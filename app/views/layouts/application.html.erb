@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Depot</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "/stylesheets/depot.css", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="store" > <div id="banner">
+    <%= image_tag("/images/logo.png") %>
+    <%= @page_title || "Pragmatic Bookshelf" %>
+</div>
+<div id="columns">
+<div id="side">
+<%= link_to "Home", :root %><br />
+<a href="http://www..../faq">Questions</a><br /> 
+<a href="http://www..../news">News</a><br />
+<a href="http://www..../contact">Contact</a><br />
+<%= Time.now.strftime('%H:%M:%S') %>
+</div>
+</div>
+<div id="main">
+<%= yield %>
+    </div>
+  </div>
+</body>
+</html>

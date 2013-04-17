@@ -1,0 +1,18 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<%= if @visits >= 5
+		pluralize(@visits, "page view") 
+	end
+%>
+<% @products.each do |product| %>
+	<div class="entry">
+		<%= link_to image_tag(product.image_url), line_items_path(:product_id => product), :method => :post %><!-- #same button as below, however since this uses a link_to helper, we need to specify the HTTP request to POST -->
+		<h3><%= product.title %></h3>
+		<%= sanitize(product.description) %>
+		<div class="price_line">
+			<span class="price"><%= number_to_currency(product.price, :precision => 2) %></span>
+			<%= button_to "Add to Cart", line_items_path(:product_id => product)  %> <!-- #creates a button which uses the line_items controller and posts a new line item with the product id supplied. Button_to helper automatically use the POST http request -->
+		</div>
+	</div>
+<% end %>
