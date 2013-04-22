@@ -43,11 +43,11 @@ class LineItemsController < ApplicationController
    # @line_item = LineItem.new(params[:line_item])
     @cart = current_cart #references the current cart which was defined in application controller
     product = Product.find(params[:product_id]) #finds the product by the ID within the URL
-    @line_item = @cart.line_items.build(:product_id => product.id) #builds a new relationship between the line item and the cart with the product
+    @line_item = @cart.add_product(product.id, product.price) #uses add_product method in cart.rb to check if the line item already exists in the cart and responds accordingly
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' } #redirects to line item within the cart
+        format.html { redirect_to @line_item.cart } #redirects to line item within the cart
         format.json { render json: @line_item, status: :created, location: @line_item }
         session[:counter] = 0 #upon adding to cart, reset the session counter to 1
       else
