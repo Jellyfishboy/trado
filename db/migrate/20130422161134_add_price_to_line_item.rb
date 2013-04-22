@@ -3,9 +3,10 @@ class AddPriceToLineItem < ActiveRecord::Migration
 
     add_column :line_items, :price, :decimal
     LineItem.reset_column_information
-
+    
     LineItem.all.each do |li|
-      li.update_attribute :price, li.product.price
+      li.price = li.product.price if li.product
+      li.update_attribute :price, li.price
     end
 
   end

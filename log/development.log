@@ -29571,3 +29571,1793 @@ Migrating to AddProductPriceToLineItem (20130422160809)
   [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
   [1m[35m (1.0ms)[0m  rollback transaction
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProducts (20130402214912)
+Migrating to CreateCarts (20130403202451)
+Migrating to CreateLineItems (20130403203027)
+Migrating to AddQuantityToLineItems (20130422122744)
+Migrating to CombineItemsInCart (20130422124249)
+Migrating to AddPriceToLineItem (20130422161134)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "line_items" ADD "price" decimal
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProducts (20130402214912)
+Migrating to CreateCarts (20130403202451)
+Migrating to CreateLineItems (20130403203027)
+Migrating to AddQuantityToLineItems (20130422122744)
+Migrating to CombineItemsInCart (20130422124249)
+Migrating to AddPriceToLineItem (20130422161134)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "line_items" ADD "price" decimal
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateProducts (20130402214912)
+Migrating to CreateCarts (20130403202451)
+Migrating to CreateLineItems (20130403203027)
+Migrating to AddQuantityToLineItems (20130422122744)
+Migrating to CombineItemsInCart (20130422124249)
+Migrating to AddPriceToLineItem (20130422161134)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "line_items" ADD "price" decimal
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 4 ORDER BY title LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mUPDATE "line_items" SET "price" = 43.0, "updated_at" = '2013-04-22 16:25:36.480117' WHERE "line_items"."id" = 3[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mUPDATE "line_items" SET "price" = 42.0, "updated_at" = '2013-04-22 16:25:36.493118' WHERE "line_items"."id" = 5[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 3 ORDER BY title LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mUPDATE "line_items" SET "price" = 49.0, "updated_at" = '2013-04-22 16:25:36.495119' WHERE "line_items"."id" = 24[0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 4 ORDER BY title LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mUPDATE "line_items" SET "price" = 43.0, "updated_at" = '2013-04-22 16:25:36.497119' WHERE "line_items"."id" = 25[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mUPDATE "line_items" SET "price" = 42.0, "updated_at" = '2013-04-22 16:25:36.498119' WHERE "line_items"."id" = 26[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130422161134')
+  [1m[36m (29.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+
+
+Started GET "/cats" for 127.0.0.1 at 2013-04-22 17:25:44 +0100
+
+ActionController::RoutingError (No route matches [GET] "/cats"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2013-04-22 17:25:46 +0100
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "product_id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 23]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? ORDER BY title LIMIT 1[0m  [["id", "3"]]
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 23 AND "line_items"."product_id" = 3 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  UPDATE "line_items" SET "quantity" = 7, "updated_at" = '2013-04-22 16:25:47.018171' WHERE "line_items"."id" = 24
+  [1m[36m (23.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 23 LIMIT 1
+Redirected to http://localhost:9000/carts/23
+Completed 302 Found in 62ms (ActiveRecord: 27.0ms)
+
+
+Started GET "/carts/23" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "23"]]
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 23
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (1.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 4 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+  Rendered carts/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:47 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" 
+  Rendered carts/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 23ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:50 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/carts/1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 1
+  Rendered carts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:25:58 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:25:59 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:00 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:00 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:26:03 +0100
+Processing by LineItemsController#index as HTML
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" 
+  Rendered line_items/index.html.erb within layouts/application (11.0ms)
+Completed 500 Internal Server Error in 18ms
+
+ActionView::Template::Error (undefined method `product_price' for #<LineItem:0x3433ce0>):
+    13: <% @line_items.each do |line_item| %>
+    14:   <tr>
+    15:     <td><%= line_item.product_id %></td>
+    16:     <td><%= line_item.product_price %></td>
+    17:     <td><%= line_item.cart_id %></td>
+    18:     <td><%= link_to 'Show', line_item %></td>
+    19:     <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
+  app/views/line_items/index.html.erb:16:in `block in _app_views_line_items_index_html_erb___777786351_31748688'
+  app/views/line_items/index.html.erb:13:in `each'
+  app/views/line_items/index.html.erb:13:in `_app_views_line_items_index_html_erb___777786351_31748688'
+  app/controllers/line_items_controller.rb:7:in `index'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  Rendered line_items/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /depot.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:17 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Processing by LineItemsController#index as HTML
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" 
+  Rendered line_items/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /depot.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  Rendered line_items/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /line_items.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:19 +0100
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  Rendered store/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:35 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:54 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "product_id"=>"2"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 23]]
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? ORDER BY title LIMIT 1[0m  [["id", "2"]]
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 23 AND "line_items"."product_id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  UPDATE "line_items" SET "quantity" = 3, "updated_at" = '2013-04-22 16:26:56.276096' WHERE "line_items"."id" = 26
+  [1m[36m (20.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 23 LIMIT 1
+Redirected to http://localhost:9000/carts/23
+Completed 302 Found in 27ms (ActiveRecord: 21.0ms)
+
+
+Started GET "/carts/23" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mCart Load (1.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "23"]]
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 23
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 3 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 4 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+  Rendered carts/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:26:56 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Processing by LineItemsController#index as HTML
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" 
+  Rendered line_items/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /line_items.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:00 +0100
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  Rendered line_items/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:01 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:02 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" 
+  Rendered carts/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /carts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:10 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started DELETE "/carts/1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 23]]
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 23[0m
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = ?  [["id", 24]]
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "line_items" WHERE "line_items"."id" = ?[0m  [["id", 25]]
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = ?  [["id", 26]]
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = ?[0m  [["id", 23]]
+  [1m[35m (20.0ms)[0m  commit transaction
+Redirected to http://localhost:9000/
+Completed 302 Found in 47ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:15 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2013-04-22 17:27:20 +0100
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "product_id"=>"3"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Mon, 22 Apr 2013 16:27:20 UTC +00:00], ["updated_at", Mon, 22 Apr 2013 16:27:20 UTC +00:00]]
+  [1m[35m (29.0ms)[0m  commit transaction
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? ORDER BY title LIMIT 1[0m  [["id", "3"]]
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 24 AND "line_items"."product_id" = 3 LIMIT 1
+Completed 500 Internal Server Error in 39ms
+
+ActiveRecord::UnknownAttributeError (unknown attribute: product_price):
+  app/models/cart.rb:10:in `add_product'
+  app/controllers/line_items_controller.rb:46:in `create'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 44ms (Views: 14.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:27:57 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2013-04-22 17:27:59 +0100
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "product_id"=>"3"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Mon, 22 Apr 2013 16:27:59 UTC +00:00], ["updated_at", Mon, 22 Apr 2013 16:27:59 UTC +00:00]]
+  [1m[35m (29.0ms)[0m  commit transaction
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? ORDER BY title LIMIT 1[0m  [["id", "3"]]
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 25 AND "line_items"."product_id" = 3 LIMIT 1
+Completed 500 Internal Server Error in 49ms
+
+ActiveModel::MassAssignmentSecurity::Error (Can't mass-assign protected attributes: price):
+  app/models/cart.rb:10:in `add_product'
+  app/controllers/line_items_controller.rb:46:in `create'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Processing by StoreController#index as HTML
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 49ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /line_items.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:10 +0100
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/line_items?product_id=3" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCQXR4+PA7ikBl+apLUPLK+E8sCHLg52iuOiQHg1+fE=", "product_id"=>"3"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Mon, 22 Apr 2013 16:28:11 UTC +00:00], ["updated_at", Mon, 22 Apr 2013 16:28:11 UTC +00:00]]
+  [1m[35m (26.0ms)[0m  commit transaction
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? ORDER BY title LIMIT 1[0m  [["id", "3"]]
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 26 AND "line_items"."product_id" = 3 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "line_items" ("cart_id", "created_at", "price", "product_id", "quantity", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["cart_id", 26], ["created_at", Mon, 22 Apr 2013 16:28:11 UTC +00:00], ["price", #<BigDecimal:3f2f8f8,'0.49E2',9(36)>], ["product_id", 3], ["quantity", 1], ["updated_at", Mon, 22 Apr 2013 16:28:11 UTC +00:00]]
+  [1m[36m (24.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mCart Load (1.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 26 LIMIT 1
+Redirected to http://localhost:9000/carts/26
+Completed 302 Found in 80ms (ActiveRecord: 55.0ms)
+
+
+Started GET "/carts/26" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mCart Load (1.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "26"]]
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = 26
+  [1m[36mProduct Load (1.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 3 ORDER BY title LIMIT 1[0m
+  Rendered carts/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /products.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /store.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:11 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+  Rendered store/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:13 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/line_items" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" [0m
+  Rendered line_items/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/carts.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /carts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/depot.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /depot.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /products.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /line_items.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.css?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /store.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/carts.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /carts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/line_items.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /line_items.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /products.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/store.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /store.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/stylesheets/depot.css" for 127.0.0.1 at 2013-04-22 17:28:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/depot.css"):
+  actionpack (3.2.12) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.12) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.12) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.12) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.12) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.12) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.12) lib/rails/engine.rb:479:in `call'
+  railties (3.2.12) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.12) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  C:/Ruby193/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
