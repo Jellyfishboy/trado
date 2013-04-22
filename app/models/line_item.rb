@@ -6,4 +6,9 @@ class LineItem < ActiveRecord::Base
   def total_price 
   	product.price * quantity
   end
+
+  def total_items?
+    @line_item.cart.empty?
+  end
+
 end

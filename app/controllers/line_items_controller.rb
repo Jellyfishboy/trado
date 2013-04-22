@@ -47,7 +47,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart } #redirects to line item within the cart
+        format.html { redirect_to @line_item.cart, notice: 'Successfully added the product to the cart.' } #redirects to line item within the cart
         format.json { render json: @line_item, status: :created, location: @line_item }
         session[:counter] = 0 #upon adding to cart, reset the session counter to 1
       else
@@ -80,8 +80,10 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to @line_item.cart, notice: 'Successfully deleted the item.' }
       format.json { head :no_content }
     end
   end
+
+  
 end

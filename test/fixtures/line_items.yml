@@ -7,3 +7,27 @@ one:
 two:
   product_id: 1
   cart_id: 1
+
+o1_coffee:
+  product_id: 2
+  cart_id: 1
+  quantity: 2
+  price: 36.00
+
+o1_ruby:
+  product_id: 3
+  cart_id: 1
+  quantity: 2
+  price: 49.95
+
+o1_rails:
+  product_id: 4
+  cart_id: 1
+  quantity: 2
+  price: 34.95
+
+o2_ruby:
+  product_id: 3
+  cart_id: 2
+  quantity: 1
+  price: 49.95
