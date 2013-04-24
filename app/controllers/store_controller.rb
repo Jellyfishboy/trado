@@ -1,6 +1,7 @@
 class StoreController < ApplicationController
   def index
   	@products = Product.all #lists all the products
+  	@cart = current_cart
   	if session[:counter].nil?
 	  	session[:counter] = 1 #if nil, assign 1 to counter session
 

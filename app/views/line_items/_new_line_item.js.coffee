@@ -1,0 +1,1 @@
+$('#cart').html "<%=j render :partial => @cart  %>"
