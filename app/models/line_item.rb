@@ -7,8 +7,4 @@ class LineItem < ActiveRecord::Base
   	product.price * quantity
   end
 
-  def total_items?
-    @line_item.cart.empty?
-  end
-
 end
