@@ -19,4 +19,12 @@ class CartTest < ActiveSupport::TestCase
   	assert_equal 2, cart.line_items[0].quantity #selecting the first line item with an array value, then quantity of the line item is expected to be 2
   end
 
+  test "empty cart should be destroyed" do
+    cart = Cart.create
+    cart.add_product(products(:rails).id, products(:rails).price).save! 
+    assert_equal 1, cart.line_items[0].quantity
+    cart.decrement_line_item_quantity(line_items(:o1_rails).id)
+    assert_equal 0, cart.line_items[0].quantity
+  end
+
 end

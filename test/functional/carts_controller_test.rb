@@ -44,7 +44,7 @@ class CartsControllerTest < ActionController::TestCase
       session[:cart_id] = @cart.id
       delete :destroy, :id => @cart.to_param
     end
-
+    assert_select '#cart', false, 'Page should not contain any cart elements'
     assert_redirected_to store_path
   end
 end
