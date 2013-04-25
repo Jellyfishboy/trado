@@ -1,0 +1,23 @@
+<h1>Listing pay_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pay_types.each do |pay_type| %>
+  <tr>
+    <td><%= pay_type.name %></td>
+    <td><%= link_to 'Show', pay_type %></td>
+    <td><%= link_to 'Edit', edit_pay_type_path(pay_type) %></td>
+    <td><%= link_to 'Destroy', pay_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pay type', new_pay_type_path %>

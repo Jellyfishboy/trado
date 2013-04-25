@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
+    @pay_type = PayType.all #adds pay_type database to the select form tag
     @cart = current_cart 
     if @cart.line_items.empty?
       redirect_to store_url, :notice => 'You cart is empty'
@@ -85,7 +86,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to store_url, 'Your order has been deleted' }
       format.json { head :no_content }
     end
   end

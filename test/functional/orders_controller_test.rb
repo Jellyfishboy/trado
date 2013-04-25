@@ -47,7 +47,7 @@ class OrdersControllerTest < ActionController::TestCase
       delete :destroy, id: @order
     end
 
-    assert_redirected_to orders_path
+    assert_redirected_to store_path
   end
 
   test "requires item in cart" do
