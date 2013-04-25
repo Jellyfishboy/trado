@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: Tom Dallimore
+  address: MyText
+  email: MyString
+  pay_type: MyString
+
+two:
+  name: MyString
+  address: MyText
+  email: tom@ruckusmedia.co.uk
+  pay_type: Credit card

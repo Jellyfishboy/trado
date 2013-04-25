@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   } #all of the above valids the attributes of products
   default_scope :order => 'title' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
+  has many :orders, :through => :line_items
   before_destroy :ensure_not_referenced_by_any_line_item #before destroy the product object, execute the following method shown below
 
   private

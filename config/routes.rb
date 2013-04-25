@@ -3,6 +3,7 @@ Depot::Application.routes.draw do
     put 'decrement', on: :member
   end
   resources :carts
+  resources :orders
   get "store/index"
   resources :products
 
