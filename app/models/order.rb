@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   validates_each :pay_type do |model, attr, value|
   if !PayType.names.include?(value)
     model.errors.add(attr, "Payment type not on the list") 
-  end
+  end #validates all columms from the paytype db have been collected
 end
 
   def add_line_items_from_cart(cart)
