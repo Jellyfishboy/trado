@@ -10,15 +10,13 @@ class Product < ActiveRecord::Base
   default_scope :order => 'title' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
-  before_destroy :ensure_not_referenced_by_any_line_item #before destroy the product object, execute the following method shown below
+  before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
 
   private
-  	def ensure_not_referenced_by_any_line_item
+  	def reference_no_line_item
   		if line_items.empty?
-  			return true
   		else
   			errors.add(:base, 'Line items present')
-  			return false
   		end #if lineitems are present, it throws an error when attempting to delete the product
   	end
 end
