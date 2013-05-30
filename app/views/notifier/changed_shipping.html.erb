@@ -1,0 +1,8 @@
+<h3>Pragmatic Order #<%= @order.id %> Shipping update</h3>
+<p>
+  Unfortunately your shipping date has been changed, we are sorry for the inconvenience:
+</p>
+<table>
+  <tr><th colspan="2" >Qty</th><th>Description</th></tr>
+  <%= render @order.line_items %>
+</table>

@@ -13,11 +13,17 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
+    begin
+      @order = Order.find(params[:id])
+    rescue
+      @logged_error = "Attempts to access invalid order #{params[:id]}"
+      Notifier.application_error(@logged_error, 'Order').deliver
+      redirect_to store_url, :notice => 'Invalid order'
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @order }
+      end
     end
   end
 
@@ -67,23 +73,18 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    begin
-      @order = Order.find(params[:id])
-    rescue
-      @logged_error = logger_error "Attempts to access invalid order #{params[:id]}"
-      Notifier.application_error(@logged_error, 'Order').deliver
-      redirect_to store_url, :notice => 'Invalid order'
-    else
-      respond_to do |format|
-        if @order.update_attributes(params[:order])
-          Notifier.order_shipped(@order).deliver unless @order.ship_date.nil?
-          binding.pry
-          format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @order.errors, status: :unprocessable_entity }
-        end
+    @order = Order.find(params[:id])
+
+    respond_to do |format|
+      if @order.update_attributes(params[:order])
+        #Notifier.order_shipped(@order).deliver unless @order.ship_date.nil?
+
+        binding.pry
+        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end

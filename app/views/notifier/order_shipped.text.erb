@@ -1,3 +1,7 @@
-Notifier#order_shipped
+Pragmatic Order Shipped
 
-<%= @greeting %>, find me in app/views/app/views/notifier/order_shipped.text.erb
+This is just to let you know that we've shipped your recent order:
+
+Qty     Description
+  <%= render @order.line_items %>
+
