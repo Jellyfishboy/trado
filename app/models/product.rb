@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   validates :image_url, :format => {
   	:with => %r{\.(gif|png|jpg)$}i,
   	:message => "must be a URL for GIF, JPG or PNG image."
-  } #all of the above valids the attributes of products
+  } # all of the above validates the attributes of products
   default_scope :order => 'title' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
@@ -17,6 +17,6 @@ class Product < ActiveRecord::Base
   		if line_items.empty?
   		else
   			errors.add(:base, 'Line items present')
-  		end #if lineitems are present, it throws an error when attempting to delete the product
+  		end # if line_items are present, it throws an error when attempting to delete the product
   	end
 end
