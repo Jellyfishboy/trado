@@ -16,52 +16,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="arel (v3.0.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.3.0, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coderay (v1.0.9, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.2.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="execjs (v1.4.0, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.1, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="journey (v1.0.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v2.2.1, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="json (v1.7.7, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mail (v2.4.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="method_source (v0.8.1, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.22, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.7.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pry (v0.9.12.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack (v1.4.5, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-ssl (v1.3.3, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="railties (v3.2.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v10.0.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.7, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="slop (v3.4.5, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.2, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.7, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="thor (v0.18.1, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="tilt (v1.3.6, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.12, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.37, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="uglifier (v1.3.0, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="will_paginate (v3.0.4, ruby-1.9.3-p327) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="win32console (v1.3.2, ruby-1.9.3-p327) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

@@ -120,6 +120,7 @@
   font: small-caps 40px/40px "Times New Roman", serif;
   color: #282;
   text-align: center;
+  overflow: hidden;
 }
 #banner img { float: left;
 }

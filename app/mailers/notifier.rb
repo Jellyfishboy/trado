@@ -23,4 +23,12 @@ class Notifier < ActionMailer::Base
 
     mail to: => order.email, :subject => 'Pragmatic Store Order Shipped'
   end
+
+  def application_error(error, obj)
+    @error_log = error
+    @obj = obj
+
+    mail to: => "tom.alan.dallimore@googlemail.com", :subject => "Application Error: #{@obj}"
+  end
+
 end

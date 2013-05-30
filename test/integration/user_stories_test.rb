@@ -2,10 +2,12 @@ require 'test_helper'
 
 class UserStoriesTest < ActionDispatch::IntegrationTest
 	fixtures :products
+  fixtures :orders
 
 	LineItem.delete_all
 	Order.delete_all
 	ruby_book = products(:ruby)
+  order_one = orders(:one)
 
 	test "buying a product" do
 		# verifys the intial landing page is index
@@ -59,5 +61,51 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal "Tom Dallimore <tom.alan.dallimore@googlemail.com>", mail[:from].value
 		assert_equal "Pragmatic Store Order Confirmation", mail.subject
 
-	end
+  end
+
+  test "send application error email when attempting order edit" do
+
+    get "/orders/#{order_one.id}/edit"
+    assert_response :fail
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["tom.alan.dallimore@googlemail.com"], mail.to
+    assert_equal "Tom Dallimore <tom.alan.dallimore@googlemail.com>", mail[:from].value
+    assert_equal "Application Error: Order"
+
+    get "/"
+    assert_response :redirect
+    assert_template "index"
+
+  end
+
+  test "send shipping mail when ship date value confirmed" do
+
+    get "/orders/#{order_one.id}/edit"
+    assert_response :success
+    assert_template "edit"
+
+    post_via_redirect "/orders"
+                      :order => { :name => "Tom Dallimore",
+                                  :address => "MyText",
+                                  :email => "MyString",
+                                  :pay_type => "MyString",
+                                  :ship_date => "2013-05-30 00:00:00 UTC"}
+    order = Order.last
+
+    assert_equal "Tom Dallimore", order.name
+    assert_equal "MyText", order.address
+    assert_equal "MyString", order.email
+    assert_equal "MyString", order.pay_type
+    assert_equal "2013-05-30 00:00:00 UTC", order.ship_date
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["MyString"], mail.to
+    assert_equal "Tom Dallimore <tom.alan.dallimore@googlemail.com>", mail[:from].value
+    assert_equal 'Pragmatic Store Order Shipped'
+
+    assert_response :success
+    assert_template "index"
+
+  end
 end
