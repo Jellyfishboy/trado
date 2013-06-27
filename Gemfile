@@ -5,6 +5,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Database
 gem 'sqlite3'
 
 
@@ -27,6 +28,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# Authenication
+gem 'devise'
+
+# Pagination
 gem 'will_paginate', '~> 3.0'
 
 # Debugging

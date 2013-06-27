@@ -1,5 +1,7 @@
 Depot::Application.routes.draw do
 
+  devise_for :users
+
   resources :pay_types
 
   resources :line_items do
