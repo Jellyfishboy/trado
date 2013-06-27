@@ -30,6 +30,7 @@ end
 
 # Authenication
 gem 'devise'
+gem 'cancan'
 
 # Pagination
 gem 'will_paginate', '~> 3.0'

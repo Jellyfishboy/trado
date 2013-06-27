@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:create, :show, :destroy]
   # GET /carts
   # GET /carts.json
   def index

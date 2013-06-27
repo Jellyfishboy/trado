@@ -1,10 +1,10 @@
 class LineItemsController < ApplicationController
-
+  
+  before_filter :authenticate_user!, :except => [:destroy, :create]
   # GET /line_items
   # GET /line_items.json
   def index
     @line_items = LineItem.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @line_items }
