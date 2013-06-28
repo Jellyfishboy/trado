@@ -1,8 +1,7 @@
 Depot::Application.routes.draw do
 
-  devise_for :users,  :controllers => { :registrations => "users/registrations" }
-  resources :users
-
+  root :to => 'store#index', :as =>'store'
+  
   resources :pay_types
 
   resources :line_items do
@@ -13,7 +12,11 @@ Depot::Application.routes.draw do
   get "store/index"
   resources :products
 
-  root :to => 'store#index', :as =>'store'
+  devise_for :users, :controllers => { 
+    :registrations => "users/registrations",
+    :sessions => "users/sessions"
+     }
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

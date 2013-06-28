@@ -1,6 +1,6 @@
 class Ability
     include CanCan::Ability
-    include Devise
+
     def initialize(user)
         if user.blank? or user.roles.empty?
             user ||= User.new
@@ -15,7 +15,7 @@ class Ability
     end
 
     def guest_permissions(user)
-        can :read [Product]
+        can :read, Product
         can :manage, User
         can [:show, :create, :destroy], [Cart]
         can [:create, :destroy], [LineItem]
