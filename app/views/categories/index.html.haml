@@ -2,7 +2,6 @@
 
 %table
   %tr
-    %th Product
     %th Name
     %th Description
     %th
@@ -11,7 +10,6 @@
 
   - @categories.each do |category|
     %tr
-      %td= category.product_id
       %td= category.name
       %td= category.description
       %td= link_to 'Show', category
