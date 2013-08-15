@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
 end
 
   def add_line_items_from_cart(cart)
-  	Pcart.line_items.each do |item|
+  	cart.line_items.each do |item|
   		item.cart_id = nil
   		line_items << item
   	end
