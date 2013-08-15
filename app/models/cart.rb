@@ -23,4 +23,12 @@ class Cart < ActiveRecord::Base
   def total_price 
   	line_items.to_a.sum { |item| item.total_price }
   end
+
+  def basket_quantity(cart)
+    cart.line_items.each do |item|
+      basket_quantity << item.quantity
+    end
+    basket_quantity
+    binding.pry
+  end
 end

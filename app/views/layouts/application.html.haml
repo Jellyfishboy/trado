@@ -46,10 +46,13 @@
             %li.dropdown
               %a{:href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"} 
                 %i.icon-shopping-cart
-                Basket
-              .dropdown-menu#cart
+                Basket (
                 - if @cart
-                  - unless @cart.line_items.empty?
+                  = @cart.line_items.sum('quantity')
+                )
+              - if @cart
+                - unless @cart.line_items.empty?
+                  .dropdown-menu#cart
                     = render @cart
     %main.container{:role => "main"}
       = yield
