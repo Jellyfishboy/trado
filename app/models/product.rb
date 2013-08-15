@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   default_scope :order => 'title' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
+  belongs_to :categories
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
 
   private
