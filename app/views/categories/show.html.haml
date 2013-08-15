@@ -1,8 +1,12 @@
 %p#notice= notice
 
 %p
-    %b Title
-    @category.title
+    %b Name
+    = @category.name
+
+%p
+    %b Description
+    = @category.description
     
 = link_to 'Edit', edit_category_path(@category)
 \|

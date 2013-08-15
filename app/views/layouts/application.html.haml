@@ -34,12 +34,9 @@
         
         .nav-collapse.collapse
           %ul.nav.navbar-nav
-            %li
-              %a{:href => "#about"} Actuators
-            %li
-              %a{:href => "#contact"} Motors
-            %li
-              %a{:href => "#accessories"} Accessories
+            - @categories.each do |category|
+              %li
+                = link_to category.name, category
           %form.navbar-form.pull-left
             %input.form-control.col-lg-8{:type => "text", :placeholder => "Search"}
           %ul.nav.navbar-nav.pull-right

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
     before_filter :authenticate_user!
+    before_filter :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
@@ -17,4 +18,8 @@ class ApplicationController < ActionController::Base
   		session[:cart_id] = cart.id #assigns the new session with the new cart id
   		cart #initializes the cart
   	end
+
+    def category_list 
+      @categories = Category.all
+    end
 end
