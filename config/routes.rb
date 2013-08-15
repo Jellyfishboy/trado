@@ -1,4 +1,4 @@
-Depot::Application.routes.draw do
+GimsonRobotics::Application.routes.draw do
 
   root :to => 'store#index', :as =>'store'
   

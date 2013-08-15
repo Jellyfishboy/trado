@@ -8,12 +8,15 @@ gem 'rails', '3.2.12'
 # Database
 gem 'sqlite3'
 
+# HTML Framework
+gem 'haml'
 
 # Development gems
 group :development do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'meta_request'
+    gem 'haml-rails'
 end
 
 # Gems used only for assets and not required

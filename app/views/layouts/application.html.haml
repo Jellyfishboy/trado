@@ -1,0 +1,58 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %title
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    :css
+      body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+      }
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "/css/bootstrap.min.css", :media => "all"
+    = stylesheet_link_tag "/css/bootstrap-responsive.min.css", :media => "all"
+  %body
+    /[if lt IE 7]
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    / This code is taken from http://twitter.github.com/bootstrap/examples/hero.html
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => store_url } Gimson Robotics
+          .nav-collapse.collapse
+            %ul.nav
+              %li.active
+                %a{:href => store_url } Home
+              %li
+                %a{:href => "#about"} About
+              %li
+                %a{:href => "#contact"} Contact
+          / /.nav-collapse
+    .container
+      = yield
+      #cart
+        - if @cart
+          - unless @cart.line_items.empty?
+            = render @cart
+      %hr/
+      %footer
+        %p © Company 2012
+    / /container
+    = javascript_include_tag "/javascript/jquery-1.9.1.min.js", "/javascript/bootstrap.min.js", "application", "/javascript/modernizr-2.6.2.min.js"
+    :javascript
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
