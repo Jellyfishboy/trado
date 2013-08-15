@@ -16,6 +16,7 @@ class Ability
 
     def guest_permissions(user)
         can :read, Product
+        can :read, Category
         can :manage, User
         can [:show, :create, :destroy], [Cart]
         can [:create, :destroy], [LineItem]
