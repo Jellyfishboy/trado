@@ -35,6 +35,10 @@ end
 gem 'devise'
 gem 'cancan'
 
+# Image uploader
+gem 'mini_magick'
+gem 'carrierwave'
+
 # Pagination
 gem 'will_paginate', '~> 3.0'
 

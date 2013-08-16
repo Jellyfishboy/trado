@@ -27,10 +27,6 @@
     <%= f.label :pay_type %><br />
     <%= f.collection_select(:pay_type, PayType.all, :name, :name, :prompt => 'Select a payment method') %>
   </div>
-  <div class="field">
-    <%= f.label :ship_date %>
-    <%= f.date_select :ship_date %>
-  </div>
   <div class="actions">
     <%= f.submit 'Place order' %>
   </div>

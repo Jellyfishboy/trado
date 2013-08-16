@@ -6,10 +6,7 @@ class Order < ActiveRecord::Base
 
   after_update :send_new_ship_email, :if => :ship_date_changed? && :no_ship_date
   after_update :send_changed_ship_email, :if => :ship_date_changed? && :ship_date_was
-
-  if !PayType.names.include?(value)
-    model.errors.add(attr, "Payment type not on the list") 
-  end #validates all columms from the paytype db have been collected
+  
 end
 
   def add_line_items_from_cart(cart)

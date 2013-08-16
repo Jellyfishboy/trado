@@ -1,27 +1,20 @@
-%p#notice= notice
-
-%p
-    %b Name
+%h1 
     = @category.name
 
-%p
-    %b Description
+#category_description
     = @category.description
 
-%p
-    %b Products
+%hr
+
+
     - @products.each_slice(3) do |slice|
         .row
             - slice.each do |product|
-                .col-3
+                .col-3.vertical_product
                     = link_to image_tag(product.image_url), line_items_path(:product_id => product), :method => :post, :remove => true
                     %h3
                         = product.title
                     .price
                         = number_to_currency(product.price, :precision => 2)
-                        = link_to 'Add to cart', line_items_path(:product_id => product), :remote => true, :method => 'post', :class => 'btn btn-success btn-small'
-                        = link_to 'Find out more', product, :class => 'btn btn-info btn-small'
-
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+                    = link_to 'Add to cart', line_items_path(:product_id => product), :remote => true, :method => 'post', :class => 'btn btn-success btn-small'
+                    = link_to 'Find out more', product, :class => 'btn btn-info btn-small'
