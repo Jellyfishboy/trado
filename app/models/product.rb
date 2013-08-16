@@ -13,6 +13,10 @@ class Product < ActiveRecord::Base
   belongs_to :categories
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
 
+  def self.category_products category_name
+    where(:category => category_name)
+  end
+
   private
   	def reference_no_line_item
   		if line_items.empty?
