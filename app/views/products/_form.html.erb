@@ -27,6 +27,10 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.collection_select(:category, Category.all, :name, :name, :prompt => "Please select a category") %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
