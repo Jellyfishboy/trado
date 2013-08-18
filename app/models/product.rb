@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   belongs_to :categories
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
+  
   def self.category_products category_name
     where(:category => category_name)
   end
