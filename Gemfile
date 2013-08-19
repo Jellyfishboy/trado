@@ -36,7 +36,7 @@ gem 'devise'
 gem 'cancan'
 
 # Image uploader
-gem 'mini_magick'
+gem 'mini_magick', '~> 3.5.0'
 gem 'carrierwave'
 
 # Pagination
