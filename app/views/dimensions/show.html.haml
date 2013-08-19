@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @dimension.product_id
+%p
+  %b Weight:
+  = @dimension.weight
+%p
+  %b Size:
+  = @dimension.size
+
+= link_to 'Edit', edit_dimension_path(@dimension)
+\|
+= link_to 'Back', dimensions_path

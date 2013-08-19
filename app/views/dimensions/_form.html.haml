@@ -1,0 +1,19 @@
+= form_for @dimension do |f|
+  - if @dimension.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dimension.errors.count, "error")} prohibited this dimension from being saved:"
+      %ul
+        - @dimension.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :product_id
+    = f.number_field :product_id
+  .field
+    = f.label :weight
+    = f.number_field :weight
+  .field
+    = f.label :size
+    = f.number_field :size
+  .actions
+    = f.submit 'Save'

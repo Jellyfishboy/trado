@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :image_url, :price, :category
+  attr_accessible :title, :description, :image_url, :price, :category_id, :weighting, :stock
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :title, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
@@ -11,6 +11,8 @@ class Product < ActiveRecord::Base
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
   belongs_to :categories
+  has_many :dimensions
+  has_many :shippings, :through => :dimensions
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
   

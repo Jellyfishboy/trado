@@ -1,0 +1,34 @@
+= form_for @shipping do |f|
+  - if @shipping.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@shipping.errors.count, "error")} prohibited this shipping from being saved:"
+      %ul
+        - @shipping.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :weight
+    = f.text_field :weight
+  .field
+    = f.label :size
+    = f.text_field :size
+  .field
+    = f.label :weight_id
+    = f.number_field :weight_id
+  .field
+    = f.label :size_id
+    = f.number_field :size_id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :price
+    = f.number_field :price
+  .field
+    = f.label :insurance
+    = f.check_box :insurance
+  .actions
+    = f.submit 'Save'

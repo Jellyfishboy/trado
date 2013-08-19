@@ -28,9 +28,22 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :category %>
-    <%= f.collection_select(:category, Category.all, :name, :name, :prompt => "Please select a category") %>
+    <%= f.label :category_id %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => "Please select a category") %>
   </div>
+  <div class="field">
+    <%= f.label :stock %><br />
+    <%= f.text_field :stock %>
+  </div>
+  <div class="field">
+    <%= f.label :weighting %><br />
+    <%= f.text_field :weighting %>
+  </div>
+  <div class="field">
+    <% Size.all.each do |rt| %>
+      <%= f.radio_button :request_type_id, rt.id %>
+      <%= f.label :request_type_id, rt.title %>
+    <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
