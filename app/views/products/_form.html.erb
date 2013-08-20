@@ -39,11 +39,8 @@
     <%= f.label :weighting %><br />
     <%= f.text_field :weighting %>
   </div>
-  <div class="field">
-    <% Size.all.each do |rt| %>
-      <%= f.radio_button :request_type_id, rt.id %>
-      <%= f.label :request_type_id, rt.title %>
-    <% end %>
+    <%= link_to_add_fields "Add Dimension", f, :dimensions %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :image_url, :price, :category_id, :weighting, :stock
+  attr_accessible :title, :description, :image_url, :price, :category_id, :weighting, :stock, :dimensions_attributes
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :title, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
@@ -7,12 +7,13 @@ class Product < ActiveRecord::Base
   	:with => %r{\.(gif|png|jpg)$}i,
   	:message => "must be a URL for GIF, JPG or PNG image."
   } # all of the above validates the attributes of products
-  default_scope :order => 'title' #orders the products by title
+  default_scope :order => 'weighting' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
   belongs_to :categories
   has_many :dimensions
-  has_many :shippings, :through => :dimensions
+  has_many :shipping_options, :through => :dimensions, :source => :shippings
+  accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
   
