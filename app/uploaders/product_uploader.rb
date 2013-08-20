@@ -13,7 +13,6 @@ class ProductUploader < CarrierWave::Uploader::Base
   end
 
   process resize_to_fit: [500,500]
-  # process :quality => 50
 
   version :large do
     process resize_to_fill: [400,400]
