@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :image_url, :price, :category_id, :weighting, :stock, :dimensions_attributes
+  attr_accessible :title, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :title, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
@@ -10,15 +10,15 @@ class Product < ActiveRecord::Base
   default_scope :order => 'weighting' #orders the products by title
   has_many :line_items #each product has many line items in the various carts
   has_many :orders, :through => :line_items
-  belongs_to :categories
+  has_many :categorisations
+  has_many :categories, :through => :categorisations
   has_many :dimensions
-  has_many :shipping_options, :through => :dimensions, :source => :shippings
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
   
   def self.category_products category_name
-    where(:category => category_name)
+    where(self.category_ids => category_name)
   end
 
   private

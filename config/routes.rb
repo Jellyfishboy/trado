@@ -1,9 +1,9 @@
 GimsonRobotics::Application.routes.draw do
 
+  resources :accessories
+
+
   resources :dimensions
-
-
-  resources :shippings
 
 
   resources :categories

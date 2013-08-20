@@ -28,8 +28,11 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :category_id %>
-    <%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => "Please select a category") %>
+    <label>Categories</label><br/>
+    <% Category.all.each do |category| %>
+        <%= check_box_tag "product[category_ids][]", category.id %>
+        <%= category.name %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :stock %><br />
@@ -45,10 +48,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<!-- <div class="field">
-  <% Shipping.all.each do |rt| %>
-    <%= f.radio_button :request_type_id, rt.id %>
-    <%= f.label :request_type_id, rt.title %>
-  <% end %>
-</div> -->

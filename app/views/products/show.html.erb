@@ -22,7 +22,9 @@
 
 <p>
   <b>Category:</b>
-  <%= @product.category_id %>
+  <% @product.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
 </p>
 
 <p>
