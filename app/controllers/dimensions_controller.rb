@@ -1,4 +1,5 @@
 class DimensionsController < ApplicationController
+  layout 'admin'
   # GET /dimensions
   # GET /dimensions.json
   def index

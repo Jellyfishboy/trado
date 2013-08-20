@@ -28,6 +28,13 @@
 </p>
 
 <p>
+  <b>Additional options:</b>
+  <% @product.additional_options.each do |option| %>
+    <li><%= option.name %></li>
+  <% end %>
+</p>
+
+<p>
   <b>Stock:</b>
   <%= @product.stock %>
 </p>

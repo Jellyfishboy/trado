@@ -1,35 +1,57 @@
-
-<div id="product_list">
+<div class="page-header">
   <h1>Listing products</h1>
-
-  <table>
+</div>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Weighting</th>
+      <th>Stock</th>
+      <th>Category</th>
+      <th>Accessories</th>
+      <th>Actions</th>
+  </thead>
+  <tbody>
   <% @products.each do |product| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-
+    <tr>
       <td>
-        <%= image_tag(product.image_url, :class => 'list_image') %>
+        <%= product.id %>
       </td>
-
-      <td class="list_description">
-        <dl>
-          <dt><%= product.title %></dt>
-          <dd><%= truncate(strip_tags(product.description),
-                 :length => 80) %></dd>
-        </dl>
+      <td>
+        <%= link_to image_tag(product.image_url.medium), product %>
       </td>
-
-      <td class="list_actions">
-        <%= link_to 'Show', product %><br/>
-        <%= link_to 'Edit', edit_product_path(product) %><br/>
+      <td>
+        <%= link_to product.title, product %>
+      </td>
+      <td>
+        <%= product.price %>
+      </td>
+      <td>
+        <%= product.weighting %>
+      </td>
+      <td>
+        <%= product.stock %>
+      </td>
+      <td>
+        <% product.categories.each do |category| %>
+          <li><%= category.name %></li>
+        <% end %>
+      </td>
+      <td>
+        <% product.additional_options.each do |option| %>
+          <li><%= option.name %></li>
+        <% end %>
+      </td>
+      <td >
+        <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-success" %><br/>
         <%= link_to 'Destroy', product, 
                     :confirm => 'Are you sure?',
-                    :method => :delete %>
-      </td>
+                    :method => :delete, :class => "btn btn-danger" %>
+      </td> 
     </tr>
   <% end %>
-  </table>
-</div>
-
-<br />
-
-<%= link_to 'New product', new_product_path %>
+  </tbody>
+</table>

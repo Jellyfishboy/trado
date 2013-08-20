@@ -1,50 +1,82 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="well">
+      <%= form_for @product, :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
+        <fieldset>
+        <% if @product.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <legend>Details</legend>
+        <div class="form-group">
+          <%= f.label :title, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.text_field :title, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :image_url, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.file_field :image_url, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.text_field :price, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :stock, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.text_field :stock, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :weighting, :class => 'control-label col-lg-2' %>
+          <div class="col-lg-10">
+            <%= f.text_field :weighting, :class => 'form-control' %>
+          </div>
+        </div>
+        <legend>Categories</legend>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <% Category.all.each do |category| %>
+                <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id) %>
+                <%= category.name %>
+            <% end %>
+          </div>
+        </div>
+        <legend>Accessories</legend>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <% ProductOption.all.each do |option| %>
+                <%= check_box_tag "product[additional_option_ids][]", option.id, @product.additional_option_ids.include?(option.id) %>
+                <%= option.name %>
+            <% end %>
+          </div>
+        </div>
+        <legend>Dimensions</legend>
+          <%= link_to_add_fields "Add Dimension", f, :dimensions %>
+
+        <div class="actions">
+          <%= f.submit :class => 'btn btn-success' %>
+        </div>
+        </fieldset>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :rows => 6 %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.file_field :image_url %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <label>Categories</label><br/>
-    <% Category.all.each do |category| %>
-        <%= check_box_tag "product[category_ids][]", category.id %>
-        <%= category.name %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :stock %><br />
-    <%= f.text_field :stock %>
-  </div>
-  <div class="field">
-    <%= f.label :weighting %><br />
-    <%= f.text_field :weighting %>
-  </div>
-    <%= link_to_add_fields "Add Dimension", f, :dimensions %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

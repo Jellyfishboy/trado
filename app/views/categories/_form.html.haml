@@ -1,16 +1,22 @@
-= form_for @category do |f|
-  - if @category.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-      %ul
-        - @category.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions
-    = f.submit 'Save'
+.row
+  .col-lg-6
+    .well   
+      = form_for @category, :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+        %fieldset
+        - if @category.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+            %ul
+              - @category.errors.full_messages.each do |msg|
+                %li= msg
+        %legend Details      
+        .form-group
+          = f.label :name, :class => 'control-label col-lg-2'
+          .col-lg-10
+            = f.text_field :name, :class => 'form-control'
+        .form-group
+          = f.label :description, :class => 'control-label col-lg-2'
+          .col-lg-10
+            = f.text_area :description, :class => 'form-control', :rows => 8
+        .actions
+          = f.submit :class => "btn btn-success"

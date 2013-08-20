@@ -2,3 +2,17 @@
     text-align: center;
     margin-bottom:30px;
 }
+table {
+    tbody{
+        tr {
+            td:last-child {
+                .btn {
+                    margin-bottom:10px;
+                        &:last-child {
+                            margin:0;
+                        }
+                }
+            }
+        }
+    }
+}

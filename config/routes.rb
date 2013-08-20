@@ -1,6 +1,6 @@
 GimsonRobotics::Application.routes.draw do
 
-  resources :accessories
+  resources :product_options
 
 
   resources :dimensions
@@ -8,6 +8,7 @@ GimsonRobotics::Application.routes.draw do
 
   resources :categories
 
+  get '/admin/dashboard' => 'admin#dashboard'
 
   root :to => 'store#index', :as =>'store'
   

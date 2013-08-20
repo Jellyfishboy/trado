@@ -1,0 +1,19 @@
+.page-header
+  %h1 Listing product options
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th Price
+      %th Actions
+  %tbody
+    - @product_options.each do |product_option|
+      %tr
+        %td= product_option.id
+        %td= product_option.name
+        %td= product_option.price
+        %td
+          = link_to 'Edit', edit_product_option_path(product_option), :class => "btn btn-success"
+          = link_to 'Destroy', product_option, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
