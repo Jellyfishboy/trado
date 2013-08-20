@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_id: 1
+  weight: 1
+  size: 1
+
+two:
+  product_id: 1
+  weight: 1
+  size: 1

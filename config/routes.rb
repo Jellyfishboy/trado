@@ -1,5 +1,11 @@
 GimsonRobotics::Application.routes.draw do
 
+  resources :dimensions
+
+
+  resources :shippings
+
+
   resources :categories
 
 

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  weight: 
+  size: 
+  weight_id: 1
+  size_id: 1
+  name: MyString
+  description: MyText
+  price: 1
+  insurance: false
+
+two:
+  weight: 
+  size: 
+  weight_id: 1
+  size_id: 1
+  name: MyString
+  description: MyText
+  price: 1
+  insurance: false
