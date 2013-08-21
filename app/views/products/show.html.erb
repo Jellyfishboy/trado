@@ -1,49 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-6">
+    <%= image_tag @product.image_url %>
+  </div>
+  <div class="col-lg-6">
+    <h1><%= @product.title %></h1>
+    <h3><%= @product.price %></h3>
+    <%= @product.description %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#messages">Messages</a></li>
+      <li><a href="#settings">Settings</a></li>
+    </ul>
 
-<p>
-  <b> title:</b>
-  <%= @product. title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <% @product.categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</p>
-
-<p>
-  <b>Additional options:</b>
-  <% @product.additional_options.each do |option| %>
-    <li><%= option.name %></li>
-  <% end %>
-</p>
-
-<p>
-  <b>Stock:</b>
-  <%= @product.stock %>
-</p>
-
-<p>
-  <b>Weighting:</b>
-  <%= @product.weighting %>
-</p>
-
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">...</div>
+      <div class="tab-pane" id="profile">...</div>
+      <div class="tab-pane" id="messages">...</div>
+      <div class="tab-pane" id="settings">...</div>
+    </div>
+  </div>
+</div>

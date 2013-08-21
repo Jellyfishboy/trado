@@ -45,6 +45,13 @@ gem 'pry'
 # Administration
 gem 'rails_admin'
 
+# Processing
+gem 'sidekiq', :require => false
+gem 'sidekiq-failures'
+gem 'slim'
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'whenever', :require => false
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

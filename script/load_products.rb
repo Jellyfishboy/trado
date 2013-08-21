@@ -1,0 +1,5 @@
+Product.transaction do
+    (1..100).each do |i|
+        Product.create(:title => "Linear Actuator #{i}", :description => 'The GLA750 is a compact and lightweight 12V DC (direct current) linear actuator available in six different stroke lengths (travel distances) of 30mm (1 3/16"), 50mm (2"), 100mm (4"), 150mm (6"), 200mm (8") and 300mm (12").Despite its small size the GLA750 is able to provide a pushing or pulling force of up to 750N (76kg, 168lbs) at the rated voltage (and as with any DC motor operation at other voltages is possible with modified operating characteristics).', :weighting => '1000', :stock => "#{i}", :price => "4#{i}", :category_ids => [1,2], :additional_option_ids => [1], :image_url => "/uploads/product/15_thdwuhdadhihwad/original/GR12-12V-planetary-gearmotor-overview.jpg")
+    end
+end

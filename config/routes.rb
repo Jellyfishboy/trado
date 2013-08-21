@@ -1,34 +1,32 @@
 GimsonRobotics::Application.routes.draw do
 
-  resources :product_options
-
-
-  resources :dimensions
-
-
-  resources :categories
-
-  namespace :admin do
-      root :to => "admin#dashboard"
-      mount RailsAdmin::Engine => '/db'
-      get '/:action' => "admin#:action"
-  end
-
   root :to => 'store#index', :as =>'store'
-
-  resources :line_items do
-    put 'decrement', on: :member
-  end
-  resources :carts
-  resources :orders
-  get "store/index"
-  resources :products
 
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
+
+  scope '/admin' do
+      root :to => "admin#dashboard"
+      mount RailsAdmin::Engine => '/db'
+      mount Sidekiq::Web => '/jobs'
+      resources :products
+      resources :categories
+      resources :product_options
+      resources :orders
+      resources :dimensions, :only => [:index]
+  end
+
+
+  resources :line_items do
+    put 'decrement', on: :member
+  end
+  resources :carts, :only => [:create, :show, :destroy]
+  resources :products, :only => [:show]
+  resources :categories, :only => [:show]
   resources :users
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

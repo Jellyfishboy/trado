@@ -18,19 +18,21 @@
       }
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "/css/bootstrap.min.css", :media => "all"
+    = stylesheet_link_tag "/css/bootstrap-theme.min.css", :media => "all"
     = stylesheet_link_tag "/css/bootstrap-responsive.min.css", :media => "all"
     = stylesheet_link_tag "/css/font-awesome.min.css", :media => "all"
   %body
     /[if lt IE 7]
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     / This code is taken from http://twitter.github.com/bootstrap/examples/hero.html
-    %header.navbar.navbar-default.navbar-fixed-top{:role => "header"}
+    %header.navbar.navbar-inverse.navbar-fixed-top{:role => "header"}
       .container
-        %a.navbar-brand{:href => store_url } Gimson Robotics
-        %a.btn.navbar-toggle.collapsed{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"} Gimson Robotics
         
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
