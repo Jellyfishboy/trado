@@ -8,7 +8,11 @@ GimsonRobotics::Application.routes.draw do
 
   resources :categories
 
-  get '/admin/dashboard' => 'admin#dashboard'
+  namespace :admin do
+      root :to => "admin#dashboard"
+      mount RailsAdmin::Engine => '/db'
+      get '/:action' => "admin#:action"
+  end
 
   root :to => 'store#index', :as =>'store'
   

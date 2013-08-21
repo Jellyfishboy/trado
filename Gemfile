@@ -39,11 +39,11 @@ gem 'cancan'
 gem 'mini_magick', '~> 3.5.0'
 gem 'carrierwave'
 
-# Pagination
-gem 'will_paginate', '~> 3.0'
-
 # Debugging
 gem 'pry'
+
+# Administration
+gem 'rails_admin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
