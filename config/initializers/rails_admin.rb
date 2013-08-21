@@ -29,10 +29,10 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  # config.excluded_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'PayType', 'Product', 'ProductOption', 'Role', 'User']
+  # config.excluded_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'ProductOption', 'Role', 'User']
 
   # Include specific models (exclude the others):
-  # config.included_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'PayType', 'Product', 'ProductOption', 'Role', 'User']
+  # config.included_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'ProductOption', 'Role', 'User']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -341,7 +341,6 @@ RailsAdmin.config do |config|
   #     configure :name, :string 
   #     configure :address, :text 
   #     configure :email, :string 
-  #     configure :pay_type, :string 
   #     configure :created_at, :datetime 
   #     configure :updated_at, :datetime 
   #     configure :ship_date, :datetime 
@@ -370,15 +369,6 @@ RailsAdmin.config do |config|
   #     # you can override a cross-section field configuration in any section with the same syntax `configure :field_name do ... end`
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
   # end
-
-
-  ###  PayType  ###
-
-  # config.model 'PayType' do
-
-  #   # You can copy this to a 'rails_admin do ... end' block inside your pay_type.rb model definition
-
-  #   # Found associations:
 
 
 

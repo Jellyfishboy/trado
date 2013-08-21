@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
-    @pay_type = PayType.all #adds pay_type database to the select form tag
     @cart = current_cart 
     if @cart.line_items.empty?
       redirect_to store_url, :notice => 'You cart is empty'

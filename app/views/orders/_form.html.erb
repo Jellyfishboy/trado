@@ -23,10 +23,6 @@
     <%= f.label :email %><br />
     <%= f.text_field :email, :size => 40 %>
   </div>
-  <div class="field">
-    <%= f.label :pay_type %><br />
-    <%= f.collection_select(:pay_type, PayType.all, :name, :name, :prompt => 'Select a payment method') %>
-  </div>
   <div class="actions">
     <%= f.submit 'Place order' %>
   </div>

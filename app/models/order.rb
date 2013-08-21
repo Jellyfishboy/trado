@@ -1,13 +1,10 @@
 class Order < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
-  attr_accessible :address, :email, :name, :pay_type, :ship_date
-  validates :name, :address, :email, :pay_type, :presence => true
-  validates_each :pay_type do |model, attr, value|
+  attr_accessible :address, :email, :name, :ship_date
+  validates :name, :address, :email, :presence => true
 
   after_update :send_new_ship_email, :if => :ship_date_changed? && :no_ship_date
   after_update :send_changed_ship_email, :if => :ship_date_changed? && :ship_date_was
-  
-end
 
   def add_line_items_from_cart(cart)
   	cart.line_items.each do |item|

@@ -5,11 +5,9 @@ one:
   name: Tom Dallimore
   address: MyText
   email: MyString
-  pay_type: MyString
 
 two:
   order: 2
   name: MyString
   address: MyText
   email: tom@ruckusmedia.co.uk
-  pay_type: Credit card

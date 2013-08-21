@@ -33,8 +33,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		post_via_redirect "/orders"
 							:order => { :name 		=> "Tom Dallimore",
 										:address 	=> "671 Wells Road",
-										:email 		=> "tom.alan.dallimore@googlemail.com",
-										:pay_type	=> "Check" }
+										:email 		=> "tom.alan.dallimore@googlemail.com"
+                                    }
 
 		assert_response :success
 		assert_template "index"
@@ -49,7 +49,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal "Tom Dallimore", 						order.name
 		assert_equal "671 Wells Road",						order.address
 		assert_equal "tom.alan.dallimore@googlemail.com",	order.email
-		assert_equal "Check",								order.pay_type
 
 		assert_equal 1, order.line_items.size
 		line_item = order.line_items[0]
@@ -89,14 +88,12 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
                       :order => { :name => "Tom Dallimore",
                                   :address => "MyText",
                                   :email => "MyString",
-                                  :pay_type => "MyString",
                                   :ship_date => "2013-05-30 00:00:00 UTC"}
     order = Order.last
 
     assert_equal "Tom Dallimore", order.name
     assert_equal "MyText", order.address
     assert_equal "MyString", order.email
-    assert_equal "MyString", order.pay_type
     assert_equal "2013-05-30 00:00:00 UTC", order.ship_date
 
     mail = ActionMailer::Base.deliveries.last

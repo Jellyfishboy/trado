@@ -15,8 +15,6 @@ GimsonRobotics::Application.routes.draw do
   end
 
   root :to => 'store#index', :as =>'store'
-  
-  resources :pay_types
 
   resources :line_items do
     put 'decrement', on: :member
