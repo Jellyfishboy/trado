@@ -18,10 +18,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
-  
-  def self.category_products category_name
-    where(self.category_ids => category_name)
-  end
 
   private
   	def reference_no_line_item

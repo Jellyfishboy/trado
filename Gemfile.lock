@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: 2ec9dacebb3345a9db2541e7dc7e7bea00147661
+  specs:
+    bcrypt-ruby (3.1.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -29,8 +35,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bcrypt-ruby (3.1.1)
-    bcrypt-ruby (3.1.1-x86-mingw32)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -223,6 +227,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt-ruby!
   better_errors
   binding_of_caller
   cancan
