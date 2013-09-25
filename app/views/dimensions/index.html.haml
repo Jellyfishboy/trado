@@ -15,5 +15,4 @@
         %td= dimension.weight
         %td= dimension.size
         %td
-          = link_to 'Edit', edit_dimension_path(dimension), :class => "btn btn-success"
-          = link_to 'Destroy', dimension, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+          = button_to 'Destroy', dimension_path(dimension), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-danger"

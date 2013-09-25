@@ -6,26 +6,25 @@ GimsonRobotics::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
+  resources :carts, :only => [:create, :show, :destroy]
+  resources :products, :only => :show
+  resources :categories, :only => :show
+  resources :users
 
   scope '/admin' do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
-      resources :products
-      resources :categories
-      resources :product_options
-      resources :orders
-      resources :dimensions, :only => [:index]
+      resources :products, :except => :show
+      resources :product_options, :orders
+      resources :dimensions
+      resources :categories, :except => :show
   end
 
 
   resources :line_items do
     put 'decrement', on: :member
   end
-  resources :carts, :only => [:create, :show, :destroy]
-  resources :products, :only => [:show]
-  resources :categories, :only => [:show]
-  resources :users
   
 
   # The priority is based upon order of creation:

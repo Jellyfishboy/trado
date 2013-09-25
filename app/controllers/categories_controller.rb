@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  layout 'admin'
+  layout 'admin', :except => :show
   # GET /categories
   # GET /categories.json
   def index
