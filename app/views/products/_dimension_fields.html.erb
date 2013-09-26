@@ -1,13 +1,15 @@
-<div class="form-group">
-  <%= f.label :weight, :class => 'control-label col-lg-2' %>
-  <div class="col-lg-10">
-    <%= f.text_field :weight, :class => 'form-control' %>
-  </div>
-</div>
-<div class="form-group">
-  <%= f.label :size, :class => 'control-label col-lg-2' %>
-  <div class="col-lg-10">
-    <%= f.text_field :size, :class => 'form-control' %>
-  </div>
-  <%= link_to_remove_fields "remove", f %>
+<div class="ajax_fields">
+    <div class="form-group">
+      <%= f.label :weight, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :weight, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :size, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :size, :class => 'form-control' %>
+      </div>
+      <%= link_to_remove_fields "remove", f %>
+    </div>
 </div>

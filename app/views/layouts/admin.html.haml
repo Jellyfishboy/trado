@@ -65,6 +65,13 @@
           %form.navbar-form.pull-left
             %input.form-control.col-lg-8{:type => "text", :placeholder => "Search"}
     %main.container{:role => "main"}
+      - if flash[:notice] or flash[:error] or flash[:success]
+        .alert.animated
+          %button.close{:type => "button", "data-dismiss" => "alert"} x
+          - if flash[:error] and !flash[:notice]
+            = raw flash[:error]
+          = raw flash[:notice]
+          = raw flash[:success]
       = yield
     %footer.col-12{:role => "footer"}
       .container

@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
     def category_list 
       @categories = Category.all
     end
+
+    def after_sign_out_path_for(resource_or_scope)
+        root_path
+    end
 end

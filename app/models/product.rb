@@ -8,23 +8,15 @@ class Product < ActiveRecord::Base
   	:message => "must be a URL for GIF, JPG or PNG image."
   } # all of the above validates the attributes of products
   default_scope :order => 'weighting' #orders the products by weighting
-  has_many :line_items, :dependent => :destroy #each product has many line items in the various carts
+  has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts
   has_many :orders, :through => :line_items
   has_many :categorisations
   has_many :categories, :through => :categorisations
   has_many :accessorisations
   has_many :additional_options, :through => :accessorisations, :source => :product_option
-  has_many :dimensionals
+  has_many :dimensionals, :dependent => :destroy
   has_many :dimensions, :through => :dimensionals
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
-  before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader
 
-  private
-  	def reference_no_line_item
-  		if line_items.empty?
-  		else
-  			errors.add(:base, 'Line items present')
-  		end # if line_items are present, it throws an error when attempting to delete the product
-  	end
 end

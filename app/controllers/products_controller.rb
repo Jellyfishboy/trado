@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => :show
   layout 'admin', :except => [:show]
   # GET /products
   # GET /products.json
@@ -76,8 +76,13 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-
+    begin
+      @product.destroy
+      flash[:success] = "Successfully deleted the product."
+    rescue ActiveRecord::DeleteRestrictionError => e
+      @product.errors.add(:base, e)
+      flash[:error] = "#{e}"
+    end
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }

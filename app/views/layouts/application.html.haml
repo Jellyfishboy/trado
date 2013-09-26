@@ -55,6 +55,13 @@
                   .dropdown-menu#cart
                     = render @cart
     %main.container{:role => "main"}
+      - if flash[:notice] or flash[:error] or flash[:success]
+        .alert.animated
+          %button.close{:type => "button", "data-dismiss" => "alert"} x
+          - if flash[:error] and !flash[:notice]
+            = raw flash[:error]
+          = raw flash[:notice]
+          = raw flash[:success]
       = yield
     %footer.col-12{:role => "footer"}
       .container
@@ -62,6 +69,11 @@
         %p © Gimson Robotics 2013 
         %p
           = link_to 'Admin Dashboard', '/admin'
+        %p 
+          - if user_signed_in?
+            = link_to "Log out", destroy_user_session_path, :method => :delete
+          - else
+            = link_to "Log in", new_user_session_path
     / /container
     = javascript_include_tag "/javascript/jquery-1.9.1.min.js", "/javascript/bootstrap.min.js", "application", "/javascript/modernizr-2.6.2.min.js"
     :javascript
