@@ -7,7 +7,7 @@
 %hr
 
 
-    - @products.each_slice(3) do |slice|
+    - @category.products.each_slice(3) do |slice|
         .row
             - slice.each do |product|
                 .col-3.vertical_product
