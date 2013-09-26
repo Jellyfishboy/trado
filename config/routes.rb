@@ -7,7 +7,7 @@ GimsonRobotics::Application.routes.draw do
     :sessions => "users/sessions"
      }
   resources :carts, :only => [:create, :show, :destroy]
-  resources :products, :only => [:show, :destroy]
+  resources :products, :only => [:show, :destroy, :update]
   resources :categories, :only => :show
   resources :users
 
