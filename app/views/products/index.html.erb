@@ -9,6 +9,7 @@
       <th>Title</th>
       <th>Price</th>
       <th>Weighting</th>
+      <th>Dimensions</th>
       <th>Stock</th>
       <th>Category</th>
       <th>Accessories</th>
@@ -33,17 +34,28 @@
         <%= product.weighting %>
       </td>
       <td>
+        <ul>
+          <% product.dimensions.each do |dimension| %>
+            <li>Weight: <%= dimension.weight %>, Size: <%= dimension.size %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
         <%= product.stock %>
       </td>
       <td>
-        <% product.categories.each do |category| %>
-          <li><%= category.name %></li>
-        <% end %>
+        <ul>
+          <% product.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </ul>
       </td>
       <td>
-        <% product.additional_options.each do |option| %>
-          <li><%= option.name %></li>
-        <% end %>
+        <ul>
+          <% product.additional_options.each do |option| %>
+            <li><%= option.name %></li>
+          <% end %>
+        </ul>
       </td>
       <td >
         <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-success" %><br/>

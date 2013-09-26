@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   has_many :accessorisations
   has_many :additional_options, :through => :accessorisations, :source => :product_option
   has_many :dimensionals
-  has_many :dimensions, :through => :dimensionals, :dependent => :destroy
+  has_many :dimensions, :through => :dimensionals
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   before_destroy :reference_no_line_item #before destroy the product object, execute the following method shown below
   mount_uploader :image_url, ProductUploader

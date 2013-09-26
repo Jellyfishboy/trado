@@ -4,14 +4,12 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th Product ID
       %th Weight
       %th Size
       %th Actions
   %tbody
     - @dimensions.each do |dimension|
       %tr
-        %td= dimension.product_id
         %td= dimension.weight
         %td= dimension.size
         %td

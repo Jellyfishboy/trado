@@ -73,12 +73,14 @@
           </div>
         </div>
         <legend>Dimensions</legend>
-        <% @product.dimensions.each do |dimension| %>
-            <%= dimension.size %><br/>
-            <%= dimension.weight %>
-            <%= link_to 'Remove', dimension, :method => :delete, :confirm => 'Are you sure?' %>
-            <br/>
-        <% end %>
+        <div class="form-group">
+          <div class="col-lg-10">
+            <% Dimension.all.each do |dimension| %>
+                <%= check_box_tag "product[dimension_ids][]", dimension.id, @product.dimension_ids.include?(dimension.id) %>
+                Weight:<%= dimension.weight %>, Size: <%= dimension.size %>
+            <% end %>
+          </div>
+        </div>  
           <%= link_to_add_fields "Add Dimension", f, :dimensions %>
         <div class="actions">
           <%= f.submit :class => 'btn btn-success' %>
