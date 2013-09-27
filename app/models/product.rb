@@ -10,9 +10,9 @@ class Product < ActiveRecord::Base
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts
   has_many :orders, :through => :line_items
-  has_many :categorisations
+  has_many :categorisations, :dependent => :destroy
   has_many :categories, :through => :categorisations
-  has_many :accessorisations
+  has_many :accessorisations, :dependent => :destroy
   has_many :additional_options, :through => :accessorisations, :source => :product_option
   has_many :dimensionals, :dependent => :destroy
   has_many :dimensions, :through => :dimensionals
