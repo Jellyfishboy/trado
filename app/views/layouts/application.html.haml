@@ -51,8 +51,10 @@
                   = @cart.line_items.sum('quantity')
                 )
               - if @cart
-                - unless @cart.line_items.empty?
-                  .dropdown-menu#cart
+                .dropdown-menu#cart
+                  - if @cart.line_items.empty?
+                    %p Your cart is empty
+                  - else
                     = render @cart
     %main.container{:role => "main"}
       - if flash[:notice] or flash[:error] or flash[:success]
