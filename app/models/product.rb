@@ -18,5 +18,10 @@ class Product < ActiveRecord::Base
   has_many :dimensions, :through => :dimensionals
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   mount_uploader :image_url, ProductUploader
+  after_destroy :remove_image_folders
+
+  def remove_image_folders
+    FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.title}", :force => true)
+  end
 
 end
