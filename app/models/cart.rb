@@ -36,6 +36,6 @@ class Cart < ActiveRecord::Base
   end
 
   def clear_carts
-    Cart.where("last_used > ?", 12.hours.ago).destroy_all
+    Cart.where("last_used < ?", 12.hours.ago).destroy_all
   end
 end
