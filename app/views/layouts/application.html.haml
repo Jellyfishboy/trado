@@ -56,12 +56,18 @@
                     = render @cart
     %main.container{:role => "main"}
       - if flash[:notice] or flash[:error] or flash[:success]
-        .alert.animated
-          %button.close{:type => "button", "data-dismiss" => "alert"} x
-          - if flash[:error] and !flash[:notice]
+        - if flash[:error]
+          .alert-danger.alert.animated
+            %button.close{:type => "button", "data-dismiss" => "alert"} x
             = raw flash[:error]
-          = raw flash[:notice]
-          = raw flash[:success]
+        - elsif flash[:notice]
+          .alert-info.alert.animated
+            %button.close{:type => "button", "data-dismiss" => "alert"} x
+            = raw flash[:notice]
+        - elsif flash[:success]
+          .alert-success.alert.animated
+            %button.close{:type => "button", "data-dismiss" => "alert"} x
+            = raw flash[:success]
       = yield
     %footer.col-12{:role => "footer"}
       .container

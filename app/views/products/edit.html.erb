@@ -58,6 +58,7 @@
         <div class="form-group">
           <div class="col-lg-12">
             <% Category.all.each do |category| %>
+                <%= hidden_field_tag "product[category_ids][]" %>
                 <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id) %>
                 <%= category.name %>
             <% end %>
@@ -67,6 +68,7 @@
         <div class="form-group">
           <div class="col-lg-12">
             <% ProductOption.all.each do |option| %>
+                <%= hidden_field_tag "product[additional_option_ids][]" %>
                 <%= check_box_tag "product[additional_option_ids][]", option.id, @product.additional_option_ids.include?(option.id) %>
                 <%= option.name %>
             <% end %>
