@@ -1,5 +1,4 @@
 class Cart < ActiveRecord::Base
-  # attr_accessible :title, :body
   attr_accessible :last_used
   has_many :line_items, :dependent => :destroy #a cart has many lineitems, however it is dependent on them. it will not be destroyed if a lineitem still exists within it
 
@@ -34,7 +33,6 @@ class Cart < ActiveRecord::Base
       basket_quantity << item.quantity
     end
     basket_quantity
-    binding.pry
   end
 
   def clear_carts
