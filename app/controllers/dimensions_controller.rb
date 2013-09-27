@@ -53,11 +53,14 @@ class DimensionsController < ApplicationController
   # DELETE /dimensions/1.json
   def destroy
     @dimension = Dimension.find(params[:id])
-    @dimension.destroy
-
     respond_to do |format|
+      if @dimension.destroy
+        flash[:success] = "Dimension was successfully deleted."
+        format.js { render :partial => "dimensions/destroy", :format => [:js] }
+      else
+        flash[:error] = "Dimension failed to be removed from the database."
+      end
       format.html { redirect_to dimensions_path }
-      format.json { head :no_content }
     end
   end
 end
