@@ -1,17 +1,20 @@
 .page-header
   %h1 Listing product options
+  = link_to new_product_option_path, :class => "btn btn-success" do
+    %i.icon-plus
+    Add accessory
 
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th ID
+      %th SKU
       %th Name
       %th Price
       %th Actions
   %tbody
     - @product_options.each do |product_option|
       %tr
-        %td= product_option.id
+        %td 
         %td= product_option.name
         %td= product_option.price
         %td

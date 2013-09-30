@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   	:message => "must be a URL for GIF, JPG or PNG image."
   } # all of the above validates the attributes of products
   default_scope :order => 'weighting' #orders the products by weighting
-  has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts
+  has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
   has_many :orders, :through => :line_items
   has_many :categorisations, :dependent => :destroy
   has_many :categories, :through => :categorisations
@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   has_many :dimensions, :through => :dimensionals
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   mount_uploader :image_url, ProductUploader
-  after_destroy :remove_image_folders
+  after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.title}", :force => true)

@@ -36,34 +36,40 @@
         
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li.dropdown
-              %a{:href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                View
-                %span.caret
-              %ul.dropdown-menu
-                %li
-                  = link_to 'Products', products_path
-                %li
-                  = link_to 'Categories', categories_path
-                %li
-                  = link_to 'Product options', product_options_path
-                %li
-                  = link_to 'Dimensions', dimensions_path
-            %li.dropdown
-              %a{:href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"}
-                Add
-                %span.caret
-              %ul.dropdown-menu
-                %li 
-                  = link_to 'Product', new_product_path
-                %li
-                  = link_to 'Category', new_category_path
-                %li 
-                  = link_to 'Product option', new_product_option_path
-                
-
-          %form.navbar-form.pull-left
-            %input.form-control.col-lg-8{:type => "text", :placeholder => "Search"}
+            %li
+              %a{:href => "/admin"}
+                %i.icon-dashboard
+                Dashboard
+            %li
+              %a{ :href => categories_path }
+                %i.icon-beaker
+                Categories
+            %li
+              %a{ :href => products_path }
+                %i.icon-th
+                Products
+            %li
+              %a{ :href => product_options_path }
+                %i.icon-cog
+                Accessories
+            %li
+              %a{ :href => orders_path }
+                %i.icon-shopping-cart
+                Orders
+            %li
+              %a{ :href => "#" }
+                %i.icon-bar-chart
+                Reports
+            %li
+              %a{ :href => users_path }
+                %i.icon-male
+                Users
+            %li 
+              %a{ :href => "#" }
+                %i.icon-wrench
+                Configuration
+          / %form.navbar-form.pull-left
+          /   %input.form-control.col-lg-8{:type => "text", :placeholder => "Search"}
     %main.container{:role => "main"}
       - if flash[:notice] or flash[:error] or flash[:success]
         .alert.animated

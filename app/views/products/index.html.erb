@@ -1,61 +1,30 @@
 <div class="page-header">
   <h1>Listing products</h1>
+  <%= link_to new_product_path, :class => "btn btn-success" do %>
+    <i class="icon-plus"></i>Add product
+  <% end %>
 </div>
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Price</th>
-      <th>Weighting</th>
-      <th>Dimensions</th>
-      <th>Stock</th>
-      <th>Category</th>
-      <th>Accessories</th>
+      <th>SKU</th>
+      <th colspan="2">Name</th>
+      <th>Price (exc.VAT)</th>
       <th>Actions</th>
   </thead>
   <tbody>
   <% @products.each do |product| %>
     <tr>
       <td>
-        <%= product.id %>
       </td>
-      <td>
-        <%= link_to image_tag(product.image_url.medium), product %>
+      <td width="85">
+        <%= link_to image_tag(product.image_url.medium, :height => "75", :width => "75"), product %>
       </td>
       <td>
         <%= link_to product.title, product %>
       </td>
       <td>
         <%= product.price %>
-      </td>
-      <td>
-        <%= product.weighting %>
-      </td>
-      <td>
-        <ul>
-          <% product.dimensions.each do |dimension| %>
-            <li>Weight: <%= dimension.weight %>, Size: <%= dimension.size %></li>
-          <% end %>
-        </ul>
-      </td>
-      <td>
-        <%= product.stock %>
-      </td>
-      <td>
-        <ul>
-          <% product.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <% product.additional_options.each do |option| %>
-            <li><%= option.name %></li>
-          <% end %>
-        </ul>
       </td>
       <td >
         <%= link_to 'Edit', edit_product_path(product), :class => "btn btn-success" %><br/>

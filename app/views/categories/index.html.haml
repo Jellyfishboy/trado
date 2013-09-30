@@ -1,5 +1,8 @@
 .page-header
   %h1 Listing categories
+  = link_to new_category_path, :class => "btn btn-success" do
+    %i.icon-plus
+    Add category
 
 %table.table.table-striped.table-bordered.table-hover
   %thead
