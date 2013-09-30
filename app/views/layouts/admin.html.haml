@@ -36,23 +36,23 @@
         
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li
+            %li{:class => active_page?("admin")}
               %a{:href => "/admin"}
                 %i.icon-dashboard
                 Dashboard
-            %li
+            %li{:class => active_page?("categories")}
               %a{ :href => categories_path }
                 %i.icon-beaker
                 Categories
-            %li
+            %li{:class => active_page?("products")}
               %a{ :href => products_path }
                 %i.icon-th
                 Products
-            %li
+            %li{:class => active_page?("product_options")}
               %a{ :href => product_options_path }
                 %i.icon-cog
                 Accessories
-            %li
+            %li{ :class => active_page?("orders")}
               %a{ :href => orders_path }
                 %i.icon-shopping-cart
                 Orders

@@ -10,4 +10,8 @@ module ApplicationHelper
       end
       link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
     end
+
+    def active_page?(page)
+      "active" if params[:controller] == page
+    end
 end
