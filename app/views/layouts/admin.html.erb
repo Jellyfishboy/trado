@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Dashboard - Ace Admin</title>
+    <title><%= yield :title %> - Gimson Robotics Administration </title>
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -226,16 +226,16 @@
               </div><!--/.main-content-->
             </div><!--/.main-container-->
 
-            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-              <i class="icon-double-angle-up icon-only bigger-110"></i>
-            </a>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-            <script type="text/javascript">
-              if("ontouchend" in document) document.write("<script src='/javascript/admin/jquery.mobile.custom.min.js' >"+"<"+"/script>");
-            </script>
-            <!--[if lte IE 8]>
-              <script src="assets/js/excanvas.min.js"></script>
-            <![endif]-->
-            <%= javascript_include_tag "/javascript/admin/jquery-ui-1.10.3.custom.min.js", "/javascript/admin/jquery.ui.touch-punch.min.js", "/javascript/admin/jquery.slimscroll.min.js", "/javascript/admin/bootstrap.min.js", "/javascript/admin/ace-elements.min.js", "/javascript/admin/ace.min.js"  %>
-          </body>
-        </html>
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+      <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript">
+      if("ontouchend" in document) document.write("<script src='/javascript/admin/jquery.mobile.custom.min.js' >"+"<"+"/script>");
+    </script>
+    <!--[if lte IE 8]>
+      <script src="assets/js/excanvas.min.js"></script>
+    <![endif]-->
+    <%= javascript_include_tag "/javascript/admin/jquery-ui-1.10.3.custom.min.js", "/javascript/admin/jquery.ui.touch-punch.min.js", "/javascript/admin/jquery.slimscroll.min.js", "/javascript/admin/bootstrap.min.js", "/javascript/admin/ace-elements.min.js", "/javascript/admin/ace.min.js"  %>
+  </body>
+</html>

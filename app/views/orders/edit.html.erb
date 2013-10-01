@@ -1,8 +1,6 @@
-<% content_for :breadcrumb, 'Edit'
+<% content_for :title, 'Edit order'
+   content_for :breadcrumb, 'Edit'
    breadcrumb_add 'Orders', orders_path %>
 <h1>Editing order</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>

@@ -1,7 +1,8 @@
-<% content_for :breadcrumb, 'Edit'
+<% content_for :title, 'Edit product'
+   content_for :breadcrumb, 'Edit'
    breadcrumb_add 'Products', products_path %>
 <div class="page-header">
-    <h1>Editing product</h1>
+    <h1>Editing <%= @product.title %></h1>
 </div>
 <div class="row">
   <div class="col-lg-6">

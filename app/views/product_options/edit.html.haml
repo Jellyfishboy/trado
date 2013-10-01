@@ -1,10 +1,9 @@
+- content_for :title, 'Edit accessory'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Accessories', product_options_path
 
-%h1 Editing product option
+%h1 
+    Editing 
+    = @product_option.name
 
 = render 'form'
-
-= link_to 'Show', @product_option
-\|
-= link_to 'Back', product_options_path
