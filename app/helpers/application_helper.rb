@@ -15,12 +15,15 @@ module ApplicationHelper
       "active" if params[:controller] == page
     end
 
-    def build_breadcrumb(first_page, second_page)
-      if second_page.empty?
-        content_for :primary_breadcrumb, first_page
-      else
-        content_for :primary_breadcrumb, first_page
-        content_for :secondary_breadcrumb, second_page
-      end
+    def create_breadcrumbs
+      @breadcrumbs ||= [ { :title => 'Dashboard', :url => '/admin'}]
+    end
+
+    def breadcrumb_add(title, url)
+      create_breadcrumbs << { :title => title, :url => url }
+    end
+
+    def render_breadcrumbs
+      render :partial => 'shared/breadcrumbs', :locals => { :breadcrumbs => create_breadcrumbs }
     end
 end

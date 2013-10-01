@@ -6,6 +6,7 @@
 
     <meta name="description" content="overview &amp; stats" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag "admin" %>
     <%= stylesheet_link_tag "/css/admin/bootstrap.min.css", :media => "all" %>
     <%= stylesheet_link_tag "/css/admin/bootstrap-responsive.min.css", :media => "all" %>
     <%= stylesheet_link_tag "/css/font-awesome.min.css", :media => "all" %>
@@ -183,30 +184,7 @@
       </div>
 
       <div class="main-content">
-        <div class="breadcrumbs" id="breadcrumbs">
-          <ul class="breadcrumb">
-            <li>
-              <i class="icon-home home-icon"></i>
-              <a href="/admin">Dashboard</a>
-              <% if content_for?(:primary_breadcrumb) %>
-                <span class="divider">
-                  <i class="icon-angle-right arrow-icon"></i>
-                </span>
-              <% end %>
-            </li>
-            <% if content_for?(:secondary_breadcrumb) %>
-              <li>
-                <%= yield :primary_breadcrumb %>
-                <span class="divider">
-                  <i class="icon-angle-right arrow-icon"></i>
-                </span>
-              </li>
-              <li class="active"><%= yield :secondary_breadcrumb %></li>
-            <% else %>
-              <li class="active"><%= yield :primary_breadcrumb %></li>
-            <% end %>
-          </ul><!--.breadcrumb-->
-        </div>
+        <%= render_breadcrumbs %>
 
         <div class="page-content">
           <%= yield %>
