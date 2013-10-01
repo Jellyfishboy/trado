@@ -4,24 +4,47 @@
   </div>
   <div class="col-lg-6">
     <h1><%= @product.title %></h1>
-    <h3><%= @product.price %></h3>
-    <%= @product.description %>
+    <h3>£<%= @product.price %></h3>
+    <p>SKU: <%= @product.sku %></p>
+    <p>
+      <% if @product.stock > 0 %>
+        <p><i class="icon-ok"></i>
+        <%= @product.stock %> left in stock</p>
+        <%= link_to 'Add to basket', line_items_path(:product_id => @product.id), :remote => true, :method => :post, :class => "btn btn-success btn-small" %>
+      <% else %>
+        <p><i class="icon-remove"></i>
+        0 left in stock</p>
+        <div class="btn btn-warning btn-small">Notify me</div>
+      <% end %>
+      
+    </p>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-12">
     <ul class="nav nav-tabs" id="myTab">
-      <li class="active"><a href="#home">Home</a></li>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#messages">Messages</a></li>
-      <li><a href="#settings">Settings</a></li>
+      <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+      <li><a href="#dimensions" data-toggle="tab">Dimensions</a></li>
+      <li><a href="#accessories" data-toggle="tab">Accessories</a></li>
     </ul>
-
     <div class="tab-content">
-      <div class="tab-pane active" id="home">...</div>
-      <div class="tab-pane" id="profile">...</div>
-      <div class="tab-pane" id="messages">...</div>
-      <div class="tab-pane" id="settings">...</div>
+      <div class="tab-pane active" id="description">
+        <%= @product.description %>
+      </div>
+      <div class="tab-pane" id="dimensions">
+        <ul>
+        <% @product.dimensions.each do | dimension| %>
+          <li>Weight: <%= dimension.weight %>, Size: <%= dimension.size %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="tab-pane" id="accessories">
+        <ul>
+        <% @product.additional_options.each do |option| %>
+          <li>Name: <%= option.name %>, Price: <%= option.price %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

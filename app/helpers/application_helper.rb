@@ -14,4 +14,13 @@ module ApplicationHelper
     def active_page?(page)
       "active" if params[:controller] == page
     end
+
+    def build_breadcrumb(first_page, second_page)
+      if second_page.empty?
+        content_for :primary_breadcrumb, first_page
+      else
+        content_for :primary_breadcrumb, first_page
+        content_for :secondary_breadcrumb, second_page
+      end
+    end
 end
