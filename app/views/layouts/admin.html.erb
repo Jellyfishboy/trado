@@ -97,21 +97,21 @@
       <div class="sidebar" id="sidebar">
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
           <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <button class="btn btn-small btn-success">
-              <i class="icon-signal"></i>
-            </button>
+            <%= link_to new_category_path, :class => "btn btn-small btn-success" do %>
+              <i class="icon-beaker"></i>
+            <% end %>
 
-            <button class="btn btn-small btn-info">
-              <i class="icon-pencil"></i>
-            </button>
+            <%= link_to new_product_path, :class => "btn btn-small btn-info" do %>
+              <i class="icon-th"></i>
+            <% end %>
 
-            <button class="btn btn-small btn-warning">
-              <i class="icon-group"></i>
-            </button>
+            <%= link_to new_product_option_path, :class => "btn btn-small btn-warning" do %>
+              <i class="icon-cog"></i>
+            <% end %>
 
-            <button class="btn btn-small btn-danger">
-              <i class="icon-cogs"></i>
-            </button>
+            <a href="#" class="btn btn-small btn-danger">
+              <i class="icon-file-text"></i>
+            </a>
           </div>
 
           <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -157,6 +157,12 @@
               <i class="icon-shopping-cart"></i>
               <span class="menu-text"> Orders </span>
             <% end %>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon-file-text"></i>
+              <span class="menu-text"> Invoices </span>
+            </a>
           </li>
           <li>
             <a href="#">
