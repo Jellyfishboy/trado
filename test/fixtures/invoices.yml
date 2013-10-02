@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  billing_address: MyText
+  delivery_address: MyText
+  email: MyString
+  date: 2013-10-02 10:35:57
+  invoice_number: 1
+  order_number: 1
+  notes: MyText
+  discount_amount: 9.99
+  pay_type: MyString
+  discount_type: MyString
+  shipping: 9.99
+
+two:
+  first_name: MyString
+  last_name: MyString
+  billing_address: MyText
+  delivery_address: MyText
+  email: MyString
+  date: 2013-10-02 10:35:57
+  invoice_number: 1
+  order_number: 1
+  notes: MyText
+  discount_amount: 9.99
+  pay_type: MyString
+  discount_type: MyString
+  shipping: 9.99

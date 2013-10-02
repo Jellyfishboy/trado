@@ -1,5 +1,8 @@
 GimsonRobotics::Application.routes.draw do
 
+  resources :invoices
+
+
   root :to => 'store#index', :as =>'store'
 
   devise_for :users, :controllers => { 

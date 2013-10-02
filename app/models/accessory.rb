@@ -1,4 +1,4 @@
-class ProductOption < ActiveRecord::Base
+class Accessory < ActiveRecord::Base
   attr_accessible :name, :price
   has_many :accessorisations, :dependent => :destroy
   has_many :products, :through => :accessorisations

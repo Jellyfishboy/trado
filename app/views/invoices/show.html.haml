@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @invoice.first_name
+%p
+  %b Last name:
+  = @invoice.last_name
+%p
+  %b Billing address:
+  = @invoice.billing_address
+%p
+  %b Delivery address:
+  = @invoice.delivery_address
+%p
+  %b Email:
+  = @invoice.email
+%p
+  %b Date:
+  = @invoice.date
+%p
+  %b Invoice number:
+  = @invoice.invoice_number
+%p
+  %b Order number:
+  = @invoice.order_number
+%p
+  %b Notes:
+  = @invoice.notes
+%p
+  %b Discount amount:
+  = @invoice.discount_amount
+%p
+  %b Pay type:
+  = @invoice.pay_type
+%p
+  %b Discount type:
+  = @invoice.discount_type
+%p
+  %b Shipping:
+  = @invoice.shipping
+
+= link_to 'Edit', edit_invoice_path(@invoice)
+\|
+= link_to 'Back', invoices_path
