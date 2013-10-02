@@ -9,34 +9,21 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th First name
-      %th Last name
-      %th Billing address
-      %th Delivery address
+      %th Invoice no.
+      %th Name
       %th Email
       %th Date
-      %th Invoice number
-      %th Order number
-      %th Notes
-      %th Discount amount
-      %th Pay type
-      %th Discount type
-      %th Shipping
+      %th Total price (exc. VAT)
       %th
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %td= invoice.first_name
-        %td= invoice.last_name
-        %td= invoice.billing_address
-        %td= invoice.delivery_address
-        %td= invoice.email
-        %td= invoice.date
         %td= invoice.invoice_number
-        %td= invoice.order_number
-        %td= invoice.notes
-        %td= invoice.discount_amount
-        %td= invoice.pay_type
-        %td= invoice.discount_type
-        %td= invoice.shipping
-        %td= table_commands invoice, edit_invoice_path(invoice)
+        %td
+          = invoice.first_name
+          = invoice.last_name
+        %td= invoice.email
+        %td= invoice.date.strftime("#{invoice.date.day.ordinalize} %B %Y ")
+        %td
+        %td{:width => '60' } 
+          = table_commands invoice, edit_invoice_path(invoice)

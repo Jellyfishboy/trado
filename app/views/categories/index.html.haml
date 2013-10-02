@@ -9,14 +9,12 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th ID
       %th Name
       %th Description
       %th
   %tbody
     - @category.each do |category|
       %tr
-        %td= category.id
         %td= link_to category.name, category
         %td= category.description
         %td
