@@ -4,21 +4,20 @@
   %h1 Listing accessories
   = link_to new_accessory_path, :class => "btn btn-success" do
     %i.icon-plus
-    Add accessory
+    New accessory
 
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %tr
-      %th SKU
+      %th Part no.
       %th Name
       %th Price
       %th Actions
   %tbody
     - @accessories.each do |accessory|
       %tr
-        %td 
+        %td= accessory.part_number
         %td= accessory.name
         %td= accessory.price
-        %td
-          = link_to 'Edit', edit_accessory_path(accessory), :class => "btn btn-success"
-          = link_to 'Destroy', accessory, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+        %td.no_show
+          = table_commands accessory, edit_accessory_path(accessory)

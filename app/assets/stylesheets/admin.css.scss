@@ -1,3 +1,8 @@
 .dashboard_home {
     padding:0 4px;
 }
+.no_show {
+    .blue, .tooltip-info {
+        display:none;
+    }
+}

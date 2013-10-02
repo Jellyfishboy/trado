@@ -1,0 +1,47 @@
+<div class="hidden-phone visible-desktop action-buttons">
+  <%= link_to object, :class => 'blue' do %>
+    <i class="icon-zoom-in bigger-130"></i>
+  <% end %>
+
+  <%= link_to edit, :class => 'green' do %>
+    <i class="icon-pencil bigger-130"></i>
+  <% end %>
+
+  <%= link_to object, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
+    <i class="icon-trash bigger-130"></i>
+  <% end %>
+</div>
+
+<div class="hidden-desktop visible-phone">
+  <div class="inline position-relative open">
+    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+      <i class="icon-caret-down icon-only bigger-120"></i>
+    </button>
+
+    <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
+      <li>
+        <%= link_to object, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
+          <span class="blue">
+            <i class="icon-zoom-in bigger-120"></i>
+          </span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
+          <span class="green">
+            <i class="icon-edit bigger-120"></i>
+          </span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to object, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
+          <span class="red">
+            <i class="icon-trash bigger-120"></i>
+          </span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

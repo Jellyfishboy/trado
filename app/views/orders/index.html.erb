@@ -1,6 +1,7 @@
 <% content_for :title, 'List orders'
    content_for :breadcrumb, 'Orders' %>
-<h1>Listing orders</h1>
+<div class="page-header">
+  <h1>Listing orders</h1>
 
 <table>
   <tr>
@@ -23,8 +24,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Order', new_order_path %>
-<p><%= @orders %>

@@ -61,7 +61,7 @@ class AccessoriesController < ApplicationController
 
     respond_to do |format|
       if @accessory.update_attributes(params[:accessory])
-        format.html { redirect_to @accessory, notice: 'Product option was successfully updated.' }
+        format.html { redirect_to accessories_path, notice: 'Product option was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

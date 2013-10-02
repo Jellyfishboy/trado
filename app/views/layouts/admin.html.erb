@@ -12,6 +12,7 @@
     <%= stylesheet_link_tag "/css/font-awesome.min.css", :media => "all" %>
     <%= stylesheet_link_tag "/css/admin/ace.min.css", :media => "all" %>
     <%= stylesheet_link_tag "/css/admin/ace-responsive.min.css", :media => "all" %>
+    <%= csrf_meta_tag %>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 
     <!--[if lte IE 8]>
@@ -158,11 +159,11 @@
               <span class="menu-text"> Orders </span>
             <% end %>
           </li>
-          <li>
-            <a href="#">
+          <li class="<%= active_page?('invoices') %>">
+            <%= link_to invoices_path do %>
               <i class="icon-file-text"></i>
               <span class="menu-text"> Invoices </span>
-            </a>
+            <% end %>
           </li>
           <li>
             <a href="#">
@@ -229,7 +230,7 @@
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
       <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <%= javascript_include_tag :admin %>
     <script type="text/javascript">
       if("ontouchend" in document) document.write("<script src='/javascript/admin/jquery.mobile.custom.min.js' >"+"<"+"/script>");
     </script>
