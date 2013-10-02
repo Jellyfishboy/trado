@@ -15,7 +15,7 @@
   %tbody
     - @category.each do |category|
       %tr
-        %td= link_to category.name, category
+        %td= category.name
         %td= category.description
         %td
           = table_commands category, edit_category_path(category)
