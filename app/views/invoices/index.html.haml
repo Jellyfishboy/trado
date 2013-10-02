@@ -6,44 +6,37 @@
     %i.icon-plus
     New invoice
 
-%table
-  %tr
-    %th First name
-    %th Last name
-    %th Billing address
-    %th Delivery address
-    %th Email
-    %th Date
-    %th Invoice number
-    %th Order number
-    %th Notes
-    %th Discount amount
-    %th Pay type
-    %th Discount type
-    %th Shipping
-    %th
-    %th
-    %th
-
-  - @invoices.each do |invoice|
+%table.table.table-striped.table-bordered.table-hover
+  %thead
     %tr
-      %td= invoice.first_name
-      %td= invoice.last_name
-      %td= invoice.billing_address
-      %td= invoice.delivery_address
-      %td= invoice.email
-      %td= invoice.date
-      %td= invoice.invoice_number
-      %td= invoice.order_number
-      %td= invoice.notes
-      %td= invoice.discount_amount
-      %td= invoice.pay_type
-      %td= invoice.discount_type
-      %td= invoice.shipping
-      %td= link_to 'Show', invoice
-      %td= link_to 'Edit', edit_invoice_path(invoice)
-      %td= link_to 'Destroy', invoice, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Invoice', new_invoice_path
+      %th First name
+      %th Last name
+      %th Billing address
+      %th Delivery address
+      %th Email
+      %th Date
+      %th Invoice number
+      %th Order number
+      %th Notes
+      %th Discount amount
+      %th Pay type
+      %th Discount type
+      %th Shipping
+      %th
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= invoice.first_name
+        %td= invoice.last_name
+        %td= invoice.billing_address
+        %td= invoice.delivery_address
+        %td= invoice.email
+        %td= invoice.date
+        %td= invoice.invoice_number
+        %td= invoice.order_number
+        %td= invoice.notes
+        %td= invoice.discount_amount
+        %td= invoice.pay_type
+        %td= invoice.discount_type
+        %td= invoice.shipping
+        %td= table_commands invoice, edit_invoice_path(invoice)
