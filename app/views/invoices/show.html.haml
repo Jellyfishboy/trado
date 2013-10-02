@@ -1,3 +1,6 @@
+- content_for :title, "Invoice #{@invoice.invoice_number}"
+- content_for :breadcrumb, 'Show'
+- breadcrumb_add 'Invoices', invoices_path
 %p#notice= notice
 
 %p

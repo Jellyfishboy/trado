@@ -1,3 +1,6 @@
+- content_for :title, 'New invoice'
+- content_for :breadcrumb, 'New'
+- breadcrumb_add 'Invoices', invoices_path
 %h1 New invoice
 
 = render 'form'

@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  layout 'admin'
   # GET /invoices
   # GET /invoices.json
   def index
