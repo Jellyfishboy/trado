@@ -19,8 +19,7 @@ GimsonRobotics::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
       resources :products, :except => :show
-      resources :product_options, :orders
-      resources :dimensions
+      resources :accessories, :orders, :dimensions
       resources :categories, :except => :show
   end
 

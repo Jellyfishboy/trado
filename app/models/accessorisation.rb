@@ -1,5 +1,5 @@
 class Accessorisation < ActiveRecord::Base
-  attr_accessible :product_id, :product_option_id
+  attr_accessible :product_id, :accessory_id
   belongs_to :product
-  belongs_to :product_option
+  belongs_to :accessory
 end

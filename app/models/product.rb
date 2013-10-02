@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   has_many :categorisations, :dependent => :destroy
   has_many :categories, :through => :categorisations
   has_many :accessorisations, :dependent => :destroy
-  has_many :additional_options, :through => :accessorisations, :source => :product_option
+  has_many :accessories, :through => :accessorisations
   has_many :dimensionals, :dependent => :destroy
   has_many :dimensions, :through => :dimensionals
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }

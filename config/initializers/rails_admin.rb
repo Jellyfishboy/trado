@@ -29,10 +29,10 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  # config.excluded_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'ProductOption', 'Role', 'User']
+  # config.excluded_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'Accessory', 'Role', 'User']
 
   # Include specific models (exclude the others):
-  # config.included_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'ProductOption', 'Role', 'User']
+  # config.included_models = ['Accessorisation', 'Cart', 'Categorisation', 'Category', 'Dimension', 'LineItem', 'Order', 'Product', 'Accessory', 'Role', 'User']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -62,13 +62,13 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :product_option, :belongs_to_association 
+  #     configure :accessory, :belongs_to_association 
   #     configure :product, :belongs_to_association 
 
   #   # Found columns:
 
   #     configure :id, :integer 
-  #     configure :product_option_id, :integer         # Hidden 
+  #     configure :accessory_id, :integer         # Hidden 
   #     configure :product_id, :integer         # Hidden 
   #     configure :created_at, :datetime 
   #     configure :updated_at, :datetime 
@@ -418,7 +418,7 @@ RailsAdmin.config do |config|
   #     configure :categorisations, :has_many_association 
   #     configure :categories, :has_many_association 
   #     configure :accessorisations, :has_many_association 
-  #     configure :additional_options, :has_many_association 
+  #     configure :accessories, :has_many_association 
   #     configure :dimensions, :has_many_association 
 
   #   # Found columns:
@@ -459,11 +459,11 @@ RailsAdmin.config do |config|
   # end
 
 
-  ###  ProductOption  ###
+  ###  Accessory  ###
 
-  # config.model 'ProductOption' do
+  # config.model 'Accessory' do
 
-  #   # You can copy this to a 'rails_admin do ... end' block inside your product_option.rb model definition
+  #   # You can copy this to a 'rails_admin do ... end' block inside your accessory.rb model definition
 
   #   # Found associations:
 

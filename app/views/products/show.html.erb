@@ -40,7 +40,7 @@
       </div>
       <div class="tab-pane" id="accessories">
         <ul>
-        <% @product.additional_options.each do |option| %>
+        <% @product.accessories.each do |option| %>
           <li>Name: <%= option.name %>, Price: <%= option.price %></li>
         <% end %>
         </ul>

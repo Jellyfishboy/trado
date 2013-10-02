@@ -1,0 +1,24 @@
+- content_for :title, 'List accessories'
+- content_for :breadcrumb, 'Accessories'
+.page-header
+  %h1 Listing accessories
+  = link_to new_accessory_path, :class => "btn btn-success" do
+    %i.icon-plus
+    Add accessory
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th SKU
+      %th Name
+      %th Price
+      %th Actions
+  %tbody
+    - @accessories.each do |accessory|
+      %tr
+        %td 
+        %td= accessory.name
+        %td= accessory.price
+        %td
+          = link_to 'Edit', edit_accessory_path(accessory), :class => "btn btn-success"
+          = link_to 'Destroy', accessory, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
