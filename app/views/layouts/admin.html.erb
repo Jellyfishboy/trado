@@ -23,8 +23,8 @@
     <!--inline styles related to this page-->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-  <body class="skin-1">
-    <div class="navbar">
+  <body class="skin-1 navbar-fixed breadcrumbs-fixed">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a href="#" class="brand">
@@ -96,7 +96,7 @@
         <span class="menu-text"></span>
       </a>
 
-      <div class="sidebar" id="sidebar">
+      <div class="sidebar fixed" id="sidebar">
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
           <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
             <%= link_to new_category_path, :class => "btn btn-small btn-success" do %>
@@ -197,36 +197,8 @@
         <div class="page-content">
           <%= yield %>
         </div><!--/.page-content-->
-
-                <div class="ace-settings-container" id="ace-settings-container">
-                  <div class="btn btn-app btn-mini btn-warning ace-settings-btn" id="ace-settings-btn">
-                    <i class="icon-cog bigger-150"></i>
-                  </div>
-
-                  <div class="ace-settings-box" id="ace-settings-box">
-                    <div>
-                      <input type="checkbox" class="ace-checkbox-2" id="ace-settings-header" />
-                      <label class="lbl" for="ace-settings-header"> Fixed Header</label>
-                    </div>
-
-                    <div>
-                      <input type="checkbox" class="ace-checkbox-2" id="ace-settings-sidebar" />
-                      <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-                    </div>
-
-                    <div>
-                      <input type="checkbox" class="ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                      <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-                    </div>
-
-                    <div>
-                      <input type="checkbox" class="ace-checkbox-2" id="ace-settings-rtl" />
-                      <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-                    </div>
-                  </div>
-                </div><!--/#ace-settings-container-->
-              </div><!--/.main-content-->
-            </div><!--/.main-container-->
+      </div><!--/.main-content-->
+    </div><!--/.main-container-->
 
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
       <i class="icon-double-angle-up icon-only bigger-110"></i>
