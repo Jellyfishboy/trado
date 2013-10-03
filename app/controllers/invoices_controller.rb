@@ -26,6 +26,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new.json
   def new
     @invoice = Invoice.new
+    @invoice.date = Time.now
 
     respond_to do |format|
       format.html # new.html.erb

@@ -10,7 +10,7 @@ one:
   invoice_number: 1
   order_number: 1
   notes: MyText
-  discount_amount: 9.99
+  discount_value: 9.99
   pay_type: MyString
   discount_type: MyString
   shipping: 9.99
@@ -25,7 +25,7 @@ two:
   invoice_number: 1
   order_number: 1
   notes: MyText
-  discount_amount: 9.99
+  discount_value: 9.99
   pay_type: MyString
   discount_type: MyString
   shipping: 9.99

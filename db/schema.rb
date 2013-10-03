@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131003144229) do
+ActiveRecord::Schema.define(:version => 20131003155417) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20131003144229) do
     t.integer  "invoice_number"
     t.integer  "order_number"
     t.text     "notes"
-    t.decimal  "discount_amount"
+    t.decimal  "discount_value"
     t.string   "pay_type"
     t.string   "discount_type"
     t.decimal  "shipping"

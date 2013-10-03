@@ -20,11 +20,14 @@
           .control-group
             = f.label :billing_address, :class => 'control-label'
             .controls
-              = f.text_area :billing_address, :class => 'form-control', :rows => 7
+              = f.text_area :billing_address, :class => 'form-control billing_textarea', :rows => 7
           .control-group
             = f.label :delivery_address, :class => 'control-label'
             .controls
-              = f.text_area :delivery_address, :class => 'form-control', :rows => 7
+              %label
+                %input{:type => 'checkbox', :class => 'invoice_address ace-checkbox-2'} 
+                %span.lbl Same as billing address
+              = f.text_area :delivery_address, :class => 'form-control delivery_textarea', :rows => 7
           .control-group
             = f.label :email, :class => 'control-label'
             .controls
@@ -43,17 +46,22 @@
             .controls
               = f.text_area :notes, :class => 'form-control', :rows => 7
           .control-group
-            = f.label :discount_amount, :class => 'control-label'
-            .controls
-              = f.text_field :discount_amount, :class => 'form-control'
-          .control-group
             = f.label :pay_type, :class => 'control-label'
             .controls
-              = f.text_field :pay_type, :class => 'form-control'
+              = f.select :pay_type,["All", "BACS"], :prompt => "Please select one..", :class => 'form-control'
+          .control-group
+            = f.label :discount_value, :class => 'control-label'
+            .controls
+              = f.text_field :discount_value, :class => 'form-control'
           .control-group
             = f.label :discount_type, :class => 'control-label'
             .controls
-              = f.radio_button_tag(:discount_type, 1), :class => 'form-control'
+              %label
+                = f.radio_button :discount_type, "Percentage", :class => 'form-control', :checked => true
+                %span.lbl Percentage
+              %label
+                = f.radio_button :discount_type, "Amount", :class => 'form-control'
+                %span.lbl Amount
           .control-group
             = f.label :shipping, :class => 'control-label'
             .controls

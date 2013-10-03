@@ -11,3 +11,18 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $('#dimension_fields').append(content.replace(regexp, new_id));
 }
+
+$(document).ready(function() {
+    duplicate_fields('.invoice_address', '.billing_textarea', '.delivery_textarea')
+});
+
+function duplicate_fields(checkbox, field_one, field_two) {
+    $(checkbox).change(function() {
+        if(this.checked) {
+            $(field_two).val($(field_one).val());
+        }
+        else {
+            $(field_two).val("");
+        }
+    });
+}
