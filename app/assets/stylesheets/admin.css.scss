@@ -6,3 +6,26 @@
         display:none;
     }
 }
+.page-header {
+    overflow: hidden;
+        h1 {
+            float:left;
+        }
+        a {
+            float:right;
+            margin-right:30px;
+        }
+}
+form.new_product {
+    .add_dimension {
+        margin-left:10px;
+    }
+    .dimension_list {
+        .control-label {
+            padding:0px;
+        }
+    }
+}
+textarea {
+    resize:none;
+}

@@ -5,25 +5,27 @@
   = link_to new_invoice_path, :class => "btn btn-success" do
     %i.icon-plus
     New invoice
-
-%table.table.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th Invoice no.
-      %th Name
-      %th Email
-      %th Date
-      %th Total price (exc. VAT)
-      %th
-  %tbody
-    - @invoices.each do |invoice|
+- if @invoices.empty?
+  %p You don't have any invoices yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td= invoice.invoice_number
-        %td
-          = invoice.first_name
-          = invoice.last_name
-        %td= invoice.email
-        %td= invoice.date.strftime("#{invoice.date.day.ordinalize} %B %Y ")
-        %td
-        %td{:width => '60' } 
-          = table_commands invoice, edit_invoice_path(invoice)
+        %th Invoice no.
+        %th Name
+        %th Email
+        %th Date created
+        %th Total price (exc. VAT)
+        %th
+    %tbody
+      - @invoices.each do |invoice|
+        %tr
+          %td= invoice.invoice_number
+          %td
+            = invoice.first_name
+            = invoice.last_name
+          %td= invoice.email
+          %td= invoice.date.strftime("#{invoice.date.day.ordinalize} %B %Y ")
+          %td
+          %td{:width => '60' } 
+            = table_commands invoice, edit_invoice_path(invoice)

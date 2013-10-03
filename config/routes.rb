@@ -11,7 +11,7 @@ GimsonRobotics::Application.routes.draw do
      }
   resources :carts, :only => [:create, :show, :destroy]
   resources :products, :only => [:show, :destroy, :update]
-  resources :categories, :only => :show
+  resources :categories, :only => [:show, :destroy, :update]
   resources :users
 
   scope '/admin' do

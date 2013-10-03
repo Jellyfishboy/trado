@@ -1,93 +1,111 @@
-<div class="row">
-  <div class="col-lg-6">
-    <div class="well">
-      <%= form_for @product, :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
-        <fieldset>
-        <% if @product.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="row-fluid">
+  <div class="span-12">
+    <%= form_for @product, :html => { :class => 'form-horizontal new_product', :role => 'form' } do |f| %>
+      <fieldset>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-            <ul>
-            <% @product.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <legend>Details</legend>
-        <div class="form-group">
-          <%= f.label :part_number, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :part_number, :class => 'form-control' %>
-          </div>
+          <ul>
+          <% @product.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
         </div>
-        <div class="form-group">
-          <%= f.label :sku, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :sku, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :title, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :title, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :description, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :image_url, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.file_field :image_url, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :price, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :price, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :stock, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :stock, :class => 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :weighting, :class => 'control-label col-lg-2' %>
-          <div class="col-lg-10">
-            <%= f.text_field :weighting, :class => 'form-control' %>
-          </div>
-        </div>
-        <legend>Categories</legend>
-        <div class="form-group">
-          <div class="col-lg-12">
-            <% Category.all.each do |category| %>
-                <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id) %>
-                <%= category.name %>
-            <% end %>
-          </div>
-        </div>
-        <legend>Accessories</legend>
-        <div class="form-group">
-          <div class="col-lg-12">
-            <% Accessory.all.each do |option| %>
-                <%= check_box_tag "product[accessory_ids][]", option.id, @product.accessory_ids.include?(option.id) %>
-                <%= option.name %>
-            <% end %>
-          </div>
-        </div>
-        <legend>Dimensions</legend>
-          <%= link_to_add_fields "Add Dimension", f, :dimensions %>
-        <div class="actions">
-          <%= f.submit :class => 'btn btn-success' %>
-        </div>
-        </fieldset>
       <% end %>
-    </div>
+      <div class="control-group">
+        <%= f.label :part_number, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :part_number, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :sku, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :sku, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :title, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :title, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :image_url, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.file_field :image_url, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :cost_value, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :cost_value, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :price, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :price, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :stock, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :stock, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :weighting, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :weighting, :class => 'form-control' %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Categories</h3>
+      <div class="control-group">
+        <div class="controls">
+          <% if Category.all.empty? %>
+            <p>No categories to select.</p>
+          <% else %>
+            <% Category.all.each do |category| %>
+              <label>
+                <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), :class => 'ace-checkbox-2' %>
+                <span class="lbl"><%= category.name %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Accessories</h3>
+      <div class="control-group">
+        <div class="controls">
+          <% if Accessory.all.empty? %>
+            <p>No accessories to select.</p>
+          <% else %>
+            <% Accessory.all.each do |option| %>
+              <label>
+                <%= check_box_tag "product[accessory_ids][]", option.id, @product.accessory_ids.include?(option.id), :class => 'ace-checkbox-2' %>
+                <span class="lbl"><%= option.name %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions %></h3>
+      <div id="dimension_fields">
+      </div>
+      <div class="form-actions">
+        <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
+          <i class="icon-ok"></i>Submit
+        <% end %>
+      </div>
+      </fieldset>
+    <% end %>
   </div>
 </div>

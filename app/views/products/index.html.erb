@@ -6,33 +6,41 @@
     <i class="icon-plus"></i>New product
   <% end %>
 </div>
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>SKU</th>
-      <th colspan="2">Name</th>
-      <th>Price (exc.VAT)</th>
-      <th></th>
-  </thead>
-  <tbody>
-  <% @products.each do |product| %>
-    <tr>
-      <td>
-        <%= product.sku %>
-      </td>
-      <td width="85">
-        <%= image_tag product.image_url.medium, :height => "75", :width => "75" %>
-      </td>
-      <td>
-        <%= product.title %>
-      </td>
-      <td>
-        <%= product.price %>
-      </td>
-      <td >
-        <%= table_commands product, edit_product_path(product) %>
-      </td> 
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% if @products.empty? %>
+  <p>You don't have any products yet.</p>
+<% else %>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th colspan="2">Name</th>
+        <th>Cost value</th>
+        <th>Price (exc.VAT)</th>
+        <th></th>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>
+          <%= product.sku %>
+        </td>
+        <td width="85">
+          <%= image_tag product.image_url.medium, :height => "75", :width => "75" %>
+        </td>
+        <td>
+          <%= product.title %>
+        </td>
+        <td>
+          <%= product.cost_value %>
+        </td>
+        <td>
+          <%= product.price %>
+        </td>
+        <td >
+          <%= table_commands product, edit_product_path(product) %>
+        </td> 
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

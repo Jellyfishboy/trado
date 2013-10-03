@@ -5,19 +5,21 @@
   = link_to new_accessory_path, :class => "btn btn-success" do
     %i.icon-plus
     New accessory
-
-%table.table.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th Part no.
-      %th Name
-      %th Price
-      %th
-  %tbody
-    - @accessories.each do |accessory|
+- if @accessories.empty?
+  %p You don't have any accessories yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td= accessory.part_number
-        %td= accessory.name
-        %td= accessory.price
-        %td.no_show
-          = table_commands accessory, edit_accessory_path(accessory)
+        %th Part no.
+        %th Name
+        %th Price
+        %th
+    %tbody
+      - @accessories.each do |accessory|
+        %tr
+          %td= accessory.part_number
+          %td= accessory.name
+          %td= accessory.price
+          %td.no_show
+            = table_commands accessory, edit_accessory_path(accessory)

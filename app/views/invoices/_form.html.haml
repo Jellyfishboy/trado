@@ -1,49 +1,64 @@
-= form_for @invoice do |f|
-  - if @invoice.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@invoice.errors.count, "error")} prohibited this invoice from being saved:"
-      %ul
-        - @invoice.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :billing_address
-    = f.text_area :billing_address
-  .field
-    = f.label :delivery_address
-    = f.text_area :delivery_address
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :date
-    = f.datetime_select :date
-  .field
-    = f.label :invoice_number
-    = f.number_field :invoice_number
-  .field
-    = f.label :order_number
-    = f.number_field :order_number
-  .field
-    = f.label :notes
-    = f.text_area :notes
-  .field
-    = f.label :discount_amount
-    = f.text_field :discount_amount
-  .field
-    = f.label :pay_type
-    = f.text_field :pay_type
-  .field
-    = f.label :discount_type
-    = f.text_field :discount_type
-  .field
-    = f.label :shipping
-    = f.text_field :shipping
-  .actions
-    = f.submit 'Save'
+.row-fluid
+  .span12
+    = form_for @invoice, :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @invoice.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@invoice.errors.count, "error")} prohibited this invoice from being saved:"
+            %ul
+              - @invoice.errors.full_messages.each do |msg|
+                %li= msg
+        .span6         
+          .control-group
+            = f.label :first_name, :class => 'control-label'
+            .controls
+              = f.text_field :first_name, :class => 'form-control'
+          .control-group
+            = f.label :last_name, :class => 'control-label'
+            .controls
+              = f.text_field :last_name, :class => 'form-control'
+          .control-group
+            = f.label :billing_address, :class => 'control-label'
+            .controls
+              = f.text_area :billing_address, :class => 'form-control', :rows => 7
+          .control-group
+            = f.label :delivery_address, :class => 'control-label'
+            .controls
+              = f.text_area :delivery_address, :class => 'form-control', :rows => 7
+          .control-group
+            = f.label :email, :class => 'control-label'
+            .controls
+              = f.text_field :email, :class => 'form-control'
+        .span6
+          .control-group
+            = f.label :invoice_number, :class => 'control-label'
+            .controls
+              = f.text_field :invoice_number, :class => 'form-control'
+          .control-group
+            = f.label :order_number, :class => 'control-label'
+            .controls
+              = f.text_field :order_number, :class => 'form-control'
+          .control-group
+            = f.label :notes, :class => 'control-label'
+            .controls
+              = f.text_area :notes, :class => 'form-control', :rows => 7
+          .control-group
+            = f.label :discount_amount, :class => 'control-label'
+            .controls
+              = f.text_field :discount_amount, :class => 'form-control'
+          .control-group
+            = f.label :pay_type, :class => 'control-label'
+            .controls
+              = f.text_field :pay_type, :class => 'form-control'
+          .control-group
+            = f.label :discount_type, :class => 'control-label'
+            .controls
+              = f.radio_button_tag(:discount_type, 1), :class => 'form-control'
+          .control-group
+            = f.label :shipping, :class => 'control-label'
+            .controls
+              = f.text_field :shipping, :class => 'form-control'
+      .form-actions
+        = button_tag(:type => 'submit', :class => 'btn btn-info') do
+          %i.icon-ok
+          Submit

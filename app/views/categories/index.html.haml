@@ -5,17 +5,19 @@
   = link_to new_category_path, :class => "btn btn-success" do
     %i.icon-plus
     New category
-
-%table.table.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-  %tbody
-    - @category.each do |category|
+- if @category.empty?
+  %p You don't have any categories yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
       %tr
-        %td= category.name
-        %td= category.description
-        %td
-          = table_commands category, edit_category_path(category)
+        %th Name
+        %th Description
+        %th
+    %tbody
+      - @category.each do |category|
+        %tr
+          %td= category.name
+          %td= category.description
+          %td
+            = table_commands category, edit_category_path(category)

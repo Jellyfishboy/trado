@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002145711) do
+ActiveRecord::Schema.define(:version => 20131003144229) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -106,13 +106,14 @@ ActiveRecord::Schema.define(:version => 20131002145711) do
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.integer  "price",       :limit => 8
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.decimal  "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "weighting"
     t.integer  "stock"
     t.integer  "part_number"
     t.string   "sku"
+    t.decimal  "cost_value"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
