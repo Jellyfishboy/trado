@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  layout 'admin'
+  layout 'admin', :except => :new
   # GET /orders
   # GET /orders.json
   def index
