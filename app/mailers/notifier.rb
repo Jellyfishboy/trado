@@ -37,4 +37,9 @@ class Notifier < ActionMailer::Base
     mail :to => "tom.alan.dallimore@googlemail.com", :subject => "Application Error: #{@obj}"
   end
 
+  def low_stock(products)
+    @restock = products
+    mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Restock Warning'
+  end
+
 end

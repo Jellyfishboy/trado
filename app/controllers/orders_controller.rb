@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to store_url, 'Your order has been deleted' }
+      format.html { redirect_to orders_path, notice: 'Your order has been deleted' }
       format.json { head :no_content }
     end
   end

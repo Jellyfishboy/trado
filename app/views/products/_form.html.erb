@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span-12">
+  <div class="span12">
     <%= form_for @product, :html => { :class => 'form-horizontal new_product', :role => 'form' } do |f| %>
       <fieldset>
       <% if @product.errors.any? %>
@@ -59,6 +59,12 @@
         <%= f.label :stock, :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field :stock, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :stock_warning_level, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :stock_warning_level, :class => 'form-control' %>
         </div>
       </div>
       <div class="control-group">

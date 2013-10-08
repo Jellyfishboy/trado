@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131004093951) do
+ActiveRecord::Schema.define(:version => 20131008135240) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -78,9 +78,10 @@ ActiveRecord::Schema.define(:version => 20131004093951) do
     t.decimal  "discount_value"
     t.string   "pay_type"
     t.string   "discount_type"
-    t.decimal  "shipping"
+    t.decimal  "shipping_cost"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "shipping_method"
   end
 
   create_table "line_items", :force => true do |t|
@@ -117,8 +118,10 @@ ActiveRecord::Schema.define(:version => 20131004093951) do
     t.string   "payment_status"
     t.string   "shipping_status"
     t.datetime "shipping_date"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "invoice_id"
+    t.decimal  "actual_shipping_cost"
   end
 
   create_table "products", :force => true do |t|
@@ -126,13 +129,14 @@ ActiveRecord::Schema.define(:version => 20131004093951) do
     t.text     "description"
     t.string   "image_url"
     t.decimal  "price"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "weighting"
     t.integer  "stock"
     t.integer  "part_number"
     t.string   "sku"
     t.decimal  "cost_value"
+    t.integer  "stock_warning_level"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
