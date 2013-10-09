@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :cost_value
+  attr_accessible :title, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :cost_value, :stock_warning_level
   validates :title, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :title, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
@@ -16,12 +16,19 @@ class Product < ActiveRecord::Base
   has_many :accessories, :through => :accessorisations
   has_many :dimensionals, :dependent => :destroy
   has_many :dimensions, :through => :dimensionals
+  has_many :taggings
+  has_many :tags, :through => :taggings
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
   mount_uploader :image_url, ProductUploader
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.title}", :force => true)
+  end
+
+  def warning_level
+    @restock = Product.where('stock < stock_warning_level')
+    Notifier.low_stock(@restock).deliver
   end
 
 end

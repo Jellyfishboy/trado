@@ -23,3 +23,7 @@ set :output "/var/log/gimson_robotics/schedule.log"
 every 12.hours do
     runner "Cart.clear_carts"
 end
+
+every 24.hours do
+    runner "Product.warning_level"
+end

@@ -20,7 +20,7 @@
   = @invoice.email
 %p
   %b Date:
-  = @invoice.date
+  = @invoice.created_at
 %p
   %b Invoice number:
   = @invoice.invoice_number
@@ -31,17 +31,20 @@
   %b Notes:
   = @invoice.notes
 %p
-  %b Discount amount:
-  = @invoice.discount_value
-%p
   %b Pay type:
   = @invoice.pay_type
+%p
+  %b Discount amount:
+  = @invoice.discount_value
 %p
   %b Discount type:
   = @invoice.discount_type
 %p
-  %b Shipping:
-  = @invoice.shipping
+  %b Shipping method:
+  = @invoice.shipping_method
+%p
+  %b Shipping cost:
+  = @invoice.shipping_cost
 
 = link_to 'Edit', edit_invoice_path(@invoice)
 \|

@@ -12,17 +12,74 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :size => 40 %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_area :address, :rows => 3, :cols => 40 %>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :size => 40 %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email, :size => 40 %>
+    <%= f.text_field :email %>
   </div>
+  <div class="field">
+    <%= f.label :billing_company %><br />
+    <%= f.text_field :billing_company %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_address %><br />
+    <%= f.text_area :billing_address, :rows => 3, :cols => 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_city %><br />
+    <%= f.text_field :billing_city %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_county %><br />
+    <%= f.text_field :billing_county %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_postcode %><br />
+    <%= f.text_field :billing_postcode %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_country %><br />
+    <%= f.text_field :billing_country %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_telephone %><br />
+    <%= f.text_field :billing_telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_address %><br />
+    <%= f.text_area :delivery_address, :rows => 3, :cols => 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_city %><br />
+    <%= f.text_field :delivery_city %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_county %><br />
+    <%= f.text_field :delivery_county %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_postcode %><br />
+    <%= f.text_field :delivery_postcode %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_country %><br />
+    <%= f.text_field :delivery_country %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_telephone %><br />
+    <%= f.text_field :delivery_telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_number %><br />
+    <%= f.text_field :tax_number %>
+  </div>
+  
   <div class="actions">
     <%= f.submit 'Place order' %>
   </div>

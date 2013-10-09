@@ -1,0 +1,8 @@
+You are running low on stock for the following items:
+
+<% @restock.each do |product| %>
+    <%= product.name, product %>
+    <%= product.stock %>
+<% end %>
+
+This is an automated email. Please do not respond to it.
