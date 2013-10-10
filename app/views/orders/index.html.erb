@@ -17,11 +17,11 @@
     </thead>
     <tbody>
       <% @orders.each do |order| %>
-        <tr>
+        <tr class="<% if order.actual_shipping_cost.blank? %>red<% end %>">
           <td><%= order.first_name %> <%= order.last_name %></td>
           <td><%= order.billing_address %></td>
           <td><%= order.email %></td>
-          <td><%= table_commands order, edit_order_path(order), 1 %></td>
+          <td><%= table_commands order, edit_order_path(order), 0 %></td>
         </tr>
       <% end %>
     </tbody>
