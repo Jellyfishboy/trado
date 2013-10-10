@@ -28,4 +28,4 @@
           %td= invoice.created_at.strftime("#{invoice.created_at.day.ordinalize} %B %Y ")
           %td
           %td{:width => '60' } 
-            = table_commands invoice, edit_invoice_path(invoice)
+            = table_commands invoice, edit_invoice_path(invoice), 0

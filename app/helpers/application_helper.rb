@@ -27,7 +27,8 @@ module ApplicationHelper
       render :partial => 'shared/breadcrumbs', :locals => { :breadcrumbs => create_breadcrumbs }
     end
 
-    def table_commands object, edit
-      render :partial => 'shared/table_actions', :locals => { :object => object, :edit => edit }
+    # type 1 is for displaying a delivery cost icon for orders, type 2 is for hiding the show icon and 0 is everything else
+    def table_commands object, edit, type
+      render :partial => 'shared/table_actions', :locals => { :object => object, :edit => edit, :type => type }
     end
 end
