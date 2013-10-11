@@ -28,6 +28,10 @@ class Cart < ActiveRecord::Base
   	line_items.to_a.sum { |item| item.total_price }
   end
 
+  def uk_tax 
+    
+  end
+
   def basket_quantity(cart)
     cart.line_items.each do |item|
       basket_quantity << item.quantity

@@ -31,4 +31,8 @@ module ApplicationHelper
     def table_commands object, edit, type
       render :partial => 'shared/table_actions', :locals => { :object => object, :edit => edit, :type => type }
     end
+
+    def format_currency price
+      number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
+    end
 end

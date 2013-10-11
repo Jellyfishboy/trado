@@ -34,7 +34,7 @@
           <%= product.cost_value %>
         </td>
         <td>
-          <%= product.price %>
+          <%= format_currency product.price %>
         </td>
         <td >
           <%= table_commands product, edit_product_path(product), 0 %>
