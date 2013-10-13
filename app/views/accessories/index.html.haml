@@ -21,5 +21,4 @@
           %td= accessory.part_number
           %td= accessory.name
           %td= accessory.price
-          %td.no_show
-            = table_commands accessory, edit_accessory_path(accessory)
+          %td= table_commands accessory, edit_accessory_path(accessory), 1

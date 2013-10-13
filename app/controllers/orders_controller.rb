@@ -54,12 +54,13 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
     @order.add_line_items_from_cart(current_cart)
-
+    @order.total = current_cart.total_price # calculate total price for all the items
+    @order.uk_vat # utitlise the uk_vat method to calulcate and populate the total_vat field (total + vat) and calculate the vat amount to populate the vat field
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
+        #Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
         format.html { redirect_to store_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else

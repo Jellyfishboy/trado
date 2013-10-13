@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008135240) do
+ActiveRecord::Schema.define(:version => 20131011111826) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
-    t.decimal  "price"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.decimal  "price",                      :precision => 8, :scale => 2
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.integer  "part_number", :limit => 255
   end
 
@@ -75,22 +75,22 @@ ActiveRecord::Schema.define(:version => 20131008135240) do
     t.integer  "invoice_number"
     t.integer  "order_number"
     t.text     "notes"
-    t.decimal  "discount_value"
+    t.decimal  "discount_value",   :precision => 8, :scale => 2
     t.string   "pay_type"
     t.string   "discount_type"
-    t.decimal  "shipping_cost"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.decimal  "shipping_cost",    :precision => 8, :scale => 2
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "shipping_method"
   end
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "quantity",   :default => 1
-    t.decimal  "price"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "quantity",                                 :default => 1
+    t.decimal  "price",      :precision => 8, :scale => 2
     t.integer  "order_id"
   end
 
@@ -112,30 +112,31 @@ ActiveRecord::Schema.define(:version => 20131008135240) do
     t.string   "delivery_telephone"
     t.string   "email"
     t.integer  "tax_number"
-    t.decimal  "total"
-    t.decimal  "total_vat"
-    t.decimal  "shipping_cost"
-    t.string   "payment_status"
-    t.string   "shipping_status"
+    t.decimal  "total",                :precision => 8, :scale => 2
+    t.decimal  "total_vat",            :precision => 8, :scale => 2
+    t.decimal  "shipping_cost",        :precision => 8, :scale => 2
+    t.string   "payment_status",                                     :default => "Pending"
+    t.string   "shipping_status",                                    :default => "Pending"
     t.datetime "shipping_date"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                                                :null => false
+    t.datetime "updated_at",                                                                :null => false
     t.integer  "invoice_id"
-    t.decimal  "actual_shipping_cost"
+    t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
+    t.decimal  "vat",                  :precision => 8, :scale => 2
   end
 
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.decimal  "price",               :precision => 8, :scale => 2
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.integer  "weighting"
     t.integer  "stock"
     t.integer  "part_number"
     t.string   "sku"
-    t.decimal  "cost_value"
+    t.decimal  "cost_value",          :precision => 8, :scale => 2
     t.integer  "stock_warning_level"
   end
 

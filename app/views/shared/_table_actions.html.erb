@@ -1,8 +1,9 @@
 <div class="hidden-phone visible-desktop action-buttons">
-  <%= link_to object, :class => 'blue' do %>
-    <i class="icon-zoom-in bigger-130"></i>
+  <% if type != 1 %>
+    <%= link_to object, :class => 'blue' do %>
+      <i class="icon-zoom-in bigger-130"></i>
+    <% end %>
   <% end %>
-
   <%= link_to edit, :class => 'green' do %>
     <i class="icon-pencil bigger-130"></i>
   <% end %>
@@ -19,13 +20,15 @@
     </button>
 
     <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-      <li>
-        <%= link_to object, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
-          <span class="blue">
-            <i class="icon-zoom-in bigger-120"></i>
-          </span>
-        <% end %>
-      </li>
+      <% if type != 1 %>
+        <li>
+          <%= link_to object, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
+            <span class="blue">
+              <i class="icon-zoom-in bigger-120"></i>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
 
       <li>
         <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
