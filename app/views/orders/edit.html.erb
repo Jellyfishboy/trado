@@ -19,121 +19,166 @@ breadcrumb_add 'Orders', orders_path %>
                       </ul>
                     </div>
                 <% end %>
-                <div class="control-group">
-                    <%= f.label :first_name, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :first_name, :size => 40, :class => 'form-control' %>
+                <div class="span6">
+                    <div class="control-group">
+                        <%= f.label :first_name, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :first_name, :size => 40, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :last_name, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :last_name, :size => 40, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :email, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :email, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_company, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_company, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_address, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_area :billing_address, :rows => 3, :cols => 40, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_city, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_city, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_county, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_county, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_postcode, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_postcode, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_country, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_country, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :billing_telephone, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :billing_telephone, :class => 'form-control' %>
+                        </div>
                     </div>
                 </div>
-                <div class="control-group">
-                    <%= f.label :last_name, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :last_name, :size => 40, :class => 'form-control' %>
+                <div class="span6">
+                    <div class="control-group">
+                        <%= f.label :delivery_address, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_area :delivery_address, :rows => 3, :cols => 40, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :email, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :email, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :delivery_city, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_city, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_company, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_company, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :delivery_county, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_county, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_address, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_area :billing_address, :rows => 3, :cols => 40, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :delivery_postcode, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_postcode, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_city, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_city, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :delivery_country, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_country, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_county, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_county, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :delivery_telephone, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_telephone, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_postcode, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_postcode, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :tax_number, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :tax_number, :class => 'form-control' %>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_country, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_country, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :billing_telephone, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :billing_telephone, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_address, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_area :delivery_address, :rows => 3, :cols => 40, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_city, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :delivery_city, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_county, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :delivery_county, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_postcode, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :delivery_postcode, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_country, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :delivery_country, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :delivery_telephone, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :delivery_telephone, :class => 'form-control' %>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <%= f.label :tax_number, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :tax_number, :class => 'form-control' %>
-                    </div>
-                </div>
 
-                <div class="control-group">
-                    <%= f.label :actual_shipping_cost, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.text_field :actual_shipping_cost, :class => 'form-control' %>
+                    <div class="control-group">
+                        <%= f.label :actual_shipping_cost, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :actual_shipping_cost, :class => 'form-control' %>
+                        </div>
                     </div>
                 </div>
-                <div class="form-actions">
-                    <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
-                      <i class="icon-ok"></i>Submit
-                    <% end %>
-                </div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="center">SKU</th>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Quantitiy</th>
+                            <th>Price</th>
+                            <% if @order.line_items.count > 1 %>
+                                <th></th>
+                            <% end %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @order.line_items.each do |item| %>
+                        <tr>
+                            <td class="center"><%= item.product.sku %></td>
+
+                            <td>
+                                <%= item.product.title %>
+                            </td>
+                            <td>
+                                <%= item.product.description %>
+                            </td>
+                            <td>
+                                <%= item.quantity %>
+                            </td>
+                            <td>
+                                <%= format_currency item.product.price %>
+                            </td>
+
+                            <% #TODO: If less than 2 line_items after delete, remove this functionality upon ajax exection
+                            if @order.line_items.count > 1 %>
+                                <td>                              
+                                    <%= del_table_command @order %>
+                                </td>
+                            <% end %>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             </fieldset>
+            <div class="form-actions">
+                <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
+                  <i class="icon-ok"></i>Submit
+                <% end %>
+            </div>
         <% end %>
     </div>
 </div>

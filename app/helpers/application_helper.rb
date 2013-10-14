@@ -32,6 +32,10 @@ module ApplicationHelper
       render :partial => 'shared/table_actions', :locals => { :object => object, :edit => edit, :type => type }
     end
 
+    def del_table_command object
+      render :partial => 'shared/del_action', :locals => { :object => object }
+    end 
+
     def format_currency price
       number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
     end
