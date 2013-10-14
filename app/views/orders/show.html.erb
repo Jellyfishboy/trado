@@ -123,11 +123,7 @@ breadcrumb_add 'Orders', orders_path %>
                                          <li>
                                             <i class="icon-caret-right green"></i>
                                             Shipping status: 
-                                            <% if @order.shipping_status == "Pending" %>
-                                                <span class="label label-warning"><%= @order.shipping_status %></span>
-                                            <% elsif @order.shipping_status == "Dispatched" %>
-                                                <span class="label label-success"><%= @order.shipping_status %></span>
-                                            <% end %>
+                                            <%= shipping_status @order.shipping_status %>
                                          </li>
                                          <li>
                                              <i class="icon-caret-right green"></i>
@@ -151,11 +147,7 @@ breadcrumb_add 'Orders', orders_path %>
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
                                            Payment status: 
-                                           <% if @order.payment_status == "Pending" %>
-                                               <span class="label label-warning"><%= @order.payment_status %></span>
-                                           <% elsif @order.payment_status == "Complete" %>
-                                               <span class="label label-success"><%= @order.payment_status %></span>
-                                           <% end %>
+                                           <%= payment_status @order.payment_status %>
                                         </li>
                                     </ul>
                                 </div>

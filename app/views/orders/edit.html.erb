@@ -121,12 +121,7 @@ breadcrumb_add 'Orders', orders_path %>
                         <%= f.text_field :tax_number, :class => 'form-control' %>
                     </div>
                 </div>
-                <div class="control-group">
-                    <%= f.label :shipping_date, :class => 'control-label' %>
-                    <div class="controls">
-                        <%= f.date_select :shipping_date, :class => 'form-control', :include_blank => true, :default => nil %>
-                    </div>
-                </div>
+
                 <div class="control-group">
                     <%= f.label :actual_shipping_cost, :class => 'control-label' %>
                     <div class="controls">

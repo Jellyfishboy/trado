@@ -35,4 +35,20 @@ module ApplicationHelper
     def format_currency price
       number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
     end
+
+    def shipping_status status
+      if status == "Pending"
+        "<span class='label label-warning'>#{status}</span>".html_safe
+      elsif status == "Dispatched"
+        "<span class='label label-success'>#{status}</span>".html_safe
+      end
+    end
+    
+    def payment_status status
+      if status == "Pending"
+        "<span class='label label-warning'>#{status}</span>".html_safe
+      elsif status == "Complete"
+        "<span class='label label-success'>#{status}</span>".html_safe
+      end
+    end
 end
