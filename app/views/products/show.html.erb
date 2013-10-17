@@ -34,7 +34,7 @@
       <div class="tab-pane" id="dimensions">
         <ul>
         <% @product.dimensions.each do | dimension| %>
-          <li>Weight: <%= dimension.weight %>, Size: <%= dimension.size %></li>
+          <li>Weight: <%= dimension.weight %>, Length: <%= dimension.length %>, Thickness: <%= dimension.thickness %></li>
         <% end %>
         </ul>
       </div>

@@ -3,9 +3,11 @@
 one:
   product_id: 1
   weight: 1
-  size: 1
+  length: 1
+  thickness: 1
 
 two:
   product_id: 1
   weight: 1
-  size: 1
+  length: 1
+  thickness: 1

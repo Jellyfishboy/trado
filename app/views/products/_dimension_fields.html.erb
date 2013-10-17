@@ -1,14 +1,20 @@
 <div class="ajax_fields">
     <div class="control-group">
-      <%= f.label :weight, :class => 'control-label' %>
+      <%= f.label :weight, 'Weight (kg)', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :weight, :class => 'form-control' %>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :size, :class => 'control-label' %>
+      <%= f.label :length, 'Length (mm)', :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :size, :class => 'form-control' %>
+        <%= f.text_field :length, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :thickness, 'Thickness (mm)', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :thickness, :class => 'form-control' %>
       </div>
     </div>
     <div class="control-group">

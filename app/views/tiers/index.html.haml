@@ -1,0 +1,29 @@
+%h1 Listing tiers
+
+%table
+  %tr
+    %th Length start
+    %th Length end
+    %th Weight start
+    %th Weight end
+    %th Thickness start
+    %th Thickness end
+    %th
+    %th
+    %th
+
+  - @tiers.each do |tier|
+    %tr
+      %td= tier.length_start
+      %td= tier.length_end
+      %td= tier.weight_start
+      %td= tier.weight_end
+      %td= tier.thickness_start
+      %td= tier.thickness_end
+      %td= link_to 'Show', tier
+      %td= link_to 'Edit', edit_tier_path(tier)
+      %td= link_to 'Destroy', tier, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Tier', new_tier_path

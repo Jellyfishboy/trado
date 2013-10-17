@@ -1,5 +1,11 @@
 GimsonRobotics::Application.routes.draw do
 
+  resources :tiers
+
+
+  resources :shippings
+
+
   resources :invoices
 
 

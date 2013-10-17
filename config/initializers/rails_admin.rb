@@ -246,7 +246,8 @@ RailsAdmin.config do |config|
   #     configure :id, :integer 
   #     configure :product_id, :integer         # Hidden 
   #     configure :weight, :integer 
-  #     configure :size, :integer 
+  #     configure :length, :decimal 
+  #     configure :thickness, :decimal 
   #     configure :created_at, :datetime 
   #     configure :updated_at, :datetime 
 

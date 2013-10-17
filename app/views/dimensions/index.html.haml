@@ -5,12 +5,14 @@
   %thead
     %tr
       %th Weight
-      %th Size
+      %th Length
+      %th Thickness
       %th Actions
   %tbody
     - @dimensions.each do |dimension|
       %tr
         %td= dimension.weight
-        %td= dimension.size
+        %td= dimension.length
+        %td= dimension.thickness
         %td
           = button_to 'Destroy', dimension_path(dimension), :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-danger"

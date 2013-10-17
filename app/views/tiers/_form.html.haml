@@ -1,0 +1,28 @@
+= form_for @tier do |f|
+  - if @tier.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tier.errors.count, "error")} prohibited this tier from being saved:"
+      %ul
+        - @tier.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :length_start
+    = f.text_field :length_start
+  .field
+    = f.label :length_end
+    = f.text_field :length_end
+  .field
+    = f.label :weight_start
+    = f.text_field :weight_start
+  .field
+    = f.label :weight_end
+    = f.text_field :weight_end
+  .field
+    = f.label :thickness_start
+    = f.text_field :thickness_start
+  .field
+    = f.label :thickness_end
+    = f.text_field :thickness_end
+  .actions
+    = f.submit 'Save'

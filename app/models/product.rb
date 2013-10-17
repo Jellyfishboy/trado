@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   has_many :dimensions, :through => :dimensionals
   has_many :taggings
   has_many :tags, :through => :taggings
-  accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:size].blank? }
+  accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:length].blank? }
   mount_uploader :image_url, ProductUploader
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 

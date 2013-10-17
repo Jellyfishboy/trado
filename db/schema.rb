@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011111826) do
+ActiveRecord::Schema.define(:version => 20131017152201) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -59,10 +59,11 @@ ActiveRecord::Schema.define(:version => 20131011111826) do
   end
 
   create_table "dimensions", :force => true do |t|
-    t.integer  "weight"
-    t.integer  "size"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.decimal  "weight",     :precision => 8, :scale => 2
+    t.decimal  "length",     :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.decimal  "thickness",  :precision => 8, :scale => 2
   end
 
   create_table "invoices", :force => true do |t|
@@ -162,6 +163,31 @@ ActiveRecord::Schema.define(:version => 20131011111826) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "shippings", :force => true do |t|
+    t.string   "name"
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "tiereds", :force => true do |t|
+    t.integer  "shipping_id"
+    t.integer  "tier_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "tiers", :force => true do |t|
+    t.decimal  "length_start",    :precision => 8, :scale => 2
+    t.decimal  "length_end",      :precision => 8, :scale => 2
+    t.decimal  "weight_start",    :precision => 8, :scale => 2
+    t.decimal  "weight_end",      :precision => 8, :scale => 2
+    t.decimal  "thickness_start", :precision => 8, :scale => 2
+    t.decimal  "thickness_end",   :precision => 8, :scale => 2
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "users", :force => true do |t|

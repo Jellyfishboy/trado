@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  length_start: 9.99
+  length_end: 9.99
+  weight_start: 9.99
+  weight_end: 9.99
+  thickness_start: 9.99
+  thickness_end: 9.99
+
+two:
+  length_start: 9.99
+  length_end: 9.99
+  weight_start: 9.99
+  weight_end: 9.99
+  thickness_start: 9.99
+  thickness_end: 9.99
