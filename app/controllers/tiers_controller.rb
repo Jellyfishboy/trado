@@ -1,4 +1,5 @@
 class TiersController < ApplicationController
+  layout "admin"
   # GET /tiers
   # GET /tiers.json
   def index
@@ -44,7 +45,7 @@ class TiersController < ApplicationController
 
     respond_to do |format|
       if @tier.save
-        format.html { redirect_to @tier, notice: 'Tier was successfully created.' }
+        format.html { redirect_to tiers_url, notice: 'Tier was successfully created.' }
         format.json { render json: @tier, status: :created, location: @tier }
       else
         format.html { render action: "new" }

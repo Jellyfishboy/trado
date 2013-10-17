@@ -1,28 +1,38 @@
-= form_for @tier do |f|
-  - if @tier.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@tier.errors.count, "error")} prohibited this tier from being saved:"
-      %ul
-        - @tier.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :length_start
-    = f.text_field :length_start
-  .field
-    = f.label :length_end
-    = f.text_field :length_end
-  .field
-    = f.label :weight_start
-    = f.text_field :weight_start
-  .field
-    = f.label :weight_end
-    = f.text_field :weight_end
-  .field
-    = f.label :thickness_start
-    = f.text_field :thickness_start
-  .field
-    = f.label :thickness_end
-    = f.text_field :thickness_end
-  .actions
-    = f.submit 'Save'
+.row-fluid
+  .span-12
+    = form_for @tier, :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+      - if @tier.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@tier.errors.count, "error")} prohibited this tier from being saved:"
+          %ul
+            - @tier.errors.full_messages.each do |msg|
+              %li= msg
+      .control-group
+        = f.label :length_start, :class => 'control-label'
+        .controls
+          = f.text_field :length_start, :class => 'form-control'
+      .control-group
+        = f.label :length_end, :class => 'control-label'
+        .controls
+          = f.text_field :length_end, :class => 'form-control'
+      .control-group
+        = f.label :weight_start, :class => 'control-label'
+        .controls
+          = f.text_field :weight_start, :class => 'form-control'
+      .control-group
+        = f.label :weight_end, :class => 'control-label'
+        .controls
+          = f.text_field :weight_end, :class => 'form-control'
+      .control-group
+        = f.label :thickness_start, :class => 'control-label'
+        .controls
+          = f.text_field :thickness_start, :class => 'form-control'
+      .control-group
+        = f.label :thickness_end, :class => 'control-label'
+        .controls
+          = f.text_field :thickness_end, :class => 'form-control'
+      .form-actions
+        = button_tag(:type => 'submit', :class => 'btn btn-info') do
+          %i.icon-ok
+          Submit

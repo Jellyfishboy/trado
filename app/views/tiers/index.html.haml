@@ -1,29 +1,35 @@
-%h1 Listing tiers
-
-%table
-  %tr
-    %th Length start
-    %th Length end
-    %th Weight start
-    %th Weight end
-    %th Thickness start
-    %th Thickness end
-    %th
-    %th
-    %th
-
-  - @tiers.each do |tier|
-    %tr
-      %td= tier.length_start
-      %td= tier.length_end
-      %td= tier.weight_start
-      %td= tier.weight_end
-      %td= tier.thickness_start
-      %td= tier.thickness_end
-      %td= link_to 'Show', tier
-      %td= link_to 'Edit', edit_tier_path(tier)
-      %td= link_to 'Destroy', tier, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Tier', new_tier_path
+- content_for :title, 'List tiers'
+- content_for :breadcrumb, 'Tiers'
+.page-header
+  %h1 Listing tiers
+  = link_to new_tier_path, :class => "btn btn-success" do
+    %i.icon-plus
+    New tier
+- if @tiers.empty?
+  %p You don't have any tiers yet
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th ID
+        %th Length (mm)
+        %th Weight (kg)
+        %th Thickness (mm)
+        %th
+    %tbody
+      - @tiers.each do |tier|
+        %tr
+          %td= tier.id
+          %td 
+            = tier.length_start
+            = '- '
+            = tier.length_end
+          %td
+            = tier.weight_start
+            = ' - '
+            = tier.weight_end
+          %td
+            = tier.thickness_start
+            = ' - '
+            = tier.thickness_end
+          %td= table_commands tier, edit_tier_path(tier), 1

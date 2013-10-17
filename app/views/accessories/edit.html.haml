@@ -1,9 +1,9 @@
 - content_for :title, 'Edit accessory'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Accessories', accessories_path
-
-%h1 
-    Editing 
-    = @accessory.name
+.page-header
+    %h1 
+        Editing 
+        = @accessory.name
 
 = render 'form'

@@ -1,21 +1,22 @@
-%h1 Listing shippings
-
-%table
-  %tr
-    %th Name
-    %th Price
-    %th
-    %th
-    %th
-
-  - @shippings.each do |shipping|
-    %tr
-      %td= shipping.name
-      %td= shipping.price
-      %td= link_to 'Show', shipping
-      %td= link_to 'Edit', edit_shipping_path(shipping)
-      %td= link_to 'Destroy', shipping, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Shipping', new_shipping_path
+- content_for :title, 'List shipping options'
+- content_for :breadcrumb, 'Shipping options'
+.page-header
+  %h1 Listing shipping options
+  = link_to new_shipping_path, :class => 'btn btn-success' do
+    %i.icon-plus
+    New shipping option
+- if @shippings.empty?
+  %p You don't have any shippings yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Price
+        %th
+    %tbody
+      - @shippings.each do |shipping|
+        %tr
+          %td= shipping.name
+          %td= format_currency shipping.price
+          %td= table_commands shipping, edit_shipping_path(shipping), 1

@@ -1,4 +1,5 @@
 class ShippingsController < ApplicationController
+  layout "admin"
   # GET /shippings
   # GET /shippings.json
   def index
@@ -44,7 +45,7 @@ class ShippingsController < ApplicationController
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to @shipping, notice: 'Shipping was successfully created.' }
+        format.html { redirect_to shippings_path, notice: 'Shipping was successfully created.' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
