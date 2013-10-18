@@ -36,6 +36,7 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    @shipping_options = @order.calculate_shipping_tier(current_cart)
 
     respond_to do |format|
       format.html # new.html.erb

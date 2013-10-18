@@ -14,9 +14,24 @@ class Order < ActiveRecord::Base
   	end
   end
 
+  def calculate_shipping_tier(cart)
+      # cart.line_items.each do |item|
+        
+      # # line_items.dimensions.sum(:weight)
+      # # line_items.dimensions.max(:thickness)
+      # # line_items.dimensions.max(:length)
+      # sum = 0
+      # sum << item.product.dimensions.sum(:weight)
+        
+      # end
+      # binding.pry
+      # # cart.line_items.inject{|sum,x| sum + x.product.dimensions.weight}
+      # # binding.pry
+  end
+
   def uk_vat
-    self.total_vat = self.total + (self.total*0.2)
-    self.vat = self.total_vat - self.total
+    total_vat = total + (total*0.2)
+    vat = total_vat - total
   end
 
   def no_shipping_date

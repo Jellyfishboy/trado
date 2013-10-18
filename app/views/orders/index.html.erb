@@ -30,7 +30,7 @@
           <td><%= payment_status order.payment_status %></td>
           <td><%= format_currency order.total %></td>
           <td><%= format_currency order.total_vat %></td>
-          <td><%= table_commands order, edit_order_path(order), 0 %></td>
+          <td><%= table_commands order, edit_order_path(order), 2 %></td>
         </tr>
       <% end %>
     </tbody>

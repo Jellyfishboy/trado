@@ -4,8 +4,10 @@
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
   <% end %>
-  <%= link_to edit, :class => 'green' do %>
-    <i class="icon-pencil bigger-130"></i>
+  <% unless type == 2 && object.shipping_status == "Dispatched" %>
+    <%= link_to edit, :class => 'green' do %>
+      <i class="icon-pencil bigger-130"></i>
+    <% end %>
   <% end %>
 
   <%= link_to object, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
@@ -29,14 +31,15 @@
           <% end %>
         </li>
       <% end %>
-
-      <li>
-        <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
-          <span class="green">
-            <i class="icon-edit bigger-120"></i>
-          </span>
-        <% end %>
-      </li>
+      <% unless type == 2 && object.shipping_status == "Dispatched" %>
+        <li>
+          <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
+            <span class="green">
+              <i class="icon-edit bigger-120"></i>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
 
       <li>
         <%= link_to object, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>

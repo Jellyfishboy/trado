@@ -10,12 +10,17 @@
       <% if @product.stock > 0 %>
         <p><i class="icon-ok"></i>
         <%= @product.stock %> left in stock</p>
-        <%= link_to 'Add to basket', line_items_path(:product_id => @product.id), :remote => true, :method => :post, :class => "btn btn-success btn-small" %>
+        <%= link_to 'Add to basket', line_items_path(:product_id => @product.id), :remote => true, :method => :post, :class => "btn btn-success btn-small add_to_basket" %>
       <% else %>
         <p><i class="icon-remove"></i>
         0 left in stock</p>
         <div class="btn btn-warning btn-small">Notify me</div>
       <% end %>
+    </p>
+    <% @product.dimensions.each do |dimension| %>
+      <%= radio_button_tag "dimension-#{dimension.id}", dimension.id %>
+      <label>Weight (kg): <%= dimension.weight %>, Thickness (mm): <%= dimension.thickness %>, Length (mm): <%= dimension.length %></label><br/>
+    <% end %>
       
     </p>
   </div>
@@ -32,11 +37,6 @@
         <%= @product.description %>
       </div>
       <div class="tab-pane" id="dimensions">
-        <ul>
-        <% @product.dimensions.each do | dimension| %>
-          <li>Weight: <%= dimension.weight %>, Length: <%= dimension.length %>, Thickness: <%= dimension.thickness %></li>
-        <% end %>
-        </ul>
       </div>
       <div class="tab-pane" id="accessories">
         <ul>
