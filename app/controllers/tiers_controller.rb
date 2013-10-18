@@ -61,7 +61,7 @@ class TiersController < ApplicationController
 
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
-        format.html { redirect_to @tier, notice: 'Tier was successfully updated.' }
+        format.html { redirect_to tiers_url, notice: 'Tier was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

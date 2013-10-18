@@ -45,7 +45,7 @@ class ShippingsController < ApplicationController
 
     respond_to do |format|
       if @shipping.save
-        format.html { redirect_to shippings_path, notice: 'Shipping was successfully created.' }
+        format.html { redirect_to shippings_url, notice: 'Shipping was successfully created.' }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class ShippingsController < ApplicationController
 
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
-        format.html { redirect_to @shipping, notice: 'Shipping was successfully updated.' }
+        format.html { redirect_to shippings_url, notice: 'Shipping was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

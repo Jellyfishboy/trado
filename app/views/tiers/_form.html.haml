@@ -32,6 +32,19 @@
         = f.label :thickness_end, :class => 'control-label'
         .controls
           = f.text_field :thickness_end, :class => 'form-control'
+      %h3.header.smaller.lighter.blue Shipping options
+      .control-group
+        .controls
+          - if Shipping.all.empty? 
+            %p No shipping options to select.
+          - else
+            - Shipping.all.each do |shipping|
+              %label
+                = check_box_tag "tier[shipping_ids][]", shipping.id, @tier.shipping_ids.include?(shipping.id), :class => 'ace-checkbox-2'
+                %span.lbl
+                  = shipping.name
+                  = ' - '
+                  %b= format_currency shipping.price
       .form-actions
         = button_tag(:type => 'submit', :class => 'btn btn-info') do
           %i.icon-ok
