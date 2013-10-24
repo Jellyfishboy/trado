@@ -2,9 +2,14 @@
 
 <table>
   <tr>
+    <th>Quantity</th>
     <th>Product</th>
     <th>Product Price</th>
     <th>Cart</th>
+    <th>Dimension ID</th>
+    <th>Length</th>
+    <th>Thickness</th>
+    <th>Weight</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +17,14 @@
 
 <% @line_items.each do |line_item| %>
   <tr>
+    <td><%= line_item.quantity %></td>
     <td><%= line_item.product_id %></td>
     <td><%= line_item.price %></td>
     <td><%= line_item.cart_id %></td>
+    <td><%= line_item.dimension_id %></td>
+    <td><%= line_item.length %></td>
+    <td><%= line_item.thickness %></td>
+    <td><%= line_item.weight %></td>
     <td><%= link_to 'Show', line_item %></td>
     <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
     <td><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

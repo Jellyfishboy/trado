@@ -26,9 +26,11 @@ class Product < ActiveRecord::Base
     FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.title}", :force => true)
   end
 
-  def warning_level
+  def self.warning_level
     @restock = Product.where('stock < stock_warning_level')
-    Notifier.low_stock(@restock).deliver
+    @restock.each do |restock|
+      Notifier.low_stock(restock).deliver
+    end
   end
 
 end
