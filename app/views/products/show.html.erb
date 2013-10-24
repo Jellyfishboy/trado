@@ -11,7 +11,7 @@
         <p><i class="icon-ok"></i>
         <%= @product.stock %> left in stock</p>
         <% @line_item = LineItem.new %>
-        <%= form_for @line_item, :url => line_items_path(:product_id => @product.id) , :html => { :method => :post} do |f| %>
+        <%= form_for @line_item, :url => line_items_path(:product_id => @product.id) , :html => { :method => :post, :remote => true} do |f| %>
           <div class="control-group">
             Select dimension:
             <div class="controls">
