@@ -15,18 +15,11 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_shipping_tier(cart)
-      # cart.line_items.each do |item|
-        
-      # # line_items.dimensions.sum(:weight)
-      # # line_items.dimensions.max(:thickness)
-      # # line_items.dimensions.max(:length)
-      # sum = 0
-      # sum << item.product.dimensions.sum(:weight)
-        
-      # end
-      # binding.pry
-      # # cart.line_items.inject{|sum,x| sum + x.product.dimensions.weight}
-      # # binding.pry
+      cart.line_items.map(&:length).max
+      cart.line_items.map(&:thickness).max
+      cart.line_items.map(&:weight).sum
+      
+      binding.pry
   end
 
   def uk_vat

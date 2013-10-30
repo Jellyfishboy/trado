@@ -6,6 +6,7 @@ class Cart < ActiveRecord::Base
   	current_item = line_items.where('product_id = ?', product_id).where('dimension_id = ?', dimension_id).first #grabs all the products which match the product id
     if current_item
   		current_item.quantity += 1 #if line item selected exists, increment its quantity by 1
+      current_item.weight += dimension_weight
   	else 
   		current_item = line_items.build(:product_id => product_id, :price => product_price, :dimension_id => dimension_id, :length => dimension_length, :thickness => dimension_thickness, :weight => dimension_weight) #if line item selected does not exist, build a new cart item
   	end
