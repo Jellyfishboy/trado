@@ -15,10 +15,10 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_shipping_tier(cart)
-      cart.line_items.map(&:length).max
-      cart.line_items.map(&:thickness).max
-      cart.line_items.map(&:weight).sum
-      
+      max_length = cart.line_items.map(&:length).max
+      max_thickness = cart.line_items.map(&:thickness).max
+      total_weight = cart.line_items.map(&:weight).sum
+      Tier.where('length_start >= ?', max_length).where('length_end <= ?',max_length).pluck(:id)
       binding.pry
   end
 

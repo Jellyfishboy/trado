@@ -1,5 +1,4 @@
-class Cart < ActiveRecord::Base
-  attr_accessible :last_used
+class Cart < ActiveRecord::Bases
   has_many :line_items, :dependent => :destroy #a cart has many lineitems, however it is dependent on them. it will not be destroyed if a lineitem still exists within it
 
   def add_product(product_id, product_price, dimension_id, dimension_length, dimension_thickness, dimension_weight)
@@ -10,8 +9,6 @@ class Cart < ActiveRecord::Base
   	else 
   		current_item = line_items.build(:product_id => product_id, :price => product_price, :dimension_id => dimension_id, :length => dimension_length, :thickness => dimension_thickness, :weight => dimension_weight) #if line item selected does not exist, build a new cart item
   	end
-    self.last_used = Time.now
-    self.save # update last_used to prevent cart being deleted by the cron job
   	current_item #return new item either by quantity or new cart item
   end
   def decrement_line_item_quantity(line_item_id)
@@ -21,8 +18,6 @@ class Cart < ActiveRecord::Base
     else
       current_item.destroy
     end
-    self.last_used = Time.now
-    self.save
     current_item
   end
 
@@ -38,6 +33,6 @@ class Cart < ActiveRecord::Base
   end
 
   def clear_carts
-    Cart.where("last_used < ?", 12.hours.ago).destroy_all
+    Cart.where("updated_at < ?", 12.hours.ago).destroy_all
   end
 end
