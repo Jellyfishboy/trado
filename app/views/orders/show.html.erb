@@ -120,16 +120,21 @@ breadcrumb_add 'Orders', orders_path %>
                                             <b class="red"><%= @order.delivery_telephone %></b>
                                         </li>    
                                         <li class="divider"></li>
-                                         <li>
+                                        <li>
+                                           <i class="icon-caret-right green"></i>
+                                           Shipping type: 
+                                           <%= @order.shipping_name %>
+                                        </li>
+                                        <li>
+                                           <i class="icon-caret-right green"></i>
+                                           Shipping status: 
+                                           <%= shipping_status @order.shipping_status %>
+                                        </li>
+                                        <li>
                                             <i class="icon-caret-right green"></i>
-                                            Shipping status: 
-                                            <%= shipping_status @order.shipping_status %>
-                                         </li>
-                                         <li>
-                                             <i class="icon-caret-right green"></i>
-                                             Dispatch date: 
-                                             <b class="red"><%= @order.shipping_date %></b>
-                                         </li> 
+                                            Dispatch date: 
+                                            <b class="red"><%= @order.shipping_date %></b>
+                                        </li> 
                                     </ul>
                                 </div>
                             </div><!--/span-->
@@ -200,7 +205,7 @@ breadcrumb_add 'Orders', orders_path %>
                                         
                                     
                                     <tr>
-                                        <td class="center"><%= item.product.sku %></td>
+                                        <td class="center"><%= item.sku %></td>
 
                                         <td>
                                             <%= item.product.title %>
@@ -223,9 +228,17 @@ breadcrumb_add 'Orders', orders_path %>
                         <div class="row-fluid">
                             <div class="span5 pull-right">
                                 <h5 class="pull-right">
-                                    Total amount :
+                                    Sub total :
                                     <span class="red"><%= format_currency @order.sub_total %></span>
                                 </h5>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span5 pull-right">
+                                <h5 class="pull-right">
+                                    Shipping:
+                                    <span class="orange"><%= format_currency @order.shipping_cost %></span>
+                                </h4>
                             </div>
                         </div>
                         <div class="row-fluid">
@@ -240,8 +253,8 @@ breadcrumb_add 'Orders', orders_path %>
                         <div class="row-fluid">
                             <div class="span5 pull-right">
                                 <h4 class="pull-right">
-                                    Final total:
-                                    <span class="green"><%= format_currency @order.total %></span>
+                                    Total:
+                                    <span class="green"><%= format_final_total @order.total, @order.shipping_cost %></span>
                                 </h4>
                             </div>
                         </div>

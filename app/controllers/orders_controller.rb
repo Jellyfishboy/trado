@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   layout 'admin', :except => :new
+  before_filter :authenticate_user!, :except => :new
   # GET /orders
   # GET /orders.json
   def index
@@ -59,6 +60,14 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
     @order.add_line_items_from_cart(current_cart)
+    # FIXME: This looks a bit long and bulky. It will need to be refactored or abstracted to the model.
+    @shipping = Shipping.find(params[:shipping])
+    @order.shipping_cost = @shipping.price
+    @order.shipping_name = @shipping.name
+    @order.sub_total = current_cart.total_price # calculate total price for all the items
+    @order.vat = @order.tax(0.2)
+    @order.total = @order.sub_total + @order.vat
+    binding.pry
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
@@ -100,4 +109,5 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

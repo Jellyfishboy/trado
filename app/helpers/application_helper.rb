@@ -40,6 +40,11 @@ module ApplicationHelper
       number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
     end
 
+    def format_final_total total, shipping
+      final_total = total + shipping
+      format_currency(final_total)
+    end
+
     def shipping_status status
       if status == "Pending"
         "<span class='label label-warning'>#{status}</span>".html_safe

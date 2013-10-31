@@ -45,7 +45,7 @@ class LineItemsController < ApplicationController
     @cart = current_cart #references the current cart which was defined in application controller
     product = Product.find(params[:product_id]) #finds the product by the ID within the URL
     dimension = Dimension.find(params[:line_item][:dimension_id])
-    @line_item = @cart.add_product(product.id, product.price, dimension.id, dimension.length, dimension.thickness, dimension.weight) #uses add_product method in cart.rb to check if the line item already exists in the cart and responds accordingly
+    @line_item = @cart.add_product(product.id, product.price, dimension.id, dimension.length, dimension.thickness, dimension.weight, product.sku) #uses add_product method in cart.rb to check if the line item already exists in the cart and responds accordingly
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url, notice: 'Successfully added the product to the cart.' } #redirects to line item within the cart

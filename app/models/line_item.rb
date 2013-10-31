@@ -1,5 +1,5 @@
 class LineItem < ActiveRecord::Base
-  attr_accessible :cart_id, :product_id, :price, :weight, :thickness, :length, :dimension_id
+  attr_accessible :cart_id, :product_id, :price, :weight, :thickness, :length, :dimension_id, :sku
   validates :dimension_id, :presence => true
   belongs_to :product #the parent of lineitems is product
   belongs_to :cart #the parent of lineitems is cart

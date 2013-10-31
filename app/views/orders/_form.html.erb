@@ -17,6 +17,7 @@
 
   <h3>Shipping</h3>
 
+
   <h3>Tax</h3>
   <%= format_currency @order.vat %>
 
@@ -26,7 +27,7 @@
 
   <% @shipping_options.shippings.each do |shipping| %>
     <label>
-      <%= check_box_tag "shipping_option", shipping.id %>
+      <%= check_box_tag :shipping, shipping.id %>
       <span class="lbl">
       <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
       </span>

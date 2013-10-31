@@ -1,14 +1,5 @@
 GimsonRobotics::Application.routes.draw do
 
-  resources :tiers
-
-
-  resources :shippings
-
-
-  resources :invoices
-
-
   root :to => 'store#index', :as =>'store'
 
   devise_for :users, :controllers => { 
@@ -16,8 +7,9 @@ GimsonRobotics::Application.routes.draw do
     :sessions => "users/sessions"
      }
   resources :carts, :only => [:create, :show, :destroy]
-  resources :products, :only => [:show, :destroy, :update]
-  resources :categories, :only => [:show, :destroy, :update]
+  resources :products, :only => :show
+  resources :categories, :only => :show
+  resources :orders, :only => :new
   resources :users
 
   scope '/admin' do
@@ -25,8 +17,9 @@ GimsonRobotics::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
       resources :products, :except => :show
-      resources :accessories, :orders, :dimensions, :invoices
+      resources :accessories, :dimensions, :invoices, :shippings, :tiers
       resources :categories, :except => :show
+      resources :orders, :except => :new
   end
 
 

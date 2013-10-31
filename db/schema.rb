@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031165102) do
+ActiveRecord::Schema.define(:version => 20131031224832) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20131031165102) do
     t.decimal  "thickness",    :precision => 8, :scale => 2
     t.decimal  "length",       :precision => 8, :scale => 2
     t.integer  "dimension_id"
+    t.string   "sku"
   end
 
   create_table "orders", :force => true do |t|

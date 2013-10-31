@@ -2,21 +2,21 @@
   .span-12
     = form_for @category, :html => { :class => 'form-horizontal', :role => 'form' } do |f|
       %fieldset
-      - if @category.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-          %ul
-            - @category.errors.full_messages.each do |msg|
-              %li= msg  
-      .control-group
-        = f.label :name, :class => 'control-label'
-        .controls
-          = f.text_field :name, :class => 'form-control'
-      .control-group
-        = f.label :description, :class => 'control-label'
-        .controls
-          = f.text_area :description, :class => 'form-control', :rows => 8
-      .form-actions
-        = button_tag(:type => 'submit', :class => 'btn btn-info') do
-          %i.icon-ok
-          Submit
+        - if @category.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+            %ul
+              - @category.errors.full_messages.each do |msg|
+                %li= msg  
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'form-control'
+        .control-group
+          = f.label :description, :class => 'control-label'
+          .controls
+            = f.text_area :description, :class => 'form-control', :rows => 8
+        .form-actions
+          = button_tag(:type => 'submit', :class => 'btn btn-info') do
+            %i.icon-ok
+            Submit
