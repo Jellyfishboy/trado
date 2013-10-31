@@ -36,8 +36,9 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
-    @shipping_options = @order.calculate_shipping_tier(current_cart)
-
+    @calculated_tier = @order.calculate_shipping_tier(current_cart)
+    @shipping_options = Tier.find(@calculated_tier).first
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }

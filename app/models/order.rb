@@ -18,10 +18,12 @@ class Order < ActiveRecord::Base
       max_length = cart.line_items.map(&:length).max
       max_thickness = cart.line_items.map(&:thickness).max
       total_weight = cart.line_items.map(&:weight).sum
-      tier_raffle << Tier.where('length_start >= ?', max_length).where('length_end <= ?',max_length).pluck(:id)
-      tier_raffle << Tier.where('thickness_start >= ?', max_thickness).where('thickness_end <= ?', max_thickness).pluck(:id)
-      tier_raffle << Tier.where('weight_start >= ?', total_weight).where('weight_end <= ?', total_weight).pluck(:id)
-      binding.pry
+      # FIXME: Possibly quite slow. Alot of repetition here so will revise later
+      tier_raffle = []
+      tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
+      tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
+      tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
+      return tier_raffle.max
   end
 
   def uk_vat

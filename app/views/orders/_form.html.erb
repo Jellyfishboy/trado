@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% @shipping_options.shippings.each do |shipping| %>
+    <%= shipping.name %>
+  <% end %>
+
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, :size => 40 %>

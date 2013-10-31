@@ -1,4 +1,4 @@
-class Cart < ActiveRecord::Bases
+class Cart < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy #a cart has many lineitems, however it is dependent on them. it will not be destroyed if a lineitem still exists within it
 
   def add_product(product_id, product_price, dimension_id, dimension_length, dimension_thickness, dimension_weight)
