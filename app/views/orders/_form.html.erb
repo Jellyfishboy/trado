@@ -10,9 +10,27 @@
       </ul>
     </div>
   <% end %>
+  <h1>Order total<h1>
+
+  <h3>Subtotal</h3>
+  <%= format_currency @order.sub_total %>
+
+  <h3>Shipping</h3>
+
+  <h3>Tax</h3>
+  <%= format_currency @order.vat %>
+
+  <h2>Total</h2> 
+  <%= format_currency @order.total %>
+
 
   <% @shipping_options.shippings.each do |shipping| %>
-    <%= shipping.name %>
+    <label>
+      <%= check_box_tag "shipping_option", shipping.id %>
+      <span class="lbl">
+      <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
+      </span>
+    </label>
   <% end %>
 
   <div class="field">

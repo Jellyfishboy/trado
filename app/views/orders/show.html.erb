@@ -224,7 +224,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span5 pull-right">
                                 <h5 class="pull-right">
                                     Total amount :
-                                    <span class="red"><%= format_currency @order.total %></span>
+                                    <span class="red"><%= format_currency @order.sub_total %></span>
                                 </h5>
                             </div>
                         </div>
@@ -241,7 +241,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span5 pull-right">
                                 <h4 class="pull-right">
                                     Final total:
-                                    <span class="green"><%= format_currency @order.total_vat %></span>
+                                    <span class="green"><%= format_currency @order.total %></span>
                                 </h4>
                             </div>
                         </div>

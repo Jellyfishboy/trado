@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
-  attr_accessible :first_name, :last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :email, :tax_number, :total, :total_vat, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat
+  attr_accessible :first_name, :last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :email, :tax_number, :sub_total, :total, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat, :shipping_name
   validates :first_name, :last_name, :email, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :presence => true
   validates_format_of :email, :with => /@/
   validates :terms, :acceptance => {:message => "Please accept the Terms & Conditions."}
@@ -26,9 +26,8 @@ class Order < ActiveRecord::Base
       return tier_raffle.max
   end
 
-  def uk_vat
-    total_vat = total + (total*0.2)
-    vat = total_vat - total
+  def tax(percentage)
+    return sub_total*percentage
   end
 
   def no_shipping_date

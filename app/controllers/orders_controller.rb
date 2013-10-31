@@ -38,7 +38,10 @@ class OrdersController < ApplicationController
     @order = Order.new
     @calculated_tier = @order.calculate_shipping_tier(current_cart)
     @shipping_options = Tier.find(@calculated_tier).first
-    
+    @order.sub_total = current_cart.total_price # calculate total price for all the items
+    @order.vat = @order.tax(0.2)
+    @order.total = @order.sub_total + @order.vat
+    # binding.pry
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }
@@ -56,8 +59,6 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
     @order.add_line_items_from_cart(current_cart)
-    @order.total = current_cart.total_price # calculate total price for all the items
-    @order.uk_vat # utitlise the uk_vat method to calulcate and populate the total_vat field (total + vat) and calculate the vat amount to populate the vat field
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
