@@ -30,7 +30,7 @@
         <div class="col-4 vertical_product">
           <%= link_to image_tag(product.image_url.large), line_items_path(:product_id => product.id), :method => :post, :remote => true %><!-- #same button as below, however since this uses a link_to helper, we need to specify the HTTP request to POST -->
           <h3><%= product.name %></h3>
-          <div class="price"><%= number_to_currency(product.price, :precision => 2) %></div>
+          <div class="price"><%= format_currency product.dimensions.first.price %></div>
           <%= link_to 'Add to Cart', line_items_path(:product_id => product.id), :remote => true, :class => "btn btn-success btn-small", :method => "post" %> <!-- #creates a button which uses the line_items controller and posts a new line item with the product id supplied. Button_to helper automatically use the POST http request -->
           <%= link_to 'Find out more', product, :class => "btn btn-info btn-small" %>
         </div>

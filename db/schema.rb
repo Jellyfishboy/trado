@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101092946) do
+ActiveRecord::Schema.define(:version => 20131101111634) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20131101092946) do
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
     t.decimal  "thickness",  :precision => 8, :scale => 2
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.decimal  "cost_value", :precision => 8, :scale => 2
   end
 
   create_table "invoices", :force => true do |t|
@@ -136,14 +138,12 @@ ActiveRecord::Schema.define(:version => 20131101092946) do
     t.string   "name"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",               :precision => 8, :scale => 2
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "weighting"
     t.integer  "stock"
     t.integer  "part_number"
     t.string   "sku"
-    t.decimal  "cost_value",          :precision => 8, :scale => 2
     t.integer  "stock_warning_level"
   end
 

@@ -15,17 +15,14 @@ class ProductTest < ActiveSupport::TestCase
   	product = Product.new(:name => products(:ruby).name,
   						  :description => products(:ruby).description,
   						  :image_url => products(:ruby).image_url) #creates a new product with the fixture data
-  	product.price = -1
   	assert product.invalid?
   	assert_equal "price must be greater than or equal to 0.01",
   		product.errors[:price].join('; ') #tests the price attribute with -1 and outputs error
 
-  	product.price = 0
   	assert product.invalid?
   	assert_equal "price must be greater than or equal to 0.01",
   		product.errors[:price].join('; ') #tests the price attrubute with 0 and outputs error
 
-  	product.price = 1
   	assert product.valid? #indicates price attribute is valid with 1
   end
 

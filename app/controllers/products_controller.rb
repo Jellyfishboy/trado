@@ -89,4 +89,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update_price 
+    @price = Dimension.where('id = ?', params[:dimension_id]).first
+    render :partial => "products/update_price", :object => @price
+  end
+
 end

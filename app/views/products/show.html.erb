@@ -4,7 +4,7 @@
   </div>
   <div class="col-lg-6">
     <h1><%= @product.name %></h1>
-    <h3>£<%= @product.price %></h3>
+    <h3 class="price"><%= format_currency @product.dimensions.first.price %></h3>
     <p>SKU: <%= @product.sku %></p>
     <p>
       <% if @product.stock > 0 %>
@@ -15,7 +15,7 @@
           <div class="control-group">
             Select dimension:
             <div class="controls">
-            <%= f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["Length: #{dimension.length}mm, Thickness: #{dimension.thickness}mm, Weight: #{dimension.weight}kg", dimension.id ] }) %>
+            <%= f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["Length: #{dimension.length}mm, Thickness: #{dimension.thickness}mm, Weight: #{dimension.weight}kg", dimension.id ] }), :prompt => 'Select a dimension' %>
             </div>
           </div>
           <%= f.submit "Add to basket", :class => 'btn btn-success' %> 

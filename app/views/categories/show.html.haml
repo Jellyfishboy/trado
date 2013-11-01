@@ -15,6 +15,5 @@
                     %h3
                         = product.name
                     .price
-                        = number_to_currency(product.price, :precision => 2)
                     = link_to 'Add to cart', line_items_path(:product_id => product), :remote => true, :method => 'post', :class => 'btn btn-success btn-small'
                     = link_to 'Find out more', product, :class => 'btn btn-info btn-small'

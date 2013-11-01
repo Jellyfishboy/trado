@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :cost_value, :stock_warning_level
+  attr_accessible :name, :description, :image_url, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level
   validates :name, :description, :image_url, :presence => true
-  validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :name, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
   validates :image_url, :format => {
   	:with => %r{\.(gif|png|jpg)$}i,

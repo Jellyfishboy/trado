@@ -14,7 +14,7 @@ RailsAdmin.config do |config|
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
 
-  config.excluded_models = ["Accessorisation", "LineItem", "Categorisation", "Dimensional", "Tagging"]
+  # config.excluded_models = ["Accessorisation", "Categorisation", "Dimensional", "Tagging"]
 
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
@@ -245,6 +245,8 @@ RailsAdmin.config do |config|
 
   #     configure :id, :integer 
   #     configure :product_id, :integer         # Hidden 
+  #     configure :cost_value, :decimal
+  #     configure :price, :decimal
   #     configure :weight, :integer 
   #     configure :length, :decimal 
   #     configure :thickness, :decimal 

@@ -2,13 +2,15 @@ GimsonRobotics::Application.routes.draw do
 
   root :to => 'store#index', :as =>'store'
 
+  match '/update_price' => 'products#update_price'
+
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
   resources :carts, :only => [:create, :show, :destroy]
-  resources :products, :only => :show
-  resources :categories, :only => :show
+  resources :products, :only => [:show, :destroy, :update]
+  resources :categories, :only => [:show, :destroy, :update]
   resources :orders, :only => :new
   resources :users
 
