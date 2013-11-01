@@ -425,7 +425,7 @@ RailsAdmin.config do |config|
   #   # Found columns:
 
   #     configure :id, :integer 
-  #     configure :title, :string 
+  #     configure :name, :string 
   #     configure :description, :text 
   #     configure :image_url, :carrierwave 
   #     configure :price, :integer 

@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :cost_value, :stock_warning_level
-  validates :title, :description, :image_url, :presence => true
+  attr_accessible :name, :description, :image_url, :price, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :cost_value, :stock_warning_level
+  validates :name, :description, :image_url, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
-  validates :title, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
+  validates :name, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
   validates :image_url, :format => {
   	:with => %r{\.(gif|png|jpg)$}i,
   	:message => "must be a URL for GIF, JPG or PNG image."
@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
   def remove_image_folders
-    FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.title}", :force => true)
+    FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.name}", :force => true)
   end
 
   def self.warning_level
