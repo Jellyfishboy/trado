@@ -9,7 +9,11 @@
       <i class="icon-pencil bigger-130"></i>
     <% end %>
   <% end %>
-
+  <% if type == 2 && object.shipping_status == "Pending" %>
+    <a href="#" class="grey">
+      <i class="icon-truck bigger-130"></i>
+    </a>
+  <% end %>
   <%= link_to object, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
     <i class="icon-trash bigger-130"></i>
   <% end %>
@@ -36,6 +40,15 @@
           <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
             <span class="green">
               <i class="icon-edit bigger-120"></i>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+      <% if type == 2 && object.shipping_status == "Pending" %>
+        <li>
+          <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Mark as dispatched' do %>
+            <span class="grey">
+              <i class="icon-truck bigger-120"></i>
             </span>
           <% end %>
         </li>
