@@ -21,6 +21,13 @@ set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 
+desc "Setup database"
+task :setup_database, :roles => :app do
+	run "cd /var/www/gimsonrobotics/current && RAILS_ENV=production rake db:create db:schema:load"
+end
+
 # additional settings
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
+
+after :deploy, 'setup_database'
