@@ -11,12 +11,18 @@ gem 'mysql2'
 # HTML Framework
 gem 'haml'
 
+# Production gems
+group :production do
+
+end
+
 # Development gems
 group :development do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'meta_request'
     gem 'haml-rails'
+    gem 'capistrano'
 end
 
 # Gems used only for assets and not required
