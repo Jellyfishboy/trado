@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate_user!, :except => :new
-  load_and_authorize_resource
+  load_and_authorize_resource, :except => :new
 
     def show
         @user = User.find(params[:id])
