@@ -22,6 +22,13 @@ set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 set :normalize_asset_timestamps, false
 
+desc "setup environment variables"
+task :setup_env_variables, :roles => :app do
+	run "cp /env/gr_env.conf /var/www/gimsonrobotics/current/config"
+end
+
 # additional settings
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
+
+after :deploy, 'setup_env_variables'
