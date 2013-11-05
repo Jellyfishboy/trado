@@ -13,7 +13,8 @@ gem 'haml'
 
 # Production gems
 group :production do
-
+  gem 'unicorn'
+  gem 'therubyracer'
 end
 
 # Development gems
