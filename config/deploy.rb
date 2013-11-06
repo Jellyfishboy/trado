@@ -23,7 +23,6 @@ after "deploy:restart", "deploy:cleanup"
 set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
-set :normalize_asset_timestamps, false
 
 # additional settings
 default_run_options[:pty] = true
