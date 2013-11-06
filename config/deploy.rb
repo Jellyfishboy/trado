@@ -22,9 +22,17 @@ set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 set :normalize_asset_timestamps, false
 
-desc "setup environment variables"
-task :setup_env_variables, :roles => :app do
-	run "cp /env/gr_env.conf /var/www/gimsonrobotics/current/config"
+namespace :deploy do
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if releases.length <= 1 || capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+	end
+  end
 end
 
 # additional settings
