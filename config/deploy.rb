@@ -39,4 +39,4 @@ end
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, 'setup_env_variables'
+after :deploy, 'deploy:assets:precompile'
