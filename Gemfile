@@ -5,16 +5,12 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# Database
-gem 'mysql2'
-
-# HTML Framework
-gem 'haml'
-
 # Production gems
 group :production do
-  gem 'unicorn'
-  gem 'therubyracer'
+  platforms :ruby do
+    gem 'unicorn'
+  end
+  gem 'mysql2'
 end
 
 # Development gems
@@ -23,9 +19,28 @@ group :development do
     gem 'binding_of_caller'
     gem 'meta_request'
     gem 'haml-rails'
+    gem 'quiet_assets'
+    gem 'rack-mini-profiler'
     gem 'capistrano'
+    gem 'bullet'
+    gem 'haml'
+    gem 'rails_best_practices'
+    gem 'capistrano-unicorn'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  # gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'sqlite3'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -46,8 +61,14 @@ gem 'cancan'
 gem 'mini_magick', '~> 3.5.0'
 gem 'carrierwave'
 
-# Debugging
-gem 'pry'
+# Monitoring
+gem 'newrelic_rpm'
+
+# Rails 4 features
+gem 'turbolinks'
+
+# Font set
+gem 'font-awesome-rails'
 
 # Administration
 gem 'rails_admin'
@@ -61,15 +82,3 @@ gem 'whenever', :require => false
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
