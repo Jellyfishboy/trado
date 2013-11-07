@@ -12,9 +12,6 @@ server domain, :app, :web, :db, :primary => true
 # Bundler for remote gem installs
 require "bundler/capistrano"
 
-# Build assets
-load 'deploy/assets'
-
 # Only keep the latest 3 releases
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
