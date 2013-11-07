@@ -25,7 +25,9 @@ group :development do
     gem 'bullet'
     gem 'haml'
     gem 'rails_best_practices'
-    gem 'capistrano-unicorn'
+    platforms :ruby do
+      gem 'capistrano-unicorn'
+    end
 end
 
 group :test do
