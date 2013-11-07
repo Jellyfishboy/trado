@@ -23,6 +23,10 @@ set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 
+desc "deploy_assets"
+task :assets, :roles => :app do
+	run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
+
 desc "setup database"
 task :setup_database, :roles => :app do
 	run "yes | cp /var/www/db_config/database.yml /var/www/gimsonrobotics/current/config"
@@ -32,4 +36,5 @@ end
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, 'setup_database'
+after :deploy, 'assets'
+after 'assets', 'setup_database'
