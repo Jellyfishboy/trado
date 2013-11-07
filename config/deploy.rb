@@ -1,3 +1,5 @@
+require 'capistrano-unicorn'
+
 set :application, 'gimson_robotics'
 set :user, 'root'
 set :scm, 'git'
@@ -40,3 +42,4 @@ default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'custom:assets'
 after 'custom:assets', 'custom:setup_database'
+after 'deploy:restart', 'unicorn:restart' 

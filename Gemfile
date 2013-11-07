@@ -23,7 +23,7 @@ group :development do
     gem 'haml'
     gem 'rails_best_practices'
     platforms :ruby do
-      gem 'capistrano-unicorn'
+      gem 'capistrano-unicorn', :require => false
     end
 end
 
