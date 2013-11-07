@@ -16,6 +16,8 @@ require "bundler/capistrano"
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 
+set :normalize_asset_timestamps, false
+
 # deploy config
 set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
