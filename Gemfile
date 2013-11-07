@@ -7,9 +7,6 @@ gem 'rails', '3.2.12'
 
 # Production gems
 group :production do
-  platforms :ruby do
-    gem 'unicorn'
-  end
   gem 'mysql2'
 end
 
@@ -53,6 +50,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+platforms :ruby do
+  gem 'unicorn'
 end
 
 # Authenication
