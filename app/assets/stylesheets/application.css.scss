@@ -11,6 +11,10 @@
  *= require_self
  *= require_tree .
  */
+ //= require bootstrap-responsive.min
+ //= require bootstrap-theme.min
+ //= require bootstrap.min
+ //= require font-awesome.min
 body {
 	margin:0;
 	padding:0;
