@@ -36,8 +36,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'pry'
+  # gem 'rspec-rails'
+  # gem 'pry'
   gem 'sqlite3'
 end
 # Gems used only for assets and not required
@@ -66,9 +66,6 @@ gem 'carrierwave'
 
 # Monitoring
 gem 'newrelic_rpm'
-
-# Rails 4 features
-gem 'turbolinks'
 
 # Font set
 gem 'font-awesome-rails'

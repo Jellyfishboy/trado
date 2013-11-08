@@ -107,3 +107,24 @@
 [11/07/13 20:23:42 +0000 tomdallmoresmbp.lan (25890)] INFO : Installing Rails3 Error instrumentation
 [11/07/13 20:23:42 +0000 tomdallmoresmbp.lan (25890)] INFO : Finished instrumentation
 [11/07/13 20:23:42 +0000 tomdallmoresmbp.lan (25890)] INFO : Doing deferred dependency-detection before Rack startup
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Starting the New Relic agent in "development" environment.
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Reading configuration from 
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] ERROR : Unable to read configuration file : Is a directory - C:/Repositories/Github/gimson_robotics
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Enabling the Request Sampler.
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Enabling the Request Sampler.
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Environment: development
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Dispatcher: webrick
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Application: development
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'development'
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing ActiveRecord instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Net instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Sinatra instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing deferred Rack instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Sidekiq instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Rails 3 Controller instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Installing Rails3 Error instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] INFO : Finished instrumentation
+[11/08/13 10:42:11 +0000 UKMCSL32947 (8856)] WARN : Failed to determine processor count, assuming 1
+[11/08/13 10:42:13 +0000 UKMCSL32947 (8856)] INFO : Doing deferred dependency-detection before Rack startup
