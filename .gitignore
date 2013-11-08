@@ -1,3 +1,4 @@
 log/development.log
 log/test.log
 tmp
+.DS_Store
