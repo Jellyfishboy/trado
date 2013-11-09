@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tag_id: 1
+  product_id: 1
+
+two:
+  tag_id: 1
+  product_id: 1
