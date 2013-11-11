@@ -8,10 +8,13 @@
 #= require admin/jquery.slimscroll.min
 #= require admin/jquery.ui.touch-punch.min
 
+# Attach a function or variable to the global namespace
+root = exports ? this
+
 remove_fields = (link) ->
   $(link).prev("input[type=hidden]").val "1"
   $(link).closest(".ajax_fields").remove()
-add_fields = (link, association, content) ->
+root.add_fields = (link, association, content) ->
   new_id = new Date().getTime()
   regexp = new RegExp("new_" + association, "g")
   $("#dimension_fields").append content.replace(regexp, new_id)

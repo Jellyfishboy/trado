@@ -33,11 +33,12 @@ class Product < ActiveRecord::Base
     end
   end
 
+  #TODO: Throw an error on the form when dimension exceeds the tier maximum values
   def check_tiers
-    product.dimensions.each do |dimension|
+    self.dimensions.each do |dimension|
       if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || Tier.maximum("thickness_end")
         errors.add(:dimension_ids, "do not have any suitable postage tiers available.")
-        put "ERROR"
+        puts "ERROR"
       end
     end
   end
