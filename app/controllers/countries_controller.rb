@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController
+  layout 'admin'
   # GET /countries
   # GET /countries.json
   def index
@@ -44,7 +45,7 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
+        format.html { redirect_to countries_url, notice: 'Country was successfully created.' }
         format.json { render json: @country, status: :created, location: @country }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.update_attributes(params[:country])
-        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
+        format.html { redirect_to countries_url, notice: 'Country was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

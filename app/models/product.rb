@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :image_url, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level
+  attr_accessible :name, :description, :image_url, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level, :tag_ids
   validates :name, :description, :image_url, :presence => true
   validates :name, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
   validates :image_url, :format => {
@@ -20,6 +20,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:length].blank? }
   mount_uploader :image_url, ProductUploader
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
+  before_create :check_tiers
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.name}", :force => true)
@@ -29,6 +30,15 @@ class Product < ActiveRecord::Base
     @restock = Product.where('stock < stock_warning_level')
     @restock.each do |restock|
       Notifier.low_stock(restock).deliver
+    end
+  end
+
+  def check_tiers
+    product.dimensions.each do |dimension|
+      if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || Tier.maximum("thickness_end")
+        errors.add(:dimension_ids, "do not have any suitable postage tiers available.")
+        put "ERROR"
+      end
     end
   end
 

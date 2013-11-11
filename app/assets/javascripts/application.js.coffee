@@ -1,5 +1,7 @@
 #= require jquery
 #= require jquery_ujs
+#= require bootstrap.min
+#= require modernizr-2.6.2.min
 
 $(document).ready ->
     $('#line_item_dimension_id').change ->

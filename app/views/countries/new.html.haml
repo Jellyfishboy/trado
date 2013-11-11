@@ -1,5 +1,7 @@
-%h1 New country
+- content_for :title, 'New country'
+- content_for :breadcrumb, 'New'
+- breadcrumb_add 'Countries', countries_path
+.page-header
+	%h1 New country
 
 = render 'form'
-
-= link_to 'Back', countries_path

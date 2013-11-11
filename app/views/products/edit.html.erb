@@ -148,6 +148,21 @@
       <% end %>
       <div id="dimension_fields">
       </div>
+      <h3 class="header smaller lighter blue">Tags</h3>
+        <div class="control-group">
+          <div class="controls">
+            <% if Tag.all.empty? %>
+              <p>No tags to select.</p>
+            <% else %>
+              <% Tag.all.each do |tag| %>
+                <label>
+                  <%= check_box_tag "product[tag_ids][]", tag.id, @product.tag_ids.include?(tag.id), :class => 'ace-checkbox-2' %>
+                  <span class="lbl"><%= tag.name %></span>
+                </label>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       <div class="form-actions">
         <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
           <i class="icon-ok"></i>Submit

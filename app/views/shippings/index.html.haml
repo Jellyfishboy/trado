@@ -13,6 +13,7 @@
       %tr
         %th Name
         %th Price
+        %th Countries
         %th Tier(s)
         %th
     %tbody
@@ -20,5 +21,10 @@
         %tr
           %td= shipping.name
           %td= format_currency shipping.price
+          %td
+            %ul 
+              - shipping.countries.each do |country|
+                %li
+                  = country.name
           %td= shipping.tiers.map{ |tier| tier.id }.join(', ')
           %td= table_commands shipping, edit_shipping_path(shipping), 1

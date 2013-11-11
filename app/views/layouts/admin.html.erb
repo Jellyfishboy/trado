@@ -160,7 +160,7 @@
               <span class="menu-text"> Invoices </span>
             <% end %>
           </li>
-          <li class="<%= active_page?('tiers') %> <%= active_page?('shippings') %>">
+          <li class="<%= active_page?('tiers') %> <%= active_page?('shippings') %> <%= active_page?('countries') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-truck"></i>
               <span class="menu-text"> Shipping </span>
@@ -177,6 +177,12 @@
                 <%= link_to shippings_path do %>
                   <i class="icon-double-angle-right"></i>
                   Shipping Options
+                <% end %>
+              </li>
+              <li class="<%= active_page?('countries') %>">
+                <%= link_to countries_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  Countries
                 <% end %>
               </li>
             </ul>
@@ -223,8 +229,5 @@
     <script type="text/javascript">
       if("ontouchend" in document) document.write("<script src='/javascript/admin/jquery.mobile.custom.min.js' >"+"<"+"/script>");
     </script>
-    <!--[if lte IE 8]>
-      <script src="assets/js/excanvas.min.js"></script>
-    <![endif]-->
   </body>
 </html>
