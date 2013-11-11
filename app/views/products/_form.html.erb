@@ -103,7 +103,7 @@
               <% Tag.all.each do |tag| %>
                 <label>
                   <%= check_box_tag "product[tag_ids][]", tag.id, @product.tag_ids.include?(tag.id), :class => 'ace-checkbox-2' %>
-                  <span class="lbl"><%= option.name %></span>
+                  <span class="lbl"><%= tag.name %></span>
                 </label>
               <% end %>
             <% end %>
