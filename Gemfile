@@ -37,7 +37,7 @@ end
 
 group :development, :test do
   # gem 'rspec-rails'
-  gem 'pry'
+  # gem 'pry'
   gem 'sqlite3'
 end
 # Gems used only for assets and not required
