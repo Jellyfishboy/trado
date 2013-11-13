@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   	:with => %r{\.(gif|png|jpg)$}i,
   	:message => "must be a URL for GIF, JPG or PNG image."
   } # all of the above validates the attributes of products
+  validates :dimensions, :tier => true, :on => :create
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
   has_many :orders, :through => :line_items
@@ -20,7 +21,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:length].blank? }
   mount_uploader :image_url, ProductUploader
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
-  before_create :check_tiers
+  # before_create :check_tiers
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/product/#{self.id}_#{self.name}", :force => true)
@@ -34,13 +35,13 @@ class Product < ActiveRecord::Base
   end
 
   #TODO: Throw an error on the form when dimension exceeds the tier maximum values
-  def check_tiers
-    self.dimensions.each do |dimension|
-      if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || Tier.maximum("thickness_end")
-        errors.add(:dimension_ids, "do not have any suitable postage tiers available.")
-        puts "ERROR"
-      end
-    end
-  end
+  # def check_tiers
+  #   self.dimensions.each do |dimension|
+  #     if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || Tier.maximum("thickness_end")
+  #       binding.pry
+  #       self.errors[:base] << "There are no available tiers for the product's dimensions."
+  #     end
+  #   end
+  # end
 
 end
