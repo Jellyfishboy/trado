@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.warning_level
-    @restock = Product.where('stock < stock_warning_level')
+    @restock = Product.where('stock < stock_warning_level').all
     @restock.each do |restock|
       Notifier.low_stock(restock).deliver
     end
