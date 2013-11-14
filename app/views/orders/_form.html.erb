@@ -24,7 +24,7 @@
   <h2>Total</h2> 
   <%= format_currency @order.total %>
   
-  <%= select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :prompt => 'Select a country' %>
+  <%= select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }) %>
 
   <div id="shipping_options">
     <% @shipping_options.each do |shipping| %>
