@@ -11,3 +11,11 @@ $(document).ready ->
             dataType: 'html'
             success: (data) ->
                 $('.price').html data
+    $('#country_selector').change ->
+    	$.ajax '/update_country',
+    		type: 'GET'
+    		data: {'country_id' : $('#country_selector').val() }
+    		dataType: 'html'
+    		success: (data) ->
+    			$('#shipping_options').html data
+

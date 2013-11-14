@@ -34,14 +34,4 @@ class Product < ActiveRecord::Base
     end
   end
 
-  #TODO: Throw an error on the form when dimension exceeds the tier maximum values
-  # def check_tiers
-  #   self.dimensions.each do |dimension|
-  #     if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || Tier.maximum("thickness_end")
-  #       binding.pry
-  #       self.errors[:base] << "There are no available tiers for the product's dimensions."
-  #     end
-  #   end
-  # end
-
 end

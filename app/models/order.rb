@@ -14,6 +14,17 @@ class Order < ActiveRecord::Base
   	end
   end
 
+  def display_shippings(calculated_tier)
+    @tier = Tier.find(calculated_tier)
+    return @tier.shippings.joins(:countries).where('country_id = ?', 1)
+  end
+
+  def calculate_order(cart)
+    self.sub_total = cart.total_price
+    self.vat = sub_total*0.2 
+    self.total = sub_total + vat
+  end
+
   def calculate_shipping_tier(cart)
       max_length = cart.line_items.map(&:length).max
       max_thickness = cart.line_items.map(&:thickness).max
@@ -23,11 +34,13 @@ class Order < ActiveRecord::Base
       tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
       tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
       tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
-      return tier_raffle.max
+      self.tier = tier_raffle.max.first
   end
 
-  def tax(percentage)
-    return sub_total*percentage
+  def calculate_shipping(id)
+    @shipping = Shipping.find(id)
+    self.shipping_cost = @shipping.price
+    self.shipping_name = @shipping.name
   end
 
   def no_shipping_date

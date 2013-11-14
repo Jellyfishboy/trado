@@ -1,0 +1,8 @@
+<% @shipping_options.each do |shipping| %>
+  <label>
+    <%= check_box_tag :shipping, shipping.id %>
+    <span class="lbl">
+    <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
+    </span>
+  </label>
+<% end %>

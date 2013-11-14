@@ -3,6 +3,7 @@ GimsonRobotics::Application.routes.draw do
   root :to => 'store#index', :as =>'store'
 
   match '/update_price' => 'products#update_price'
+  match '/update_country' => 'orders#update_country'
 
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",

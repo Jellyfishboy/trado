@@ -37,12 +37,9 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
-    @calculated_tier = @order.calculate_shipping_tier(current_cart)
-    @shipping_options = Tier.find(@calculated_tier).first
-    @order.sub_total = current_cart.total_price # calculate total price for all the items
-    @order.vat = @order.tax(0.2)
-    @order.total = @order.sub_total + @order.vat
-    # binding.pry
+    @order.calculate_shipping_tier(current_cart)
+    @shipping_options = @order.display_shippings(@order.tier)
+    @order.calculate_order(current_cart)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }
@@ -60,14 +57,8 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
     @order.add_line_items_from_cart(current_cart)
-    # FIXME: This looks a bit long and bulky. It will need to be refactored or abstracted to the model.
-    @shipping = Shipping.find(params[:shipping])
-    @order.shipping_cost = @shipping.price
-    @order.shipping_name = @shipping.name
-    @order.sub_total = current_cart.total_price # calculate total price for all the items
-    @order.vat = @order.tax(0.2)
-    @order.total = @order.sub_total + @order.vat
-    binding.pry
+    @order.calculate_shipping(params[:shipping])
+    @order.calculate_order(current_cart)
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
@@ -110,4 +101,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update_country
+    @order = Order.find(params[:id])
+    @order.calculate_shipping_tier(current_cart)
+    @tier = Tier.find(@order.tier)
+    @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).first
+    binding.pry
+    render :partial => "orders/update_country", :object => @new_shippings
+  end
 end
