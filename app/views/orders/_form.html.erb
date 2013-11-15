@@ -16,7 +16,7 @@
   <%= format_currency @order.sub_total %>
 
   <h3>Shipping</h3>
-
+  <div id="shipping_value"></div>
 
   <h3>Tax</h3>
   <%= format_currency @order.vat %>
@@ -29,7 +29,7 @@
   <div id="shipping_options" data-tier="<%= @calculated_tier %>">
     <% @shipping_options.each do |shipping| %>
       <label>
-        <%= check_box_tag :shipping, shipping.id %>
+        <%= radio_button_tag :shipping, shipping.id %>
         <span class="lbl">
         <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
         </span>

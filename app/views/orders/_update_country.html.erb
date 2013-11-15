@@ -1,6 +1,6 @@
 <% @new_shippings.each do |shipping| %>
   <label>
-    <%= check_box_tag :shipping, shipping.id %>
+    <%= radio_button_tag :shipping, shipping.id %>
     <span class="lbl">
     <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
     </span>

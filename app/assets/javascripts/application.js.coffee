@@ -4,6 +4,7 @@
 #= require modernizr-2.6.2.min
 
 $(document).ready ->
+    update_shipping_cost()
     $('#line_item_dimension_id').change ->
         $.ajax '/update_price',
             type: 'GET'
@@ -18,4 +19,16 @@ $(document).ready ->
     		dataType: 'html'
     		success: (data) ->
     			$('#shipping_options').html data
+
+$(document).ajaxComplete ->
+    update_shipping_cost()
+
+update_shipping_cost = ->
+    $('#shipping_options input[type="radio"]').change ->
+        $.ajax '/update_shipping',
+            type: 'GET'
+            data: {'shipping_id' : $(@).val() }
+            dataType: 'html'
+            success: (data) ->
+                $('#shipping_value').html data
 
