@@ -16,6 +16,7 @@ class Order < ActiveRecord::Base
 
   def display_shippings(calculated_tier)
     @tier = Tier.find(calculated_tier)
+    # Default is to display UK shipping options in the specified tier
     return @tier.shippings.joins(:countries).where('country_id = ?', 1)
   end
 
@@ -34,7 +35,7 @@ class Order < ActiveRecord::Base
       tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
       tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
       tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
-      self.tier = tier_raffle.max.first
+      return tier_raffle.max.first
   end
 
   def calculate_shipping(id)

@@ -14,7 +14,7 @@ $(document).ready ->
     $('#country_selector').change ->
     	$.ajax '/update_country',
     		type: 'GET'
-    		data: {'country_id' : $('#country_selector').val() }
+    		data: {'country_id' : $('#country_selector').val(), 'tier_id' : $('#shipping_options').attr 'data-tier' }
     		dataType: 'html'
     		success: (data) ->
     			$('#shipping_options').html data

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131114233750) do
+ActiveRecord::Schema.define(:version => 20131111123127) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -145,7 +145,6 @@ ActiveRecord::Schema.define(:version => 20131114233750) do
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
     t.decimal  "vat",                  :precision => 8, :scale => 2
     t.string   "shipping_name"
-    t.integer  "tier"
   end
 
   create_table "products", :force => true do |t|

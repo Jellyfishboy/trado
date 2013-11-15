@@ -26,7 +26,7 @@
   
   <%= select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }) %>
 
-  <div id="shipping_options">
+  <div id="shipping_options" data-tier="<%= @calculated_tier %>">
     <% @shipping_options.each do |shipping| %>
       <label>
         <%= check_box_tag :shipping, shipping.id %>

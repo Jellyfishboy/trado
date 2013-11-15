@@ -37,8 +37,8 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
-    @order.calculate_shipping_tier(current_cart)
-    @shipping_options = @order.display_shippings(@order.tier)
+    @calculated_tier = @order.calculate_shipping_tier(current_cart)
+    @shipping_options = @order.display_shippings(@calculated_tier)
     @order.calculate_order(current_cart)
     respond_to do |format|
       format.html # new.html.erb
@@ -102,11 +102,8 @@ class OrdersController < ApplicationController
   end
 
   def update_country
-    @order = Order.find(params[:id])
-    @order.calculate_shipping_tier(current_cart)
-    @tier = Tier.find(@order.tier)
-    @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).first
-    binding.pry
+    @tier = Tier.find(params[:tier_id])
+    @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).all
     render :partial => "orders/update_country", :object => @new_shippings
   end
 end
