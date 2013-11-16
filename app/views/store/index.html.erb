@@ -1,29 +1,5 @@
 <% content_for :page_title, 'Store index' %>
 <div class="col-12">
-  <div id="carousel-example-generic" class="carousel slide">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="item active">
-        <%= image_tag '/images/Carousel/1.png', :alt => "first slide" %>
-      </div>
-      <div class="item">
-        <%= image_tag '/images/Carousel/2.png', :alt => "second slide" %>
-      </div>
-      <div class="item">
-        <%= image_tag '/images/Carousel/3.png', :alt => "third slide" %>
-      </div>
-    </div>
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-      <span class="icon-prev"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-      <span class="icon-next"></span>
-    </a>
-  </div>
   <% @products.each_slice(3) do |slice| %>
     <div class="row store_products">
       <% slice.each do |product| %>

@@ -11,75 +11,168 @@
     %title 
       = yield :title
     %meta{:content => "", :name => "description"}/
-    %meta{:content => "width=device-width", :name => "viewport"}/
-    :css
-      body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-      }
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag :application, :media => "all"
+    %link{href: "http://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Shadows+Into+Light", rel: "stylesheet", type: "text/css"}/
   %body
     /[if lt IE 7]
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-    / This code is taken from http://twitter.github.com/bootstrap/examples/hero.html
-    %header.navbar.navbar-inverse.navbar-fixed-top{:role => "header"}
-      .container
-        .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "/"} Gimson Robotics
-        
-        .navbar-collapse.collapse
-          %ul.nav.navbar-nav
-            - @categories.each do |category|
-              %li
-                = link_to category.name, category
-          %form.navbar-form.pull-left
-            %input.form-control.col-lg-8{:type => "text", :placeholder => "Search"}
-          %ul.nav.navbar-nav.pull-right
-            %li.dropdown
-              %a{:href => "#", :class => "dropdown-toggle", "data-toggle" => "dropdown"} 
-                %i.icon-shopping-cart
-                Basket (
-                - if @cart
-                  = @cart.line_items.sum('quantity')
-                )
-              - if @cart
-                .dropdown-menu#cart
-                  - if @cart.line_items.empty?
-                    %p Your cart is empty
+    / Header
+    .header
+      / Top bar
+      .top
+        .container
+          .row
+            .span6
+            .span6.hidden-phone
+              %ul.inline.pull-right
+                %li
+                  - if user_signed_in?
+                    = link_to "Log out", destroy_user_session_path, :method => :delete
                   - else
-                    = render @cart
-    %main.container{:role => "main"}
-      - if flash[:notice] or flash[:error] or flash[:success]
-        - if flash[:error]
-          .alert-danger.alert.animated
-            %button.close{:type => "button", "data-dismiss" => "alert"} x
-            = raw flash[:error]
-        - elsif flash[:notice]
-          .alert-info.alert.animated
-            %button.close{:type => "button", "data-dismiss" => "alert"} x
-            = raw flash[:notice]
-        - elsif flash[:success]
-          .alert-success.alert.animated
-            %button.close{:type => "button", "data-dismiss" => "alert"} x
-            = raw flash[:success]
-      = yield
-    %footer.col-12{:role => "footer"}
+                    = link_to "Log in", new_user_session_path
+      / End class="top"
+      / Logo & Search bar
+      .bottom
+        .container
+          .row
+            .span8
+              .logo
+                %a{href: "/", title: "← Back home"}
+                  = image_tag "logo.png", :alt => "Gimson Robotics"
+            .span4
+              .row-fluid
+                .span10
+                  / Search
+                  .search
+                    .qs_s
+                      %form{action: "search.html", method: "post"}
+                      %input#query{autocomplete: "off", name: "query", placeholder: "Search…", type: "text", value: ""}/
+                  / End class="search"
+                .span2
+                  / Mini cart
+                  .mini-cart
+                    %a{href: "cart.html", title: "Go to cart →"}
+                      - if @cart
+                        - if @cart.line_items.count > 0
+                          %span
+                            = @cart.line_items.sum('quantity')
+                  / End class="mini-cart"
+      / End class="bottom"
+    / End class="header"
+    / Navigation
+    %nav.navigation
       .container
-        %hr/
-        %p © Gimson Robotics 2013 
-        %p
-          = link_to 'Admin Dashboard', '/admin'
-        %p 
-          - if user_signed_in?
-            = link_to "Log out", destroy_user_session_path, :method => :delete
-          - else
-            = link_to "Log in", new_user_session_path
+        .row
+          .span9
+            .hidden-phone
+              / Main menu (desktop)
+              %ul.main-menu
+                %li
+                  %a.title{href: "/", title: "Home"} Home
+                - Category.all.each do |category|
+                  %li= link_to category.name, category
+                %li
+                  %a.title{href: "about-us.html", title: "About us"} About us
+                %li
+                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
+              / End class="main-menu"
+            .visible-phone
+              / Main menu (mobile)
+              %select.mobile-nav
+                %option{selected: "selected", value: ""}Go to…
+                %option{value: "/"} Home
+                %option{value: "about-us.html"} About
+                %option{value: "contact-us.html"} Contact
+          .span3.visible-desktop
+    / End class="navigation"
+    %section.main
+      %section.home
+        .container
+          = yield
+    / Twitter bar
+    .twitter-bar
+      .container
+        .row
+          .span12
+            .icon
+              %i.icon-twitter
+            #tweets{"data-username" => "lemonstand"}
+    / End class="twitter-bar"
+    / Footer
+    .footer
+      .container
+        .row
+          .span2
+            / Support
+            .support
+              %h6 Support
+              %ul.links
+                %li
+                  %a.title{href: "about-us.html", title: "About us"} About us
+                %li
+                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
+            / End class="support"
+            %hr/
+            / My account
+            .account
+              %h6 My account
+              %ul.links
+                %li
+                  - if user_signed_in?
+                    = link_to "Log out", destroy_user_session_path, :method => :delete
+                  - else
+                    = link_to "Log in", new_user_session_path
+            / End class="account"
+          .span2
+            / Categories
+            .categories
+              %h6 Categories
+              %ul.links
+                - Category.all.each do |category|
+                  %li
+                    = link_to category.name, category
+            / End class="categories"
+            %hr/
+            / Pay with confidence
+            .confidence
+              %h6 Pay with confidence
+              = image_tag "stripe.png", :title => "We accept all major credit cards", :alt => "We accept all major credit cards"
+            / End class="confidence"
+          .span4
+            %h6 From the blog
+            %ul.list-chevron.links
+              %li
+                %a{href: "blog-post.html"} Article with video
+                %small 05/01/2013
+              %li
+                %a{href: "blog-post.html"} Article with images
+                %small 03/14/2013
+              %li
+                %a{href: "blog-post.html"} Article with style!
+                %small 08/31/2013
+          .span4
+            / Newsletter subscription
+            .newsletter
+              %h6 Newsletter subscription
+              %form{action: "/", enctype: "multipart/form-data", method: "post", onsubmit: "$('#newsletter_subscribe').modal('show'); return false;"}
+              .input-append
+                %input.span3{name: "email", type: "text"}/
+                %button.btn{type: "submit"} Go!
+              %p Sign up to receive our latest news and updates direct to your inbox
+            / End class="newsletter"
+            %hr/
+            / Social icons
+            .social
+              %h6 Socialize with us
+              %ul.social-icons
+                %li
+                  %a.twitter{href: "#", title: "Twitter"} Twitter
+            / End class="social"
+    / End id="footer"
     / /container
     %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
     = javascript_include_tag :application    
     :javascript
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
