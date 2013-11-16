@@ -7,18 +7,13 @@
           .product-images
             .box
               .primary
-                = image_tag @product.image_url.large
+                = image_tag @product.attachments.first.file.large
               #gallery.thumbs
                 %ul.thumbs-list
-                  %li
-                    %a.active{"data-image" => "img/thumbnails/db_file_img_228_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_228_640xauto.jpg", href: "#", title: "Chaser Overalls"}
-                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_228_160xauto.jpg"}/
-                  %li
-                    %a{"data-image" => "img/thumbnails/db_file_img_229_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_229_640xauto.jpg", href: "#", title: "Chaser Overalls"}
-                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_229_160xauto.jpg"}/
-                  %li
-                    %a{"data-image" => "img/thumbnails/db_file_img_227_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_227_640xauto.jpg", href: "#", title: "Chaser Overalls"}
-                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_227_160xauto.jpg"}/
+                  - @product.attachments.each_with_index do |image, index|
+                    %li
+                      %a{"data-image" => image.file.large, "data-zoom-image" => image.file.large, href: "#", title: image.description, :class => "#{ "active" if index == 0 }"}
+                        = image_tag image.file.small, :alt => image.description
               .social
                 #sharrre
                   .exfacebook.sharrre
@@ -91,7 +86,6 @@
                   .short-description
                     %p= @product.description
                   - if @product.stock > 0
-                    - @line_item = LineItem.new
                     = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
                       .options
                         .row-fluid
@@ -249,7 +243,7 @@
               %li.standard{"data-price" => product.dimensions.first.price}
                 = link_to product, :title => product.name do
                   .image
-                    = image_tag product.image_url.medium, :alt => product.name, :class => 'primary'
+                    = image_tag product.attachments.first.file.large
                   .title
                     .prices
                       %span.price= format_currency product.dimensions.first.price

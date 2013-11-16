@@ -14,10 +14,10 @@ root = exports ? this
 remove_fields = (link) ->
   $(link).prev("input[type=hidden]").val "1"
   $(link).closest(".ajax_fields").remove()
-root.add_fields = (link, association, content) ->
+root.add_fields = (link, association, content, target) ->
   new_id = new Date().getTime()
   regexp = new RegExp("new_" + association, "g")
-  $("#dimension_fields").append content.replace(regexp, new_id)
+  $(target).append content.replace(regexp, new_id)
 duplicate_fields = (checkbox, field_one, field_two) ->
   $(checkbox).change ->
     if @checked

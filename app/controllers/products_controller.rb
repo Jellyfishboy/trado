@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @category = @product.categories.first
+    @line_item = LineItem.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

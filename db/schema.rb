@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111123127) do
+ActiveRecord::Schema.define(:version => 20131116150848) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20131111123127) do
     t.integer  "product_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.string   "description"
+    t.string   "file"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -150,7 +159,6 @@ ActiveRecord::Schema.define(:version => 20131111123127) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "image_url"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "weighting"

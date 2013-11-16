@@ -25,7 +25,7 @@
           <%= product.sku %>
         </td>
         <td width="85">
-          <%= image_tag product.image_url.medium, :height => "75", :width => "75" %>
+          <%= image_tag product.attachments.first.file.medium, :height => "75", :width => "75" %>
         </td>
         <td>
           <%= product.name %>

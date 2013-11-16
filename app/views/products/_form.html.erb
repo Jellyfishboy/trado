@@ -38,12 +38,6 @@
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :image_url, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.file_field :image_url, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="control-group">
         <%= f.label :stock, :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field :stock, :class => 'form-control' %>
@@ -61,6 +55,8 @@
           <%= f.text_field :weighting, :class => 'form-control' %>
         </div>
       </div>
+      <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
+      <div id="image_fields"></div>
       <h3 class="header smaller lighter blue">Categories</h3>
       <div class="control-group">
         <div class="controls">
@@ -91,9 +87,8 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions %></h3>
-      <div id="dimension_fields">
-      </div>
+      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions,"#dimension_fields" %></h3>
+      <div id="dimension_fields"></div>
       <h3 class="header smaller lighter blue">Tags</h3>
         <div class="control-group">
           <div class="controls">

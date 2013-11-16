@@ -44,12 +44,6 @@
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :image_url, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.file_field :image_url, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="control-group">
         <%= f.label :stock, :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field :stock, :class => 'form-control' %>
@@ -67,6 +61,37 @@
           <%= f.text_field :weighting, :class => 'form-control' %>
         </div>
       </div>
+      <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
+      <div id="image_fields"></div>
+      <% if @product.attachments.empty? %>
+      <div class="control-group">
+        <div class="controls">
+          <p>This product currently has no attachments.</p>
+        </div>
+      </div>
+      <% else %>
+        <% @product.attachments.each do |attachment| %>
+        <div id="attachment_<%= attachment.id %>" class="dimension_list">
+          <div class="control-group">
+            <div class="control-label">Description:</div>
+            <div class="controls">
+              <div class="form-control"><%= attachment.description %></div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="control-label">Image:</div>
+            <div class="controls">
+              <div class="form-control"><%= image_tag attachment.file.small %></div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <%= link_to "Remove", attachment, :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
       <h3 class="header smaller lighter blue">Categories</h3>
       <div class="control-group">
         <div class="controls">
@@ -97,7 +122,7 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions %></h3>
+      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions,"#dimension_fields" %></h3>
       <% if @product.dimensions.empty? %>
       <div class="control-group">
         <div class="controls">

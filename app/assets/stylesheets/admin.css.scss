@@ -5,6 +5,7 @@
 //= require admin/ace-skins.min
 //= require admin/ace.min
 //= require admin/jquery-ui-1.10.3.custom.min
+//= require font-awesome_custom
 .dashboard_home {
     padding:0 4px;
 }
@@ -24,7 +25,7 @@
         }
 }
 form.new_product {
-    .add_dimension {
+    .add_field {
         margin-left:10px;
     }
     .dimension_list {
