@@ -10,7 +10,7 @@
 #= require jquery.gmap3
 #= require jquery.tweet
 #= require imagesloaded
-#= require la_boutique
+
 #= require modernizr-2.6.2.min
 
 $(document).ready ->

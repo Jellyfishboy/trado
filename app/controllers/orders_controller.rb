@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   layout 'admin', :except => :new
-  before_filter :authenticate_user!, :except => :new
+  before_filter :authenticate_user!, :except => [:new, :update_country, :update_shipping]
   # GET /orders
   # GET /orders.json
   def index
