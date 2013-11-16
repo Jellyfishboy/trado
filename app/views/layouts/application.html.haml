@@ -9,7 +9,8 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title 
-      = yield :title
+      Gimson Robotics - 
+      = yield :page_title
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag :application, :media => "all"
@@ -52,7 +53,7 @@
                 .span2
                   / Mini cart
                   .mini-cart
-                    %a{href: "cart.html", title: "Go to cart →"}
+                    = link_to new_order_path, :method => :get do
                       - if @cart
                         - if @cart.line_items.count > 0
                           %span
@@ -70,7 +71,7 @@
               %ul.main-menu
                 %li
                   %a.title{href: "/", title: "Home"} Home
-                - Category.all.each do |category|
+                - @categories.each do |category|
                   %li= link_to category.name, category
                 %li
                   %a.title{href: "about-us.html", title: "About us"} About us
@@ -87,9 +88,7 @@
           .span3.visible-desktop
     / End class="navigation"
     %section.main
-      %section.home
-        .container
-          = yield
+      = yield
     / Twitter bar
     .twitter-bar
       .container
@@ -129,7 +128,7 @@
             .categories
               %h6 Categories
               %ul.links
-                - Category.all.each do |category|
+                - @categories.each do |category|
                   %li
                     = link_to category.name, category
             / End class="categories"

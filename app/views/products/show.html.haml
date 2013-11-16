@@ -1,0 +1,270 @@
+%section.product
+  / Product info
+  %section.product-info
+    .container
+      .row
+        .span4
+          .product-images
+            .box
+              .primary
+                = image_tag @product.image_url.large
+              #gallery.thumbs
+                %ul.thumbs-list
+                  %li
+                    %a.active{"data-image" => "img/thumbnails/db_file_img_228_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_228_640xauto.jpg", href: "#", title: "Chaser Overalls"}
+                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_228_160xauto.jpg"}/
+                  %li
+                    %a{"data-image" => "img/thumbnails/db_file_img_229_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_229_640xauto.jpg", href: "#", title: "Chaser Overalls"}
+                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_229_160xauto.jpg"}/
+                  %li
+                    %a{"data-image" => "img/thumbnails/db_file_img_227_480xauto.jpg", "data-zoom-image" => "img/thumbnails/db_file_img_227_640xauto.jpg", href: "#", title: "Chaser Overalls"}
+                      %img{alt: "Chaser Overalls", src: "img/thumbnails/db_file_img_227_160xauto.jpg"}/
+              .social
+                #sharrre
+                  .exfacebook.sharrre
+                    %button.btn.btn-mini.btn-facebook
+                      %i.icon-facebook
+                        12
+                  .extwitter.sharrre
+                    %button.btn.btn-mini.btn-twitter
+                      %i.icon-twitter
+                        3
+                  .googleplus.sharrre
+                    %button.btn.btn-mini.btn-googleplus
+                      %i.icon-google-plus
+                        19
+                  .pinterest.sharrre
+                    %button.btn.btn-mini.btn-pinterest
+                      %i.icon-pinterest
+                        64
+        .span8
+          / Product content
+          .product-content
+            .box
+              / Tab panels' navigation
+              %ul.nav.nav-tabs
+                %li.active
+                  %a{"data-toggle" => "tab", href: "#product"}
+                    %i.icon-reorder.icon-large
+                    %span.hidden-phone Product
+                %li
+                  %a{"data-toggle" => "tab", href: "#description"}
+                    %i.icon-info-sign.icon-large
+                    %span.hidden-phone Info
+                %li
+                  %a{"data-toggle" => "tab", href: "#shipping"}
+                    %i.icon-truck.icon-large
+                    %span.hidden-phone Shipping
+                %li
+                  %a{"data-toggle" => "tab", href: "#returns"}
+                    %i.icon-undo.icon-large
+                    %span.hidden-phone Returns
+                %li
+                  %a{"data-toggle" => "tab", href: "#ratings"}
+                    %i.icon-heart.icon-large
+                    %span.hidden-phone Ratings
+              / End Tab panels' navigation
+              / Tab panels container
+              .tab-content
+                / Product tab
+                #product.tab-pane.active
+                  %form{action: "#", enctype: "multipart/form-data", method: "post", onsubmit: "return false;"}
+                  .details
+                    %h1= @product.name
+                    .prices
+                      %span.price= format_currency @product.dimensions.first.price
+                    .meta
+                      .sku
+                        %i.icon-pencil
+                        %span{rel: "tooltip", title: "SKU is #{@product.sku}"}
+                          = @product.sku
+                      .categories
+                        %span>
+                          %i.icon-tags
+                          %a{href: "#", title: "Dresses"} Dresses
+                        ,
+                        %a{href: "#", title: "Womens"} Womens
+                      .stock
+                        %i.icon-bar-chart
+                        %span{rel: "tooltip", :title => "Stock is #{@product.stock}"}
+                          = @product.stock
+                  .short-description
+                    %p= @product.description
+                  - if @product.stock > 0
+                    - @line_item = LineItem.new
+                    = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
+                      .options
+                        .row-fluid
+                          .span6
+                            .control-group
+                              %label.control-label Dimension
+                              .controls
+                                = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["Length: #{dimension.length}mm, Thickness: #{dimension.thickness}mm, Weight: #{dimension.weight}kg", dimension.id ] }), :prompt => 'Select a dimension'
+                      .add-to-cart
+                        = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large', :onclick => "$('#added').modal('show')") do
+          
+                          %i.icon-plus
+                            Add to cart
+                  - else
+                    .btn.btn-primary.btn-large Notify me
+
+                / End id="product"
+                / Description tab
+                #description.tab-pane
+                  %p
+                    %span Vintage-style faux leather short overalls. Long adjustable straps with brass detailing, exposed zip at back, and side slant pockets with single rear welt pocket.
+                    %br/
+                    %br/
+                    %span 100% Polyester
+                / End id="description"
+                / Shipping tab
+                #shipping.tab-pane
+                  %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                  %p
+                    %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/royal-mail.png"}/
+                    %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/ups-logo.png"}/
+                  %p Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                  %h6
+                    %em.icon-gift
+                    Giftwrap?
+                  %p
+                    Let us take care of giftwrapping your presents by selecting
+                    %strong Giftwrap
+                    in the order process. Eligible items can be giftwrapped for as little as £0.99, and larger items may be presented in gift bags.
+                / End id="shipping"
+                / Returns tab
+                #returns.tab-pane
+                  %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                  %p.lead
+                    For any unwanted goods La Boutique offers a
+                    = succeed "." do
+                      %strong 21-day return policy
+                  %p
+                    If you receive items from us that differ from what you have ordered, then you must notify us as soon as possible using our
+                    = succeed "." do
+                      %a{href: "#"} online contact form
+                  %p If you find that your items are faulty or damaged on arrival, then you are entitled to a repair, replacement or a refund. Please note that for some goods it may be disproportionately costly to repair, and so where this is the case, then we will give you a replacement or a refund.
+                  %p
+                    Please visit our
+                    %a{href: "#"} Warranty section
+                    for more details.
+                / End id="returns"
+                / Ratings tab
+                #ratings.tab-pane
+                  .ratings-items
+                    %article.rating-item
+                      .row-fluid
+                        .span9
+                          %h5 Shaped for crush
+                          %p
+                            I hope they release some more colours of this dress. It feels great and looks sexier.
+                            %br/
+                            %br/
+                            I love it!
+                        .span3
+                          %img.gravatar{alt: "", src: "img/thumbnails/avatar.png"}/
+                          %h6 Sam Ritora
+                          %small 08/30/2013
+                          .rating.rating-5
+                            %i.icon-heart
+                            %i.icon-heart
+                            %i.icon-heart
+                            %i.icon-heart
+                    %hr/
+                  .well
+                    .row-fluid
+                      .span8
+                        %h6
+                          %i.icon-comment-alt
+                            Share your opinion!
+                        %p Let other people know your thoughts on this product!
+                      .span4
+                        %button.btn.btn-seconary.btn-block{onclick: "$('#review_form').modal('show')"} Rate this product
+                  / Review modal window
+                  #review_form.modal.hide.fade{role: "dialog", tabindex: "-1"}
+                    %form{action: "/product/chaser-overalls", enctype: "multipart/form-data", method: "post"}
+                    %input{name: "ls_session_key", type: "hidden", value: "lsk52286509c22077.63404603"}/
+                    .modal-header
+                      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+                      .hgroup.title
+                        %h3 Modal header
+                        %h5 Modal header
+                    .modal-body
+                      .row-fluid
+                        .span6
+                          .control-group
+                            %label.control-label Rating
+                            .controls
+                              %select.span12{name: "rate"}
+                                %option{value: "1"}>
+                                1
+                                = succeed "2" do
+                                  %option{value: "2"}
+                                = succeed "3" do
+                                  %option{value: "3"}
+                                = succeed "4" do
+                                  %option{value: "4"}
+                                = succeed "5" do
+                                  %option{value: "5"}
+                        .span6
+                          .control-group
+                            %label.control-label{for: "review_title"} Review title
+                            .controls
+                              %input#review_title.span12{name: "review_title", type: "text"}/
+                      .row-fluid
+                        .span6
+                          .control-group
+                            %label.control-label{for: "review_author_name"} Your name
+                            .controls
+                              %input#review_author_name.span12{name: "review_author_name", type: "text", value: ""}/
+                        .span6
+                          .control-group
+                            %label.control-label{for: "review_author_email"} Your email
+                            .controls
+                              %input#review_author_email.span12{name: "review_author_email", type: "text", value: ""}/
+                      .row-fluid
+                        .span12
+                          .control-group
+                            %label.control-label{for: "review_text"} Review
+                            .controls
+                              %textarea#review_text.span12{name: "review_text"}
+                    .modal-footer
+                      .pull-right
+                        %button.btn.btn-primary{onclick: "", type: "submit"} Submit product review
+                  / End id="review_form"
+                / End id="ratings"
+              / End tab panels container
+          / End class="product-content"
+  / End class="product-info"
+  / Related products
+  - if @category.products.count > 1
+    %section.product-related
+      .container
+        .span12
+          %h5 Can't find what you're looking for? Why not try these…
+          %ul.product-list.isotope
+            - @category.products.first(4).each do |product|
+              - if product == @product
+                - next
+              %li.standard{"data-price" => product.dimensions.first.price}
+                = link_to product, :title => product.name do
+                  .image
+                    = image_tag product.image_url.medium, :alt => product.name, :class => 'primary'
+                  .title
+                    .prices
+                      %span.price= format_currency product.dimensions.first.price
+                    %h3= product.name
+    / End class="products-related"
+  / Added to cart modal window
+  #added.modal.hide.fade{tabindex: "-1"}
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      .hgroup.title
+        %h3 You're one step closer to owning this product!
+        %h5 "Chaser Overalls" has been added to your cart
+    .modal-footer
+      .pull-right
+        %a.btn.btn-primary.btn-small{href: "cart.html"}
+          Go to cart  
+          %i.icon-chevron-right
+  / End id="added"

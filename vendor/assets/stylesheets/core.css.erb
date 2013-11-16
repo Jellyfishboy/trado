@@ -2151,7 +2151,7 @@ textarea {
 }
 .product-list a .image {
   position: relative;
-  background: #ffffff url('../../img/preloader.gif') no-repeat center center;
+  background: #ffffff url('<%= asset_path "preloader.gif" %>') no-repeat center center;
 }
 .product-list a .image img {
   display: block;
@@ -3015,6 +3015,10 @@ html[xmlns] .slides {
 }
 .product-related {
   padding-top: 80px;
+  -webkit-box-shadow: 0 -1px 2px rgba(71, 73, 72, 0.19999999999999996), 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  -moz-box-shadow: 0 -1px 2px rgba(71, 73, 72, 0.19999999999999996), 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  box-shadow: 0 -1px 2px rgba(71, 73, 72, 0.19999999999999996), 0 1px 2px rgba(71, 73, 72, 0.19999999999999996);
+  background-color: #ffffff;
 }
 .product-related h5 {
   text-align: center;

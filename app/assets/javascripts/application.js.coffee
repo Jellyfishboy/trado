@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require bootstrap
+#= require bootstrap_custom
 #= require jquery-ui-1.10.2.custom
 #= require jquery.easing-1.3.min
 #= require jquery.isotope.min
@@ -9,6 +9,7 @@
 #= require jquery.sharrre-1.3.4
 #= require jquery.gmap3
 #= require jquery.tweet
+#= require la_boutique
 #= require imagesloaded
 
 #= require modernizr-2.6.2.min
