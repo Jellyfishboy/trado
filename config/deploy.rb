@@ -1,5 +1,3 @@
-require 'capistrano-unicorn'
-
 set :application, 'gimson_robotics'
 set :user, 'root'
 set :scm, 'git'
@@ -10,6 +8,8 @@ set :deploy_to, '/var/www/gimsonrobotics/'
 set :branch, 'master'
 
 server domain, :app, :web, :db, :primary => true
+
+require 'capistrano-unicorn'
 
 # Bundler for remote gem installs
 require "bundler/capistrano"
@@ -42,4 +42,3 @@ default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'custom:assets'
 after 'custom:assets', 'custom:setup_database'
-after 'custom:setup_database', 'unicorn:restart' 
