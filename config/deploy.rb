@@ -42,3 +42,4 @@ default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'custom:assets'
 after 'custom:assets', 'custom:setup_database'
+after 'custom:setup_database', 'unicorn:restart' 
