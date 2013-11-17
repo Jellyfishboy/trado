@@ -18,7 +18,7 @@ GimsonRobotics::Application.configure do
   config.assets.compile = false
 
   config.assets.precompile += %w(rails_admin/rails_admin.css rails_admin/rails_admin.js)
-  config.assets.precompile += %w(*/application.js */application.css */admin.css */admin.js)
+  config.assets.precompile += %w(*/application.js */application.css */administration.css */administration.js)
 
   # Generate digests for assets URLs
   config.assets.digest = true
