@@ -33,8 +33,6 @@ module GimsonRobotics
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

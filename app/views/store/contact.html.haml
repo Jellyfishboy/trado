@@ -1,0 +1,109 @@
+%section.static_page_1
+  .container
+    .row
+      .span12
+        %section.static-page
+          .row-fluid
+            .span3
+              / Static page navigation
+              %ul.nav.nav-tabs.nav-stacked
+                %li
+                  %a.title{href: "about-us.html", title: "About us"} About us
+                %li
+                  %a.title{href: "typography.html", title: "Typography"} Typography
+                %li
+                  %a.title{href: "retina-ready-icons.html", title: "Retina-ready icons"} Retina-ready icons
+                %li
+                  %a.title{href: "buttons.html", title: "Buttons"} Buttons
+                %li
+                  %a.title{href: "elements.html", title: "Elements"} Elements
+                %li
+                  %a.title{href: "grids.html", title: "Grids"} Grids
+                %li
+                  %a.title{href: "store-locator.html", title: "Store locator"} Store locator
+                %li
+                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
+              / End static page navigation
+            .span9
+              .content
+                %h1 Get in touch!
+                %p.lead Our opening hours are Monday to Friday — 9:00 to 18:00 GMT
+                %p
+                  For
+                  %strong hosting
+                  and
+                  = succeed "," do
+                    %strong support
+                  = succeed "." do
+                    %a{href: "http://laboutique.ticksy.com", target: "_blank"} support board
+                  %a{href: "http://themeforest.net/user/Tfingi", target: "_blank"}
+                    %strong
+                      La Boutique
+                      %em Pro
+                  theme.
+                %hr/
+                %h3 Contacts
+                .map{"data-address" => "16 Clocktower Mews, Newmarket, CB8 8LL, UK", "data-zoom" => "12", style: "height: 320px; width: 100%; background-color: #F0F0F0;"}  
+                %hr/
+                .row-fluid
+                  .span4
+                    %h5
+                      %em.icon-map-marker.icon-larger
+                      La Boutique
+                    %p
+                      Clocktower Mews
+                      %br>/
+                      Newmarket CB8 8LL
+                      %br>/
+                      United Kingdom
+                  .span4
+                    %h5
+                      %em.icon-phone.icon-larger
+                      Call us
+                    %p
+                      Well, don't really call us as we do not offer telephone support :)
+                      %br/
+                      %strong +44 1234 567 890
+                  .span4
+                    %h5
+                      %em.icon-medkit.icon-larger
+                      Support
+                    %p
+                      A dedicated team provides timely and effective
+                      %a{href: "http://laboutique.ticksy.com", target: "_blank"} support
+                      whenever you need a hand getting things right.
+                %hr/
+                %form#form{action: "#", enctype: "multipart/form-data", method: "post"}
+                %h3 Send us a message
+                .row-fluid
+                  .span6
+                    .control-group
+                      %label.control-label{for: "name"} Name
+                      .controls
+                        %input#name.span12{name: "name", type: "text", value: ""}/
+                  .span6
+                    .control-group
+                      %label.control-label{for: "email"} Email
+                      .controls
+                        %input#email.span12{name: "email", type: "text", value: ""}/
+                .row-fluid
+                  .span6
+                    .control-group
+                      %label.control-label{for: "subject"} Subject
+                      .controls
+                        %input#subject.span12{name: "subject", type: "text", value: ""}/
+                  .span6
+                    .control-group
+                      %label.control-label{for: "order_no"} Order number
+                      .controls
+                        %input#order_no.span12{name: "order_no", type: "text", value: ""}/
+                .row-fluid
+                  .span12
+                    .control-group
+                      %label.control-label{for: "message"} Message
+                      .controls
+                        %textarea#message.span12{name: "message"}
+                .row-fluid
+                  .span12
+                    %button.btn.btn-primary
+                      Send message

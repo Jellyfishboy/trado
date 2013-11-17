@@ -14,24 +14,6 @@
                     %li
                       %a{"data-image" => image.file.large, "data-zoom-image" => image.file.large, href: "#", title: image.description, :class => "#{ "active" if index == 0 }"}
                         = image_tag image.file.small, :alt => image.description
-              .social
-                #sharrre
-                  .exfacebook.sharrre
-                    %button.btn.btn-mini.btn-facebook
-                      %i.icon-facebook
-                        12
-                  .extwitter.sharrre
-                    %button.btn.btn-mini.btn-twitter
-                      %i.icon-twitter
-                        3
-                  .googleplus.sharrre
-                    %button.btn.btn-mini.btn-googleplus
-                      %i.icon-google-plus
-                        19
-                  .pinterest.sharrre
-                    %button.btn.btn-mini.btn-pinterest
-                      %i.icon-pinterest
-                        64
         .span8
           / Product content
           .product-content

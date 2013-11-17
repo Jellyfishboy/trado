@@ -42,7 +42,7 @@
             .span8
               .logo
                 %a{href: "/", title: "← Back home"}
-                  = image_tag "logo.png", :alt => "Gimson Robotics"
+                  %h4 Gimson Robotics
             .span4
               .row-fluid
                 .span10
@@ -72,21 +72,21 @@
               / Main menu (desktop)
               %ul.main-menu
                 %li
-                  %a.title{href: "/", title: "Home"} Home
+                  %a.title{href: store_path, title: "Home"} Home
                 - @categories.each do |category|
                   %li= link_to category.name, category
                 %li
-                  %a.title{href: "about-us.html", title: "About us"} About us
+                  %a.title{href: about_path, title: "About us"} About us
                 %li
-                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
+                  %a.title{href: contact_path, title: "Contact us"} Contact us
               / End class="main-menu"
             .visible-phone
               / Main menu (mobile)
               %select.mobile-nav
                 %option{selected: "selected", value: ""}Go to…
-                %option{value: "/"} Home
-                %option{value: "about-us.html"} About
-                %option{value: "contact-us.html"} Contact
+                %option{value: store_path} Home
+                %option{value: about_path} About
+                %option{value: contact_path} Contact
           .span3.visible-desktop
     / End class="navigation"
     %section.main
@@ -110,9 +110,9 @@
               %h6 Support
               %ul.links
                 %li
-                  %a.title{href: "about-us.html", title: "About us"} About us
+                  %a.title{href: about_path, title: "About us"} About us
                 %li
-                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
+                  %a.title{href: contact_path, title: "Contact us"} Contact us
             / End class="support"
             %hr/
             / My account

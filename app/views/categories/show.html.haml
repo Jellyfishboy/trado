@@ -1,19 +1,67 @@
-%h1 
-    = @category.name
+%section.category
+  .container
+    .row
+      .span3
+        / Sidebar
+        %aside.sidebar
+          / Price filter
+          .price-filter
+            .box.border-top
+              .hgroup.title
+                %h3 Refine products
+                %h5 Filter your products by price
+              #slider{"data-currency" => "£", "data-max" => "200", "data-step" => "5"}
+              %span#slider-label
+                Price range:
+                %strong £0 – £200
+          / End class="price-filter"
+          / TopSellingProducts
+          .widget.TopSellingProducts
+            %h3.widget-title.widget-title Top selling products
+            %ul.product-list-small
+              - @category.products.take(3).each do |product|
+                %li
+                  .image
+                    = link_to product_path, :title => product.name do
+                      = image_tag product.attachments.first.file.medium, :alt => product.name
+                  .desc
+                    %h6
+                      = link_to product.name, product_path, :title => product.name
+                    .price= product.dimensions.first.price
+                    .rating.rating-0
+                      %a{href: "#"} No reviews — be the first?
+          / End  class="widget TopSellingProducts"
+          / This month only! widget
+          .widget.Text
+            %h3.widget-title.widget-title This month only!
+            %h5 Free UK shipping!
+            %h6
+              %i.icon-gift  
+              Free gift wrap
+            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
+            %a.btn.btn-primary{href: "#"}
+              BUY NOW
+              %em for
+              $85
+          / End class="widget Text"
+        / End sidebar
+      .span9
+        / Products list
+        %ul.product-list.isotope
+          - @category.products.each do |product|  
+            %li.standard{"data-price" => product.dimensions.first.price}
+              = link_to product_path, :title => product.name do
+                .image
+                  = image_tag product.attachments.first.file.large, :alt => product.name, :class => 'primary'
+                .title
+                  .prices
+                    %span.price= format_currency product.dimensions.first.price
+                  %h3= product.name
 
-#category_description
-    = @category.description
-
-%hr
-
-
-    - @category.products.each_slice(3) do |slice|
-        .row
-            - slice.each do |product|
-                .col-3.vertical_product
-                    = link_to image_tag(product.attachments.first.file.medium), line_items_path(:product_id => product), :method => :post, :remove => true
-                    %h3
-                        = product.name
-                    .price
-                    = link_to 'Add to cart', line_items_path(:product_id => product), :remote => true, :method => 'post', :class => 'btn btn-success btn-small'
-                    = link_to 'Find out more', product, :class => 'btn btn-info btn-small'
+        / End class="product-list isotope"
+        / "Load More" Button
+        / %button#load_more.btn.btn-block{"data-category" => "16", "data-featured" => "true", "data-page" => "1", "data-rows" => "20"}
+        /   %span Load more
+        /    
+        /   %i.icon-spinner.icon-spin.icon-large
+        / End "Load More" Button

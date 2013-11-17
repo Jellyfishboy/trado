@@ -2,6 +2,12 @@ GimsonRobotics::Application.routes.draw do
 
   root :to => 'store#index', :as =>'store'
 
+
+  # Standard pages
+  match '/about' => 'store#about'
+  match '/contact' => 'store#contact'
+
+  # Ajax methods
   match '/update_price' => 'products#update_price'
   match '/update_country' => 'orders#update_country'
   match '/update_shipping' => 'orders#update_shipping'
