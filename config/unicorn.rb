@@ -13,6 +13,9 @@ root = "/var/www/gimsonrobotics/current"
 # more will usually help for _short_ waits on databases/caches.
 worker_processes 4
 
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
+end
 # Since Unicorn is never exposed to outside clients, it does not need to
 # run on the standard HTTP port (80), there is no reason to start Unicorn
 # as root unless it's from system init scripts.
