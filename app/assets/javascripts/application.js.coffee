@@ -11,7 +11,6 @@
 #= require jquery.tweet
 #= require la_boutique
 #= require imagesloaded
-
 #= require modernizr-2.6.2.min
 
 $(document).ready ->
