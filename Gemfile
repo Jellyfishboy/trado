@@ -22,9 +22,7 @@ group :development do
     gem 'bullet'
     gem 'haml'
     gem 'rails_best_practices'
-    platforms :ruby do
-      gem 'capistrano-unicorn', :require => false
-    end
+    gem 'capistrano-unicorn', :require => false
 end
 
 group :test do
@@ -52,9 +50,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-platforms :ruby do
-  gem 'unicorn'
-end
+gem 'unicorn'
 
 # Authenication
 gem 'devise'
