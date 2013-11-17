@@ -75,7 +75,7 @@
                             .control-group
                               %label.control-label Dimension
                               .controls
-                                = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["Length: #{dimension.length}mm, Thickness: #{dimension.thickness}mm, Weight: #{dimension.weight}kg", dimension.id ] }), :prompt => 'Select a dimension'
+                                = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] }), :prompt => 'Select a dimension'
                       .add-to-cart
                         = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large', :onclick => "$('#added').modal('show')") do
           
