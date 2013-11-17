@@ -19,14 +19,14 @@
           .widget.TopSellingProducts
             %h3.widget-title.widget-title Top selling products
             %ul.product-list-small
-              - @category.products.take(3).each do |product|
+              - @category.products.first(3).each do |product|
                 %li
                   .image
-                    = link_to product_path, :title => product.name do
+                    = link_to product, :title => product.name do
                       = image_tag product.attachments.first.file.medium, :alt => product.name
                   .desc
                     %h6
-                      = link_to product.name, product_path, :title => product.name
+                      = link_to product.name, product, :title => product.name
                     .price= product.dimensions.first.price
                     .rating.rating-0
                       %a{href: "#"} No reviews — be the first?
@@ -50,7 +50,7 @@
         %ul.product-list.isotope
           - @category.products.each do |product|  
             %li.standard{"data-price" => product.dimensions.first.price}
-              = link_to product_path, :title => product.name do
+              = link_to product, :title => product.name do
                 .image
                   = image_tag product.attachments.first.file.large, :alt => product.name, :class => 'primary'
                 .title

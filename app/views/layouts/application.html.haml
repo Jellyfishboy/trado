@@ -55,8 +55,8 @@
                 .span2
                   / Mini cart
                   .mini-cart
-                    = link_to new_order_path, :method => :get do
-                      - if @cart
+                    - if @cart
+                      = link_to new_order_path, :method => :get do
                         - if @cart.line_items.count > 0
                           %span
                             = @cart.line_items.sum('quantity')

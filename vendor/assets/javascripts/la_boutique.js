@@ -208,30 +208,6 @@ $(document).ready(function() {
 			$('#autocomplete-results').css({display:'none'});
 		},3000);
 	});
-	(function() {
-		$tweets = $('#tweets');
-		
-		$tweets.tweet({
-			username: $tweets.data('username'),
-			favorites: false,
-			retweets: false, 
-			count: 1,
-			avatar_size: 60,
-			template: '<div class="tweet"><div class="avatar">{avatar}</div><div class="text">{text}{time}</div></div>'
-		});
-
-	})();
-	
-	//set color scheme
-	if (typeof($.cookie('color_scheme'))!=undefined){
-		var stylesheet = $('#color_scheme');
-		stylesheet.attr('href', $.cookie('color_scheme'));
-		
-		
-		$('.options-panel #option_color_scheme').val($.cookie('color_scheme'));
-		
-		
-	}
 	
 });
 $(window).smartresize(function() {

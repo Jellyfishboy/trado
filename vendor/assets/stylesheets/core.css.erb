@@ -1159,7 +1159,7 @@ textarea {
 ---*/
 .ajax_loading_indicator {
   position: fixed;
-  background: url('../../img/loader.gif') center center no-repeat rgba(71, 73, 72, 0.5);
+  background: url('<%= asset_path "loader.gif" %>') center center no-repeat rgba(71, 73, 72, 0.5);
   width: 100%;
   height: 100%;
 }
@@ -1323,7 +1323,7 @@ textarea {
   left: 50%;
   top: -14px;
   margin-left: -13px;
-  background-image: url('../../img/triangle.png');
+  background-image: url('<%= asset_path "triangle.png" %>');
   z-index: 100;
 }
 .search #autocomplete-results ul li {
@@ -1996,7 +1996,7 @@ textarea {
   height: 16px;
   margin-left: -8px;
   margin-top: -2px;
-  background: url('../../img/ui-slider-handle.png') no-repeat;
+  background: url('<%= asset_path "ui-slider-handle.png" %>') no-repeat;
   z-index: 20;
 }
 .category .sidebar .price-filter .ui-slider .ui-slider-handle:focus {

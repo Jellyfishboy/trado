@@ -1,0 +1,49 @@
+- content_for :page_title, 'The Linear Actuator and Electric Motor specialist'
+/ Home content
+%section.home
+  / Promos
+  %section.promos
+    .container
+      .row
+        .span4
+          .free-shipping
+            .box.border-top
+              = image_tag "free-shipping.png", :alt => "Free shipping"
+              .hgroup.title
+                %h3 Free UK shipping!
+                %h5 This is a snappy sub-title
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
+        .span4
+          .world-shipping
+            .box.border-top
+              = image_tag "world-shipping.png", :alt => "World shipping"
+              .hgroup.title
+                %h3 We're now global!
+                %h5 This is a snappy sub-title
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
+        .span4
+          .low-price
+            .box.border-top
+              = image_tag "low-price.png", :alt => "Low price"
+              .hgroup.title
+                %h3 Lowest price guarantee!
+                %h5 This is a snappy sub-title
+              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
+  / End class="promos"
+  %section.featured
+    .container
+      .row
+        .span12
+          / Products list
+          %ul.product-list.isotope
+            - @products.each do |product|
+              %li.standard{"data-price" => product.dimensions.first.price}
+                = link_to product, :title => product.name do
+                  .image
+                    = image_tag product.attachments.first.file.large, :alt => product.name, :class => 'primary'
+                  .title
+                    .prices
+                      %span.price= format_currency product.dimensions.first.price
+                    %h3= product.name
+          / End class="product-list isotope"
+/ End class="home"
