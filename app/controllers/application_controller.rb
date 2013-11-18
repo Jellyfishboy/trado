@@ -2,14 +2,15 @@ class ApplicationController < ActionController::Base
 
     before_filter :authenticate_user!
     before_filter :category_list
+    helper_method :current_cart
 
     rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
         puts exception.message
         redirect_to store_url
     end
-
-    private 
+    
+    protected
 
   	def current_cart
       Cart.find(session[:cart_id]) #searches for cart in session
