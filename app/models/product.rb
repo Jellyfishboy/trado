@@ -10,13 +10,13 @@ class Product < ActiveRecord::Base
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
   has_many :orders, :through => :line_items
-  has_many :categorisations, :dependent => :destroy
+  has_many :categorisations, :dependent => :delete_all
   has_many :categories, :through => :categorisations
-  has_many :accessorisations, :dependent => :destroy
+  has_many :accessorisations, :dependent => :delete_all
   has_many :accessories, :through => :accessorisations
-  has_many :dimensionals, :dependent => :destroy
+  has_many :dimensionals, :dependent => :delete_all
   has_many :dimensions, :through => :dimensionals
-  has_many :taggings
+  has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable
   accepts_nested_attributes_for :attachments  

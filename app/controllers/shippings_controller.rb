@@ -42,7 +42,7 @@ class ShippingsController < ApplicationController
   # POST /shippings.json
   def create
     @shipping = Shipping.new(params[:shipping])
-
+    
     respond_to do |format|
       if @shipping.save
         format.html { redirect_to shippings_url, notice: 'Shipping was successfully created.' }
@@ -58,7 +58,7 @@ class ShippingsController < ApplicationController
   # PUT /shippings/1.json
   def update
     @shipping = Shipping.find(params[:id])
-
+    @shipping.attributes = {'country_ids' => []}.merge(params[:shipping] || {})
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
         format.html { redirect_to shippings_url, notice: 'Shipping was successfully updated.' }

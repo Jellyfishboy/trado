@@ -3,7 +3,7 @@ class LineItem < ActiveRecord::Base
   validates :dimension_id, :presence => true
   belongs_to :product #the parent of lineitems is product
   belongs_to :cart #the parent of lineitems is cart
-  belongs_to :order, :dependent => :destroy
+  belongs_to :order
 
   def total_price 
   	price * quantity

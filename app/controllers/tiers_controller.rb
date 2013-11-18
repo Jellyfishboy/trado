@@ -58,7 +58,8 @@ class TiersController < ApplicationController
   # PUT /tiers/1.json
   def update
     @tier = Tier.find(params[:id])
-
+    # Use empty hash if none selected to force an update of deleting all the associations.
+    @tier.attributes = {'shipping_ids' => []}.merge(params[:tier] || {})
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
         format.html { redirect_to tiers_url, notice: 'Tier was successfully updated.' }
