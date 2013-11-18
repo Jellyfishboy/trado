@@ -60,4 +60,12 @@ module ApplicationHelper
         "<span class='label label-success'>#{status}</span>".html_safe
       end
     end
+
+    def boolean_helper obj, first, second
+      if obj == true
+        return first
+      else
+        return second
+      end
+    end
 end

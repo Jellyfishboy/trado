@@ -27,13 +27,17 @@
   <%= select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }) %>
 
   <div id="shipping_options" data-tier="<%= @calculated_tier %>">
-    <% @shipping_options.each do |shipping| %>
-      <label>
-        <%= radio_button_tag :shipping, shipping.id %>
-        <span class="lbl">
-        <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
-        </span>
-      </label>
+    <% if @shipping_options.empty? %>
+     <p> There are no shipping options available</p>
+    <% else %>
+      <% @shipping_options.each do |shipping| %>
+        <label>
+          <%= radio_button_tag :shipping, shipping.id %>
+          <span class="lbl">
+          <%= shipping.name %> - <b><%= format_currency shipping.price %></b>
+          </span>
+        </label>
+      <% end %>
     <% end %>
   </div>
 

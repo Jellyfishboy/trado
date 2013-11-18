@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   	end
 
     def category_list 
-      Category.all
+      Category.where('visible = ?', true).all
     end
 
     def after_sign_out_path_for(resource_or_scope)

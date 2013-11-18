@@ -13,11 +13,13 @@
       %tr
         %th Name
         %th Description
+        %th Visiblity
         %th
     %tbody
       - @category.each do |category|
         %tr
           %td= category.name
           %td= category.description
+          %td= boolean_helper category.visible, "Yes", "No"
           %td
             = table_commands category, edit_category_path(category), 0
