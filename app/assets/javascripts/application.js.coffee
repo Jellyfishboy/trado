@@ -11,6 +11,7 @@
 #= require la_boutique
 #= require imagesloaded
 #= require modernizr-2.6.2.min
+#= require rails.validations
 
 $(document).ready ->
     update_shipping_cost()
