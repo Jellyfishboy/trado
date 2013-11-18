@@ -122,64 +122,64 @@
         </div><!--#sidebar-shortcuts-->
 
         <ul class="nav nav-list">
-          <li class="<%= active_page?('admin') %>">
+          <li class="<%= active_controller?('admin') %>">
             <a href="/admin">
               <i class="icon-dashboard"></i>
               <span class="menu-text"> Dashboard </span>
             </a>
           </li>
 
-          <li class="<%= active_page?('categories') %>">
+          <li class="<%= active_controller?('categories') %>">
             <%= link_to categories_path do %>
               <i class="icon-beaker"></i>
               <span class="menu-text"> Categories </span>
             <% end %>
           </li>
 
-          <li class="<%= active_page?('products') %>">
+          <li class="<%= active_controller?('products') %>">
             <%= link_to products_path do %>
               <i class="icon-th"></i>
               <span class="menu-text">Products</span>
             <% end %>
           </li>
-          <li class="<%= active_page?('accessories') %>">
+          <li class="<%= active_controller?('accessories') %>">
             <%= link_to accessories_path do %>
               <i class="icon-cog"></i>
               <span class="menu-text">Accessories</span>
             <% end %>
           </li>
-          <li class="<%= active_page?('orders') %>">
+          <li class="<%= active_controller?('orders') %>">
             <%= link_to orders_path do %>
               <i class="icon-shopping-cart"></i>
               <span class="menu-text"> Orders </span>
             <% end %>
           </li>
-          <li class="<%= active_page?('invoices') %>">
+          <li class="<%= active_controller?('invoices') %>">
             <%= link_to invoices_path do %>
               <i class="icon-file-text"></i>
               <span class="menu-text"> Invoices </span>
             <% end %>
           </li>
-          <li class="<%= active_page?('tiers') %> <%= active_page?('shippings') %> <%= active_page?('countries') %>">
+          <li class="<%= active_controller?('tiers') %> <%= active_controller?('shippings') %> <%= active_controller?('countries') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-truck"></i>
               <span class="menu-text"> Shipping </span>
               <b class="arrow icon-angle-down"></b>
             </a>
             <ul class="submenu">
-              <li class="<%= active_page?('tiers') %>">
+              <li class="<%= active_controller?('tiers') %>">
                 <%= link_to tiers_path do %>
                   <i class="icon-double-angle-right"></i>
                   Tiers
                 <% end %>
               </li>
-              <li class="<%= active_page?('shippings') %>">
+              <li class="<%= active_controller?('shippings') %>">
                 <%= link_to shippings_path do %>
                   <i class="icon-double-angle-right"></i>
                   Shipping Options
                 <% end %>
               </li>
-              <li class="<%= active_page?('countries') %>">
+              <li class="<%= active_controller?('countries') %>">
                 <%= link_to countries_path do %>
                   <i class="icon-double-angle-right"></i>
                   Countries

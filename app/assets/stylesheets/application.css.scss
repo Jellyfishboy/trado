@@ -8,3 +8,9 @@ body {
 textarea {
     resize:none;
 }
+.main-menu {
+    li.active a {
+        color:#1abc9c;
+        font-weight: bold;
+    }
+}

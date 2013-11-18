@@ -11,8 +11,16 @@ module ApplicationHelper
       link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{target}\")", :class => 'btn btn-success btn-mini add_field')
     end
 
-    def active_page? page
-      "active" if params[:controller] == page
+    def active_controller? controller
+      "active" if params[:controller] == controller
+    end
+
+    def active_category? id
+      "active" if params[:id].to_i == id
+    end
+
+    def active_page? controller, action
+      "active" if params[:controller] == controller && params[:action] == action
     end
 
     def create_breadcrumbs

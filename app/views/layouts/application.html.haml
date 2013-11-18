@@ -71,13 +71,14 @@
             .hidden-phone
               / Main menu (desktop)
               %ul.main-menu
-                %li
+                %li{ :class => active_page?('store', 'index') }
                   %a.title{href: store_path, title: "Home"} Home
                 - category_list.each do |category|
-                  %li= link_to category.name, category
-                %li
+                  %li{ :class => active_category?(category.id) }
+                    = link_to category.name, category
+                %li{ :class => active_page?('store', 'about') }
                   %a.title{href: about_path, title: "About us"} About us
-                %li
+                %li{ :class => active_page?('store', 'contact') }
                   %a.title{href: contact_path, title: "Contact us"} Contact us
               / End class="main-menu"
             .visible-phone
