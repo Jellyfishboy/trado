@@ -77,7 +77,7 @@
                               .controls
                                 = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] }), :prompt => 'Select a dimension'
                       .add-to-cart
-                        = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large', :onclick => "$('#added').modal('show')") do
+                        = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large') do
           
                           %i.icon-plus
                             Add to cart
@@ -231,16 +231,3 @@
                       %span.price= format_currency product.dimensions.first.price
                     %h3= product.name
     / End class="products-related"
-  / Added to cart modal window
-  #added.modal.hide.fade{tabindex: "-1"}
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      .hgroup.title
-        %h3 You're one step closer to owning this product!
-        %h5 "Chaser Overalls" has been added to your cart
-    .modal-footer
-      .pull-right
-        %a.btn.btn-primary.btn-small{href: "cart.html"}
-          Go to cart  
-          %i.icon-chevron-right
-  / End id="added"

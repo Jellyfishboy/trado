@@ -55,10 +55,12 @@
                 .span2
                   / Mini cart
                   .mini-cart
-                    - if current_cart
+                    - if current_cart.line_items.count > 0
                       = link_to current_cart, :method => :get do
                         %span
                           = current_cart.line_items.sum('quantity')
+                    - else 
+                      %a
 
                   / End class="mini-cart"
       / End class="bottom"

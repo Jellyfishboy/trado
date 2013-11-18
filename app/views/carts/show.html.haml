@@ -35,8 +35,6 @@
                         %ul.options
                           %li
                             = "Length: #{item.length}mm"
-                          %li
-                            = "SKU: #{item.sku}"
                       %td.col_remove.text-right
                         = link_to item, :method => :delete, :remote => true do
                           %i.icon-trash.icon-large

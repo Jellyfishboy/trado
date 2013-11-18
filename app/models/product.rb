@@ -1,12 +1,11 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level, :tag_ids, :attachments_attributes
-  validates :name, :description, :presence => true
-  validates :name, :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
-  # validates :attachment, :format => {
-  # 	:with => %r{\.(gif|png|jpg)$}i,
-  # 	:message => "must be a URL for GIF, JPG or PNG image."
-  # } # all of the above validates the attributes of products
-  validates :dimensions, :tier => true, :on => :create
+  attr_accessible :name, :description, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level, :tag_ids, :attachments_attributes, :attachment_ids
+  validates :name, :description, :part_number, :sku, :stock, :stock_warning_level, :weighting, :presence => true
+  validates :part_number, :sku, :name, :uniqueness => true
+  validates :part_number, :stock, :stock_warning_level, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :name, :length => {:minimum => 10, :message => :too_short}
+  validates :description, :length => {:minimum => 20, :message => :too_short}
+  validates :dimensions, :tier => true, :on => :save
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
   has_many :orders, :through => :line_items
@@ -19,8 +18,8 @@ class Product < ActiveRecord::Base
   has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable
-  accepts_nested_attributes_for :attachments  
-  accepts_nested_attributes_for :dimensions, :reject_if => lambda { |a| a[:length].blank? }
+  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :dimensions
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
   def remove_image_folders
