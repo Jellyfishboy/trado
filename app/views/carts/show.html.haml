@@ -1,0 +1,107 @@
+/ Cart container
+%section.cart
+  .container
+    .row
+      .span9
+        / Cart
+        .box
+          %form{action: "checkout-start.html", enctype: "multipart/form-data", method: "post"}
+          .box-header
+            %h3 Shopping cart
+            %h5
+              You currently have
+              %strong= current_cart.line_items.sum('quantity')
+              item(s) in your cart
+          .box-content
+            .cart-items
+              %table.styled-table
+                %thead
+                  %tr
+                    %th.col_product.text-left Product
+                    %th.col_remove.text-right  
+                    %th.col_qty.text-right Qty
+                    %th.col_single.text-right Single
+                    %th.col_discount.text-right Discount
+                    %th.col_total.text-right Total
+                %tbody
+                  - current_cart.line_items.each do |item|
+                    %tr
+                      %td.col_product.text-left
+                        .image.visible-desktop
+                          = link_to item.product do
+                            = image_tag item.product.attachments.first.file.small, :alt => item.product.name
+                        %h5
+                          = link_to item.product.name, item.product
+                        %ul.options
+                          %li
+                            = "Length: #{item.length}mm"
+                          %li
+                            = "SKU: #{item.sku}"
+                      %td.col_remove.text-right
+                        = link_to item, :method => :delete, :remote => true do
+                          %i.icon-trash.icon-large
+                      %td.col_qty.text-right
+                        %input{name: "item_quantity[]", type: "text", value: item.quantity}/
+                      %td.col_single.text-right
+                        %span.single-price= format_currency item.price
+                      %td.col_discount.text-right
+                        %span.discount £0.00
+                      %td.col_total.text-right
+                        %span.total-price= format_currency item.total_price
+          .box-footer
+            .pull-left
+              = link_to store_path, :class => 'btn btn-small' do
+                %i.icon-chevron-left
+                  Continue shopping
+            .pull-right
+              %button.btn.btn-small.mm20{type: "submit"}
+                %i.icon-undo
+                  Update cart
+              = link_to new_order_path, :method => :get, :class => 'btn btn-primary btn-small mm20' do
+                Proceed to checkout  
+                %i.icon-chevron-right
+        / End Cart
+        / Shipping estimator
+        .box
+          %form{action: "#", enctype: "multipart/form-data", method: "post", onsubmit: "return false;"}
+          .box-header
+            %h3 Shipping estimator
+            %h5 Get an estimated shipping cost for your order
+          .box-content
+            .row-fluid
+              .span4
+                %label Country
+                = select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] })
+          .box-footer
+            %a.btn.btn-small#estimate_shipping{href: "#", "data-tier" => @calculated_tier} Estimate shipping cost
+        / End Shipping estimator
+        / Shipping modal
+        #shipping.modal.hide.fade{tabindex: "-1"}
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            .hgroup.title
+              %h3 Shipping estimator
+              %h5 Get an estimated shipping cost for your order
+          .modal-body
+            #shipping_options
+          .modal-footer
+            .pull-right
+              = link_to new_order_path, :method => :get, :class => 'btn btn-primary btn-small' do
+                Proceed to checkout  
+                %i.icon-chevron-right
+        / End Shipping modal
+      .span3
+        / Cart details
+        .cart-details
+          .box
+            .hgroup.title
+              %h3 Order totals
+              %h5 Shipping costs and taxes will be evaluated during checkout
+            %ul.price-list
+              %li
+                Subtotal:
+                %strong= format_currency current_cart.total_price
+              %li.important
+                Total:
+                %strong= format_currency current_cart.total_price
+        / End class="cart-details"

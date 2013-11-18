@@ -1,0 +1,117 @@
+%section.checkout
+  .container
+    %form{action: "shipping.html", enctype: "multipart/form-data", method: "post"}
+      .row
+        .span9
+          .box
+            / Checkout progress
+            #checkout-progress
+              %ul.nav.nav-tabs
+                %li.active
+                  %a{href: "#"}
+                    %i.icon-map-marker.icon-large
+                    %span Billing address
+                %li
+                  %div
+                    %i.icon-envelope.icon-large
+                    %span Shipping address
+                %li
+                  %div
+                    %i.icon-truck.icon-large
+                    %span Shipping method
+                %li
+                  %div
+                    %i.icon-money.icon-large
+                    %span Payment method
+                %li
+                  %div
+                    %i.icon-search.icon-large
+                    %span Order review
+            / End id="checkout-progress"
+            / Checkout content
+            #checkout-content
+              .box-header
+                %h3 Billing address
+                %h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              .box-content
+                .row-fluid
+                  .span6
+                    .control-group
+                      %label.control-label{for: "first_name"} First name
+                      .controls
+                        %input#first_name.span12{name: "first_name", type: "text", value: ""}/
+                    .control-group
+                      %label.control-label{for: "last_name"} Last name
+                      .controls
+                        %input#last_name.span12{name: "last_name", type: "text", value: ""}/
+                    .control-group
+                      %label.control-label{for: "email"} Email
+                      .controls
+                        %input#email.span12{name: "email", type: "text", value: ""}/
+                    .control-group
+                      %label.control-label{for: "phone"} Phone
+                      .controls
+                        %input#phone.span12{name: "phone", type: "text", value: ""}/
+                  .span6
+                    .control-group
+                      %label.control-label{for: "company"} Company
+                      .controls
+                        %input#company.span12{name: "company", type: "text", value: ""}/
+                    .control-group
+                      %label.control-label{for: "street_address"} Street address
+                      .controls
+                        %input#street_address.span12{name: "street_address", type: "text", value: ""}/
+                    .row-fluid
+                      .span6
+                        .control-group
+                          %label.control-label{for: "city"} Town / City
+                          .controls
+                            %input#city.span12{name: "city", type: "text", value: ""}/
+                      .span6
+                        .control-group
+                          %label.control-label{for: "zip"} Zip / Postcode
+                          .controls
+                            %input#zip.span12{name: "zip", type: "text", value: ""}/
+                    .row-fluid
+                      .span6
+                        .control-group
+                          %label.control-label{for: "country"} Country
+                          .controls
+                            %select#country.span12{name: "country"}
+                      .span6
+                        .control-group
+                          %label.control-label{for: "state"} State
+                          .controls
+                            #states
+                              %select#state.span12{name: "state"}
+              .box-footer
+                .pull-left
+                  %a.btn.btn-small{href: "cart.html"}
+                    %i.icon-chevron-left
+                      Back to cart
+                .pull-right
+                  %button.btn.btn-primary{type: "submit"}
+                    Shipping address  
+                    %i.icon-chevron-right
+            / End id="checkout-content"
+        .span3
+          .box
+            / Order totals
+            #checkout-totals
+              .hgroup.title
+                %h3 Order total
+                %h5 Shipping costs and taxes will be calculated during checkout
+              %ul.price-list
+                %li
+                  Subtotal:
+                  %strong £247.98
+                %li
+                  Shipping:
+                  %strong £0.00
+                %li
+                  Tax:
+                  %strong £0.00
+                %li.important
+                  Total:
+                  %strong £247.98
+            / End id="checkout-totals"

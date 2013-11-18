@@ -32,6 +32,18 @@ class Cart < ActiveRecord::Base
     basket_quantity
   end
 
+  def calculate_shipping_tier
+      max_length = self.line_items.map(&:length).max
+      max_thickness = self.line_items.map(&:thickness).max
+      total_weight = self.line_items.map(&:weight).sum
+      # FIXME: Possibly quite slow. Alot of repetition here so will revise later
+      tier_raffle = []
+      tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
+      tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
+      tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
+      return tier_raffle.max.first
+  end
+
   def clear_carts
     Cart.where("updated_at < ?", 12.hours.ago).destroy_all
   end

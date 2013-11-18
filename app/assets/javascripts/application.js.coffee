@@ -29,6 +29,16 @@ $(document).ready ->
     		success: (data) ->
     			$('#shipping_options').html data
 
+    $('#estimate_shipping').click ->
+        $.ajax '/estimate_shipping',
+            type: 'GET'
+            data: {'country_id' : $('#country_selector').val(), 'tier_id' : $(@).attr 'data-tier' }
+            dataType: 'html'
+            success: (data) ->
+                $('#shipping_options').html data
+        $('#shipping').modal 'show'
+        return false
+
 $(document).ajaxComplete ->
     update_shipping_cost()
 

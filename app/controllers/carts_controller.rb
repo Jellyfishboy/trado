@@ -17,6 +17,7 @@ class CartsController < ApplicationController
   def show
     begin
       @cart = Cart.find(params[:id])
+      @calculated_tier = @cart.calculate_shipping_tier
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
       redirect_to store_url, :notice => "Invalid cart"
@@ -32,7 +33,6 @@ class CartsController < ApplicationController
   # GET /carts/new.json
   def new
     @cart = Cart.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @cart }
@@ -87,5 +87,11 @@ class CartsController < ApplicationController
       format.html { redirect_to store_url }
       format.json { head :no_content }
     end
+  end
+
+  def estimate_shipping
+    @tier = Tier.find(params[:tier_id])
+    @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).all
+    render :partial => "carts/estimate_shipping", :object => @new_shippings
   end
 end
