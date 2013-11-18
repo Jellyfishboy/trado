@@ -73,7 +73,7 @@
               %ul.main-menu
                 %li
                   %a.title{href: store_path, title: "Home"} Home
-                - @categories.each do |category|
+                - category_list.each do |category|
                   %li= link_to category.name, category
                 %li
                   %a.title{href: about_path, title: "About us"} About us
@@ -85,6 +85,8 @@
               %select.mobile-nav
                 %option{selected: "selected", value: ""}Go to…
                 %option{value: store_path} Home
+                - category_list.each do |category|
+                  %option{value: category_path(category) }= category.name
                 %option{value: about_path} About
                 %option{value: contact_path} Contact
           .span3.visible-desktop
@@ -130,7 +132,7 @@
             .categories
               %h6 Categories
               %ul.links
-                - @categories.each do |category|
+                - category_list.each do |category|
                   %li
                     = link_to category.name, category
             / End class="categories"

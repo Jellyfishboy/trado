@@ -1,15 +1,14 @@
 class ApplicationController < ActionController::Base
 
     before_filter :authenticate_user!
-    before_filter :category_list
-    helper_method :current_cart
+    helper_method :current_cart, :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
         puts exception.message
         redirect_to store_url
     end
-    
+
     protected
 
   	def current_cart
@@ -21,7 +20,7 @@ class ApplicationController < ActionController::Base
   	end
 
     def category_list 
-      @categories = Category.all
+      Category.all
     end
 
     def after_sign_out_path_for(resource_or_scope)
