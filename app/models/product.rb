@@ -21,6 +21,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :dimensions
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
+  before_create :validate_img_dimensions
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/attachment/Product/#{self.id}", :force => true)
@@ -33,4 +34,7 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def validate_img_dimensions
+    
+  end
 end
