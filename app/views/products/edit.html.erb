@@ -62,7 +62,6 @@
         </div>
       </div>
       <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
-      <div id="image_fields"></div>
       <% if @product.attachments.empty? %>
       <div class="control-group">
         <div class="controls">
@@ -92,6 +91,7 @@
         </div>
         <% end %>
       <% end %>
+      <div id="image_fields" class="edit_field"></div>
       <h3 class="header smaller lighter blue">Categories</h3>
       <div class="control-group">
         <div class="controls">
@@ -171,8 +171,7 @@
         </div>
         <% end %>
       <% end %>
-      <div id="dimension_fields">
-      </div>
+      <div id="dimension_fields"  class="edit_field"></div>
       <h3 class="header smaller lighter blue">Tags</h3>
         <div class="control-group">
           <div class="controls">
