@@ -11,10 +11,11 @@
 # Attach a function or variable to the global namespace
 root = exports ? this
 
-root.remove_fields = (link) ->
-  if $('.ajax_fields')
-  $(link).prev("input[type=hidden]").val "1"
-  $(link).closest(".ajax_fields").remove()
+root.remove_fields = (link, obj) ->
+  console.log link
+  if obj.length > 1
+    $(link).prev("input[type=hidden]").val "1"
+    $(link).closest(".ajax_fields").remove()
 root.add_fields = (link, association, content, target) ->
   new_id = new Date().getTime()
   regexp = new RegExp("new_" + association, "g")

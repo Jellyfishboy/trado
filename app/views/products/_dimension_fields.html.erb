@@ -1,4 +1,4 @@
-<div class="ajax_fields">
+<div class="ajax_fields" id="dimensions">
     <div class="control-group">
       <%= f.label :cost_value, :class => 'control-label' %>
       <div class="controls">
@@ -31,7 +31,7 @@
     </div>
     <div class="control-group">
       <div class="controls">
-        <%= link_to_remove_fields "Remove", f %>
+        <%= link_to_remove_fields "Remove", f, "dimensions" %>
       </div>
     </div>
 </div>
