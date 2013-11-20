@@ -44,7 +44,7 @@ end
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, 'custom:assets'
+after :deploy, 'custom:setup_carrierwave'
+after 'custom:setup_carrierwave', 'custom:assets'
 after 'custom:assets', 'custom:setup_database'
-after 'custom:setup_database', 'custom:setup_carrierwave'
 after 'custom:setup_carrierwave', 'unicorn:restart' 
