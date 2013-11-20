@@ -61,8 +61,9 @@ gem 'devise'
 gem 'cancan'
 
 # Image uploader
-gem 'mini_magick', '~> 3.5.0'
+gem 'mini_magick'
 gem 'carrierwave'
+gem 'fog'
 
 # Monitoring
 gem 'newrelic_rpm'
