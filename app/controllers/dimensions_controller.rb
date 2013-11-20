@@ -1,27 +1,5 @@
 class DimensionsController < ApplicationController
   layout 'admin'
-  # GET /dimensions
-  # GET /dimensions.json
-  def index
-    @dimensions = Dimension.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @dimensions }
-    end
-  end
-
-  # GET /dimensions/1
-  # GET /dimensions/1.json
-  def show
-    @dimension = Dimension.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @dimension }
-    end
-  end
-
   # GET /dimensions/new
   # GET /dimensions/new.json
   def new

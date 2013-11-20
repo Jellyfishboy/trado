@@ -12,6 +12,7 @@
 root = exports ? this
 
 root.remove_fields = (link, obj) ->
+  console.log $(@).parent().parent().parent() 
   if obj.length > 1 || obj.parentElement.className == 'edit_field'
     $(link).prev("input[type=hidden]").val "1"
     $(link).closest(".ajax_fields").remove()
