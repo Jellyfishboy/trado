@@ -56,11 +56,10 @@
                         %span{rel: "tooltip", title: "SKU is #{@product.sku}"}
                           = @product.sku
                       .categories
-                        %span>
+                        %span
                           %i.icon-tags
-                          %a{href: "#", title: "Dresses"} Dresses
-                        ,
-                        %a{href: "#", title: "Womens"} Womens
+                          - @product.tags.each do |tag|
+                            = "#{tag.name},"
                       .stock
                         %i.icon-bar-chart
                         %span{rel: "tooltip", :title => "Stock is #{@product.stock}"}

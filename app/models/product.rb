@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :weighting, :stock, :dimensions_attributes, :category_ids, :accessory_ids, :dimension_ids, :sku, :part_number, :stock_warning_level, :tag_ids, :attachments_attributes, :attachment_ids
+  attr_accessible :name, :description, :weighting, :stock, :sku, :part_number, :stock_warning_level, :category_ids, :accessory_ids, :attachments_attributes, :tags_attributes, :dimensions_attributes
   validates :name, :description, :part_number, :sku, :stock, :stock_warning_level, :weighting, :presence => true
   validates :part_number, :sku, :name, :uniqueness => true
   validates :part_number, :stock, :stock_warning_level, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
@@ -19,9 +19,10 @@ class Product < ActiveRecord::Base
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable
   accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :dimensions
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
-  before_create :validate_img_dimensions
+  # before_create :validate_img_dimensions
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/attachment/Product/#{self.id}", :force => true)
@@ -34,7 +35,7 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def validate_img_dimensions
+  # def validate_img_dimensions
     
-  end
+  # end
 end

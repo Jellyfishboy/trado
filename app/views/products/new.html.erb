@@ -95,24 +95,14 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions,"#dimension_fields" %></h3>
+      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions, "#dimension_fields" %></h3>
       <div id="dimension_fields">
         <%= add_foreign_field f, :dimensions %>
       </div>
-      <h3 class="header smaller lighter blue">Tags</h3>
-        <div class="control-group">
-          <div class="controls">
-            <div class="tags">
-              <input type="text" name="tags" id="form-field-tags" value="Tag Input Control" placeholder="Enter tags ..." style="display: none;">
-              <input type="text" placeholder="Enter tags ...">
-              <ul class="typeahead dropdown-menu" style="top: 24px; left: 19px; display: none;">
-                <li data-value="Hawaii" class="active"><a href="#"><strong>Ha</strong>waii</a></li>
-                <li data-value="New Hampshire" class=""><a href="#">New <strong>Ha</strong>mpshire</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+      <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags, "#tag_fields" %></h3>
+      <div id="tag_fields">
+        <%= add_foreign_field f, :tags %>
+      </div>
       <div class="form-actions">
         <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
           <i class="icon-ok"></i>Submit
