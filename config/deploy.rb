@@ -32,8 +32,12 @@ namespace :custom do
 	end
 	desc "setup database"
 	task :setup_database, :roles => :app do
-		run "yes | cp /var/www/db_config/database.yml /var/www/gimsonrobotics/current/config"
+		run "yes | cp /var/www/configs/database.yml /var/www/gimsonrobotics/current/config"
 	end
+    desc "setup carrierwave"
+    task :setup_carrierwave, :roles => :app do
+        run "yes | cp /var/www/configs/carrierwave_config.rb /var/www/gimsonrobotics/current/config/initializers"
+    end
 end
 
 # additional settings
@@ -42,4 +46,5 @@ default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'custom:assets'
 after 'custom:assets', 'custom:setup_database'
-after 'custom:setup_database', 'unicorn:restart' 
+after 'custom:setup_database', 'custom:setup_carrierwave'
+after 'custom:setup_carrierwave', 'unicorn:restart' 
