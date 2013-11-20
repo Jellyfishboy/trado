@@ -64,6 +64,7 @@ gem 'cancan'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
+gem 'unf' # Dependency for fog
 
 # Monitoring
 gem 'newrelic_rpm'
