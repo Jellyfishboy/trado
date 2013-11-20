@@ -9,7 +9,11 @@ class FileUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{model.attachable_type}/#{model.attachable_id}"
+    if Rails.env.production?
+      "#{model.class.to_s.underscore}/#{model.attachable_type}/#{model.attachable_id}"
+    else
+      "uploads/#{model.class.to_s.underscore}/#{model.attachable_type}/#{model.attachable_id}"
+    end
   end
 
   process resize_to_fit: [500,500]
