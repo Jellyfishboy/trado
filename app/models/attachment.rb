@@ -15,8 +15,7 @@ class Attachment < ActiveRecord::Base
   def check_association_number
     product = Product.find(self.attachable_id)
     if product.attachments.count < 2
-        binding.pry
-        flash[:error] = "You must have at least one attachment per product."
+        product.errors[:base] << "You must have at least one attachment per product."
         return false
     end
   end

@@ -12,7 +12,7 @@ class AttachmentsController < ApplicationController
       else
         flash[:error] = "Attachment failed to be removed from the database."
       end
-      format.html { redirect_to attachments_path }
+      format.html
     end
   end
 end

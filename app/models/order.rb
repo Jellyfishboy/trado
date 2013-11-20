@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   validates :first_name, :last_name, :email, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :presence => true
   validates_format_of :email, :with => /@/
   validates :terms, :acceptance => {:message => "Please accept the Terms & Conditions."}
-  has_many :line_items, :dependent => :destroy
+  has_many :line_items, :dependent => :delete_all
   belongs_to :invoice
   # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
   # after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was

@@ -12,7 +12,7 @@ class TagsController < ApplicationController
       else
         flash[:error] = "Tag failed to be removed from the database."
       end
-      format.html { redirect_to tags_path }
+      format.html
     end
   end
 end

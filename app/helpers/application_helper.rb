@@ -1,6 +1,6 @@
 module ApplicationHelper
     def link_to_remove_fields name, f, obj
-      f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, #{obj})", :class => 'btn btn-danger btn-mini')
+      f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, '#{obj}')", :class => 'btn btn-danger btn-mini')
     end
       
     # The type parameter defines whether the helper is an ajax trigger, or just a simple form rendering.
