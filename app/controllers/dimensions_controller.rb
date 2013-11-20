@@ -38,7 +38,7 @@ class DimensionsController < ApplicationController
       else
         flash[:error] = "Dimension failed to be removed from the database."
       end
-      format.html { redirect_to dimensions_path }
+      format.html 
     end
   end
 end
