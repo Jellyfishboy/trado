@@ -25,18 +25,28 @@ set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 
-namespace :custom do
-	desc "deploy_assets"
-	task :assets, :roles => :app do
-		run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
-	end
-	desc "setup database"
-	task :setup_database, :roles => :app do
+namespace :configure do
+	desc "Setup database configuration"
+	task :database, :roles => :app do
 		run "yes | cp /var/www/configs/database.yml /var/www/gimsonrobotics/current/config"
 	end
-    desc "setup carrierwave"
-    task :setup_carrierwave, :roles => :app do
+    desc "Setup carrierwave configuration"
+    task :carrierwave, :roles => :app do
         run "yes | cp /var/www/configs/carrierwave_config.rb /var/www/gimsonrobotics/current/config/initializers"
+    end
+    desc "Setup asset_sync configuration"
+    task :asset_sync, :roles => :app do
+        run "yes | cp /var/www/configs/asset_sync.rb /var/www/gimsonrobotics/current/config/initializers"
+    end
+end
+namespace :assets do
+    desc "Compile assets"
+    task :compile, :roles => :app do
+        run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
+    end
+    desc "Sync assets to S3 bucket"
+    task :sync, :roles => :app do
+        AssetSync.sync
     end
 end
 
@@ -44,7 +54,9 @@ end
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, 'custom:setup_carrierwave'
-after 'custom:setup_carrierwave', 'custom:assets'
-after 'custom:assets', 'custom:setup_database'
-after 'custom:setup_carrierwave', 'unicorn:restart' 
+after :deploy, 'configure:carrierwave'
+after 'configure:carrierwave', 'configure:asset_sync'
+after 'configure:asset_sync', 'assets:compile'
+after 'assets:compile', 'assets:sync'
+after 'assets:sync', 'configure:database'
+after 'configure:database', 'unicorn:restart' 
