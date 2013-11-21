@@ -216,6 +216,22 @@
         <%= render_breadcrumbs %>
 
         <div class="page-content">
+          <% if flash[:notice] or flash[:error] or flash[:success] %>
+              <div class="alert 
+                <% if flash[:success] then %>alert-success
+                <% end %>
+                <% if flash[:notice] then %>alert-info
+                <% end %>
+                <% if flash[:error] then %>alert-error
+                <% end %>">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <% if flash[:error] and !flash[:notice] %>
+                    <%= raw flash[:error] %>
+                <% end %>
+                <%= raw flash[:notice] %>
+                <%= raw flash[:success] %>
+              </div>
+          <% end %>
           <%= yield %>
         </div><!--/.page-content-->
       </div><!--/.main-content-->
