@@ -26,6 +26,15 @@ duplicate_fields = (checkbox, field_one, field_two) ->
       $(field_two).val $(field_one).val()
     else
       $(field_two).val ""
-
+disable_field = (checkbox, field) ->
+  $(checkbox).change ->
+    console.log "test"
+    if @checked
+      $(field).prop 'disabled', false
+    else
+      $(field).val ''
+      $(field).prop 'disabled', true
+      
 $(document).ready ->
   duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
+  disable_field '#invoice_vat_applicable', '#invoice_vat_number'

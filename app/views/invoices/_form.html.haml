@@ -10,6 +10,10 @@
                 %li= msg
         .span6         
           .control-group
+            = f.label :invoice_number, :class => 'control-label'
+            .controls
+              = f.text_field :invoice_number, :class => 'form-control'
+          .control-group
             = f.label :first_name, :class => 'control-label'
             .controls
               = f.text_field :first_name, :class => 'form-control'
@@ -29,14 +33,14 @@
                 %span.lbl Same as billing address
               = f.text_area :delivery_address, :class => 'form-control delivery_textarea', :rows => 7
           .control-group
-            = f.label :email, :class => 'control-label'
+            = f.label "Customer email", :class => 'control-label'
             .controls
               = f.text_field :email, :class => 'form-control'
-        .span6
           .control-group
-            = f.label :invoice_number, :class => 'control-label'
+            = f.label 'Customer telephone', :class => 'control-label'
             .controls
-              = f.text_field :invoice_number, :class => 'form-control'
+              = f.text_field :telephone, :class => 'form-control'
+        .span6
           .control-group
             = f.label :notes, :class => 'control-label'
             .controls
@@ -66,6 +70,16 @@
             = f.label :shipping_cost, :class => 'control-label'
             .controls
               = f.text_field :shipping_cost, :class => 'form-control'
+          .control-group
+            = f.label :vat_applicable, :class => 'control-label'
+            .controls
+              %label
+                = f.check_box :vat_applicable, :class => 'ace-checkbox-2'
+                %span.lbl
+          .control-group
+            = f.label :vat_number, :class => 'control-label'
+            .controls
+              = f.text_field :vat_number, :class => 'form-control', :disabled => true    
       .form-actions
         = button_tag(:type => 'submit', :class => 'btn btn-info') do
           %i.icon-ok

@@ -58,8 +58,7 @@
                       .categories
                         %span
                           %i.icon-tags
-                          - @product.tags.each do |tag|
-                            = "#{tag.name},"
+                          = @product.tags.map(&:name).join(',')
                       .stock
                         %i.icon-bar-chart
                         %span{rel: "tooltip", :title => "Stock is #{@product.stock}"}

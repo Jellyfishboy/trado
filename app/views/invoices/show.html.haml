@@ -19,14 +19,14 @@
   %b Email:
   = @invoice.email
 %p
+  %b Telephone:
+  = @invoice.telephone
+%p
   %b Date:
   = @invoice.created_at
 %p
   %b Invoice number:
   = @invoice.invoice_number
-%p
-  %b Order number:
-  = @invoice.order_number
 %p
   %b Notes:
   = @invoice.notes
@@ -45,6 +45,12 @@
 %p
   %b Shipping cost:
   = @invoice.shipping_cost
+%p
+  %b VAT applicable:
+  = @invoice.vat_applicable
+%p
+  %b VAT number:
+  = @invoice.vat_number
 
 = link_to 'Edit', edit_invoice_path(@invoice)
 \|

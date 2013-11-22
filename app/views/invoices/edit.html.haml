@@ -1,10 +1,7 @@
 - content_for :title, 'Edit invoice'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Invoices', invoices_path
-%h1 Editing invoice
+.page-header
+    %h1 Editing invoice
 
 = render 'form'
-
-= link_to 'Show', @invoice
-\|
-= link_to 'Back', invoices_path
