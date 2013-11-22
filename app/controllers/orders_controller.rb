@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
     @shipping_options = @order.display_shippings(@calculated_tier)
     @order.calculate_order(current_cart)
     respond_to do |format|
+      format.js { render :partial => 'orders/update_shipping', :format => [:js] }
       format.html # new.html.erb
       format.json { render json: @order }
     end
@@ -105,11 +106,5 @@ class OrdersController < ApplicationController
     @tier = Tier.find(params[:tier_id])
     @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).all
     render :partial => "orders/update_country", :object => @new_shippings
-  end
-
-  def update_shipping
-    @shipping = Shipping.find(params[:shipping_id])
-    binding.pry
-    render :partial => "orders/update_shipping", :format => [:js], :object => @shipping
   end
 end

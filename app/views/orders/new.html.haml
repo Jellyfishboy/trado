@@ -165,7 +165,7 @@
                   %h5 Please select one shipping method in your country.
                   = select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :class => 'shipping_selector'
                 .box-content
-                  .shipping-methods{ 'data-tier' => "#{@calculated_tier}", 'data-total' => "@order.total" }
+                  .shipping-methods{ 'data-tier' => "#{@calculated_tier}", 'data-total' => "#{@order.total}" }
                     - if @shipping_options.empty?
                       .row-fluid
                         %p There are no shipping options available
@@ -227,11 +227,11 @@
                   Subtotal:
                   %strong= format_currency @order.sub_total
                 %li
+                  VAT:
+                  %strong= format_currency @order.vat
+                %li
                   Shipping:
                   %strong#shipping_value
-                %li
-                  Tax:
-                  %strong= format_currency @order.vat
                 %li.important
                   Total:
                   %strong#order_total= format_currency @order.total

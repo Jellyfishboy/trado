@@ -10,7 +10,6 @@ GimsonRobotics::Application.routes.draw do
   # Ajax methods
   match '/update_price' => 'products#update_price'
   match '/update_country' => 'orders#update_country'
-  match '/update_shipping' => 'orders#update_shipping'
   match '/estimate_shipping' => 'carts#estimate_shipping'
 
   devise_for :users, :controllers => { 
