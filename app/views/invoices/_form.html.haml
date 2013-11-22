@@ -79,7 +79,8 @@
           .control-group
             = f.label :vat_number, :class => 'control-label'
             .controls
-              = f.text_field :vat_number, :class => 'form-control', :disabled => true    
+              = hidden_field_tag :vat_number, ''
+              = f.text_field :vat_number, :class => 'form-control', :readonly => readonly_helper(@invoice.vat_applicable)    
       .form-actions
         = button_tag(:type => 'submit', :class => 'btn btn-info') do
           %i.icon-ok

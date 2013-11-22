@@ -116,7 +116,7 @@
           <% else %>
             <% Accessory.all.each do |option| %>
               <label>
-                <%=hidden_field_tag "product[accessory_ids][]", ''%>
+                <%= hidden_field_tag "product[accessory_ids][]", ''%>
                 <%= check_box_tag "product[accessory_ids][]", option.id, @product.accessory_ids.include?(option.id), :class => 'ace-checkbox-2' %>
                 <span class="lbl"><%= option.name %></span>
               </label>

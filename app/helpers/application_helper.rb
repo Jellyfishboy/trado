@@ -84,4 +84,12 @@ module ApplicationHelper
         return second
       end
     end
+
+    def readonly_helper obj
+      if obj == false
+        true
+      else 
+        false
+      end
+    end
 end

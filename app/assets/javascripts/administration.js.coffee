@@ -30,11 +30,11 @@ disable_field = (checkbox, field) ->
   $(checkbox).change ->
     console.log "test"
     if @checked
-      $(field).prop 'disabled', false
+      $(field).prop 'readonly', false
     else
-      $(field).val ''
-      $(field).prop 'disabled', true
-      
+      $(field).val '0'
+      $(field).prop 'readonly', true
+
 $(document).ready ->
   duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
   disable_field '#invoice_vat_applicable', '#invoice_vat_number'
