@@ -46,7 +46,7 @@ update_shipping_cost = ->
     $('.shipping-methods input[type="radio"]').change ->
         $.ajax '/update_shipping',
             type: 'GET'
-            data: {'shipping_id' : $(@).val(), 'product_id' }
+            data: {'shipping_id' : $(@).val() }
             dataType: 'html'
             success: (data) ->
                 $('#shipping_value').html data
