@@ -16,6 +16,10 @@
         = f.label :price, :class => 'control-label'
         .controls
           = f.text_field :price, :class => 'form-control'
+      .control-group
+        = f.label :description, :class => 'control-label'
+        .controls
+          = f.text_area :description, :class => 'form-control', :rows => 7
       %h3.header.smaller.lighter.blue Countries
       .control-group
         .controls

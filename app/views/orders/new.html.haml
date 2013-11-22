@@ -8,19 +8,19 @@
             #checkout-progress
               %ul.nav.nav-tabs
                 %li.active
-                  %a{href: "#"}
+                  %a{"data-toggle" => "tab", href: "#billing_address"}
                     %i.icon-map-marker.icon-large
                     %span Billing address
                 %li
-                  %div
+                  %a{"data-toggle" => "tab", href: "#shipping_address"}
                     %i.icon-envelope.icon-large
                     %span Shipping address
                 %li
-                  %div
+                  %a{"data-toggle" => "tab", href: "#shipping_method"}
                     %i.icon-truck.icon-large
                     %span Shipping method
                 %li
-                  %div
+                  %a{"data-toggle" => "tab", href: "#payment_method"}
                     %i.icon-money.icon-large
                     %span Payment method
                 %li
@@ -29,11 +29,11 @@
                     %span Order review
             / End id="checkout-progress"
             / Checkout content
-            #checkout-content.tab_content
+            #checkout-content.tab-content
               #billing_address.tab-pane.active
                 .box-header
                   %h3 Billing address
-                  %h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  %h5 * Required fields
                 .box-content
                   .row-fluid
                     .span6
@@ -87,13 +87,132 @@
                                 %select#state.span12{name: "state"}
                 .box-footer
                   .pull-left
-                    %a.btn.btn-small{href: "cart.html"}
+                    = link_to current_cart, :class => 'btn btn-small' do
                       %i.icon-chevron-left
                         Back to cart
                   .pull-right
-                    %button.btn.btn-primary{type: "submit"}
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_address"}
                       Shipping address  
                       %i.icon-chevron-right
+              #shipping_address.tab-pane
+                .box-header
+                  %h3 Shipping address
+                  %h5 * Required fields
+                .box-content
+                  .row-fluid
+                    .span6
+                      .control-group
+                        %label.control-label{for: "first_name"} First name
+                        .controls
+                          %input#first_name.span12{name: "first_name", type: "text", value: ""}/
+                      .control-group
+                        %label.control-label{for: "last_name"} Last name
+                        .controls
+                          %input#last_name.span12{name: "last_name", type: "text", value: ""}/
+                      .control-group
+                        %label.control-label{for: "email"} Email
+                        .controls
+                          %input#email.span12{name: "email", type: "text", value: ""}/
+                      .control-group
+                        %label.control-label{for: "phone"} Phone
+                        .controls
+                          %input#phone.span12{name: "phone", type: "text", value: ""}/
+                    .span6
+                      .control-group
+                        %label.control-label{for: "company"} Company
+                        .controls
+                          %input#company.span12{name: "company", type: "text", value: ""}/
+                      .control-group
+                        %label.control-label{for: "street_address"} Street address
+                        .controls
+                          %input#street_address.span12{name: "street_address", type: "text", value: ""}/
+                      .row-fluid
+                        .span6
+                          .control-group
+                            %label.control-label{for: "city"} Town / City
+                            .controls
+                              %input#city.span12{name: "city", type: "text", value: ""}/
+                        .span6
+                          .control-group
+                            %label.control-label{for: "zip"} Zip / Postcode
+                            .controls
+                              %input#zip.span12{name: "zip", type: "text", value: ""}/
+                      .row-fluid
+                        .span6
+                          .control-group
+                            %label.control-label{for: "country"} Country
+                            .controls
+                              %select#country.span12{name: "country"}
+                        .span6
+                          .control-group
+                            %label.control-label{for: "state"} State
+                            .controls
+                              #states
+                                %select#state.span12{name: "state"}
+                .box-footer
+                  .pull-left
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#billing_address"}
+                      %i.icon-chevron-left
+                        Billing address
+                  .pull-right
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_method"}
+                      Shipping method  
+                      %i.icon-chevron-right 
+              #shipping_method.tab-pane
+                .box-header
+                  %h3 Shipping method
+                  %h5 Please select at least one shipping method in your country.
+                  = select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :class => 'shipping_selector'
+                .box-content
+                  .shipping-methods
+                    - if @shipping_options.empty?
+                      .row-fluid
+                        %p There are no shipping options available
+                    - else
+                      - @shipping_options.each_slice(3) do |slice|
+                        .row-fluid
+                          - slice.each do |shipping|
+                            .span4
+                              .box.highlight
+                                .hgroup.title
+                                  %h3= shipping.name
+                                  %h5
+                                .box-content.highlight
+                                  .price
+                                    %strong= format_currency shipping.price
+                                  = radio_button_tag :shipping, shipping.id
+                .box-footer
+                  .pull-left
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_address"}
+                      %i.icon-chevron-left
+                        Shipping address
+                  .pull-right
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#payment_method"}
+                      Payment method  
+                      %i.icon-chevron-right   
+              #payment_method.tab-pane
+                .box-header
+                  %h3 Payment method
+                  %h5 Please select a payment method. You may be redirected securely offsite to complete your order.
+                .box-content
+                  .payment-methods
+                    .row-fluid
+                      .span4
+                        .box.highlight
+                          .hgroup.title
+                            %h3 Stripe
+                            %h5 Stripe makes it easy for developers to accept credit cards on the web.
+                          .box-content.highlight
+                            %input#option1{name: "shipping_option", type: "radio", value: "1"}/
+                .box-footer
+                  .pull-left
+                    %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_method"}
+                      %i.icon-chevron-left
+                      \  Shipping method
+                  .pull-right
+                    %button.btn.btn-primary{type: "submit"}
+                      Order review  
+                      %i.icon-chevron-right    
         .span3
           .box
             / Order totals
@@ -104,14 +223,14 @@
               %ul.price-list
                 %li
                   Subtotal:
-                  %strong £247.98
+                  %strong= format_currency @order.sub_total
                 %li
                   Shipping:
-                  %strong £0.00
+                  %strong.shipping_value
                 %li
                   Tax:
-                  %strong £0.00
+                  %strong= format_currency @order.vat
                 %li.important
                   Total:
-                  %strong £247.98
+                  %strong= format_currency @order.total
             / End id="checkout-totals"

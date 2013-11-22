@@ -1,7 +1,7 @@
-- content_for :title, 'List shipping options'
-- content_for :breadcrumb, 'Shipping options'
+- content_for :title, 'List shipping methods'
+- content_for :breadcrumb, 'Shipping methods'
 .page-header
-  %h1 Listing shipping options
+  %h1 Listing shipping methods
   = link_to new_shipping_path, :class => 'btn btn-success' do
     %i.icon-plus
     New shipping option
@@ -13,6 +13,7 @@
       %tr
         %th Name
         %th Price
+        %th Description
         %th Countries
         %th Tier(s)
         %th
@@ -21,6 +22,7 @@
         %tr
           %td= shipping.name
           %td= format_currency shipping.price
+          %td= shipping.description
           %td
             %ul 
               - shipping.countries.each do |country|

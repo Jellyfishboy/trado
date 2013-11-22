@@ -21,7 +21,6 @@
                     %th.col_remove.text-right  
                     %th.col_qty.text-right Qty
                     %th.col_single.text-right Single
-                    %th.col_discount.text-right Discount
                     %th.col_total.text-right Total
                 %tbody
                   - current_cart.line_items.each do |item|
@@ -42,8 +41,6 @@
                         %input{name: "item_quantity[]", type: "text", value: item.quantity}/
                       %td.col_single.text-right
                         %span.single-price= format_currency item.price
-                      %td.col_discount.text-right
-                        %span.discount £0.00
                       %td.col_total.text-right
                         %span.total-price= format_currency item.total_price
           .box-footer
