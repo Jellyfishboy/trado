@@ -30,6 +30,7 @@
             / End id="checkout-progress"
             / Checkout content
             #checkout-content.tab-content
+              / Billing address tag
               #billing_address.tab-pane.active
                 .box-header
                   %h3 Billing address
@@ -76,15 +77,14 @@
                       .row-fluid
                         .span6
                           .control-group
+                            %label.control-label{for: "city"} County
+                            .controls
+                              %input#city.span12{name: "city", type: "text", value: ""}/
+                        .span6
+                          .control-group
                             %label.control-label{for: "country"} Country
                             .controls
                               %select#country.span12{name: "country"}
-                        .span6
-                          .control-group
-                            %label.control-label{for: "state"} State
-                            .controls
-                              #states
-                                %select#state.span12{name: "state"}
                 .box-footer
                   .pull-left
                     = link_to current_cart, :class => 'btn btn-small' do
@@ -94,6 +94,7 @@
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_address"}
                       Shipping address  
                       %i.icon-chevron-right
+              / Shipping address tab
               #shipping_address.tab-pane
                 .box-header
                   %h3 Shipping address
@@ -140,15 +141,14 @@
                       .row-fluid
                         .span6
                           .control-group
+                            %label.control-label{for: "city"} County
+                            .controls
+                              %input#city.span12{name: "city", type: "text", value: ""}/
+                        .span6
+                          .control-group
                             %label.control-label{for: "country"} Country
                             .controls
                               %select#country.span12{name: "country"}
-                        .span6
-                          .control-group
-                            %label.control-label{for: "state"} State
-                            .controls
-                              #states
-                                %select#state.span12{name: "state"}
                 .box-footer
                   .pull-left
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#billing_address"}
@@ -158,13 +158,14 @@
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_method"}
                       Shipping method  
                       %i.icon-chevron-right 
+              / Shipping method tab
               #shipping_method.tab-pane
                 .box-header
                   %h3 Shipping method
-                  %h5 Please select at least one shipping method in your country.
+                  %h5 Please select one shipping method in your country.
                   = select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :class => 'shipping_selector'
                 .box-content
-                  .shipping-methods
+                  .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
                     - if @shipping_options.empty?
                       .row-fluid
                         %p There are no shipping options available
@@ -176,7 +177,7 @@
                               .box.highlight
                                 .hgroup.title
                                   %h3= shipping.name
-                                  %h5
+                                  %h5= shipping.description
                                 .box-content.highlight
                                   .price
                                     %strong= format_currency shipping.price
@@ -190,6 +191,7 @@
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#payment_method"}
                       Payment method  
                       %i.icon-chevron-right   
+              / Payment method tab
               #payment_method.tab-pane
                 .box-header
                   %h3 Payment method
@@ -200,8 +202,8 @@
                       .span4
                         .box.highlight
                           .hgroup.title
-                            %h3 Stripe
-                            %h5 Stripe makes it easy for developers to accept credit cards on the web.
+                            %h3 PayPal&trade;
+                            %h5 Speedy, secure and safe transactions with a trusted service.
                           .box-content.highlight
                             %input#option1{name: "shipping_option", type: "radio", value: "1"}/
                 .box-footer
@@ -226,11 +228,11 @@
                   %strong= format_currency @order.sub_total
                 %li
                   Shipping:
-                  %strong.shipping_value
+                  %strong#shipping_value
                 %li
                   Tax:
                   %strong= format_currency @order.vat
                 %li.important
                   Total:
-                  %strong= format_currency @order.total
+                  %strong#order_total= format_currency @order.total
             / End id="checkout-totals"

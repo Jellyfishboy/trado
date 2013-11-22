@@ -24,10 +24,10 @@ $(document).ready ->
     $('#country_selector').change ->
     	$.ajax '/update_country',
     		type: 'GET'
-    		data: {'country_id' : $('#country_selector').val(), 'tier_id' : $('#shipping_options').attr 'data-tier' }
+    		data: {'country_id' : $('#country_selector').val(), 'tier_id' : $('.shipping-methods').attr 'data-tier' }
     		dataType: 'html'
     		success: (data) ->
-    			$('#shipping_options').html data
+    			$('.shipping-methods').html data
 
     $('#estimate_shipping').click ->
         $.ajax '/estimate_shipping',
@@ -43,11 +43,15 @@ $(document).ajaxComplete ->
     update_shipping_cost()
 
 update_shipping_cost = ->
-    $('#shipping_options input[type="radio"]').change ->
+    $('.shipping-methods input[type="radio"]').change ->
         $.ajax '/update_shipping',
             type: 'GET'
-            data: {'shipping_id' : $(@).val() }
+            data: {'shipping_id' : $(@).val(), 'product_id' }
             dataType: 'html'
             success: (data) ->
                 $('#shipping_value').html data
+
+
+
+
 

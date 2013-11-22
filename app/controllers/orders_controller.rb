@@ -109,6 +109,7 @@ class OrdersController < ApplicationController
 
   def update_shipping
     @shipping = Shipping.find(params[:shipping_id])
-    render :partial => "orders/update_shipping", :object => @shipping
+    binding.pry
+    render :partial => "orders/update_shipping", :format => [:js], :object => @shipping
   end
 end
