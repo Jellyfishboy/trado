@@ -1,6 +1,6 @@
 %section.checkout
   .container
-    %form{action: "shipping.html", enctype: "multipart/form-data", method: "post"}
+    = form_for(@order) do |f|
       .row
         .span9
           .box
@@ -39,13 +39,13 @@
                   .row-fluid
                     .span6
                       .control-group
-                        %label.control-label{for: "first_name"} First name
+                        = f.label :first_name, :class => 'control-label'
                         .controls
-                          %input#first_name.span12{name: "first_name", type: "text", value: ""}/
+                          = f.text_field :first_name, :class => 'span12', :id => 'first_name'
                       .control-group
-                        %label.control-label{for: "last_name"} Last name
+                        = f.label :last_name, :class => 'control-label'
                         .controls
-                          %input#last_name.span12{name: "last_name", type: "text", value: ""}/
+                          = f.text_field :last_name, :class => 'span12', :id => 'last_name'
                       .control-group
                         %label.control-label{for: "email"} Email
                         .controls
