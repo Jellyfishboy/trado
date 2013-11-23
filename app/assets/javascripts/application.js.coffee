@@ -46,14 +46,7 @@ update_shipping_cost = ->
     $('.shipping-methods input[type="radio"]').change ->
         shipping = $(@).val()
         order = $('.shipping-methods').attr 'data-total'
-        url = '/orders/new?shipping_id=' + shipping + '&order_total=' + order
-        $.get url
-        # $.ajax '/update_shipping',
-        #     type: 'GET'
-        #     data: {'shipping_id' : $(@).val(), 'total' : $('.shipping-methods').attr 'data-total' }
-        #     dataType: 'html'
-        #     success: (data) ->
-        #         $('#shipping_value').html data
+        $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
 
 
 
