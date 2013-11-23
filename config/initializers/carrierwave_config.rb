@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
             :region => 'eu-west-1', # optional, defaults to 'us-east-1'
         }
         config.fog_directory = "gimson-robotics-production" # required
-        config.asset_host = "http://cdn%d.tomdallimore.com"
+        config.asset_host = "http://cdn0.tomdallimore.com"
         config.fog_public = true # optional, defaults to true
         config.fog_attributes = {
           'Cache-Control' => 'max-age=315576000',
