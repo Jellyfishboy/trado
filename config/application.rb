@@ -56,7 +56,7 @@ module GimsonRobotics
     config.active_record.whitelist_attributes = true
 
     # Stops connecting to database while precompiling assets on deployment with capistrano
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     # Enable the asset pipeline
     config.assets.enabled = true
