@@ -44,10 +44,6 @@ namespace :assets do
     task :compile, :roles => :app do
         run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
     end
-    desc "Sync assets to S3 bucket"
-    task :sync, :roles => :app do
-        AssetSync.sync
-    end
 end
 
 # additional settings
@@ -57,6 +53,5 @@ default_run_options[:shell] = '/bin/bash --login'
 after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
 after 'configure:asset_sync', 'assets:compile'
-after 'assets:compile', 'assets:sync'
-after 'assets:sync', 'configure:database'
+after 'assets:compile', 'configure:database'
 after 'configure:database', 'unicorn:restart' 
