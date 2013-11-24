@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  layout 'admin', :except => :new
+  layout 'admin', :except => [:new, :create]
   before_filter :authenticate_user!, :except => [:new, :update_country, :update_shipping]
   # GET /orders
   # GET /orders.json
@@ -65,11 +65,10 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         #Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
-        format.html { redirect_to store_url, notice: 'Thank you for your order.' }
+        format.js { render :js => "window.location = '#{store_url}'", flash[:success] => 'You have completed your order. Please check your email for confirmation details.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render :json => { :error => @order.errors.full_messages } }
       end
     end
   end

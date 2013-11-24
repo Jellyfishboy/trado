@@ -1,8 +1,7 @@
 class Order < ActiveRecord::Base
-  attr_accessible :billing_first_name, :billing_last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_first_name, :delivery_last_name, :delivery_company, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :tax_number, :sub_total, :total, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat, :shipping_name
-  validates :first_name, :last_name, :email, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :presence => true
-  validates_format_of :email, :with => /@/
-  validates :terms, :acceptance => {:message => "Please accept the Terms & Conditions."}
+  attr_accessible :billing_first_name, :billing_last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_first_name, :delivery_last_name, :delivery_company, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :tax_number, :sub_total, :total, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat, :shipping_name, :email
+  validates :billing_first_name, :billing_last_name, :email, :billing_address, :billing_city, :billing_postcode, :billing_country, :delivery_first_name, :delivery_last_name, :delivery_address, :delivery_city, :delivery_postcode, :delivery_country, :presence => true
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many :line_items, :dependent => :delete_all
   belongs_to :invoice
   # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date

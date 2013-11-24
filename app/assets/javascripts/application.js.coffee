@@ -14,6 +14,7 @@
 
 $(document).ready ->
     update_shipping_cost()
+    handle_form_errors()
     $('#line_item_dimension_id').change ->
         $.ajax '/update_price',
             type: 'GET'
@@ -48,7 +49,16 @@ update_shipping_cost = ->
         order = $('.shipping-methods').attr 'data-total'
         $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
 
-
+handle_form_errors = ->
+    $('#errors .continue').click -> 
+        $('#errors ul').empty()
+    $(document).on "ajax:success", "form", (xhr, data, response) ->
+        if data.error
+            console.log 'Response' + response
+            console.log 'XHR' + xhr
+            for message of data.error
+                $('#errors ul').append '<li>' + data.error[message] + '</li>'
+            $('#errors').modal 'show'
 
 
 

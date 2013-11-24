@@ -21,15 +21,15 @@ breadcrumb_add 'Orders', orders_path %>
                 <% end %>
                 <div class="span6">
                     <div class="control-group">
-                        <%= f.label :first_name, :class => 'control-label' %>
+                        <%= f.label :billing_first_name, :class => 'control-label' %>
                         <div class="controls">
-                            <%= f.text_field :first_name, :size => 40, :class => 'form-control' %>
+                            <%= f.text_field :billing_first_name, :size => 40, :class => 'form-control' %>
                         </div>
                     </div>
                     <div class="control-group">
-                        <%= f.label :last_name, :class => 'control-label' %>
+                        <%= f.label :billing_last_name, :class => 'control-label' %>
                         <div class="controls">
-                            <%= f.text_field :last_name, :size => 40, :class => 'form-control' %>
+                            <%= f.text_field :billing_last_name, :size => 40, :class => 'form-control' %>
                         </div>
                     </div>
                     <div class="control-group">
@@ -80,8 +80,26 @@ breadcrumb_add 'Orders', orders_path %>
                             <%= f.text_field :billing_telephone, :class => 'form-control' %>
                         </div>
                     </div>
+                    <div class="control-group">
+                        <%= f.label :tax_number, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :tax_number, :class => 'form-control' %>
+                        </div>
+                    </div>
                 </div>
                 <div class="span6">
+                    <div class="control-group">
+                        <%= f.label :delivery_first_name, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_first_name, :size => 40, :class => 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <%= f.label :delivery_last_name, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :delivery_last_name, :size => 40, :class => 'form-control' %>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <%= f.label :delivery_address, :class => 'control-label' %>
                         <div class="controls">
@@ -119,12 +137,17 @@ breadcrumb_add 'Orders', orders_path %>
                         </div>
                     </div>
                     <div class="control-group">
-                        <%= f.label :tax_number, :class => 'control-label' %>
+                        <%= f.label :shipping_name, :class => 'control-label' %>
                         <div class="controls">
-                            <%= f.text_field :tax_number, :class => 'form-control' %>
+                            <%= f.text_field :shipping_name, :class => 'form-control' %>
                         </div>
                     </div>
-
+                    <div class="control-group">
+                        <%= f.label :shipping_cost, :class => 'control-label' %>
+                        <div class="controls">
+                            <%= f.text_field :shipping_cost, :class => 'form-control' %>
+                        </div>
+                    </div>
                     <div class="control-group">
                         <%= f.label :actual_shipping_cost, :class => 'control-label' %>
                         <div class="controls">

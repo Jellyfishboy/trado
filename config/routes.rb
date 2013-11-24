@@ -19,7 +19,7 @@ GimsonRobotics::Application.routes.draw do
   resources :carts, :only => [:create, :show, :destroy]
   resources :products, :only => [:show, :destroy, :update]
   resources :categories, :only => [:show, :destroy, :update]
-  resources :orders, :only => :new
+  resources :orders, :only => [:new, :create, :update_country]
   resources :users
 
   scope '/admin' do
@@ -29,7 +29,7 @@ GimsonRobotics::Application.routes.draw do
       resources :products, :except => :show
       resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
       resources :categories, :except => :show
-      resources :orders, :except => :new
+      resources :orders, :only => [:show, :index, :destroy, :edit, :update]
   end
 
 
