@@ -39,50 +39,50 @@
                   .row-fluid
                     .span6
                       .control-group
-                        = f.label :first_name, :class => 'control-label'
+                        = f.label "First name", :class => 'control-label'
                         .controls
-                          = f.text_field :first_name, :class => 'span12', :id => 'first_name'
+                          = f.text_field :billing_first_name, :class => 'span12', :id => 'first_name'
                       .control-group
-                        = f.label :last_name, :class => 'control-label'
+                        = f.label "Last name", :class => 'control-label'
                         .controls
-                          = f.text_field :last_name, :class => 'span12', :id => 'last_name'
+                          = f.text_field :billing_last_name, :class => 'span12', :id => 'last_name'
                       .control-group
-                        %label.control-label{for: "email"} Email
+                        = f.label :email, :class => 'control-label'
                         .controls
-                          %input#email.span12{name: "email", type: "text", value: ""}/
+                          = f.text_field :billing_first_name, :class => 'span12', :id => 'email'
                       .control-group
-                        %label.control-label{for: "phone"} Phone
+                        = f.label :telephone, :class => 'control-label'
                         .controls
-                          %input#phone.span12{name: "phone", type: "text", value: ""}/
+                          = f.text_field :billing_first_name, :class => 'span12', :id => 'phone'
                     .span6
                       .control-group
-                        %label.control-label{for: "company"} Company
+                        = f.label "Company", :class => 'control-label'
                         .controls
-                          %input#company.span12{name: "company", type: "text", value: ""}/
+                          = f.text_field :billing_first_name, :class => 'span12', :id => 'company'
                       .control-group
-                        %label.control-label{for: "street_address"} Street address
+                        = f.label "Street address", :class => 'control-label'
                         .controls
-                          %input#street_address.span12{name: "street_address", type: "text", value: ""}/
+                          = f.text_field :billing_first_name, :class => 'span12', :id => 'first_name'
                       .row-fluid
                         .span6
                           .control-group
-                            %label.control-label{for: "city"} Town / City
+                            = f.label "City", :class => 'control-label'
                             .controls
                               %input#city.span12{name: "city", type: "text", value: ""}/
                         .span6
                           .control-group
-                            %label.control-label{for: "zip"} Zip / Postcode
+                            = f.label "Postcode", :class => 'control-label'
                             .controls
                               %input#zip.span12{name: "zip", type: "text", value: ""}/
                       .row-fluid
                         .span6
                           .control-group
-                            %label.control-label{for: "city"} County
+                            = f.label "County", :class => 'control-label'
                             .controls
                               %input#city.span12{name: "city", type: "text", value: ""}/
                         .span6
                           .control-group
-                            %label.control-label{for: "country"} Country
+                            = f.label "Country", :class => 'control-label'
                             .controls
                               %select#country.span12{name: "country"}
                 .box-footer
@@ -103,50 +103,46 @@
                   .row-fluid
                     .span6
                       .control-group
-                        %label.control-label{for: "first_name"} First name
+                        = f.label "First name", :class => 'control-label'
                         .controls
                           %input#first_name.span12{name: "first_name", type: "text", value: ""}/
                       .control-group
-                        %label.control-label{for: "last_name"} Last name
+                        = f.label "Last name", :class => 'control-label'
                         .controls
                           %input#last_name.span12{name: "last_name", type: "text", value: ""}/
                       .control-group
-                        %label.control-label{for: "email"} Email
-                        .controls
-                          %input#email.span12{name: "email", type: "text", value: ""}/
-                      .control-group
-                        %label.control-label{for: "phone"} Phone
+                        = f.label "Telephone", :class => 'control-label'
                         .controls
                           %input#phone.span12{name: "phone", type: "text", value: ""}/
-                    .span6
                       .control-group
-                        %label.control-label{for: "company"} Company
+                        = f.label "Company", :class => 'control-label'
                         .controls
                           %input#company.span12{name: "company", type: "text", value: ""}/
+                    .span6
                       .control-group
-                        %label.control-label{for: "street_address"} Street address
+                        = f.label "Street address", :class => 'control-label'
                         .controls
                           %input#street_address.span12{name: "street_address", type: "text", value: ""}/
                       .row-fluid
                         .span6
                           .control-group
-                            %label.control-label{for: "city"} Town / City
+                            = f.label "City", :class => 'control-label'
                             .controls
                               %input#city.span12{name: "city", type: "text", value: ""}/
                         .span6
                           .control-group
-                            %label.control-label{for: "zip"} Zip / Postcode
+                            = f.label "Postcode", :class => 'control-label'
                             .controls
                               %input#zip.span12{name: "zip", type: "text", value: ""}/
                       .row-fluid
                         .span6
                           .control-group
-                            %label.control-label{for: "city"} County
+                            = f.label "County", :class => 'control-label'
                             .controls
                               %input#city.span12{name: "city", type: "text", value: ""}/
                         .span6
                           .control-group
-                            %label.control-label{for: "country"} Country
+                            = f.label "Country", :class => 'control-label'
                             .controls
                               %select#country.span12{name: "country"}
                 .box-footer

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131122135446) do
+ActiveRecord::Schema.define(:version => 20131124001344) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(:version => 20131122135446) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "billing_first_name"
+    t.string   "billing_last_name"
     t.string   "billing_company"
     t.string   "billing_address"
     t.string   "billing_city"
@@ -158,6 +158,9 @@ ActiveRecord::Schema.define(:version => 20131122135446) do
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
     t.decimal  "vat",                  :precision => 8, :scale => 2
     t.string   "shipping_name"
+    t.string   "delivery_first_name"
+    t.string   "delivery_last_name"
+    t.string   "delivery_company"
   end
 
   create_table "products", :force => true do |t|
