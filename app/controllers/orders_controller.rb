@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
         format.js { render :js => "window.location = '#{store_url}'", flash[:success] => 'You have completed your order. Please check your email for confirmation details.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.json { render :json => { :error => @order.errors.full_messages } }
+        format.json { render :json => { :error => @order.errors.full_messages }, :status => 422 }
       end
     end
   end
