@@ -1,9 +1,11 @@
 class Order < ActiveRecord::Base
-  attr_accessible :billing_first_name, :billing_last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_first_name, :delivery_last_name, :delivery_company, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :tax_number, :sub_total, :total, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat, :shipping_name, :email
-  validates :billing_first_name, :billing_last_name, :email, :billing_address, :billing_city, :billing_postcode, :billing_country, :delivery_first_name, :delivery_last_name, :delivery_address, :delivery_city, :delivery_postcode, :delivery_country, :presence => true
+  attr_accessible :billing_first_name, :billing_last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :delivery_first_name, :delivery_last_name, :delivery_company, :delivery_address, :delivery_city, :delivery_county, :delivery_postcode, :delivery_country, :delivery_telephone, :tax_number, :sub_total, :total, :shipping_cost, :payment_status, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :vat, :shipping_name, :email, :shipping_id
+  validates :billing_first_name, :billing_last_name, :email, :billing_address, :billing_city, :billing_postcode, :billing_country, :delivery_first_name, :delivery_last_name, :delivery_address, :delivery_city, :delivery_postcode, :delivery_country, :presence => { :message => 'is required.' }
+  validates :shipping_id, :presence => { :message => 'option is required.'}
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many :line_items, :dependent => :delete_all
   belongs_to :invoice
+  after_create :calculate_shipping
   # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
   # after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was
 
@@ -38,10 +40,11 @@ class Order < ActiveRecord::Base
       return tier_raffle.max.first
   end
 
-  def calculate_shipping(id)
-    @shipping = Shipping.find(id)
+  def calculate_shipping
+    @shipping = Shipping.find(self.shipping_id)
     self.shipping_cost = @shipping.price
     self.shipping_name = @shipping.name
+    binding.pry
   end
 
   def no_shipping_date

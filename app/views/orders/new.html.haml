@@ -3,7 +3,7 @@
     = form_for @order, :remote => true do |f|
       #errors.modal.hide.fade{tabindex: "-1"}
         .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+          %button.close.continue{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
           .hgroup.title
             %h3 Form validation errors
             %h5 Please correct the below errors before continuing.
@@ -195,7 +195,7 @@
                                   .box-content.highlight
                                     .price
                                       %strong= format_currency shipping.price
-                                    = radio_button_tag :shipping, shipping.id
+                                    = f.radio_button :shipping_id, shipping.id
                 .box-footer
                   .pull-left
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_address"}

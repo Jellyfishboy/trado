@@ -58,7 +58,6 @@ class OrdersController < ApplicationController
     @cart = current_cart
     @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
     @order.add_line_items_from_cart(current_cart)
-    @order.calculate_shipping(params[:shipping])
     @order.calculate_order(current_cart)
     respond_to do |format|
       if @order.save

@@ -25,7 +25,7 @@ $(document).ready ->
     $('#country_selector').change ->
     	$.ajax '/update_country',
     		type: 'GET'
-    		data: {'country_id' : $('#country_selector').val(), 'tier_id' : $('.shipping-methods').attr 'data-tier' }
+    		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
     		dataType: 'html'
     		success: (data) ->
     			$('.shipping-methods').html data
@@ -52,6 +52,7 @@ update_shipping_cost = ->
 form_JSON_errors = ->
     $('#errors .continue').click -> 
         $('#errors ul').empty()
+        console.log "EMPTY"
     $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
         errors = xhr.responseJSON.error
         for message of errors
