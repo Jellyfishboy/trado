@@ -15,10 +15,16 @@ textarea {
     }
 }
 .checkout {
-    .tab-pane {
-        overflow:hidden;
+    .tab-content {
+        overflow:inherit;
     }
     .shipping_selector {
         margin-top: 20px;
+    }
+    .update_country {
+        margin:8px 0 0 10px;
+    }
+    select {
+        width:195px;
     }
 }

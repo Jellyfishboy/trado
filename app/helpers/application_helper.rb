@@ -21,9 +21,10 @@ module ApplicationHelper
 
     def update_country_shippings name, f, target, tier_id, country_id
       tier = Tier.find(tier_id)
+      binding.pry
       new_shippings = tier.shippings.joins(:countries).where('country_id = ?', country_id).all
       fields = render('update_country', :f => f, :shippings => new_shippings)
-      link_to_function(name, "update_country(this,\"#{escape_javascript(fields)}\", \"#{target}\")")  , :class => 'btn-small btn btn-primary'
+      link_to_function(name, "update_country(\"#{escape_javascript(fields)}\", \"#{target}\")", :class => 'btn-mini btn btn-primary update_country')
     end
 
     def active_controller? controller

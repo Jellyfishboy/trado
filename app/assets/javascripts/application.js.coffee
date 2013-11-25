@@ -12,6 +12,9 @@
 #= require imagesloaded
 #= require modernizr-2.6.2.min
 
+# Attach a function or variable to the global namespace
+root = exports ? this
+
 $(document).ready ->
     update_shipping_cost()
     form_JSON_errors()
@@ -22,13 +25,13 @@ $(document).ready ->
             dataType: 'html'
             success: (data) ->
                 $('.price').html data
-    $('#country_selector').change ->
-    	$.ajax '/update_country',
-    		type: 'GET'
-    		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
-    		dataType: 'html'
-    		success: (data) ->
-    			$('.shipping-methods').html data
+    # $('#country_selector').change ->
+    # 	$.ajax '/update_country',
+    # 		type: 'GET'
+    # 		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
+    # 		dataType: 'html'
+    # 		success: (data) ->
+    # 			$('.shipping-methods').html data
 
     $('#estimate_shipping').click ->
         $.ajax '/estimate_shipping',
@@ -58,6 +61,9 @@ form_JSON_errors = ->
         for message of errors
             $('#errors ul').append '<li>' + errors[message] + '</li>'
         $('#errors').modal 'show'
+
+root.update_country = (content, target) ->
+    $(target).empty().html content
 
 
 
