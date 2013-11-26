@@ -47,8 +47,8 @@ $(document).ajaxComplete ->
     update_shipping_cost()
 
 update_shipping_cost = ->
-    $('.shipping-methods input[type="radio"]').change ->
-        shipping = $(@).val()
+    $('.shipping-methods .shipping_option').click ->
+        shipping = $(@).find('input[type="radio"]').val()
         order = $('.shipping-methods').attr 'data-total'
         $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
 
@@ -61,9 +61,6 @@ form_JSON_errors = ->
         for message of errors
             $('#errors ul').append '<li>' + errors[message] + '</li>'
         $('#errors').modal 'show'
-
-root.update_country = (content, target) ->
-    $(target).empty().html content
 
 
 

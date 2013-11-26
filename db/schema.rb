@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125113914) do
+ActiveRecord::Schema.define(:version => 20131126153852) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -138,12 +138,12 @@ ActiveRecord::Schema.define(:version => 20131125113914) do
     t.string   "billing_postcode"
     t.string   "billing_country"
     t.string   "billing_telephone"
-    t.string   "delivery_address"
-    t.string   "delivery_city"
-    t.string   "delivery_county"
-    t.string   "delivery_postcode"
-    t.string   "delivery_country"
-    t.string   "delivery_telephone"
+    t.string   "shipping_address"
+    t.string   "shipping_city"
+    t.string   "shipping_county"
+    t.string   "shipping_postcode"
+    t.string   "shipping_country"
+    t.string   "shipping_telephone"
     t.string   "email"
     t.integer  "tax_number"
     t.decimal  "sub_total",            :precision => 8, :scale => 2
@@ -158,9 +158,9 @@ ActiveRecord::Schema.define(:version => 20131125113914) do
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
     t.decimal  "vat",                  :precision => 8, :scale => 2
     t.string   "shipping_name"
-    t.string   "delivery_first_name"
-    t.string   "delivery_last_name"
-    t.string   "delivery_company"
+    t.string   "shipping_first_name"
+    t.string   "shipping_last_name"
+    t.string   "shipping_company"
     t.integer  "shipping_id"
   end
 

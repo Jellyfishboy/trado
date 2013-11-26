@@ -18,7 +18,7 @@ class InvoicesControllerTest < ActionController::TestCase
 
   test "should create invoice" do
     assert_difference('Invoice.count') do
-      post :create, invoice: { billing_address: @invoice.billing_address, date: @invoice.date, delivery_address: @invoice.delivery_address, discount_value: @invoice.discount_value, discount_type: @invoice.discount_type, email: @invoice.email, first_name: @invoice.first_name, invoice_number: @invoice.invoice_number, last_name: @invoice.last_name, notes: @invoice.notes, order_number: @invoice.order_number, pay_type: @invoice.pay_type, shipping: @invoice.shipping }
+      post :create, invoice: { billing_address: @invoice.billing_address, date: @invoice.date, shipping_address: @invoice.shipping_address, discount_value: @invoice.discount_value, discount_type: @invoice.discount_type, email: @invoice.email, first_name: @invoice.first_name, invoice_number: @invoice.invoice_number, last_name: @invoice.last_name, notes: @invoice.notes, order_number: @invoice.order_number, pay_type: @invoice.pay_type, shipping: @invoice.shipping }
     end
 
     assert_redirected_to invoice_path(assigns(:invoice))
@@ -35,7 +35,7 @@ class InvoicesControllerTest < ActionController::TestCase
   end
 
   test "should update invoice" do
-    put :update, id: @invoice, invoice: { billing_address: @invoice.billing_address, date: @invoice.date, delivery_address: @invoice.delivery_address, discount_value: @invoice.discount_value, discount_type: @invoice.discount_type, email: @invoice.email, first_name: @invoice.first_name, invoice_number: @invoice.invoice_number, last_name: @invoice.last_name, notes: @invoice.notes, order_number: @invoice.order_number, pay_type: @invoice.pay_type, shipping: @invoice.shipping }
+    put :update, id: @invoice, invoice: { billing_address: @invoice.billing_address, date: @invoice.date, shipping_address: @invoice.shipping_address, discount_value: @invoice.discount_value, discount_type: @invoice.discount_type, email: @invoice.email, first_name: @invoice.first_name, invoice_number: @invoice.invoice_number, last_name: @invoice.last_name, notes: @invoice.notes, order_number: @invoice.order_number, pay_type: @invoice.pay_type, shipping: @invoice.shipping }
     assert_redirected_to invoice_path(assigns(:invoice))
   end
 

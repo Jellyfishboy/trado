@@ -4,7 +4,7 @@ one:
   first_name: MyString
   last_name: MyString
   billing_address: MyText
-  delivery_address: MyText
+  shipping_address: MyText
   email: MyString
   date: 2013-10-02 10:35:57
   invoice_number: 1
@@ -19,7 +19,7 @@ two:
   first_name: MyString
   last_name: MyString
   billing_address: MyText
-  delivery_address: MyText
+  shipping_address: MyText
   email: MyString
   date: 2013-10-02 10:35:57
   invoice_number: 1

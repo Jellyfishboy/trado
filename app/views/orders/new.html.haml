@@ -118,11 +118,11 @@
                       .control-group
                         = f.label "First name*", :class => 'control-label'
                         .controls
-                          = f.text_field :delivery_first_name, :class => 'span12', :id => 'delivery_first_name'
+                          = f.text_field :shipping_first_name, :class => 'span12', :id => 'shipping_first_name'
                       .control-group
                         = f.label "Last name*", :class => 'control-label'
                         .controls
-                          = f.text_field :delivery_last_name, :class => 'span12', :id => 'delivery_last_name'
+                          = f.text_field :shipping_last_name, :class => 'span12', :id => 'shipping_last_name'
                       .control-group
                         = f.label "Email*", :class => 'control-label'
                         .controls
@@ -130,38 +130,38 @@
                       .control-group
                         = f.label "Telephone", :class => 'control-label'
                         .controls
-                          = f.text_field :delivery_telephone, :class => 'span12', :id => 'delivery_telephone'
+                          = f.text_field :shipping_telephone, :class => 'span12', :id => 'shipping_telephone'
                     .span6
                       .control-group
                         = f.label "Company", :class => 'control-label'
                         .controls
-                          = f.text_field :delivery_company, :class => 'span12', :id => 'delivery_company'
+                          = f.text_field :shipping_company, :class => 'span12', :id => 'shipping_company'
                       .control-group
                         = f.label "Street address*", :class => 'control-label'
                         .controls
-                          = f.text_field :delivery_address, :class => 'span12', :id => 'delivery_address'
+                          = f.text_field :shipping_address, :class => 'span12', :id => 'shipping_address'
                       .row-fluid
                         .span6
                           .control-group
                             = f.label "City*", :class => 'control-label'
                             .controls
-                              = f.text_field :delivery_city, :class => 'span12', :id => 'delivery_city'
+                              = f.text_field :shipping_city, :class => 'span12', :id => 'shipping_city'
                         .span6
                           .control-group
                             = f.label "Postcode*", :class => 'control-label'
                             .controls
-                              = f.text_field :delivery_postcode, :class => 'span12', :id => 'delivery_postcode'
+                              = f.text_field :shipping_postcode, :class => 'span12', :id => 'shipping_postcode'
                       .row-fluid
                         .span6
                           .control-group
                             = f.label "County", :class => 'control-label'
                             .controls
-                              = f.text_field :delivery_county, :class => 'span12', :id => 'delivery_city'
+                              = f.text_field :shipping_county, :class => 'span12', :id => 'shipping_city'
                         .span6
                           .control-group
                             = f.label "Country*", :class => 'control-label'
                             .controls
-                              = f.select :delivery_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), :class => 'span12', :id => 'delivery_country', :prompt => 'Please select..'
+                              = f.select :shipping_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), :class => 'span12', :id => 'shipping_country', :prompt => 'Please select..'
                 .box-footer
                   .pull-left
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#billing_address"}
@@ -189,7 +189,7 @@
                           .row-fluid
                             - slice.each do |shipping|
                               .span4
-                                .box.highlight
+                                .box.highlight.shipping_option
                                   .hgroup.title
                                     %h3= shipping.name
                                     %h5= shipping.description
