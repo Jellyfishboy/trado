@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_many :line_items, :dependent => :delete_all
   belongs_to :invoice
+  has_one :payment
+  has_one :pay_type, :through => :payment
   after_create :calculate_shipping
   # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
   # after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was

@@ -21,6 +21,10 @@ GimsonRobotics::Application.routes.draw do
   resources :categories, :only => [:show, :destroy, :update]
   resources :orders, :only => [:new, :create, :update_country]
   resources :users
+  resources :pay_types
+  resources :line_items do
+    put 'decrement', on: :member
+  end
 
   scope '/admin' do
       root :to => "admin#dashboard"
@@ -29,12 +33,11 @@ GimsonRobotics::Application.routes.draw do
       resources :products, :except => :show
       resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
       resources :categories, :except => :show
-      resources :orders, :only => [:show, :index, :destroy, :edit, :update]
+      resources :orders
   end
 
-
-  resources :line_items do
-    put 'decrement', on: :member
+  namespace :admin do
+    resources :orders
   end
   
 

@@ -149,7 +149,7 @@
             <% end %>
           </li>
           <li class="<%= active_controller?('orders') %>">
-            <%= link_to orders_path do %>
+            <%= link_to admin_orders_path do %>
               <i class="icon-shopping-cart"></i>
               <span class="menu-text"> Orders </span>
             <% end %>
@@ -199,11 +199,20 @@
               <span class="menu-text"> Users </span>
             </a>
           </li>
-          <li>
-            <a href="#">
+          <li class="<%= active_controller?('pay_types') %>">
+            <a href="#" class="dropdown-toggle">
               <i class="icon-wrench"></i>
               <span class="menu-text"> Configuration </span>
+              <b class="arrow icon-angle-down"></b>
             </a>
+            <ul class="submenu">
+            <li class="<%= active_controller?('pay_types') %>">
+                <%= link_to pay_types_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  Payment methods
+                <% end %>
+              </li>
+            </ul>
           </li>
         </ul><!--/.nav-list-->
 
