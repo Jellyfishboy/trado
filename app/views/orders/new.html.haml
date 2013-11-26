@@ -177,9 +177,9 @@
                   %h3 Shipping method
                   %h5 Please select one shipping method in your country.
                   = select_tag :country_selector, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :class => 'shipping_selector'
-                  = update_country_shippings "Update", f, "shipping-methods", @calculated_tier, :country_selector
+                  / = update_country_shippings "Update", f, "shipping-methods", @calculated_tier, :country_selector
                 .box-content
-                  .shipping-methods{ 'data-total' => "#{@order.total}" }
+                  .shipping-methods{ 'data-total' => "#{@order.total}", 'data-tier' => "#{@calculated_tier}" }
                     - if defined?(@shipping_options)
                       - if @shipping_options.empty?
                         .row-fluid

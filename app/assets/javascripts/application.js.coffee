@@ -25,13 +25,13 @@ $(document).ready ->
             dataType: 'html'
             success: (data) ->
                 $('.price').html data
-    # $('#country_selector').change ->
-    # 	$.ajax '/update_country',
-    # 		type: 'GET'
-    # 		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
-    # 		dataType: 'html'
-    # 		success: (data) ->
-    # 			$('.shipping-methods').html data
+    $('#country_selector').change ->
+    	$.ajax '/update_country',
+    		type: 'GET'
+    		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
+    		dataType: 'html'
+    		success: (data) ->
+    			$('.shipping-methods').html data
 
     $('#estimate_shipping').click ->
         $.ajax '/estimate_shipping',

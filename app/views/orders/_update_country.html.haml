@@ -1,8 +1,8 @@
-- if shippings.empty?
+- if @new_shippings.empty?
   .row-fluid
     %p There are no shipping options available
 - else
-  - shippings.each_slice(3) do |slice|
+  - @new_shippings.each_slice(3) do |slice|
     .row-fluid
       - slice.each do |shipping|
         .span4
@@ -13,4 +13,4 @@
             .box-content.highlight
               .price
                 %strong= format_currency shipping.price
-              = f.radio_button :shipping_id, shipping.id
+              = radio_button_tag "order[shipping_id]", shipping.id

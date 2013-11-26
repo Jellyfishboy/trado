@@ -44,6 +44,7 @@ class Order < ActiveRecord::Base
     @shipping = Shipping.find(self.shipping_id)
     self.shipping_cost = @shipping.price
     self.shipping_name = @shipping.name
+    self.save!
     binding.pry
   end
 
