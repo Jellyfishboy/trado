@@ -1,13 +1,22 @@
-= form_for [:admin, @pay_type] do |f|
-  - if @pay_type.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@pay_type.errors.count, "error")} prohibited this pay_type from being saved:"
-      %ul
-        - @pay_type.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+.row-fluid
+  .span12
+    = form_for [:admin, @pay_type], :html => { :class => 'form-horizontal', :role => 'form'} do |f|
+      %fieldset
+        - if @pay_type.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@pay_type.errors.count, "error")} prohibited this pay_type from being saved:"
+            %ul
+              - @pay_type.errors.full_messages.each do |msg|
+                %li= msg
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'form-control'
+      .control-group
+        = f.label :description, :class => 'control-label'
+        .controls
+          = f.text_area :description, :class => 'form-control', :rows => 8
+      .form-actions
+        = button_tag(:type => 'submit', :class => 'btn btn-info') do
+          %i.icon-ok
+          Submit
