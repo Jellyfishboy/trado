@@ -17,27 +17,31 @@ GimsonRobotics::Application.routes.draw do
     :sessions => "users/sessions"
      }
   resources :carts, :only => [:create, :show, :destroy]
-  resources :products, :only => [:show, :destroy, :update]
-  resources :categories, :only => [:show, :destroy, :update]
+  resources :categories, :only => :show
+  resources :products, :only => [:show, :update_price]
+  
   resources :orders, :only => [:new, :create, :update_country]
   resources :users
-  resources :pay_types
-  resources :line_items do
-    put 'decrement', on: :member
-  end
+  resources :line_items, :only => [:create, :destroy]
 
-  scope '/admin' do
+  # scope '/admin' do
+  #     root :to => "admin#dashboard"
+  #     mount RailsAdmin::Engine => '/db'
+  #     mount Sidekiq::Web => '/jobs'
+  #     resources :products, :except => :show
+  #     resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
+  #     resources :categories, :except => :show
+  #     resources :orders
+  # end
+
+  namespace :admin do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
       resources :products, :except => :show
-      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
+      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
       resources :categories, :except => :show
       resources :orders
-  end
-
-  namespace :admin do
-    resources :orders
   end
   
 

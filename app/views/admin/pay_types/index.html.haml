@@ -1,0 +1,18 @@
+%h1 Listing pay_types
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @pay_types.each do |pay_type|
+    %tr
+      %td= pay_type.name
+      %td= link_to 'Edit', edit_admin_pay_type_path(pay_type)
+      %td= link_to 'Destroy', pay_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pay type', new_admin_pay_type_path

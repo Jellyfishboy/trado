@@ -1,0 +1,9 @@
+- content_for :title, 'Edit category'
+- content_for :breadcrumb, 'Edit'
+- breadcrumb_add 'Categories', admin_categories_path
+.page-header
+    %h1 
+        Editing 
+        = @category.name
+
+= render 'form'

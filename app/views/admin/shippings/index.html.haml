@@ -1,0 +1,32 @@
+- content_for :title, 'List shipping methods'
+- content_for :breadcrumb, 'Shipping methods'
+.page-header
+  %h1 Listing shipping methods
+  = link_to new_admin_shipping_path, :class => 'btn btn-success' do
+    %i.icon-plus
+    New shipping option
+- if @shippings.empty?
+  %p You don't have any shippings yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Price
+        %th Description
+        %th Countries
+        %th Tier(s)
+        %th
+    %tbody
+      - @shippings.each do |shipping|
+        %tr
+          %td= shipping.name
+          %td= format_currency shipping.price
+          %td= shipping.description
+          %td
+            %ul 
+              - shipping.countries.each do |country|
+                %li
+                  = country.name
+          %td= shipping.tiers.map{ |tier| tier.id }.join(', ')
+          %td= table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1

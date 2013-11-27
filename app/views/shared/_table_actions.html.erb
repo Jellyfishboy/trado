@@ -1,6 +1,6 @@
 <div class="hidden-phone visible-desktop action-buttons">
   <% if type != 1 %>
-    <%= link_to object, :class => 'blue' do %>
+    <%= link_to view, :class => 'blue' do %>
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
   <% end %>
@@ -14,7 +14,7 @@
       <i class="icon-truck bigger-130"></i>
     </a>
   <% end %>
-  <%= link_to object, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
+  <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
     <i class="icon-trash bigger-130"></i>
   <% end %>
 </div>
@@ -28,7 +28,7 @@
     <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
       <% if type != 1 %>
         <li>
-          <%= link_to object, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
+          <%= link_to view, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
             <span class="blue">
               <i class="icon-zoom-in bigger-120"></i>
             </span>
@@ -55,7 +55,7 @@
       <% end %>
 
       <li>
-        <%= link_to object, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
+        <%= link_to del, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
           <span class="red">
             <i class="icon-trash bigger-120"></i>
           </span>

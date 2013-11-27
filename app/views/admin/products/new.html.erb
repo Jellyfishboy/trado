@@ -1,0 +1,114 @@
+<% content_for :title, 'New product'
+   content_for :breadcrumb, 'New'
+   breadcrumb_add 'Products', admin_products_path %>
+<div class="page-header">
+    <h1>New product</h1>
+</div>
+<div class="row-fluid">
+  <div class="span12">
+    <%= form_for [:admin, @product], :html => { :class => 'form-horizontal new_product', :role => 'form' } do |f| %>
+      <fieldset>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+          <ul>
+          <% @product.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="control-group">
+        <%= f.label :part_number, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :part_number, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :sku, "SKU", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :sku, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :name, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :stock, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :stock, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :stock_warning_level, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :stock_warning_level, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :weighting, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :weighting, :class => 'form-control' %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
+      <div id="image_fields">
+          <%= add_foreign_field f, :attachments %>
+      </div>
+      <h3 class="header smaller lighter blue">Categories</h3>
+      <div class="control-group">
+        <div class="controls">
+          <% if Category.all.empty? %>
+            <p>No categories to select.</p>
+          <% else %>
+            <% Category.all.each do |category| %>
+              <label>
+                <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), :class => 'ace-checkbox-2' %>
+                <span class="lbl"><%= category.name %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Accessories</h3>
+      <div class="control-group">
+        <div class="controls">
+          <% if Accessory.all.empty? %>
+            <p>No accessories to select.</p>
+          <% else %>
+            <% Accessory.all.each do |option| %>
+              <label>
+                <%= check_box_tag "product[accessory_ids][]", option.id, @product.accessory_ids.include?(option.id), :class => 'ace-checkbox-2' %>
+                <span class="lbl"><%= option.name %></span>
+              </label>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions, "#dimension_fields" %></h3>
+      <div id="dimension_fields">
+        <%= add_foreign_field f, :dimensions %>
+      </div>
+      <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags, "#tag_fields" %></h3>
+      <div id="tag_fields">
+        <%= add_foreign_field f, :tags %>
+      </div>
+      <div class="form-actions">
+        <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
+          <i class="icon-ok"></i>Submit
+        <% end %>
+      </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

@@ -93,19 +93,19 @@
       <div class="sidebar fixed" id="sidebar">
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
           <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <%= link_to new_category_path, :class => "btn btn-small btn-success" do %>
+            <%= link_to new_admin_category_path, :class => "btn btn-small btn-success" do %>
               <i class="icon-beaker"></i>
             <% end %>
 
-            <%= link_to new_product_path, :class => "btn btn-small btn-info" do %>
+            <%= link_to new_admin_product_path, :class => "btn btn-small btn-info" do %>
               <i class="icon-th"></i>
             <% end %>
 
-            <%= link_to new_accessory_path, :class => "btn btn-small btn-warning" do %>
+            <%= link_to new_admin_accessory_path, :class => "btn btn-small btn-warning" do %>
               <i class="icon-cog"></i>
             <% end %>
 
-            <%= link_to new_invoice_path, :class => "btn btn-small btn-danger" do %>
+            <%= link_to new_admin_invoice_path, :class => "btn btn-small btn-danger" do %>
               <i class="icon-file-text"></i>
             <% end %>
           </div>
@@ -130,20 +130,20 @@
           </li>
 
           <li class="<%= active_controller?('categories') %>">
-            <%= link_to categories_path do %>
+            <%= link_to admin_categories_path do %>
               <i class="icon-beaker"></i>
               <span class="menu-text"> Categories </span>
             <% end %>
           </li>
 
           <li class="<%= active_controller?('products') %>">
-            <%= link_to products_path do %>
+            <%= link_to admin_products_path do %>
               <i class="icon-th"></i>
               <span class="menu-text">Products</span>
             <% end %>
           </li>
           <li class="<%= active_controller?('accessories') %>">
-            <%= link_to accessories_path do %>
+            <%= link_to admin_accessories_path do %>
               <i class="icon-cog"></i>
               <span class="menu-text">Accessories</span>
             <% end %>
@@ -155,7 +155,7 @@
             <% end %>
           </li>
           <li class="<%= active_controller?('invoices') %>">
-            <%= link_to invoices_path do %>
+            <%= link_to admin_invoices_path do %>
               <i class="icon-file-text"></i>
               <span class="menu-text"> Invoices </span>
             <% end %>
@@ -168,19 +168,19 @@
             </a>
             <ul class="submenu">
               <li class="<%= active_controller?('tiers') %>">
-                <%= link_to tiers_path do %>
+                <%= link_to admin_tiers_path do %>
                   <i class="icon-double-angle-right"></i>
                   Tiers
                 <% end %>
               </li>
               <li class="<%= active_controller?('shippings') %>">
-                <%= link_to shippings_path do %>
+                <%= link_to admin_shippings_path do %>
                   <i class="icon-double-angle-right"></i>
                   Methods
                 <% end %>
               </li>
               <li class="<%= active_controller?('countries') %>">
-                <%= link_to countries_path do %>
+                <%= link_to admin_countries_path do %>
                   <i class="icon-double-angle-right"></i>
                   Countries
                 <% end %>
@@ -207,7 +207,7 @@
             </a>
             <ul class="submenu">
             <li class="<%= active_controller?('pay_types') %>">
-                <%= link_to pay_types_path do %>
+                <%= link_to admin_pay_types_path do %>
                   <i class="icon-double-angle-right"></i>
                   Payment methods
                 <% end %>

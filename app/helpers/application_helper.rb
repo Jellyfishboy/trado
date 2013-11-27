@@ -44,8 +44,8 @@ module ApplicationHelper
     end
 
     # type 1 is for displaying a delivery cost icon for orders, type 2 is for hiding the show icon and 0 is everything else
-    def table_commands object, edit, type
-      render :partial => 'shared/table_actions', :locals => { :object => object, :edit => edit, :type => type }
+    def table_commands object, show, edit, delete, type
+      render :partial => 'shared/table_actions', :locals => { :object => object, :view => show, :edit => edit, :del => delete, :type => type }
     end
 
     def del_table_command object

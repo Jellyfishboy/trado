@@ -1,0 +1,38 @@
+.row-fluid
+  .span-12    
+    = form_for [:admin, @shipping], :html => { :class => 'form-horizontal', :role => 'form'} do |f|
+      %fieldset
+      - if @shipping.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@shipping.errors.count, "error")} prohibited this shipping from being saved:"
+          %ul
+            - @shipping.errors.full_messages.each do |msg|
+              %li= msg
+      .control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'form-control'
+      .control-group
+        = f.label :price, :class => 'control-label'
+        .controls
+          = f.text_field :price, :class => 'form-control'
+      .control-group
+        = f.label :description, :class => 'control-label'
+        .controls
+          = f.text_area :description, :class => 'form-control', :rows => 7
+      %h3.header.smaller.lighter.blue Countries
+      .control-group
+        .controls
+          - if Country.all.empty?
+            %p No country to select.
+          - else
+            - Country.all.each do |country|
+              %label
+                = hidden_field_tag "shipping[country_ids][]", ''
+                = check_box_tag "shipping[country_ids][]", country.id, @shipping.country_ids.include?(country.id), :class => 'ace-checkbox-2'
+                %span.lbl
+                  = country.name
+      .form-actions
+        = button_tag(:type => 'submit', :class => 'btn btn-info') do
+          %i.icon-ok
+          Submit

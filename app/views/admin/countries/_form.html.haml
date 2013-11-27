@@ -1,0 +1,18 @@
+.row-fluid
+  .span-12
+    = form_for [:admin, @country], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @country.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@country.errors.count, "error")} prohibited this country from being saved:"
+            %ul
+              - @country.errors.full_messages.each do |msg|
+                %li= msg
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'form-control'
+        .form-actions
+          = button_tag(:type => 'submit', :class => 'btn btn-info') do
+            %i.icon-ok
+            Submit

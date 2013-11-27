@@ -1,0 +1,24 @@
+- content_for :title, 'List accessories'
+- content_for :breadcrumb, 'Accessories'
+.page-header
+  %h1 Listing accessories
+  = link_to new_admin_accessory_path, :class => "btn btn-success" do
+    %i.icon-plus
+    New accessory
+- if @accessories.empty?
+  %p You don't have any accessories yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Part no.
+        %th Name
+        %th Price
+        %th
+    %tbody
+      - @accessories.each do |accessory|
+        %tr
+          %td= accessory.part_number
+          %td= accessory.name
+          %td= format_currency accessory.price
+          %td= table_commands accessory, admin_accessory_path(accessory), edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 1
