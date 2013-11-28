@@ -122,64 +122,64 @@
         </div><!--#sidebar-shortcuts-->
 
         <ul class="nav nav-list">
-          <li class="<%= active_controller?('admin') %>">
+          <li class="<%= active_controller?('admin/admin') %>">
             <a href="/admin">
               <i class="icon-dashboard"></i>
               <span class="menu-text"> Dashboard </span>
             </a>
           </li>
 
-          <li class="<%= active_controller?('categories') %>">
+          <li class="<%= active_controller?('admin/categories') %>">
             <%= link_to admin_categories_path do %>
               <i class="icon-beaker"></i>
               <span class="menu-text"> Categories </span>
             <% end %>
           </li>
 
-          <li class="<%= active_controller?('products') %>">
+          <li class="<%= active_controller?('admin/products') %>">
             <%= link_to admin_products_path do %>
               <i class="icon-th"></i>
               <span class="menu-text">Products</span>
             <% end %>
           </li>
-          <li class="<%= active_controller?('accessories') %>">
+          <li class="<%= active_controller?('admin/accessories') %>">
             <%= link_to admin_accessories_path do %>
               <i class="icon-cog"></i>
               <span class="menu-text">Accessories</span>
             <% end %>
           </li>
-          <li class="<%= active_controller?('orders') %>">
+          <li class="<%= active_controller?('admin/orders') %>">
             <%= link_to admin_orders_path do %>
               <i class="icon-shopping-cart"></i>
               <span class="menu-text"> Orders </span>
             <% end %>
           </li>
-          <li class="<%= active_controller?('invoices') %>">
+          <li class="<%= active_controller?('admin/invoices') %>">
             <%= link_to admin_invoices_path do %>
               <i class="icon-file-text"></i>
               <span class="menu-text"> Invoices </span>
             <% end %>
           </li>
-          <li class="<%= active_controller?('tiers') %> <%= active_controller?('shippings') %> <%= active_controller?('countries') %>">
+          <li class="<%= active_controller?('admin/tiers') %> <%= active_controller?('admin/shippings') %> <%= active_controller?('admin/countries') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-truck"></i>
               <span class="menu-text"> Shipping </span>
               <b class="arrow icon-angle-down"></b>
             </a>
             <ul class="submenu">
-              <li class="<%= active_controller?('tiers') %>">
+              <li class="<%= active_controller?('admin/tiers') %>">
                 <%= link_to admin_tiers_path do %>
                   <i class="icon-double-angle-right"></i>
                   Tiers
                 <% end %>
               </li>
-              <li class="<%= active_controller?('shippings') %>">
+              <li class="<%= active_controller?('admin/shippings') %>">
                 <%= link_to admin_shippings_path do %>
                   <i class="icon-double-angle-right"></i>
                   Methods
                 <% end %>
               </li>
-              <li class="<%= active_controller?('countries') %>">
+              <li class="<%= active_controller?('admin/countries') %>">
                 <%= link_to admin_countries_path do %>
                   <i class="icon-double-angle-right"></i>
                   Countries
@@ -199,14 +199,14 @@
               <span class="menu-text"> Users </span>
             </a>
           </li>
-          <li class="<%= active_controller?('pay_types') %>">
+          <li class="<%= active_controller?('admin/pay_types') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-wrench"></i>
               <span class="menu-text"> Configuration </span>
               <b class="arrow icon-angle-down"></b>
             </a>
             <ul class="submenu">
-            <li class="<%= active_controller?('pay_types') %>">
+            <li class="<%= active_controller?('admin/pay_types') %>">
                 <%= link_to admin_pay_types_path do %>
                   <i class="icon-double-angle-right"></i>
                   Payment methods

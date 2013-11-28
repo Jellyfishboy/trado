@@ -213,14 +213,20 @@
                   %h5 Please select a payment method. You may be redirected securely offsite to complete your order.
                 .box-content
                   .payment-methods
-                    .row-fluid
-                      .span4
-                        .box.highlight
-                          .hgroup.title
-                            %h3 PayPal&trade;
-                            %h5 Speedy, secure and safe transactions with a trusted service.
-                          .box-content.highlight
-                            %input#option1{name: "shipping_option", type: "radio", value: "1"}/
+                    - if PayType.all.empty?
+                      .row-fluid
+                        %p There are no payment methods to select. Please contact support for help.
+                    - else 
+                      - PayType.all.each_slice(3) do |slice|
+                        .row-fluid
+                          - slice.each do |pay|
+                            .span4
+                              .box.highlight
+                                .hgroup.title
+                                  %h3= pay.name
+                                  %h5= pay.description
+                                .box-content.highlight
+                                  = radio_button_tag "order[pay_type]", pay.id
                 .box-footer
                   .pull-left
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_method"}
