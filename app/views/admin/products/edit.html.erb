@@ -44,18 +44,6 @@
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :stock, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :stock, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :stock_warning_level, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :stock_warning_level, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="control-group">
         <%= f.label :weighting, :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field :weighting, :class => 'form-control' %>
@@ -162,6 +150,18 @@
             <div class="control-label">Thickness (mm):</div>
             <div class="controls">
               <div class="form-control"><%= dimension.thickness %></div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="control-label">Stock:</div>
+            <div class="controls">
+              <div class="form-control"><%= dimension.stock %></div>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="control-label">Stock warning level:</div>
+            <div class="controls">
+              <div class="form-control"><%= dimension.stock_warning_level %></div>
               <hr>
             </div>
           </div>

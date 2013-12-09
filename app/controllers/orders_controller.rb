@@ -38,6 +38,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def success
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def failure
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def update_country
     @tier = Tier.find(params[:tier_id])
     @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).all

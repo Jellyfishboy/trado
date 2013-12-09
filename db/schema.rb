@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127171430) do
+ActiveRecord::Schema.define(:version => 20131209164830) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -82,13 +82,15 @@ ActiveRecord::Schema.define(:version => 20131127171430) do
   end
 
   create_table "dimensions", :force => true do |t|
-    t.decimal  "weight",     :precision => 8, :scale => 2
-    t.decimal  "length",     :precision => 8, :scale => 2
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-    t.decimal  "thickness",  :precision => 8, :scale => 2
-    t.decimal  "price",      :precision => 8, :scale => 2
-    t.decimal  "cost_value", :precision => 8, :scale => 2
+    t.decimal  "weight",              :precision => 8, :scale => 2
+    t.decimal  "length",              :precision => 8, :scale => 2
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.decimal  "thickness",           :precision => 8, :scale => 2
+    t.decimal  "price",               :precision => 8, :scale => 2
+    t.decimal  "cost_value",          :precision => 8, :scale => 2
+    t.integer  "stock"
+    t.integer  "stock_warning_level"
   end
 
   create_table "invoices", :force => true do |t|
@@ -181,13 +183,11 @@ ActiveRecord::Schema.define(:version => 20131127171430) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "weighting"
-    t.integer  "stock"
     t.integer  "part_number"
     t.string   "sku"
-    t.integer  "stock_warning_level"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

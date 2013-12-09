@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :weighting, :stock, :sku, :part_number, :stock_warning_level, :category_ids, :accessory_ids, :attachments_attributes, :tags_attributes, :dimensions_attributes
-  validates :name, :description, :part_number, :sku, :stock, :stock_warning_level, :weighting, :presence => true
+  attr_accessible :name, :description, :weighting, :sku, :part_number, :category_ids, :accessory_ids, :attachments_attributes, :tags_attributes, :dimensions_attributes
+  validates :name, :description, :part_number, :sku, :weighting, :presence => true
   validates :part_number, :sku, :name, :uniqueness => true
-  validates :part_number, :stock, :stock_warning_level, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :part_number, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validates :name, :length => {:minimum => 10, :message => :too_short}
   validates :description, :length => {:minimum => 20, :message => :too_short}
   validates :dimensions, :tier => true, :on => :save

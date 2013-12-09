@@ -54,6 +54,9 @@ platforms :ruby do
   gem 'unicorn'
 end
 
+# Transaction handler
+gem 'activemerchant'
+
 # Authenication
 gem 'devise'
 gem 'cancan'

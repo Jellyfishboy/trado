@@ -226,7 +226,7 @@
                                   %h3= pay.name
                                   %h5= pay.description
                                 .box-content.highlight
-                                  = radio_button_tag "order[pay_type]", pay.id
+                                  = radio_button_tag "order[pay_type_ids]", pay.id
                 .box-footer
                   .pull-left
                     %a.btn.btn-small{"data-toggle" => "tab", href: "#shipping_method"}
