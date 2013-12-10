@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        #Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
+        Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
         format.js { render :js => "window.location = '#{store_url}'", flash[:success] => 'You have completed your order. Please check your email for confirmation details.' }
         format.json { render json: @order, status: :created, location: @order }
       else

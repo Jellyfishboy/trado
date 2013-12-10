@@ -25,5 +25,5 @@ every 12.hours do
 end
 
 every 24.hours do
-    runner "Product.warning_level"
+    runner "Dimension.warning_level"
 end

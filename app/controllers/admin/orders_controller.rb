@@ -36,6 +36,7 @@ class Admin::OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
+    binding.pry
     @order = Order.find(params[:id])
 
     respond_to do |format|

@@ -196,6 +196,17 @@ breadcrumb_add 'Orders', admin_orders_path %>
                         <% end %>
                     </tbody>
                 </table>
+                <div class"span6">
+                    <div class="control-group">
+                        <div class="controls">
+                          <label>
+                            <%= hidden_field_tag :update_customer, '' %>
+                            <%= check_box_tag :update_customer, :class => 'ace-checkbox-2' %>
+                            <span class="lbl">Email customer update</span>
+                          </label>
+                        </div>
+                  </div>
+                </div>
             </fieldset>
             <div class="form-actions">
                 <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>
