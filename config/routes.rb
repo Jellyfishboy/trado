@@ -41,7 +41,9 @@ GimsonRobotics::Application.routes.draw do
       resources :products, :except => :show
       resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
       resources :categories, :except => :show
-      resources :orders
+      resources :orders do
+        put 'shipping', on: :member
+      end
   end
   
 

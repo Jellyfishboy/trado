@@ -9,8 +9,8 @@ class Order < ActiveRecord::Base
   has_many :payments, :dependent => :destroy
   has_many :pay_types, :through => :payments
   after_create :calculate_shipping
-  after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
-  after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was
+  # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
+  # after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was
 
   def add_line_items_from_cart(cart)
   	cart.line_items.each do |item|
@@ -50,15 +50,11 @@ class Order < ActiveRecord::Base
     self.save!
   end
 
-  def no_shipping_date
-    self.shipping_date_was.nil?
-  end
-
-  def send_new_ship_email
-    Notifier.order_shipped(self).deliver
-  end
-
-  def send_changed_ship_email
-    Notifier.changed_shipping(self).deliver
+  def send_shipping_email
+    if self.shipping_date_changed? && self.shipping_date_was.nil?
+      Notifier.order_shipped(self).deliver
+    elsif self.shipping_date_changed? && self.shipping_date_was
+      Notifier.shipping_update(self).deliver
+    end
   end
 end

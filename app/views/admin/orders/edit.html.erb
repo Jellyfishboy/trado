@@ -200,8 +200,8 @@ breadcrumb_add 'Orders', admin_orders_path %>
                     <div class="control-group">
                         <div class="controls">
                           <label>
-                            <%= hidden_field_tag :update_customer, '' %>
-                            <%= check_box_tag :update_customer, :class => 'ace-checkbox-2' %>
+                            <%= hidden_field_tag :update_customer, 0 %>
+                            <%= check_box_tag :update_customer, 1, :class => 'ace-checkbox-2' %>
                             <span class="lbl">Email customer update</span>
                           </label>
                         </div>

@@ -36,11 +36,11 @@ class Admin::OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    binding.pry
     @order = Order.find(params[:id])
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
+        Notifier.order_updated(@order).deliver if params[:update_customer].to_i == 1
         format.html { redirect_to admin_order_path(@order), notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
@@ -49,6 +49,20 @@ class Admin::OrdersController < ApplicationController
       end
     end
   end
+
+  def shipping
+    @order = Order.find(params[:id])
+
+    respond_to do |format|
+      if @order.update_attributes(params[:order])
+        @order.send_shipping_email
+        format.html { redirect_to admin_orders_path, notice: "Shipping was successfully updated for order ##{@order.id}"}
+        format.json { head :no_content }
+      else
+        format.html { redirect_to admin_orders_path, notice: 'Unable to update the shipping information for this order. Please contact your system adminsitrator.'}
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
 
   # DELETE /orders/1
   # DELETE /orders/1.json
