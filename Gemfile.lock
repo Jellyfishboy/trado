@@ -146,6 +146,7 @@ GEM
     jquery-ui-rails (3.0.1)
       jquery-rails
       railties (>= 3.1.0)
+    jquery_datepicker (0.4)
     json (1.8.1)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -350,6 +351,7 @@ DEPENDENCIES
   haml
   haml-rails
   jquery-rails
+  jquery_datepicker
   meta_request
   mini_magick
   mysql2

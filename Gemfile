@@ -54,6 +54,9 @@ platforms :ruby do
   gem 'unicorn'
 end
 
+# Datepicker
+gem 'jquery_datepicker'
+
 # Transaction handler
 gem 'activemerchant'
 

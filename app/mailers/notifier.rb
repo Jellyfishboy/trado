@@ -10,13 +10,13 @@ class Notifier < ActionMailer::Base
   def order_received(order) #retrieve argument 'order' and assign it within the method to send to the customers correct email
     @order = order
 
-    mail :to => order.email, :subject => "Gimson Robotics ##{order.id} order confirmation"
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order confirmation"
   end
 
   def order_updated(order)
     @order = order
 
-    mail :to => order.email, :subject => "Gimson Robotics ##{order.id} order update"
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order update"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -27,7 +27,7 @@ class Notifier < ActionMailer::Base
   def order_shipped(order)
     @order = order
 
-    mail :to => order.email, :subject => 'Gimson Robotics ##{order.id} order shipped'
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order shipped"
   end
 
   def shipping_updated(order)

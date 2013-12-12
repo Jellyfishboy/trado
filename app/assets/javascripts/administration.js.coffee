@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 #= require admin/ace-elements.min
 #= require admin/ace.min
 #= require admin/bootstrap.min
@@ -38,3 +39,7 @@ disable_field = (checkbox, field) ->
 $(document).ready ->
   duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
   disable_field '#invoice_vat_applicable', '#invoice_vat_number'
+
+  $('.change_shipping').click ->
+    order = $(@).attr 'id'
+    $.get '/admin/orders?order_id=' + order

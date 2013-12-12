@@ -6,6 +6,7 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.order('created_at desc').page(params[:page])
     respond_to do |format|
+      format.js { render :partial => 'admin/orders/change_shipping', :format => [:js] }
       format.html # index.html.erb
       format.json { render json: @orders }
     end
@@ -63,6 +64,7 @@ class Admin::OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # DELETE /orders/1
   # DELETE /orders/1.json
