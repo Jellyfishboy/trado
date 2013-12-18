@@ -8,9 +8,9 @@ class Order < ActiveRecord::Base
   belongs_to :invoice
   has_many :payments, :dependent => :destroy
   has_many :pay_types, :through => :payments
-  after_create :calculate_shipping
-  # after_update :send_new_ship_email, :if => :shipping_date_changed? && :no_shipping_date
-  # after_update :send_changed_ship_email, :if => :shipping_date_changed? && :shipping_date_was
+  after_create :update_shipping_information
+  after_update :delayed_shipping, :change_shipping_status
+  # after_save :change_shipping_status
 
   def add_line_items_from_cart(cart)
   	cart.line_items.each do |item|
@@ -43,18 +43,32 @@ class Order < ActiveRecord::Base
       return tier_raffle.max.first
   end
 
-  def calculate_shipping
+  def update_shipping_information
     @shipping = Shipping.find(self.shipping_id)
-    self.shipping_cost = @shipping.price
-    self.shipping_name = @shipping.name
-    self.save!
+    self.update_column(:shipping_cost, @shipping.price)
+    self.update_column(:shipping_name, @shipping.name)
   end
 
-  def send_shipping_email
-    if self.shipping_date_changed? && self.shipping_date_was.nil?
-      Notifier.order_shipped(self).deliver
-    elsif self.shipping_date_changed? && self.shipping_date_was
-      Notifier.shipping_update(self).deliver
+  def delayed_shipping
+    if self.shipping_date_changed? && self.shipping_date_was
+      Notifier.shipping_delayed(self).deliver
     end
   end
+
+  def change_shipping_status
+    if self.shipping_date.to_date == Date.today
+      self.update_column(:shipping_status, "Dispatched")
+      Notifier.order_shipped(self).deliver
+    end
+  end
+
+  def dispatch_orders
+    Order.all.each do |order|
+      if order.shipping_date == Date.today
+        order.update_column(:shipping_status, "Dispatched")
+        order.order_shipped(self).deliver
+      end
+    end
+  end
+
 end

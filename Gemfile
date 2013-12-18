@@ -55,7 +55,7 @@ platforms :ruby do
 end
 
 # Datepicker
-gem 'jquery_datepicker'
+gem 'bootstrap-datepicker-rails'
 
 # Transaction handler
 gem 'activemerchant'

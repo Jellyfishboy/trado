@@ -6,25 +6,24 @@
     <div class="modal-body overflow-visible">
       <div class="row-fluid">
         <div class="span12">
-          <%= form_for [:admin, @order], :url => { :action => :shipping }, :html => { :method => "put" } do |f| %>
+          <%= form_for [:admin, @order], :html => { :class => 'form-horizontal', :role => 'form', :method => "put" } do |f| %>
             <div class="control-group">
               <%= f.label :shipping_date, :class => 'control-label' %>
               <div class="controls">
-                <%= f.datepicker :shipping_date, :class => 'form-control' %>
+                <%= f.text_field :shipping_date, :class => 'form-control', 'data-behaviour' => 'datepicker', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y')) %>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
     </div>
     <div class="modal-footer">
       <button class="btn btn-small" data-dismiss="modal">
         <i class="icon-remove"></i>
         Cancel
       </button>
-      <button class="btn btn-small btn-primary">
-        <i class="icon-ok"></i>
-        Update
-      </button>
+      <%= button_tag(:type => 'submit', :class => 'btn btn-small btn-primary') do %>
+          <i class="icon-ok"></i>Submit
+        <% end %>
+      <% end %>
     </div>
   </div>

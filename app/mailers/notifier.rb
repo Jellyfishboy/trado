@@ -24,16 +24,17 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.order_shipped.subject
   #
+
+  def delayed_shipping(order)
+    @order = order
+
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} shipping update"
+  end
+
   def order_shipped(order)
     @order = order
 
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order shipped"
-  end
-
-  def shipping_updated(order)
-    @order = order
-
-    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} shipping update"
   end
 
   def application_error(error, obj)

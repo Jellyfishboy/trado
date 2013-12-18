@@ -8,6 +8,7 @@
 #= require admin/jquery-ui-1.10.3.custom.min
 #= require admin/jquery.slimscroll.min
 #= require admin/jquery.ui.touch-punch.min
+#= require bootstrap-datepicker
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -43,3 +44,8 @@ $(document).ready ->
   $('.change_shipping').click ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order
+
+$(document).ajaxComplete ->
+  $("[data-behaviour~=datepicker]").datepicker
+    format: "dd/mm/yyyy"
+    startDate: "0"
