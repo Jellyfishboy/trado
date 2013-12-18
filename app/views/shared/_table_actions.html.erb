@@ -4,12 +4,12 @@
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
   <% end %>
-  <% unless type == 2 && object.shipping_status == "Dispatched" %>
+  <% unless type == 2 && object.shipping_status == "Dispatched"  %>
     <%= link_to edit, :class => 'green' do %>
       <i class="icon-pencil bigger-130"></i>
     <% end %>
   <% end %>
-  <% if type == 2 && object.shipping_status == "Pending" %>
+  <% if type == 2 && object.shipping_status == "Pending" && object.payment_status == "Complete" %>
     <a href="#" class="grey change_shipping" id="<%= object.id %>">
       <i class="icon-truck bigger-130"></i>
     </a>

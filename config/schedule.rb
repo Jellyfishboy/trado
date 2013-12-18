@@ -24,6 +24,10 @@ every 12.hours do
     runner "Cart.clear_carts"
 end
 
-every 24.hours do
+every 1.day, :at => '8:30 am' do
     runner "Dimension.warning_level"
+end
+
+every 1.day, :at => '7:00 am' do
+    runner "Order.dispatch_orders"
 end
