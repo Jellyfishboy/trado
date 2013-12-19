@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationContoller
+class CategoriesController < ApplicationController
 
     # GET /categories/1
     # GET /categories/1.json
