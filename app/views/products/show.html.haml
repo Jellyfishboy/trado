@@ -53,34 +53,35 @@
                     .meta
                       .sku
                         %i.icon-pencil
-                        %span{rel: "tooltip", title: "SKU is #{@product.sku}"}
-                          = @product.sku
+                        %span.dimension{rel: "tooltip", title: "SKU is #{@product.sku}-#{@product.dimensions.first.length.floor}"}
+                          = "#{@product.sku}-#{@product.dimensions.first.length.floor}"
                       .categories
-                        %span
+                        %span{rel: "tooltip", title: "Tags"}
                           %i.icon-tags
                           = @product.tags.map(&:name).join(',')
                       .stock
                         %i.icon-bar-chart
-                        %span{rel: "tooltip", :title => "Stock is #{@product.stock}"}
-                          = @product.stock
+                        %span.stock_count{rel: "tooltip", :title => "#{@product.dimensions.first.stock} items in stock"}
+                          = @product.dimensions.first.stock
                   .short-description
                     %p= @product.description
-                  - if @product.stock > 0
-                    = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
-                      .options
-                        .row-fluid
-                          .span6
-                            .control-group
-                              %label.control-label Dimension
-                              .controls
-                                = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] })
-                      .add-to-cart
-                        = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large') do
-          
-                          %i.icon-plus
-                            Add to cart
-                  - else
-                    .btn.btn-primary.btn-large Notify me
+                  .add-to-cart
+                    - if @product.dimensions.first.stock > 0
+                      = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
+                        .options
+                          .row-fluid
+                            .span6
+                              .control-group
+                                %label.control-label Dimension
+                                .control{ 'data-product' => @product.id }
+                                  = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] } )
+                        .add-to-cart
+                          = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large') do
+            
+                            %i.icon-plus
+                              Add to cart
+                    - else
+                      .btn.btn-primary.btn-large Notify me
 
                 / End id="product"
                 / Description tab

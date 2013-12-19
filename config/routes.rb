@@ -8,7 +8,6 @@ GimsonRobotics::Application.routes.draw do
   match '/contact' => 'store#contact'
 
   # Ajax methods
-  match '/update_price' => 'products#update_price'
   match '/update_country' => 'orders#update_country'
   match '/estimate_shipping' => 'carts#estimate_shipping'
 
@@ -18,21 +17,11 @@ GimsonRobotics::Application.routes.draw do
      }
   resources :carts, :only => [:create, :show, :destroy]
   resources :categories, :only => :show
-  resources :products, :only => [:show, :update_price]
+  resources :products, :only => :show
   
   resources :orders, :only => [:new, :create, :update_country]
   resources :users
   resources :line_items, :only => [:create, :destroy]
-
-  # scope '/admin' do
-  #     root :to => "admin#dashboard"
-  #     mount RailsAdmin::Engine => '/db'
-  #     mount Sidekiq::Web => '/jobs'
-  #     resources :products, :except => :show
-  #     resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
-  #     resources :categories, :except => :show
-  #     resources :orders
-  # end
 
   namespace :admin do
       root :to => "admin#dashboard"

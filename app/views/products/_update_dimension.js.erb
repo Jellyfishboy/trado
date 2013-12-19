@@ -1,0 +1,5 @@
+<% @dimension = Dimension.where('id = ?', dimension_id).first %>
+$('.price').html('<%= format_currency @dimension.price %>');
+$('.dimension').html('<%= "#{@product.sku}-#{@dimension.length.floor}" %>').attr('title', '<%=  "SKU is #{@product.sku}-#{@dimension.length.floor}" %>').tooltip('fixTitle');
+$('.stock_count').html('<%=  @dimension.stock %>').attr('title', '<%= "#{@dimension.stock} items in stock" %>').tooltip('fixTitle');
+$('.add-to-cart').html('<%=j render :partial => "products/add_to_cart", :object => @dimension %>');

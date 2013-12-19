@@ -18,13 +18,7 @@ root = exports ? this
 $(document).ready ->
     update_shipping_cost()
     form_JSON_errors()
-    $('#line_item_dimension_id').change ->
-        $.ajax '/update_price',
-            type: 'GET'
-            data: {'dimension_id' : $('#line_item_dimension_id').val() }
-            dataType: 'html'
-            success: (data) ->
-                $('.price').html data
+    update_dimension()
     $('#country_selector').change ->
     	$.ajax '/update_country',
     		type: 'GET'
@@ -45,6 +39,7 @@ $(document).ready ->
 
 $(document).ajaxComplete ->
     update_shipping_cost()
+    update_dimension()
 
 update_shipping_cost = ->
     $('.shipping-methods .shipping_option').click ->
@@ -61,6 +56,12 @@ form_JSON_errors = ->
         for message of errors
             $('#errors ul').append '<li>' + errors[message] + '</li>'
         $('#errors').modal 'show'
+
+update_dimension = ->
+    $('#line_item_dimension_id').change ->
+        product_id = $('#line_item_dimension_id').parent().attr 'data-product'
+        dimension_id = $('#line_item_dimension_id').val()
+        $.get '/products/' + product_id + '?dimension_id=' + dimension_id
 
 
 

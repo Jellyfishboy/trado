@@ -1,0 +1,16 @@
+- if @product.dimensions.first.stock > 0
+  = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
+    .options
+      .row-fluid
+        .span6
+          .control-group
+            %label.control-label Dimension
+            .control{ 'data-product' => @product.id }
+              = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] }, @dimension.id )
+    .add-to-cart
+      = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large') do
+
+        %i.icon-plus
+          Add to cart
+- else
+  .btn.btn-primary.btn-large Notify me

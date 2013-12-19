@@ -7,13 +7,10 @@ class ProductsController < ApplicationController
     @category = @product.categories.first
     @line_item = LineItem.new
     respond_to do |format|
+      format.js { render :partial => 'products/update_dimension', :format => [:js], :locals => { :dimension_id => params[:dimension_id] } }
       format.html # show.html.erb
       format.json { render json: @product }
     end
   end
-  
-  def update_price 
-    @price = Dimension.where('id = ?', params[:dimension_id]).first
-    render :partial => "products/update_price", :object => @price
-  end
+
 end

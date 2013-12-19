@@ -1,0 +1,123 @@
+
+
+.row-fluid
+  .span12
+    .login-container
+      .row-fluid
+        .center
+          %h1
+            %i.icon-shopping-cart.green
+            %span.red Gimson 
+            %span.white Robotics
+      .space-6
+      .row-fluid
+        .position-relative
+          #login-box.login-box.visible.widget-box.no-border
+            .widget-body
+              .widget-main
+                %h4.header.blue.lighter.bigger
+                  %i.icon-check.green
+                  Please Enter Your Information
+                .space-6
+                = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                  %fieldset
+                    %label
+                      %span.block.input-icon.input-icon-right
+                        = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "span12"
+                        %i.icon-user
+                    %label
+                      %span.block.input-icon.input-icon-right
+                        = f.password_field :password, :placeholder => "Password", :class => "span12"
+                        %i.icon-lock
+                    .space
+                    .clearfix
+                    - if devise_mapping.rememberable?
+                      %label.inline
+                        = f.check_box :remember_me
+                        = f.label :remember_me, :class => "lbl"
+                      = button_tag(:type => 'submit', :class => 'width-35 pull-right btn btn-small btn-primary') do
+                        %i.icon-key
+                        Login
+                    .space-4
+              / /widget-main
+              .toolbar.clearfix
+                %div
+                  %a.forgot-password-link{href: "#", onclick: "show_box('forgot-box'); return false;"}
+                    %i.icon-arrow-left
+                    I forgot my password
+            / /widget-body
+          / /login-box
+          #forgot-box.forgot-box.widget-box.no-border
+            .widget-body
+              .widget-main
+                %h4.header.red.lighter.bigger
+                  %i.icon-key
+                  Retrieve Password
+                .space-6
+                %p
+                  Enter your email and to receive instructions
+                = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+                  %fieldset
+                    %label
+                      %span.block.input-icon.input-icon-right
+                        = f.email_field :email, :autofocus => true, :placeholder => "Email", :type => "email", :class => "span12"
+                        %i.icon-envelope
+                    .clearfix
+                      = button_tag(:type => 'submit', :class => 'width-35 pull-right btn btn-small btn-danger') do
+                        %i.icon-lightbulb
+                        Send me
+              / /widget-main
+              .toolbar.center
+                %a.back-to-login-link{href: "#", onclick: "show_box('login-box'); return false;"}
+                  Back to login
+                  %i.icon-arrow-right
+            / /widget-body
+          / /forgot-box
+          #signup-box.signup-box.widget-box.no-border
+            .widget-body
+              .widget-main
+                %h4.header.green.lighter.bigger
+                  %i.icon-group.blue
+                  New User Registration
+                .space-6
+                %p Enter your details to begin:
+                %form
+                %fieldset
+                  %label
+                    %span.block.input-icon.input-icon-right
+                      %input.span12{placeholder: "Email", type: "email"}/
+                      %i.icon-envelope
+                  %label
+                    %span.block.input-icon.input-icon-right
+                      %input.span12{placeholder: "Username", type: "text"}/
+                      %i.icon-user
+                  %label
+                    %span.block.input-icon.input-icon-right
+                      %input.span12{placeholder: "Password", type: "password"}/
+                      %i.icon-lock
+                  %label
+                    %span.block.input-icon.input-icon-right
+                      %input.span12{placeholder: "Repeat password", type: "password"}/
+                      %i.icon-retweet
+                  %label
+                    %input{type: "checkbox"}/
+                    %span.lbl
+                      I accept the
+                      %a{href: "#"} User Agreement
+                  .space-24
+                  .clearfix
+                    %button.width-30.pull-left.btn.btn-small{type: "reset"}
+                      %i.icon-refresh
+                      Reset
+                    %button.width-65.pull-right.btn.btn-small.btn-success{onclick: "return false;"}
+                      Register
+                      %i.icon-arrow-right.icon-on-right
+              .toolbar.center
+                %a.back-to-login-link{href: "#", onclick: "show_box('login-box'); return false;"}
+                  %i.icon-arrow-left
+                  Back to login
+            / /widget-body
+          / /signup-box
+        / /position-relative
+  / /.span
+/ /.row-fluid
