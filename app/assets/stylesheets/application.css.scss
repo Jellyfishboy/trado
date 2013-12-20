@@ -2,6 +2,8 @@
 //= require bootstrap-responsive
 //= require core
 //= require font-awesome_custom
+@import "compass/css3";
+
 body {
 
 }
@@ -31,3 +33,5 @@ textarea {
         cursor: pointer;
     }
 }
+
+@import "product";
