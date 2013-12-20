@@ -15,6 +15,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag :application, :media => "all"
     %link{href: "http://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Shadows+Into+Light", rel: "stylesheet", type: "text/css"}/
+    %link{href: "/stylesheets/font-awesome.min.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -181,7 +182,18 @@
     %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
     = javascript_include_tag :application    
     :javascript
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+      Modernizr.load([
+          {
+              test: Modernizr.csstransitions,
+              nope: ['#{asset_path("css3-fallback.js")}']
+          }
+      ]);
+      var _gaq = [
+          ['_setAccount', 'UA-32097152-2'],
+          ['_trackPageview']
+      ];
+      (function (d, t) {
+          var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g, s)
+      }(document, 'script'));
