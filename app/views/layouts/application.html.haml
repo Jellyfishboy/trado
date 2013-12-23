@@ -14,7 +14,20 @@
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag :application, :media => "all"
-    %link{href: "http://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Shadows+Into+Light", rel: "stylesheet", type: "text/css"}/
+    :javascript
+      WebFontConfig = {
+          google : {
+              families : ['Open+Sans:400,700,400italic,700italic:latin,latin-ext,cyrillic', 'Pacifico::latin']
+          }
+      };
+      (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+      })();
     %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
