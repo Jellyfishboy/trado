@@ -1,16 +1,15 @@
 #= require jquery
 #= require jquery_ujs
-#= require bootstrap_custom
-#= require jquery-ui-1.10.2.custom
-#= require jquery.easing-1.3.min
-#= require jquery.isotope.min
-#= require jquery.flexslider
-#= require jquery.elevatezoom
-#= require jquery.sharrre-1.3.4
-#= require jquery.gmap3
-#= require la_boutique
-#= require imagesloaded
-#= require modernizr-2.6.2.min
+#= require underscore/underscore-min
+#= require bootstrap.min
+#= require jquery.carouFredSel-6.2.1-packed
+#= require jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min
+#= require jquery-ui-1.10.3/touch-fix.min
+#= require isotope/jquery.isotope.min
+#= require bootstrap-tour/build/js/bootstrap-tour.min
+#= require prettyphoto/js/jquery.prettyPhoto
+#= require goMap/js/jquery.gomap-1.3.2.min
+#= require custom
 
 # Attach a function or variable to the global namespace
 root = exports ? this
