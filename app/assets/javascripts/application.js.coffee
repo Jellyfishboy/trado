@@ -10,6 +10,7 @@
 #= require prettyphoto/js/jquery.prettyPhoto
 #= require goMap/js/jquery.gomap-1.3.2.min
 #= require custom
+#= require modernizr.custom.56918
 
 # Attach a function or variable to the global namespace
 root = exports ? this

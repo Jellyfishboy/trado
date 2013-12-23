@@ -13,8 +13,6 @@
       = yield :page_title
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = stylesheet_link_tag :application, :media => "all"
-    %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
     :javascript
       WebFontConfig = {
           google : {
@@ -29,168 +27,303 @@
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(wf, s);
       })();
+    = stylesheet_link_tag :application, :media => "all"
+    %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-    / Header
-    .header
-      / Top bar
-      .top
-        .container
-          .row
-            .span6
-            .span6.hidden-phone
-              %ul.inline.pull-right
-                %li
+    .master-wrapper
+      / ==========
+      / = Header =
+      / ==========
+      %header#header
+        .darker-row
+          .container
+            .row
+              .span4
+                .higher-line
                   = link_to "Administration", admin_root_path
-                %li
                   - if user_signed_in?
                     = link_to "Log out", destroy_user_session_path, :method => :delete
                   - else
                     = link_to "Log in", new_user_session_path
-      / End class="top"
-      / Logo & Search bar
-      .bottom
+              .span8
+                .topmost-line
+                  .higher-line
+                    = link_to "Checkout", current_cart, :class => 'gray-link'
+                   
+                  .lang-currency
+                    .dropdown.js-selectable-dropdown
+                      %a.selected{"data-toggle" => "dropdown", href: "#"}
+                        %span.js-change-text
+                          %i.famfamfam-flag-gb
+                          English (EN)
+                        %b.caret
+                      %ul.dropdown-menu.js-possibilities{"aria-labelledby" => "dLabel", role: "menu"}
+                        %li
+                          %a{href: "#"}
+                            %i.famfamfam-flag-gb
+                            English (EN)
+                    .dropdown.js-selectable-dropdown
+                      %a.selected{"data-toggle" => "dropdown", href: "#"}
+                        %span.js-change-text GBP (£)
+                        %b.caret
+                      %ul.dropdown-menu.js-possibilities{"aria-labelledby" => "dLabel", role: "menu"}
+                        %li
+                          %a{href: "#"} GBP (£)
         .container
           .row
-            .span8
-              .logo
-                %a{href: "/", title: "← Back home"}
-                  %h4 Gimson Robotics
-            .span4
-              .row-fluid
-                .span10
-                  / Search
-                  .search
-                    .qs_s
-                      %form{action: "search.html", method: "post"}
-                      %input#query{autocomplete: "off", name: "query", placeholder: "Search…", type: "text", value: ""}/
-                  / End class="search"
-                .span2
-                  / Mini cart
-                  .mini-cart
-                    - if current_cart.line_items.count > 0
-                      = link_to current_cart, :method => :get do
-                        %span
-                          = current_cart.line_items.sum('quantity')
+            / ==========
+            / = Logo =
+            / ==========
+            .span7
+              %a.brand{href: "index.html"}
+                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => 'Gimson Robotics'
+                %span.pacifico Gimson Robotics
+                %span.tagline The linear actuator and electric motor specialist
+            / ==========
+            / = Social Icons =
+            / ==========
+            .span5
+              .top-right
+                .icons
+                  %a{href: "http://www.facebook.com/ProteusNet"}
+                    %span.zocial-facebook
+                  %a{href: "skype:primozcigler?call"}
+                    %span.zocial-skype
+                  %a{href: "https://twitter.com/proteusnetcom"}
+                    %span.zocial-twitter
+                  %a{href: "http://eepurl.com/xFPYD"}
+                    %span.zocial-rss
+                  %a{href: "#"}
+                    %span.zocial-wordpress
+                  %a{href: "#"}
+                    %span.zocial-android
+                  %a{href: "#"}
+                    %span.zocial-html5
+                  %a{href: "#"}
+                    %span.zocial-windows
+                  %a{href: "#"}
+                    %span.zocial-apple
+      / ==========
+      / = Main Menu / navbar =
+      / ==========
+      #stickyNavbar.navbar.navbar-static-top
+        .navbar-inner
+          .container
+            .row
+              .span9
+                %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                / ==========
+                / = Menu =
+                / ==========
+                .nav-collapse.collapse
+                  %ul#mainNavigation.nav
+                    %li{ :class => active_page?('store', 'index') }
+                      %a.title{href: store_path, title: "Home"} Home
+                    - category_list.each do |category|
+                      %li{ :class => active_category?(category.id) }
+                        = link_to category.name, category
+                    %li{ :class => active_page?('store', 'about') }
+                      %a.title{href: about_path, title: "About us"} About us
+                    %li{ :class => active_page?('store', 'contact') }
+                      %a.title{href: contact_path, title: "Contact us"} Contact us
+                  / ==========
+                  / = Search form =
+                  / ==========
+                  %form.navbar-form.pull-right{action: "#", method: "get"}
+                    %button{type: "submit"}
+                      %span.icon-search
+                    %input#navSearchInput.span1{name: "search", type: "text"}/
+                / /.nav-collapse
+              / ==========
+              / = Cart =
+              / ==========
+              .span3
+                #cartContainer.cart-container
+                  .cart
+                    %p.items
+                      CART
+                      %span.dark-clr
+                        (
+                        = current_cart.line_items.sum('quantity')
+                        )
+                    %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
+                    = link_to current_cart, :class => 'btn btn-danger' do
+                      / <span class="icon icons-cart"></span>
+                      %i.icon-shopping-cart
+                  .open-panel
+                    - if current_cart.line_items.empty?
+                      %p You have no items in your cart
                     - else 
-                      %a
-
-                  / End class="mini-cart"
-      / End class="bottom"
-    / End class="header"
-    / Navigation
-    %nav.navigation
+                      - current_cart.line_items.each do |item|
+                        .item-in-cart.clearfix
+                          .image
+                            = image_tag item.product.attachments.first.file.small, :alt => item.product.name, :height => 124, :width => 124
+                          .desc
+                            %strong
+                              = link_to item.product.name, item.product
+                            %span.light-clr.qty
+                              Qty:
+                              = item.quantity
+                              \ 
+                              = link_to item, :method => :delete, :remote => true, :class => 'icon-remove-sign', :title => 'Remove item'
+                          .price
+                            %strong= format_currency item.price
+                        .summary
+                          .line
+                            .row-fluid
+                              .span6 Subtotal:
+                              .span6.align-right.size-16= format_currency current_cart.total_price
+                        .proceed
+                          = link_to current_cart, :class => 'btn btn-danger pull-right bold higher' do
+                            CHECKOUT
+                            %i.icon-shopping-cart
+      / ==========
+      / = Main container =
+      / ==========
       .container
-        .row
-          .span9
-            .hidden-phone
-              / Main menu (desktop)
-              %ul.main-menu
-                %li{ :class => active_page?('store', 'index') }
-                  %a.title{href: store_path, title: "Home"} Home
-                - category_list.each do |category|
-                  %li{ :class => active_category?(category.id) }
-                    = link_to category.name, category
-                %li{ :class => active_page?('store', 'about') }
-                  %a.title{href: about_path, title: "About us"} About us
-                %li{ :class => active_page?('store', 'contact') }
-                  %a.title{href: contact_path, title: "Contact us"} Contact us
-              / End class="main-menu"
-            .visible-phone
-              / Main menu (mobile)
-              %select.mobile-nav
-                %option{selected: "selected", value: ""}Go to…
-                %option{value: store_path} Home
-                - category_list.each do |category|
-                  %option{value: category_path(category) }= category.name
-                %option{value: about_path} About
-                %option{value: contact_path} Contact
-          .span3.visible-desktop
-    / End class="navigation"
-    %section.main
-      = yield
-    / Twitter bar
-    .twitter-bar
-      .container
-        .row
-          .span12
-            .icon
-              %i.icon-twitter
-            #tweets{"data-username" => "lemonstand"}
-    / End class="twitter-bar"
-    / Footer
-    .footer
-      .container
-        .row
-          .span2
-            / Support
-            .support
-              %h6 Support
-              %ul.links
-                %li
-                  %a.title{href: about_path, title: "About us"} About us
-                %li
-                  %a.title{href: contact_path, title: "Contact us"} Contact us
-            / End class="support"
-            %hr/
-            / My account
-            .account
-              %h6 My account
-              %ul.links
-                %li
-                  - if user_signed_in?
-                    = link_to "Log out", destroy_user_session_path, :method => :delete
-                  - else
-                    = link_to "Log in", new_user_session_path
-            / End class="account"
-          .span2
-            / Categories
-            .categories
-              %h6 Categories
-              %ul.links
-                - category_list.each do |category|
+        = yield
+      / ==========
+      / = Footer =
+      / ==========
+      %footer
+        / ==========
+        / = Upper footer =
+        / ==========
+        .foot-light
+          .container
+            .row
+              .span4
+                %h2.pacifico
+                  Gimson Robotics
+                  = image_tag "webmarket/webmarket.png", :alt => "Gimson Robotics"
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis
+              .span4
+                .main-titles.lined
+                  %h3.title Facebook
+                .bordered
+                  .fill-iframe
+                    .fb-like-box{"data-colorscheme" => "dark", "data-header" => "false", "data-height" => "200", "data-href" => "https://www.facebook.com/ProteusNet", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
+              .span4
+                .main-titles.lined
+                  %h3.title
+                    %span.light Newsletters
+                    Signup
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam tincidunt vestibulum risus et gravida.
+                / Begin MailChimp Signup Form
+                #mc_embed_signup
+                  %form#mc-embedded-subscribe-form.validate.form.form-inline{action: "http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&id=5dad3f35e9", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank"}
+                    .mc-field-group
+                      %input#mce-EMAIL.required.email{name: "EMAIL", placeholder: "Enter your e-mail address", type: "email", value: ""}/
+                      %input#mc-embedded-subscribe.btn.btn-primary{name: "subscribe", type: "submit", value: "Send"}/
+                    #mce-responses.clear
+                      #mce-error-response.response{style: "display:none"}
+                      #mce-success-response.response{style: "display:none"}
+                / End mc_embed_signup
+        / /upper footer
+        / ==========
+        / = Middle footer =
+        / ==========
+        .foot-dark
+          .container
+            .row
+              / ==========
+              / = Menu 1 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    %span.light Main
+                    Navigation
+                %ul.nav.bold
                   %li
-                    = link_to category.name, category
-            / End class="categories"
-            %hr/
-            / Pay with confidence
-            .confidence
-              %h6 Pay with confidence
-              = image_tag "stripe.png", :title => "We accept all major credit cards", :alt => "We accept all major credit cards"
-            / End class="confidence"
-          .span4
-            %h6 From the blog
-            %ul.list-chevron.links
-              %li
-                %a{href: "blog-post.html"} Article with video
-                %small 05/01/2013
-              %li
-                %a{href: "blog-post.html"} Article with images
-                %small 03/14/2013
-              %li
-                %a{href: "blog-post.html"} Article with style!
-                %small 08/31/2013
-          .span4
-            / Newsletter subscription
-            .newsletter
-              %h6 Newsletter subscription
-              %form{action: "/", enctype: "multipart/form-data", method: "post", onsubmit: "$('#newsletter_subscribe').modal('show'); return false;"}
-              .input-append
-                %input.span3{name: "email", type: "text"}/
-                %button.btn{type: "submit"} Go!
-              %p Sign up to receive our latest news and updates direct to your inbox
-            / End class="newsletter"
-            %hr/
-            / Social icons
-            .social
-              %h6 Socialize with us
-              %ul.social-icons
-                %li
-                  %a.twitter{href: "#", title: "Twitter"} Twitter
-            / End class="social"
-    / End id="footer"
-    / /container
+                    %a{href: "#"} Home
+                  %li
+                    %a{href: "#"} Pages
+                  %li
+                    %a{href: "#"} About Us
+                  %li
+                    %a{href: "#"} Shortcodes
+                  %li
+                    %a{href: "#"} Gallery
+                  %li
+                    %a{href: "#"} Contact Us
+              / ==========
+              / = Menu 2 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    %span.light Second
+                    Navigation
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+              / ==========
+              / = Menu 3 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    %span.light Third
+                    Navigation
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+              / ==========
+              / = Menu 4 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    %span.light Fourth
+                    Navigation
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+        / /middle footer
+        / ==========
+        / = Bottom Footer =
+        / ==========
+        .foot-last
+          %a#toTheTop{href: "#"}
+            %span.icon-chevron-up
+          .container
+            .row
+              .span6
+                \© Copyright 2013. All rights reserved - Gimson Robotics
+        / /bottom footer
+      / /footer
     %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
     %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
     = javascript_include_tag :application    
