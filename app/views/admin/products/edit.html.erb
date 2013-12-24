@@ -74,7 +74,7 @@
             </div>
             <div class="control-group">
               <div class="controls">
-                <%= link_to "Remove", admin_attachment_path, :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
+                <%= link_to "Remove", admin_attachment_path(attachment), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
             </div>
             <div class="control-group">
               <div class="controls">
-                <%= link_to "Remove", admin_dimension_path, :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
+                <%= link_to "Remove", admin_dimension_path(dimension), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
               </div>
             </div>
           </div>

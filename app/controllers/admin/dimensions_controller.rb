@@ -8,7 +8,7 @@ class Admin::DimensionsController < ApplicationController
     respond_to do |format|
       if @dimension.destroy
         flash[:success] = "Dimension was successfully deleted."
-        format.js { render :partial => "dimensions/destroy", :format => [:js] }
+        format.js { render :partial => "admin/dimensions/destroy", :format => [:js] }
       else
         flash[:error] = "Dimension failed to be removed from the database."
       end

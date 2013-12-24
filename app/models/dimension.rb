@@ -7,7 +7,7 @@ class Dimension < ActiveRecord::Base
   validates :price, :cost_value, :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness, :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
-  has_many :notifications, as: :notifiable, :dependent => :delete_all
+  # has_many :notifications, as: :notifiable, :dependent => :delete_all
   
   def check_association_number
     product = Product.find(self.product.id)

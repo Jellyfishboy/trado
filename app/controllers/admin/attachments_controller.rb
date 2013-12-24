@@ -8,7 +8,7 @@ class Admin::AttachmentsController < ApplicationController
     respond_to do |format|
       if @attachment.destroy
         flash[:success] = "Attachment was successfully deleted."
-        format.js { render :partial => "attachments/destroy", :format => [:js] }
+        format.js { render :partial => "admin/attachments/destroy", :format => [:js] }
       else
         flash[:error] = "Attachment failed to be removed from the database."
       end
