@@ -1,49 +1,499 @@
 - content_for :page_title, 'The Linear Actuator and Electric Motor specialist'
-/ Home content
-%section.home
-  / Promos
-  %section.promos
+/ ==========
+/ = Slider Revolution =
+/ ==========
+.fullwidthbanner-container
+  .fullwidthbanner
+    %ul
+      %li{"data-slotamount" => "3", "data-transition" => "premium-random"}
+        %img{alt: "slider img", height: "377", src: "images/dummy/slides/1/slide.jpg", width: "1400"}/
+        / baloons
+        .caption.lft.ltt{"data-easing" => "easeOutElastic", "data-speed" => "4000", "data-start" => "1000", "data-x" => "570", "data-y" => "50"}
+          %img{alt: "baloon", height: "186", src: "images/dummy/slides/1/baloon1.png", width: "135"}/
+        .caption.lft.ltt{"data-easing" => "easeOutElastic", "data-speed" => "4000", "data-start" => "1200", "data-x" => "770", "data-y" => "60"}
+          %img{alt: "baloon", height: "55", src: "images/dummy/slides/1/baloon3.png", width: "40"}/
+        .caption.lft.ltt{"data-easing" => "easeOutElastic", "data-speed" => "4000", "data-start" => "1500", "data-x" => "870", "data-y" => "80"}
+          %img{alt: "baloon", height: "83", src: "images/dummy/slides/1/baloon2.png", width: "60"}/
+        / texts
+        .caption.lfl.big_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "500", "data-x" => "120", "data-y" => "120"}
+          With Webmarket, the Sky Is the Limit
+        .caption.lfl.small_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "700", "data-x" => "120", "data-y" => "190"}
+          Take a tour on Webmarket HTML Template
+        %a.caption.lfl.btn.btn-primary.btn_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "900", "data-x" => "120", "data-y" => "260", href: "features.html"}
+          ALL THEME FEATURES
+      / /slide
+      %li{"data-slotamount" => "3", "data-transition" => "premium-random"}
+        %img{alt: "slider img", height: "377", src: "images/dummy/slides/2/slide.jpg", width: "1400"}/
+        / woman
+        .caption.lfb.ltb{"data-easing" => "easeInOutCubic", "data-speed" => "1000", "data-start" => "1000", "data-x" => "800", "data-y" => "50"}
+          %img{alt: "woman", height: "374", src: "images/dummy/slides/2/woman.png", width: "361"}/
+        / plane
+        .caption.lfl.str{"data-easing" => "linear", "data-speed" => "10000", "data-start" => "1000", "data-x" => "400", "data-y" => "20"}
+          %img{alt: "aircraft", height: "28", src: "images/dummy/slides/2/plane.png", width: "117"}/
+        / texts
+        .caption.lfl.big_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "500", "data-x" => "120", "data-y" => "120"}
+          Slider Revolution
+        .caption.lfl.small_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "700", "data-x" => "120", "data-y" => "190"}
+          This premium slider comes with the theme, as a bonus, for FREE!
+        %a.caption.lfl.btn.btn-primary.btn_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "900", "data-x" => "120", "data-y" => "260", href: "features.html"}
+          AND MANY MORE ...
+      / /slide
+      %li{"data-slotamount" => "3", "data-transition" => "premium-random"}
+        %img{alt: "slider img", height: "377", src: "images/dummy/slides/3/slide.jpg", width: "1400"}/
+        / phone
+        .caption.sfr.fadeout{"data-easing" => "easeInOutCubic", "data-speed" => "1000", "data-start" => "2500", "data-x" => "950", "data-y" => "77"}
+          %img{alt: "phone in a hand", height: "377", src: "images/dummy/slides/3/phone.png", width: "495"}/
+        / texts
+        .caption.lfl.big_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "500", "data-x" => "120", "data-y" => "120"}
+          We Are Mobile Ready
+        .caption.lfl.small_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "700", "data-x" => "120", "data-y" => "190"}
+          Try to resize the browser window. The Webmarket will look awesome no matter the device screen resolution!
+        %a.caption.lfl.btn.btn-primary.btn_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "900", "data-x" => "120", "data-y" => "260", href: "icons.html"}
+          And also all the icons are retina-ready...
+      / /slide
+      %li{"data-slotamount" => "3", "data-transition" => "premium-random"}
+        %img{alt: "slider img", height: "377", src: "images/dummy/slides/4/slide.jpg", width: "1400"}/
+        / faces
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "2000", "data-x" => "-150", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "204", src: "images/dummy/slides/4/person1.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "2200", "data-x" => "0", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "321", src: "images/dummy/slides/4/person2.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "2400", "data-x" => "500", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "139", src: "images/dummy/slides/4/person3.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "2600", "data-x" => "720", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "191", src: "images/dummy/slides/4/person4.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "2800", "data-x" => "940", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "139", src: "images/dummy/slides/4/person5.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "3000", "data-x" => "1200", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "179", src: "images/dummy/slides/4/person6.png", width: "108"}/
+        .caption.lft.ltt{"data-easing" => "easeInOutCubic", "data-speed" => "300", "data-start" => "3200", "data-x" => "1350", "data-y" => "0"}
+          %img{alt: "satisfied customer", height: "133", src: "images/dummy/slides/4/person7.png", width: "108"}/
+        / texts
+        .caption.lfl.big_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "500", "data-x" => "120", "data-y" => "140"}
+          Over 1000 Satisfied Customers
+        .caption.lfl.small_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "700", "data-x" => "120", "data-y" => "210"}
+          Take a look at our profile page on the
+          = succeed "!" do
+            %a{href: "http://themeforest.net/user/ProteusThemes", target: "_blank"} ThemeForest
+        %a.caption.lfl.btn.btn-primary.btn_theme{"data-easing" => "easeInOutBack", "data-speed" => "1000", "data-start" => "900", "data-x" => "120", "data-y" => "280", href: "http://proteusthemes.ticksy.com/"}
+          We provide support on Ticksy
+      / /slide
+    .tp-bannertimer
+  / ==========
+  / = Nav Arrows =
+  / ==========
+  #sliderRevLeft
+    %i.icon-chevron-left
+  #sliderRevRight
+    %i.icon-chevron-right
+/ /slider revolution
+.container
+  .row
+    .span12
+      .push-up.over-slider.blocks-spacer
+        / ==========
+        / = Three Banners =
+        / ==========
+        .row
+          .span4
+            %a.btn.btn-block.banner{href: "#"}
+              %span.title
+                %span.light UK
+                BASED
+              %em stockist and developer of products
+          .span4
+            %a.btn.btn-block.colored.banner{href: "#"}
+              %span.title
+                %span.light FREE
+                SHIPPING
+              %em on orders over £85
+          .span4
+            %a.btn.btn-block.banner{href: "#"}
+              %span.title
+                %span.light PREMIUM
+                SPECIALIST
+              %em of linear actuators and electric motors
+        / /three banners
+  / ==========
+  / = Most Popular products =
+  / ==========
+  .most-popular.blocks-spacer
     .container
-      .row
-        .span4
-          .free-shipping
-            .box.border-top
-              = image_tag "free-shipping.png", :alt => "Free shipping"
-              .hgroup.title
-                %h3 Free UK shipping!
-                %h5 This is a snappy sub-title
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
-        .span4
-          .world-shipping
-            .box.border-top
-              = image_tag "world-shipping.png", :alt => "World shipping"
-              .hgroup.title
-                %h3 We're now global!
-                %h5 This is a snappy sub-title
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
-        .span4
-          .low-price
-            .box.border-top
-              = image_tag "low-price.png", :alt => "Low price"
-              .hgroup.title
-                %h3 Lowest price guarantee!
-                %h5 This is a snappy sub-title
-              %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
-  / End class="promos"
-  %section.featured
-    .container
+      / ==========
+      / = Title =
+      / ==========
       .row
         .span12
-          / Products list
-          %ul.product-list.isotope
-            - @products.each do |product|
-              %li.standard{"data-price" => product.dimensions.first.price}
-                = link_to product, :title => product.name do
-                  .image
-                    = image_tag product.attachments.first.file.large, :alt => product.name, :class => 'primary'
-                  .title
-                    .prices
-                      %span.price= format_currency product.dimensions.first.price
-                    %h3= product.name
-          / End class="product-list isotope"
-/ End class="home"
+          .main-titles.lined
+            %h2.title
+              %span.light Most
+              Popular Products
+      / /title
+      .row.popup-products
+        / ==========
+        / = Product =
+        / ==========
+        .span3
+          .product
+            .product-inner
+              .product-img
+                .picture
+                  %img{alt: "", height: "412", src: "images/dummy/most-popular-products/popular-1.jpg", width: "540"}/
+                  .img-overlay
+                    %a.btn.more.btn-primary{href: "#"} More
+                    %a.btn.buy.btn-danger{href: "#"} Add to Cart
+              .main-titles.no-margin
+                %h4.title $32
+                %h5.no-margin Horsefeathers 89
+              %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+              .row-fluid.hidden-line
+                .span6
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-heart
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-exchange
+                .span6.align-right
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star
+                  %span.icon-star
+                  %span.icon-star
+        / /product
+        / ==========
+        / = Product =
+        / ==========
+        .span3
+          .product
+            .product-inner
+              .product-img
+                .picture
+                  %img{alt: "", height: "412", src: "images/dummy/most-popular-products/popular-2.jpg", width: "540"}/
+                  .img-overlay
+                    %a.btn.more.btn-primary{href: "#"} More
+                    %a.btn.buy.btn-danger{href: "#"} Add to Cart
+              .main-titles.no-margin
+                %h4.title $32
+                %h5.no-margin Horsefeathers 360
+              %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+              .row-fluid.hidden-line
+                .span6
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-heart
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-exchange
+                .span6.align-right
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star
+        / /product
+        / ==========
+        / = Product =
+        / ==========
+        .span3
+          .product
+            .product-inner
+              .product-img
+                .picture
+                  %img{alt: "", height: "412", src: "images/dummy/most-popular-products/popular-3.jpg", width: "540"}/
+                  .img-overlay
+                    %a.btn.more.btn-primary{href: "#"} More
+                    %a.btn.buy.btn-danger{href: "#"} Add to Cart
+              .main-titles.no-margin
+                %h4.title $32
+                %h5.no-margin Horsefeathers 328
+              %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+              .row-fluid.hidden-line
+                .span6
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-heart
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-exchange
+                .span6.align-right
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star.stars-clr
+                  %span.icon-star
+                  %span.icon-star
+        / /product
+        / ==========
+        / = Product =
+        / ==========
+        .span3
+          .product
+            .product-inner
+              .product-img
+                .picture
+                  %img{alt: "", height: "412", src: "images/dummy/most-popular-products/popular-4.jpg", width: "540"}/
+                  .img-overlay
+                    %a.btn.more.btn-primary{href: "#"} More
+                    %a.btn.buy.btn-danger{href: "#"} Add to Cart
+              .main-titles.no-margin
+                %h4.title $32
+                %h5.no-margin Horsefeathers 143
+              %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+              .row-fluid.hidden-line
+                .span6
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-heart
+                  %a.btn.btn-small{href: "#"}
+                    %i.icon-exchange
+                .span6.align-right
+                  %span.icon-star.stars-clr
+                  %span.icon-star
+                  %span.icon-star
+                  %span.icon-star
+                  %span.icon-star
+        / /product
+  / /most popular
+/ ==========
+/ = New Products =
+/ ==========
+.boxed-area.blocks-spacer
+  .container
+    / ==========
+    / = Title =
+    / ==========
+    .row
+      .span12
+        .main-titles.lined
+          %h2.title
+            %span.light New
+            Products in the Shop
+    / /title
+    .row.popup-products.blocks-spacer
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-6.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 130
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star
+                %span.icon-star
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-7.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 123
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star
+                %span.icon-star
+                %span.icon-star
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-8.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 112
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star
+                %span.icon-star
+                %span.icon-star
+                %span.icon-star
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-9.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 462
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star
+                %span.icon-star
+      / /product
+      .clearfix
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-10.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 183
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-11.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 67
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-12.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 72
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+      / /product
+      / ==========
+      / = Product =
+      / ==========
+      .span3
+        .product
+          .product-inner
+            .product-img
+              .picture
+                %img{alt: "", height: "374", src: "images/dummy/products/product-13.jpg", width: "540"}/
+                .img-overlay
+                  %a.btn.more.btn-primary{href: "#"} More
+                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
+            .main-titles.no-margin
+              %h4.title $32
+              %h5.no-margin Horsefeathers 298
+            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
+            .row-fluid.hidden-line
+              .span6
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-heart
+                %a.btn.btn-small{href: "#"}
+                  %i.icon-exchange
+              .span6.align-right
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+                %span.icon-star.stars-clr
+      / /product
+/ /new products

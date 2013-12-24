@@ -157,7 +157,10 @@
                       %i.icon-shopping-cart
                   .open-panel
                     - if current_cart.line_items.empty?
-                      %p You have no items in your cart
+                      .item-in-cart.clearfix
+                        .desc
+                          %strong
+                            %p You have no items in your cart.
                     - else 
                       - current_cart.line_items.each do |item|
                         .item-in-cart.clearfix
@@ -185,15 +188,14 @@
       / ==========
       / = Main container =
       / ==========
-      .container
-        = yield
+      = yield
       / ==========
       / = Footer =
       / ==========
       %footer
         / ==========
-        / = Upper footer =
         / ==========
+        / = Upper footer =
         .foot-light
           .container
             .row
@@ -239,8 +241,7 @@
               .span3
                 .main-titles.lined
                   %h3.title
-                    %span.light Main
-                    Navigation
+                    Products
                 %ul.nav.bold
                   %li
                     %a{href: "#"} Home
@@ -260,8 +261,7 @@
               .span3
                 .main-titles.lined
                   %h3.title
-                    %span.light Second
-                    Navigation
+                    Support
                 %ul.nav
                   %li
                     %a{href: "#"} Lorem Ipsum Dolor Sit
@@ -279,8 +279,7 @@
               .span3
                 .main-titles.lined
                   %h3.title
-                    %span.light Third
-                    Navigation
+                    General
                 %ul.nav
                   %li
                     %a{href: "#"} Lorem Ipsum Dolor Sit
@@ -298,8 +297,7 @@
               .span3
                 .main-titles.lined
                   %h3.title
-                    %span.light Fourth
-                    Navigation
+                    Contact
                 %ul.nav
                   %li
                     %a{href: "#"} Lorem Ipsum Dolor Sit

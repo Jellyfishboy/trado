@@ -1,109 +1,142 @@
-%section.static_page_1
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+.darker-stripe
   .container
     .row
       .span12
-        %section.static-page
-          .row-fluid
+        %ul.breadcrumb
+          %li
+            %a{href: "index.html"} Webmarket
+          %li
+            %span.icon-chevron-right
+          %li
+            %a{href: "contact.html"} Contact Us
+.container
+  .push-up.top-equal.blocks-spacer-last
+    .row
+      / ==========
+      / = Main Title =
+      / ==========
+      .span12
+        .title-area
+          %h1.inline
+            %span.light Contact
+            Us
+      / ==========
+      / = Main content =
+      / ==========
+      %section.span8.single.single-page
+        / ==========
+        / = Post =
+        / ==========
+        %article.post
+          .post-inner
+            %p
+              The simple contact form below comes packed within this theme. To use the inbuilt form, simply create a page and use the page template “Contact”. The form will automatically insert below any page content. The form includes jQuery validation to enhance user experience and the recipient email can be configured from the theme options.
+        %hr/
+        / ==========
+        / = Contact Form =
+        / ==========
+        %section.contact-form-container
+          %h3.push-down-25
+            %span.light Send
+            a Message
+          %form#commentform.form.form-inline.form-contact{action: "#", method: "post"}
+            %p.push-down-20
+              %input#author{"aria-required" => "true", name: "author", required: "", size: "30", tabindex: "1", type: "text", value: ""}/
+              %label{for: "author"}
+                Name
+                %span.red-clr.bold *
+            %p.push-down-20
+              %input#email{"aria-required" => "true", name: "email", required: "", size: "30", tabindex: "2", type: "email", value: ""}/
+              %label{for: "email"}
+                Mail
+                %span.red-clr.bold *
+            %p.push-down-20
+              %input#url{name: "url", size: "30", tabindex: "3", type: "text", value: ""}/
+              %label{for: "url"} Website
+            %p.push-down-20
+              %textarea#comment.input-block-level{cols: "70", name: "comment", placeholder: "Your Message goes here ...", required: "", rows: "7", tabindex: "4"}
+            %p
+              %button#submit.btn.btn-primary.bold{tabindex: "5", type: "submit"} SEND EMAIL
+        %hr/
+        / ==========
+        / = Company Info with Google Maps =
+        / ==========
+        %article.company-info
+          .row
             .span3
-              / Static page navigation
-              %ul.nav.nav-tabs.nav-stacked
-                %li
-                  %a.title{href: "about-us.html", title: "About us"} About us
-                %li
-                  %a.title{href: "typography.html", title: "Typography"} Typography
-                %li
-                  %a.title{href: "retina-ready-icons.html", title: "Retina-ready icons"} Retina-ready icons
-                %li
-                  %a.title{href: "buttons.html", title: "Buttons"} Buttons
-                %li
-                  %a.title{href: "elements.html", title: "Elements"} Elements
-                %li
-                  %a.title{href: "grids.html", title: "Grids"} Grids
-                %li
-                  %a.title{href: "store-locator.html", title: "Store locator"} Store locator
-                %li
-                  %a.title{href: "contact-us.html", title: "Contact us"} Contact us
-              / End static page navigation
-            .span9
-              .content
-                %h1 Get in touch!
-                %p.lead Our opening hours are Monday to Friday — 9:00 to 18:00 GMT
-                %p
-                  For
-                  %strong hosting
-                  and
-                  = succeed "," do
-                    %strong support
-                  = succeed "." do
-                    %a{href: "http://laboutique.ticksy.com", target: "_blank"} support board
-                  %a{href: "http://themeforest.net/user/Tfingi", target: "_blank"}
-                    %strong
-                      La Boutique
-                      %em Pro
-                  theme.
-                %hr/
-                %h3 Contacts
-                .map{"data-address" => "16 Clocktower Mews, Newmarket, CB8 8LL, UK", "data-zoom" => "12", style: "height: 320px; width: 100%; background-color: #F0F0F0;"}  
-                %hr/
-                .row-fluid
-                  .span4
-                    %h5
-                      %em.icon-map-marker.icon-larger
-                      La Boutique
-                    %p
-                      Clocktower Mews
-                      %br>/
-                      Newmarket CB8 8LL
-                      %br>/
-                      United Kingdom
-                  .span4
-                    %h5
-                      %em.icon-phone.icon-larger
-                      Call us
-                    %p
-                      Well, don't really call us as we do not offer telephone support :)
-                      %br/
-                      %strong +44 1234 567 890
-                  .span4
-                    %h5
-                      %em.icon-medkit.icon-larger
-                      Support
-                    %p
-                      A dedicated team provides timely and effective
-                      %a{href: "http://laboutique.ticksy.com", target: "_blank"} support
-                      whenever you need a hand getting things right.
-                %hr/
-                %form#form{action: "#", enctype: "multipart/form-data", method: "post"}
-                %h3 Send us a message
-                .row-fluid
-                  .span6
-                    .control-group
-                      %label.control-label{for: "name"} Name
-                      .controls
-                        %input#name.span12{name: "name", type: "text", value: ""}/
-                  .span6
-                    .control-group
-                      %label.control-label{for: "email"} Email
-                      .controls
-                        %input#email.span12{name: "email", type: "text", value: ""}/
-                .row-fluid
-                  .span6
-                    .control-group
-                      %label.control-label{for: "subject"} Subject
-                      .controls
-                        %input#subject.span12{name: "subject", type: "text", value: ""}/
-                  .span6
-                    .control-group
-                      %label.control-label{for: "order_no"} Order number
-                      .controls
-                        %input#order_no.span12{name: "order_no", type: "text", value: ""}/
-                .row-fluid
-                  .span12
-                    .control-group
-                      %label.control-label{for: "message"} Message
-                      .controls
-                        %textarea#message.span12{name: "message"}
-                .row-fluid
-                  .span12
-                    %button.btn.btn-primary
-                      Send message
+              %h3.push-down-30
+                %span.light Company
+                Info
+              %p
+                %strong.opensans.dark-clr IMAGINARY COMPANY LTD.
+                %br/
+                Wall street 17,
+                %br/
+                1000 New York,
+                %br/
+                United States
+              %p
+                %strong.opensans.dark-clr Phone number:
+                00386 31 567 537
+                %br/
+                %strong.opensans.dark-clr Fax:
+                00386 31 567 538
+                %br/
+                %strong.opensans.dark-clr Email:
+                %a{href: "#"} info@webmarket.com
+            .span5
+              .add-googlemap{"data-addr" => "Prešernov Trg, Ljubljana", "data-height" => "205", "data-title" => "Webmarket Business", "data-type" => "roadmap", "data-zoom" => "14"}
+      / /main content
+      / ==========
+      / = Sidebar =
+      / ==========
+      %aside.span4
+        / ==========
+        / = Opening Times Widget =
+        / ==========
+        #opening_time-4.sidebar-item.opening-time
+          .underlined
+            %h3
+              %span.light Opening
+              Time
+          .time-table
+            %dl.week-day
+              %dt
+                Monday
+              %dd
+                8:00 - 16:00
+            %dl.week-day.light-bg
+              %dt
+                Tuesday
+              %dd
+                8:00 - 16:00
+            %dl.week-day
+              %dt
+                Wednesday
+              %dd
+                8:00 - 16:00
+            %dl.week-day.light-bg.today
+              %dt
+                Thursday
+              %dd
+                10:00 - 15:00
+            %dl.week-day
+              %dt
+                Friday
+              %dd
+                8:00 - 16:00
+            %dl.week-day.light-bg
+              %dt
+                Saturday
+              %dd
+                8:00 - 16:00
+            %dl.week-day.closed
+              %dt
+                Sunday
+              %dd
+                CLOSED
+      / /sidebar
+/ /container

@@ -1,67 +1,341 @@
-%section.category
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+.darker-stripe
   .container
     .row
-      .span3
-        / Sidebar
-        %aside.sidebar
-          / Price filter
-          .price-filter
-            .box.border-top
-              .hgroup.title
-                %h3 Refine products
-                %h5 Filter your products by price
-              #slider{"data-currency" => "£", "data-max" => "200", "data-step" => "5"}
-              %span#slider-label
-                Price range:
-                %strong £0 – £200
-          / End class="price-filter"
-          / TopSellingProducts
-          .widget.TopSellingProducts
-            %h3.widget-title.widget-title Top selling products
-            %ul.product-list-small
-              - @category.products.first(3).each do |product|
-                %li
-                  .image
-                    = link_to product, :title => product.name do
-                      = image_tag product.attachments.first.file.medium, :alt => product.name
-                  .desc
-                    %h6
-                      = link_to product.name, product, :title => product.name
-                    .price= product.dimensions.first.price
-                    .rating.rating-0
-                      %a{href: "#"} No reviews — be the first?
-          / End  class="widget TopSellingProducts"
-          / This month only! widget
-          .widget.Text
-            %h3.widget-title.widget-title This month only!
-            %h5 Free UK shipping!
-            %h6
-              %i.icon-gift  
-              Free gift wrap
-            %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque beatae tempore porro officiis!
-            %a.btn.btn-primary{href: "#"}
-              BUY NOW
-              %em for
-              $85
-          / End class="widget Text"
-        / End sidebar
-      .span9
-        / Products list
-        %ul.product-list.isotope
-          - @category.products.each do |product|  
-            %li.standard{"data-price" => product.dimensions.first.price}
-              = link_to product, :title => product.name do
-                .image
-                  = image_tag product.attachments.first.file.large, :alt => product.name, :class => 'primary'
-                .title
-                  .prices
-                    %span.price= format_currency product.dimensions.first.price
-                  %h3= product.name
-
-        / End class="product-list isotope"
-        / "Load More" Button
-        / %button#load_more.btn.btn-block{"data-category" => "16", "data-featured" => "true", "data-page" => "1", "data-rows" => "20"}
-        /   %span Load more
-        /    
-        /   %i.icon-spinner.icon-spin.icon-large
-        / End "Load More" Button
+      .span12
+        %ul.breadcrumb
+          %li
+            %a{href: "index.html"} Webmarket
+          %li
+            %span.icon-chevron-right
+          %li
+            %a{href: "shop.html"} Shop
+          %li
+            %span.icon-chevron-right
+          %li
+            %a{href: "shop.html"} Grid View
+.container
+  .push-up.blocks-spacer
+    .row
+      / ==========
+      / = Sidebar =
+      / ==========
+      %aside#tourStep1.span3.left-sidebar
+        #sidebarFilters.sidebar-item.sidebar-filters
+          / ==========
+          / = Sidebar Title =
+          / ==========
+          .underlined
+            %h3
+              %span.light Shop
+              by filters
+          / ==========
+          / = Categories =
+          / ==========
+          #tourStep2.accordion-group
+            .accordion-heading
+              %a.accordion-toggle{"data-toggle" => "collapse", href: "#filterOne"}
+                Categories
+                %b.caret
+            #filterOne.accordion-body.collapse.in
+              .accordion-inner
+                %a.selectable{"data-target" => ".filter--accessories", href: "#"}
+                  %i.box
+                  Accessories
+                %a.selectable{"data-target" => ".filter--bags, .filter--hats", href: "#"}
+                  %i.box
+                  Bags & Hats
+                %a.selectable{"data-target" => ".filter--polo-shirts", href: "#"}
+                  %i.box
+                  Polo Shirts
+                %a.selectable{"data-target" => ".filter--shirts", href: "#"}
+                  %i.box
+                  Shirts
+                %a.selectable{"data-target" => ".filter--shoes, .filter--boots, .filter--trainers", href: "#"}
+                  %i.box
+                  Shoes, Boots & Trainers
+                %a.selectable{"data-target" => ".filter--shorts", href: "#"}
+                  %i.box
+                  Shorts
+                %a.selectable{"data-target" => ".filter--suits, .filter--blazers", href: "#"}
+                  %i.box
+                  Suits & Blazers
+                %a.selectable{"data-target" => ".filter--sunglasses", href: "#"}
+                  %i.box
+                  Sunglasses
+                %a.selectable{"data-target" => ".filter--swimwear", href: "#"}
+                  %i.box
+                  Swimwear
+                %a.selectable{"data-target" => ".filter--trousers, .filter--chinos", href: "#"}
+                  %i.box
+                  Trousers & Chinos
+                %a.selectable{"data-target" => ".filter--t-shirts, .filter--vests", href: "#"}
+                  %i.box
+                  T-Shirts & Vests
+                %a.selectable{"data-target" => ".filter--bags", href: "#"}
+                  %i.box
+                  Bags
+                %a.selectable{"data-target" => ".filter--underwear, .filter--socks", href: "#"}
+                  %i.box
+                  Underwear & Socks
+          / /categories
+          / ==========
+          / = Prices slider =
+          / ==========
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle{"data-toggle" => "collapse", href: "#filterPrices"}
+                Price
+                %b.caret
+            #filterPrices.accordion-body.in.collapse
+              .accordion-inner.with-slider
+                .jqueryui-slider-container
+                  #pricesRange
+                %input.max-val.pull-right{"data-initial" => "432", disabled: "disabled", type: "text"}/
+                %input.min-val{"data-initial" => "99", disabled: "disabled", type: "text"}/
+          / /prices slider
+          / ==========
+          / = Size filter =
+          / ==========
+          #tourStep3.accordion-group
+            .accordion-heading
+              %a.accordion-toggle.collapsed{"data-toggle" => "collapse", href: "#filterTwo"}
+                Size
+                %b.caret
+            #filterTwo.accordion-body.collapse
+              .accordion-inner
+                %a.selectable.detailed{"data-target" => "xs", "data-type" => "size", href: "#"}
+                  %i.box
+                  XS
+                %a.selectable.detailed{"data-target" => "s", "data-type" => "size", href: "#"}
+                  %i.box
+                  S
+                %a.selectable.detailed{"data-target" => "m", "data-type" => "size", href: "#"}
+                  %i.box
+                  M
+                %a.selectable.detailed{"data-target" => "l", "data-type" => "size", href: "#"}
+                  %i.box
+                  L
+                %a.selectable.detailed{"data-target" => "xl", "data-type" => "size", href: "#"}
+                  %i.box
+                  XL
+                %a.selectable.detailed{"data-target" => "xxl", "data-type" => "size", href: "#"}
+                  %i.box
+                  XXL
+          / /size filter
+          / ==========
+          / = Color filter =
+          / ==========
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle.collapsed{"data-toggle" => "collapse", href: "#filterThree"}
+                Color
+                %b.caret
+            #filterThree.accordion-body.collapse
+              .accordion-inner
+                %a.selectable.detailed{"data-target" => "red", "data-type" => "color", href: "#"}
+                  %i.box
+                  Red
+                %a.selectable.detailed{"data-target" => "green", "data-type" => "color", href: "#"}
+                  %i.box
+                  Green
+                %a.selectable.detailed{"data-target" => "blue", "data-type" => "color", href: "#"}
+                  %i.box
+                  Blue
+                %a.selectable.detailed{"data-target" => "pink", "data-type" => "color", href: "#"}
+                  %i.box
+                  Pink
+                %a.selectable.detailed{"data-target" => "purple", "data-type" => "color", href: "#"}
+                  %i.box
+                  Purple
+                %a.selectable.detailed{"data-target" => "orange", "data-type" => "color", href: "#"}
+                  %i.box
+                  Orange
+          / /color filter
+          / ==========
+          / = Brand filter =
+          / ==========
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle.collapsed{"data-toggle" => "collapse", href: "#filterFour"}
+                Brand
+                %b.caret
+            #filterFour.accordion-body.collapse
+              .accordion-inner
+                %a.selectable.detailed{"data-target" => "s-oliver", "data-type" => "brand", href: "#"}
+                  %i.box
+                  S. Oliver
+                %a.selectable.detailed{"data-target" => "nike", "data-type" => "brand", href: "#"}
+                  %i.box
+                  Nike
+                %a.selectable.detailed{"data-target" => "naish", "data-type" => "brand", href: "#"}
+                  %i.box
+                  Naish
+                %a.selectable.detailed{"data-target" => "adidas", "data-type" => "brand", href: "#"}
+                  %i.box
+                  Adidas
+                %a.selectable.detailed{"data-target" => "puma", "data-type" => "brand", href: "#"}
+                  %i.box
+                  Puma
+                %a.selectable.detailed{"data-target" => "shred", "data-type" => "brand", href: "#"}
+                  %i.box
+                  Shred
+          / /brand filter
+          %a#removeFilters.remove-filter{href: "#"}
+            %span.icon-ban-circle
+            Remove All Filters
+      / /sidebar
+      / ==========
+      / = Main content =
+      / ==========
+      %section.span9
+        / ==========
+        / = Title =
+        / ==========
+        .underlined.push-down-20
+          .row
+            .span4
+              %h3
+                %span.light All
+                Products
+            .span5.align-right.sm-align-left
+              #tourStep4.form-inline.sorting-by
+                %label.black-clr{for: "isotopeSorting"} Sort:
+                %select#isotopeSorting.span3
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"true\"}"} By Price (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"false\"}"} By Price (High to Low) ↓
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"true\"}"} By Name (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"false\"}"} By Name (High to Low) ↓
+                  %option{value: "{\"sortBy\":\"popularity\", \"sortAscending\":\"true\"}"} By Popularity (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"popularity\", \"sortAscending\":\"false\"}"} By Popularity (High to Low) ↓
+              .view-switch
+                %a.btn.btn-primary{href: "shop.html"}
+                  %i.icon-th
+                %a.btn{href: "shop-list-view.html"}
+                  %i.icon-list
+        / /title
+        / ==========
+        / = Products =
+        / ==========
+        .row.popup-products
+          #isotopeContainer.isotope-container
+            / ==========
+            / = Single Product =
+            / ==========
+            .span3.isotope--target.filter--accessories{"data-brand" => "adidas", "data-color" => "purple", "data-popularity" => "3", "data-price" => "388", "data-size" => "xs|s|xl|xxl"}
+              .product
+                .product-inner
+                  .product-img
+                    .picture
+                      %img{alt: "", height: "374", src: "images/dummy/products/product-1.jpg", width: "540"}/
+                      .img-overlay
+                        %a.btn.more.btn-primary{href: "#"} More
+                        %a.btn.buy.btn-danger{href: "#"} Add to Cart
+                  .main-titles.no-margin
+                    %h4.title $388
+                    %h5.no-margin.isotope--title Vel Nisi
+                  .row-fluid.hidden-line
+                    .span6
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-heart
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-exchange
+                    .span6.align-right
+                      %span.icon-star.stars-clr
+                      %span.icon-star.stars-clr
+                      %span.icon-star.stars-clr
+                      %span.icon-star
+                      %span.icon-star
+            / /single product
+            / ==========
+            / = Single Product =
+            / ==========
+            .span3.isotope--target.filter--suits{"data-brand" => "s-oliver", "data-color" => "blue|orange", "data-popularity" => "2", "data-price" => "1134", "data-size" => "l|xl|xxl"}
+              .product
+                .product-inner
+                  .stamp.red Sold
+                  .product-img
+                    .picture
+                      %img{alt: "", height: "374", src: "images/dummy/products/product-2.jpg", width: "540"}/
+                      .img-overlay
+                        %a.btn.more.btn-primary{href: "#"} More
+                        %a.btn.buy.btn-danger{href: "#"} Add to Cart
+                  .main-titles.no-margin
+                    %h4.title $1134
+                    %h5.no-margin.isotope--title Ipsum Tincidunt Duis Est Eros
+                  .row-fluid.hidden-line
+                    .span6
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-heart
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-exchange
+                    .span6.align-right
+                      %span.icon-star.stars-clr
+                      %span.icon-star.stars-clr
+                      %span.icon-star
+                      %span.icon-star
+                      %span.icon-star
+            / /single product
+            / ==========
+            / = Single Product =
+            / ==========
+            .span3.isotope--target.filter--suits{"data-brand" => "s-oliver", "data-color" => "blue|orange", "data-popularity" => "2", "data-price" => "1134", "data-size" => "l|xl|xxl"}
+              .product
+                .product-inner
+                  .stamp.red Sold
+                  .product-img
+                    .picture
+                      %img{alt: "", height: "374", src: "images/dummy/products/product-2.jpg", width: "540"}/
+                      .img-overlay
+                        %a.btn.more.btn-primary{href: "#"} More
+                        %a.btn.buy.btn-danger{href: "#"} Add to Cart
+                  .main-titles.no-margin
+                    %h4.title $1134
+                    %h5.no-margin.isotope--title Ipsum Tincidunt Duis Est Eros
+                  .row-fluid.hidden-line
+                    .span6
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-heart
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-exchange
+                    .span6.align-right
+                      %span.icon-star.stars-clr
+                      %span.icon-star.stars-clr
+                      %span.icon-star
+                      %span.icon-star
+                      %span.icon-star
+            / /single product
+            / ==========
+            / = Single Product =
+            / ==========
+            .span3.isotope--target.filter--suits{"data-brand" => "s-oliver", "data-color" => "blue|orange", "data-popularity" => "2", "data-price" => "1134", "data-size" => "l|xl|xxl"}
+              .product
+                .product-inner
+                  .stamp.red Sold
+                  .product-img
+                    .picture
+                      %img{alt: "", height: "374", src: "images/dummy/products/product-2.jpg", width: "540"}/
+                      .img-overlay
+                        %a.btn.more.btn-primary{href: "#"} More
+                        %a.btn.buy.btn-danger{href: "#"} Add to Cart
+                  .main-titles.no-margin
+                    %h4.title $1134
+                    %h5.no-margin.isotope--title Ipsum Tincidunt Duis Est Eros
+                  .row-fluid.hidden-line
+                    .span6
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-heart
+                      %a.btn.btn-small{href: "#"}
+                        %i.icon-exchange
+                    .span6.align-right
+                      %span.icon-star.stars-clr
+                      %span.icon-star.stars-clr
+                      %span.icon-star
+                      %span.icon-star
+                      %span.icon-star
+            / /single product
+        %hr/
+      / /main content
+/ /container
