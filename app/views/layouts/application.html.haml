@@ -77,7 +77,7 @@
             / = Logo =
             / ==========
             .span7
-              %a.brand{href: "index.html"}
+              = link_to root_path, :class => 'brand' do
                 = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => 'Gimson Robotics'
                 %span.pacifico Gimson Robotics
                 %span.tagline The linear actuator and electric motor specialist
