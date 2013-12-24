@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210102843) do
+ActiveRecord::Schema.define(:version => 20131224165330) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -50,16 +50,6 @@ ActiveRecord::Schema.define(:version => 20131210102843) do
     t.datetime "updated_at",                     :null => false
     t.boolean  "visible",     :default => false
   end
-
-  create_table "categorisations", :force => true do |t|
-    t.integer  "category_id"
-    t.integer  "product_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "categorisations", ["category_id"], :name => "index_categorisations_on_category_id"
-  add_index "categorisations", ["product_id"], :name => "index_categorisations_on_product_id"
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -171,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20131210102843) do
     t.string   "shipping_last_name"
     t.string   "shipping_company"
     t.integer  "shipping_id"
+    t.integer  "pay_type_id"
   end
 
   create_table "pay_types", :force => true do |t|
@@ -178,13 +169,6 @@ ActiveRecord::Schema.define(:version => 20131210102843) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
-  end
-
-  create_table "payments", :force => true do |t|
-    t.integer  "pay_type_id"
-    t.integer  "order_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -195,6 +179,7 @@ ActiveRecord::Schema.define(:version => 20131210102843) do
     t.integer  "weighting"
     t.integer  "part_number"
     t.string   "sku"
+    t.integer  "category_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

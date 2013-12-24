@@ -3,6 +3,5 @@ class PayType < ActiveRecord::Base
   validates :name, :description, :presence => true
   validates :name, :uniqueness => true
   validates :description, :length => { :maximum => 100, :message => :too_long }
-  has_many :payments
-  has_many :orders, :through => :payments
+  has_many :orders
 end

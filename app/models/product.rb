@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :weighting, :sku, :part_number, :category_ids, :accessory_ids, :attachments_attributes, :tags_attributes, :dimensions_attributes
+  attr_accessible :name, :description, :weighting, :sku, :part_number, :accessory_ids, :attachments_attributes, :tags_attributes, :dimensions_attributes, :category_id
   validates :name, :description, :part_number, :sku, :weighting, :presence => true
   validates :part_number, :sku, :name, :uniqueness => true
   validates :part_number, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
@@ -9,8 +9,7 @@ class Product < ActiveRecord::Base
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :line_items, :dependent => :destroy, :dependent => :restrict #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
   has_many :orders, :through => :line_items
-  has_many :categorisations, :dependent => :delete_all
-  has_many :categories, :through => :categorisations
+  belongs_to :category
   has_many :accessorisations, :dependent => :delete_all
   has_many :accessories, :through => :accessorisations
   has_many :dimensionals, :dependent => :delete_all
@@ -21,6 +20,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :dimensions
+  accepts_nested_attributes_for :category
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
   def remove_image_folders

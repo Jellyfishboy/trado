@@ -24,23 +24,37 @@ module ApplicationHelper
     end
 
     def active_category? id
-      "active" if params[:id].to_i == id
+      category = params[:category_id]
+      category ||= params[:id]
+      "active" if category.to_i == id
     end
 
     def active_page? controller, action
       "active" if params[:controller] == controller && params[:action] == action
     end
 
-    def create_breadcrumbs
-      @breadcrumbs ||= [ { :title => 'Dashboard', :url => '/admin'}]
+    def create_app_breadcrumbs
+      @app_breadcrumbs ||= [ { :title => 'Home', :url => root_path }]
+    end
+
+    def app_breadcrumb_add title, url
+      create_app_breadcrumbs << { :title => title, :url => url }
+    end
+
+    def create_admin_breadcrumbs
+      @admin_breadcrumbs ||= [ { :title => 'Dashboard', :url => admin_root_path}]
     end
 
     def breadcrumb_add title, url
-      create_breadcrumbs << { :title => title, :url => url }
+      create_admin_breadcrumbs << { :title => title, :url => url }
     end
 
-    def render_breadcrumbs
-      render :partial => 'shared/breadcrumbs', :locals => { :breadcrumbs => create_breadcrumbs }
+    def render_breadcrumbs type
+      if type == 0
+        render :partial => 'shared/admin_breadcrumbs', :locals => { :breadcrumbs => create_admin_breadcrumbs }
+      else 
+        render :partial => 'shared/app_breadcrumbs', :locals => { :breadcrumbs => create_app_breadcrumbs }
+      end
     end
 
     # type 2 is for displaying a delivery cost icon for orders, type 1 is for hiding the show icon and 0 is everything else

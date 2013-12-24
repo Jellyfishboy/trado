@@ -1,25 +1,10 @@
+- content_for :title, @product.name
+- content_for :breadcrumb, @product.name
+- app_breadcrumb_add @product.category.name, category_path(@product.category)
 / ==========
 / = Breadcrumbs =
 / ==========
-.darker-stripe
-  .container
-    .row
-      .span12
-        %ul.breadcrumb
-          %li
-            %a{href: "index.html"} Webmarket
-          %li
-            %span.icon-chevron-right
-          %li
-            %a{href: "shop.html"} Shop
-          %li
-            %span.icon-chevron-right
-          %li
-            %a{href: "#"} Horsefeathers
-          %li
-            %span.icon-chevron-right
-          %li
-            %a{href: "product.html"} Horsefeathers Shot Surfers T-shirt
+= render_breadcrumbs 1
 / ==========
 / = Main container =
 / ==========
@@ -35,67 +20,40 @@
       .span5
         .product-preview
           .picture
-            %img#mainPreviewImg{alt: "", height: "940", src: "images/dummy/products/shirt-1.jpg", width: "940"}/
+            = image_tag @product.attachments.first.file.large, :id => "mainPreviewImg", :alt => @product.name, :width => 940, :height => 940
           .thumbs.clearfix
-            .thumb.active
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-1.jpg", width: "940"}/
-            .thumb
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-2.jpg", width: "940"}/
-            .thumb
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-3.jpg", width: "940"}/
-            .thumb
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-3.jpg", width: "940"}/
-            .thumb
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-3.jpg", width: "940"}/
-            .thumb.active
-              %a{href: "#mainPreviewImg"}
-                %img{alt: "", height: "940", src: "images/dummy/products/shirt-1.jpg", width: "940"}/
+            - @product.attachments.each_with_index do |image, index|
+              .thumb{:class => "#{ "active" if index == 0 }"}
+                %a{href: "#mainPreviewImg"}
+                  = image_tag image.file.large, :alt => image.description, :width => 940, :height => 940
       / ==========
       / = Title and short desc =
       / ==========
       .span7
         .product-title
           %h1.name
-            %span.light Horsefeathers
-            Shot Surfers T-shirt
+            %span.light= @product.name
           .meta
-            %span.tag $ 59.99
+            %span.tag.price= format_currency @product.dimensions.first.price
             %span.stock
-              %span.btn.btn-success In Stock
-              %span.btn.btn-danger Out of Stock
-              %span.btn.btn-warning Ask for availability
+              - if @product.dimensions.first.stock > 0
+                %span.btn.btn-success In Stock
+              - else 
+                %span.btn.btn-danger Out of Stock
         .product-description
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut ultrices ferme ntum, aliquam consequat metus. In vel turpis dolorin dapibus dui. Aenean at auctor neque. Lorem ipsum dolor sit , consectetur elit. Fusce dolor tellus, tempor ut ultrices fermentum, aliquam consequat metus. In vel turpis dolor, in dapibus dui. Aenean at auctor neque.
+          %p= @product.description
           %hr/
           / ==========
           / = Add to cart form =
           / ==========
-          %form.form.form-inline.clearfix{action: "#"}
+          = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true, :class => 'form form-inline clearfix product_dimension_form' } do |f|
             .numbered
-              %input.tiny-size{name: "num", type: "text", value: "1"}/
+              = f.text_field :quantity, :value => 1, :class => 'tiny-size'
               %span.clickable.add-one.icon-plus-sign-alt
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
-            %select.span2{name: "color"}
-              %option{value: "-1"} Select Color
-              %option{value: "blue"} Blue
-              %option{value: "orange"} Orange
-              %option{value: "black"} Black
-            \ 
-            %select.span2{name: "size"}
-              %option{value: "-1"} Select Size
-              %option{value: "XS"} Extra Small
-              %option{value: "S"} Small
-              %option{value: "M"} Medium
-              %option{value: "L"} Large
-              %option{value: "XL"} Extra Large
-              %option{value: "XXL"} Huge
-            %button.btn.btn-danger.pull-right
+            = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] } )
+            = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
               %i.icon-shopping-cart
               \  Add To Cart
           %hr/
@@ -118,14 +76,9 @@
                   / AddThis Button END
           / More Buttons
           .store-buttons
-            %i.icon-heart
-            %a{href: "#"} Add to a wishlist
-            \   |   
-            %i.icon-exchange
-            %a{href: "#"} Add to compare
-            \   |   
             %i.icon-envelope-alt
             %a{href: "#"} Email to a friend
+            \
     / ==========
     / = Tabs with more info =
     / ==========
@@ -143,14 +96,7 @@
         .tab-content
           #tab-1.fade.in.tab-pane.active
             %h3 Product Description
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui ante, vulputate at pellentesque eget, viverra ac dolor. Morbi interdum tortor non leo aliquam ac aliquet nulla porta. Morbi id dolor massa, ut ornare augue. Morbi tincidunt magna bibendum enim tristique tristique. Quisque a massa tellus, ac tempor magna. Sed eget ligula tellus, nec pellentesque dolor. Phasellus dictum, mauris non mollis ornare, turpis libero faucibus orci, at fringilla urna leo sodales libero. Aliquam nec lectus mauris. Morbi lectus quam, convallis vel euismod a, auctor non dui. Etiam a nisi risus.
-            %p Phasellus velit quam, ultrices et hendrerit vitae, suscipit nec dui. Sed at ligula vitae ligula pellentesque dictum. Duis lobortis auctor ipsum vel placerat. Phasellus nisi odio, ornare eget faucibus et, accumsan nec mauris. per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui ante, vulputate at pellentesque eget, viverra ac dolor.Etiam a nisi risus.
-            %h1 Heading H1 30px
-            %h2 Heading H2 26px
-            %h3 Heading H3 20px
-            %h4 Heading H4 18px
-            %h5 Heading H5 15px
-            %p Phasellus velit quam, ultrices et hendrerit vitae, suscipit nec dui. Sed at ligula vitae ligula pellentesque dictum. Duis lobortis auctor ipsum vel placerat. Phasellus nisi odio, ornare eget faucibus et, accumsan nec mauris. per conubia nostra, per inceptos himenaeos.
+            %p= @product.description
           #tab-2.fade.tab-pane
             %p
               Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
@@ -158,356 +104,53 @@
             %p
               Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
           #tab-4.fade.tab-pane
+            %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
             %p
-              Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr. Another text here ...
+              %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/royal-mail.png"}/
+              %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/ups-logo.png"}/
+            %p Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            %h6
+              %em.icon-gift
+              Giftwrap?
+            %p
+              Let us take care of giftwrapping your presents by selecting
+              %strong Giftwrap
+              in the order process. Eligible items can be giftwrapped for as little as £0.99, and larger items may be presented in gift bags.
 / /container
-/ ==========
-/ = Related Products =
-/ ==========
-.boxed-area.no-bottom
-  .container
-    / ==========
-    / = Title =
-    / ==========
-    .row
-      .span12
-        .main-titles.lined
-          %h2.title
-            %span.light Related
-            Products
-    / ==========
-    / = Related products =
-    / ==========
-    .row.popup-products
+- if @product.category.products.count > 1
+  / ==========
+  / = Related Products =
+  / ==========
+  .boxed-area.no-bottom
+    .container
       / ==========
-      / = Products =
+      / = Title =
       / ==========
-      .span3
-        .product
-          .product-inner
-            .product-img
-              .picture
-                %img{alt: "", height: "374", src: "images/dummy/products/product-1.jpg", width: "540"}/
-                .img-overlay
-                  %a.btn.more.btn-primary{href: "#"} More
-                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
-            .main-titles.no-margin
-              %h4.title
-                %span.striked $32
-                %span.red-clr $29
-              %h5.no-margin Adidas Converse 552
-            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
-            %p.center-align.stars
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star
-      / /product
+      .row
+        .span12
+          .main-titles.lined
+            %h2.title
+              %span.light Related
+              Products
       / ==========
-      / = Products =
+      / = Related products =
       / ==========
-      .span3
-        .product
-          .product-inner
-            .product-img
-              .picture
-                %img{alt: "", height: "374", src: "images/dummy/products/product-2.jpg", width: "540"}/
-                .img-overlay
-                  %a.btn.more.btn-primary{href: "#"} More
-                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
-            .main-titles.no-margin
-              %h4.title
-                %span.striked $32
-                %span.red-clr $29
-              %h5.no-margin Adidas Converse 552
-            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
-            %p.center-align.stars
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star
-      / /product
-      / ==========
-      / = Products =
-      / ==========
-      .span3
-        .product
-          .product-inner
-            .product-img
-              .picture
-                %img{alt: "", height: "374", src: "images/dummy/products/product-3.jpg", width: "540"}/
-                .img-overlay
-                  %a.btn.more.btn-primary{href: "#"} More
-                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
-            .main-titles.no-margin
-              %h4.title
-                %span.striked $32
-                %span.red-clr $29
-              %h5.no-margin Adidas Converse 552
-            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
-            %p.center-align.stars
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star
-      / /product
-      / ==========
-      / = Products =
-      / ==========
-      .span3
-        .product
-          .product-inner
-            .product-img
-              .picture
-                %img{alt: "", height: "374", src: "images/dummy/products/product-4.jpg", width: "540"}/
-                .img-overlay
-                  %a.btn.more.btn-primary{href: "#"} More
-                  %a.btn.buy.btn-danger{href: "#"} Add to Cart
-            .main-titles.no-margin
-              %h4.title
-                %span.striked $32
-                %span.red-clr $29
-              %h5.no-margin Adidas Converse 552
-            %p.desc 59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila
-            %p.center-align.stars
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star.stars-clr
-              %span.icon-star
-      / /product
-/ %section.product
-/   / Product info
-/   %section.product-info
-/     .container
-/       .row
-/         .span4
-/           .product-images
-/             .box
-/               .primary
-/                 = image_tag @product.attachments.first.file.large
-/               #gallery.thumbs
-/                 %ul.thumbs-list
-/                   - @product.attachments.each_with_index do |image, index|
-/                     %li
-/                       %a{"data-image" => image.file.large, "data-zoom-image" => image.file.large, href: "#", title: image.description, :class => "#{ "active" if index == 0 }"}
-/                         = image_tag image.file.small, :alt => image.description
-/         .span8
-/           / Product content
-/           .product-content
-/             .box
-/               / Tab panels' navigation
-/               %ul.nav.nav-tabs
-/                 %li.active
-/                   %a{"data-toggle" => "tab", href: "#product"}
-/                     %i.icon-reorder.icon-large
-/                     %span.hidden-phone Product
-/                 %li
-/                   %a{"data-toggle" => "tab", href: "#description"}
-/                     %i.icon-info-sign.icon-large
-/                     %span.hidden-phone Info
-/                 %li
-/                   %a{"data-toggle" => "tab", href: "#shipping"}
-/                     %i.icon-truck.icon-large
-/                     %span.hidden-phone Shipping
-/                 %li
-/                   %a{"data-toggle" => "tab", href: "#returns"}
-/                     %i.icon-undo.icon-large
-/                     %span.hidden-phone Returns
-/                 %li
-/                   %a{"data-toggle" => "tab", href: "#ratings"}
-/                     %i.icon-heart.icon-large
-/                     %span.hidden-phone Ratings
-/               / End Tab panels' navigation
-/               / Tab panels container
-/               .tab-content
-/                 / Product tab
-/                 #product.tab-pane.active
-/                   %form{action: "#", enctype: "multipart/form-data", method: "post", onsubmit: "return false;"}
-/                   .details
-/                     %h1= @product.name
-/                     .prices
-/                       %span.price= format_currency @product.dimensions.first.price
-/                     .meta
-/                       .sku
-/                         %i.icon-pencil
-/                         %span.dimension{rel: "tooltip", title: "SKU is #{@product.sku}-#{@product.dimensions.first.length.floor}"}
-/                           = "#{@product.sku}-#{@product.dimensions.first.length.floor}"
-/                       .categories
-/                         %span{rel: "tooltip", title: "Tags"}
-/                           %i.icon-tags
-/                           = @product.tags.map(&:name).join(',')
-/                       .stock
-/                         %i.icon-bar-chart
-/                         %span.stock_count{rel: "tooltip", :title => "#{@product.dimensions.first.stock} items in stock"}
-/                           = @product.dimensions.first.stock
-/                   .short-description
-/                     %p= @product.description
-/                   .add-to-cart
-/                     - if @product.dimensions.first.stock > 0
-/                       = form_for @line_item, :url => line_items_path(:product_id => @product.id), :html => { :method => :post, :remote => true } do |f|
-/                         .options
-/                           .row-fluid
-/                             .span6
-/                               .control-group
-/                                 %label.control-label Dimension
-/                                 .control{ 'data-product' => @product.id }
-/                                   = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] } )
-/                         .add-to-cart
-/                           = button_tag(:type => 'submit', :class => 'btn btn-primary btn-large') do
-            
-/                             %i.icon-plus
-/                               Add to cart
-/                     - else
-/                       .btn.btn-primary.btn-large Notify me
-
-/                 / End id="product"
-/                 / Description tab
-/                 #description.tab-pane
-/                   %p
-/                     %span Vintage-style faux leather short overalls. Long adjustable straps with brass detailing, exposed zip at back, and side slant pockets with single rear welt pocket.
-/                     %br/
-/                     %br/
-/                     %span 100% Polyester
-/                 / End id="description"
-/                 / Shipping tab
-/                 #shipping.tab-pane
-/                   %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-/                   %p
-/                     %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/royal-mail.png"}/
-/                     %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/ups-logo.png"}/
-/                   %p Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-/                   %h6
-/                     %em.icon-gift
-/                     Giftwrap?
-/                   %p
-/                     Let us take care of giftwrapping your presents by selecting
-/                     %strong Giftwrap
-/                     in the order process. Eligible items can be giftwrapped for as little as £0.99, and larger items may be presented in gift bags.
-/                 / End id="shipping"
-/                 / Returns tab
-/                 #returns.tab-pane
-/                   %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-/                   %p.lead
-/                     For any unwanted goods La Boutique offers a
-/                     = succeed "." do
-/                       %strong 21-day return policy
-/                   %p
-/                     If you receive items from us that differ from what you have ordered, then you must notify us as soon as possible using our
-/                     = succeed "." do
-/                       %a{href: "#"} online contact form
-/                   %p If you find that your items are faulty or damaged on arrival, then you are entitled to a repair, replacement or a refund. Please note that for some goods it may be disproportionately costly to repair, and so where this is the case, then we will give you a replacement or a refund.
-/                   %p
-/                     Please visit our
-/                     %a{href: "#"} Warranty section
-/                     for more details.
-/                 / End id="returns"
-/                 / Ratings tab
-/                 #ratings.tab-pane
-/                   .ratings-items
-/                     %article.rating-item
-/                       .row-fluid
-/                         .span9
-/                           %h5 Shaped for crush
-/                           %p
-/                             I hope they release some more colours of this dress. It feels great and looks sexier.
-/                             %br/
-/                             %br/
-/                             I love it!
-/                         .span3
-/                           %img.gravatar{alt: "", src: "img/thumbnails/avatar.png"}/
-/                           %h6 Sam Ritora
-/                           %small 08/30/2013
-/                           .rating.rating-5
-/                             %i.icon-heart
-/                             %i.icon-heart
-/                             %i.icon-heart
-/                             %i.icon-heart
-/                     %hr/
-/                   .well
-/                     .row-fluid
-/                       .span8
-/                         %h6
-/                           %i.icon-comment-alt
-/                             Share your opinion!
-/                         %p Let other people know your thoughts on this product!
-/                       .span4
-/                         %button.btn.btn-seconary.btn-block{onclick: "$('#review_form').modal('show')"} Rate this product
-/                   / Review modal window
-/                   #review_form.modal.hide.fade{role: "dialog", tabindex: "-1"}
-/                     %form{action: "/product/chaser-overalls", enctype: "multipart/form-data", method: "post"}
-/                     %input{name: "ls_session_key", type: "hidden", value: "lsk52286509c22077.63404603"}/
-/                     .modal-header
-/                       %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-/                       .hgroup.title
-/                         %h3 Modal header
-/                         %h5 Modal header
-/                     .modal-body
-/                       .row-fluid
-/                         .span6
-/                           .control-group
-/                             %label.control-label Rating
-/                             .controls
-/                               %select.span12{name: "rate"}
-/                                 %option{value: "1"}>
-/                                 1
-/                                 = succeed "2" do
-/                                   %option{value: "2"}
-/                                 = succeed "3" do
-/                                   %option{value: "3"}
-/                                 = succeed "4" do
-/                                   %option{value: "4"}
-/                                 = succeed "5" do
-/                                   %option{value: "5"}
-/                         .span6
-/                           .control-group
-/                             %label.control-label{for: "review_title"} Review title
-/                             .controls
-/                               %input#review_title.span12{name: "review_title", type: "text"}/
-/                       .row-fluid
-/                         .span6
-/                           .control-group
-/                             %label.control-label{for: "review_author_name"} Your name
-/                             .controls
-/                               %input#review_author_name.span12{name: "review_author_name", type: "text", value: ""}/
-/                         .span6
-/                           .control-group
-/                             %label.control-label{for: "review_author_email"} Your email
-/                             .controls
-/                               %input#review_author_email.span12{name: "review_author_email", type: "text", value: ""}/
-/                       .row-fluid
-/                         .span12
-/                           .control-group
-/                             %label.control-label{for: "review_text"} Review
-/                             .controls
-/                               %textarea#review_text.span12{name: "review_text"}
-/                     .modal-footer
-/                       .pull-right
-/                         %button.btn.btn-primary{onclick: "", type: "submit"} Submit product review
-/                   / End id="review_form"
-/                 / End id="ratings"
-/               / End tab panels container
-/           / End class="product-content"
-/   / End class="product-info"
-/   / Related products
-/   - if @category.products.count > 1
-/     %section.product-related
-/       .container
-/         .span12
-/           %h5 Can't find what you're looking for? Why not try these…
-/           %ul.product-list.isotope
-/             - @category.products.first(4).each do |product|
-/               - if product == @product
-/                 - next
-/               %li.standard{"data-price" => product.dimensions.first.price}
-/                 = link_to product, :title => product.name do
-/                   .image
-/                     = image_tag product.attachments.first.file.large
-/                   .title
-/                     .prices
-/                       %span.price= format_currency product.dimensions.first.price
-/                     %h3= product.name
-/     / End class="products-related"
+      .row.popup-products
+        - @product.category.products.first(4).each do |product|
+          - if product == @product
+            - next
+          / ==========
+          / = Products =
+          / ==========
+          .span3
+            .product
+              .product-inner
+                .product-img
+                  .picture
+                    = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
+                .main-titles.no-margin
+                  %h4.title
+                    %span= format_currency product.dimensions.first.price
+                  %h5.no-margin= truncate product.name, :length => 35
+                %p.desc= truncate product.description, :length => 100
+          / /product

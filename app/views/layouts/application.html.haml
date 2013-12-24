@@ -9,8 +9,8 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title 
-      Gimson Robotics - 
-      = yield :page_title
+      = yield :title
+      = " - Gimson Robotics | The linear actuator and electric motor specialist"
     %meta{:content => "", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     :javascript
@@ -153,7 +153,6 @@
                         )
                     %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
                     = link_to current_cart, :class => 'btn btn-danger' do
-                      / <span class="icon icons-cart"></span>
                       %i.icon-shopping-cart
                   .open-panel
                     - if current_cart.line_items.empty?
@@ -165,26 +164,29 @@
                       - current_cart.line_items.each do |item|
                         .item-in-cart.clearfix
                           .image
-                            = image_tag item.product.attachments.first.file.small, :alt => item.product.name, :height => 124, :width => 124
+                            = link_to (image_tag item.product.attachments.first.file.small, :alt => item.product.name, :height => 124, :width => 124), [item.product.category, item.product]
                           .desc
                             %strong
-                              = link_to item.product.name, item.product
+                              = link_to item.product.name, [item.product.category, item.product]
+                            %div
+                              = "#{item.length}mm"
                             %span.light-clr.qty
                               Qty:
                               = item.quantity
                               \ 
-                              = link_to item, :method => :delete, :remote => true, :class => 'icon-remove-sign', :title => 'Remove item'
+                              = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
+                                %i.icon-remove-sign
                           .price
                             %strong= format_currency item.price
-                        .summary
-                          .line
-                            .row-fluid
-                              .span6 Subtotal:
-                              .span6.align-right.size-16= format_currency current_cart.total_price
-                        .proceed
-                          = link_to current_cart, :class => 'btn btn-danger pull-right bold higher' do
-                            CHECKOUT
-                            %i.icon-shopping-cart
+                      .summary
+                        .line
+                          .row-fluid
+                            .span6 Subtotal:
+                            .span6.align-right.size-16= format_currency current_cart.total_price
+                      .proceed
+                        = link_to current_cart, :class => 'btn btn-danger pull-right bold higher' do
+                          CHECKOUT
+                          %i.icon-shopping-cart
       / ==========
       / = Main container =
       / ==========

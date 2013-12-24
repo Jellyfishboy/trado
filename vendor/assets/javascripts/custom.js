@@ -426,14 +426,14 @@ jQuery(document).ready(function($) {
 
 
     // delete item from the popover cart
-    $(".item-in-cart .icon-remove-sign").click(function() {
-        $(this).parents(".item-in-cart").animate({
-            opacity: 0
-        }, "swing", function() {
-            $(this).slideUp();
-        });
-        return false;
-    });
+    // $(".item-in-cart .icon-remove-sign").click(function() {
+    //     $(this).parents(".item-in-cart").animate({
+    //         opacity: 0
+    //     }, "swing", function() {
+    //         $(this).slideUp();
+    //     });
+    //     return false;
+    // });
 
 
 

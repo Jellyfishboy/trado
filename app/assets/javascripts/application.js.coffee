@@ -59,9 +59,8 @@ form_JSON_errors = ->
 
 update_dimension = ->
     $('#line_item_dimension_id').change ->
-        product_id = $('#line_item_dimension_id').parent().attr 'data-product'
         dimension_id = $('#line_item_dimension_id').val()
-        $.get '/products/' + product_id + '?dimension_id=' + dimension_id
+        $.get '/update_dimension?dimension_id=' + dimension_id
 
 
 

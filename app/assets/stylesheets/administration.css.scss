@@ -52,6 +52,16 @@ form.new_product {
             padding: 0px;
         }
     }
+    #tags {
+        overflow: hidden;
+        .foreign_list, .tag {
+            float:left;
+            width:400px;
+        }
+        .foreign_list .control-label {
+            padding:0px;
+        }
+    }
 }
 textarea {
     resize:none;

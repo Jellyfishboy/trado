@@ -63,7 +63,7 @@
           <% else %>
             <% Category.all.each do |category| %>
               <label>
-                <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), :class => 'ace-checkbox-2' %>
+                <%= f.radio_button :category_id, category.id %>
                 <span class="lbl"><%= category.name %></span>
               </label>
             <% end %>
@@ -92,8 +92,10 @@
         </div>
       </div>
       <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags, "#tag_fields" %></h3>
-      <div id="tag_fields">
-        <%= add_foreign_field f, :tags %>
+      <div id="tags">
+        <div id="tag_fields">
+          <%= add_foreign_field f, :tags %>
+        </div>
       </div>
       <div class="form-actions">
         <%= button_tag(:type => 'submit', :class => 'btn btn-info') do %>

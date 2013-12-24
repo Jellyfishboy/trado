@@ -34,5 +34,20 @@ textarea {
         cursor: pointer;
     }
 }
+.fade_to_white {
+  overflow:hidden;
+  white-space:nowrap;
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      content: "";
+      @include background-image(linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)));
+    }
+}
 
 @import "product";
+@import "category";

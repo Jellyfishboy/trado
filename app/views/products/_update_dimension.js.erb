@@ -1,9 +1,9 @@
 <% @dimension = Dimension.where('id = ?', dimension_id).first %>
 $('.price').html('<%= format_currency @dimension.price %>');
-$('.dimension').html('<%= "#{@product.sku}-#{@dimension.length.floor}" %>').attr('title', '<%=  "SKU is #{@product.sku}-#{@dimension.length.floor}" %>').tooltip('fixTitle');
-$('.stock_count').html('<%=  @dimension.stock %>').attr('title', '<%= "#{@dimension.stock} items in stock" %>').tooltip('fixTitle');
-$(".sku, .stock").addClass("update").delay(1000).queue(function(next){
-    $(this).removeClass("update");
-    next();
-});
-$('.add-to-cart').html('<%=j render :partial => "products/add_to_cart", :object => @dimension %>');
+<% if @dimension.stock < 13 %>
+    $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
+    $('.add_to_cart').hide();
+<% else %>
+    $('.stock').html('<span class="btn btn-success">In Stock</span>');
+    $('.add_to_cart').show();
+<% end %>
