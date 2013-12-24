@@ -50,8 +50,10 @@
         </div>
       </div>
       <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
-      <div id="image_fields">
-          <%= add_foreign_field f, :attachments %>
+      <div id="attachments">
+        <div id="image_fields">
+            <%= add_foreign_field f, :attachments %>
+        </div>
       </div>
       <h3 class="header smaller lighter blue">Categories</h3>
       <div class="control-group">
@@ -84,8 +86,10 @@
         </div>
       </div>
       <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions, "#dimension_fields" %></h3>
-      <div id="dimension_fields">
-        <%= add_foreign_field f, :dimensions %>
+      <div id="dimensions">
+        <div id="dimension_fields">
+          <%= add_foreign_field f, :dimensions %>
+        </div>
       </div>
       <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags, "#tag_fields" %></h3>
       <div id="tag_fields">

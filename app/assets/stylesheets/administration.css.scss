@@ -28,9 +28,28 @@ form.new_product {
     .add_field {
         margin-left:10px;
     }
-    .foreign_list {
-        .control-label {
-            padding:0px;
+    #dimensions {
+        overflow: hidden;
+        .foreign_list {
+            float:left;
+            width:400px;
+            .control-label {
+                padding:0px;
+            }
+        }
+        .dimensions {
+            float:left;
+        }
+    }
+    #attachments {
+        overflow: hidden;
+        .foreign_list, .attachments {
+            float:left;
+            width:400px;    
+            height:161px;
+        }
+        .foreign_list .control-label {
+            padding: 0px;
         }
     }
 }
