@@ -123,7 +123,7 @@
                 .nav-collapse.collapse
                   %ul#mainNavigation.nav
                     %li{ :class => active_page?('store', 'index') }
-                      %a.title{href: store_path, title: "Home"} Home
+                      %a.title{href: root_path, title: "Home"} Home
                     - category_list.each do |category|
                       %li{ :class => active_category?(category.id) }
                         = link_to category.name, category
@@ -144,49 +144,7 @@
               / ==========
               .span3
                 #cartContainer.cart-container
-                  .cart
-                    %p.items
-                      CART
-                      %span.dark-clr
-                        (
-                        = current_cart.line_items.sum('quantity')
-                        )
-                    %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
-                    = link_to current_cart, :class => 'btn btn-danger' do
-                      %i.icon-shopping-cart
-                  .open-panel
-                    - if current_cart.line_items.empty?
-                      .item-in-cart.clearfix
-                        .desc
-                          %strong
-                            %p You have no items in your cart.
-                    - else 
-                      - current_cart.line_items.each do |item|
-                        .item-in-cart.clearfix
-                          .image
-                            = link_to (image_tag item.product.attachments.first.file.small, :alt => item.product.name, :height => 124, :width => 124), [item.product.category, item.product]
-                          .desc
-                            %strong
-                              = link_to item.product.name, [item.product.category, item.product]
-                            %div
-                              = "#{item.length}mm"
-                            %span.light-clr.qty
-                              Qty:
-                              = item.quantity
-                              \ 
-                              = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
-                                %i.icon-remove-sign
-                          .price
-                            %strong= format_currency item.price
-                      .summary
-                        .line
-                          .row-fluid
-                            .span6 Subtotal:
-                            .span6.align-right.size-16= format_currency current_cart.total_price
-                      .proceed
-                        = link_to current_cart, :class => 'btn btn-danger pull-right bold higher' do
-                          CHECKOUT
-                          %i.icon-shopping-cart
+                  = render :partial => 'carts/cart'
       / ==========
       / = Main container =
       / ==========
@@ -324,7 +282,6 @@
                 \© Copyright 2013. All rights reserved - Gimson Robotics
         / /bottom footer
       / /footer
-    %script{src: "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
     %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
     = javascript_include_tag :application    
     :javascript

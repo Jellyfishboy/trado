@@ -58,6 +58,9 @@ end
 # Datepicker
 gem 'bootstrap-datepicker-rails'
 
+# RTE
+gem 'redactor-rails'
+
 # Transaction handler
 gem 'activemerchant'
 
@@ -73,9 +76,6 @@ gem 'unf' # Dependency for fog
 
 # Monitoring
 gem 'newrelic_rpm'
-
-# Font set
-gem 'font-awesome-rails'
 
 # Administration
 gem 'rails_admin'

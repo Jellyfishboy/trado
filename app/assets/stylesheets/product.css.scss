@@ -1,11 +1,3 @@
-.stock, .sku {
-    @include transition-property(color);
-    @include transition-timing-function(ease-in);
-    @include transition-duration(0.4s);
-        &.update {
-            color:#EE2C2C !important;
-        }
-}
 .product_dimension_form {
     select {
         width:140px;

@@ -7,9 +7,9 @@
 // variables
 var WebMarketVars = {
     currencyBefore: true, // true foe the currencies like USD, where the symbol comes before the number ($123.45). False for the symbol after the number (123,45 €) 
-    currencySymbol: "$",
-    priceRange: [ 0, 1750 ], // minimum and maximum range for the price range selector
-    priceStep: 50
+    currencySymbol: "£",
+    priceRange: [ 0, 300 ], // minimum and maximum range for the price range selector
+    priceStep: 15
 };
 
 jQuery(document).ready(function($) {
@@ -441,19 +441,19 @@ jQuery(document).ready(function($) {
     //  = Checkout Process Effects = 
     //  ========== 
     // delete the item from review table
-    $(".table-items .icon-remove-sign").click(function() {
-        var elmToRemove = $(this).parents('tr');
-        if( !! $(this).data('delete-next') ) {
-            elmToRemove = elmToRemove.add(elmToRemove.next());
-        }
-        elmToRemove.animate({
-            opacity: 0
-        }, "swing", function() {
-            $(this).remove();
-        });
+    // $(".table-items .icon-remove-sign").click(function() {
+    //     var elmToRemove = $(this).parents('tr');
+    //     if( !! $(this).data('delete-next') ) {
+    //         elmToRemove = elmToRemove.add(elmToRemove.next());
+    //     }
+    //     elmToRemove.animate({
+    //         opacity: 0
+    //     }, "swing", function() {
+    //         $(this).remove();
+    //     });
             
-        return false;
-    });
+    //     return false;
+    // });
     $(".card-num-input").on("keyup", function() {
         if ($(this).val().length > 3) {
             $(this).next(".card-num-input").focus();

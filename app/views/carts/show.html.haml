@@ -27,10 +27,10 @@
                     %tr
                       %td.col_product.text-left
                         .image.visible-desktop
-                          = link_to item.product do
+                          = link_to [item.product.category, item.product] do
                             = image_tag item.product.attachments.first.file.small, :alt => item.product.name
                         %h5
-                          = link_to item.product.name, item.product
+                          = link_to item.product.name, [item.product.category, item.product]
                         %ul.options
                           %li
                             = "Length: #{item.length}mm"
@@ -45,7 +45,7 @@
                         %span.total-price= format_currency item.total_price
           .box-footer
             .pull-left
-              = link_to store_path, :class => 'btn btn-small' do
+              = link_to root_path, :class => 'btn btn-small' do
                 %i.icon-chevron-left
                   Continue shopping
             .pull-right

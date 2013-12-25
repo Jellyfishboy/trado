@@ -1,4 +1,5 @@
 module ApplicationHelper
+
     def link_to_remove_fields name, f, obj
       f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, '#{obj}')", :class => 'btn btn-danger btn-mini')
     end

@@ -1,0 +1,20 @@
+- current_cart.line_items.each do |item|
+  %tr
+    %td.image
+      = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124
+    %td.desc
+      = item.product.name
+      = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
+        %i.icon-remove-sign
+    %td.qty
+      = form_for item, :remote => true do |f|
+        = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
+    %td.price= format_currency item.price
+%tr
+  %td{colspan: "2", rowspan: "2"}
+    .alert.alert-info
+      Shipping cost will be calculated later in the order process.
+%tr
+  %td.stronger Subtotal:
+  %td.stronger
+    .size-16.align-right.total_price= format_currency current_cart.total_price

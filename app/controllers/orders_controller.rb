@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   def new
     @cart = current_cart 
     if @cart.line_items.empty?
-      redirect_to store_url, :notice => 'You cart is empty'
+      redirect_to root_url, :notice => 'You cart is empty'
       return
     end
     @order = Order.new
@@ -35,6 +35,12 @@ class OrdersController < ApplicationController
       else
         format.json { render :json => { :error => @order.errors.full_messages }, :status => 422 }
       end
+    end
+  end
+
+  def update_line_item 
+    respond_to do |format|
+      format.js { render :partial => 'carts/update_cart', :format => [:js] }
     end
   end
 

@@ -37,7 +37,7 @@
           <%= format_currency product.dimensions.first.price %>
         </td>
         <td >
-          <%= table_commands product, product, edit_admin_product_path(product), admin_product_path(product), 0 %>
+          <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>
         </td> 
       </tr>
     <% end %>

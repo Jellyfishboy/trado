@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
   		cart #initializes the cart
   	end
 
-    def category_list 
-      Category.where('visible = ?', true).all
+    def category_list
+      Category.where('visible = ?', true).joins(:products).group("category_id HAVING count(products.id) > 0")
     end
 
     def after_sign_out_path_for(resource_or_scope)

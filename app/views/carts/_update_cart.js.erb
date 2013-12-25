@@ -1,1 +1,15 @@
-$("#cartContainer").html("<%=j render :partial => 'carts/new_cart' %>");
+$("#cartContainer").html("<%=j render :partial => 'carts/cart' %>");
+<% unless current_cart.line_items.count == 0 %>
+    $('.checkout-container .table-items tbody').html("<%=j render :partial => 'orders/cart' %>");
+<% else %>
+    $('.checkout-container .right-align').remove();
+    $('.checkout-container .table-items').html('<h4>Your cart is now empty</h4>');
+<% end %>
+$(".total_price").addClass("update").delay(1000).queue(function(next){
+      $(this).removeClass("update");
+      next();
+  });
+$('.checkout-container .table-items').before('<div class="alert alert-success order-alert animated fadeInDown"><button data-dismiss="alert" class="close" type="button">×</button>Your order has been updated successfully.</div>').delay(1500).queue(function(next){
+    $('.order-alert').addClass('fadeOutUp').delay(500).hide(1);
+    next();
+});

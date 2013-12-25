@@ -1,0 +1,12 @@
+.total_price {
+    @include transition-property(color);
+    @include transition-timing-function(ease-in);
+    @include transition-duration(0.4s);
+        &.update {
+            color:#EE2C2C !important;
+        }
+}
+.checkout-container .table-items h4 {
+    text-align: center;
+    margin-bottom: 27px;
+}

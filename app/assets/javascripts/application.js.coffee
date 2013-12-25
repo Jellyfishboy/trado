@@ -11,13 +11,14 @@
 #= require goMap/js/jquery.gomap-1.3.2.min
 #= require custom
 #= require modernizr.custom.56918
+#= require redactor-rails
 
 # Attach a function or variable to the global namespace
 root = exports ? this
 
 $(document).ready ->
     update_shipping_cost()
-    form_JSON_errors()
+    # form_JSON_errors()
     update_dimension()
     $('#country_selector').change ->
     	$.ajax '/update_country',
@@ -37,6 +38,10 @@ $(document).ready ->
         $('#shipping').modal 'show'
         return false
 
+    $('#update_quantity').click ->
+        $('.edit_line_item').submit()
+        $.get '/update_line_item'
+
 $(document).ajaxComplete ->
     update_shipping_cost()
     update_dimension()
@@ -47,15 +52,15 @@ update_shipping_cost = ->
         order = $('.shipping-methods').attr 'data-total'
         $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
 
-form_JSON_errors = ->
-    $('#errors .continue').click -> 
-        $('#errors ul').empty()
-        console.log "EMPTY"
-    $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
-        errors = xhr.responseJSON.error
-        for message of errors
-            $('#errors ul').append '<li>' + errors[message] + '</li>'
-        $('#errors').modal 'show'
+# form_JSON_errors = ->
+#     $('#errors .continue').click -> 
+#         $('#errors ul').empty()
+#         console.log "EMPTY"
+#     $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
+#         errors = xhr.responseJSON.error
+#         for message of errors
+#             $('#errors ul').append '<li>' + errors[message] + '</li>'
+#         $('#errors').modal 'show'
 
 update_dimension = ->
     $('#line_item_dimension_id').change ->

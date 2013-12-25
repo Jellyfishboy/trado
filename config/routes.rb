@@ -2,7 +2,6 @@ GimsonRobotics::Application.routes.draw do
 
   root :to => 'store#index'
 
-
   # Standard pages
   match '/about' => 'store#about'
   match '/contact' => 'store#contact'
@@ -11,6 +10,7 @@ GimsonRobotics::Application.routes.draw do
   match '/update_country' => 'orders#update_country'
   match '/estimate_shipping' => 'carts#estimate_shipping'
   match '/update_dimension' => 'products#update_dimension'
+  match '/update_line_item' => 'orders#update_line_item'
 
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
@@ -21,14 +21,16 @@ GimsonRobotics::Application.routes.draw do
     resources :products, :only => :show
   end
   
-  resources :orders, :only => [:new, :create, :update_country]
+  resources :orders, :only => [:new, :create, :update_country, :update_line_item]
+
   resources :users
-  resources :line_items, :only => [:create, :destroy]
+  resources :line_items, :only => [:create, :destroy, :update]
 
   namespace :admin do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
+      mount RedactorRails::Engine => '/redactor'
       resources :products, :except => :show
       resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
       resources :categories, :except => :show

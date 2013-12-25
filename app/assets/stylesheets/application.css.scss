@@ -3,6 +3,9 @@
 //= require jquery-ui-1.10.3.custom.min
 //= require prettyPhoto
 //= require main
+//= require animations
+//= require redactor-rails
+
 @import "compass/css3";
 
 body {
@@ -48,6 +51,12 @@ textarea {
       @include background-image(linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)));
     }
 }
+.checkout-container {
+  .span10 {
+    margin-top:35px;
+  }
+}
 
 @import "product";
 @import "category";
+@import "order";
