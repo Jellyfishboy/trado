@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   belongs_to :pay_type
   after_create :update_shipping_information
   after_update :delayed_shipping, :change_shipping_status
+  attr_writer :current_step
   # after_save :change_shipping_status
 
   def add_line_items_from_cart(cart)
@@ -67,6 +68,39 @@ class Order < ActiveRecord::Base
         order.update_column(:shipping_status, "Dispatched")
         order.order_shipped(self).deliver
       end
+    end
+  end
+
+  # Multi form methods
+
+  def current_step
+    @current_step || steps.first
+  end
+
+  def steps
+    %w[review billing shipping payment confirm]
+  end
+
+  def next_step
+    self.current_step = steps[steps.index(current_step)+1]
+  end
+
+  def previous_step
+    self.current_step = steps[steps.index(current_step)-1]
+  end
+
+  def first_step?
+    current_step == steps.first
+  end
+
+  def last_step?
+    current_step == steps.last
+  end
+
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
     end
   end
 
