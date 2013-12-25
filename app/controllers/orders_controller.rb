@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
       redirect_to root_url, :notice => 'You cart is empty'
       return
     end
-    session[:order_params] ||= {}
+    session[:order_params] ||= {} # currently causing the error
     @order = Order.new(session[:order_params])
     @order.current_step = session[:order_step]
     @calculated_tier = @order.calculate_shipping_tier(current_cart)
