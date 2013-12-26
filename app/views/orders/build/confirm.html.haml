@@ -1,4 +1,4 @@
-- content_for :title, "New order for Cart ##{@cart.id}"
+- content_for :title, 'Confirm your order'
 
 .container
   .row
@@ -17,8 +17,8 @@
                 .span6.offset2
                   .center-align
                     %h1
-                      %span.light Review
-                      Shopping Cart
+                      %span.light Confirm
+                      \& Pay
                 .span2
                   .right-align
                     = image_tag 'webmarket/buttons/security.jpg', :alt => 'Security', :width => 92, :height => 65
@@ -27,19 +27,23 @@
             / ==========
             .checkout-steps
               .clearfix
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Review order', wizard_path(:review)
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Billing address', wizard_path(:billing)
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Shipping information', wizard_path(:shipping)
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Payment method', wizard_path(:payment)
                 .step.active
-                  .step-badge 1
-                  Shopping Cart
-                .step
-                  .step-badge 2
-                  Billing address
-                .step
-                  .step-badge 3
-                  Shipping information
-                .step
-                  .step-badge 4
-                  Payment Method
-                .step
                   .step-badge 5
                   Confirm & Pay
             / /steps
@@ -61,24 +65,31 @@
                       = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124
                     %td.desc
                       = item.product.name
-                      = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
-                        %i.icon-remove-sign
-                    %td.qty
-                      = form_for item, :remote => true do |f|
-                        = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
+                    %td.qty= item.quantity
                     %td.price= format_currency item.price
                 %tr
                   %td{colspan: "2", rowspan: "2"}
-                    .alert.alert-info
-                      Shipping cost will be calculated later in the order process.
+                  \ 
+                  %td.stronger Shipping:
+                  %td.stronger
+                    .align-right= format_currency @order.shipping_cost
                 %tr
+                  %td{colspan: "2", rowspan: "2"}
+                  \ 
+                  %td.stronger VAT:
+                  %td.stronger
+                    .align-right= format_currency @order.vat
+                %tr
+                  %td{colspan: "2", rowspan: "2"}
+                  \ 
                   %td.stronger Subtotal:
                   %td.stronger
-                    .size-16.align-right.total_price= format_currency @cart.total_price
-            %hr/
-            %p.right-align
-              In the next step you will choose your shipping address    
-              %a.btn.higher.bold#update_quantity UPDATE
-              %a.btn.btn-primary.higher.bold{href: "checkout-step-2.html"} CONTINUE
+                    .align-right= format_currency @order.sub_total
+                %tr
+                  %td.stronger Total:
+                  %td.stronger
+                    .size-16.align-right.total_price= format_currency @order.total
+            %p.right-align  
+              = link_to 'CONFIRM & PAY', next_wizard_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container

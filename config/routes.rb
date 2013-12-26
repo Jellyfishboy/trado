@@ -8,7 +8,6 @@ GimsonRobotics::Application.routes.draw do
 
   # Ajax methods
   match '/update_country' => 'orders#update_country'
-  match '/estimate_shipping' => 'carts#estimate_shipping'
   match '/update_dimension' => 'products#update_dimension'
   match '/update_line_item' => 'orders#update_line_item'
 
@@ -21,7 +20,10 @@ GimsonRobotics::Application.routes.draw do
     resources :products, :only => :show
   end
   
-  resources :orders, :only => [:new, :create, :update_country, :update_line_item]
+  # resources :orders, :only => [:new, :create, :update_country, :update_line_item, :update]
+  resources :orders do
+    resources :build, controller: 'orders/build'
+  end
 
   resources :users
   resources :line_items, :only => [:create, :destroy, :update]

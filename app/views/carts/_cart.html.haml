@@ -6,7 +6,7 @@
       = current_cart.line_items.sum('quantity')
       )
   %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
-  = link_to new_order_path, :method => :get, :class => 'btn btn-danger' do
+  = link_to new_order_path, :class => 'btn btn-danger' do
     %i.icon-shopping-cart
 .open-panel
   - if current_cart.line_items.empty?
@@ -38,6 +38,6 @@
           .span6 Subtotal:
           .span6.align-right.size-16= format_currency current_cart.total_price
     .proceed
-      = link_to new_order_path, :method => :get, :class => 'btn btn-danger pull-right bold higher' do
+      = link_to orders_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
         %i.icon-shopping-cart

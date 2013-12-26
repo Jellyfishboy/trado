@@ -17,10 +17,10 @@
 root = exports ? this
 
 $(document).ready ->
-    update_shipping_cost()
+    # update_shipping_cost()
     # form_JSON_errors()
     update_dimension()
-    $('#country_selector').change ->
+    $('#order_shipping_country').change ->
     	$.ajax '/update_country',
     		type: 'GET'
     		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
@@ -28,38 +28,28 @@ $(document).ready ->
     		success: (data) ->
     			$('.shipping-methods').html data
 
-    $('#estimate_shipping').click ->
-        $.ajax '/estimate_shipping',
-            type: 'GET'
-            data: {'country_id' : $('#country_selector').val(), 'tier_id' : $(@).attr 'data-tier' }
-            dataType: 'html'
-            success: (data) ->
-                $('#shipping_options').html data
-        $('#shipping').modal 'show'
-        return false
-
     $('#update_quantity').click ->
         $('.edit_line_item').submit()
         $.get '/update_line_item'
 
 $(document).ajaxComplete ->
-    update_shipping_cost()
+    # update_shipping_cost()
     update_dimension()
 
-update_shipping_cost = ->
-    $('.shipping-methods .shipping_option').click ->
-        shipping = $(@).find('input[type="radio"]').val()
-        order = $('.shipping-methods').attr 'data-total'
-        $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
+# update_shipping_cost = ->
+#     $('.shipping-methods .shipping_option').click ->
+#         shipping = $(@).find('input[type="radio"]').val()
+#         order = $('.shipping-methods').attr 'data-total'
+#         $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
 
 # form_JSON_errors = ->
-#     $('#errors .continue').click -> 
-#         $('#errors ul').empty()
+#     $('#errors .close').click -> 
+#         $('#errors .modal-body ul').empty()
 #         console.log "EMPTY"
 #     $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
 #         errors = xhr.responseJSON.error
 #         for message of errors
-#             $('#errors ul').append '<li>' + errors[message] + '</li>'
+#             $('#errors .modal-body ul').append '<li>' + errors[message] + '</li>'
 #         $('#errors').modal 'show'
 
 update_dimension = ->

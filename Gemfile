@@ -58,6 +58,8 @@ end
 # Datepicker
 gem 'bootstrap-datepicker-rails'
 
+gem 'wicked'
+
 # RTE
 gem 'redactor-rails'
 

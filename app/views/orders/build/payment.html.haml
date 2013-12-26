@@ -1,0 +1,66 @@
+- content_for :title, 'Choose a payment method'
+
+.container
+  .row
+    / ==========
+    / = Main content =
+    / ==========
+    %section.span12
+      .checkout-container
+        .row
+          .span10.offset1
+            / ==========
+            / = Header =
+            / ==========
+            %header
+              .row
+                .span6.offset2
+                  .center-align
+                    %h1
+                      %span.light Choose
+                      Payment Method
+                .span2
+                  .right-align
+                    = image_tag 'webmarket/buttons/security.jpg', :alt => 'Security', :width => 92, :height => 65
+            / ==========
+            / = Steps =
+            / ==========
+            .checkout-steps
+              .clearfix
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Review order', wizard_path(:review)
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Billing address', wizard_path(:billing)
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Shipping information', wizard_path(:shipping)
+                .step.active
+                  .step-badge 4
+                  Payment method
+                .step
+                  .step-badge 5
+                  Confirm & pay
+            / /steps
+            / ==========
+            / = Payment =
+            / ==========
+            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+              - PayType.all.each do |pay_type|
+                %span.btn.btn-danger.circle.pull-left
+                  %i.icon-chevron-right
+                .shifted-left-45.clearfix
+                  %h3.no-margin
+                    %span.light=pay_type.name
+                    = f.radio_button :pay_type_id, pay_type.id, :checked => true
+                    = pay_type.description
+              %hr/
+              %p.right-align
+                In the next step you will be able to review and confirm the order   
+                = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
+    / /main content
+/ /container

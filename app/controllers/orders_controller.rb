@@ -1,58 +1,40 @@
 class OrdersController < ApplicationController
+  include Wicked::Wizard
+
+  steps :review, :billing, :shipping, :payment, :confirm
   # GET /orders/new
   # GET /orders/new.json
   def new
-    @cart = current_cart 
-    if @cart.line_items.empty?
-      redirect_to root_url, :notice => 'You cart is empty'
-      return
-    end
-    session[:order_params] ||= {}
-    @order = Order.new(session[:order_params])
-    @order.current_step = session[:order_step]
-    @calculated_tier = @order.calculate_shipping_tier(current_cart)
-    @shipping_options = @order.display_shippings(@calculated_tier)
-    @order.calculate_order(current_cart)
-    respond_to do |format|
-      format.js { render :partial => 'orders/update_shipping', :format => [:js] }
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
+    @order = Order.create
+    binding.pry
+    redirect_to order_build_path(:order_id => @order.id, :id => steps.first)
+    # @cart = current_cart 
+    # if @cart.line_items.empty?
+    #   redirect_to root_url, :notice => 'You cart is empty'
+    #   return
+    # end
   end
 
   # POST /orders
   # POST /orders.json
   def create
-    # FIXME: This is very long and cumbersome controller method. NEEDS TO BE REVISED POST V1!
-    session[:order_params].deep_merge!(params[:order]) if params[:order]
-    @cart = current_cart
-    @order = Order.new(params[:order_params]) # want all the data from the form so select the :order hash
-    @order.current_step = session[:order_step]
-    @order.add_line_items_from_cart(current_cart)
-    @order.calculate_order(current_cart)
-    if @order.valid? # check order is valid
-      if params[:back_button] #check if back button is pressed
-        @order.previous_step
-      elsif @order.last_step? #check if it is the last step, if so save and send email
-        if @order.all_valid?
-          @order.save
-          Cart.destroy(session[:cart_id])
-          session[:cart_id] = nil
-          Notifier.order_received(@order).deliver
-        end
-      else # otherwise it has to be a next step request
-        @order.next_step
-      end
-      # update session to current_step
-      session[:order_step] = @order.current_step
-    end
-    if @order.new_record? # if new record, render new template
-      render "new"
-    else # else clear the session values ready for the next order and redirect with a notice
-      session[:order_step] = session[:order_params] = nil
-      flash[:notice] = "Order saved!"
-      redirect_to root_url
-    end
+    # @order = Order.create
+    # redirect_to wizard_path(steps.first, :product_id => @product.id)
+    # @cart = current_cart
+    # @order = Order.new(params[:order]) # want all the data from the form so select the :order hash
+    # @order.add_line_items_from_cart(current_cart)
+    # @order.calculate_order(current_cart)
+    # respond_to do |format|
+    #   if @order.save
+    #     Cart.destroy(session[:cart_id])
+    #     session[:cart_id] = nil
+    #     Notifier.order_received(@order).deliver # pass the current @order into the method within Notifier class, then execute the delivery
+    #     format.js { render :js => "window.location = '#{store_url}'", flash[:success] => 'You have completed your order. Please check your email for confirmation details.' }
+    #     format.json { render json: @order, status: :created, location: @order }
+    #   else
+    #     format.json { render :json => { :error => @order.errors.full_messages }, :status => 422 }
+    #   end
+    # end
   end
 
   def update_line_item 

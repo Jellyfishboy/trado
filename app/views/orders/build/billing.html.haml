@@ -1,0 +1,112 @@
+- content_for :title, 'Submit your billing address'
+- if @order.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+    %ul
+      - @order.errors.full_messages.each do |msg|
+        %li= msg
+.container
+  .row
+    / ==========
+    / = Main content =
+    / ==========
+    %section.span12
+      .checkout-container
+        .row
+          .span10.offset1
+            / ==========
+            / = Header =
+            / ==========
+            %header
+              .row
+                .span6.offset2
+                  .center-align
+                    %h1
+                      %span.light Billing
+                      address
+                .span2
+                  .right-align
+                    = image_tag 'webmarket/buttons/security.jpg', :alt => 'Security', :width => 92, :height => 65
+            / ==========
+            / = Steps =
+            / ==========
+            .checkout-steps
+              .clearfix
+                .step.done
+                  .step-badge
+                    %i.icon-ok
+                  = link_to 'Review order', wizard_path(:review)
+                .step.active
+                  .step-badge 2
+                  Billing address
+                .step
+                  .step-badge 3
+                  Shipping information
+                .step
+                  .step-badge 4
+                  Payment method
+                .step
+                  .step-badge 5
+                  Confirm & pay
+            / /steps
+            / ==========
+            / = Shipping addr form =
+            / ==========
+            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+              .control-group
+                = f.label :billing_first_name, :class => 'control-label' do
+                  First name
+                  %span.red-clr.bold *
+                .controls
+                  = f.text_field :billing_first_name, :class => 'span4', :id => 'billing_first_name'
+              .control-group
+                = f.label :billing_last_name, :class => 'control-label' do
+                  Last name
+                  %span.red-clr.bold *
+                .controls
+                  = f.text_field :billing_last_name, :class => 'span4', :id => 'billing_last_name'
+              .control-group
+                = f.label :billing_telephone, :class => 'control-label' do
+                  Telephone
+                .controls
+                  = f.text_field :billing_telephone, :class => 'span4', :id => 'billing_telephone'
+              .control-group
+                = f.label :billing_company, :class => 'control-label' do
+                  Company
+                .controls
+                  = f.text_field :billing_company, :class => 'span4', :id => 'billing_company'
+              .control-group
+                = f.label :billing_address, :class => 'control-label' do
+                  Street address
+                  %span.red-clr.bold *
+                .controls
+                  = f.text_field :billing_address, :class => 'span4', :id => 'billing_address'
+              .control-group
+                = f.label :billing_city, :class => 'control-label' do
+                  City
+                  %span.red-clr.bold *
+                .controls
+                  = f.text_field :billing_city, :class => 'span4', :id => 'billing_city'
+              .control-group
+                = f.label :billing_postcode, :class => 'control-label' do
+                  Postcode
+                  %span.red-clr.bold *
+                .controls
+                  = f.text_field :billing_postcode, :class => 'span4', :id => 'billing_postcode'
+              .control-group
+                = f.label :billing_county, :class => 'control-label' do
+                  County
+                .controls
+                  = f.text_field :billing_county, :class => 'span4', :id => 'billing_county'
+              .control-group
+                = f.label :billing_country, :class => 'control-label' do
+                  Country
+                  %span.red-clr.bold *
+                .controls
+                  = f.select :billing_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), :class => 'as-span4', :id => 'billing_country'
+              %hr/
+              %p.right-align
+                In the next step you will choose a shipping option 
+                = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
+    / /main content
+/ /container

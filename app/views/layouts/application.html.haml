@@ -50,8 +50,7 @@
               .span8
                 .topmost-line
                   .higher-line
-                    = link_to "Checkout", current_cart, :class => 'gray-link'
-                   
+                    = link_to 'Checkout', orders_path, :class => 'gray-link'
                   .lang-currency
                     .dropdown.js-selectable-dropdown
                       %a.selected{"data-toggle" => "dropdown", href: "#"}

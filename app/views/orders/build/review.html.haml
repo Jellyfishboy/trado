@@ -1,3 +1,5 @@
+- content_for :title, "Review your order"
+
 .container
   .row
     / ==========
@@ -16,7 +18,7 @@
                   .center-align
                     %h1
                       %span.light Review
-                      Shopping Cart
+                      order
                 .span2
                   .right-align
                     = image_tag 'webmarket/buttons/security.jpg', :alt => 'Security', :width => 92, :height => 65
@@ -27,7 +29,7 @@
               .clearfix
                 .step.active
                   .step-badge 1
-                  Shopping Cart
+                  Review order
                 .step
                   .step-badge 2
                   Billing address
@@ -36,10 +38,10 @@
                   Shipping information
                 .step
                   .step-badge 4
-                  Payment Method
+                  Payment method
                 .step
                   .step-badge 5
-                  Confirm & Pay
+                  Confirm & pay
             / /steps
             / ==========
             / = Selected Items =
@@ -75,8 +77,8 @@
                     .size-16.align-right.total_price= format_currency @cart.total_price
             %hr/
             %p.right-align
-              In the next step you will choose your shipping address    
+              In the next step you will choose your billing address    
               %a.btn.higher.bold#update_quantity UPDATE
-              %a.btn.btn-primary.higher.bold{href: "checkout-step-2.html"} CONTINUE
+              = link_to "CONTINUE", next_wizard_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container
