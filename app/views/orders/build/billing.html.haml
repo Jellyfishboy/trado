@@ -73,6 +73,11 @@
                 .controls
                   = f.text_field :billing_company, :class => 'span4', :id => 'billing_company'
               .control-group
+                = f.label :tax_number, :class => 'control-label' do
+                  Tax number
+                .controls
+                  = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
+              .control-group
                 = f.label :billing_address, :class => 'control-label' do
                   Street address
                   %span.red-clr.bold *
