@@ -16,25 +16,34 @@
 # Attach a function or variable to the global namespace
 root = exports ? this
 
+#####################################
+#    Check if console exists (IE)   #
+#####################################
+log = (message) ->
+  if typeof console is 'object' then console.log(message) else return null
+
 $(document).ready ->
-    # update_shipping_cost()
-    # form_JSON_errors()
     update_dimension()
+    select_shipping()
+
     $('#order_shipping_country').change ->
-    	$.ajax '/update_country',
-    		type: 'GET'
-    		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
-    		dataType: 'html'
-    		success: (data) ->
-    			$('.shipping-methods').html data
+        unless @value is ""
+        	$.ajax '/update_country',
+        		type: 'GET'
+        		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
+        		dataType: 'html'
+        		success: (data) ->
+        			$('.shipping-methods .control-group .controls').html data
+        else 
+            $('.shipping-methods .control-group .controls').html '<p class="shipping_notice">Select a shipping country to view the available shipping options.</p>'
 
     $('#update_quantity').click ->
         $('.edit_line_item').submit()
         $.get '/update_line_item'
 
 $(document).ajaxComplete ->
-    # update_shipping_cost()
     update_dimension()
+    select_shipping()
 
 # update_shipping_cost = ->
 #     $('.shipping-methods .shipping_option').click ->
@@ -51,6 +60,14 @@ $(document).ajaxComplete ->
 #         for message of errors
 #             $('#errors .modal-body ul').append '<li>' + errors[message] + '</li>'
 #         $('#errors').modal 'show'
+
+select_shipping = ->
+    $('.shipping-methods .option').click ->
+        $(@).find('input:radio').prop 'checked', true
+        $('.option').removeClass 'active'
+        $(@).addClass 'active'
+    $('.shipping-methods .option input:radio').each ->
+        $(@).parent().addClass 'active' if $(@).is ':checked'
 
 update_dimension = ->
     $('#line_item_dimension_id').change ->

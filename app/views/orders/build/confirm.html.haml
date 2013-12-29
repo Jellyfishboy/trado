@@ -50,6 +50,13 @@
             / ==========
             / = Selected Items =
             / ==========
+            %span.icon-stack
+              %i.icon-circle-blank.icon-stack-base
+              %i.icon-ok
+            %p
+              You are currently logged in with the following PayPal account:
+              %b
+                = @order.paypal_email
             %table.table.table-items
               %thead
                 %tr
@@ -68,28 +75,32 @@
                     %td.qty= item.quantity
                     %td.price= format_currency item.price
                 %tr
-                  %td{colspan: "2", rowspan: "2"}
-                  \ 
-                  %td.stronger Shipping:
-                  %td.stronger
-                    .align-right= format_currency @order.shipping_cost
+                  %td.image
+                    = image_tag "delivery.png", :alt => @order.shipping_name
+                  %td.desc
+                    = @order.shipping_name
+                  %td.qty 1
+                  %td.price= format_currency @order.shipping_cost
                 %tr
-                  %td{colspan: "2", rowspan: "2"}
+                  %td{colspan: "2"}
                   \ 
-                  %td.stronger VAT:
+                  %td.stronger VAT (exc. shipping):
                   %td.stronger
                     .align-right= format_currency @order.vat
                 %tr
-                  %td{colspan: "2", rowspan: "2"}
+                  %td{colspan: "2", rowspan: "1"}
                   \ 
                   %td.stronger Subtotal:
                   %td.stronger
                     .align-right= format_currency @order.sub_total
                 %tr
+                  %td{colspan: "2", rowspan: "1"}
+                    .alert.alert-info
+                      The total amount will be debited from the PayPal account detailed above.
                   %td.stronger Total:
                   %td.stronger
                     .size-16.align-right.total_price= format_currency @order.total
             %p.right-align  
-              = link_to 'CONFIRM & PAY', next_wizard_path, :class => 'btn btn-primary higher bold'
+              = link_to 'CONFIRM & PAY', purchase_order_build_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container

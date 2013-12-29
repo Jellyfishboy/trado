@@ -49,18 +49,15 @@
             / ==========
             / = Payment =
             / ==========
-            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
-              - PayType.all.each do |pay_type|
-                %span.btn.btn-danger.circle.pull-left
-                  %i.icon-chevron-right
-                .shifted-left-45.clearfix
-                  %h3.no-margin
-                    %span.light=pay_type.name
-                    = f.radio_button :pay_type_id, pay_type.id, :checked => true
-                    = pay_type.description
-              %hr/
-              %p.right-align
-                In the next step you will be able to review and confirm the order   
-                = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
+            %span.btn.btn-danger.circle.pull-left
+              %i.icon-chevron-right
+            .shifted-left-45.clearfix
+              %h3.no-margin
+                %span.light PayPal
+                = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_order_build_path
+              %p Speedy, secure and safe transactions with a trusted service.
+            %hr/
+            %p.right-align
+              You will be redirected to PayPal to login to your account.
     / /main content
 / /container

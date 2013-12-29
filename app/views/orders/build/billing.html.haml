@@ -1,10 +1,5 @@
 - content_for :title, 'Submit your billing address'
-- if @order.errors.any?
-  #error_explanation
-    %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-    %ul
-      - @order.errors.full_messages.each do |msg|
-        %li= msg
+
 .container
   .row
     / ==========
@@ -59,12 +54,14 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :billing_first_name, :class => 'span4', :id => 'billing_first_name'
+                  = errors_for @order, :billing_first_name
               .control-group
                 = f.label :billing_last_name, :class => 'control-label' do
                   Last name
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :billing_last_name, :class => 'span4', :id => 'billing_last_name'
+                  = errors_for @order, :billing_last_name
               .control-group
                 = f.label :billing_telephone, :class => 'control-label' do
                   Telephone
@@ -81,18 +78,21 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :billing_address, :class => 'span4', :id => 'billing_address'
+                  = errors_for @order, :billing_address
               .control-group
                 = f.label :billing_city, :class => 'control-label' do
                   City
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :billing_city, :class => 'span4', :id => 'billing_city'
+                  = errors_for @order, :billing_city
               .control-group
                 = f.label :billing_postcode, :class => 'control-label' do
                   Postcode
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :billing_postcode, :class => 'span4', :id => 'billing_postcode'
+                  = errors_for @order, :billing_postcode
               .control-group
                 = f.label :billing_county, :class => 'control-label' do
                   County
@@ -103,7 +103,8 @@
                   Country
                   %span.red-clr.bold *
                 .controls
-                  = f.select :billing_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), :class => 'as-span4', :id => 'billing_country'
+                  = f.select(:billing_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @order.billing_country), { :include_blank => 'Please select...'})
+                  = errors_for @order, :billing_country
               %hr/
               %p.right-align
                 In the next step you will choose a shipping option 

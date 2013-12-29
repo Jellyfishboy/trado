@@ -1,0 +1,9 @@
+.container
+    .row
+        %h5 Your payment was unsuccessful
+        %p 
+            Unfortunately the payment for your order was unsuccessful for the following reason(s):
+            = params[:response]
+            = "Error code: #{params[:error_code]}"
+
+        = link_to "Try again", order_build_path(:order_id => params[:order_id], :id => 'payment'), :class => 'btn btn-danger'

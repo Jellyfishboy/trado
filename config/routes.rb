@@ -22,7 +22,14 @@ GimsonRobotics::Application.routes.draw do
   
   # resources :orders, :only => [:new, :create, :update_country, :update_line_item, :update]
   resources :orders do
-    resources :build, controller: 'orders/build'
+    resources :build, controller: 'orders/build' do
+      member do
+        get 'express'
+        get 'purchase'
+        get 'success'
+        get 'failure'
+      end
+    end
   end
 
   resources :users

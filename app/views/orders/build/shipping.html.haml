@@ -1,10 +1,4 @@
 - content_for :title, 'Select a shipping method'
-- if @order.errors.any?
-  #error_explanation
-    %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-    %ul
-      - @order.errors.full_messages.each do |msg|
-        %li= msg
 .container
   .row
     / ==========
@@ -60,18 +54,21 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :shipping_first_name, :class => 'span4', :id => 'shipping_first_name'
+                  = errors_for @order, :shipping_first_name
               .control-group
                 = f.label :shipping_last_name, :class => 'control-label' do
                   Last name
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :shipping_last_name, :class => 'span4', :id => 'shipping_last_name'
+                  = errors_for @order, :shipping_last_name
               .control-group
                 = f.label :email, :class => 'control-label' do
                   Email
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :email, :class => 'span4', :id => 'email'
+                  = errors_for @order, :email
               .control-group
                 = f.label :shipping_telephone, :class => 'control-label' do
                   Telephone
@@ -88,18 +85,21 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :shipping_address, :class => 'span4', :id => 'shipping_address'
+                  = errors_for @order, :shipping_address
               .control-group
                 = f.label :shipping_city, :class => 'control-label' do
                   City
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :shipping_city, :class => 'span4', :id => 'shipping_city'
+                  = errors_for @order, :shipping_city
               .control-group
                 = f.label :shipping_postcode, :class => 'control-label' do
                   Postcode
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :shipping_postcode, :class => 'span4', :id => 'shipping_postcode'
+                  = errors_for @order, :shipping_postcode
               .control-group
                 = f.label :shipping_county, :class => 'control-label' do
                   County
@@ -110,25 +110,15 @@
                   Country
                   %span.red-clr.bold *
                 .controls
-                  = f.select :shipping_country, options_for_select(Country.all.map { |country| [country.name, country.id ] }), :class => 'as-span4', :id => 'shipping_country', :prompt => 'Please select..'
+                  = f.select(:shipping_country, options_for_select(Country.all.map { |country| [country.name, country.id] }), { :include_blank => 'Please select...'})
+                  = errors_for @order, :shipping_country
               .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
-                - if defined?(@shipping_options)
-                  - if @shipping_options.empty?
-                    .row-fluid
-                      %p There are no shipping options available
-                  - else
-                    - @shipping_options.each_slice(3) do |slice|
-                      .row-fluid
-                        - slice.each do |shipping|
-                          .span4
-                            .box.highlight.shipping_option
-                              .hgroup.title
-                                %h3= shipping.name
-                                %h5= shipping.description
-                              .box-content.highlight
-                                .price
-                                  %strong= format_currency shipping.price
-                                = f.radio_button :shipping_id, shipping.id
+                .control-group
+                  = f.label :shipping_id, :class => 'control-label' do
+                    Shipping options
+                    %span.red-clr.bold *
+                  .controls
+                    %p.shipping_notice Select a shipping country to view the available shipping options.
               %hr/
               %p.right-align
                 In the next step you will choose a payment method

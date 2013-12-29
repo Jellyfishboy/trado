@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225232226) do
+ActiveRecord::Schema.define(:version => 20131229225140) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -160,8 +160,11 @@ ActiveRecord::Schema.define(:version => 20131225232226) do
     t.string   "shipping_last_name"
     t.string   "shipping_company"
     t.integer  "shipping_id"
-    t.integer  "pay_type_id"
     t.string   "status"
+    t.string   "express_token"
+    t.string   "express_payer_id"
+    t.string   "paypal_email"
+    t.datetime "purchased_at"
   end
 
   create_table "pay_types", :force => true do |t|
