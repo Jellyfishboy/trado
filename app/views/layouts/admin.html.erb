@@ -199,20 +199,11 @@
               <span class="menu-text"> Users </span>
             </a>
           </li>
-          <li class="<%= active_controller?('admin/pay_types') %>">
-            <a href="#" class="dropdown-toggle">
+          <li>
+            <a href="#">
               <i class="icon-wrench"></i>
               <span class="menu-text"> Configuration </span>
-              <b class="arrow icon-angle-down"></b>
             </a>
-            <ul class="submenu">
-            <li class="<%= active_controller?('admin/pay_types') %>">
-                <%= link_to admin_pay_types_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Payment methods
-                <% end %>
-              </li>
-            </ul>
           </li>
         </ul><!--/.nav-list-->
 

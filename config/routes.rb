@@ -41,7 +41,7 @@ GimsonRobotics::Application.routes.draw do
       mount Sidekiq::Web => '/jobs'
       mount RedactorRails::Engine => '/redactor'
       resources :products, :except => :show
-      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :pay_types
+      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
       resources :categories, :except => :show
       resources :orders
   end
