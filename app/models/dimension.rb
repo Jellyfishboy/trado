@@ -1,8 +1,7 @@
 class Dimension < ActiveRecord::Base
-  attr_accessible :length, :weight, :thickness, :price, :cost_value, :stock, :stock_warning_level
+  attr_accessible :length, :weight, :thickness, :price, :cost_value, :stock, :stock_warning_level, :product_id
   before_destroy :check_association_number
-  has_one :dimensional, :dependent => :destroy
-  has_one :product, :through => :dimensional
+  belongs_to :product
   validates :length, :weight, :thickness, :price, :cost_value, :stock, :stock_warning_level, :presence => true
   validates :price, :cost_value, :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness, :numericality => { :greater_than_or_equal_to => 0 }
