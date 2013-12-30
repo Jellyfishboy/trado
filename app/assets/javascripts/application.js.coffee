@@ -38,8 +38,8 @@ $(document).ready ->
             $('.shipping-methods .control-group .controls').html '<p class="shipping_notice">Select a shipping country to view the available shipping options.</p>'
 
     $('#update_quantity').click ->
-        $('.edit_line_item').submit()
-        $.get '/update_line_item'
+        $('.edit_line_item').each ->
+            $(@).submit()
 
 $(document).ajaxComplete ->
     update_dimension()

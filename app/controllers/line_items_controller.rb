@@ -27,9 +27,9 @@ class LineItemsController < ApplicationController
         if @line_item.update_attributes(params[:line_item])
           if @line_item.quantity == 0 
             @line_item.destroy
-          else
-            format.json { head :no_content }
           end
+          format.js { render :partial => 'carts/update_cart', :format => [:js] }
+          format.json { head :no_content }
         else
           format.json { render json: @category.errors, status: :unprocessable_entity }
         end

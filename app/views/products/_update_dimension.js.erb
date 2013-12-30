@@ -1,6 +1,6 @@
 <% @dimension = Dimension.where('id = ?', dimension_id).first %>
 $('.price').html('<%= format_currency @dimension.price %>');
-<% if @dimension.stock < 13 %>
+<% if @dimension.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
     $('.add_to_cart').hide();
 <% else %>
