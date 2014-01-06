@@ -14,12 +14,10 @@ GimsonRobotics::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
-  resources :carts, :only => [:create, :show, :destroy]
-  resources :categories, :only => :show do
-    resources :products, :only => :show
+  resources :carts
+  resources :categories do
+    resources :products
   end
-  
-  # resources :orders, :only => [:new, :create, :update_country, :update_line_item, :update]
   resources :orders do
     resources :build, controller: 'orders/build' do
       member do
@@ -27,12 +25,13 @@ GimsonRobotics::Application.routes.draw do
         get 'purchase'
         get 'success'
         get 'failure'
+        get 'purge'
       end
     end
   end
 
   resources :users
-  resources :line_items, :only => [:create, :destroy, :update]
+  resources :line_items
 
   namespace :admin do
       root :to => "admin#dashboard"

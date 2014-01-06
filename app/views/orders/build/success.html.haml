@@ -1,1 +1,8 @@
-%h1 SUCCESS!
+- content_for :title, "Order ##{@order.id} successful"
+.container
+    .row
+        .underlined
+            %h3 You order was successful
+            %p 
+                A confirmation email detailing your order has been sent to
+                %strong= @order.email

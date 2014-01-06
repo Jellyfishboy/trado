@@ -1,9 +1,14 @@
+- content_for :title, "Order ##{@order.id} unsuccessful"
 .container
     .row
-        %h5 Your payment was unsuccessful
-        %p 
-            Unfortunately the payment for your order was unsuccessful for the following reason(s):
-            = params[:response]
-            = "Error code: #{params[:error_code]}"
+        .underlined
+            %h3 You order was unsuccessful
+            %p 
+                Unfortunately the payment for your order was unsuccessful for the following reason(s):
+                %strong= params[:response]
+            %p 
+                Error code: 
+                %strong= params[:error_code]
 
-        = link_to "Try again", order_build_path(:order_id => params[:order_id], :id => 'payment'), :class => 'btn btn-danger'
+            = link_to "Try again", order_build_path(:order_id => @order.id, :id => 'payment'), :class => 'btn btn-primary higher bold'
+            = link_to "Cancel order", purge_order_build_path(@order), :confirm => 'Are you sure?', :class => 'btn btn-danger bold higher'

@@ -78,7 +78,7 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def confirm_and_update_products
+  def finish_order
     self.update_column(:purchased_at, Time.now)
     self.update_column(:payment_status, 'Complete')
     self.line_items.each do |item|

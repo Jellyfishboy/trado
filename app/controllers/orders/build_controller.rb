@@ -67,26 +67,49 @@ class Orders::BuildController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
-        @order.confirm_and_update_products
-        redirect_to success_order_build_url
+        @order.finish_order
+        redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.transaction_id)
+        binding.pry
       else
-        
-        redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"])
+        binding.pry
+        redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :transaction_id => response.transaction_id)
       end
     end
   end
 
   def success
+    @order = Order.find(params[:order_id])
 
     respond_to do |format|
-      format.html
+      unless params[:transaction_id].blank?
+        format.html
+      else
+        format.html { redirect_to root_url }
+      end
     end
   end
 
   def failure
+    @order = Order.find(params[:order_id])
 
     respond_to do |format|
-      format.html
+      unless params[:transaction_id].blank?
+        format.html
+      else
+        format.html { redirect_to root_url }
+      end
+    end
+  end
+
+  def purge
+    @order = Order.find(params[:order_id])
+    unless @order.payment_status == 'Complete'
+      @order.destroy
+
+      redirect_to root_url, notice: 'Your order has been deleted.'
+    else
+      binding.pry
+      redirect_to root_url, flash[:notice] => 'Cannot delete a completed order.'
     end
   end
 

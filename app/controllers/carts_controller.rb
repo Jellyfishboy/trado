@@ -46,9 +46,4 @@ class CartsController < ApplicationController
     end
   end
 
-  def estimate_shipping
-    @tier = Tier.find(params[:tier_id])
-    @new_shippings = @tier.shippings.joins(:countries).where('country_id = ?', params[:country_id]).all
-    render :partial => "carts/estimate_shipping", :object => @new_shippings
-  end
 end
