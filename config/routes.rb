@@ -37,7 +37,6 @@ GimsonRobotics::Application.routes.draw do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
-      mount RedactorRails::Engine => '/redactor'
       resources :products, :except => :show
       resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
       resources :categories, :except => :show

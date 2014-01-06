@@ -60,6 +60,8 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'wicked'
 
+gem 'foreman'
+
 # RTE
 gem 'redactor-rails'
 
