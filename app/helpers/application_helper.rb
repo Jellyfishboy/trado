@@ -70,12 +70,7 @@ module ApplicationHelper
     def format_currency price
       number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
     end
-
-    def format_final_total total, shipping
-      final_total = total + shipping
-      format_currency(final_total)
-    end
-
+    
     def shipping_status status
       if status == "Pending"
         "<span class='label label-warning'>#{status}</span>".html_safe
@@ -85,9 +80,9 @@ module ApplicationHelper
     end
     
     def payment_status status
-      if status == "Pending"
+      unless status == "Completed"
         "<span class='label label-warning'>#{status}</span>".html_safe
-      elsif status == "Complete"
+      else
         "<span class='label label-success'>#{status}</span>".html_safe
       end
     end
@@ -115,4 +110,5 @@ module ApplicationHelper
         end
       end
     end
+
 end

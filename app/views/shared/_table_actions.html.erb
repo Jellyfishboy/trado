@@ -9,7 +9,7 @@
       <i class="icon-pencil bigger-130"></i>
     <% end %>
   <% end %>
-  <% if type == 2 && object.shipping_status == "Pending" && object.payment_status == "Complete" %>
+  <% if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed" %>
     <a href="#" class="grey change_shipping" id="<%= object.id %>">
       <i class="icon-truck bigger-130"></i>
     </a>

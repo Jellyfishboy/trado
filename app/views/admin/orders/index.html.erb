@@ -15,7 +15,7 @@
         <th>Email</th>
         <th>Shipping status</th>
         <th>Payment status</th>
-        <th>Total (exc. VAT)</th>
+        <th>PayPal Fee</th>
         <th>Total (inc. VAT)</th>
         <th></th>
       </tr>
@@ -27,9 +27,9 @@
           <td><%= order.billing_first_name %> <%= order.billing_last_name %></td>
           <td><%= order.email %></td>
           <td><%= shipping_status order.shipping_status %></td>
-          <td><%= payment_status order.payment_status %></td>
-          <td><%= format_currency order.sub_total %></td>
-          <td><%= format_currency order.total %></td>
+          <td><%= payment_status order.transaction.payment_status %></td>
+          <td><%= format_currency order.transaction.fee %></td>
+          <td><%= format_currency order.transaction.gross_amount %></td>
           <td><%= table_commands order, admin_order_path(order), edit_admin_order_path(order), admin_order_path(order), 2 %></td>
         </tr>
       <% end %>

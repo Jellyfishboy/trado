@@ -5,12 +5,10 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
-    binding.pry
     if current_cart.line_items.empty?
       redirect_to root_url, flash[:notice] => "Your cart is empty."
     else
       @order = Order.create
-      binding.pry
       redirect_to order_build_path(:order_id => @order.id, :id => steps.first)
     end
   end

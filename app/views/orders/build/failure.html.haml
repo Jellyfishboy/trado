@@ -9,6 +9,6 @@
             %p 
                 Error code: 
                 %strong= params[:error_code]
-
-            = link_to "Try again", order_build_path(:order_id => @order.id, :id => 'payment'), :class => 'btn btn-primary higher bold'
-            = link_to "Cancel order", purge_order_build_path(@order), :confirm => 'Are you sure?', :class => 'btn btn-danger bold higher'
+            - unless params[:error_code].to_i == 10415
+                = link_to "Try again", order_build_path(:order_id => @order.id, :id => 'payment'), :class => 'btn btn-primary higher bold'
+                = link_to "Cancel order", purge_order_build_path(@order), :confirm => 'Are you sure?', :class => 'btn btn-danger bold higher'

@@ -137,7 +137,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span6">
                                 <div class="row-fluid">
                                     <div class="span12 label label-large label-warning arrowed-in arrowed-right">
-                                        <b>Order status</b>
+                                        <b>Order information</b>
                                     </div>
                                 </div>
 
@@ -146,24 +146,24 @@ breadcrumb_add 'Orders', orders_path %>
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
                                            Payment status: 
-                                           <%= payment_status @order.payment_status %>
+                                           <%= payment_status @order.transaction.payment_status %>
+                                        </li>
+                                        <li>
+                                           <i class="icon-caret-right yellow"></i>
+                                           Transaction ID: 
+                                           <%= @order.transaction.transaction_id %>
+                                        </li>
+                                        <li>
+                                           <i class="icon-caret-right yellow"></i>
+                                           Transaction type: 
+                                           <%= @order.transaction.transaction_type %>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
-                                           Shipping type: 
-                                           <%= @order.shipping_name %>
+                                           PayPal fee: 
+                                           <%= format_currency @order.transaction.fee %>
                                         </li>
-                                        <li>
-                                           <i class="icon-caret-right yellow"></i>
-                                           Shipping status: 
-                                           <%= shipping_status @order.shipping_status %>
-                                        </li>
-                                        <li>
-                                            <i class="icon-caret-right yellow"></i>
-                                            Dispatch date: 
-                                            <b class="red"><%= @order.shipping_date %></b>
-                                        </li> 
                                     </ul>
                                 </div>
                             </div><!--/span-->
@@ -171,7 +171,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span6">
                                 <div class="row-fluid">
                                     <div class="span12 label label-large label-danger arrowed-in arrowed-right">
-                                        <b>Contact information</b>
+                                        <b>Shipping information</b>
                                     </div>
                                 </div>
 
@@ -181,7 +181,22 @@ breadcrumb_add 'Orders', orders_path %>
                                         <i class="icon-caret-right grey"></i>
                                         Email:
                                         <b class="red"><%= @order.email %></b>
-                                    </li>     
+                                    </li>
+                                    <li>
+                                       <i class="icon-caret-right grey"></i>
+                                       Shipping type: 
+                                       <%= @order.shipping_name %>
+                                    </li>
+                                    <li>
+                                       <i class="icon-caret-right grey"></i>
+                                       Shipping status: 
+                                       <%= shipping_status @order.shipping_status %>
+                                    </li>
+                                    <li>
+                                        <i class="icon-caret-right grey"></i>
+                                        Dispatch date: 
+                                        <b class="red"><%= @order.shipping_date %></b>
+                                    </li>      
                                     </ul>
                                 </div>
                             </div><!--/span-->
@@ -229,7 +244,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span5 pull-right">
                                 <h5 class="pull-right">
                                     Sub total :
-                                    <span class="red"><%= format_currency @order.sub_total %></span>
+                                    <span class="red"><%= format_currency @order.transaction.net_amount %></span>
                                 </h5>
                             </div>
                         </div>
@@ -237,7 +252,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span5 pull-right">
                                 <h5 class="pull-right">
                                     VAT:
-                                    <span class="blue"><%= format_currency @order.vat %></span>
+                                    <span class="blue"><%= format_currency @order.transaction.tax_amount %></span>
                                 </h4>
                             </div>
                         </div>
@@ -254,7 +269,7 @@ breadcrumb_add 'Orders', orders_path %>
                             <div class="span5 pull-right">
                                 <h4 class="pull-right">
                                     Total:
-                                    <span class="green"><%= format_final_total @order.total, @order.shipping_cost %></span>
+                                    <span class="green"><%= format_currency @order.transaction.gross_amount %></span>
                                 </h4>
                             </div>
                         </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131229235417) do
+ActiveRecord::Schema.define(:version => 20140106200123) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -138,27 +138,21 @@ ActiveRecord::Schema.define(:version => 20131229235417) do
     t.string   "shipping_telephone"
     t.string   "email"
     t.integer  "tax_number"
-    t.decimal  "sub_total",            :precision => 8, :scale => 2
-    t.decimal  "total",                :precision => 8, :scale => 2
     t.decimal  "shipping_cost",        :precision => 8, :scale => 2
-    t.string   "payment_status",                                     :default => "Pending"
     t.string   "shipping_status",                                    :default => "Pending"
     t.datetime "shipping_date"
     t.datetime "created_at",                                                                :null => false
     t.datetime "updated_at",                                                                :null => false
     t.integer  "invoice_id"
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
-    t.decimal  "vat",                  :precision => 8, :scale => 2
     t.string   "shipping_name"
     t.string   "shipping_first_name"
     t.string   "shipping_last_name"
     t.string   "shipping_company"
-    t.integer  "shipping_id"
     t.string   "status"
     t.string   "express_token"
     t.string   "express_payer_id"
-    t.string   "paypal_email"
-    t.datetime "purchased_at"
+    t.integer  "shipping_id"
   end
 
   create_table "pay_types", :force => true do |t|
@@ -257,6 +251,20 @@ ActiveRecord::Schema.define(:version => 20131229235417) do
     t.decimal  "thickness_end",   :precision => 8, :scale => 2
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "transaction_id"
+    t.string   "transaction_type"
+    t.string   "payment_type"
+    t.decimal  "fee",              :precision => 8, :scale => 2
+    t.string   "payment_status"
+    t.integer  "order_id"
+    t.decimal  "gross_amount",     :precision => 8, :scale => 2
+    t.decimal  "tax_amount",       :precision => 8, :scale => 2
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.decimal  "net_amount",       :precision => 8, :scale => 2
   end
 
   create_table "users", :force => true do |t|

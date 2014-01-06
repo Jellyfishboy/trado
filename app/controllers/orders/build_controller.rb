@@ -6,7 +6,7 @@ class Orders::BuildController < ApplicationController
   def show
     @cart = current_cart
     @order = Order.find(params[:order_id])
-    if @order.payment_status == 'Complete'
+    if @order.transaction_status
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       case step
@@ -15,12 +15,12 @@ class Orders::BuildController < ApplicationController
       end
       case step 
       when :payment
-        @order.calculate_order(current_cart)
+        @order.calculate_order(current_cart, session)
       end
       case step
       when :confirm
         if defined?(params[:token])
-          @order.assign_paypal_token(params[:token], params[:PayerID])
+          @order.assign_paypal_token(params[:token], params[:PayerID], session)
         end
       end
       render_wizard
@@ -42,37 +42,30 @@ class Orders::BuildController < ApplicationController
 
   def express
     @order = Order.find(params[:order_id])
-    if @order.payment_status == 'Complete'
+    if @order.transaction_status
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
-      options = {
-        :ip                => request.remote_ip,
-        :return_url        => order_build_url(:order_id => @order.id, :id => steps.last),
-        :cancel_return_url => order_build_url(:order_id => @order.id, :id => 'payment'),
-        :currency          => 'GBP',
-      }
-      response = EXPRESS_GATEWAY.setup_purchase(@order.price_in_pennies, options)
+      response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
   end
 
   def purchase 
     @order = Order.find(params[:order_id])
-    if @order.payment_status == 'Complete'
+    if @order.transaction_status
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
-      response = EXPRESS_GATEWAY.purchase(@order.price_in_pennies, express_purchase_options(@order))
+      binding.pry
+      response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
       if response.success?
         @order.add_line_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
-        @order.finish_order
-        redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.transaction_id)
-        binding.pry
+        @order.finish_order(response)
+        redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else
-        binding.pry
-        redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :transaction_id => response.transaction_id)
+        redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :correlation_id => response.params['correlation_id'])
       end
     end
   end
@@ -93,7 +86,7 @@ class Orders::BuildController < ApplicationController
     @order = Order.find(params[:order_id])
 
     respond_to do |format|
-      unless params[:transaction_id].blank?
+      unless params[:correlation_id].blank?
         format.html
       else
         format.html { redirect_to root_url }
@@ -103,12 +96,10 @@ class Orders::BuildController < ApplicationController
 
   def purge
     @order = Order.find(params[:order_id])
-    unless @order.payment_status == 'Complete'
+    unless @order.transaction_status
       @order.destroy
-
       redirect_to root_url, notice: 'Your order has been deleted.'
     else
-      binding.pry
       redirect_to root_url, flash[:notice] => 'Cannot delete a completed order.'
     end
   end
@@ -117,10 +108,44 @@ private
 
   def express_purchase_options(order)
     {
+      :subtotal          => price_in_pennies(session[:sub_total]),
+      :shipping          => price_in_pennies(order.shipping_cost),
+      :tax               => price_in_pennies(session[:tax]),
+      :handling          => 0,
       :token => order.express_token,
       :payer_id => order.express_payer_id,
       :currency => 'GBP'
     }
+  end
+
+  def express_setup_options(order)
+    {
+      :subtotal          => price_in_pennies(session[:sub_total]),
+      :shipping          => price_in_pennies(order.shipping_cost),
+      :tax               => price_in_pennies(session[:tax]),
+      :handling          => 0,
+      :order_id          => order.id,
+      :items             => express_items,
+      :ip                => request.remote_ip,
+      :return_url        => order_build_url(:order_id => order.id, :id => steps.last),
+      :cancel_return_url => order_build_url(:order_id => order.id, :id => 'payment'),
+      :currency          => 'GBP',
+    }
+  end
+
+  def price_in_pennies(price)
+    (price*100).round
+  end
+
+  def express_items
+    current_cart.line_items.collect do |item|
+       {
+        :name => item.product.name,
+        :description => "#{item.length}mm",
+        :amount => price_in_pennies(item.price), 
+        :quantity => item.quantity 
+      }
+    end
   end
 
 end
