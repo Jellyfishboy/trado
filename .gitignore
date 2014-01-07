@@ -2,4 +2,5 @@ log/development.log
 log/test.log
 log/newrelic_agent.log
 tmp
-.DS_Store
+*.DS_Store
+.env

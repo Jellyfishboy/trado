@@ -60,7 +60,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'wicked'
 
-gem 'foreman'
+gem 'foreman',   '~> 0.61.0'
 
 # RTE
 gem 'redactor-rails'

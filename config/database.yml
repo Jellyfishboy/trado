@@ -19,6 +19,6 @@ production:
   database: gimson_robotics_db
   host: localhost
   pool: 30
-  username: <%= ENV['GIMSON_DB_USER'] %>
-  password: <%= ENV['GIMSON_DB_PW'] %>
+  username: ENV['GIMSON_DB_USER']
+  password: ENV['GIMSON_DB_PW']
   socket: /var/run/mysqld/mysqld.sock
