@@ -39,12 +39,8 @@ GimsonRobotics::Application.routes.draw do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
-      resources :products, :except => :show
-      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags
-      resources :categories, :except => :show
-      resources :orders
+      resources :accessories, :dimensions, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :skus, :variant_values, :variants, :categories, :orders, :products
   end
-  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

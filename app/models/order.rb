@@ -100,7 +100,7 @@ class Order < ActiveRecord::Base
     Order.all.each do |order|
       if order.shipping_date == Date.today
         order.update_column(:shipping_status, "Dispatched")
-        order.order_shipped(self).deliver
+        Notifier.order_shipped(self).deliver
       end
     end
   end

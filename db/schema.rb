@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106200123) do
+ActiveRecord::Schema.define(:version => 20140107172236) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -64,15 +64,11 @@ ActiveRecord::Schema.define(:version => 20140106200123) do
   end
 
   create_table "dimensions", :force => true do |t|
-    t.decimal  "weight",              :precision => 8, :scale => 2
-    t.decimal  "length",              :precision => 8, :scale => 2
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
-    t.decimal  "thickness",           :precision => 8, :scale => 2
-    t.decimal  "price",               :precision => 8, :scale => 2
-    t.decimal  "cost_value",          :precision => 8, :scale => 2
-    t.integer  "stock"
-    t.integer  "stock_warning_level"
+    t.decimal  "weight",     :precision => 8, :scale => 2
+    t.decimal  "length",     :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.decimal  "thickness",  :precision => 8, :scale => 2
     t.integer  "product_id"
   end
 
@@ -222,6 +218,16 @@ ActiveRecord::Schema.define(:version => 20140106200123) do
     t.text     "description"
   end
 
+  create_table "skus", :force => true do |t|
+    t.decimal  "price",               :precision => 8, :scale => 2
+    t.decimal  "cost_value",          :precision => 8, :scale => 2
+    t.integer  "stock"
+    t.integer  "stock_warning_level"
+    t.string   "sku"
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "product_id"
@@ -285,5 +291,21 @@ ActiveRecord::Schema.define(:version => 20140106200123) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "variant_values", :force => true do |t|
+    t.integer  "variant_id"
+    t.integer  "sku_id"
+    t.string   "value"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "dimension_id"
+  end
+
+  create_table "variants", :force => true do |t|
+    t.string   "type"
+    t.string   "measurement"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

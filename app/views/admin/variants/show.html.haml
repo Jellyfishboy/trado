@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @variant.type
+%p
+  %b Measurement:
+  = @variant.measurement
+
+= link_to 'Edit', edit_variant_path(@variant)
+\|
+= link_to 'Back', variants_path

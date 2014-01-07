@@ -25,7 +25,7 @@ every 12.hours do
 end
 
 every 1.day, :at => '8:30 am' do
-    runner "Dimension.warning_level"
+    runner "Sku.warning_level"
 end
 
 every 1.day, :at => '7:00 am' do

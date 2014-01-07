@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  price: 9.99
+  cost_value: 9.99
+  stock: 1
+  stock_warning_level: 1
+  sku: MyString
+
+two:
+  price: 9.99
+  cost_value: 9.99
+  stock: 1
+  stock_warning_level: 1
+  sku: MyString
