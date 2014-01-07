@@ -10,6 +10,8 @@ GimsonRobotics::Application.routes.draw do
   match '/update_country' => 'orders#update_country'
   match '/update_dimension' => 'products#update_dimension'
 
+  get '/search' => 'search#results'
+
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :sessions => "users/sessions"

@@ -1,0 +1,4 @@
+%ul
+    - @products_solr.each do |product|
+        %li
+            = link_to product.name, product

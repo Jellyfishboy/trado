@@ -81,6 +81,10 @@ gem 'unf' # Dependency for fog
 # Monitoring
 gem 'newrelic_rpm'
 
+# Search indexing
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 # Administration
 gem 'rails_admin'
 

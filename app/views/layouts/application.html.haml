@@ -133,11 +133,10 @@
                   / ==========
                   / = Search form =
                   / ==========
-                  %form.navbar-form.pull-right{action: "#", method: "get"}
-                    %button{type: "submit"}
+                  = form_tag search_path, :method => :get, :class => 'navbar-form pull-right' do
+                    = button_tag(:type => 'submit') do
                       %span.icon-search
-                    %input#navSearchInput.span1{name: "search", type: "text"}/
-                / /.nav-collapse
+                    = text_field_tag(:query, params[:query], :autocomplete => 'off', :tabindex => "1", :placeholder => "Search for products..", :class => 'span1', :id => 'navSearchInput' )
               / ==========
               / = Cart =
               / ==========

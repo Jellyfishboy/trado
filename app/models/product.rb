@@ -22,6 +22,13 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :category
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
 
+  searchable do
+    text :name
+    text :tags do
+      tags.map { |tag| tag.name }
+    end
+  end
+
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/attachment/Product/#{self.id}", :force => true)
   end
