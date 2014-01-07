@@ -1,17 +1,5 @@
 <div class="ajax_fields dimensions">
     <div class="control-group">
-      <%= f.label :cost_value, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :cost_value, :class => 'form-control' %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :price, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :price, :class => 'form-control' %>
-      </div>
-    </div>
-    <div class="control-group">
       <%= f.label :weight, 'Weight (kg)', :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :weight, :class => 'form-control' %>
@@ -29,18 +17,6 @@
         <%= f.text_field :thickness, :class => 'form-control' %>
       </div>
     </div>
-    <div class="control-group">
-        <%= f.label :stock, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :stock, :class => 'form-control' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :stock_warning_level, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :stock_warning_level, :class => 'form-control' %>
-        </div>
-      </div>
     <div class="control-group">
       <div class="controls">
         <%= link_to_remove_fields "Remove", f, "dimensions" %>

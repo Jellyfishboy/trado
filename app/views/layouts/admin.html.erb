@@ -136,11 +136,26 @@
             <% end %>
           </li>
 
-          <li class="<%= active_controller?('admin/products') %>">
-            <%= link_to admin_products_path do %>
+          <li class="<%= active_controller?('admin/products') %> <%= active_controller?('admin/attribute_types') %>">
+            <a href="#" class="dropdown-toggle">
               <i class="icon-th"></i>
               <span class="menu-text">Products</span>
-            <% end %>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li class="<%= active_controller?('admin/products') %>">
+                <%= link_to admin_products_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  Products
+                <% end %>
+              </li>
+              <li class="<%= active_controller?('admin/attribute_types') %>">
+                <%= link_to admin_attribute_types_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  Attribute types
+                <% end %>
+              </li>
+            </ul>
           </li>
           <li class="<%= active_controller?('admin/accessories') %>">
             <%= link_to admin_accessories_path do %>

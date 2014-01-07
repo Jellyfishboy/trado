@@ -3,9 +3,9 @@ class TierValidator < ActiveModel::EachValidator
         if Tier.all.count < 1
             record.errors[:base] << "You do not currently have any shipping tiers. Please add a shipping tier before creating a product."
         else
-    		record.dimensions.each do |dimension|
-          		if dimension.length > Tier.maximum("length_end") || dimension.weight > Tier.maximum("weight_end") || dimension.thickness > Tier.maximum("thickness_end")
-            		record.errors[:base] << "There are no available tiers for the product's dimensions."
+    		record.skus.each do |sku|
+          		if sku.length > Tier.maximum("length_end") || sku.weight > Tier.maximum("weight_end") || sku.thickness > Tier.maximum("thickness_end")
+            		record.errors[:base] << "There are no available tiers for the product's SKUs."
           		end
         	end
         end

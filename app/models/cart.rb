@@ -1,17 +1,17 @@
 class Cart < ActiveRecord::Base
-  has_many :line_items, :dependent => :destroy # A cart has many lineitems, however it is dependent on them. it will not be destroyed if a lineitem still exists within it
+  has_many :line_items, :dependent => :delete_all # A cart has many lineitems, however it is dependent on them. it will not be destroyed if a lineitem still exists within it
 
-  def add_product(product_id, dimension_price, dimension_id, dimension_length, dimension_thickness, dimension_weight, product_sku, item_quantity)
-  	current_item = line_items.where('product_id = ?', product_id).where('dimension_id = ?', dimension_id).first #grabs all the products which match the product id
+  def add_product(product_id, sku_price, sku_id, sku_length, sku_thickness, sku_weight, sku, item_quantity)
+  	current_item = line_items.where('product_id = ?', product_id).where('sku_id = ?', sku_id).first #grabs all the products which match the product id
     if current_item
   		current_item.quantity += item_quantity.to_i #if line item selected exists, increment its quantity by 1
-      current_item.weight += dimension_weight
+      current_item.weight += sku_weight
   	else 
       if item_quantity.to_i > 1
-    		current_item = line_items.build(:product_id => product_id, :price => dimension_price, :dimension_id => dimension_id, :length => dimension_length, :thickness => dimension_thickness, :weight => dimension_weight, :sku => "#{product_sku}-#{dimension_length.floor}") #if line item selected does not exist, build a new cart item
+    		current_item = line_items.build(:product_id => product_id, :price => sku_price, :sku_id => sku_id, :length => sku_length, :thickness => sku_thickness, :weight => sku_weight, :sku => sku) #if line item selected does not exist, build a new cart item
         current_item.quantity += (item_quantity.to_i-1)
       else 
-        current_item = line_items.build(:product_id => product_id, :price => dimension_price, :dimension_id => dimension_id, :length => dimension_length, :thickness => dimension_thickness, :weight => dimension_weight, :sku => "#{product_sku}-#{dimension_length.floor}") #if line item selected does not exist, build a new cart item
+        current_item = line_items.build(:product_id => product_id, :price => sku_price, :sku_id => sku_id, :length => sku_length, :thickness => sku_thickness, :weight => sku_weight, :sku => sku) #if line item selected does not exist, build a new cart item
       end
   	end
   	current_item #return new item either by quantity or new cart item

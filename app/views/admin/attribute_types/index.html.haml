@@ -1,0 +1,23 @@
+- content_for :title, 'List product attribute types'
+- content_for :breadcrumb, 'Product attribute types'
+.page-header
+  %h1 Listing product attribute types
+  = link_to new_admin_attribute_type_path, :class => "btn btn-success" do
+    %i.icon-plus
+    New attribute type
+- if @attribute_types.empty?
+  %p You don't have any product attribute types.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Measurement
+        %th
+    %tbody
+      - @attribute_types.each do |attribute_type|
+        %tr
+          %td= attribute_type.name
+          %td= attribute_type.measurement
+          %td= table_commands attribute_type, admin_attribute_type_path(attribute_type), edit_admin_attribute_type_path(attribute_type), admin_attribute_type_path(attribute_type), 1
+

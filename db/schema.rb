@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140107172236) do
+ActiveRecord::Schema.define(:version => 20140107234635) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(:version => 20140107172236) do
     t.string   "attachable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "attribute_types", :force => true do |t|
+    t.string   "name"
+    t.string   "measurement"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "attribute_values", :force => true do |t|
+    t.integer  "attribute_type_id"
+    t.integer  "sku_id"
+    t.string   "value"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -63,15 +78,6 @@ ActiveRecord::Schema.define(:version => 20140107172236) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "dimensions", :force => true do |t|
-    t.decimal  "weight",     :precision => 8, :scale => 2
-    t.decimal  "length",     :precision => 8, :scale => 2
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-    t.decimal  "thickness",  :precision => 8, :scale => 2
-    t.integer  "product_id"
-  end
-
   create_table "invoices", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -97,16 +103,16 @@ ActiveRecord::Schema.define(:version => 20140107172236) do
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.integer  "quantity",                                   :default => 1
-    t.decimal  "price",        :precision => 8, :scale => 2
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "quantity",                                 :default => 1
+    t.decimal  "price",      :precision => 8, :scale => 2
     t.integer  "order_id"
-    t.decimal  "weight",       :precision => 8, :scale => 2
-    t.decimal  "thickness",    :precision => 8, :scale => 2
-    t.decimal  "length",       :precision => 8, :scale => 2
-    t.integer  "dimension_id"
+    t.decimal  "weight",     :precision => 8, :scale => 2
+    t.decimal  "thickness",  :precision => 8, :scale => 2
+    t.decimal  "length",     :precision => 8, :scale => 2
     t.string   "sku"
+    t.integer  "sku_id"
   end
 
   create_table "notifications", :force => true do |t|
@@ -226,6 +232,10 @@ ActiveRecord::Schema.define(:version => 20140107172236) do
     t.string   "sku"
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
+    t.integer  "product_id"
+    t.decimal  "length",              :precision => 8, :scale => 2
+    t.decimal  "weight",              :precision => 8, :scale => 2
+    t.decimal  "thickness",           :precision => 8, :scale => 2
   end
 
   create_table "taggings", :force => true do |t|
@@ -291,21 +301,5 @@ ActiveRecord::Schema.define(:version => 20140107172236) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "variant_values", :force => true do |t|
-    t.integer  "variant_id"
-    t.integer  "sku_id"
-    t.string   "value"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "dimension_id"
-  end
-
-  create_table "variants", :force => true do |t|
-    t.string   "type"
-    t.string   "measurement"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
 
 end

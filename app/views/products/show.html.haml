@@ -34,9 +34,9 @@
           %h1.name
             %span.light= @product.name
           .meta
-            %span.tag.price= format_currency @product.dimensions.first.price
+            %span.tag.price= format_currency @product.skus.first.price
             %span.stock
-              - if @product.dimensions.first.stock > 0
+              - if @product.skus.first.stock > 0
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
@@ -52,7 +52,7 @@
               %span.clickable.add-one.icon-plus-sign-alt
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
-            = f.select :dimension_id, options_for_select(@product.dimensions.map { |dimension| ["#{dimension.length}mm", dimension.id ] } )
+            = f.select :sku_id, options_for_select(@product.skus.map { |sku| ["#{sku.length}mm", sku.id ] } )
             = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
               %i.icon-shopping-cart
               \  Add To Cart
@@ -150,7 +150,7 @@
                     = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
                 .main-titles.no-margin
                   %h4.title
-                    %span= format_currency product.dimensions.first.price
+                    %span= format_currency product.skus.first.price
                   %h5.no-margin= truncate product.name, :length => 35
                 %p.desc= truncate product.description, :length => 100
           / /product

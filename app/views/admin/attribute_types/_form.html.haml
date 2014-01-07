@@ -1,0 +1,23 @@
+.row-fluid
+  .span-12
+    = form_for [:admin, @attribute_type], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @attribute_type.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@attribute_type.errors.count, "error")} prohibited this attribute type from being saved:"
+            %ul
+              - @attribute_type.errors.full_messages.each do |msg|
+                %li= msg
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'form-control'
+        .control-group
+          = f.label :measurement, :class => 'control-label'
+          .controls
+            = f.text_field :measurement, :class => 'form-control'
+        .form-actions
+          = button_tag(:type => 'submit', :class => 'btn btn-info') do
+            %i.icon-ok
+            Submit
+

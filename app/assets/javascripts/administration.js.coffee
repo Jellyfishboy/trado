@@ -1,6 +1,5 @@
 #= require jquery
 #= require jquery_ujs
-#= require jquery-ui
 #= require admin/ace-elements.min
 #= require admin/ace.min
 #= require admin/bootstrap.min

@@ -113,63 +113,63 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">Dimensions <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :dimensions,"#dimension_fields" %></h3>
+      <h3 class="header smaller lighter blue">SKUs </h3>
       <div id="dimensions">
-        <% if @product.dimensions.empty? %>
+        <% if @product.skus.empty? %>
         <div class="control-group">
           <div class="controls">
-            <p>This product currently has no dimensions.</p>
+            <p>This product currently has no SKUs.</p>
           </div>
         </div>
         <% else %>
-          <% @product.dimensions.each do |dimension| %>
-          <div id="dimension_<%= dimension.id %>" class="foreign_list">
+          <% @product.skus.each do |sku| %>
+          <div id="dimension_<%= sku.id %>" class="foreign_list">
             <div class="control-group">
               <div class="control-label">Cost value:</div>
               <div class="controls">
-                <div class="form-control"><%= format_currency dimension.cost_value %></div>
+                <div class="form-control"><%= format_currency sku.cost_value %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Price:</div>
               <div class="controls">
-                <div class="form-control"><%= format_currency dimension.price %></div>
+                <div class="form-control"><%= format_currency sku.price %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Weight (kg):</div>
               <div class="controls">
-                <div class="form-control"><%= dimension.weight %></div>
+                <div class="form-control"><%= sku.weight %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Length (mm):</div>
               <div class="controls">
-                <div class="form-control"><%= dimension.length %></div>
+                <div class="form-control"><%= sku.length %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Thickness (mm):</div>
               <div class="controls">
-                <div class="form-control"><%= dimension.thickness %></div>
+                <div class="form-control"><%= sku.thickness %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Stock:</div>
               <div class="controls">
-                <div class="form-control"><%= dimension.stock %></div>
+                <div class="form-control"><%= sku.stock %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Stock warning level:</div>
               <div class="controls">
-                <div class="form-control"><%= dimension.stock_warning_level %></div>
+                <div class="form-control"><%= sku.stock_warning_level %></div>
                 <hr>
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <%= link_to "Remove", admin_dimension_path(dimension), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
+                <%= link_to "Remove", admin_sku_path(sku), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
               </div>
             </div>
           </div>

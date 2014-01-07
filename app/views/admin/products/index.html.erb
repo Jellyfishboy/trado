@@ -13,8 +13,8 @@
     <thead>
       <tr>
         <th>SKU</th>
+        <th>Part No.</th>
         <th colspan="2">Name</th>
-        <th>Cost value</th>
         <th>Price (exc.VAT)</th>
         <th></th>
     </thead>
@@ -24,17 +24,17 @@
         <td>
           <%= product.sku %>
         </td>
+        <td>
+          <%= product.part_number %>
+        </td>
         <td width="85">
           <%= image_tag product.attachments.first.file.medium, :height => "75", :width => "75" %>
         </td>
         <td>
           <%= product.name %>
         </td>
-        <td>
-          <%= format_currency product.dimensions.first.cost_value %>
-        </td>
         <td> 
-          <%= format_currency product.dimensions.first.price %>
+
         </td>
         <td >
           <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>
