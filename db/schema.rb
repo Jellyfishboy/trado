@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108111203) do
+ActiveRecord::Schema.define(:version => 20140108172329) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(:version => 20140108111203) do
     t.string   "measurement"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "attribute_values", :force => true do |t|
-    t.integer  "attribute_type_id"
-    t.integer  "sku_id"
-    t.string   "value"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -239,6 +231,8 @@ ActiveRecord::Schema.define(:version => 20140108111203) do
     t.decimal  "length",              :precision => 8, :scale => 2
     t.decimal  "weight",              :precision => 8, :scale => 2
     t.decimal  "thickness",           :precision => 8, :scale => 2
+    t.string   "attribute_value"
+    t.integer  "attribute_type_id"
   end
 
   create_table "taggings", :force => true do |t|

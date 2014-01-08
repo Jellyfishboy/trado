@@ -85,10 +85,10 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_sku_fields "<i class='icon-plus'></i>".html_safe, f, :skus, :attribute_values, "#sku_fields" %></h3>
+      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
         <div id="skus">
           <div id="sku_fields">
-            <%= add_sku_field f, :skus, :attribute_values %>
+            <%= add_foreign_field f, :skus %>
           </div>
         </div>
 

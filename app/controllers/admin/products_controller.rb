@@ -17,8 +17,6 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    @sku = @product.skus.build
-    @sku.attribute_values.build
     unless Tier.all.count > 0
       flash[:error] = "You do not currently have any shipping tiers. Please add a shipping tier before creating a product."
     end

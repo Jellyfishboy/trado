@@ -42,24 +42,22 @@
         <%= f.text_field :stock_warning_level, :class => 'form-control' %>
       </div>
     </div> 
-    <%= f.fields_for(:attribute_values, attribute_value, :child_index => "new_attribute_values") do |ff| %>
-      <div class="control-group">
-        <%= ff.label 'Attribute value', :class => 'control-label' %>
-        <div class="controls">
-          <%= ff.text_field :value, :class => 'form-control' %>
-        </div>
+    <div class="control-group">
+      <%= f.label :attribute_value, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :attribute_value, :class => 'form-control' %>
       </div>
-      <div class="control-group">
-        <%= ff.label :attribute_type_id, :class => 'control-label' %>
-        <div class="controls">
-          <% if AttributeType.all.empty? %>
-            <p>No variant types to select</p>
-          <% else %>
-            <%= ff.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'}) %>
-          <% end %>
-        </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :attribute_type_id, :class => 'control-label' %>
+      <div class="controls">
+        <% if AttributeType.all.empty? %>
+          <p>No variant types to select</p>
+        <% else %>
+          <%= f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'}) %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
     <div class="control-group">
       <div class="controls">
         <%= link_to_remove_fields "Remove", f, "skus" %>
