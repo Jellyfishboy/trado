@@ -28,7 +28,7 @@ form.new_product {
     .add_field {
         margin-left:10px;
     }
-    #dimensions {
+    #skus {
         overflow: hidden;
         .foreign_list {
             float:left;
@@ -37,7 +37,7 @@ form.new_product {
                 padding:0px;
             }
         }
-        .dimensions {
+        .skus {
             float:left;
         }
     }

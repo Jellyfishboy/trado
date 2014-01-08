@@ -1,6 +1,6 @@
 <% content_for :title, 'New product'
    content_for :breadcrumb, 'New'
-   breadcrumb_add 'Products', admin_products_path %>
+   breadcrumb_add 'All products', admin_products_path %>
 <div class="page-header">
     <h1>New product</h1>
 </div>
@@ -85,71 +85,12 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs </h3>
-        <%= f.fields_for :skus do |ff| %>
-          <div class="control-group">
-            <%= ff.label :weight, 'Weight (kg)', :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :weight, :class => 'form-control' %>
-            </div>
+      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_sku_fields "<i class='icon-plus'></i>".html_safe, f, :skus, :attribute_values, "#sku_fields" %></h3>
+        <div id="skus">
+          <div id="sku_fields">
+            <%= add_sku_field f, :skus, :attribute_values %>
           </div>
-          <div class="control-group">
-            <%= ff.label :length, 'Length (mm)', :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :length, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= ff.label :thickness, 'Thickness (mm)', :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :thickness, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= ff.label :cost_value, :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :cost_value, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= ff.label :price, :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :price, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= ff.label :stock, :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :stock, :class => 'form-control' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= ff.label :stock_warning_level, :class => 'control-label' %>
-            <div class="controls">
-              <%= ff.text_field :stock_warning_level, :class => 'form-control' %>
-            </div>
-          </div>
-          <h5>Details</h5>
-            
-            <%= ff.fields_for :attribute_values do |fff| %>
-              <div class="control-group">
-                <%= fff.label :value, :class => 'control-label' %>
-                <div class="controls">
-                  <%= fff.text_field :value, :class => 'form-control' %>
-                </div>
-              </div>
-              <div class="control-group">
-                <%= fff.label :attribute_type_id, :class => 'control-label' %>
-                <div class="controls">
-                  <% if AttributeType.all.empty? %>
-                    <p>No variant types to select</p>
-                  <% else %>
-                    <%= fff.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'}) %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
+        </div>
 
       <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags, "#tag_fields" %></h3>
       <div id="tags">

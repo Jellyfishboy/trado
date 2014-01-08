@@ -32,6 +32,7 @@ class Product < ActiveRecord::Base
 
   def assign_sku_references
     self.skus.each do |sku|
+      skus = self.skus
       suffix = sku.attribute_values.first.value.tr(".","-")
       sku.sku = "#{self.sku}-#{suffix}"
     end

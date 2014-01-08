@@ -1,6 +1,6 @@
 <% content_for :title, 'Edit product'
    content_for :breadcrumb, 'Edit'
-   breadcrumb_add 'Products', admin_products_path %>
+   breadcrumb_add 'All products', admin_products_path %>
 <div class="page-header">
     <h1>Editing <%= @product.name %></h1>
 </div>
@@ -113,8 +113,8 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs </h3>
-      <div id="dimensions">
+      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_sku_fields "<i class='icon-plus'></i>".html_safe, f, :skus, :attribute_values, "#sku_fields" %></h3>
+      <div id="skus">
         <% if @product.skus.empty? %>
         <div class="control-group">
           <div class="controls">
@@ -123,7 +123,7 @@
         </div>
         <% else %>
           <% @product.skus.each do |sku| %>
-          <div id="dimension_<%= sku.id %>" class="foreign_list">
+          <div id="sku_<%= sku.id %>" class="foreign_list">
             <div class="control-group">
               <div class="control-label">Cost value:</div>
               <div class="controls">
@@ -168,6 +168,19 @@
               </div>
             </div>
             <div class="control-group">
+              <div class="control-label">Attribute value:</div>
+              <div class="controls">
+                <div class="form-control"><%= sku.attribute_values.first.value %></div>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="control-label">Attribute type:</div>
+              <div class="controls">
+                <div class="form-control"><%= sku.attribute_values.first.attribute_type.name %></div>
+                <hr>
+              </div>
+            </div>
+            <div class="control-group">
               <div class="controls">
                 <%= link_to "Remove", admin_sku_path(sku), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
               </div>
@@ -175,7 +188,7 @@
           </div>
           <% end %>
         <% end %>
-        <div id="dimension_fields"  class="edit_field"></div>
+        <div id="sku_fields"  class="edit_field"></div>
       </div>
       <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags,"#tag_fields" %></h3>
       <div id="tags">

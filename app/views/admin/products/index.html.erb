@@ -34,7 +34,7 @@
           <%= product.name %>
         </td>
         <td> 
-
+        <%= format_currency product.skus.first.price %>
         </td>
         <td >
           <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>

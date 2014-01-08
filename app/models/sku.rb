@@ -8,7 +8,7 @@ class Sku < ActiveRecord::Base
   has_many :attribute_values, :dependent => :delete_all
   belongs_to :product
   accepts_nested_attributes_for :attribute_values
-  before_destroy :check_association_number
+  before_destroy :check_association_count
 
   def self.warning_level
     @restock = Sku.where('stock < stock_warning_level').all
@@ -24,10 +24,9 @@ class Sku < ActiveRecord::Base
     end
   end
 
-  def check_association_number
+  def check_association_count
     product = Product.find(self.product.id)
     if product.skus.count < 2
-      product.errors[:base] << "must have at least one sku per product."
       return false
     end
   end  

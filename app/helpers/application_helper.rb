@@ -20,6 +20,20 @@ module ApplicationHelper
       end
     end
 
+    def link_to_add_sku_fields name, f, association_one, association_two, target
+      sku = f.object.class.reflect_on_association(association_one).klass.new
+      attribute_value = sku.class.reflect_on_association(association_two).klass.new
+      fields = render('sku_fields', :sku => sku, :attribute_value => attribute_value, :f => f)
+
+      link_to_function(name, "add_fields(this, \"skus\", \"#{escape_javascript(fields)}\", \"#{target}\")", :class => 'btn btn-success btn-mini add_field')
+    end
+
+    def add_sku_field f, association_one, association_two
+      sku = f.object.class.reflect_on_association(association_one).klass.new
+      attribute_value = sku.class.reflect_on_association(association_two).klass.new
+      render('sku_fields', :sku => sku, :attribute_value => attribute_value, :f => f)
+    end
+
     def active_controller? controller
       "active" if params[:controller] == controller
     end
