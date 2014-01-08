@@ -1,11 +1,13 @@
 class Sku < ActiveRecord::Base
   attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, :weight, :thickness, :product_id, :attribute_value, :attribute_type_id
-  validates :price, :cost_value, :stock, :length, :weight, :thickness, :stock_warning_level, :attribute_value, :presence => true
+  validates :price, :cost_value, :stock, :length, :weight, :thickness, :stock_warning_level, :attribute_value, :attribute_type_id, :presence => true
   validates :price, :cost_value, :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness, :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validate :check_stock_values, :on => :create
+  validates :attribute_value, :uniqueness => true
   belongs_to :product
+  belongs_to :attribute_type
   before_destroy :check_association_count
 
   def self.warning_level
@@ -16,11 +18,13 @@ class Sku < ActiveRecord::Base
   end
 
   def check_stock_values
-    if self.stock && self.stock_warning_level && self.stock < self.stock_warning_level
+    if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
       return false
     end
   end
+
+  private
 
   def check_association_count
     product = Product.find(self.product.id)

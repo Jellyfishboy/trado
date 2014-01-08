@@ -113,7 +113,7 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_sku_fields "<i class='icon-plus'></i>".html_safe, f, :skus, :attribute_values, "#sku_fields" %></h3>
+      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
       <div id="skus">
         <% if @product.skus.empty? %>
         <div class="control-group">
@@ -170,13 +170,13 @@
             <div class="control-group">
               <div class="control-label">Attribute value:</div>
               <div class="controls">
-                <div class="form-control"><%= sku.attribute_values.first.value %></div>
+                <div class="form-control"><%= sku.attribute_value %></div>
               </div>
             </div>
             <div class="control-group">
               <div class="control-label">Attribute type:</div>
               <div class="controls">
-                <div class="form-control"><%= sku.attribute_values.first.attribute_type.name %></div>
+                <div class="form-control"><%= sku.attribute_type.name %></div>
                 <hr>
               </div>
             </div>
