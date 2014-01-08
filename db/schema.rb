@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108102547) do
+ActiveRecord::Schema.define(:version => 20140108111203) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -103,16 +103,19 @@ ActiveRecord::Schema.define(:version => 20140108102547) do
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
-    t.integer  "quantity",                                 :default => 1
-    t.decimal  "price",      :precision => 8, :scale => 2
+    t.datetime "created_at",                                                         :null => false
+    t.datetime "updated_at",                                                         :null => false
+    t.integer  "quantity",                                            :default => 1
+    t.decimal  "price",                 :precision => 8, :scale => 2
     t.integer  "order_id"
-    t.decimal  "weight",     :precision => 8, :scale => 2
-    t.decimal  "thickness",  :precision => 8, :scale => 2
-    t.decimal  "length",     :precision => 8, :scale => 2
+    t.decimal  "weight",                :precision => 8, :scale => 2
+    t.decimal  "thickness",             :precision => 8, :scale => 2
+    t.decimal  "length",                :precision => 8, :scale => 2
     t.string   "sku"
     t.integer  "sku_id"
+    t.string   "attribute_value"
+    t.string   "attribute_type"
+    t.string   "attribute_measurement"
   end
 
   create_table "notifications", :force => true do |t|

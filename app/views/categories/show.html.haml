@@ -73,7 +73,7 @@
               / ==========
               / = Single Product =
               / ==========
-              .span3.isotope--target.filter--accessories{"data-brand" => product.name, "data-price" => product.dimensions.first.price}
+              .span3.isotope--target.filter--accessories{"data-brand" => product.name, "data-price" => product.skus.first.price}
                 .product
                   .product-inner
                     .product-img
@@ -81,7 +81,7 @@
                         = link_to (image_tag product.attachments.first.file.large, :alt => product.name, :width => 540, :height => 374), [product.category, product]
 
                     .main-titles.no-margin
-                      %h4.title= format_currency product.dimensions.first.price
+                      %h4.title= format_currency product.skus.first.price
                       %h5.no-margin.isotope--title= truncate product.name, :length => 35
         %hr/
       / /main content

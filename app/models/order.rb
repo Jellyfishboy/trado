@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   validates :shipping_id, :presence => { :message => 'option is required'}, :if => :active_or_shipping?
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   has_many :line_items, :dependent => :delete_all
-  has_one :transaction, :dependent => :delete
+  has_one :transaction, :dependent => :destroy
   belongs_to :invoice
   # TODO: Refactor shipping emails in light of the new multi form setup
   # after_update :delayed_shipping, :change_shipping_status

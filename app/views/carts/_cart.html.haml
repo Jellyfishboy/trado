@@ -23,7 +23,7 @@
           %strong
             = link_to item.product.name, [item.product.category, item.product]
           %div
-            = "#{item.length}mm"
+            = "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }"
           %span.light-clr.qty
             Qty:
             = item.quantity
@@ -38,6 +38,6 @@
           .span6 Subtotal:
           .span6.align-right.size-16= format_currency current_cart.total_price
     .proceed
-      = link_to orders_path, :class => 'btn btn-danger pull-right bold higher' do
+      = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
         %i.icon-shopping-cart

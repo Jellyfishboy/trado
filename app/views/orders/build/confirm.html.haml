@@ -72,6 +72,7 @@
                       = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124
                     %td.desc
                       = item.product.name
+                      %div= "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }"
                     %td.qty= item.quantity
                     %td.price= format_currency item.price
                 %tr

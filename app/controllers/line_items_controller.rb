@@ -7,7 +7,8 @@ class LineItemsController < ApplicationController
     @cart = current_cart #references the current cart which was defined in application controller
     product = Product.find(params[:product_id]) #finds the product by the ID within the URL
     sku = Sku.find(params[:line_item][:sku_id])
-    @line_item = @cart.add_product(product.id, sku.price, sku.id, sku.length, sku.thickness, sku.weight, sku.sku, params[:line_item][:quantity]) #uses add_product method in cart.rb to check if the line item already exists in the cart and responds accordingly
+    # FIXME: This is becoming rather long. Refactor and move away from controller if possible.
+    @line_item = @cart.add_product(product.id, sku.price, sku.id, sku.length, sku.thickness, sku.weight, sku.sku, sku.attribute_values.first.value, sku.attribute_values.first.attribute_type.name, sku.attribute_values.first.attribute_type.measurement, params[:line_item][:quantity]) #uses add_product method in cart.rb to check if the line item already exists in the cart and responds accordingly
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to root_url, notice: 'Successfully added the product to the cart.' } #redirects to line item within the cart
