@@ -1,6 +1,7 @@
 - content_for :title, @product.name
 - content_for :breadcrumb, @product.name
 - app_breadcrumb_add @product.category.name, category_path(@product.category)
+- content_for :meta_description, @product.description
 / ==========
 / = Breadcrumbs =
 / ==========

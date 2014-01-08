@@ -11,7 +11,7 @@
     %title 
       = yield :title
       = " - Gimson Robotics | The linear actuator and electric motor specialist"
-    %meta{:content => "", :name => "description"}/
+    %meta{:content => "#{yield :meta_description}", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     :javascript
       WebFontConfig = {
