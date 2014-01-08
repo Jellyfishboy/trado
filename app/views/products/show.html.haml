@@ -52,7 +52,7 @@
               %span.clickable.add-one.icon-plus-sign-alt
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
-            = f.select :sku_id, options_for_select(@product.skus.order('attribute_value desc').map { |sku| [sku_attribute_values(sku), sku.id ] } )
+            = f.select :sku_id, options_for_select(@product.skus.sort.reverse.map { |sku| [sku_attribute_values(sku), sku.id ] } )
             = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
               %i.icon-shopping-cart
               \  Add To Cart
