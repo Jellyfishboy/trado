@@ -35,7 +35,7 @@
           %h1.name
             %span.light= @product.name
           .meta
-            %span.tag.price= format_currency @product.skus.first.price
+            %span.tag.price= format_currency @product.skus.sort.reverse.first.price
             %span.stock
               - if @product.skus.first.stock > 0
                 %span.btn.btn-success In Stock
