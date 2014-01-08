@@ -8,7 +8,7 @@ GimsonRobotics::Application.routes.draw do
 
   # Ajax methods
   match '/update_country' => 'orders#update_country'
-  match '/update_dimension' => 'products#update_dimension'
+  match '/update_sku' => 'products#update_sku'
 
   get '/search' => 'search#results'
 

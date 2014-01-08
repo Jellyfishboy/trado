@@ -53,8 +53,8 @@ class Order < ActiveRecord::Base
                         :transaction_type => response.params['PaymentInfo']['TransactionType'],
                         :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost)
     self.line_items.each do |item|
-      dimension = Dimension.find(item.dimension_id)
-      dimension.update_column(:stock, dimension.stock-item.quantity)
+      sku = Sku.find(item.sku_id)
+      sku.update_column(:stock, sku.stock-item.quantity)
     end
   end
 

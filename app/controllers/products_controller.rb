@@ -11,8 +11,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update_dimension
-    render :partial => 'products/update_dimension', :format => [:js], :locals => { :dimension_id => params[:dimension_id] } 
+  def update_sku
+    render :partial => 'products/update_sku', :format => [:js], :locals => { :sku_id => params[:sku_id] } 
   end
 
 end

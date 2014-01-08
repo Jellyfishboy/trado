@@ -23,7 +23,7 @@ log = (message) ->
   if typeof console is 'object' then console.log(message) else return null
 
 $(document).ready ->
-    update_dimension()
+    update_sku()
     select_shipping()
 
     $('#order_shipping_country').change ->
@@ -42,7 +42,7 @@ $(document).ready ->
             $(@).submit()
 
 $(document).ajaxComplete ->
-    update_dimension()
+    update_sku()
     select_shipping()
 
 # update_shipping_cost = ->
@@ -69,10 +69,10 @@ select_shipping = ->
     $('.shipping-methods .option input:radio').each ->
         $(@).parent().addClass 'active' if $(@).is ':checked'
 
-update_dimension = ->
-    $('#line_item_dimension_id').change ->
-        dimension_id = $('#line_item_dimension_id').val()
-        $.get '/update_dimension?dimension_id=' + dimension_id
+update_sku = ->
+    $('#line_item_sku_id').change ->
+        sku_id = $('#line_item_sku_id').val()
+        $.get '/update_sku?sku_id=' + sku_id
 
 
 
