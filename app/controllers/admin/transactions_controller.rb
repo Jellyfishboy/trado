@@ -4,7 +4,7 @@ class Admin::TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.order('updated_at desc').all
 
     respond_to do |format|
       format.html # index.html.erb

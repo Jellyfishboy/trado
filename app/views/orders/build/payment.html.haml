@@ -54,10 +54,18 @@
             .shifted-left-45.clearfix
               %h3.no-margin
                 %span.light PayPal
-                = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_order_build_path
+                = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_order_build_path, :class => 'paypal_checkout'
               %p Speedy, secure and safe transactions with a trusted service.
             %hr/
             %p.right-align
               You will be redirected to PayPal to login to your account.
     / /main content
 / /container
+#paypalModal.modal.hide.fade.in{"aria-hidden" => "false", "aria-labelledby" => "paypalModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %h3#paypalModalLabel
+      %span.light Redirecting
+      To PayPal
+  .modal-body
+    %p Please wait while we redirect you to PayPal to login securely.
+    %div.loading_block

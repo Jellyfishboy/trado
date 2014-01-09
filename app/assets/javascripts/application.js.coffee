@@ -12,6 +12,8 @@
 #= require custom
 #= require modernizr.custom.56918
 #= require redactor-rails
+#= require spin
+#= require jquery.spin
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -25,6 +27,7 @@ log = (message) ->
 $(document).ready ->
     update_sku()
     select_shipping()
+    loading_animation_settings()
 
     $('#order_shipping_country').change ->
         unless @value is ""
@@ -40,6 +43,9 @@ $(document).ready ->
     $('#update_quantity').click ->
         $('.edit_line_item').each ->
             $(@).submit()
+
+    loading_modal('.paypal_checkout', '#paypalModal')
+    loading_modal('.confirm_order', '#confirmOrderModal')
 
 $(document).ajaxComplete ->
     update_sku()
@@ -60,6 +66,10 @@ $(document).ajaxComplete ->
 #         for message of errors
 #             $('#errors .modal-body ul').append '<li>' + errors[message] + '</li>'
 #         $('#errors').modal 'show'
+loading_modal = (trigger, target) ->
+    $(trigger).click ->
+        $(target).modal 'show'
+        $(target + ' .modal-body .loading_block').spin 'standard'
 
 select_shipping = ->
     $('.shipping-methods .option').click ->
@@ -73,6 +83,25 @@ update_sku = ->
     $('#line_item_sku_id').change ->
         sku_id = $('#line_item_sku_id').val()
         $.get '/update_sku?sku_id=' + sku_id
+
+loading_animation_settings = ->
+    $.fn.spin.presets.standard =
+        lines: 9 # The number of lines to draw
+        length: 0 # The length of each line
+        width: 10 # The line thickness
+        radius: 18 # The radius of the inner circle
+        corners: 1 # Corner roundness (0..1)
+        rotate: 0 # The rotation offset
+        direction: 1 # 1: clockwise, -1: counterclockwise
+        color: "#e54b5d" # #rgb or #rrggbb
+        speed: 0.8 # Rounds per second
+        trail: 42 # Afterglow percentage
+        shadow: false # Whether to render a shadow
+        hwaccel: false # Whether to use hardware acceleration
+        className: "spinner" # The CSS class to assign to the spinner
+        zIndex: 2e9 # The z-index (defaults to 2000000000)
+        top: "auto" # Top position relative to parent in px
+        left: "auto" # Left position relative to parent in px
 
 
 

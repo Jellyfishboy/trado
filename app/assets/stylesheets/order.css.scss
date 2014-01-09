@@ -90,3 +90,8 @@
             }
     }
 }
+#paypalModal, #confirmOrderModal {
+    .modal-body p {
+        text-align: center;
+    }
+}

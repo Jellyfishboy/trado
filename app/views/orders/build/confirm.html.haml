@@ -102,6 +102,14 @@
                   %td.stronger
                     .size-16.align-right.total_price= format_currency session["total"]
             %p.right-align  
-              = link_to 'CONFIRM & PAY', purchase_order_build_path, :class => 'btn btn-primary higher bold'
+              = link_to 'CONFIRM & PAY', purchase_order_build_path, :class => 'btn btn-primary higher bold confirm_order'
     / /main content
 / /container
+#confirmOrderModal.modal.hide.fade.in{"aria-hidden" => "false", "aria-labelledby" => "confirmOrderModal", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %h3#confirmOrderModal
+      %span.light Confirming
+      Your Order
+  .modal-body
+    %p Please wait while we confirm and process your order.
+    %div.loading_block

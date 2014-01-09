@@ -17,14 +17,6 @@ class Order < ActiveRecord::Base
   	end
   end
 
-  def transaction_status
-    if !self.transaction.nil? && self.transaction.payment_status == 'Completed' 
-      return true 
-    else 
-      return false 
-    end
-  end
-
   # FIXME: Possible security risk
   def calculate_order(cart, session)
     session[:sub_total] = session[:tax] = session[:total] = nil
@@ -62,6 +54,7 @@ class Order < ActiveRecord::Base
     self.update_column(:status, 'active')
   end
 
+  # FIXME: Looks rather horrible, re factor when possible.
   def transaction_reason(response)
     if defined?(response.params['PaymentInfo']['PendingReason'])
       @reason = response.params['PaymentInfo']['PendingReason']
