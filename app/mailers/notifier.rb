@@ -49,4 +49,8 @@ class Notifier < ActionMailer::Base
     mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Restock Warning'
   end
 
+  def failed_paypal_verification(notify)
+    @notify = notify
+    mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Failed Paypal Notification'
+  end
 end

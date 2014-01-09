@@ -1,32 +1,31 @@
 - content_for :title, 'List transactions'
-- content_for :breadcrumb, 'Shipping methods'
+- content_for :breadcrumb, 'Transactions'
 .page-header
-  %h1 Listing shipping methods
-  = link_to new_admin_shipping_path, :class => 'btn btn-success' do
-    %i.icon-plus
-    New shipping option
-- if @shippings.empty?
-  %p You don't have any shippings yet.
+  %h1 Listing transactions
+- if @transactions.empty?
+  %p You don't have any transactions yet.
 - else
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th Name
-        %th Price
-        %th Description
-        %th Countries
-        %th Tier(s)
-        %th
+        %th Transaction ID
+        %th Order ID
+        %th Transaction Type
+        %th Payment Type
+        %th Payment Status
+        %th Fee
+        %th Net amount
+        %th Gross amount
+        %th Last updated
     %tbody
-      - @shippings.each do |shipping|
+      - @transactions.each do |transaction|
         %tr
-          %td= shipping.name
-          %td= format_currency shipping.price
-          %td= shipping.description
-          %td
-            %ul 
-              - shipping.countries.each do |country|
-                %li
-                  = country.name
-          %td= shipping.tiers.map{ |tier| tier.id }.join(', ')
-          %td= table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1
+          %td= transaction.transaction_id
+          %td= transaction.order_id
+          %td= transaction.transaction_type
+          %td= transaction.payment_type
+          %td= transaction.payment_status
+          %td= format_currency transaction.fee
+          %td= format_currency transaction.net_amount
+          %td= format_currency transaction.gross_amount
+          %td= transaction.updated_at.strftime('%d/%m/%Y at %I:%M%p')
