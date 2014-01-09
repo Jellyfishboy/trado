@@ -21,6 +21,7 @@ class Admin::TransactionsController < ApplicationController
       begin
 
         if notify.complete? and transaction.gross_amount = notify.amount
+          # TODO: Find out if the notify response contains a paypal fee and update the relevant column
           transaction.payment_status = notify.status
         else
           Notifier.failed_paypal_verification(notify)
