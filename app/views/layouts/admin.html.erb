@@ -163,11 +163,26 @@
               <span class="menu-text">Accessories</span>
             <% end %>
           </li>
-          <li class="<%= active_controller?('admin/orders') %>">
-            <%= link_to admin_orders_path do %>
+          <li class="<%= active_controller?('admin/orders') %> <%= active_controller?('admin/transactions') %>">
+            <a href="#" class="dropdown-toggle">
               <i class="icon-shopping-cart"></i>
               <span class="menu-text"> Orders </span>
-            <% end %>
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <li class="<%= active_controller?('admin/orders') %>">
+                <%= link_to admin_orders_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  All orders
+                <% end %>
+              </li>
+              <li class="<%= active_controller?('admin/transactions') %>">
+                <%= link_to admin_transactions_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  Transactions
+                <% end %>
+              </li>
+            </ul>
           </li>
           <li class="<%= active_controller?('admin/invoices') %>">
             <%= link_to admin_invoices_path do %>

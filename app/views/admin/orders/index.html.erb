@@ -1,5 +1,5 @@
 <% content_for :title, 'List orders'
-   content_for :breadcrumb, 'Orders' %>
+   content_for :breadcrumb, 'All orders' %>
 <div class="page-header">
   <h1>Listing orders</h1>
 </div>
@@ -11,6 +11,7 @@
     <thead>
       <tr>
         <th>Order no.</th>
+        <th>Transaction ID</th>
         <th>Name</th>
         <th>Email</th>
         <th>Shipping status</th>
@@ -24,11 +25,12 @@
       <% @orders.each do |order| %>
         <tr class="<% if order.actual_shipping_cost.blank? %>red<% end %>">
           <td><%= order.id %></td>
+          <td><%= order.transaction.id %></td>
           <td><%= order.billing_first_name %> <%= order.billing_last_name %></td>
           <td><%= order.email %></td>
           <td><%= shipping_status order.shipping_status %></td>
           <td><%= payment_status order.transaction.payment_status %></td>
-          <td><%= format_currency order.transaction.fee %></td>
+          <td><%= format_currency order.transaction.fee unless order.transaction.fee.nil? %></td>
           <td><%= format_currency order.transaction.gross_amount %></td>
           <td><%= table_commands order, admin_order_path(order), edit_admin_order_path(order), admin_order_path(order), 2 %></td>
         </tr>

@@ -55,7 +55,6 @@ class Orders::BuildController < ApplicationController
     if @order.transaction_status
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
-      binding.pry
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
       if response.success?
         @order.add_line_items_from_cart(current_cart)
@@ -112,9 +111,9 @@ private
       :shipping          => price_in_pennies(order.shipping_cost),
       :tax               => price_in_pennies(session[:tax]),
       :handling          => 0,
-      :token => order.express_token,
-      :payer_id => order.express_payer_id,
-      :currency => 'GBP'
+      :token             => order.express_token,
+      :payer_id          => order.express_payer_id,
+      :currency          => 'GBP'
     }
   end
 
@@ -139,7 +138,7 @@ private
 
   def express_items
     current_cart.line_items.collect do |item|
-       {
+      {
         :name => item.product.name,
         :description => "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }",
         :amount => price_in_pennies(item.price), 

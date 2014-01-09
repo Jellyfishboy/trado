@@ -1,5 +1,5 @@
 <% content_for :title, 'List products'
-   content_for :breadcrumb, 'Products' %>
+   content_for :breadcrumb, 'All products' %>
 <div class="page-header">
   <h1>Listing products</h1>
   <%= link_to new_admin_product_path, :class => "btn btn-success" do %>
@@ -13,7 +13,7 @@
     <thead>
       <tr>
         <th>SKU</th>
-        <th>Part No.</th>
+        <th>Part no.</th>
         <th colspan="2">Name</th>
         <th>Price (exc.VAT)</th>
         <th></th>

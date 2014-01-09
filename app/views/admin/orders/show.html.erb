@@ -1,6 +1,6 @@
 <% content_for :title, "Order ##{@order.id}"
 content_for :breadcrumb, 'Show'
-breadcrumb_add 'Orders', orders_path %>
+breadcrumb_add 'All orders', orders_path %>
 <div class="row-fluid">
     <div class="span10 offset1">
         <div class="widget-box transparent invoice-box">
@@ -162,7 +162,7 @@ breadcrumb_add 'Orders', orders_path %>
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
                                            PayPal fee: 
-                                           <%= format_currency @order.transaction.fee %>
+                                           <%= format_currency @order.transaction.fee unless @order.transaction.fee.nil? %>
                                         </li>
                                     </ul>
                                 </div>

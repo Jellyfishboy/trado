@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   has_one :transaction, :dependent => :destroy
   belongs_to :invoice
   # TODO: Refactor shipping emails in light of the new multi form setup
-  # after_update :delayed_shipping, :change_shipping_status
+  after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
   def add_line_items_from_cart(cart)
   	cart.line_items.each do |item|
@@ -42,7 +42,7 @@ class Order < ActiveRecord::Base
   end
 
   def finish_order(response)
-    response
+    # Create transaction
     Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                         :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                         :order_id => self.id, 
@@ -51,10 +51,22 @@ class Order < ActiveRecord::Base
                         :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
                         :transaction_id => response.params['PaymentInfo']['TransactionID'], 
                         :transaction_type => response.params['PaymentInfo']['TransactionType'],
-                        :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost)
+                        :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost,
+                        :status_reason => transaction_reason(response))
+    # Update stock quantity
     self.line_items.each do |item|
       sku = Sku.find(item.sku_id)
       sku.update_column(:stock, sku.stock-item.quantity)
+    end
+    # Set order status to active
+    self.update_column(:status, 'active')
+  end
+
+  def transaction_reason(response)
+    if defined?(response.params['PaymentInfo']['PendingReason'])
+      @reason = response.params['PaymentInfo']['PendingReason']
+    else
+      @reason = ""
     end
   end
 
@@ -85,24 +97,30 @@ class Order < ActiveRecord::Base
 
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
-      Notifier.shipping_delayed(self).deliver
+      # Notifier.shipping_delayed(self).deliver
+      binding.pry
     end
   end
 
   def change_shipping_status
     if self.shipping_date.to_date == Date.today
+      binding.pry
       self.update_column(:shipping_status, "Dispatched")
-      Notifier.order_shipped(self).deliver
+      # Notifier.order_shipped(self).deliver
     end
   end
 
-  def dispatch_orders
+  def self.dispatch_orders
     Order.all.each do |order|
       if order.shipping_date == Date.today
         order.update_column(:shipping_status, "Dispatched")
         Notifier.order_shipped(self).deliver
       end
     end
+  end
+
+  def shipping_date_nil?
+    return false if self.shipping_date.nil?
   end
 
   # Multi form methods
