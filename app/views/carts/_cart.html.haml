@@ -3,27 +3,27 @@
     CART
     %span.dark-clr
       (
-      = current_cart.line_items.sum('quantity')
+      = current_cart.cart_items.sum('quantity')
       )
   %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
   = link_to new_order_path, :class => 'btn btn-danger' do
     %i.icon-shopping-cart
 .open-panel
-  - if current_cart.line_items.empty?
+  - if current_cart.cart_items.empty?
     .item-in-cart.clearfix
       .desc
         %strong
           %p You have no items in your cart.
   - else 
-    - current_cart.line_items.each do |item|
+    - current_cart.cart_items.each do |item|
       .item-in-cart.clearfix
         .image
-          = link_to (image_tag item.product.attachments.first.file.small, :alt => item.product.name, :height => 124, :width => 124), [item.product.category, item.product]
+          = link_to (image_tag item.sku.product.attachments.first.file.small, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
         .desc
           %strong
-            = link_to item.product.name, [item.product.category, item.product]
+            = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
           %div
-            = "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }"
+            = "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
           %span.light-clr.qty
             Qty:
             = item.quantity

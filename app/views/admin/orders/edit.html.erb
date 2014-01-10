@@ -163,13 +163,13 @@ breadcrumb_add 'Orders', admin_orders_path %>
                             <th>Description</th>
                             <th>Quantitiy</th>
                             <th>Price</th>
-                            <% if @order.line_items.count > 1 %>
+                            <% if @order.order_items.count > 1 %>
                                 <th></th>
                             <% end %>
                         </tr>
                     </thead>
                     <tbody>
-                        <% @order.line_items.each do |item| %>
+                        <% @order.order_items.each do |item| %>
                         <tr>
                             <td class="center"><%= item.product.sku %></td>
 
@@ -186,8 +186,8 @@ breadcrumb_add 'Orders', admin_orders_path %>
                                 <%= format_currency item.price %>
                             </td>
 
-                            <% #TODO: If less than 2 line_items after delete, remove this functionality upon ajax exection
-                            if @order.line_items.count > 1 %>
+                            <% #TODO: If less than 2 order_items after delete, remove this functionality upon ajax exection
+                            if @order.order_items.count > 1 %>
                                 <td>                              
                                     <%= del_table_command @order %>
                                 </td>

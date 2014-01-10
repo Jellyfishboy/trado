@@ -41,7 +41,7 @@ $(document).ready ->
             $('.shipping-methods .control-group .controls').html '<p class="shipping_notice">Select a shipping country to view the available shipping options.</p>'
 
     $('#update_quantity').click ->
-        $('.edit_line_item').each ->
+        $('.edit_cart_item').each ->
             $(@).submit()
 
     loading_modal('.paypal_checkout', '#paypalModal')
@@ -80,8 +80,8 @@ select_shipping = ->
         $(@).parent().addClass 'active' if $(@).is ':checked'
 
 update_sku = ->
-    $('#line_item_sku_id').change ->
-        sku_id = $('#line_item_sku_id').val()
+    $('#cart_item_sku_id').change ->
+        sku_id = $(@).val()
         $.get '/update_sku?sku_id=' + sku_id
 
 loading_animation_settings = ->

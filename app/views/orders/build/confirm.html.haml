@@ -66,7 +66,7 @@
                   %th
                     .align-right Price
               %tbody
-                - @cart.line_items.each do |item|
+                - @cart.cart_items.each do |item|
                   %tr
                     %td.image
                       = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124

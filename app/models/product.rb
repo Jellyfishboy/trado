@@ -7,12 +7,10 @@ class Product < ActiveRecord::Base
   validates :description, :length => {:minimum => 20, :message => :too_short}
   validates :skus, :tier => true, :on => :save
   default_scope :order => 'weighting' #orders the products by weighting
-  has_many :line_items #each product has many line items in the various carts. Restrict deletion if line items exist linked to the related product.
-  has_many :orders, :through => :line_items
-  has_many :skus, :dependent => :delete_all
+  has_many :skus, :dependent => :restrict
   belongs_to :category
-  has_many :accessorisations, :dependent => :delete_all
-  has_many :accessories, :through => :accessorisations
+  # has_many :accessorisations, :dependent => :delete_all
+  # has_many :accessories, :through => :accessorisations
   has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable, :dependent => :delete_all

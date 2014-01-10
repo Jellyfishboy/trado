@@ -8,6 +8,10 @@ class Sku < ActiveRecord::Base
   validates :attribute_value, :uniqueness => true
   belongs_to :product
   belongs_to :attribute_type
+  has_many :cart_items, :dependent => :restrict
+  has_many :carts, :through => :cart_items
+  has_many :order_items, :dependent => :restrict
+  has_many :orders, :through => :order_items
   before_destroy :check_association_count
 
   def self.warning_level

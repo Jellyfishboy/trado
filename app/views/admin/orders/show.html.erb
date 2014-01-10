@@ -222,7 +222,7 @@ breadcrumb_add 'All orders', orders_path %>
                                 </thead>
 
                                 <tbody>
-                                    <% @order.line_items.each do |item| %>
+                                    <% @order.order_items.each do |item| %>
                                         
                                     
                                     <tr>

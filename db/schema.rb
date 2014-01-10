@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140109132738) do
+ActiveRecord::Schema.define(:version => 20140110160224) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(:version => 20140109132738) do
     t.string   "measurement"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "cart_items", :force => true do |t|
+    t.integer  "cart_id"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "quantity",                                 :default => 1
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.integer  "order_id"
+    t.integer  "sku_id"
+    t.decimal  "weight",     :precision => 8, :scale => 2
   end
 
   create_table "carts", :force => true do |t|
@@ -92,29 +103,20 @@ ActiveRecord::Schema.define(:version => 20140109132738) do
     t.boolean  "vat_applicable"
   end
 
-  create_table "line_items", :force => true do |t|
-    t.integer  "product_id"
-    t.integer  "cart_id"
-    t.datetime "created_at",                                                         :null => false
-    t.datetime "updated_at",                                                         :null => false
-    t.integer  "quantity",                                            :default => 1
-    t.decimal  "price",                 :precision => 8, :scale => 2
-    t.integer  "order_id"
-    t.decimal  "weight",                :precision => 8, :scale => 2
-    t.decimal  "thickness",             :precision => 8, :scale => 2
-    t.decimal  "length",                :precision => 8, :scale => 2
-    t.string   "sku"
-    t.integer  "sku_id"
-    t.string   "attribute_value"
-    t.string   "attribute_type"
-    t.string   "attribute_measurement"
-  end
-
   create_table "notifications", :force => true do |t|
     t.string   "email"
     t.integer  "notifiable_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.integer  "quantity"
+    t.string   "sku_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "order_id"
   end
 
   create_table "orders", :force => true do |t|

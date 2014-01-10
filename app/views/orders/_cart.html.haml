@@ -1,12 +1,12 @@
-- current_cart.line_items.each do |item|
+- current_cart.cart_items.each do |item|
   %tr
     %td.image
-      = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124
+      = image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124
     %td.desc
-      = item.product.name
+      = item.sku.product.name
       = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
         %i.icon-remove-sign
-      %div= "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }"
+      %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
     %td.qty
       = form_for item, :remote => true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'

@@ -19,7 +19,7 @@ class Ability
         can :read, Category
         can :manage, User
         can [:show, :create, :destroy], [Cart]
-        can [:create, :destroy], [LineItem]
+        can [:create, :destroy], [CartItem]
     end
 
     def user_permissions(user)

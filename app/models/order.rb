@@ -4,16 +4,16 @@ class Order < ActiveRecord::Base
   validates :email, :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city, :shipping_postcode, :shipping_country, :presence => { :message => 'is required' }, :if => :active_or_shipping?
   validates :shipping_id, :presence => { :message => 'option is required'}, :if => :active_or_shipping?
   validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  has_many :line_items, :dependent => :delete_all
+  has_many :order_items, :dependent => :delete_all
   has_one :transaction, :dependent => :destroy
   belongs_to :invoice
   # TODO: Refactor shipping emails in light of the new multi form setup
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
-  def add_line_items_from_cart(cart)
-  	cart.line_items.each do |item|
-  		item.cart_id = nil
-  		line_items << item
+  def add_cart_items_from_cart(cart)
+  	cart.cart_items.each do |item|
+      OrderItem.create(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id)
+      item.destroy
   	end
   end
 
@@ -46,7 +46,7 @@ class Order < ActiveRecord::Base
                         :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost,
                         :status_reason => transaction_reason(response))
     # Update stock quantity
-    self.line_items.each do |item|
+    self.order_items.each do |item|
       sku = Sku.find(item.sku_id)
       sku.update_column(:stock, sku.stock-item.quantity)
     end
@@ -66,9 +66,9 @@ class Order < ActiveRecord::Base
   # Shipping methods
 
   def calculate_shipping_tier(cart)
-      max_length = cart.line_items.map(&:length).max
-      max_thickness = cart.line_items.map(&:thickness).max
-      total_weight = cart.line_items.map(&:weight).sum
+      max_length = cart.cart_items.map(&:length).max
+      max_thickness = cart.cart_items.map(&:thickness).max
+      total_weight = cart.cart_items.map(&:weight).sum
       # FIXME: Possibly quite slow. Alot of repetition here so will revise later
       tier_raffle = []
       tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)

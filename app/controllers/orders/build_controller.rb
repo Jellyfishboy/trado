@@ -6,7 +6,7 @@ class Orders::BuildController < ApplicationController
   def show
     @cart = current_cart
     @order = Order.find(params[:order_id])
-    if @order.transaction || @cart.line_items.empty?
+    if @order.transaction || @cart.cart_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       case step
@@ -42,7 +42,7 @@ class Orders::BuildController < ApplicationController
 
   def express
     @order = Order.find(params[:order_id])
-    if @order.transaction || @cart.line_items.empty?
+    if @order.transaction || @cart.cart_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
@@ -52,14 +52,13 @@ class Orders::BuildController < ApplicationController
 
   def purchase 
     @order = Order.find(params[:order_id])
-    if @order.transaction || @cart.line_items.empty?
+    if @order.transaction || @cart.cart_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
       if response.success?
-        @order.add_line_items_from_cart(current_cart)
+        @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
-        session[:cart_id] = nil
         # Notifier.order_received(@order).deliver
         @order.finish_order(response)
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
@@ -137,7 +136,7 @@ private
   end
 
   def express_items
-    current_cart.line_items.collect do |item|
+    current_cart.cart_items.collect do |item|
       {
         :name => item.product.name,
         :description => "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }",

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
-    if current_cart.line_items.empty?
+    if current_cart.cart_items.empty?
       redirect_to root_url, flash[:notice] => "Your cart is empty."
     else
       @order = Order.create
