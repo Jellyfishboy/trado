@@ -6,7 +6,7 @@ class Orders::BuildController < ApplicationController
   def show
     @cart = current_cart
     @order = Order.find(params[:order_id])
-    if @order.transaction
+    if @order.transaction || @cart.line_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       case step
@@ -42,7 +42,7 @@ class Orders::BuildController < ApplicationController
 
   def express
     @order = Order.find(params[:order_id])
-    if @order.transaction
+    if @order.transaction || @cart.line_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
@@ -52,7 +52,7 @@ class Orders::BuildController < ApplicationController
 
   def purchase 
     @order = Order.find(params[:order_id])
-    if @order.transaction
+    if @order.transaction || @cart.line_items.empty?
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
