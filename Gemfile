@@ -88,6 +88,9 @@ gem 'sunspot_solr'
 # Administration
 gem 'rails_admin'
 
+# Sitemap
+gem 'sitemap_generator'
+
 # Processing
 gem 'sidekiq', :require => false
 gem 'sidekiq-failures'

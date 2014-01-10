@@ -44,6 +44,10 @@ namespace :assets do
     task :compile, :roles => :app do
         run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
     end
+    desc "Generate sitemap"
+    task :refresh_sitemaps do
+      run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+    end
 end
 
 # additional settings
@@ -54,4 +58,5 @@ after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
 after 'configure:asset_sync', 'configure:database'
 after 'configure:database', 'assets:compile'
-after 'assets:compile', 'unicorn:restart' 
+after 'assets:compile', 'assets:refresh_sitemaps'
+after 'assets:refresh_sitemaps', 'unicorn:restart' 

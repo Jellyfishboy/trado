@@ -24,14 +24,19 @@ every 12.hours do
     runner "Cart.clear_carts"
 end
 
-every 1.day, :at => '8:30 am' do
-    runner "Sku.warning_level"
+every 1.day, :at => '5:00 am' do
+  rake "-s sitemap:refresh"
 end
 
 every 1.day, :at => '7:00 am' do
     runner "Order.dispatch_orders"
 end
 
-every 1.day do
-    rake 'cleanup:products'
+every 1.day, :at => '8:00am' do
+    rake 'cleanup:orders'
 end
+
+every 1.day, :at => '8:30 am' do
+    runner "Sku.warning_level"
+end
+
