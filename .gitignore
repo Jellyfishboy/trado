@@ -4,3 +4,5 @@ log/newrelic_agent.log
 tmp
 *.DS_Store
 .env
+vendor/cache/*
+tmp/cache/*
