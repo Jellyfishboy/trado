@@ -195,7 +195,7 @@ breadcrumb_add 'All orders', orders_path %>
                                     <li>
                                         <i class="icon-caret-right grey"></i>
                                         Dispatch date: 
-                                        <b class="red"><%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") %></b>
+                                        <b class="red"><%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil? %></b>
                                     </li> 
                                     <li class="divider"></li>    
                                     <li>

@@ -7,11 +7,9 @@ class Cart < ActiveRecord::Base
   		current_item.quantity += item_quantity.to_i #if line item selected exists, increment its quantity by 1
       current_item.weight += sku_weight
   	else 
+      current_item = line_items.build(:product_id => product_id, :price => sku_price, :sku_id => sku_id, :length => sku_length, :thickness => sku_thickness, :weight => sku_weight, :sku => sku, :attribute_value => attribute_value, :attribute_type => attribute_type, :attribute_measurement => attribute_measure) #if line item selected does not exist, build a new cart item
       if item_quantity.to_i > 1
-    		current_item = line_items.build(:product_id => product_id, :price => sku_price, :sku_id => sku_id, :length => sku_length, :thickness => sku_thickness, :weight => sku_weight, :sku => sku, :attribute_value => attribute_value, :attribute_type => attribute_type, :attribute_measurement => attribute_measure) #if line item selected does not exist, build a new cart item
         current_item.quantity += (item_quantity.to_i-1)
-      else 
-        current_item = line_items.build(:product_id => product_id, :price => sku_price, :sku_id => sku_id, :length => sku_length, :thickness => sku_thickness, :weight => sku_weight, :sku => sku, :attribute_value => attribute_value, :attribute_type => attribute_type, :attribute_measurement => attribute_measure) #if line item selected does not exist, build a new cart item
       end
   	end
   	current_item #return new item either by quantity or new cart item

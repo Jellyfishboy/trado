@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.order('created_at desc').page(params[:page])
+    @orders = Order.where('status = ?', 'active').order('created_at desc').page(params[:page])
     respond_to do |format|
       format.js { render :partial => 'admin/orders/update_order', :format => [:js] }
       format.html # index.html.erb

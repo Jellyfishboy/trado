@@ -3,7 +3,7 @@ $("#cartContainer").html("<%=j render :partial => 'carts/cart' %>");
     $('.checkout-container .table-items tbody').html("<%=j render :partial => 'orders/cart' %>");
 <% else %>
     $('.checkout-container .right-align').remove();
-    $('.checkout-container .table-items').html('<h4>Your cart is now empty</h4>');
+    $('.checkout-container .table-items').html('<h4>Your cart is empty</h4>');
 <% end %>
 $(".total_price").addClass("update").delay(1000).queue(function(next){
       $(this).removeClass("update");
