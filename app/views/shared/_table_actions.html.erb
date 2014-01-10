@@ -14,6 +14,11 @@
       <i class="icon-truck bigger-130"></i>
     </a>
   <% end %>
+  <% if type == 2 %>
+    <a href="#" class="green add_actual_shipping_cost" id="<%= object.id %>">
+      <i class="icon-money bigger-130"></i>
+    </a>
+  <% end %>
   <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
     <i class="icon-trash bigger-130"></i>
   <% end %>

@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.order('created_at desc').page(params[:page])
     respond_to do |format|
-      format.js { render :partial => 'admin/orders/change_shipping', :format => [:js] }
+      format.js { render :partial => 'admin/orders/update_order', :format => [:js] }
       format.html # index.html.erb
       format.json { render json: @orders }
     end

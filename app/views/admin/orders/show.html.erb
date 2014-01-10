@@ -195,8 +195,14 @@ breadcrumb_add 'All orders', orders_path %>
                                     <li>
                                         <i class="icon-caret-right grey"></i>
                                         Dispatch date: 
-                                        <b class="red"><%= @order.shipping_date %></b>
-                                    </li>      
+                                        <b class="red"><%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") %></b>
+                                    </li> 
+                                    <li class="divider"></li>    
+                                    <li>
+                                        <i class="icon-caret-right grey"></i>
+                                        Actual shipping cost: 
+                                        <b class="red"><%= format_currency @order.actual_shipping_cost unless @order.actual_shipping_cost.nil? %></b>
+                                    </li>
                                     </ul>
                                 </div>
                             </div><!--/span-->

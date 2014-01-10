@@ -1,0 +1,9 @@
+<% @order = Order.find(params[:order_id]) %>
+
+<% if params[:update_type] == 'shipping' %>
+    $('#shipping-modal').html('<%=j render :partial => "admin/orders/shipping_form", :object => @order %>');
+    $('#shipping-form').modal('show');
+<% elsif params[:update_type] == 'actual_shipping_cost' %>
+    $('#actual-shipping-cost-modal').html('<%=j render :partial => "admin/orders/actual_shipping_cost_form", :object => @order %>');
+    $('#actual-shipping-cost-form').modal('show');
+<% end %>
