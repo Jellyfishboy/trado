@@ -18,7 +18,6 @@ GimsonRobotics::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
-  resources :carts
   resources :categories do
     resources :products
   end

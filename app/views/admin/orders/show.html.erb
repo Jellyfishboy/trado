@@ -145,11 +145,6 @@ breadcrumb_add 'All orders', orders_path %>
                                     <ul class="unstyled spaced">
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
-                                           Payment status: 
-                                           <%= payment_status @order.transaction.payment_status %>
-                                        </li>
-                                        <li>
-                                           <i class="icon-caret-right yellow"></i>
                                            Transaction ID: 
                                            <%= @order.transaction.transaction_id %>
                                         </li>
@@ -157,6 +152,11 @@ breadcrumb_add 'All orders', orders_path %>
                                            <i class="icon-caret-right yellow"></i>
                                            Transaction type: 
                                            <%= @order.transaction.transaction_type %>
+                                        </li>
+                                        <li>
+                                           <i class="icon-caret-right yellow"></i>
+                                           Payment status: 
+                                           <%= payment_status @order.transaction.payment_status %>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
@@ -226,13 +226,13 @@ breadcrumb_add 'All orders', orders_path %>
                                         
                                     
                                     <tr>
-                                        <td class="center"><%= item.sku %></td>
+                                        <td class="center"><%= item.sku.sku %></td>
 
                                         <td>
-                                            <%= item.product.name %>
+                                            <%= item.sku.product.name %>
                                         </td>
                                         <td>
-                                            <%= item.product.description %>
+                                            <%= item.sku.product.description %>
                                         </td>
                                         <td>
                                             <%= item.quantity %>

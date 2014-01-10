@@ -1,5 +1,6 @@
 class Cart < ActiveRecord::Base
   has_many :cart_items, :dependent => :delete_all # A cart has many cart_items, however it is dependent on them. it will not be destroyed if a cart_item still exists within it
+  has_many :skus, :through => :cart_items
 
   def add_cart_item(sku_weight, sku_price, sku_id, item_quantity)
   	current_item = cart_items.where('sku_id = ?', sku_id).first #grabs all the products which match the product id

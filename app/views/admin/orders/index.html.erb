@@ -25,7 +25,7 @@
       <% @orders.each do |order| %>
         <tr class="<% if order.actual_shipping_cost.blank? %>red<% end %>">
           <td><%= order.id %></td>
-          <td><%= order.transaction.id %></td>
+          <td><%= order.transaction.transaction_id %></td>
           <td><%= order.billing_first_name %> <%= order.billing_last_name %></td>
           <td><%= order.email %></td>
           <td><%= shipping_status order.shipping_status %></td>

@@ -69,10 +69,10 @@
                 - @cart.cart_items.each do |item|
                   %tr
                     %td.image
-                      = image_tag item.product.attachments.first.file.medium, :alt => item.product.name, :height => 124, :width => 124
+                      = image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124
                     %td.desc
-                      = item.product.name
-                      %div= "#{item.attribute_value}#{item.attribute_measurement unless item.attribute_measurement.nil? }"
+                      = item.sku.product.name
+                      %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
                     %td.qty= item.quantity
                     %td.price= format_currency item.price
                 %tr

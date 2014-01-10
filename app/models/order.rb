@@ -12,8 +12,7 @@ class Order < ActiveRecord::Base
 
   def add_cart_items_from_cart(cart)
   	cart.cart_items.each do |item|
-      OrderItem.create(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id)
-      item.destroy
+      OrderItem.create(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
   	end
   end
 
@@ -66,9 +65,9 @@ class Order < ActiveRecord::Base
   # Shipping methods
 
   def calculate_shipping_tier(cart)
-      max_length = cart.cart_items.map(&:length).max
-      max_thickness = cart.cart_items.map(&:thickness).max
-      total_weight = cart.cart_items.map(&:weight).sum
+      max_length = cart.skus.map(&:length).max
+      max_thickness = cart.skus.map(&:thickness).max
+      total_weight = cart.skus.map(&:weight).sum
       # FIXME: Possibly quite slow. Alot of repetition here so will revise later
       tier_raffle = []
       tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
