@@ -21,12 +21,16 @@ class Product < ActiveRecord::Base
   after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
   before_create :assign_sku_references
 
-  # searchable do
-  #   text :name
-  #   text :tags do
-  #     tags.map { |tag| tag.name }
-  #   end
-  # end
+  searchable do
+    text :name
+    text :tags do
+      tags.map { |tag| tag.name }
+    end
+    text :skus do 
+      skus.map { |sku| sku.sku }
+    end
+    text :part_number
+  end
 
   def assign_sku_references
     self.skus.each do |sku|

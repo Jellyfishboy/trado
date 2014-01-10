@@ -1,4 +1,96 @@
-%ul
-    - @products_solr.each do |product|
-        %li
-            = link_to product.name, product
+- content_for :title, "Search results for #{params[:query]}: #{@products.map(&:name).join(',')}"
+- content_for :breadcrumb, "Search: #{params[:query]}"
+- content_for :meta_description, "Search results for #{params[:query]}: #{@products.map(&:name).join(',')}"
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+= render_breadcrumbs 1
+.container
+  .push-up.blocks-spacer
+    .row
+      / ==========
+      / = Sidebar =
+      / ==========
+      %aside#tourStep1.span3.left-sidebar
+        #sidebarFilters.sidebar-item.sidebar-filters
+          / ==========
+          / = Sidebar Title =
+          / ==========
+          .underlined
+            %h3
+              %span.light Shop
+              by filters
+          / /categories
+          / ==========
+          / = Prices slider =
+          / ==========
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle{"data-toggle" => "collapse", href: "#filterPrices"}
+                Price
+                %b.caret
+            #filterPrices.accordion-body.in.collapse
+              .accordion-inner.with-slider
+                .jqueryui-slider-container
+                  #pricesRange
+                %input.max-val.pull-right{"data-initial" => "432", disabled: "disabled", type: "text"}/
+                %input.min-val{"data-initial" => "99", disabled: "disabled", type: "text"}/
+          / /prices slider
+          %a#removeFilters.remove-filter{href: "#"}
+            %span.icon-ban-circle
+            Remove All Filters
+      / /sidebar
+      / ==========
+      / = Main content =
+      / ==========
+      %section.span9
+        / ==========
+        / = Title =
+        / ==========
+        .underlined.push-down-20
+          .row
+            .span4
+              %h3
+                %span.light All
+                Products
+            .span5.align-right.sm-align-left
+              #tourStep4.form-inline.sorting-by
+                %label.black-clr{for: "isotopeSorting"} Sort:
+                %select#isotopeSorting.span3
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"true\"}"} By Price (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"false\"}"} By Price (High to Low) ↓
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"true\"}"} By Name (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"false\"}"} By Name (High to Low) ↓
+        / /title
+        / ==========
+        / = Products =
+        / ==========
+        .row.search
+          - if @products.empty?
+            %p 
+              Unfortuantely, we couldn't find anything for 
+              %strong= "#{params[:query]}."
+
+          - else
+            #isotopeContainer.isotope-container
+            
+
+              - @products.each do |product|
+                .span9.isotope--target.filter--boots{"data-brand" => product.name, "data-price" => product.skus.first.price}
+                  .product
+                    .row
+                      .span3
+                        .product-img
+                          .picture
+                            = link_to (image_tag product.attachments.first.file.large, :alt => product.name, :width => 540, :height => 374), [product.category, product]
+                      .span6
+                        .main-titles.no-margin
+                          %h5.isotope--title
+                            = link_to product.name, [product.category, product]
+                          .meta-data
+                            %span.price= price_range(product)
+                        %p.desc= product.description
+                / /single product
+            %hr/
+      / /main content
+/ /container

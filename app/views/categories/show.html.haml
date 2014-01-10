@@ -1,5 +1,6 @@
 - content_for :title, @category.name
 - content_for :breadcrumb, @category.name
+- content_for :meta_description, @category.description
 / ==========
 / = Breadcrumbs =
 / ==========
@@ -60,9 +61,6 @@
                   %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"false\"}"} By Price (High to Low) ↓
                   %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"true\"}"} By Name (Low to High) ↑
                   %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"false\"}"} By Name (High to Low) ↓
-              .view-switch
-                %a.btn.btn-primary{href: "#", onclick: "return false;"}
-                  %i.icon-th
         / /title
         / ==========
         / = Products =

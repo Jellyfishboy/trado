@@ -1,0 +1,912 @@
+Jan 10, 2014 8:40:11 PM org.apache.solr.servlet.SolrDispatchFilter init
+INFO: SolrDispatchFilter.init()
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: JNDI not configured for solr (NoInitialContextEx)
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: using system property solr.solr.home: /Users/tomdallimore/gimson_robotics/solr
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.CoreContainer$Initializer initialize
+INFO: looking for solr.xml: /Users/tomdallimore/gimson_robotics/solr/solr.xml
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.CoreContainer <init>
+INFO: New CoreContainer 559514551
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.CoreContainer load
+INFO: Loading CoreContainer using Solr Home: '/Users/tomdallimore/gimson_robotics/solr/'
+Jan 10, 2014 8:40:11 PM org.apache.solr.core.SolrResourceLoader <init>
+INFO: new SolrResourceLoader for directory: '/Users/tomdallimore/gimson_robotics/solr/'
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting socketTimeout to: 0
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting urlScheme to: http://
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting connTimeout to: 0
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting maxConnectionsPerHost to: 20
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting corePoolSize to: 0
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting maximumPoolSize to: 2147483647
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting maxThreadIdleTime to: 5
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting sizeOfQueue to: -1
+Jan 10, 2014 8:40:11 PM org.apache.solr.handler.component.HttpShardHandlerFactory getParameter
+INFO: Setting fairnessPolicy to: false
+Jan 10, 2014 8:40:11 PM org.apache.solr.client.solrj.impl.HttpClientUtil createClient
+INFO: Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.CoreContainer load
+INFO: Registering Log Listener
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.CoreContainer create
+INFO: Creating SolrCore 'default' using instanceDir: /Users/tomdallimore/gimson_robotics/solr/.
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrResourceLoader <init>
+INFO: new SolrResourceLoader for directory: '/Users/tomdallimore/gimson_robotics/solr/./'
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.CoreContainer create
+INFO: Creating SolrCore 'development' using instanceDir: /Users/tomdallimore/gimson_robotics/solr/.
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrResourceLoader <init>
+INFO: new SolrResourceLoader for directory: '/Users/tomdallimore/gimson_robotics/solr/./'
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.CoreContainer create
+INFO: Creating SolrCore 'test' using instanceDir: /Users/tomdallimore/gimson_robotics/solr/.
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrResourceLoader <init>
+INFO: new SolrResourceLoader for directory: '/Users/tomdallimore/gimson_robotics/solr/./'
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Using Lucene MatchVersion: LUCENE_41
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Using Lucene MatchVersion: LUCENE_41
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Using Lucene MatchVersion: LUCENE_41
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Loaded SolrConfig: solrconfig.xml
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Reading Solr Schema
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Loaded SolrConfig: solrconfig.xml
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Reading Solr Schema
+Jan 10, 2014 8:40:12 PM org.apache.solr.core.SolrConfig <init>
+INFO: Loaded SolrConfig: solrconfig.xml
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Reading Solr Schema
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Schema name=sunspot
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Schema name=sunspot
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: Schema name=sunspot
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: default search field in schema is text
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: default search field in schema is text
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: query parser default operator is AND
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: query parser default operator is AND
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: unique key field: id
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: default search field in schema is text
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: query parser default operator is AND
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: unique key field: id
+Jan 10, 2014 8:40:12 PM org.apache.solr.schema.IndexSchema readSchema
+INFO: unique key field: id
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: [development] Opening new SolrCore at /Users/tomdallimore/gimson_robotics/solr/./, dataDir=/Users/tomdallimore/gimson_robotics/solr/./development/data/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: [default] Opening new SolrCore at /Users/tomdallimore/gimson_robotics/solr/./, dataDir=/Users/tomdallimore/gimson_robotics/solr/./default/data/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: [test] Opening new SolrCore at /Users/tomdallimore/gimson_robotics/solr/./, dataDir=/Users/tomdallimore/gimson_robotics/solr/./test/data/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: JMX monitoring not detected for core: default
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: JMX monitoring not detected for core: development
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore <init>
+INFO: JMX monitoring not detected for core: test
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initDirectoryFactory
+INFO: solr.NRTCachingDirectoryFactory
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initDirectoryFactory
+INFO: solr.NRTCachingDirectoryFactory
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initDirectoryFactory
+INFO: solr.NRTCachingDirectoryFactory
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./development/data forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./default/data forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./test/data forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore getNewIndexDir
+INFO: New index directory detected: old=null new=/Users/tomdallimore/gimson_robotics/solr/./default/data/index/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore getNewIndexDir
+INFO: New index directory detected: old=null new=/Users/tomdallimore/gimson_robotics/solr/./development/data/index/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore getNewIndexDir
+INFO: New index directory detected: old=null new=/Users/tomdallimore/gimson_robotics/solr/./test/data/index/
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initIndex
+WARNING: [development] Solr index directory '/Users/tomdallimore/gimson_robotics/solr/./development/data/index' doesn't exist. Creating new index...
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initIndex
+WARNING: [test] Solr index directory '/Users/tomdallimore/gimson_robotics/solr/./test/data/index' doesn't exist. Creating new index...
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrCore initIndex
+WARNING: [default] Solr index directory '/Users/tomdallimore/gimson_robotics/solr/./default/data/index' doesn't exist. Creating new index...
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./test/data/index forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./development/data/index forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.CachingDirectoryFactory get
+INFO: return new directory for /Users/tomdallimore/gimson_robotics/solr/./default/data/index forceNew: false
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/default/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@6d3136e5; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1,filenames=[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/test/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2f7fc44f; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1,filenames=[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 1[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 1[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1,filenames=[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 1[segments_1]
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /select: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /query: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /get: solr.RealTimeGetHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /select: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /query: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /select: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /query: solr.SearchHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /get: solr.RealTimeGetHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update: solr.UpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update: solr.UpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /get: solr.RealTimeGetHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/json: solr.JsonUpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/csv: solr.CSVRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/json: solr.JsonUpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/extract: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update: solr.UpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/csv: solr.CSVRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/json: solr.JsonUpdateRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/field: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/extract: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/document: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/csv: solr.CSVRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /update/extract: solr.extraction.ExtractingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/field: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/field: solr.FieldAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/document: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /analysis/document: solr.DocumentAnalysisRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/ping: solr.PingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/ping: solr.PingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/ping: solr.PingRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /debug/dump: solr.DumpRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /debug/dump: solr.DumpRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /debug/dump: solr.DumpRequestHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /replication: solr.ReplicationHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /replication: solr.ReplicationHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /replication: solr.ReplicationHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /mlt: solr.MoreLikeThisHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /mlt: solr.MoreLikeThisHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /mlt: solr.MoreLikeThisHandler
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/: solr.admin.AdminHandlers
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/: solr.admin.AdminHandlers
+Jan 10, 2014 8:40:13 PM org.apache.solr.core.RequestHandlers initHandlersFromConfig
+INFO: created /admin/: solr.admin.AdminHandlers
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.loader.XMLLoader init
+INFO: xsltCacheLifetimeSeconds=60
+Jan 10, 2014 8:40:14 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@3b629e96 main
+Jan 10, 2014 8:40:14 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@38f8ff42 main
+Jan 10, 2014 8:40:14 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@4799a84f main
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Hard AutoCommit: if uncommited for 15000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Hard AutoCommit: if uncommited for 15000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Hard AutoCommit: if uncommited for 15000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Soft AutoCommit: if uncommited for 5000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Soft AutoCommit: if uncommited for 5000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.update.CommitTracker <init>
+INFO: Soft AutoCommit: if uncommited for 5000ms; 
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: Initializing spell checkers
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: Initializing spell checkers
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: Initializing spell checkers
+Jan 10, 2014 8:40:14 PM org.apache.solr.spelling.DirectSolrSpellChecker init
+INFO: init: {name=default,field=name,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+Jan 10, 2014 8:40:14 PM org.apache.solr.spelling.DirectSolrSpellChecker init
+INFO: init: {name=default,field=name,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+Jan 10, 2014 8:40:14 PM org.apache.solr.spelling.DirectSolrSpellChecker init
+INFO: init: {name=default,field=name,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: No queryConverter defined, using default converter
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: No queryConverter defined, using default converter
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.component.SpellCheckComponent inform
+INFO: No queryConverter defined, using default converter
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.ReplicationHandler inform
+INFO: Commits will be reserved for  10000
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.ReplicationHandler inform
+INFO: Commits will be reserved for  10000
+Jan 10, 2014 8:40:14 PM org.apache.solr.handler.ReplicationHandler inform
+INFO: Commits will be reserved for  10000
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [default] Registered new searcher Searcher@38f8ff42 main{StandardDirectoryReader(segments_1:1)}
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [test] Registered new searcher Searcher@3b629e96 main{StandardDirectoryReader(segments_1:1)}
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.CoreContainer registerCore
+INFO: registering core: test
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.CoreContainer registerCore
+INFO: registering core: default
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.CoreContainer registerCore
+INFO: registering core: development
+Jan 10, 2014 8:40:14 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [development] Registered new searcher Searcher@4799a84f main{StandardDirectoryReader(segments_1:1)}
+Jan 10, 2014 8:40:14 PM org.apache.solr.servlet.SolrDispatchFilter init
+INFO: user.dir=/Users/tomdallimore/.rvm/gems/ruby-2.0.0-p195/gems/sunspot_solr-2.1.0/solr
+Jan 10, 2014 8:40:14 PM org.apache.solr.servlet.SolrDispatchFilter init
+INFO: SolrDispatchFilter.init() done
+Jan 10, 2014 8:40:35 PM org.apache.solr.servlet.SolrDispatchFilter handleAdminRequest
+INFO: [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json} status=0 QTime=4 
+Jan 10, 2014 8:40:35 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/system params={wt=json} status=0 QTime=62 
+Jan 10, 2014 8:41:19 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=12v&qf=name_text+tags_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=0 status=0 QTime=65 
+Jan 10, 2014 8:42:05 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=12v&qf=name_text+tags_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 8:42:20 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-top.html} status=404 QTime=4 
+Jan 10, 2014 8:42:20 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-bottom.html} status=404 QTime=0 
+Jan 10, 2014 8:42:21 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json} status=0 QTime=2 
+Jan 10, 2014 8:42:21 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/replication params={command=details&wt=json} status=0 QTime=3 
+Jan 10, 2014 8:42:21 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.html} status=0 QTime=1 
+Jan 10, 2014 8:42:21 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/ping params={action=status&wt=json} status=503 QTime=8 
+Jan 10, 2014 8:42:32 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file params={file=schema.xml&contentType=text/xml;charset%3Dutf-8} status=0 QTime=0 
+Jan 10, 2014 8:42:35 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/ping params={ts=1389386555895&wt=json} hits=0 status=0 QTime=1 
+Jan 10, 2014 8:42:35 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/ping params={ts=1389386555895&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:42:37 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file params={file=schema.xml&contentType=text/xml;charset%3Dutf-8} status=0 QTime=1 
+Jan 10, 2014 8:42:38 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file params={file=solrconfig.xml&contentType=text/xml;charset%3Dutf-8} status=0 QTime=1 
+Jan 10, 2014 8:42:38 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/replication params={command=details&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:42:40 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=5 
+Jan 10, 2014 8:42:40 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/luke params={numTerms=0&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:42:40 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/luke params={show=schema&wt=json} status=0 QTime=4 
+Jan 10, 2014 8:42:41 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/mbeans params={stats=true&wt=json} status=0 QTime=120 
+Jan 10, 2014 8:42:42 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/mbeans params={stats=true&wt=json} status=0 QTime=8 
+Jan 10, 2014 8:42:42 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/mbeans params={cat=QUERYHANDLER&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-top.html} status=404 QTime=0 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.menu-bottom.html} status=404 QTime=1 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/replication params={command=details&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/file/ params={file=admin-extra.html} status=0 QTime=1 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/ping params={action=status&wt=json} status=503 QTime=0 
+Jan 10, 2014 8:42:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json} status=0 QTime=10 
+Jan 10, 2014 8:43:12 PM org.apache.solr.core.SolrDeletionPolicy onInit
+INFO: SolrDeletionPolicy.onInit: commits:num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1,filenames=[segments_1]
+Jan 10, 2014 8:43:12 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 1[segments_1]
+Jan 10, 2014 8:43:12 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@2abb5859 realtime
+Jan 10, 2014 8:43:12 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {deleteByQuery=type:Product (-1456877435269152768)} 0 105
+Jan 10, 2014 8:43:12 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {add=[Product 26 (1456877435479916544)]} 0 18
+Jan 10, 2014 8:43:12 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+Jan 10, 2014 8:43:12 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=2
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1,filenames=[segments_1]
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2,filenames=[_0.fnm, _0_Lucene41_0.doc, _0_Lucene41_0.pos, _0.nvd, segments_2, _0.fdx, _0.si, _0.nvm, _0_Lucene41_0.tim, _0.fdt, _0_Lucene41_0.tip]
+Jan 10, 2014 8:43:12 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 2[_0.fnm, _0_Lucene41_0.doc, _0_Lucene41_0.pos, _0.nvd, segments_2, _0.fdx, _0.si, _0.nvm, _0_Lucene41_0.tim, _0.fdt, _0_Lucene41_0.tip]
+Jan 10, 2014 8:43:12 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@19737b9f main
+Jan 10, 2014 8:43:12 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: end_commit_flush
+Jan 10, 2014 8:43:12 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [development] Registered new searcher Searcher@19737b9f main{StandardDirectoryReader(segments_2:3:nrt _0(4.2):C1)}
+Jan 10, 2014 8:43:12 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {commit=} 0 99
+Jan 10, 2014 8:43:46 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=linear&qf=name_text+tags_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=15 
+Jan 10, 2014 8:44:20 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=linear&qf=name_text+tags_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 8:45:54 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 8:47:22 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@6dc6480f realtime
+Jan 10, 2014 8:47:22 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {deleteByQuery=type:Product (-1456877697381695488)} 0 17
+Jan 10, 2014 8:47:22 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {add=[Product 26 (1456877697561001984)]} 0 5
+Jan 10, 2014 8:47:22 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+Jan 10, 2014 8:47:22 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=2
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_2,generation=2,filenames=[_0.fnm, _0_Lucene41_0.doc, _0_Lucene41_0.pos, _0.nvd, segments_2, _0.fdx, _0.si, _0.nvm, _0_Lucene41_0.tim, _0.fdt, _0_Lucene41_0.tip]
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3,filenames=[_1.fdx, _1_Lucene41_0.pos, _1.nvm, _1_Lucene41_0.doc, _1.fdt, _1.si, _1_Lucene41_0.tim, _1.nvd, _1_Lucene41_0.tip, _1.fnm, segments_3]
+Jan 10, 2014 8:47:22 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 3[_1.fdx, _1_Lucene41_0.pos, _1.nvm, _1_Lucene41_0.doc, _1.fdt, _1.si, _1_Lucene41_0.tim, _1.nvd, _1_Lucene41_0.tip, _1.fnm, segments_3]
+Jan 10, 2014 8:47:22 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@2de8396e main
+Jan 10, 2014 8:47:22 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: end_commit_flush
+Jan 10, 2014 8:47:22 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [development] Registered new searcher Searcher@2de8396e main{StandardDirectoryReader(segments_3:7:nrt _1(4.2):C1)}
+Jan 10, 2014 8:47:22 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {commit=} 0 15
+Jan 10, 2014 8:47:35 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=GLA750&qf=name_text+tags_text+skus_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 8:49:23 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@37c8f59c realtime
+Jan 10, 2014 8:49:23 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {deleteByQuery=type:Product (-1456877824688259072)} 0 3
+Jan 10, 2014 8:49:23 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {add=[Product 26 (1456877824910557184)]} 0 3
+Jan 10, 2014 8:49:23 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+Jan 10, 2014 8:49:23 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=2
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_3,generation=3,filenames=[_1.fdx, _1_Lucene41_0.pos, _1.nvm, _1_Lucene41_0.doc, _1.fdt, _1.si, _1_Lucene41_0.tim, _1.nvd, _1_Lucene41_0.tip, _1.fnm, segments_3]
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_4,generation=4,filenames=[_2.si, _2_Lucene41_0.pos, _2_Lucene41_0.tim, _2.nvm, _2.nvd, _2.fdt, _2_Lucene41_0.doc, _2_Lucene41_0.tip, _2.fdx, _2.fnm, segments_4]
+Jan 10, 2014 8:49:23 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 4[_2.si, _2_Lucene41_0.pos, _2_Lucene41_0.tim, _2.nvm, _2.nvd, _2.fdt, _2_Lucene41_0.doc, _2_Lucene41_0.tip, _2.fdx, _2.fnm, segments_4]
+Jan 10, 2014 8:49:23 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@762d4c7e main
+Jan 10, 2014 8:49:23 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: end_commit_flush
+Jan 10, 2014 8:49:23 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [development] Registered new searcher Searcher@762d4c7e main{StandardDirectoryReader(segments_4:11:nrt _2(4.2):C1)}
+Jan 10, 2014 8:49:23 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {commit=} 0 12
+Jan 10, 2014 8:49:36 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=364246644&qf=name_text+tags_text+skus_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 8:49:38 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=364246644&qf=name_text+tags_text+skus_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 8:49:56 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@6c82fba9 realtime
+Jan 10, 2014 8:49:56 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {deleteByQuery=type:Product (-1456877858742861824)} 0 3
+Jan 10, 2014 8:49:56 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {add=[Product 26 (1456877858914828288)]} 0 3
+Jan 10, 2014 8:49:56 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+Jan 10, 2014 8:49:56 PM org.apache.solr.core.SolrDeletionPolicy onCommit
+INFO: SolrDeletionPolicy.onCommit: commits:num=2
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_4,generation=4,filenames=[_2.si, _2_Lucene41_0.pos, _2_Lucene41_0.tim, _2.nvm, _2.nvd, _2.fdt, _2_Lucene41_0.doc, _2_Lucene41_0.tip, _2.fdx, _2.fnm, segments_4]
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/Users/tomdallimore/gimson_robotics/solr/development/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@3a0b2c64; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_5,generation=5,filenames=[_3.fdx, _3.nvd, _3_Lucene41_0.doc, _3_Lucene41_0.pos, _3_Lucene41_0.tip, _3.si, _3.fdt, _3_Lucene41_0.tim, _3.nvm, _3.fnm, segments_5]
+Jan 10, 2014 8:49:56 PM org.apache.solr.core.SolrDeletionPolicy updateCommits
+INFO: newest commit = 5[_3.fdx, _3.nvd, _3_Lucene41_0.doc, _3_Lucene41_0.pos, _3_Lucene41_0.tip, _3.si, _3.fdt, _3_Lucene41_0.tim, _3.nvm, _3.fnm, segments_5]
+Jan 10, 2014 8:49:56 PM org.apache.solr.search.SolrIndexSearcher <init>
+INFO: Opening Searcher@3abb1bc4 main
+Jan 10, 2014 8:49:56 PM org.apache.solr.update.DirectUpdateHandler2 commit
+INFO: end_commit_flush
+Jan 10, 2014 8:49:56 PM org.apache.solr.core.SolrCore registerSearcher
+INFO: [development] Registered new searcher Searcher@3abb1bc4 main{StandardDirectoryReader(segments_5:15:nrt _3(4.2):C1)}
+Jan 10, 2014 8:49:56 PM org.apache.solr.update.processor.LogUpdateProcessor finish
+INFO: [development] webapp=/solr path=/update params={wt=ruby} {commit=} 0 13
+Jan 10, 2014 8:49:59 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=0&wt=json} status=0 QTime=2 
+Jan 10, 2014 8:50:09 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:11 PM org.apache.solr.servlet.SolrDispatchFilter handleAdminRequest
+INFO: [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:12 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/system params={wt=json} status=0 QTime=25 
+Jan 10, 2014 8:50:12 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=0&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:13 PM org.apache.solr.servlet.SolrDispatchFilter handleAdminRequest
+INFO: [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:13 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/system params={wt=json} status=0 QTime=26 
+Jan 10, 2014 8:50:13 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=0&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:20 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=364246644&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 8:50:23 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:34 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:45 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:50:56 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:51:07 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:51:18 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:51:29 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:51:40 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:51:51 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:52:02 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:52:13 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:52:24 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:52:35 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:52:46 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:52:57 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:53:08 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:53:19 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:53:30 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:53:41 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:53:52 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:54:03 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:54:14 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:54:25 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:54:36 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:54:47 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:54:58 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:55:09 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:55:20 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:55:31 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:55:42 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:55:53 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:56:04 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:56:15 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 8:56:26 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:56:37 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:56:48 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:56:59 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:57:10 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:57:21 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:57:32 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:57:43 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:57:54 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:58:05 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:58:16 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:58:27 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:58:38 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:58:49 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:00 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:11 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:22 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:33 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:44 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 8:59:55 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:00:06 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:00:17 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:00:28 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:00:39 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:00:50 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:01:01 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:01:12 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:01:23 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:01:34 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:01:45 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:01:56 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:02:07 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:02:18 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:02:29 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:02:40 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:02:51 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:03:02 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:03:13 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:03:24 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:03:35 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:03:46 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:03:57 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:04:08 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:04:19 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:04:30 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:04:41 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:04:52 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:05:03 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:05:14 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:05:25 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:05:36 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:05:40 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:05:47 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:05:58 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:06:09 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:06:20 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:06:31 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:06:42 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:06:45 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:06:53 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:04 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:15 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:26 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:33 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:07:35 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:07:37 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:46 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:07:48 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:07:59 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:08:10 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:08:15 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:08:21 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:08:32 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:08:43 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:08:54 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:09:05 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:09:16 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:09:19 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:09:27 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:09:29 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:09:38 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:09:49 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:10:00 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:10:11 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:10:22 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:10:33 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:10:44 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:10:55 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:11:06 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:11:17 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:11:28 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:11:39 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:11:50 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:11:58 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:12:01 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:12:12 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:12:14 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:12:16 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:12:23 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:12:34 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:12:36 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=20&defType=edismax} hits=1 status=0 QTime=0 
+Jan 10, 2014 9:12:45 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:12:56 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:13:07 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:13:18 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:13:29 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:13:40 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:13:51 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:13:56 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:14:02 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:14:13 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:14:24 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:14:35 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:14:46 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:14:57 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:15:07 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=2 
+Jan 10, 2014 9:15:08 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:15:10 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:15:12 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:15:19 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:15:19 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:15:23 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:15:30 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:15:41 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:15:52 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:16:03 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:16:14 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:16:25 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:16:36 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=2 
+Jan 10, 2014 9:16:37 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:16:47 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:16:47 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:16:53 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:16:57 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:16:58 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:17:05 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:17:09 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:17:20 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:17:31 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:17:42 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:17:53 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:04 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=2 
+Jan 10, 2014 9:18:04 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:11 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:18:15 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:17 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:18:26 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:34 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:18:37 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:48 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:18:56 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:18:59 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:19:10 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:19:21 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:19:32 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:19:38 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:19:40 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:19:42 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=2 
+Jan 10, 2014 9:19:43 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=1 
+Jan 10, 2014 9:19:54 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:19:56 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=ha&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:20:05 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:20:09 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=12v&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=2 
+Jan 10, 2014 9:20:16 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:20:27 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:20:32 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=12v&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:20:38 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:20:42 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=gla&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=1 
+Jan 10, 2014 9:20:49 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
+Jan 10, 2014 9:20:51 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=GLA750&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=1 
+Jan 10, 2014 9:21:00 PM org.apache.solr.core.SolrCore execute
+INFO: [default] webapp=/solr path=/admin/logging params={since=1389386413026&wt=json} status=0 QTime=0 
