@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
+    @notification = Notification.new
+    @sku = Sku.find(@product.skus.sort.reverse.first.id)
+    @stock = @product.skus.sort.reverse.first.stock
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

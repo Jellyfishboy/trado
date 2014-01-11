@@ -9,3 +9,16 @@
         top:30px !important;
     }
 }
+form {
+    .error_explanation {
+        color:#bd362f;
+            span {
+                text-transform: capitalize;   
+            }
+    }
+    .field_with_errors {
+        input {
+            border-color: #bd362f !important;
+        }
+    }
+}

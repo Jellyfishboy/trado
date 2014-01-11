@@ -48,6 +48,9 @@ class Order < ActiveRecord::Base
     self.order_items.each do |item|
       sku = Sku.find(item.sku_id)
       sku.update_column(:stock, sku.stock-item.quantity)
+      if sku.quantity == 0
+        sku.update_column(:out_of_stock, true)
+      end
     end
     # Set order status to active
     self.update_column(:status, 'active')
@@ -99,15 +102,6 @@ class Order < ActiveRecord::Base
       binding.pry
       self.update_column(:shipping_status, "Dispatched")
       # Notifier.order_shipped(self).deliver
-    end
-  end
-
-  def self.dispatch_orders
-    Order.all.each do |order|
-      if order.shipping_date == Date.today
-        order.update_column(:shipping_status, "Dispatched")
-        Notifier.order_shipped(self).deliver
-      end
     end
   end
 

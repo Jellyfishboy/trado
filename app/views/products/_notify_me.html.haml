@@ -1,0 +1,18 @@
+#notifyMeModal.modal.hide.fade.in{"aria-hidden" => "false", "aria-labelledby" => "notifyMeModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#notifyMeModalLabel
+      %span.light Notify
+      Me
+  .modal-body
+    = form_for notification, :url => notifications_path(:sku_id => sku.id), :html => { :method => :post, :remote => true} do |f|
+      %p 
+        Please enter your email address and we'll let you know when
+        %strong= "#{sku.product.name} (#{sku.attribute_value}#{sku.attribute_type.measurement})"
+        is back in stock!
+      .control-group
+        = f.label :email, :class => 'control-label hidden shown-ie8'
+        .controls
+          = f.text_field :email, :id => 'inputEmail', :class => 'input-block-level', :placeholder => 'Email'
+      = button_tag(:type => 'submit', :class => 'btn btn-primary input-block-level bold higher') do
+        SUBMIT

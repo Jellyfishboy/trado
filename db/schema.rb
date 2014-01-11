@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110194016) do
+ActiveRecord::Schema.define(:version => 20140111180223) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -106,8 +106,11 @@ ActiveRecord::Schema.define(:version => 20140110194016) do
   create_table "notifications", :force => true do |t|
     t.string   "email"
     t.integer  "notifiable_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "sent",            :default => false
+    t.datetime "sent_at"
+    t.string   "notifiable_type"
   end
 
   create_table "order_items", :force => true do |t|
@@ -228,14 +231,15 @@ ActiveRecord::Schema.define(:version => 20140110194016) do
     t.integer  "stock"
     t.integer  "stock_warning_level"
     t.string   "sku"
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.integer  "product_id"
     t.decimal  "length",              :precision => 8, :scale => 2
     t.decimal  "weight",              :precision => 8, :scale => 2
     t.decimal  "thickness",           :precision => 8, :scale => 2
     t.string   "attribute_value"
     t.integer  "attribute_type_id"
+    t.boolean  "out_of_stock",                                      :default => false
   end
 
   create_table "taggings", :force => true do |t|

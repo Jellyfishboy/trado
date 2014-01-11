@@ -1,9 +1,11 @@
-<% @sku = Sku.where('id = ?', sku_id).first %>
+<% @sku = Sku.find(sku_id)
+    @notification = Notification.new %>
 $('.price').html('<%= format_currency @sku.price %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
-    $('.add_to_cart').hide();
+    $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"icon-envelope\"></i>Notify me</a>");
+    $('#notify_me_form').html("<%=j render :partial => 'products/notify_me', :locals => { :sku => @sku, :notification => @notification } %>")
 <% else %>
     $('.stock').html('<span class="btn btn-success">In Stock</span>');
-    $('.add_to_cart').show();
+    $('.notify_me').replaceWith("<button class=\"btn btn-danger pull-right add_to_cart\" type=\"submit\"><i class=\"icon-shopping-cart\"></i>Add To Cart</button>");
 <% end %>

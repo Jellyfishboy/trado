@@ -35,6 +35,7 @@ GimsonRobotics::Application.routes.draw do
 
   resources :users
   resources :cart_items
+  resources :notifications
 
   namespace :admin do
       root :to => "admin#dashboard"

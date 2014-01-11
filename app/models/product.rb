@@ -9,8 +9,8 @@ class Product < ActiveRecord::Base
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :skus, :dependent => :restrict
   belongs_to :category
-  # has_many :accessorisations, :dependent => :delete_all
-  # has_many :accessories, :through => :accessorisations
+  has_many :accessorisations, :dependent => :delete_all
+  has_many :accessories, :through => :accessorisations
   has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable, :dependent => :delete_all

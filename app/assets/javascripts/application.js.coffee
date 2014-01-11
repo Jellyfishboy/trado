@@ -28,6 +28,7 @@ $(document).ready ->
     update_sku()
     select_shipping()
     loading_animation_settings()
+    modal('.notify_me', '#notifyMeModal')
 
     $('#order_shipping_country').change ->
         unless @value is ""
@@ -50,26 +51,31 @@ $(document).ready ->
 $(document).ajaxComplete ->
     update_sku()
     select_shipping()
+    modal('.notify_me', '#notifyMeModal')
+    form_JSON_errors()
 
-# update_shipping_cost = ->
-#     $('.shipping-methods .shipping_option').click ->
-#         shipping = $(@).find('input[type="radio"]').val()
-#         order = $('.shipping-methods').attr 'data-total'
-#         $.get '/orders/new?shipping_id=' + shipping + '&order_total=' + order
+form_JSON_errors = ->
+    $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
+        errors = $.parseJSON(xhr.responseJSON.errors)
+        $.each errors, (key, value) ->
+            $element = $("input[name*='" + key + "']")
+            $error_target = '.error_explanation'
+            if $element.parent().next().is $error_target
+                $($error_target).html '<span>' + key + '</span> ' + value
+            else 
+                $element.wrap '<div class="field_with_errors"></div>'
+                $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
 
-# form_JSON_errors = ->
-#     $('#errors .close').click -> 
-#         $('#errors .modal-body ul').empty()
-#         console.log "EMPTY"
-#     $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
-#         errors = xhr.responseJSON.error
-#         for message of errors
-#             $('#errors .modal-body ul').append '<li>' + errors[message] + '</li>'
-#         $('#errors').modal 'show'
+modal = (trigger, target) ->
+    $(trigger).click ->
+        $(target).modal 'show'
+        return false
+
 loading_modal = (trigger, target) ->
     $(trigger).click ->
         $(target).modal 'show'
         $(target + ' .modal-body .loading_block').spin 'standard'
+        return false
 
 select_shipping = ->
     $('.shipping-methods .option').click ->

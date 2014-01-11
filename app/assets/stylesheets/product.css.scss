@@ -3,8 +3,14 @@
         width:140px;
     }
 }
-.add_to_cart {
+.add_to_cart, .notify_me {
     @include transition-property(display);
     @include transition-timing-function(ease-in);
     @include transition-duration(0.4s);
+}
+.notify_me {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
 }

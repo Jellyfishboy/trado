@@ -29,7 +29,7 @@ every 1.day, :at => '5:00 am' do
 end
 
 every 1.day, :at => '7:00 am' do
-    runner "Order.dispatch_orders"
+    runner "MailDaemon.dispatch_orders"
 end
 
 every 1.day, :at => '8:00am' do
@@ -37,6 +37,10 @@ every 1.day, :at => '8:00am' do
 end
 
 every 1.day, :at => '8:30 am' do
-    runner "Sku.warning_level"
+    runner "MailDaemon.warning_level"
 end
+
+every 1.day, :at => '9:00 am' do
+    runner "MailDaemon.notify_of_new_stock"
+end 
 

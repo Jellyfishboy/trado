@@ -37,7 +37,7 @@
           .meta
             %span.tag.price= format_currency @product.skus.sort.reverse.first.price
             %span.stock
-              - if @product.skus.first.stock > 0
+              - if @stock > 0
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
@@ -54,9 +54,14 @@
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
             = f.select :sku_id, options_for_select(@product.skus.sort.reverse.map { |sku| [sku_attribute_values(sku), sku.id ] } )
-            = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
-              %i.icon-shopping-cart
-              \  Add To Cart
+            - if @stock > 0
+              = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
+                %i.icon-shopping-cart
+                \  Add To Cart
+            - else
+              %a.btn.btn-warning.pull-right.notify_me{href: "#"}
+                %i.icon-envelope
+                Notify me
           %hr/
           / ==========.order('attribute_value desc')
           / = Share buttons =
@@ -155,3 +160,6 @@
                   %h5.no-margin= truncate product.name, :length => 35
                 %p.desc= truncate product.description, :length => 100
           / /product
+#notify_me_form
+  - unless @stock > 0
+    = render :partial => 'products/notify_me', :locals => { :sku => @sku, :notification => @notification }

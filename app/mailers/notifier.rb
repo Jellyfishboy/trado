@@ -53,4 +53,14 @@ class Notifier < ActionMailer::Base
     @notify = notify
     mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Failed Paypal Notification'
   end
+
+  def sku_stock_confirmation(sku, email)
+    @sku = sku
+    mail :to => email, :subject => "Stock notification setup for #{sku.sku}"
+  end
+
+  def sku_stock_notification(sku, email)
+    @sku = sku
+    mail :to => email, :subject => "#{sku.product.name} is now in stock!"
+  end
 end
