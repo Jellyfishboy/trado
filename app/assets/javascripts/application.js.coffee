@@ -75,7 +75,6 @@ loading_modal = (trigger, target) ->
     $(trigger).click ->
         $(target).modal 'show'
         $(target + ' .modal-body .loading_block').spin 'standard'
-        return false
 
 select_shipping = ->
     $('.shipping-methods .option').click ->

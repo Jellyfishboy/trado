@@ -7,7 +7,6 @@ class Order < ActiveRecord::Base
   has_many :order_items, :dependent => :delete_all
   has_one :transaction, :dependent => :destroy
   belongs_to :invoice
-  # TODO: Refactor shipping emails in light of the new multi form setup
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
   def add_cart_items_from_cart(cart)
@@ -48,7 +47,7 @@ class Order < ActiveRecord::Base
     self.order_items.each do |item|
       sku = Sku.find(item.sku_id)
       sku.update_column(:stock, sku.stock-item.quantity)
-      if sku.quantity == 0
+      if sku.stock == 0
         sku.update_column(:out_of_stock, true)
       end
     end
@@ -92,7 +91,7 @@ class Order < ActiveRecord::Base
 
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
-      # Notifier.shipping_delayed(self).deliver
+      Notifier.shipping_delayed(self).deliver
       binding.pry
     end
   end
@@ -101,7 +100,7 @@ class Order < ActiveRecord::Base
     if self.shipping_date.to_date == Date.today
       binding.pry
       self.update_column(:shipping_status, "Dispatched")
-      # Notifier.order_shipped(self).deliver
+      Notifier.order_shipped(self).deliver
     end
   end
 

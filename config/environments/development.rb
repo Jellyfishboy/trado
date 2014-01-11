@@ -28,7 +28,7 @@ GimsonRobotics::Application.configure do
     :domain               => 'localhost:3000',
     :authentication       => "plain",
     :user_name            => 'tom.alan.dallimore@googlemail.com',
-    :password             => ENV['MANDRILL_PWD'],
+    :password             => '1NXzOFaHtPpIyZYxGpIrkQ',
     :enable_starttls_auto => true
 
   }

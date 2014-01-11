@@ -380,3 +380,11 @@ Jan 11, 2014 4:46:35 PM org.apache.solr.core.SolrCore registerSearcher
 INFO: [development] Registered new searcher Searcher@3cecfaea main{StandardDirectoryReader(segments_3:5:nrt _0(4.2):C1 _1(4.2):C1)}
 Jan 11, 2014 4:46:35 PM org.apache.solr.update.processor.LogUpdateProcessor finish
 INFO: [development] webapp=/solr path=/update params={wt=ruby} {commit=} 0 15
+Jan 11, 2014 6:10:43 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=12v&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=2 status=0 QTime=3 
+Jan 11, 2014 7:33:08 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=GLA&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=3 
+Jan 11, 2014 7:33:15 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=acutator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=0 status=0 QTime=2 
+Jan 11, 2014 8:32:27 PM org.apache.solr.core.SolrCore execute
+INFO: [development] webapp=/solr path=/select params={fl=*+score&start=0&q=actuator&qf=name_text+tags_text+skus_text+part_number_text&wt=ruby&fq=type:Product&rows=30&defType=edismax} hits=1 status=0 QTime=3 

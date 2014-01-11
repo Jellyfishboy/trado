@@ -60,7 +60,7 @@ class Orders::BuildController < ApplicationController
         @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        # Notifier.order_received(@order).deliver
+        Notifier.order_received(@order).deliver
         @order.finish_order(response)
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else

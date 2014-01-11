@@ -14,5 +14,7 @@
         = f.label :email, :class => 'control-label hidden shown-ie8'
         .controls
           = f.text_field :email, :id => 'inputEmail', :class => 'input-block-level', :placeholder => 'Email'
+      = f.hidden_field :notifiable_id, :value => sku.id
+      = f.hidden_field :notifiable_type, :value =>'Sku'
       = button_tag(:type => 'submit', :class => 'btn btn-primary input-block-level bold higher') do
         SUBMIT
