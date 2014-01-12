@@ -1,0 +1,35 @@
+- content_for :title, 'List SKUs'
+- content_for :breadcrumb, 'SKUs'
+.page-header
+  %h1 Listing SKUs
+- if @skus.empty?
+  %p You don't have any SKUs yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th SKU
+        %th Product ID
+        %th Weight
+        %th Length
+        %th Thickness
+        %th Attribute value
+        %th Attribute type
+        %th Stock
+        %th Stock warning level
+        %th Cost value
+        %th Price
+    %tbody
+      - @skus.each do |sku|
+        %tr
+          %td= sku.sku
+          %td
+            = link_to sku.product_id, products_path()
+          %td= transaction.transaction_type
+          %td= transaction.payment_type
+          %td= transaction.payment_status
+          %td= transaction.status_reason
+          %td= format_currency transaction.fee unless transaction.fee.nil?
+          %td= format_currency transaction.net_amount
+          %td= format_currency transaction.gross_amount
+          %td= transaction.updated_at.strftime('%d/%m/%Y at %I:%M%p')

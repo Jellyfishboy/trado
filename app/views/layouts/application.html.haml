@@ -127,9 +127,9 @@
                       %li{ :class => active_category?(category.id) }
                         = link_to category.name, category
                     %li{ :class => active_page?('store', 'about') }
-                      %a.title{href: about_path, title: "About us"} About us
+                      %a.title{href: about_store_path, title: "About us"} About us
                     %li{ :class => active_page?('store', 'contact') }
-                      %a.title{href: contact_path, title: "Contact us"} Contact us
+                      %a.title{href: contact_store_path, title: "Contact us"} Contact us
                   / ==========
                   / = Search form =
                   / ==========

@@ -1,7 +1,12 @@
 class Admin::SkusController < ApplicationController
-
-  # DELETE /skus/1
-  # DELETE /skus/1.json
+  layout 'admin'
+  
+  def index
+    @skus = Sku.all
+    respond_to do |format|
+      format.html
+    end
+  end
   
   def destroy
     @sku = Sku.find(params[:id])

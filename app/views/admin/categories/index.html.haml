@@ -22,6 +22,6 @@
           %td= category.name
           %td= category.description
           %td= boolean_helper category.visible, "Yes", "No"
-          %td= category.products.count
+          %td= link_to category.products.count, admin_category_products_path(category)
           %td
             = table_commands category, category, edit_admin_category_path(category), admin_category_path(category), 0

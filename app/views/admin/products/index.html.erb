@@ -15,7 +15,8 @@
         <th>SKU</th>
         <th>Part no.</th>
         <th colspan="2">Name</th>
-        <th>Price (exc.VAT)</th>
+        <th>Net price</th>
+        <th>Gross price</th>
         <th></th>
     </thead>
     <tbody>
@@ -34,9 +35,12 @@
           <%= product.name %>
         </td>
         <td> 
-        <%= format_currency product.skus.first.price %>
+          <%= format_currency product.skus.first.price %>
         </td>
-        <td >
+        <td>
+        <%= gross_price product.skus.first.price %>
+        </td>
+        <td>
           <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>
         </td> 
       </tr>

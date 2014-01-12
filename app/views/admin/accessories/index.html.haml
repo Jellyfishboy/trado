@@ -13,6 +13,7 @@
       %tr
         %th Part no.
         %th Name
+        %th Weight (kg)
         %th Price
         %th
     %tbody
@@ -20,5 +21,6 @@
         %tr
           %td= accessory.part_number
           %td= accessory.name
+          %td= accessory.weight
           %td= format_currency accessory.price
           %td= table_commands accessory, admin_accessory_path(accessory), edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 1

@@ -72,6 +72,9 @@ gem 'activemerchant'
 gem 'devise'
 gem 'cancan'
 
+# Friendly URLs
+# gem 'friendly_id', '~> 5.0.0'
+
 # Image uploader
 gem 'mini_magick'
 gem 'carrierwave'
@@ -90,6 +93,9 @@ gem 'rails_admin'
 
 # Sitemap
 gem 'sitemap_generator'
+
+# Global
+gem 'global'
 
 # Processing
 gem 'sidekiq', :require => false

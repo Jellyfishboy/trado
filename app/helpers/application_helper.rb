@@ -103,12 +103,16 @@ module ApplicationHelper
       end
     end
 
-    def errors_for(model, attribute)
+    def errors_for model, attribute
       if model.errors[attribute].present?
         content_tag :span, :class => 'error_explanation' do
           model.errors[attribute].join(", ")
         end
       end
+    end
+
+    def gross_price  net_price
+      format_currency net_price*0.2 + net_price
     end
 
 end

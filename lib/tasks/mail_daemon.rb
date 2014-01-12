@@ -34,5 +34,5 @@ class MailDaemon
         notification.sent_at = Time.now
         notification.save!
     end
-    
+
 end

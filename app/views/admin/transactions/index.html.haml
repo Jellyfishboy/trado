@@ -21,7 +21,7 @@
     %tbody
       - @transactions.each do |transaction|
         %tr
-          %td= transaction.transaction_id
+          %td= link_to transaction.transaction_id, "#{Global.paypal.transaction_link}#{transaction.transaction_id}", :target => '_blank'
           %td
             = link_to transaction.order_id, admin_order_path(transaction.order_id)
           %td= transaction.transaction_type

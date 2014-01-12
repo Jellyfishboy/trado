@@ -1,0 +1,8 @@
+development:
+    transaction_link: "https://sandbox.paypal.com/cgi-bin/webscr?cmd=_view-a-trans&id="
+
+test:
+    transaction_link: "https://sandbox.paypal.com/cgi-bin/webscr?cmd=_view-a-trans&id="
+
+production:
+    transaction_link: "https://www.paypal.com/cgi-bin/webscr?cmd=_view-a-trans&id="

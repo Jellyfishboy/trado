@@ -12,21 +12,21 @@
     %thead
       %tr
         %th Name
-        %th Price
         %th Description
         %th Countries
         %th Tier(s)
+        %th Net price
         %th
     %tbody
       - @shippings.each do |shipping|
         %tr
           %td= shipping.name
-          %td= format_currency shipping.price
           %td= shipping.description
           %td
             %ul 
               - shipping.countries.each do |country|
                 %li
                   = country.name
-          %td= shipping.tiers.map{ |tier| tier.id }.join(', ')
+          %td= shipping.tiers.map(&:id).join(', ')
+          %td= format_currency shipping.price
           %td= table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1

@@ -11,17 +11,6 @@ class Admin::AccessoriesController < ApplicationController
     end
   end
 
-  # GET /accessories/1
-  # GET /accessories/1.json
-  def show
-    @accessory = Accessory.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @accessory }
-    end
-  end
-
   # GET /accessories/new
   # GET /accessories/new.json
   def new

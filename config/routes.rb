@@ -3,14 +3,8 @@ GimsonRobotics::Application.routes.draw do
   root :to => 'store#index'
 
   # Standard pages
-  match '/about' => 'store#about'
-  match '/contact' => 'store#contact'
-
-  # Ajax methods
-  match '/update_country' => 'orders#update_country'
-  match '/update_sku' => 'products#update_sku'
-
-  match '/paypal/ipn' => 'transactions#paypal_ipn'
+  get '/about' => 'store#about'
+  get '/contact' => 'store#contact'
 
   get '/search' => 'search#results'
 
@@ -18,11 +12,13 @@ GimsonRobotics::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
-  resources :categories do
-    resources :products
+  resources :categories, :only => :show do
+    resources :products, :only => :show do
+      get 'update_sku'
+    end
   end
-  resources :orders do
-    resources :build, controller: 'orders/build' do
+  resources :orders, :only => :new do
+    resources :build, controller: 'orders/build', :only => [:show,:update] do
       member do
         get 'express'
         get 'purchase'
@@ -31,17 +27,28 @@ GimsonRobotics::Application.routes.draw do
         get 'purge'
       end
     end
+    get 'update_country'
   end
 
   resources :users
-  resources :cart_items
-  resources :notifications
+  resources :cart_items, :only => [:create,:update,:destroy]
+  resources :notifications, :only => :create
 
   namespace :admin do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
-      resources :accessories, :invoices, :shippings, :tiers, :countries, :attachments, :tags, :skus, :categories, :orders, :products, :attribute_types, :transactions
+      resources :accessories, :shippings, :tiers, :countries, :attribute_types, :products, :except => :show
+      resources :invoices 
+      resources :attachments, :tags, :only => :destroy
+      resources :skus, :only =>  [:index,:destroy]
+      resources :orders, :except => [:new, :create]
+      resources :transactions, :only => :index do
+        member do
+          get 'paypal_ipn'
+        end
+      end
+      resources :categories, :except => :show
   end
 
   # The priority is based upon order of creation:

@@ -145,6 +145,11 @@ breadcrumb_add 'All orders', orders_path %>
                                     <ul class="unstyled spaced">
                                         <li>
                                            <i class="icon-caret-right yellow"></i>
+                                           Last updated: 
+                                           <%= @order.updated_at.strftime('%d/%m/%Y at %I:%M%p') %>
+                                        </li>
+                                        <li>
+                                           <i class="icon-caret-right yellow"></i>
                                            Transaction ID: 
                                            <%= @order.transaction.transaction_id %>
                                         </li>

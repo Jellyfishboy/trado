@@ -80,6 +80,7 @@
                     = image_tag "delivery.png", :alt => @order.shipping_name
                   %td.desc
                     = @order.shipping_name
+                    %div= @order.shipping_country
                   %td.qty 1
                   %td.price= format_currency @order.shipping_cost
                 %tr

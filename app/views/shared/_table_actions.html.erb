@@ -19,8 +19,10 @@
       <i class="icon-money bigger-130"></i>
     </a>
   <% end %>
-  <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
-    <i class="icon-trash bigger-130"></i>
+  <% unless type == 2 %>
+    <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
+      <i class="icon-trash bigger-130"></i>
+    <% end %>
   <% end %>
 </div>
 
