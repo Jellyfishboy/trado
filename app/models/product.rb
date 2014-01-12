@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
   attr_accessible :name, :description, :weighting, :sku, :part_number, :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   validates :name, :description, :part_number, :sku, :weighting, :presence => true
   validates :part_number, :sku, :name, :uniqueness => true
   validates :part_number, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }

@@ -6,6 +6,9 @@ GimsonRobotics::Application.routes.draw do
   get '/about' => 'store#about'
   get '/contact' => 'store#contact'
 
+  get '/update_country' => 'orders#update_country'
+  get '/update_sku' => 'products#update_sku'
+  get '/paypal/ipn' => 'transactions#paypal_ipn'
   get '/search' => 'search#results'
 
   devise_for :users, :controllers => { 
@@ -13,9 +16,7 @@ GimsonRobotics::Application.routes.draw do
     :sessions => "users/sessions"
      }
   resources :categories, :only => :show do
-    resources :products, :only => :show do
-      get 'update_sku'
-    end
+    resources :products, :only => :show
   end
   resources :orders, :only => :new do
     resources :build, controller: 'orders/build', :only => [:show,:update] do
@@ -27,7 +28,6 @@ GimsonRobotics::Application.routes.draw do
         get 'purge'
       end
     end
-    get 'update_country'
   end
 
   resources :users
@@ -41,11 +41,7 @@ GimsonRobotics::Application.routes.draw do
       resources :accessories, :shippings, :tiers, :countries, :products, :categories, :except => :show
       resources :invoices 
       resources :orders, :only => [:index, :show]
-      resources :transactions, :only => :index do
-        member do
-          get 'paypal_ipn'
-        end
-      end
+      resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :tags, :only => :destroy
         resources :skus, :only =>  [:index,:destroy]

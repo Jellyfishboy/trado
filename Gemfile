@@ -73,7 +73,7 @@ gem 'devise'
 gem 'cancan'
 
 # Friendly URLs
-# gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 4.0.10'
 
 # Image uploader
 gem 'mini_magick'
