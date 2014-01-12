@@ -1,6 +1,6 @@
 .row-fluid
   .span-12
-    = form_for [:admin, @attribute_type], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+    = form_for [:admin, :products, :skus, @attribute_type], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
       %fieldset
         - if @attribute_type.errors.any?
           #error_explanation

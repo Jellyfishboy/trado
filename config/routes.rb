@@ -38,17 +38,21 @@ GimsonRobotics::Application.routes.draw do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
-      resources :accessories, :shippings, :tiers, :countries, :attribute_types, :products, :except => :show
+      resources :accessories, :shippings, :tiers, :countries, :products, :categories, :except => :show
       resources :invoices 
-      resources :attachments, :tags, :only => :destroy
-      resources :skus, :only =>  [:index,:destroy]
-      resources :orders, :except => [:new, :create]
+      resources :orders, :only => [:index, :show]
       resources :transactions, :only => :index do
         member do
           get 'paypal_ipn'
         end
       end
-      resources :categories, :except => :show
+      namespace :products do
+        resources :attachments, :tags, :only => :destroy
+        resources :skus, :only =>  [:index,:destroy]
+        namespace :skus do
+          resources :attribute_types, :except => :show
+        end
+      end
   end
 
   # The priority is based upon order of creation:

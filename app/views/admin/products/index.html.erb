@@ -41,7 +41,11 @@
         <%= gross_price product.skus.first.price %>
         </td>
         <td>
-          <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>
+          <% if product.carts.empty? && product.orders.empty? %>
+            <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0 %>
+          <% else %>
+            <%= table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 3 %>
+          <% end %>
         </td> 
       </tr>
     <% end %>

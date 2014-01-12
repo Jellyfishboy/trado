@@ -1,4 +1,4 @@
-class Admin::AttributeTypesController < ApplicationController
+class Admin::Products::Skus::AttributeTypesController < ApplicationController
   layout 'admin'
   # GET /attribute_types
   # GET /attribute_types.json

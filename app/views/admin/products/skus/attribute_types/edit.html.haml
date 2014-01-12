@@ -1,0 +1,11 @@
+- content_for :title, 'Edit SKU attribute type'
+- content_for :breadcrumb, 'Edit'
+- breadcrumb_add 'SKU attribute types', admin_products_skus_attribute_types_path
+.page-header
+    %h1 
+        Editing
+        = @attribute_type.name
+        attribute type
+
+= render 'form'
+

@@ -4,7 +4,7 @@
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
   <% end %>
-  <% unless type == 2 %>
+  <% unless type == 2 || type == 3 %>
     <%= link_to edit, :class => 'green' do %>
       <i class="icon-pencil bigger-130"></i>
     <% end %>
@@ -19,7 +19,7 @@
       <i class="icon-money bigger-130"></i>
     </a>
   <% end %>
-  <% unless type == 2 %>
+  <% unless type == 2 || type == 3 %>
     <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
       <i class="icon-trash bigger-130"></i>
     <% end %>
@@ -42,7 +42,7 @@
           <% end %>
         </li>
       <% end %>
-      <% unless type == 2 && object.shipping_status == "Dispatched" %>
+      <% unless type == 2 || type == 3 %>
         <li>
           <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
             <span class="green">
@@ -51,23 +51,33 @@
           <% end %>
         </li>
       <% end %>
-      <% if type == 2 && object.shipping_status == "Pending" %>
+      <% if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed" %>
         <li>
-          <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Mark as dispatched' do %>
+          <a href="#" class="tooltip-info change_shipping" id="<%= object.id %>" data-rel="tooltip" data-original-title="Mark as dispatched">
             <span class="grey">
               <i class="icon-truck bigger-120"></i>
+            </span>
+          </a>
+        </li>
+      <% end %>
+      <% if type == 2 %>
+        <li>
+          <a href="#" class="tooltip-info add_actual_shipping_cost" id="<%= object.id %>" data-rel="tooltip" data-original-title="Actual shipping cost">
+            <span class="green">
+              <i class="icon-money bigger-120"></i>
+            </span>
+          </a>
+        </li>
+      <% end %>
+      <% unless type == 2 || type == 3 %>
+        <li>
+          <%= link_to del, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
+            <span class="red">
+              <i class="icon-trash bigger-120"></i>
             </span>
           <% end %>
         </li>
       <% end %>
-
-      <li>
-        <%= link_to del, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
-          <span class="red">
-            <i class="icon-trash bigger-120"></i>
-          </span>
-        <% end %>
-      </li>
     </ul>
   </div>
 </div>

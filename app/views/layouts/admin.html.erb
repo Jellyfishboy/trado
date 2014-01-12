@@ -136,7 +136,7 @@
             <% end %>
           </li>
 
-          <li class="<%= active_controller?('admin/products') %> <%= active_controller?('admin/attribute_types') %>">
+          <li class="<%= active_controller?('admin/products') %> <%= active_controller?('admin/products/skus/attribute_types') %> <%= active_controller?('admin/products/skus') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-th"></i>
               <span class="menu-text">Products</span>
@@ -149,8 +149,14 @@
                   All products
                 <% end %>
               </li>
-              <li class="<%= active_controller?('admin/attribute_types') %>">
-                <%= link_to admin_attribute_types_path do %>
+              <li class="<%= active_controller?('admin/products/skus') %>">
+                <%= link_to admin_products_skus_path do %>
+                  <i class="icon-double-angle-right"></i>
+                  SKUs
+                <% end %>
+              </li>
+              <li class="<%= active_controller?('admin/products/skus/attribute_types') %>">
+                <%= link_to admin_products_skus_attribute_types_path do %>
                   <i class="icon-double-angle-right"></i>
                   Attribute types
                 <% end %>

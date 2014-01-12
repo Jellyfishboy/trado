@@ -1,4 +1,4 @@
-class Admin::AttachmentsController < ApplicationController
+class Admin::Products::AttachmentsController < ApplicationController
   layout 'admin'
 
   # DELETE /attachments/1

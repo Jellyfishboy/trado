@@ -53,12 +53,16 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     
     respond_to do |format|
-      if @product.update_attributes(params[:product])
-        format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+      if @product.carts.empty? && @product.orders.empty?
+        if @product.update_attributes(params[:product])
+          format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.html { redirect_to admin_products_url, notice: 'You cannot edit a product which is associated with carts or orders.' }
       end
     end
   end
@@ -66,17 +70,18 @@ class Admin::ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
-    begin
-      @product.destroy
-      flash[:success] = "Successfully deleted the product."
-    rescue ActiveRecord::DeleteRestrictionError => e
-      @product.errors.add(:base, e)
-      flash[:error] = "#{e}"
+    if @product.carts.empty? && @product.orders.empty?
+      @product = Product.find(params[:id])
+      begin
+        @product.destroy
+        flash[:success] = "Successfully deleted the product."
+      rescue ActiveRecord::DeleteRestrictionError => e
+        @product.errors.add(:base, e)
+        flash[:error] = "#{e}"
+      end
     end
     respond_to do |format|
       format.html { redirect_to admin_products_url }
-      format.json { head :no_content }
     end
   end
 end

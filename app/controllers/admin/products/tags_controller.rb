@@ -1,4 +1,4 @@
-class Admin::TagsController < ApplicationController
+class Admin::Products::TagsController < ApplicationController
   layout 'admin'
 
   # DELETE /tags/1

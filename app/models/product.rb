@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
   validates :skus, :tier => true, :on => :save
   default_scope :order => 'weighting' #orders the products by weighting
   has_many :skus, :dependent => :restrict
+  has_many :orders, :through => :skus
+  has_many :carts, :through => :skus
   belongs_to :category
   has_many :accessorisations, :dependent => :delete_all
   has_many :accessories, :through => :accessorisations

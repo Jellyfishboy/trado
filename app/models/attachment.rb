@@ -8,11 +8,11 @@ class Attachment < ActiveRecord::Base
   } # all of the above validates the attributes of products
   validates :file, :description, :presence => true
   validates :description, :length => {:minimum => 5, :message => :too_short}
-  before_destroy :check_association_count
+  before_destroy :validate_association_count
 
   private
   
-  def check_association_count
+  def validate_association_count
     product = Product.find(self.attachable_id)
     if product.attachments.count < 2
         product.errors[:base] << "You must have at least one attachment per product."
