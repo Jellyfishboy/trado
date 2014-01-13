@@ -8,6 +8,7 @@
 #= require admin/jquery.slimscroll.min
 #= require admin/jquery.ui.touch-punch.min
 #= require bootstrap-datepicker
+#= require redactor-rails
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -43,12 +44,11 @@ $(document).ready ->
   $('.change_shipping').click ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=shipping'
-    # return false
 
   $('.add_actual_shipping_cost').click ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
-    # return false
+
 
 $(document).ajaxComplete ->
   $("[data-behaviour~=datepicker]").datepicker

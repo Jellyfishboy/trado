@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112231907) do
+ActiveRecord::Schema.define(:version => 20140112235444) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -170,13 +170,15 @@ ActiveRecord::Schema.define(:version => 20140112231907) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "weighting"
     t.integer  "part_number"
     t.string   "sku"
     t.integer  "category_id"
     t.string   "slug"
+    t.string   "meta_description"
+    t.boolean  "featured"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

@@ -1,11 +1,11 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :weighting, :sku, :part_number, :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id
+  attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates :name, :description, :part_number, :sku, :weighting, :presence => true
+  validates :name, :meta_description, :description, :part_number, :sku, :weighting, :presence => true
   validates :part_number, :sku, :name, :uniqueness => true
   validates :part_number, :weighting, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
-  validates :name, :length => {:minimum => 10, :message => :too_short}
+  validates :name, :meta_description, :length => {:minimum => 10, :message => :too_short}
   validates :description, :length => {:minimum => 20, :message => :too_short}
   validates :skus, :tier => true, :on => :save
   default_scope :order => 'weighting' #orders the products by weighting
