@@ -3,7 +3,7 @@
 Trado is an automated enterprise e-commerce solution, built to be easy to manage and lightweight.
 
 
-- How to contribute
+= How to contribute
 
 * Fork the project
 * Create your feature or bug fix
