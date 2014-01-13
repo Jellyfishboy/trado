@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-GimsonRobotics::Application.load_tasks
+Trado::Application.load_tasks

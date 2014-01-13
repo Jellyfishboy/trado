@@ -1,4 +1,4 @@
-GimsonRobotics::Application.routes.draw do
+Trado::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
 
