@@ -6,3 +6,7 @@ tmp
 .env
 vendor/cache/*
 tmp/cache/*
+
+/solr/data
+/solr/development/data
+/solr/pids
