@@ -3,6 +3,6 @@
 - breadcrumb_add 'Tiers', admin_tiers_path
 
 .page-header
-    %h1 Editing tier
+    %h1= "Editing tier ##{@tier.id}"  
 
 = render 'form'

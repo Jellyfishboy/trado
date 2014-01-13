@@ -46,7 +46,7 @@ Trado::Application.routes.draw do
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :tags, :only => :destroy
-        resources :skus, :only =>  [:index,:destroy]
+        resources :skus, :only =>  [:index,:destroy, :edit, :update]
         namespace :skus do
           resources :attribute_types, :except => :show
         end

@@ -19,12 +19,11 @@ class MailDaemon
     end
 
     def self.notify_of_new_stock
-        @skus = Sku.where('out_of_stock = ? AND stock > stock_warning_level', true).joins("INNER JOIN notifications ON skus.id = notifications.notifiable_id").where('notifications.sent = ? ', false)
+        @skus = Sku.where('stock > stock_warning_level').joins("INNER JOIN notifications ON skus.id = notifications.notifiable_id").where('notifications.sent = ? ', false)
         @skus.each do |sku|
             sku.notifications.each do |notify|
                 Notifier.sku_stock_notification(sku, notify.email)
                 mark_notification_as_sent(notify)
-                sku.update_column(:out_of_stock, false)
             end
         end
     end

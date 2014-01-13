@@ -51,7 +51,7 @@
       <%= f.label :attribute_type_id, :class => 'control-label' %>
       <div class="controls">
         <% if AttributeType.all.empty? %>
-          <p>No variant types to select</p>
+          <p>No attribute types to select</p>
         <% else %>
           <%= f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'}) %>
         <% end %>

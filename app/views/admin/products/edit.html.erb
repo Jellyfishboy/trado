@@ -19,24 +19,26 @@
           </ul>
         </div>
       <% end %>
-      <div class="control-group">
-        <%= f.label :part_number, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :part_number, :class => 'form-control' %>
+      <% if @product.carts.empty? && @product.orders.empty? %>
+        <div class="control-group">
+          <%= f.label :part_number, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :part_number, :class => 'form-control' %>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :sku, "SKU", :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :sku, :class => 'form-control' %>
+        <div class="control-group">
+          <%= f.label :sku, "SKU", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :sku, :class => 'form-control' %>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :name, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :name, :class => 'form-control' %>
+        <div class="control-group">
+          <%= f.label :name, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name, :class => 'form-control' %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="control-group">
         <%= f.label :meta_description, :class => 'control-label' %>
         <div class="controls">
@@ -119,83 +121,85 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
-      <div id="skus">
-        <% if @product.skus.empty? %>
-        <div class="control-group">
-          <div class="controls">
-            <p>This product currently has no SKUs.</p>
-          </div>
-        </div>
-        <% else %>
-          <% @product.skus.each do |sku| %>
-          <div id="sku_<%= sku.id %>" class="foreign_list">
-            <div class="control-group">
-              <div class="control-label">Cost value:</div>
-              <div class="controls">
-                <div class="form-control"><%= format_currency sku.cost_value %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Price:</div>
-              <div class="controls">
-                <div class="form-control"><%= format_currency sku.price %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Weight (kg):</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.weight %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Length (mm):</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.length %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Thickness (mm):</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.thickness %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Stock:</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.stock %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Stock warning level:</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.stock_warning_level %></div>
-                <hr>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Attribute value:</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.attribute_value %></div>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="control-label">Attribute type:</div>
-              <div class="controls">
-                <div class="form-control"><%= sku.attribute_type.name %></div>
-                <hr>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <%= link_to "Remove", admin_products_sku_path(sku), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
-              </div>
+      <% if @product.carts.empty? && @product.orders.empty? %>
+        <h3 class="header smaller lighter blue">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
+        <div id="skus">
+          <% if @product.skus.empty? %>
+          <div class="control-group">
+            <div class="controls">
+              <p>This product currently has no SKUs.</p>
             </div>
           </div>
+          <% else %>
+            <% @product.skus.each do |sku| %>
+            <div id="sku_<%= sku.id %>" class="foreign_list">
+              <div class="control-group">
+                <div class="control-label">Cost value:</div>
+                <div class="controls">
+                  <div class="form-control"><%= format_currency sku.cost_value %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Price:</div>
+                <div class="controls">
+                  <div class="form-control"><%= format_currency sku.price %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Weight (kg):</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.weight %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Length (mm):</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.length %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Thickness (mm):</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.thickness %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Stock:</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.stock %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Stock warning level:</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.stock_warning_level %></div>
+                  <hr>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Attribute value:</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.attribute_value %></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="control-label">Attribute type:</div>
+                <div class="controls">
+                  <div class="form-control"><%= sku.attribute_type.name %></div>
+                  <hr>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="controls">
+                  <%= link_to "Remove", admin_products_sku_path(sku), :method => :delete, :confirm => "Are you sure?", :remote => true, :class => 'btn btn-danger btn-mini' %>
+                </div>
+              </div>
+            </div>
+            <% end %>
           <% end %>
-        <% end %>
-        <div id="sku_fields"  class="edit_field"></div>
-      </div>
+          <div id="sku_fields"  class="edit_field"></div>
+        </div>
+      <% end %>
       <h3 class="header smaller lighter blue">Tags <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags,"#tag_fields" %></h3>
       <div id="tags">
         <% if @product.tags.empty? %>

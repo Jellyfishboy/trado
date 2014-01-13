@@ -3,6 +3,8 @@
 - breadcrumb_add 'Shipping options', admin_shippings_path
 
 .page-header
-    %h1 Editing shipping option
+    %h1 
+        Editing
+        = @shipping.name
 
 = render 'form'

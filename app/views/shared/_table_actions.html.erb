@@ -1,10 +1,10 @@
 <div class="hidden-phone visible-desktop action-buttons">
-  <% if type != 1 %>
+  <% if type != 1 || type != 4 %>
     <%= link_to view, :class => 'blue' do %>
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
   <% end %>
-  <% unless type == 2 || type == 3 %>
+  <% unless type == 2 %>
     <%= link_to edit, :class => 'green' do %>
       <i class="icon-pencil bigger-130"></i>
     <% end %>
@@ -19,7 +19,7 @@
       <i class="icon-money bigger-130"></i>
     </a>
   <% end %>
-  <% unless type == 2 || type == 3 %>
+  <% unless type == 2 || type == 3 || type == 4 %>
     <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
       <i class="icon-trash bigger-130"></i>
     <% end %>
@@ -31,7 +31,6 @@
     <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
       <i class="icon-caret-down icon-only bigger-120"></i>
     </button>
-
     <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
       <% if type != 1 %>
         <li>
@@ -42,7 +41,7 @@
           <% end %>
         </li>
       <% end %>
-      <% unless type == 2 || type == 3 %>
+      <% unless type == 2 %>
         <li>
           <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
             <span class="green">

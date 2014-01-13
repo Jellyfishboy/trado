@@ -19,6 +19,7 @@
         %th Stock warning level
         %th Cost value
         %th Price
+        %th
     %tbody
       - @skus.each do |sku|
         %tr
@@ -33,3 +34,4 @@
           %td= sku.stock_warning_level
           %td= format_currency sku.cost_value
           %td= format_currency sku.price
+          %td= table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 4

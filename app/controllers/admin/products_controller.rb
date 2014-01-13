@@ -26,7 +26,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
   end
@@ -53,16 +52,12 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     
     respond_to do |format|
-      if @product.carts.empty? && @product.orders.empty?
-        if @product.update_attributes(params[:product])
-          format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: "edit" }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
-        end
+      if @product.update_attributes(params[:product])
+        format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { redirect_to admin_products_url, notice: 'You cannot edit a product which is associated with carts or orders.' }
+        format.html { render action: "edit" }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
