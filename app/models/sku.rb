@@ -1,5 +1,5 @@
 class Sku < ActiveRecord::Base
-  attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :out_of_stock
+  attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, :weight, :thickness, :product_id, :attribute_value, :attribute_type_id
   validates :price, :cost_value, :stock, :length, :weight, :thickness, :stock_warning_level, :attribute_value, :attribute_type_id, :presence => true
   validates :price, :cost_value, :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness, :numericality => { :greater_than_or_equal_to => 0 }

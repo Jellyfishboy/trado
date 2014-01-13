@@ -47,9 +47,6 @@ class Order < ActiveRecord::Base
     self.order_items.each do |item|
       sku = Sku.find(item.sku_id)
       sku.update_column(:stock, sku.stock-item.quantity)
-      if sku.stock < 1
-        sku.update_column(:out_of_stock, true)
-      end
     end
     # Set order status to active
     self.update_column(:status, 'active')

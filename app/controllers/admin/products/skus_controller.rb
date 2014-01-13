@@ -12,9 +12,6 @@ class Admin::Products::SkusController < ApplicationController
   def update
     @sku = Sku.find(params[:id])
     binding.pry
-    if params[:sku][:stock].to_i < 1
-      @sku.update_column(:out_of_stock, true)
-    end
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
         format.html { redirect_to admin_products_skus_url, notice: 'SKU was successfully updated.' }

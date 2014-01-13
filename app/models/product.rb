@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   validates :description, :length => {:minimum => 20, :message => :too_short}
   validates :skus, :tier => true, :on => :save
   default_scope :order => 'weighting' #orders the products by weighting
-  has_many :skus, :dependent => :restrict
+  has_many :skus, :dependent => :delete_all
   has_many :orders, :through => :skus
   has_many :carts, :through => :skus
   belongs_to :category

@@ -14,6 +14,8 @@
 #= require redactor-rails
 #= require spin
 #= require jquery.spin
+#= require typeahead
+#= require hogan-2.0.0
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -29,6 +31,7 @@ $(document).ready ->
     select_shipping()
     loading_animation_settings()
     modal('.notify_me', '#notifyMeModal')
+    typeahead_engine()
 
     $('#order_shipping_country').change ->
         unless @value is ""
@@ -107,6 +110,67 @@ loading_animation_settings = ->
         zIndex: 2e9 # The z-index (defaults to 2000000000)
         top: "auto" # Top position relative to parent in px
         left: "auto" # Left position relative to parent in px
+
+typeahead_engine = ->
+    $("#navSearchInput").typeahead(
+        remote: "/search.json?utf8=✓&query=%QUERY"
+        # prefetch: "/search.json"
+        template: "<div class='inner-suggest'><img src='{{image.file.url}}'/><span><div>{{value}}</div>{{category_name}}{{}}</span></div>"
+        engine: Hogan
+        limit: 4
+    ).on "typeahead:selected", ($e, data) ->
+        window.location = "/releases/" + data.category_slug + "/products/" + data.product_slug
+
+    # dataquery = $('.search-data-query')
+    # searchquery = $('#navSearchInput')
+
+    # typepos = $('#navSearchInput').offset()
+    # $('.search-data-query').css "left", typepos["left"]
+
+
+    # searchquery.bind "input", ->
+    #   if searchquery.val() is ""
+    #     dataquery.hide()
+    #   else
+    #     s_query = searchquery.val()
+    #     dataquery.show().html("<a href ='/search?utf8=✓&query=" + s_query + "'><div>Search for '<span>" + s_query + "</span>'</div></a>").addClass "data-query-highlight"
+
+    # searchquery.blur ->
+    #   setTimeout (->
+    #     dataquery.hide()
+    #   ), 150
+
+    # searchquery.focus ->
+    #   unless searchquery.val() is ""
+    #     dataquery.show().addClass "data-query-highlight"
+
+    # dataquery.hover ->
+    #   $('.tt-suggestion').removeClass 'tt-is-under-cursor'
+
+    # $('.tt-dropdown-menu').hover ->
+    #   dataquery.removeClass "data-query-highlight"
+
+    # searchquery.keydown (event) ->
+    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 40
+    #   dataquery.removeClass "data-query-highlight"  if event.keyCode is 38
+
+    #   unless $('.tt-suggestion').hasClass "tt-is-under-cursor"
+    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 38
+    #     dataquery.addClass "data-query-highlight"  if event.keyCode is 40
+
+    #   if dataquery.hasClass "data-query-highlight"
+    #     $('#').submit()  if event.keyCode is 13
+
+    # $(document)[0].oncontextmenu = ->
+    # false
+
+    # $(document).mousedown (e) ->
+    #   if e.button is 2
+    #     dataquery.hide()
+    #     $('.tt-dropdown-menu').hide()
+    #     false
+    #   else
+    #     true
 
 
 

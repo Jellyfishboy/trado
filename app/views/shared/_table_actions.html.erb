@@ -1,5 +1,5 @@
 <div class="hidden-phone visible-desktop action-buttons">
-  <% if type != 1 || type != 4 %>
+  <% unless type == 1 || type == 4 %>
     <%= link_to view, :class => 'blue' do %>
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
