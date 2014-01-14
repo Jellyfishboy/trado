@@ -1,0 +1,2 @@
+$('#insufficientStockNotice').html("<%=j render :partial => 'carts/insufficient_stock', :formats => [:html], :object => @cart_item %>");
+$('#insufficientStockModal').modal('show');

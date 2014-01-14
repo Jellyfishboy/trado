@@ -1,0 +1,15 @@
+#insufficientStockModal.modal.hide.fade.in{"aria-hidden" => "false", "aria-labelledby" => "insufficientStockModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#insufficientStockModalLabel
+      %span.light Insufficient
+      Stock
+  .modal-body
+    %p 
+      We only have 
+      %strong= @cart_item.sku.stock
+      left in stock for
+      %strong= "#{@cart_item.sku.product.name} (#{@cart_item.sku.attribute_value}#{@cart_item.sku.attribute_type.measurement})."
+      Please contact us at
+      %a{ :href => 'mailto:support@gimsonrobotics.co.uk'} support@gimsonrobotics.co.uk
+      if you would like to make a large order or require further help.

@@ -8,13 +8,14 @@ class CartItemsController < ApplicationController
     sku = Sku.find(params[:cart_item][:sku_id])
     @cart_item = @cart.add_cart_item(sku.weight, sku.price, sku.id, params[:cart_item][:quantity]) #uses add_cart_item method in cart.rb to check if the cart item already exists in the cart and responds accordingly
     respond_to do |format|
-      if @cart_item.save
-        format.html { redirect_to root_url, notice: 'Successfully added the product to the cart.' } #redirects to cart item within the cart
-        format.json { render json: @cart_item, status: :created, location: @cart_item }
-        format.js { render :partial => 'carts/update_cart', :formats => [:js] }
+      if sku.stock >= @cart_item.quantity #checks to make sure the requested quantity is not more than the current DB stock
+        if @cart_item.save
+          format.js { render :partial => 'carts/update_cart', :formats => [:js] }
+        else
+          format.json { render json: @cart_item.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: "new" }
-        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
+        format.js { render :partial => 'carts/insufficient_stock', :formats => [:js], :object => @cart_item }
       end
     end
   end
@@ -22,14 +23,18 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
       respond_to do |format|
-        if @cart_item.update_attributes(params[:cart_item])
-          if @cart_item.quantity == 0 
-            @cart_item.destroy
+        if @cart_item.sku.stock >= params[:cart_item][:quantity].to_i #checks to make sure the requested quantity is not more than the current DB stock
+          if @cart_item.update_attributes(params[:cart_item])
+            if @cart_item.quantity == 0 
+              @cart_item.destroy
+            end
+            format.js { render :partial => 'carts/update_cart', :format => [:js] }
+            format.json { head :no_content }
+          else
+            format.json { render json: @category.errors, status: :unprocessable_entity }
           end
-          format.js { render :partial => 'carts/update_cart', :format => [:js] }
-          format.json { head :no_content }
         else
-          format.json { render json: @category.errors, status: :unprocessable_entity }
+          format.js { render :partial => 'carts/insufficient_stock', :formats => [:js], :object => @cart_item }
         end
       end
   end

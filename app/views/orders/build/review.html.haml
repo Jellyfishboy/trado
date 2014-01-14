@@ -63,7 +63,7 @@
                   - @cart.cart_items.each do |item|
                     %tr
                       %td.image
-                        = image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124
+                        = link_to (image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
                       %td.desc
                         = item.sku.product.name
                         = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
@@ -89,3 +89,4 @@
                 = link_to "CONTINUE", next_wizard_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container
+#insufficientStockNotice
