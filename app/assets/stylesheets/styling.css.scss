@@ -22,3 +22,17 @@ form {
         }
     }
 }
+.fade_to_grey {
+  overflow:hidden;
+  white-space:nowrap;
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      content: "";
+      @include background-image(linear-gradient(left,rgba(243,243,243,0),rgba(243,243,243,1)));
+    }
+}

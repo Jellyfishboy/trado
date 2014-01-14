@@ -166,11 +166,11 @@ jQuery(document).ready(function($) {
     //  = Nav Search = 
     //  ========== 
     $(document).on("focus", ".large-screen #navSearchInput", function() {
-        $(this).parent().parent().addClass("search-mode");
+        $(this).parent().parent().parent().addClass("search-mode");
         repositionLine();
     });
     $(document).on("blur", ".large-screen #navSearchInput", function() {
-        $(this).parent().parent().removeClass("search-mode");
+        $(this).parent().parent().parent().removeClass("search-mode");
         repositionLine();
     });
     var repositionLine = function() {
