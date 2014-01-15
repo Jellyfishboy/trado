@@ -15,11 +15,11 @@ class Order < ActiveRecord::Base
   	end
   end
 
-  # FIXME: Possible security risk
+  # FIXME: Looks really ugly and clumsy. Fix when internationalized tax is introduced.
   def calculate_order(cart, session)
     session[:sub_total] = session[:tax] = session[:total] = nil
     session[:sub_total] = cart.total_price
-    session[:tax] = session[:sub_total]*0.2
+    session[:tax] = (session[:sub_total]*0.2) + (shipping_cost*0.2)
     session[:total] = session[:sub_total]+session[:tax]+shipping_cost
   end
 
@@ -42,7 +42,7 @@ class Order < ActiveRecord::Base
                         :transaction_id => response.params['PaymentInfo']['TransactionID'], 
                         :transaction_type => response.params['PaymentInfo']['TransactionType'],
                         :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost,
-                        :status_reason => transaction_reason(response))
+                        :status_reason => response.params['PaymentInfo']['PendingReason'])
     # Update stock quantity
     self.order_items.each do |item|
       sku = Sku.find(item.sku_id)
@@ -50,15 +50,6 @@ class Order < ActiveRecord::Base
     end
     # Set order status to active
     self.update_column(:status, 'active')
-  end
-
-  # FIXME: Looks rather horrible, re factor when possible.
-  def transaction_reason(response)
-    if defined?(response.params['PaymentInfo']['PendingReason'])
-      @reason = response.params['PaymentInfo']['PendingReason']
-    else
-      @reason = ""
-    end
   end
 
   # Shipping methods
@@ -112,27 +103,15 @@ class Order < ActiveRecord::Base
   end
 
   def active_or_billing?
-    if status == 'billing' 
-      return true
-    else
-      active?
-    end
+    status == 'billing' ? true : active?
   end
 
   def active_or_shipping?
-    if status == 'shipping' 
-      return true
-    else
-      active?
-    end
+    status == 'shipping' ? true : active?
   end
 
   def active_or_payment?
-    if status == 'payment' 
-      return true
-    else
-      active?
-    end
+    status == 'payment' ? true : active?
   end
 
 end

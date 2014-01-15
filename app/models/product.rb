@@ -13,8 +13,6 @@ class Product < ActiveRecord::Base
   has_many :orders, :through => :skus
   has_many :carts, :through => :skus
   belongs_to :category
-  has_many :accessorisations, :dependent => :delete_all
-  has_many :accessories, :through => :accessorisations
   has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
   has_many :attachments, as: :attachable, :dependent => :delete_all

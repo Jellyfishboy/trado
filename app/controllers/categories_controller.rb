@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+    skip_before_filter :authenticate_user!
+    
     # GET /categories/1
     # GET /categories/1.json
     def show

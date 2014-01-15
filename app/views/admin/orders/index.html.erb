@@ -34,7 +34,7 @@
           <td><%= format_currency order.transaction.fee unless order.transaction.fee.nil? %></td>
           <td><%= format_currency order.transaction.gross_amount %></td>
           <td><%= order.updated_at.strftime('%d/%m/%Y at %I:%M%p') %></td>
-          <td><%= table_commands order, admin_order_path(order), edit_admin_order_path(order), admin_order_path(order), 2 %></td>
+          <td><%= table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2 %></td>
         </tr>
       <% end %>
     </tbody>

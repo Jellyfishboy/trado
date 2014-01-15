@@ -42,7 +42,7 @@
               - else 
                 %span.btn.btn-danger Out of Stock
         .product-description
-          %p= @product.description
+          %p=raw @product.description
           %hr/
           / ==========
           / = Add to cart form =
@@ -54,6 +54,8 @@
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
             = f.select :sku_id, options_for_select(@product.skus.sort.reverse.map { |sku| [sku_attribute_values(sku), sku.id ] } )
+            - unless @product.accessories.empty?
+              = select_tag :accessory, options_for_select(@product.accessories.map { |acc| [acc.name, acc.id] } )
             - if @stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
                 %i.icon-shopping-cart

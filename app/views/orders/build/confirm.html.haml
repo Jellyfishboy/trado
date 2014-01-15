@@ -86,22 +86,22 @@
                 %tr
                   %td{colspan: "2"}
                   \ 
-                  %td.stronger VAT (exc. shipping):
+                  %td.stronger VAT:
                   %td.stronger
-                    .align-right= format_currency session["tax"]
+                    .align-right= format_currency session[:tax]
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
                   %td.stronger Subtotal:
                   %td.stronger
-                    .align-right= format_currency session["sub_total"]
+                    .align-right= format_currency session[:sub_total]
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                     .alert.alert-info
                       The total amount will be debited from the PayPal account detailed above.
                   %td.stronger Total:
                   %td.stronger
-                    .size-16.align-right.total_price= format_currency session["total"]
+                    .size-16.align-right.total_price= format_currency session[:total]
             %p.right-align  
               = link_to 'CONFIRM & PAY', purchase_order_build_path, :class => 'btn btn-primary higher bold confirm_order'
     / /main content

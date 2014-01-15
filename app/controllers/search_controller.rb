@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
 
+    skip_before_filter :authenticate_user!
+    
     def results
         @products_solr = Product.search do
                             fulltext params[:query]

@@ -1,11 +1,14 @@
 class CartItemsController < ApplicationController
 
+  skip_before_filter :authenticate_user!
+
   # POST /cart_items
   # POST /cart_items.json
   def create
-   # @cart_item = CartItem.new(params[:cart_item])
     @cart = current_cart #references the current cart which was defined in application controller
     sku = Sku.find(params[:cart_item][:sku_id])
+    # params[:accessory_id].any? ? params[:accessory_id] : nil
+    # @cart_accessory_item = @cart.add_accessory_cart_item
     @cart_item = @cart.add_cart_item(sku.weight, sku.price, sku.id, params[:cart_item][:quantity]) #uses add_cart_item method in cart.rb to check if the cart item already exists in the cart and responds accordingly
     respond_to do |format|
       if sku.stock >= @cart_item.quantity #checks to make sure the requested quantity is not more than the current DB stock

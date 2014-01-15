@@ -49,6 +49,15 @@ $(document).ready ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
 
+  # Display shipping value with tax
+  $('.calculate_shipping_tax').bind "input", ->
+    val = Number(@value)
+    sum = val + (val*0.2)
+    sum = 0 if isNaN(sum)
+    unless $('.shipping_gross').length > 0
+      $(@).after '<div class="shipping_gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
+    else
+      $('.shipping_gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
 
 $(document).ajaxComplete ->
   $("[data-behaviour~=datepicker]").datepicker

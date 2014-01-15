@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   include Wicked::Wizard
 
+  skip_before_filter :authenticate_user!
+
   steps :review, :billing, :shipping, :payment, :confirm
   # GET /orders/new
   # GET /orders/new.json

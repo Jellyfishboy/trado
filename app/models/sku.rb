@@ -1,12 +1,14 @@
 class Sku < ActiveRecord::Base
-  attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, :weight, :thickness, :product_id, :attribute_value, :attribute_type_id
+  attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id, :sku
   validates :price, :cost_value, :stock, :length, :weight, :thickness, :stock_warning_level, :attribute_value, :attribute_type_id, :presence => true
   validates :price, :cost_value, :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness, :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validate :check_stock_values, :on => :create
+  validates :sku, :uniqueness => true
   validates :attribute_value, :uniqueness => { :scope => :product_id }
   belongs_to :product
+  belongs_to :accessory
   belongs_to :attribute_type
   has_many :cart_items, :dependent => :restrict
   has_many :carts, :through => :cart_items

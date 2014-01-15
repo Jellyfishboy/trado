@@ -12,6 +12,7 @@
     %thead
       %tr
         %th Part no.
+        %th SKU
         %th Name
         %th Weight (kg)
         %th Price
@@ -20,6 +21,7 @@
       - @accessories.each do |accessory|
         %tr
           %td= accessory.part_number
+          %td= accessory.sku
           %td= accessory.name
           %td= accessory.weight
           %td= format_currency accessory.price
