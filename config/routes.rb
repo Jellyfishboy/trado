@@ -35,6 +35,7 @@ Trado::Application.routes.draw do
   resources :users
   resources :cart_items, :only => [:create,:update,:destroy]
   resources :notifications, :only => :create
+  resources :addresses, :only => [:new, :create, :update]
 
   namespace :admin do
       root :to => "admin#dashboard"

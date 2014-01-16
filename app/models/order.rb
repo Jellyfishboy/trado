@@ -34,12 +34,15 @@ class Order < ActiveRecord::Base
   has_many :order_items,        :dependent => :delete_all
   has_one :transaction,         :dependent => :destroy
   belongs_to :shipping
-  belongs_to :invoice
+  belongs_to :ship_address,     class_name: 'Address'
+  belongs_to :bill_address,     class_name: 'Address'
 
-  validates :billing_first_name, :billing_last_name, :billing_address, :billing_city, :billing_postcode, :billing_country,                        :presence => { :message => 'is required.' }, :if => :active_or_billing?
-  validates :email, :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city, :shipping_postcode, :shipping_country,          :presence => { :message => 'is required' }, :if => :active_or_shipping?
-  validates :shipping_id,                                                                                                                         :presence => { :message => 'option is required'}, :if => :active_or_shipping?
-  validates :email,                                                                                                                               :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
+
+  validates :email,             :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
+  validates :shipping_id,       :presence => { :message => 'option is required'}, :if => :active_or_shipping?                                                                                                                  
+
+  accepts_nested_attributes_for :ship_address
+  accepts_nested_attributes_for :bill_address
 
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
@@ -53,8 +56,8 @@ class Order < ActiveRecord::Base
   def calculate_order(cart, session)
     session[:sub_total] = session[:tax] = session[:total] = nil
     session[:sub_total] = cart.total_price
-    session[:tax] = (session[:sub_total]*0.2) + (shipping_cost*0.2)
-    session[:total] = session[:sub_total]+session[:tax]+shipping_cost
+    session[:tax] = (session[:sub_total]*0.2) + (shipping.price*0.2)
+    session[:total] = session[:sub_total]+session[:tax]+shipping.price
   end
 
   # assign paypal token to order after user logs into their account
@@ -119,14 +122,6 @@ class Order < ActiveRecord::Base
       tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
       tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
       return tier_raffle.max.first
-  end
-
-  def update_shipping_information
-    unless self.shipping_country.blank?
-      # FIXME: Currently causing 3 db calls in order to trigger the AJAX shipping selection and store the correct country. Needs to be revised.
-      country = Country.find(self.shipping_country)
-      self.update_column(:shipping_country, country.name)
-    end
   end
 
   def delayed_shipping

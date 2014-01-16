@@ -12,7 +12,22 @@ class Orders::BuildController < ApplicationController
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       case step
+      when :billing
+        # If billing address exists, load the current record and populate the fields
+        if @order.bill_address_id
+          @billing_address = Address.find(@order.bill_address_id)
+        else
+          # Else create a new record
+          @billing_address = Address.new
+        end
+      end
+      case step
       when :shipping
+        if @order.ship_address_id
+          @shipping_address = Address.find(@order.ship_address_id)
+        else
+          @shipping_address = Address.new
+        end
         @calculated_tier = @order.calculate_shipping_tier(current_cart)
       end
       case step 
@@ -34,10 +49,18 @@ class Orders::BuildController < ApplicationController
     params[:order][:status] = step.to_s # sets current state of form for the correct validation to trigger, i.e. the steps labeled above
     params[:order][:status] = 'active' if step == steps.last # sets the status as active on the last step so all validation is triggered
     @order.update_attributes(params[:order])
+    case step 
+    when :billing
+      # Update billing attributes
+      @billing_address.update_attributes(params[:billing_address])
+      # Add billing ID to order record
+      @order.update_column(:bill_address_id, @billing_address.id)
+    end
     case step
     when :shipping
       @calculated_tier = @order.calculate_shipping_tier(current_cart)
-      @order.update_shipping_information
+      @shipping_address.update_attributes(params[:shipping_address])
+      @order.update_column(:ship_address_id, @shipping_address.id)
     end
     render_wizard @order
   end

@@ -47,72 +47,73 @@
             / ==========
             / = Shipping addr form =
             / ==========
-            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
-              .control-group
-                = f.label :billing_first_name, :class => 'control-label' do
-                  First name
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :billing_first_name, :class => 'span4', :id => 'billing_first_name'
-                  = errors_for @order, :billing_first_name
-              .control-group
-                = f.label :billing_last_name, :class => 'control-label' do
-                  Last name
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :billing_last_name, :class => 'span4', :id => 'billing_last_name'
-                  = errors_for @order, :billing_last_name
-              .control-group
-                = f.label :billing_telephone, :class => 'control-label' do
-                  Telephone
-                .controls
-                  = f.text_field :billing_telephone, :class => 'span4', :id => 'billing_telephone'
-              .control-group
-                = f.label :billing_company, :class => 'control-label' do
-                  Company
-                .controls
-                  = f.text_field :billing_company, :class => 'span4', :id => 'billing_company'
-              .control-group
-                = f.label :tax_number, :class => 'control-label' do
-                  Tax number
-                .controls
-                  = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
-              .control-group
-                = f.label :billing_address, :class => 'control-label' do
-                  Street address
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :billing_address, :class => 'span4', :id => 'billing_address'
-                  = errors_for @order, :billing_address
-              .control-group
-                = f.label :billing_city, :class => 'control-label' do
-                  City
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :billing_city, :class => 'span4', :id => 'billing_city'
-                  = errors_for @order, :billing_city
-              .control-group
-                = f.label :billing_postcode, :class => 'control-label' do
-                  Postcode
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :billing_postcode, :class => 'span4', :id => 'billing_postcode'
-                  = errors_for @order, :billing_postcode
-              .control-group
-                = f.label :billing_county, :class => 'control-label' do
-                  County
-                .controls
-                  = f.text_field :billing_county, :class => 'span4', :id => 'billing_county'
-              .control-group
-                = f.label :billing_country, :class => 'control-label' do
-                  Country
-                  %span.red-clr.bold *
-                .controls
-                  = f.select(:billing_country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @order.billing_country), { :include_blank => 'Please select...'})
-                  = errors_for @order, :billing_country
-              %hr/
-              %p.right-align
-                In the next step you will choose a shipping option 
-                = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
+            = @billing_address
+            = form_for @billing_address, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+            /   .control-group
+            /     = f.label :first_name, :class => 'control-label' do
+            /       First name
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.text_field :first_name, :class => 'span4', :id => 'billing_first_name'
+            /       = errors_for @billing_address, :first_name
+            /   .control-group
+            /     = f.label :last_name, :class => 'control-label' do
+            /       Last name
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.text_field :last_name, :class => 'span4', :id => 'billing_last_name'
+            /       = errors_for @billing_address, :last_name
+            /   .control-group
+            /     = f.label :telephone, :class => 'control-label' do
+            /       Telephone
+            /     .controls
+            /       = f.text_field :telephone, :class => 'span4', :id => 'billing_telephone'
+            /   .control-group
+            /     = f.label :company, :class => 'control-label' do
+            /       Company
+            /     .controls
+            /       = f.text_field :company, :class => 'span4', :id => 'billing_company'
+            /   .control-group
+            /     = f.label :tax_number, :class => 'control-label' do
+            /       Tax number
+            /     .controls
+            /       = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
+            /   .control-group
+            /     = f.label :address, :class => 'control-label' do
+            /       Street address
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.text_field :address, :class => 'span4', :id => 'billing_address'
+            /       = errors_for @billing_address, :address
+            /   .control-group
+            /     = f.label :city, :class => 'control-label' do
+            /       City
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.text_field :city, :class => 'span4', :id => 'billing_city'
+            /       = errors_for @billing_address, :city
+            /   .control-group
+            /     = f.label :postcode, :class => 'control-label' do
+            /       Postcode
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.text_field :postcode, :class => 'span4', :id => 'billing_postcode'
+            /       = errors_for @billing_address, :postcode
+            /   .control-group
+            /     = f.label :county, :class => 'control-label' do
+            /       County
+            /     .controls
+            /       = f.text_field :county, :class => 'span4', :id => 'billing_county'
+            /   .control-group
+            /     = f.label :country, :class => 'control-label' do
+            /       Country
+            /       %span.red-clr.bold *
+            /     .controls
+            /       = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @billing_address.country), { :include_blank => 'Please select...'})
+            /       = errors_for @billing_address, :country
+            /   %hr/
+            /   %p.right-align
+            /     In the next step you will choose a shipping option 
+            /     = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
     / /main content
 / /container

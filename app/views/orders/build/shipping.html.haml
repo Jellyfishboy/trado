@@ -47,78 +47,78 @@
             / ==========
             / = Shipping addr form =
             / ==========
-            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+            = form_for @shipping_address, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
               .control-group
-                = f.label :shipping_first_name, :class => 'control-label' do
+                = f.label :first_name, :class => 'control-label' do
                   First name
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :shipping_first_name, :class => 'span4', :id => 'shipping_first_name'
-                  = errors_for @order, :shipping_first_name
+                  = f.text_field :first_name, :class => 'span4', :id => 'shipping_first_name'
+                  = errors_for @shipping_address, :first_name
               .control-group
-                = f.label :shipping_last_name, :class => 'control-label' do
+                = f.label :last_name, :class => 'control-label' do
                   Last name
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :shipping_last_name, :class => 'span4', :id => 'shipping_last_name'
-                  = errors_for @order, :shipping_last_name
+                  = f.text_field :last_name, :class => 'span4', :id => 'shipping_last_name'
+                  = errors_for @shipping_address, :last_name
+              / .control-group
+              /   = f.label :email, :class => 'control-label' do
+              /     Email
+              /     %span.red-clr.bold *
+              /   .controls
+              /     = f.text_field :email, :class => 'span4', :id => 'email'
+              /     = errors_for @order, :email
               .control-group
-                = f.label :email, :class => 'control-label' do
-                  Email
-                  %span.red-clr.bold *
-                .controls
-                  = f.text_field :email, :class => 'span4', :id => 'email'
-                  = errors_for @order, :email
-              .control-group
-                = f.label :shipping_telephone, :class => 'control-label' do
+                = f.label :telephone, :class => 'control-label' do
                   Telephone
                 .controls
-                  = f.text_field :shipping_telephone, :class => 'span4', :id => 'shipping_telephone'
+                  = f.text_field :telephone, :class => 'span4', :id => 'shipping_telephone'
               .control-group
-                = f.label :shipping_company, :class => 'control-label' do
+                = f.label :company, :class => 'control-label' do
                   Company
                 .controls
-                  = f.text_field :shipping_company, :class => 'span4', :id => 'shipping_company'
+                  = f.text_field :company, :class => 'span4', :id => 'shipping_company'
               .control-group
-                = f.label :shipping_address, :class => 'control-label' do
+                = f.label :address, :class => 'control-label' do
                   Street address
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :shipping_address, :class => 'span4', :id => 'shipping_address'
-                  = errors_for @order, :shipping_address
+                  = f.text_field :address, :class => 'span4', :id => 'shipping_address'
+                  = errors_for @shipping_address, :address
               .control-group
-                = f.label :shipping_city, :class => 'control-label' do
+                = f.label :city, :class => 'control-label' do
                   City
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :shipping_city, :class => 'span4', :id => 'shipping_city'
-                  = errors_for @order, :shipping_city
+                  = f.text_field :city, :class => 'span4', :id => 'shipping_city'
+                  = errors_for @shipping_address, :city
               .control-group
-                = f.label :shipping_postcode, :class => 'control-label' do
+                = f.label :postcode, :class => 'control-label' do
                   Postcode
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :shipping_postcode, :class => 'span4', :id => 'shipping_postcode'
-                  = errors_for @order, :shipping_postcode
+                  = f.text_field :postcode, :class => 'span4', :id => 'shipping_postcode'
+                  = errors_for @shipping_address, :postcode
               .control-group
-                = f.label :shipping_county, :class => 'control-label' do
+                = f.label :county, :class => 'control-label' do
                   County
                 .controls
-                  = f.text_field :shipping_county, :class => 'span4', :id => 'shipping_county'
+                  = f.text_field :county, :class => 'span4', :id => 'shipping_county'
               .control-group
-                = f.label :shipping_country, :class => 'control-label' do
+                = f.label :country, :class => 'control-label' do
                   Country
                   %span.red-clr.bold *
                 .controls
-                  = f.select(:shipping_country, options_for_select(Country.all.map { |country| [country.name, country.id] }), { :include_blank => 'Please select...'})
-                  = errors_for @order, :shipping_country
-              .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
-                .control-group
-                  = f.label :shipping_id, :class => 'control-label' do
-                    Shipping options
-                    %span.red-clr.bold *
-                  .controls
-                    %p.shipping_notice Select a shipping country to view the available shipping options.
+                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.id] }), { :include_blank => 'Please select...'})
+                  = errors_for @shipping_address, :country
+              / .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
+              /   .control-group
+              /     = f.label :shipping_id, :class => 'control-label' do
+              /       Shipping options
+              /       %span.red-clr.bold *
+              /     .controls
+              /       %p.shipping_notice Select a shipping country to view the available shipping options.
               %hr/
               %p.right-align
                 In the next step you will choose a payment method
