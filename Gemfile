@@ -55,6 +55,11 @@ platforms :ruby do
   gem 'unicorn'
 end
 
+# Logging/Monitoring
+gem 'lograge'
+gem 'rollbar'
+gem 'newrelic_rpm'
+
 # Datepicker
 gem 'bootstrap-datepicker-rails'
 
@@ -80,9 +85,6 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
 gem 'unf' # Dependency for fog
-
-# Monitoring
-gem 'newrelic_rpm'
 
 # Search indexing
 gem 'sunspot_rails'

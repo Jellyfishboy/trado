@@ -24,6 +24,9 @@ Trado::Application.configure do
 
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' 
 
+  # Logs more concise errors
+  config.lograge.enabled = true
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

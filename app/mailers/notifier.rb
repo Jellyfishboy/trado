@@ -18,13 +18,6 @@ class Notifier < ActionMailer::Base
 
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order update"
   end
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier.order_shipped.subject
-  #
-
   def delayed_shipping(order)
     @order = order
 
@@ -58,4 +51,5 @@ class Notifier < ActionMailer::Base
     @sku = sku
     mail :to => email, :subject => "#{sku.product.name} is now in stock!"
   end
+
 end

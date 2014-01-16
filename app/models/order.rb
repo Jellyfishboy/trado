@@ -1,12 +1,46 @@
+# Order Documentation
+#
+# The order table handles all the data associated to a current, completed or failed order. 
+# It is updated throughout the order process and discarded if the order is not completed within 2 days. 
+# Each order has an associated transaction which contains more information on the payment process. 
+
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                       :integer          not null, primary key
+#  ip_address               :string(255)      
+#  email                    :string(255)     
+#  state                    :string(255)          
+#  user_id                  :integer     
+#  bill_address_id          :integer     
+#  ship_address_id          :integer     
+#  tax_number               :integer 
+#  shipping_id              :integer        
+#  shipping_status          :string(255)      default("Pending")   
+#  shipping_date            :datetime 
+#  actual_shipping_cost     :decimal          precision(8), scale(2) 
+#  express_token            :string(255) 
+#  express_payer_id         :string(255) 
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#
+
 class Order < ActiveRecord::Base
-  attr_accessible :billing_first_name, :billing_last_name, :billing_company, :billing_address, :billing_city, :billing_county, :billing_postcode, :billing_country, :billing_telephone, :shipping_first_name, :shipping_last_name, :shipping_company, :shipping_address, :shipping_city, :shipping_county, :shipping_postcode, :shipping_country, :shipping_telephone, :tax_number, :shipping_cost, :shipping_status, :shipping_date, :invoice_id, :actual_shipping_cost, :shipping_name, :email, :shipping_id, :status
-  validates :billing_first_name, :billing_last_name, :billing_address, :billing_city, :billing_postcode, :billing_country, :presence => { :message => 'is required.' }, :if => :active_or_billing?
-  validates :email, :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city, :shipping_postcode, :shipping_country, :presence => { :message => 'is required' }, :if => :active_or_shipping?
-  validates :shipping_id, :presence => { :message => 'option is required'}, :if => :active_or_shipping?
-  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  has_many :order_items, :dependent => :delete_all
-  has_one :transaction, :dependent => :destroy
+
+  attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
+  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id
+  
+  has_many :order_items,        :dependent => :delete_all
+  has_one :transaction,         :dependent => :destroy
+  belongs_to :shipping
   belongs_to :invoice
+
+  validates :billing_first_name, :billing_last_name, :billing_address, :billing_city, :billing_postcode, :billing_country,                        :presence => { :message => 'is required.' }, :if => :active_or_billing?
+  validates :email, :shipping_first_name, :shipping_last_name, :shipping_address, :shipping_city, :shipping_postcode, :shipping_country,          :presence => { :message => 'is required' }, :if => :active_or_shipping?
+  validates :shipping_id,                                                                                                                         :presence => { :message => 'option is required'}, :if => :active_or_shipping?
+  validates :email,                                                                                                                               :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
+
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
   def add_cart_items_from_cart(cart)
@@ -31,7 +65,7 @@ class Order < ActiveRecord::Base
     session[:paypal_email] = details.params["payer"]
   end
 
-  def finish_order(response)
+  def successful_order(response)
     # Create transaction
     Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                         :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
@@ -50,6 +84,27 @@ class Order < ActiveRecord::Base
     end
     # Set order status to active
     self.update_column(:status, 'active')
+  rescue Exception => e
+      Rollbar.report_exception(e)
+      redirect_to root_url, flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
+  end
+
+
+  def failed_order(response)
+    Transaction.create( :fee => 0, 
+                        :gross_amount => session[:total], 
+                        :order_id => self.id, 
+                        :payment_status => 'Failed', 
+                        :payment_type => '', 
+                        :tax_amount => session[:tax], 
+                        :transaction_id => '', 
+                        :transaction_type => '',
+                        :net_amount => session[:sub_total],
+                        :status_reason => response.message ? response.message : response.params['PaymentInfo']['PendingReason'])
+    self.update_column(:status, 'active')
+  rescue Exception => e
+      Rollbar.report_exception(e)
+      redirect_to root_url, flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
   end
 
   # Shipping methods
@@ -71,9 +126,6 @@ class Order < ActiveRecord::Base
       # FIXME: Currently causing 3 db calls in order to trigger the AJAX shipping selection and store the correct country. Needs to be revised.
       country = Country.find(self.shipping_country)
       self.update_column(:shipping_country, country.name)
-      shipping = Shipping.find(self.shipping_id)
-      self.update_column(:shipping_cost, shipping.price)
-      self.update_column(:shipping_name, shipping.name)
     end
   end
 

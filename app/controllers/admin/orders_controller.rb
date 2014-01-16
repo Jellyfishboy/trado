@@ -17,9 +17,8 @@ class Admin::OrdersController < ApplicationController
   def show
     begin
       @order = Order.find(params[:id])
-    rescue
-      @logged_error = "Attempts to access invalid order #{params[:id]}"
-      Notifier.application_error(@logged_error, 'Order').deliver
+    rescue Exception => e
+      Rollbar.report_exception(e)
       redirect_to store_url, :notice => 'Invalid order'
     else
       respond_to do |format|

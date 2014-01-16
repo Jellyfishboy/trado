@@ -167,6 +167,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    lograge (0.2.2)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -279,6 +283,8 @@ GEM
       redis (~> 3.0.4)
     remotipart (1.2.1)
     require_all (1.3.2)
+    rollbar (0.9.14)
+      multi_json (~> 1.5)
     rsolr (1.0.9)
       builder (>= 2.1.2)
     ruby-hmac (0.4.0)
@@ -388,6 +394,7 @@ DEPENDENCIES
   haml
   haml-rails
   jquery-rails
+  lograge
   meta_request
   mini_magick
   mysql2
@@ -399,6 +406,7 @@ DEPENDENCIES
   rails_admin
   rails_best_practices
   redactor-rails
+  rollbar
   sass-rails (~> 3.2.3)
   shoulda-matchers
   sidekiq

@@ -51,6 +51,9 @@ Trado::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Logs more concise errors
+  config.lograge.enabled = true
+
   # PayPal settings
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test

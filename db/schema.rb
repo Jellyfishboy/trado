@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115223308) do
+ActiveRecord::Schema.define(:version => 20140116172658) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -117,45 +117,21 @@ ActiveRecord::Schema.define(:version => 20140115223308) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "billing_first_name"
-    t.string   "billing_last_name"
-    t.string   "billing_company"
-    t.string   "billing_address"
-    t.string   "billing_city"
-    t.string   "billing_county"
-    t.string   "billing_postcode"
-    t.string   "billing_country"
-    t.string   "billing_telephone"
-    t.string   "shipping_address"
-    t.string   "shipping_city"
-    t.string   "shipping_county"
-    t.string   "shipping_postcode"
-    t.string   "shipping_country"
-    t.string   "shipping_telephone"
     t.string   "email"
     t.integer  "tax_number"
-    t.decimal  "shipping_cost",        :precision => 8, :scale => 2
     t.string   "shipping_status",                                    :default => "Pending"
     t.datetime "shipping_date"
     t.datetime "created_at",                                                                :null => false
     t.datetime "updated_at",                                                                :null => false
-    t.integer  "invoice_id"
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
-    t.string   "shipping_name"
-    t.string   "shipping_first_name"
-    t.string   "shipping_last_name"
-    t.string   "shipping_company"
     t.string   "status"
     t.string   "express_token"
     t.string   "express_payer_id"
     t.integer  "shipping_id"
-  end
-
-  create_table "pay_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.text     "description"
+    t.string   "ip_address"
+    t.integer  "user_id"
+    t.integer  "bill_address_id"
+    t.integer  "ship_address_id"
   end
 
   create_table "products", :force => true do |t|
@@ -216,9 +192,10 @@ ActiveRecord::Schema.define(:version => 20140115223308) do
   create_table "shippings", :force => true do |t|
     t.string   "name"
     t.decimal  "price",       :precision => 8, :scale => 2
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.text     "description"
+    t.boolean  "active",                                    :default => true
   end
 
   create_table "skus", :force => true do |t|

@@ -58,14 +58,15 @@ class Orders::BuildController < ApplicationController
       redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
-      if response.success?
+      if response.params['payment_status'] == 'Completed'
         @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        @order.successful_order(response)
         Notifier.order_received(@order).deliver
-        @order.finish_order(response)
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else
+        @order.failed_order(response)
         redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :correlation_id => response.params['correlation_id'])
       end
     end

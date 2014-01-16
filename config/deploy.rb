@@ -38,6 +38,14 @@ namespace :configure do
     task :asset_sync, :roles => :app do
         run "yes | cp /var/www/configs/asset_sync.rb /var/www/gimsonrobotics/current/config/initializers"
     end
+    desc "Notify Rollbar of deployment"
+    task :notify_rollbar, :roles => :app do
+      set :revision, `git log -n 1 --pretty=format:"%H"`
+      set :local_user, `whoami`
+      set :rollbar_token, ENV['ROLLBAR_ACCESS_TOKEN']
+      rails_env = fetch(:rails_env, 'production')
+      run "curl https://api.rollbar.com/api/1/deploy/ -F access_token=#{rollbar_token} -F environment=#{rails_env} -F revision=#{revision} -F local_username=#{local_user} >/dev/null 2>&1", :once => true
+    end
 end
 namespace :assets do
     desc "Compile assets"
@@ -59,4 +67,5 @@ after 'configure:carrierwave', 'configure:asset_sync'
 after 'configure:asset_sync', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
-after 'assets:refresh_sitemaps', 'unicorn:restart' 
+after 'assets:refresh_sitemaps', 'configure:notify_rollbar'
+after 'configure:notify_rollbar', 'unicorn:restart' 
