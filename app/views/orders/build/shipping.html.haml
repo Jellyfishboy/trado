@@ -16,7 +16,7 @@
                 .span6.offset2
                   .center-align
                     %h1
-                      %span.light Billing
+                      %span.light Shipping
                       address
                 .span2
                   .right-align
@@ -62,13 +62,14 @@
                 .controls
                   = f.text_field :last_name, :class => 'span4', :id => 'shipping_last_name'
                   = errors_for @shipping_address, :last_name
-              / .control-group
-              /   = f.label :email, :class => 'control-label' do
-              /     Email
-              /     %span.red-clr.bold *
-              /   .controls
-              /     = f.text_field :email, :class => 'span4', :id => 'email'
-              /     = errors_for @order, :email
+              = fields_for @order do |ff|
+                .control-group
+                  = ff.label :email, :class => 'control-label' do
+                    Email
+                    %span.red-clr.bold *
+                  .controls
+                    = ff.text_field :email, :class => 'span4', :id => 'email'
+                    = errors_for @order, :email
               .control-group
                 = f.label :telephone, :class => 'control-label' do
                   Telephone

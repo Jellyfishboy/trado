@@ -38,11 +38,9 @@ class Order < ActiveRecord::Base
   belongs_to :bill_address,     class_name: 'Address'
 
 
+  validates :tax_number,        :presence => true
   validates :email,             :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   validates :shipping_id,       :presence => { :message => 'option is required'}, :if => :active_or_shipping?                                                                                                                  
-
-  accepts_nested_attributes_for :ship_address
-  accepts_nested_attributes_for :bill_address
 
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 

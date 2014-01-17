@@ -26,6 +26,7 @@ class Orders::BuildController < ApplicationController
         if @order.ship_address_id
           @shipping_address = Address.find(@order.ship_address_id)
         else
+          # Else create a new record
           @shipping_address = Address.new
         end
         @calculated_tier = @order.calculate_shipping_tier(current_cart)
@@ -46,23 +47,55 @@ class Orders::BuildController < ApplicationController
 
   def update 
     @order = Order.find(params[:order_id])
-    params[:order][:status] = step.to_s # sets current state of form for the correct validation to trigger, i.e. the steps labeled above
-    params[:order][:status] = 'active' if step == steps.last # sets the status as active on the last step so all validation is triggered
-    @order.update_attributes(params[:order])
+    # Sets current state of the order
+    if step == steps.last
+      @order.update_column(:status, 'active')
+    else
+      @order.update_column(:status, step.to_s)
+    end
     case step 
     when :billing
+      if @order.bill_address_id
+        @billing_address = Address.find(@order.bill_address_id)
+      else
+        @billing_address = Address.new(:addressable_id => @order.id, :addressable_type => 'Order')
+      end
       # Update billing attributes
-      @billing_address.update_attributes(params[:billing_address])
-      # Add billing ID to order record
-      @order.update_column(:bill_address_id, @billing_address.id)
+      if @billing_address.update_attributes(params[:address])
+        # Add billing ID to order record
+        @order.update_column(:bill_address_id, @billing_address.id) unless @order.bill_address_id
+        # Update order attributes in the form
+        unless @order.update_attributes(params[:order])
+          # if unsuccessful re-render the form with order errors
+          render_wizard @order
+        else
+          # else continue to the next stage
+          render_wizard @billing_address
+        end
+      end  
     end
     case step
     when :shipping
       @calculated_tier = @order.calculate_shipping_tier(current_cart)
-      @shipping_address.update_attributes(params[:shipping_address])
-      @order.update_column(:ship_address_id, @shipping_address.id)
+      if @order.ship_address_id
+        @shipping_address = Address.find(@order.ship_address_id)
+      else
+        @shipping_address = Address.new(:addressable_id => @order.id, :addressable_type => 'Order')
+      end
+      # Update billing attributes
+      if @shipping_address.update_attributes(params[:address])
+        # Add billing ID to order record
+        @order.update_column(:ship_address_id, @shipping_address.id) unless @order.ship_address_id
+        # Update order attributes in the form
+        unless @order.update_attributes(params[:order])
+          # if unsuccessful re-render the form with order errors
+          render_wizard @order
+        else
+          # else continue to the next stage
+          render_wizard @shipping_address
+        end
+      end
     end
-    render_wizard @order
   end
 
   def express

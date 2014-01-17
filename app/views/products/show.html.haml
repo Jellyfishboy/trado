@@ -35,9 +35,9 @@
           %h1.name
             %span.light= @product.name
           .meta
-            %span.tag.price= format_currency @product.skus.sort.reverse.first.price
+            %span.tag.price= format_currency @skus.first.price
             %span.stock
-              - if @stock > 0
+              - if @skus.first.stock > 0
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
@@ -53,10 +53,10 @@
               %span.clickable.add-one.icon-plus-sign-alt
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
-            = f.select :sku_id, options_for_select(@product.skus.sort.reverse.map { |sku| [sku_attribute_values(sku), sku.id ] } )
+            = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku), sku.id ] } )
             / - unless @product.accessories.empty?
             /   = select_tag :accessory, options_for_select(@product.accessories.map { |acc| [acc.name, acc.id] } )
-            - if @stock > 0
+            - if @skus.first.stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
                 %i.icon-shopping-cart
                 \  Add To Cart
@@ -163,6 +163,6 @@
                 %p.desc= truncate product.description, :length => 100
           / /product
 #notify_me_form
-  - unless @stock > 0
-    = render :partial => 'products/notify_me', :locals => { :sku => @sku, :notification => @notification }
+  - unless @skus.first.stock > 0
+    = render :partial => 'products/notify_me', :locals => { :sku => @skus.first, :notification => @notification }
 #insufficientStockNotice

@@ -8,8 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
     @notification = Notification.new
-    @sku = Sku.find(@product.skus.sort.reverse.first.id)
-    @stock = @product.skus.sort.reverse.first.stock
+    @skus = @product.skus.order('attribute_value asc')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
