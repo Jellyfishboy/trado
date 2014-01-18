@@ -11,7 +11,9 @@ FactoryGirl.define do
         postcode { Faker::Address.zip_code }
         country { Faker::Address.country }
         telephone { Faker::PhoneNumber.phone_number }
-        sequence(:addressable_id) { |n| n }
-        addressable_type 'Order'
+
+        factory :order_address do
+            association :addressable, :factory => :order
+        end
     end
 end

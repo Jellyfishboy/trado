@@ -1,6 +1,6 @@
 FactoryGirl.define do 
     factory :accessory do
-        name "Accessory #1"
+        name { Faker::Lorem.word }
         sequence(:part_number) { |n| n }
     end
 end
