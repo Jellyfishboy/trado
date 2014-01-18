@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
     # attr_accessible :title, :body
     has_and_belongs_to_many :roles
-    has_many :notifications, as: :notifiable,       :dependent => :delete_all
+    has_many :notifications,                                as: :notifiable, :dependent => :delete_all
 
     def role?(role)
         return !!self.roles.find_by_name(role.to_s.camelize)

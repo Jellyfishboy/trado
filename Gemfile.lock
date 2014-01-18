@@ -114,6 +114,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -287,6 +288,17 @@ GEM
       multi_json (~> 1.5)
     rsolr (1.0.9)
       builder (>= 2.1.2)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.4)
+    rspec-rails (2.14.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
     ruby-progressbar (1.4.0)
     safe_yaml (0.9.7)
@@ -407,6 +419,7 @@ DEPENDENCIES
   rails_best_practices
   redactor-rails
   rollbar
+  rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
   sidekiq

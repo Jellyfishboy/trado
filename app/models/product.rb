@@ -33,11 +33,11 @@ class Product < ActiveRecord::Base
   validates :skus,                                            :tier => true, :on => :save
 
   has_many :skus,                                             :dependent => :delete_all
-  has_many :orders, :through => :skus
-  has_many :carts, :through => :skus
+  has_many :orders,                                           :through => :skus
+  has_many :carts,                                            :through => :skus
   has_many :taggings,                                         :dependent => :delete_all
-  has_many :tags, :through => :taggings
-  has_many :attachments, as: :attachable,                     :dependent => :delete_all
+  has_many :tags,                                             :through => :taggings
+  has_many :attachments,                                      as: :attachable, :dependent => :delete_all
   belongs_to :category
 
   accepts_nested_attributes_for :attachments
