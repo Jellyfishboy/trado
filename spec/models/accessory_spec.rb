@@ -2,12 +2,35 @@ require 'spec_helper'
 
 describe Accessory do
 
-    it "is valid with a name and part number"
-    it "it is invalid without a name"
-    it "it is invalid without a part number"
-    it "is invalid with a non unique name"
-    it "is invalid with a non unique part number"
-    it "is invalid with a non integer part number"
-    it "is invalid with a part number less than one"
+    # Validations
+    it "is valid with a name and part number" do
+        expect(build(:accessory)).to be_valid
+    end
+    it "it is invalid without a name" do
+        accessory = build(:accessory, name: nil)
+        expect(accessory).to have(1).errors_on(:name)
+    end
+    it "it is invalid without a part number" do
+        accessory = build(:accessory, part_number: nil)
+        expect(accessory).to have(2).errors_on(:part_number)
+    end
+    it "is invalid with a non integer part number" do
+        accessory = build(:accessory, part_number: "string")
+        expect(accessory).to have(1).errors_on(:part_number)
+    end
+    it "is invalid with a part number less than one" do
+        accessory = build(:accessory, part_number: 0)
+        expect(accessory).to have(1).errors_on(:part_number)
+    end
+    it "is invalid with a non unique name" do
+        create(:accessory)
+        accessory = build(:accessory)
+        expect(accessory).to have(1).errors_on(:name)
+    end
+    it "is invalid with a non unique part number" do
+        create(:accessory, part_number: 123)
+        accessory = build(:accessory, part_number: 123)
+        expect(accessory).to have(1).errors_on(:part_number)
+    end
 
 end
