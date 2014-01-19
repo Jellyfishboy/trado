@@ -4,7 +4,7 @@ FactoryGirl.define do
         sequence(:quantity) { |n| n }
         sequence(:weight) { |n| n }
 
-        association :cart
         association :sku
+        association :cart
     end
 end

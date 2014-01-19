@@ -14,7 +14,7 @@ describe Accessory do
         accessory = build(:accessory, part_number: nil)
         expect(accessory).to have(2).errors_on(:part_number)
     end
-    it "is valid with an integer part nunber" do
+    it "is valid with an integer part number" do
         accessory = build(:accessory)
         expect(accessory.part_number).to be_kind_of(Integer)
         expect(accessory).to be_valid

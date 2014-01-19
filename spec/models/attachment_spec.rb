@@ -23,17 +23,5 @@ describe Attachment do
         expect(attachment.description).to have(4).characters
         expect(attachment).to have(1).errors_on(:description)
     end
-    it "is valid with JPG type for the file URL" do
-        expect(build(:attachment)).to be_valid
-    end
-    it "is valid with PNG type for the file URL" do
-        expect(build(:png_image)).to be_valid
-    end
-    it "is valid with GIF type for the file URL" do
-        expect(build(:gif_image)).to be_valid
-    end
-    it "is invalid with the wrong file type for the file URL" do
-        expect(build(:pdf)).to have(1).errors_on(:file)
-    end
 
 end

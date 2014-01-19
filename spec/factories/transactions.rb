@@ -9,5 +9,7 @@ FactoryGirl.define do
         transaction_type { Faker::Lorem.word }
         net_amount { |n| n }
         status_reason 'none'
+
+        association :order
     end
 end

@@ -9,5 +9,9 @@ FactoryGirl.define do
         weight { |n| n }
         thickness { |n| n }
         atttribute_value { Faker::Lorem.word }
+
+        association :attribute_type
+        association :product
+        association :accessory
     end
 end

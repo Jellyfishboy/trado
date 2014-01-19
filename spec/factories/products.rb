@@ -7,5 +7,7 @@ FactoryGirl.define do
         sku { Faker::Lorem.characters(5) }
         sequence(:part_number) { |n| n }
         featured false
+
+        association :category
     end
 end
