@@ -51,9 +51,8 @@ describe Product do
         expect(product).to have(1).errors_on(:name)
     end
     it "is valid with an integer part nunber and weighting" do
-        product = build(:product)
-        expect(product.part_number).to be_kind_of(Integer)
-        expect(product.weighting).to be_kind_of(Integer)
+        expect(build(:product).part_number).to be_kind_of(Integer)
+        expect(build(:product).weighting).to be_kind_of(Integer)
         expect(build(:product)).to be_valid
     end
     it "is invalid with a non integer part number" do
@@ -77,10 +76,9 @@ describe Product do
         expect(product).to have(1).errors_on(:weighting)
     end
     it "is valid with 10 or more characters in the name and meta description" do
-        product = build(:product)
-        expect(product.name).to have(10).characters
-        expect(product.meta_description).to have(10).characters
-        expect(product).to be_valid
+        expect(build(:product).name).to have(10).characters
+        expect(build(:product).meta_description).to have(10).characters
+        expect(build(:product)).to be_valid
     end
     it "is invalid with less than 10 characters in the name" do
         product = build(:product, name: 'Telephone')
@@ -88,9 +86,8 @@ describe Product do
         expect(product).to have(1).errors_on(:name)
     end
     it "is valid with 20 or more characters in the description" do
-        product = build(:product)
-        expect(product.description).to have(20).characters
-        expect(product).to be_valid
+        expect(build(:product).description).to have(20).characters
+        expect(build(:product)).to be_valid
     end
     it "is invalid with less than 20 characters in the description" do
         product = build(:product, description: 'Product information')
