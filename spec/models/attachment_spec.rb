@@ -15,10 +15,12 @@ describe Attachment do
         expect(attachment).to have(2).errors_on(:description)
     end
     it "is valid with 5 or more characters in the description" do
+        expect(build(:attachment).description).to have(5).characters
         expect(build(:attachment)).to be_valid
     end
     it "is invalid with less than 5 characters in the description" do
         attachment = build(:attachment, description: 'hehe')
+        expect(attachment.description).to have(4).characters
         expect(attachment).to have(1).errors_on(:description)
     end
     it "is valid with JPG type for the file URL" do

@@ -15,7 +15,9 @@ describe Accessory do
         expect(accessory).to have(2).errors_on(:part_number)
     end
     it "is valid with an integer part nunber" do
-        expect(build(:accessory)).to be_valid
+        accessory = build(:accessory)
+        expect(accessory.part_number).to be_kind_of(Integer)
+        expect(accessory).to be_valid
     end
     it "is invalid with a non integer part number" do
         accessory = build(:accessory, part_number: 'string')
@@ -29,20 +31,15 @@ describe Accessory do
         accessory = build(:accessory, part_number: 0)
         expect(accessory).to have(1).errors_on(:part_number)
     end
-    it "is valid with a unique name" do
-        create(:accessory, name: 'accessory1')
-        accessory = build(:accessory, name: 'accessory2')
+    it "is valid with a unique name and part number" do
+        create(:accessory, name: 'accessory1', part_number: 123)
+        accessory = build(:accessory, name: 'accessory2', part_number: 124)
         expect(accessory).to be_valid
     end
-    it "is invalid with a non unique name" do
+    it "is invalid without a unique name" do
         create(:accessory, name: 'accessory1')
         accessory = build(:accessory, name: 'accessory1')
         expect(accessory).to have(1).errors_on(:name)
-    end
-    it "is valid with a unique part number" do
-        create(:accessory, part_number: 123)
-        accessory = build(:accessory, name: 124)
-        expect(accessory).to be_valid
     end
     it "is invalid without a unique part number" do
         create(:accessory, part_number: 123)
