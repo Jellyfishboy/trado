@@ -31,4 +31,14 @@ class Shipping < ActiveRecord::Base
   validates :description,                               :length => { :maximum => 100, :message => :too_long }
   validates :price,                                     :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
 
+
+  def inactivate!
+      self.active = false
+      save!
+  end
+
+  def self.active
+    where(['shippings.active = ?', true])
+  end
+
 end

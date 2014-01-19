@@ -35,7 +35,7 @@
             = tier.thickness_end
           %td
             %ul 
-              - tier.shippings.each do |shipping|
+              - tier.shippings.active.each do |shipping|
                 %li
                   = shipping.name
                   = ' - '

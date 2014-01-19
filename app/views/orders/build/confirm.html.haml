@@ -77,24 +77,24 @@
                     %td.price= format_currency item.price
                 %tr
                   %td.image
-                    = image_tag "delivery.png", :alt => @order.shipping_name
+                    = image_tag "delivery.png", :alt => @order.shipping.name
                   %td.desc
-                    = @order.shipping_name
-                    %div= @order.shipping_country
+                    = @order.shipping.name
+                    %div= @order.ship_address.country
                   %td.qty 1
-                  %td.price= format_currency @order.shipping_cost
+                  %td.price= format_currency @order.shipping.price
                 %tr
                   %td{colspan: "2"}
-                  \ 
-                  %td.stronger VAT:
-                  %td.stronger
-                    .align-right= format_currency session[:tax]
-                %tr
-                  %td{colspan: "2", rowspan: "1"}
                   \ 
                   %td.stronger Subtotal:
                   %td.stronger
                     .align-right= format_currency session[:sub_total]
+                %tr
+                  %td{colspan: "2", rowspan: "1"}
+                  \ 
+                  %td.stronger VAT:
+                  %td.stronger
+                    .align-right= format_currency session[:tax]   
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                     .alert.alert-info

@@ -43,7 +43,7 @@ Trado::Application.routes.draw do
       mount Sidekiq::Web => '/jobs'
       resources :accessories, :shippings, :tiers, :countries, :products, :categories, :except => :show
       resources :invoices 
-      resources :orders, :only => [:index, :show]
+      resources :orders, :only => [:index, :show, :update]
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :tags, :only => :destroy

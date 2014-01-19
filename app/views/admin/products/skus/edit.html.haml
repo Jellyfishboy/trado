@@ -16,27 +16,26 @@
                         %ul
                             - @sku.errors.full_messages.each do |msg|
                                 %li= msg
-            - if @sku.carts.empty? && @sku.orders.empty?
-                .control-group
-                    = f.label :weight, :class => 'control-label'
-                    .controls
-                        = f.text_field :weight, :class => 'form-control'
-                .control-group
-                    = f.label :length, :class => 'control-label'
-                    .controls
-                        = f.text_field :length, :class => 'form-control'
-                .control-group
-                    = f.label :thickness, :class => 'control-label'
-                    .controls
-                        = f.text_field :thickness, :class => 'form-control'
-                .control-group
-                    = f.label :cost_value, :class => 'control-label'
-                    .controls
-                        = f.text_field :cost_value, :class => 'form-control'
-                .control-group
-                    = f.label :price, :class => 'control-label'
-                    .controls
-                        = f.text_field :price, :class => 'form-control'
+            .control-group
+                = f.label :weight, :class => 'control-label'
+                .controls
+                    = f.text_field :weight, :class => 'form-control'
+            .control-group
+                = f.label :length, :class => 'control-label'
+                .controls
+                    = f.text_field :length, :class => 'form-control'
+            .control-group
+                = f.label :thickness, :class => 'control-label'
+                .controls
+                    = f.text_field :thickness, :class => 'form-control'
+            .control-group
+                = f.label :cost_value, :class => 'control-label'
+                .controls
+                    = f.text_field :cost_value, :class => 'form-control'
+            .control-group
+                = f.label :price, :class => 'control-label'
+                .controls
+                    = f.text_field :price, :class => 'form-control'
             .control-group
                 = f.label :stock, :class => 'control-label'
                 .controls
@@ -45,18 +44,17 @@
                 = f.label :stock_warning_level, :class => 'control-label'
                 .controls
                     = f.text_field :stock_warning_level, :class => 'form-control'
-            - if @sku.carts.empty? && @sku.orders.empty?
-                .control-group
-                    = f.label :attribute_value, :class => 'control-label'
-                    .controls
-                        = f.text_field :attribute_value, :class => 'form-control'
-                .control-group
-                    = f.label :attribute_type_id, :class => 'control-label'
-                    .controls
-                        - if AttributeType.all.empty?
-                            %p No attribute types to select.
-                        - else
-                            = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'})
+            .control-group
+                = f.label :attribute_value, :class => 'control-label'
+                .controls
+                    = f.text_field :attribute_value, :class => 'form-control'
+            .control-group
+                = f.label :attribute_type_id, :class => 'control-label'
+                .controls
+                    - if AttributeType.all.empty?
+                        %p No attribute types to select.
+                    - else
+                        = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'})
             .form-actions
                 = button_tag(:type => 'submit', :class => 'btn btn-info') do
                     %i.icon-ok

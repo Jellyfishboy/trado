@@ -27,7 +27,7 @@
         <tr class="<% if order.actual_shipping_cost.blank? %>red<% end %>">
           <td><%= order.id %></td>
           <td><%= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank' %></td>
-          <td><%= order.billing_first_name %> <%= order.billing_last_name %></td>
+          <td><%= order.bill_address.first_name %> <%= order.bill_address.last_name %></td>
           <td><%= order.email %></td>
           <td><%= shipping_status order.shipping_status %></td>
           <td><%= payment_status order.transaction.payment_status %></td>

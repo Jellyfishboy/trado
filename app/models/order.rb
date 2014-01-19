@@ -38,7 +38,7 @@ class Order < ActiveRecord::Base
   belongs_to :bill_address,     class_name: 'Address'
 
   validates :email,             :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :shipping_id,       :presence => { :message => 'option is required'}, :if => :active_or_shipping?                                                                                                                  
+  validates :shipping_id,       :presence => { :message => ' Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
 
   after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
 
@@ -74,7 +74,7 @@ class Order < ActiveRecord::Base
                         :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
                         :transaction_id => response.params['PaymentInfo']['TransactionID'], 
                         :transaction_type => response.params['PaymentInfo']['TransactionType'],
-                        :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping_cost,
+                        :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping.price,
                         :status_reason => response.params['PaymentInfo']['PendingReason'])
     # Update stock quantity
     self.order_items.each do |item|
@@ -83,9 +83,6 @@ class Order < ActiveRecord::Base
     end
     # Set order status to active
     self.update_column(:status, 'active')
-  rescue Exception => e
-      Rollbar.report_exception(e)
-      redirect_to root_url, flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
   end
 
 
@@ -101,9 +98,6 @@ class Order < ActiveRecord::Base
                         :net_amount => session[:sub_total],
                         :status_reason => response.message ? response.message : response.params['PaymentInfo']['PendingReason'])
     self.update_column(:status, 'active')
-  rescue Exception => e
-      Rollbar.report_exception(e)
-      redirect_to root_url, flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
   end
 
   # Shipping methods
@@ -123,7 +117,6 @@ class Order < ActiveRecord::Base
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
       Notifier.shipping_delayed(self).deliver
-      binding.pry
     end
   end
 

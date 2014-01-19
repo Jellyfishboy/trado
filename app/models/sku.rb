@@ -49,8 +49,6 @@ class Sku < ActiveRecord::Base
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
 
-  before_destroy :validate_association_count
-
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
@@ -58,14 +56,13 @@ class Sku < ActiveRecord::Base
     end
   end
 
-  private
+  def inactivate!
+      self.active = false
+      save!
+  end
 
-  def validate_association_count
-    product = Product.find(self.product.id)
-    if product.skus.count < 2
-      product.errors[:base] << "You must have at least one SKU per product."
-      return false
-    end
-  end 
+  def self.active
+    where(['skus.active = ?', true])
+  end
 
 end

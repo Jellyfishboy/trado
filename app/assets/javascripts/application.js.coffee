@@ -33,7 +33,7 @@ $(document).ready ->
     modal('.notify_me', '#notifyMeModal')
     typeahead_engine()
 
-    $('#order_shipping_country').change ->
+    $('.update_shipping #address_country').change ->
         unless @value is ""
         	$.ajax '/update_country',
         		type: 'GET'

@@ -22,12 +22,12 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a href="#" class="brand">
+          <%= link_to admin_root_path, :class => 'brand' do %>
             <small>
               <i class="icon-cog"></i>
               Gimson Robotics
             </small>
-          </a><!--/.brand-->
+          <% end %><!--/.brand-->
 
           <ul class="nav ace-nav pull-right">
 
@@ -190,12 +190,12 @@
               </li>
             </ul>
           </li>
-          <li class="<%= active_controller?('admin/invoices') %>">
+<!--           <li class="<%= active_controller?('admin/invoices') %>">
             <%= link_to admin_invoices_path do %>
               <i class="icon-file-text"></i>
               <span class="menu-text"> Invoices </span>
             <% end %>
-          </li>
+          </li> -->
           <li class="<%= active_controller?('admin/tiers') %> <%= active_controller?('admin/shippings') %> <%= active_controller?('admin/countries') %>">
             <a href="#" class="dropdown-toggle">
               <i class="icon-truck"></i>

@@ -3,7 +3,7 @@ class Admin::ShippingsController < ApplicationController
   # GET /shippings
   # GET /shippings.json
   def index
-    @shippings = Shipping.all
+    @shippings = Shipping.active.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,8 +47,21 @@ class Admin::ShippingsController < ApplicationController
   # PUT /shippings/1.json
   def update
     @shipping = Shipping.find(params[:id])
+
+    # If there are orders associated with the shipping, create a new shipping record
+    @shipping = Shipping.new(params[:shipping]) unless @shipping.orders.empty?
+
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
+
+        @old_shipping = Shipping.find(params[:id])
+        unless @old_shipping.orders.empty?
+          # Plucks tier associations from old record and creates new associations for the newly updated record
+          @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
+          # Deactivate the old shipping
+          @old_shipping.inactivate!
+        end
+
         format.html { redirect_to admin_shippings_url, notice: 'Shipping was successfully updated.' }
         format.json { head :no_content }
       else
@@ -62,7 +75,9 @@ class Admin::ShippingsController < ApplicationController
   # DELETE /shippings/1.json
   def destroy
     @shipping = Shipping.find(params[:id])
-    @shipping.destroy
+
+    # If no associated records, destroy the shipping. Else set it to inactive
+    @shipping.orders.empty? ? @shipping.destroy : @shipping.update_column(:active, false)
 
     respond_to do |format|
       format.html { redirect_to admin_shippings_url }

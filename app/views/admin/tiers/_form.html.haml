@@ -35,10 +35,10 @@
       %h3.header.smaller.lighter.blue Shipping options
       .control-group
         .controls
-          - if Shipping.all.empty? 
+          - if Shipping.active.all.empty? 
             %p No shipping options to select.
           - else
-            - Shipping.all.each do |shipping|
+            - Shipping.active.all.each do |shipping|
               %label
                 = hidden_field_tag "tier[shipping_ids][]", ""
                 = check_box_tag "tier[shipping_ids][]", shipping.id, @tier.shipping_ids.include?(shipping.id), :class => 'ace-checkbox-2'

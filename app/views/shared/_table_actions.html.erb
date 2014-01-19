@@ -1,5 +1,5 @@
 <div class="hidden-phone visible-desktop action-buttons">
-  <% unless type == 1 || type == 4 %>
+  <% unless type == 1 %>
     <%= link_to view, :class => 'blue' do %>
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
@@ -19,7 +19,7 @@
       <i class="icon-money bigger-130"></i>
     </a>
   <% end %>
-  <% unless type == 2 || type == 3 || type == 4 %>
+  <% unless type == 2 %>
     <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
       <i class="icon-trash bigger-130"></i>
     <% end %>
@@ -68,7 +68,7 @@
           </a>
         </li>
       <% end %>
-      <% unless type == 2 || type == 3 %>
+      <% unless type == 2 %>
         <li>
           <%= link_to del, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
             <span class="red">

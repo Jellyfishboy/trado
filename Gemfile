@@ -8,6 +8,7 @@ gem 'rails', '3.2.12'
 # Production gems
 group :production do
   gem 'mysql2'
+  gem 'lograge'
 end
 
 # Development gems
@@ -57,7 +58,6 @@ platforms :ruby do
 end
 
 # Logging/Monitoring
-gem 'lograge'
 gem 'rollbar'
 gem 'newrelic_rpm'
 

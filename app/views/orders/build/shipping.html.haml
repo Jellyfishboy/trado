@@ -110,16 +110,19 @@
                 = f.label :country, :class => 'control-label' do
                   Country
                   %span.red-clr.bold *
-                .controls
-                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.id] }), { :include_blank => 'Please select...'})
+                .controls.update_shipping
+                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
                   = errors_for @shipping_address, :country
-              / .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
-              /   .control-group
-              /     = f.label :shipping_id, :class => 'control-label' do
-              /       Shipping options
-              /       %span.red-clr.bold *
-              /     .controls
-              /       %p.shipping_notice Select a shipping country to view the available shipping options.
+              .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
+                .control-group
+                  = f.label :shipping_id, :class => 'control-label' do
+                    Shipping options
+                    %span.red-clr.bold *
+                  .controls
+                    %p.shipping_notice Select a shipping country to view the available shipping options.
+              .control-group
+                .controls
+                  = errors_for @order, :shipping_id
               %hr/
               %p.right-align
                 In the next step you will choose a payment method

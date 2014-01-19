@@ -9,7 +9,7 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
+      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
     else
       case step
       when :billing
@@ -72,6 +72,8 @@ class Orders::BuildController < ApplicationController
           # else continue to the next stage
           render_wizard @billing_address
         end
+      else
+        render_wizard @billing_address
       end  
     end
     case step
@@ -94,6 +96,8 @@ class Orders::BuildController < ApplicationController
           # else continue to the next stage
           render_wizard @shipping_address
         end
+      else
+        render_wizard @shipping_address
       end
     end
   end
@@ -101,7 +105,7 @@ class Orders::BuildController < ApplicationController
   def express
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
+      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
@@ -111,18 +115,28 @@ class Orders::BuildController < ApplicationController
   def purchase 
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] => "You do not have permission to amend this order."
+      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
       if response.params['payment_status'] == 'Completed'
         @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        @order.successful_order(response)
+        begin 
+          @order.successful_order(response)
+        rescue Exception => e
+            Rollbar.report_exception(e)
+            redirect_to root_url, flash[:error] => "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
+        end
         Notifier.order_received(@order).deliver
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else
-        @order.failed_order(response)
+        begin
+          @order.failed_order(response)
+        rescue Exception => e
+            Rollbar.report_exception(e)
+            redirect_to root_url, flash[:error] => "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
+        end
         redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :correlation_id => response.params['correlation_id'])
       end
     end
@@ -158,7 +172,7 @@ class Orders::BuildController < ApplicationController
       @order.destroy
       redirect_to root_url, notice: 'Your order has been deleted.'
     else
-      redirect_to root_url, flash[:notice] => 'Cannot delete a completed order.'
+      redirect_to root_url, flash[:notice] = 'Cannot delete a completed order.'
     end
   end
 
@@ -167,7 +181,7 @@ private
   def express_purchase_options(order)
     {
       :subtotal          => price_in_pennies(session[:sub_total]),
-      :shipping          => price_in_pennies(order.shipping_cost),
+      :shipping          => price_in_pennies(order.shipping.price),
       :tax               => price_in_pennies(session[:tax]),
       :handling          => 0,
       :token             => order.express_token,
@@ -179,7 +193,7 @@ private
   def express_setup_options(order)
     {
       :subtotal          => price_in_pennies(session[:sub_total]),
-      :shipping          => price_in_pennies(order.shipping_cost),
+      :shipping          => price_in_pennies(order.shipping.price),
       :tax               => price_in_pennies(session[:tax]),
       :handling          => 0,
       :order_id          => order.id,

@@ -42,42 +42,42 @@ breadcrumb_add 'All orders', admin_orders_path %>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Name: 
-                                            <b class="red"><%= @order.billing_first_name %> <%= @order.billing_last_name %></b>
+                                            <b class="red"><%= @order.bill_address.first_name %> <%= @order.bill_address.last_name %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Company: 
-                                            <b class="red"><%= @order.billing_company %></b>
+                                            <b class="red"><%= @order.bill_address.company %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Address: 
-                                            <b class="red"><%= @order.billing_address %></b>
+                                            <b class="red"><%= @order.bill_address.address %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             City: 
-                                            <b class="red"><%= @order.billing_city %></b>
+                                            <b class="red"><%= @order.bill_address.city %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             County: 
-                                            <b class="red"><%= @order.billing_county %></b>
+                                            <b class="red"><%= @order.bill_address.county %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Postcode: 
-                                            <b class="red"><%= @order.billing_postcode %></b>
+                                            <b class="red"><%= @order.bill_address.postcode %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Country: 
-                                            <b class="red"><%= @order.billing_country %></b>
+                                            <b class="red"><%= @order.bill_address.country %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Telephone: 
-                                            <b class="red"><%= @order.billing_telephone %></b>
+                                            <b class="red"><%= @order.bill_address.telephone %></b>
                                         </li>
 
                                         <li class="divider"></li>
@@ -97,37 +97,37 @@ breadcrumb_add 'All orders', admin_orders_path %>
                                         <li>
                                             <i class="icon-caret-right blue"></i>
                                             Name: 
-                                            <b class="red"><%= @order.shipping_first_name %> <%= @order.shipping_last_name %></b>
+                                            <b class="red"><%= @order.ship_address.first_name %> <%= @order.ship_address.last_name %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             Address: 
-                                            <b class="red"><%= @order.shipping_address %></b>
+                                            <b class="red"><%= @order.ship_address.address %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             City: 
-                                            <b class="red"><%= @order.shipping_city %></b>
+                                            <b class="red"><%= @order.ship_address.city %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             County: 
-                                            <b class="red"><%= @order.shipping_county %></b>
+                                            <b class="red"><%= @order.ship_address.county %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             Postcode: 
-                                            <b class="red"><%= @order.shipping_postcode %></b>
+                                            <b class="red"><%= @order.ship_address.postcode %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             Country: 
-                                            <b class="red"><%= @order.shipping_country %></b>
+                                            <b class="red"><%= @order.ship_address.country %></b>
                                         </li>
                                         <li>
                                             <i class="icon-caret-right green"></i>
                                             Telephone: 
-                                            <b class="red"><%= @order.shipping_telephone %></b>
+                                            <b class="red"><%= @order.ship_address.telephone %></b>
                                         </li>
                                     </ul>
                                 </div>
@@ -190,7 +190,7 @@ breadcrumb_add 'All orders', admin_orders_path %>
                                     <li>
                                        <i class="icon-caret-right grey"></i>
                                        Shipping type: 
-                                       <%= @order.shipping_name %>
+                                       <%= @order.shipping.name %>
                                     </li>
                                     <li>
                                        <i class="icon-caret-right grey"></i>
@@ -271,7 +271,7 @@ breadcrumb_add 'All orders', admin_orders_path %>
                             <div class="span5 pull-right">
                                 <h5 class="pull-right">
                                     Shipping:
-                                    <span class="orange"><%= format_currency @order.shipping_cost %></span>
+                                    <span class="orange"><%= format_currency @order.shipping.price %></span>
                                 </h4>
                             </div>
                         </div>

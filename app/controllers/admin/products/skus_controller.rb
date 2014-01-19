@@ -2,7 +2,7 @@ class Admin::Products::SkusController < ApplicationController
   layout 'admin'
   
   def index
-    @skus = Sku.all
+    @skus = Sku.active.all
   end
 
   def edit
@@ -27,15 +27,26 @@ class Admin::Products::SkusController < ApplicationController
   def destroy
     @sku = Sku.find(params[:id])
     respond_to do |format|
-      if @product.carts.empty? && @product.orders.empty?
-        if @sku.destroy
-          flash[:success] = "SKU was successfully deleted."
-          format.js { render :partial => "admin/skus/destroy", :format => [:js] }
+      # If sku count is less than 2 for the associated product, avoid delete or soft delete
+      if @sku.product.skus.active.count > 1
+        # If no associated orders or carts, delete
+        if @sku.carts.empty? && @sku.orders.empty?
+          @sku.destroy
+        # If associated orders but no carts, just inactivate the sku
+        elsif @sku.carts.empty? && !@sku.orders.empty?
+          @sku.inactivate!
+        # If orders and/or carts, inactivate sku and remove from cart items
         else
-          flash[:error] = "SKU failed to be removed from the database (you must have at least one SKU per product)."
+          @sku.inactivate!
+          CartItem.where('sku_id = ?', @sku.id).destroy_all
         end
-      else 
-        format.html { redirect_to admin_products_skus_url, notice: 'You cannot edit a SKU which is associated with carts or orders.' }
+        flash[:success] = "SKU was successfully deleted."
+        format.js { render :partial => "admin/skus/destroy", :format => [:js] }
+        format.html { redirect_to admin_products_skus_url }
+      else
+        flash[:error] = "SKU failed to be removed from the database (you must have at least one SKU per product)."
+        format.js
+        format.html { redirect_to admin_products_skus_url }
       end
     end
   end
