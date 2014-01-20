@@ -30,21 +30,9 @@ class Notifier < ActionMailer::Base
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order shipped"
   end
 
-  def application_error(error, obj)
-    @error_log = error
-    @obj = obj
-
-    mail :to => "tom.alan.dallimore@googlemail.com", :subject => "Application Error: #{@obj}"
-  end
-
   def low_stock(products)
     @restock = products
     mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Restock Warning'
-  end
-
-  def failed_paypal_verification(notify)
-    @notify = notify
-    mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Failed Paypal Notification'
   end
 
   def sku_stock_notification(sku, email)

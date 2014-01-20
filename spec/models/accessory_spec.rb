@@ -18,4 +18,7 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:name) }
     it { expect(subject).to validate_uniqueness_of(:part_number) }
 
+    # Nested attributes
+    it { expect(subject).to accept_nested_attributes_for(:sku) }
+
 end

@@ -1,4 +1,4 @@
-# Notifier is getting too cluttered. Abstracted alot of the logic away from it to ensure clear concise code.
+# Notifier is getting too cluttered. Abstracted alot of the logic away from it to ensure clear, concise code.
 
 class MailDaemon
 

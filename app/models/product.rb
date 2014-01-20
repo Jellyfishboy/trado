@@ -43,7 +43,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
-  accepts_nested_attributes_for :category
 
   default_scope :order => 'weighting' #orders the products by weighting
 
@@ -73,13 +72,6 @@ class Product < ActiveRecord::Base
 
   def remove_image_folders
     FileUtils.remove_dir("#{Rails.root}/public/uploads/attachment/Product/#{self.id}", :force => true)
-  end
-
-  def self.warning_level
-    @restock = Product.where('stock < stock_warning_level').all
-    @restock.each do |restock|
-      Notifier.low_stock(restock).deliver
-    end
   end
 
 end

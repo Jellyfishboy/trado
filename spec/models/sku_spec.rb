@@ -32,5 +32,21 @@ describe Sku do
 
     it { expect(subject).to validate_uniqueness_of(:sku) } 
     it { expect(subject).to validate_uniqueness_of(:attribute_value).scoped_to(:product_id) }
-    
+
+    context "When a used SKU is updated or deleted" do
+
+        it "should set the record as inactive" do
+            sku = create(:sku)
+            sku.inactivate!
+            expect(sku.active).to eq false
+        end
+    end
+
+    it "should return an array of active SKUs" do
+        sku_1 = create(:sku, active: false)
+        sku_2 = create(:sku)
+        sku_3 = create(:sku, active: false)
+        expect(Sku.active).to match_array([sku_2])
+    end
+
 end
