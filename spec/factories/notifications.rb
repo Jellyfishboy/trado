@@ -6,7 +6,7 @@ FactoryGirl.define do
 
         factory :sent_notification do
             sent true
-            sent_at { Date.new(2013, 12, 3) }
+            sequence(:sent_at) { |d| Date.today - d.days }
         end
         
         factory :sku_notification do
