@@ -72,13 +72,4 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  def products
-    @category = Category.find(params[:category_id])
-    @products = @category.products
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @products }
-    end
-  end
 end

@@ -11,7 +11,7 @@
 #  id                       :integer          not null, primary key
 #  ip_address               :string(255)      
 #  email                    :string(255)     
-#  state                    :string(255)          
+#  status                   :string(255)          
 #  user_id                  :integer     
 #  bill_address_id          :integer     
 #  ship_address_id          :integer     

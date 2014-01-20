@@ -6,7 +6,7 @@ FactoryGirl.define do
 
         factory :sent_notification do
             sent true
-            sent_at { Faker::Date.backward(1) }
+            sent_at { Date.new(2013, 12, 3) }
         end
         
         factory :sku_notification do

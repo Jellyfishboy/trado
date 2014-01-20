@@ -19,6 +19,12 @@ RSpec.configure do |config|
   # Use quick FactoryGirl methods
   config.include FactoryGirl::Syntax::Methods
 
+  # Controller macros
+  config.extend ControllerMacros, :type => :controller
+
+  # Devise helpers
+  config.include Devise::TestHelpers, :type => :controller
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
