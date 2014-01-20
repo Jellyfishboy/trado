@@ -2,23 +2,13 @@ require 'spec_helper'
 
 describe Country do
 
+    # ActiveRecord
+    it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:shippings).through(:destinations) }
+
     #Validations
-    it "is valid with name" do
-        expect(build(:country)).to be_valid
-    end
-    it "is invalid without a name" do
-        country = build(:country, name: nil)
-        expect(country).to have(1).errors_on(:name)
-    end
-    it "is valid with a unqiue name" do
-        create(:country, name: 'United Kingdom')
-        country = build(:country, name: 'United States')
-        expect(country).to be_valid
-    end
-    it "is invalid without a unique name" do
-        create(:country, name: 'United Kingdom')
-        country = build(:country, name: 'United Kingdom')
-        expect(country).to have(1).errors_on(:name)
-    end
+    it { expect(subject).to validate_presence_of(:name) }
+    
+    it { expect(subject).to validate_uniqueness_of(:name) }
 
 end

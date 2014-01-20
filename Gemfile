@@ -29,6 +29,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
   # gem 'selenium-webdriver'
@@ -38,7 +39,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'pry'
   gem 'sqlite3'
 end

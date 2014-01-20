@@ -1,11 +1,11 @@
 FactoryGirl.define do
     factory :tier do
-        length_start { 2.56 }
-        length_end { 50.42 }
-        weight_start { 14.89 }
-        weight_end { 80.50 }
-        thickness_start { 1.89 }
-        thickness_end { 14.50 }
+        sequence(:length_start) { |n| n }
+        sequence(:length_end) { |n| n }
+        sequence(:weight_start) { |n| n }
+        sequence(:weight_end) { |n| n }
+        sequence(:thickness_start) { |n| n }
+        sequence(:thickness_end) { |n| n }
 
         factory :invalid_tier do
             length_start nil

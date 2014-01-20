@@ -1,14 +1,14 @@
 FactoryGirl.define do
     factory :sku do
         sku { Faker::Lorem.characters(5) }
-        cost_value { |n| n }
-        price { |n| n }
-        stock { |n| n }
-        stock_warning_level { |n| n }
-        length { |n| n }
-        weight { |n| n }
-        thickness { |n| n }
-        atttribute_value { Faker::Lorem.word }
+        sequence(:cost_value) { |n| n }
+        sequence(:price) { |n| n }
+        stock 30
+        stock_warning_level 5
+        sequence(:length) { |n| n }
+        sequence(:weight) { |n| n }
+        sequence(:thickness) { |n| n }
+        attribute_value { Faker::Lorem.word }
 
         association :attribute_type
         association :product

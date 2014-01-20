@@ -3,15 +3,15 @@ FactoryGirl.define do
       file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg')) }
       description { Faker::Lorem.characters(5) }
 
-      factory :png_image do
-        file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg')) }
+      factory :png_attachment do
+        file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.png')) }
       end
 
-      factory :gif_image do
-        file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg')) }
+      factory :gif_attachment do
+        file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.gif')) }
       end
 
-      factory :pdf do
+      factory :pdf_attachment do
         file { File.open(File.join(Rails.root, '/spec/dummy_data/base.pdf')) }
       end
 

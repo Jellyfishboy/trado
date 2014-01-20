@@ -2,28 +2,35 @@ require 'spec_helper'
 
 describe Sku do
 
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:product) }
+    it { expect(subject).to belong_to(:accessory) }
+    it { expect(subject).to belong_to(:attribute_type) }
+    it { expect(subject).to have_many(:cart_items).dependent(:restrict) }
+    it { expect(subject).to have_many(:carts).through(:cart_items).dependent(:restrict) }
+    it { expect(subject).to have_many(:order_items).dependent(:restrict) }
+    it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict) }
+
     # Validation
-    it "is valid with price, cost value, stock, length, weight, thickness, stock warning level, attribute value and attribute type id"
-    it "is invalid without a price"
-    it "is invalid without a cost value"
-    it "is invalid without a stock"
-    it "is invalid without a length"
-    it "is invalid without a weight"
-    it "is invalid without a thickness"
-    it "is invalid without a stock warning level"
-    it "is invalid without a attribute value"
-    it "is valid with length, weight and thickness equal to or greater than 0"
-    it "is invalid with length less than 0"
-    it "is invalid with weight less than 0"
-    it "is invalid with thickness less than 0"
-    it "is valid with stock and stock warning level equal to or greater than 1"
-    it "is invalid with stock less than 1"
-    it "is invalid with stock warning level less than 1"
-    it "is valid with stock and stock warning level as an integer"
-    it "is invalid when stock is not an integer"
-    it "is invalid when stock warning leve is not an integer"
-    it "is valid with a unique sku"
-    it "is invalid without a unique sku"
-    it "is valid with a unique attribute value within the scope of it's product"
-    it "is invalid without a unique attribute value within the scope of it's product"
+    it { expect(subject).to validate_presence_of(:price) }
+    it { expect(subject).to validate_presence_of(:cost_value) }
+    it { expect(subject).to validate_presence_of(:stock) }
+    it { expect(subject).to validate_presence_of(:length) }
+    it { expect(subject).to validate_presence_of(:weight) }
+    it { expect(subject).to validate_presence_of(:thickness) }
+    it { expect(subject).to validate_presence_of(:stock_warning_level) }
+    it { expect(subject).to validate_presence_of(:attribute_value) }
+    it { expect(subject).to validate_presence_of(:attribute_type_id) }
+
+    it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
+    it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
+    it { expect(subject).to validate_numericality_of(:thickness).is_greater_than_or_equal_to(0) } 
+    it { expect(subject).to validate_numericality_of(:stock).is_greater_than_or_equal_to(1) } 
+    it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1) } 
+    it { expect(subject).to validate_numericality_of(:stock).only_integer } 
+    it { expect(subject).to validate_numericality_of(:stock_warning_level).only_integer } 
+
+    it { expect(subject).to validate_uniqueness_of(:sku) } 
+    it { expect(subject).to validate_uniqueness_of(:attribute_value).scoped_to(:product_id) }
+    
 end

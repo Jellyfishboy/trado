@@ -2,49 +2,21 @@ require 'spec_helper'
 
 describe Shipping do
 
+    # ActiveRecord relations
+    it { expect(subject).to have_many(:tiereds).dependent(:delete_all) }
+    it { expect(subject).to have_many(:tiers).through(:tiereds) }
+    it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:countries).through(:destinations) }
+    it { expect(subject).to have_many(:orders).dependent(:restrict) }
+
     # Validations
-    it "is valid with name, price and description" do
-        expect(build(:shipping)).to be_valid
-    end
-    it "is invalid without a name" do
-        shipping = build(:shipping, name: nil)
-        expect(shipping).to have(2).errors_on(:name)
-    end
-    it "is invalid without a price" do
-        shipping = build(:shipping, price: nil)
-        expect(shipping).to have(2).errors_on(:price)
-    end
-    it "is invalid without a description" do
-        shipping = build(:shipping, description: nil)
-        expect(shipping).to have(1).errors_on(:description)
-    end
-    it "is valid with a unique name" do
-        create(:shipping, name: 'Royal Mail')
-        shipping = build(:shipping, name: 'Parcelforce')
-        expect(shipping).to be_valid
-    end
-    it "is invalid without a unique name" do
-        create(:shipping, name: 'Royal Mail')
-        shipping = build(:shipping, name: 'Royal Mail')
-        expect(shipping).to have(1).errors_on(:name)
-    end
-    it "is valid with 10 or more characters in the name" do
-        expect(build(:shipping).name).to have(10).characters
-        expect(build(:shipping)).to be_valid
-    end
-    it "is invalid with less than 10 characters in the name" do
-        shipping = build(:shipping, name: 'Postage')
-        expect(shipping.name).to have(7).characters
-        expect(shipping).to have(1).errors_on(:name)
-    end
-    it "is valid with a less than 100 characters in the description" do
-        expect(build(:shipping).description).to have(99).characters
-        expect(build(:shipping)).to be_valid
-    end
-    it "is invalid with more than 100 characters in the description" do
-        shipping = build(:shipping, description: Faker::Lorem.characters(101))
-        expect(shipping.description).to have(101).characters
-        expect(shipping).to have(1).errors_on(:description)
-    end
+    it { expect(subject).to validate_presence_of(:name) }
+    it { expect(subject).to validate_presence_of(:price) }
+    it { expect(subject).to validate_presence_of(:description) }
+
+    it { expect(subject).to validate_uniqueness_of(:name) }
+
+    it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
+    it { expect(subject).to ensure_length_of(:description).is_at_most(100) }
 
 end
