@@ -6,5 +6,9 @@ FactoryGirl.define do
         weight_end { 80.50 }
         thickness_start { 1.89 }
         thickness_end { 14.50 }
+
+        factory :invalid_tier do
+            length_start nil
+        end
     end
 end

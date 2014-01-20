@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.0.0
+script:
+  - RAILS_ENV=test bundle exec rake db:setup --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+branches:
+  only:
+    - master
+before_install:
+  - sudo apt-get install -qq openjdk-6-jre
+env:
+  global:
+    - DB=sqlite
