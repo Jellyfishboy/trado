@@ -20,7 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 set :output "/var/log/gimson_robotics/schedule.log"
 
-every 12.hours do
+every 1.day do
     runner "Cart.clear_carts"
 end
 

@@ -31,8 +31,8 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock).only_integer } 
     it { expect(subject).to validate_numericality_of(:stock_warning_level).only_integer } 
 
-    it { expect(subject).to validate_uniqueness_of(:sku) } 
-    it { expect(subject).to validate_uniqueness_of(:attribute_value).scoped_to(:product_id) }
+    it { expect(create(:sku)).to validate_uniqueness_of(:sku) } 
+    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to(:product_id) }
 
     context "When a used SKU is updated or deleted" do
 
@@ -49,6 +49,12 @@ describe Sku do
             sku = build(:sku, stock: 5, stock_warning_level: 10)
             expect(sku).to have(1).error_on(:sku)
         end
+
+        it "should assign new SKU value by using the product SKU as a prefix" do
+            sku = create(:sku)
+            expect(sku.sku).to eq "#{sku.product.sku}-#{sku.attribute_value}"
+        end
+
     end
 
     it "should return an array of active SKUs" do

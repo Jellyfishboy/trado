@@ -44,8 +44,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  before_create :assign_sku_references
-
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -58,13 +56,6 @@ class Product < ActiveRecord::Base
       skus.map { |sku| sku.sku }
     end
     text :part_number
-  end
-
-  def assign_sku_references
-    self.skus.each do |sku|
-      suffix = sku.attribute_value.tr(".","-")
-      sku.sku = "#{self.sku}-#{suffix}"
-    end
   end
 
 end

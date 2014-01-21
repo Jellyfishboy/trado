@@ -49,6 +49,8 @@ class Sku < ActiveRecord::Base
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
 
+  before_create :update_sku
+
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
@@ -63,6 +65,11 @@ class Sku < ActiveRecord::Base
 
   def self.active
     where(['skus.active = ?', true])
+  end
+
+  def update_sku
+    suffix = self.attribute_value.tr(".","-")
+    self.sku = "#{self.product.sku}-#{suffix}"
   end
 
 end

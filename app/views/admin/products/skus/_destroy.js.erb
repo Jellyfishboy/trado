@@ -1,1 +1,4 @@
 $("#sku_<%= params[:id] %>").remove();
+if (!$('.sku-destroy-alert').is(':visible')) {
+    $('h3.sku_header').after('<div class="alert alert-success sku-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>SKU was successfully deleted.</div>');
+}

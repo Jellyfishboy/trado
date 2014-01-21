@@ -25,18 +25,6 @@ class Attachment < ActiveRecord::Base
 
   validates :file,                  :format => { :with => %r{\.(gif|png|jpg)$}i, :message => "must be a URL for GIF, JPG or PNG image." }
   validates :file, :description,    :presence => true
-  validates :description,           :length => {:minimum => 5, :message => :too_short}
-
-  before_destroy :validate_association_count
-
-  private
-  
-  def validate_association_count
-    product = Product.find(self.attachable_id)
-    if product.attachments.count < 2
-        product.errors[:base] << "You must have at least one attachment per product."
-        return false
-    end
-  end
+  validates :description,           :length => {:minimum => 5, :message => :too_short }
 
 end

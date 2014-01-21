@@ -45,9 +45,11 @@ class Cart < ActiveRecord::Base
   def total_price 
   	cart_items.to_a.sum { |item| item.total_price }
   end
+  
+  private
 
-  def clear_carts
-    Cart.where("updated_at < ?", 12.hours.ago).destroy_all
+  def self.clear_carts
+    where("updated_at < ?", 12.hours.ago).destroy_all
   end
   
 end

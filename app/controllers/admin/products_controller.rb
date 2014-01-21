@@ -65,8 +65,8 @@ class Admin::ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    @product = Product.find(params[:id])
     if @product.carts.empty? && @product.orders.empty?
-      @product = Product.find(params[:id])
       begin
         @product.destroy
         flash[:success] = "Successfully deleted the product."

@@ -1,0 +1,3 @@
+if (!$('.failed-sku-destroy-alert').is(':visible')) {
+    $('h3.sku_header').after('<div class="alert alert-danger failed-sku-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>SKU failed to be removed from the database (you must have at least one SKU per product).</div>');
+}

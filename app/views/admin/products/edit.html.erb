@@ -55,7 +55,7 @@
           <%= f.text_field :weighting, :class => 'form-control' %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
+      <h3 class="header smaller lighter blue attachment_header">Images <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields" %></h3>
       <div id="attachments">
         <% if @product.attachments.empty? %>
         <div class="control-group">
@@ -119,7 +119,7 @@
           <% end %>
         </div>
       </div>
-      <h3 class="header smaller lighter blue">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
+      <h3 class="header smaller lighter blue sku_header">SKUs <%= link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields" %></h3>
       <div id="skus">
         <% if @product.skus.active.empty? %>
         <div class="control-group">

@@ -6,13 +6,12 @@ class Admin::Products::AttachmentsController < ApplicationController
   def destroy
     @attachment = Attachment.find(params[:id])
     respond_to do |format|
-      if @attachment.destroy
-        flash[:success] = "Attachment was successfully deleted."
-        format.js { render :partial => "admin/attachments/destroy", :format => [:js] }
+      if @attachment.attachable.attachments.count > 1
+        @attachment.destroy
+        format.js { render :partial => "admin/products/attachments/destroy", :format => [:js] }
       else
-        flash[:error] = "Attachment failed to be removed from the database."
+        format.js { render :partial => "admin/products/attachments/failed_destroy", :format => [:js] }
       end
-      format.html
     end
   end
 end

@@ -40,12 +40,12 @@ class Admin::Products::SkusController < ApplicationController
           @sku.inactivate!
           CartItem.where('sku_id = ?', @sku.id).destroy_all
         end
+        format.js { render :partial => "admin/products/skus/destroy", :format => [:js] }
         flash[:success] = "SKU was successfully deleted."
-        format.js { render :partial => "admin/skus/destroy", :format => [:js] }
-        format.html { redirect_to admin_products_skus_url }
+        format.html { redirect_to admin_products_skus_url, notice: "SKU was successfully deleted." }
       else
+        format.js { render :partial => 'admin/products/skus/failed_destroy',:format => [:js] }
         flash[:error] = "SKU failed to be removed from the database (you must have at least one SKU per product)."
-        format.js
         format.html { redirect_to admin_products_skus_url }
       end
     end

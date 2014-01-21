@@ -1,6 +1,5 @@
 FactoryGirl.define do
     factory :sku do
-        sku { Faker::Lorem.characters(5) }
         sequence(:cost_value) { |n| n }
         sequence(:price) { |n| n }
         stock 30

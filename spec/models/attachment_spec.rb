@@ -15,7 +15,4 @@ describe Attachment do
     it { expect(create(:png_attachment)).to allow_value(".png").for(:file) }
     it { expect(create(:gif_attachment)).to allow_value(".gif").for(:file) }
 
-
-    
-
 end
