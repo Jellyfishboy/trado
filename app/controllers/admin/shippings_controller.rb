@@ -43,12 +43,17 @@ class Admin::ShippingsController < ApplicationController
     end
   end
 
-  # PUT /shippings/1
-  # PUT /shippings/1.json
+  # Updating a shipping
+  #
+  # First grab the current shipping via the param id.
+  # If the shipping has associated orders, create a new shipping with the new attributes.
+  # Upon updating, retrieve the current record again via the param id.
+  # If the current shipping has associated orders, pluck tier associations and create new associations for the new shipping record.
+  # Then set the current shipping as inactive.
   def update
     @shipping = Shipping.find(params[:id])
 
-    # If there are orders associated with the shipping, create a new shipping record
+    # 
     @shipping = Shipping.new(params[:shipping]) unless @shipping.orders.empty?
 
     respond_to do |format|
@@ -56,9 +61,7 @@ class Admin::ShippingsController < ApplicationController
 
         @old_shipping = Shipping.find(params[:id])
         unless @old_shipping.orders.empty?
-          # Plucks tier associations from old record and creates new associations for the newly updated record
           @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
-          # Deactivate the old shipping
           @old_shipping.inactivate!
         end
 
@@ -71,12 +74,12 @@ class Admin::ShippingsController < ApplicationController
     end
   end
 
-  # DELETE /shippings/1
-  # DELETE /shippings/1.json
+  # Destroying a shipping
+  #
+  # If no associated order records, destroy the shipping. Else set it to inactive.
   def destroy
     @shipping = Shipping.find(params[:id])
 
-    # If no associated records, destroy the shipping. Else set it to inactive
     @shipping.orders.empty? ? @shipping.destroy : @shipping.update_column(:active, false)
 
     respond_to do |format|

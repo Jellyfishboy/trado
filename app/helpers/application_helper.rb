@@ -27,7 +27,7 @@ module ApplicationHelper
     def active_category? id
       category = params[:category_id]
       category ||= params[:id]
-      "active" if category.to_i == id
+      "active" if category == id
     end
 
     def active_page? controller, action

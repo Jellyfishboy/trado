@@ -5,7 +5,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.active.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,13 +46,33 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.json
+  # Updating a product
+  #
+  # If the product is not associated with orders, update the current record.
+  # Else create a new product with the new attributes.
+  # Duplicate all 'active' skus and attach to the new product
+  # Remove any old skus which have no associated orders
+  # Set the old product and it's skus as inactive. (It is now archived for reference by previous orders)
   def update
     @product = Product.find(params[:id])
+
+    unless @product.orders.empty?
+      @product = Product.new(params[:product])
+    end
     
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        @old_product = Product.find(params[:id])
+        unless @old_product.orders.empty?
+          @old_product.skus.active.each do |sku|
+            @new_sku = Sku.create(sku.attributes)
+            @new_sku.product_id = @product.id
+            @new_sku.save
+          end
+          # @old_product.where
+          @old_product.skus.map { |s| s.inactivate! }
+          @old_product.inactivate!
+        end
         format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -62,20 +82,32 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
+  # Destroying a product
+  #
+  # Various if statements to handle how a product is dealt with then checking order and cart associations
+  # If there are no carts or orders: destroy the product and its skus.
+  # If there are orders but no carts: deactivate the product and its skus.
+  # If there are carts but no orders: delete all cart items, then delete the product and its skus.
+  # If there are orders and carts: deactivate the product, its skus and delete all cart items.
   def destroy
     @product = Product.find(params[:id])
+
     if @product.carts.empty? && @product.orders.empty?
-      begin
-        @product.destroy
-        flash[:success] = "Successfully deleted the product."
-      rescue ActiveRecord::DeleteRestrictionError => e
-        @product.errors.add(:base, e)
-        flash[:error] = "#{e}"
-      end
+      @product.destroy
+    elsif @product.carts.empty? && !@product.orders.empty?
+      @product.skus.map { |s| s.inactivate! }
+      @product.inactivate!
+    elsif !@product.carts.empty? && @product.orders.empty?
+      CartItem.where(:sku_id, @product.skus.pluck(:id)).destroy_all
+      @product.destroy
+    else
+      @product.skus.map { |s| s.inactivate! }
+      @product.inactivate!
+      CartItem.where(:sku_id, @product.skus.pluck(:id)).destroy_all
     end
+
     respond_to do |format|
+      flash[:success] = "Product was successfully deleted."
       format.html { redirect_to admin_products_url }
     end
   end

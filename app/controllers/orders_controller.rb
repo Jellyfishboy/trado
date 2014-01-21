@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     if current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] => "Your cart is empty."
+      flash[:notice] = "Your cart is empty."
+      redirect_to root_url
     else
       @order = Order.create(:ip_address => request.remote_ip)
       redirect_to order_build_path(:order_id => @order.id, :id => steps.first)

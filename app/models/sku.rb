@@ -37,8 +37,7 @@ class Sku < ActiveRecord::Base
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,           :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validate :check_stock_values,                     :on => :create
-  validates :sku,                                   :uniqueness => true
-  validates :attribute_value,                       :uniqueness => { :scope => :product_id }
+  validates :sku,                                   :uniqueness => { :scope => :active }
 
   belongs_to :product
   belongs_to :accessory
@@ -59,8 +58,7 @@ class Sku < ActiveRecord::Base
   end
 
   def inactivate!
-      self.active = false
-      save!
+    self.update_column(:active, false)
   end
 
   def self.active

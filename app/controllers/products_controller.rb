@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
     @notification = Notification.new
-    @skus = @product.skus.order('attribute_value asc')
+    @skus = @product.skus.active.order('cast(attribute_value as unsigned) asc')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

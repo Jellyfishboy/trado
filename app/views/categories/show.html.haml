@@ -67,7 +67,7 @@
         / ==========
         .row.popup-products
           #isotopeContainer.isotope-container
-            - @category.products.each do |product|
+            - @category.products.active.each do |product|
               / ==========
               / = Single Product =
               / ==========

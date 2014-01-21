@@ -9,7 +9,8 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
+      flash[:error] = "You do not have permission to amend this order."
+      redirect_to root_url
     else
       case step
       when :billing
@@ -105,7 +106,8 @@ class Orders::BuildController < ApplicationController
   def express
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
+      flash[:error] = "You do not have permission to amend this order."
+      redirect_to root_url
     else
       response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
@@ -115,7 +117,8 @@ class Orders::BuildController < ApplicationController
   def purchase 
     @order = Order.find(params[:order_id])
     if @order.transaction || current_cart.cart_items.empty?
-      redirect_to root_url, flash[:notice] = "You do not have permission to amend this order."
+      flash[:error] = "You do not have permission to amend this order."
+      redirect_to root_url
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
       if response.params['payment_status'] == 'Completed'
@@ -126,7 +129,8 @@ class Orders::BuildController < ApplicationController
           @order.successful_order(response)
         rescue Exception => e
             Rollbar.report_exception(e)
-            redirect_to root_url, flash[:error] => "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
+            flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly."
+            redirect_to root_url 
         end
         Notifier.order_received(@order).deliver
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
@@ -135,7 +139,8 @@ class Orders::BuildController < ApplicationController
           @order.failed_order(response)
         rescue Exception => e
             Rollbar.report_exception(e)
-            redirect_to root_url, flash[:error] => "Your order appears to have failed. Our team has been notified and we will be in contact shortly." 
+            flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly."
+            redirect_to root_url 
         end
         redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :correlation_id => response.params['correlation_id'])
       end
@@ -170,9 +175,11 @@ class Orders::BuildController < ApplicationController
     @order = Order.find(params[:order_id])
     unless @order.transaction
       @order.destroy
-      redirect_to root_url, notice: 'Your order has been deleted.'
+      flash[:success] = "Your order has been deleted."
+      redirect_to root_url
     else
-      redirect_to root_url, flash[:notice] = 'Cannot delete a completed order.'
+      flash[:error] = "Cannot delete a completed order."
+      redirect_to root_url
     end
   end
 

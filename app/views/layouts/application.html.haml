@@ -124,7 +124,7 @@
                     %li{ :class => active_page?('store', 'index') }
                       %a.title{href: root_path, title: "Home"} Home
                     - category_list.each do |category|
-                      %li{ :class => active_category?(category.id) }
+                      %li{ :class => active_category?(category.slug) }
                         = link_to category.name, category
                     %li{ :class => active_page?('store', 'about') }
                       %a.title{href: about_path, title: "About us"} About us

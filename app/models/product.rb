@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
 
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting,                             :presence => true
-  validates :part_number, :sku, :name,                        :uniqueness => true
+  validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
   validates :part_number, :weighting,                         :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short}
   validates :description,                                     :length => {:minimum => 20, :message => :too_short}
@@ -56,6 +56,14 @@ class Product < ActiveRecord::Base
       skus.map { |sku| sku.sku }
     end
     text :part_number
+  end
+
+  def inactivate!
+    self.update_column(:active, false)
+  end
+
+  def self.active
+    where(['products.active = ?', true])
   end
 
 end
