@@ -44,9 +44,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  default_scope :order => 'weighting' #orders the products by weighting
-
-  after_destroy :remove_image_folders # Remove carrierwave image folders after destroying a product
   before_create :assign_sku_references
 
   extend FriendlyId
@@ -68,10 +65,6 @@ class Product < ActiveRecord::Base
       suffix = sku.attribute_value.tr(".","-")
       sku.sku = "#{self.sku}-#{suffix}"
     end
-  end
-
-  def remove_image_folders
-    FileUtils.remove_dir("#{Rails.root}/public/uploads/attachment/Product/#{self.id}", :force => true)
   end
 
 end

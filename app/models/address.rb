@@ -30,8 +30,6 @@ class Address < ActiveRecord::Base
   attr_accessible :active, :address, :city, :company, :country, :county, :addressable_id,
   :addressable_type, :default, :first_name, :last_name, :postcode, :telephone
 
-  has_many :orders
-
   validates :first_name, :last_name, :address, :city, :postcode, :country,               :presence => true
 
 end

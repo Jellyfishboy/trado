@@ -10,6 +10,7 @@ describe Sku do
     it { expect(subject).to have_many(:carts).through(:cart_items).dependent(:restrict) }
     it { expect(subject).to have_many(:order_items).dependent(:restrict) }
     it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict) }
+    it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
 
     # Validation
     it { expect(subject).to validate_presence_of(:price) }
@@ -39,6 +40,14 @@ describe Sku do
             sku = create(:sku)
             sku.inactivate!
             expect(sku.active).to eq false
+        end
+    end
+
+    context "When creating a new SKU" do
+
+        it "should validate whether the stock value is higher than stock_warning_level" do
+            sku = build(:sku, stock: 5, stock_warning_level: 10)
+            expect(sku).to have(1).error_on(:sku)
         end
     end
 

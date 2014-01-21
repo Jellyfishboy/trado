@@ -8,7 +8,9 @@ describe Product do
     it { expect(subject).to have_many(:carts).through(:skus) }
     it { expect(subject).to have_many(:taggings).dependent(:delete_all) }
     it { expect(subject).to have_many(:tags).through(:taggings) }
+    it { expect(subject).to have_many(:attachments).dependent(:delete_all) }
     it { expect(subject).to belong_to(:category) }
+
 
     # Validation
     it { expect(subject).to validate_presence_of(:name) }
@@ -35,5 +37,13 @@ describe Product do
     it { expect(subject).to accept_nested_attributes_for(:skus) }
     it { expect(subject).to accept_nested_attributes_for(:attachments) }
     it { expect(subject).to accept_nested_attributes_for(:tags) }
+
+    context "After creating a product" do
+
+        it "assigns SKUs to the associated SKU records" do
+            product = create(:product, sku: 'GLA750')
+
+        end
+    end
 
 end

@@ -8,6 +8,11 @@ FactoryGirl.define do
         sequence(:part_number) { |n| n }
         featured false
 
+        factory :product_with_skus do
+            after(:create) do |product, evaluator|
+                create_list(:sku, 2, product: product)
+            end
+        end
         association :category
     end
 end

@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Attachment do
 
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:attachable) }
+
     # Validations
     it { expect(subject).to validate_presence_of(:file) }
     it { expect(subject).to validate_presence_of(:description) }

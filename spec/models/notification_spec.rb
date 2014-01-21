@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Notification do
 
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:notifiable) }
+
     #Validations
     it { expect(subject).to validate_presence_of(:email) }
 
