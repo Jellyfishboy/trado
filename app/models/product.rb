@@ -47,16 +47,16 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  searchable do
-    text :name
-    text :tags do
-      tags.map { |tag| tag.name }
-    end
-    text :skus do 
-      skus.map { |sku| sku.sku }
-    end
-    text :part_number
-  end
+  # searchable do
+  #   text :name
+  #   text :tags do
+  #     tags.map { |tag| tag.name }
+  #   end
+  #   text :skus do 
+  #     skus.map { |sku| sku.sku }
+  #   end
+  #   text :part_number
+  # end
 
   def inactivate!
     self.update_column(:active, false)

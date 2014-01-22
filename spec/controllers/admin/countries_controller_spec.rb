@@ -5,16 +5,16 @@ describe Admin::CountriesController do
     login_admin
 
     describe 'GET #index' do
-            it "populates an array of all countries" do
-                country_1 = create(:country)
-                country_2 = create(:country)
-                get :index
-                expect(assigns(:countries)).to match_array([country_1, country_2])
-            end
-            it "renders the :index template" do
-                get :index
-                expect(response).to render_template :index
-            end
+        it "populates an array of all countries" do
+            country_1 = create(:country)
+            country_2 = create(:country)
+            get :index
+            expect(assigns(:countries)).to match_array([country_1, country_2])
+        end
+        it "renders the :index template" do
+            get :index
+            expect(response).to render_template :index
+        end
     end
 
     describe 'GET #new' do

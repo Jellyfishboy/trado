@@ -5,16 +5,16 @@ describe Admin::AccessoriesController do
     login_admin
 
     describe 'GET #index' do
-            it "populates an array of all accessories" do
-                accessory_1 = create(:accessory)
-                accessory_2 = create(:accessory)
-                get :index
-                expect(assigns(:accessories)).to match_array([accessory_1, accessory_2])
-            end
-            it "renders the :index template" do
-                get :index
-                expect(response).to render_template :index
-            end
+        it "populates an array of all accessories" do
+            accessory_1 = create(:accessory)
+            accessory_2 = create(:accessory)
+            get :index
+            expect(assigns(:accessories)).to match_array([accessory_1, accessory_2])
+        end
+        it "renders the :index template" do
+            get :index
+            expect(response).to render_template :index
+        end
     end
 
     describe 'GET #new' do

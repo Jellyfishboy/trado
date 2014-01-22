@@ -6,16 +6,16 @@ describe Admin::TiersController do
     login_admin
 
     describe 'GET #index' do
-            it "populates an array of all tiers" do
-                tier_1 = create(:tier)
-                tier_2 = create(:tier)
-                get :index
-                expect(assigns(:tiers)).to match_array([tier_1, tier_2])
-            end
-            it "renders the :index template" do
-                get :index
-                expect(response).to render_template :index
-            end
+        it "populates an array of all tiers" do
+            tier_1 = create(:tier)
+            tier_2 = create(:tier)
+            get :index
+            expect(assigns(:tiers)).to match_array([tier_1, tier_2])
+        end
+        it "renders the :index template" do
+            get :index
+            expect(response).to render_template :index
+        end
     end
 
     describe 'GET #new' do
