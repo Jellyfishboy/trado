@@ -37,5 +37,21 @@ describe Product do
     it { expect(subject).to accept_nested_attributes_for(:skus) }
     it { expect(subject).to accept_nested_attributes_for(:attachments) }
     it { expect(subject).to accept_nested_attributes_for(:tags) }
+
+    context "When a used product is updated or deleted" do
+
+        it "should set the record as inactive" do
+            product = create(:product)
+            product.inactivate!
+            expect(product.active).to eq false
+        end
+    end
+
+    it "should return an array of active products" do
+        product_1 = create(:product, active: false)
+        product_2 = create(:product)
+        product_3 = create(:product)
+        expect(Product.active).to match_array([product_2, product_3])
+    end
     
 end

@@ -42,8 +42,8 @@ class Sku < ActiveRecord::Base
   belongs_to :product
   belongs_to :accessory
   belongs_to :attribute_type
-  has_many :cart_items,                             :dependent => :restrict
-  has_many :carts,                                  :through => :cart_items, :dependent => :restrict
+  has_many :cart_items
+  has_many :carts,                                  :through => :cart_items
   has_many :order_items,                            :dependent => :restrict
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all

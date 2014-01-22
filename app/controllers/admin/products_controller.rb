@@ -65,11 +65,11 @@ class Admin::ProductsController < ApplicationController
         @old_product = Product.find(params[:id])
         unless @old_product.orders.empty?
           @old_product.skus.active.each do |sku|
-            @new_sku = Sku.create(sku.attributes)
+            @new_sku = Sku.new(sku.attributes)
             @new_sku.product_id = @product.id
             @new_sku.save
           end
-          # @old_product.where
+          @old_product.skus.includes(:order_items).where(:order_items => { :sku_id => nil } ).destroy_all
           @old_product.skus.map { |s| s.inactivate! }
           @old_product.inactivate!
         end
