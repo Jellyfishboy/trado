@@ -46,36 +46,42 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # Updating a product
-  #
+  # TODO: This update procedure needs to completed. It is all working apart from the attachment and tagging relations need to be 
+  # attached to the SKU and not the product. Due to extended complexity for this action, it will be postponed to a later release.
+  #######################
   # If the product is not associated with orders, update the current record.
   # Else create a new product with the new attributes.
   # Duplicate all 'active' skus and attach to the new product
   # Remove any old skus which have no associated orders
   # Set the old product and it's skus as inactive. (It is now archived for reference by previous orders)
+  #######################
+  # Updating a product
+  # 
+  # You can only update specific attributes when a product is associated with orders.
   def update
     @product = Product.find(params[:id])
 
-    unless @product.orders.empty?
-      @product = Product.new(params[:product])
-    end
-    
+    # unless @product.orders.empty?
+    #   @product.inactivate!
+    #   @product = Product.new(params[:product])
+    #   @old_product = Product.find(params[:id])
+    # end
+
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        @old_product = Product.find(params[:id])
-        unless @old_product.orders.empty?
-          @old_product.skus.active.each do |sku|
-            @new_sku = Sku.new(sku.attributes)
-            @new_sku.product_id = @product.id
-            @new_sku.save
-          end
-          @old_product.skus.includes(:order_items).where(:order_items => { :sku_id => nil } ).destroy_all
-          @old_product.skus.map { |s| s.inactivate! }
-          @old_product.inactivate!
-        end
+        # if @old_product
+        #   @old_product.skus.active.each do |sku|
+        #     @new_sku = sku.dup
+        #     @new_sku.product_id = @product.id
+        #     sku.inactivate!
+        #     @new_sku.save
+        #   end
+        #   @old_product.skus.includes(:order_items).where(:order_items => { :sku_id => nil } ).destroy_all
+        # end
         format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
+        # @old_product.activate! if @old_product
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end

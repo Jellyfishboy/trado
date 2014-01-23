@@ -49,6 +49,10 @@ $(document).ready ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
 
+  $('.update_stock').click ->
+    sku = $(@).attr 'id'
+    $.get '/admin/products/skus?sku_id=' + sku
+
   # Display shipping value with tax
   $('.calculate_shipping_tax').bind "input", ->
     val = Number(@value)

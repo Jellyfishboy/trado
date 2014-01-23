@@ -27,7 +27,7 @@ class Shipping < ActiveRecord::Base
   has_many :orders,                                     :dependent => :restrict
 
   validates :name, :price, :description,                :presence => true
-  validates :name,                                      :uniqueness => true, :length => {:minimum => 10, :message => :too_short}
+  validates :name,                                      :uniqueness => { :scope => :active }, :length => {:minimum => 10, :message => :too_short}
   validates :description,                               :length => { :maximum => 100, :message => :too_long }
   validates :price,                                     :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
 
@@ -35,6 +35,10 @@ class Shipping < ActiveRecord::Base
   def inactivate!
       self.active = false
       save!
+  end
+
+  def activate!
+    self.update_column(:active, true)
   end
 
   def self.active

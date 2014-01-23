@@ -24,7 +24,7 @@ class Admin::ShippingsController < ApplicationController
 
   # GET /shippings/1/edit
   def edit
-    @shipping = Shipping.find(params[:id])
+    @form_shipping = Shipping.find(params[:id])
   end
 
   # POST /shippings
@@ -53,14 +53,16 @@ class Admin::ShippingsController < ApplicationController
   def update
     @shipping = Shipping.find(params[:id])
 
-    # 
-    @shipping = Shipping.new(params[:shipping]) unless @shipping.orders.empty?
+    unless @shipping.orders.empty?
+      @shipping.inactivate!
+      @shipping = Shipping.new(params[:shipping])
+      @old_shipping = Shipping.find(params[:id])
+    end
 
     respond_to do |format|
       if @shipping.update_attributes(params[:shipping])
 
-        @old_shipping = Shipping.find(params[:id])
-        unless @old_shipping.orders.empty?
+        if @old_shipping
           @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
           @old_shipping.inactivate!
         end
@@ -68,6 +70,9 @@ class Admin::ShippingsController < ApplicationController
         format.html { redirect_to admin_shippings_url, notice: 'Shipping was successfully updated.' }
         format.json { head :no_content }
       else
+        @form_shipping = Shipping.find(params[:id])
+        @form_shipping.activate!
+        @form_shipping.attributes = params[:shipping]
         format.html { render action: "edit" }
         format.json { render json: @shipping.errors, status: :unprocessable_entity }
       end

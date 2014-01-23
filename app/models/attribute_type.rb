@@ -16,7 +16,7 @@
 class AttributeType < ActiveRecord::Base
   attr_accessible :measurement, :name
 
-  has_many :skus
+  has_many :skus,       :dependent => :restrict 
 
   validates :name,      :presence => true
 

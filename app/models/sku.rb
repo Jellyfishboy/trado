@@ -30,14 +30,14 @@ class Sku < ActiveRecord::Base
   attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, 
   :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id
   
-  validates :price, :cost_value, :stock, :length, 
-  :weight, :thickness, :stock_warning_level, 
-  :attribute_value, :attribute_type_id,             :presence => true
+  validates :price, :cost_value, :length, 
+  :weight, :thickness, :attribute_value, 
+  :attribute_type_id,                               :presence => true
   validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
-  validates :stock, :stock_warning_level,           :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
   validate :check_stock_values,                     :on => :create
-  validates :sku,                                   :uniqueness => { :scope => :active }
+  validates :sku, :attribute_value,                 :uniqueness => { :scope => :active }
 
   belongs_to :product
   belongs_to :accessory
@@ -59,6 +59,10 @@ class Sku < ActiveRecord::Base
 
   def inactivate!
     self.update_column(:active, false)
+  end
+
+  def activate!
+    self.update_column(:active, true)
   end
 
   def self.active

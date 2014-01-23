@@ -5,12 +5,12 @@
 .page-header
     %h1 
         Editing
-        = @sku.sku
+        = @form_sku.sku
 .row-fluid
     .span-12 
-        = form_for [:admin, :products, @sku], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+        = form_for [:admin, :products, @form_sku], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
             %fieldset
-                - if @sku.errors.any?
+                - if @sku && @sku.errors.any?
                     #error_explanation
                         %h2= "#{pluralize(@sku.errors.count, "error")} prohibited this sku from being saved:"
                         %ul
@@ -36,14 +36,6 @@
                 = f.label :price, :class => 'control-label'
                 .controls
                     = f.text_field :price, :class => 'form-control'
-            .control-group
-                = f.label :stock, :class => 'control-label'
-                .controls
-                    = f.text_field :stock, :class => 'form-control'
-            .control-group
-                = f.label :stock_warning_level, :class => 'control-label'
-                .controls
-                    = f.text_field :stock_warning_level, :class => 'form-control'
             .control-group
                 = f.label :attribute_value, :class => 'control-label'
                 .controls

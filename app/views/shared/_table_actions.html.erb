@@ -1,8 +1,13 @@
 <div class="hidden-phone visible-desktop action-buttons">
-  <% unless type == 1 %>
+  <% unless type == 1 || type = 3 %>
     <%= link_to view, :class => 'blue' do %>
       <i class="icon-zoom-in bigger-130"></i>
     <% end %>
+  <% end %>
+  <% if type == 3 %>
+    <a href="#" class="grey update_stock" id="<%= object.id %>">
+      <i class="icon-signal bigger-130"></i>
+    </a>
   <% end %>
   <% unless type == 2 %>
     <%= link_to edit, :class => 'green' do %>
@@ -39,6 +44,15 @@
               <i class="icon-zoom-in bigger-120"></i>
             </span>
           <% end %>
+        </li>
+      <% end %>
+      <% if type == 3 %>
+        <li>
+          <a href="#" class="tooltip-info update_stock" id="<%= object.id %>" data-rel="tooltip" data-original-title="Update SKU stock">
+            <span class="grey">
+              <i class="icon-signal bigger-120"></i>
+            </span>
+          </a>
         </li>
       <% end %>
       <% unless type == 2 %>

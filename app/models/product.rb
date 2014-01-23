@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
   has_many :orders,                                           :through => :skus
   has_many :carts,                                            :through => :skus
   has_many :taggings,                                         :dependent => :delete_all
-  has_many :tags,                                             :through => :taggings
+  has_many :tags,                                             :through => :taggings, :dependent => :delete_all
   has_many :attachments,                                      as: :attachable, :dependent => :delete_all
   belongs_to :category
 
@@ -60,6 +60,10 @@ class Product < ActiveRecord::Base
 
   def inactivate!
     self.update_column(:active, false)
+  end
+
+  def activate!
+    self.update_column(:active, true)
   end
 
   def self.active

@@ -3,10 +3,15 @@ class Admin::Products::SkusController < ApplicationController
   
   def index
     @skus = Sku.active.all
+
+    respond_to do |format|
+      format.js { render :partial => 'admin/products/skus/update_sku', :format => [:js] }
+      format.html
+    end
   end
 
   def edit
-    @sku = Sku.find(params[:id])
+    @form_sku = Sku.find(params[:id])
   end
 
 
@@ -18,15 +23,18 @@ class Admin::Products::SkusController < ApplicationController
   # Delete any cart items associated with the old sku.
   def update
     @sku = Sku.find(params[:id])
-
-    unless @sku.orders.empty?
+    unless @sku.orders.empty? || params[:sku][:stock]
+      @sku.inactivate!
       @sku = Sku.new(params[:sku])
       @old_sku = Sku.find(params[:id])
       @sku.product_id = @old_sku.product.id
+      extra_values = {:product_id => @old_sku.product.id, :stock => @old_sku.stock, :stock_warning_level => @old_sku.stock_warning_level}
+      params[:sku].merge!(extra_values)
     end
 
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
+
         if @old_sku
           @old_sku.inactivate!
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all
@@ -34,6 +42,9 @@ class Admin::Products::SkusController < ApplicationController
         format.html { redirect_to admin_products_skus_url, notice: 'SKU was successfully updated.' }
         format.json { head :no_content }
       else
+        @form_sku = Sku.find(params[:id])
+        @form_sku.activate!
+        @form_sku.attributes = params[:sku]
         format.html { render action: "edit" }
         format.json { render json: @sku.errors, status: :unprocessable_entity }
       end
