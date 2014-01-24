@@ -1,6 +1,31 @@
 //= require admin/saturn
 //= require bootstrap-datepicker
 
+body, html {
+    height:100%;
+    padding:0;
+    margin:0;
+}
+.all-wrapper, .main-content {
+    height:100%;
+}
+.add_record {
+    float:right;
+    margin: 5px 0 15px;
+}
+.hide_subnav {
+    .menu-toggler {
+        display:none;
+    }
+    .main-content {
+        margin-left:60px;
+    }
+    .sidebar-wrapper {
+        -webkit-box-shadow: inset -3px 0px 4px 0px rgba(0,0,0,0.3);
+        -moz-box-shadow: inset -3px 0px 4px 0px rgba(0,0,0,0.3);
+        box-shadow: inset -3px 0px 4px 0px rgba(0,0,0,0.3);
+    }
+}
 // .dashboard_home {
 //     padding:0 4px;
 // }

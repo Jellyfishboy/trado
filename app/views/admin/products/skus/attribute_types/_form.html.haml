@@ -1,5 +1,5 @@
 .row-fluid
-  .span-12
+  .col-md-6
     = form_for [:admin, :products, :skus, @attribute_type], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
       %fieldset
         - if @attribute_type.errors.any?
@@ -8,16 +8,15 @@
             %ul
               - @attribute_type.errors.full_messages.each do |msg|
                 %li= msg
-        .control-group
-          = f.label :name, :class => 'control-label'
-          .controls
+        .form-group
+          = f.label :name, :class => 'control-label col-md-3'
+          .col-md-9
             = f.text_field :name, :class => 'form-control'
-        .control-group
-          = f.label :measurement, :class => 'control-label'
-          .controls
+        .form-group
+          = f.label :measurement, :class => 'control-label col-md-3'
+          .col-md-9
             = f.text_field :measurement, :class => 'form-control'
-        .form-actions
-          = button_tag(:type => 'submit', :class => 'btn btn-info') do
-            %i.icon-ok
-            Submit
+        .form-group
+        .col-md-offset-3.col-md-9
+          = f.submit 'Submit', :class => 'btn btn-primary'
 

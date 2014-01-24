@@ -1,9 +1,7 @@
 - content_for :title, 'Edit country'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Countries', admin_countries_path
-.page-header
-	%h1 
-		Editing
-		= @country.name
+- content_for :header, "Editing #{@country.name}"
+- content_for :hide_sub_navigation, 'hide_subnav'
 
 = render 'form'

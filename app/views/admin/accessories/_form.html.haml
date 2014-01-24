@@ -1,5 +1,5 @@
 .row-fluid
-  .span-12 
+  .col-md-6
     = form_for [:admin, @accessory], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
       %fieldset
         - if @accessory.errors.any?
@@ -8,45 +8,44 @@
             %ul
               - @accessory.errors.full_messages.each do |msg|
                 %li= msg
-        .control-group
-          = f.label :part_number, :class => 'control-label'
-          .controls
+        .form-group
+          = f.label :part_number, :class => 'control-label col-md-3'
+          .col-md-9
             = f.text_field :part_number, :class => 'form-control'
-        .control-group
-          = f.label :name, :class => 'control-label'
-          .controls
+        .form-group
+          = f.label :name, :class => 'control-label col-md-3'
+          .col-md-9
             = f.text_field :name, :class => 'form-control'
         = f.fields_for @sku do |ff|
-          .control-group
-            = ff.label :weight, 'Weight (kg)', :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :weight, 'Weight (kg)', :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :weight, :class => 'form-control'
-          .control-group
-            = ff.label :length, 'Length (mm)', :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :length, 'Length (mm)', :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :length, :class => 'form-control'
-          .control-group
-            = ff.label :thickness, 'Thickness (mm)', :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :thickness, 'Thickness (mm)', :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :thickness, :class => 'form-control'
-          .control-group
-            = ff.label :cost_value, :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :cost_value, :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :cost_value, :class => 'form-control'
-          .control-group
-            = ff.label :price, :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :price, :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :price, :class => 'form-control'
-          .control-group
-            = ff.label :stock, :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :stock, :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :stock, :class => 'form-control'
-          .control-group
-            = ff.label :stock_warning_level, :class => 'control-label'
-            .controls
+          .form-group
+            = ff.label :stock_warning_level, :class => 'control-label col-md-3'
+            .col-md-9
               = ff.text_field :stock_warning_level, :class => 'form-control'
-        .form-actions
-          = button_tag(:type => 'submit', :class => 'btn btn-info') do
-            %i.icon-ok
-            Submit
+        .form-group
+          .col-md-offset-3.col-md-9
+            = f.submit 'Submit', :class => 'btn btn-primary'
         

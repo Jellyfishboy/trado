@@ -1,10 +1,14 @@
-- content_for :title, 'List SKU attribute types'
+- content_for :title, 'SKU attribute types'
 - content_for :breadcrumb, 'SKU attribute types'
-.page-header
-  %h1 Listing SKU attribute types
-  = link_to new_admin_products_skus_attribute_type_path, :class => "btn btn-success" do
-    %i.icon-plus
-    New attribute type
+- content_for :header, 'Product SKUs'
+- content_for :subnav do
+  %li= link_to 'Products', admin_products_path
+  %li= link_to 'SKUs', admin_products_skus_path
+  %li.current
+    %a.current Attribute types
+= link_to new_admin_products_skus_attribute_type_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
+  New attribute type
 - if @attribute_types.empty?
   %p You don't have any product attribute types.
 - else
@@ -19,5 +23,5 @@
         %tr
           %td= attribute_type.name
           %td= attribute_type.measurement
-          %td= table_commands attribute_type, admin_products_skus_attribute_type_path(attribute_type), edit_admin_products_skus_attribute_type_path(attribute_type), admin_products_skus_attribute_type_path(attribute_type), 1
+          = table_commands attribute_type, admin_products_skus_attribute_type_path(attribute_type), edit_admin_products_skus_attribute_type_path(attribute_type), admin_products_skus_attribute_type_path(attribute_type), 1
 

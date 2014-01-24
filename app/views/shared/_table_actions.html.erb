@@ -1,96 +1,32 @@
-<div class="hidden-phone visible-desktop action-buttons">
+<td class="text-right">
   <% unless type == 1 || type == 3 %>
-    <%= link_to view, :class => 'blue' do %>
-      <i class="icon-zoom-in bigger-130"></i>
+    <%= link_to view, :class => 'btn btn-info btn-xs' do %>
+      <i class="icon-search"></i>
     <% end %>
   <% end %>
   <% if type == 3 %>
-    <a href="#" class="grey update_stock" id="<%= object.id %>">
-      <i class="icon-signal bigger-130"></i>
+    <a href="#" class="btn btn-info btn-xs update_stock" id="<%= object.id %>">
+      <i class="icon-signal"></i>
     </a>
   <% end %>
   <% unless type == 2 %>
-    <%= link_to edit, :class => 'green' do %>
-      <i class="icon-pencil bigger-130"></i>
+    <%= link_to edit, :class => 'btn btn-success btn-xs' do %>
+      <i class="icon-pencil"></i>
     <% end %>
   <% end %>
   <% if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed" %>
-    <a href="#" class="grey change_shipping" id="<%= object.id %>">
-      <i class="icon-truck bigger-130"></i>
+    <a href="#" class="btn btn-default btn-xs change_shipping" id="<%= object.id %>">
+      <i class="icon-truck"></i>
     </a>
   <% end %>
   <% if type == 2 %>
-    <a href="#" class="green add_actual_shipping_cost" id="<%= object.id %>">
-      <i class="icon-money bigger-130"></i>
+    <a href="#" class="btn btn-success btn-xs add_actual_shipping_cost" id="<%= object.id %>">
+      <i class="icon-money"></i>
     </a>
   <% end %>
   <% unless type == 2 %>
-    <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'red' do %>
-      <i class="icon-trash bigger-130"></i>
+    <%= link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger btn-xs' do %>
+      <i class="icon-remove"></i>
     <% end %>
   <% end %>
-</div>
-
-<div class="hidden-desktop visible-phone">
-  <div class="inline position-relative open">
-    <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-      <i class="icon-caret-down icon-only bigger-120"></i>
-    </button>
-    <ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
-      <% if type != 1 %>
-        <li>
-          <%= link_to view, :class => 'tooltip-info', 'data-rel' => 'tooltip', 'data-original-title' => 'View' do %>
-            <span class="blue">
-              <i class="icon-zoom-in bigger-120"></i>
-            </span>
-          <% end %>
-        </li>
-      <% end %>
-      <% if type == 3 %>
-        <li>
-          <a href="#" class="tooltip-info update_stock" id="<%= object.id %>" data-rel="tooltip" data-original-title="Update SKU stock">
-            <span class="grey">
-              <i class="icon-signal bigger-120"></i>
-            </span>
-          </a>
-        </li>
-      <% end %>
-      <% unless type == 2 %>
-        <li>
-          <%= link_to edit, :class => 'tooltip-success', 'data-rel' => 'tooltip', 'data-original-title' => 'Edit' do %>
-            <span class="green">
-              <i class="icon-edit bigger-120"></i>
-            </span>
-          <% end %>
-        </li>
-      <% end %>
-      <% if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed" %>
-        <li>
-          <a href="#" class="tooltip-info change_shipping" id="<%= object.id %>" data-rel="tooltip" data-original-title="Mark as dispatched">
-            <span class="grey">
-              <i class="icon-truck bigger-120"></i>
-            </span>
-          </a>
-        </li>
-      <% end %>
-      <% if type == 2 %>
-        <li>
-          <a href="#" class="tooltip-info add_actual_shipping_cost" id="<%= object.id %>" data-rel="tooltip" data-original-title="Actual shipping cost">
-            <span class="green">
-              <i class="icon-money bigger-120"></i>
-            </span>
-          </a>
-        </li>
-      <% end %>
-      <% unless type == 2 %>
-        <li>
-          <%= link_to del, :class => 'tooltip-error', :method => :delete, :confirm => 'Are you sure?', 'data-rel' => 'tooltip', 'data-original-title' => 'Delete' do %>
-            <span class="red">
-              <i class="icon-trash bigger-120"></i>
-            </span>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+</td>

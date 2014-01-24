@@ -32,8 +32,8 @@ disable_field = (checkbox, field) ->
       $(field).prop 'readonly', true
 
 $(document).ready ->
-  duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
-  disable_field '#invoice_vat_applicable', '#invoice_vat_number'
+  # duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
+  # disable_field '#invoice_vat_applicable', '#invoice_vat_number'
 
   $('.change_shipping').click ->
     order = $(@).attr 'id'

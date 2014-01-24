@@ -1,10 +1,10 @@
-- content_for :title, 'List accessories'
+- content_for :title, 'Accessories'
 - content_for :breadcrumb, 'Accessories'
-.page-header
-  %h1 Listing accessories
-  = link_to new_admin_accessory_path, :class => "btn btn-success" do
-    %i.icon-plus
-    New accessory
+- content_for :header, 'Accessories'
+- content_for :hide_sub_navigation, 'hide_subnav'
+= link_to new_admin_accessory_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
+  New accessory
 - if @accessories.empty?
   %p You don't have any accessories yet.
 - else
@@ -25,4 +25,4 @@
           %td= accessory.name
           %td= accessory.weight
           %td= format_currency accessory.price
-          %td= table_commands accessory, admin_accessory_path(accessory), edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 1
+          = table_commands accessory, admin_accessory_path(accessory), edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 1

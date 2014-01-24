@@ -1,8 +1,7 @@
 - content_for :title, 'Edit tier'
 - content_for :breadcrumb, 'Edit'
-- breadcrumb_add 'Tiers', admin_tiers_path
-
-.page-header
-    %h1= "Editing tier ##{@tier.id}"  
+- breadcrumb_add 'Shipping tiers', admin_tiers_path
+- content_for :header, "Editing tier ##{@tier.id}"
+- content_for :hide_sub_navigation, 'hide_subnav'
 
 = render 'form'

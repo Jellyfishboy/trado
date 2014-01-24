@@ -1,4 +1,4 @@
-- content_for :title, 'List products'
+- content_for :title, 'Products'
 - content_for :breadcrumb, 'Products'
 - content_for :header, 'Products'
 - content_for :subnav do
@@ -6,8 +6,8 @@
     %a.current Products
   %li= link_to 'SKUs', admin_products_skus_path
   %li= link_to 'Attribute types', admin_products_skus_attribute_types_path 
-= link_to new_admin_product_path, :class => "btn btn-success" do
-  %i.icon-plus>
+= link_to new_admin_product_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
   New product
 - if @products.empty?
   %p You don't have any products yet.
@@ -36,5 +36,4 @@
             = format_currency product.skus.first.price
           %td
             = gross_price product.skus.first.price
-          %td
-            = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
+          = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0

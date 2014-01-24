@@ -1,7 +1,7 @@
 - content_for :title, 'New accessory'
 - content_for :breadcrumb, 'New'
 - breadcrumb_add 'Accessories', admin_accessories_path
-.page-header
-    %h1 New accessory
+- content_for :header, 'New accessory'
+- content_for :hide_sub_navigation, 'hide_subnav'
 
 = render 'form'

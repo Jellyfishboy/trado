@@ -1,9 +1,8 @@
 <% content_for :title, 'New product'
    content_for :breadcrumb, 'New'
-   breadcrumb_add 'All products', admin_products_path %>
-<div class="page-header">
-    <h1>New product</h1>
-</div>
+   breadcrumb_add 'Products', admin_products_path
+   content_for :header, 'New product'
+   content_for :hide_sub_navigation, 'hide_subnav' %>
 <div class="row-fluid">
   <div class="span12">
     <%= form_for [:admin, @product], :html => { :class => 'form-horizontal new_product', :role => 'form' } do |f| %>

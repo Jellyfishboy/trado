@@ -1,7 +1,11 @@
-- content_for :title, 'List SKUs'
-- content_for :breadcrumb, 'SKUs'
-.page-header
-  %h1 Listing SKUs
+- content_for :title, 'Product SKUs'
+- content_for :breadcrumb, 'Product SKUs'
+- content_for :header, 'Product SKUs'
+- content_for :subnav do
+  %li= link_to 'Products', admin_products_path
+  %li.current
+    %a.current SKUs
+  %li= link_to 'Attribute types', admin_products_skus_attribute_types_path 
 - if @skus.empty?
   %p You don't have any SKUs yet.
 - else
@@ -34,6 +38,6 @@
           %td= sku.stock_warning_level
           %td= format_currency sku.cost_value
           %td= format_currency sku.price
-          %td= table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 3
+          = table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 3
 
 #sku-stock-modal
