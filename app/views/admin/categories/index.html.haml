@@ -1,10 +1,6 @@
 - content_for :title, 'List categories'
 - content_for :breadcrumb, 'Categories'
-.page-header
-  %h1 Listing categories
-  = link_to new_admin_category_path, :class => "btn btn-success" do
-    %i.icon-plus
-    New category
+- content_for :header, 'Listing categories'
 - if @category.empty?
   %p You don't have any categories yet.
 - else

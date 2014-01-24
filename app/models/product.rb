@@ -14,6 +14,7 @@
 #  meta_description         :string(255)      precision(8), scale(2) 
 #  weighting                :integer 
 #  featured                 :boolean 
+#  active                   :boolean          default(true)
 #  category_id              :integer    
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null

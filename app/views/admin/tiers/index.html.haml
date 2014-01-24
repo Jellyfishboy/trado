@@ -1,10 +1,15 @@
-- content_for :title, 'List shipping tiers'
+- content_for :title, 'Shipping tiers'
 - content_for :breadcrumb, 'Shipping tiers'
-.page-header
-  %h1 Listing shipping tiers
-  = link_to new_admin_tier_path, :class => "btn btn-success" do
-    %i.icon-plus
-    New tier
+- content_for :header, 'Shipping tiers'
+- content_for :subnav do
+  %li= link_to 'Methods', admin_shippings_path
+  %li.current
+    %a.current Tiers
+  %li= link_to 'Countries', admin_countries_path
+
+= link_to new_admin_tier_path, :class => "btn btn-success" do
+  %i.icon-plus
+  New tier
 - if @tiers.empty?
   %p You don't have any tiers yet
 - else

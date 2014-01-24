@@ -47,6 +47,15 @@ describe Product do
         end
     end
 
+    context "When the new SKU fails to update" do
+
+        it "should set the record as active" do
+            sku = create(:sku, active: false)
+            sku.activate!
+            expect(sku.active).to eq true
+        end
+    end
+
     it "should return an array of active products" do
         product_1 = create(:product, active: false)
         product_2 = create(:product)

@@ -20,6 +20,7 @@
 #  cost_value                 :decimal          precision(8), scale(2) 
 #  price                      :decimal          precision(8), scale(2) 
 #  product_id                 :integer 
+#  active                     :boolean          default(true)
 #  accessory_id               :integer          
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null

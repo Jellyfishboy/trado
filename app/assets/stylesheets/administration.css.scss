@@ -1,73 +1,67 @@
-//= require admin/bootstrap-responsive.min
-//= require admin/bootstrap.min
-//= require admin/ace-responsive.min
-//= require admin/ace-skins.min
-//= require admin/ace.min
-//= require admin/jquery-ui-1.10.3.custom.min
+//= require admin/saturn
 //= require bootstrap-datepicker
-//= require redactor-rails
 
-.dashboard_home {
-    padding:0 4px;
-}
-.no_show {
-    .blue, .tooltip-info {
-        display:none;
-    }
-}
-.page-header {
-    overflow: hidden;
-        h1 {
-            float:left;
-        }
-        a {
-            float:right;
-            margin-right:30px;
-        }
-}
-form.new_product {
-    .add_field {
-        margin-left:10px;
-    }
-    #skus {
-        overflow: hidden;
-        .foreign_list {
-            float:left;
-            width:400px;
-            .control-label {
-                padding:0px;
-            }
-        }
-        .skus {
-            float:left;
-        }
-    }
-    #attachments {
-        overflow: hidden;
-        .foreign_list, .attachments {
-            float:left;
-            width:400px;    
-            height:161px;
-        }
-        .foreign_list .control-label {
-            padding: 0px;
-        }
-    }
-    #tags {
-        overflow: hidden;
-        .foreign_list, .tag {
-            float:left;
-            width:400px;
-        }
-        .foreign_list .control-label {
-            padding:0px;
-        }
-    }
-}
-textarea {
-    resize:none;
-}
-.shipping_gross {
-    margin-top:5px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+// .dashboard_home {
+//     padding:0 4px;
+// }
+// .no_show {
+//     .blue, .tooltip-info {
+//         display:none;
+//     }
+// }
+// .page-header {
+//     overflow: hidden;
+//         h1 {
+//             float:left;
+//         }
+//         a {
+//             float:right;
+//             margin-right:30px;
+//         }
+// }
+// form.new_product {
+//     .add_field {
+//         margin-left:10px;
+//     }
+//     #skus {
+//         overflow: hidden;
+//         .foreign_list {
+//             float:left;
+//             width:400px;
+//             .control-label {
+//                 padding:0px;
+//             }
+//         }
+//         .skus {
+//             float:left;
+//         }
+//     }
+//     #attachments {
+//         overflow: hidden;
+//         .foreign_list, .attachments {
+//             float:left;
+//             width:400px;    
+//             height:161px;
+//         }
+//         .foreign_list .control-label {
+//             padding: 0px;
+//         }
+//     }
+//     #tags {
+//         overflow: hidden;
+//         .foreign_list, .tag {
+//             float:left;
+//             width:400px;
+//         }
+//         .foreign_list .control-label {
+//             padding:0px;
+//         }
+//     }
+// }
+// textarea {
+//     resize:none;
+// }
+// .shipping_gross {
+//     margin-top:5px;
+//     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+// }

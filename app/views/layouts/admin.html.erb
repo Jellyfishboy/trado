@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= stylesheet_link_tag :administration %>
     <%= csrf_meta_tag %>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300|Roboto:100,300,400,700|Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/stylesheets/font.css" media="screen" />
     <!--[if lte IE 8]>
       <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -18,235 +18,78 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
 
-  <body class="skin-1 navbar-fixed breadcrumbs-fixed">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <%= link_to admin_root_path, :class => 'brand' do %>
-            <small>
-              <i class="icon-cog"></i>
-              Gimson Robotics
-            </small>
-          <% end %><!--/.brand-->
-
-          <ul class="nav ace-nav pull-right">
-
-            <li class="blue">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <i class="icon-bell-alt icon-animated-bell"></i>
-                <span class="badge badge-important">8</span>
-              </a>
-
-              <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-closer">
-                <li class="nav-header">
-                  <i class="icon-warning-sign"></i>
-                  8 Notifications
-                </li>
-
-                <li>
-                  <a href="#">
-                    <div class="clearfix">
-                      <span class="pull-left">
-                        <i class="btn btn-mini no-hover btn-pink icon-comment"></i>
-                        New Comments
-                      </span>
-                      <span class="pull-right badge badge-info">+12</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    See all notifications
-                    <i class="icon-arrow-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="light-blue">
-              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                <span class="user-info">
-                  <small>Welcome,</small>
-                  Admin
-                </span>
-                <i class="icon-caret-down"></i>
-              </a>
-              <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                <li>
-                  <%= link_to destroy_user_session_path, :method => :delete do %>
-                    <i class="icon-off"></i>
-                    Logout
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-          </ul><!--/.ace-nav-->
-        </div><!--/.container-fluid-->
-      </div><!--/.navbar-inner-->
-    </div>
-
-    <div class="main-container container-fluid">
-      <a class="menu-toggler" id="menu-toggler" href="#">
-        <span class="menu-text"></span>
-      </a>
-
-      <div class="sidebar fixed" id="sidebar">
-        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-          <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <%= link_to new_admin_category_path, :class => "btn btn-small btn-success" do %>
-              <i class="icon-beaker"></i>
-            <% end %>
-
-            <%= link_to new_admin_product_path, :class => "btn btn-small btn-info" do %>
-              <i class="icon-th"></i>
-            <% end %>
-
-            <%= link_to new_admin_accessory_path, :class => "btn btn-small btn-warning" do %>
-              <i class="icon-cog"></i>
-            <% end %>
-
-            <%= link_to new_admin_invoice_path, :class => "btn btn-small btn-danger" do %>
-              <i class="icon-file-text"></i>
-            <% end %>
-          </div>
-
-          <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-            <span class="btn btn-success"></span>
-
-            <span class="btn btn-info"></span>
-
-            <span class="btn btn-warning"></span>
-
-            <span class="btn btn-danger"></span>
-          </div>
-        </div><!--#sidebar-shortcuts-->
-
-        <ul class="nav nav-list">
-          <li class="<%= active_controller?('admin/admin') %>">
-            <a href="/admin">
-              <i class="icon-dashboard"></i>
-              <span class="menu-text"> Dashboard </span>
-            </a>
-          </li>
-
-          <li class="<%= active_controller?('admin/categories') %>">
-            <%= link_to admin_categories_path do %>
-              <i class="icon-beaker"></i>
-              <span class="menu-text"> Categories </span>
-            <% end %>
-          </li>
-
-          <li class="<%= active_controller?('admin/products') %> <%= active_controller?('admin/products/skus/attribute_types') %> <%= active_controller?('admin/products/skus') %>">
-            <a href="#" class="dropdown-toggle">
-              <i class="icon-th"></i>
-              <span class="menu-text">Products</span>
-              <b class="arrow icon-angle-down"></b>
-            </a>
-            <ul class="submenu">
-              <li class="<%= active_controller?('admin/products') %>">
-                <%= link_to admin_products_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  All products
-                <% end %>
-              </li>
-              <li class="<%= active_controller?('admin/products/skus') %>">
-                <%= link_to admin_products_skus_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  SKUs
-                <% end %>
-              </li>
-              <li class="<%= active_controller?('admin/products/skus/attribute_types') %>">
-                <%= link_to admin_products_skus_attribute_types_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Attribute types
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <li class="<%= active_controller?('admin/accessories') %>">
-            <%= link_to admin_accessories_path do %>
-              <i class="icon-cog"></i>
-              <span class="menu-text">Accessories</span>
-            <% end %>
-          </li>
-          <li class="<%= active_controller?('admin/orders') %> <%= active_controller?('admin/transactions') %>">
-            <a href="#" class="dropdown-toggle">
-              <i class="icon-shopping-cart"></i>
-              <span class="menu-text"> Orders </span>
-              <b class="arrow icon-angle-down"></b>
-            </a>
-            <ul class="submenu">
-              <li class="<%= active_controller?('admin/orders') %>">
-                <%= link_to admin_orders_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  All orders
-                <% end %>
-              </li>
-              <li class="<%= active_controller?('admin/transactions') %>">
-                <%= link_to admin_transactions_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Transactions
-                <% end %>
-              </li>
-            </ul>
-          </li>
-<!--           <li class="<%= active_controller?('admin/invoices') %>">
-            <%= link_to admin_invoices_path do %>
-              <i class="icon-file-text"></i>
-              <span class="menu-text"> Invoices </span>
-            <% end %>
-          </li> -->
-          <li class="<%= active_controller?('admin/tiers') %> <%= active_controller?('admin/shippings') %> <%= active_controller?('admin/countries') %>">
-            <a href="#" class="dropdown-toggle">
-              <i class="icon-truck"></i>
-              <span class="menu-text"> Shipping </span>
-              <b class="arrow icon-angle-down"></b>
-            </a>
-            <ul class="submenu">
-              <li class="<%= active_controller?('admin/tiers') %>">
-                <%= link_to admin_tiers_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Tiers
-                <% end %>
-              </li>
-              <li class="<%= active_controller?('admin/shippings') %>">
-                <%= link_to admin_shippings_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Methods
-                <% end %>
-              </li>
-              <li class="<%= active_controller?('admin/countries') %>">
-                <%= link_to admin_countries_path do %>
-                  <i class="icon-double-angle-right"></i>
-                  Countries
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-bar-chart"></i>
-              <span class="menu-text"> Reports </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-male"></i>
-              <span class="menu-text"> Users </span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-wrench"></i>
-              <span class="menu-text"> Configuration </span>
-            </a>
-          </li>
-        </ul><!--/.nav-list-->
-
-        <div class="sidebar-collapse" id="sidebar-collapse">
-          <i class="icon-double-angle-left"></i>
+  <body>
+    <div class="all-wrapper fixed-header left-menu">
+      <div class="page-header">
+      <div class="header-links hidden-xs">
+        <div class="top-search-w dropdown">
+          <input type="text" class="top-search" placeholder="Search"/>
+        </div>
+        <div class="dropdown">
+          <a href="#" class="header-link clearfix">
+            <div class="avatar">
+              <%= image_tag 'avatar-small.jpg' %>
+            </div>
+            <div class="user-name-w">
+              Administrator
+            </div>
+          </a>
+        </div>
+        <div class="dropdown hidden-sm hidden-xs">
+          <%= link_to destroy_user_session_path, :method => :delete, :class => 'header-link' do %>
+            <i class="icon-power-off"></i> Logout
+          <% end %>
         </div>
       </div>
+      <%= link_to admin_root_path, :class => 'current logo hidden-xs' do %>
+        <i class="icon-rocket"></i>
+      <% end %>
+      <a class="menu-toggler" href="#"><i class="icon-reorder"></i></a>
+      <h1><%= yield :header %></h1>
+    </div>
+
+    <div class="side">
+      <div class="sidebar-wrapper">
+      <ul>
+        <li class='<%= active_controller?('admin/admin') %>'>
+          <%= link_to admin_root_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Dashboard', :class => active_controller?('admin/admin') do %>
+            <i class="icon-home"></i>
+          <% end %>
+        </li>
+        <li class="<%= active_controller?('admin/categories') %>" >
+          <%= link_to admin_categories_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Categories', :class => active_controller?('admin/categories') do %>
+            <i class="icon-beaker"></i>
+          <% end %>
+        </li>
+
+        <li class="<%= active_controller?('admin/products') %> <%= active_controller?('admin/products/skus/attribute_types') %> <%= active_controller?('admin/products/skus') %>">
+            <%= link_to admin_products_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Products', :class => "active_controller?('admin/Products') active_controller?('admin/products/skus/attribute_types') active_controller?('admin/products/skus')" do %>
+              <i class="icon-th"></i>
+            <% end %>
+        </li>
+        <li class="<%= active_controller?('admin/accessories') %>">
+          <%= link_to admin_accessories_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories', :class => active_controller?('admin/accessories') do %>
+            <i class="icon-code-fork"></i>
+          <% end %>
+        </li>
+        <li class="<%= active_controller?('admin/orders') %> <%= active_controller?('admin/transactions') %>">
+          <%= link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories', :class => "active_controller?('admin/orders') active_controller?('admin/transactions')" do %>
+            <i class="icon-shopping-cart"></i>
+          <% end %>
+        </li>
+        <li class="<%= active_controller?('admin/tiers') %> <%= active_controller?('admin/shippings') %> <%= active_controller?('admin/countries') %>">
+          <%= link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories', :class => "active_controller?('admin/tiers') active_controller?('admin/shippings') active_controller?('admin/countries')" do %>
+            <i class="icon-truck"></i>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="sub-sidebar-wrapper">
+      <ul class="nav">
+        <%= yield :subnav %>
+      </ul>
+    </div>
+  </div>
 
       <div class="main-content">
         <%= render_breadcrumbs 0 %>
@@ -265,8 +108,6 @@
       <i class="icon-double-angle-up icon-only bigger-110"></i>
     </a>
     <%= javascript_include_tag :administration %>
-    <script type="text/javascript">
-      if("ontouchend" in document) document.write("<script src='/javascript/admin/jquery.mobile.custom.min.js' >"+"<"+"/script>");
-    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   </body>
 </html>

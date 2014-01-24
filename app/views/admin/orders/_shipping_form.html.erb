@@ -1,29 +1,29 @@
 <div id="shipping-form" class="modal hide fade" tabindex="-1" aria-hidden="true" style="display: none;">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h4 class="blue bigger">#<%= @order.id %> Update shipping</h4>
-    </div>
-    <div class="modal-body overflow-visible">
-      <div class="row-fluid">
-        <div class="span12">
-          <%= form_for [:admin, @order], :html => { :class => 'form-horizontal', :role => 'form', :method => "put" } do |f| %>
-            <div class="control-group">
-              <%= f.label :shipping_date, :class => 'control-label' %>
-              <div class="controls">
-                <%= f.text_field :shipping_date, :class => 'form-control', 'data-behaviour' => 'datepicker', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y')) %>
-              </div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h4 class="blue bigger">#<%= @order.id %> Update shipping</h4>
+  </div>
+  <div class="modal-body overflow-visible">
+    <div class="row-fluid">
+      <div class="span12">
+        <%= form_for [:admin, @order], :html => { :class => 'form-horizontal', :role => 'form', :method => "put" } do |f| %>
+          <div class="control-group">
+            <%= f.label :shipping_date, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :shipping_date, :class => 'form-control', 'data-behaviour' => 'datepicker', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y')) %>
             </div>
           </div>
         </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-small" data-dismiss="modal">
-        <i class="icon-remove"></i>
-        Cancel
-      </button>
-      <%= button_tag(:type => 'submit', :class => 'btn btn-small btn-primary') do %>
-          <i class="icon-ok"></i>Submit
-        <% end %>
-      <% end %>
-    </div>
+      </div>
   </div>
+  <div class="modal-footer">
+    <button class="btn btn-small" data-dismiss="modal">
+      <i class="icon-remove"></i>
+      Cancel
+    </button>
+    <%= button_tag(:type => 'submit', :class => 'btn btn-small btn-primary') do %>
+        <i class="icon-ok"></i>Submit
+      <% end %>
+    <% end %>
+  </div>
+</div>

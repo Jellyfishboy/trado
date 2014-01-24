@@ -1,10 +1,14 @@
-- content_for :title, 'List shipping countries'
+- content_for :title, 'Shipping countries'
 - content_for :breadcrumb, 'Shipping countries'
-.page-header
-  %h1 Listing shipping countries
-  = link_to new_admin_country_path, :class => "btn btn-success" do
-    %i.icon-plus
-    New country
+- content_for :header, 'Shipping countries'
+- content_for :subnav do
+  %li= link_to 'Methods', admin_countries_path
+  %li= link_to 'Tiers', admin_tiers_path
+  %li.current
+    %a.current Countries
+= link_to new_admin_country_path, :class => "btn btn-success" do
+  %i.icon-plus
+  New country
 - if @countries.empty?
   %p You don't have any countries yet.
 - else 

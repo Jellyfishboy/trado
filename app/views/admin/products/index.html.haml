@@ -1,0 +1,40 @@
+- content_for :title, 'List products'
+- content_for :breadcrumb, 'Products'
+- content_for :header, 'Products'
+- content_for :subnav do
+  %li.current
+    %a.current Products
+  %li= link_to 'SKUs', admin_products_skus_path
+  %li= link_to 'Attribute types', admin_products_skus_attribute_types_path 
+= link_to new_admin_product_path, :class => "btn btn-success" do
+  %i.icon-plus>
+  New product
+- if @products.empty?
+  %p You don't have any products yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th SKU
+        %th Part no.
+        %th{colspan: "2"} Name
+        %th Net price
+        %th Gross price
+        %th
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td
+            = product.sku
+          %td
+            = product.part_number
+          %td{width: "85"}
+            = image_tag product.attachments.first.file.medium, :height => "75", :width => "75"
+          %td
+            = product.name
+          %td
+            = format_currency product.skus.first.price
+          %td
+            = gross_price product.skus.first.price
+          %td
+            = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0

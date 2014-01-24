@@ -28,6 +28,15 @@ describe Shipping do
         end
     end
 
+    context "When the new shipping fails to update" do
+
+        it "should set the record as active" do
+            shipping = create(:shipping, active: false)
+            shipping.activate!
+            expect(shipping.active).to eq true
+        end
+    end
+
     it "should return an array of 'active' shippings" do
         shipping_1 = create(:shipping)
         shipping_2 = create(:shipping, active: false)

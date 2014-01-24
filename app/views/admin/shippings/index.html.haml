@@ -1,10 +1,14 @@
-- content_for :title, 'List shipping methods'
+- content_for :title, 'Shipping methods'
 - content_for :breadcrumb, 'Shipping methods'
-.page-header
-  %h1 Listing shipping methods
-  = link_to new_admin_shipping_path, :class => 'btn btn-success' do
-    %i.icon-plus
-    New shipping option
+/ - content_for :header, 'Shipping methods'
+- content_for :subnav do
+  %li.current
+    %a.current Methods
+  %li= link_to 'Tiers', admin_tiers_path
+  %li= link_to 'Countries', admin_countries_path
+= link_to new_admin_shipping_path, :class => 'btn btn-success' do
+  %i.icon-plus
+  New shipping option
 - if @shippings.empty?
   %p You don't have any shippings yet.
 - else

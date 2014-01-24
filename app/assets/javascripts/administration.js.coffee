@@ -1,14 +1,8 @@
 #= require jquery
 #= require jquery_ujs
-#= require admin/ace-elements.min
-#= require admin/ace.min
-#= require admin/bootstrap.min
-#= require admin/bootstrap-tag.min
-#= require admin/jquery-ui-1.10.3.custom.min
-#= require admin/jquery.slimscroll.min
-#= require admin/jquery.ui.touch-punch.min
+#= require admin/saturn_1
+#= require admin/saturn_2
 #= require bootstrap-datepicker
-#= require redactor-rails
 
 # Attach a function or variable to the global namespace
 root = exports ? this

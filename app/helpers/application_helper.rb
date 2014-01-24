@@ -21,7 +21,7 @@ module ApplicationHelper
     end
     
     def active_controller? controller
-      "active" if params[:controller] == controller
+      "current" if params[:controller] == controller
     end
 
     def active_category? id

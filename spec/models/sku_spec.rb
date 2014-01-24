@@ -15,12 +15,13 @@ describe Sku do
     # Validation
     it { expect(subject).to validate_presence_of(:price) }
     it { expect(subject).to validate_presence_of(:cost_value) }
-    it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:length) }
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:thickness) }
-    it { expect(subject).to validate_presence_of(:stock_warning_level) }
     it { expect(subject).to validate_presence_of(:attribute_type_id) }
+    before { subject.stub(:stock_changed?) { true } }
+    it { expect(subject).to validate_presence_of(:stock) }
+    it { expect(subject).to validate_presence_of(:stock_warning_level) }
 
     it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
@@ -30,6 +31,7 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock).only_integer } 
     it { expect(subject).to validate_numericality_of(:stock_warning_level).only_integer } 
 
+    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to(:active) }
     it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to(:active) }
 
     context "When a used SKU is updated or deleted" do
@@ -38,6 +40,16 @@ describe Sku do
             sku = create(:sku)
             sku.inactivate!
             expect(sku.active).to eq false
+        end
+
+    end
+
+    context "When the new SKU fails to update" do
+
+        it "should set the record as active" do
+            sku = create(:sku, active: false)
+            sku.activate!
+            expect(sku.active).to eq true
         end
     end
 
