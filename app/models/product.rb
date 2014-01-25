@@ -23,7 +23,8 @@
 class Product < ActiveRecord::Base
 
   attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
-  :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured
+  :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
+  :short_description
 
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting,                             :presence => true

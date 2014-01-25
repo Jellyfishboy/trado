@@ -100,10 +100,6 @@
         <% end %>
 
         <div class="page-content">
-          <% if flash[:notice] or flash[:error] or flash[:success] %>
-              <div class="alert <% if flash[:success] then %>alert-success <% elsif flash[:notice] then %>alert-info <% elsif flash[:error] then %>alert-error<% end %>">
-                <button type="button" class="close" data-dismiss="alert">×</button><%= raw flash[:error] %><%= raw flash[:notice] %><%= raw flash[:success] %></div>
-          <% end %>
           <%= yield %>
         </div><!--/.page-content-->
       </div><!--/.main-content-->

@@ -71,6 +71,9 @@ gem 'foreman',   '~> 0.61.0'
 # Transaction handler
 gem 'activemerchant'
 
+# RTE
+gem 'redactor-rails'
+
 # Authenication
 gem 'devise'
 gem 'cancan'

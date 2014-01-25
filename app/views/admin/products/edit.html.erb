@@ -46,9 +46,15 @@
         </div>
       </div>
       <div class="form-group">
+        <%= f.label :short_description, :class => 'control-label col-md-3' %>
+        <div class="col-md-9">
+          <%= f.text_area :short_description, :rows => 6, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
         <%= f.label :description, :class => 'control-label col-md-3' %>
-        <div class="col-md-9 edit_bk">
-          <%= f.text_area :description, :rows => 6, :class => 'form-control summernote', :name => 'editor' %>
+        <div class="col-md-9">
+          <%= f.text_area :description, :rows => 6, :class => 'form-control redactor' %>
         </div>
       </div>
       <div class="form-group">

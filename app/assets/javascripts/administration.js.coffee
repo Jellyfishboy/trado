@@ -1,8 +1,9 @@
 #= require jquery
 #= require jquery_ujs
 #= require admin/saturn_1
-#= require admin/saturn_2
+# require admin/saturn_2
 #= require bootstrap-datepicker
+#= require redactor-rails
 
 # Attach a function or variable to the global namespace
 root = exports ? this

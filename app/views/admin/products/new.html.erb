@@ -43,9 +43,15 @@
         </div>
       </div>
       <div class="control-group">
+        <%= f.label :short_description, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :short_description, :rows => 6, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="control-group">
         <%= f.label :description, :class => 'control-label' %>
-        <div class="controls edit_bk">
-          <%= f.text_area :description, :rows => 6, :class => 'form-control summernote', :name => 'editor' %>
+        <div class="controls">
+          <%= f.text_area :description, :rows => 6, :class => 'form-control redactor' %>
         </div>
       </div>
       <div class="control-group">

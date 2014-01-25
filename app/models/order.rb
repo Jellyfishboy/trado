@@ -34,7 +34,7 @@ class Order < ActiveRecord::Base
   
   has_many :order_items,        :dependent => :delete_all
   has_one :transaction,         :dependent => :destroy
-  ja4
+
   belongs_to :shipping
   belongs_to :ship_address,     class_name: 'Address'
   belongs_to :bill_address,     class_name: 'Address'
