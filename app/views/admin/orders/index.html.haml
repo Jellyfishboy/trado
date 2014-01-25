@@ -18,10 +18,8 @@
         %th Order no.
         %th Transaction ID
         %th Name
-        %th Email
         %th Shipping status
         %th Payment status
-        %th Fee
         %th Gross amount
         %th Last updated
         %th
@@ -33,10 +31,8 @@
           %td
             = order.bill_address.first_name
             = order.bill_address.last_name
-          %td= order.email
           %td= shipping_status order.shipping_status
           %td= payment_status order.transaction.payment_status
-          %td= format_currency order.transaction.fee unless order.transaction.fee.nil?
           %td= format_currency order.transaction.gross_amount
           %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
           = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2

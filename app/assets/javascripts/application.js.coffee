@@ -11,7 +11,6 @@
 #= require goMap/js/jquery.gomap-1.3.2.min
 #= require custom
 #= require modernizr.custom.56918
-#= require redactor-rails
 #= require spin
 #= require jquery.spin
 #= require typeahead_2

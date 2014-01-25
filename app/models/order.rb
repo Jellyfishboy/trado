@@ -22,6 +22,7 @@
 #  actual_shipping_cost     :decimal          precision(8), scale(2) 
 #  express_token            :string(255) 
 #  express_payer_id         :string(255) 
+# apqiote a protmm lkgjt/wing
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
@@ -33,6 +34,7 @@ class Order < ActiveRecord::Base
   
   has_many :order_items,        :dependent => :delete_all
   has_one :transaction,         :dependent => :destroy
+  ja4
   belongs_to :shipping
   belongs_to :ship_address,     class_name: 'Address'
   belongs_to :bill_address,     class_name: 'Address'

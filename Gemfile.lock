@@ -276,10 +276,6 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    redactor-rails (0.4.3)
-      devise
-      mime-types
-      orm_adapter
     redis (3.0.7)
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
@@ -420,7 +416,6 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_admin
   rails_best_practices
-  redactor-rails
   rollbar
   rspec-rails
   sass-rails (~> 3.2.3)
