@@ -22,7 +22,6 @@
 #  created_at                   :datetime           not null
 #  updated_at                   :datetime           not null
 #
-
 class User < ActiveRecord::Base
 
     # Include default devise modules. Others available are:

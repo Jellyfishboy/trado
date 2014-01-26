@@ -26,7 +26,6 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
-
 class Order < ActiveRecord::Base
 
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 

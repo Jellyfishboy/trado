@@ -15,7 +15,6 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
-
 class Attachment < ActiveRecord::Base
   attr_accessible :attachable_id, :attachable_type, :description, :file
 

@@ -1,0 +1,12 @@
+.ajax_fields.attachments.col-md-4
+  .form-group
+    = f.label :description, :class => 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :description, :class => 'form-control'
+  .form-group
+    = f.label :file, :class => 'control-label col-md-3'
+    .col-md-9
+      = f.file_field :file, :class => 'form-control'
+  .form-group
+    .col-md-12
+      = link_to_remove_fields "Remove", f, "attachments"

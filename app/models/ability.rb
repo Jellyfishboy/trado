@@ -1,7 +1,6 @@
 # Ability documentation
 #
 # The ability class defines the user types and permission within your application. E.g. admin, user and guest.
-
 class Ability
     include CanCan::Ability
 

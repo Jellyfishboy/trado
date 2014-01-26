@@ -16,7 +16,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class CartItem < ActiveRecord::Base
 
   attr_accessible :cart_id, :price, :quantity, :sku_id, :weight

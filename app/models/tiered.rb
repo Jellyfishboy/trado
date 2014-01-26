@@ -12,7 +12,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Tiered < ActiveRecord::Base
 
   attr_accessible :shipping_id, :tier_id

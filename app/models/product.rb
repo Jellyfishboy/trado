@@ -19,7 +19,6 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
-
 class Product < ActiveRecord::Base
 
   attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
@@ -27,9 +26,9 @@ class Product < ActiveRecord::Base
   :short_description
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting,                             :presence => true
+  :part_number, :sku,                                         :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
-  validates :part_number, :weighting,                         :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short}
   validates :description,                                     :length => {:minimum => 20, :message => :too_short}
   validates :skus,                                            :tier => true, :on => :save

@@ -59,12 +59,7 @@ describe Sku do
             sku = build(:sku, stock: 5, stock_warning_level: 10)
             expect(sku).to have(1).error_on(:sku)
         end
-
-        it "should assign new SKU value by using the product SKU as a prefix" do
-            sku = create(:sku)
-            expect(sku.sku).to eq "#{sku.product.sku}-#{sku.attribute_value}"
-        end
-
+        
     end
 
     it "should return an array of active SKUs" do

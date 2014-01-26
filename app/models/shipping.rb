@@ -15,7 +15,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Shipping < ActiveRecord::Base
 
   attr_accessible :name, :price, :description, :active, :country_ids

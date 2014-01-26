@@ -73,12 +73,12 @@
           <% end %>
         </li>
         <li class="<%= active_controller?('admin/orders') %> <%= active_controller?('admin/transactions') %>">
-          <%= link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories', :class => "active_controller?('admin/orders') active_controller?('admin/transactions')" do %>
+          <%= link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Orders', :class => "active_controller?('admin/orders') active_controller?('admin/transactions')" do %>
             <i class="icon-shopping-cart"></i>
           <% end %>
         </li>
         <li class="<%= active_controller?('admin/tiers') %> <%= active_controller?('admin/shippings') %> <%= active_controller?('admin/countries') %>">
-          <%= link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories', :class => "active_controller?('admin/tiers') active_controller?('admin/shippings') active_controller?('admin/countries')" do %>
+          <%= link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Shipping', :class => "active_controller?('admin/tiers') active_controller?('admin/shippings') active_controller?('admin/countries')" do %>
             <i class="icon-truck"></i>
           <% end %>
         </li>
@@ -105,6 +105,6 @@
       </div><!--/.main-content-->
     </div><!--/.main-container-->
     <%= javascript_include_tag :administration %>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
   </body>
 </html>

@@ -16,7 +16,6 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
-
 class Notification < ActiveRecord::Base
 
   attr_accessible :notifiable_id, :notifiable_type, :email, :sent, :sent_at

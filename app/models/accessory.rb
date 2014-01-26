@@ -12,7 +12,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Accessory < ActiveRecord::Base
 
   attr_accessible :name, :part_number, :sku_attributes

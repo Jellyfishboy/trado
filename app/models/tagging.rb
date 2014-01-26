@@ -12,7 +12,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Tagging < ActiveRecord::Base
 
   attr_accessible :product_id, :tag_id

@@ -25,7 +25,6 @@
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #
-
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, 

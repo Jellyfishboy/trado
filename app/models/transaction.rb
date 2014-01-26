@@ -21,7 +21,6 @@
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #
-
 class Transaction < ActiveRecord::Base
 
   attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 

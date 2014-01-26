@@ -1,5 +1,4 @@
 //= require admin/saturn
-//= require bootstrap-datepicker
 //= require redactor-rails
 
 body, html {
@@ -27,8 +26,14 @@ body, html {
         box-shadow: inset -3px 0px 4px 0px rgba(0,0,0,0.3);
     }
 }
-.edit_bk {
-    background-color: white;
+.datepicker {
+    z-index:1041 !important;
+}
+.remove_field {
+    float:right;
+}
+textarea {
+    resize:none;
 }
 // .dashboard_home {
 //     padding:0 4px;

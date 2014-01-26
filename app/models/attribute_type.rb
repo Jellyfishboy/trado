@@ -12,7 +12,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class AttributeType < ActiveRecord::Base
   attr_accessible :measurement, :name
 

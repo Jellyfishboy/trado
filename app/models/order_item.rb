@@ -16,7 +16,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class OrderItem < ActiveRecord::Base
 
   attr_accessible :price, :quantity, :sku_id, :order_id, :weight

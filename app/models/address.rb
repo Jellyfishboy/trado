@@ -24,7 +24,6 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
-
 class Address < ActiveRecord::Base
 
   attr_accessible :active, :address, :city, :company, :country, :county, :addressable_id,

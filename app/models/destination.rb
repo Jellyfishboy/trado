@@ -12,7 +12,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Destination < ActiveRecord::Base
 
   attr_accessible :country_id, :shipping_id

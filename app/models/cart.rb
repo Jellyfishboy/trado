@@ -11,7 +11,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Cart < ActiveRecord::Base
 
   has_many :cart_items,       :dependent => :delete_all

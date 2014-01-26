@@ -11,7 +11,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
 class Tag < ActiveRecord::Base
 
   attr_accessible :name
