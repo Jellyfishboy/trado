@@ -22,7 +22,6 @@
 #  actual_shipping_cost     :decimal          precision(8), scale(2) 
 #  express_token            :string(255) 
 #  express_payer_id         :string(255) 
-# apqiote a protmm lkgjt/wing
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #

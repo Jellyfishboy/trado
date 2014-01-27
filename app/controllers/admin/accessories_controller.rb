@@ -15,7 +15,6 @@ class Admin::AccessoriesController < ApplicationController
   # GET /accessories/new.json
   def new
     @accessory = Accessory.new
-    @sku = @accessory.build_sku
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @accessory }

@@ -11,18 +11,21 @@
 #  cart_id        :integer          
 #  price          :decimal          precision(8), scale(2)
 #  quantity       :integer          
-#  sku_id         :integer          
+#  sku_id         :integer    
+#  product_id     :integer      
 #  weight         :decimal          precision(8), scale(2)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 class CartItem < ActiveRecord::Base
 
-  attr_accessible :cart_id, :price, :quantity, :sku_id, :weight
+  attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :product_id
 
-  belongs_to :sku 
+  has_one :addon, class_name: 'CartItem', foreign_key: 'product_id'
+  belongs_to :product, class_name: 'CartItem'
   belongs_to :cart
-  
+  belongs_to :sku 
+
   def total_price 
   	price * quantity
   end

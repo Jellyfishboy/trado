@@ -16,7 +16,11 @@
           = f.label :name, :class => 'control-label col-md-3'
           .col-md-9
             = f.text_field :name, :class => 'form-control'
-        = f.fields_for @sku do |ff|
+        = f.fields_for :sku do |ff|
+          .form-group
+            = ff.label :sku, 'SKU', :class => 'control-label col-md-3'
+            .col-md-9
+              = ff.text_field :sku, :class => 'form-control'
           .form-group
             = ff.label :weight, 'Weight (kg)', :class => 'control-label col-md-3'
             .col-md-9
@@ -45,6 +49,9 @@
             = ff.label :stock_warning_level, :class => 'control-label col-md-3'
             .col-md-9
               = ff.text_field :stock_warning_level, :class => 'form-control'
+          / FIXME: Only temporary. Improved solution required.
+          = ff.hidden_field :attribute_value, :value => 'Accessory'
+          = ff.hidden_field :attribute_type_id, :value => 7
         .form-group
           .col-md-offset-3.col-md-9
             = f.submit 'Submit', :class => 'btn btn-primary'
