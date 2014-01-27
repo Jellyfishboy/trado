@@ -15,6 +15,12 @@
                             - @sku.errors.full_messages.each do |msg|
                                 %li= msg
             .form-group
+                = f.label :sku, 'SKU', :class => 'control-label col-md-3'
+                .col-md-9
+                    .input-group
+                        %span.input-group-addon.sku_prefix= "#{@form_sku.product.sku}-"
+                        = f.text_field :sku, :class => 'form-control'
+            .form-group
                 = f.label :weight, :class => 'control-label col-md-3'
                 .col-md-9
                     = f.text_field :weight, :class => 'form-control'

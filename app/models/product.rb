@@ -53,9 +53,7 @@ class Product < ActiveRecord::Base
   #   text :tags do
   #     tags.map { |tag| tag.name }
   #   end
-  #   text :skus do 
-  #     skus.map { |sku| sku.sku }
-  #   end
+  #   text :sku
   #   text :part_number
   # end
 

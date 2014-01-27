@@ -6,7 +6,7 @@
           %h3
             %i.icon-signal
             Update stock: 
-            = @sku.sku 
+            = "#{@sku.product.sku}-#{@sku.sku}" 
         .widget-content
           .modal-body
             = form_for [:admin, :products, @sku], :html => { :class => 'form-horizontal', :role => 'form', :method => "put" } do |f|

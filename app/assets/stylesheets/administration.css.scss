@@ -35,6 +35,21 @@ body, html {
 textarea {
     resize:none;
 }
+.text-right {
+    a {
+        margin-right:5px;
+
+        &:last-child {
+            margin-right: 0px;
+        }
+        &.update_stock, &.change_shipping {
+            margin-right: 2px;
+        }
+    }
+}
+#sku_prefix {
+    padding:8px 15px;
+}
 // .dashboard_home {
 //     padding:0 4px;
 // }

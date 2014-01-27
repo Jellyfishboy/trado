@@ -32,7 +32,7 @@ class Sku < ActiveRecord::Base
   
   validates :price, :cost_value, :length, 
   :weight, :thickness, :attribute_value, 
-  :attribute_type_id,                               :presence => true
+  :attribute_type_id, :sku,                         :presence => true
   validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
@@ -48,7 +48,6 @@ class Sku < ActiveRecord::Base
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
 
-  before_create :update_sku
 
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
@@ -69,9 +68,5 @@ class Sku < ActiveRecord::Base
     where(['skus.active = ?', true])
   end
 
-  def update_sku
-    suffix = self.attribute_value.tr(".","-")
-    self.sku = "#{self.product.sku}-#{suffix}"
-  end
 
 end

@@ -25,7 +25,7 @@
         %th
     %tbody
       - @orders.each do |order|
-        %tr.if{class: "<haml_silent> order.actual_shipping_cost.blank? </haml_silent><haml_block>red</haml_block>"}
+        %tr{:class => ("red" if order.actual_shipping_cost.blank?)}
           %td= order.id
           %td= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank'
           %td

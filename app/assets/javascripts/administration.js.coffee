@@ -57,6 +57,13 @@ $(document).ready ->
     else
       $('.shipping_gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
 
+  # Copy SKU Prefix
+  if $("#product_sku").is ':visible'
+    window.setInterval (->
+      $(".sku_prefix").text $("#product_sku").val() + '-'
+    ), 100
+
+
 $(document).ajaxComplete ->
   $("[data-behaviour~=datepicker]").datepicker
     format: "dd/mm/yyyy"

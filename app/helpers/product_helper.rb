@@ -4,4 +4,8 @@ module ProductHelper
         "#{sku.attribute_value} #{sku.attribute_type.measurement unless sku.attribute_type.measurement.nil?}"
     end
 
+    def gross_price  net_price
+      format_currency net_price*0.2 + net_price
+    end
+
 end

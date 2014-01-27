@@ -62,45 +62,17 @@ module ApplicationHelper
     def table_commands object, show, edit, delete, type
       render :partial => 'shared/table_actions', :locals => { :object => object, :view => show, :edit => edit, :del => delete, :type => type }
     end
-
-    def del_table_command object
-      render :partial => 'shared/del_action', :locals => { :object => object }
-    end 
-
+    
     def format_currency price
       number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
     end
-    
-    def shipping_status status
-      if status == "Pending"
-        "<span class='label label-warning'>#{status}</span>".html_safe
-      elsif status == "Dispatched"
-        "<span class='label label-success'>#{status}</span>".html_safe
-      end
-    end
-    
-    def payment_status status
-      unless status == "Completed"
-        "<span class='label label-warning'>#{status}</span>".html_safe
-      else
-        "<span class='label label-success'>#{status}</span>".html_safe
-      end
-    end
 
     def boolean_helper obj, first, second
-      if obj == true
-        return first
-      else
-        return second
-      end
+      obj == true ? first : second
     end
 
     def readonly_helper obj
-      if obj == false
-        true
-      else 
-        false
-      end
+      obj == false ? true : false
     end
 
     def errors_for model, attribute
@@ -109,10 +81,6 @@ module ApplicationHelper
           model.errors[attribute].join(", ")
         end
       end
-    end
-
-    def gross_price  net_price
-      format_currency net_price*0.2 + net_price
     end
 
 end

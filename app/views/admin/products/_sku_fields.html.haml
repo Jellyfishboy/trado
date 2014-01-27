@@ -1,5 +1,11 @@
 .ajax_fields.skus.col-md-3
   .form-group
+    = f.label :sku, 'SKU', :class => 'control-label col-md-6'
+    .col-md-6
+      .input-group
+        %span.input-group-addon.sku_prefix
+        = f.text_field :sku, :class => 'form-control'
+  .form-group
     = f.label :weight, 'Weight (kg)', :class => 'control-label col-md-6'
     .col-md-6
       = f.text_field :weight, :class => 'form-control'

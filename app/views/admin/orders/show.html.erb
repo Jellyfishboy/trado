@@ -231,7 +231,7 @@ breadcrumb_add 'All orders', admin_orders_path %>
                                         
                                     
                                     <tr>
-                                        <td class="center"><%= item.sku.sku %></td>
+                                        <td class="center"><%= item.sku.product.sku %>-<%= item.sku.sku %></td>
 
                                         <td>
                                             <%= item.sku.product.name %>

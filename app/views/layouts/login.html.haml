@@ -7,23 +7,12 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = stylesheet_link_tag :administration
     = csrf_meta_tag
-    %link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,300", rel: "stylesheet"}/
-    /[if lte IE 8]
-      %link{href: "assets/css/ace-ie.min.css", rel: "stylesheet"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300|Roboto:100,300,400,700|Roboto+Condensed:300,400,700", rel: "stylesheet"}/
+    %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}
     / inline styles related to this page
     %meta{content: "text/html; charset=US-ASCII", "http-equiv" => "Content-Type"}/
-  %body.login-layout
-    .main-container.container-fluid
-      .main-content
-        = yield
-    / /.main-container
+  %body
+    .all-wrapper.no-menu-wrapper.light-bg
+      = yield
     / basic scripts
-    / [if !IE]>
     %script{src: "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
-    :javascript
-      if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-    :javascript
-      function show_box(id) {
-       $('.widget-box.visible').removeClass('visible');
-       $('#'+id).addClass('visible');
-      }

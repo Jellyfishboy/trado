@@ -27,7 +27,7 @@
     %tbody
       - @skus.each do |sku|
         %tr
-          %td= sku.sku
+          %td= "#{sku.product.sku}-#{sku.sku}"
           %td= link_to sku.product_id, [sku.product.category, sku.product]
           %td= sku.weight
           %td= sku.length

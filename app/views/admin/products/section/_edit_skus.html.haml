@@ -27,7 +27,7 @@
         %tbody
           - skus.each do |sku|
             %tr
-              %td= sku.sku
+              %td= "#{sku.product.sku}-#{sku.sku}"
               %td= sku.weight
               %td= sku.length
               %td= sku.thickness
@@ -41,4 +41,3 @@
     %h4.widget-header New SKUs
     #skus
       #sku_fields.row
-        = add_foreign_field f, :skus
