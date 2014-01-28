@@ -4,7 +4,7 @@
       %fieldset
         - if @accessory.errors.any?
           #error_explanation
-            %h2= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
+            %h4= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
             %ul
               - @accessory.errors.full_messages.each do |msg|
                 %li= msg
