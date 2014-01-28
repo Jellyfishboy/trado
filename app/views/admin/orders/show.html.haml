@@ -9,57 +9,53 @@
     .col-sm-8
       %h1.page-title.page-title-hard-bordered
         %i.fa.fa-file-text-o
-        Order #324
-        %span.title-price $22.84
+        = "Order ##{@order.id}"
+        %span.title-price= format_currency @order.transaction.gross_amount
       %h4.section-title Order Information
       %ul.order-info-list
         %li
           %i.fa.fa-calendar
           %strong Date:
-          December 4, 2013, 9:16 pm
+          = @order.updated_at.strftime('%B %-d, %Y, %I:%M %P')
         %li
           %i.fa.fa-truck
-          = succeed "Delivery" do
-            %strong Type:
+          %strong Transaction ID:
+          = link_to @order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{@order.transaction.transaction_id}", :target => '_blank'
         %li
           %i.fa.fa-money
-          = succeed "Cash" do
-            %strong Payment Type:
-        %li
-          %i.fa.fa-clock-o
-          = succeed "30" do
-            %strong Delivery Time:
+          %strong Transaction type:
+          = @order.transaction.transaction_type 
         %li
           %i.fa.fa-bell-o
-          = succeed "As" do
-            %strong Ready:
+          %strong Transaction fee:
+          = format_currency @order.transaction.fee unless @order.transaction.fee.nil?
         %li
-          %i.fa.fa-smile-o
-          = succeed "Rmartinez" do
-            %strong Sales Person:
-      %h4.section-title Customer Information
+          %i.fa.fa-clock-o
+          %strong Payment status:
+          = payment_status @order.transaction.payment_status
+
+      %h4.section-title Shipping Information
       %ul.order-info-list
         %li
           %i.fa.fa-user
-          %strong Name:
-          %a{href: "#"}
-            John Fiziko
-            %i.fa.fa-external-link-square
+          %strong Email:
+          = @order.email
         %li
           %i.fa.fa-phone
-          = succeed "(415)" do
-            %strong Phone:
+          %strong Shipping type:
+          = @order.shipping.name
         %li
           %i.fa.fa-map-marker
-          = succeed "3815" do
-            %strong Address:
+          %strong Shipping status:
+          = shipping_status @order.shipping_status
         %li
           %i.fa.fa-retweet
-          %span.label.label-success Returned Customer
+          %strong Shipping date:
+          = @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil? 
         %li
           %i.fa.fa-money
-          %strong Average Order:
-          $28.3
+          %strong Actual shipping cost:
+          = format_currency @order.actual_shipping_cost unless @order.actual_shipping_cost.nil?
     .col-sm-4
       .merchant-info
         %a.top-right-control-link{href: "#"}
