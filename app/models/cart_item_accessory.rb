@@ -23,8 +23,4 @@ class CartItemAccessory < ActiveRecord::Base
   belongs_to :cart_item
   belongs_to :accessory 
 
-  def total_price 
-    price * quantity
-  end
-
 end

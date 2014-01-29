@@ -34,6 +34,7 @@ Trado::Application.routes.draw do
 
   resources :users
   resources :cart_items, :only => [:create,:update,:destroy]
+  resources :cart_item_accessories, :only => [:update, :destroy]
   resources :notifications, :only => :create
   resources :addresses, :only => [:new, :create, :update]
 

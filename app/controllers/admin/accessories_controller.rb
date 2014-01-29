@@ -15,6 +15,7 @@ class Admin::AccessoriesController < ApplicationController
   # GET /accessories/new.json
   def new
     @accessory = Accessory.new
+    @attachment = @accessory.build_attachment
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @accessory }

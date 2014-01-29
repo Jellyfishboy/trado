@@ -11,6 +11,15 @@
       = form_for item, :remote => true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
     %td.price= format_currency item.price
+  - unless item.cart_item_accessory.blank?
+    %tr.accessory_row
+      %td.image
+        = image_tag 'http://placehold.it/124x124'
+      %td.desc
+        = item.cart_item_accessory.accessory.name
+      %td.qty
+        = item.cart_item_accessory.quantity
+
 %tr
   %td{colspan: "2", rowspan: "2"}
     .alert.alert-info

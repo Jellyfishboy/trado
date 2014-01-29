@@ -16,42 +16,27 @@
           = f.label :name, :class => 'control-label col-md-3'
           .col-md-9
             = f.text_field :name, :class => 'form-control'
-        = f.fields_for :sku do |ff|
+        .form-group
+          = f.label :weight, 'Weight (kg)', :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :weight, :class => 'form-control'
+        .form-group
+          = f.label :cost_value, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :cost_value, :class => 'form-control'
+        .form-group
+          = f.label :price, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :price, :class => 'form-control'
+        = f.fields_for :attachment do |ff|
           .form-group
-            = ff.label :sku, 'SKU', :class => 'control-label col-md-3'
+            = ff.label :description, :class => 'control-label col-md-3'
             .col-md-9
-              = ff.text_field :sku, :class => 'form-control'
+              = ff.text_field :description, :class => 'form-control'
           .form-group
-            = ff.label :weight, 'Weight (kg)', :class => 'control-label col-md-3'
+            = ff.label :file, :class => 'control-label col-md-3'
             .col-md-9
-              = ff.text_field :weight, :class => 'form-control'
-          .form-group
-            = ff.label :length, 'Length (mm)', :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :length, :class => 'form-control'
-          .form-group
-            = ff.label :thickness, 'Thickness (mm)', :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :thickness, :class => 'form-control'
-          .form-group
-            = ff.label :cost_value, :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :cost_value, :class => 'form-control'
-          .form-group
-            = ff.label :price, :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :price, :class => 'form-control'
-          .form-group
-            = ff.label :stock, :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :stock, :class => 'form-control'
-          .form-group
-            = ff.label :stock_warning_level, :class => 'control-label col-md-3'
-            .col-md-9
-              = ff.text_field :stock_warning_level, :class => 'form-control'
-          / FIXME: Only temporary. Improved solution required.
-          = ff.hidden_field :attribute_value, :value => 'Accessory'
-          = ff.hidden_field :attribute_type_id, :value => 7
+              = ff.file_field :file, :class => 'form-control'
         .form-group
           .col-md-offset-3.col-md-9
             = f.submit 'Submit', :class => 'btn btn-primary'

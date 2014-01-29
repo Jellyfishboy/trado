@@ -55,6 +55,9 @@ textarea {
     margin-top:35px;
   }
 }
+.accessory_row td {
+  border-top:0px;
+}
 
 @import "product";
 @import "category";
