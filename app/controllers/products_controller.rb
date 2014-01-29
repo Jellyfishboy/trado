@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
+    @cart_item_accessory = @cart_item.build_cart_item_accessory unless @product.accessories.empty?
     @notification = Notification.new
     @skus = @product.skus.active.order('cast(attribute_value as unsigned) asc')
     respond_to do |format|

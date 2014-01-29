@@ -5,14 +5,14 @@ class CartItemsController < ApplicationController
   # POST /cart_items
   # POST /cart_items.json
   def create
+    binding.pry
     @cart = current_cart #references the current cart which was defined in application controller
     sku = Sku.find(params[:cart_item][:sku_id])
-    # params[:accessory_id].any? ? params[:accessory_id] : nil
-    # @cart_accessory_item = @cart.add_accessory_cart_item
     @cart_item = @cart.add_cart_item(sku.weight, sku.price, sku.id, params[:cart_item][:quantity]) #uses add_cart_item method in cart.rb to check if the cart item already exists in the cart and responds accordingly
     respond_to do |format|
       if sku.stock >= @cart_item.quantity #checks to make sure the requested quantity is not more than the current DB stock
         if @cart_item.save
+          # @cart_accessory_item = @cart.add_accessory_cart_item(params[:accessory_id]) unless params[:accessory_id].blank?
           format.js { render :partial => 'carts/update_cart', :formats => [:js] }
         else
           format.json { render json: @cart_item.errors, status: :unprocessable_entity }

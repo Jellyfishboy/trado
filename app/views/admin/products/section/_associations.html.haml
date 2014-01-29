@@ -25,5 +25,5 @@
             - Accessory.all.each do |accessory|
               .checkbox
                 %label
-                  = check_box_tag "product[accessory_ids][]", option.id, @product.accessory_ids.include?(option.id)
-                  = category.name
+                  = check_box_tag "product[accessory_ids][]", accessory.id, @product.accessory_ids.include?(accessory.id)
+                  = accessory.name

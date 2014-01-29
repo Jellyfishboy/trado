@@ -7,8 +7,8 @@
 # Table name: tiereds
 #
 #  id             :integer          not null, primary key
-#  shipping_id     :integer
-#  product_id         :integer          
+#  tier_id        :integer
+#  shipping_id    :integer          
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

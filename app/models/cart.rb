@@ -21,6 +21,7 @@ class Cart < ActiveRecord::Base
   	current_item = cart_items.where('sku_id = ?', sku_id).first #grabs all the products which match the product id
     if current_item
   		current_item.quantity += item_quantity.to_i #if cart item selected exists, increment its quantity by 1
+      # current_item.accessory.quantity += item_quantity.to_i
       current_item.weight += sku_weight
   	else 
       current_item = cart_items.build(:price => sku_price, :sku_id => sku_id, :weight => sku_weight) #if cart item selected does not exist, build a new cart item
@@ -39,6 +40,11 @@ class Cart < ActiveRecord::Base
       current_item.destroy
     end
     current_item
+  end
+
+  def add_accessory_cart_item accessory_id
+    accessory = Accessory.find(accessory_id)
+    
   end
 
   def total_price 

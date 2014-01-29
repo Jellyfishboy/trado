@@ -39,6 +39,8 @@ class Product < ActiveRecord::Base
   has_many :taggings,                                         :dependent => :delete_all
   has_many :tags,                                             :through => :taggings, :dependent => :delete_all
   has_many :attachments,                                      as: :attachable, :dependent => :delete_all
+  has_many :accessorisations,                                 :dependent => :delete_all
+  has_many :accessories,                                      :through => :accessorisations
   belongs_to :category
 
   accepts_nested_attributes_for :attachments
