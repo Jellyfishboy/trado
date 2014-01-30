@@ -21,7 +21,6 @@ class Cart < ActiveRecord::Base
     accessory_current_item = cart_items.where('sku_id = ?',sku_id).includes(:cart_item_accessory).where('cart_item_accessories.accessory_id = ?', accessory_id).first unless accessory_id.blank?
     # If it can find a SKU with the related accessory, it will assign the current_item. Otherwise it will just find the SKU normally.
   	current_item =  accessory_current_item ? accessory_current_item : cart_items.where('sku_id = ?', sku_id).first  
-    accessory = Accessory.find(accessory_id) unless accessory_id.blank?
     # If the requested item has matching accessory requests, increase quantity. Otherwise, create new item.
     if (current_item && accessory_id.blank? && current_item.cart_item_accessory.nil?) || (current_item && !accessory_id.blank? && !current_item.cart_item_accessory.nil?)
   		current_item.quantity += item_quantity.to_i #if cart item selected exists, increment its quantity by 1
@@ -34,6 +33,7 @@ class Cart < ActiveRecord::Base
     # Create new cart item with (possibly) new cart item accessory
   	else 
       unless accessory_id.blank?
+        accessory = Accessory.find(accessory_id)
         current_item = cart_items.build(:price => (sku_price + accessory.price), :sku_id => sku_id, :weight => (sku_weight + accessory.weight)) #if cart item selected does not exist, build a new cart item
         current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory_id, :weight => accessory.weight)
       else
