@@ -30,5 +30,13 @@ class CartItem < ActiveRecord::Base
   	price * quantity
   end
 
+  def update_quantity quantity, accessory
+    self.quantity = quantity
+    self.cart_item_accessory.quantity = quantity unless accessory.blank?
+  end
+
+  def update_weight quantity, weight
+    self.weight = (weight*quantity)
+  end
 
 end

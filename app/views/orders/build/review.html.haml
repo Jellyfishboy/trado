@@ -65,7 +65,7 @@
                       %td.image
                         = link_to (image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
                       %td.desc
-                        = item.sku.product.name
+                        = item.weight
                         = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
                           %i.icon-remove-sign
                         %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
@@ -78,7 +78,7 @@
                         %td.image
                           = image_tag 'http://placehold.it/124x124'
                         %td.desc
-                          = item.cart_item_accessory.accessory.name
+                          = item.cart_item_accessory.weight
                         %td.qty
                           = item.cart_item_accessory.quantity
 

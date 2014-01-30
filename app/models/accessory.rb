@@ -6,11 +6,15 @@
 #
 # Table name: accessories
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)      
-#  part_number    :integer          
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id               :integer          not null, primary key
+#  name             :string(255)      
+#  part_number      :integer  
+#  price            :decimal          precision(8), scale(2)      
+#  weight           :decimal          precision(8), scale(2) 
+#  cost_value       :decimal          precision(8), scale(2)     
+#  active           :boolean          default(true)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 class Accessory < ActiveRecord::Base
 

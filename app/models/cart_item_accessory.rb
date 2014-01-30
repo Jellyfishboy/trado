@@ -11,14 +11,13 @@
 #  cart_item_id         :integer          
 #  price                :decimal          precision(8), scale(2)
 #  quantity             :integer          
-#  accessory_id         :integer         
-#  weight               :decimal          precision(8), scale(2)
+#  accessory_id         :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
 class CartItemAccessory < ActiveRecord::Base
 
-  attr_accessible :cart_item_id, :price, :quantity, :accessory_id, :weight
+  attr_accessible :cart_item_id, :price, :quantity, :accessory_id
 
   belongs_to :cart_item
   belongs_to :accessory 
