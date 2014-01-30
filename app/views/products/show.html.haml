@@ -57,7 +57,7 @@
             = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku), sku.id ] } )
             - unless @product.accessories.empty?
               = f.fields_for @cart_item_accessory do |ff|
-                = ff.select :accessory_id, options_for_select(@product.accessories.map { |a| [a.name, a.id]}), :prompt => "Select accessory"
+                = ff.select :accessory_id, options_for_select(@product.accessories.map { |a| [accessory_details(a), a.id]}), :prompt => "Select accessory"
             - if @skus.first.stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
                 %i.icon-shopping-cart

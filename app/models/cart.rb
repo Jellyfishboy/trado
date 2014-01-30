@@ -25,15 +25,20 @@ class Cart < ActiveRecord::Base
     # If the requested item has matching accessory requests, increase quantity. Otherwise, create new item.
     if (current_item && accessory_id.blank? && current_item.cart_item_accessory.nil?) || (current_item && !accessory_id.blank? && !current_item.cart_item_accessory.nil?)
   		current_item.quantity += item_quantity.to_i #if cart item selected exists, increment its quantity by 1
-      current_item.weight += sku_weight
+      current_item.weight += (sku_weight + current_item.cart_item_accessory.weight)
       # If accessory requested
       unless accessory_id.blank?
         current_item.cart_item_accessory.quantity += item_quantity.to_i
-        current_item.cart_item_accessory.weight += accessory.weight
+        current_item.weight += current_item.cart_item_accessory.weight
       end
+    # Create new cart item with (possibly) new cart item accessory
   	else 
-      current_item = cart_items.build(:price => sku_price, :sku_id => sku_id, :weight => sku_weight) #if cart item selected does not exist, build a new cart item
-      current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory_id, :weight => accessory.weight) unless accessory_id.blank?
+      unless accessory_id.blank?
+        current_item = cart_items.build(:price => (sku_price + accessory.price), :sku_id => sku_id, :weight => (sku_weight + accessory.weight)) #if cart item selected does not exist, build a new cart item
+        current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory_id, :weight => accessory.weight)
+      else
+        current_item = cart_items.build(:price => sku_price, :sku_id => sku_id, :weight => sku_weight)
+      end
       if item_quantity.to_i > 1
         current_item.quantity += (item_quantity.to_i-1)
         current_item.cart_item_accessory.quantity += (item_quantity.to_i-1) unless accessory_id.blank?
@@ -45,7 +50,8 @@ class Cart < ActiveRecord::Base
   def decrement_cart_item_quantity(cart_item_id)
     current_item = cart_items.find(cart_item_id)
     if current_item.quantity > 1
-      current_item.quantity -= 1
+      current_item.quantity = current_item.cart_item_accessory.quantity -= 1
+      # current_item.update_column(:weight, (current_item.weight - current_item.cart_item_accessory.weight)) 
     else
       current_item.destroy
     end

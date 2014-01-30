@@ -30,6 +30,7 @@ class CartItemsController < ApplicationController
               @cart_item.destroy
             else
               @cart_item.cart_item_accessory.update_column(:quantity, params[:cart_item][:quantity])
+              # @cart_item.update_column(:weight, (@cart_item.sku.weight + (@cart_item.cart_item_accessory.weight*params[:cart_item][:quantity])))
             end
             format.js { render :partial => 'carts/update_cart', :format => [:js] }
             format.json { head :no_content }
@@ -48,7 +49,7 @@ class CartItemsController < ApplicationController
     @cart = current_cart
     cart_item = CartItem.find(params[:id])
     @cart_item = @cart.decrement_cart_item_quantity(cart_item.id)
-
+    
     respond_to do |format|
       if @cart_item.save
         format.html { redirect_to store_url, notice: 'Successfully deleted the item.' }

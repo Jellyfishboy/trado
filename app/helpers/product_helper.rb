@@ -8,4 +8,8 @@ module ProductHelper
       format_currency net_price*0.2 + net_price
     end
 
+    def accessory_details accessory
+        "#{accessory.name} (+#{format_currency(accessory.price)})".html_safe
+    end
+
 end
