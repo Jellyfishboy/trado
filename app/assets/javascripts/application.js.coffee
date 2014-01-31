@@ -31,6 +31,7 @@ $(document).ready ->
     loading_animation_settings()
     modal('.notify_me', '#notifyMeModal')
     typeahead_engine()
+    update_accessory()
 
     $('.update_shipping #address_country').change ->
         unless @value is ""
@@ -89,7 +90,14 @@ select_shipping = ->
 update_sku = ->
     $('#cart_item_sku_id').change ->
         sku_id = $(@).val()
-        $.get '/update_sku?sku_id=' + sku_id
+        accessory_id = $('#cart_item_cart_item_accessory_accessory_id').val()
+        $.get '/update_sku?sku_id=' + sku_id + '&accessory_id=' + accessory_id
+
+update_accessory = ->
+    $('#cart_item_cart_item_accessory_accessory_id').change ->
+        accessory_id = $(@).val()
+        sku_id = $('#cart_item_sku_id').val()
+        $.get '/update_accessory?accessory_id=' + accessory_id + '&sku_id=' + sku_id
 
 loading_animation_settings = ->
     $.fn.spin.presets.standard =

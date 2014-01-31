@@ -10,6 +10,7 @@ Trado::Application.routes.draw do
 
   get '/update_country' => 'orders#update_country'
   get '/update_sku' => 'products#update_sku'
+  get '/update_accessory' => 'products#update_accessory'
   get '/paypal/ipn' => 'transactions#paypal_ipn'
   get '/search' => 'search#results'
 
