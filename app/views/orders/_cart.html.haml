@@ -3,7 +3,7 @@
     %td.image
       = image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124
     %td.desc
-      = item.sku.product.name
+      = item.weight
       = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
         %i.icon-remove-sign
       %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"

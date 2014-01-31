@@ -60,36 +60,7 @@
                     %th
                       .align-right Price
                 %tbody
-                  - @cart.cart_items.each do |item|
-                    %tr
-                      %td.image
-                        = link_to (image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
-                      %td.desc
-                        = item.weight
-                        = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
-                          %i.icon-remove-sign
-                        %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
-                      %td.qty
-                        = form_for item, :remote => true do |f|
-                          = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
-                      %td.price= format_currency item.price
-                    - unless item.cart_item_accessory.blank?
-                      %tr.accessory_row
-                        %td.image
-                          = image_tag 'http://placehold.it/124x124'
-                        %td.desc
-                          = item.cart_item_accessory.weight
-                        %td.qty
-                          = item.cart_item_accessory.quantity
-
-                  %tr
-                    %td{colspan: "2", rowspan: "2"}
-                      .alert.alert-info
-                        Shipping cost will be calculated later in the order process.
-                  %tr
-                    %td.stronger Subtotal:
-                    %td.stronger
-                      .size-16.align-right.total_price= format_currency @cart.total_price
+                  = render :partial => 'orders/cart'
             %hr/
             - unless @cart.cart_items.empty?
               %p.right-align

@@ -28,10 +28,11 @@ class CartItemsController < ApplicationController
         if @cart_item.sku.stock >= params[:cart_item][:quantity].to_i #checks to make sure the requested quantity is not more than the current DB stock
           if @cart_item.update_attributes(params[:cart_item])
             if @cart_item.quantity == 0 
-              @cart_item.destroy
+              @cart_item.destroy 
             else
-              @cart_item.cart_item_accessory.update_column(:quantity, params[:cart_item][:quantity])
-              # @cart_item.update_column(:weight, (@cart_item.sku.weight + (@cart_item.cart_item_accessory.weight*params[:cart_item][:quantity])))
+              @cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil)
+              @cart_item.cart_item_accessory.quantity = params[:cart_item][:quantity] unless @cart_item.cart_item_accessory.nil?
+              @cart_item.save!
             end
             format.js { render :partial => 'carts/update_cart', :format => [:js] }
             format.json { head :no_content }

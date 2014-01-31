@@ -24,7 +24,7 @@ class Cart < ActiveRecord::Base
     # If the requested item has matching accessory requests, increase quantity. Otherwise, create new item.
     if (current_item && accessory.blank? && current_item.cart_item_accessory.nil?) || (current_item && !accessory.blank? && !current_item.cart_item_accessory.nil?)
   		current_item.update_quantity((current_item.quantity+item_quantity.to_i), accessory)
-      current_item.update_weight((current_item.quantity+item_quantity.to_i), (sku.weight+accessory.weight))
+      current_item.update_weight(current_item.quantity, sku.weight, accessory)
     # Create new cart item with (possibly) new cart item accessory
   	else 
       unless accessory.blank?
@@ -34,7 +34,7 @@ class Cart < ActiveRecord::Base
         current_item = cart_items.build(:price => sku.price, :sku_id => sku.id, :weight => sku.weight)
       end
       current_item.update_quantity(item_quantity.to_i, accessory)
-      current_item.update_weight(item_quantity.to_i, (sku.weight+accessory.weight))
+      current_item.update_weight(item_quantity.to_i, sku.weight, accessory)
   	end
   	current_item #return new item either by quantity or new cart item
   end
@@ -43,7 +43,7 @@ class Cart < ActiveRecord::Base
     current_item = cart_items.find(cart_item_id)
     if current_item.quantity > 1
       current_item.update_quantity((current_item.quantity-1), current_item.cart_item_accessory)
-      current_item.update_weight((current_item.quantity-1), (current_item.sku.weight, current_item.cart_item_accessory.accessory.weight))
+      current_item.update_weight(current_item.quantity, current_item.sku.weight, current_item.cart_item_accessory ? current_item.cart_item_accessory.accessory : nil)
     else
       current_item.destroy
     end

@@ -75,6 +75,14 @@
                       %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
                     %td.qty= item.quantity
                     %td.price= format_currency item.price
+                  - unless item.cart_item_accessory.blank?
+                    %tr.accessory_row
+                      %td.image
+                        = image_tag 'http://placehold.it/124x124', :height => 124, :width => 124
+                      %td.desc
+                        = item.cart_item_accessory.accessory.name
+                      %td.qty
+                        = item.cart_item_accessory.quantity
                 %tr
                   %td.image
                     = image_tag "delivery.png", :alt => @order.shipping.name
