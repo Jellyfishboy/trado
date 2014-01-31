@@ -105,7 +105,7 @@ class Order < ActiveRecord::Base
   def calculate_shipping_tier(cart)
       max_length = cart.skus.map(&:length).max
       max_thickness = cart.skus.map(&:thickness).max
-      total_weight = cart.skus.map(&:weight).sum
+      total_weight = cart.cart_items.map(&:weight).sum
       # FIXME: Possibly quite slow. Alot of repetition here so will revise later
       tier_raffle = []
       tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
