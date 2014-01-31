@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130200026) do
+ActiveRecord::Schema.define(:version => 20140131220842) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.datetime "created_at",                                                                 :null => false
+    t.datetime "updated_at",                                                                 :null => false
     t.integer  "part_number", :limit => 255
     t.decimal  "price",                      :precision => 8, :scale => 2
     t.decimal  "weight",                     :precision => 8, :scale => 2
     t.decimal  "cost_value",                 :precision => 8, :scale => 2
-    t.boolean  "active"
+    t.boolean  "active",                                                   :default => true
   end
 
   create_table "accessorisations", :force => true do |t|

@@ -14,7 +14,7 @@
   - unless item.cart_item_accessory.blank?
     %tr.accessory_row
       %td.image
-        = image_tag 'http://placehold.it/124x124'
+        = image_tag item.cart_item_accessory.accessory.attachment.file.medium, :alt => item.cart_item_accessory.accessory.name, :height => 124, :width => 124
       %td.desc
         = item.cart_item_accessory.accessory.name
       %td.qty
