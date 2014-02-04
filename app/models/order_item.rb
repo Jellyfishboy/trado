@@ -20,7 +20,7 @@ class OrderItem < ActiveRecord::Base
 
   attr_accessible :price, :quantity, :sku_id, :order_id, :weight
 
-  has_one :order_item_accessory,            :dependent => :destroy
+  has_one :order_item_accessory,            :dependent => :delete
   belongs_to :sku
   belongs_to :order  
 

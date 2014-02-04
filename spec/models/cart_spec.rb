@@ -4,6 +4,7 @@ describe Cart do
 
     # ActiveRecord relations
     it { expect(subject).to have_many(:cart_items).dependent(:delete_all) }
+    it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
 
     context "When retrieving the cart total value" do
@@ -27,6 +28,43 @@ describe Cart do
             cart_3 = create(:cart, updated_at: 28.hours.ago)
             expect(Cart.clear_carts).to match_array([cart_2, cart_3])
         end
+    end
+
+    describe "When adding a product to the cart" do
+
+        context "increment a current cart item" do
+
+            context "with accessory" do
+
+                it "should increment the cart items quantity and weight with the accessory weight"
+
+            end
+
+            context "without an accessory" do
+
+                it "should increment just the cart item's quantity and weight"
+
+            end
+
+
+        end
+
+        context "create a new cart item" do
+
+            context "with accessory" do
+
+                it "should create a new cart item, with the weight and price of the accessory, and create a cart item accessory"
+
+            end
+
+            context "without an accessory" do
+
+                it "should create a new cart item"
+
+            end
+
+        end
+
     end
 
 end

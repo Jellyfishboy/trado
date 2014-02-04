@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe OrderItemAccessory do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:order_item) }
+    it { expect(subject).to belong_to(:accessory) }
+
 end

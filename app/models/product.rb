@@ -9,9 +9,10 @@
 #
 #  id                       :integer          not null, primary key
 #  part_number              :integer      
-#  name                     :string(255)      precision(8), scale(2) 
-#  description              :text             precision(8), scale(2) 
-#  meta_description         :string(255)      precision(8), scale(2) 
+#  name                     :string(255)
+#  description              :text
+#  short_description        :text
+#  meta_description         :string(255)
 #  weighting                :integer 
 #  featured                 :boolean 
 #  active                   :boolean          default(true)

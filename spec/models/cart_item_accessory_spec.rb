@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe CartItemAccessory do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+    # Activerecord relations
+    it { expect(subject).to belong_to(:cart_item) }
+    it { expect(subject).to belong_to(:accessory) }
+
 end

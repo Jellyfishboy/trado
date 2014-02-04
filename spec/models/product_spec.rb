@@ -9,6 +9,8 @@ describe Product do
     it { expect(subject).to have_many(:taggings).dependent(:delete_all) }
     it { expect(subject).to have_many(:tags).through(:taggings) }
     it { expect(subject).to have_many(:attachments).dependent(:delete_all) }
+    it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:accessories).dependent(:accessorisations) }
     it { expect(subject).to belong_to(:category) }
 
 
