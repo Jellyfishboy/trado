@@ -10,7 +10,7 @@
     %td.qty
       = form_for item, :remote => true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
-    %td.price= format_currency item.price
+    %td.price= format_currency item.total_price
   - unless item.cart_item_accessory.blank?
     %tr.accessory_row
       %td.image

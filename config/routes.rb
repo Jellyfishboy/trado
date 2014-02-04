@@ -14,6 +14,12 @@ Trado::Application.routes.draw do
   get '/paypal/ipn' => 'transactions#paypal_ipn'
   get '/search' => 'search#results'
 
+  # Error pages
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
+
+
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :sessions => "users/sessions"

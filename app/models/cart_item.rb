@@ -20,7 +20,7 @@ class CartItem < ActiveRecord::Base
 
   attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :cart_item_accessory_attributes
 
-  has_one :cart_item_accessory,             :dependent => :destroy
+  has_one :cart_item_accessory,             :dependent => :delete
   belongs_to :cart
   belongs_to :sku 
 

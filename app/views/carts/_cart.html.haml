@@ -34,7 +34,7 @@
             = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
               %i.icon-remove-sign
         .price
-          %strong= format_currency item.price
+          %strong= format_currency item.total_price
     .summary
       .line
         .row-fluid

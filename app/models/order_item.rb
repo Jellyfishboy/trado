@@ -24,4 +24,8 @@ class OrderItem < ActiveRecord::Base
   belongs_to :sku
   belongs_to :order  
 
+  def total_price 
+    price * quantity
+  end
+
 end

@@ -74,7 +74,7 @@
                       = item.sku.product.name
                       %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
                     %td.qty= item.quantity
-                    %td.price= format_currency item.price
+                    %td.price= format_currency item.total_price
                   - unless item.cart_item_accessory.blank?
                     %tr.accessory_row
                       %td.image
