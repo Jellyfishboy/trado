@@ -32,7 +32,7 @@ describe Cart do
 
     describe "When adding a product to the cart" do
 
-        context "increment a current cart item" do
+        context "incrementing a current cart item" do
 
             context "with accessory" do
 
@@ -49,7 +49,7 @@ describe Cart do
 
         end
 
-        context "create a new cart item" do
+        context "creating a new cart item" do
 
             context "with accessory" do
 
@@ -59,12 +59,37 @@ describe Cart do
 
             context "without an accessory" do
 
-                it "should create a new cart item"
+                it "should create just a new cart item"
 
             end
 
         end
 
+    end
+
+    describe "When removing cart items from the cart" do
+
+        context "with quantity more than 0" do
+
+            context "with accessory" do
+
+                it "should decrement the cart items quantity and weight with the accessory weight"
+
+            end
+
+            context "without acccessory" do
+
+                it "should decrement just the cart item's quantity and weight"
+
+            end
+
+        end
+
+        context "with quantity at 0" do
+
+            it "should destroy the cart item"
+
+        end
     end
 
 end
