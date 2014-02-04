@@ -1,1 +1,15 @@
-%h1 422 - Unprocessable entity
+- content_for :title, '422 Error'
+
+.darker-stripe
+.container
+  .push-up.blocks-spacer
+    .row
+      %section.span12
+        .container-error
+          %h1 422 Error
+        %hr/
+        %p.center-align.size-16
+          The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
+        %p.center-align.size-16.push-down-50
+          Go
+          = "#{link_to 'Home', root_path}.".html_safe
