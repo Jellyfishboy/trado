@@ -40,4 +40,8 @@ class CartItem < ActiveRecord::Base
     self.weight = (weight*quantity.to_i)
   end
 
+  # def update_price quantity, price, accessory
+  #   price = accessory.nil? ? price : (price + accessory.price)
+  #   self.price = (price*quantity.to_i)
+  # end
 end

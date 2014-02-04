@@ -30,7 +30,8 @@ class CartItemsController < ApplicationController
             if @cart_item.quantity == 0 
               @cart_item.destroy 
             else
-              @cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil)
+              accessory = @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil
+              @cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, accessory)
               @cart_item.cart_item_accessory.quantity = params[:cart_item][:quantity] unless @cart_item.cart_item_accessory.nil?
               @cart_item.save!
             end

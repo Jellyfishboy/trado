@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140131220842) do
+ActiveRecord::Schema.define(:version => 20140203132401) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -119,6 +119,15 @@ ActiveRecord::Schema.define(:version => 20140131220842) do
     t.boolean  "sent",            :default => false
     t.datetime "sent_at"
     t.string   "notifiable_type"
+  end
+
+  create_table "order_item_accessories", :force => true do |t|
+    t.integer  "order_item_id"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.integer  "accessory_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "order_items", :force => true do |t|

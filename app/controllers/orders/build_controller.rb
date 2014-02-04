@@ -129,8 +129,6 @@ class Orders::BuildController < ApplicationController
           @order.successful_order(response)
         rescue Exception => e
             Rollbar.report_exception(e)
-            flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly."
-            redirect_to root_url 
         end
         Notifier.order_received(@order).deliver
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
@@ -139,8 +137,6 @@ class Orders::BuildController < ApplicationController
           @order.failed_order(response)
         rescue Exception => e
             Rollbar.report_exception(e)
-            flash[:error] = "Your order appears to have failed. Our team has been notified and we will be in contact shortly."
-            redirect_to root_url 
         end
         redirect_to failure_order_build_url(:order_id => @order.id, :id => steps.last, :response => response.message, :error_code => response.params["error_codes"], :correlation_id => response.params['correlation_id'])
       end

@@ -44,7 +44,9 @@ class Order < ActiveRecord::Base
 
   def add_cart_items_from_cart(cart)
   	cart.cart_items.each do |item|
-      OrderItem.create(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
+      @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
+      @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
+      @order_item.save!
   	end
   end
 

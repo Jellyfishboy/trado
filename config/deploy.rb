@@ -68,7 +68,10 @@ end
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, :configure
-after :configure, :assets
-after :assets, :rollbar
-after :rollbar, 'unicorn:restart' 
+after :deploy, 'configure:carrierwave'
+after 'configure:carrierwave', 'configure:asset_sync'
+after 'configure:asset_sync', 'configure:database'
+after 'configure:database', 'assets:compile'
+after 'assets:compile', 'assets:refresh_sitemaps'
+after 'assets:refresh_sitemaps', 'configure:notify_rollbar'
+after 'configure:notify_rollbar', 'unicorn:restart'

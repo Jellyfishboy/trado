@@ -13,12 +13,14 @@
 #
 class Cart < ActiveRecord::Base
 
-  has_many :cart_items,       :dependent => :delete_all
+  has_many :cart_items,                         :dependent => :delete_all
+  has_many :cart_item_accessories,              :through => :cart_items
   
-  has_many :skus,             :through => :cart_items
+  has_many :skus,                               :through => :cart_items
 
   def add_cart_item sku, item_quantity, accessory
     accessory_current_item = cart_items.where('sku_id = ?',sku.id).includes(:cart_item_accessory).where('cart_item_accessories.accessory_id = ?', accessory.id).first unless accessory.blank?
+    # binding.pry
     # If it can find a SKU with the related accessory, it will assign the current_item. Otherwise it will just find the SKU normally.
   	current_item =  accessory_current_item ? accessory_current_item : cart_items.where('sku_id = ?', sku.id).includes(:cart_item_accessory).where('cart_item_accessories.accessory_id IS NULL').first  
     # If the requested item has matching accessory requests, increase quantity. Otherwise, create new item.
@@ -31,7 +33,7 @@ class Cart < ActiveRecord::Base
         current_item = cart_items.build(:price => (sku.price + accessory.price), :sku_id => sku.id)
         current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory.id)
       else
-        current_item = cart_items.build(:price => sku.price, :sku_id => sku.id, :weight => sku.weight)
+        current_item = cart_items.build(:price => sku.price, :sku_id => sku.id)
       end
       current_item.update_quantity(item_quantity.to_i, accessory)
       current_item.update_weight(item_quantity.to_i, sku.weight, accessory)

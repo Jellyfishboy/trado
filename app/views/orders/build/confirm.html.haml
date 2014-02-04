@@ -96,7 +96,7 @@
                   \ 
                   %td.stronger Subtotal:
                   %td.stronger
-                    .align-right= format_currency session[:sub_total]
+                    .align-right= format_currency (session[:sub_total] + @order.shipping.price)
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
