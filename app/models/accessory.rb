@@ -35,4 +35,17 @@ class Accessory < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachment
 
+  def inactivate!
+      self.active = false
+      save!
+  end
+
+  def activate!
+    self.update_column(:active, true)
+  end
+
+  def self.active
+    where(['accessories.active = ?', true])
+  end
+
 end

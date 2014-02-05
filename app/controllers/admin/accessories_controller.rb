@@ -5,7 +5,7 @@ class Admin::AccessoriesController < ApplicationController
   # GET /accessories
   # GET /accessories.json
   def index
-    @accessories = Accessory.all
+    @accessories = Accessory.where('active = ?', true)
 
     respond_to do |format|
       format.html # index.html.erb

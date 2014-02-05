@@ -27,4 +27,29 @@ describe Accessory do
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:attachment) }
 
+    context "When a used accessory is updated or deleted" do
+
+        it "should set the record as inactive" do
+            accessory = create(:accessory)
+            accessory.inactivate!
+            expect(accessory.active).to eq false
+        end
+    end
+
+    context "When the new accessory fails to update" do
+
+        it "should set the record as active" do
+            accessory = create(:accessory, active: false)
+            accessory.activate!
+            expect(accessory.active).to eq true
+        end
+    end
+
+    it "should return an array of 'active' accessorys" do
+        accessory_1 = create(:accessory)
+        accessory_2 = create(:accessory, active: false)
+        accessory_3 = create(:accessory)
+        expect(Accessory.active).to match_array([accessory_1, accessory_3])
+    end
+
 end

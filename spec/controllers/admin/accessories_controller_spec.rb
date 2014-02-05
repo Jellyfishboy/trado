@@ -5,11 +5,12 @@ describe Admin::AccessoriesController do
     login_admin
 
     describe 'GET #index' do
-        it "populates an array of all accessories" do
-            accessory_1 = create(:accessory)
-            accessory_2 = create(:accessory)
+        it "populates an array of active accessories" do
+            accessory_1 = create(:accessory, active: false)
+            accessory_2 = create(:accessory, active: true)
+            accessory_3 = create(:accessory, active: true)
             get :index
-            expect(assigns(:accessories)).to match_array([accessory_1, accessory_2])
+            expect(assigns(:accessories)).to match_array([accessory_2, accessory_3])
         end
         it "renders the :index template" do
             get :index
@@ -32,7 +33,7 @@ describe Admin::AccessoriesController do
         it "assigns the requested accessory to @accessory" do
             accessory = create(:accessory)
             get :edit , id: accessory
-            expect(assigns(:accessory)).to eq accessory
+            expect(assigns(:form_accessory)).to eq accessory
         end
         it "renders the :edit template" do
             accessory = create(:accessory)
