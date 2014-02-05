@@ -26,7 +26,7 @@ class Admin::AccessoriesController < ApplicationController
 
   # GET /accessories/1/edit
   def edit
-    @accessory = Accessory.find(params[:id])
+    @form_accessory = Accessory.find(params[:id])
   end
 
   # POST /accessories
