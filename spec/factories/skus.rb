@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :sku do
-        sku { |n| "GLA-566-#{n}" }
+        sku { |n| "5#{n}" }
         sequence(:cost_value) { |n| n }
         sequence(:price) { |n| n }
         stock 30

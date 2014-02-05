@@ -4,9 +4,9 @@ describe Accessory do
 
     # ActiveRecord relations
     it { expect(subject).to have_many(:cart_item_accessories) }
-    it { expect(subject).to have_many(:carts).through(:cart_item_accessories) }
+    it { expect(subject).to have_many(:cart_items).through(:cart_item_accessories) }
     it { expect(subject).to have_many(:order_item_accessories).dependent(:restrict) }
-    it { expect(subject).to have_many(:orders).through(:order_item_accessories).dependent(:restrict) }
+    it { expect(subject).to have_many(:order_items).through(:order_item_accessories).dependent(:restrict) }
     it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
     it { expect(subject).to have_many(:products).through(:accessorisations) }
     it { expect(subject).to have_one(:attachment).dependent(:destroy) }
