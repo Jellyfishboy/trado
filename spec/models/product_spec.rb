@@ -10,14 +10,13 @@ describe Product do
     it { expect(subject).to have_many(:tags).through(:taggings) }
     it { expect(subject).to have_many(:attachments).dependent(:delete_all) }
     it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
-    it { expect(subject).to have_many(:accessories).dependent(:accessorisations) }
+    it { expect(subject).to have_many(:accessories).through(:accessorisations) }
     it { expect(subject).to belong_to(:category) }
 
 
     # Validation
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:meta_description) }
-    it { expect(subject).to validate_presence_of(:short_description) }
     it { expect(subject).to validate_presence_of(:description) }
     it { expect(subject).to validate_presence_of(:part_number) }
     it { expect(subject).to validate_presence_of(:sku) }
