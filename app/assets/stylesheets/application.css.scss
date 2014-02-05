@@ -66,6 +66,18 @@ textarea {
   padding: 30px 0;
   text-align: center;
 }
+.success_failure {
+  text-align: center;
+    h1 {
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 0 0 20px;
+        &:first-child {
+          margin:20px 0;
+        }
+    }
+}
 
 @import "product";
 @import "category";

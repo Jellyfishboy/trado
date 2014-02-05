@@ -98,7 +98,7 @@ class Order < ActiveRecord::Base
                         :transaction_id => '', 
                         :transaction_type => '',
                         :net_amount => session[:sub_total],
-                        :status_reason => response.message == "Failed" ? response.message : response.params['PaymentInfo']['PendingReason'])
+                        :status_reason => response.message)
     self.update_column(:status, 'active')
   end
 

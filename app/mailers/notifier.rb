@@ -7,6 +7,8 @@ class Notifier < ActionMailer::Base
   #
   #   en.notifier.order_received.subject
   #
+
+  # ORDERS
   def order_received(order) #retrieve argument 'order' and assign it within the method to send to the customers correct email
     @order = order
 
@@ -18,18 +20,27 @@ class Notifier < ActionMailer::Base
 
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order update"
   end
-  def delayed_shipping(order)
+
+  def pending_order order
     @order = order
 
-    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} shipping update"
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} pending payment"
   end
 
+  # SHIPPINGS
   def order_shipped(order)
     @order = order
 
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order shipped"
   end
 
+  def delayed_shipping(order)
+    @order = order
+
+    mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} shipping update"
+  end
+
+  # STOCK
   def low_stock(products)
     @restock = products
     mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Restock Warning'

@@ -1,4 +1,6 @@
 class Admin::TiersController < ApplicationController
+
+  before_filter :authenticate_user!
   layout "admin"
   # GET /tiers
   # GET /tiers.json

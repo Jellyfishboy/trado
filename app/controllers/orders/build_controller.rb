@@ -130,7 +130,11 @@ class Orders::BuildController < ApplicationController
         rescue Exception => e
             Rollbar.report_exception(e)
         end
-        Notifier.order_received(@order).deliver
+        if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
+          Notifier.pending_order(@order).deliver
+        else
+          Notifier.order_received(@order).deliver
+        end
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else
         begin

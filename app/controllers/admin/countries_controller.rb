@@ -1,4 +1,6 @@
 class Admin::CountriesController < ApplicationController
+
+  before_filter :authenticate_user!
   layout 'admin'
   # GET /countries
   # GET /countries.json

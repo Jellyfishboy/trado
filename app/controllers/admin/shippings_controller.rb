@@ -1,4 +1,6 @@
 class Admin::ShippingsController < ApplicationController
+
+  before_filter :authenticate_user!
   layout "admin"
   # GET /shippings
   # GET /shippings.json

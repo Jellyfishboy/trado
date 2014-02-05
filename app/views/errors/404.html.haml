@@ -1,6 +1,7 @@
 - content_for :title, '404 Error'
+- content_for :breadcrumb, '404'
 
-.darker-stripe
+= render_breadcrumbs 1
 .container
   .push-up.blocks-spacer
     .row

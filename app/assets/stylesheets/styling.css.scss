@@ -36,3 +36,6 @@ form {
       @include background-image(linear-gradient(left,rgba(243,243,243,0),rgba(243,243,243,1)));
     }
 }
+.center {
+  text-align: center;
+}

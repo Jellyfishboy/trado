@@ -1,8 +1,20 @@
 - content_for :title, "Order ##{@order.id} successful"
+- content_for :breadcrumb, 'Order successful'
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+= render_breadcrumbs 1
 .container
+  .push-up.blocks-spacer
     .row
-        .underlined
-            %h3 You order was successful
-            %p 
-                A confirmation email detailing your order has been sent to
-                %strong= @order.email
+      %section.span6.offset3.success_failure
+        %h1
+          %span.light Order
+          Successful
+        %p= "Thank you <strong>#{@order.ship_address.full_name}</strong> your order number #{@order.id} has now been received".html_safe
+
+        %p= "You should shortly be receiving an email receipt to the email address provided (#{@order.email}). Please check your spam folders and get in touch quoting your order number if this does not arrive."
+
+        %p We will usually dispatch your order within the next 1-2 working days (product dependent, some items may take longer to prepare than others).
+
+        %p If you have any questions then please contact us. Thank you for your custom!

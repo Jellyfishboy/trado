@@ -11,7 +11,6 @@ Trado::Application.routes.draw do
   get '/update_country' => 'orders#update_country'
   get '/update_sku' => 'products#update_sku'
   get '/update_accessory' => 'products#update_accessory'
-  get '/paypal/ipn' => 'transactions#paypal_ipn'
   get '/search' => 'search#results'
 
   # Error pages
@@ -49,6 +48,7 @@ Trado::Application.routes.draw do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
+      post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :tiers, :countries, :products, :categories, :except => :show
       resources :orders, :only => [:index, :show, :update]
       resources :transactions, :only => :index

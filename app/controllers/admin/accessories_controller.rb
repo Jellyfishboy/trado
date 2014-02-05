@@ -1,4 +1,6 @@
 class Admin::AccessoriesController < ApplicationController
+  
+  before_filter :authenticate_user!
   layout 'admin'
   # GET /accessories
   # GET /accessories.json
