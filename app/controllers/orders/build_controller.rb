@@ -121,7 +121,7 @@ class Orders::BuildController < ApplicationController
       redirect_to root_url
     else
       response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
-      if response.params['payment_status'] == 'Completed'
+      if response.success
         @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

@@ -3,7 +3,8 @@ class StoreController < ApplicationController
   skip_before_filter :authenticate_user!
 
   def index
-  	@products = Product.all #lists all the products
+  	@new_products = Product.order('created_at DESC').first(6)
+    @featured_products = Product.where('featured = ?', true).first(6)
   end
 
   def about

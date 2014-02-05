@@ -16,29 +16,30 @@ class Admin::TransactionsController < ApplicationController
   end
 
   # Handler for incoming Instant Payment Notifications from paypal about orders
-  # def paypal_ipn
-  #   notify = Paypal::Notification.new(request.raw_post)
+  def paypal_ipn
+    notify = Paypal::Notification.new(request.raw_post)
 
-  #   if notify.acknowledge
-  #     transaction = Transaction.where('transaction_id = ?', notify.transaction_id)
-  #     begin
+    if notify.acknowledge
+      transaction = Transaction.where('transaction_id = ?', notify.transaction_id)
+      begin
 
-  #       if notify.complete? and transaction.gross_amount = notify.amount
-  #         # TODO: Find out if the notify response contains a paypal fee and update the relevant column
-  #         transaction.payment_status = notify.status
-  #       else
-  #         Notifier.failed_paypal_verification(notify)
-  #       end
+        if notify.complete? and transaction.gross_amount = notify.mc_gross
+          # TODO: Find out if the notify response contains a paypal fee and update the relevant column
+          transaction.fee = notify.mc_fee
+          transaction.payment_status = notify.payment_status
+        else
+          Notifier.failed_paypal_verification(notify)
+        end
 
-  #     rescue => e
-  #       transaction.payment_status = 'Failed'
-  #       raise
-  #     ensure
-  #       transaction.save
-  #     end
-  #   end
+      rescue => e
+        transaction.payment_status = 'Failed'
+        raise
+      ensure
+        transaction.save
+      end
+    end
 
-  #   render :nothing => true
-  # end
+    render :nothing => true
+  end
 
 end
