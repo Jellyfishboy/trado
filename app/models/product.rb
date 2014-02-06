@@ -30,9 +30,10 @@ class Product < ActiveRecord::Base
   :part_number, :sku,                                         :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
   validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
-  validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short}
-  validates :description,                                     :length => {:minimum => 20, :message => :too_short}
+  validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
+  validates :description,                                     :length => {:minimum => 20, :message => :too_short }
   validates :skus,                                            :tier => true, :on => :save
+  validates :short_description,                               :length => { :maximum => 100, :message => :too_long }
 
   has_many :skus,                                             :dependent => :delete_all
   has_many :orders,                                           :through => :skus

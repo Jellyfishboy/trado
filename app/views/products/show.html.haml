@@ -153,7 +153,7 @@
                   %h4.title
                     %span= format_currency product.skus.first.price
                   %h5.no-margin= truncate product.name, :length => 35
-                %p.desc= truncate product.description, :length => 100
+                %p.desc= truncate product.short_description
           / /product
 #notify_me_form
   - unless @skus.first.stock > 0

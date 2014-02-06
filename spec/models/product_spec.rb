@@ -31,6 +31,7 @@ describe Product do
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:meta_description).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_least(20) }
+    it { expect(subject).to ensure_length_of(:short_description).is_at_most(100) }
 
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:skus) }
