@@ -47,11 +47,10 @@ class Admin::ShippingsController < ApplicationController
 
   # Updating a shipping
   #
-  # First grab the current shipping via the param id.
-  # If the shipping has associated orders, create a new shipping with the new attributes.
-  # Upon updating, retrieve the current record again via the param id.
-  # If the current shipping has associated orders, pluck tier associations and create new associations for the new shipping record.
-  # Then set the current shipping as inactive.
+  # If the accessory is not associated with orders, update the current record.
+  # Else create a new shipping with the new attributes.
+  # Pluck tier associations and create new associations for the new shipping record.
+  # Then set the old shipping as inactive.
   def update
     @shipping = Shipping.find(params[:id])
 

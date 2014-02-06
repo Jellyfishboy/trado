@@ -11,7 +11,6 @@ describe Accessory do
     it { expect(subject).to have_many(:orders).through(:order_items) }
     it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
     it { expect(subject).to have_many(:products).through(:accessorisations) }
-    it { expect(subject).to have_one(:attachment).dependent(:destroy) }
 
     # Validations
     it { expect(subject).to validate_presence_of(:name) }
@@ -23,9 +22,6 @@ describe Accessory do
 
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
-
-    # Nested attributes
-    it { expect(subject).to accept_nested_attributes_for(:attachment) }
 
     context "When a used accessory is updated or deleted" do
 
