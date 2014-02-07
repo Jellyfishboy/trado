@@ -71,7 +71,7 @@ end
 
 # additional settings
 default_run_options[:pty] = true
-default_run_options[:shell] = '/bin/bash --login'
+# default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
