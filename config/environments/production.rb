@@ -65,6 +65,35 @@ Trado::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
+  # Set default URL
+  config.action_mailer.default_url_options = { :host => '141.0.175.166' }
+
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
+  # Emails are appended to an array, non are sent outside the application
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.mandrillapp.com',
+    :port                 => 587,
+    :domain               => 'localhost:3000',
+    :authentication       => "plain",
+    :user_name            => 'tom.alan.dallimore@googlemail.com',
+    :password             => ENV['MANDRILL_PWD'],
+    :enable_starttls_auto => true
+
+  }
+
+  # Paypal
+  config.after_initialize do
+    paypal_options = {
+      login: ENV['PAYPAL_LOGIN'],
+      password: ENV['PAYPAL_PWD'],
+      signature: ENV['PAYPAL_SIG']
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true

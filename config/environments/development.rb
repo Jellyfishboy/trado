@@ -28,7 +28,7 @@ Trado::Application.configure do
     :domain               => 'localhost:3000',
     :authentication       => "plain",
     :user_name            => 'tom.alan.dallimore@googlemail.com',
-    :password             => '1NXzOFaHtPpIyZYxGpIrkQ',
+    :password             => ENV['MANDRILL_PWD'],
     :enable_starttls_auto => true
 
   }
