@@ -25,6 +25,11 @@ set :deploy_via, :remote_cache
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules"]
 set :use_sudo, false
 
+# For RBENV
+set :default_environment, {
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+}
+
 namespace :configure do
   desc "Setup carrierwave configuration"
   task :carrierwave, :roles => :app do
