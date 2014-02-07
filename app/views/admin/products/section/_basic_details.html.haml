@@ -6,23 +6,25 @@
   .widget-content
     .row
       .col-md-6
-        .form-group
-          = f.label :part_number, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :part_number, :class => 'form-control'
-        .form-group
-          = f.label :name, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :name, :class => 'form-control col-md-3'
+        - unless @product.orders.empty?
+          .form-group
+            = f.label :part_number, :class => 'control-label col-md-3'
+            .col-md-9
+              = f.text_field :part_number, :class => 'form-control'
+          .form-group
+            = f.label :name, :class => 'control-label col-md-3'
+            .col-md-9
+              = f.text_field :name, :class => 'form-control col-md-3'
         .form-group
           = f.label :meta_description, :class => 'control-label col-md-3'
           .col-md-9
             = f.text_area :meta_description, :rows => 6, :class => 'form-control'
       .col-md-6
-        .form-group
-          = f.label :sku, "SKU", :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :sku, :class => 'form-control'
+        - unless @product.orders.empty?
+          .form-group
+            = f.label :sku, "SKU", :class => 'control-label col-md-3'
+            .col-md-9
+              = f.text_field :sku, :class => 'form-control'
         .form-group
           %label.col-md-3.control-label Featured
           .col-md-9

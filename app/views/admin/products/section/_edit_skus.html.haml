@@ -7,7 +7,7 @@
       SKUs
   .widget-content
     %h4.widget-header Current SKUs
-    - if skus.empty?
+    - if @product.skus.active.empty?
       %p You don't have any SKUs yet.
     - else
       %table.table.table-striped.table-bordered.table-hover
@@ -25,7 +25,7 @@
             %th Price
             %th
         %tbody
-          - skus.each do |sku|
+          - @product.skus.active.each do |sku|
             %tr
               %td= "#{sku.product.sku}-#{sku.sku}"
               %td= sku.weight

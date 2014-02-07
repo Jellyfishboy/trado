@@ -3,8 +3,8 @@ set :user, 'root'
 set :scm, 'git'
 set :repository, 'git@github.com:Jellyfishboy/gimson_robotics.git'
 set :scm_verbose, true
-set :domain, '146.185.130.90'
-set :deploy_to, '/var/www/gimsonrobotics/'
+set :domain, '141.0.175.166'
+set :deploy_to, '/home/gimsonrobotics/'
 set :branch, 'master'
 
 server domain, :app, :web, :db, :primary => true
@@ -28,25 +28,25 @@ set :use_sudo, false
 namespace :configure do
   desc "Setup carrierwave configuration"
   task :carrierwave, :roles => :app do
-      run "yes | cp /var/www/configs/carrierwave_config.rb /var/www/gimsonrobotics/current/config/initializers"
+      run "yes | cp /home/configs/carrierwave_config.rb /home/gimsonrobotics/current/config/initializers"
   end
   desc "Setup asset_sync configuration"
   task :asset_sync, :roles => :app do
-      run "yes | cp /var/www/configs/asset_sync.rb /var/www/gimsonrobotics/current/config/initializers"
+      run "yes | cp /home/configs/asset_sync.rb /home/gimsonrobotics/current/config/initializers"
   end
   desc "Setup PayPal configuration"
   task :paypal, :roles => :app do
-      run "yes | cp /var/www/configs/production.rb /var/www/gimsonrobotics/current/config/environments"
+      run "yes | cp /home/configs/production.rb /home/gimsonrobotics/current/config/environments"
   end
   desc "Setup database configuration"
   task :database, :roles => :app do
-    run "yes | cp /var/www/configs/database.yml /var/www/gimsonrobotics/current/config"
+    run "yes | cp /home/configs/database.yml /home/gimsonrobotics/current/config"
   end
 end
 namespace :assets do
     desc "Compile assets"
     task :compile, :roles => :app do
-        run "cd /var/www/gimsonrobotics/current && bundle exec rake assets:precompile"
+        run "cd /home/gimsonrobotics/current && bundle exec rake assets:precompile"
     end
     desc "Generate sitemap"
     task :refresh_sitemaps do
@@ -70,7 +70,8 @@ default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
-after 'configure:asset_sync', 'configure:database'
+after 'configure:asset_sync', 'configure:paypal'
+after 'configure:paypal', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
 after 'assets:refresh_sitemaps', 'configure:notify_rollbar'

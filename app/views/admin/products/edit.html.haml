@@ -19,7 +19,7 @@
 
   = render 'admin/products/section/edit_images', :f => f
 
-  = render 'admin/products/section/edit_skus', :f => f, :skus => @product.skus.active
+  = render 'admin/products/section/edit_skus', :f => f
 
   = render 'admin/products/section/associations', :f => f
 
@@ -30,4 +30,6 @@
       .form-group
         .col-md-offset-2.col-md-10
           = f.submit 'Submit', :class => 'btn btn-primary'
+
+#sku-stock-modal
    

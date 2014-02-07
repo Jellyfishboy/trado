@@ -1,4 +1,4 @@
-root = "/var/www/gimsonrobotics/current"
+root = "/home/gimsonrobotics/current"
 # Sample verbose configuration file for Unicorn (not Rack)
 #
 # This configuration file documents many features of Unicorn
