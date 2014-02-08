@@ -50,7 +50,7 @@
                     - if AttributeType.all.empty?
                         %p No attribute types to select.
                     - else
-                        = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Please select...'}, { :class => 'form-control' })
+                        = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { :include_blank => 'Please select...'}, { :class => 'form-control' })
             .form-group
                 .col-md-offset-3.col-md-9
                     = f.submit 'Submit', :class => 'btn btn-primary'

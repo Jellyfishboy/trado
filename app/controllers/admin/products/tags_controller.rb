@@ -7,8 +7,7 @@ class Admin::Products::TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     respond_to do |format|
       if @tag.destroy
-        flash[:success] = "Tag was successfully deleted."
-        format.js { render :partial => "tags/destroy", :format => [:js] }
+        format.js { render :partial => "admin/products/tags/destroy", :format => [:js] }
       else
         flash[:error] = "Tag failed to be removed from the database."
       end

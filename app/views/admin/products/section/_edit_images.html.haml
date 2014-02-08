@@ -12,7 +12,7 @@
         - if @product.attachments.empty?
           .form-group
             .col-md-9
-              %p This product currently has no attachments
+              %p This product currently has no attachments.
         - else
           - @product.attachments.each do |attach|
             %div{ :id => "attachment_#{attach.id}", :class => 'col-md-3'}

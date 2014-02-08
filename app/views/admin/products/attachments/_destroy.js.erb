@@ -1,4 +1,4 @@
 $("#attachment_<%= params[:id] %>").remove();
 if (!$('.attachment-destroy-alert').is(':visible')) {
-    $('h3.attachment_header').after('<div class="alert alert-success attachment-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>Attachment was successfully deleted.</div>');
+    $('#attachments').before('<div class="alert alert-success attachment-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>Attachment was successfully deleted.</div>');
 }
