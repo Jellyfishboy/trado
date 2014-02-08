@@ -18,7 +18,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     unless Tier.all.count > 0
-      flash[:error] = "You do not currently have any shipping tiers. Please add a shipping tier before creating a product."
+      flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
     end
     respond_to do |format|
       format.html # new.html.erb
