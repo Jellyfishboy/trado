@@ -1,17 +1,20 @@
 language: ruby
 rvm:
-  - 2.0.0
+    - 2.0.0
 script:
-  - RAILS_ENV=test bundle exec rake db:setup --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+    - RAILS_ENV=test bundle exec rake db:setup --trace
+    - bundle exec rake db:test:prepare
+    - bundle exec rspec spec/
 branches:
-  only:
-    - master
+    only:
+        - master
 before_install:
-  - sudo apt-get install -qq openjdk-6-jre
+    - sudo apt-get install -qq openjdk-6-jre
 env:
-  global:
+    - DB=sqlite
     - DB=mysql
+    - DB=postgresql
 before_script:
-  - mysql -e 'create database gimson_robotics_test_db'
+    - cp config/database.travis.yml config/database.yml
+    - mysql -e 'create database gimson_robotics_test_db'
+    - psql -c 'create database strano_test' -U postgres

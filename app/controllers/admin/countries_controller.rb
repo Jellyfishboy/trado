@@ -5,7 +5,7 @@ class Admin::CountriesController < ApplicationController
   # GET /countries
   # GET /countries.json
   def index
-    @countries = Country.all
+    @countries = Country.order('name ASC').all
 
     respond_to do |format|
       format.html # index.html.erb
