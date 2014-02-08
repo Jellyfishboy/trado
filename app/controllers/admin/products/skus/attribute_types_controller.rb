@@ -34,7 +34,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
 
     respond_to do |format|
       if @attribute_type.save
-        format.html { redirect_to admin_attribute_types_url, notice: 'AttributeType was successfully created.' }
+        format.html { redirect_to admin_products_skus_attribute_types_url, notice: 'AttributeType was successfully created.' }
         format.json { render json: @attribute_type, status: :created, location: @attribute_type }
       else
         format.html { render action: "new" }
@@ -50,7 +50,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
 
     respond_to do |format|
       if @attribute_type.update_attributes(params[:attribute_type])
-        format.html { redirect_to admin_attribute_types_url, notice: 'AttributeType was successfully updated.' }
+        format.html { redirect_to admin_products_skus_attribute_types_url, notice: 'AttributeType was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,7 +66,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
     @attribute_type.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_attribute_types_url }
+      format.html { redirect_to admin_products_skus_attribute_types_url }
       format.json { head :no_content }
     end
   end
