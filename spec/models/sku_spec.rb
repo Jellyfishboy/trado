@@ -63,9 +63,10 @@ describe Sku do
     end
 
     it "should return an array of active SKUs" do
-        sku_1 = create(:sku, active: false)
-        sku_2 = create(:sku)
-        sku_3 = create(:sku, active: false)
+        product = create(:product)
+        sku_1 = create(:sku, active: false, product: product)
+        sku_2 = create(:sku, product: product)
+        sku_3 = create(:sku, active: false, product: product)
         expect(Sku.active).to match_array([sku_2])
     end
 

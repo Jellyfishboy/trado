@@ -36,6 +36,8 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'faker'
+  # Testing postgresql on Travis CI
+  gem 'pg'
 end
 
 group :development, :test do
