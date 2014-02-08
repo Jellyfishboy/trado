@@ -60,7 +60,7 @@ namespace :assets do
 end
 namespace :rollbar do
   desc "Notify Rollbar of deployment"
-  task :notify_rollbar, :roles => :app do
+  task :notify, :roles => :app do
     set :revision, `git log -n 1 --pretty=format:"%H"`
     set :local_user, `whoami`
     set :rollbar_token, ENV['ROLLBAR_ACCESS_TOKEN']
@@ -79,5 +79,5 @@ after 'configure:asset_sync', 'configure:paypal'
 after 'configure:paypal', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
-after 'assets:refresh_sitemaps', 'configure:notify_rollbar'
-after 'configure:notify_rollbar', 'unicorn:restart'
+after 'assets:refresh_sitemaps', 'rollbar:notify'
+after 'rollbar:notify', 'unicorn:restart'
