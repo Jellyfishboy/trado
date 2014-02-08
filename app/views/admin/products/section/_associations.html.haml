@@ -25,5 +25,6 @@
             - Accessory.all.each do |accessory|
               .checkbox
                 %label
+                  = hidden_field_tag "product[accessory_ids][]", ""
                   = check_box_tag "product[accessory_ids][]", accessory.id, @product.accessory_ids.include?(accessory.id)
                   = accessory.name
