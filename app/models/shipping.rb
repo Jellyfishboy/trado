@@ -27,7 +27,7 @@ class Shipping < ActiveRecord::Base
 
   validates :name, :price, :description,                :presence => true
   validates :name,                                      :uniqueness => { :scope => :active }, :length => {:minimum => 10, :message => :too_short}
-  validates :description,                               :length => { :maximum => 100, :message => :too_long }
+  validates :description,                               :length => { :maximum => 180, :message => :too_long }
   validates :price,                                     :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
 
 
