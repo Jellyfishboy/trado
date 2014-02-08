@@ -43,6 +43,10 @@ namespace :configure do
   task :paypal, :roles => :app do
       run "yes | cp /home/configs/production.rb /home/gimsonrobotics/current/config/environments"
   end
+  desc "Setup Rollbar configuration"
+  task :rollbar, :roles => :app do
+    run "yes | cp /home/configs/rollbar.rb /home/gimsonrobotics/current/config/initializers"
+  end
   desc "Setup database configuration"
   task :database, :roles => :app do
     run "yes | cp /home/configs/database.yml /home/gimsonrobotics/current/config"
@@ -76,7 +80,8 @@ default_run_options[:pty] = true
 after :deploy, 'configure:carrierwave'
 after 'configure:carrierwave', 'configure:asset_sync'
 after 'configure:asset_sync', 'configure:paypal'
-after 'configure:paypal', 'configure:database'
+after 'configure:paypal', 'configure:rollbar'
+after 'configure:rollbar', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
 after 'assets:refresh_sitemaps', 'rollbar:notify'
