@@ -12,4 +12,6 @@ before_install:
   - sudo apt-get install -qq openjdk-6-jre
 env:
   global:
-    - DB=sqlite
+    - DB=mysql
+before_script:
+  - mysql -e 'create database gimson_robotics_test_db'
