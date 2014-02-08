@@ -6,5 +6,20 @@
       %i.icon-picture
       Images
   .widget-content
+    %h4.widget-header Current attachments
     #attachments
-      #image_fields.row
+      .row.current_attachments
+        - if @product.attachments.empty?
+          .form-group
+            .col-md-9
+              %p This product currently has no attachments
+        - else
+          - @product.attachments.each do |attach|
+            %div{ :id => "attachment_#{attach.id}", :class => 'col-md-3'}
+              = image_tag attach.file.medium
+              %p= attach.description
+              = link_to 'Remove', admin_products_attachment_path(attach), :method => :delete, :confirm => 'Are you sure?', :remote => true, :class => 'btn btn-danger btn-xs'
+      %h4.widget-header New attachments
+      #image_fields.row.edit_field
+        
+

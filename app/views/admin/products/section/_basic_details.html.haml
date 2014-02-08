@@ -6,7 +6,7 @@
   .widget-content
     .row
       .col-md-6
-        - unless @product.orders.empty?
+        - if @product.orders.empty?
           .form-group
             = f.label :part_number, :class => 'control-label col-md-3'
             .col-md-9
@@ -20,7 +20,7 @@
           .col-md-9
             = f.text_area :meta_description, :rows => 6, :class => 'form-control'
       .col-md-6
-        - unless @product.orders.empty?
+        - if @product.orders.empty?
           .form-group
             = f.label :sku, "SKU", :class => 'control-label col-md-3'
             .col-md-9
