@@ -5,7 +5,7 @@
       %span.light Notify
       Me
   .modal-body
-    = form_for notification, :url => notifications_path(:sku_id => sku.id), :html => { :method => :post, :remote => true} do |f|
+    = form_for notification, :html => { :method => :post, :remote => true } do |f|
       %p 
         Please enter your email address and we'll let you know when
         %strong= "#{sku.product.name} (#{sku.attribute_value}#{sku.attribute_type.measurement})"
