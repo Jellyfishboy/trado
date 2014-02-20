@@ -1,6 +1,6 @@
 require 'sunspot/rails/spec_helper'
 
-Rspec.configure do |config|
+RSpec.configure do |config|
 
     # Stub out SOLR during test
   config.before(:each) do

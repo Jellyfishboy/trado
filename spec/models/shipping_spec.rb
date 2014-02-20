@@ -5,8 +5,8 @@ describe Shipping do
     # ActiveRecord relations
     it { expect(subject).to have_many(:tiereds).dependent(:delete_all) }
     it { expect(subject).to have_many(:tiers).through(:tiereds) }
-    it { expect(subject).to have_many(:zonifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:zones).through(:zonifications) }
+    it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:zones).through(:destinations) }
     it { expect(subject).to have_many(:countries).through(:zones) }
     it { expect(subject).to have_many(:orders).dependent(:restrict) }
 

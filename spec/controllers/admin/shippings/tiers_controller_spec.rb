@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'bigdecimal'
 
-describe Admin::TiersController do
+describe Admin::Shippings::TiersController do
 
     login_admin
 
@@ -51,7 +51,7 @@ describe Admin::TiersController do
             end
             it "redirects to tiers#index"  do
                 post :create, tier: attributes_for(:tier)
-                expect(response).to redirect_to admin_tiers_url
+                expect(response).to redirect_to admin_shippings_tiers_url
             end
         end
         context "with invalid attributes" do
@@ -84,7 +84,7 @@ describe Admin::TiersController do
             end
             it "redirects to the tiers#index" do
                 put :update, id: @tier, tier: attributes_for(:tier)
-                expect(response).to redirect_to admin_tiers_url
+                expect(response).to redirect_to admin_shippings_tiers_url
             end
         end
         context "with invalid attributes" do 
@@ -112,7 +112,7 @@ describe Admin::TiersController do
         end
         it "redirects to tiers#index" do
             delete :destroy, id: @tier
-            expect(response).to redirect_to admin_tiers_url
+            expect(response).to redirect_to admin_shippings_tiers_url
         end
     end
 

@@ -60,7 +60,7 @@ Trado::Application.routes.draw do
         end
       end
       namespace :shippings do
-        resources :tiers, :countries, :zones, :execept => :show
+        resources :tiers, :countries, :zones, :except => :show
       end
   end
 
