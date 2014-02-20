@@ -1,4 +1,4 @@
-class Admin::TiersController < ApplicationController
+class Admin::Shippings::TiersController < ApplicationController
 
   before_filter :authenticate_user!
   layout "admin"
@@ -36,7 +36,7 @@ class Admin::TiersController < ApplicationController
 
     respond_to do |format|
       if @tier.save
-        format.html { redirect_to admin_tiers_url, notice: 'Tier was successfully created.' }
+        format.html { redirect_to admin_shippings_tiers_url, notice: 'Tier was successfully created.' }
         format.json { render json: @tier, status: :created, location: @tier }
       else
         format.html { render action: "new" }
@@ -51,7 +51,7 @@ class Admin::TiersController < ApplicationController
     @tier = Tier.find(params[:id])
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
-        format.html { redirect_to admin_tiers_url, notice: 'Tier was successfully updated.' }
+        format.html { redirect_to admin_shippings_tiers_url, notice: 'Tier was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,7 +67,7 @@ class Admin::TiersController < ApplicationController
     @tier.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_tiers_url }
+      format.html { redirect_to admin_shippings_tiers_url }
       format.json { head :no_content }
     end
   end

@@ -3,10 +3,11 @@
 - content_for :header, 'Shipping countries'
 - content_for :subnav do
   %li= link_to 'Methods', admin_shippings_path
-  %li= link_to 'Tiers', admin_tiers_path
+  %li= link_to 'Tiers', admin_shippings_tiers_path
+  %li= link_to 'Zones', admin_shippings_zones_path
   %li.current
     %a.current Countries
-= link_to new_admin_country_path, :class => "btn btn-success add_record" do
+= link_to new_admin_shippings_country_path, :class => "btn btn-success add_record" do
   %i.icon-plus
   New country
 - if @countries.empty?
@@ -21,4 +22,4 @@
       - @countries.each do |country|
         %tr
           %td= country.name
-          = table_commands country, admin_country_path(country), edit_admin_country_path(country), admin_country_path(country), 1
+          = table_commands country, admin_shippings_country_path(country), edit_admin_shippings_country_path(country), admin_shippings_country_path(country), 1

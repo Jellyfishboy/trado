@@ -5,9 +5,9 @@
   %li= link_to 'Methods', admin_shippings_path
   %li.current
     %a.current Tiers
-  %li= link_to 'Countries', admin_countries_path
-
-= link_to new_admin_tier_path, :class => "btn btn-success add_record" do
+  %li= link_to 'Zones', admin_shippings_zones_path
+  %li= link_to 'Countries', admin_shippings_countries_path
+= link_to new_admin_shippings_tier_path, :class => "btn btn-success add_record" do
   %i.icon-plus
   New tier
 - if @tiers.empty?
@@ -45,4 +45,4 @@
                   = shipping.name
                   = ' - '
                   %b= format_currency shipping.price
-          = table_commands tier, admin_tier_path(tier), edit_admin_tier_path(tier), admin_tier_path(tier),  1
+          = table_commands tier, admin_shippings_tier_path(tier), edit_admin_shippings_tier_path(tier), admin_shippings_tier_path(tier),  1

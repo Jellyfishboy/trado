@@ -22,7 +22,8 @@ class Shipping < ActiveRecord::Base
   has_many :tiereds,                                    :dependent => :delete_all
   has_many :tiers,                                      :through => :tiereds
   has_many :destinations,                               :dependent => :delete_all
-  has_many :countries,                                  :through => :destinations
+  has_many :zones,                                      :through => :destinations
+  has_many :countries,                                  :through => :zones
   has_many :orders,                                     :dependent => :restrict
 
   validates :name, :price, :description,                :presence => true

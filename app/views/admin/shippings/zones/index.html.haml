@@ -1,0 +1,25 @@
+- content_for :title, 'Shipping zones'
+- content_for :breadcrumb, 'Shipping zones'
+- content_for :header, 'Shipping zones'
+- content_for :subnav do
+  %li= link_to 'Methods', admin_shippings_path
+  %li= link_to 'Tiers', admin_shippings_tiers_path
+  %li.current
+    %a.current Zones
+  %li= link_to 'Countries', admin_shippings_countries_path
+= link_to new_admin_shippings_zone_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
+  New zone
+- if @zones.empty?
+  %p You don't have any zones yet.
+- else 
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th
+    %tbody
+      - @zones.each do |zone|
+        %tr
+          %td= zone.name
+          = table_commands zone, admin_shippings_zone_path(zone), edit_admin_shippings_zone_path(zone), admin_shippings_zone_path(zone), 1

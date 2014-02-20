@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203132401) do
+ActiveRecord::Schema.define(:version => 20140220161254) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20140203132401) do
 
   create_table "destinations", :force => true do |t|
     t.integer  "shipping_id"
-    t.integer  "country_id"
+    t.integer  "zone_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -306,5 +306,18 @@ ActiveRecord::Schema.define(:version => 20140203132401) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "zones", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "zonifications", :force => true do |t|
+    t.integer  "country_id"
+    t.integer  "zone_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

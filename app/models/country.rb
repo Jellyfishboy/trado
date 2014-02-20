@@ -1,7 +1,7 @@
 # Country Documentation
 #
 # The country table is a list of available countries available to a user when they select their billing and shipping country. 
-# Furthermore it also defines which shippings are available in the country. 
+# It has and belongs to country zones.
 
 # == Schema Information
 #
@@ -16,10 +16,10 @@ class Country < ActiveRecord::Base
 
   attr_accessible :name
 
-  has_many :destinations,       :dependent => :delete_all
-  has_many :shippings,          :through => :destinations
+  has_many :zonifications,          :dependent => :delete_all
+  has_many :zones,                  :through => :zonifications
 
-  validates :name,              :uniqueness => true, :presence => true
+  validates :name,                  :uniqueness => true, :presence => true
 
 
 end

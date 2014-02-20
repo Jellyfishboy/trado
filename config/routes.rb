@@ -49,7 +49,7 @@ Trado::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       mount Sidekiq::Web => '/jobs'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
-      resources :accessories, :shippings, :tiers, :countries, :products, :categories, :except => :show
+      resources :accessories, :shippings, :products, :categories, :except => :show
       resources :orders, :only => [:index, :show, :update]
       resources :transactions, :only => :index
       namespace :products do
@@ -58,6 +58,9 @@ Trado::Application.routes.draw do
         namespace :skus do
           resources :attribute_types, :except => :show
         end
+      end
+      namespace :shippings do
+        resources :tiers, :countries, :zones, :execept => :show
       end
   end
 

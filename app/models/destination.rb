@@ -1,22 +1,22 @@
 # Destination Documentation
 #
-# The destination table is a HABTM relationship handler between the shippings and countries tables.
+# The destination table is a HABTM relationship handler between the shippings and zones tables.
 
 # == Schema Information
 #
 # Table name: destinations
 #
 #  id             :integer          not null, primary key
-#  counrty_id     :integer  
+#  zone_id        :integer  
 #  shipping_id    :integer          
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 class Destination < ActiveRecord::Base
 
-  attr_accessible :country_id, :shipping_id
+  attr_accessible :zone_id, :shipping_id
 
+  belongs_to :zone
   belongs_to :shipping
-  belongs_to :country
 
 end

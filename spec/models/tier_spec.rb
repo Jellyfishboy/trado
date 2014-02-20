@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Tier do
 
-    #ActiveRecord relations
+    # ActiveRecord relations
     it { expect(subject).to have_many(:tiereds).dependent(:delete_all) }
     it { expect(subject).to have_many(:shippings).through(:tiereds) }
 

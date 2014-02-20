@@ -4,6 +4,6 @@ describe Destination do
 
     #ActiveRecord relations
     it { expect(subject).to belong_to(:shipping) }
-    it { expect(subject).to belong_to(:country) }
+    it { expect(subject).to belong_to(:zone) }
 
 end

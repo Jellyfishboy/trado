@@ -1,0 +1,17 @@
+.row-fluid
+  .col-md-6
+    = form_for [:admin, :shippings, @zone], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @zone.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@zone.errors.count, "error")} prohibited this zone from being saved:"
+            %ul
+              - @zone.errors.full_messages.each do |msg|
+                %li= msg
+        .form-group
+          = f.label :name, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :name, :class => 'form-control'
+        .form-group
+          .col-md-offset-3.col-md-9
+            = f.submit 'Submit', :class => 'btn btn-primary'
