@@ -27,7 +27,7 @@ class Product < ActiveRecord::Base
   :short_description
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku,                                         :presence => true
+  :part_number, :sku, :weighting,                             :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
   validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
@@ -48,6 +48,8 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
+
+  default_scope order('weighting DESC')
 
   extend FriendlyId
   friendly_id :name, use: :slugged

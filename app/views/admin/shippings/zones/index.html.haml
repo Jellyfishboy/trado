@@ -17,9 +17,15 @@
     %thead
       %tr
         %th Name
+        %th Countries
         %th
     %tbody
       - @zones.each do |zone|
         %tr
           %td= zone.name
+          %td
+            %ul 
+              - zone.countries.each do |country|
+                %li
+                  = country.name
           = table_commands zone, admin_shippings_zone_path(zone), edit_admin_shippings_zone_path(zone), admin_shippings_zone_path(zone), 1

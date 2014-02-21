@@ -62,5 +62,14 @@ describe Product do
         product_3 = create(:product)
         expect(Product.active).to match_array([product_2, product_3])
     end
+
+    context "Default scope" do
+        it "should return an array of products ordered by descending weighting" do
+            product_1 = create(:product, weighting: 2000)
+            product_2 = create(:product, weighting: 3000)
+            product_3 = create(:product, weighting: 1000)
+            expect(Product.all).to match_array([product_2, product_1, product_3])
+        end
+    end
     
 end

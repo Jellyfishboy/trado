@@ -37,7 +37,7 @@
               .checkbox
                 %label
                   = hidden_field_tag "shipping[zone_ids][]", ''
-                  = check_box_tag "shipping[zone_ids][]", zone.id, @form_shipping.zone_ids.include?(zone.id), :class => 'ace-checkbox-2'
+                  = check_box_tag "shipping[zone_ids][]", zone.id, @shipping.zone_ids.include?(zone.id), :class => 'ace-checkbox-2'
                   = zone.name
       .form-group
         .col-md-offset-3.col-md-9

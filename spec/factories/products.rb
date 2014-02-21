@@ -8,6 +8,7 @@ FactoryGirl.define do
         sequence(:part_number) { |n| n }
         featured false
         active true
+        sequence(:weighting) { |n| n }
 
         association :category
     end

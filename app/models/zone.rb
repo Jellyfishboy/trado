@@ -14,7 +14,7 @@
 #
 class Zone < ActiveRecord::Base
 
-  attr_accessible :name
+  attr_accessible :name, :country_ids
 
   has_many :destinations,               :dependent => :delete_all
   has_many :shippings,                  :through => :destinations

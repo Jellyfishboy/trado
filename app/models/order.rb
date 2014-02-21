@@ -30,17 +30,17 @@ class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id
   
-  has_many :order_items,        :dependent => :delete_all
-  has_one :transaction,         :dependent => :destroy
+  has_many :order_items,                                                :dependent => :delete_all
+  has_one :transaction,                                                 :dependent => :destroy
 
   belongs_to :shipping
-  belongs_to :ship_address,     class_name: 'Address'
-  belongs_to :bill_address,     class_name: 'Address'
+  belongs_to :ship_address,                                             class_name: 'Address'
+  belongs_to :bill_address,                                             class_name: 'Address'
 
-  validates :email,             :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :shipping_id,       :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
+  validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
+  validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
 
-  after_update :delayed_shipping, :change_shipping_status, :if => :shipping_date_nil?
+  after_update :delayed_shipping, :change_shipping_status,              :if => :shipping_date_nil?
 
   def add_cart_items_from_cart(cart)
   	cart.cart_items.each do |item|
