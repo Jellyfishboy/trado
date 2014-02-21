@@ -39,7 +39,7 @@
             .form-group
                 = f.label :price, :class => 'control-label col-md-3'
                 .col-md-9
-                    = f.text_field :price, :class => 'form-control'
+                    = f.text_field :price, :class => 'form-control calculate_tax', :autocomplete => 'off'
             .form-group
                 = f.label :attribute_value, :class => 'control-label col-md-3'
                 .col-md-9

@@ -31,9 +31,25 @@ disable_field = (checkbox, field) ->
       $(field).val '0'
       $(field).prop 'readonly', true
 
+calculate_tax = ->
+  # $elem = $('.calculate_tax')
+  $('.calculate_tax').each ->
+    val = Number(@value)
+    sum = val + (val*0.2)
+    sum = 0 if isNaN(sum)
+    $(@).closest('input').after '<div id="gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
+  $('.calculate_tax').bind "input", ->
+    val = Number(@value)
+    sum = val + (val*0.2)
+    sum = 0 if isNaN(sum)
+    unless $('#gross').length > 0
+      $(@).closest('input').after '<div id="gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
+    else
+      $('#gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
+  
+
 $(document).ready ->
-  # duplicate_fields ".invoice_address", ".billing_textarea", ".delivery_textarea"
-  # disable_field '#invoice_vat_applicable', '#invoice_vat_number'
+  calculate_tax()
 
   $('.change_shipping').click ->
     order = $(@).attr 'id'
@@ -47,16 +63,6 @@ $(document).ready ->
     sku = $(@).attr 'id'
     $.get '/admin/products/skus?sku_id=' + sku
 
-  # Display shipping value with tax
-  $('.calculate_shipping_tax').bind "input", ->
-    val = Number(@value)
-    sum = val + (val*0.2)
-    sum = 0 if isNaN(sum)
-    unless $('.shipping_gross').length > 0
-      $(@).after '<div class="shipping_gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
-    else
-      $('.shipping_gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
-
   # Copy SKU Prefix
   if $("#product_sku").is ':visible'
     window.setInterval (->
@@ -68,3 +74,4 @@ $(document).ajaxComplete ->
   $("[data-behaviour~=datepicker]").datepicker
     format: "dd/mm/yyyy"
     startDate: "0"
+  calculate_tax()
