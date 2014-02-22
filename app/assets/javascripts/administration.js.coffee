@@ -16,6 +16,7 @@ root.add_fields = (link, association, content, target) ->
   new_id = new Date().getTime()
   regexp = new RegExp("new_" + association, "g")
   $(target).append content.replace(regexp, new_id)
+  calculate_tax()
 duplicate_fields = (checkbox, field_one, field_two) ->
   $(checkbox).change ->
     if @checked
@@ -71,4 +72,3 @@ $(document).ajaxComplete ->
   $("[data-behaviour~=datepicker]").datepicker
     format: "dd/mm/yyyy"
     startDate: "0"
-  calculate_tax()
