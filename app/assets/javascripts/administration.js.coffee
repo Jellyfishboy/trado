@@ -32,20 +32,17 @@ disable_field = (checkbox, field) ->
       $(field).prop 'readonly', true
 
 calculate_tax = ->
-  # $elem = $('.calculate_tax')
-  $('.calculate_tax').each ->
+  $elem = $('.calculate_tax')
+  $elem.each ->
     val = Number(@value)
     sum = val + (val*0.2)
     sum = 0 if isNaN(sum)
-    $(@).closest('input').after '<div id="gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
-  $('.calculate_tax').bind "input", ->
+    $(@).closest('input').after '<div class="gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
+  $elem.bind "input", ->
     val = Number(@value)
     sum = val + (val*0.2)
     sum = 0 if isNaN(sum)
-    unless $('#gross').length > 0
-      $(@).closest('input').after '<div id="gross">Gross amount: ' + parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>'
-    else
-      $('#gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
+    $(@).next('.gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
   
 
 $(document).ready ->
