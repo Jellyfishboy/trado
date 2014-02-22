@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140220161254) do
+ActiveRecord::Schema.define(:version => 20140222170508) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -203,6 +203,14 @@ ActiveRecord::Schema.define(:version => 20140220161254) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
+  create_table "related_products", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "related_id"
+  end
+
+  add_index "related_products", ["product_id", "related_id"], :name => "index_related_products_on_product_id_and_related_id", :unique => true
+  add_index "related_products", ["related_id", "product_id"], :name => "index_related_products_on_related_id_and_product_id", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"

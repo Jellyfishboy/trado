@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description
+  :short_description, :related_ids
 
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting,                             :presence => true
@@ -43,6 +43,11 @@ class Product < ActiveRecord::Base
   has_many :attachments,                                      as: :attachable, :dependent => :delete_all
   has_many :accessorisations,                                 :dependent => :delete_all
   has_many :accessories,                                      :through => :accessorisations
+  has_and_belongs_to_many :related, 
+                                                              class_name: "Product", 
+                                                              join_table: :related_products, 
+                                                              foreign_key: :product_id, 
+                                                              association_foreign_key: :related_id
   belongs_to :category
 
   accepts_nested_attributes_for :attachments
@@ -54,14 +59,14 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  searchable do
-    text :name
-    text :tags do
-      tags.map { |tag| tag.name }
-    end
-    text :sku
-    text :part_number
-  end
+  # searchable do
+  #   text :name
+  #   text :tags do
+  #     tags.map { |tag| tag.name }
+  #   end
+  #   text :sku
+  #   text :part_number
+  # end
 
   def inactivate!
     self.update_column(:active, false)

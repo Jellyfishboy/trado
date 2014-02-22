@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :product do
-        name { Faker::Lorem.characters(10) }
+        sequence(:name)  { |n| "#{Faker::Lorem.characters(10)}#{n}" }
         meta_description { Faker::Lorem.characters(10) }
         short_description { Faker::Lorem.characters(15) } 
         description { Faker::Lorem.characters(20) }

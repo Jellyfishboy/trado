@@ -19,6 +19,10 @@
           = f.label :meta_description, :class => 'control-label col-md-3'
           .col-md-9
             = f.text_area :meta_description, :rows => 6, :class => 'form-control'
+        .form-group
+          = f.label :weighting, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :weighting, :class => 'form-control col-md-3l'
       .col-md-6
         - if @product.orders.empty?
           .form-group
