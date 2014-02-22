@@ -11,4 +11,13 @@ describe Country do
     
     it { expect(subject).to validate_uniqueness_of(:name) }
 
+    context "Default scope" do
+        it "should return an array of countries in alphabetical order" do
+            country_1 = create(:country, name: 'United Kingdom')
+            country_2 = create(:country, name: 'Belgium')
+            country_3 = create(:country, name: 'Zimbabwe')
+            expect(Country.all).to match_array([country_2, country_1, country_3])
+        end
+    end
+
 end
