@@ -1,7 +1,7 @@
 set :application, 'gimson_robotics'
 set :user, 'root'
 set :scm, 'git'
-set :repository, 'git@github.com:Jellyfishboy/gimson_robotics.git'
+set :repository, 'git@github.com:Jellyfishboy/trado.git'
 set :scm_verbose, true
 set :domain, '141.0.175.166'
 set :deploy_to, '/home/gimsonrobotics/'
