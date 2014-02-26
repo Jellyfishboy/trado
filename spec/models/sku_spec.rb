@@ -34,7 +34,7 @@ describe Sku do
     it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to(:active) }
     it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to(:active) }
 
-    context "When a used SKU is updated or deleted" do
+    describe "When a used SKU is updated or deleted" do
 
         it "should set the record as inactive" do
             sku = create(:sku)
@@ -44,7 +44,7 @@ describe Sku do
 
     end
 
-    context "When the new SKU fails to update" do
+    describe "When the new SKU fails to update" do
 
         it "should set the record as active" do
             sku = create(:sku, active: false)
@@ -53,7 +53,7 @@ describe Sku do
         end
     end
 
-    context "When creating a new SKU" do
+    describe "When creating a new SKU" do
 
         it "should validate whether the stock value is higher than stock_warning_level" do
             sku = build(:sku, stock: 5, stock_warning_level: 10)

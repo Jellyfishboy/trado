@@ -1,17 +1,17 @@
 # Notifier is getting too cluttered. Abstracted alot of the logic away from it to ensure clear, concise code.
-
+# FIXME: This class is sort of a miss match of random methods. Revise this later on to formulate a more structured plan.
 class MailDaemon
 
     def self.dispatch_orders
         Order.all.each do |order|
             if order.shipping_date == Date.today
                 order.update_column(:shipping_status, "Dispatched")
-                Notifier.order_shipped(self).deliver
+                Notifier.order_shipped(order).deliver
             end
         end
     end
 
-    def self.warning_level
+    def self.stock_warning_level
         @restock = Sku.where('stock < stock_warning_level').all
         if defined?(@restock)
             Notifier.low_stock(@restock).deliver

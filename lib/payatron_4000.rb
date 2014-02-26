@@ -6,7 +6,7 @@ module Payatron4000
         (price*100).round
     end
 
-    def stock (order)
+    def stock_update (order)
         order.order_items.each do |item|
           sku = Sku.find(item.sku_id)
           sku.update_column(:stock, sku.stock-item.quantity)

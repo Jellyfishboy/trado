@@ -10,6 +10,7 @@ describe Order do
     it { expect(subject).to belong_to(:bill_address).class_name('Address') }
 
     context "If current order status is at shipping" do
+        
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to validate_presence_of(:shipping_id).with_message('Shipping option is required') }
@@ -22,7 +23,7 @@ describe Order do
         let(:order_2) { create(:order, shipping_date: Date.today) }
         # let(:order_3) { create(:order) }
 
-        context "If order date is today" do
+        context "if order date is today" do
 
             it "should update the order as dispatched" do
                 expect {
@@ -39,15 +40,15 @@ describe Order do
             end
         end
 
-        context "If order had a shipping date and was changed again" do
+        context "if order had a shipping date and was changed again" do
             # before(:each) do
-            #     binding.pry
-            #     order_3.update_column(:shipping_date, Date.new(2014, 3, 29))
+            #     order_3.stub(:shipping_date_changed?) { true }
+            #     order_3.stub(:shipping_date_was) { true }
             # end
-            # it "should send a delayed_shipping email" do
+            # it "should send a ship_order_today email" do
             #     expect {
             #         binding.pry
-            #         order_3.delayed_shipping
+            #         order_3.ship_order_today
             #     }.to change {
             #         ActionMailer::Base.deliveries.count }.by(1)
             # end

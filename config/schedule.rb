@@ -37,7 +37,7 @@ every 1.day, :at => '8:00am' do
 end
 
 every 1.day, :at => '8:30 am' do
-    runner "MailDaemon.warning_level"
+    runner "MailDaemon.stock_warning_level"
 end
 
 every 1.day, :at => '9:00 am' do

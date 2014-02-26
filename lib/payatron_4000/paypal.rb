@@ -1,18 +1,6 @@
 module Payatron4000
     class Paypal
 
-        def express_purchase_options(order, session)
-            {
-              :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
-              :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
-              :tax               => Payatron4000.price_in_pennies(session[:tax]),
-              :handling          => 0,
-              :token             => order.express_token,
-              :payer_id          => order.express_payer_id,
-              :currency          => 'GBP'
-            }
-        end
-
         def express_setup_options(order, steps, cart, session)
             {
               :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
@@ -25,6 +13,18 @@ module Payatron4000
               :return_url        => order_build_url(:order_id => order.id, :id => steps.last),
               :cancel_return_url => order_build_url(:order_id => order.id, :id => 'payment'),
               :currency          => 'GBP',
+            }
+        end
+
+        def express_purchase_options(order, session)
+            {
+              :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
+              :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
+              :tax               => Payatron4000.price_in_pennies(session[:tax]),
+              :handling          => 0,
+              :token             => order.express_token,
+              :payer_id          => order.express_payer_id,
+              :currency          => 'GBP'
             }
         end
 
@@ -42,6 +42,7 @@ module Payatron4000
         # assign paypal token to order after user logs into their account
         def assign_paypal_token(token, payer_id, session, order)
             details = EXPRESS_GATEWAY.details_for(token)
+            # FIXME: Reduce DB calls by one by using update_attributes method
             order.update_column(:express_token, token)
             order.update_column(:express_payer_id, payer_id)
             session[:paypal_email] = details.params["payer"]
@@ -60,7 +61,7 @@ module Payatron4000
                                 :transaction_type => response.params['PaymentInfo']['TransactionType'],
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping.price,
                                 :status_reason => response.params['PaymentInfo']['PendingReason'])
-            Payatron4000.stock(order)
+            Payatron4000.stock_update(order)
             # Set order status to active
             order.update_column(:status, 'active')
         end

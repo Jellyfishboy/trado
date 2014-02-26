@@ -20,7 +20,7 @@ describe Shipping do
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
-    context "When a used shipping is updated or deleted" do
+    describe "When a used shipping is updated or deleted" do
 
         it "should set the record as inactive" do
             shipping = create(:shipping)
@@ -29,7 +29,7 @@ describe Shipping do
         end
     end
 
-    context "When the new shipping fails to update" do
+    describe "When the new shipping fails to update" do
 
         it "should set the record as active" do
             shipping = create(:shipping, active: false)

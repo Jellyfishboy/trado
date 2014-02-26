@@ -7,7 +7,7 @@ describe Cart do
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
 
-    context "When retrieving the cart total value" do
+    describe "When retrieving the cart total value" do
 
         it "should iterate through all cart items and calculate the sum" do
             cart = create(:cart)
@@ -20,7 +20,7 @@ describe Cart do
         end
     end
 
-    context "During a daily scheduled task" do
+    describe "During a daily scheduled task" do
 
         it "should remove any carts which are more than 12 hours old" do
             cart_1 = create(:cart, updated_at: 11.hours.ago)

@@ -34,7 +34,7 @@ class Notifier < ActionMailer::Base
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} order shipped"
   end
 
-  def delayed_shipping(order)
+  def shipping_delayed(order)
     @order = order
 
     mail :to => order.email, :subject => "Gimson Robotics ##{@order.id} shipping update"

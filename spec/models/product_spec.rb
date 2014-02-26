@@ -38,7 +38,7 @@ describe Product do
     it { expect(subject).to accept_nested_attributes_for(:attachments) }
     it { expect(subject).to accept_nested_attributes_for(:tags) }
 
-    context "When a used product is updated or deleted" do
+    describe "When a used product is updated or deleted" do
 
         it "should set the record as inactive" do
             product = create(:product)
@@ -47,7 +47,7 @@ describe Product do
         end
     end
 
-    context "When the new SKU fails to update" do
+    describe "When the new SKU fails to update" do
 
         it "should set the record as active" do
             sku = create(:sku, active: false)
@@ -63,7 +63,8 @@ describe Product do
         expect(Product.active).to match_array([product_2, product_3])
     end
 
-    context "Default scope" do
+    describe "Default scope" do
+        
         it "should return an array of products ordered by descending weighting" do
             product_1 = create(:product, weighting: 2000)
             product_2 = create(:product, weighting: 3000)

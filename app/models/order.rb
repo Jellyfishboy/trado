@@ -75,6 +75,7 @@ class Order < ActiveRecord::Base
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
       Notifier.shipping_delayed(self).deliver
+      binding.pry
     end
   end
 
@@ -86,7 +87,7 @@ class Order < ActiveRecord::Base
   end
 
   def shipping_date_nil?
-    return false if self.shipping_date.nil?
+    return true unless self.shipping_date.nil?
   end
 
   # Multi form methods

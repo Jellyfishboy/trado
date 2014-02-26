@@ -23,7 +23,7 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
-    context "When a used accessory is updated or deleted" do
+    describe "When a used accessory is updated or deleted" do
 
         it "should set the record as inactive" do
             accessory = create(:accessory)
@@ -32,7 +32,7 @@ describe Accessory do
         end
     end
 
-    context "When the new accessory fails to update" do
+    describe "When the new accessory fails to update" do
 
         it "should set the record as active" do
             accessory = create(:accessory, active: false)
