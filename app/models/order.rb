@@ -58,50 +58,6 @@ class Order < ActiveRecord::Base
     session[:total] = session[:sub_total]+session[:tax]+shipping.price
   end
 
-  # assign paypal token to order after user logs into their account
-  def assign_paypal_token(token, payer_id, session)
-    details = EXPRESS_GATEWAY.details_for(token)
-    self.update_column(:express_token, token)
-    self.update_column(:express_payer_id, payer_id)
-    session[:paypal_email] = details.params["payer"]
-  end
-
-  def successful_order(response)
-    # Create transaction
-    Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
-                        :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
-                        :order_id => self.id, 
-                        :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
-                        :payment_type => response.params['PaymentInfo']['PaymentType'], 
-                        :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
-                        :transaction_id => response.params['PaymentInfo']['TransactionID'], 
-                        :transaction_type => response.params['PaymentInfo']['TransactionType'],
-                        :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping.price,
-                        :status_reason => response.params['PaymentInfo']['PendingReason'])
-    # Update stock quantity
-    self.order_items.each do |item|
-      sku = Sku.find(item.sku_id)
-      sku.update_column(:stock, sku.stock-item.quantity)
-    end
-    # Set order status to active
-    self.update_column(:status, 'active')
-  end
-
-
-  def failed_order(response)
-    Transaction.create( :fee => 0, 
-                        :gross_amount => session[:total], 
-                        :order_id => self.id, 
-                        :payment_status => 'Failed', 
-                        :payment_type => '', 
-                        :tax_amount => session[:tax], 
-                        :transaction_id => '', 
-                        :transaction_type => '',
-                        :net_amount => session[:sub_total],
-                        :status_reason => response.message)
-    self.update_column(:status, 'active')
-  end
-
   # Shipping methods
 
   def calculate_shipping_tier(cart)

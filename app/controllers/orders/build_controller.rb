@@ -39,7 +39,7 @@ class Orders::BuildController < ApplicationController
       case step
       when :confirm
         if defined?(params[:token])
-          @order.assign_paypal_token(params[:token], params[:PayerID], session)
+          Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], session, @order)
         end
       end
       render_wizard
@@ -109,7 +109,7 @@ class Orders::BuildController < ApplicationController
       flash[:error] = "You do not have permission to amend this order."
       redirect_to root_url
     else
-      response = EXPRESS_GATEWAY.setup_purchase(price_in_pennies(session[:total]), express_setup_options(@order))
+      response = EXPRESS_GATEWAY.setup_purchase(Payatron4000.price_in_pennies(session[:total]), Payatron4000::Paypal.express_setup_options(@order, steps, current_cart, session))
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
   end
@@ -120,26 +120,27 @@ class Orders::BuildController < ApplicationController
       flash[:error] = "You do not have permission to amend this order."
       redirect_to root_url
     else
-      response = EXPRESS_GATEWAY.purchase(price_in_pennies(session[:total]), express_purchase_options(@order))
+      response = EXPRESS_GATEWAY.purchase(Payatron4000.price_in_pennies(session[:total]), Payatron4000::Paypal.express_purchase_options(@order, session))
       binding.pry
       if response.success
         @order.add_cart_items_from_cart(current_cart)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         begin 
+          Payatron4000::Paypal.successful(response, @order)
           @order.successful_order(response)
         rescue Exception => e
             Rollbar.report_exception(e)
         end
-        # if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
-        #   Notifier.pending_order(@order).deliver
-        # else
-        #   Notifier.order_received(@order).deliver
-        # end
+        if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
+          Notifier.pending_order(@order).deliver
+        else
+          Notifier.order_received(@order).deliver
+        end
         redirect_to success_order_build_url(:order_id => @order.id, :id => steps.last, :transaction_id => response.params['PaymentInfo']['TransactionID'])
       else
         begin
-          @order.failed_order(response)
+          Payatron4000::Paypal.failed(response, @order)
         rescue Exception => e
             Rollbar.report_exception(e)
         end
@@ -181,50 +182,6 @@ class Orders::BuildController < ApplicationController
     else
       flash[:error] = "Cannot delete a completed order."
       redirect_to root_url
-    end
-  end
-
-private
-
-  def express_purchase_options(order)
-    {
-      :subtotal          => price_in_pennies(session[:sub_total]),
-      :shipping          => price_in_pennies(order.shipping.price),
-      :tax               => price_in_pennies(session[:tax]),
-      :handling          => 0,
-      :token             => order.express_token,
-      :payer_id          => order.express_payer_id,
-      :currency          => 'GBP'
-    }
-  end
-
-  def express_setup_options(order)
-    {
-      :subtotal          => price_in_pennies(session[:sub_total]),
-      :shipping          => price_in_pennies(order.shipping.price),
-      :tax               => price_in_pennies(session[:tax]),
-      :handling          => 0,
-      :order_id          => order.id,
-      :items             => express_items,
-      :ip                => request.remote_ip,
-      :return_url        => order_build_url(:order_id => order.id, :id => steps.last),
-      :cancel_return_url => order_build_url(:order_id => order.id, :id => 'payment'),
-      :currency          => 'GBP',
-    }
-  end
-
-  def price_in_pennies(price)
-    (price*100).round
-  end
-
-  def express_items
-    current_cart.cart_items.collect do |item|
-      {
-        :name => item.sku.product.name,
-        :description => "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }",
-        :amount => price_in_pennies(item.price), 
-        :quantity => item.quantity 
-      }
     end
   end
 

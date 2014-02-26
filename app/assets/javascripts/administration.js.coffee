@@ -44,10 +44,23 @@ calculate_tax = ->
     sum = val + (val*0.2)
     sum = 0 if isNaN(sum)
     $(@).next('.gross').text 'Gross amount: ' + parseFloat(sum).toFixed(2)
+
+form_JSON_errors = ->
+  $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
+      errors = $.parseJSON(xhr.responseJSON.errors)
+      $.each errors, (key, value) ->
+          $element = $("input[name*='" + key + "']")
+          $error_target = '.error_explanation'
+          if $element.parent().next().is $error_target
+              $($error_target).html '<span>' + key + '</span> ' + value
+          else 
+              $element.wrap '<div class="field_with_errors"></div>'
+              $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
   
 
 $(document).ready ->
   calculate_tax()
+  form_JSON_errors()
 
   $('.change_shipping').click ->
     order = $(@).attr 'id'
