@@ -37,7 +37,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'spork'
-  gem 'guard-rspec', require: false
+  gem 'guard-rspec', :require => false
   gem 'guard-spork'
   # Testing postgresql on Travis CI
   gem 'pg'
@@ -46,6 +46,7 @@ end
 group :development, :test do
   gem 'pry'
   gem 'sqlite3'
+  gem 'terminal-notifier-guard', :platforms => :ruby
 end
 # Gems used only for assets and not required
 # in production environments by default.

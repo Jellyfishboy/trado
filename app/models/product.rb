@@ -8,7 +8,7 @@
 # Table name: products
 #
 #  id                       :integer          not null, primary key
-#  part_number              :integer      
+#  part_number              :string      
 #  name                     :string(255)
 #  description              :text
 #  short_description        :text
@@ -29,7 +29,6 @@ class Product < ActiveRecord::Base
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting,                             :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
-  validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
   validates :description,                                     :length => {:minimum => 20, :message => :too_short }
   validates :skus,                                            :tier => true, :on => :save

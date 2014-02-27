@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222170508) do
+ActiveRecord::Schema.define(:version => 20140227201826) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20140222170508) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.integer  "weighting"
-    t.integer  "part_number"
+    t.string   "part_number"
     t.string   "sku"
     t.integer  "category_id"
     t.string   "slug"

@@ -14,5 +14,11 @@ FactoryGirl.define do
         association :attribute_type
         association :product
         association :accessory
+
+        factory :sku_in_stock do
+            after(:create) do |sku, evaluator|
+                create(:sku_notification)
+            end
+        end
     end
 end
