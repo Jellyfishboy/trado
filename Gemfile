@@ -36,6 +36,9 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'faker'
+  gem 'spork'
+  gem 'guard-rspec', require: false
+  gem 'guard-spork'
   # Testing postgresql on Travis CI
   gem 'pg'
 end
@@ -103,10 +106,6 @@ gem 'sitemap_generator'
 gem 'global'
 
 # Processing
-gem 'sidekiq', :require => false
-gem 'sidekiq-failures'
-gem 'slim'
-gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'whenever', :require => false
 
 # To use ActiveModel has_secure_password

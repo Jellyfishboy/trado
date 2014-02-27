@@ -47,7 +47,6 @@ Trado::Application.routes.draw do
   namespace :admin do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
-      mount Sidekiq::Web => '/jobs'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :except => :show
       resources :orders, :only => [:index, :show, :update]
