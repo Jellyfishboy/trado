@@ -1,7 +1,7 @@
 module Payatron4000
     class Paypal
 
-        def express_setup_options(order, steps, cart, session)
+        def self.express_setup_options(order, steps, cart, session)
             {
               :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
               :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
@@ -16,7 +16,7 @@ module Payatron4000
             }
         end
 
-        def express_purchase_options(order, session)
+        def self.express_purchase_options(order, session)
             {
               :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
               :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
@@ -28,7 +28,7 @@ module Payatron4000
             }
         end
 
-        def express_items(cart)
+        def self.express_items(cart)
             cart.cart_items.collect do |item|
                 {
                     :name => item.sku.product.name,
@@ -40,7 +40,7 @@ module Payatron4000
         end
 
         # assign paypal token to order after user logs into their account
-        def assign_paypal_token(token, payer_id, session, order)
+        def self.assign_paypal_token(token, payer_id, session, order)
             details = EXPRESS_GATEWAY.details_for(token)
             # FIXME: Reduce DB calls by one by using update_attributes method
             order.update_column(:express_token, token)
@@ -49,7 +49,7 @@ module Payatron4000
         end
 
         # Successful order
-        def successful(response, order)
+        def self.successful(response, order)
             # Create transaction
             Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
@@ -67,7 +67,7 @@ module Payatron4000
         end
 
         # Failed order
-        def failed(response)
+        def self.failed(response)
             Transaction.create( :fee => 0, 
                                 :gross_amount => session[:total], 
                                 :order_id => self.id, 

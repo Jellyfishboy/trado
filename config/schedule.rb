@@ -29,7 +29,7 @@ every 1.day, :at => '5:00 am' do
 end
 
 every 1.day, :at => '7:00 am' do
-    runner "MailDaemon.dispatch_orders"
+    runner "Mailatro.dispatch_orders"
 end
 
 every 1.day, :at => '8:00am' do

@@ -1,7 +1,7 @@
 You are running low on stock for the following items:
 
 <% @restock.each do |sku| %>
-    <%= sku.product.name, sku.product %>
+    <%=link_to sku.product.name, sku.product %>
     <%= sku.stock %>
 <% end %>
 

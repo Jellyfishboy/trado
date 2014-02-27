@@ -6,5 +6,4 @@ describe Accessorisation do
     it { expect(subject).to belong_to(:accessory) }
     it { expect(subject).to belong_to(:product) }
 
-    # hai
 end

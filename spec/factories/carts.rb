@@ -6,7 +6,7 @@ FactoryGirl.define do
 
         factory :full_cart do
             after(:create) do |cart, evaluator|
-                create_list(:cart_item, evaluator.cart_item_count)
+                create_list(:cart_item, evaluator.cart_item_count, cart: cart)
             end
         end
     end 

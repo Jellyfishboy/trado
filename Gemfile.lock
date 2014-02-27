@@ -387,7 +387,6 @@ GEM
     ruby2ruby (2.0.7)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
-    ruby_gntp (0.3.4)
     ruby_parser (3.3.0)
       sexp_processor (~> 4.1)
     safe_yaml (0.9.7)
@@ -502,7 +501,6 @@ DEPENDENCIES
   redactor-rails
   rollbar
   rspec-rails
-  ruby_gntp
   sass-rails (~> 3.2.3)
   shoulda-matchers
   sitemap_generator

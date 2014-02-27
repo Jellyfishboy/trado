@@ -13,5 +13,15 @@ FactoryGirl.define do
         association :shipping
         association :ship_address, factory: :address
         association :bill_address, factory: :address
+
+        ignore do
+            count 1
+        end
+
+        factory :complete_order do
+            after(:create) do |order, evaluator|
+                create(:order_item, quantity: 5, order: order)
+            end
+        end
     end
 end

@@ -18,6 +18,18 @@ describe Order do
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
 
+    describe "Adding cart_items to an order" do
+
+        it "should build an order_item from the cart_item data"
+
+        context "if cart_item has an accessory" do
+            
+            it "should be an order_item_accessory for the associated order_item"
+        end
+
+        it "should save the order_item"
+    end
+
     describe "Managing an order shipping" do
         let(:order) { create(:order, shipping_date: nil) }
         let(:order_2) { create(:order, shipping_date: Date.today) }
@@ -52,6 +64,7 @@ describe Order do
             #     }.to change {
             #         ActionMailer::Base.deliveries.count }.by(1)
             # end
+            # still seems a bit slow
         end
 
         it "should return false if the shipping_date is nil" do

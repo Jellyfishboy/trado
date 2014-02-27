@@ -5,7 +5,7 @@ FactoryGirl.define do
         short_description { Faker::Lorem.characters(15) } 
         description { Faker::Lorem.characters(20) }
         sku { Faker::Lorem.characters(5) }
-        sequence(:part_number) { |n| n }
+        sequence(:part_number) { |n| "#{Faker::Lorem.characters(4)}#{n}" }
         featured false
         active true
         sequence(:weighting) { |n| n }
