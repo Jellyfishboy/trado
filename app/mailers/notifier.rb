@@ -48,7 +48,7 @@ class Notifier < ActionMailer::Base
 
   def sku_stock_notification(sku, email)
     @sku = sku
-    mail :to => email, :subject => "#{sku.product.name} is now in stock!"
+    mail :to => email, :subject => "#{@sku.product.name} is now in stock!"
   end
 
 end

@@ -25,7 +25,8 @@ describe Mailatron4000::Stock do
     describe "Notifying of new stock" do
 
         before(:all) do
-            create(:sku)
+            sku = create(:sku)
+            create(:sku_notification, notifiable: sku)
         end
         context "if there are any notifications" do
 

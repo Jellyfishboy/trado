@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :category do
-        name { Faker::Lorem.word }
+        name { |n| "#{Faker::Lorem.characters(10)}#{n}" }
         description { Faker::Lorem.paragraph(1) }
         visible true
 
