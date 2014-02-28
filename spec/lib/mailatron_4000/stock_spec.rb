@@ -21,7 +21,6 @@ describe Mailatron4000::Stock do
         end
     end 
 
-    # Screaming about product_path because it is missing a product object
     describe "Notifying of new stock" do
 
         before(:all) do
