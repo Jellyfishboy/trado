@@ -17,7 +17,7 @@ FactoryGirl.define do
 
         factory :sku_in_stock do
             after(:create) do |sku, evaluator|
-                create(:sku_notification)
+                create(:sku_notification, notifiable: sku)
             end
         end
     end

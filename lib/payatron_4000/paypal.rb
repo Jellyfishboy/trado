@@ -67,7 +67,7 @@ module Payatron4000
         end
 
         # Failed order
-        def self.failed(response)
+        def self.failed(response, order)
             Transaction.create( :fee => 0, 
                                 :gross_amount => session[:total], 
                                 :order_id => self.id, 

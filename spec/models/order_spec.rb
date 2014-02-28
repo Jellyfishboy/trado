@@ -19,15 +19,38 @@ describe Order do
     end
 
     describe "Adding cart_items to an order" do
+        let(:cart) { create(:full_cart) }
+        let(:order) { create(:order) }
 
-        it "should build an order_item from the cart_item data"
+        it "should build an order_item from the cart_item data" do
+            expect { 
+                order.add_cart_items_from_cart(cart)
+            }.to change(OrderItem, :count).by(4)
+        end
 
         context "if cart_item has an accessory" do
             
-            it "should be an order_item_accessory for the associated order_item"
+            it "should create an order_item_accessory for the associated order_item" do
+                expect {
+                    order.add_cart_items_from_cart(cart)
+                }.to change(OrderItemAccessory, :count).by(3)
+            end
         end
 
-        it "should save the order_item"
+        it "should save each order_item" do
+            # order.add_cart_items_from_cart(cart)
+            # order.order_items.each do |order_item|
+            #     expect(order_item).to receive(:save).once
+            # end
+        end
+    end
+
+    describe "Calculating an order" do
+
+        it "should set the sub_total, tax and total to nil"
+        it "should set the sub_total as the cart.total_price"
+        it "should set the tax using the sub_total and order shipping price"
+        it "should set the total using the sub_total, tax and order shipping price"
     end
 
     describe "Managing an order shipping" do
@@ -64,7 +87,6 @@ describe Order do
             #     }.to change {
             #         ActionMailer::Base.deliveries.count }.by(1)
             # end
-            # still seems a bit slow
         end
 
         it "should return false if the shipping_date is nil" do

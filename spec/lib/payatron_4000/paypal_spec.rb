@@ -21,7 +21,12 @@ describe Payatron4000::Paypal do
 
     describe "Failed order" do
 
-        it "should create a failed transaction"
+        # let(:order) { create(:order) }
+        # let(:failed_response) { ActiveSupport::JSON.decode(File.open(File.join('spec', 'dummy_data', 'failed_paypal_order.json'))) }
+        # let(:failed) { Payatron4000::Paypal.failed(failed_response, order) }
+
+        it "should create a transaction record"
+        it "should set the transaction record as failed"
         it "should set the order status as active"
     end
 

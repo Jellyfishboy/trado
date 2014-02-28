@@ -54,8 +54,8 @@ class Order < ActiveRecord::Base
   def calculate_order(cart, session)
     session[:sub_total] = session[:tax] = session[:total] = nil
     session[:sub_total] = cart.total_price
-    session[:tax] = (session[:sub_total]*0.2) + (shipping.price*0.2)
-    session[:total] = session[:sub_total]+session[:tax]+shipping.price
+    session[:tax] = (session[:sub_total]*0.2) + (self.shipping.price*0.2)
+    session[:total] = session[:sub_total]+session[:tax]+self.shipping.price
   end
 
   # Shipping methods
