@@ -10,7 +10,6 @@ module Mailatron4000
 
         def self.notify
             @skus = Sku.where('stock > stock_warning_level').joins("INNER JOIN notifications ON skus.id = notifications.notifiable_id").where('notifications.sent = ? ', false)
-            binding.pry
             @skus.each do |sku|
                 sku.notifications.each do |notify|
                     Notifier.sku_stock_notification(sku, notify.email)
