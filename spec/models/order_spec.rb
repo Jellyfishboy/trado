@@ -36,13 +36,6 @@ describe Order do
                 }.to change(OrderItemAccessory, :count).by(3)
             end
         end
-
-        it "should save each order_item" do
-            # order.add_cart_items_from_cart(cart)
-            # order.order_items.each do |order_item|
-            #     expect(order_item).to receive(:save).once
-            # end
-        end
     end
 
     describe "Calculating an order" do
@@ -51,6 +44,11 @@ describe Order do
         it "should set the sub_total as the cart.total_price"
         it "should set the tax using the sub_total and order shipping price"
         it "should set the total using the sub_total, tax and order shipping price"
+    end
+
+    describe "Calculating the shipping tier" do
+
+        it "should return the correct shipping tier for the highest dimensions"
     end
 
     describe "Managing an order shipping" do
