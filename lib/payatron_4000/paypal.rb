@@ -1,7 +1,8 @@
 module Payatron4000
     class Paypal
 
-        def self.express_setup_options(order, steps, cart, session)
+        def self.express_setup_options(order, steps, cart, session, ip_address)
+          binding.pry
             {
               :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
               :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
@@ -9,7 +10,7 @@ module Payatron4000
               :handling          => 0,
               :order_id          => order.id,
               :items             => Payatron4000::Paypal.express_items(cart),
-              :ip                => request.remote_ip,
+              :ip                => ip_address,
               :return_url        => order_build_url(:order_id => order.id, :id => steps.last),
               :cancel_return_url => order_build_url(:order_id => order.id, :id => 'payment'),
               :currency          => 'GBP',
@@ -33,7 +34,7 @@ module Payatron4000
                 {
                     :name => item.sku.product.name,
                     :description => "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }",
-                    :amount => price_in_pennies(item.price), 
+                    :amount => Payatron4000.price_in_pennies(item.price), 
                     :quantity => item.quantity 
                 }
             end
