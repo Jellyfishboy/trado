@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :address do
-        active true
+        active false
         default false
         first_name { Faker::Name.first_name }
         last_name { Faker::Name.last_name }

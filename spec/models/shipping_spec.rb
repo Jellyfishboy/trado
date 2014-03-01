@@ -23,7 +23,7 @@ describe Shipping do
     describe "When a used shipping is updated or deleted" do
 
         it "should set the record as inactive" do
-            shipping = create(:shipping)
+            shipping = create(:shipping, active: true)
             shipping.inactivate!
             expect(shipping.active).to eq false
         end
@@ -32,16 +32,16 @@ describe Shipping do
     describe "When the new shipping fails to update" do
 
         it "should set the record as active" do
-            shipping = create(:shipping, active: false)
+            shipping = create(:shipping)
             shipping.activate!
             expect(shipping.active).to eq true
         end
     end
 
     it "should return an array of 'active' shippings" do
-        shipping_1 = create(:shipping)
-        shipping_2 = create(:shipping, active: false)
-        shipping_3 = create(:shipping)
+        shipping_1 = create(:shipping, active: true)
+        shipping_2 = create(:shipping)
+        shipping_3 = create(:shipping, active: true)
         expect(Shipping.active).to match_array([shipping_1, shipping_3])
     end
 

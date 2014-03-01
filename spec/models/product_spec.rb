@@ -38,25 +38,25 @@ describe Product do
     describe "When a used product is updated or deleted" do
 
         it "should set the record as inactive" do
-            product = create(:product)
+            product = create(:product, active: true)
             product.inactivate!
             expect(product.active).to eq false
         end
     end
 
-    describe "When the new SKU fails to update" do
+    describe "When the product fails to update" do
 
         it "should set the record as active" do
-            sku = create(:sku, active: false)
-            sku.activate!
-            expect(sku.active).to eq true
+            product = create(:product)
+            product.activate!
+            expect(product.active).to eq true
         end
     end
 
     it "should return an array of active products" do
-        product_1 = create(:product, active: false)
-        product_2 = create(:product)
-        product_3 = create(:product)
+        product_1 = create(:product)
+        product_2 = create(:product, active: true)
+        product_3 = create(:product, active: true)
         expect(Product.active).to match_array([product_2, product_3])
     end
 
@@ -66,7 +66,7 @@ describe Product do
             product_1 = create(:product, weighting: 2000)
             product_2 = create(:product, weighting: 3000)
             product_3 = create(:product, weighting: 1000)
-            expect(Product.all).to match_array([product_2, product_1, product_3])
+            expect(Product.last(3)).to match_array([product_2, product_1, product_3])
         end
     end
     

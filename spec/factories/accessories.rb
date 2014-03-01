@@ -5,7 +5,7 @@ FactoryGirl.define do
         sequence(:price) { |n| n }
         sequence(:weight) { |n| n }
         sequence(:cost_value) { |n| n }
-        active true
+        active false
         
         factory :invalid_accessory do
             name nil

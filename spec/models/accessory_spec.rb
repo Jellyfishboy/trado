@@ -26,7 +26,7 @@ describe Accessory do
     describe "When a used accessory is updated or deleted" do
 
         it "should set the record as inactive" do
-            accessory = create(:accessory)
+            accessory = create(:accessory, active: true)
             accessory.inactivate!
             expect(accessory.active).to eq false
         end
@@ -35,16 +35,16 @@ describe Accessory do
     describe "When the new accessory fails to update" do
 
         it "should set the record as active" do
-            accessory = create(:accessory, active: false)
+            accessory = create(:accessory)
             accessory.activate!
             expect(accessory.active).to eq true
         end
     end
 
     it "should return an array of 'active' accessorys" do
-        accessory_1 = create(:accessory)
-        accessory_2 = create(:accessory, active: false)
-        accessory_3 = create(:accessory)
+        accessory_1 = create(:accessory, active: true)
+        accessory_2 = create(:accessory)
+        accessory_3 = create(:accessory, active: true)
         expect(Accessory.active).to match_array([accessory_1, accessory_3])
     end
 

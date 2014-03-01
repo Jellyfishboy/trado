@@ -37,7 +37,7 @@ describe Sku do
     describe "When a used SKU is updated or deleted" do
 
         it "should set the record as inactive" do
-            sku = create(:sku)
+            sku = create(:sku, active: true)
             sku.inactivate!
             expect(sku.active).to eq false
         end
@@ -47,7 +47,7 @@ describe Sku do
     describe "When the new SKU fails to update" do
 
         it "should set the record as active" do
-            sku = create(:sku, active: false)
+            sku = create(:sku)
             sku.activate!
             expect(sku.active).to eq true
         end
@@ -63,10 +63,9 @@ describe Sku do
     end
 
     it "should return an array of active SKUs" do
-        product = create(:product)
-        sku_1 = create(:sku, active: false, product: product)
-        sku_2 = create(:sku, product: product)
-        sku_3 = create(:sku, active: false, product: product)
+        sku_1 = create(:sku)
+        sku_2 = create(:sku, active: true)
+        sku_3 = create(:sku)
         expect(Sku.active).to match_array([sku_2])
     end
 
