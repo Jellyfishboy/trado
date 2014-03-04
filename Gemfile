@@ -93,10 +93,6 @@ gem 'carrierwave'
 gem 'fog'
 gem 'unf' # Dependency for fog
 
-# Search indexing
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-
 # Administration
 gem 'rails_admin'
 

@@ -62,28 +62,6 @@ namespace :assets do
       run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
     end
 end
-namespace :solr do
-  desc "start solr"
-  task :start, :roles => :app, :except => {:no_release => true} do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start"
-  end
-
-  desc "stop solr"
-  task :stop, :roles => :app, :except => {:no_release => true} do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:stop"
-  end
-
-  desc "reindex the whole database"
-  task :reindex, :roles => :app do
-    run "cd #{current_path} && yes | RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
-  end
-
-  desc "Symlink in-progress deployment to a shared Solr index"
-  task :symlink, :except => {:no_release => true} do
-    run "ln -s #{shared_path}/solr/data/ #{release_path}/solr/data"
-    run "ln -s #{shared_path}/solr/pids/ #{release_path}/solr/pids"
-  end
-end
 namespace :rollbar do
   desc "Notify Rollbar of deployment"
   task :notify, :roles => :app do
@@ -106,7 +84,5 @@ after 'configure:paypal', 'configure:rollbar'
 after 'configure:rollbar', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
-after 'assets:refresh_sitemaps', 'solr:start'
-after 'solr:start', 'solr:symlink'
-after 'solr:symlink', 'rollbar:notify'
+after 'assets:refresh_sitemaps', 'rollbar:notify'
 after 'rollbar:notify', 'unicorn:restart'
