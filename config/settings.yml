@@ -1,0 +1,37 @@
+mailer:
+    development:
+        server: smtp.mandrillapp.com
+        port: 587
+        domain: localhost:3000
+        user_name: tom.alan.dallimore@googlemail.com
+        password: <%= ENV['MANDRILL_PWD'] %>
+        host: localhost:3000
+    production:
+        server: smtp.mandrillapp.com
+        port: 587
+        domain: 141.0.175.166
+        user_name: tom.alan.dallimore@googlemail.com
+        password: <%= ENV['MANDRILL_PWD'] %>
+        host: 141.0.175.166
+paypal:
+    development:
+        login: <%= ENV['PAYPAL_DEV_LOGIN'] %>
+        password: <%= ENV['PAYPAL_DEV_PWD'] %>
+        signature: <%= ENV['PAYPAL_DEV_SIG'] %>
+    production:
+        login: <%= ENV['PAYPAL_LOGIN'] %>
+        password: <%= ENV['PAYPAL_PWD'] %>
+        signature: <%= ENV['PAYPAL_SIG'] %>
+aws:
+    s3:
+        id: <%= ENV['GIMSON_AWS_ID'] %>
+        key: <%= ENV['GIMSON_AWS_KEY'] %>
+        bucket: gimson-robotics-production
+        region: eu-west-1
+    cloudfront:
+        host:
+            carrierwave: http://cdn0.tomdallimore.com
+            app: http://cdn%d.tomdallimore.com
+        prefix: /assets
+sitemap:
+    host: 'http://www.gimsonrobotics.com'
