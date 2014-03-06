@@ -34,6 +34,7 @@ class Product < ActiveRecord::Base
   validates :skus,                                            :tier => true, :on => :save
   validates :short_description,                               :length => { :maximum => 100, :message => :too_long }
 
+  has_many :searches
   has_many :skus,                                             :dependent => :delete_all
   has_many :orders,                                           :through => :skus
   has_many :carts,                                            :through => :skus
@@ -53,10 +54,19 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
+  searchkick word_start: [:name], conversions: "conversions"
+
   default_scope order('weighting DESC')
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+
+  def search_data
+    {
+      name: name,
+      conversions: searches.group("query").count
+    }
+  end
 
   def inactivate!
     self.update_column(:active, false)

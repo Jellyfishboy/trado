@@ -120,9 +120,15 @@ loading_animation_settings = ->
 
 typeahead_engine = ->
     $("#navSearchInput").typeahead(
-        remote: "/search.json?utf8=✓&query=%QUERY"
+        remote: "/search/autocomplete?utf8=✓&query=%QUERY"
         # prefetch: "/search.json"
-        template: "<div class='inner-suggest'><img src='{{image.file.url}}'/><span><div>{{value}}</div><div>{{category_name}}{{}}</div></span></div>"
+        template: " <div class='inner-suggest'>
+                        <img src='{{image.file.url}}' height='45' width='45'/>
+                        <span>
+                            <div>{{value}}</div>
+                            <div>{{category_name}}{{}}</div>
+                        </span>
+                    </div>"
         engine: Hogan
         limit: 4
     ).on "typeahead:selected", ($e, data) ->

@@ -12,6 +12,7 @@ Trado::Application.routes.draw do
   get '/update_sku' => 'products#update_sku'
   get '/update_accessory' => 'products#update_accessory'
   get '/search' => 'search#results'
+  get '/search/autocomplete' => 'search#autocomplete'
 
   # Error pages
   %w( 404 422 500 ).each do |code|

@@ -67,6 +67,9 @@ end
 gem 'rollbar'
 gem 'newrelic_rpm'
 
+# Search
+gem 'searchkick'
+
 # Datepicker
 gem 'bootstrap-datepicker-rails'
 
