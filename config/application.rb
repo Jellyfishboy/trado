@@ -9,6 +9,10 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require './lib/deep_struct'
+
+Settings = DeepStruct.new(YAML.load_file("./config/settings.yml"))
+
 module Trado
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

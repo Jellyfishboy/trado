@@ -52,9 +52,9 @@ Trado::Application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
-  config.action_controller.asset_host = "http://cdn%d.tomdallimore.com"
+  config.action_controller.asset_host = Settings.aws.cloudfront.host.app
 
-  config.assets.prefix = "/assets"
+  config.assets.prefix = Settings.aws.cloudfront.prefix
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -66,7 +66,7 @@ Trado::Application.configure do
   # config.threadsafe!
 
   # Set default URL
-  config.action_mailer.default_url_options = { :host => '141.0.175.166' }
+  config.action_mailer.default_url_options = { :host => Settings.mailer.production.host }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
@@ -75,12 +75,12 @@ Trado::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address              => 'smtp.mandrillapp.com',
-    :port                 => 587,
-    :domain               => 'localhost:3000',
+    :address              => Settings.mailer.production.server,
+    :port                 => Settings.mailer.production.port,
+    :domain               => Settings.mailer.production.domain,
     :authentication       => "plain",
-    :user_name            => 'tom.alan.dallimore@googlemail.com',
-    :password             => ENV['MANDRILL_PWD'],
+    :user_name            => Settings.mailer.production.user_name,
+    :password             => Settings.mailer.production.password,
     :enable_starttls_auto => true
 
   }
@@ -88,9 +88,9 @@ Trado::Application.configure do
   # Paypal
   config.after_initialize do
     paypal_options = {
-      login: ENV['PAYPAL_LOGIN'],
-      password: ENV['PAYPAL_PWD'],
-      signature: ENV['PAYPAL_SIG']
+      login: Settings.paypal.production.login,
+      password: Settings.papypal.production.password,
+      signature: Settings.paypal.production.signature
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
