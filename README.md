@@ -63,7 +63,7 @@ If you would like to modify the external storage server configuration to point t
 However, if you would like to retain your application assets on the local web server, remove the 'asset_sync' gem amd the asset_sync.rb initializer file.
 
 
-##Content devlivery network
+##Content delivery network
 
 
 Ensuring swift response times in your application is an important attribute for your end user experience. In order to improve the speed of Trado, a content delivery network configuration has been introduced. To ensure consistency AWS (Amazon web services) Cloudfront has been utilised.
