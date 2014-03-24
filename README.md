@@ -8,6 +8,14 @@ Trado is an automated enterprise e-commerce solution, built to be easy to manage
 
 ##How to configure
 
+Customising Trado to suit your environment has been simplified with a single global YAML setting file, located at *config/settings.yml* - it cannot be moved from this location. The majority of the functionality detailed below has configuration values located within this file, which can be modified to suit your environment requirements. Furthermore, additional setting values can be added to the file for use throughout your application, if required. 
+
+This file is initialized upon running the rails server, before any other configuration initialisation - the **Settings** constant can therefore be accessed by a multitude of application configuration files.
+
+*Please note*: The global YAML setting file should not contain any sensitive data which you wouldn't share with the public. All secure data should be stored in environment variables; you can find a few examples below.
+
+
+
     mailer:
         development:
             server: smtp.mandrillapp.com
