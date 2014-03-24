@@ -31,21 +31,9 @@ set :default_environment, {
 }
 
 namespace :configure do
-  desc "Setup carrierwave configuration"
-  task :carrierwave, :roles => :app do
-      run "yes | cp /home/configs/carrierwave_config.rb /home/gimsonrobotics/current/config/initializers"
-  end
-  desc "Setup asset_sync configuration"
-  task :asset_sync, :roles => :app do
-      run "yes | cp /home/configs/asset_sync.rb /home/gimsonrobotics/current/config/initializers"
-  end
-  desc "Setup PayPal configuration"
-  task :paypal, :roles => :app do
-      run "yes | cp /home/configs/production.rb /home/gimsonrobotics/current/config/environments"
-  end
-  desc "Setup Rollbar configuration"
-  task :rollbar, :roles => :app do
-    run "yes | cp /home/configs/rollbar.rb /home/gimsonrobotics/current/config/initializers"
+  desc "Setup application configuration"
+  task :application, :roles => :app do
+      run "yes | cp /home/configs/settings.yml /home/gimsonrobotics/current/config"
   end
   desc "Setup database configuration"
   task :database, :roles => :app do
@@ -77,11 +65,8 @@ end
 default_run_options[:pty] = true
 # default_run_options[:shell] = '/bin/bash --login'
 
-after :deploy, 'configure:carrierwave'
-after 'configure:carrierwave', 'configure:asset_sync'
-after 'configure:asset_sync', 'configure:paypal'
-after 'configure:paypal', 'configure:rollbar'
-after 'configure:rollbar', 'configure:database'
+after :deploy, 'configure:application'
+after 'configure:application', 'configure:database'
 after 'configure:database', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
 after 'assets:refresh_sitemaps', 'rollbar:notify'

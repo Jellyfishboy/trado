@@ -35,3 +35,5 @@ aws:
         prefix: /assets
 sitemap:
     host: 'http://www.gimsonrobotics.com'
+rollbar:
+    access_token: <%= ENV['ROLLBAR_ACCESS_TOKEN'] %>
