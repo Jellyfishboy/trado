@@ -5,5 +5,7 @@ FactoryGirl.define do
         factory :invalid_country do
             name nil
         end
+
+        association :tax_rate
     end
 end

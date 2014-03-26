@@ -1,0 +1,7 @@
+- content_for :title, 'Edit tax rate'
+- content_for :breadcrumb, 'Edit'
+- breadcrumb_add 'Tax rates', admin_tax_rates_path
+- content_for :header, "Editing #{@tax_rate.name}"
+- content_for :hide_sub_navigation, "hide_subnav"
+
+= render 'form'

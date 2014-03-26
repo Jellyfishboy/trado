@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140306124419) do
+ActiveRecord::Schema.define(:version => 20140326165651) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -100,8 +100,9 @@ ActiveRecord::Schema.define(:version => 20140306124419) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "tax_rate_id"
   end
 
   create_table "destinations", :force => true do |t|
@@ -270,6 +271,13 @@ ActiveRecord::Schema.define(:version => 20140306124419) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "tax_rates", :force => true do |t|
+    t.string   "name"
+    t.decimal  "rate",       :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "tiereds", :force => true do |t|

@@ -1,0 +1,35 @@
+.row-fluid
+  .col-md-6
+    = form_for [:admin, @tax_rate], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @tax_rate.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@tax_rate.errors.count, "error")} prohibited this tax rate from being saved:"
+            %ul
+              - @tax_rate.errors.full_messages.each do |msg|
+                %li= msg  
+        .form-group
+          = f.label :name, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :name, :class => 'form-control'
+        .form-group
+          = f.label :rate, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :rate, :class => 'form-control'
+        .form-group
+          %label.control-label.col-md-3 Countries
+          .col-md-9
+            - if Country.all.empty?
+              %p No zones to select.
+            - else
+              - Country.all.each do |country|
+                .checkbox
+                  %label
+                    = hidden_field_tag "tax_rate[country_ids][]", ''
+                    = check_box_tag "tax_rate[country_ids][]", country.id, @tax_rate.country_ids.include?(country.id), :class => 'ace-checkbox-2'
+                    = country.name
+
+
+        .form-group
+          .col-md-offset-3.col-md-9
+            = f.submit 'Submit', :class => 'btn btn-primary'
