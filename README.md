@@ -108,7 +108,7 @@ The asset management within Trado is not your typical setup. When deploying the 
 
 If you would like to modify the external storage server configuration to point to a different provider, consult the [**asset_sync**](https://github.com/rumblelabs/asset_sync) gem documentation and modify the global YAML setting file retrospectively.
 
-However, if you would like to retain your application assets on the local web server, remove the asset_sync gem amd the asset_sync.rb initializer file.
+However, if you would like to retain your application assets on the local web server, remove the asset_sync gem and the *config/initializers/asset_sync.rb* initializer file.
 
 
 ##Content delivery network
