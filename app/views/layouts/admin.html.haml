@@ -52,12 +52,12 @@
             %li{:class => "#{active_controller?('admin/orders')} #{active_controller?('admin/transactions')}"}
               = link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Orders', :class => "#{active_controller?('admin/orders')} #{active_controller?('admin/transactions')}" do
                 %i.icon-shopping-cart
-            %li{:class => "#{active_controller?('admin/shippings/tiers')} #{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/countries')}"}
+            %li{:class => "#{active_controller?('admin/shippings/tiers')} #{active_controller?('admin/shippings')}"}
               = link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Shipping', :class => "#{active_controller?('admin/shippings/tiers')} #{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/countries')}" do
                 %i.icon-truck
-            %li{:class => active_controller?('admin/tax_rates') }
-              = link_to admin_tax_rates_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Tax rates', :class => active_controller?('admin/tax_rates') do
-                %i.icon-briefcase
+            %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/tax_rates')} #{active_controller?('admin/countries/zones')}" }
+              = link_to admin_countries_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Countries', :class => active_controller?('admin/countries') do
+                %i.icon-globe
         .sub-sidebar-wrapper
           %ul.nav= yield :subnav
 

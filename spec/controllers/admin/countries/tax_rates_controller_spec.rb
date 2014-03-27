@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::TaxRatesController do
+describe Admin::Countries::TaxRatesController do
 
     login_admin
 
@@ -51,7 +51,7 @@ describe Admin::TaxRatesController do
             end
             it "redirects to tax_rates#index"  do
                 post :create, tax_rate: attributes_for(:tax_rate)
-                expect(response).to redirect_to admin_tax_rates_url
+                expect(response).to redirect_to admin_countries_tax_rates_url
             end
         end
         context "with invalid attributes" do
@@ -83,7 +83,7 @@ describe Admin::TaxRatesController do
             end
             it "redirects to the tax_rates#index" do
                 put :update, id: @tax_rate, tax_rate: attributes_for(:tax_rate)
-                expect(response).to redirect_to admin_tax_rates_url
+                expect(response).to redirect_to admin_countries_tax_rates_url
             end
         end
         context "with invalid attributes" do 
@@ -110,7 +110,7 @@ describe Admin::TaxRatesController do
         end
         it "redirects to tax_rates#index" do
             delete :destroy, id: @tax_rate
-            expect(response).to redirect_to admin_tax_rates_url
+            expect(response).to redirect_to admin_countries_tax_rates_url
         end
     end
 end

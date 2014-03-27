@@ -9,21 +9,30 @@
 #
 #  id                   :integer          not null, primary key
 #  name                 :string(255)     
+#  language             :string(255)
+#  iso                  :string(255)
+#  available            :boolean          default(false)
 #  tax_rate_id          :integer  
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
 class Country < ActiveRecord::Base
 
-  attr_accessible :name
+  attr_accessible :name, :iso, :available, :language
 
-  has_many :zonifications,              :dependent => :delete_all
-  has_many :zones,                      :through => :zonifications
-  belongs_to :tax_rate
+  has_many :zonifications,                      :dependent => :delete_all
+  has_many :zones,                              :through => :zonifications
+  has_one :country_tax,                         class_name: 'CountryTax', :dependent => :destroy
+  has_one :tax,                                 :through => :country_tax, :source => :tax_rate
 
-  validates :name,                      :uniqueness => true, :presence => true
+
+  validates :name, :iso,             :uniqueness => true, :presence => true
+  validates :language,               :presence => true
 
   default_scope order('name ASC')
 
+  def self.available 
+    where(['countries.available = ?', true])
+  end
 
 end

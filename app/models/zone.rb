@@ -22,4 +22,5 @@ class Zone < ActiveRecord::Base
   has_many :countries,                  :through => :zonifications
 
   validates :name,                      :uniqueness => true, :presence => true
+  
 end

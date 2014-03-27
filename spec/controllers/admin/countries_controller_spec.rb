@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::Shippings::CountriesController do
+describe Admin::CountriesController do
 
     login_admin
 
@@ -50,7 +50,7 @@ describe Admin::Shippings::CountriesController do
             end
             it "redirects to countries#index"  do
                 post :create, country: attributes_for(:country)
-                expect(response).to redirect_to admin_shippings_countries_url
+                expect(response).to redirect_to admin_countries_url
             end
         end
         context "with invalid attributes" do
@@ -82,7 +82,7 @@ describe Admin::Shippings::CountriesController do
             end
             it "redirects to the countries#index" do
                 put :update, id: @country, country: attributes_for(:country)
-                expect(response).to redirect_to admin_shippings_countries_url
+                expect(response).to redirect_to admin_countries_url
             end
         end
         context "with invalid attributes" do 
@@ -109,7 +109,7 @@ describe Admin::Shippings::CountriesController do
         end
         it "redirects to countries#index" do
             delete :destroy, id: @country
-            expect(response).to redirect_to admin_shippings_countries_url
+            expect(response).to redirect_to admin_countries_url
         end
     end
 

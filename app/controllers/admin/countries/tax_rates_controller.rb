@@ -1,4 +1,4 @@
-class Admin::TaxRatesController < ApplicationController
+class Admin::Countries::TaxRatesController < ApplicationController
 
   before_filter :authenticate_user!
   layout 'admin'
@@ -36,7 +36,7 @@ class Admin::TaxRatesController < ApplicationController
 
     respond_to do |format|
       if @tax_rate.save
-        format.html { redirect_to admin_tax_rates_url, notice: 'Tax rate was successfully created.' }
+        format.html { redirect_to admin_countries_tax_rates_url, notice: 'Tax rate was successfully created.' }
         format.json { render json: @tax_rate, status: :created, location: @tax_rate }
       else
         format.html { render action: "new" }
@@ -52,7 +52,7 @@ class Admin::TaxRatesController < ApplicationController
 
     respond_to do |format|
       if @tax_rate.update_attributes(params[:tax_rate])
-        format.html { redirect_to admin_tax_rates_url, notice: 'Tax rate was successfully updated.' }
+        format.html { redirect_to admin_countries_tax_rates_url, notice: 'Tax rate was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -68,7 +68,7 @@ class Admin::TaxRatesController < ApplicationController
     @tax_rate.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_tax_rates_url }
+      format.html { redirect_to admin_countries_tax_rates_url }
       format.json { head :no_content }
     end
   end

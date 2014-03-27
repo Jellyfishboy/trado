@@ -1,0 +1,33 @@
+- content_for :title, 'Country tax rates'
+- content_for :breadcrumb, 'Country tax rates'
+- content_for :header, 'Country tax rates'
+- content_for :subnav do
+  %li= link_to 'Countries', admin_countries_path
+  %li= link_to 'Zones', admin_countries_zones_path
+  %li.current
+    %a.current Tax rates
+
+= link_to new_admin_countries_tax_rate_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
+  New tax rate
+- if @tax_rates.empty?
+  %p You don't have any tax rates yet.
+- else
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Rate
+        %th Countries
+        %th
+    %tbody
+      - @tax_rates.each do |tax_rate|
+        %tr
+          %td= tax_rate.name
+          %td= tax_rate.rate
+          %td
+            %ul 
+              - tax_rate.countries.each do |country|
+                %li
+                  = country.name
+          = table_commands tax_rate, admin_countries_tax_rate_path(tax_rate), edit_admin_countries_tax_rate_path(tax_rate), admin_countries_tax_rate_path(tax_rate), 1

@@ -52,10 +52,11 @@
                           English (EN)
                         %b.caret
                       %ul.dropdown-menu.js-possibilities{"aria-labelledby" => "dLabel", role: "menu"}
-                        %li
-                          %a{href: "#"}
-                            %i.famfamfam-flag-gb
-                            English (EN)
+                        - Country.available.each do |country|
+                          %li
+                            %a{href: "#"}
+                              %i.famfamfam-flag-gb
+                              = "#{country.language} (#{country.iso})"
                     .dropdown.js-selectable-dropdown
                       %a.selected{"data-toggle" => "dropdown", href: "#"}
                         %span.js-change-text GBP (£)

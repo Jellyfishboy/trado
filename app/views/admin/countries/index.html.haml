@@ -1,0 +1,30 @@
+- content_for :title, 'Countries'
+- content_for :breadcrumb, 'Countries'
+- content_for :header, 'Countries'
+- content_for :subnav do
+  %li.current
+    %a.current Countries
+  %li= link_to 'Zones', admin_countries_zones_path
+  %li= link_to 'Tax rates', admin_countries_tax_rates_path
+= link_to new_admin_country_path, :class => "btn btn-success add_record" do
+  %i.icon-plus
+  New country
+- if @countries.empty?
+  %p You don't have any countries yet.
+- else 
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Language
+        %th ISO
+        %th Available
+        %th
+    %tbody
+      - @countries.each do |country|
+        %tr
+          %td= country.name
+          %td= country.language
+          %td= country.iso
+          %td= boolean_helper country.available, "Yes", "No"
+          = table_commands country, admin_country_path(country), edit_admin_country_path(country), admin_country_path(country), 1

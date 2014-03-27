@@ -49,7 +49,7 @@ Trado::Application.routes.draw do
       root :to => "admin#dashboard"
       mount RailsAdmin::Engine => '/db'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
-      resources :accessories, :shippings, :products, :categories, :tax_rates, :except => :show
+      resources :accessories, :shippings, :products, :categories, :countries, :except => :show
       resources :orders, :only => [:index, :show, :update]
       resources :transactions, :only => :index
       namespace :products do
@@ -60,7 +60,10 @@ Trado::Application.routes.draw do
         end
       end
       namespace :shippings do
-        resources :tiers, :countries, :zones, :except => :show
+        resources :tiers, :except => :show
+      end
+      namespace :countries do
+        resources :zones, :tax_rates, :except => :show
       end
   end
 

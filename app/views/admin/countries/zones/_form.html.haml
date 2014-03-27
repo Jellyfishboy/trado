@@ -1,6 +1,6 @@
 .row-fluid
   .col-md-6
-    = form_for [:admin, :shippings, @zone], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+    = form_for [:admin, :countries, @zone], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
       %fieldset
         - if @zone.errors.any?
           #error_explanation

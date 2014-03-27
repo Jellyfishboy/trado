@@ -5,7 +5,7 @@ module ProductHelper
     end
 
     def gross_price  net_price
-      format_currency net_price*0.2 + net_price
+      format_currency net_price*current_tax_rate + net_price
     end
 
     def accessory_details accessory

@@ -1,4 +1,4 @@
-class Admin::Shippings::ZonesController < ApplicationController
+class Admin::Countries::ZonesController < ApplicationController
 
   before_filter :authenticate_user!
   layout "admin"
@@ -36,7 +36,7 @@ class Admin::Shippings::ZonesController < ApplicationController
 
     respond_to do |format|
       if @zone.save
-        format.html { redirect_to admin_shippings_zones_url, notice: 'Zone was successfully created.' }
+        format.html { redirect_to admin_countries_zones_url, notice: 'Zone was successfully created.' }
         format.json { render json: @zone, status: :created, location: @zone }
       else
         format.html { render action: "new" }
@@ -51,7 +51,7 @@ class Admin::Shippings::ZonesController < ApplicationController
     @zone = Zone.find(params[:id])
     respond_to do |format|
       if @zone.update_attributes(params[:zone])
-        format.html { redirect_to admin_shippings_zones_url, notice: 'Zone was successfully updated.' }
+        format.html { redirect_to admin_countries_zones_url, notice: 'Zone was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,7 +67,7 @@ class Admin::Shippings::ZonesController < ApplicationController
     @zone.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_shippings_zones_url }
+      format.html { redirect_to admin_countries_zones_url }
       format.json { head :no_content }
     end
   end

@@ -17,9 +17,10 @@ class TaxRate < ActiveRecord::Base
 
   attr_accessible :name, :rate, :country_ids
   
-  has_many :countries                  
+  has_many :country_taxes,                      class_name: 'CountryTax', :dependent => :delete_all
+  has_many :countries,                          :through => :country_taxes                  
 
-  validates :name, :rate,               :presence => true
-  validates :name,                      :uniqueness => true
-
+  validates :name, :rate,                       :presence => true
+  validates :name,                              :uniqueness => true, :length => {:minimum => 5, :message => :too_short }
+  validates :rate,                              :numericality => { :less_than_or_equal_to => 100, :greater_than_or_equal_to => 0.1 }
 end
