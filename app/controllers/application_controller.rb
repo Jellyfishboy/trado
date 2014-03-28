@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     protected
 
     def current_tax_rate
-      country = session[:iso].nil? ? Country.where('iso = ?', 'EN').first : Country.where('iso = ?', session[:iso]).first
+      country = Country.where('available = ?', true).first
       country.tax ? country.tax.rate/100 : 0.2
     end
 

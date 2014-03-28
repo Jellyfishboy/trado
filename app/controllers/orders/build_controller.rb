@@ -34,7 +34,7 @@ class Orders::BuildController < ApplicationController
       end
       case step 
       when :payment
-        @order.calculate_order(current_cart, session)
+        @order.calculate_order(current_cart, session, current_tax_rate)
       end
       case step
       when :confirm

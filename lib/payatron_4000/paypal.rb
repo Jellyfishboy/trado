@@ -3,7 +3,6 @@ module Payatron4000
     class Paypal
 
         def self.express_setup_options(order, steps, cart, session, ip_address, return_url, cancel_url)
-          binding.pry
             {
               :subtotal          => Payatron4000.price_in_pennies(session[:sub_total]),
               :shipping          => Payatron4000.price_in_pennies(order.shipping.price),
@@ -44,9 +43,8 @@ module Payatron4000
         # assign paypal token to order after user logs into their account
         def self.assign_paypal_token(token, payer_id, session, order)
             details = EXPRESS_GATEWAY.details_for(token)
-            # FIXME: Reduce DB calls by one by using update_attributes method
-            order.update_column(:express_token, token)
-            order.update_column(:express_payer_id, payer_id)
+            order.update_attributes(:express_token => token, :express_payer_id => payer_id)
+            order.save!
             session[:paypal_email] = details.params["payer"]
         end
 

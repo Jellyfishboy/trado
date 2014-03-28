@@ -100,7 +100,7 @@
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
-                  %td.stronger VAT:
+                  %td.stronger= "VAT (#{current_tax_rate*100}%):"
                   %td.stronger
                     .align-right= format_currency session[:tax]   
                 %tr

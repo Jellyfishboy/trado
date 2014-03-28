@@ -27,6 +27,8 @@ class Admin::Countries::TaxRatesController < ApplicationController
   # GET /tax_rates/1/edit
   def edit
     @tax_rate = TaxRate.find(params[:id])
+    # FIXME: Improve this query to use just one SQL query
+    @countries = Country.includes(:country_tax).where('country_taxes.country_id IS NULL') | Country.includes(:country_tax).where('country_taxes.tax_rate_id = ?', @tax_rate.id)
   end
 
   # POST /tax_rates

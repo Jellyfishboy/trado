@@ -1,6 +1,6 @@
 FactoryGirl.define do 
     factory :accessory do
-        name { Faker::Lorem.word }
+        sequence(:name)  { |n| "#{Faker::Lorem.word}#{Faker::Lorem.characters(8)}#{n}" }
         sequence(:part_number) { |n| n }
         sequence(:price) { |n| n }
         sequence(:weight) { |n| n }

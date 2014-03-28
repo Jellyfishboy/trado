@@ -2,7 +2,6 @@ class NotificationsController < ApplicationController
 
     skip_before_filter :authenticate_user!
 
-    # FIXME: This is very adhoc for the SKU notifications. If other models started using the notifications table, errors would occur due to the absence of the param[:sku_id]
     def create
     @notification = Notification.new(params[:notification])
     
