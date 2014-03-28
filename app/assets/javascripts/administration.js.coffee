@@ -17,20 +17,6 @@ root.add_fields = (link, association, content, target) ->
   regexp = new RegExp("new_" + association, "g")
   $(target).append content.replace(regexp, new_id)
   calculate_tax()
-duplicate_fields = (checkbox, field_one, field_two) ->
-  $(checkbox).change ->
-    if @checked
-      $(field_two).val $(field_one).val()
-    else
-      $(field_two).val ""
-disable_field = (checkbox, field) ->
-  $(checkbox).change ->
-    console.log "test"
-    if @checked
-      $(field).prop 'readonly', false
-    else
-      $(field).val '0'
-      $(field).prop 'readonly', true
 
 calculate_tax = ->
   $elem = $('.calculate_tax')

@@ -32,6 +32,7 @@ $(document).ready ->
     modal('.notify_me', '#notifyMeModal')
     typeahead_engine()
     update_accessory()
+    use_billing_address()
 
     $('.update_shipping #address_country').change ->
         unless @value is ""
@@ -98,6 +99,16 @@ update_accessory = ->
         accessory_id = $(@).val()
         sku_id = $('#cart_item_sku_id').val()
         $.get '/update_accessory?accessory_id=' + accessory_id + '&sku_id=' + sku_id
+
+use_billing_address = ->
+    $('.use_billing_address').change ->
+        if @checked
+            $('.use_billing').each ->
+                $(@).val $(@).next('div').text()
+            $('.field_with_errors').each ->
+                $(@).children('input').val $(@).next('div').text()
+        else
+            $('.use_billing').val ''
 
 loading_animation_settings = ->
     $.fn.spin.presets.standard =
