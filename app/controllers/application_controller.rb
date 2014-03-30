@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
 
     def current_tax_rate
       country = Country.where('available = ?', true).first
-      country.tax ? country.tax.rate/100 : 0.2
+      if country
+        country.tax ? country.tax.rate/100 : 0.2
+      else
+        0.2
+      end
     end
 
   	def current_cart
