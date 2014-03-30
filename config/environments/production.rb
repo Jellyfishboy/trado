@@ -89,7 +89,7 @@ Trado::Application.configure do
   config.after_initialize do
     paypal_options = {
       login: Settings.paypal.production.login,
-      password: Settings.papypal.production.password,
+      password: Settings.paypal.production.password,
       signature: Settings.paypal.production.signature
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
