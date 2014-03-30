@@ -27,5 +27,4 @@
               - zone.countries.each do |country|
                 %li
                   = country.name
-          %td= boolean_helper category.visible, "Yes", "No"
           = table_commands zone, admin_countries_zone_path(zone), edit_admin_countries_zone_path(zone), admin_countries_zone_path(zone), 1
