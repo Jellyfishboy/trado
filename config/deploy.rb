@@ -63,7 +63,6 @@ end
 
 # additional settings
 default_run_options[:pty] = true
-# default_run_options[:shell] = '/bin/bash --login'
 
 after :deploy, 'configure:application'
 after 'configure:application', 'configure:database'
