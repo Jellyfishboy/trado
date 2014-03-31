@@ -24,28 +24,30 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
     describe "When a used accessory is updated or deleted" do
+        let(:accessory) { create(:accessory, active: true) }
 
         it "should set the record as inactive" do
-            accessory = create(:accessory, active: true)
             accessory.inactivate!
             expect(accessory.active).to eq false
         end
     end
 
     describe "When the new accessory fails to update" do
+        let(:accessory) { create(:accessory) }
 
         it "should set the record as active" do
-            accessory = create(:accessory)
             accessory.activate!
             expect(accessory.active).to eq true
         end
     end
+    describe "Listing all products" do
+        let!(:accessory_1) { create(:accessory, active: true) }
+        let!(:accessory_2) { create(:accessory) }
+        let!(:accessory_3) { create(:accessory, active: true) }
 
-    it "should return an array of 'active' accessorys" do
-        accessory_1 = create(:accessory, active: true)
-        accessory_2 = create(:accessory)
-        accessory_3 = create(:accessory, active: true)
-        expect(Accessory.active).to match_array([accessory_1, accessory_3])
+        it "should return an array of 'active' accessorys" do
+            expect(Accessory.active).to match_array([accessory_1, accessory_3])
+        end
     end
 
 end

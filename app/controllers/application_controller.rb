@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     before_filter :authenticate_user!
-    helper_method :current_cart, :category_list, :current_tax_rate
+    helper_method :current_cart, :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
         flash[:error] = exception.message
@@ -10,15 +10,6 @@ class ApplicationController < ActionController::Base
     end
 
     protected
-
-    def current_tax_rate
-      country = Country.where('available = ?', true).first
-      if country
-        country.tax ? country.tax.rate/100 : 0.2
-      else
-        0.2
-      end
-    end
 
   	def current_cart
       Cart.find(session[:cart_id]) #searches for cart in session

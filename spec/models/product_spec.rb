@@ -36,37 +36,48 @@ describe Product do
     it { expect(subject).to accept_nested_attributes_for(:tags) }
 
     describe "When a used product is updated or deleted" do
+        let(:product) { create(:product, active: true) }
 
         it "should set the record as inactive" do
-            product = create(:product, active: true)
             product.inactivate!
             expect(product.active).to eq false
         end
     end
 
     describe "When the product fails to update" do
+        let(:product) { create(:product) }
 
         it "should set the record as active" do
-            product = create(:product)
             product.activate!
             expect(product.active).to eq true
         end
     end
 
-    it "should return an array of active products" do
-        product_1 = create(:product)
-        product_2 = create(:product, active: true)
-        product_3 = create(:product, active: true)
-        expect(Product.active).to match_array([product_2, product_3])
+    describe "Listing all products" do
+        let!(:product_1) { create(:product) }
+        let!(:product_2) { create(:product, active: true) }
+        let!(:product_3) { create(:product, active: true) }
+
+        it "should return an array of active products" do
+            expect(Product.active).to match_array([product_2, product_3])
+        end
     end
 
     describe "Default scope" do
-        
+        let!(:product_1) { create(:product, weighting: 2000) }
+        let!(:product_2) { create(:product, weighting: 3000) }
+        let!(:product_3) { create(:product, weighting: 1000) }
+
         it "should return an array of products ordered by descending weighting" do
-            product_1 = create(:product, weighting: 2000)
-            product_2 = create(:product, weighting: 3000)
-            product_3 = create(:product, weighting: 1000)
             expect(Product.last(3)).to match_array([product_2, product_1, product_3])
+        end
+    end
+
+    describe "When setting a product as a single product" do
+        let!(:product) { create(:product_skus, single: true) }
+
+        it "should validate whether the product has more than one SKU" do
+            expect(product.single_product).to be_false
         end
     end
     

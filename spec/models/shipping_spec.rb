@@ -21,28 +21,30 @@ describe Shipping do
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
     describe "When a used shipping is updated or deleted" do
+        let(:shipping) { create(:shipping, active: true) }
 
         it "should set the record as inactive" do
-            shipping = create(:shipping, active: true)
             shipping.inactivate!
             expect(shipping.active).to eq false
         end
     end
 
     describe "When the new shipping fails to update" do
+        let(:shipping) { create(:shipping) }
 
         it "should set the record as active" do
-            shipping = create(:shipping)
             shipping.activate!
             expect(shipping.active).to eq true
         end
     end
+    describe "Listing all products" do
+        let!(:shipping_1) { create(:shipping, active: true) }
+        let!(:shipping_2) { create(:shipping) }
+        let!(:shipping_3) { create(:shipping, active: true) }
 
-    it "should return an array of 'active' shippings" do
-        shipping_1 = create(:shipping, active: true)
-        shipping_2 = create(:shipping)
-        shipping_3 = create(:shipping, active: true)
-        expect(Shipping.active).to match_array([shipping_1, shipping_3])
+        it "should return an array of 'active' shippings" do
+            expect(Shipping.active).to match_array([shipping_1, shipping_3])
+        end
     end
 
 end

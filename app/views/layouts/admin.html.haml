@@ -4,7 +4,7 @@
     %meta{charset: "utf-8"}/
     %title
       = yield :title
-      \- Gimson Robotics Administration
+      = "- #{Store::settings.name} Administration"
     %meta{content: "overview & stats", name: "description"}/
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = stylesheet_link_tag :administration
@@ -58,6 +58,9 @@
             %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/tax_rates')} #{active_controller?('admin/countries/zones')}" }
               = link_to admin_countries_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Countries', :class => active_controller?('admin/countries') do
                 %i.icon-globe
+            %li{:class => active_controller?('admin/settings') }
+              = link_to admin_settings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Settings', :class => active_controller?('admin/settings') do
+                %i.icon-cog
         .sub-sidebar-wrapper
           %ul.nav= yield :subnav
 

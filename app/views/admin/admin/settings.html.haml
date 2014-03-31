@@ -1,0 +1,34 @@
+- content_for :title, 'Settings'
+- content_for :breadcrumb, 'Settings'
+- content_for :header, 'Settings'
+- content_for :hide_sub_navigation, 'hide_subnav'
+
+.row-fluid
+  .col-md-6
+    = form_for @settings, :url => admin_settings_update_path, :html => { :class => 'form-horizontal', :role => 'form' } do |f|
+      %fieldset
+        - if @settings.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@settings.errors.count, "error")} prohibited the store settings from being saved:"
+            %ul
+              - @settings.errors.full_messages.each do |msg|
+                %li= msg  
+        .form-group
+          = f.label 'Store name', :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :name, :class => 'form-control'
+        .form-group
+          = f.label 'Store email address', :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :email, :class => 'form-control'
+        .form-group
+          = f.label :tax_name, :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :tax_name, :class => 'form-control'
+        .form-group
+          = f.label 'Currency unit', :class => 'control-label col-md-3'
+          .col-md-9
+            = f.text_field :currency, :class => 'form-control'
+        .form-group
+          .col-md-offset-3.col-md-9
+            = f.submit 'Submit', :class => 'btn btn-primary'

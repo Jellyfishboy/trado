@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140328101228) do
+ActiveRecord::Schema.define(:version => 20140331123611) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20140328101228) do
     t.boolean  "featured"
     t.boolean  "active",            :default => true
     t.text     "short_description"
+    t.boolean  "single"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -267,6 +268,16 @@ ActiveRecord::Schema.define(:version => 20140328101228) do
     t.integer  "attribute_type_id"
     t.integer  "accessory_id"
     t.boolean  "active",                                            :default => true
+  end
+
+  create_table "store_settings", :force => true do |t|
+    t.string   "name",       :default => "Trado"
+    t.string   "email",      :default => "admin@example.com"
+    t.string   "currency",   :default => "£"
+    t.string   "tax_name",   :default => "VAT"
+    t.integer  "user_id"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "taggings", :force => true do |t|

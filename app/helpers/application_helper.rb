@@ -64,7 +64,7 @@ module ApplicationHelper
     end
     
     def format_currency price
-      number_to_currency(price, :unit => "&pound;", :precision => (price.round == price) ? 0 : 2)
+      number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
     end
 
     def boolean_helper obj, first, second

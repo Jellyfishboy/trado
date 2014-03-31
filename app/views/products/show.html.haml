@@ -41,7 +41,7 @@
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
-            %div.gross_price= "#{gross_price @skus.first.price} inc. VAT".html_safe
+            %div.gross_price= "#{gross_price @skus.first.price} inc. #{Store::settings.tax_name}".html_safe
         .product-description
           %p= @product.short_description
           %hr/
@@ -55,7 +55,10 @@
               %span.clickable.add-one.icon-plus-sign-alt
               %span.clickable.remove-one.icon-minus-sign-alt
             \ 
-            = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku), sku.id ] } )
+            - if @product.single
+              = f.hidden_field :sku_id, :value => @product.skus.first.id
+            - else
+              = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku, sku.product.single), sku.id ] } )
             - unless @product.accessories.active.empty?
               = f.fields_for @cart_item_accessory do |ff|
                 = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "Select accessory"

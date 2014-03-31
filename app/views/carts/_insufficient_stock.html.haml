@@ -9,7 +9,9 @@
       We only have 
       %strong= @cart_item.sku.stock
       left in stock for
-      %strong= "#{@cart_item.sku.product.name} (#{@cart_item.sku.attribute_value}#{@cart_item.sku.attribute_type.measurement})."
+      %strong
+        = "#{@cart_item.sku.product.name}"
+        = sku_attribute_values(@cart_item.sku, @cart_item.sku.product.single)
       Please contact us at
       %a{ :href => 'mailto:support@gimsonrobotics.co.uk'} support@gimsonrobotics.co.uk
       if you would like to make a large order or require further help.

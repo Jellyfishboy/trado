@@ -43,7 +43,7 @@ class Notifier < ActionMailer::Base
   # STOCK
   def low_stock(products)
     @restock = products
-    mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Restock Warning'
+    mail :to => 'tom.alan.dallimore@googlemail.com', :subject => 'Gimson Robotics Restock Warning'
   end
 
   def sku_stock_notification(sku, email)

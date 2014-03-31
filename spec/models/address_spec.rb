@@ -10,10 +10,12 @@ describe Address do
     it { expect(subject).to validate_presence_of(:postcode) }
     it { expect(subject).to validate_presence_of(:country) }
 
+    describe "When displaying an address" do
+        let!(:address) { create(:address, first_name: 'John', last_name: 'Doe') }
 
-    it "should return a contact's full name as a string" do
-        address = create(:address, first_name: 'John', last_name: 'Doe')
-        expect(address.full_name).to eq 'John Doe'
+        it "should return a contact's full name as a string" do
+            expect(address.full_name).to eq 'John Doe'
+        end
     end
     
 end

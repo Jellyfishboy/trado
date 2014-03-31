@@ -2,7 +2,7 @@
     @sku = Sku.find(sku_id)
     @notification = Notification.new %>
 $('.price').html('<%= format_currency (@sku.price+@accessory_price) %>');
-$('.gross_price').html('<%= gross_price (@sku.price+@accessory_price) %> inc. VAT');
+$('.gross_price').html('<%= gross_price (@sku.price+@accessory_price) %> inc. <%= Store::settings.tax_name %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
     $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"icon-envelope\"></i> &nbsp; Notify me</a>");

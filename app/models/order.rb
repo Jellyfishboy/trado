@@ -28,7 +28,7 @@
 class Order < ActiveRecord::Base
 
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id
+  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id
   
   has_many :order_items,                                                :dependent => :delete_all
   has_one :transaction,                                                 :dependent => :destroy

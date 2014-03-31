@@ -10,7 +10,7 @@
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title 
       = yield :title
-      = " - Gimson Robotics | The linear actuator and electric motor specialist"
+      = " - #{Store::settings.name} | The linear actuator and electric motor specialist"
     %meta{:content => "#{yield :meta_description}", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     :javascript
@@ -71,8 +71,8 @@
             / ==========
             .span7
               = link_to root_path, :class => 'brand' do
-                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => 'Gimson Robotics'
-                %span.pacifico Gimson Robotics
+                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => Store::settings.name
+                %span.pacifico= Store::settings.name
                 %span.tagline The linear actuator and electric motor specialist
             / ==========
             / = Social Icons =
@@ -153,8 +153,8 @@
             .row
               .span4
                 %h2.pacifico
-                  Gimson Robotics
-                  = image_tag "webmarket/webmarket.png", :alt => "Gimson Robotics"
+                  = Store::settings.name
+                  = image_tag "webmarket/webmarket.png", :alt => Store::settings.name
                 %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis
               .span4
                 .main-titles.lined
@@ -271,7 +271,7 @@
           .container
             .row
               .span6
-                \© Copyright 2013. All rights reserved - Gimson Robotics
+                = "© Copyright 2013. All rights reserved - #{Store::settings.name}"
         / /bottom footer
       / /footer
     %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}

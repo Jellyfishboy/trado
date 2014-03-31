@@ -6,7 +6,7 @@
       = item.sku.product.name
       = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
         %i.icon-remove-sign
-      %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
+      %div= sku_attribute_values(item.sku, item.sku.product.single)
     %td.qty
       = form_for item, :remote => true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'

@@ -65,6 +65,8 @@ Trado::Application.routes.draw do
       namespace :countries do
         resources :zones, :tax_rates, :except => :show
       end
+      get '/settings' => 'admin#settings'
+      put '/settings/update' => 'admin#update'
   end
 
   # The priority is based upon order of creation:

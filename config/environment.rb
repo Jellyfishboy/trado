@@ -6,3 +6,4 @@ Trado::Application.initialize!
 require_dependency 'mailatron_4000'
 require_dependency 'payatron_4000'
 require_dependency 'deep_struct'
+require_dependency 'store'

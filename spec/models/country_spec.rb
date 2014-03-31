@@ -16,20 +16,23 @@ describe Country do
     it { expect(subject).to validate_uniqueness_of(:iso) }
 
     describe "Default scope" do
+        let!(:country_1) { create(:country, name: 'United Kingdom') }
+        let!(:country_2) { create(:country, name: 'Belgium') }
+        let!(:country_3) { create(:country, name: 'Zimbabwe') }
         
         it "should return an array of countries in alphabetical order" do
-            country_1 = create(:country, name: 'United Kingdom')
-            country_2 = create(:country, name: 'Belgium')
-            country_3 = create(:country, name: 'Zimbabwe')
             expect(Country.all).to match_array([country_2, country_1, country_3])
         end
     end
 
-    it "should return an array of 'available' countries" do
-        country_1 = create(:country, available: true)
-        country_2 = create(:country)
-        country_3 = create(:country, available: true)
-        expect(Country.available).to match_array([country_1, country_3])
+    describe "Listing all SKUs" do
+        let!(:country_1) { create(:country, available: true) }
+        let!(:country_2) { create(:country) }
+        let!(:country_3) { create(:country, available: true) }
+
+        it "should return an array of 'available' countries" do
+            expect(Country.available).to match_array([country_1, country_3])
+        end
     end
 
 end

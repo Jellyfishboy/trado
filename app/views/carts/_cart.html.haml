@@ -23,10 +23,9 @@
           %strong
             = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
           %div
-            = "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
+            = sku_attribute_values(item.sku, item.sku.product.single)
             - unless item.cart_item_accessory.blank?
               = "<i class='icon-code-fork'></i> #{item.cart_item_accessory.accessory.name}".html_safe
-            %strong 
           %span.light-clr.qty
             Qty:
             = item.quantity

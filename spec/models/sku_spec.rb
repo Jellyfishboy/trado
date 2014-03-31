@@ -35,9 +35,9 @@ describe Sku do
     it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to(:active) }
 
     describe "When a used SKU is updated or deleted" do
+        let(:sku) { create(:sku, active: true) }
 
         it "should set the record as inactive" do
-            sku = create(:sku, active: true)
             sku.inactivate!
             expect(sku.active).to eq false
         end
@@ -45,28 +45,30 @@ describe Sku do
     end
 
     describe "When the new SKU fails to update" do
+        let(:sku) { create(:sku) }
 
         it "should set the record as active" do
-            sku = create(:sku)
             sku.activate!
             expect(sku.active).to eq true
         end
     end
 
     describe "When creating a new SKU" do
-
+        let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
+        
         it "should validate whether the stock value is higher than stock_warning_level" do
-            sku = build(:sku, stock: 5, stock_warning_level: 10)
             expect(sku).to have(1).error_on(:sku)
         end
-        
     end
 
-    it "should return an array of active SKUs" do
-        sku_1 = create(:sku)
-        sku_2 = create(:sku, active: true)
-        sku_3 = create(:sku)
-        expect(Sku.active).to match_array([sku_2])
+    describe "Listing all SKUs" do
+        let!(:sku_1) { create(:sku) }
+        let!(:sku_2) { create(:sku, active: true) }
+        let!(:sku_3) { create(:sku) }
+
+        it "should return an array of active SKUs" do
+            expect(Sku.active).to match_array([sku_2])
+        end
     end
 
 end

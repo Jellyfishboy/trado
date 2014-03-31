@@ -29,10 +29,16 @@ class Country < ActiveRecord::Base
   validates :name, :iso,             :uniqueness => true, :presence => true
   validates :language,               :presence => true
 
+  after_save :reset_tax
+
   default_scope order('name ASC')
 
   def self.available 
     where(['countries.available = ?', true])
+  end
+
+  def reset_tax
+    Store::reset_tax_rate
   end
 
 end

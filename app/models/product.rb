@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids
+  :short_description, :related_ids, :single
 
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting,                             :presence => true
@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
   validates :description,                                     :length => {:minimum => 20, :message => :too_short }
   validates :skus,                                            :tier => true, :on => :save
-  validates :short_description,                               :length => { :maximum => 100, :message => :too_long }
+  validates :short_description,                               :length => { :maximum => 100, :message => :too_long }                                                         
 
   has_many :searches
   has_many :skus,                                             :dependent => :delete_all
@@ -43,12 +43,13 @@ class Product < ActiveRecord::Base
   has_many :attachments,                                      as: :attachable, :dependent => :delete_all
   has_many :accessorisations,                                 :dependent => :delete_all
   has_many :accessories,                                      :through => :accessorisations
-  has_and_belongs_to_many :related, 
-                                                              class_name: "Product", 
+  has_and_belongs_to_many :related,                           class_name: "Product", 
                                                               join_table: :related_products, 
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
+
+  before_save :single_product
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -78,6 +79,13 @@ class Product < ActiveRecord::Base
 
   def self.active
     where(['products.active = ?', true])
+  end
+
+  def single_product
+    if self.single && self.skus.count > 1
+      errors.add(:product, "cannot be set as a single product with more than one SKU.")
+      return false
+    end
   end
 
 end

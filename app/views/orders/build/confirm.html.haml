@@ -72,7 +72,7 @@
                       = image_tag item.sku.product.attachments.first.file.medium, :alt => item.sku.product.name, :height => 124, :width => 124
                     %td.desc
                       = item.sku.product.name
-                      %div= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }"
+                      %div= sku_attribute_values(item.sku, item.sku.product.single)
                     %td.qty= item.quantity
                     %td.price= format_currency item.total_price
                   - unless item.cart_item_accessory.blank?
@@ -100,7 +100,7 @@
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
-                  %td.stronger= "VAT (#{current_tax_rate*100}%):"
+                  %td.stronger= "#{Store::settings.tax_name} (#{Store::tax_rate*100}%):"
                   %td.stronger
                     .align-right= format_currency session[:tax]   
                 %tr

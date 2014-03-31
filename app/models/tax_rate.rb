@@ -23,4 +23,11 @@ class TaxRate < ActiveRecord::Base
   validates :name, :rate,                       :presence => true
   validates :name,                              :uniqueness => true, :length => {:minimum => 5, :message => :too_short }
   validates :rate,                              :numericality => { :less_than_or_equal_to => 100, :greater_than_or_equal_to => 0.1 }
+
+  after_save :reset_tax
+  
+  def reset_tax
+    Store::reset_tax_rate
+  end
+  
 end

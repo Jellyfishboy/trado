@@ -11,9 +11,11 @@ describe CartItem do
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:cart_item_accessory) }
 
-    it "should return the sum of price multiplied by quantity" do
-        cart_item = build(:cart_item, price: 12, quantity: 7)
-        expect(cart_item.total_price).to eq 84
+    describe "When calculating a cart item total" do
+        let!(:cart_item) { build(:cart_item, price: 12, quantity: 7) }
+        it "should return the sum of price multiplied by quantity" do
+            expect(cart_item.total_price).to eq 84
+        end
     end
 
     describe  "Updating quantity" do

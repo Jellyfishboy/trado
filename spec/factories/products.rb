@@ -9,7 +9,14 @@ FactoryGirl.define do
         featured false
         active false
         sequence(:weighting) { |n| n }
+        single false
 
         association :category
+
+        factory :product_skus do 
+            after(:create) do |product, evaluator|
+                create_list(:sku, 3, product: product)
+            end
+        end
     end
 end
