@@ -11,6 +11,7 @@ describe Mailatron4000::Orders do
 
             it "should update the order as dispatched" do
                 expect {
+                    binding.pry
                     Mailatron4000::Orders.dispatch_all
                 }.to change {
                     Order.first.shipping_status }.to('Dispatched')

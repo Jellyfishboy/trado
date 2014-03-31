@@ -7,12 +7,12 @@ describe Payatron4000 do
     let(:order) { create(:complete_order) }
 
     it "should calculate a price in pennies" do
-        expect(Payatron4000.price_in_pennies(sku.price)).to eq 1250
+        expect(Payatron4000::price_in_pennies(sku.price)).to eq 1250
     end
 
     it "should update the SKU's stock" do
         expect {
-            Payatron4000.stock_update(order)
+            Payatron4000::stock_update(order)
         }.to change {
             order.order_items.first.sku.stock }.by(-5)
     end

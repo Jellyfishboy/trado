@@ -13,7 +13,7 @@ module Mailatron4000
             @skus.each do |sku|
                 sku.notifications.each do |notify|
                     Notifier.sku_stock_notification(sku, notify.email).deliver
-                    Mailatron4000.notification_sent(notify)
+                    Mailatron4000::notification_sent(notify)
                 end
             end
         end
