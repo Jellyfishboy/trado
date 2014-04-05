@@ -12,11 +12,12 @@
 #  attachable_type    :string(255)      
 #  description        :string(255)      
 #  file               :string(255)      
+#  default            :boolean          default(false)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
 class Attachment < ActiveRecord::Base
-  attr_accessible :attachable_id, :attachable_type, :description, :file
+  attr_accessible :attachable_id, :attachable_type, :description, :file, :default
 
   belongs_to :attachable, polymorphic: true
 
@@ -25,5 +26,6 @@ class Attachment < ActiveRecord::Base
   validates :file,                  :format => { :with => %r{\.(gif|png|jpg)$}i, :message => "must be a URL for GIF, JPG or PNG image." }
   validates :file, :description,    :presence => true
   validates :description,           :length => {:minimum => 5, :message => :too_short }
+  validates :default,               :uniqueness => { :scope => :attachable_id }
 
 end

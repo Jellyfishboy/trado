@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331123611) do
+ActiveRecord::Schema.define(:version => 20140405171501) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(:version => 20140331123611) do
     t.string   "file"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "default",         :default => false
   end
 
   create_table "attribute_types", :force => true do |t|
@@ -266,7 +267,6 @@ ActiveRecord::Schema.define(:version => 20140331123611) do
     t.decimal  "thickness",           :precision => 8, :scale => 2
     t.string   "attribute_value"
     t.integer  "attribute_type_id"
-    t.integer  "accessory_id"
     t.boolean  "active",                                            :default => true
   end
 
