@@ -1,0 +1,9 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+# asset 'bootstrap'
+asset 'normalize-css', '~3.0.1'
+asset 'modernizr', '~2.7.2' 
+asset 'fontawesome', '~4.0.3'
+asset 'icomoon', '~0.0.1'
+asset 'bootstrap-tagsinput', '~0.3.9'

@@ -48,6 +48,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'terminal-notifier-guard', :platforms => :ruby
 end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -58,6 +59,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'asset_sync'
 end
+gem "bower-rails", "~> 0.7.1"
 
 platforms :ruby do
   gem 'unicorn'

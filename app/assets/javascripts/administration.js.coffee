@@ -1,7 +1,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap-datepicker
-#= require admin/saturn_1
+#= require admin/soca
+#= require admin/bootstrap.min
 #= require redactor-rails
 
 # Attach a function or variable to the global namespace

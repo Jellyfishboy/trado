@@ -4,6 +4,7 @@ tmp
 .env
 vendor/cache/*
 tmp/cache/*
+vendor/assets/bower_components
 
 /solr/data
 /solr/development/data
