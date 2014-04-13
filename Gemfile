@@ -18,7 +18,7 @@ group :development do
     gem 'meta_request'
     gem 'haml-rails'
     gem 'quiet_assets'
-    gem 'rack-mini-profiler'
+    # gem 'rack-mini-profiler'
     gem 'capistrano', '~> 2.15'
     gem 'bullet'
     gem 'haml'

@@ -1,128 +1,135 @@
 - content_for :title, "Order ##{@order.id}"
 - content_for :breadcrumb, "Order ##{@order.id}"
-- breadcrumb_add 'All orders', admin_orders_path
-- content_for :header, "Order ##{@order.id}"
-- content_for :hide_sub_navigation, 'hide_subnav'
+- breadcrumb_add 'Orders', admin_orders_path
 
-.order-details
-  .row
-    .col-sm-8
-      %h1.page-title.page-title-hard-bordered
-        %i.fa.fa-file-text-o
-        = "Order ##{@order.id}"
-        %span.title-price= format_currency @order.transaction.gross_amount
-      %h4.section-title Order Information
-      %ul.order-info-list
+.twelvecol
+  .page-header
+    %h2.widget.widget-header= "Order ##{@order.id}"
+.row
+  .fourcol
+    .widget-sub-heading
+      %h3 Shipping details
+    .widget.widget-form
+      %ul
         %li
-          %i.fa.fa-calendar
-          %strong Date:
-          = @order.updated_at.strftime('%B %-d, %Y, %I:%M %P')
-        %li
-          %i.fa.fa-truck
-          %strong Transaction ID:
-          = link_to @order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{@order.transaction.transaction_id}", :target => '_blank'
-        %li
-          %i.fa.fa-money
-          %strong Transaction type:
-          = @order.transaction.transaction_type 
-        %li
-          %i.fa.fa-bell-o
-          %strong Transaction fee:
-          = format_currency @order.transaction.fee unless @order.transaction.fee.nil?
-        %li
-          %i.fa.fa-clock-o
-          %strong Payment status:
-          = payment_status @order.transaction.payment_status
-
-      %h4.section-title Shipping Information
-      %ul.order-info-list
-        %li
-          %i.fa.fa-user
-          %strong Email:
+          %i.icon-envelop
+          = succeed ":" do
+            %b Email
           = @order.email
         %li
-          %i.fa.fa-phone
-          %strong Shipping type:
+          %i.icon-airplane
+          = succeed ":" do
+            %b Type
           = @order.shipping.name
         %li
-          %i.fa.fa-map-marker
-          %strong Shipping status:
+          %i.icon-location
+          = succeed ":" do
+            %b Status
           = shipping_status @order.shipping_status
         %li
-          %i.fa.fa-retweet
-          %strong Shipping date:
+          %i.icon-calendar
+          = succeed ":" do
+            %b Dispatch date
           = @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil? 
         %li
-          %i.fa.fa-money
-          %strong Actual shipping cost:
+          %i.icon-coin
+          = succeed ":" do
+            %b Actual shipping cost
           = format_currency @order.actual_shipping_cost unless @order.actual_shipping_cost.nil?
-    .col-sm-4
-      .merchant-info
-        %h3 Billing address
-        %p
-          = @order.bill_address.full_name
-          %br/
-          = "#{@order.bill_address.address}, <br/>#{@order.bill_address.county}, <br/>#{@order.bill_address.postcode}, <br/>#{@order.bill_address.country}".html_safe
-          %br/
-          Phone:
-          %strong= @order.bill_address.telephone
-          %br/
-          = "Company: #{@order.bill_address.company} <br/>".html_safe unless @order.bill_address.company.blank?
-          = "<br/>Tax number: <strong>#{@order.tax_number}</strong>" unless @order.tax_number.blank?
-      / .map-label
-      /   %i.fa.fa-map-marker
-      /   Customer Location
-      / .map-w
-      /   %a{href: "http://maps.google.com/?q=3815+25th+street%2C+san+francisco%2C+CA", target: "_blank"}
-      /     %img{alt: "", src: "http://maps.googleapis.com/maps/api/staticmap?center=3815+25th+street%2C+san+francisco%2C+CA&zoom=15&size=300x300&maptype=roadmap&sensor=false&markers=color:blue%7C3815+25th+street%2C+san+francisco%2C+CA"}/
-    .col-sm-4
-      .merchant-info
-        %h3 Shipping address
-        %p
-          = @order.ship_address.full_name
-          %br/
-          = "#{@order.ship_address.company} <br/>".html_safe unless @order.ship_address.company.blank?
-          = "#{@order.ship_address.address}, <br/>#{@order.ship_address.county}, <br/>#{@order.ship_address.postcode}, <br/>#{@order.ship_address.country}".html_safe
-          %br/
-          Phone:
-          %strong= @order.ship_address.telephone
-  .row.bottom-margin
-    .col-sm-12
-      %h4.section-title Ordered Items
-      %table.table.table-bordered.table-striped.cart-contents-table
-        %thead
-          %tr
-            %th Item Ordered
-            %th.text-right Item Price
-            %th.text-right Qty
-            %th.text-right Total
-        %tbody
-          - @order.order_items.each do |item|
-            %tr
-              %td
-                .item-name= item.sku.product.name
-                .item-extra
-                  %b= "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.blank?}"
-                - unless item.order_item_accessory.nil?
-                  .item-accessory
-                    %span.label.label-danger= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
-              %td.text-right= format_currency item.price
-              %td.text-right= item.quantity
-              %td.text-right= format_currency item.total_price
+  .fourcol
+    .widget-sub-heading
+      %h3 Billing address
+    .widget.widget-form
+      = @order.bill_address.full_name
+      %br/
+      = @order.bill_address.address
+      %br/
+      = @order.bill_address.city
+      %br/
+      = @order.bill_address.postcode
+      %br/
+      = @order.bill_address.country
+      %br/
+      = @order.bill_address.telephone
+      %br/
+  .fourcol.last
+    .widget-sub-heading
+      %h3 Shipping address
+    .widget.widget-form
+      = @order.ship_address.full_name
+      %br/
+      = @order.ship_address.address
+      %br/
+      = @order.ship_address.city
+      %br/
+      = @order.ship_address.postcode
+      %br/
+      = @order.ship_address.country
+      %br/
+      = @order.ship_address.telephone
+      %br/
+.row
+  .twelvecol
+    .widget-sub-heading
+      %h3 Order items
+    %table.table.table-striped.table-bordered.table-hover.table-margin
+      %thead
+        %tr
+          %th Item
+          %th SKU
+          %th Item price
+          %th Qty
+          %th Total
+      %tbody
+        - @order.order_items.each do |item|
           %tr
             %td
-              .item-name= @order.shipping.name
-              .item-extra
-                %b= @order.ship_address.country
-            %td.text-right= format_currency @order.shipping.price
-            %td.text-right 1
-            %td.text-right= format_currency @order.shipping.price
-          %tr
-            %td.text-right{colspan: "3"} Subtotal:
-            %td.text-right{colspan: "3"}= format_currency @order.transaction.net_amount
-          %tr
-            %td.text-right{colspan: "3"} Tax:
-            %td.text-right{colspan: "3"}= format_currency @order.transaction.tax_amount
-          %tr
-            %td.text-right.grand-total-label{colspan: "3"} Total:
-            %td.text-right.grand-total-value{colspan: "3"}= format_currency @order.transaction.gross_amount
+              = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
+              .item-sub= sku_attribute_values item.sku, item.sku.product.single
+              - unless item.order_item_accessory.nil?
+                .item-sub.label.label-blue= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
+            %td= "#{item.sku.product.sku}-#{item.sku.sku}"
+            %td= format_currency item.price
+            %td= item.quantity
+            %td= format_currency item.total_price
+        %tr
+          %td
+            = @order.shipping.name
+            .item-sub= @order.ship_address.country
+          %td -
+          %td= format_currency @order.shipping.price
+          %td 1
+          %td= format_currency @order.shipping.price
+        %tr
+          %td.align-right.border-top{colspan: "4"}
+            %b Subtotal:
+          %td.border-top= format_currency @order.transaction.net_amount
+        %tr
+          %td.align-right{colspan: "4"}
+            %b Tax:
+          %td= format_currency @order.transaction.tax_amount
+        %tr.focused
+          %td.align-right{colspan: "4"}
+            %b Total:
+          %td= format_currency @order.transaction.gross_amount
+    .widget-sub-heading
+      %h3 Transactions
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th Transaction ID
+          %th Transaction type
+          %th Payment status
+          %th Fee
+          %th Net amount
+          %th Gross amount
+          %th Last updated
+      %tbody
+        %tr
+          %td= link_to @order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{@order.transaction.transaction_id}", :target => '_blank'
+          %td= @order.transaction.transaction_type 
+          %td= payment_status @order.transaction.payment_status
+          %td= format_currency @order.transaction.fee
+          %td= format_currency @order.transaction.net_amount
+          %td= format_currency @order.transaction.gross_amount
+          %td.align-left= @order.updated_at.strftime('%B %-d, %Y, %I:%M %P')

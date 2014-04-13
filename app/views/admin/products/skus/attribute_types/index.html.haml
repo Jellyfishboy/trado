@@ -1,11 +1,6 @@
 - content_for :title, 'SKU attribute types'
 - content_for :breadcrumb, 'SKU attribute types'
-- content_for :header, 'Product SKUs'
-- content_for :subnav do
-  %li= link_to 'Products', admin_products_path
-  %li= link_to 'SKUs', admin_products_skus_path
-  %li.current
-    %a.current Attribute types
+
 = link_to new_admin_products_skus_attribute_type_path, :class => "btn btn-success add_record" do
   %i.icon-plus
   New attribute type

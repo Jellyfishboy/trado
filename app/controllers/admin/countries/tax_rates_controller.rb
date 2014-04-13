@@ -51,6 +51,7 @@ class Admin::Countries::TaxRatesController < ApplicationController
   # PUT /tax_rates/1.json
   def update
     @tax_rate = TaxRate.find(params[:id])
+    @countries = Country.includes(:country_tax).where('country_taxes.country_id IS NULL') | Country.includes(:country_tax).where('country_taxes.tax_rate_id = ?', @tax_rate.id)
 
     respond_to do |format|
       if @tax_rate.update_attributes(params[:tax_rate])

@@ -14,6 +14,7 @@
 #  short_description        :text
 #  meta_description         :string(255)
 #  weighting                :integer 
+#  sku                      :string(255)
 #  featured                 :boolean 
 #  active                   :boolean          default(true)
 #  category_id              :integer    

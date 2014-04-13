@@ -1,28 +1,30 @@
 - content_for :title, 'Accessories'
 - content_for :breadcrumb, 'Accessories'
-- content_for :header, 'Accessories'
-- content_for :hide_sub_navigation, 'hide_subnav'
-= link_to new_admin_accessory_path, :class => "btn btn-success add_record" do
-  %i.icon-plus
-  New accessory
-- if @accessories.empty?
-  %p You don't have any accessories yet.
-- else
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Part no.
-        %th Name
-        %th Weight (g)
-        %th Cost value
-        %th Price
-        %th
-    %tbody
-      - @accessories.each do |accessory|
-        %tr
-          %td= accessory.part_number
-          %td= accessory.name
-          %td= accessory.weight
-          %td= format_currency accessory.cost_value
-          %td= format_currency accessory.price
-          = table_commands accessory, admin_accessory_path(accessory), edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 1
+
+.twelvecol
+  .page-header
+    = link_to new_admin_accessory_path, :class => "btn btn-blue btn-large" do
+      %i.icon-plus
+    %h2.widget.widget-header Accessories
+  - if @accessories.empty?
+    %p You don't have any accessories yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Part no.
+            %th Name
+            %th Weight (g)
+            %th Cost value
+            %th Price
+            %th
+        %tbody
+          - @accessories.each do |accessory|
+            %tr
+              %td= accessory.part_number
+              %td= accessory.name
+              %td= accessory.weight
+              %td= format_currency accessory.cost_value
+              %td= format_currency accessory.price
+              = table_commands accessory, accessory, edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 0

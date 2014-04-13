@@ -1,7 +1,28 @@
 - content_for :title, 'Edit category'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Categories', admin_categories_path
-- content_for :header, "Editing #{@category.name}"
-- content_for :hide_sub_navigation, "hide_subnav"
 
-= render 'form'
+.eightcol
+  .page-header
+    %h2.widget.widget-header Edit category
+  = form_for [:admin, @category], :html => { :role => 'form' } do |f|
+    %fieldset.widget.widget-form.widget-last
+      - if @category.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
+          %ul
+            - @category.errors.full_messages.each do |msg|
+              %li= msg  
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+      .form-group
+        = f.label :description
+        = f.text_area :description, :class => 'form-control', :rows => 8
+      .checkbox
+        %label
+          = f.check_box :visible
+          Visible
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue'
+.fourcol.last

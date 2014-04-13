@@ -1,35 +1,36 @@
 - content_for :title, 'Shipping methods'
 - content_for :breadcrumb, 'Shipping methods'
-- content_for :header, 'Shipping methods'
-- content_for :subnav do
-  %li.current
-    %a.current Methods
-  %li= link_to 'Tiers', admin_shippings_tiers_path
-= link_to new_admin_shipping_path, :class => 'btn btn-success add_record' do
-  %i.icon-plus
-  New shipping option
-- if @shippings.empty?
-  %p You don't have any shippings yet.
-- else
-  %table.table.table-striped.table-bordered.table-hover.table-responsive
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th Countries
-        %th Tier(s)
-        %th Net price
-        %th
-    %tbody
-      - @shippings.each do |shipping|
-        %tr
-          %td= shipping.name
-          %td= shipping.description
-          %td
-            %ul 
-              - shipping.countries.each do |country|
-                %li
-                  = country.name
-          %td= shipping.tiers.map(&:id).join(', ')
-          %td= format_currency shipping.price
-          = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1
+
+.twelvecol
+  .page-header
+    = link_to new_admin_shipping_path, :class => "btn btn-blue btn-large" do
+      %i.icon-plus
+    = link_to admin_shippings_tiers_path, :class => "btn btn-blue btn-large" do
+      %i.icon-bars-2
+    %h2.widget.widget-header Shipping methods
+  - if @shippings.empty?
+    %p You don't have any shippings yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Name
+            %th Description
+            %th Countries
+            %th Tier(s)
+            %th Net price
+            %th
+        %tbody
+          - @shippings.each do |shipping|
+            %tr
+              %td= shipping.name
+              %td= shipping.description
+              %td
+                %ul 
+                  - shipping.countries.each do |country|
+                    %li
+                      = country.name
+              %td= shipping.tiers.map(&:id).join(', ')
+              %td= format_currency shipping.price
+              = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1

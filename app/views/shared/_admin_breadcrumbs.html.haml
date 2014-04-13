@@ -1,8 +1,5 @@
-%ol.breadcrumb
-  - if params[:controller] == "admin/admin" && params[:action] == "dashboard"
-    %li Dashboard
-  - else
+%ol#breadcrumbs
     - breadcrumbs.each do |n|
-      %li
-        = link_to n[:title], n[:url]
+        %li
+            = link_to n[:title], n[:url]
     %li= yield(:breadcrumb)

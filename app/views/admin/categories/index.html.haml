@@ -1,26 +1,28 @@
 - content_for :title, 'Categories'
 - content_for :breadcrumb, 'Categories'
-- content_for :header, 'Categories'
-- content_for :hide_sub_navigation, 'hide_subnav'
-= link_to new_admin_category_path, :class => "btn btn-success add_record" do
-  %i.icon-plus
-  New category
-- if @category.empty?
-  %p You don't have any categories yet.
-- else
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th Visiblity
-        %th No. of products
-        %th
-    %tbody
-      - @category.each do |category|
-        %tr
-          %td= category.name
-          %td= category.description
-          %td= boolean_helper category.visible, "Yes", "No"
-          %td= category.products.count
-          = table_commands category, category, edit_admin_category_path(category), admin_category_path(category), 0
+
+.twelvecol
+  .page-header
+    = link_to new_admin_category_path, :class => "btn btn-blue btn-large" do
+      %i.icon-plus
+    %h2.widget.widget-header Categories
+  - if @categories.empty?
+    %p You don't have any categories yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Name
+            %th Description
+            %th Visiblity
+            %th No. of products
+            %th
+        %tbody
+          - @categories.each do |category|
+            %tr
+              %td= link_to category.name, category
+              %td= category.description
+              %td= boolean_helper category.visible, "Yes", "No"
+              %td= category.products.count
+              = table_commands category, category, edit_admin_category_path(category), admin_category_path(category), 0

@@ -1,41 +1,34 @@
 - content_for :title, 'Edit accessory'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Accessories', admin_accessories_path
-- content_for :header, "Editing #{@form_accessory.name}"
-- content_for :hide_sub_navigation, 'hide_subnav'
 
-.row-fluid
-  .col-md-6
-    = form_for [:admin, @form_accessory], :html => { :class => 'form-horizontal', :role => 'form' } do |f|
-      %fieldset
-        - if @accessory && @accessory.errors.any?
-          #error_explanation
-            %h4= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
-            %ul
-              - @accessory.errors.full_messages.each do |msg|
-                %li= msg
-        .form-group
-          = f.label :part_number, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :part_number, :class => 'form-control'
-        .form-group
-          = f.label :name, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :name, :class => 'form-control'
-        .form-group
-          = f.label :weight, 'Weight (g)', :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :weight, :class => 'form-control'
-        .form-group
-          = f.label :cost_value, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :cost_value, :class => 'form-control calculate_tax', :autocomplete => 'off'
-        .form-group
-          = f.label :price, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :price, :class => 'form-control calculate_tax', :autocomplete => 'off'
-        .form-group
-          .col-md-offset-3.col-md-9
-            = f.submit 'Submit', :class => 'btn btn-primary'
-        
+.eightcol
+  .page-header
+    %h2.widget.widget-header Edit accessory
+  = form_for [:admin, @form_accessory], :html => { :role => 'form' } do |f|
+    %fieldset.widget.widget-form.widget-last
+      - if @accessory && @accessory.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
+          %ul
+            - @accessory.errors.full_messages.each do |msg|
+              %li= msg  
+      .form-group
+        = f.label :part_number
+        = f.text_field :part_number, :class => 'form-control'
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+      .form-group
+        = f.label 'Weight (g)'
+        = f.text_field :weight, :class => 'form-control'
+      .form-group
+        = f.label :cost_value
+        = f.text_field :cost_value, :class => 'form-control calculate_tax', :autocomplete => 'off'
+      .form-group.form-last
+        = f.label :price
+        = f.text_field :price, :class => 'form-control calculate_tax', :autocomplete => 'off'
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue'
+.fourcol.last
 

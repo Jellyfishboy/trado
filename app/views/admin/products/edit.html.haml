@@ -1,8 +1,6 @@
 - content_for :title, 'Edit product'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Products', admin_products_path
-- content_for :header, "Editing #{@product.name}"
-- content_for :hide_sub_navigation, 'hide_subnav'
 
 - if @product.errors.any?
   #error_explanation

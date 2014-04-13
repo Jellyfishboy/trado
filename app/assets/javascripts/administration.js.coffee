@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require bootstrap-datepicker
 #= require admin/soca
+#= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min 
 #= require admin/bootstrap.min
 #= require redactor-rails
 

@@ -1,7 +1,34 @@
 - content_for :title, 'Edit zone'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Country zones', admin_countries_zones_path
-- content_for :header, "Editing #{@zone.name}"
-- content_for :hide_sub_navigation, 'hide_subnav'
 
-= render 'form'
+.eightcol
+  .page-header
+    %h2.widget.widget-header Edit country zone
+  = form_for [:admin, :countries, @zone], :html => { :role => 'form' } do |f|
+    %fieldset.widget.widget-form.widget-last
+      - if @zone.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@zone.errors.count, "error")} prohibited this zone from being saved:"
+          %ul
+            - @zone.errors.full_messages.each do |msg|
+              %li= msg  
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+      .form-group.form-last
+        = f.label 'Countries'
+        - if Country.all.empty?
+          %p No zones to select.
+        - else
+          - Country.all.each do |country|
+            .checkbox.blocked
+              %label
+                = hidden_field_tag "shipping[country_ids][]", ''
+                = check_box_tag "shipping[country_ids][]", country.id, @zone.country_ids.include?(country.id)
+                = country.name
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue'
+.fourcol.last
+
+

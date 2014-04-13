@@ -1,10 +1,6 @@
 - content_for :title, 'Transactions'
 - content_for :breadcrumb, 'Transactions'
-- content_for :header, 'Transactions'
-- content_for :subnav do
-  %li= link_to 'Orders', admin_orders_path
-  %li.current
-    %a.current Transactions
+
 - if @transactions.empty?
   %p You don't have any transactions yet.
 - else

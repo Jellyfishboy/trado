@@ -5,7 +5,7 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @category = Category.all
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,19 +1,9 @@
-%td.text-right
-  - unless type == 1 || type == 3
-    = link_to view, :class => 'btn btn-info btn-xs' do
-      %i.icon-search
-  - if type == 3
-    %a.btn.btn-info.btn-xs.update_stock{href: "#", id: object.id}
-      %i.icon-signal
-  - unless type == 2
-    = link_to edit, :class => 'btn btn-success btn-xs' do
-      %i.icon-pencil
+%td
+  = link_to edit do
+    %i.icon-pencil
   - if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed"
-    %a.btn.btn-default.btn-xs.change_shipping{href: "#", id: object.id}
-      %i.icon-truck
-  - if type == 2
-    %a.btn.btn-success.btn-xs.add_actual_shipping_cost{href: "#", id: object.id}
-      %i.icon-money
+    %a{href: "#", id: object.id}
+      %i.icon-airplane
   - unless type == 2
-    = link_to del, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger btn-xs' do
+    = link_to del, :method => :delete, :confirm => 'Are you sure?' do
       %i.icon-remove

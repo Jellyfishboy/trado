@@ -53,7 +53,7 @@ class Order < ActiveRecord::Base
   # FIXME: Looks really ugly and clumsy. Fix when internationalized tax is introduced.
   def calculate_order(cart, session, current_tax_rate)
     session[:sub_total] = session[:tax] = session[:total] = nil
-    session[:sub_total] = cart.total_price
+    session[:sub_total] = cart.total_price + self.shipping.price
     session[:tax] = (session[:sub_total]*current_tax_rate) + (self.shipping.price*current_tax_rate)
     session[:total] = session[:sub_total]+session[:tax]+self.shipping.price
   end

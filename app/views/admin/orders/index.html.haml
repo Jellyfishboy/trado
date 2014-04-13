@@ -1,40 +1,69 @@
 - content_for :title, 'Orders'
 - content_for :breadcrumb, 'Orders'
-- content_for :header, 'Orders'
-- content_for :subnav do
-  %li.current
-    %a.current Orders
-  %li= link_to 'Transactions', admin_transactions_path
-- if @orders.empty?
-  %p You don't have any orders yet.
-- else
-  %p
-    The orders highlighted in red are missing an
-    %b actual shipping cost
-    value.
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th Order no.
-        %th Transaction ID
-        %th Name
-        %th Shipping status
-        %th Payment status
-        %th Gross amount
-        %th Last updated
-        %th
-    %tbody
-      - @orders.each do |order|
-        %tr{:class => ("red" if order.actual_shipping_cost.blank?)}
-          %td= order.id
-          %td= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank'
-          %td
-            = order.bill_address.first_name
-            = order.bill_address.last_name
-          %td= shipping_status order.shipping_status
-          %td= payment_status order.transaction.payment_status
-          %td= format_currency order.transaction.gross_amount
-          %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
-          = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2
-#shipping-modal
-#actual-shipping-cost-modal
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Orders
+  - if @orders.empty?
+    %p You don't have any orders yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Order no.
+            %th Transaction ID
+            %th Name
+            %th Shipping status
+            %th Payment status
+            %th Gross amount
+            %th Last updated
+            %th
+        %tbody
+          - @orders.each do |order|
+            %tr
+              %td= link_to order.id, [:admin, order]
+              %td= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank'
+              %td
+                = order.bill_address.first_name
+                = order.bill_address.last_name
+              %td= shipping_status order.shipping_status
+              %td= payment_status order.transaction.payment_status
+              %td= format_currency order.transaction.gross_amount
+              %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
+              = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2
+
+
+/ - if @orders.empty?
+/   %p You don't have any orders yet.
+/ - else
+/   %p
+/     The orders highlighted in red are missing an
+/     %b actual shipping cost
+/     value.
+/   %table.table.table-striped.table-bordered.table-hover
+/     %thead
+/       %tr
+/         %th Order no.
+/         %th Transaction ID
+/         %th Name
+/         %th Shipping status
+/         %th Payment status
+/         %th Gross amount
+/         %th Last updated
+/         %th
+/     %tbody
+/       - @orders.each do |order|
+/         %tr{:class => ("red" if order.actual_shipping_cost.blank?)}
+/           %td= order.id
+/           %td= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank'
+/           %td
+/             = order.bill_address.first_name
+/             = order.bill_address.last_name
+/           %td= shipping_status order.shipping_status
+/           %td= payment_status order.transaction.payment_status
+/           %td= format_currency order.transaction.gross_amount
+/           %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
+/           = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2
+/ #shipping-modal
+/ #actual-shipping-cost-modal
