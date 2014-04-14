@@ -43,7 +43,7 @@ module ApplicationHelper
     end
 
     def create_admin_breadcrumbs
-      @admin_breadcrumbs ||= [ { :title => 'Dashboard', :url => admin_root_path}]
+      @admin_breadcrumbs ||= [ { :title => Store::settings.name, :url => admin_root_path}]
     end
 
     def breadcrumb_add title, url

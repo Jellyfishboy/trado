@@ -17,7 +17,8 @@ class Admin::AdminController < ApplicationController
         respond_to do |format|
           if @settings.update_attributes(params[:store_setting])
             Store::reset_settings
-            format.html { redirect_to admin_root_path, notice: 'Store settings were successfully updated.' }
+            flash[:success] = 'Store settings were successfully updated.'
+            format.html { redirect_to admin_root_path }
             format.json { head :no_content }
           else
             format.html { render action: "settings" }

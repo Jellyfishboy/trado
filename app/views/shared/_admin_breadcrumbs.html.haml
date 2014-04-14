@@ -2,4 +2,4 @@
     - breadcrumbs.each do |n|
         %li
             = link_to n[:title], n[:url]
-    %li= yield(:breadcrumb)
+    %li.current= yield(:breadcrumb)

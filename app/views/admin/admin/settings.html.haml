@@ -8,9 +8,9 @@
     %fieldset.widget.widget-form.widget-last
       - if @settings.errors.any?
         #error_explanation
-          %h2= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
+          %h2= "#{pluralize(@settings.errors.count, "error")} prohibited these settings from being saved:"
           %ul
-            - @accessory.errors.full_messages.each do |msg|
+            - @settings.errors.full_messages.each do |msg|
               %li= msg  
       .form-group
         = f.label 'Store name'
