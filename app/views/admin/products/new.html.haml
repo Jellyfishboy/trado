@@ -2,29 +2,27 @@
 - content_for :breadcrumb, 'New'
 - breadcrumb_add 'Products', admin_products_path
 
-- if @product.errors.any?
-  #error_explanation
-    %h2
-      = pluralize(@product.errors.count, "error")
-      prohibited this product from being saved:
-    %ul
-      - @product.errors.full_messages.each do |msg|
-        %li= msg
-
-= form_for [:admin, @product], :html => { :class => 'form-horizontal new_product', :role => 'form' } do |f|
+.twelvecol
+  .page-header
+    %h2.widget.widget-header New product
+  = form_for [:admin, @product], :html => { :class => 'new_product', :role => 'form' } do |f|
+    - if @product.errors.any?
+      #errors
+        %ul
+          - @product.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
     
-  = render 'admin/products/section/basic_details', :f => f
+    = render 'admin/products/section/basic_details', :f => f
 
-  = render 'admin/products/section/new_images', :f => f
+    = render 'admin/products/section/new_images', :f => f
 
-  = render 'admin/products/section/new_skus', :f => f
+    = render 'admin/products/section/new_skus', :f => f
 
-  = render 'admin/products/section/associations', :f => f
+    = render 'admin/products/section/associations', :f => f
 
-  = render 'admin/products/section/new_tags', :f => f
+    = render 'admin/products/section/new_tags', :f => f
 
-  .row
-    .col-md-6
-      .form-group
-        .col-md-offset-2.col-md-10
-          = f.submit 'Submit', :class => 'btn btn-primary'
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue'

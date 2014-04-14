@@ -1,52 +1,50 @@
-.widget.widget-green
-  .widget-title
-    %h3
-      %i.icon-file-text
-      Basic details
-  .widget-content
-    .row
-      .col-md-6
-        - if @product.orders.empty?
-          .form-group
-            = f.label :part_number, :class => 'control-label col-md-3'
-            .col-md-9
-              = f.text_field :part_number, :class => 'form-control'
-          .form-group
-            = f.label :name, :class => 'control-label col-md-3'
-            .col-md-9
-              = f.text_field :name, :class => 'form-control col-md-3'
-        .form-group
-          = f.label :meta_description, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_area :meta_description, :rows => 6, :class => 'form-control'
-        .form-group
-          = f.label :weighting, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_field :weighting, :class => 'form-control col-md-3l'
-      .col-md-6
-        - if @product.orders.empty?
-          .form-group
-            = f.label :sku, "SKU", :class => 'control-label col-md-3'
-            .col-md-9
-              = f.text_field :sku, :class => 'form-control'
-        .form-group
-          %label.col-md-3.control-label Featured
-          .col-md-9
-            .checkbox
-              = f.hidden_field :featured, :value => false
-              = f.check_box :featured
-        .form-group
-          %label.col-md-3.control-label Single product?
-          .col-md-9
-            .checkbox
-              = f.hidden_field :single, :value => false
-              = f.check_box :single
-        .form-group
-          = f.label :short_description, :class => 'control-label col-md-3'
-          .col-md-9
-            = f.text_area :short_description, :rows => 6, :class => 'form-control'
-    .row
-      .col-md-12
-        .form-group
-          = f.label :description
-          = f.text_area :description, :rows => 6, :class => 'form-control redactor'
+.widget-sub-heading
+  %h3 Product information
+%fieldset.widget.widget-form
+  .row
+    .twelvecol
+      = f.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id ] } ), :prompt => "Please select category..."
+  .row
+    .fourcol
+      .form-group
+        = f.label :part_number
+        = f.text_field :part_number, :class => 'form-control'
+    .fourcol
+      .form-group
+        = f.label :sku
+        = f.text_field :sku, :class => 'form-control'
+    .fourcol.last
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+  .row
+    .fourcol
+      .form-group
+        = f.label :short_description
+        = f.text_field :short_description, :class => 'form-control'
+    .fourcol
+      .form-group
+        = f.label :meta_description
+        = f.text_field :meta_description, :class => 'form-control'
+    .fourcol.last
+      .form-group
+        = f.label :weighting
+        = f.text_field :weighting, :class => 'form-control'
+  .row
+    .twelvecol
+      .form-group.form-last
+        = f.label :description
+        = f.text_area :short_description, :rows => 8, :class => 'form-control'
+.widget-sub-heading
+  %h3 Product options
+%fieldset.widget.widget-form
+  .row
+    .twelvecol
+      .checkbox
+        %label
+          = f.check_box :featured
+          Featured
+      .checkbox
+        %label
+          = f.check_box :single
+          Single product

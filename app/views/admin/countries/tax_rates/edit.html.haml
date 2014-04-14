@@ -1,10 +1,11 @@
-- content_for :title, 'Edit tax rate'
+- content_for :title, 'Edit country tax rate'
 - content_for :breadcrumb, 'Edit'
-- breadcrumb_add 'Country tax rates', admin_countries_tax_rates_path
+- breadcrumb_add 'Countries', admin_countries_path
+- breadcrumb_add 'Tax rates', admin_countries_tax_rates_path
 
 .eightcol
   .page-header
-    %h2.widget.widget-header Edit country tax rate
+    %h2.widget.widget-header Edit tax rate
   = form_for [:admin, :countries, @tax_rate], :html => { :role => 'form' } do |f|
     - if @tax_rate.errors.any?
       #errors

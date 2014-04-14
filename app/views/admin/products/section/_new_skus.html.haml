@@ -1,11 +1,21 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus,"#sku_fields", 'Add SKU'
-    %h3
-      %i.icon-th-large
-      SKUs
-  .widget-content
-    #skus
-      #sku_fields.row
-        = add_foreign_field f, :skus
+.widget-sub-heading
+  %h3 SKUs
+  .pull-right
+    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f,:skus,"#sku_fields", 'Add SKU'
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-last.table-form
+    %thead
+      %tr
+        %th SKU
+        %th Weight
+        %th Length
+        %th Thickness
+        %th Attribute value
+        %th Attribute type
+        %th Stock
+        %th Stock warning level
+        %th Cost value
+        %th Price
+        %th
+    %tbody#sku_fields
+      = add_foreign_field f, :skus

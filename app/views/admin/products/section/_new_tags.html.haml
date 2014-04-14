@@ -1,11 +1,6 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags,"#tag_fields", 'Add tag'
-    %h3
-      %i.icon-tag
-      TAGS
-  .widget-content
-    #tags
-      #tag_fields.row
-        = add_foreign_field f, :tags
+.widget-sub-heading
+  %h3 Tags
+%fieldset.widget.widget-form.tag-form.widget-last
+  .row
+    .twelvecol
+      %input#product_tags{"data-role" => "tagsinput"}/

@@ -1,43 +1,33 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :skus, "#sku_fields", 'Add SKU'
-    %h3
-      %i.icon-th-large
-      SKUs
-  .widget-content
-    %h4.widget-header Current SKUs
-    - if @product.skus.active.empty?
-      %p You don't have any SKUs yet.
-    - else
-      %table.table.table-striped.table-bordered.table-hover
-        %thead
-          %tr
-            %th SKU
-            %th Weight
-            %th Length
-            %th Thickness
-            %th Attribute value
-            %th Attribute type
-            %th Stock
-            %th Stock warning level
-            %th Cost value
-            %th Price
-            %th
-        %tbody
-          - @product.skus.active.each do |sku|
-            %tr
-              %td= "#{sku.product.sku}-#{sku.sku}"
-              %td= sku.weight
-              %td= sku.length
-              %td= sku.thickness
-              %td= sku.attribute_value
-              %td= sku.attribute_type.name
-              %td= sku.stock
-              %td= sku.stock_warning_level
-              %td= format_currency sku.cost_value
-              %td= format_currency sku.price
-              = table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 3
-    %h4.widget-header New SKUs
-    #skus
-      #sku_fields.row.edit_field
+.widget-sub-heading
+  %h3 SKUs
+  .pull-right
+    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f,:skus,"#sku_fields", 'Add SKU'
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-last.table-form
+    %thead
+      %tr
+        %th SKU
+        %th Weight
+        %th Length
+        %th Thickness
+        %th Attribute value
+        %th Attribute type
+        %th Stock
+        %th Stock warning level
+        %th Cost value
+        %th Price
+        %th
+    %tbody#sku_fields.edit_field
+      - @product.skus.active.each do |sku|
+        %tr
+          %td= "#{sku.product.sku}-#{sku.sku}"
+          %td= sku.weight
+          %td= sku.length
+          %td= sku.thickness
+          %td= sku.attribute_value
+          %td= sku.attribute_type.name
+          %td= sku.stock
+          %td= sku.stock_warning_level
+          %td= format_currency sku.cost_value
+          %td= format_currency sku.price
+          = table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 3

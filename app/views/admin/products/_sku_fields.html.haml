@@ -1,49 +1,23 @@
-.ajax_fields.skus.col-md-3
-  .form-group
-    = f.label :sku, 'SKU', :class => 'control-label col-md-6'
-    .col-md-6
-      .input-group
-        %span.input-group-addon.sku_prefix
-        = f.text_field :sku, :class => 'form-control'
-  .form-group
-    = f.label :weight, 'Weight (g)', :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :weight, :class => 'form-control'
-  .form-group
-    = f.label :length, 'Length (mm)', :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :length, :class => 'form-control'
-  .form-group
-    = f.label :thickness, 'Thickness (mm)', :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :thickness, :class => 'form-control'
-  .form-group
-    = f.label :cost_value, :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :cost_value, :class => 'form-control calculate_tax', :autocomplete => 'off'
-  .form-group
-    = f.label :price, :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :price, :class => 'form-control calculate_tax', :autocomplete => 'off'
-  .form-group
-    = f.label :stock, :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :stock, :class => 'form-control'
-  .form-group
-    = f.label :stock_warning_level, :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :stock_warning_level, :class => 'form-control'
-  .form-group
-    = f.label :attribute_value, :class => 'control-label col-md-6'
-    .col-md-6
-      = f.text_field :attribute_value, :class => 'form-control'
-  .form-group
-    = f.label :attribute_type_id, :class => 'control-label col-md-6'
-    .col-md-6
-      - if AttributeType.all.empty?
-        %p No attribute types to select
-      - else
-        = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Select...'}, { :class => 'form-control' })
-  .form-group
-    .col-md-12
-      = link_to_remove_fields "Remove", f, "skus"
+%tr.skus.ajax-fields
+  %td
+    = f.text_field :sku
+  %td
+    = f.text_field :weight
+  %td
+    = f.text_field :length
+  %td
+    = f.text_field :thickness
+  %td
+    = f.text_field :attribute_value
+  %td.select
+    = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }), { :include_blank => 'Select...'}, { :class => 'form-control' })
+  %td
+    = f.text_field :stock
+  %td
+    = f.text_field :stock_warning_level
+  %td
+    = f.text_field :cost_value
+  %td
+    = f.text_field :price
+  %td
+    = link_to_remove_fields "<i class='icon-remove'></i>".html_safe, f, "skus"

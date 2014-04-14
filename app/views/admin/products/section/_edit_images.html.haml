@@ -1,25 +1,15 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields", 'Add image'
-    %h3
-      %i.icon-picture
-      Images
-  .widget-content
-    %h4.widget-header Current attachments
-    #attachments
-      .row.current_attachments
-        - if @product.attachments.empty?
-          .form-group
-            .col-md-9
-              %p This product currently has no attachments.
-        - else
-          - @product.attachments.each do |attach|
-            %div{ :id => "attachment_#{attach.id}", :class => 'col-md-3'}
-              = image_tag attach.file.medium
-              %p= attach.description
-              = link_to 'Remove', admin_products_attachment_path(attach), :method => :delete, :confirm => 'Are you sure?', :remote => true, :class => 'btn btn-danger btn-xs'
-      %h4.widget-header New attachments
-      #image_fields.row.edit_field
+.widget-sub-heading
+  %h3 Attachments
+  .pull-right
+    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields", 'Add image'
+%fieldset.widget.widget-form.attachment-form
+  .row
+    .twelvecol
+      #image_fields.edit_field
+        - @product.attachments.each do |attach|
+          .attachments.current-file{ :id => "attachment_#{attach.id}" }
+            = image_tag attach.file.medium
+            = link_to admin_products_attachment_path(attach), :method => :delete, :confirm => 'Are you sure?', :remote => true do
+              %i.icon-close
         
 

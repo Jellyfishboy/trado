@@ -1,11 +1,12 @@
 - content_for :title, 'Country zones'
-- content_for :breadcrumb, 'Country zones'
+- content_for :breadcrumb, 'Zones'
+- breadcrumb_add 'Countries', admin_countries_path
 
 .twelvecol
   .page-header
-    = link_to new_admin_countries_zone_path, :class => "btn btn-blue btn-large" do
+    = link_to new_admin_countries_zone_path, :class => "btn btn-blue " do
       %i.icon-plus
-    %h2.widget.widget-header Country zones
+    %h2.widget.widget-header Zones
   - if @zones.empty?
     %p You don't have any zones yet.
   - else

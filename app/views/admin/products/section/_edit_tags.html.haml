@@ -1,22 +1,6 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :tags,"#tag_fields", 'Add tag'
-    %h3
-      %i.icon-tag
-      TAGS
-  .widget-content
-    %h4.widget-header Current tags
-    #tags
-      .row
-        - if @product.tags.empty?
-          .form-group
-            .col-md-9
-              %p This product currently has no tags.
-        - else
-          - @product.tags.each do |tag|
-            %div{ :id => "tag_#{tag.id}", :class => 'col-md-3'}
-              %p= tag.name
-              = link_to 'Remove', admin_products_tag_path(tag), :method => :delete, :confirm => 'Are you sure?', :remote => true, :class => 'btn btn-danger btn-xs'
-      %h4.widget-header New tags
-      #tag_fields.row.edit_field
+.widget-sub-heading
+  %h3 Tags
+%fieldset.widget.widget-form.tag-form.widget-last
+  .row
+    .twelvecol
+      %input#product_tags{"data-role" => "tagsinput", :value => @product.tags.map(&:name).join(",")}

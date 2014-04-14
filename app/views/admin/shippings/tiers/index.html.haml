@@ -1,11 +1,12 @@
-- content_for :title, 'Shipping tiers'
-- content_for :breadcrumb, 'Shipping tiers'
+- content_for :title, 'Shipping method tiers'
+- content_for :breadcrumb, 'Tiers'
+- breadcrumb_add 'Shipping methods', admin_shippings_path
 
 .twelvecol
   .page-header
-    = link_to new_admin_shippings_tier_path, :class => "btn btn-blue btn-large" do
+    = link_to new_admin_shippings_tier_path, :class => "btn btn-blue " do
       %i.icon-plus
-    %h2.widget.widget-header Shipping tiers
+    %h2.widget.widget-header Tiers
   - if @tiers.empty?
     %p You don't have any tiers yet.
   - else

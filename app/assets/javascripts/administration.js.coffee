@@ -9,15 +9,17 @@
 root = exports ? this
 
 root.remove_fields = (link, obj) ->
-  $element = $('.' + obj + '.ajax_fields')
-  if $element.length > 1 || $element.parent().hasClass 'edit_field'
+  $elements = $('.' + obj + '.ajax-fields')
+  if $elements.length > 1 || $elements.parent().hasClass 'edit_field'
     $(link).prev("input[type=hidden]").val "1"
-    $(link).closest(".ajax_fields").remove()
+    $elem = $(link).closest(".ajax-fields")
+    $elem.next("input[type=file]").remove() if obj == "attachments"
+    $elem.remove()
 root.add_fields = (link, association, content, target) ->
   new_id = new Date().getTime()
   regexp = new RegExp("new_" + association, "g")
   $(target).append content.replace(regexp, new_id)
-  calculate_tax()
+  # calculate_tax()
 
 calculate_tax = ->
   $elem = $('.calculate_tax')

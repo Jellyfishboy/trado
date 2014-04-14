@@ -1,10 +1,11 @@
-- content_for :title, 'Edit zone'
+- content_for :title, 'Edit country zone'
 - content_for :breadcrumb, 'Edit'
-- breadcrumb_add 'Country zones', admin_countries_zones_path
+- breadcrumb_add 'Countries', admin_countries_path
+- breadcrumb_add 'Zones', admin_countries_zones_path
 
 .eightcol
   .page-header
-    %h2.widget.widget-header Edit country zone
+    %h2.widget.widget-header Edit zone
   = form_for [:admin, :countries, @zone], :html => { :role => 'form' } do |f|
     - if @zone.errors.any?
       #errors

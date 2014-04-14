@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def link_to_remove_fields name, f, obj
-      f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, '#{obj}')", :class => 'btn btn-danger btn-xs remove_field')
+      f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this, '#{obj}')")
     end
       
     # The type parameter defines whether the helper is an ajax trigger, or just a simple form rendering.
@@ -10,7 +10,7 @@ module ApplicationHelper
       fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
         render(association.to_s.singularize + "_fields", :f => builder)
       end
-      link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{target}\")", :class => 'widget-control add_field', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => tooltip)
+      link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{target}\")", 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => tooltip)
     end
 
     def add_foreign_field f, association

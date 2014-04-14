@@ -1,11 +1,9 @@
-.widget.widget-green
-  .widget-title
-    .widget-controls
-      = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields", 'Add image'
-    %h3
-      %i.icon-picture
-      Images
-  .widget-content
-    #attachments
-      #image_fields.row
+.widget-sub-heading
+  %h3 Attachments
+  .pull-right
+    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields", 'Add image'
+%fieldset.widget.widget-form.attachment-form
+  .row
+    .twelvecol
+      #image_fields
         = add_foreign_field f, :attachments

@@ -1,44 +1,30 @@
-.widget.widget-green
-  .widget-title
-    %h3
-      %i.icon-sitemap
-      ASSOCIATIONS
-  .widget-content
-    .row
-      .col-md-4
-        %h4.widget-header Categories
-        .form-group
-          - if Category.all.empty?
-            %p No categories to select.
-          - else
-            - Category.all.each do |category|
-              .checkbox
-                %label
-                  = f.radio_button :category_id, category.id
-                  = category.name
-      .col-md-4
-        %h4.widget-header Accessories
-        .form-group
-          - if Accessory.all.empty?
-            %p No accessories to select.
-          - else
-            - Accessory.all.each do |accessory|
-              .checkbox
-                %label
-                  = hidden_field_tag "product[accessory_ids][]", ""
-                  = check_box_tag "product[accessory_ids][]", accessory.id, @product.accessory_ids.include?(accessory.id)
-                  = accessory.name
-      .col-md-4
-        %h4.widget-header Related products
-        .form-group
-          - if Product.all.empty?
-            %p No related products to select.
-          - else
-            - Product.all.each do |related_product|
-              - if related_product == @product
-                - next
-              .checkbox
-                %label
-                  = hidden_field_tag "product[related_ids][]", ""
-                  = check_box_tag "product[related_ids][]", related_product.id, @product.related_ids.include?(related_product.id)
-                  = related_product.name
+.widget-sub-heading
+  %h3 Accessories
+%fieldset.widget.widget-form
+  .row
+    .twelvecol
+      - if Accessory.all.empty?
+        %p No accessories to select.
+      - else
+        - Accessory.all.each do |accessory|
+          .checkbox
+            %label
+              = hidden_field_tag "product[accessory_ids][]", ""
+              = check_box_tag "product[accessory_ids][]", accessory.id, @product.accessory_ids.include?(accessory.id)
+              = accessory.name
+.widget-sub-heading
+  %h3 Related products
+%fieldset.widget.widget-form
+  .row
+    .twelvecol
+      - if Product.all.empty?
+        %p No related products to select.
+      - else
+        - Product.all.each do |related_product|
+          - if related_product == @product
+            - next
+          .checkbox
+            %label
+              = hidden_field_tag "product[related_ids][]", ""
+              = check_box_tag "product[related_ids][]", related_product.id, @product.related_ids.include?(related_product.id)
+              = related_product.name
