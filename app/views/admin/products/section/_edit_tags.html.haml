@@ -3,4 +3,4 @@
 %fieldset.widget.widget-form.tag-form.widget-last
   .row
     .twelvecol
-      %input#product_tags{"data-role" => "tagsinput", :value => @product.tags.map(&:name).join(",")}
+      = text_field_tag :taggings, @product.tags.map(&:name).join(","), 'data-role' => 'tagsinput'

@@ -1,6 +1,7 @@
 # Product Documentation
 #
-# The product table contains the global data for any given product. It has associations to attachments, tags and skus.
+# The product table contains the global data for any given product. 
+# It has associations to attachments, tags and skus.
 # More detailed information and different product variations are maintained within the Sku table.
 
 # == Schema Information

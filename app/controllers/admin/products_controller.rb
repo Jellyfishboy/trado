@@ -71,7 +71,7 @@ class Admin::ProductsController < ApplicationController
     #   @product = Product.new(params[:product])
     #   @old_product = Product.find(params[:id])
     # end
-
+    binding.pry
     respond_to do |format|
       if @product.update_attributes(params[:product])
         # if @old_product
