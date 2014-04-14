@@ -6,13 +6,14 @@
   .page-header
     %h2.widget.widget-header New country zone
   = form_for [:admin, :countries, @zone], :html => { :role => 'form' } do |f|
+    - if @zone.errors.any?
+      #errors
+        %ul
+          - @zone.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
     %fieldset.widget.widget-form.widget-last
-      - if @zone.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@zone.errors.count, "error")} prohibited this zone from being saved:"
-          %ul
-            - @zone.errors.full_messages.each do |msg|
-              %li= msg  
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'

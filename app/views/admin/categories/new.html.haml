@@ -6,13 +6,14 @@
   .page-header
     %h2.widget.widget-header New category
   = form_for [:admin, @category], :html => { :role => 'form' } do |f|
+    - if @category.errors.any?
+      #errors
+        %ul
+          - @category.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
     %fieldset.widget.widget-form.widget-last
-      - if @category.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-          %ul
-            - @category.errors.full_messages.each do |msg|
-              %li= msg  
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'

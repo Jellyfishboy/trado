@@ -6,13 +6,14 @@
   .page-header
     %h2.widget.widget-header New country tax rate
   = form_for [:admin, :countries, @tax_rate], :html => { :role => 'form' } do |f|
+    - if @tax_rate.errors.any?
+      #errors
+        %ul
+          - @tax_rate.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
     %fieldset.widget.widget-form.widget-last
-      - if @tax_rate.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@tax_rate.errors.count, "error")} prohibited this tax_rate from being saved:"
-          %ul
-            - @tax_rate.errors.full_messages.each do |msg|
-              %li= msg  
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'

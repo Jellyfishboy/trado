@@ -6,13 +6,14 @@
   .page-header
     %h2.widget.widget-header Edit accessory
   = form_for [:admin, @form_accessory], :html => { :role => 'form' } do |f|
+    - if @accessory && @accessory.errors.any?
+      #errors
+        %ul
+          - @accessory.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
     %fieldset.widget.widget-form.widget-last
-      - if @accessory && @accessory.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@accessory.errors.count, "error")} prohibited this accessory from being saved:"
-          %ul
-            - @accessory.errors.full_messages.each do |msg|
-              %li= msg  
       .form-group
         = f.label :part_number
         = f.text_field :part_number, :class => 'form-control'

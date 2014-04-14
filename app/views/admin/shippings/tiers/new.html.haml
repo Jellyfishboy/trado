@@ -6,13 +6,14 @@
   .page-header
     %h2.widget.widget-header New tier
   = form_for [:admin, :shippings, @tier], :html => { :role => 'form' } do |f|
+    - if @tier.errors.any?
+      #errors
+        %ul
+          - @tier.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg 
     %fieldset.widget.widget-form.widget-last
-      - if @tier.errors.any?
-        #error_explanation
-          %h2= "#{pluralize(@tier.errors.count, "error")} prohibited this tier from being saved:"
-          %ul
-            - @tier.errors.full_messages.each do |msg|
-              %li= msg  
       .form-group
         = f.label :length_start
         = f.text_field :length_start, :class => 'form-control'
