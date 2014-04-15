@@ -4,7 +4,7 @@
 
 .twelvecol
   .page-header
-    = link_to new_admin_countries_tax_rate_path, :class => "btn btn-blue " do
+    = link_to new_admin_countries_tax_rate_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add tax rate" do
       %i.icon-plus
     %h2.widget.widget-header Tax rates
   - if @tax_rates.empty?

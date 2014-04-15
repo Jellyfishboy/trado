@@ -13,7 +13,7 @@
             %li
               %i.icon-cancel-circle
               = msg  
-    %fieldset.widget.widget-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label :part_number
         = f.text_field :part_number, :class => 'form-control'
@@ -30,6 +30,6 @@
         = f.label :price
         = f.text_field :price, :class => 'form-control calculate_tax', :autocomplete => 'off'
     .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue'
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
 

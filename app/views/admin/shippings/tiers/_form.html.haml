@@ -9,7 +9,7 @@
             %li
               %i.icon-cancel-circle
               = msg 
-    %fieldset.widget.widget-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label :length_start
         = f.text_field :length_start, :class => 'form-control'
@@ -42,5 +42,5 @@
               = ' - '
               %b= format_currency shipping.price
     .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue'
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

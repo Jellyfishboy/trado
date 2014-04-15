@@ -14,7 +14,7 @@
             %li
               %i.icon-cancel-circle
               = msg  
-    %fieldset.widget.widget-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'
@@ -33,6 +33,6 @@
                 = check_box_tag "tax_rate[country_ids][]", country.id, @tax_rate.countries.map{|c| c.id}.include?(country.id), :class => 'ace-checkbox-2'
                 = country.name
     .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue'
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
 

@@ -12,7 +12,7 @@
             %li
               %i.icon-cancel-circle
               = msg  
-    %fieldset.widget.widget-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label 'Store name'
         = f.text_field :name, :class => 'form-control'
@@ -26,5 +26,5 @@
         = f.label 'Currency unit'
         = f.text_field :currency, :class => 'form-control'
     .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue'
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

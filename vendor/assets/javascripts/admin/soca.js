@@ -2,6 +2,7 @@
   var attachment_ui;
 
   $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
     $(".user-menu ul li:first-child a").hover((function() {
       return $(".user-menu .fa-caret-up").css('color', '#2f363d');
     }), function() {

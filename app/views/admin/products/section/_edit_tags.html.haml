@@ -1,6 +1,6 @@
 .widget-sub-heading
   %h3 Tags
-%fieldset.widget.widget-form.tag-form.widget-last
+%fieldset.widget.widget-content.tag-form.widget-last
   .row
     .twelvecol
       = text_field_tag :taggings, @product.tags.map(&:name).join(","), 'data-role' => 'tagsinput'

@@ -4,7 +4,7 @@
 
 .twelvecol
   .page-header
-    = link_to new_admin_shippings_tier_path, :class => "btn btn-blue " do
+    = link_to new_admin_shippings_tier_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add tier" do
       %i.icon-plus
     %h2.widget.widget-header Tiers
   - if @tiers.empty?

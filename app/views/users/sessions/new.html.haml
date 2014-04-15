@@ -3,7 +3,7 @@
   .page-header
     %h2.widget.widget-header Administration login
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form' }) do |f|
-    %fieldset.widget.widget-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label :email
         = f.email_field :email, :autofocus => true, :class => "form-control"

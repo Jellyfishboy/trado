@@ -9,7 +9,7 @@
   .fourcol
     .widget-sub-heading
       %h3 Shipping details
-    .widget.widget-form
+    .widget.widget-content
       %ul
         %li
           %i.icon-envelop
@@ -39,7 +39,7 @@
   .fourcol
     .widget-sub-heading
       %h3 Billing address
-    .widget.widget-form
+    .widget.widget-content
       = @order.bill_address.full_name
       %br/
       = @order.bill_address.address
@@ -55,7 +55,7 @@
   .fourcol.last
     .widget-sub-heading
       %h3 Shipping address
-    .widget.widget-form
+    .widget.widget-content
       = @order.ship_address.full_name
       %br/
       = @order.ship_address.address

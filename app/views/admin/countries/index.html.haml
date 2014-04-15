@@ -3,11 +3,11 @@
 
 .twelvecol
   .page-header
-    = link_to new_admin_country_path, :class => "btn btn-blue " do
+    = link_to new_admin_country_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add country" do
       %i.icon-plus
-    = link_to admin_countries_zones_path, :class => "btn btn-blue " do
+    = link_to admin_countries_zones_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Zones" do
       %i.icon-location
-    = link_to admin_countries_tax_rates_path, :class => "btn btn-blue " do
+    = link_to admin_countries_tax_rates_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Tax rates" do
       %i.icon-coin
     %h2.widget.widget-header Countries
   - if @countries.empty?

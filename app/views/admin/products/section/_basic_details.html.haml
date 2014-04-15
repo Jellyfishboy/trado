@@ -1,6 +1,6 @@
 .widget-sub-heading
   %h3 Product information
-%fieldset.widget.widget-form
+%fieldset.widget.widget-content
   .row
     .twelvecol
       = f.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id ] } ), :prompt => "Please select category..."
@@ -37,7 +37,7 @@
         = f.text_area :description, :rows => 8, :class => 'form-control'
 .widget-sub-heading
   %h3 Product options
-%fieldset.widget.widget-form
+%fieldset.widget.widget-content
   .row
     .twelvecol
       .checkbox

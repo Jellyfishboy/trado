@@ -1,6 +1,6 @@
 .widget-sub-heading
   %h3 Accessories
-%fieldset.widget.widget-form
+%fieldset.widget.widget-content
   .row
     .twelvecol
       - if Accessory.all.empty?
@@ -14,7 +14,7 @@
               = accessory.name
 .widget-sub-heading
   %h3 Related products
-%fieldset.widget.widget-form
+%fieldset.widget.widget-content
   .row
     .twelvecol
       - if Product.all.empty?
