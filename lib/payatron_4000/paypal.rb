@@ -55,7 +55,7 @@ module Payatron4000
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => self.id, 
                                 :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
-                                :payment_type => response.params['PaymentInfo']['PaymentType'], 
+                                :payment_type => 'Credit', 
                                 :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
                                 :transaction_id => response.params['PaymentInfo']['TransactionID'], 
                                 :transaction_type => response.params['PaymentInfo']['TransactionType'],
