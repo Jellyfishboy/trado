@@ -41,8 +41,9 @@ class Admin::ProductsController < ApplicationController
           format.html { redirect_to [@product.category, @product], notice: 'Product was successfully created.' }
           format.json { render json: @product, status: :created, location: @product }
         else
-          format.html { render action: "new" }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+          # format.html { render action: "new" }
+          # format.json { render json: @product.errors, status: :unprocessable_entity }
+          format.json { render :json => { :errors => @product.errors.to_json(root: true)}, :status => 422 }
         end
       else
         flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
@@ -83,12 +84,13 @@ class Admin::ProductsController < ApplicationController
         #   end
         #   @old_product.skus.includes(:order_items).where(:order_items => { :sku_id => nil } ).destroy_all
         # end
-        format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+        # format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
+        # format.json { head :no_content }
       else
         # @old_product.activate! if @old_product
-        format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        # format.html { render action: "edit" }
+        # format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render :json => { :errors => @product.errors.to_json(root: true)}, :status => 422 }
       end
     end
   end

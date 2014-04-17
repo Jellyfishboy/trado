@@ -38,13 +38,14 @@ form_JSON_errors = ->
   $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
       errors = $.parseJSON(xhr.responseJSON.errors)
       $.each errors, (key, value) ->
-          $element = $("input[name*='" + key + "']")
-          $error_target = '.error_explanation'
-          if $element.parent().next().is $error_target
-              $($error_target).html '<span>' + key + '</span> ' + value
-          else 
-              $element.wrap '<div class="field_with_errors"></div>'
-              $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
+          $('#errors').show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + key + ' ' + value + '</li>'
+          # $element = $("input[name*='" + key + "']")
+          # $error_target = '.error_explanation'
+          # if $element.parent().next().is $error_target
+          #     $($error_target).html '<span>' + key + '</span> ' + value
+          # else 
+          #     $element.wrap '<div class="field_with_errors"></div>'
+          #     $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
   
 
 $(document).ready ->
@@ -71,6 +72,7 @@ $(document).ready ->
 
 
 $(document).ajaxComplete ->
-  $("[data-behaviour~=datepicker]").datepicker
-    format: "dd/mm/yyyy"
-    startDate: "0"
+  form_JSON_errors()
+  # $("[data-behaviour~=datepicker]").datepicker
+  #   format: "dd/mm/yyyy"
+  #   startDate: "0"
