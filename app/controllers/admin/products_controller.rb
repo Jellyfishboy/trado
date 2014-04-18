@@ -38,11 +38,15 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       if Tier.all.count > 0 && AttributeType.all.count > 0
         if @product.save
-          format.html { redirect_to [@product.category, @product], notice: 'Product was successfully created.' }
-          format.json { render json: @product, status: :created, location: @product }
+
+          # format.html { redirect_to [@product.category, @product], notice: 'Product was successfully created.' }
+          # format.json { render json: @product, status: :created, location: @product }
+          # format.js { render :js => "window.location.replace('#{admin_products_url}');"}
         else
-          format.html { render action: "new" }
-          format.json { render json: @product.errors, status: :unprocessable_entity }
+          # format.html { render action: "new" }
+          # format.json { render json: @product.errors, status: :unprocessable_entity }
+
+          format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 }  
         end
       else
         flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
