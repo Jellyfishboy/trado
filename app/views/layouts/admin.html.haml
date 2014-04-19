@@ -84,7 +84,7 @@
         .container
           .row
             - if flash[:notice] or flash[:error] or flash[:success]
-              %div.alert{:class => (if flash[:success] then "alert-success" elsif flash[:notice] then "alert-info" elsif flash[:error] then "alert-danger" end) }
+              %div.alert{:class => (if flash[:success] then "alert-success" elsif flash[:notice] then "alert-info" elsif flash[:error] then "alert-warning" end) }
                 = if flash[:success] then "<i class='icon-checkmark-circle'></i>".html_safe elsif flash[:notice] then "<i class='icon-info-2'></i>".html_safe elsif flash[:error] then "<i class='icon-spam'></i>".html_safe end
                 = raw flash[:error]
                 = raw flash[:notice]

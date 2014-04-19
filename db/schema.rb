@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140414220144) do
+ActiveRecord::Schema.define(:version => 20140419021124) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -267,6 +267,14 @@ ActiveRecord::Schema.define(:version => 20140414220144) do
     t.string   "attribute_value"
     t.integer  "attribute_type_id"
     t.boolean  "active",                                            :default => true
+  end
+
+  create_table "stock_levels", :force => true do |t|
+    t.string   "description"
+    t.integer  "adjustment",  :default => 0
+    t.integer  "sku_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "store_settings", :force => true do |t|

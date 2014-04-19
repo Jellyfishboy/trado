@@ -4,13 +4,13 @@ describe Sku do
 
     # ActiveRecord relations
     it { expect(subject).to belong_to(:product) }
-    it { expect(subject).to belong_to(:accessory) }
     it { expect(subject).to belong_to(:attribute_type) }
     it { expect(subject).to have_many(:cart_items) }
     it { expect(subject).to have_many(:carts).through(:cart_items) }
     it { expect(subject).to have_many(:order_items).dependent(:restrict) }
     it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict) }
     it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
+    it { expect(subject).to have_many(:stock_levels) }
 
     # Validation
     it { expect(subject).to validate_presence_of(:price) }
@@ -31,8 +31,8 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock).only_integer } 
     it { expect(subject).to validate_numericality_of(:stock_warning_level).only_integer } 
 
-    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to(:active) }
-    it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to(:active) }
+    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
+    it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
 
     describe "When a used SKU is updated or deleted" do
         let(:sku) { create(:sku, active: true) }

@@ -45,7 +45,7 @@ class Sku < ActiveRecord::Base
   has_many :order_items,                            :dependent => :restrict
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
-
+  has_many :stock_levels,                           :dependent => :delete_all
 
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level

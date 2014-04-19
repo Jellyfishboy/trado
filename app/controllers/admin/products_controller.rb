@@ -17,11 +17,13 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    unless Tier.all.count > 0
-      flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
-    end
     respond_to do |format|
-      format.html # new.html.erb
+      unless Tier.all.count > 0 || AttributeType.all.count > 0
+        format.html { redirect_to admin_products_url }
+        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
+      else
+        format.html
+      end
       format.json { render json: @product }
     end
   end
