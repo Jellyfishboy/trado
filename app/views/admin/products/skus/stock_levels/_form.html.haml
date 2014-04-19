@@ -1,0 +1,35 @@
+#stock-level-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "stockLevelModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      = form_for [:admin, :products, :skus, @stock_level], :html => { :role => 'form' }, :remote => true do |f|
+        = f.hidden_field :sku_id, :value => @sku.id
+        #errors.json
+          %ul
+        .modal-header
+          %h3#stockLevelModalLabel
+            Stock levels for 
+            = "#{@sku.product.sku}-#{@sku.sku}" 
+        .modal-body
+          %p
+            Stock level total is
+            %b= @sku.stock
+          .table-responsive
+            %table.table.table-striped.table-bordered.table-hover
+              %thead
+                %tr
+                  %th Date
+                  %th.fifty Description
+                  %th Adjustment
+              %tbody
+                %tr
+                  %td
+                    = f.submit 'Add', :class => 'btn btn-blue btn-normal'
+                  %td
+                    = f.text_field :description, :class => 'form-control'
+                  %td
+                    = f.text_field :adjustment, :class => 'form-control'
+                - @sku.stock_levels.where('description IS NOT NULL').each do |stock|
+                  %tr
+                    %td= stock.created_at.strftime('%d/%m/%Y at %I:%M%p')
+                    %td.fifty= stock.description
+                    %td.align-left= stock.adjustment

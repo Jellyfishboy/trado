@@ -1,9 +1,21 @@
 %td
-  = link_to edit do
-    %i.icon-pencil
+  / Update stock level
+  - if type == 1
+    %a.update_stock_level{href: "#", id: object.id}
+      %i.icon-plus
+  - unless type == 1
+    / Edit record
+    = link_to edit do
+      %i.icon-pencil
+  - else
+    / Edit SKU
+    %a{href: "#", id: object.id}
+      %i.icon-pencil
+  / Update order shipping date
   - if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed"
     %a{href: "#", id: object.id}
       %i.icon-airplane
+  / Delete record
   - unless type == 2
     = link_to del, :method => :delete, :confirm => 'Are you sure?' do
       %i.icon-remove

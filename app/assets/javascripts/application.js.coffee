@@ -36,7 +36,7 @@ $(document).ready ->
 
     $('.update_shipping #address_country').change ->
         unless @value is ""
-        	$.ajax '/update_country',
+        	$.ajax '/order/shippings/update',
         		type: 'GET'
         		data: {'country_id' : @value, 'tier_id' : $('.shipping-methods').attr 'data-tier' }
         		dataType: 'html'
@@ -92,13 +92,13 @@ update_sku = ->
     $('#cart_item_sku_id').change ->
         sku_id = $(@).val()
         accessory_id = $('#cart_item_cart_item_accessory_accessory_id').val()
-        $.get '/update_sku?sku_id=' + sku_id + '&accessory_id=' + accessory_id
+        $.get '/product/skus/update?sku_id=' + sku_id + '&accessory_id=' + accessory_id
 
 update_accessory = ->
     $('#cart_item_cart_item_accessory_accessory_id').change ->
         accessory_id = $(@).val()
         sku_id = $('#cart_item_sku_id').val()
-        $.get '/update_accessory?accessory_id=' + accessory_id + '&sku_id=' + sku_id
+        $.get '/product/accessories/update?accessory_id=' + accessory_id + '&sku_id=' + sku_id
 
 use_billing_address = ->
     $('.use_billing_address').change ->

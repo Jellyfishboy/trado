@@ -16,9 +16,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update_country
+  def update
     @tier = Tier.find(params[:tier_id])
     @new_shippings = @tier.shippings.joins(:countries).where('countries.name = ?', params[:country_id]).all
-    render :partial => "orders/update_country", :object => @new_shippings
+    render :partial => "orders/shippings/update", :object => @new_shippings
   end
+  
 end

@@ -29,7 +29,7 @@ class Product < ActiveRecord::Base
   :short_description, :related_ids, :single
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting,                             :presence => true
+  :part_number, :sku, :weighting, :category_id,               :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
   validates :description,                                     :length => {:minimum => 20, :message => :too_short }

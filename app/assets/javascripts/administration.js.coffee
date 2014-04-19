@@ -39,10 +39,11 @@ calculate_tax = ->
 form_JSON_errors = ->
   $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
       array = $.parseJSON(xhr.responseText)
-      $('#errors ul').empty()
+      content = $(@).children('#errors')
+      content.find('ul').empty()
       for value in array.errors
-          $('#errors').show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + value + '</li>'
-      $('body').scrollTo '.page-header', 800
+          content.show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + value + '</li>'
+      $('body').scrollTo('.page-header', 800) unless $(@).parent().hasClass 'modal-content'
       $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px')
       $('.new-file').children('div').empty()
       
@@ -58,9 +59,9 @@ $(document).ready ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
 
-  $('.update_stock').click ->
+  $('body').on 'click', '.update_stock_level', ->
     sku = $(@).attr 'id'
-    $.get '/admin/products/skus?sku_id=' + sku
+    $.get '/admin/products/skus/stock_levels/new?sku_id=' + sku
 
   # Copy SKU Prefix
   # if $("#product_sku").is ':visible'

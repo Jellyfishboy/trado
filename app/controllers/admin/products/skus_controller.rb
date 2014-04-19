@@ -1,19 +1,12 @@
 class Admin::Products::SkusController < ApplicationController
   layout 'admin'
-  
-  def index
-    @skus = Sku.active.all
 
-    respond_to do |format|
-      format.js { render :partial => 'admin/products/skus/update_sku', :format => [:js] }
-      format.html
-    end
-  end
-
-  def edit
-    @form_sku = Sku.find(params[:id])
-  end
-
+  # Update stock level
+  #
+  # Modal trigger for displaying a form to add a stock level adjustment 
+  # def update_stock_level 
+    
+  # end
 
   # Updating a SKU
   #

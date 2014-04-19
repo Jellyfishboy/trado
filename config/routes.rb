@@ -8,9 +8,10 @@ Trado::Application.routes.draw do
   get '/about' => 'store#about'
   get '/contact' => 'store#contact'
 
-  get '/update_country' => 'orders#update_country'
-  get '/update_sku' => 'products#update_sku'
-  get '/update_accessory' => 'products#update_accessory'
+  # Store
+  get '/order/shippings/update' => 'orders#update'
+  get '/product/accessories/update' => 'products#update_accessory'
+  get '/product/skus/update' => 'products#update_sku'
   get '/search' => 'search#results'
   get '/search/autocomplete' => 'search#autocomplete'
 
@@ -57,6 +58,7 @@ Trado::Application.routes.draw do
         resources :skus, :only =>  [:index,:destroy, :edit, :update]
         namespace :skus do
           resources :attribute_types, :except => :show
+          resources :stock_levels, :only => [:create, :new]
         end
       end
       namespace :shippings do

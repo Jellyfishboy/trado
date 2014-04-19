@@ -17,11 +17,11 @@ class ProductsController < ApplicationController
   end
 
   def update_sku
-    render :partial => 'products/update_sku', :format => [:js], :locals => { :sku_id => params[:sku_id], :accessory_id => params[:accessory_id] } 
+    render :partial => 'products/skus/update', :format => [:js], :locals => { :sku_id => params[:sku_id], :accessory_id => params[:accessory_id] } 
   end
 
   def update_accessory
-    render :partial => 'products/update_accessory', :format => [:js], :locals => { :accessory_id => params[:accessory_id], :sku_id => params[:sku_id] }
+    render :partial => 'products/accessories/update', :format => [:js], :locals => { :accessory_id => params[:accessory_id], :sku_id => params[:sku_id] }
   end
 
 end

@@ -5,13 +5,9 @@
 .twelvecol
   .page-header
     %h2.widget.widget-header New product
-  = form_for [:admin, @product], :html => { :class => 'new_product', :role => 'form' }, :remote => true do |f|
+  = form_for [:admin, @product], :html => { :role => 'form' }, :remote => true do |f|
     #errors.json
       %ul
-        - @product.errors.full_messages.each do |msg|
-          %li
-            %i.icon-cancel-circle
-            = msg  
     
     = render 'admin/products/section/basic_details', :f => f
 

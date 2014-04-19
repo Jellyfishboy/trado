@@ -38,5 +38,12 @@ module Store
         def reset_tax_rate
           @@current_country = nil
         end
+
+        # Detects whether an integer is positive
+        #
+        # @return [boolean]
+        def positive? number
+          return true if number > 0 else false
+        end
     end
 end

@@ -1,4 +1,0 @@
-<% @shipping = Shipping.find(params[:shipping_id]) 
-   @total = @shipping.price + params[:order_total].to_f %>
-$('#shipping_value').html('<%= format_currency @shipping.price %>');
-$('#order_total').html('<%= format_currency @total %>');

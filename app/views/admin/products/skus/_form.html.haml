@@ -1,0 +1,37 @@
+#stock-level-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h3#stockLevelModalLabel
+          Edit SKU
+          = "#{@form_sku.product.sku}-#{@form_sku.sku}" 
+      = form_for [:admin, :products, @form_sku], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+        .modal-body
+          %fieldset.widget.widget-content.widget-last
+            .form-group
+              = f.label :length
+              = f.text_field :length, :class => 'form-control'
+            .form-group
+              = f.label :weight
+              = f.text_field :weight, :class => 'form-control'
+            .form-group
+              = f.label :thickness
+              = f.text_field :thickness, :class => 'form-control'
+            .form-group
+              = f.label :attribute_value
+              = f.text_field :attribute_value, :class => 'form-control'
+            .form-group
+              = f.label :attribute_type_id
+              = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { :include_blank => 'Select...'}, { :class => 'form-control' })
+            .form-group
+              = f.label :stock_warning_level
+              = f.text_field :stock_warning_level, :class => 'form-control'
+            .form-group
+              = f.label :cost_value
+              = f.text_field :cost_value, :class => 'form-control'
+            .form-group.form-last
+              = f.label :price
+              = f.text_field :price, :class => 'form-control'
+        .modal-footer
+          %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
+          = f.submit 'Submit', :class => 'btn btn-blue btn-large'

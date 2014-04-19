@@ -20,7 +20,10 @@ class StockLevel < ActiveRecord::Base
 
   validates :description, :adjustment,                      :presence => true
   validates :description,                                   :length => { :minimum => 5, :message => :too_short }
+  validate                                                  { errors.add(:adjustment, "must be greater or less than zero") if adjustment == 0 }
 
   belongs_to :sku
+
+  default_scope order('created_at DESC')
 
 end
