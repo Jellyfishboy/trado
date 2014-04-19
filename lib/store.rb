@@ -1,3 +1,5 @@
+require 'store/tags'
+
 module Store
 
     class << self
@@ -36,6 +38,5 @@ module Store
         def reset_tax_rate
           @@current_country = nil
         end
-
     end
 end

@@ -5,6 +5,7 @@
 #= require admin/bootstrap.min
 #= require jquery.scrollTo/jquery.scrollTo.min
 #= require redactor-rails
+#= require jquery.remotipart
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -37,13 +38,14 @@ calculate_tax = ->
 
 form_JSON_errors = ->
   $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
-      errors = xhr.responseJSON.errors
+      array = $.parseJSON(xhr.responseText)
       $('#errors ul').empty()
-
-      for value in errors
+      for value in array.errors
           $('#errors').show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + value + '</li>'
       $('body').scrollTo '.page-header', 800
-
+      $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px')
+      $('.new-file').children('div').empty()
+      
 $(document).ready ->
   calculate_tax()
   form_JSON_errors()

@@ -3,4 +3,4 @@
 %fieldset.widget.widget-content.tag-form.widget-last
   .row
     .twelvecol
-      %input#product_tags{"data-role" => "tagsinput"}/
+      = text_field_tag :taggings, params[:taggings], 'data-role' => 'tagsinput'

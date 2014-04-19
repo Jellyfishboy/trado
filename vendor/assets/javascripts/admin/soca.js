@@ -34,11 +34,9 @@
       parent = $(this).prev('.new-file');
       parent.children('div').text(clean);
       if (clean) {
-        parent.css('background-color', '#8DC73F');
-        return parent.children('.icon-upload-3').css('top', '20px');
+        return parent.css('background-color', '#8DC73F').children('.icon-upload-3').css('top', '20px');
       } else {
-        parent.css('background-color', '#00aff1');
-        return parent.children('.icon-upload-3').css('top', '41px');
+        return parent.css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px');
       }
     });
   };
