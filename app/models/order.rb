@@ -42,6 +42,9 @@ class Order < ActiveRecord::Base
 
   after_update :delayed_shipping, :ship_order_today,                    :if => :shipping_date_nil?
 
+  # Upon completing an order, transfer the cart item data to new order item records 
+  #
+  # @return [nil]
   def add_cart_items_from_cart(cart)
   	cart.cart_items.each do |item|
       @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
@@ -50,6 +53,9 @@ class Order < ActiveRecord::Base
   	end
   end
 
+  # Set the session variables for an order - sub total, tax and total
+  #
+  # @return [session]
   # FIXME: Looks really ugly and clumsy. Fix when internationalized tax is introduced.
   def calculate_order(cart, session, current_tax_rate)
     session[:sub_total] = session[:tax] = session[:total] = nil
@@ -58,8 +64,9 @@ class Order < ActiveRecord::Base
     session[:total] = session[:sub_total]+session[:tax]+self.shipping.price
   end
 
-  # Shipping methods
-
+  # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order
+  #
+  # @return [object]
   def calculate_shipping_tier(cart)
       max_length = cart.skus.map(&:length).max
       max_thickness = cart.skus.map(&:thickness).max
@@ -72,13 +79,18 @@ class Order < ActiveRecord::Base
       return tier_raffle.max.first
   end
 
+  # If you set the shipping date for an order more than once, send a delayed shipping email
+  #
+  # @return [array]
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
       Notifier.shipping_delayed(self).deliver
-      binding.pry
     end
   end
 
+  # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email
+  #
+  # @return [nil]
   def ship_order_today
     if self.shipping_date.to_date == Date.today
       self.update_column(:shipping_status, "Dispatched")
@@ -86,24 +98,37 @@ class Order < ActiveRecord::Base
     end
   end
 
+  # Determines whether the shipping date of the current order is nil
+  #
+  # @return [boolean]
   def shipping_date_nil?
     return true unless self.shipping_date.nil?
   end
 
-  # Multi form methods
-
+  # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job
+  #
+  # @return [boolean]
   def active?
     status == 'active'
   end
 
+  # Detects if the current status of the order is 'billing'. See wicked gem for more info
+  #
+  # @return [boolean]
   def active_or_billing?
     status == 'billing' ? true : active?
   end
 
+  # Detects if the current status of the order is 'shipping'. See wicked gem for more info
+  #
+  # @return [boolean]
   def active_or_shipping?
     status == 'shipping' ? true : active?
   end
 
+  # Detects if the current status of the order is 'payment'. See wicked gem for more info
+  #
+  # @return [boolean]
   def active_or_payment?
     status == 'payment' ? true : active?
   end

@@ -18,6 +18,9 @@ class Cart < ActiveRecord::Base
   
   has_many :skus,                               :through => :cart_items
 
+  # Adds a new cart item or increases the quantity and weight of a cart item - including any assocated accessories
+  #
+  # @return [object]
   def add_cart_item sku, item_quantity, accessory
     accessory_current_item = cart_items.where('sku_id = ?',sku.id).includes(:cart_item_accessory).where('cart_item_accessories.accessory_id = ?', accessory.id).first unless accessory.blank?
     # binding.pry
@@ -41,6 +44,9 @@ class Cart < ActiveRecord::Base
   	current_item #return new item either by quantity or new cart item
   end
 
+  # Decreases the quantity and weight of a cart item, including any associated accessories
+  #
+  # @return [object]
   def decrement_cart_item_quantity cart_item_id
     current_item = cart_items.find(cart_item_id)
     if current_item.quantity > 1
@@ -52,12 +58,18 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  # Calculates the total price of a cart
+  #
+  # @return [decimal]
   def total_price 
   	cart_items.to_a.sum { |item| item.total_price }
   end
   
   private
 
+  # Deletes redundant carts which are more than 12 hours old
+  #
+  # @return [nil]
   def self.clear_carts
     where("updated_at < ?", 12.hours.ago).destroy_all
   end

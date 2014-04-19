@@ -31,7 +31,9 @@ class Address < ActiveRecord::Base
 
   validates :first_name, :last_name, :address, :city, :postcode, :country,               :presence => true
 
-
+  # Combines the first and last name of an address
+  #
+  # @return [string]
   def full_name
     [first_name, last_name].join(' ')
   end

@@ -26,15 +26,24 @@ class CartItem < ActiveRecord::Base
 
   accepts_nested_attributes_for :cart_item_accessory
 
+  # Calculates the total price of a cart item by multipling the item price by it's quantity
+  #
+  # @return [decimal]
   def total_price 
   	price * quantity
   end
 
+  # Updates the quantity of a cart item, taking into account associated accessories
+  #
+  # @return [object]
   def update_quantity quantity, accessory
     self.quantity = quantity
     self.cart_item_accessory.quantity = quantity unless accessory.blank?
   end
 
+  # Updates the weight of a cart item, taking into account associated accessories
+  #
+  # @return [object]
   def update_weight quantity, weight, accessory
     weight = accessory.nil? ? weight : (weight + accessory.weight)
     self.weight = (weight*quantity.to_i)

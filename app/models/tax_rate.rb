@@ -26,6 +26,9 @@ class TaxRate < ActiveRecord::Base
 
   after_save :reset_tax
   
+  # Resets the tax rate Store library method after saving a tax rate record as the tax rate is stored as a global variable
+  #
+  # @return [nil]
   def reset_tax
     Store::reset_tax_rate
   end

@@ -47,6 +47,9 @@ class Sku < ActiveRecord::Base
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
   has_many :stock_levels,                           :dependent => :delete_all
 
+  # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
+  #
+  # @return [boolean]
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
@@ -54,14 +57,23 @@ class Sku < ActiveRecord::Base
     end
   end
 
+  # Sets the related record's active field as false
+  #
+  # @return [object]
   def inactivate!
     self.update_column(:active, false)
   end
 
+  # Sets the related record's active field as true
+  #
+  # @return [object]
   def activate!
     self.update_column(:active, true)
   end
 
+  # Grabs an array of records which have their active field set to true
+  #
+  # @return [array]
   def self.active
     where(['skus.active = ?', true])
   end
