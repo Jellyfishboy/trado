@@ -21,17 +21,11 @@
       %tbody
         - @products.each do |product|
           %tr
-            %td
-              = product.sku
-            %td
-              = product.part_number
-            %td{width: "85"}
-              = image_tag product.attachments.first.file.medium, :height => "75", :width => "75"
-            %td
-              = product.name
-            %td
-              = format_currency product.skus.first.price
-            %td
-              = gross_price product.skus.first.price
+            %td= product.sku
+            %td= product.part_number
+            %td{width: "85"}= image_tag product.attachments.first.file.medium, :height => "75", :width => "75"
+            %td= link_to product.name, [product.category, product]
+            %td= format_currency product.skus.first.price
+            %td= gross_price product.skus.first.price
             = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
             
