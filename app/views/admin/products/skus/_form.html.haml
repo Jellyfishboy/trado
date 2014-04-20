@@ -1,11 +1,13 @@
-#stock-level-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
+#sku-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      .modal-header
-        %h3#stockLevelModalLabel
-          Edit SKU
-          = "#{@form_sku.product.sku}-#{@form_sku.sku}" 
       = form_for [:admin, :products, @form_sku], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+        #errors.json
+          %ul
+        .modal-header
+          %h3#skulModalLabel
+            Edit SKU
+            = "#{@form_sku.product.sku}-#{@form_sku.sku}"
         .modal-body
           %fieldset.widget.widget-content.widget-last
             .form-group

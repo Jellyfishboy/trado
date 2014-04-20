@@ -1,7 +1,7 @@
 %td
   / Update stock level
   - if type == 1
-    %a.update_stock_level{href: "#", id: object.id}
+    %a.new_stock_levels{href: "#", id: object.id}
       %i.icon-plus
   - unless type == 1
     / Edit record
@@ -9,7 +9,7 @@
       %i.icon-pencil
   - else
     / Edit SKU
-    %a{href: "#", id: object.id}
+    %a.edit_sku_attributes{href: "#", id: object.id}
       %i.icon-pencil
   / Update order shipping date
   - if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed"

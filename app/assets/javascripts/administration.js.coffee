@@ -56,9 +56,13 @@ $(document).ready ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
 
-  $('body').on 'click', '.update_stock_level', ->
+  $('body').on 'click', '.new_stock_levels', ->
     sku = $(@).attr 'id'
     $.get '/admin/products/skus/stock_levels/new?sku_id=' + sku
+
+  $('body').on 'click', '.edit_sku_attributes', ->
+    sku = $(@).attr 'id'
+    $.get '/admin/products/skus/' + sku + '/edit'
 
   # Copy SKU Prefix
   # if $("#product_sku").is ':visible'

@@ -31,12 +31,13 @@ class Sku < ActiveRecord::Base
   
   validates :price, :cost_value, :length, 
   :weight, :thickness, :attribute_value, 
-  :attribute_type_id, :sku,                         :presence => true
+  :attribute_type_id,                               :presence => true
   validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
   validate :check_stock_values,                     :on => :create
-  validates :sku, :attribute_value,                 :uniqueness => { :scope => [:product_id, :active] }
+  validates :attribute_value,                       :uniqueness => { :scope => [:product_id, :active] }
+  validates :sku,                                   :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :should_validate_sku?
 
   belongs_to :product
   belongs_to :attribute_type
@@ -78,5 +79,11 @@ class Sku < ActiveRecord::Base
     where(['skus.active = ?', true])
   end
 
+  # Validate wether the current record is new
+  #
+  # @return [boolean]
+  def should_validate_sku?
+    return true if self.new_record?
+  end
 
 end

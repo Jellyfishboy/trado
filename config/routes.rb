@@ -44,6 +44,7 @@ Trado::Application.routes.draw do
   resources :cart_item_accessories, :only => [:update, :destroy]
   resources :notifications, :only => :create
   resources :addresses, :only => [:new, :create, :update]
+  resources :skus, :only => :edit
 
   
 
@@ -56,7 +57,7 @@ Trado::Application.routes.draw do
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :tags, :only => :destroy
-        resources :skus, :only =>  [:index,:destroy, :edit, :update]
+        resources :skus, :only =>  [:index, :destroy, :edit, :update]
         namespace :skus do
           resources :attribute_types, :except => :show
           resources :stock_levels, :only => [:create, :new]

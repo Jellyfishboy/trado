@@ -2,7 +2,8 @@ class Admin::Products::SkusController < ApplicationController
   layout 'admin'
 
   def edit
-    
+    @form_sku = Sku.find(params[:id])
+    render :partial => '/admin/products/skus/edit', :format => [:js]
   end
 
   # Updating a SKU
@@ -24,19 +25,16 @@ class Admin::Products::SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
-
         if @old_sku
           @old_sku.inactivate!
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all
         end
-        format.html { redirect_to admin_products_skus_url, notice: 'SKU was successfully updated.' }
-        format.json { head :no_content }
+        format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
       else
         @form_sku = Sku.find(params[:id])
         @form_sku.activate!
         @form_sku.attributes = params[:sku]
-        format.html { render action: "edit" }
-        format.json { render json: @sku.errors, status: :unprocessable_entity }
+        format.json { render :json => { :errors => @sku.errors.full_messages}, :status => 422 }
       end
     end
   end
