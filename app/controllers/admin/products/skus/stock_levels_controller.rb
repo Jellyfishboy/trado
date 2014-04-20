@@ -4,9 +4,7 @@ class Admin::Products::Skus::StockLevelsController < ApplicationController
   #
   # Modal trigger for displaying a form to add a stock level adjustment 
   def new 
-    @sku = Sku.find(params[:sku_id])
-    @stock_level = StockLevel.new
-    render :partial => 'admin/products/skus/stock_levels/new', :format => [:js]
+    render :partial => 'admin/products/skus/stock_levels/new', :format => [:js], :locals => { :sku_id => params[:sku_id] }
   end
 
   def create
@@ -18,7 +16,7 @@ class Admin::Products::Skus::StockLevelsController < ApplicationController
         else
           @stock_level.sku.update_column(:stock, @stock_level.sku.stock - @stock_level.adjustment.abs)
         end
-        format.js { render :partial => 'admin/products/skus/stock_levels/new', :format => [:js] }
+        format.js { render :partial => 'admin/products/skus/stock_levels/new', :format => [:js], :locals => { :sku_id => @stock_level.sku.id} }
       else
         format.json { render :json => { :errors => @stock_level.errors.full_messages}, :status => 422 }
       end

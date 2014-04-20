@@ -1,2 +1,6 @@
+<% @sku = Sku.find(sku_id)
+    @stock_level = StockLevel.new %>
 $('#stock-level-modal').html('<%=j render :partial => "admin/products/skus/stock_levels/form" %>');
-$('#stock-level-form').modal('show');
+if (!$('#stock-level-form').is(':visible')) {
+    $('#stock-level-form').modal('show');
+}

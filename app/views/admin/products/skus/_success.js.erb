@@ -1,3 +1,6 @@
 $('#sku-form').modal('hide');
-$('.sku-heading').before('<div class="alert alert-success alert-no-margin"><i class="icon-checkmark-circle"></i>Successfully updated the SKU.</div>');
+$('.sku-heading').before('<div class="alert alert-success alert-no-margin animated fadeInDown sku-alert"><i class="icon-checkmark-circle"></i>Successfully updated the SKU.</div>').delay(3500).queue(function(next){
+        $('.sku-alert').addClass('fadeOutUp').delay(800).hide(1);
+        next();
+    });
 $('body').scrollTo('.sku-heading', 800);
