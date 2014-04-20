@@ -15,13 +15,5 @@ class ProductsController < ApplicationController
       format.json { render json: @product }
     end
   end
-
-  def update_sku
-    render :partial => 'products/skus/update', :format => [:js], :locals => { :sku_id => params[:sku_id], :accessory_id => params[:accessory_id] } 
-  end
-
-  def update_accessory
-    render :partial => 'products/accessories/update', :format => [:js], :locals => { :accessory_id => params[:accessory_id], :sku_id => params[:sku_id] }
-  end
-
+  
 end

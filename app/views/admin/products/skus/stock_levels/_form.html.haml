@@ -14,7 +14,7 @@
             Stock level total is
             %b= @sku.stock
           .table-responsive
-            %table.table.table-striped.table-bordered.table-hover
+            %table.table.table-bordered
               %thead
                 %tr
                   %th Date
@@ -29,7 +29,7 @@
                   %td
                     = f.text_field :adjustment, :class => 'form-control'
                 - @sku.stock_levels.where('description IS NOT NULL').each do |stock|
-                  %tr
+                  %tr{ :class => coloured_row(stock.adjustment) }
                     %td= stock.created_at.strftime('%d/%m/%Y at %I:%M%p')
                     %td.fifty= stock.description
                     %td.align-left= stock.adjustment

@@ -1,11 +1,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require admin/soca
-#= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min 
 #= require admin/bootstrap.min
 #= require jquery.scrollTo/jquery.scrollTo.min
-#= require redactor-rails
-#= require jquery.remotipart
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -68,9 +65,3 @@ $(document).ready ->
   #   window.setInterval (->
   #     $(".sku_prefix").text $("#product_sku").val() + '-'
   #   ), 100
-
-
-# $(document).ajaxComplete ->
-  # $("[data-behaviour~=datepicker]").datepicker
-  #   format: "dd/mm/yyyy"
-  #   startDate: "0"

@@ -1,15 +1,12 @@
 #= require jquery
 #= require jquery_ujs
-#= require underscore/underscore-min
 #= require bootstrap.min
 #= require jquery.carouFredSel-6.2.1-packed
 #= require jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min
 #= require jquery-ui-1.10.3/touch-fix.min
-#= require isotope/jquery.isotope.min
-#= require bootstrap-tour/build/js/bootstrap-tour.min
-#= require prettyphoto/js/jquery.prettyPhoto
-#= require goMap/js/jquery.gomap-1.3.2.min
 #= require custom
+#= require underscore/underscore-min
+#= require isotope/jquery.isotope.min
 #= require modernizr.custom.56918
 #= require spin
 #= require jquery.spin

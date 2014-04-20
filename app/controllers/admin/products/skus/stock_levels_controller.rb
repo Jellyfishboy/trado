@@ -1,6 +1,6 @@
 class Admin::Products::Skus::StockLevelsController < ApplicationController
 
-  # Update stock level
+  # New stock level
   #
   # Modal trigger for displaying a form to add a stock level adjustment 
   def new 

@@ -1,12 +1,9 @@
 class Admin::Products::SkusController < ApplicationController
   layout 'admin'
 
-  # Update stock level
-  #
-  # Modal trigger for displaying a form to add a stock level adjustment 
-  # def update_stock_level 
+  def edit
     
-  # end
+  end
 
   # Updating a SKU
   #
