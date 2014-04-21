@@ -1,4 +1,5 @@
 $('#sku-form').modal('hide');
+$('tr#sku_<%= @sku.id %>').html('<%=j render :partial => "admin/products/skus/table", :object => @sku %>');
 $('.sku-heading').before('<div class="alert alert-success alert-no-margin animated fadeInDown sku-alert"><i class="icon-checkmark-circle"></i>Successfully updated the SKU.</div>').delay(3500).queue(function(next){
         $('.sku-alert').addClass('fadeOutUp').delay(800).hide(1);
         next();

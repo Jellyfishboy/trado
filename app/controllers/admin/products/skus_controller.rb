@@ -29,7 +29,7 @@ class Admin::Products::SkusController < ApplicationController
           @old_sku.inactivate!
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all
         end
-        format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
+        format.js { render :partial => 'admin/products/skus/success', :format => [:js], :object => @sku }
       else
         @form_sku = Sku.find(params[:id])
         @form_sku.activate!
