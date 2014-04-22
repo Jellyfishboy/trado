@@ -8,9 +8,10 @@ Trado::Application.routes.draw do
   get '/about' => 'store#about'
   get '/contact' => 'store#contact'
 
-  get '/update_country' => 'orders#update_country'
-  get '/update_sku' => 'products#update_sku'
-  get '/update_accessory' => 'products#update_accessory'
+  # Store
+  get '/order/shippings/update' => 'shippings#update'
+  get '/product/skus/update' => 'skus#update'
+  get '/product/accessories/update' => 'accessories#update'
   get '/search' => 'search#results'
   get '/search/autocomplete' => 'search#autocomplete'
 
@@ -24,9 +25,6 @@ Trado::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
-  resources :categories, :only => :show do
-    resources :products, :only => :show
-  end
   resources :orders, :only => :new do
     resources :build, controller: 'orders/build', :only => [:show,:update] do
       member do
@@ -38,12 +36,17 @@ Trado::Application.routes.draw do
       end
     end
   end
-
+  resources :categories, :only => :show do
+    resources :products, :only => :show
+  end
   resources :users
   resources :cart_items, :only => [:create,:update,:destroy]
   resources :cart_item_accessories, :only => [:update, :destroy]
   resources :notifications, :only => :create
   resources :addresses, :only => [:new, :create, :update]
+  resources :skus, :only => :edit
+
+  
 
   namespace :admin do
       root :to => "categories#index"
@@ -54,9 +57,10 @@ Trado::Application.routes.draw do
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :tags, :only => :destroy
-        resources :skus, :only =>  [:index,:destroy, :edit, :update]
+        resources :skus, :only =>  [:index, :destroy, :edit, :update]
         namespace :skus do
           resources :attribute_types, :except => :show
+          resources :stock_levels, :only => [:create, :new]
         end
       end
       namespace :shippings do

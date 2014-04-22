@@ -4,17 +4,6 @@ class Admin::TransactionsController < ApplicationController
   layout 'admin'
 
   include ActiveMerchant::Billing::Integrations
-  
-  # GET /transactions
-  # GET /transactions.json
-  def index
-    @transactions = Transaction.order('updated_at desc').all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @transactions }
-    end
-  end
 
   # Handler for incoming Instant Payment Notifications from paypal about orders
   def paypal_ipn

@@ -24,6 +24,6 @@ class Attachment < ActiveRecord::Base
 
   validates :file,                  :format => { :with => %r{\.(gif|png|jpg)$}i, :message => "must be a URL for GIF, JPG or PNG image." }
   validates :file,                  :presence => true
-  validates :default,               :uniqueness => { :scope => :attachable_id }
+  # validates :default,               :uniqueness => { :scope => :attachable_id }
 
 end

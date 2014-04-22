@@ -142,13 +142,6 @@ jQuery(document).ready(function($) {
         
     }
     //  ==========
-    //  = Add prettyPhoto for images with class .add-prettyphoto =
-    //  ==========
-    $(".add-prettyphoto").prettyPhoto({
-        default_width: 720,
-        default_height: 405
-    });
-    //  ==========
     //  = Accordion group toggle classes =
     //  ==========
     $(".accordion-group .accordion-toggle").click(function() {
@@ -366,94 +359,6 @@ jQuery(document).ready(function($) {
         });
     })();
 
-
-
-    //  ========== 
-    //  = Tour = 
-    //  ========== 
-    (function() {
-        var tour = new Tour({
-            useLocalStorage: true,
-            backdrop: false
-        });
-        tour.addSteps([ {
-            element: "#tourStep1",
-            title: "Filtering",
-            content: "Filtering the products in Webmarket is fun!"
-        }, {
-            element: "#tourStep2",
-            title: "Categories",
-            content: "Click to multiple categories and the articles on the right will be shown or hidden automatically."
-        }, {
-            element: "#filterPrices",
-            title: "Price Range Filter",
-            content: "Select the price range, the products on the left will be filtered automatically, without page refresh!"
-        }, {
-            element: "#tourStep3",
-            title: "Open Additional Filters",
-            content: "Just open the panel with the click on the title and you can start filtering the products even further... <br />The same way you can turn off the filter, just close the pane.",
-            placement: "top"
-        }, {
-            element: "#tourStep4",
-            title: "The Best Part: Sorting!",
-            content: "Never refresh a page again when you decide to order the items below. Just select ordering from the dropdown, the products below will magically fit into desired order",
-            placement: "bottom"
-        } ]);
-        tour.start();
-    })();
-
-
-
-    //  ========== 
-    //  = Google Maps API with GoMap jQuery plugin = 
-    //  ========== 
-    $(".add-googlemap").each(function() {
-        var $this = $(this);
-        $this.css("height", typeof $this.data("height") === "undefined" ? 200 : parseInt($this.data("height"), 10));
-        if (jQuery.goMap) {
-            $this.goMap({
-                markers: [ {
-                    address: $this.data("addr"),
-                    title: "undefined" === typeof $this.data("title") ? false : $this.data("title")
-                } ],
-                scrollwheel: false,
-                zoom: "undefined" === typeof $this.data("zoom") ? 13 : parseInt($this.data("zoom"), 10),
-                maptype: "undefined" === typeof $this.data("type") ? "ROADMAP" : $this.data("type").toUpperCase()
-            });
-        }
-    });
-
-
-
-    // delete item from the popover cart
-    // $(".item-in-cart .icon-remove-sign").click(function() {
-    //     $(this).parents(".item-in-cart").animate({
-    //         opacity: 0
-    //     }, "swing", function() {
-    //         $(this).slideUp();
-    //     });
-    //     return false;
-    // });
-
-
-
-    //  ========== 
-    //  = Checkout Process Effects = 
-    //  ========== 
-    // delete the item from review table
-    // $(".table-items .icon-remove-sign").click(function() {
-    //     var elmToRemove = $(this).parents('tr');
-    //     if( !! $(this).data('delete-next') ) {
-    //         elmToRemove = elmToRemove.add(elmToRemove.next());
-    //     }
-    //     elmToRemove.animate({
-    //         opacity: 0
-    //     }, "swing", function() {
-    //         $(this).remove();
-    //     });
-            
-    //     return false;
-    // });
     $(".card-num-input").on("keyup", function() {
         if ($(this).val().length > 3) {
             $(this).next(".card-num-input").focus();

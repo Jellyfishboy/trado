@@ -3,7 +3,8 @@
 %fieldset.widget.widget-content
   .row
     .twelvecol
-      = f.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id ] } ), :prompt => "Please select category..."
+      .form-group
+        = f.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id ] }, @product.category_id ), { :include_blank => "Please select category..."}, { :class => 'form-control' }
   .row
     .fourcol
       .form-group

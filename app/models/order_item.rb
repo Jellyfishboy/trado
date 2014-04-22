@@ -24,6 +24,9 @@ class OrderItem < ActiveRecord::Base
   belongs_to :sku
   belongs_to :order  
 
+  # Calculates the total price of an order item by multipling the item price by it's quantity
+  #
+  # @return [decimal]
   def total_price 
     price * quantity
   end

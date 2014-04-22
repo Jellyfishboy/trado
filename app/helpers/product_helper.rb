@@ -12,4 +12,8 @@ module ProductHelper
         "#{accessory.name} (+#{format_currency(accessory.price)})".html_safe
     end
 
+    def coloured_row adjustment
+        Store::positive?(adjustment) ? "tr-green" : "tr-red"
+    end
+
 end

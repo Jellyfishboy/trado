@@ -1,0 +1,3 @@
+<% @stock_level = StockLevel.new %>
+$('#stock-level-form').html('<%=j render :partial => "admin/products/skus/stock_levels/form" %>');
+$('tr#sku_<%= @sku.id %> td:nth-child(7)').text('<%= @sku.stock %>');

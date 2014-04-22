@@ -1,9 +1,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require admin/soca
-#= require bootstrap-tagsinput/dist/bootstrap-tagsinput.min 
 #= require admin/bootstrap.min
-#= require redactor-rails
+#= require jquery.scrollTo/jquery.scrollTo.min
 
 # Attach a function or variable to the global namespace
 root = exports ? this
@@ -36,18 +35,15 @@ calculate_tax = ->
 
 form_JSON_errors = ->
   $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
-      errors = $.parseJSON(xhr.responseJSON.errors)
-      $.each errors, (key, value) ->
-          $('#errors').show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + key + ' ' + value + '</li>'
-          # $element = $("input[name*='" + key + "']")
-          # $error_target = '.error_explanation'
-          # if $element.parent().next().is $error_target
-          #     $($error_target).html '<span>' + key + '</span> ' + value
-          # else 
-          #     $element.wrap '<div class="field_with_errors"></div>'
-          #     $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
-  
-
+      array = $.parseJSON(xhr.responseText)
+      content = $(@).children('#errors')
+      content.find('ul').empty()
+      for value in array.errors
+          content.show().find('ul').append '<li><i class="icon-cancel-circle"></i>' + value + '</li>'
+      $('body').scrollTo('.page-header', 800) unless $(@).parent().hasClass 'modal-content'
+      $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px')
+      $('.new-file').children('div').empty()
+      
 $(document).ready ->
   calculate_tax()
   form_JSON_errors()
@@ -60,19 +56,16 @@ $(document).ready ->
     order = $(@).attr 'id'
     $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
 
-  $('.update_stock').click ->
+  $('body').on 'click', '.new_stock_levels', ->
     sku = $(@).attr 'id'
-    $.get '/admin/products/skus?sku_id=' + sku
+    $.get '/admin/products/skus/stock_levels/new?sku_id=' + sku
+
+  $('body').on 'click', '.edit_sku_attributes', ->
+    sku = $(@).attr 'id'
+    $.get '/admin/products/skus/' + sku + '/edit'
 
   # Copy SKU Prefix
-  if $("#product_sku").is ':visible'
-    window.setInterval (->
-      $(".sku_prefix").text $("#product_sku").val() + '-'
-    ), 100
-
-
-$(document).ajaxComplete ->
-  form_JSON_errors()
-  # $("[data-behaviour~=datepicker]").datepicker
-  #   format: "dd/mm/yyyy"
-  #   startDate: "0"
+  # if $("#product_sku").is ':visible'
+  #   window.setInterval (->
+  #     $(".sku_prefix").text $("#product_sku").val() + '-'
+  #   ), 100

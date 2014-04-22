@@ -1,19 +1,17 @@
 - content_for :title, 'Edit product'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Products', admin_products_path
+- javascript 'redactor-rails'
+- javascript 'bootstrap-tagsinput/dist/bootstrap-tagsinput.min'
+- javascript 'jquery.remotipart'
 
 .twelvecol
   .page-header
     %h2.widget.widget-header New product
-  = form_for [:admin, @product], :html => { :class => 'new_product', :role => 'form' } do |f|
-    - if @product.errors.any?
-      #errors
-        %ul
-          - @product.errors.full_messages.each do |msg|
-            %li
-              %i.icon-cancel-circle
-              = msg  
-    
+  = form_for [:admin, @product], :html => {:role => 'form' }, :remote => true do |f|
+    #errors.json
+      %ul
+          
     = render 'admin/products/section/basic_details', :f => f
 
     = render 'admin/products/section/edit_images', :f => f
@@ -26,4 +24,8 @@
 
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+
+#stock-level-modal
+  #stock-level-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "stockLevelModalLabel", role: "dialog", tabindex: "-1"}
+#sku-modal
    

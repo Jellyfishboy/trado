@@ -33,4 +33,4 @@
                       = country.name
               %td= shipping.tiers.map(&:id).join(', ')
               %td= format_currency shipping.price
-              = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  1
+              = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  0

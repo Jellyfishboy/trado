@@ -20,6 +20,8 @@ describe Product do
     it { expect(subject).to validate_presence_of(:description) }
     it { expect(subject).to validate_presence_of(:part_number) }
     it { expect(subject).to validate_presence_of(:sku) }
+    it { expect(subject).to validate_presence_of(:category_id) }
+    it { expect(subject).to validate_presence_of(:weighting) }
 
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:sku).scoped_to(:active) }

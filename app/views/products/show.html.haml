@@ -160,5 +160,5 @@
           / /product
 #notify_me_form
   - unless @skus.first.stock > 0
-    = render :partial => 'products/notify_me', :locals => { :sku => @skus.first, :notification => @notification }
+    = render :partial => 'products/notify/form', :locals => { :sku => @skus.first, :notification => @notification }
 #insufficientStockNotice

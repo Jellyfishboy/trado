@@ -1,3 +1,0 @@
-<% @sku = Sku.find(params[:sku_id]) %>
-$('#sku-stock-modal').html('<%=j render :partial => "admin/products/skus/stock_form", :object => @sku %>');
-$('#sku-stock-form').modal('show');

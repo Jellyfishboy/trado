@@ -503,6 +503,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_admin
   redactor-rails
+  remotipart (~> 1.2)
   rollbar
   rspec-rails
   sass-rails (~> 3.2.3)

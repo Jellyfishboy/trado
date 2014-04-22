@@ -17,11 +17,13 @@ class Admin::ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
-    unless Tier.all.count > 0
-      flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
-    end
     respond_to do |format|
-      format.html # new.html.erb
+      unless Tier.all.count > 0 || AttributeType.all.count > 0
+        format.html { redirect_to admin_products_url }
+        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
+      else
+        format.html
+      end
       format.json { render json: @product }
     end
   end
@@ -36,61 +38,24 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(params[:product])
 
     respond_to do |format|
-      if Tier.all.count > 0 && AttributeType.all.count > 0
-        if @product.save
-          format.html { redirect_to [@product.category, @product], notice: 'Product was successfully created.' }
-          format.json { render json: @product, status: :created, location: @product }
-        else
-          # format.html { render action: "new" }
-          # format.json { render json: @product.errors, status: :unprocessable_entity }
-          format.json { render :json => { :errors => @product.errors.to_json(root: true)}, :status => 422 }
-        end
+      if @product.save
+        Store::Tags.add(params[:taggings], @product.id)
+        format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
       else
-        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
-        format.html { render action: "new" }
+        format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 }  
       end
     end
   end
 
-  # TODO: This update procedure needs to completed. It is all working apart from the attachment and tagging relations need to be 
-  # attached to the SKU and not the product. Due to extended complexity for this action, it will be postponed to a later release.
-  #######################
-  # If the product is not associated with orders, update the current record.
-  # Else create a new product with the new attributes.
-  # Duplicate all 'active' skus and attach to the new product
-  # Remove any old skus which have no associated orders
-  # Set the old product and it's skus as inactive. (It is now archived for reference by previous orders)
-  #######################
-  # Updating a product
-  # 
-  # You can only update specific attributes when a product is associated with orders.
   def update
     @product = Product.find(params[:id])
-
-    # unless @product.orders.empty?
-    #   @product.inactivate!
-    #   @product = Product.new(params[:product])
-    #   @old_product = Product.find(params[:id])
-    # end
-    binding.pry
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        # if @old_product
-        #   @old_product.skus.active.each do |sku|
-        #     @new_sku = sku.dup
-        #     @new_sku.product_id = @product.id
-        #     sku.inactivate!
-        #     @new_sku.save
-        #   end
-        #   @old_product.skus.includes(:order_items).where(:order_items => { :sku_id => nil } ).destroy_all
-        # end
-        # format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
-        # format.json { head :no_content }
+        Store::Tags.del(params[:taggings], @product.id)
+        Store::Tags.add(params[:taggings], @product.id)
+        format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
       else
-        # @old_product.activate! if @old_product
-        # format.html { render action: "edit" }
-        # format.json { render json: @product.errors, status: :unprocessable_entity }
-        format.json { render :json => { :errors => @product.errors.to_json(root: true)}, :status => 422 }
+        format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 
       end
     end
   end

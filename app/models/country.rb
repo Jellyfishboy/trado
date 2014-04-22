@@ -26,17 +26,24 @@ class Country < ActiveRecord::Base
   has_one :tax,                                 :through => :country_tax, :source => :tax_rate
 
 
-  validates :name, :iso,             :uniqueness => true, :presence => true
-  validates :language,               :presence => true
+  validates :name, :iso,                        :uniqueness => true, :presence => true
+  validates :language,                          :presence => true
 
   after_save :reset_tax
 
   default_scope order('name ASC')
 
+  # Grabs an array of records which have their available field set to true
+  #
+  # @return [array]
   def self.available 
     where(['countries.available = ?', true])
   end
 
+  # Resets the tax rate Store library method after saving a country record as the tax rate is stored as a global variable
+  # This is only required when a countries available value has been modified
+  #
+  # @return [nil]
   def reset_tax
     Store::reset_tax_rate
   end

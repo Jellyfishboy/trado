@@ -31,16 +31,24 @@ class Shipping < ActiveRecord::Base
   validates :description,                               :length => { :maximum => 180, :message => :too_long }
   validates :price,                                     :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
 
-
+  # Sets the related record's active field as false
+  #
+  # @return [object]
   def inactivate!
       self.active = false
       save!
   end
 
+  # Sets the related record's active field as true
+  #
+  # @return [object]
   def activate!
     self.update_column(:active, true)
   end
 
+  # Grabs an array of records which have their active field set to true
+  #
+  # @return [array]
   def self.active
     where(['shippings.active = ?', true])
   end

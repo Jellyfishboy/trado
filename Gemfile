@@ -65,6 +65,9 @@ platforms :ruby do
   gem 'unicorn'
 end
 
+# AJAX file upload
+gem 'remotipart', '~> 1.2'
+
 # Logging/Monitoring
 gem 'rollbar'
 gem 'newrelic_rpm'

@@ -58,7 +58,6 @@ module ApplicationHelper
       end
     end
 
-    # type 2 is for displaying a delivery cost icon for orders, type 1 is for hiding the show icon and 0 is everything else
     def table_commands object, show, edit, delete, type
       render :partial => 'shared/table_actions', :locals => { :object => object, :view => show, :edit => edit, :del => delete, :type => type }
     end
@@ -71,16 +70,16 @@ module ApplicationHelper
       obj == true ? first : second
     end
 
-    def readonly_helper obj
-      obj == false ? true : false
-    end
-
     def errors_for model, attribute
       if model.errors[attribute].present?
         content_tag :span, :class => 'error_explanation' do
           model.errors[attribute].join(", ")
         end
       end
+    end
+
+    def javascript(*files)
+      content_for(:footer) { javascript_include_tag(*files) }
     end
 
 end

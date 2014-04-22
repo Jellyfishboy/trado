@@ -31,12 +31,13 @@ class Sku < ActiveRecord::Base
   
   validates :price, :cost_value, :length, 
   :weight, :thickness, :attribute_value, 
-  :attribute_type_id, :sku,                         :presence => true
+  :attribute_type_id,                               :presence => true
   validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
   validate :check_stock_values,                     :on => :create
-  validates :sku, :attribute_value,                 :uniqueness => { :scope => :active }
+  validates :attribute_value,                       :uniqueness => { :scope => [:product_id, :active] }
+  validates :sku,                                   :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :should_validate_sku?
 
   belongs_to :product
   belongs_to :attribute_type
@@ -45,8 +46,11 @@ class Sku < ActiveRecord::Base
   has_many :order_items,                            :dependent => :restrict
   has_many :orders,                                 :through => :order_items, :dependent => :restrict
   has_many :notifications,                          as: :notifiable, :dependent => :delete_all
+  has_many :stock_levels,                           :dependent => :delete_all
 
-
+  # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
+  #
+  # @return [boolean]
   def check_stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
@@ -54,17 +58,32 @@ class Sku < ActiveRecord::Base
     end
   end
 
+  # Sets the related record's active field as false
+  #
+  # @return [object]
   def inactivate!
     self.update_column(:active, false)
   end
 
+  # Sets the related record's active field as true
+  #
+  # @return [object]
   def activate!
     self.update_column(:active, true)
   end
 
+  # Grabs an array of records which have their active field set to true
+  #
+  # @return [array]
   def self.active
     where(['skus.active = ?', true])
   end
 
+  # Validate wether the current record is new
+  #
+  # @return [boolean]
+  def should_validate_sku?
+    return true if self.new_record?
+  end
 
 end

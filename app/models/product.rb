@@ -29,7 +29,7 @@ class Product < ActiveRecord::Base
   :short_description, :related_ids, :single
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting,                             :presence => true
+  :part_number, :sku, :weighting, :category_id,               :presence => true
   validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
   validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
   validates :description,                                     :length => {:minimum => 20, :message => :too_short }
@@ -64,6 +64,9 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  # Search paramters for elasticsearch
+  #
+  # @return [nil]
   def search_data
     {
       name: name,
@@ -71,18 +74,30 @@ class Product < ActiveRecord::Base
     }
   end
 
+  # Sets the related record's active field as false
+  #
+  # @return [object]
   def inactivate!
     self.update_column(:active, false)
   end
 
+  # Sets the related record's active field as true
+  #
+  # @return [object]
   def activate!
     self.update_column(:active, true)
   end
 
+  # Grabs an array of records which have their active field set to true
+  #
+  # @return [array]
   def self.active
     where(['products.active = ?', true])
   end
 
+  # Detects if a product has more than one SKU when attempting to set the single product field as true
+  #
+  # @return [boolean]
   def single_product
     if self.single && self.skus.count > 1
       errors.add(:product, "cannot be set as a single product with more than one SKU.")
