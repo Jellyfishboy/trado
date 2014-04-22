@@ -58,8 +58,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-datepicker-rails (1.1.1.11)
-      railties (>= 3.0)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     bower-rails (0.7.1)
@@ -468,7 +466,6 @@ DEPENDENCIES
   bcrypt-ruby!
   better_errors
   binding_of_caller
-  bootstrap-datepicker-rails
   bower-rails (~> 0.7.1)
   bullet
   cancan

@@ -75,9 +75,6 @@ gem 'newrelic_rpm'
 # Search
 gem 'searchkick'
 
-# Datepicker
-gem 'bootstrap-datepicker-rails'
-
 gem 'wicked'
 
 gem 'foreman',   '~> 0.61.0'

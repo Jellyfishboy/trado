@@ -12,7 +12,7 @@
           %fieldset.widget.widget-content.widget-last
             .form-group
               = f.label :shipping_date
-              = f.text_field :shipping_date, :class => 'form-control datepicker'
+              = f.text_field :shipping_date, :class => 'form-control datepicker', :autocomplete => 'off', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y'))
         .modal-footer
           %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
           = f.submit 'Submit', :class => 'btn btn-blue btn-large'
