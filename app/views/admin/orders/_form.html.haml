@@ -1,11 +1,11 @@
-#order-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
+#order-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "orderModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
       = form_for [:admin, @order], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
         #errors.json
           %ul
         .modal-header
-          %h3#skulModalLabel
+          %h3#orderModalLabel
             Edit Order
             = "##{@order.id}"
         .modal-body
