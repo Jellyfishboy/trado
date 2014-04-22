@@ -45,6 +45,7 @@ Trado::Application.routes.draw do
   resources :notifications, :only => :create
   resources :addresses, :only => [:new, :create, :update]
   resources :skus, :only => :edit
+  resources :shippings, :only => [:update]
 
   
 
@@ -53,12 +54,12 @@ Trado::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :countries, :except => :show
-      resources :orders, :only => [:index, :show, :update]
+      resources :orders, :only => [:index, :show, :update, :edit]
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :only => :destroy
-        resources :tags, :only => [:index, :destroy]
-        resources :skus, :only =>  [:index, :destroy, :edit, :update]
+        resources :tags, :only => :index
+        resources :skus, :only =>  [:destroy, :edit, :update]
         namespace :skus do
           resources :attribute_types, :except => :show
           resources :stock_levels, :only => [:create, :new]

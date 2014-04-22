@@ -3,19 +3,28 @@
   - if type == 1
     %a.new_stock_levels{href: "#", id: object.id}
       %i.icon-plus
-  - unless type == 1
-    / Edit record
-    = link_to edit do
-      %i.icon-pencil
-  - else
+  - if type == 1
     / Edit SKU
     %a.edit_sku_attributes{href: "#", id: object.id}
       %i.icon-pencil
+  - elsif type == 2
+    / Edit order
+    %a.edit_order_attributes{href: "#", id: object.id}
+      %i.icon-pencil
+  - else
+    / Edit record
+    = link_to edit do
+      %i.icon-pencil
+
   / Update order shipping date
   - if type == 2 && object.shipping_status == "Pending" && object.transaction.payment_status == "Completed"
     %a{href: "#", id: object.id}
       %i.icon-airplane
   / Delete record
-  - unless type == 2
+  - unless type == 2 || type == 1
     = link_to del, :method => :delete, :confirm => 'Are you sure?' do
+      %i.icon-remove
+  / AJAX delete record (SKU)
+  - if type == 1
+    = link_to del, :method => :delete, :confirm => 'Are you sure?', :remote => true do
       %i.icon-remove

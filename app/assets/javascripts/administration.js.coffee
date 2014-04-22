@@ -50,11 +50,11 @@ $(document).ready ->
 
   $('.change_shipping').click ->
     order = $(@).attr 'id'
-    $.get '/admin/orders?order_id=' + order + '&update_type=shipping'
+    $.get '/admin/orders?order_id=' + order
 
-  $('.add_actual_shipping_cost').click ->
+  $('.edit_order_attributes').click ->
     order = $(@).attr 'id'
-    $.get '/admin/orders?order_id=' + order + '&update_type=actual_shipping_cost'
+    $.get '/admin/orders/' + order + '/edit'
 
   $('body').on 'click', '.new_stock_levels', ->
     sku = $(@).attr 'id'

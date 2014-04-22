@@ -1,4 +1,5 @@
-$("#sku_<%= params[:id] %>").remove();
-if (!$('.sku-destroy-alert').is(':visible')) {
-    $('h3.sku_header').after('<div class="alert alert-success sku-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>SKU was successfully deleted.</div>');
-}
+$("tr#sku_<%= params[:id] %>").remove();
+$('.sku-heading').before('<div class="alert alert-success alert-no-margin animated fadeInDown sku-destroy-alert"><i class="icon-checkmark-circle"></i>Successfully deleted the SKU.</div>').delay(3500).queue(function(next){
+    $('.sku-destroy-alert').addClass('fadeOutUp').delay(800).hide(1);
+    next();
+});

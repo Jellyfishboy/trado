@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Payatron4000::Paypal - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/payatron_4000/paypal.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-assign_paypal_token">::assign_paypal_token</a>
+    
+    <li><a href="#method-c-express_items">::express_items</a>
+    
+    <li><a href="#method-c-express_purchase_options">::express_purchase_options</a>
+    
+    <li><a href="#method-c-express_setup_options">::express_setup_options</a>
+    
+    <li><a href="#method-c-failed">::failed</a>
+    
+    <li><a href="#method-c-successful">::successful</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Admin.html">Admin</a>
+  
+    <li><a href="../Admin/AccessoriesController.html">Admin::AccessoriesController</a>
+  
+    <li><a href="../Admin/AdminController.html">Admin::AdminController</a>
+  
+    <li><a href="../Admin/CategoriesController.html">Admin::CategoriesController</a>
+  
+    <li><a href="../Admin/Countries.html">Admin::Countries</a>
+  
+    <li><a href="../Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
+  
+    <li><a href="../Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
+  
+    <li><a href="../Admin/CountriesController.html">Admin::CountriesController</a>
+  
+    <li><a href="../Admin/OrdersController.html">Admin::OrdersController</a>
+  
+    <li><a href="../Admin/Products.html">Admin::Products</a>
+  
+    <li><a href="../Admin/Products/AttachmentsController.html">Admin::Products::AttachmentsController</a>
+  
+    <li><a href="../Admin/Products/Skus.html">Admin::Products::Skus</a>
+  
+    <li><a href="../Admin/Products/Skus/AttributeTypesController.html">Admin::Products::Skus::AttributeTypesController</a>
+  
+    <li><a href="../Admin/Products/Skus/StockLevelsController.html">Admin::Products::Skus::StockLevelsController</a>
+  
+    <li><a href="../Admin/Products/SkusController.html">Admin::Products::SkusController</a>
+  
+    <li><a href="../Admin/Products/TagsController.html">Admin::Products::TagsController</a>
+  
+    <li><a href="../Admin/ProductsController.html">Admin::ProductsController</a>
+  
+    <li><a href="../Admin/Shippings.html">Admin::Shippings</a>
+  
+    <li><a href="../Admin/Shippings/TiersController.html">Admin::Shippings::TiersController</a>
+  
+    <li><a href="../Admin/ShippingsController.html">Admin::ShippingsController</a>
+  
+    <li><a href="../Admin/TransactionsController.html">Admin::TransactionsController</a>
+  
+    <li><a href="../RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="../RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="../RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="../RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="../Mailatron4000.html">Mailatron4000</a>
+  
+    <li><a href="../Mailatron4000/Orders.html">Mailatron4000::Orders</a>
+  
+    <li><a href="../Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="../Users.html">Users</a>
+  
+    <li><a href="../Users/RegistrationsController.html">Users::RegistrationsController</a>
+  
+    <li><a href="../Users/SessionsController.html">Users::SessionsController</a>
+  
+    <li><a href="../Orders.html">Orders</a>
+  
+    <li><a href="../Orders/BuildController.html">Orders::BuildController</a>
+  
+    <li><a href="../Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
+  
+    <li><a href="../Ability.html">Ability</a>
+  
+    <li><a href="../AccessoriesController.html">AccessoriesController</a>
+  
+    <li><a href="../Accessorisation.html">Accessorisation</a>
+  
+    <li><a href="../Accessory.html">Accessory</a>
+  
+    <li><a href="../Address.html">Address</a>
+  
+    <li><a href="../AddressController.html">AddressController</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Attachment.html">Attachment</a>
+  
+    <li><a href="../AttributeType.html">AttributeType</a>
+  
+    <li><a href="../Cart.html">Cart</a>
+  
+    <li><a href="../CartItem.html">CartItem</a>
+  
+    <li><a href="../CartItemAccessory.html">CartItemAccessory</a>
+  
+    <li><a href="../CartItemsController.html">CartItemsController</a>
+  
+    <li><a href="../CategoriesController.html">CategoriesController</a>
+  
+    <li><a href="../Category.html">Category</a>
+  
+    <li><a href="../CategoryHelper.html">CategoryHelper</a>
+  
+    <li><a href="../Country.html">Country</a>
+  
+    <li><a href="../CountryTax.html">CountryTax</a>
+  
+    <li><a href="../DeepStruct.html">DeepStruct</a>
+  
+    <li><a href="../Destination.html">Destination</a>
+  
+    <li><a href="../ErrorsController.html">ErrorsController</a>
+  
+    <li><a href="../FileUploader.html">FileUploader</a>
+  
+    <li><a href="../Notification.html">Notification</a>
+  
+    <li><a href="../NotificationsController.html">NotificationsController</a>
+  
+    <li><a href="../Notifier.html">Notifier</a>
+  
+    <li><a href="../Order.html">Order</a>
+  
+    <li><a href="../OrderHelper.html">OrderHelper</a>
+  
+    <li><a href="../OrderItem.html">OrderItem</a>
+  
+    <li><a href="../OrderItemAccessory.html">OrderItemAccessory</a>
+  
+    <li><a href="../OrdersController.html">OrdersController</a>
+  
+    <li><a href="../Product.html">Product</a>
+  
+    <li><a href="../ProductHelper.html">ProductHelper</a>
+  
+    <li><a href="../ProductsController.html">ProductsController</a>
+  
+    <li><a href="../RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="../RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="../RelatedProduct.html">RelatedProduct</a>
+  
+    <li><a href="../Role.html">Role</a>
+  
+    <li><a href="../Search.html">Search</a>
+  
+    <li><a href="../SearchController.html">SearchController</a>
+  
+    <li><a href="../Shipping.html">Shipping</a>
+  
+    <li><a href="../ShippingsController.html">ShippingsController</a>
+  
+    <li><a href="../Sku.html">Sku</a>
+  
+    <li><a href="../SkusController.html">SkusController</a>
+  
+    <li><a href="../StockLevel.html">StockLevel</a>
+  
+    <li><a href="../Store.html">Store</a>
+  
+    <li><a href="../StoreController.html">StoreController</a>
+  
+    <li><a href="../StoreSetting.html">StoreSetting</a>
+  
+    <li><a href="../Tag.html">Tag</a>
+  
+    <li><a href="../Tagging.html">Tagging</a>
+  
+    <li><a href="../TaxRate.html">TaxRate</a>
+  
+    <li><a href="../Tier.html">Tier</a>
+  
+    <li><a href="../TierValidator.html">TierValidator</a>
+  
+    <li><a href="../Tiered.html">Tiered</a>
+  
+    <li><a href="../Transaction.html">Transaction</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsersController.html">UsersController</a>
+  
+    <li><a href="../Zone.html">Zone</a>
+  
+    <li><a href="../Zonification.html">Zonification</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Payatron4000::Paypal</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-assign_paypal_token" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assign_paypal_token</span><span
+            class="method-args">(token, payer_id, session, order)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>assign paypal token to order after user logs into their account</p>
+          
+
+          
+          <div class="method-source-code" id="assign_paypal_token-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">assign_paypal_token</span>(<span class="ruby-identifier">token</span>, <span class="ruby-identifier">payer_id</span>, <span class="ruby-identifier">session</span>, <span class="ruby-identifier">order</span>)
+    <span class="ruby-identifier">details</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">details_for</span>(<span class="ruby-identifier">token</span>)
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-value">:express_token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">token</span>, <span class="ruby-value">:express_payer_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">payer_id</span>)
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">save!</span>
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:paypal_email</span>] = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;payer&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assign_paypal_token-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assign_paypal_token-method -->
+
+    
+      <div id="method-c-express_items" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_items</span><span
+            class="method-args">(cart)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express_items-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">express_items</span>(<span class="ruby-identifier">cart</span>)
+    <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+        {
+            <span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">sku</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">name</span>,
+            <span class="ruby-value">:description</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }&quot;</span>,
+            <span class="ruby-value">:amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">price</span>), 
+            <span class="ruby-value">:quantity</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span> 
+        }
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- express_items-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- express_items-method -->
+
+    
+      <div id="method-c-express_purchase_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_purchase_options</span><span
+            class="method-args">(order, session)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express_purchase_options-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">express_purchase_options</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">session</span>)
+    {
+      <span class="ruby-value">:subtotal</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:sub_total</span>]),
+      <span class="ruby-value">:shipping</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">order</span>.<span class="ruby-identifier">shipping</span>.<span class="ruby-identifier">price</span>),
+      <span class="ruby-value">:tax</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:tax</span>]),
+      <span class="ruby-value">:handling</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>,
+      <span class="ruby-value">:token</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">express_token</span>,
+      <span class="ruby-value">:payer_id</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">express_payer_id</span>,
+      <span class="ruby-value">:currency</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;GBP&#39;</span>
+    }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- express_purchase_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- express_purchase_options-method -->
+
+    
+      <div id="method-c-express_setup_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_setup_options</span><span
+            class="method-args">(order, steps, cart, session, ip_address, return_url, cancel_url)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express_setup_options-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">express_setup_options</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">steps</span>, <span class="ruby-identifier">cart</span>, <span class="ruby-identifier">session</span>, <span class="ruby-identifier">ip_address</span>, <span class="ruby-identifier">return_url</span>, <span class="ruby-identifier">cancel_url</span>)
+    {
+      <span class="ruby-value">:subtotal</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:sub_total</span>]),
+      <span class="ruby-value">:shipping</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">order</span>.<span class="ruby-identifier">shipping</span>.<span class="ruby-identifier">price</span>),
+      <span class="ruby-value">:tax</span>               =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:tax</span>]),
+      <span class="ruby-value">:handling</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>,
+      <span class="ruby-value">:order_id</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">id</span>,
+      <span class="ruby-value">:items</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">express_items</span>(<span class="ruby-identifier">cart</span>),
+      <span class="ruby-value">:ip</span>                =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ip_address</span>,
+      <span class="ruby-value">:return_url</span>        =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">return_url</span>,
+      <span class="ruby-value">:cancel_return_url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cancel_url</span>,
+      <span class="ruby-value">:currency</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;GBP&#39;</span>,
+    }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- express_setup_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- express_setup_options-method -->
+
+    
+      <div id="method-c-failed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">failed</span><span
+            class="method-args">(response, order)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Failed order</p>
+          
+
+          
+          <div class="method-source-code" id="failed-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">failed</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">order</span>)
+    <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">create</span>( <span class="ruby-value">:fee</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, 
+                        <span class="ruby-value">:gross_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:total</span>], 
+                        <span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, 
+                        <span class="ruby-value">:payment_status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Failed&#39;</span>, 
+                        <span class="ruby-value">:payment_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;&#39;</span>, 
+                        <span class="ruby-value">:tax_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:tax</span>], 
+                        <span class="ruby-value">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;&#39;</span>, 
+                        <span class="ruby-value">:transaction_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;&#39;</span>,
+                        <span class="ruby-value">:net_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:sub_total</span>],
+                        <span class="ruby-value">:status_reason</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">message</span>)
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:status</span>, <span class="ruby-string">&#39;active&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- failed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- failed-method -->
+
+    
+      <div id="method-c-successful" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">successful</span><span
+            class="method-args">(response, order)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Successful order</p>
+          
+
+          
+          <div class="method-source-code" id="successful-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/paypal.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">successful</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">order</span>)
+    <span class="ruby-comment"># Create transaction</span>
+    <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">create</span>( <span class="ruby-value">:fee</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;FeeAmount&#39;</span>], 
+                        <span class="ruby-value">:gross_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;GrossAmount&#39;</span>], 
+                        <span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, 
+                        <span class="ruby-value">:payment_status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;PaymentStatus&#39;</span>], 
+                        <span class="ruby-value">:payment_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Credit&#39;</span>, 
+                        <span class="ruby-value">:tax_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;TaxAmount&#39;</span>], 
+                        <span class="ruby-value">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;TransactionID&#39;</span>], 
+                        <span class="ruby-value">:transaction_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;TransactionType&#39;</span>],
+                        <span class="ruby-value">:net_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;GrossAmount&#39;</span>].<span class="ruby-identifier">to_d</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;TaxAmount&#39;</span>].<span class="ruby-identifier">to_d</span> <span class="ruby-operator">-</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">shipping</span>.<span class="ruby-identifier">price</span>,
+                        <span class="ruby-value">:status_reason</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;PendingReason&#39;</span>])
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">stock_update</span>(<span class="ruby-identifier">order</span>)
+    <span class="ruby-comment"># Set order status to active</span>
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:status</span>, <span class="ruby-string">&#39;active&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- successful-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- successful-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

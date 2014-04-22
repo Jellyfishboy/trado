@@ -6,10 +6,13 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.where('status = ?', 'active').order('created_at desc').page(params[:page])
     respond_to do |format|
-      format.js { render :partial => 'admin/orders/update_order', :format => [:js] }
       format.html # index.html.erb
       format.json { render json: @orders }
     end
+  end
+
+  def edit
+    render :partial => 'admin/orders/edit', :format => [:js]
   end
 
   # PUT /orders/1
@@ -19,12 +22,8 @@ class Admin::OrdersController < ApplicationController
  
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        Notifier.order_updated(@order).deliver if params[:update_customer].to_i == 1
-        format.html { redirect_to admin_order_path(@order), notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        # Notifier.order_updated(@order).deliver if params[:update_customer].to_i == 1
+        format.js { render :partial => 'admin/orders/success', :format => [:js] }
       end
     end
   end

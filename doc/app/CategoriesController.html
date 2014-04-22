@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class CategoriesController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/categories_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-show">#show</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/AccessoriesController.html">Admin::AccessoriesController</a>
+  
+    <li><a href="./Admin/AdminController.html">Admin::AdminController</a>
+  
+    <li><a href="./Admin/CategoriesController.html">Admin::CategoriesController</a>
+  
+    <li><a href="./Admin/Countries.html">Admin::Countries</a>
+  
+    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
+  
+    <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
+  
+    <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
+  
+    <li><a href="./Admin/OrdersController.html">Admin::OrdersController</a>
+  
+    <li><a href="./Admin/Products.html">Admin::Products</a>
+  
+    <li><a href="./Admin/Products/AttachmentsController.html">Admin::Products::AttachmentsController</a>
+  
+    <li><a href="./Admin/Products/Skus.html">Admin::Products::Skus</a>
+  
+    <li><a href="./Admin/Products/Skus/AttributeTypesController.html">Admin::Products::Skus::AttributeTypesController</a>
+  
+    <li><a href="./Admin/Products/Skus/StockLevelsController.html">Admin::Products::Skus::StockLevelsController</a>
+  
+    <li><a href="./Admin/Products/SkusController.html">Admin::Products::SkusController</a>
+  
+    <li><a href="./Admin/Products/TagsController.html">Admin::Products::TagsController</a>
+  
+    <li><a href="./Admin/ProductsController.html">Admin::ProductsController</a>
+  
+    <li><a href="./Admin/Shippings.html">Admin::Shippings</a>
+  
+    <li><a href="./Admin/Shippings/TiersController.html">Admin::Shippings::TiersController</a>
+  
+    <li><a href="./Admin/ShippingsController.html">Admin::ShippingsController</a>
+  
+    <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
+  
+    <li><a href="./RedactorRails.html">RedactorRails</a>
+  
+    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
+  
+    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
+  
+    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+  
+    <li><a href="./Mailatron4000.html">Mailatron4000</a>
+  
+    <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
+  
+    <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Users.html">Users</a>
+  
+    <li><a href="./Users/RegistrationsController.html">Users::RegistrationsController</a>
+  
+    <li><a href="./Users/SessionsController.html">Users::SessionsController</a>
+  
+    <li><a href="./Orders.html">Orders</a>
+  
+    <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AccessoriesController.html">AccessoriesController</a>
+  
+    <li><a href="./Accessorisation.html">Accessorisation</a>
+  
+    <li><a href="./Accessory.html">Accessory</a>
+  
+    <li><a href="./Address.html">Address</a>
+  
+    <li><a href="./AddressController.html">AddressController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttributeType.html">AttributeType</a>
+  
+    <li><a href="./Cart.html">Cart</a>
+  
+    <li><a href="./CartItem.html">CartItem</a>
+  
+    <li><a href="./CartItemAccessory.html">CartItemAccessory</a>
+  
+    <li><a href="./CartItemsController.html">CartItemsController</a>
+  
+    <li><a href="./CategoriesController.html">CategoriesController</a>
+  
+    <li><a href="./Category.html">Category</a>
+  
+    <li><a href="./CategoryHelper.html">CategoryHelper</a>
+  
+    <li><a href="./Country.html">Country</a>
+  
+    <li><a href="./CountryTax.html">CountryTax</a>
+  
+    <li><a href="./DeepStruct.html">DeepStruct</a>
+  
+    <li><a href="./Destination.html">Destination</a>
+  
+    <li><a href="./ErrorsController.html">ErrorsController</a>
+  
+    <li><a href="./FileUploader.html">FileUploader</a>
+  
+    <li><a href="./Notification.html">Notification</a>
+  
+    <li><a href="./NotificationsController.html">NotificationsController</a>
+  
+    <li><a href="./Notifier.html">Notifier</a>
+  
+    <li><a href="./Order.html">Order</a>
+  
+    <li><a href="./OrderHelper.html">OrderHelper</a>
+  
+    <li><a href="./OrderItem.html">OrderItem</a>
+  
+    <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
+  
+    <li><a href="./OrdersController.html">OrdersController</a>
+  
+    <li><a href="./Product.html">Product</a>
+  
+    <li><a href="./ProductHelper.html">ProductHelper</a>
+  
+    <li><a href="./ProductsController.html">ProductsController</a>
+  
+    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
+  
+    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
+  
+    <li><a href="./RelatedProduct.html">RelatedProduct</a>
+  
+    <li><a href="./Role.html">Role</a>
+  
+    <li><a href="./Search.html">Search</a>
+  
+    <li><a href="./SearchController.html">SearchController</a>
+  
+    <li><a href="./Shipping.html">Shipping</a>
+  
+    <li><a href="./ShippingsController.html">ShippingsController</a>
+  
+    <li><a href="./Sku.html">Sku</a>
+  
+    <li><a href="./SkusController.html">SkusController</a>
+  
+    <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./Store.html">Store</a>
+  
+    <li><a href="./StoreController.html">StoreController</a>
+  
+    <li><a href="./StoreSetting.html">StoreSetting</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./Tagging.html">Tagging</a>
+  
+    <li><a href="./TaxRate.html">TaxRate</a>
+  
+    <li><a href="./Tier.html">Tier</a>
+  
+    <li><a href="./TierValidator.html">TierValidator</a>
+  
+    <li><a href="./Tiered.html">Tiered</a>
+  
+    <li><a href="./Transaction.html">Transaction</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./Zone.html">Zone</a>
+  
+    <li><a href="./Zonification.html">Zonification</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class CategoriesController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /categories/1 GET /categories/1.json</p>
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/categories_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@category</span> = <span class="ruby-constant">Category</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@category</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

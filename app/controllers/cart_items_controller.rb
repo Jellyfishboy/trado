@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
           format.json { render json: @cart_item.errors, status: :unprocessable_entity }
         end
       else
-        format.js { render :partial => 'carts/insufficient_stock', :formats => [:js], :object => @cart_item }
+        format.js { render :partial => 'carts/insufficient_stock', :formats => [:js] }
       end
     end
   end
@@ -41,7 +41,7 @@ class CartItemsController < ApplicationController
             format.json { render json: @category.errors, status: :unprocessable_entity }
           end
         else
-          format.js { render :partial => 'carts/insufficient_stock', :formats => [:js], :object => @cart_item }
+          format.js { render :partial => 'carts/insufficient_stock', :formats => [:js] }
         end
       end
   end

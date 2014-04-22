@@ -26,7 +26,6 @@
 #  updated_at               :datetime         not null
 #
 class Order < ActiveRecord::Base
-
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id
   

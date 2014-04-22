@@ -1,0 +1,18 @@
+#order-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      = form_for [:admin, @order], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+        #errors.json
+          %ul
+        .modal-header
+          %h3#skulModalLabel
+            Edit Order
+            = "##{@order.id}"
+        .modal-body
+          %fieldset.widget.widget-content.widget-last
+            .form-group
+              = f.label :actual_shipping_cost
+              = f.text_field :actual_shipping_cost, :class => 'form-control'
+        .modal-footer
+          %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
+          = f.submit 'Submit', :class => 'btn btn-blue btn-large'

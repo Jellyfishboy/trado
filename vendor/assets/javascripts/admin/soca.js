@@ -9,11 +9,11 @@
       return $(".user-menu .fa-caret-up").css('color', '#ffffff');
     });
     attachment_ui();
-    $('.current-file').click(function() {
-      $(this).next('input[type="radio"]').prop('checked', true);
-      $('.current-file').removeClass('default');
-      return $(this).addClass('default');
-    });
+    // $('.current-file').click(function() {
+    //   $(this).next('input[type="radio"]').prop('checked', true);
+    //   $('.current-file').removeClass('default');
+    //   return $(this).addClass('default');
+    // });
     return $('#menu-trigger-input').change(function() {
       if (this.checked) {
         return $('body').css('overflow', 'hidden');

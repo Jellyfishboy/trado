@@ -1,0 +1,5 @@
+$('#order-form').modal('hide');
+$('.widget-header').before('<div class="alert alert-success alert-no-margin animated fadeInDown order-update-alert"><i class="icon-checkmark-circle"></i>Successfully updated order #<%= @order.id %>.</div>').delay(3500).queue(function(next){
+        $('.order-update-alert').addClass('fadeOutUp').delay(800).hide(1);
+        next();
+});

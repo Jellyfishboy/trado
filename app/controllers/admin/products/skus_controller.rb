@@ -30,7 +30,7 @@ class Admin::Products::SkusController < ApplicationController
           @old_sku.inactivate!
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all
         end
-        format.js { render :partial => 'admin/products/skus/success', :format => [:js], :object => @sku }
+        format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
       else
         @form_sku = Sku.find(params[:id])
         @form_sku.activate!
@@ -65,12 +65,8 @@ class Admin::Products::SkusController < ApplicationController
           CartItem.where('sku_id = ?', @sku.id).destroy_all
         end
         format.js { render :partial => "admin/products/skus/destroy", :format => [:js] }
-        flash[:success] = "SKU was successfully deleted."
-        format.html { redirect_to admin_products_skus_url }
       else
         format.js { render :partial => 'admin/products/skus/failed_destroy',:format => [:js] }
-        flash[:error] = "SKU failed to be removed from the database (you must have at least one SKU per product)."
-        format.html { redirect_to admin_products_skus_url }
       end
     end
   end

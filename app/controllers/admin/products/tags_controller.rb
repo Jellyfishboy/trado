@@ -12,19 +12,4 @@ class Admin::Products::TagsController < ApplicationController
       format.json { render json: @tags }
     end
   end
-
-  # Destroy a tag record
-  #
-  # @return [nil]
-  def destroy
-    @tag = Tag.find(params[:id])
-    respond_to do |format|
-      if @tag.destroy
-        format.js { render :partial => "admin/products/tags/destroy", :format => [:js] }
-      else
-        flash[:error] = "Tag failed to be removed from the database."
-      end
-      format.html
-    end
-  end
 end

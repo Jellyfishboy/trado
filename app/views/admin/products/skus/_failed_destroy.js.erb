@@ -1,3 +1,4 @@
-if (!$('.failed-sku-destroy-alert').is(':visible')) {
-    $('h3.sku_header').after('<div class="alert alert-danger failed-sku-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>SKU failed to be removed from the database (you must have at least one SKU per product).</div>');
-}
+$('.sku-heading').before('<div class="alert alert-warning alert-no-margin animated fadeInDown sku-failed-destroy-alert"><i class="icon-spam"></i>Failed to remove the SKU from the database (you must have at least one SKU per product).</div>').delay(3500).queue(function(next){
+    $('.sku-failed-destroy-alert').addClass('fadeOutUp').delay(800).hide(1);
+    next();
+});

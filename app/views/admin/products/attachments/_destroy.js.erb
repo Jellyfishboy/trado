@@ -1,4 +1,5 @@
 $("#attachment_<%= params[:id] %>").remove();
-if (!$('.attachment-destroy-alert').is(':visible')) {
-    $('#attachments').before('<div class="alert alert-success attachment-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>Attachment was successfully deleted.</div>');
-}
+$('.attachment-heading').before('<div class="alert alert-success alert-no-margin animated fadeInDown attachment-destroy-alert"><i class="icon-checkmark-circle"></i>Successfully deleted the attachment.</div>').delay(3500).queue(function(next){
+    $('.attachment-destroy-alert').addClass('fadeOutUp').delay(800).hide(1);
+    next();
+});

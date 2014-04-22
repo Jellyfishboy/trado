@@ -1,3 +1,4 @@
-if (!$('.failed-attachment-destroy-alert').is(':visible')) {
-    $('#attachments').before('<div class="alert alert-danger failed-sku-destroy-alert"><button data-dismiss="alert" class="close" type="button">×</button>Attachment failed to be removed from the database (you must have at least one image attachment per product).</div>');
-}
+$('.attachment-heading').before('<div class="alert alert-warning alert-no-margin animated fadeInDown failed-attachment-destroy-alert"><i class="icon-checkmark-circle"></i>Failed to remove the attachment from the database (you must have at least one image attachment per product).</div>').delay(3500).queue(function(next){
+    $('.failed-attachment-destroy-alert').addClass('fadeOutUp').delay(800).hide(1);
+    next();
+});
