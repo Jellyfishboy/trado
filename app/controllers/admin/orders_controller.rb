@@ -1,6 +1,8 @@
 class Admin::OrdersController < ApplicationController
+
   layout 'admin'
   before_filter :authenticate_user!
+
   # GET /orders
   # GET /orders.json
   def index
@@ -12,6 +14,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:id])
     render :partial => 'admin/orders/edit', :format => [:js]
   end
 
@@ -43,4 +46,13 @@ class Admin::OrdersController < ApplicationController
       end
     end
   end
+
+  # Set the shipping dispatch date for an orders
+  #
+  # @return [nil]
+  def shipping
+    @order = Order.find(params[:id])
+    render :partial => 'admin/orders/shipping/edit', :format => [:js]
+  end
+
 end

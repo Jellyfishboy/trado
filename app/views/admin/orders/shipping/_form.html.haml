@@ -1,19 +1,18 @@
-#shipping-form.modal.fade{"aria-hidden" => "true", style: "display: none;", tabindex: "-1"}
+#shipping-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      .widget.widget-blue
-        .widget-title
-          %h3
-            %i.icon-signal
-            = "Update shipping: ##{@order.id}"
-        .widget-content
-          .modal-body
-            = form_for [:admin, @order], :html => { :class => 'form-horizontal', :role => 'form', :method => "put" } do |f|
-              .form-group
-                = f.label :shipping_date, :class => 'control-label col-md-3'
-                .col-md-9
-                  = f.text_field :shipping_date, :class => 'form-control', 'data-behaviour' => 'datepicker', :autocomplete => 'off', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y'))
-              .form-group
-                .col-md-offset-3.col-md-9
-                  = f.submit 'Submit', :class => 'btn btn-primary'
-                  %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+      = form_for [:admin, @order], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+        #errors.json
+          %ul
+        .modal-header
+          %h3#skulModalLabel
+            Dispatch Order
+            = "##{@order.id}"
+        .modal-body
+          %fieldset.widget.widget-content.widget-last
+            .form-group
+              = f.label :shipping_date
+              = f.text_field :shipping_date, :class => 'form-control datepicker'
+        .modal-footer
+          %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
+          = f.submit 'Submit', :class => 'btn btn-blue btn-large'

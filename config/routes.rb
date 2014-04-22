@@ -54,7 +54,9 @@ Trado::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :countries, :except => :show
-      resources :orders, :only => [:index, :show, :update, :edit]
+      resources :orders, :only => [:index, :show, :update, :edit] do
+        get 'shipping', on: :member
+      end
       resources :transactions, :only => :index
       namespace :products do
         resources :attachments, :only => :destroy

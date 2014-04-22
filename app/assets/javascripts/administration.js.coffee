@@ -48,9 +48,9 @@ $(document).ready ->
   calculate_tax()
   form_JSON_errors()
 
-  $('.change_shipping').click ->
+  $('.order_shipping').click ->
     order = $(@).attr 'id'
-    $.get '/admin/orders?order_id=' + order
+    $.get '/admin/orders/' + order + '/shipping'
 
   $('.edit_order_attributes').click ->
     order = $(@).attr 'id'

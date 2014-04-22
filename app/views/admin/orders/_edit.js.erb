@@ -1,3 +1,2 @@
-<% @order = Order.find(params[:id]) %>
 $('#order-modal').html('<%=j render :partial => "admin/orders/form" %>');
 $('#order-form').modal('show');
