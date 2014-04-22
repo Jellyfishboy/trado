@@ -83,7 +83,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [boolean]
   def should_validate_sku?
-    return true if self.new_record?
+    return true if self.product.nil?
   end
 
 end

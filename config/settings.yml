@@ -36,4 +36,4 @@ aws:
 sitemap:
     host: 'http://www.gimsonrobotics.com'
 rollbar:
-    access_token: <%= ENV['ROLLBAR_ACCESS_TOKEN'] %>
+    access_token: 1f8d4dbc61e0415da953524ad5c80375

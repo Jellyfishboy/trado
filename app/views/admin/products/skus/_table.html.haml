@@ -1,4 +1,4 @@
-%td= "#{@sku.product.@sku}-#{@sku.@sku}"
+%td= "#{@sku.product.sku}-#{@sku.sku}"
 %td= @sku.weight
 %td= @sku.length
 %td= @sku.thickness
@@ -8,4 +8,4 @@
 %td= @sku.stock_warning_level
 %td= format_currency @sku.cost_value
 %td= format_currency @sku.price
-= table_commands @sku, admin_products_@sku_path(@sku), edit_admin_products_@sku_path(@sku), admin_products_@sku_path(@sku), 1
+= table_commands @sku, admin_products_sku_path(@sku), edit_admin_products_sku_path(@sku), admin_products_sku_path(@sku), 1

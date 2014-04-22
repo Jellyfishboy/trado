@@ -13,7 +13,7 @@ module Store
             end
         end
 
-        # Deletes tags not contained within the comma separated string
+        # Deletes tags not contained within the comma separated string, associated by the HABTM taggings table
         #
         # @return [nil]
         def self.del value, product_id
