@@ -39,7 +39,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        Store::Tags.add(params[:taggings], @product.id)
+        Tag.add(params[:taggings], @product.id)
         format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
       else
         format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 }  
@@ -51,8 +51,8 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        Store::Tags.del(params[:taggings], @product.id)
-        Store::Tags.add(params[:taggings], @product.id)
+        Tag.del(params[:taggings], @product.id)
+        Tag.add(params[:taggings], @product.id)
         format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
       else
         format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 

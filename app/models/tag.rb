@@ -1,6 +1,6 @@
 # Tag Documentation
 #
-# The tag table contains a list of tags which belong to products. These are notably used to improve SOLR search results and site SEO.
+# The tag table contains a list of tags which belong to products. These are notably used to improve search results and site SEO.
 
 # == Schema Information
 #
@@ -17,5 +17,25 @@ class Tag < ActiveRecord::Base
 
   has_many :taggings,               :dependent => :delete_all
   has_many :products,               :through => :taggings
-  
+
+  # Creates or updates the list of tags for an object
+  #
+  # @return [array]
+  def self.add value, product_id
+    @tags = value.split(/,\s*/)   
+    @tags.each do |t|
+        next unless Tag.where('name = ?', t).includes(:taggings).where(:taggings => { :product_id => product_id }).empty?
+        new_tag = Tag.find_by_name(t).nil? ? Tag.create(name: t) : Tag.find_by_name(t)
+        Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
+    end
+  end
+
+  # Deletes tags not contained within the comma separated string, associated by the HABTM taggings table
+  #
+  # @return [nil]
+  def self.del value, product_id
+    @tags = value.split(/,\s*/)
+    Tag.where('name NOT IN (?)', @tags).includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
+  end
+
 end

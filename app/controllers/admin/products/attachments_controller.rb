@@ -1,5 +1,6 @@
 class Admin::Products::AttachmentsController < ApplicationController
-  layout 'admin'
+  
+  before_filter :authenticate_user!
 
   # DELETE /attachments/1
   # DELETE /attachments/1.json

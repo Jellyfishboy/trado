@@ -1,4 +1,6 @@
 class Admin::Products::Skus::AttributeTypesController < ApplicationController
+
+  before_filter :authenticate_user!
   layout 'admin'
   # GET /attribute_types
   # GET /attribute_types.json

@@ -1,5 +1,6 @@
 class Admin::Products::SkusController < ApplicationController
-  layout 'admin'
+
+  before_filter :authenticate_user!
 
   def edit
     @form_sku = Sku.find(params[:id])

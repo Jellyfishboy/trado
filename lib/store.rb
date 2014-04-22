@@ -1,5 +1,3 @@
-require 'store/tags'
-
 module Store
 
     class << self
@@ -45,5 +43,6 @@ module Store
         def positive? number
           return true if number > 0 else false
         end
+        
     end
 end
