@@ -69,7 +69,7 @@ end
 gem 'remotipart', '~> 1.2'
 
 # Logging/Monitoring
-gem 'rollbar'
+gem 'rollbar', '~> 0.12.17'
 gem 'newrelic_rpm'
 
 # Search

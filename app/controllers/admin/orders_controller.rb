@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
   # PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
-    @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time
+    @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
     respond_to do |format|
       if @order.update_attributes(params[:order])
         # Notifier.order_updated(@order).deliver if params[:update_customer].to_i == 1
