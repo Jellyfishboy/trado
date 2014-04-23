@@ -1,7 +1,5 @@
 Trado::Application.routes.draw do
 
-  mount RedactorRails::Engine => '/redactor_rails'
-
   root :to => 'store#index'
 
   # Standard pages

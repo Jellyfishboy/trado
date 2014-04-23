@@ -60,7 +60,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bower-rails (0.7.1)
     builder (3.0.4)
     bullet (4.7.1)
       activesupport
@@ -345,10 +344,6 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redactor-rails (0.4.3)
-      devise
-      mime-types
-      orm_adapter
     redcard (1.1.0)
     reek (1.3.6)
       ruby2ruby (~> 2.0.7)
@@ -452,7 +447,6 @@ GEM
       rails (>= 3.0.7)
     win32-process (0.7.4)
       ffi (>= 1.0.0)
-    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -467,7 +461,6 @@ DEPENDENCIES
   bcrypt-ruby!
   better_errors
   binding_of_caller
-  bower-rails (~> 0.7.1)
   bullet
   cancan
   capistrano (~> 2.15)
@@ -500,7 +493,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 3.2.13)
   rails_admin
-  redactor-rails
   remotipart (~> 1.2)
   rollbar (~> 0.12.17)
   rspec-rails
