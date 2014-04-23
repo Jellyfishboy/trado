@@ -25,7 +25,6 @@ class Admin::OrdersController < ApplicationController
     @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        # Notifier.order_updated(@order).deliver if params[:update_customer].to_i == 1
         format.js { render :partial => 'admin/orders/success', :format => [:js] }
       end
     end
@@ -47,7 +46,7 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
-  # Set the shipping dispatch date for an orders
+  # Set the shipping dispatch date for an order
   #
   # @return [nil]
   def shipping
