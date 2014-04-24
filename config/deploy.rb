@@ -40,14 +40,24 @@ namespace :configure do
     run "yes | cp /home/configs/database.yml /home/gimsonrobotics/current/config"
   end
 end
+namespace :database do
+  desc "Migrate the database"
+  task :migrate, :roles => :app do
+    run "cd /home/gimsonrobotics/current && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
+  end
+end
 namespace :assets do
+    desc "Install Bower dependencies"
+    task :bower, :roles => :app do
+      run "cd /home/gimsonrobotics/current && sudo bower install --allow-root"
+    end 
     desc "Compile assets"
     task :compile, :roles => :app do
-        run "cd /home/gimsonrobotics/current && bundle exec rake assets:precompile"
+        run "cd /home/gimsonrobotics/current && RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
     end
     desc "Generate sitemap"
     task :refresh_sitemaps do
-      run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+      run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
     end
 end
 namespace :rollbar do
@@ -66,7 +76,9 @@ default_run_options[:pty] = true
 
 after :deploy, 'configure:application'
 after 'configure:application', 'configure:database'
-after 'configure:database', 'assets:compile'
+after 'configure:database', 'database:migrate'
+after 'database:migrate', 'assets:bower'
+after 'assets:bower', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'
 after 'assets:refresh_sitemaps', 'rollbar:notify'
 after 'rollbar:notify', 'unicorn:restart'
