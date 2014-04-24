@@ -12,11 +12,6 @@ class Admin::Products::Skus::StockLevelsController < ApplicationController
     @stock_level = StockLevel.new(params[:stock_level])
     respond_to do |format|
       if @stock_level.save
-        if Store::positive?(@stock_level.adjustment)
-          @stock_level.sku.update_column(:stock, @stock_level.sku.stock + @stock_level.adjustment)
-        else
-          @stock_level.sku.update_column(:stock, @stock_level.sku.stock - @stock_level.adjustment.abs)
-        end
         @sku = @stock_level.sku
         format.js { render :partial => 'admin/products/skus/stock_levels/success', :format => [:js] }
       else

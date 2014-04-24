@@ -28,6 +28,6 @@
               %td= country.name
               %td= country.language
               %td= country.iso
-              %td= country.available ? "Yes" : "No"
+              %td= country.available ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe
               = table_commands country, country, edit_admin_country_path(country), admin_country_path(country), 0
 
