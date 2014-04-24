@@ -33,14 +33,14 @@ class StockLevel < ActiveRecord::Base
   # @return [boolean]
   def validate_stock
     unless !Store::positive?(self.adjustment) && self.adjustment.abs > self.sku.stock
-        if Store::positive?(@stock_level.adjustment)
-          @stock_level.sku.update_column(:stock, @stock_level.sku.stock + @stock_level.adjustment)
-        else
-          @stock_level.sku.update_column(:stock, @stock_level.sku.stock - @stock_level.adjustment.abs)
-        end
+      if Store::positive?(self.adjustment)
+        self.sku.update_column(:stock, self.sku.stock + self.adjustment)
+      else
+        self.sku.update_column(:stock, self.sku.stock - self.adjustment.abs)
+      end
     else
-        errors.add(:stock_level, " can't reduce the SKU stock to a negative value.")
-        return false
+      errors.add(:stock_level, "can't   reduce the SKU stock to a negative value.")
+      return false
     end
   end
 

@@ -41,7 +41,7 @@ module Store
         #
         # @return [boolean]
         def positive? number
-          return true if number > 0 else false
+          return true if number > 0
         end
         
     end
