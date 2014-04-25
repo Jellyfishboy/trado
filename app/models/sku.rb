@@ -35,7 +35,7 @@ class Sku < ActiveRecord::Base
   validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
-  validate :check_stock_values,                     :on => :create
+  validate :stock_values,                           :on => :create
   validates :attribute_value,                       :uniqueness => { :scope => [:product_id, :active] }
   validates :sku,                                   :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :should_validate_sku?
 
@@ -51,7 +51,7 @@ class Sku < ActiveRecord::Base
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
   #
   # @return [boolean]
-  def check_stock_values
+  def stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
       return false

@@ -5,7 +5,7 @@
     %td.desc
       = item.sku.product.name
       = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
-        %i.icon-remove-sign
+        %i.fa.fa-times-circle
       %div= sku_attribute_values(item.sku, item.sku.product.single)
     %td.qty
       = form_for item, :remote => true do |f|

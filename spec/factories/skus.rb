@@ -19,5 +19,11 @@ FactoryGirl.define do
                 create(:sku_notification, notifiable: sku)
             end
         end
+
+        factory :sku_stock_level do
+            after(:create) do |sku, evaluator|
+                create(:stock_level, adjustment: 3, sku: sku)
+            end
+        end
     end
 end

@@ -7,7 +7,7 @@
       )
   %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
   = link_to new_order_path, :class => 'btn btn-danger' do
-    %i.icon-shopping-cart
+    %i.fa.fa-shopping-cart
 .open-panel
   - if current_cart.cart_items.empty?
     .item-in-cart.clearfix
@@ -25,13 +25,13 @@
           %div
             = sku_attribute_values(item.sku, item.sku.product.single)
             - unless item.cart_item_accessory.blank?
-              = "<i class='icon-code-fork'></i> #{item.cart_item_accessory.accessory.name}".html_safe
+              = "<i class='fa fa-code-fork'></i> #{item.cart_item_accessory.accessory.name}".html_safe
           %span.light-clr.qty
             Qty:
             = item.quantity
             \ 
             = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
-              %i.icon-remove-sign
+              %i.fa.fa-times-circle
         .price
           %strong= format_currency item.total_price
     .summary
@@ -42,4 +42,4 @@
     .proceed
       = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
-        %i.icon-shopping-cart
+        %i.fa.fa-shopping-cart
