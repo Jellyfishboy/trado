@@ -35,9 +35,12 @@ class Tag < ActiveRecord::Base
   #
   # @return [nil]
   def self.del value, product_id
-    Tag.includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all if value.blank?
-    @tags = value.split(/,\s*/)
-    Tag.where('name NOT IN (?)', @tags).includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
+    if value.blank?
+      Tag.includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all 
+    else
+      @tags = value.split(/,\s*/)
+      Tag.where('name NOT IN (?)', @tags).includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
+    end
   end
 
 end
