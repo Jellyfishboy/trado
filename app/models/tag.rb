@@ -30,10 +30,12 @@ class Tag < ActiveRecord::Base
     end
   end
 
-  # Deletes tags not contained within the comma separated string, associated by the HABTM taggings table
+  # Deletes all tags associated to the product if the string is blank.
+  # Or deletes tags not contained within the comma separated string, including tagging records.
   #
   # @return [nil]
   def self.del value, product_id
+    Tag.includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all if value.blank?
     @tags = value.split(/,\s*/)
     Tag.where('name NOT IN (?)', @tags).includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
   end
