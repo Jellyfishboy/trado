@@ -5,9 +5,9 @@ $('.price').html('<%= format_currency (@sku.price+@accessory_price) %>');
 $('.gross_price').html('<%= gross_price (@sku.price+@accessory_price) %> inc. <%= Store::settings.tax_name %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
-    $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"icon-envelope\"></i> &nbsp; Notify me</a>");
+    $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"fa fa-envelope\"></i> &nbsp; Notify me</a>");
     $('#notify_me_form').html("<%=j render :partial => 'products/notify/form', :locals => { :sku => @sku, :notification => @notification } %>")
 <% else %>
     $('.stock').html('<span class="btn btn-success">In Stock</span>');
-    $('.notify_me').replaceWith("<button class=\"btn btn-danger pull-right add_to_cart\" type=\"submit\"><i class=\"icon-shopping-cart\"></i> &nbsp; Add To Cart</button>");
+    $('.notify_me').replaceWith("<button class=\"btn btn-danger pull-right add_to_cart\" type=\"submit\"><i class=\"fa fa-shopping-cart\"></i> &nbsp; Add To Cart</button>");
 <% end %>

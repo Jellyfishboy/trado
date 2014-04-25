@@ -1,6 +1,6 @@
 - content_for :title, @product.name
 - content_for :breadcrumb, @product.name
-- app_breadcrumb_add @product.category.name, category_path(@product.category)
+- store_breadcrumb_add @product.category.name, category_path(@product.category)
 - content_for :meta_description, @product.meta_description
 / ==========
 / = Breadcrumbs =
@@ -52,8 +52,8 @@
           = form_for @cart_item, :html => { :method => :post, :remote => true, :class => 'form form-inline clearfix product_sku_form' } do |f|
             .numbered
               = f.text_field :quantity, :value => 1, :class => 'tiny-size'
-              %span.clickable.add-one.icon-plus-sign-alt
-              %span.clickable.remove-one.icon-minus-sign-alt
+              %span.clickable.add-one.fa.fa-plus-square
+              %span.clickable.remove-one.fa.fa-minus-square
             \ 
             - if @product.single
               = f.hidden_field :sku_id, :value => @product.skus.first.id
@@ -64,11 +64,11 @@
                 = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "Select accessory"
             - if @skus.first.stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart') do
-                %i.icon-shopping-cart
+                %i.fa.fa-shopping-cart
                 \  Add To Cart
             - else
               %a.btn.btn-warning.pull-right.notify_me{href: "#"}
-                %i.icon-envelope
+                %i.fa.fa-envelope
                 Notify me
           %hr/
           / ==========.order('attribute_value desc')
@@ -90,7 +90,7 @@
                   / AddThis Button END
           / More Buttons
           .store-buttons
-            %i.icon-envelope-alt
+            %i.fa.fa-envelope
             %a{href: "#"} Email to a friend
             \
     / ==========
@@ -114,7 +114,7 @@
               %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/ups-logo.png"}/
             %p Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
             %h6
-              %em.icon-gift
+              %em.fa.fa-gift
               Giftwrap?
             %p
               Let us take care of giftwrapping your presents by selecting

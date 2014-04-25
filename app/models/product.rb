@@ -17,6 +17,7 @@
 #  weighting                :integer 
 #  sku                      :string(255)
 #  featured                 :boolean 
+#  single                   :boolean
 #  active                   :boolean          default(true)
 #  category_id              :integer    
 #  created_at               :datetime         not null
@@ -35,6 +36,7 @@ class Product < ActiveRecord::Base
   validates :description,                                     :length => {:minimum => 20, :message => :too_short }
   validates :skus,                                            :tier => true, :on => :save
   validates :short_description,                               :length => { :maximum => 100, :message => :too_long }                                                         
+  validate :single_product
 
   has_many :searches
   has_many :skus,                                             :dependent => :delete_all
@@ -50,8 +52,6 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
-
-  before_save :single_product
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -96,11 +96,13 @@ class Product < ActiveRecord::Base
   end
 
   # Detects if a product has more than one SKU when attempting to set the single product field as true
+  # The sku association needs to map an attribute block in order to count the number of records successfully
+  # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   #
   # @return [boolean]
   def single_product
-    if self.single && self.skus.count > 1
-      errors.add(:product, "cannot be set as a single product with more than one SKU.")
+    if self.single && self.skus.map { |s| s.active }.count > 1
+      errors.add(:single, " product cannot be set if the product has more than one SKU.")
       return false
     end
   end

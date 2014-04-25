@@ -80,7 +80,6 @@ describe Order do
             # end
             # it "should send a ship_order_today email" do
             #     expect {
-            #         binding.pry
             #         order_3.ship_order_today
             #     }.to change {
             #         ActionMailer::Base.deliveries.count }.by(1)

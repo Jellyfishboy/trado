@@ -5,8 +5,7 @@ module Mailatron4000
             Order.all.each do |order|
                 if order.shipping_date == Date.today
                     order.update_column(:shipping_status, "Dispatched")
-                    binding.pry
-                    Notifier.order_shipped(order).deliver
+                    StoreMailer.Shippings.complete(order).deliver
                 end
             end
         end

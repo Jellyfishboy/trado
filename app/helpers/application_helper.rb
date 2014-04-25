@@ -34,12 +34,12 @@ module ApplicationHelper
       "active" if params[:controller] == controller && params[:action] == action
     end
 
-    def create_app_breadcrumbs
+    def create_store_breadcrumbs
       @app_breadcrumbs ||= [ { :title => 'Home', :url => root_path }]
     end
 
-    def app_breadcrumb_add title, url
-      create_app_breadcrumbs << { :title => title, :url => url }
+    def store_breadcrumb_add title, url
+      create_store_breadcrumbs << { :title => title, :url => url }
     end
 
     def create_admin_breadcrumbs
@@ -52,9 +52,9 @@ module ApplicationHelper
 
     def render_breadcrumbs type
       if type == 0
-        render :partial => 'shared/admin_breadcrumbs', :locals => { :breadcrumbs => create_admin_breadcrumbs }
+        render :partial => 'shared/breadcrumbs/admin', :locals => { :breadcrumbs => create_admin_breadcrumbs }
       else 
-        render :partial => 'shared/app_breadcrumbs', :locals => { :breadcrumbs => create_app_breadcrumbs }
+        render :partial => 'shared/breadcrumbs/store', :locals => { :breadcrumbs => create_store_breadcrumbs }
       end
     end
 

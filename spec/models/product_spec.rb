@@ -75,11 +75,11 @@ describe Product do
         end
     end
 
-    describe "When setting a product as a single product" do
-        let!(:product) { create(:product_skus, single: true) }
+    describe "Setting a product as a single product" do
 
-        it "should validate whether the product has more than one SKU" do
-            expect(product.single_product).to be_false
+        context "when the product has more than one SKUs" do
+
+            it "should produce an error"
         end
     end
     
