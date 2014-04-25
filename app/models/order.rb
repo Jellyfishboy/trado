@@ -83,7 +83,7 @@ class Order < ActiveRecord::Base
   # @return [array]
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
-      Notifier.shipping_delayed(self).deliver
+      StoreMailer.Shippings.delayed(self).deliver
     end
   end
 
@@ -93,7 +93,7 @@ class Order < ActiveRecord::Base
   def ship_order_today
     if self.shipping_date.to_date == Date.today
       self.update_column(:shipping_status, "Dispatched")
-      Notifier.order_shipped(self).deliver
+      StoreMailer.Shippings.complete(self).deliver
     end
   end
 

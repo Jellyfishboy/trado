@@ -12,7 +12,7 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       if sku.stock >= @cart_item.quantity #checks to make sure the requested quantity is not more than the current DB stock
         if @cart_item.save
-          format.js { render :partial => 'carts/update_cart', :formats => [:js] }
+          format.js { render :partial => 'carts/update', :formats => [:js] }
         else
           format.json { render json: @cart_item.errors, status: :unprocessable_entity }
         end
@@ -35,7 +35,7 @@ class CartItemsController < ApplicationController
               @cart_item.cart_item_accessory.quantity = params[:cart_item][:quantity] unless @cart_item.cart_item_accessory.nil?
               @cart_item.save!
             end
-            format.js { render :partial => 'carts/update_cart', :format => [:js] }
+            format.js { render :partial => 'carts/update', :format => [:js] }
             format.json { head :no_content }
           else
             format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -55,8 +55,7 @@ class CartItemsController < ApplicationController
     
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to store_url, notice: 'Successfully deleted the item.' }
-        format.js { render :partial => 'carts/update_cart', :formats => [:js] }
+        format.js { render :partial => 'carts/update', :formats => [:js] }
         format.json { head :no_content }
       end
     end
