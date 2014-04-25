@@ -9,6 +9,16 @@ describe StockLevel do
     it { expect(subject).to validate_presence_of(:description) }
     it { expect(subject).to validate_presence_of(:adjustment) }
 
+    describe "Default scope" do
+        let!(:stock_level_1) { create(:stock_level, created_at: 1.hour.ago) }
+        let!(:stock_level_2) { create(:stock_level, created_at: 6.hours.ago) }
+        let!(:stock_level_3) { create(:stock_level, created_at: Time.now) }
+
+        it "should return an array of stock_levels ordered by descending created_at" do
+            expect(StockLevel.last(3)).to match_array([stock_level_3, stock_level_1, stock_level_2])
+        end
+    end
+
     describe "Validating the adjustment value is greater than or less than zero" do
 
         context "if the adjustment value is zero" do
