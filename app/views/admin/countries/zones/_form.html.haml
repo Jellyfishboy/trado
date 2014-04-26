@@ -21,8 +21,8 @@
           - Country.all.each do |country|
             .checkbox.blocked
               %label
-                = hidden_field_tag "shipping[country_ids][]", ''
-                = check_box_tag "shipping[country_ids][]", country.id, @zone.country_ids.include?(country.id)
+                = hidden_field_tag "zone[country_ids][]", ''
+                = check_box_tag "zone[country_ids][]", country.id, @zone.country_ids.include?(country.id)
                 = country.name
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
