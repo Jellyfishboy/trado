@@ -82,8 +82,9 @@ class Order < ActiveRecord::Base
   #
   # @return [array]
   def delayed_shipping
+    binding.pry
     if self.shipping_date_changed? && self.shipping_date_was
-      StoreMailer.Shippings.delayed(self).deliver
+      StoreMailer::Shippings.delayed(self).deliver
     end
   end
 

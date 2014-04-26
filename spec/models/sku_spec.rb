@@ -18,8 +18,9 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:length) }
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:thickness) }
+    # before { subject.stub(:)}
     it { expect(subject).to validate_presence_of(:attribute_type_id) }
-    before { subject.stub(:stock_changed?) { true } }
+    # before { subject.stub(:stock_changed?) { true } }
     it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:stock_warning_level) }
 

@@ -31,13 +31,14 @@ class Sku < ActiveRecord::Base
   
   validates :price, :cost_value, :length, 
   :weight, :thickness, :attribute_value, 
-  :attribute_type_id,                               :presence => true
-  validates :price, :cost_value,                    :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
-  validates :length, :weight, :thickness,           :numericality => { :greater_than_or_equal_to => 0 }
-  validates :stock, :stock_warning_level,           :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :stock_changed?
-  validate :stock_values,                           :on => :create
-  validates :attribute_value,                       :uniqueness => { :scope => [:product_id, :active] }
-  validates :sku,                                   :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :should_validate_sku?
+  :attribute_type_id,                                         :presence => true
+  validates :price, :cost_value,                              :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
+  validates :length, :weight, :thickness,                     :numericality => { :greater_than_or_equal_to => 0 }
+  validates :stock, :stock_warning_level,                     :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validate :stock_values,                                     :on => :create
+  validates :attribute_value,                                 :uniqueness => { :scope => [:product_id, :active] }
+  validates :sku,                                             :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :new_sku?
+  validates :attribute_value, :attribute_type_id,             :presence => true, :if => :single_sku?
 
   belongs_to :product
   belongs_to :attribute_type
@@ -82,8 +83,17 @@ class Sku < ActiveRecord::Base
   # Validate wether the current record is new
   #
   # @return [boolean]
-  def should_validate_sku?
+  def new_sku?
     return true if self.product.nil?
+  end
+
+  # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
+  # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
+  #
+  # @return [boolean]
+  def single_sku?
+    binding.pry
+    return true if self.product.skus.map { |s| s.active }.count == 1
   end
 
 end

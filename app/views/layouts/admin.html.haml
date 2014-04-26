@@ -74,7 +74,7 @@
           %li{:class => "#{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/tiers')}"}
             = link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Shippings' do
               %i.icon-airplane
-          %li{:class => active_controller?('admin/countries')}
+          %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/tax_rates')} #{active_controller?('admin/countries/zones')}"}
             = link_to admin_countries_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Countries' do
               %i.icon-earth
           %li{:class => active_controller?('admin/admin')}
