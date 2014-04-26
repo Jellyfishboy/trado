@@ -38,8 +38,8 @@ class Sku < ActiveRecord::Base
   validate :stock_values,                                     :on => :create
   validates :attribute_value,                                 :uniqueness => { :scope => [:product_id, :active] }
   validates :sku,                                             :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :new_sku?
-  validates :attribute_value, :attribute_type_id,             :presence => true, :if => :single_sku?
-
+  validates :attribute_value, :attribute_type_id,             :presence => true
+  
   belongs_to :product
   belongs_to :attribute_type
   has_many :cart_items
@@ -92,7 +92,6 @@ class Sku < ActiveRecord::Base
   #
   # @return [boolean]
   def single_sku?
-    binding.pry
     return true if self.product.skus.map { |s| s.active }.count == 1
   end
 
