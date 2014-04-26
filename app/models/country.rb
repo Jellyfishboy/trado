@@ -27,7 +27,6 @@ class Country < ActiveRecord::Base
 
 
   validates :name, :iso,                        :uniqueness => true, :presence => true
-  validates :language,                          :presence => true
 
   after_save :reset_tax
 

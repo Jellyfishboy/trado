@@ -11,7 +11,6 @@ describe Country do
     #Validations
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:iso) }
-    it { expect(subject).to validate_presence_of(:language) }
     it { expect(subject).to validate_uniqueness_of(:name) }
     it { expect(subject).to validate_uniqueness_of(:iso) }
 
