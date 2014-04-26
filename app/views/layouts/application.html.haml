@@ -283,13 +283,15 @@
               nope: ['#{asset_path("css3-fallback.js")}']
           }
       ]);
-      var _gaq = [
-          ['_setAccount', 'UA-24970777-1'],
-          ['_trackPageview']
-      ];
-      (function (d, t) {
-          var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-          s.parentNode.insertBefore(g, s)
-      }(document, 'script'));
+    - if Store::settings.ga_active
+      :javascript
+        var _gaq = [
+            ['_setAccount', tracking_code],
+            ['_trackPageview']
+        ];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s)
+        }(document, 'script'));
 .search-data-query

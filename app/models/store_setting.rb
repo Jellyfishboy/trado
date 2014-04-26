@@ -12,12 +12,14 @@
 #  email            :string(255)            default('admin@example.com')
 #  tax_name         :string(255)            default('VAT')    
 #  currency         :string(255)            default('£')
+#  ga_code          :string(255)
+#  ga_active        :boolean                default(false)
 #  created_at       :datetime               not null
 #  updated_at       :datetime               not null
 #
 class StoreSetting < ActiveRecord::Base
 
-  attr_accessible :currency, :email, :name, :tax_name, :user_id
+  attr_accessible :currency, :email, :name, :tax_name, :user_id, :ga_active, :ga_code
 
   belongs_to :user
 

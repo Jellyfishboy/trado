@@ -22,6 +22,9 @@ root = exports ? this
 log = (message) ->
   if typeof console is 'object' then console.log(message) else return null
 
+# Set the tracking code for GA
+root.tracking_code = "<%= Store::settings.ga_code %>"
+
 $(document).ready ->
     update_sku()
     select_shipping()

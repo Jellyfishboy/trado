@@ -12,7 +12,7 @@
             %li
               %i.icon-cancel-circle
               = msg  
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         = f.label 'Store name'
         = f.text_field :name, :class => 'form-control'
@@ -25,6 +25,17 @@
       .form-group.form-last
         = f.label 'Currency unit'
         = f.text_field :currency, :class => 'form-control'
+    .widget-sub-heading
+      %h3 Google Analytics
+    %fieldset.widget.widget-content.tag-form.widget-last
+      .form-group
+        .checkbox
+          %label
+            = f.check_box :ga_active
+            Active
+      .form-group
+        = f.label 'Web tracking code'
+        = f.text_field :ga_code, :class => 'form-control'
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
