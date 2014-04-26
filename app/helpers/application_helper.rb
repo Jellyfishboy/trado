@@ -19,6 +19,10 @@ module ApplicationHelper
         render("admin/products/" + association.to_s + "/fields", :f => builder)
       end
     end
+
+    def gross_price  net_price
+      format_currency net_price*Store::tax_rate + net_price
+    end
     
     def active_controller? controller
       "current" if params[:controller] == controller

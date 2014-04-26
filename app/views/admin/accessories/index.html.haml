@@ -17,7 +17,8 @@
             %th Name
             %th Weight (g)
             %th Cost value
-            %th Price
+            %th Net price
+            %th Gross price
             %th
         %tbody
           - @accessories.each do |accessory|
@@ -27,4 +28,5 @@
               %td= accessory.weight
               %td= format_currency accessory.cost_value
               %td= format_currency accessory.price
+              %td= gross_price accessory.price
               = table_commands accessory, accessory, edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 0
