@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     skip_before_filter :authenticate_user!
     
     def results
-        @products = Product.search params[:query], page: params[:page], per_page: 30, fields: [:name, :part_number, :sku, :skus]
+        @products = Product.search params[:query], page: params[:page], per_page: 30, fields: [:name, :part_number, :sku]
         respond_to do |format|
             format.html
         end

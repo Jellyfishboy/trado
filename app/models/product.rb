@@ -57,7 +57,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  searchkick word_start: [:name, :sku, :tags], conversions: "conversions"
+  searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope order('weighting DESC')
 
