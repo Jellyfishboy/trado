@@ -1,2 +1,14 @@
+$('.checkout-container .table-items tbody').html("<%=j render :partial => 'orders/cart' %>");
 $('#insufficientStockNotice').html("<%=j render :partial => 'carts/insufficient_stock/modal' %>");
-$('#insufficientStockModal').modal('show');
+// $(document).ajaxComplete(function() {});
+
+// if ()
+// {
+//     console.log("WOO");
+// $(document).ajaxComplete(function() {
+    if ($('.modal-backdrop').length == 0)
+    {
+        $('#insufficientStockModal').modal('show');
+    }
+// });
+// }

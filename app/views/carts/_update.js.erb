@@ -10,7 +10,7 @@ $(".total_price").addClass("update").delay(1000).queue(function(next){
       next();
   });
 if (!$('.order-alert').is(':visible')) {
-    $('.checkout-container .table-items').before('<div class="alert alert-success order-alert animated fadeInDown"><button data-dismiss="alert" class="close" type="button">×</button>Your order has been updated successfully.</div>').delay(2300).queue(function(next){
+    $('.checkout-container .table-items').before('<div class="alert alert-success order-alert animated fadeInDown"><button data-dismiss="alert" class="close" type="button">×</button>Your cart has been updated successfully.</div>').delay(2300).queue(function(next){
         $('.order-alert').addClass('fadeOutUp').delay(800).hide(1);
         next();
     });

@@ -143,11 +143,3 @@
                 = f.submit 'CONTINUE', :class => 'btn btn-primary higher bold'
     / /main content
 / /container
-#errors.modal.hide.fade.in{"aria-hidden" => "false", "aria-labelledby" => "errorModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-    %h3#errorModalLabel
-      %span.light   Form
-      errors
-  .modal-body
-    %ul
