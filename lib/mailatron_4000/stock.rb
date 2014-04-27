@@ -4,7 +4,7 @@ module Mailatron4000
         def self.warning
             @restock = Sku.where('stock < stock_warning_level').all
             if defined?(@restock)
-                StoreMailer.Stock.low(@restock).deliver
+                StockMailer.low(@restock).deliver
             end
         end
 
@@ -12,7 +12,7 @@ module Mailatron4000
             @skus = Sku.where('stock > stock_warning_level').joins("INNER JOIN notifications ON skus.id = notifications.notifiable_id").where('notifications.sent = ? ', false)
             @skus.each do |sku|
                 sku.notifications.each do |notify|
-                    StoreMailer.Stock.notification(sku, notify.email).deliver
+                    StockMailer.notification(sku, notify.email).deliver
                     Mailatron4000::notification_sent(notify)
                 end
             end

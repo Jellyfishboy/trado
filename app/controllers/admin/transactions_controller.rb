@@ -24,7 +24,7 @@ class Admin::TransactionsController < ApplicationController
         raise
       ensure
         if transaction.save
-          StoreMailer.Orders.received(transaction.order)
+          OrderMailer.received(transaction.order)
         end
       end
     end

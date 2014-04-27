@@ -5,5 +5,6 @@ tmp
 vendor/cache/*
 tmp/cache/*
 vendor/assets/components
+.gitkeep
 
 public/assets

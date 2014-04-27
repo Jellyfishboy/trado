@@ -25,7 +25,11 @@ class Admin::OrdersController < ApplicationController
     @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.js { render :partial => 'admin/orders/success', :format => [:js] }
+        if params[:order][:shipping_date]
+          format.js { render :partial => 'admin/orders/shipping/success', :format => [:js] }
+        else
+          format.js { render :partial => 'admin/orders/success', :format => [:js] }
+        end
       end
     end
   end

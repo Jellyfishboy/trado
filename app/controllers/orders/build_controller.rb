@@ -144,9 +144,9 @@ class Orders::BuildController < ApplicationController
             Rollbar.report_exception(e)
         end
         if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
-          StoreMailer.Orders.pending(@order).deliver
+          OrderMailer.pending(@order).deliver
         else
-          StoreMailer.Orders.received(@order).deliver
+          OrderMailer.received(@order).deliver
         end
         redirect_to success_order_build_url(:order_id => @order.id, 
                                             :id => steps.last, 
