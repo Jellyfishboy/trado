@@ -6,5 +6,7 @@ vendor/cache/*
 tmp/cache/*
 vendor/assets/components
 .gitkeep
+config/settings.yml
+
 
 public/assets

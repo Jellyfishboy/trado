@@ -1,0 +1,39 @@
+mailer:
+    development:
+        server: smtp.example.com
+        port: 587
+        domain: localhost:3000
+        user_name: user@example.com
+        password: password123
+        host: localhost:3000
+    production:
+        server: smtp.example.com
+        port: 587
+        domain: 10.1.2.56
+        user_name: user@example.com
+        password: password123
+        host: 10.1.2.56
+paypal:
+    development:
+        login: user@example.com
+        password: password123
+        signature: hex123
+    production:
+        login: user@example.com
+        password: password123
+        signature: hex123
+aws:
+    s3:
+        id: abc123
+        key: hex123
+        bucket: example-bucket
+        region: eu-west-1
+    cloudfront:
+        host:
+            carrierwave: http://cdn.example.com
+            app: http://cdn%d.example.com
+        prefix: /assets
+sitemap:
+    host: http://www.example.com
+rollbar:
+    access_token: hex123

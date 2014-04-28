@@ -55,9 +55,9 @@ Trado::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
-      login: ENV['PAYPAL_LOGIN'],
-      password: ENV['PAYPAL_PWD'],
-      signature: ENV['PAYPAL_SIG']
+      login: Settings.paypal.development.login,
+      password: Settings.paypal.development.password,
+      signature: Settings.paypal.development.signature
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end

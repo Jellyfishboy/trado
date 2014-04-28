@@ -133,7 +133,7 @@ class Orders::BuildController < ApplicationController
                                           Payatron4000::Paypal.express_purchase_options(@order, 
                                                                                         session
                                           )
-        )
+      )
       @order.add_cart_items_from_cart(current_cart)
       if response.success?
         Cart.destroy(session[:cart_id])
