@@ -13,7 +13,6 @@
                     Unsuccessful
                 %p 
                     Unfortunately the payment for your order was unsuccessful.
-                    %strong= params[:response]
 
                 %p= "Your order may have failed for the following reason(s): <strong>#{params[:response]}</strong>".html_safe unless params[:response].nil?
 

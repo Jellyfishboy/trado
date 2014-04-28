@@ -119,7 +119,6 @@ class Orders::BuildController < ApplicationController
                                                                                             order_build_url(:order_id => @order.id, :id => 'payment')
                                                 )
       )
-      binding.pry
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
   end
@@ -134,17 +133,15 @@ class Orders::BuildController < ApplicationController
                                           Payatron4000::Paypal.express_purchase_options(@order, 
                                                                                         session
                                           )
-      )
-      binding.pry
-      if response.success
-        @order.add_cart_items_from_cart(current_cart)
+        )
+      @order.add_cart_items_from_cart(current_cart)
+      if response.success?
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         begin 
           Payatron4000::Paypal.successful(response, @order)
-          @order.successful_order(response)
         rescue Exception => e
-            Rollbar.report_exception(e)
+          Rollbar.report_exception(e)
         end
         if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
           OrderMailer.pending(@order).deliver
@@ -157,9 +154,9 @@ class Orders::BuildController < ApplicationController
         )
       else
         begin
-          Payatron4000::Paypal.failed(response, @order)
+          Payatron4000::Paypal.failed(response, @order, session)
         rescue Exception => e
-            Rollbar.report_exception(e)
+          Rollbar.report_exception(e)
         end
         redirect_to failure_order_build_url(:order_id => @order.id, 
                                             :id => steps.last, 

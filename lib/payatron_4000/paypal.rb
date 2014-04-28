@@ -19,7 +19,7 @@ module Payatron4000
 
         def self.express_purchase_options(order, session)
             {
-              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total]),
+              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total] - order.shipping.price),
               :shipping          => Payatron4000::price_in_pennies(order.shipping.price),
               :tax               => Payatron4000::price_in_pennies(session[:tax]),
               :handling          => 0,
@@ -53,13 +53,13 @@ module Payatron4000
             # Create transaction
             Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
-                                :order_id => self.id, 
+                                :order_id => order.id, 
                                 :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
                                 :payment_type => 'Credit', 
                                 :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
                                 :transaction_id => response.params['PaymentInfo']['TransactionID'], 
                                 :transaction_type => response.params['PaymentInfo']['TransactionType'],
-                                :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - self.shipping.price,
+                                :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - order.shipping.price,
                                 :status_reason => response.params['PaymentInfo']['PendingReason'])
             Payatron4000::stock_update(order)
             # Set order status to active
@@ -67,10 +67,10 @@ module Payatron4000
         end
 
         # Failed order
-        def self.failed(response, order)
+        def self.failed(response, order, session)
             Transaction.create( :fee => 0, 
                                 :gross_amount => session[:total], 
-                                :order_id => self.id, 
+                                :order_id => order.id, 
                                 :payment_status => 'Failed', 
                                 :payment_type => '', 
                                 :tax_amount => session[:tax], 

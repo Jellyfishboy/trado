@@ -12,7 +12,7 @@ Trado::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
+  binding.pry
   # Set default URL
   config.action_mailer.default_url_options = { :host => Settings.mailer.development.host }
 
@@ -55,9 +55,9 @@ Trado::Application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
-      login: Settings.paypal.development.login,
-      password: Settings.paypal.development.password,
-      signature: Settings.paypal.development.signature
+      login: ENV['PAYPAL_LOGIN'],
+      password: ENV['PAYPAL_PWD'],
+      signature: ENV['PAYPAL_SIG']
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end

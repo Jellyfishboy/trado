@@ -9,10 +9,12 @@ module OrderHelper
     end
     
     def payment_status status
-      unless status == "Completed"
+      if status == "Completed"
+        "<span class='label label-green label-small'>#{status}</span>".html_safe
+      elsif status == "Pending"
         "<span class='label label-orange label-small'>#{status}</span>".html_safe
       else
-        "<span class='label label-green label-small'>#{status}</span>".html_safe
+        "<span class='label label-red label-small'>#{status}</span>".html_safe
       end
     end
     
