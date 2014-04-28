@@ -20,7 +20,8 @@ module Payatron4000
         def stock_update order
             order.order_items.each do |item|
               sku = Sku.find(item.sku_id)
-              StockLevel.create(:description => "Order ##{order.id}", :adjustment => "-#{item.quantity}", :sku_id => item.sku_id)
+              description = item.order_item_accessory.nil? ? "Order ##{order.id}" : "Order ##{order.id} (+ #{item.order_item_accessory.accessory.name})"
+              StockLevel.create(:description => description, :adjustment => "-#{item.quantity}", :sku_id => item.sku_id)
               sku.update_column(:stock, sku.stock-item.quantity)
             end
         end

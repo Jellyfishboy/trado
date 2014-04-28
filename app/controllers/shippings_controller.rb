@@ -1,5 +1,7 @@
 class ShippingsController < ApplicationController
 
+    skip_before_filter :authenticate_user!
+    
     # Update shipping results
     #
     # When selecting a shipping country in the order process, the shipping results are updated automatically
