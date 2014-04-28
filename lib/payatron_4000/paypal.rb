@@ -4,7 +4,7 @@ module Payatron4000
 
         def self.express_setup_options(order, steps, cart, session, ip_address, return_url, cancel_url)
             {
-              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total]),
+              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total] - order.shipping.price),
               :shipping          => Payatron4000::price_in_pennies(order.shipping.price),
               :tax               => Payatron4000::price_in_pennies(session[:tax]),
               :handling          => 0,

@@ -15,9 +15,9 @@ mailer:
         host: 141.0.175.166
 paypal:
     development:
-        login: <%= ENV['PAYPAL_DEV_LOGIN'] %>
-        password: <%= ENV['PAYPAL_DEV_PWD'] %>
-        signature: <%= ENV['PAYPAL_DEV_SIG'] %>
+        login: <%= ENV['PAYPAL_LOGIN'] %>
+        password: <%= ENV['PAYPAL_PWD'] %>
+        signature: <%= ENV['PAYPAL_SIG'] %>
     production:
         login: <%= ENV['PAYPAL_LOGIN'] %>
         password: <%= ENV['PAYPAL_PWD'] %>

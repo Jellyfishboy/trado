@@ -109,16 +109,17 @@ class Orders::BuildController < ApplicationController
       flash[:error] = "You do not have permission to amend this order."
       redirect_to root_url
     else
-
       response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::price_in_pennies(session[:total]), 
-                                                Payatron4000::Paypal.express_setup_options(@order, 
-                                                steps, 
-                                                current_cart, 
-                                                session, 
-                                                request.remote_ip, 
-                                                order_build_url(:order_id => @order.id, :id => steps.last), 
-                                                order_build_url(:order_id => @order.id, :id => 'payment'))
+                                                Payatron4000::Paypal.express_setup_options( @order, 
+                                                                                            steps, 
+                                                                                            current_cart, 
+                                                                                            session, 
+                                                                                            request.remote_ip, 
+                                                                                            order_build_url(:order_id => @order.id, :id => steps.last), 
+                                                                                            order_build_url(:order_id => @order.id, :id => 'payment')
+                                                )
       )
+      binding.pry
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
   end
@@ -130,7 +131,9 @@ class Orders::BuildController < ApplicationController
       redirect_to root_url
     else
       response = EXPRESS_GATEWAY.purchase(Payatron4000::price_in_pennies(session[:total]), 
-                                          Payatron4000::Paypal.express_purchase_options(@order, session)
+                                          Payatron4000::Paypal.express_purchase_options(@order, 
+                                                                                        session
+                                          )
       )
       binding.pry
       if response.success
