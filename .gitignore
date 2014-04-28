@@ -7,6 +7,7 @@ tmp/cache/*
 vendor/assets/components
 .gitkeep
 config/settings.yml
+db/test.sqlite3
 
 public/uploads/attachment/large
 public/uploads/attachment/medium
