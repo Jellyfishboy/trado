@@ -18,7 +18,6 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:length) }
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:thickness) }
-    # before { subject.stub(:)}
     it { expect(subject).to validate_presence_of(:attribute_type_id) }
     # before { subject.stub(:stock_changed?) { true } }
     it { expect(subject).to validate_presence_of(:stock) }
@@ -27,13 +26,12 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:thickness).is_greater_than_or_equal_to(0) } 
-    it { expect(subject).to validate_numericality_of(:stock).is_greater_than_or_equal_to(1) } 
-    it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1) } 
-    it { expect(subject).to validate_numericality_of(:stock).only_integer } 
-    it { expect(subject).to validate_numericality_of(:stock_warning_level).only_integer } 
+    it { expect(subject).to validate_numericality_of(:stock).is_greater_than_or_equal_to(1).only_integer } 
+    it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1).only_integer }
 
-    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
-    it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
+    it { expect(subject).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
+    before { subject.stub(:new_sku?) { true } }
+    it { expect(subject).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
 
     describe "When a used SKU is updated or deleted" do
         let(:sku) { create(:sku, active: true) }

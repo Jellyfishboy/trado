@@ -8,5 +8,9 @@ vendor/assets/components
 .gitkeep
 config/settings.yml
 
+public/uploads/attachment/large
+public/uploads/attachment/medium
+public/uploads/attachment/small
+public/uploads/attachment/original
 
 public/assets

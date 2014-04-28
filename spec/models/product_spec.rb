@@ -27,6 +27,8 @@ describe Product do
     it { expect(subject).to validate_uniqueness_of(:sku).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
+    it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
+
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:meta_description).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_least(20) }

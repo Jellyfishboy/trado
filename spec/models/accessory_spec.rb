@@ -16,8 +16,7 @@ describe Accessory do
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:part_number) }
 
-    it { expect(subject).to validate_numericality_of(:part_number).only_integer } 
-    it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1) } 
+    it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
 
 
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }

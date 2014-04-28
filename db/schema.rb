@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140426195738) do
+ActiveRecord::Schema.define(:version => 20140428211557) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -171,16 +171,16 @@ ActiveRecord::Schema.define(:version => 20140426195738) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.integer  "weighting"
-    t.string   "part_number"
+    t.integer  "part_number",       :limit => 255
     t.string   "sku"
     t.integer  "category_id"
     t.string   "slug"
     t.string   "meta_description"
     t.boolean  "featured"
-    t.boolean  "active",            :default => true
+    t.boolean  "active",                           :default => true
     t.text     "short_description"
     t.boolean  "single"
   end
