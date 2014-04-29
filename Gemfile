@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 # Production gems
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', :platforms => :ruby
   gem 'lograge'
 end
 
