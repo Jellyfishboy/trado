@@ -1,4 +1,5 @@
 class StockMailer < ActionMailer::Base
+    layout 'email'
     default :from => "Tom Dallimore <tom.alan.dallimore@googlemail.com>"
 
     # Deliver an email detailing a collection of products which are low on stock to the administrator

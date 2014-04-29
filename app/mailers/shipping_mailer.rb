@@ -1,4 +1,5 @@
 class ShippingMailer < ActionMailer::Base
+    layout 'email'
     default :from => "Tom Dallimore <tom.alan.dallimore@googlemail.com>"
 
     # Deliver an email to the customer when an order has been shipped
