@@ -1,0 +1,12 @@
+- content_for :breadcrumb, "Emails"
+.twelvecol
+    .page-header
+        %h2.widget.widget-header Emails
+    - split_in_halves(@previews_by_class.keys) { |c| @previews_by_class[c].length }.each do |classes|
+        - classes.map { |c| @previews_by_class[c] }.each do |previews|
+            - next if previews[0].group_name == "Base"
+            .widget-sub-heading
+                %h3= previews[0].group_name
+            .widget.widget-content
+                - previews.each do |p|
+                    %a{ :href => rails_email_preview.rep_email_url(preview_id: p.id, email_locale: @email_locale), :class => 'btn btn-normal btn-blue' }= p.method_name  

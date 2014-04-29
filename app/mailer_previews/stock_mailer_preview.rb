@@ -1,10 +1,11 @@
-class StockMailerPreview
-  def low
-    StockMailer.low products
-  end
+class StockMailerPreview < BasePreview
+
+    def low
+        StockMailer.low(mock_products)
+    end
 
 
-  def notification
-    StockMailer.notification sku, email
-  end
+    def notification
+        StockMailer.notification(mock_sku, Store::settings.email)
+    end
 end
