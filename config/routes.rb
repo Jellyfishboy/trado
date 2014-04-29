@@ -50,6 +50,7 @@ Trado::Application.routes.draw do
   namespace :admin do
       root :to => "categories#index"
       mount RailsAdmin::Engine => '/db'
+      mount RailsEmailPreview::Engine => '/email'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :countries, :except => :show
       resources :orders, :only => [:index, :show, :update, :edit] do
