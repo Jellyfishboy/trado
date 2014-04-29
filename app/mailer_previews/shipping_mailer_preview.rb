@@ -1,10 +1,11 @@
 class ShippingMailerPreview
   def complete
-    ShippingMailer.complete order
+    order = Order.new
+    ShippingMailer.complete(order)
   end
 
 
-  def delayed
-    ShippingMailer.delayed order
-  end
+  # def delayed
+  #   ShippingMailer.delayed order
+  # end
 end
