@@ -2,6 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css">
 <title><%= Store::settings.name %> - <%= yield :title %></title>
 <style type="text/css">
 div, p, a, li, td { -webkit-text-size-adjust:none; }
@@ -11,33 +12,34 @@ strong { font-weight:bold;}
 <body bgcolor="#ffffff" style="background-color:#ffffff;">
     <table width="100%" bgcolor="#ffffff" style="background-color:#ffffff;" border="0">
         <tr>
-            <td width="33%"><img src="clear.gif" width="1" height="1" alt="" /></td>
+            <td width="33%"><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '1' %></td>
             <td>
             <!--HEADER-->    
                 <table border="0" width="600" height="50" bgcolor="#EEEEEE" style="background-color:#EEEEEE;border-bottom:1px #cccccc solid;" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
                     </tr>
                     <tr align="left">
-                        <td><img src="clear.gif" alt="" style="display: block" width="20" height="50" /></td>
-                        <td><%= link_to root_path, :target => '_blank' do %>
-                                <img src="image-314077-623952.jpg" alt="SNGTRKR" style="display: block;border:none;" width="63" height="50" />
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
+                        <td>
+                            <%= link_to root_path, :target => '_blank' do %>
+                                <img src="image-314077-623952.jpg" alt="SNGTRKR" style="display: block;border:none;" width="50" height="50" />
                             <% end %>
                         </td>
-                        <td align="left" width="447" height="50" ><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= @order.bill_address.full_name %></strong><br/><%= yield :subject %></p></td>
-                        <td><img src="http://placehold.it/50x50" alt="" style="display: block;border:none;" width="50" height="50" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="20" height="50" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '10', :height => '50' %></td>
+                        <td align="left" width="500" height="50" ><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= yield :recipient %></strong><br/><%= yield :subject %></p></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
                     </tr>
                     <tr>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
                     </tr>
                 </table>
             <!--HEADER END-->   
@@ -46,9 +48,9 @@ strong { font-weight:bold;}
             <!-- top padding -->
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                 <tr>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
                 </tr>
             </table> 
 
@@ -60,9 +62,9 @@ strong { font-weight:bold;}
             <!-- bottom padding -->
             <table bgcolor="#ffffff" border="0" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
                 <tr>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
-                    <td><img src="clear.gif" alt="" style="display: block" width="1" height="30" /></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '30' %></td>
                 </tr>
             </table> 
             <!--MAIN CONTENT END-->       
@@ -70,36 +72,24 @@ strong { font-weight:bold;}
                 <!-- Main Footer -->
               <table border="0" width="600" height="50" bgcolor="#EEEEEE" style="background-color:#EEEEEE;border-top:1px #cccccc solid;" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
                     </tr>
                     <tr align="left">
-                        <td><img src="clear.gif" alt="" style="display: block" width="50" height="42" /></td>
-                        <td align="left" width="382" height="37"><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Please do not reply to this message; it was sent from an unmonitored email address. This message is a service email related to your use of <%= Store::settings.name %>.</p><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #9e9e9e !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Copyright 2014 <%= Store::settings.name %>. All rights reserved.</p></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="20" height="20" /></td>
-                        <td><a href="https://www.facebook.com/sngtrkr" target="_blank"><img src="image-314079-623958.jpg" alt="" style="display: block; border:0;" width="33" height="37" /></a></td>
-                        <td><a href="https://twitter.com/sngtrkr" target="_blank"><img src="image-314082-623961.jpg" alt="" style="display: block; border:0;" width="31" height="37" /></a></td>
-                        <td><a href="https://plus.google.com/111951759053908858363" target="_blank"><img src="image-314085-623964.jpg" alt="" style="display: block; border:0;" width="34" height="37" /></a></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="50" height="42" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '42' %></td>
+                        <td align="left" width="500" height="37"><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Please do not reply to this message; it was sent from an unmonitored email address. This message is a service email related to your use of <%= Store::settings.name %>.</p><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #9e9e9e !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Copyright 2014 <%= Store::settings.name %>. All rights reserved.</p></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '42' %></td>
                     </tr>
                     <tr>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
-                        <td><img src="clear.gif" alt="" style="display: block" width="1" height="20" /></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
+                        <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '20' %></td>
                     </tr>
                 </table>
             <!--FOOTER END-->               
             </td>
-            <td width="33%"><img src="clear.gif" width="1" height="1" alt="" /></td>
+            <td width="33%"><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '1', :height => '1' %></td>
         </tr>
     </table>
 </body>
