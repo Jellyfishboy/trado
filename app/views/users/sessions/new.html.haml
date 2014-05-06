@@ -16,34 +16,5 @@
             = f.check_box :remember_me
             = f.label :remember_me
     .form-action
-      %input.btn.btn-blue{type: "submit", value: "Login"}/
+      %input.btn.btn-blue.btn-large{type: "submit", value: "Login"}/
 .threecol.last
-
-/ .login-logo-w
-/   = link_to root_path, :class => 'logo' do
-/     %i.icon-cog
-/ .row
-/   .col-md-4.col-md-offset-4
-/     .widget.widget-blue
-/       .widget-title
-/         %h3.text-center
-/           %i.icon-lock
-/           Administration Login
-/       .widget-content
-/         = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form' }) do |f|
-/           .form-group.relative-w
-/             = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "form-control"
-/             %i.icon-user.input-abs-icon
-/           .form-group.relative-w
-/             = f.password_field :password, :placeholder => "Password", :class => "form-control"
-/             %i.icon-lock.input-abs-icon
-/           - if devise_mapping.rememberable?
-/             .form-group
-/               .checkbox
-/                 %label
-/                   = f.check_box :remember_me
-/                   = f.label :remember_me
-/           = button_tag(:type => 'submit', :class => 'btn btn-primary btn-rounded btn-iconed') do
-/             %span Log me in
-/             %i.icon-arrow-right
-
