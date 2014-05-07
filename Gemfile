@@ -70,8 +70,9 @@ gem 'newrelic_rpm'
 # Search
 gem 'searchkick'
 
+# Misc
+gem 'global'
 gem 'wicked'
-
 gem 'foreman',   '~> 0.61.0'
 
 # Transaction handler

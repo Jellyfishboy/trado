@@ -170,6 +170,8 @@ GEM
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     fssm (0.2.10)
+    global (0.0.3)
+      activesupport
     guard (2.5.1)
       formatador (>= 0.2.4)
       listen (~> 2.6)
@@ -492,6 +494,7 @@ DEPENDENCIES
   fog
   foreman (~> 0.61.0)
   friendly_id (~> 4.0.10)
+  global
   guard-rspec
   guard-spork
   haml
