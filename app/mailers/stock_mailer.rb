@@ -8,7 +8,7 @@ class StockMailer < ActionMailer::Base
     # @parameter [array]
     def low products
         @restock = products
-
+        
         mail(to: 'tom.alan.dallimore@googlemail.com', 
              subject: 'Gimson Robotics Restock Warning',
              template_path: 'mailer/stock',

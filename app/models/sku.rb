@@ -95,4 +95,11 @@ class Sku < ActiveRecord::Base
     return true if self.product.skus.map { |s| s.active }.count == 1
   end
 
+  # Joins the parent product SKU and the current SKU with a hyphen
+  #
+  # @return [string]
+  def full_sku
+    [product.sku, sku].join('-')
+  end
+
 end

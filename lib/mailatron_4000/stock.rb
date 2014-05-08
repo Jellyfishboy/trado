@@ -3,9 +3,7 @@ module Mailatron4000
 
         def self.warning
             @restock = Sku.where('stock < stock_warning_level').all
-            if defined?(@restock)
-                StockMailer.low(@restock).deliver
-            end
+            StockMailer.low(@restock).deliver unless @restock.nil?
         end
 
         def self.notify

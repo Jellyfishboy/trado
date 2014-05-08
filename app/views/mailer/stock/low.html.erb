@@ -1,0 +1,76 @@
+<% content_for :title, "Stock level warning for #{pluralize(@restock.count, 'product SKU')}" %>
+<% content_for :header_1, "Stock level warning" %>
+<% content_for :header_2, pluralize(@restock.count, 'product SKU') %>
+
+<tr>
+    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
+    <td align="left" width="500">
+        <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Hi,</p> 
+        <br/>
+    <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Here is a list of SKUs which arent currently running low on stock: </p>
+        <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+            <tr>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+            </tr>
+            <% @restock.each do |sku| %>
+                <% bkground = cycle('EEEEEE', 'FFFFFF') %>
+                <tr bgcolor="#<%= bkground %>" style="background-color:#<%= bkground %>;">
+                    <td>
+                    <%= link_to image_tag(sku.product.attachments.first.file.medium, :alt => sku.product.name, :style => 'display:block;border:none;', :height => '100', :width => '100'), [sku.product.category, sku.product], :target => '_blank' %> 
+     
+                    </td>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '15', :height => '100' %></td>
+                    <td align="left" width="385" height="100">
+                        <table bgcolor="#<%= bkground %>" border="0" width="385" height="100" cellpadding="0" cellspacing="0" style="background-color:#<%= bkground %>;">
+                            <tr>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="font-weight: bold; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #e54b5d !important; font-size: 15px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
+                                        <%= link_to edit_admin_product_url(sku.product), :target => '_blank', :style => 'color:#e54b5d;text-decoration:none;margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;' do %>
+                                            <%= sku.product.name %>
+                                        <% end %>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="font-weight: normal; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #34353e !important; font-size: 14px; line-height: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
+                                        <%= sku.full_sku %>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="font-weight: bold; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #34353e !important; font-size: 14px; line-height: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
+                                        <%= sku.stock %> in stock
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                </tr>
+            <% end %>
+            <tr>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '20' %></td>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '20' %></td>
+                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '20' %></td>
+            </tr>
+        </table>
+        <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">You can start updating your stock by clicking on the product and modifying the stock level of the relevant SKU.</p>
+    </td>
+    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
+</tr>
