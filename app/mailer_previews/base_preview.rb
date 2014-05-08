@@ -19,7 +19,7 @@ class BasePreview
     # Array of the last 5 product records in the database
     #
     # @return [array]
-    def mock_products
-        Product.last(5)
+    def mock_skus
+        Sku.last(3)
     end
 end

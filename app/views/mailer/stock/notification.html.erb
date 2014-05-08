@@ -1,6 +1,6 @@
-<% content_for :recipient, "Stock reminder" %>
 <% content_for :title, "Stock reminder for #{@sku.product.name}" %>
-<% content_for :subject, @sku.product.name %>
+<% content_for :header_1, "Stock reminder" %>
+<% content_for :header_2, @sku.product.name %>
 
 <tr>
     <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
@@ -43,10 +43,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <p style="font-weight: bold; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #45a1c6 !important; font-size: 14px; line-height: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
-                                    <a href="http://www.sngtrkr.com/" target="_blank" style="color:#34353e;text-decoration:none;margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">
-                                        <%= format_currency @sku.product.skus.first.price %>
-                                    </a>
+                                <p style="font-weight: bold; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #34353e !important; font-size: 14px; line-height: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
+                                    <%= format_currency @sku.product.skus.first.price %>
                                 </p>
                             </td>
                         </tr>
@@ -81,7 +79,6 @@
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">If you did not request this reminder, please ignore and delete this email.</p>
         <br/>
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Regards</p>
-        <br/>
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= Store::settings.name %> team</strong></p>
     </td>
     <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>

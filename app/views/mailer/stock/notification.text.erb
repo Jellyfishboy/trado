@@ -1,7 +1,13 @@
-Gimson Robotics
+<% content_for :header_1, "Stock reminder" %>
+<% content_for :header_2, @sku.product.name %>
 
-<%= @sku.product.name %> is now back in stock!
+Hello,
 
-<%= link_to 'Buy now', [@sku.product.category, @sku.product] %>
+You requested a reminder to be sent when 12v Premium Linear Actuator is back in stock. You can now purchase this item from our online store:
 
-This is an automated email. Please do not respond to it.
+<%= category_product_url(@sku.product.category, @sku.product) %>
+
+If you did not request this reminder, please ignore and delete this email.
+
+Regards
+<%= Store::settings.name %> team

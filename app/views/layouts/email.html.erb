@@ -27,11 +27,11 @@ strong { font-weight:bold;}
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
                         <td>
                             <%= link_to root_path, :target => '_blank' do %>
-                                <img src="image-314077-623952.jpg" alt="SNGTRKR" style="display: block;border:none;" width="50" height="50" />
+                                <%= image_tag "#{Store::settings.attachment.file.square}", :alt => Store::settings.name, :style => 'display:block; border:none;', :width => 50, :height => 50 %>
                             <% end %>
                         </td>
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '10', :height => '50' %></td>
-                        <td align="left" width="500" height="50" ><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= yield :recipient %></strong><br/><%= yield :subject %></p></td>
+                        <td align="left" width="500" height="50" ><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= yield :header_1 %></strong><br/><%= yield :header_2 %></p></td>
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
                     </tr>
                     <tr>

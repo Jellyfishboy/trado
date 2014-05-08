@@ -9,6 +9,7 @@ class Admin::AdminController < ApplicationController
 
     def settings
         @settings = current_user.store_setting
+        @attachment = @settings.build_attachment unless @settings.attachment
     end
 
     def update

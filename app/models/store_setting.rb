@@ -19,10 +19,13 @@
 #
 class StoreSetting < ActiveRecord::Base
 
-  attr_accessible :currency, :email, :name, :tax_name, :user_id, :ga_active, :ga_code
+  attr_accessible :currency, :email, :name, :tax_name, :user_id, :ga_active, :ga_code, :attachment_attributes
 
   belongs_to :user
+  has_one :attachment,                                                  as: :attachable, :dependent => :destroy
 
   validates :name, :email, :tax_name, :currency,                        :presence => true
+
+  accepts_nested_attributes_for :attachment
   
 end

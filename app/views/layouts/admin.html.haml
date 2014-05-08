@@ -22,7 +22,7 @@
             %span Categories
         %li{:class => active_controller?('admin/products')}
           = link_to admin_products_path do
-            %i.icon-lab
+            %i.fa.fa-th-large
             %span Products
         %li{:class => active_controller?('admin/accessories')}
           = link_to admin_accessories_path do
@@ -40,19 +40,30 @@
           = link_to admin_countries_path do
             %i.icon-earth
             %span Countries
-        %li{:class => active_controller?('admin/admin')}
-          = link_to admin_settings_path do
-            %i.icon-cog
-            %span Settings
     .all-wrapper
       %header
-        #logo.desktop
+        #logo.desktop= image_tag Store::settings.attachment.file.square, :width => 60, :height => 60 if Store::settings.attachment
         %label#menu-trigger.mobile{for: "menu-trigger-input", href: "#"}
           %i.icon-menu-2
         .dropdown.user-menu
-          %a{"data-toggle" => "dropdown", href: "#"}
+          - if current_user.attachment
+            = image_tag current_user.attachment.file.square, 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
+          - else 
+            %a{'data-toggle' => 'dropdown', :href => '#'}
           %i.fa.fa-caret-up
           %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
+            / %li
+            /   = link_to rep_emails_path do
+            /     %i.icon-envelop
+            /     CRM
+            %li
+              = link_to admin_profile_path do
+                %i.icon-user
+                Profile
+            %li
+              = link_to admin_settings_path do
+                %i.icon-cog
+                Settings
             %li
               = link_to destroy_user_session_path, :method => :delete do
                 %i.icon-switch
@@ -77,9 +88,6 @@
           %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/tax_rates')} #{active_controller?('admin/countries/zones')}"}
             = link_to admin_countries_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Countries' do
               %i.icon-earth
-          %li{:class => active_controller?('admin/admin')}
-            = link_to admin_settings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Settings' do
-              %i.icon-cog
       .main
         .container
           .row

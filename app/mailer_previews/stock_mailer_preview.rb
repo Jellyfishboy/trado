@@ -1,7 +1,7 @@
 class StockMailerPreview < BasePreview
 
     def low
-        StockMailer.low(mock_products)
+        StockMailer.low(mock_skus)
     end
 
 

@@ -74,6 +74,8 @@ Trado::Application.routes.draw do
       end
       get '/settings' => 'admin#settings'
       put '/settings/update' => 'admin#update'
+      get '/profile' => 'users#edit'
+      put '/profile/update' => 'users#update'
   end
 
 end

@@ -1,0 +1,21 @@
+- content_for :breadcrumb, @preview.name
+- content_for :title, @preview.name
+- breadcrumb_add 'CRM', rep_emails_path
+
+.rep-email-show#email-show
+  %div
+    %div
+      %div
+        -# From, To, Subject and other headers
+        %div
+          = render 'rails_email_preview/emails/headers'
+        -# Locale, format and actions
+        %div
+          %ul.list-unstyled.text-right.rep-email-options
+            - if RailsEmailPreview.enable_send_email
+              %li= render 'rails_email_preview/emails/send_form'
+            %li= render 'rails_email_preview/emails/format_nav'
+
+  -# actual email content, rendered in an iframe to prevent browser styles from interfering
+  .margin-right
+    = render 'rails_email_preview/emails/email_iframe'

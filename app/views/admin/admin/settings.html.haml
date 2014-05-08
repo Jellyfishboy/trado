@@ -1,11 +1,11 @@
-- content_for :title, 'Settings'
-- content_for :breadcrumb, 'Settings'
+- content_for :title, 'Profile'
+- content_for :breadcrumb, 'Profile'
 
 .eightcol
   .page-header
-    %h2.widget.widget-header Settings
+    %h2.widget.widget-header Profile
   = form_for @settings, :url => admin_settings_update_path, :html => { :role => 'form' } do |f|
-    - if @settings && @settings.errors.any?
+    - if @settings.errors.any?
       #errors
         %ul
           - @settings.errors.full_messages.each do |msg|
@@ -19,6 +19,11 @@
       .form-group
         = f.label 'Store email address'
         = f.text_field :email, :class => 'form-control'
+      = f.fields_for :attachment do |ff|
+        .form-group
+          = ff.label "Store logo"
+          %div= image_tag @settings.attachment.file.square, :width => 75, :height => 75
+          %div= ff.file_field :file
       .form-group
         = f.label :tax_name
         = f.text_field :tax_name, :class => 'form-control'
@@ -27,13 +32,13 @@
         = f.text_field :currency, :class => 'form-control'
     .widget-sub-heading
       %h3 Google Analytics
-    %fieldset.widget.widget-content.tag-form.widget-last
+    %fieldset.widget.widget-content.widget-last
       .form-group
         .checkbox
           %label
             = f.check_box :ga_active
             Active
-      .form-group
+      .form-group.form-last
         = f.label 'Web tracking code'
         = f.text_field :ga_code, :class => 'form-control'
     .form-action
