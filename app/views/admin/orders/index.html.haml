@@ -13,8 +13,7 @@
         %thead
           %tr
             %th Order no.
-            %th Transaction ID
-            %th Name
+            %th PayPal ID
             %th Shipping status
             %th Payment status
             %th Gross amount
@@ -24,10 +23,7 @@
           - @orders.each do |order|
             %tr
               %td= link_to order.id, [:admin, order]
-              %td= link_to order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{order.transaction.transaction_id}", :target => '_blank'
-              %td
-                = order.bill_address.first_name
-                = order.bill_address.last_name
+              %td= link_to order.transaction.paypal_id, "#{Global.paypal.transaction_link}#{order.transaction.paypal_id}", :target => '_blank'
               %td= shipping_status order.shipping_status
               %td= payment_status order.transaction.payment_status
               %td= format_currency order.transaction.gross_amount

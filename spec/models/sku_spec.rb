@@ -31,7 +31,7 @@ describe Sku do
 
     it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
     before { subject.stub(:new_sku?) { true } }
-    it { expect(subject).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
+    it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
 
     describe "When a used SKU is updated or deleted" do
         let(:sku) { create(:sku, active: true) }

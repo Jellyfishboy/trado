@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509143107) do
+ActiveRecord::Schema.define(:version => 20140509145845) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -297,9 +297,8 @@ ActiveRecord::Schema.define(:version => 20140509143107) do
   end
 
   create_table "transactions", :force => true do |t|
-    t.string   "transaction_id"
+    t.string   "paypal_id"
     t.string   "transaction_type"
-    t.string   "payment_type"
     t.decimal  "fee",              :precision => 8, :scale => 2
     t.string   "payment_status"
     t.integer  "order_id"
@@ -309,6 +308,7 @@ ActiveRecord::Schema.define(:version => 20140509143107) do
     t.datetime "updated_at",                                     :null => false
     t.decimal  "net_amount",       :precision => 8, :scale => 2
     t.string   "status_reason"
+    t.string   "payment_type"
   end
 
   create_table "users", :force => true do |t|

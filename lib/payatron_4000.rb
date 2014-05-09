@@ -1,4 +1,6 @@
 require 'payatron_4000/paypal'
+require 'payatron_4000/bank_transfer'
+require 'payatron_4000/cheque'
 
 module Payatron4000
 

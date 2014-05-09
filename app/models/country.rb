@@ -22,8 +22,7 @@ class Country < ActiveRecord::Base
   has_many :zones,                              :through => :zonifications
 
 
-  validates :name, :iso,                        :uniqueness => true, :presence => true
-  validates :language,                          :presence => true
+  validates :name,                              :uniqueness => true, :presence => true
 
   default_scope order('name ASC')
 

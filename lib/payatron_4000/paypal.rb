@@ -55,10 +55,10 @@ module Payatron4000
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => order.id, 
                                 :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
-                                :payment_type => 'Credit', 
+                                :transaction_type => 'Credit', 
                                 :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
-                                :transaction_id => response.params['PaymentInfo']['TransactionID'], 
-                                :transaction_type => response.params['PaymentInfo']['TransactionType'],
+                                :paypal_id => response.params['PaymentInfo']['TransactionID'], 
+                                :payment_type => response.params['PaymentInfo']['TransactionType'],
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d - order.shipping.price,
                                 :status_reason => response.params['PaymentInfo']['PendingReason'])
             Payatron4000::stock_update(order)
@@ -72,10 +72,10 @@ module Payatron4000
                                 :gross_amount => session[:total], 
                                 :order_id => order.id, 
                                 :payment_status => 'Failed', 
-                                :payment_type => '', 
+                                :transaction_type => '', 
                                 :tax_amount => session[:tax], 
-                                :transaction_id => '', 
-                                :transaction_type => '',
+                                :paypal_id => '', 
+                                :payment_type => '',
                                 :net_amount => session[:sub_total],
                                 :status_reason => response.message)
             order.update_column(:status, 'active')

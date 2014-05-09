@@ -5,15 +5,10 @@ describe Country do
     # ActiveRecord
     it { expect(subject).to have_many(:zonifications).dependent(:delete_all) }
     it { expect(subject).to have_many(:zones).through(:zonifications) }
-    it { expect(subject).to have_one(:country_tax).class_name('CountryTax').dependent(:destroy) }
-    it { expect(subject).to have_one(:tax).through(:country_tax).source(:tax_rate) }
 
     #Validations
     it { expect(subject).to validate_presence_of(:name) }
-    it { expect(subject).to validate_presence_of(:iso) }
-    it { expect(subject).to validate_presence_of(:language) }
     it { expect(subject).to validate_uniqueness_of(:name) }
-    it { expect(subject).to validate_uniqueness_of(:iso) }
 
     describe "Default scope" do
         let!(:country_1) { create(:country, name: 'United Kingdom') }

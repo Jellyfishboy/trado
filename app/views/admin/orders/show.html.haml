@@ -117,8 +117,9 @@
     %table.table.table-striped.table-bordered.table-hover
       %thead
         %tr
-          %th Transaction ID
-          %th Transaction type
+          %th Transaction Type
+          %th Payment type
+          %th PayPal ID
           %th Payment status
           %th Fee
           %th Net amount
@@ -126,8 +127,9 @@
           %th Last updated
       %tbody
         %tr
-          %td= link_to @order.transaction.transaction_id, "#{Global.paypal.transaction_link}#{@order.transaction.transaction_id}", :target => '_blank'
-          %td= @order.transaction.transaction_type 
+          %td= @order.transaction.transaction_type
+          %td= @order.transaction.payment_type 
+          %td= link_to @order.transaction.paypal_id, "#{Global.paypal.transaction_link}#{@order.transaction.paypal_id}", :target => '_blank'
           %td= payment_status @order.transaction.payment_status
           %td= format_currency @order.transaction.fee
           %td= format_currency @order.transaction.net_amount
