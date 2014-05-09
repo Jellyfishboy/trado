@@ -100,7 +100,7 @@
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
-                  %td.stronger= "#{Store::settings.tax_name} (#{Store::tax_rate*100}%):"
+                  %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
                   %td.stronger
                     .align-right= format_currency session[:tax]   
                 %tr

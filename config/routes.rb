@@ -70,7 +70,7 @@ Trado::Application.routes.draw do
         resources :tiers, :except => :show
       end
       namespace :countries do
-        resources :zones, :tax_rates, :except => :show
+        resources :zones, :except => :show
       end
       get '/settings' => 'admin#settings'
       put '/settings/update' => 'admin#update'

@@ -25,14 +25,4 @@ describe Country do
         end
     end
 
-    describe "Listing all SKUs" do
-        let!(:country_1) { create(:country, available: true) }
-        let!(:country_2) { create(:country) }
-        let!(:country_3) { create(:country, available: true) }
-
-        it "should return an array of 'available' countries" do
-            expect(Country.available).to match_array([country_1, country_3])
-        end
-    end
-
 end

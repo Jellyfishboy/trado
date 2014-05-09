@@ -19,10 +19,6 @@
       .form-group
         = f.label 'ISO 3166-1-alpha-2'
         = f.text_field :iso, :class => 'form-control'
-      .checkbox
-        %label
-          = f.check_box :available
-          Available
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

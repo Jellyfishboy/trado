@@ -7,8 +7,6 @@
       %i.icon-plus
     = link_to admin_countries_zones_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Zones" do
       %i.icon-location
-    = link_to admin_countries_tax_rates_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Tax rates" do
-      %i.icon-coin
     %h2.widget.widget-header Countries
   - if @countries.empty?
     %p You don't have any countries yet.
@@ -20,7 +18,6 @@
             %th Name
             %th Language
             %th ISO 3166-1-alpha-2
-            %th Available
             %th
         %tbody
           - @countries.each do |country|
@@ -28,6 +25,5 @@
               %td= country.name
               %td= country.language
               %td= country.iso
-              %td= country.available ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe
               = table_commands country, country, edit_admin_country_path(country), admin_country_path(country), 0
 

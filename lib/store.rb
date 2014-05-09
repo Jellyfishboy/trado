@@ -17,24 +17,11 @@ module Store
           @@store_settings = nil
         end
 
-        # Sets the tax_rate for the entire store
+        # Returns a divided value of the tax rate in the Store settings, ready for use in calculations
         #
-        # @return [Store::tax_rate]
+        # @returns [decimal]
         def tax_rate
-          @@current_country ||= Country.where('available = ?', true).first
-          if @@current_country
-            @@current_country.tax ? @@current_country.tax.rate/100 : 0.2
-          else
-            0.2
-          end
-        end
-
-        # Clears the current_country class variable so the new country can be taken
-        # from the database when next accessed
-        #
-        # @return [nil]
-        def reset_tax_rate
-          @@current_country = nil
+            Store::settings.tax_rate/100
         end
 
         # Detects whether an integer is positive
