@@ -3,7 +3,7 @@ module Mailatron4000
 
         def self.dispatch_all
             Order.all.each do |order|
-                if order.shipping_date == Date.today
+                if order.shipping_date.to_date == Date.today
                     order.update_column(:shipping_status, "Dispatched")
                     ShippingMailer.complete(order).deliver
                 end

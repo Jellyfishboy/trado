@@ -18,7 +18,7 @@
                 <% bkground = cycle('EEEEEE', 'FFFFFF') %>
                 <tr bgcolor="#<%= bkground %>" style="background-color:#<%= bkground %>;">
                     <td>
-                    <%= link_to image_tag(sku.product.attachments.first.file.medium, :alt => sku.product.name, :style => 'display:block;border:none;', :height => '100', :width => '100'), [sku.product.category, sku.product], :target => '_blank' %> 
+                    <%= link_to image_tag(sku.product.attachments.first.file.square, :alt => sku.product.name, :style => 'display:block;border:none;', :height => '100', :width => '100'), [sku.product.category, sku.product], :target => '_blank' %> 
      
                     </td>
                     <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '15', :height => '100' %></td>

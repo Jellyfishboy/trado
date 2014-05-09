@@ -18,5 +18,38 @@ FactoryGirl.define do
                 create_list(:sku, 3, product: product)
             end
         end
+
+        factory :product_sku do
+            after(:create) do |product, evaluator|
+                create(:sku, product: product, sku: '55')
+            end
+        end
+
+        factory :notified_product do
+            after(:create) do |product, evaluator|
+                create(:sku_in_stock, product: product)
+                create(:product_attachment, attachable: product)
+            end
+        end
+
+        # Factories for stock_spec:automated stock warning level
+        factory :stock_warning_product_1 do
+            after(:create) do |product, evaluator|
+                build(:sku, product: product, stock: 5, stock_warning_level: 10).save(validate: false)
+                create(:product_attachment, attachable: product)
+            end
+        end
+        factory :stock_warning_product_2 do
+            after(:create) do |product, evaluator|
+                build(:sku, product: product, stock: 20, stock_warning_level: 5).save(validate: false)
+                create(:product_attachment, attachable: product)
+            end
+        end
+        factory :stock_warning_product_3 do
+            after(:create) do |product, evaluator|
+                build(:sku, product: product, stock: 7, stock_warning_level: 15).save(validate: false)
+                create(:product_attachment, attachable: product)
+            end
+        end
     end
 end

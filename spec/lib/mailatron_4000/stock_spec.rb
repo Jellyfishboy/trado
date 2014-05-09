@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe Mailatron4000::Stock do
 
+    store_setting
+
     describe "Automated stock warning level" do
 
         before(:all) do
-            build(:sku, stock: 5, stock_warning_level: 10).save(validate: false)
-            build(:sku, stock: 20, stock_warning_level: 5).save(validate: false)
-            build(:sku, stock: 7, stock_warning_level: 15).save(validate: false)
+            create(:stock_warning_product_1)
+            create(:stock_warning_product_2)
+            create(:stock_warning_product_3)
         end
 
         context "if there is low stock" do
@@ -24,7 +26,7 @@ describe Mailatron4000::Stock do
     describe "Notifying of new stock" do
 
         before(:all) do
-            create(:sku_in_stock)
+            create(:notified_product)
         end
         context "if there are any notifications" do
 

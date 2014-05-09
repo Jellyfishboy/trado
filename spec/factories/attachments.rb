@@ -18,5 +18,9 @@ FactoryGirl.define do
       factory :product_attachment do
         association :attachable, :factory => :product
       end
+
+      factory :store_setting_attachment do
+        association :attachable, :factory => :store_setting
+      end
     end
 end

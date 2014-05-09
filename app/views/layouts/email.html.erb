@@ -27,7 +27,11 @@ strong { font-weight:bold;}
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
                         <td>
                             <%= link_to root_path, :target => '_blank' do %>
-                                <%= image_tag "#{Store::settings.attachment.file.square}", :alt => Store::settings.name, :style => 'display:block; border:none;', :width => 50, :height => 50 %>
+                                <% if Store::settings.attachment %>
+                                    <%= image_tag "#{Store::settings.attachment.file.square}", :alt => Store::settings.name, :style => 'display:block; border:none;', :width => 50, :height => 50 %>
+                                <% else %>
+                                    <img src="http://placehold.it/50x50", style="display:block; border:none;"/>
+                                <% end %>
                             <% end %>
                         </td>
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '10', :height => '50' %></td>

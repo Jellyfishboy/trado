@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe Mailatron4000::Orders do
 
+    store_setting
+
     describe "Dispatching orders" do
 
-        before(:each) do
-           create(:order, shipping_date: Date.today)
-        end
+        let!(:order){ create(:order, shipping_date: Time.now) }
+        
         context "if order delivery date is today" do
 
             it "should update the order as dispatched" do

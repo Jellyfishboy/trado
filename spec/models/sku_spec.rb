@@ -29,7 +29,7 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock).is_greater_than_or_equal_to(1).only_integer } 
     it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1).only_integer }
 
-    it { expect(subject).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
+    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
     before { subject.stub(:new_sku?) { true } }
     it { expect(subject).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
 
@@ -67,6 +67,14 @@ describe Sku do
 
         it "should return an array of active SKUs" do
             expect(Sku.active).to match_array([sku_2])
+        end
+    end
+
+    describe "Displaying a full SKU value" do
+        let(:product) { create(:product_sku, sku: 'GA280') }
+
+        it "should return a string value of the product SKU and the child SKU joined by a hyphen" do
+            expect(product.skus.first.full_sku).to eq 'GA280-55'
         end
     end
 

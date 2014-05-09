@@ -45,6 +45,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    addressable (2.3.6)
     ansi (1.4.3)
     arel (3.0.3)
     arrayfields (4.9.0)
@@ -130,6 +131,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    email_spec (1.5.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -210,6 +214,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     listen (2.6.1)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
@@ -489,6 +495,7 @@ DEPENDENCIES
   compass-rails
   database_cleaner
   devise
+  email_spec
   factory_girl_rails
   faker
   fog

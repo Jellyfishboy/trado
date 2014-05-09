@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Order do
 
+    store_setting
+
     # ActiveRecord relations
     it { expect(subject).to have_many(:order_items).dependent(:delete_all) }
     it { expect(subject).to have_one(:transaction).dependent(:destroy) }
@@ -53,8 +55,8 @@ describe Order do
 
     describe "Managing an order shipping" do
         let(:order) { create(:order, shipping_date: nil) }
-        let(:order_2) { create(:order, shipping_date: Date.today) }
-        # let(:order_3) { create(:order) }
+        let(:order_2) { create(:order, shipping_date: Time.now) }
+        let!(:order_3) { create(:order) }
 
         context "if order date is today" do
 
@@ -74,16 +76,16 @@ describe Order do
         end
 
         context "if order had a shipping date and was changed again" do
-            # before(:each) do
-            #     order_3.stub(:shipping_date_changed?) { true }
-            #     order_3.stub(:shipping_date_was) { true }
-            # end
-            # it "should send a ship_order_today email" do
-            #     expect {
-            #         order_3.ship_order_today
-            #     }.to change {
-            #         ActionMailer::Base.deliveries.count }.by(1)
-            # end
+            before(:each) do
+                order_3.stub(:shipping_date_changed?) { true }
+                order_3.stub(:shipping_date_was) { true }
+            end
+            it "should send a delayed_shipping email" do
+                expect {
+                    order_3.delayed_shipping
+                }.to change {
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
         end
 
         it "should return false if the shipping_date is nil" do
