@@ -35,7 +35,7 @@
         = f.text_field :currency, :class => 'form-control'
     .widget-sub-heading
       %h3 Google Analytics
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         .checkbox
           %label
@@ -44,6 +44,10 @@
       .form-group.form-last
         = f.label 'Web tracking code'
         = f.text_field :ga_code, :class => 'form-control'
+    .widget-sub-heading
+      %h3 Payment options
+    %fieldset.widget.widget-content.widget-last
+      %p Please check the following payment options you would like to offer for your store. PayPal is automatically turned on.
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
