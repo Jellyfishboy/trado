@@ -6,13 +6,13 @@ mysql: &mysql
   adapter: mysql2
   username: travis
   password:
-  database: gimson_robotics_<%= Rails.env %>_db
+  database: trado_<%= Rails.env %>_db
 
 postgresql: &postgresql
   adapter: postgresql
   username: postgres
   password:
-  database: gimson_robotics_<%= Rails.env %>_db
+  database: trado_<%= Rails.env %>_db
   min_messages: ERROR
 
 defaults: &defaults
