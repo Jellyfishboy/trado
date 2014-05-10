@@ -2,11 +2,11 @@ module Payatron4000
 
     class Paypal
 
-        def self.express_setup_options(order, steps, cart, session, ip_address, return_url, cancel_url)
+        def self.express_setup_options(order, steps, cart, ip_address, return_url, cancel_url)
             {
-              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total] - order.shipping.price),
+              :subtotal          => Payatron4000::price_in_pennies(order.net_amount - order.shipping.price),
               :shipping          => Payatron4000::price_in_pennies(order.shipping.price),
-              :tax               => Payatron4000::price_in_pennies(session[:tax]),
+              :tax               => Payatron4000::price_in_pennies(order.tax_amount),
               :handling          => 0,
               :order_id          => order.id,
               :items             => Payatron4000::Paypal.express_items(cart),
@@ -17,11 +17,11 @@ module Payatron4000
             }
         end
 
-        def self.express_purchase_options(order, session)
+        def self.express_purchase_options(order)
             {
-              :subtotal          => Payatron4000::price_in_pennies(session[:sub_total] - order.shipping.price),
+              :subtotal          => Payatron4000::price_in_pennies(order.net_amount - order.shipping.price),
               :shipping          => Payatron4000::price_in_pennies(order.shipping.price),
-              :tax               => Payatron4000::price_in_pennies(session[:tax]),
+              :tax               => Payatron4000::price_in_pennies(order.tax_amount),
               :handling          => 0,
               :token             => order.express_token,
               :payer_id          => order.express_payer_id,
@@ -67,16 +67,16 @@ module Payatron4000
         end
 
         # Failed order
-        def self.failed(response, order, session)
+        def self.failed(response, order)
             Transaction.create( :fee => 0, 
-                                :gross_amount => session[:total], 
+                                :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
                                 :payment_status => 'Failed', 
                                 :transaction_type => '', 
-                                :tax_amount => session[:tax], 
+                                :tax_amount => order.tax_amount, 
                                 :paypal_id => '', 
                                 :payment_type => '',
-                                :net_amount => session[:sub_total],
+                                :net_amount => order.net_amount,
                                 :status_reason => response.message)
             order.update_column(:status, 'active')
         end

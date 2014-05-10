@@ -7,20 +7,22 @@
 #
 # Table name: store_settings
 #
-#  id               :integer                not null, primary key
-#  name             :string(255)            default('Trado')
-#  email            :string(255)            default('admin@example.com')
-#  tax_name         :string(255)            default('VAT')
-#  tax_rate         :decimal                precision(8), scale(2), default(20.0)    
-#  currency         :string(255)            default('£')
-#  ga_code          :string(255)
-#  ga_active        :boolean                default(false)
-#  created_at       :datetime               not null
-#  updated_at       :datetime               not null
+#  id                       :integer                not null, primary key
+#  name                     :string(255)            default('Trado')
+#  email                    :string(255)            default('admin@example.com')
+#  tax_name                 :string(255)            default('VAT')
+#  tax_rate                 :decimal                precision(8), scale(2), default(20.0)    
+#  currency                 :string(255)            default('£')
+#  ga_code                  :string(255)
+#  ga_active                :boolean                default(false)
+#  cheque                   :boolean                default(false)
+#  bank_transfer            :boolean                default(false)
+#  created_at               :datetime               not null
+#  updated_at               :datetime               not null
 #
 class StoreSetting < ActiveRecord::Base
 
-  attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :user_id, :ga_active, :ga_code, :attachment_attributes
+  attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :user_id, :ga_active, :ga_code, :cheque, :bank_transfer, :attachment_attributes
 
   belongs_to :user
   has_one :attachment,                                                  as: :attachable, :dependent => :destroy

@@ -17,20 +17,24 @@
 #  ship_address_id          :integer     
 #  tax_number               :integer 
 #  shipping_id              :integer        
-#  shipping_status          :string(255)      default("Pending")   
+#  shipping_status          :string(255)      default('Pending')   
 #  shipping_date            :datetime 
 #  actual_shipping_cost     :decimal          precision(8), scale(2) 
 #  express_token            :string(255) 
 #  express_payer_id         :string(255) 
+#  net_amount               :decimal          precision(8), scale(2)
+#  tax_amount               :decimal          precision(8), scale(2) 
+#  gross_amount             :decimal          precision(8), scale(2) 
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id
+  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id,
+  :net_amount, :tax_amount, :gross_amount
   
   has_many :order_items,                                                :dependent => :delete_all
-  has_one :transaction,                                                 :dependent => :destroy
+  has_many :transactions,                                               :dependent => :delete_all
 
   belongs_to :shipping
   belongs_to :ship_address,                                             class_name: 'Address', :dependent => :destroy
@@ -52,15 +56,20 @@ class Order < ActiveRecord::Base
   	end
   end
 
-  # Set the session variables for an order - sub total, tax and total
+  # Update the current order's net_amount, tax_amount and gross_amount attribute values
   #
-  # @return [session]
-  # FIXME: Looks really ugly and clumsy. Fix when internationalized tax is introduced.
-  def calculate_order(cart, session, current_tax_rate)
-    session[:sub_total] = session[:tax] = session[:total] = nil
-    session[:sub_total] = cart.total_price + self.shipping.price
-    session[:tax] = (session[:sub_total]*current_tax_rate) + (self.shipping.price*current_tax_rate)
-    session[:total] = session[:sub_total] + session[:tax]
+  # @parameter [hash object, decimal]
+  def calculate(cart, current_tax_rate)
+    net_amount = cart.total_price + self.shipping.price
+    self.update_attributes( :net_amount => net_amount,
+                            :tax_amount => net_amount*current_tax_rate,
+                            :gross_amount => net_amount + (net_amount*current_tax_rate)
+    )
+    self.save!
+    # session[:sub_total] = session[:tax] = session[:total] = nil
+    # session[:sub_total] = cart.total_price + self.shipping.price
+    # session[:tax] = (session[:sub_total]*current_tax_rate) + (self.shipping.price*current_tax_rate)
+    # session[:total] = session[:sub_total] + session[:tax]
   end
 
   # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order

@@ -8,7 +8,7 @@ module Payatron4000
 
         # Convert a price into single digit currency
         #
-        # @return [Payatron4000::price_in_pennies]
+        # @return [decimal]
         # @parameter [decimal]
         def price_in_pennies price
             (price*100).round
@@ -17,7 +17,6 @@ module Payatron4000
         # Creates a new stock level record for each order item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
         #
-        # @return [Payatron4000::stock_update]
         # @parameter [hash object]
         def stock_update order
             order.order_items.each do |item|

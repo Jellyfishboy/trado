@@ -103,15 +103,15 @@
         %tr
           %td.align-right.border-top{colspan: "4"}
             %b Subtotal:
-          %td.border-top= format_currency @order.transaction.net_amount
+          %td.border-top= format_currency @order.net_amount
         %tr
           %td.align-right{colspan: "4"}
             %b Tax:
-          %td= format_currency @order.transaction.tax_amount
+          %td= format_currency @order.tax_amount
         %tr.focused
           %td.align-right{colspan: "4"}
             %b Total:
-          %td= format_currency @order.transaction.gross_amount
+          %td= format_currency @order.gross_amount
     .widget-sub-heading
       %h3 Transactions
     %table.table.table-striped.table-bordered.table-hover
@@ -126,12 +126,13 @@
           %th Gross amount
           %th Last updated
       %tbody
-        %tr
-          %td= @order.transaction.transaction_type
-          %td= @order.transaction.payment_type 
-          %td= link_to @order.transaction.paypal_id, "#{Global.paypal.transaction_link}#{@order.transaction.paypal_id}", :target => '_blank'
-          %td= payment_status @order.transaction.payment_status
-          %td= format_currency @order.transaction.fee
-          %td= format_currency @order.transaction.net_amount
-          %td= format_currency @order.transaction.gross_amount
-          %td.align-left= @order.updated_at.strftime('%B %-d, %Y, %I:%M %P')
+        - @order.transactions.each do |transaction|
+          %tr
+            %td= transaction.transaction_type
+            %td= transaction.payment_type 
+            %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank'
+            %td= payment_status transaction.payment_status
+            %td= format_currency transaction.fee
+            %td= format_currency transaction.net_amount
+            %td= format_currency transaction.gross_amount
+            %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')

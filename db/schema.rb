@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509145845) do
+ActiveRecord::Schema.define(:version => 20140510185139) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -158,6 +158,9 @@ ActiveRecord::Schema.define(:version => 20140509145845) do
     t.integer  "user_id"
     t.integer  "bill_address_id"
     t.integer  "ship_address_id"
+    t.decimal  "net_amount",           :precision => 8, :scale => 2
+    t.decimal  "gross_amount",         :precision => 8, :scale => 2
+    t.decimal  "tax_amount",           :precision => 8, :scale => 2
   end
 
   create_table "products", :force => true do |t|
@@ -253,16 +256,18 @@ ActiveRecord::Schema.define(:version => 20140509145845) do
   end
 
   create_table "store_settings", :force => true do |t|
-    t.string   "name",                                     :default => "Trado"
-    t.string   "email",                                    :default => "admin@example.com"
-    t.string   "currency",                                 :default => "£"
-    t.string   "tax_name",                                 :default => "VAT"
+    t.string   "name",                                        :default => "Trado"
+    t.string   "email",                                       :default => "admin@example.com"
+    t.string   "currency",                                    :default => "£"
+    t.string   "tax_name",                                    :default => "VAT"
     t.integer  "user_id"
-    t.datetime "created_at",                                                                :null => false
-    t.datetime "updated_at",                                                                :null => false
-    t.string   "ga_code",                                  :default => "UA-XXXXX-X"
-    t.boolean  "ga_active",                                :default => false
-    t.decimal  "tax_rate",   :precision => 8, :scale => 2, :default => 20.0
+    t.datetime "created_at",                                                                   :null => false
+    t.datetime "updated_at",                                                                   :null => false
+    t.string   "ga_code",                                     :default => "UA-XXXXX-X"
+    t.boolean  "ga_active",                                   :default => false
+    t.decimal  "tax_rate",      :precision => 8, :scale => 2, :default => 20.0
+    t.boolean  "cheque",                                      :default => false
+    t.boolean  "bank_transfer",                               :default => false
   end
 
   create_table "taggings", :force => true do |t|

@@ -27,4 +27,5 @@ class Transaction < ActiveRecord::Base
   :tax_amount, :paypal_id, :transaction_type, :net_amount, :status_reason
   
   belongs_to :order
+  
 end

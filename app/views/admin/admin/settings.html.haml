@@ -47,7 +47,17 @@
     .widget-sub-heading
       %h3 Payment options
     %fieldset.widget.widget-content.widget-last
-      %p Please check the following payment options you would like to offer for your store. PayPal is automatically turned on.
+      %p Please select the following payment options you would like to offer for your store (PayPal is automatically turned on).
+      .form-group
+        .checkbox
+          %label
+            = f.check_box :cheque
+            Cheque
+      .form-group
+        .checkbox
+          %label
+            = f.check_box :bank_transfer
+            Bank transfer
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
