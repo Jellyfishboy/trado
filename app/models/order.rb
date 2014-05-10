@@ -66,10 +66,6 @@ class Order < ActiveRecord::Base
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )
     self.save!
-    # session[:sub_total] = session[:tax] = session[:total] = nil
-    # session[:sub_total] = cart.total_price + self.shipping.price
-    # session[:tax] = (session[:sub_total]*current_tax_rate) + (self.shipping.price*current_tax_rate)
-    # session[:total] = session[:sub_total] + session[:tax]
   end
 
   # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order

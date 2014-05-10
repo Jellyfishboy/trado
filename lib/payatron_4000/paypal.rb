@@ -68,14 +68,15 @@ module Payatron4000
 
         # Failed order
         def self.failed(response, order)
+            binding.pry
             Transaction.create( :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
                                 :payment_status => 'Failed', 
-                                :transaction_type => '', 
+                                :transaction_type => 'Credit', 
                                 :tax_amount => order.tax_amount, 
                                 :paypal_id => '', 
-                                :payment_type => '',
+                                :payment_type => 'express-checkout',
                                 :net_amount => order.net_amount,
                                 :status_reason => response.message)
             order.update_column(:status, 'active')

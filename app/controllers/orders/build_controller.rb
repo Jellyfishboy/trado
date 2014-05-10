@@ -118,7 +118,7 @@ class Orders::BuildController < ApplicationController
     response = EXPRESS_GATEWAY.purchase(Payatron4000::price_in_pennies(@order.gross_amount), 
                                         Payatron4000::Paypal.express_purchase_options(@order)
     )
-    @order.add_cart_items_from_cart(current_cart)
+    @order.add_cart_items_from_cart(current_cart) if @order.transactions.blank?
     if response.success?
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
@@ -193,12 +193,13 @@ class Orders::BuildController < ApplicationController
 
   private
 
-  # Before filter method to check if the order has an associated transaction record.
+  # Before filter method to check if the order has an associated transaction record with a payment_status of completed
   # Or if the the current_cart is empty, and if so redirect to the homepage.
   #
   def accessible_order
     @order = Order.find(params[:order_id])
-    if !@order.transactions.blank? || current_cart.cart_items.empty?
+    @orders = @order.transactions.where(:payment_status => 'Completed').blank? ? false : true
+    if @orders || current_cart.cart_items.empty?
       flash[:error] = "You do not have permission to amend this order."
       redirect_to root_url
     end
