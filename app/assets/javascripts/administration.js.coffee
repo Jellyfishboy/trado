@@ -64,6 +64,10 @@ $(document).ready ->
     sku = $(@).attr 'id'
     $.get '/admin/products/skus/' + sku + '/edit'
 
+  $('.edit_transaction_attributes').click ->
+      transaction = $(@).attr 'id'
+      $.get '/admin/transactions/' + transaction + '/edit'
+
   # Copy SKU Prefix
   # if $("#product_sku").is ':visible'
   #   window.setInterval (->

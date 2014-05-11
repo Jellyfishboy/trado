@@ -1,0 +1,23 @@
+#transaction-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "transactionModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      = form_for [:admin, @transaction], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+        #errors.json
+          %ul
+        .modal-header
+          %h3#transactionModalLabel
+            Edit Transaction
+            = "##{@transaction.id}"
+            for Order
+            = "##{@transaction.order.id}"
+        .modal-body
+          %fieldset.widget.widget-content.widget-last
+            %p If the payment has been received and cleared successfully, mark the transaction as completed.
+            .form-group
+              .checkbox
+                %label
+                  = f.check_box :payment_status, {}, 'Completed'
+                  Completed
+        .modal-footer
+          %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
+          = f.submit 'Submit', :class => 'btn btn-blue btn-large'

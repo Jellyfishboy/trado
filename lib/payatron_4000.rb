@@ -1,6 +1,5 @@
 require 'payatron_4000/paypal'
-require 'payatron_4000/bank_transfer'
-require 'payatron_4000/cheque'
+require 'payatron_4000/generic'
 
 module Payatron4000
 
@@ -14,7 +13,7 @@ module Payatron4000
             (price*100).round
         end
 
-        # Creates a new stock level record for each order item SKU, adding the order id to the description
+        # Creates a new stock level record for each order_item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
         #
         # @parameter [hash object]
@@ -56,6 +55,6 @@ module Payatron4000
             else
                 OrderMailer.received(order).deliver
             end
-        end 
+        end
     end  
 end

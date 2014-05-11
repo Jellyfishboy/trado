@@ -62,27 +62,25 @@ module Payatron4000
             session[:paypal_email] = details.params["payer"]
         end
 
-        # Completes the order process by communicating with PayPal; receives a response and in turn creats the relevant transaction records,
+        # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
         # sends a confirmation email and redirects the user
         #
-        # @parameter [hash object, hash object, hash object, array]
-        def self.complete order, cart, session, steps
+        # @parameter [hash object, hash object, array]
+        def self.complete order, session, steps
           response = EXPRESS_GATEWAY.purchase(Payatron4000::singularize_price(order.gross_amount), 
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
-          order.transfer(cart) if order.transactions.blank?
           if response.success?
-            Payatron4000::destroy_cart(session)
             begin 
               Payatron4000::Paypal.successful(response, order)
+              Payatron4000::destroy_cart(session)
             rescue Exception => e
               Rollbar.report_exception(e)
             end
             order.reload
-            binding.pry
             Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
             redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
-                                                                                      :id => steps.last
+                                                                                       :id => steps.last
             )
           else
             begin
@@ -114,7 +112,6 @@ module Payatron4000
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
                                 :status_reason => response.params['PaymentInfo']['PendingReason']
             )
-            binding.pry
             Payatron4000::stock_update(order)
             order.update_column(:status, 'active')
         end

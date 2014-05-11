@@ -3,10 +3,13 @@ class Orders::BuildController < ApplicationController
 
   skip_before_filter :authenticate_user!
 
-  before_filter :accessible_order, :only => [:show, :update, :express, :purchase]
+  before_filter :accessible_order, :only => [:show, :update, :express, :cheque, :bank_transfer, :purchase]
 
   steps :review, :billing, :shipping, :payment, :confirm
 
+  # Displays the front-end content of each step, with specific methods throughout providing the relevant data
+  # Steps include, in this order: review, billing, shipping, payment then confimration
+  #
   def show
     @cart = current_cart
     case step
@@ -29,6 +32,9 @@ class Orders::BuildController < ApplicationController
     render_wizard
   end
 
+  # When advancing to the next step in the order process, the update method is called
+  # Any bespoke business logic in each step is then triggered, for example: updating the address and the order status attribute value
+  #
   def update 
     # Sets current state of the order
     if step == steps.last
@@ -78,10 +84,12 @@ class Orders::BuildController < ApplicationController
     end
   end
 
-  # Prepares the order data and redirects to the PayPal login page to review the order.
-  # Bespoke PayPal method.
+  # Prepares the order data and redirects to the PayPal login page to review the order
+  # Set the payment_type session value to nil in order to prevent the wrong complete method being fired in the purchase method below
+  # Bespoke PayPal method
   #
   def express
+    session[:payment_type] = nil
     response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::singularize_price(@order.gross_amount), 
                                               Payatron4000::Paypal.express_setup_options( @order, 
                                                                                           steps, 
@@ -94,9 +102,34 @@ class Orders::BuildController < ApplicationController
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  # Payment method for a bank transfer, which sets the payment_type session value to Bank tranfer
+  # Redirect to last step in the order process
+  #
+  def bank_transfer
+    session[:payment_type] = 'Bank transfer' 
+    redirect_to order_build_url(:order_id => @order.id, :id => steps.last)
+  end
 
+  # Payment method for a cheque, which sets the payment_type session value to Cheque
+  # Redirect to last step in the order process
+  #
+  def cheque
+    session[:payment_type] = 'Cheque'
+    redirect_to order_build_url(:order_id => @order.id, :id => steps.last)
+  end
+
+  # Transfers all the cart_items to new order_items (including cart_item_accessories => order_item_accessories)
+  # If there is a payment_type value set in the session store, trigger the generic complete method
+  # Else trigger the bespoke PayPal complete method
+  #
   def purchase 
-    Payatron4000::Paypal.complete(@order, current_cart, session, steps)
+    binding.pry
+    @order.transfer(current_cart) if @order.transactions.blank?
+    unless session[:payment_type].nil?
+      Payatron4000::Generic.complete(@order, session[:payment_type], session, steps)
+    else
+      Payatron4000::Paypal.complete(@order, session, steps)
+    end
   end
 
   # Renders the successful order page, however redirected if the order payment status is not Pending or completed.

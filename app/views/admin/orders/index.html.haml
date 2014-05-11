@@ -23,7 +23,7 @@
           - @orders.each do |order|
             %tr
               %td= link_to order.id, [:admin, order]
-              %td= link_to order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank'
+              %td= link_to order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank' if order.transactions.last.paypal_id
               %td= shipping_status order.shipping_status
               %td= payment_status order.transactions.last.payment_status
               %td= format_currency order.gross_amount

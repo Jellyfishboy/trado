@@ -125,14 +125,18 @@
           %th Net amount
           %th Gross amount
           %th Last updated
+          %th
       %tbody
         - @order.transactions.each do |transaction|
-          %tr
+          %tr{:id => "transaction_#{transaction.id}" }
             %td= transaction.transaction_type
             %td= transaction.payment_type 
-            %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank'
+            %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id
             %td= payment_status transaction.payment_status
             %td= format_currency transaction.fee
             %td= format_currency transaction.net_amount
             %td= format_currency transaction.gross_amount
             %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
+            - if transaction.payment_status == 'Pending' && transaction.payment_type != 'express-checkout'
+              = table_commands transaction, nil, nil, nil, 3
+#transaction-modal

@@ -27,6 +27,8 @@ Trado::Application.routes.draw do
     resources :build, controller: 'orders/build', :only => [:show,:update] do
       member do
         get 'express'
+        get 'cheque'
+        get 'bank_transfer'
         get 'purchase'
         get 'success'
         get 'failure'
@@ -56,7 +58,7 @@ Trado::Application.routes.draw do
       resources :orders, :only => [:index, :show, :update, :edit] do
         get 'shipping', on: :member
       end
-      resources :transactions, :only => :index
+      resources :transactions, :only => [:edit, :update]
       namespace :products do
         resources :attachments, :only => :destroy
         resources :tags, :only => :index

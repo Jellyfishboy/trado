@@ -11,6 +11,10 @@
     / Edit order
     %a.edit_order_attributes{href: "#", id: object.id}
       %i.icon-pencil
+  - elsif type == 3
+    / Edit transaction
+    %a.edit_transaction_attributes{href: "#", id: object.id}
+      %i.icon-pencil
   - else
     / Edit record
     = link_to edit do
@@ -21,7 +25,7 @@
     %a.order_shipping{href: "#", id: object.id}
       %i.icon-airplane
   / Delete record
-  - unless type == 2 || type == 1
+  - unless type == 2 || type == 1 || type == 3
     = link_to del, :method => :delete, :confirm => 'Are you sure?' do
       %i.icon-remove
   / AJAX delete record (SKU)
