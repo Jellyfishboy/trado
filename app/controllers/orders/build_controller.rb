@@ -11,23 +11,12 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     case step
     when :billing
-      # If billing address exists, load the current record and populate the fields
-      if @order.bill_address_id
-        @billing_address = Address.find(@order.bill_address_id)
-      else
-        # Else create a new record
-        @billing_address = Address.new
-      end
+      @billing_address = Payatron4000::select_address(@order.id, @order.bill_address_id)
     end
     case step
     when :shipping
-      if @order.ship_address_id
-        @shipping_address = Address.find(@order.ship_address_id)
-      else
-        # Else create a new record
-        @shipping_address = Address.new
-      end
-      @calculated_tier = @order.calculate_shipping_tier(current_cart)
+      @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
+      @calculated_tier = @order.tier(current_cart)
     end
     case step 
     when :payment
@@ -35,9 +24,7 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :confirm
-      if defined?(params[:token])
-        Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], session, @order)
-      end
+      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], session, @order) if params[:token]
     end
     render_wizard
   end
@@ -51,11 +38,8 @@ class Orders::BuildController < ApplicationController
     end
     case step 
     when :billing
-      if @order.bill_address_id
-        @billing_address = Address.find(@order.bill_address_id)
-      else
-        @billing_address = Address.new(:addressable_id => @order.id, :addressable_type => 'Order')
-      end
+
+      @billing_address Payatron4000::select_address(@order.id, @order.bill_address_id)
       # Update billing attributes
       if @billing_address.update_attributes(params[:address])
         # Add billing ID to order record
@@ -75,11 +59,7 @@ class Orders::BuildController < ApplicationController
     case step
     when :shipping
       @calculated_tier = @order.calculate_shipping_tier(current_cart)
-      if @order.ship_address_id
-        @shipping_address = Address.find(@order.ship_address_id)
-      else
-        @shipping_address = Address.new(:addressable_id => @order.id, :addressable_type => 'Order')
-      end
+      @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
       # Update billing attributes
       if @shipping_address.update_attributes(params[:address])
         # Add billing ID to order record
@@ -101,7 +81,7 @@ class Orders::BuildController < ApplicationController
   # Prepares the order data and redirects to the PayPal login page to review the order
   #
   def express
-    response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::price_in_pennies(@order.gross_amount), 
+    response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::singularize_price(@order.gross_amount), 
                                               Payatron4000::Paypal.express_setup_options( @order, 
                                                                                           steps, 
                                                                                           current_cart,
@@ -115,38 +95,7 @@ class Orders::BuildController < ApplicationController
 
 
   def purchase 
-    response = EXPRESS_GATEWAY.purchase(Payatron4000::price_in_pennies(@order.gross_amount), 
-                                        Payatron4000::Paypal.express_purchase_options(@order)
-    )
-    @order.add_cart_items_from_cart(current_cart) if @order.transactions.blank?
-    if response.success?
-      Cart.destroy(session[:cart_id])
-      session[:cart_id] = nil
-      begin 
-        Payatron4000::Paypal.successful(response, @order)
-      rescue Exception => e
-        Rollbar.report_exception(e)
-      end
-      if response.params['PaymentInfo']['PaymentStatus'] == "Pending"
-        OrderMailer.pending(@order).deliver
-      else
-        OrderMailer.received(@order).deliver
-      end
-      redirect_to success_order_build_url(:order_id => @order.id, 
-                                          :id => steps.last
-      )
-    else
-      begin
-        Payatron4000::Paypal.failed(response, @order)
-      rescue Exception => e
-        Rollbar.report_exception(e)
-      end
-      redirect_to failure_order_build_url(:order_id => @order.id, 
-                                          :id => steps.last, 
-                                          :response => response.message, 
-                                          :error_code => response.params["error_codes"]
-      )
-    end
+    Payatron4000::Paypal.complete(@order, steps)
   end
 
   # Renders the successful order page, however redirected if the order payment status is not Pending or completed
@@ -181,12 +130,12 @@ class Orders::BuildController < ApplicationController
   #
   def purge
     @order = Order.find(params[:order_id])
-    unless @order.transactions
-      @order.destroy
-      flash[:success] = "Your order has been deleted."
+    if @order.completed?
+      flash[:error] = "Cannot delete a completed order."
       redirect_to root_url
     else
-      flash[:error] = "Cannot delete a completed order."
+      @order.destroy
+      flash[:success] = "Your order has been deleted."
       redirect_to root_url
     end
   end
@@ -198,8 +147,7 @@ class Orders::BuildController < ApplicationController
   #
   def accessible_order
     @order = Order.find(params[:order_id])
-    @orders = @order.transactions.where(:payment_status => 'Completed').blank? ? false : true
-    if @orders || current_cart.cart_items.empty?
+    if @order.completed? || current_cart.cart_items.empty?
       flash[:error] = "You do not have permission to amend this order."
       redirect_to root_url
     end

@@ -8,9 +8,9 @@ module Payatron4000
 
         # Convert a price into single digit currency
         #
-        # @return [decimal]
         # @parameter [decimal]
-        def price_in_pennies price
+        # @return [decimal]
+        def singularize_price price
             (price*100).round
         end
 
@@ -26,5 +26,25 @@ module Payatron4000
               sku.update_column(:stock, sku.stock-item.quantity)
             end
         end
+
+        # Destroys the cart and any associated cart_item & cart_items_accesory records
+        # and sets the cart_id session value to nil
+        # 
+        # @parameter [hash object]
+        def destroy_cart session
+            Cart.destroy(session[:cart_id])
+            session[:cart_id] = nil
+        end
+
+        # If address exists for an order, find and utilise it. If not, create a new address record
+        #
+        # @parameter [integer, integer]
+        def select_address order_id, address_id
+            if address_id
+                Address.find(address_id)
+            else
+                Address.new(:addressable_id => order_id, :addressable_type => 'Order')
+            end
+        end 
     end  
 end

@@ -47,8 +47,7 @@ class Order < ActiveRecord::Base
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
-  # @return [nil]
-  def add_cart_items_from_cart(cart)
+  def transfer(cart)
   	cart.cart_items.each do |item|
       @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
       @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
@@ -70,8 +69,9 @@ class Order < ActiveRecord::Base
 
   # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order
   #
-  # @return [object]
-  def calculate_shipping_tier(cart)
+  # @parameter [hash object]
+  # @return [hash object]
+  def tier(cart)
       max_length = cart.skus.map(&:length).max
       max_thickness = cart.skus.map(&:thickness).max
       total_weight = cart.cart_items.map(&:weight).sum
@@ -85,7 +85,6 @@ class Order < ActiveRecord::Base
 
   # If you set the shipping date for an order more than once, send a delayed shipping email
   #
-  # @return [array]
   def delayed_shipping
     if self.shipping_date_changed? && self.shipping_date_was
       ShippingMailer.delayed(self).deliver
@@ -94,7 +93,6 @@ class Order < ActiveRecord::Base
 
   # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email
   #
-  # @return [nil]
   def ship_order_today
     if self.shipping_date.to_date == Date.today
       self.update_column(:shipping_status, "Dispatched")
@@ -114,6 +112,13 @@ class Order < ActiveRecord::Base
   # @return [boolean]
   def active?
     status == 'active'
+  end
+
+  # Returns a boolean on whether the order is marked as completed
+  #
+  # @return [boolean]
+  def completed?
+    transactions.where(:payment_status => 'Completed').blank? ? false : true
   end
 
   # Detects if the current status of the order is 'billing'. See wicked gem for more info
