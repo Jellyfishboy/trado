@@ -2,6 +2,10 @@ module Payatron4000
 
     class Paypal
 
+        # Creates the payment information object for PayPal to parse in the login step
+        #
+        # @parameter [hash object, array, hash object, string, string, string]
+        # @return [hash object]
         def self.express_setup_options order, steps, cart, ip_address, return_url, cancel_url
             {
               :subtotal          => Payatron4000::singularize_price(order.net_amount - order.shipping.price),
@@ -17,6 +21,10 @@ module Payatron4000
             }
         end
 
+        # Creates the payment information object for PayPal to parse in the confirmation step and complete the purchase
+        #
+        # @parameter [hash object]
+        # @return [hash object]
         def self.express_purchase_options order
             {
               :subtotal          => Payatron4000::singularize_price(order.net_amount - order.shipping.price),
@@ -29,6 +37,10 @@ module Payatron4000
             }
         end
 
+        # Creates an aray of items which represent cart_items
+        # This is passed into the express_setup_options method
+        #
+        # @return [array]
         def self.express_items cart
             cart.cart_items.collect do |item|
                 {
@@ -40,7 +52,9 @@ module Payatron4000
             end
         end
 
-        # assign paypal token to order after user logs into their account
+        # Assign PayPal token to order after user logs into their account
+        #
+        # @parameter [string, integer, hash object, hsh object]
         def self.assign_paypal_token token, payer_id, session, order
             details = EXPRESS_GATEWAY.details_for(token)
             order.update_attributes(:express_token => token, :express_payer_id => payer_id)
@@ -48,11 +62,15 @@ module Payatron4000
             session[:paypal_email] = details.params["payer"]
         end
 
-        def self.complete order, steps
+        # Completes the order process by communicating with PayPal; receives a response and in turn creats the relevant transaction records,
+        # sends a confirmation email and redirects the user
+        #
+        # @parameter [hash object, hash object, hash object, array]
+        def self.complete order, cart, session, steps
           response = EXPRESS_GATEWAY.purchase(Payatron4000::singularize_price(order.gross_amount), 
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
-          order.transfer(current_cart) if order.transactions.blank?
+          order.transfer(cart) if order.transactions.blank?
           if response.success?
             Payatron4000::destroy_cart(session)
             begin 
@@ -60,14 +78,11 @@ module Payatron4000
             rescue Exception => e
               Rollbar.report_exception(e)
             end
-            # order email
-            if order.transactions.last.payment_status == "Pending"
-              OrderMailer.pending(order).deliver
-            else
-              OrderMailer.received(order).deliver
-            end
-            redirect_to success_order_build_url(:order_id => order.id, 
-                                                :id => steps.last
+            order.reload
+            binding.pry
+            Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
+            redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
+                                                                                      :id => steps.last
             )
           else
             begin
@@ -75,20 +90,19 @@ module Payatron4000
             rescue Exception => e
               Rollbar.report_exception(e)
             end
-            redirect_to failure_order_build_url(:order_id => order.id, 
-                                                :id => steps.last, 
-                                                :response => response.message, 
-                                                :error_code => response.params["error_codes"]
+            redirect_to Rails.application.routes.url_helpers.failure_order_build_url( :order_id => order.id, 
+                                                                                      :id => steps.last, 
+                                                                                      :response => response.message, 
+                                                                                      :error_code => response.params["error_codes"]
             )
           end
         end
 
         # Upon successfully completing an order with a PayPal payment option a new transaction record is created, stock is updated for the relevant SKU
         # and order status attribute set to active
-        # @parameter [object, hash object]
         #
+        # @parameter [object, hash object]
         def self.successful response, order
-            # Create transaction
             Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => order.id, 
@@ -100,12 +114,15 @@ module Payatron4000
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
                                 :status_reason => response.params['PaymentInfo']['PendingReason']
             )
+            binding.pry
             Payatron4000::stock_update(order)
-            # Set order status to active
             order.update_column(:status, 'active')
         end
 
-        # Failed order
+        
+        # When an order has failed to complete, a new transaction record is created with a logged status reason
+        #
+        # @parameter [object, hash object]
         def self.failed response, order
             Transaction.create( :fee => 0, 
                                 :gross_amount => order.gross_amount, 

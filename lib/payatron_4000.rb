@@ -45,6 +45,17 @@ module Payatron4000
             else
                 Address.new(:addressable_id => order_id, :addressable_type => 'Order')
             end
+        end
+
+        # Depending on the payment_status of the order, the relevant email template is sent
+        #
+        # @parameter [hash object, string]
+        def confirmation_email order, payment_status
+            if payment_status == "Pending"
+                OrderMailer.pending(order).deliver
+            else
+                OrderMailer.received(order).deliver
+            end
         end 
     end  
 end

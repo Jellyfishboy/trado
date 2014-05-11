@@ -47,7 +47,7 @@ class Order < ActiveRecord::Base
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
-  def transfer(cart)
+  def transfer cart
   	cart.cart_items.each do |item|
       @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
       @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
@@ -58,7 +58,7 @@ class Order < ActiveRecord::Base
   # Update the current order's net_amount, tax_amount and gross_amount attribute values
   #
   # @parameter [hash object, decimal]
-  def calculate(cart, current_tax_rate)
+  def calculate cart, current_tax_rate
     net_amount = cart.total_price + self.shipping.price
     self.update_attributes( :net_amount => net_amount,
                             :tax_amount => net_amount*current_tax_rate,
@@ -71,7 +71,7 @@ class Order < ActiveRecord::Base
   #
   # @parameter [hash object]
   # @return [hash object]
-  def tier(cart)
+  def tier cart
       max_length = cart.skus.map(&:length).max
       max_thickness = cart.skus.map(&:thickness).max
       total_weight = cart.cart_items.map(&:weight).sum

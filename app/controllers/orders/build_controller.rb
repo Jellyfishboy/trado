@@ -39,7 +39,7 @@ class Orders::BuildController < ApplicationController
     case step 
     when :billing
 
-      @billing_address Payatron4000::select_address(@order.id, @order.bill_address_id)
+      @billing_address = Payatron4000::select_address(@order.id, @order.bill_address_id)
       # Update billing attributes
       if @billing_address.update_attributes(params[:address])
         # Add billing ID to order record
@@ -58,7 +58,7 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :shipping
-      @calculated_tier = @order.calculate_shipping_tier(current_cart)
+      @calculated_tier = @order.tier(current_cart)
       @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
       # Update billing attributes
       if @shipping_address.update_attributes(params[:address])
@@ -78,7 +78,8 @@ class Orders::BuildController < ApplicationController
     end
   end
 
-  # Prepares the order data and redirects to the PayPal login page to review the order
+  # Prepares the order data and redirects to the PayPal login page to review the order.
+  # Bespoke PayPal method.
   #
   def express
     response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::singularize_price(@order.gross_amount), 
@@ -95,10 +96,10 @@ class Orders::BuildController < ApplicationController
 
 
   def purchase 
-    Payatron4000::Paypal.complete(@order, steps)
+    Payatron4000::Paypal.complete(@order, current_cart, session, steps)
   end
 
-  # Renders the successful order page, however redirected if the order payment status is not Pending or completed
+  # Renders the successful order page, however redirected if the order payment status is not Pending or completed.
   #
   def success
     @order = Order.find(params[:order_id])
