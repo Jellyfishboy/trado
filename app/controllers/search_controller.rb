@@ -17,7 +17,7 @@ class SearchController < ApplicationController
                                 :category_slug => p.category.slug,
                                 :category_name => p.category.name,
                                 :product_slug => p.slug,
-                                :image => p.attachments.first.file.small
+                                :image => p.attachments.first.file.square
                         }
         end
         respond_to do |format|
