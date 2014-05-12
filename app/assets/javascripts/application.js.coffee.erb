@@ -129,21 +129,21 @@ loading_animation_settings = ->
         top: "auto" # Top position relative to parent in px
         left: "auto" # Left position relative to parent in px
 
-typeahead_engine = ->
-    $("#navSearchInput").typeahead(
-        remote: "/search/autocomplete?utf8=✓&query=%QUERY"
-        # prefetch: "/search.json"
-        template: " <div class='inner-suggest'>
-                        <img src='{{image.file.url}}' height='45' width='45'/>
-                        <span>
-                            <div>{{value}}</div>
-                            <div>{{category_name}}{{}}</div>
-                        </span>
-                    </div>"
-        engine: Hogan
-        limit: 4
-    ).on "typeahead:selected", ($e, data) ->
-        window.location = "/categories/" + data.category_slug + "/products/" + data.product_slug
+# typeahead_engine = ->
+#     $("#navSearchInput").typeahead(
+#         remote: "/search/autocomplete?utf8=✓&query=%QUERY"
+#         # prefetch: "/search.json"
+#         template: " <div class='inner-suggest'>
+#                         <img src='{{image.file.url}}' height='45' width='45'/>
+#                         <span>
+#                             <div>{{value}}</div>
+#                             <div>{{category_name}}{{}}</div>
+#                         </span>
+#                     </div>"
+#         engine: Hogan
+#         limit: 4
+#     ).on "typeahead:selected", ($e, data) ->
+#         window.location = "/categories/" + data.category_slug + "/products/" + data.product_slug
 
 
 
