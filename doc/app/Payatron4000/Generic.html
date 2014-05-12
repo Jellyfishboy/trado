@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class RedactorRails::Picture - Rails Application Documentation</title>
+<title>class Payatron4000::Generic - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/models/redactor_rails/picture.rb
+    <li>lib/payatron_4000/generic.rb
   </ul>
 </nav>
 
@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link"><a href="Asset.html">RedactorRails::Asset</a>
+  <p class="link">Object
   
 </nav>
 
@@ -70,7 +70,9 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-url_content">#url_content</a>
+    <li><a href="#method-c-complete">::complete</a>
+    
+    <li><a href="#method-c-successful">::successful</a>
     
   </ul>
 </nav>
@@ -103,8 +105,6 @@
   
     <li><a href="../Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="../Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="../Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="../Admin/CountriesController.html">Admin::CountriesController</a>
@@ -135,19 +135,19 @@
   
     <li><a href="../Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="../RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="../RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="../RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="../RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="../Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="../Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="../Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="../Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="../Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="../Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Users.html">Users</a>
   
@@ -158,10 +158,6 @@
     <li><a href="../Orders.html">Orders</a>
   
     <li><a href="../Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="../Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Ability.html">Ability</a>
   
@@ -183,6 +179,8 @@
   
     <li><a href="../AttributeType.html">AttributeType</a>
   
+    <li><a href="../BasePreview.html">BasePreview</a>
+  
     <li><a href="../Cart.html">Cart</a>
   
     <li><a href="../CartItem.html">CartItem</a>
@@ -199,8 +197,6 @@
   
     <li><a href="../Country.html">Country</a>
   
-    <li><a href="../CountryTax.html">CountryTax</a>
-  
     <li><a href="../DeepStruct.html">DeepStruct</a>
   
     <li><a href="../Destination.html">Destination</a>
@@ -213,8 +209,6 @@
   
     <li><a href="../NotificationsController.html">NotificationsController</a>
   
-    <li><a href="../Notifier.html">Notifier</a>
-  
     <li><a href="../Order.html">Order</a>
   
     <li><a href="../OrderHelper.html">OrderHelper</a>
@@ -223,6 +217,10 @@
   
     <li><a href="../OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="../OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="../OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="../OrdersController.html">OrdersController</a>
   
     <li><a href="../Product.html">Product</a>
@@ -230,10 +228,6 @@
     <li><a href="../ProductHelper.html">ProductHelper</a>
   
     <li><a href="../ProductsController.html">ProductsController</a>
-  
-    <li><a href="../RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="../RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="../RelatedProduct.html">RelatedProduct</a>
   
@@ -245,6 +239,10 @@
   
     <li><a href="../Shipping.html">Shipping</a>
   
+    <li><a href="../ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="../ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="../ShippingsController.html">ShippingsController</a>
   
     <li><a href="../Sku.html">Sku</a>
@@ -252,6 +250,10 @@
     <li><a href="../SkusController.html">SkusController</a>
   
     <li><a href="../StockLevel.html">StockLevel</a>
+  
+    <li><a href="../StockMailer.html">StockMailer</a>
+  
+    <li><a href="../StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="../Store.html">Store</a>
   
@@ -263,8 +265,6 @@
   
     <li><a href="../Tagging.html">Tagging</a>
   
-    <li><a href="../TaxRate.html">TaxRate</a>
-  
     <li><a href="../Tier.html">Tier</a>
   
     <li><a href="../TierValidator.html">TierValidator</a>
@@ -274,8 +274,6 @@
     <li><a href="../Transaction.html">Transaction</a>
   
     <li><a href="../User.html">User</a>
-  
-    <li><a href="../UsersController.html">UsersController</a>
   
     <li><a href="../Zone.html">Zone</a>
   
@@ -288,7 +286,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class RedactorRails::Picture</h1>
+  <h1 class="class">class Payatron4000::Generic</h1>
 
   <div id="description" class="description">
     
@@ -308,41 +306,96 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-i-url_content" class="method-detail ">
+      <div id="method-c-complete" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">url_content</span><span
-            class="method-args">()</span>
+          <span class="method-name">complete</span><span
+            class="method-args">(order, payment_type, session, steps)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Completes the order process by creating a transaction record, sending a
+confirmation email and redirects the user</p>
+
+<p>@parameter [hash object, string, hash object, hash_object]</p>
           
 
           
-          <div class="method-source-code" id="url_content-source">
-            <pre><span class="ruby-comment"># File app/models/redactor_rails/picture.rb, line 4</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">url_content</span>
-  <span class="ruby-identifier">url</span>(<span class="ruby-value">:content</span>)
+          <div class="method-source-code" id="complete-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/generic.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">complete</span> <span class="ruby-identifier">order</span>, <span class="ruby-identifier">payment_type</span>, <span class="ruby-identifier">session</span>, <span class="ruby-identifier">steps</span>
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Generic</span>.<span class="ruby-identifier">successful</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">payment_type</span>)
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">destroy_cart</span>(<span class="ruby-identifier">session</span>)
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">reload</span>
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">confirmation_email</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">order</span>.<span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">payment_status</span>)
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">routes</span>.<span class="ruby-identifier">url_helpers</span>.<span class="ruby-identifier">success_order_build_url</span>(  <span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">id</span>, 
+                                                                               <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>
+    )
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- url_content-source -->
+          </div><!-- complete-source -->
           
         </div>
 
         
 
         
-      </div><!-- url_content-method -->
+      </div><!-- complete-method -->
 
     
-    </section><!-- public-instance-method-details -->
+      <div id="method-c-successful" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">successful</span><span
+            class="method-args">(order, payment_type)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Upon successfully completing an order a new transaction record is created,
+stock is updated for the relevant SKU and order status attribute set to
+active</p>
+
+<p>@parameter [hash object, string]</p>
+          
+
+          
+          <div class="method-source-code" id="successful-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000/generic.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">successful</span> <span class="ruby-identifier">order</span>, <span class="ruby-identifier">payment_type</span>
+    <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">create</span>( <span class="ruby-value">:fee</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, 
+                        <span class="ruby-value">:gross_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">gross_amount</span>, 
+                        <span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">id</span>, 
+                        <span class="ruby-value">:payment_status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Pending&#39;</span>, 
+                        <span class="ruby-value">:transaction_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Credit&#39;</span>, 
+                        <span class="ruby-value">:tax_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">tax_amount</span>, 
+                        <span class="ruby-value">:paypal_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, 
+                        <span class="ruby-value">:payment_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">payment_type</span>,
+                        <span class="ruby-value">:net_amount</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">net_amount</span>,
+                        <span class="ruby-value">:status_reason</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>
+    )
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">stock_update</span>(<span class="ruby-identifier">order</span>)
+    <span class="ruby-identifier">order</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:status</span>, <span class="ruby-string">&#39;active&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- successful-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- successful-method -->
+
+    
+    </section><!-- public-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

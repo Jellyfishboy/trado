@@ -107,8 +107,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -139,19 +137,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -162,10 +160,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -187,6 +181,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -203,8 +199,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -217,8 +211,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -227,6 +219,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -234,10 +230,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -249,6 +241,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -256,6 +252,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -267,8 +267,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -278,8 +276,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -346,7 +342,6 @@ including any assocated accessories</p>
             <pre><span class="ruby-comment"># File app/models/cart.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_cart_item</span> <span class="ruby-identifier">sku</span>, <span class="ruby-identifier">item_quantity</span>, <span class="ruby-identifier">accessory</span>
   <span class="ruby-identifier">accessory_current_item</span> = <span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;sku_id = ?&#39;</span>,<span class="ruby-identifier">sku</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-value">:cart_item_accessory</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;cart_item_accessories.accessory_id = ?&#39;</span>, <span class="ruby-identifier">accessory</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">first</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">accessory</span>.<span class="ruby-identifier">blank?</span>
-  <span class="ruby-comment"># binding.pry</span>
   <span class="ruby-comment"># If it can find a SKU with the related accessory, it will assign the current_item. Otherwise it will just find the SKU normally.</span>
       <span class="ruby-identifier">current_item</span> =  <span class="ruby-identifier">accessory_current_item</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">accessory_current_item</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;sku_id = ?&#39;</span>, <span class="ruby-identifier">sku</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-value">:cart_item_accessory</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;cart_item_accessories.accessory_id IS NULL&#39;</span>).<span class="ruby-identifier">first</span>  
   <span class="ruby-comment"># If the requested item has matching accessory requests, increase quantity. Otherwise, create new item.</span>
@@ -395,7 +390,7 @@ accessories</p>
 
           
           <div class="method-source-code" id="decrement_cart_item_quantity-source">
-            <pre><span class="ruby-comment"># File app/models/cart.rb, line 50</span>
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">decrement_cart_item_quantity</span> <span class="ruby-identifier">cart_item_id</span>
   <span class="ruby-identifier">current_item</span> = <span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">cart_item_id</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
@@ -434,7 +429,7 @@ accessories</p>
 
           
           <div class="method-source-code" id="total_price-source">
-            <pre><span class="ruby-comment"># File app/models/cart.rb, line 64</span>
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">total_price</span> 
       <span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sum</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">total_price</span> }
 <span class="ruby-keyword">end</span></pre>

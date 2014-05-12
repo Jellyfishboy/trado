@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class RedactorRailsDocumentUploader - Rails Application Documentation</title>
+<title>class ShippingMailer - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/uploaders/redactor_rails_document_uploader.rb
+    <li>app/mailers/shipping_mailer.rb
   </ul>
 </nav>
 
@@ -59,32 +59,20 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">CarrierWave::Uploader::Base
+  <p class="link">ActionMailer::Base
   
 </nav>
 
-    <!-- Included Modules -->
-<nav id="includes-section" class="section">
-  <h3 class="section-header">Included Modules</h3>
-
-  <ul class="link-list">
-  
-  
-    <li><span class="include">RedactorRails::Backend::CarrierWave</span>
-  
-  
-  </ul>
-</nav>
-
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-extension_white_list">#extension_white_list</a>
+    <li><a href="#method-i-complete">#complete</a>
     
-    <li><a href="#method-i-store_dir">#store_dir</a>
+    <li><a href="#method-i-delayed">#delayed</a>
     
   </ul>
 </nav>
@@ -117,8 +105,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -149,19 +135,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -172,10 +158,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -197,6 +179,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -213,8 +197,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -227,8 +209,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -237,6 +217,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -244,10 +228,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -259,6 +239,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -266,6 +250,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -277,8 +265,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -288,8 +274,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -302,7 +286,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class RedactorRailsDocumentUploader</h1>
+  <h1 class="class">class ShippingMailer</h1>
 
   <div id="description" class="description">
     
@@ -326,68 +310,81 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-extension_white_list" class="method-detail ">
+      <div id="method-i-complete" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">extension_white_list</span><span
-            class="method-args">()</span>
+          <span class="method-name">complete</span><span
+            class="method-args">(order)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Deliver an email to the customer when an order has been shipped</p>
+
+<p>@parameter [object]</p>
           
 
           
-          <div class="method-source-code" id="extension_white_list-source">
-            <pre><span class="ruby-comment"># File app/uploaders/redactor_rails_document_uploader.rb, line 15</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">extension_white_list</span>
-  <span class="ruby-constant">RedactorRails</span>.<span class="ruby-identifier">document_file_types</span>
+          <div class="method-source-code" id="complete-source">
+            <pre><span class="ruby-comment"># File app/mailers/shipping_mailer.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">complete</span> <span class="ruby-identifier">order</span>
+    <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">order</span>
+
+    <span class="ruby-identifier">mail</span>(<span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">email</span>, 
+         <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;Gimson Robotics ##{@order.id} order shipped&quot;</span>,
+         <span class="ruby-identifier">template_path</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;mailer/shippings&#39;</span>,
+         <span class="ruby-identifier">template_name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;shipped&#39;</span>
+    )
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- extension_white_list-source -->
+          </div><!-- complete-source -->
           
         </div>
 
         
 
         
-      </div><!-- extension_white_list-method -->
+      </div><!-- complete-method -->
 
     
-      <div id="method-i-store_dir" class="method-detail ">
+      <div id="method-i-delayed" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">store_dir</span><span
-            class="method-args">()</span>
+          <span class="method-name">delayed</span><span
+            class="method-args">(order)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Deliver an email to the customer when an order has been delayed This is
+only triggered when a shipping date has been set more than once on an order</p>
+
+<p>@parameter [object]</p>
           
 
           
-          <div class="method-source-code" id="store_dir-source">
-            <pre><span class="ruby-comment"># File app/uploaders/redactor_rails_document_uploader.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">store_dir</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">production?</span>
-      <span class="ruby-node">&quot;rte/documents/#{model.class.to_s.underscore}&quot;</span>
-  <span class="ruby-keyword">else</span>
-      <span class="ruby-node">&quot;uploads/redactor_assets/documents/#{model.id}&quot;</span>
-  <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="delayed-source">
+            <pre><span class="ruby-comment"># File app/mailers/shipping_mailer.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delayed</span> <span class="ruby-identifier">order</span>
+    <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">order</span>
+
+    <span class="ruby-identifier">mail</span>(<span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">email</span>, 
+         <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;Gimson Robotics ##{@order.id} shipping update&quot;</span>,
+         <span class="ruby-identifier">template_path</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;mailer/shippings&#39;</span>,
+         <span class="ruby-identifier">template_name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;delayed&#39;</span>
+    )
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- store_dir-source -->
+          </div><!-- delayed-source -->
           
         </div>
 
         
 
         
-      </div><!-- store_dir-method -->
+      </div><!-- delayed-method -->
 
     
     </section><!-- public-instance-method-details -->

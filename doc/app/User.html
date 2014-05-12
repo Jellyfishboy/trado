@@ -70,6 +70,8 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-i-full_name">#full_name</a>
+    
     <li><a href="#method-i-role-3F">#role?</a>
     
   </ul>
@@ -103,8 +105,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -135,19 +135,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -158,10 +158,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -183,6 +179,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -199,8 +197,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -213,8 +209,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -223,6 +217,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -230,10 +228,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -245,6 +239,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -252,6 +250,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -263,8 +265,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -274,8 +274,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -297,6 +295,8 @@
 <p>Table name: users</p>
 
 <pre>id                           :integer            not null, primary key
+first_name                   :string(255)        default(&#39;Joe&#39;)
+last_name                    :string(255)        default(&#39;Bloggs&#39;)
 email                        :string(255),       not null, default(&quot;&quot;)   
 encrypted_password           :string(255)        not null, default(&quot;&quot;)  
 role                         :string(255)        default(&quot;user&quot;)
@@ -331,6 +331,38 @@ updated_at                   :datetime           not null</pre>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-full_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Combines the first and last name of a profile</p>
+
+<p>@return [string]</p>
+          
+
+          
+          <div class="method-source-code" id="full_name-source">
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_name</span> 
+    [<span class="ruby-identifier">first_name</span>, <span class="ruby-identifier">last_name</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- full_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- full_name-method -->
+
+    
       <div id="method-i-role-3F" class="method-detail ">
         
         <div class="method-heading">
@@ -347,7 +379,7 @@ updated_at                   :datetime           not null</pre>
 
           
           <div class="method-source-code" id="role-3F-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 39</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">role?</span>(<span class="ruby-identifier">role</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">role</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">camelize</span>)
 <span class="ruby-keyword">end</span></pre>

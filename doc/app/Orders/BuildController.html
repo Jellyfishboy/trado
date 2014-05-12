@@ -82,6 +82,10 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-i-bank_transfer">#bank_transfer</a>
+    
+    <li><a href="#method-i-cheque">#cheque</a>
+    
     <li><a href="#method-i-express">#express</a>
     
     <li><a href="#method-i-failure">#failure</a>
@@ -127,8 +131,6 @@
   
     <li><a href="../Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="../Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="../Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="../Admin/CountriesController.html">Admin::CountriesController</a>
@@ -159,19 +161,19 @@
   
     <li><a href="../Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="../RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="../RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="../RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="../RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="../Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="../Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="../Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="../Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="../Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="../Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Users.html">Users</a>
   
@@ -182,10 +184,6 @@
     <li><a href="../Orders.html">Orders</a>
   
     <li><a href="../Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="../Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Ability.html">Ability</a>
   
@@ -207,6 +205,8 @@
   
     <li><a href="../AttributeType.html">AttributeType</a>
   
+    <li><a href="../BasePreview.html">BasePreview</a>
+  
     <li><a href="../Cart.html">Cart</a>
   
     <li><a href="../CartItem.html">CartItem</a>
@@ -223,8 +223,6 @@
   
     <li><a href="../Country.html">Country</a>
   
-    <li><a href="../CountryTax.html">CountryTax</a>
-  
     <li><a href="../DeepStruct.html">DeepStruct</a>
   
     <li><a href="../Destination.html">Destination</a>
@@ -237,8 +235,6 @@
   
     <li><a href="../NotificationsController.html">NotificationsController</a>
   
-    <li><a href="../Notifier.html">Notifier</a>
-  
     <li><a href="../Order.html">Order</a>
   
     <li><a href="../OrderHelper.html">OrderHelper</a>
@@ -247,6 +243,10 @@
   
     <li><a href="../OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="../OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="../OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="../OrdersController.html">OrdersController</a>
   
     <li><a href="../Product.html">Product</a>
@@ -254,10 +254,6 @@
     <li><a href="../ProductHelper.html">ProductHelper</a>
   
     <li><a href="../ProductsController.html">ProductsController</a>
-  
-    <li><a href="../RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="../RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="../RelatedProduct.html">RelatedProduct</a>
   
@@ -269,6 +265,10 @@
   
     <li><a href="../Shipping.html">Shipping</a>
   
+    <li><a href="../ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="../ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="../ShippingsController.html">ShippingsController</a>
   
     <li><a href="../Sku.html">Sku</a>
@@ -276,6 +276,10 @@
     <li><a href="../SkusController.html">SkusController</a>
   
     <li><a href="../StockLevel.html">StockLevel</a>
+  
+    <li><a href="../StockMailer.html">StockMailer</a>
+  
+    <li><a href="../StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="../Store.html">Store</a>
   
@@ -287,8 +291,6 @@
   
     <li><a href="../Tagging.html">Tagging</a>
   
-    <li><a href="../TaxRate.html">TaxRate</a>
-  
     <li><a href="../Tier.html">Tier</a>
   
     <li><a href="../TierValidator.html">TierValidator</a>
@@ -298,8 +300,6 @@
     <li><a href="../Transaction.html">Transaction</a>
   
     <li><a href="../User.html">User</a>
-  
-    <li><a href="../UsersController.html">UsersController</a>
   
     <li><a href="../Zone.html">Zone</a>
   
@@ -336,6 +336,70 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-bank_transfer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">bank_transfer</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Payment method for a bank transfer, which sets the payment_type session
+value to Bank tranfer Redirect to last step in the order process</p>
+          
+
+          
+          <div class="method-source-code" id="bank_transfer-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">bank_transfer</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:payment_type</span>] = <span class="ruby-string">&#39;Bank transfer&#39;</span> 
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- bank_transfer-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- bank_transfer-method -->
+
+    
+      <div id="method-i-cheque" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cheque</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Payment method for a cheque, which sets the payment_type session value to
+Cheque Redirect to last step in the order process</p>
+          
+
+          
+          <div class="method-source-code" id="cheque-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cheque</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:payment_type</span>] = <span class="ruby-string">&#39;Cheque&#39;</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- cheque-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- cheque-method -->
+
+    
       <div id="method-i-express" class="method-detail ">
         
         <div class="method-heading">
@@ -347,21 +411,27 @@
 
         <div class="method-description">
           
-          
+          <p>Prepares the order data and redirects to the PayPal login page to review
+the order Set the payment_type session value to nil in order to prevent the
+wrong complete method being fired in the purchase method below Bespoke
+PayPal method</p>
           
 
           
           <div class="method-source-code" id="express-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 106</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">express</span>
-  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;You do not have permission to amend this order.&quot;</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:total</span>]), <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">express_setup_options</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-identifier">steps</span>, <span class="ruby-identifier">current_cart</span>, <span class="ruby-identifier">session</span>, <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>, <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>), <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;payment&#39;</span>)))
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:payment_type</span>] = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">singularize_price</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">gross_amount</span>), 
+                                            <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">express_setup_options</span>( <span class="ruby-ivar">@order</span>, 
+                                                                                        <span class="ruby-identifier">steps</span>, 
+                                                                                        <span class="ruby-identifier">current_cart</span>,
+                                                                                        <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>, 
+                                                                                        <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>), 
+                                                                                        <span class="ruby-identifier">order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;payment&#39;</span>)
+                                            )
+  )
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- express-source -->
           
@@ -384,17 +454,18 @@
 
         <div class="method-description">
           
-          
+          <p>Renders the failed order page, however redirected if the order payment
+stautus it not Failed</p>
           
 
           
           <div class="method-source-code" id="failure-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 164</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">failure</span>
   <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:correlation_id</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">payment_status</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Failed&#39;</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span> }
@@ -422,44 +493,22 @@
 
         <div class="method-description">
           
-          
+          <p>Transfers all the cart_items to new order_items (including
+cart_item_accessories =&gt; order_item_accessories) If there is a
+payment_type value set in the session store, trigger the generic complete
+method Else trigger the bespoke PayPal complete method</p>
           
 
           
           <div class="method-source-code" id="purchase-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 117</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">purchase</span> 
-  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;You do not have permission to amend this order.&quot;</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
+  <span class="ruby-identifier">binding</span>.<span class="ruby-identifier">pry</span>
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transfer</span>(<span class="ruby-identifier">current_cart</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:payment_type</span>].<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Generic</span>.<span class="ruby-identifier">complete</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-identifier">session</span>[<span class="ruby-value">:payment_type</span>], <span class="ruby-identifier">session</span>, <span class="ruby-identifier">steps</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">price_in_pennies</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:total</span>]), <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">express_purchase_options</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-identifier">session</span>))
-    <span class="ruby-identifier">binding</span>.<span class="ruby-identifier">pry</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success</span>
-      <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">add_cart_items_from_cart</span>(<span class="ruby-identifier">current_cart</span>)
-      <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">destroy</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>])
-      <span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>] = <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">begin</span> 
-        <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">successful</span>(<span class="ruby-identifier">response</span>, <span class="ruby-ivar">@order</span>)
-        <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">successful_order</span>(<span class="ruby-identifier">response</span>)
-      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-          <span class="ruby-constant">Rollbar</span>.<span class="ruby-identifier">report_exception</span>(<span class="ruby-identifier">e</span>)
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;PaymentStatus&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Pending&quot;</span>
-        <span class="ruby-constant">Notifier</span>.<span class="ruby-identifier">pending_order</span>(<span class="ruby-ivar">@order</span>).<span class="ruby-identifier">deliver</span>
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-constant">Notifier</span>.<span class="ruby-identifier">order_received</span>(<span class="ruby-ivar">@order</span>).<span class="ruby-identifier">deliver</span>
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">success_order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>, <span class="ruby-value">:transaction_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;PaymentInfo&#39;</span>][<span class="ruby-string">&#39;TransactionID&#39;</span>])
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">begin</span>
-        <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">failed</span>(<span class="ruby-identifier">response</span>, <span class="ruby-ivar">@order</span>)
-      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-          <span class="ruby-constant">Rollbar</span>.<span class="ruby-identifier">report_exception</span>(<span class="ruby-identifier">e</span>)
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">failure_order_build_url</span>(<span class="ruby-value">:order_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>, <span class="ruby-value">:response</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">message</span>, <span class="ruby-value">:error_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;error_codes&quot;</span>], <span class="ruby-value">:correlation_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;correlation_id&#39;</span>])
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">complete</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-identifier">session</span>, <span class="ruby-identifier">steps</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- purchase-source -->
@@ -483,20 +532,21 @@
 
         <div class="method-description">
           
-          
+          <p>When an order has failed, the user has an option to delete the order
+altogether including addresses and order_items</p>
           
 
           
           <div class="method-source-code" id="purge-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 176</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">purge</span>
   <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
-  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transaction</span>
-    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">destroy</span>
-    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Your order has been deleted.&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">completed?</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;Cannot delete a completed order.&quot;</span>
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;Cannot delete a completed order.&quot;</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Your order has been deleted.&quot;</span>
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -521,51 +571,34 @@
 
         <div class="method-description">
           
-          
+          <p>Displays the front-end content of each step, with specific methods
+throughout providing the relevant data Steps include, in this order:
+review, billing, shipping, payment then confimration</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">current_cart</span>
-  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:error</span>] = <span class="ruby-string">&quot;You do not have permission to amend this order.&quot;</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">:billing</span>
-      <span class="ruby-comment"># If billing address exists, load the current record and populate the fields</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>
-        <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>)
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-comment"># Else create a new record</span>
-        <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">:shipping</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>
-        <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>)
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-comment"># Else create a new record</span>
-        <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>
-      <span class="ruby-keyword">end</span>
-      <span class="ruby-ivar">@calculated_tier</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">calculate_shipping_tier</span>(<span class="ruby-identifier">current_cart</span>)
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span> 
-    <span class="ruby-keyword">when</span> <span class="ruby-value">:payment</span>
-      <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">calculate_order</span>(<span class="ruby-identifier">current_cart</span>, <span class="ruby-identifier">session</span>, <span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">tax_rate</span>)
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">:confirm</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>])
-        <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">assign_paypal_token</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:PayerID</span>], <span class="ruby-identifier">session</span>, <span class="ruby-ivar">@order</span>)
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">render_wizard</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:billing</span>
+    <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">select_address</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>)
   <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:shipping</span>
+    <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">select_address</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>)
+    <span class="ruby-ivar">@calculated_tier</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">tier</span>(<span class="ruby-identifier">current_cart</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span> 
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:payment</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">calculate</span>(<span class="ruby-identifier">current_cart</span>, <span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">tax_rate</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:confirm</span>
+    <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-constant">Paypal</span>.<span class="ruby-identifier">assign_paypal_token</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:PayerID</span>], <span class="ruby-identifier">session</span>, <span class="ruby-ivar">@order</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">render_wizard</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
           
@@ -588,17 +621,18 @@
 
         <div class="method-description">
           
-          
+          <p>Renders the successful order page, however redirected if the order payment
+status is not Pending or completed.</p>
           
 
           
           <div class="method-source-code" id="success-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 152</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">success</span>
   <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:transaction_id</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">payment_status</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Pending&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">payment_status</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Completed&#39;</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_url</span> }
@@ -626,14 +660,15 @@
 
         <div class="method-description">
           
-          
+          <p>When advancing to the next step in the order process, the update method is
+called Any bespoke business logic in each step is then triggered, for
+example: updating the address and the order status attribute value</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/orders/build_controller.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span> 
-  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
   <span class="ruby-comment"># Sets current state of the order</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">step</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">steps</span>.<span class="ruby-identifier">last</span>
     <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:status</span>, <span class="ruby-string">&#39;active&#39;</span>)
@@ -642,11 +677,8 @@
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span> 
   <span class="ruby-keyword">when</span> <span class="ruby-value">:billing</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>
-      <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>)
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:addressable_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:addressable_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Order&#39;</span>)
-    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@billing_address</span> = <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">select_address</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_address_id</span>)
     <span class="ruby-comment"># Update billing attributes</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@billing_address</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:address</span>])
       <span class="ruby-comment"># Add billing ID to order record</span>
@@ -665,12 +697,8 @@
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">step</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:shipping</span>
-    <span class="ruby-ivar">@calculated_tier</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">calculate_shipping_tier</span>(<span class="ruby-identifier">current_cart</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>
-      <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>)
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:addressable_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">:addressable_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Order&#39;</span>)
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@calculated_tier</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">tier</span>(<span class="ruby-identifier">current_cart</span>)
+    <span class="ruby-ivar">@shipping_address</span> = <span class="ruby-constant">Payatron4000</span><span class="ruby-operator">::</span><span class="ruby-identifier">select_address</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">id</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_address_id</span>)
     <span class="ruby-comment"># Update billing attributes</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@shipping_address</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:address</span>])
       <span class="ruby-comment"># Add billing ID to order record</span>

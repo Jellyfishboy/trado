@@ -72,19 +72,17 @@
     
     <li><a href="#method-i-add_foreign_field">#add_foreign_field</a>
     
-    <li><a href="#method-i-app_breadcrumb_add">#app_breadcrumb_add</a>
-    
-    <li><a href="#method-i-boolean_helper">#boolean_helper</a>
-    
     <li><a href="#method-i-breadcrumb_add">#breadcrumb_add</a>
     
     <li><a href="#method-i-create_admin_breadcrumbs">#create_admin_breadcrumbs</a>
     
-    <li><a href="#method-i-create_app_breadcrumbs">#create_app_breadcrumbs</a>
+    <li><a href="#method-i-create_store_breadcrumbs">#create_store_breadcrumbs</a>
     
     <li><a href="#method-i-errors_for">#errors_for</a>
     
     <li><a href="#method-i-format_currency">#format_currency</a>
+    
+    <li><a href="#method-i-gross_price">#gross_price</a>
     
     <li><a href="#method-i-javascript">#javascript</a>
     
@@ -93,6 +91,8 @@
     <li><a href="#method-i-link_to_remove_fields">#link_to_remove_fields</a>
     
     <li><a href="#method-i-render_breadcrumbs">#render_breadcrumbs</a>
+    
+    <li><a href="#method-i-store_breadcrumb_add">#store_breadcrumb_add</a>
     
     <li><a href="#method-i-table_commands">#table_commands</a>
     
@@ -127,8 +127,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -159,19 +157,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -182,10 +180,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -207,6 +201,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -223,8 +219,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -237,8 +231,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -247,6 +239,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -254,10 +250,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -269,6 +261,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -276,6 +272,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -287,8 +287,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -298,8 +296,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -347,12 +343,16 @@
 
         <div class="method-description">
           
-          
+          <p>Either the id or category_id value from the parameters hash is assigned to
+an instance variable If the instance variable is equal to the passed in
+parameter, return a string</p>
+
+<p>@parameter [integer] @return [string]</p>
           
 
           
           <div class="method-source-code" id="active_category-3F-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">active_category?</span> <span class="ruby-identifier">id</span>
   <span class="ruby-identifier">category</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:category_id</span>]
   <span class="ruby-identifier">category</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
@@ -379,12 +379,15 @@
 
         <div class="method-description">
           
-          
+          <p>If the string parameter equals the current controller value in the
+parameters hash, return a string</p>
+
+<p>@parameter [string] @return [string]</p>
           
 
           
           <div class="method-source-code" id="active_controller-3F-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">active_controller?</span> <span class="ruby-identifier">controller</span>
   <span class="ruby-string">&quot;current&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:controller</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">controller</span>
 <span class="ruby-keyword">end</span></pre>
@@ -409,12 +412,15 @@
 
         <div class="method-description">
           
-          
+          <p>If the controller and action values from the parameter hash are equal to
+the parameters Return a string</p>
+
+<p>@parameter [string, string] @return [string]</p>
           
 
           
           <div class="method-source-code" id="active_page-3F-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">active_page?</span> <span class="ruby-identifier">controller</span>, <span class="ruby-identifier">action</span>
   <span class="ruby-string">&quot;active&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:controller</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">controller</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:action</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">action</span>
 <span class="ruby-keyword">end</span></pre>
@@ -439,16 +445,18 @@
 
         <div class="method-description">
           
-          
+          <p>Add a single form field object to the DOM</p>
+
+<p>@parameter [object, object] @return [object]</p>
           
 
           
           <div class="method-source-code" id="add_foreign_field-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_foreign_field</span> <span class="ruby-identifier">f</span>, <span class="ruby-identifier">association</span>
   <span class="ruby-identifier">new_object</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">object</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">reflect_on_association</span>(<span class="ruby-identifier">association</span>).<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">f</span>.<span class="ruby-identifier">fields_for</span>(<span class="ruby-identifier">association</span>, <span class="ruby-identifier">new_object</span>, <span class="ruby-value">:child_index</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;new_#{association}&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">builder</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">render</span>(<span class="ruby-identifier">association</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_fields&quot;</span>, <span class="ruby-value">:f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">builder</span>)
+    <span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;admin/products/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">association</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/fields&quot;</span>, <span class="ruby-value">:f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">builder</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- add_foreign_field-source -->
@@ -459,66 +467,6 @@
 
         
       </div><!-- add_foreign_field-method -->
-
-    
-      <div id="method-i-app_breadcrumb_add" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">app_breadcrumb_add</span><span
-            class="method-args">(title, url)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="app_breadcrumb_add-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 41</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">app_breadcrumb_add</span> <span class="ruby-identifier">title</span>, <span class="ruby-identifier">url</span>
-  <span class="ruby-identifier">create_app_breadcrumbs</span> <span class="ruby-operator">&lt;&lt;</span> { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">title</span>, <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">url</span> }
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- app_breadcrumb_add-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- app_breadcrumb_add-method -->
-
-    
-      <div id="method-i-boolean_helper" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">boolean_helper</span><span
-            class="method-args">(obj, first, second)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="boolean_helper-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 69</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">boolean_helper</span> <span class="ruby-identifier">obj</span>, <span class="ruby-identifier">first</span>, <span class="ruby-identifier">second</span>
-  <span class="ruby-identifier">obj</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">second</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- boolean_helper-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- boolean_helper-method -->
 
     
       <div id="method-i-breadcrumb_add" class="method-detail ">
@@ -532,12 +480,15 @@
 
         <div class="method-description">
           
-          
+          <p>Add a new breadcrumb to the administration area breadcrumb object using the
+parameters</p>
+
+<p>@parameter [string, string]</p>
           
 
           
           <div class="method-source-code" id="breadcrumb_add-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">breadcrumb_add</span> <span class="ruby-identifier">title</span>, <span class="ruby-identifier">url</span>
   <span class="ruby-identifier">create_admin_breadcrumbs</span> <span class="ruby-operator">&lt;&lt;</span> { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">title</span>, <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">url</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -562,12 +513,15 @@
 
         <div class="method-description">
           
-          
+          <p>Create a new object to start building breadcrumbs for the administration
+area</p>
+
+<p>@return [object]</p>
           
 
           
           <div class="method-source-code" id="create_admin_breadcrumbs-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 45</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create_admin_breadcrumbs</span>
   <span class="ruby-ivar">@admin_breadcrumbs</span> <span class="ruby-operator">||=</span> [ { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">settings</span>.<span class="ruby-identifier">name</span>, <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">admin_root_path</span>}]
 <span class="ruby-keyword">end</span></pre>
@@ -581,10 +535,10 @@
       </div><!-- create_admin_breadcrumbs-method -->
 
     
-      <div id="method-i-create_app_breadcrumbs" class="method-detail ">
+      <div id="method-i-create_store_breadcrumbs" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">create_app_breadcrumbs</span><span
+          <span class="method-name">create_store_breadcrumbs</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -592,23 +546,25 @@
 
         <div class="method-description">
           
-          
+          <p>Create a new object to start building breadcrumbs for the storefront</p>
+
+<p>@return [object]</p>
           
 
           
-          <div class="method-source-code" id="create_app_breadcrumbs-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_app_breadcrumbs</span>
+          <div class="method-source-code" id="create_store_breadcrumbs-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_store_breadcrumbs</span>
   <span class="ruby-ivar">@app_breadcrumbs</span> <span class="ruby-operator">||=</span> [ { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Home&#39;</span>, <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">root_path</span> }]
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- create_app_breadcrumbs-source -->
+          </div><!-- create_store_breadcrumbs-source -->
           
         </div>
 
         
 
         
-      </div><!-- create_app_breadcrumbs-method -->
+      </div><!-- create_store_breadcrumbs-method -->
 
     
       <div id="method-i-errors_for" class="method-detail ">
@@ -622,12 +578,15 @@
 
         <div class="method-description">
           
-          
+          <p>Creates HTML elements and an error associated with the attribute, if one
+exists</p>
+
+<p>@parameter [object, object] @return [string]</p>
           
 
           
           <div class="method-source-code" id="errors_for-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 73</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">errors_for</span> <span class="ruby-identifier">model</span>, <span class="ruby-identifier">attribute</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">errors</span>[<span class="ruby-identifier">attribute</span>].<span class="ruby-identifier">present?</span>
     <span class="ruby-identifier">content_tag</span> <span class="ruby-value">:span</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;error_explanation&#39;</span> <span class="ruby-keyword">do</span>
@@ -661,8 +620,9 @@
 
           
           <div class="method-source-code" id="format_currency-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 65</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">format_currency</span> <span class="ruby-identifier">price</span>
+  <span class="ruby-identifier">price</span> = <span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">settings</span>.<span class="ruby-identifier">tax_breakdown</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">price</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">price</span>*<span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">tax_rate</span><span class="ruby-operator">+</span><span class="ruby-identifier">price</span>
   <span class="ruby-identifier">number_to_currency</span>(<span class="ruby-identifier">price</span>, <span class="ruby-value">:unit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">settings</span>.<span class="ruby-identifier">currency</span>, <span class="ruby-value">:precision</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">price</span>.<span class="ruby-identifier">round</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">price</span>) <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- format_currency-source -->
@@ -673,6 +633,39 @@
 
         
       </div><!-- format_currency-method -->
+
+    
+      <div id="method-i-gross_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gross_price</span><span
+            class="method-args">(net_price)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a string of a formatted currency, using the currency unit and tax
+rate set in the <a href="Store.html">Store</a> settings</p>
+
+<p>@parameter [decimal] @return [string]</p>
+          
+
+          
+          <div class="method-source-code" id="gross_price-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">gross_price</span>  <span class="ruby-identifier">net_price</span>
+  <span class="ruby-identifier">format_currency</span> <span class="ruby-identifier">net_price</span>*<span class="ruby-constant">Store</span><span class="ruby-operator">::</span><span class="ruby-identifier">tax_rate</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">net_price</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- gross_price-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- gross_price-method -->
 
     
       <div id="method-i-javascript" class="method-detail ">
@@ -686,12 +679,15 @@
 
         <div class="method-description">
           
-          
+          <p>Creates a JavaScript tag, targeting the associated JavaScript file within
+the asset pipeline This method is used for page specific JavaScript files</p>
+
+<p>@parameter [object] @return [string]</p>
           
 
           
           <div class="method-source-code" id="javascript-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 81</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">javascript</span>(*<span class="ruby-identifier">files</span>)
   <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:footer</span>) { <span class="ruby-identifier">javascript_include_tag</span>(*<span class="ruby-identifier">files</span>) }
 <span class="ruby-keyword">end</span></pre>
@@ -716,17 +712,19 @@
 
         <div class="method-description">
           
-          <p>The type parameter defines whether the helper is an ajax trigger, or just a
-simple form rendering.</p>
+          <p>Create a new form field object and trigger the associated JavaScript to add
+the field elements to the DOM</p>
+
+<p>@parameter [string, object, object, string, string] @return [object]</p>
           
 
           
           <div class="method-source-code" id="link_to_add_fields-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">link_to_add_fields</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">f</span>, <span class="ruby-identifier">association</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">tooltip</span>
   <span class="ruby-identifier">new_object</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">object</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">reflect_on_association</span>(<span class="ruby-identifier">association</span>).<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">fields</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">fields_for</span>(<span class="ruby-identifier">association</span>, <span class="ruby-identifier">new_object</span>, <span class="ruby-value">:child_index</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;new_#{association}&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">builder</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">render</span>(<span class="ruby-identifier">association</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">singularize</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_fields&quot;</span>, <span class="ruby-value">:f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">builder</span>)
+    <span class="ruby-identifier">render</span>(<span class="ruby-string">&quot;admin/products/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">association</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/fields&quot;</span>, <span class="ruby-value">:f</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">builder</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;add_fields(this, \&quot;#{association}\&quot;, \&quot;#{escape_javascript(fields)}\&quot;, \&quot;#{target}\&quot;)&quot;</span>, <span class="ruby-string">&#39;data-toggle&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;tooltip&#39;</span>, <span class="ruby-string">&#39;data-placement&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;top&#39;</span>, <span class="ruby-string">&#39;data-original-title&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tooltip</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -751,12 +749,15 @@ simple form rendering.</p>
 
         <div class="method-description">
           
-          
+          <p>Destroy generated form field object and trigger the associated JavaScript
+function to remove it from the DOM too</p>
+
+<p>@parameter [string, object, object]</p>
           
 
           
           <div class="method-source-code" id="link_to_remove_fields-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">link_to_remove_fields</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">f</span>, <span class="ruby-identifier">obj</span>
   <span class="ruby-identifier">f</span>.<span class="ruby-identifier">hidden_field</span>(<span class="ruby-value">:_destroy</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">link_to_function</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;remove_fields(this, &#39;#{obj}&#39;)&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -781,17 +782,19 @@ simple form rendering.</p>
 
         <div class="method-description">
           
-          
+          <p>Renders the HTML elements for the breadcrumbs</p>
+
+<p>@parameter [integer] @return [string]</p>
           
 
           
           <div class="method-source-code" id="render_breadcrumbs-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 53</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_breadcrumbs</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;shared/admin_breadcrumbs&#39;</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:breadcrumbs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">create_admin_breadcrumbs</span> }
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;shared/breadcrumbs/admin&#39;</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:breadcrumbs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">create_admin_breadcrumbs</span> }
   <span class="ruby-keyword">else</span> 
-    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;shared/app_breadcrumbs&#39;</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:breadcrumbs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">create_app_breadcrumbs</span> }
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;shared/breadcrumbs/store&#39;</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:breadcrumbs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">create_store_breadcrumbs</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render_breadcrumbs-source -->
@@ -802,6 +805,39 @@ simple form rendering.</p>
 
         
       </div><!-- render_breadcrumbs-method -->
+
+    
+      <div id="method-i-store_breadcrumb_add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">store_breadcrumb_add</span><span
+            class="method-args">(title, url)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add a new breadcrumb to the storefront breadcrumb object using the
+parameters</p>
+
+<p>@parameter [string, string]</p>
+          
+
+          
+          <div class="method-source-code" id="store_breadcrumb_add-source">
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">store_breadcrumb_add</span> <span class="ruby-identifier">title</span>, <span class="ruby-identifier">url</span>
+  <span class="ruby-identifier">create_store_breadcrumbs</span> <span class="ruby-operator">&lt;&lt;</span> { <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">title</span>, <span class="ruby-value">:url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">url</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- store_breadcrumb_add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- store_breadcrumb_add-method -->
 
     
       <div id="method-i-table_commands" class="method-detail ">
@@ -815,12 +851,15 @@ simple form rendering.</p>
 
         <div class="method-description">
           
-          
+          <p>Creates HTML elements for the table actions with the administration area
+The visible actions are dependent on the type parameter</p>
+
+<p>@parameter [object, object, object, object, integer] @return [string]</p>
           
 
           
           <div class="method-source-code" id="table_commands-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 61</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">table_commands</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">show</span>, <span class="ruby-identifier">edit</span>, <span class="ruby-identifier">delete</span>, <span class="ruby-identifier">type</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;shared/table_actions&#39;</span>, <span class="ruby-value">:locals</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:object</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object</span>, <span class="ruby-value">:view</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">show</span>, <span class="ruby-value">:edit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">edit</span>, <span class="ruby-value">:del</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">delete</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span> }
 <span class="ruby-keyword">end</span></pre>

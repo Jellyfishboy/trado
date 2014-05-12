@@ -111,8 +111,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -143,19 +141,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -166,10 +164,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -191,6 +185,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -207,8 +203,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -221,8 +215,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -231,6 +223,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -238,10 +234,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -253,6 +245,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -260,6 +256,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -271,8 +271,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -282,8 +280,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -313,6 +309,7 @@ meta_description         :string(255)
 weighting                :integer 
 sku                      :string(255)
 featured                 :boolean 
+single                   :boolean
 active                   :boolean          default(true)
 category_id              :integer    
 created_at               :datetime         not null
@@ -356,7 +353,7 @@ updated_at               :datetime         not null</pre>
 
           
           <div class="method-source-code" id="active-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 94</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">active</span>
   <span class="ruby-identifier">where</span>([<span class="ruby-string">&#39;products.active = ?&#39;</span>, <span class="ruby-keyword">true</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -394,7 +391,7 @@ updated_at               :datetime         not null</pre>
 
           
           <div class="method-source-code" id="activate-21-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 87</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">activate!</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:active</span>, <span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -426,7 +423,7 @@ updated_at               :datetime         not null</pre>
 
           
           <div class="method-source-code" id="inactivate-21-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 80</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inactivate!</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:active</span>, <span class="ruby-keyword">false</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -458,7 +455,7 @@ updated_at               :datetime         not null</pre>
 
           
           <div class="method-source-code" id="search_data-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 70</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">search_data</span>
   {
     <span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>,
@@ -487,17 +484,20 @@ updated_at               :datetime         not null</pre>
         <div class="method-description">
           
           <p>Detects if a product has more than one SKU when attempting to set the
-single product field as true</p>
+single product field as true The sku association needs to map an attribute
+block in order to count the number of records successfully The standard
+self.skus.count is performed using the record ID, which none of the SKUs
+currently have</p>
 
 <p>@return [boolean]</p>
           
 
           
           <div class="method-source-code" id="single_product-source">
-            <pre><span class="ruby-comment"># File app/models/product.rb, line 101</span>
+            <pre><span class="ruby-comment"># File app/models/product.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">single_product</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">single</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">skus</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:product</span>, <span class="ruby-string">&quot;cannot be set as a single product with more than one SKU.&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">single</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">skus</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">active</span> }.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:single</span>, <span class="ruby-string">&quot; product cannot be set if the product has more than one SKU.&quot;</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

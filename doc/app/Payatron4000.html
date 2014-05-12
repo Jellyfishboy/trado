@@ -48,6 +48,7 @@
   <h3 class="section-header">Defined In</h3>
   <ul>
     <li>lib/payatron_4000.rb
+    <li>lib/payatron_4000/generic.rb
     <li>lib/payatron_4000/paypal.rb
   </ul>
 </nav>
@@ -65,7 +66,13 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-c-price_in_pennies">::price_in_pennies</a>
+    <li><a href="#method-c-confirmation_email">::confirmation_email</a>
+    
+    <li><a href="#method-c-destroy_cart">::destroy_cart</a>
+    
+    <li><a href="#method-c-select_address">::select_address</a>
+    
+    <li><a href="#method-c-singularize_price">::singularize_price</a>
     
     <li><a href="#method-c-stock_update">::stock_update</a>
     
@@ -100,8 +107,6 @@
   
     <li><a href="./Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="./Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="./Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="./Admin/CountriesController.html">Admin::CountriesController</a>
@@ -132,19 +137,19 @@
   
     <li><a href="./Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="./RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="./RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="./RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="./RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="./Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="./Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="./Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="./Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="./Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Users.html">Users</a>
   
@@ -155,10 +160,6 @@
     <li><a href="./Orders.html">Orders</a>
   
     <li><a href="./Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="./Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="./Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="./Ability.html">Ability</a>
   
@@ -180,6 +181,8 @@
   
     <li><a href="./AttributeType.html">AttributeType</a>
   
+    <li><a href="./BasePreview.html">BasePreview</a>
+  
     <li><a href="./Cart.html">Cart</a>
   
     <li><a href="./CartItem.html">CartItem</a>
@@ -196,8 +199,6 @@
   
     <li><a href="./Country.html">Country</a>
   
-    <li><a href="./CountryTax.html">CountryTax</a>
-  
     <li><a href="./DeepStruct.html">DeepStruct</a>
   
     <li><a href="./Destination.html">Destination</a>
@@ -210,8 +211,6 @@
   
     <li><a href="./NotificationsController.html">NotificationsController</a>
   
-    <li><a href="./Notifier.html">Notifier</a>
-  
     <li><a href="./Order.html">Order</a>
   
     <li><a href="./OrderHelper.html">OrderHelper</a>
@@ -220,6 +219,10 @@
   
     <li><a href="./OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="./OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="./OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="./OrdersController.html">OrdersController</a>
   
     <li><a href="./Product.html">Product</a>
@@ -227,10 +230,6 @@
     <li><a href="./ProductHelper.html">ProductHelper</a>
   
     <li><a href="./ProductsController.html">ProductsController</a>
-  
-    <li><a href="./RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="./RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="./RelatedProduct.html">RelatedProduct</a>
   
@@ -242,6 +241,10 @@
   
     <li><a href="./Shipping.html">Shipping</a>
   
+    <li><a href="./ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="./ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="./ShippingsController.html">ShippingsController</a>
   
     <li><a href="./Sku.html">Sku</a>
@@ -249,6 +252,10 @@
     <li><a href="./SkusController.html">SkusController</a>
   
     <li><a href="./StockLevel.html">StockLevel</a>
+  
+    <li><a href="./StockMailer.html">StockMailer</a>
+  
+    <li><a href="./StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="./Store.html">Store</a>
   
@@ -260,8 +267,6 @@
   
     <li><a href="./Tagging.html">Tagging</a>
   
-    <li><a href="./TaxRate.html">TaxRate</a>
-  
     <li><a href="./Tier.html">Tier</a>
   
     <li><a href="./TierValidator.html">TierValidator</a>
@@ -271,8 +276,6 @@
     <li><a href="./Transaction.html">Transaction</a>
   
     <li><a href="./User.html">User</a>
-  
-    <li><a href="./UsersController.html">UsersController</a>
   
     <li><a href="./Zone.html">Zone</a>
   
@@ -309,10 +312,118 @@
       <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-c-price_in_pennies" class="method-detail ">
+      <div id="method-c-confirmation_email" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">price_in_pennies</span><span
+          <span class="method-name">confirmation_email</span><span
+            class="method-args">(order, payment_status)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Depending on the payment_status of the order, the relevant email template
+is sent</p>
+
+<p>@parameter [hash object, string]</p>
+          
+
+          
+          <div class="method-source-code" id="confirmation_email-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">confirmation_email</span> <span class="ruby-identifier">order</span>, <span class="ruby-identifier">payment_status</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">payment_status</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Pending&quot;</span>
+        <span class="ruby-constant">OrderMailer</span>.<span class="ruby-identifier">pending</span>(<span class="ruby-identifier">order</span>).<span class="ruby-identifier">deliver</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-constant">OrderMailer</span>.<span class="ruby-identifier">received</span>(<span class="ruby-identifier">order</span>).<span class="ruby-identifier">deliver</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- confirmation_email-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- confirmation_email-method -->
+
+    
+      <div id="method-c-destroy_cart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy_cart</span><span
+            class="method-args">(session)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Destroys the cart and any associated cart_item &amp; cart_items_accesory
+records and sets the cart_id session value to nil</p>
+
+<p>@parameter [hash object]</p>
+          
+
+          
+          <div class="method-source-code" id="destroy_cart-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy_cart</span> <span class="ruby-identifier">session</span>
+    <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">destroy</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>])
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:cart_id</span>] = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroy_cart-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroy_cart-method -->
+
+    
+      <div id="method-c-select_address" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">select_address</span><span
+            class="method-args">(order_id, address_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>If address exists for an order, find and utilise it. If not, create a new
+address record</p>
+
+<p>@parameter [integer, integer]</p>
+          
+
+          
+          <div class="method-source-code" id="select_address-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">select_address</span> <span class="ruby-identifier">order_id</span>, <span class="ruby-identifier">address_id</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">address_id</span>
+        <span class="ruby-constant">Address</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">address_id</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:addressable_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">order_id</span>, <span class="ruby-value">:addressable_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Order&#39;</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- select_address-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- select_address-method -->
+
+    
+      <div id="method-c-singularize_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">singularize_price</span><span
             class="method-args">(price)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -322,25 +433,23 @@
           
           <p>Convert a price into single digit currency</p>
 
-<p>@return [<a
-href="Payatron4000.html#method-c-price_in_pennies">::price_in_pennies</a>]
-@parameter [decimal]</p>
+<p>@parameter [decimal] @return [decimal]</p>
           
 
           
-          <div class="method-source-code" id="price_in_pennies-source">
-            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">price_in_pennies</span> <span class="ruby-identifier">price</span>
+          <div class="method-source-code" id="singularize_price-source">
+            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">singularize_price</span> <span class="ruby-identifier">price</span>
     (<span class="ruby-identifier">price</span>*<span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- price_in_pennies-source -->
+          </div><!-- singularize_price-source -->
           
         </div>
 
         
 
         
-      </div><!-- price_in_pennies-method -->
+      </div><!-- singularize_price-method -->
 
     
       <div id="method-c-stock_update" class="method-detail ">
@@ -354,19 +463,20 @@ href="Payatron4000.html#method-c-price_in_pennies">::price_in_pennies</a>]
 
         <div class="method-description">
           
-          <p>Updates the stock after a purchase has been completed</p>
+          <p>Creates a new stock level record for each order_item SKU, adding the order
+id to the description Also updates the related SKU&#39;s stock value</p>
 
-<p>@return [<a
-href="Payatron4000.html#method-c-stock_update">::stock_update</a>]
-@parameter [hash object]</p>
+<p>@parameter [hash object]</p>
           
 
           
           <div class="method-source-code" id="stock_update-source">
-            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/payatron_4000.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">stock_update</span> <span class="ruby-identifier">order</span>
     <span class="ruby-identifier">order</span>.<span class="ruby-identifier">order_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">sku</span> = <span class="ruby-constant">Sku</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">sku_id</span>)
+      <span class="ruby-identifier">description</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">order_item_accessory</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;Order ##{order.id}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;Order ##{order.id} (+ #{item.order_item_accessory.accessory.name})&quot;</span>
+      <span class="ruby-constant">StockLevel</span>.<span class="ruby-identifier">create</span>(<span class="ruby-value">:description</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">description</span>, <span class="ruby-value">:adjustment</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;-#{item.quantity}&quot;</span>, <span class="ruby-value">:sku_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">sku_id</span>)
       <span class="ruby-identifier">sku</span>.<span class="ruby-identifier">update_column</span>(<span class="ruby-value">:stock</span>, <span class="ruby-identifier">sku</span>.<span class="ruby-identifier">stock</span><span class="ruby-operator">-</span><span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

@@ -82,7 +82,11 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-i-edit">#edit</a>
+    
     <li><a href="#method-i-paypal_ipn">#paypal_ipn</a>
+    
+    <li><a href="#method-i-update">#update</a>
     
   </ul>
 </nav>
@@ -115,8 +119,6 @@
   
     <li><a href="../Admin/Countries.html">Admin::Countries</a>
   
-    <li><a href="../Admin/Countries/TaxRatesController.html">Admin::Countries::TaxRatesController</a>
-  
     <li><a href="../Admin/Countries/ZonesController.html">Admin::Countries::ZonesController</a>
   
     <li><a href="../Admin/CountriesController.html">Admin::CountriesController</a>
@@ -147,19 +149,19 @@
   
     <li><a href="../Admin/TransactionsController.html">Admin::TransactionsController</a>
   
-    <li><a href="../RedactorRails.html">RedactorRails</a>
-  
-    <li><a href="../RedactorRails/Asset.html">RedactorRails::Asset</a>
-  
-    <li><a href="../RedactorRails/Document.html">RedactorRails::Document</a>
-  
-    <li><a href="../RedactorRails/Picture.html">RedactorRails::Picture</a>
+    <li><a href="../Admin/UsersController.html">Admin::UsersController</a>
   
     <li><a href="../Mailatron4000.html">Mailatron4000</a>
   
     <li><a href="../Mailatron4000/Orders.html">Mailatron4000::Orders</a>
   
     <li><a href="../Mailatron4000/Stock.html">Mailatron4000::Stock</a>
+  
+    <li><a href="../Payatron4000.html">Payatron4000</a>
+  
+    <li><a href="../Payatron4000/Generic.html">Payatron4000::Generic</a>
+  
+    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Users.html">Users</a>
   
@@ -170,10 +172,6 @@
     <li><a href="../Orders.html">Orders</a>
   
     <li><a href="../Orders/BuildController.html">Orders::BuildController</a>
-  
-    <li><a href="../Payatron4000.html">Payatron4000</a>
-  
-    <li><a href="../Payatron4000/Paypal.html">Payatron4000::Paypal</a>
   
     <li><a href="../Ability.html">Ability</a>
   
@@ -195,6 +193,8 @@
   
     <li><a href="../AttributeType.html">AttributeType</a>
   
+    <li><a href="../BasePreview.html">BasePreview</a>
+  
     <li><a href="../Cart.html">Cart</a>
   
     <li><a href="../CartItem.html">CartItem</a>
@@ -211,8 +211,6 @@
   
     <li><a href="../Country.html">Country</a>
   
-    <li><a href="../CountryTax.html">CountryTax</a>
-  
     <li><a href="../DeepStruct.html">DeepStruct</a>
   
     <li><a href="../Destination.html">Destination</a>
@@ -225,8 +223,6 @@
   
     <li><a href="../NotificationsController.html">NotificationsController</a>
   
-    <li><a href="../Notifier.html">Notifier</a>
-  
     <li><a href="../Order.html">Order</a>
   
     <li><a href="../OrderHelper.html">OrderHelper</a>
@@ -235,6 +231,10 @@
   
     <li><a href="../OrderItemAccessory.html">OrderItemAccessory</a>
   
+    <li><a href="../OrderMailer.html">OrderMailer</a>
+  
+    <li><a href="../OrderMailerPreview.html">OrderMailerPreview</a>
+  
     <li><a href="../OrdersController.html">OrdersController</a>
   
     <li><a href="../Product.html">Product</a>
@@ -242,10 +242,6 @@
     <li><a href="../ProductHelper.html">ProductHelper</a>
   
     <li><a href="../ProductsController.html">ProductsController</a>
-  
-    <li><a href="../RedactorRailsDocumentUploader.html">RedactorRailsDocumentUploader</a>
-  
-    <li><a href="../RedactorRailsPictureUploader.html">RedactorRailsPictureUploader</a>
   
     <li><a href="../RelatedProduct.html">RelatedProduct</a>
   
@@ -257,6 +253,10 @@
   
     <li><a href="../Shipping.html">Shipping</a>
   
+    <li><a href="../ShippingMailer.html">ShippingMailer</a>
+  
+    <li><a href="../ShippingMailerPreview.html">ShippingMailerPreview</a>
+  
     <li><a href="../ShippingsController.html">ShippingsController</a>
   
     <li><a href="../Sku.html">Sku</a>
@@ -264,6 +264,10 @@
     <li><a href="../SkusController.html">SkusController</a>
   
     <li><a href="../StockLevel.html">StockLevel</a>
+  
+    <li><a href="../StockMailer.html">StockMailer</a>
+  
+    <li><a href="../StockMailerPreview.html">StockMailerPreview</a>
   
     <li><a href="../Store.html">Store</a>
   
@@ -275,8 +279,6 @@
   
     <li><a href="../Tagging.html">Tagging</a>
   
-    <li><a href="../TaxRate.html">TaxRate</a>
-  
     <li><a href="../Tier.html">Tier</a>
   
     <li><a href="../TierValidator.html">TierValidator</a>
@@ -286,8 +288,6 @@
     <li><a href="../Transaction.html">Transaction</a>
   
     <li><a href="../User.html">User</a>
-  
-    <li><a href="../UsersController.html">UsersController</a>
   
     <li><a href="../Zone.html">Zone</a>
   
@@ -324,6 +324,37 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/transactions_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@transaction</span> = <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;admin/transactions/edit&#39;</span>, <span class="ruby-value">:format</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">:js</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit-method -->
+
+    
       <div id="method-i-paypal_ipn" class="method-detail ">
         
         <div class="method-heading">
@@ -348,7 +379,7 @@
     <span class="ruby-identifier">transaction</span> = <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;order_id = ?&#39;</span>, <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;invoice&#39;</span>]).<span class="ruby-identifier">first</span>
     <span class="ruby-keyword">begin</span>
 
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">complete?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">gross_amount</span> = <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;mc_gross&#39;</span>]
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">complete?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">gross_amount</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;mc_gross&#39;</span>]
         <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">fee</span> = <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;mc_fee&#39;</span>]
         <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">payment_status</span> = <span class="ruby-identifier">notify</span>.<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;payment_status&#39;</span>]
       <span class="ruby-keyword">end</span>
@@ -359,7 +390,7 @@
       <span class="ruby-identifier">raise</span>
     <span class="ruby-keyword">ensure</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">save</span>
-        <span class="ruby-constant">Notifier</span>.<span class="ruby-identifier">order_received</span>(<span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">order</span>)
+        <span class="ruby-constant">OrderMailer</span>.<span class="ruby-identifier">received</span>(<span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">order</span>)
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
@@ -374,6 +405,42 @@
 
         
       </div><!-- paypal_ipn-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin/transactions_controller.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@transaction</span> = <span class="ruby-constant">Transaction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@transaction</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:transaction</span>])
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;admin/transactions/success&#39;</span>, <span class="ruby-value">:format</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">:js</span>] }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
 
     
     </section><!-- public-instance-method-details -->
