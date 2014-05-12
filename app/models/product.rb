@@ -58,7 +58,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  searchkick word_start: [:name, :part_number, :sku]#, conversions: "conversions"
+  searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope order('weighting DESC')
 
@@ -68,12 +68,12 @@ class Product < ActiveRecord::Base
   # Search paramters for elasticsearch
   #
   # @return [nil]
-  # def search_data
-  #   {
-  #     name: name,
-  #     conversions: searches.group("query").count
-  #   }
-  # end
+  def search_data
+    {
+      name: name,
+      conversions: searches.group("query").count
+    }
+  end
 
   # Sets the related record's active field as false
   #

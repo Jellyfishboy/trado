@@ -44,6 +44,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'sqlite3'
   gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
@@ -59,7 +60,6 @@ group :assets do
 end
 
 gem 'unicorn', :platforms => :ruby
-gem 'sqlite3'
 
 # AJAX file upload
 gem 'remotipart', '~> 1.2'
