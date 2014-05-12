@@ -9,19 +9,19 @@ class SearchController < ApplicationController
         end
     end
 
-    # def autocomplete
-    #     @json_products = Product.search(params[:query], fields: [{name: :word_start}], limit: 5, partial: true).map do |p|
-    #                     {
-    #                             :value => p.name,
-    #                             :tokens => p.name,
-    #                             :category_slug => p.category.slug,
-    #                             :category_name => p.category.name,
-    #                             :product_slug => p.slug,
-    #                             :image => p.attachments.first.file.small
-    #                     }
-    #     end
-    #     respond_to do |format|
-    #         format.json { render json: @json_products }
-    #     end
-    # end 
+    def autocomplete
+        @json_products = Product.search(params[:query], fields: [{name: :word_start}], limit: 5, partial: true).map do |p|
+                        {
+                                :value => p.name,
+                                :tokens => p.name,
+                                :category_slug => p.category.slug,
+                                :category_name => p.category.name,
+                                :product_slug => p.slug,
+                                :image => p.attachments.first.file.small
+                        }
+        end
+        respond_to do |format|
+            format.json { render json: @json_products }
+        end
+    end 
 end
