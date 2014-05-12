@@ -24,15 +24,25 @@
           = ff.label "Store logo"
           %div= image_tag @settings.attachment.file.square, :width => 75, :height => 75
           %div= ff.file_field :file
-      .form-group
-        = f.label :tax_name
-        = f.text_field :tax_name, :class => 'form-control'
-      .form-group
-        = f.label :tax_rate
-        = f.text_field :tax_rate, :class => 'form-control'
       .form-group.form-last
         = f.label 'Currency unit'
         = f.text_field :currency, :class => 'form-control'
+    .widget-sub-heading
+      %h3 Tax
+    %fieldset.widget.widget-content
+      .form-group
+        = f.label 'Name'
+        = f.text_field :tax_name, :class => 'form-control'
+      .form-group
+        = f.label 'Rate'
+        = f.text_field :tax_rate, :class => 'form-control'
+      %p If you would like your customers to view your product prices without tax and view the tax total in the checkout process, then please select the checkbox below.
+      .form-group
+        .checkbox
+          %label
+            = f.check_box :tax_breakdown
+            Breakdown
+          
     .widget-sub-heading
       %h3 Google Analytics
     %fieldset.widget.widget-content

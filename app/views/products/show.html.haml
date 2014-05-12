@@ -41,7 +41,7 @@
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
-            %div.gross_price= "#{gross_price @skus.first.price} inc. #{Store::settings.tax_name}".html_safe
+            %div.gross_price= "#{gross_price @skus.first.price} inc. #{Store::settings.tax_name}".html_safe if Store::settings.tax_breakdown
         .product-description
           %p= @product.short_description
           %hr/

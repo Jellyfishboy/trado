@@ -67,6 +67,7 @@ module ApplicationHelper
     end
     
     def format_currency price
+      price = Store::settings.tax_breakdown ? price : price*Store::tax_rate+price
       number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
     end
     

@@ -91,18 +91,19 @@
                     %div= @order.ship_address.country
                   %td.qty 1
                   %td.price= format_currency @order.shipping.price
-                %tr
-                  %td{colspan: "2"}
-                  \ 
-                  %td.stronger Subtotal:
-                  %td.stronger
-                    .align-right= format_currency (@order.net_amount)
-                %tr
-                  %td{colspan: "2", rowspan: "1"}
-                  \ 
-                  %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
-                  %td.stronger
-                    .align-right= format_currency @order.tax_amount  
+                - if Store::settings.tax_breakdown
+                  %tr
+                    %td{colspan: "2"}
+                    \ 
+                    %td.stronger Subtotal:
+                    %td.stronger
+                      .align-right= format_currency (@order.net_amount)
+                  %tr
+                    %td{colspan: "2", rowspan: "1"}
+                    \ 
+                    %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+                    %td.stronger
+                      .align-right= format_currency @order.tax_amount  
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                     .alert.alert-info

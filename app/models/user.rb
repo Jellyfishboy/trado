@@ -35,8 +35,7 @@ class User < ActiveRecord::Base
     attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :attachment_attributes
 
     validates :first_name, :last_name,                      :presence => true
-
-    has_one :store_setting     
+    
     has_one :attachment,                                    as: :attachable, :dependent => :destroy                            
     has_and_belongs_to_many :roles
     has_many :notifications,                                as: :notifiable, :dependent => :delete_all

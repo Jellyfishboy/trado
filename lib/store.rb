@@ -6,7 +6,7 @@ module Store
         #
         # @return [Store::settings]
         def settings
-          @@store_settings ||= User.where(:role => 'admin').first.store_setting
+          @@store_settings ||= StoreSetting.first
         end
 
         # Clears the store_settings class variable so they can be taken

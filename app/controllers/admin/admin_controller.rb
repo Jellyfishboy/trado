@@ -8,12 +8,12 @@ class Admin::AdminController < ApplicationController
     end
 
     def settings
-        @settings = current_user.store_setting
+        @settings = Store::settings
         @attachment = @settings.build_attachment unless @settings.attachment
     end
 
     def update
-        @settings = current_user.store_setting
+        @settings = Store::settings
         
         respond_to do |format|
           if @settings.update_attributes(params[:store_setting])
