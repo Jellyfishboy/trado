@@ -13,7 +13,7 @@ class Admin::TransactionsController < ApplicationController
       transaction = Transaction.where('order_id = ?', notify.params['invoice']).first
       begin
 
-        if notify.complete? and transaction.gross_amount = notify.params['mc_gross']
+        if notify.complete? and transaction.gross_amount.to_s == notify.params['mc_gross']
           transaction.fee = notify.params['mc_fee']
           transaction.payment_status = notify.params['payment_status']
         end
