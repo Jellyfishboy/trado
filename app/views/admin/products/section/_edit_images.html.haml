@@ -8,7 +8,7 @@
       #image_fields.edit_field
         - @product.attachments.each do |attach|
           .attachments.current-file{ :id => "attachment_#{attach.id}" }
-            = image_tag attach.file.medium
+            = image_tag attach.file.square, :height => 140, :width => 140
             = link_to admin_products_attachment_path(attach), :method => :delete, :confirm => 'Are you sure?', :remote => true do
               %i.icon-close
         
