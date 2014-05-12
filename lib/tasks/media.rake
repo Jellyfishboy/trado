@@ -11,9 +11,9 @@ namespace :media do
         Attachment.all.each do |attachment| 
           begin
             # attachment.process_file_uploader_upload = true # only if you use carrierwave_backgrounder
-            attachment.cache_stored_file! 
-            attachment.retrieve_from_cache!(cache_name) 
-            attachment.recreate_versions! 
+            attachment.file.cache_stored_file! 
+            attachment.file.retrieve_from_cache!(attachment.file.cache_name) 
+            attachment.file.recreate_versions! 
             attachment.save! 
           rescue => e
             puts  "ERROR: Attachment: #{attachment.id} -> #{e.to_s}"
