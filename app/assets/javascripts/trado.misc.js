@@ -2,7 +2,8 @@ trado.misc =
 {
     log: function(message) 
     {
-        if (typeof console === 'object') {
+        if (typeof console === 'object') 
+        {
             return console.log(message);
         } 
         else 
@@ -15,8 +16,9 @@ trado.misc =
     {
         var number, sum;
         number = Number(value);
-        sum = number + (number*0.2)
-        return if isNaN(sum) ? 0 : sum
+        sum = number + (number*(parseFloat(taxRate)/100));
+        sum = isNaN(sum) ? 0 : sum;
+        return sum;
     }
 
 }

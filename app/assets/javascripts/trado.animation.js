@@ -1,7 +1,9 @@
 trado.animation =
 {
-    loadingSettings: function() {
-        $.fn.spin.presets.standard = {
+    loadingSettings: function() 
+    {
+        $.fn.spin.presets.standard = 
+        {
             lines: 9,
             length: 0,
             width: 10,

@@ -2,15 +2,17 @@ trado.modal =
 {
     loading: function(trigger, target) 
     {
-        $(trigger).click(function() {
+        $(trigger).click(function() 
+        {
             $(target).modal('show');
-            return $(target + ' .modal-body .loading_block').spin('standard');
+            return $(target + ' .modal-body .loading-block').spin('standard');
         });
     },
     
     open: function(trigger, target)
     {
-        $(trigger).click(function() {
+        $(trigger).click(function() 
+        {
            $(target).modal('show');
            return false;
         });
@@ -18,7 +20,8 @@ trado.modal =
 
     ajaxOpen: function(elem, url, urlEnd)
     {   
-        $('body').on('click', elem, function() {
+        $('body').on('click', elem, function() 
+        {
             var id;
             id = $(this).attr('id');
             if (urlEnd)

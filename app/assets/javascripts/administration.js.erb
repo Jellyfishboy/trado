@@ -1,0 +1,24 @@
+//= require jquery
+//= require jquery_ujs
+//= require admin/soca
+//= require admin/bootstrap.min
+//= require jquery.scrollTo/jquery.scrollTo.min
+//= require _trado
+//= require trado.misc
+//= require trado.modal
+//= require trado.admin
+
+var taxRate = "<%= Store::settings.tax_rate %>";
+     
+$(document).ready(function() 
+{
+    trado.admin.taxField();
+    trado.admin.jsonErrors();
+
+    trado.modal.ajaxOpen('.order_shipping', '/admin/orders/', '/shipping');
+    trado.modal.ajaxOpen('.edit_order_attributes', '/admin/orders/', '/edit');
+    trado.modal.ajaxOpen('.new_stock_levels', '/admin/products/skus/stock_levels/new?sku_id=', null);
+    trado.modal.ajaxOpen('.edit_sku_attributes', '/admin/products/skus/', '/edit');
+    trado.modal.ajaxOpen('.edit_transaction_attributes', '/admin/transactions/', '/edit');
+
+});

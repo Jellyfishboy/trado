@@ -5,7 +5,7 @@
 %fieldset.widget.widget-content.attachment-form
   .row
     .twelvecol
-      #image_fields.edit_field
+      #image_fields.edit-field
         - @product.attachments.each do |attach|
           .attachments.current-file{ :id => "attachment_#{attach.id}" }
             = image_tag attach.file.square, :height => 140, :width => 140

@@ -1,0 +1,49 @@
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap.min
+//= require jquery.carouFredSel-6.2.1-packed
+//= require jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min
+//= require jquery-ui-1.10.3/touch-fix.min
+//= require custom
+//= require underscore/underscore-min
+//= require isotope/jquery.isotope.min
+//= require modernizr.custom.56918
+//= require spin
+//= require jquery.spin
+//= require typeahead_2
+//= require hogan-2.0.0
+//= require _trado
+//= require trado.misc
+//= require trado.animation
+//= require trado.modal
+//= require trado.tracking
+//= require trado.app
+
+var trackingCode = "<%= Store::settings.ga_code %>"
+
+$(document).ready(function()
+{
+    trado.tracking.init();
+    trado.modal.loading('.paypal_checkout', '#paypalModal');
+    trado.modal.loading('.confirm_order', '#confirmOrderModal');
+    trado.modal.open('.notify_me', '#notifyMeModal');
+    trado.app.submitAll();
+    trado.animation.loadingSettings();
+    trado.app.updatePrice('/product/skus/update?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+    trado.app.updatePrice('/product/accessories/update?accessory_id=', '&sku_id=', '#cart_item_cart_item_accessory_accessory_id', '#cart_item_sku_id');
+    trado.app.typeahead();
+    trado.app.selectShipping();
+    trado.app.updateShipping();
+    trado.app.duplicateAddress();
+});
+    
+$(document).ajaxComplete(function()
+{
+    trado.modal.open('.notify_me', '#notifyMeModal');
+    trado.animation.loadingSettings();
+    trado.app.updatePrice('/product/skus/update?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+    trado.app.selectShipping();
+    trado.app.jsonErrors();
+});
+    
+
