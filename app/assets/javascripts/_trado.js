@@ -4,6 +4,8 @@ var trado =
     tracking: {},
     modal: {},
     form: {},
+    app: {},
+    admin: {},
     misc: {}
 
 };

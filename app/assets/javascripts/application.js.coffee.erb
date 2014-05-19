@@ -12,26 +12,44 @@
 #= require jquery.spin
 #= require typeahead_2
 #= require hogan-2.0.0
-
-# Attach a function or variable to the global namespace
-root = exports ? this
-
-#####################################
-#    Check if console exists (IE)   #
-#####################################
-log = (message) ->
-  if typeof console is 'object' then console.log(message) else return null
+#= require _trado
+#= require trado.misc
+#= require trado.animation
+#= require trado.modal
+#= require trado.tracking
+#= require trado.app
 
 # Set the tracking code for GA
 root.tracking_code = "<%= Store::settings.ga_code %>"
 
 $(document).ready ->
-    updateSku()
+    trado.tracking.init()
+
+    trado.modal.loading('.paypal_checkout', '#paypalModal')
+    trado.modal.loading('.confirm_order', '#confirmOrderModal')
+    trado.modal.open('.notify_me', '#notifyMeModal')
+
+    trado.animation.loadingSettings()
+
+    trado.app.updatePrice('/product/skus/update?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+    trado.app.updatePrice('/product/accessories/update?accessory_id=', '&sku_id=', '#cart_item_cart_item_accessory_accessory_id', '#cart_item_sku_id');
+
     shippingSelector()
-    modal('.notify_me', '#notifyMeModal')
+    
     typeaheadEngine()
     updateAccessory()
     useBillingAddress()
+    
+$(document).ajaxComplete ->
+    trado.modal.open('.notify_me', '#notifyMeModal')
+
+    trado.animation.loadingSettings()
+
+    trado.app.updatePrice('/product/skus/update?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+
+    shippingSelector()
+    
+    formJsonErrors()
 
     $('.update_shipping #address_country').change ->
         unless @value is ""
@@ -48,15 +66,9 @@ $(document).ready ->
         $('.edit_cart_item').each ->
             $(@).submit()
 
-    loadingModal('.paypal_checkout', '#paypalModal')
-    loadingModal('.confirm_order', '#confirmOrderModal')
+    
 
-$(document).ajaxComplete ->
-    updateSku()
-    shippingSelector()
-    modal('.notify_me', '#notifyMeModal')
-    formJsonErrors()
-    analyticsTracking()
+
 
 formJsonErrors = ->
     $(document).on "ajax:error", "form", (evt, xhr, status, error) ->
@@ -70,16 +82,6 @@ formJsonErrors = ->
                 $element.wrap '<div class="field_with_errors"></div>'
                 $element.parent().after '<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>'
 
-modal = (trigger, target) ->
-    $(trigger).click ->
-        $(target).modal 'show'
-        return false
-
-loadingModal = (trigger, target) ->
-    $(trigger).click ->
-        $(target).modal 'show'
-        $(target + ' .modal-body .loading_block').spin 'standard'
-
 shippingSelector = ->
     $('.shipping-methods .option').click ->
         $(@).find('input:radio').prop 'checked', true
@@ -87,18 +89,6 @@ shippingSelector = ->
         $(@).addClass 'active'
     $('.shipping-methods .option input:radio').each ->
         $(@).parent().addClass 'active' if $(@).is ':checked'
-
-updateSku = ->
-    $('#cart_item_sku_id').change ->
-        sku_id = $(@).val()
-        accessory_id = $('#cart_item_cart_item_accessory_accessory_id').val()
-        $.get '/product/skus/update?sku_id=' + sku_id + '&accessory_id=' + accessory_id
-
-updateAccessory = ->
-    $('#cart_item_cart_item_accessory_accessory_id').change ->
-        accessory_id = $(@).val()
-        sku_id = $('#cart_item_sku_id').val()
-        $.get '/product/accessories/update?accessory_id=' + accessory_id + '&sku_id=' + sku_id
 
 useBillingAddress = ->
     $('.use_billing_address').change ->
@@ -125,40 +115,4 @@ typeaheadEngine = ->
         limit: 4
     ).on "typeahead:selected", ($e, data) ->
         window.location = "/categories/" + data.category_slug + "/products/" + data.product_slug
-
-analyticsTracking = ->
-  # Confirm the gaq object exists
-  # ga_enabled = typeof _gaq == 'object'
-  ga_enabled = if typeof _gaq is 'object' then true else false
-  window.SGA = new Sngtrkr_analytics_data ga_enabled
-
-  # Assign the click event to the relevant element and collate data attribute data
-  $('body').on 'click', '[data-tracking="true"]', ->
-    tracking_category = $(@).attr 'data-tracking-category'
-    $this = $(@)
-    name = $this.attr 'data-tracking-name'
-    category = $this.attr 'data-tracking-category'
-    window.SGA.send [name, category]
-
-# Set up object for building and pushing the GA array
-class Sngtrkr_analytics_data
-
-  constructor: (@enabled) ->
-    @send()
-  # Default event
-  event: "click"
-
-  build: (tracker) ->
-    if tracker isnt undefined
-      @name = tracker[0]
-      @category = tracker[1]
-
-    return ['_trackEvent', @category, @event, @name]
-
-  send: (object) ->
-    if @enabled
-      _gaq.push @build(object)
-    return
-
-
 
