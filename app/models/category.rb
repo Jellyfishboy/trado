@@ -22,7 +22,7 @@ class Category < ActiveRecord::Base
   has_many :products
 
   validates :name,:description, :sorting,                :presence => true
-  validates :name, :sorting,                             :uniqueness => true
+  validates :name,                                       :uniqueness => true
   validates :sorting,                                    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
 
   default_scope order('sorting ASC')

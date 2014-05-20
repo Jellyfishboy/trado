@@ -11,12 +11,5 @@ FactoryGirl.define do
         factory :admin do
             role 'admin'
         end
-
-        factory :user_settings do
-            role 'admin'
-            after(:create) do |user, evaluator|
-                create(:attached_store_setting, user: user)
-            end
-        end
     end
 end

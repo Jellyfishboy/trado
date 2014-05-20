@@ -13,6 +13,15 @@ describe Category do
     it { expect(subject).to validate_numericality_of(:sorting).is_greater_than_or_equal_to(0).only_integer } 
 
     it { expect(subject).to validate_uniqueness_of(:name) }
-    it { expect(subject).to validate_uniqueness_of(:sorting) }
+
+    describe "Default scope" do
+        let!(:category_1) { create(:category, sorting: 2) }
+        let!(:category_2) { create(:category, sorting: 0) }
+        let!(:category_3) { create(:category, sorting: 1) }
+
+        it "should return an array of products ordered by descending weighting" do
+            expect(Category.last(3)).to match_array([category_2, category_3, category_1])
+        end
+    end
     
 end
