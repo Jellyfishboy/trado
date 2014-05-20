@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512081310) do
+ActiveRecord::Schema.define(:version => 20140520112717) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20140512081310) do
     t.datetime "updated_at",                     :null => false
     t.boolean  "visible",     :default => false
     t.string   "slug"
+    t.integer  "sorting",     :default => 0
   end
 
   create_table "countries", :force => true do |t|

@@ -16,6 +16,9 @@
       .form-group
         = f.label :description
         = f.text_area :description, :class => 'form-control', :rows => 8
+      .form-group
+        = f.label :sorting
+        = f.text_field :sorting, :class => 'form-control'
       .checkbox
         %label
           = f.check_box :visible
