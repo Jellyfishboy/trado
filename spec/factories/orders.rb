@@ -9,6 +9,10 @@ FactoryGirl.define do
         sequence(:actual_shipping_cost) { |n| n }
         express_token { Faker::Lorem.characters(8) }
         express_payer_id { Faker::Lorem.characters(6) }
+        net_amount { |n| n }
+        tax_amount { |n| n }
+        gross_amount { |n| n }
+        terms { true }
 
         association :shipping
         association :ship_address, factory: :address

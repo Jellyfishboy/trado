@@ -59,11 +59,10 @@ module Payatron4000
             details = EXPRESS_GATEWAY.details_for(token)
             order.update_attributes(:express_token => token, :express_payer_id => payer_id)
             order.save!
-            session[:paypal_email] = details.params["payer"]
         end
 
         # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
-        # sends a confirmation email and redirects the user
+        # sends a confirmation email and redirects the user. Rollbar is notified with the relevant data if the email fails to send
         #
         # @parameter [hash object, hash object, array]
         def self.complete order, session, steps
@@ -78,10 +77,14 @@ module Payatron4000
               Rollbar.report_exception(e)
             end
             order.reload
-            Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
             redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
                                                                                        :id => steps.last
             )
+            begin
+              Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
+            rescue
+                Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
+            end
           else
             begin
               Payatron4000::Paypal.failed(response, order)

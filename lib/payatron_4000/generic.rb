@@ -22,18 +22,22 @@ module Payatron4000
             order.update_column(:status, 'active')
         end
 
-        # Completes the order process by creating a transaction record,
-        # sending a confirmation email and redirects the user
+        # Completes the order process by creating a transaction record, sending a confirmation email and redirects the user
+        # Rollbar is notified with the relevant data if the email fails to send
         #
         # @parameter [hash object, string, hash object, hash_object]
         def self.complete order, payment_type, session, steps
             Payatron4000::Generic.successful(order, payment_type)
             Payatron4000::destroy_cart(session)
             order.reload
-            Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
             redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
                                                                                        :id => steps.last
             )
+            begin
+                Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
+            rescue
+                Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
+            end
         end
     end
 end

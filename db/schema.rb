@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140520112717) do
+ActiveRecord::Schema.define(:version => 20140521144548) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20140520112717) do
     t.decimal  "net_amount",           :precision => 8, :scale => 2
     t.decimal  "gross_amount",         :precision => 8, :scale => 2
     t.decimal  "tax_amount",           :precision => 8, :scale => 2
+    t.boolean  "terms"
   end
 
   create_table "products", :force => true do |t|

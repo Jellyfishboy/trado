@@ -50,69 +50,70 @@
             / ==========
             / = Selected Items =
             / ==========
-            %span.icon-stack
-              %i.icon-circle-blank.icon-stack-base
-              %i.icon-ok
-            %p
-              You are currently logged in with the following PayPal account:
-              %b
-                = session["paypal_email"]
-            %table.table.table-items
-              %thead
-                %tr
-                  %th{colspan: "2"} Item
-                  %th
-                    .align-center Quantity
-                  %th
-                    .align-right Price
-              %tbody
-                - @cart.cart_items.each do |item|
+            / %span.icon-stack
+            /   %i.icon-circle-blank.icon-stack-base
+            /   %i.icon-ok
+            / %p
+            /   You are currently logged in with the following PayPal account:
+            /   %b
+            /     = session["paypal_email"]
+            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+              %table.table.table-items
+                %thead
+                  %tr
+                    %th{colspan: "2"} Item
+                    %th
+                      .align-center Quantity
+                    %th
+                      .align-right Price
+                %tbody
+                  - @cart.cart_items.each do |item|
+                    %tr
+                      %td.image
+                        = image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124
+                      %td.desc
+                        = item.sku.product.name
+                        %div= sku_attribute_values(item.sku, item.sku.product.single)
+                      %td.qty= item.quantity
+                      %td.price= format_currency item.total_price
+                    - unless item.cart_item_accessory.blank?
+                      %tr.accessory_row
+                        %td.image
+                          = image_tag 'http://placehold.it/124x124', :height => 124, :width => 124
+                        %td.desc
+                          = item.cart_item_accessory.accessory.name
+                        %td.qty
+                          = item.cart_item_accessory.quantity
                   %tr
                     %td.image
-                      = image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124
+                      = image_tag "delivery.png", :alt => @order.shipping.name
                     %td.desc
-                      = item.sku.product.name
-                      %div= sku_attribute_values(item.sku, item.sku.product.single)
-                    %td.qty= item.quantity
-                    %td.price= format_currency item.total_price
-                  - unless item.cart_item_accessory.blank?
-                    %tr.accessory_row
-                      %td.image
-                        = image_tag 'http://placehold.it/124x124', :height => 124, :width => 124
-                      %td.desc
-                        = item.cart_item_accessory.accessory.name
-                      %td.qty
-                        = item.cart_item_accessory.quantity
-                %tr
-                  %td.image
-                    = image_tag "delivery.png", :alt => @order.shipping.name
-                  %td.desc
-                    = @order.shipping.name
-                    %div= @order.ship_address.country
-                  %td.qty 1
-                  %td.price= format_currency @order.shipping.price
-                - if Store::settings.tax_breakdown
-                  %tr
-                    %td{colspan: "2"}
-                    \ 
-                    %td.stronger Subtotal:
-                    %td.stronger
-                      .align-right= format_currency (@order.net_amount)
+                      = @order.shipping.name
+                      %div= @order.ship_address.country
+                    %td.qty 1
+                    %td.price= format_currency @order.shipping.price
+                  - if Store::settings.tax_breakdown
+                    %tr
+                      %td{colspan: "2"}
+                      \ 
+                      %td.stronger Subtotal:
+                      %td.stronger
+                        .align-right= format_currency (@order.net_amount)
+                    %tr
+                      %td{colspan: "2", rowspan: "1"}
+                      \ 
+                      %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+                      %td.stronger
+                        .align-right= format_currency @order.tax_amount  
                   %tr
                     %td{colspan: "2", rowspan: "1"}
-                    \ 
-                    %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+                      = f.check_box :terms
+                      = errors_for @order, :terms
+                    %td.stronger Total:
                     %td.stronger
-                      .align-right= format_currency @order.tax_amount  
-                %tr
-                  %td{colspan: "2", rowspan: "1"}
-                    .alert.alert-info
-                      The total amount will be debited from the PayPal account detailed above.
-                  %td.stronger Total:
-                  %td.stronger
-                    .size-16.align-right.total_price= format_currency @order.gross_amount
-            %p.right-align  
-              = link_to 'CONFIRM & PAY', purchase_order_build_path, :class => 'btn btn-primary higher bold confirm_order'
+                      .size-16.align-right.total_price= format_currency @order.gross_amount
+              %p.right-align  
+                = f.submit 'CONFIRM & PAY', :class => 'btn btn-primary higher bold confirm_order'
     / /main content
 / /container
 #confirmOrderModal.modal.fade{"aria-hidden" => "false", "aria-labelledby" => "confirmOrderModal", role: "dialog", tabindex: "-1"}

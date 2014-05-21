@@ -25,13 +25,14 @@
 #  net_amount               :decimal          precision(8), scale(2)
 #  tax_amount               :decimal          precision(8), scale(2) 
 #  gross_amount             :decimal          precision(8), scale(2) 
+#  terms                    :boolean          
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount
+  :net_amount, :tax_amount, :gross_amount, :terms
   
   has_many :order_items,                                                :dependent => :delete_all
   has_many :transactions,                                               :dependent => :delete_all
@@ -42,6 +43,7 @@ class Order < ActiveRecord::Base
 
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
+  validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
 
   after_update :delayed_shipping, :ship_order_today,                    :if => :shipping_date_nil?
 
@@ -59,11 +61,13 @@ class Order < ActiveRecord::Base
   #
   # @parameter [hash object, decimal]
   def calculate cart, current_tax_rate
+    binding.pry
     net_amount = cart.total_price + self.shipping.price
     self.update_attributes( :net_amount => net_amount,
                             :tax_amount => net_amount*current_tax_rate,
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )
+    binding.pry
     self.save!
   end
 

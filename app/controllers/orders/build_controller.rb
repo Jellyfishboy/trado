@@ -36,6 +36,7 @@ class Orders::BuildController < ApplicationController
   # Any bespoke business logic in each step is then triggered, for example: updating the address and the order status attribute value
   #
   def update 
+    @cart = current_cart
     # Sets current state of the order
     if step == steps.last
       @order.update_column(:status, 'active')
@@ -82,7 +83,22 @@ class Orders::BuildController < ApplicationController
         render_wizard @shipping_address
       end
     end
-  end
+    case step
+    when :confirm
+      if @order.update_attributes(params[:order])
+        @order.transfer(current_cart) if @order.transactions.blank?
+        unless session[:payment_type].nil?
+          Payatron4000::Generic.complete(@order, session[:payment_type], session, steps)
+        else
+          Payatron4000::Paypal.complete(@order, session, steps)
+        end
+      else
+        render_wizard @order
+      end
+    end
+   end
+
+  ## PAYMENT TYPES ##
 
   # Prepares the order data and redirects to the PayPal login page to review the order
   # Set the payment_type session value to nil in order to prevent the wrong complete method being fired in the purchase method below
@@ -118,19 +134,7 @@ class Orders::BuildController < ApplicationController
     redirect_to order_build_url(:order_id => @order.id, :id => steps.last)
   end
 
-  # Transfers all the cart_items to new order_items (including cart_item_accessories => order_item_accessories)
-  # If there is a payment_type value set in the session store, trigger the generic complete method
-  # Else trigger the bespoke PayPal complete method
-  #
-  def purchase 
-    binding.pry
-    @order.transfer(current_cart) if @order.transactions.blank?
-    unless session[:payment_type].nil?
-      Payatron4000::Generic.complete(@order, session[:payment_type], session, steps)
-    else
-      Payatron4000::Paypal.complete(@order, session, steps)
-    end
-  end
+  ## END OF PAYMENT TYPES ##  
 
   # Renders the successful order page, however redirected if the order payment status is not Pending or completed.
   #

@@ -29,7 +29,6 @@ Trado::Application.routes.draw do
         get 'express'
         get 'cheque'
         get 'bank_transfer'
-        get 'purchase'
         get 'success'
         get 'failure'
         get 'purge'
