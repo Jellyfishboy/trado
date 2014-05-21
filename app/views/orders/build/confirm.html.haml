@@ -98,20 +98,20 @@
                       \ 
                       %td.stronger Subtotal:
                       %td.stronger
-                        .align-right= format_currency (@order.net_amount)
+                        .align-right= format_currency(@order.net_amount)
                     %tr
                       %td{colspan: "2", rowspan: "1"}
                       \ 
                       %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
                       %td.stronger
-                        .align-right= format_currency @order.tax_amount  
+                        .align-right= format_currency(@order.tax_amount)
                   %tr
                     %td{colspan: "2", rowspan: "1"}
                       = f.check_box :terms
                       = errors_for @order, :terms
                     %td.stronger Total:
                     %td.stronger
-                      .size-16.align-right.total_price= format_currency @order.gross_amount
+                      .size-16.align-right.total_price= format_currency(@order.net_amount)
               %p.right-align  
                 = f.submit 'CONFIRM & PAY', :class => 'btn btn-primary higher bold confirm_order'
     / /main content
