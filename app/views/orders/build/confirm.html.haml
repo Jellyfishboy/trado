@@ -107,11 +107,14 @@
                         .align-right= format_currency(@order.tax_amount)
                   %tr
                     %td{colspan: "2", rowspan: "1"}
-                      = f.check_box :terms
-                      = errors_for @order, :terms
+
                     %td.stronger Total:
                     %td.stronger
                       .size-16.align-right.total_price= format_currency(@order.net_amount)
+              %div.right-align.terms-checkbox 
+                = f.check_box :terms
+                = errors_for @order, :terms
+                %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
               %p.right-align  
                 = f.submit 'CONFIRM & PAY', :class => 'btn btn-primary higher bold confirm_order'
     / /main content

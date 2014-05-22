@@ -61,13 +61,11 @@ class Order < ActiveRecord::Base
   #
   # @parameter [hash object, decimal]
   def calculate cart, current_tax_rate
-    binding.pry
     net_amount = cart.total_price + self.shipping.price
     self.update_attributes( :net_amount => net_amount,
                             :tax_amount => net_amount*current_tax_rate,
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )
-    binding.pry
     self.save!
   end
 
