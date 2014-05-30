@@ -78,6 +78,25 @@ You can acquire your personal API key for Mandrill at www.mandrillapp.com, and i
 
 If you wish to use an alternative service, you can modify your development and/or production configuration to add your preferred SMTP server details.
 
+You will need to modify the following section in the *config/settings.yml* file:
+
+    mailer:
+        development:
+            server: smtp.mandrillapp.com
+            port: 587
+            domain: localhost:3000
+            user_name: user@example.com
+            password: <%= ENV['MANDRILL_PWD'] %>
+            host: localhost:3000
+        production:
+            server: smtp.mandrillapp.com
+            port: 587
+            domain: www.example.com
+            user_name: user@example.com
+            password: <%= ENV['MANDRILL_PWD'] %>
+            host: www.example.com
+
+
 ##Payment gateway
 
 The payment gateway within Trado utilises the very popular [**activemerchant**](https://github.com/Shopify/active_merchant) gem - an open source project by the Shopify team. The ideology behind the gem is to provide a solution which doesn't require setup and initialisation for each different payment method, thereby removing the requirement of managing each payment method individually.
@@ -87,6 +106,18 @@ Currently Trado only supports [**PayPal**](http://www.paypal.com) as a form of p
 You will need to define two different API access credentials for development and production, as these indicate which account any successful transactions should be deposited to. You can set up a developer API credential for development and production at the [PayPal developer center](http://developer.paypal.com) and add the new credentials to the global YAML setting file, detailed above. When testing your application on the development environment, utilise the [PayPal Sandbox](https://www.sandbox.paypal.com/) to generate and complete fake payments, receipts and accounts.
 
 Please note, these credentials reference the desired account to receive PayPal payments, so be sure to check your credentials when deploying for production.
+
+You will need to modify the following section in the *config/settings.yml* file:
+
+    paypal:
+        development:
+            login: <%= ENV['PAYPAL_DEV_LOGIN'] %>
+            password: <%= ENV['PAYPAL_DEV_PWD'] %>
+            signature: <%= ENV['PAYPAL_DEV_SIG'] %>
+        production:
+            login: <%= ENV['PAYPAL_LOGIN'] %>
+            password: <%= ENV['PAYPAL_PWD'] %>
+            signature: <%= ENV['PAYPAL_SIG'] %>
 
 ##Image processing
 
@@ -102,6 +133,15 @@ Please note, for development purposes, the external media server configuration h
     
     end
 
+You will need to modify the following section in the *config/settings.yml* file, if you are using AWS as your storage provider:
+
+    aws:
+        s3:
+            id: <%= ENV['GIMSON_AWS_ID'] %>
+            key: <%= ENV['GIMSON_AWS_KEY'] %>
+            bucket: example-bucket-production
+            region: eu-west-1
+
 ##Asset management
 
 The asset management within Trado is not your typical setup. When deploying the application to the production server, the application assets are configured to be uploaded to an external storage server - the storage server has been configured as the same for image uploads to ensure a clean collection of resources. There are two reasons for this architechture choice: save web server storage and increase asset response time (response times will be explained further in the Content delivery network section).
@@ -109,6 +149,20 @@ The asset management within Trado is not your typical setup. When deploying the 
 If you would like to modify the external storage server configuration to point to a different provider, consult the [**asset_sync**](https://github.com/rumblelabs/asset_sync) gem documentation and modify the global YAML setting file retrospectively.
 
 However, if you would like to retain your application assets on the local web server, remove the asset_sync gem and the *config/initializers/asset_sync.rb* file.
+
+You will need to modify the following section in the *config/settings.yml* file, if you are using AWS as your storage provider:
+
+    aws:
+        s3:
+            id: <%= ENV['GIMSON_AWS_ID'] %>
+            key: <%= ENV['GIMSON_AWS_KEY'] %>
+            bucket: example-bucket-production
+            region: eu-west-1
+        cloudfront:
+            host:
+                carrierwave: http://cdn0.example.com
+                app: http://cdn%d.example.com
+            prefix: /assets
 
 
 ##Content delivery network
@@ -121,6 +175,20 @@ Ensuring swift response times in your application is an important attribute for 
 Gaining a prominent web presence is an important part to running a successful website. Listing rich content from your site on popular search engines is a sure fire way of increasing presence, however updating a sitemap after every update can be a tedious approach. Trado has been set up to automatically create a new sitemap every day, utilising data from category, product, about and contact pages. In turn Google and Bing are pinged to indicate a new sitemap is ready for retrieval and processing.
 
 You will need to modify the *sitemap.host* value in the global YAML setting file detailed above, with your preferred domain name. If you would like more information on configuring this functionality, check out the [**sitemap_generator**](https://github.com/kjvarga/sitemap_generator) gem.
+
+You will need to modify the following section in the *config/settings.yml* file, if you are using AWS as your storage provider:
+
+    aws:
+        s3:
+            id: <%= ENV['GIMSON_AWS_ID'] %>
+            key: <%= ENV['GIMSON_AWS_KEY'] %>
+            bucket: example-bucket-production
+            region: eu-west-1
+        cloudfront:
+            host:
+                carrierwave: http://cdn0.example.com
+                app: http://cdn%d.example.com
+            prefix: /assets
 
 
 ##How to contribute
