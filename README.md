@@ -14,45 +14,45 @@ This file is initialized upon running the rails server, before any other configu
 
 *Please note*: The global YAML setting file should not contain any sensitive data which you wouldn't share with the public. All secure data should be stored in environment variables; you can find a few examples below.
 
-
-
     mailer:
         development:
-            server: smtp.mandrillapp.com
+            server: smtp.example.com
             port: 587
             domain: localhost:3000
             user_name: user@example.com
-            password: <%= ENV['MANDRILL_PWD'] %>
+            password: password123
             host: localhost:3000
         production:
-            server: smtp.mandrillapp.com
+            server: smtp.example.com
             port: 587
-            domain: www.example.com
+            domain: 10.1.2.56
             user_name: user@example.com
-            password: <%= ENV['MANDRILL_PWD'] %>
-            host: www.example.com
+            password: password123
+            host: 10.1.2.56
     paypal:
         development:
-            login: <%= ENV['PAYPAL_DEV_LOGIN'] %>
-            password: <%= ENV['PAYPAL_DEV_PWD'] %>
-            signature: <%= ENV['PAYPAL_DEV_SIG'] %>
+            login: user@example.com
+            password: password123
+            signature: hex123
         production:
-            login: <%= ENV['PAYPAL_LOGIN'] %>
-            password: <%= ENV['PAYPAL_PWD'] %>
-            signature: <%= ENV['PAYPAL_SIG'] %>
+            login: user@example.com
+            password: password123
+            signature: hex123
     aws:
         s3:
-            id: <%= ENV['GIMSON_AWS_ID'] %>
-            key: <%= ENV['GIMSON_AWS_KEY'] %>
-            bucket: example-bucket-production
+            id: abc123
+            key: hex123
+            bucket: example-bucket
             region: eu-west-1
         cloudfront:
             host:
-                carrierwave: http://cdn0.example.com
+                carrierwave: http://cdn.example.com
                 app: http://cdn%d.example.com
             prefix: /assets
     sitemap:
-        host: 'http://www.example.com'
+        host: http://www.example.com
+    rollbar:
+        access_token: hex123
 
 ##Search
 
@@ -82,20 +82,19 @@ You will need to modify the following section in the *config/settings.yml* file:
 
     mailer:
         development:
-            server: smtp.mandrillapp.com
+            server: smtp.example.com
             port: 587
             domain: localhost:3000
             user_name: user@example.com
-            password: <%= ENV['MANDRILL_PWD'] %>
+            password: password123
             host: localhost:3000
         production:
-            server: smtp.mandrillapp.com
+            server: smtp.example.com
             port: 587
-            domain: www.example.com
+            domain: 10.1.2.56
             user_name: user@example.com
-            password: <%= ENV['MANDRILL_PWD'] %>
-            host: www.example.com
-
+            password: password123
+            host: 10.1.2.56
 
 ##Payment gateway
 
@@ -111,13 +110,13 @@ You will need to modify the following section in the *config/settings.yml* file:
 
     paypal:
         development:
-            login: <%= ENV['PAYPAL_DEV_LOGIN'] %>
-            password: <%= ENV['PAYPAL_DEV_PWD'] %>
-            signature: <%= ENV['PAYPAL_DEV_SIG'] %>
+            login: user@example.com
+            password: password123
+            signature: hex123
         production:
-            login: <%= ENV['PAYPAL_LOGIN'] %>
-            password: <%= ENV['PAYPAL_PWD'] %>
-            signature: <%= ENV['PAYPAL_SIG'] %>
+            login: user@example.com
+            password: password123
+            signature: hex123
 
 ##Image processing
 
@@ -137,9 +136,9 @@ You will need to modify the following section in the *config/settings.yml* file,
 
     aws:
         s3:
-            id: <%= ENV['GIMSON_AWS_ID'] %>
-            key: <%= ENV['GIMSON_AWS_KEY'] %>
-            bucket: example-bucket-production
+            id: abc123
+            key: hex123
+            bucket: example-bucket
             region: eu-west-1
 
 ##Asset management
@@ -154,13 +153,13 @@ You will need to modify the following section in the *config/settings.yml* file,
 
     aws:
         s3:
-            id: <%= ENV['GIMSON_AWS_ID'] %>
-            key: <%= ENV['GIMSON_AWS_KEY'] %>
-            bucket: example-bucket-production
+            id: abc123
+            key: hex123
+            bucket: example-bucket
             region: eu-west-1
         cloudfront:
             host:
-                carrierwave: http://cdn0.example.com
+                carrierwave: http://cdn.example.com
                 app: http://cdn%d.example.com
             prefix: /assets
 
@@ -170,18 +169,12 @@ You will need to modify the following section in the *config/settings.yml* file,
 
 Ensuring swift response times in your application is an important attribute for your end user experience. In order to improve the speed of Trado, a content delivery network configuration has been introduced. To ensure consistency AWS (Amazon web services) Cloudfront has been utilised.
 
-##Sitemap generator
-
-Gaining a prominent web presence is an important part to running a successful website. Listing rich content from your site on popular search engines is a sure fire way of increasing presence, however updating a sitemap after every update can be a tedious approach. Trado has been set up to automatically create a new sitemap every day, utilising data from category, product, about and contact pages. In turn Google and Bing are pinged to indicate a new sitemap is ready for retrieval and processing.
-
-You will need to modify the *sitemap.host* value in the global YAML setting file detailed above, with your preferred domain name. If you would like more information on configuring this functionality, check out the [**sitemap_generator**](https://github.com/kjvarga/sitemap_generator) gem.
-
 You will need to modify the following section in the *config/settings.yml* file, if you are using AWS as your storage provider:
 
     aws:
         s3:
-            id: <%= ENV['GIMSON_AWS_ID'] %>
-            key: <%= ENV['GIMSON_AWS_KEY'] %>
+            id: <%= ENV['AWS_ID'] %>
+            key: <%= ENV['AWS_KEY'] %>
             bucket: example-bucket-production
             region: eu-west-1
         cloudfront:
@@ -190,6 +183,27 @@ You will need to modify the following section in the *config/settings.yml* file,
                 app: http://cdn%d.example.com
             prefix: /assets
 
+##Sitemap generator
+
+Gaining a prominent web presence is an important part to running a successful website. Listing rich content from your site on popular search engines is a sure fire way of increasing presence, however updating a sitemap after every update can be a tedious approach. Trado has been set up to automatically create a new sitemap every day, utilising data from category, product, about and contact pages. In turn Google and Bing are pinged to indicate a new sitemap is ready for retrieval and processing.
+
+If you would like more information on configuring this functionality, check out the [**sitemap_generator**](https://github.com/kjvarga/sitemap_generator) gem.
+
+You will need to modify the following section in the *config/settings.yml* file:
+
+    sitemap:
+        host: http://www.example.com
+
+##Logging
+
+Monitoring your application is a key requirement when trying to maintain the reliability of your application. Trado has been set up already with [**Rollbar**](https://rollbar.com/) to log any errors or anomalies which occur within the application, including providing additional data when they occur in important business areas such as the order process. Furthermore, if you choose to use [**Capistrano**](http://capistranorb.com/) for your deployment process, the deploy configuration has been set up to log a record when a successful deployment has occurred - thereby keeping track of how often and when you deploy your application to the production server.
+
+Rollbar offers several packages for their services including a free option with 3,000 occurrences per month and a 30 day retention. You can find out more information here: https://rollbar.com/pricing/
+
+You will need to modify the following section in the *config/settings.yml* file:
+
+    rollbar:
+        access_token: hex123
 
 ##How to contribute
 
