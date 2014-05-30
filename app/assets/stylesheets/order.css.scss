@@ -33,12 +33,16 @@
     .terms-checkbox {
         overflow: hidden;
         margin:15px 0 10px;
-            p, input[type=checkbox] {
-                float:right;
-            }
-            input[type=checkbox] {
-                margin-left:15px;
-            }
+
+        span {
+            display: block;
+        }    
+        p, input[type=checkbox] {
+            float:right;
+        }
+        input[type=checkbox] {
+            margin-left:15px;
+        }
     }
     .shipping-methods {
         overflow:hidden;
