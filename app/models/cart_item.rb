@@ -28,14 +28,14 @@ class CartItem < ActiveRecord::Base
 
   # Calculates the total price of a cart item by multipling the item price by it's quantity
   #
-  # @return [decimal]
+  # @return [Decimal] total price of cart item
   def total_price 
   	price * quantity
   end
 
   # Updates the quantity of a cart item, taking into account associated accessories
   #
-  # @return [object]
+  # @return [Object] current cart item
   def update_quantity quantity, accessory
     self.quantity = quantity
     self.cart_item_accessory.quantity = quantity unless accessory.blank?
@@ -43,7 +43,7 @@ class CartItem < ActiveRecord::Base
 
   # Updates the weight of a cart item, taking into account associated accessories
   #
-  # @return [object]
+  # @return [Object] current cart item
   def update_weight quantity, weight, accessory
     weight = accessory.nil? ? weight : (weight + accessory.weight)
     self.weight = (weight*quantity.to_i)

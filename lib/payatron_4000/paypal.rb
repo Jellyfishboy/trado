@@ -4,8 +4,13 @@ module Payatron4000
 
         # Creates the payment information object for PayPal to parse in the login step
         #
-        # @parameter [hash object, array, hash object, string, string, string]
-        # @return [hash object]
+        # @param order [Object]
+        # @param steps [Array]
+        # @param cart [Object]
+        # @param ip_address [String]
+        # @param return_url [String]
+        # @param cancel_url [String]
+        # @return [Object] order data from the store for PayPal
         def self.express_setup_options order, steps, cart, ip_address, return_url, cancel_url
             {
               :subtotal          => Payatron4000::singularize_price(order.net_amount - order.shipping.price),
@@ -23,8 +28,8 @@ module Payatron4000
 
         # Creates the payment information object for PayPal to parse in the confirmation step and complete the purchase
         #
-        # @parameter [hash object]
-        # @return [hash object]
+        # @param order [Object]
+        # @return [Object] current customer order
         def self.express_purchase_options order
             {
               :subtotal          => Payatron4000::singularize_price(order.net_amount - order.shipping.price),
@@ -40,7 +45,7 @@ module Payatron4000
         # Creates an aray of items which represent cart_items
         # This is passed into the express_setup_options method
         #
-        # @return [array]
+        # @return [Array] list of cart items for PayPal
         def self.express_items cart
             cart.cart_items.collect do |item|
                 {
@@ -54,7 +59,10 @@ module Payatron4000
 
         # Assign PayPal token to order after user logs into their account
         #
-        # @parameter [string, integer, hash object, hsh object]
+        # @param token [String]
+        # @param payer_id [Integer]
+        # @param session [Object]
+        # @param order [Object]
         def self.assign_paypal_token token, payer_id, session, order
             details = EXPRESS_GATEWAY.details_for(token)
             order.update_attributes(:express_token => token, :express_payer_id => payer_id)
@@ -64,7 +72,9 @@ module Payatron4000
         # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
         # sends a confirmation email and redirects the user. Rollbar is notified with the relevant data if the email fails to send
         #
-        # @parameter [hash object, hash object, array]
+        # @param order [Object]
+        # @param session [Object
+        # @param steps [Array]
         def self.complete order, session, steps
           response = EXPRESS_GATEWAY.purchase(Payatron4000::singularize_price(order.gross_amount), 
                                               Payatron4000::Paypal.express_purchase_options(order)
@@ -102,7 +112,8 @@ module Payatron4000
         # Upon successfully completing an order with a PayPal payment option a new transaction record is created, stock is updated for the relevant SKU
         # and order status attribute set to active
         #
-        # @parameter [object, hash object]
+        # @param response [Object]
+        # @param order [Object]
         def self.successful response, order
             Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
@@ -122,7 +133,8 @@ module Payatron4000
         
         # When an order has failed to complete, a new transaction record is created with a logged status reason
         #
-        # @parameter [object, hash object]
+        # @param response [Object]
+        # @param order [Object]
         def self.failed response, order
             Transaction.create( :fee => 0, 
                                 :gross_amount => order.gross_amount, 

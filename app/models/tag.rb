@@ -20,7 +20,6 @@ class Tag < ActiveRecord::Base
 
   # Creates or updates the list of tags for an object
   #
-  # @return [array]
   def self.add value, product_id
     @tags = value.split(/,\s*/)   
     @tags.each do |t|

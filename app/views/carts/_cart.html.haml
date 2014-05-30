@@ -6,6 +6,7 @@
       = current_cart.cart_items.sum('quantity')
       )
   %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
+  = excluding_tax
   = link_to new_order_path, :class => 'btn btn-danger' do
     %i.fa.fa-shopping-cart
 .open-panel
@@ -34,10 +35,14 @@
               %i.fa.fa-times-circle
         .price
           %strong= format_currency item.total_price
+          = excluding_tax
     .summary
       .line
         .row-fluid
-          .span6 Subtotal:
+          .span6 
+            Subtotal
+            = excluding_tax
+            = ":"
           .span6.align-right.size-16= format_currency current_cart.total_price
     .proceed
       = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do

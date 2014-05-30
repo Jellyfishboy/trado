@@ -4,7 +4,7 @@ class ShippingMailer < ActionMailer::Base
 
     # Deliver an email to the customer when an order has been shipped
     #
-    # @parameter [object]
+    # @param order [Object]
     def complete order
         @order = order
 
@@ -18,7 +18,7 @@ class ShippingMailer < ActionMailer::Base
     # Deliver an email to the customer when an order has been delayed
     # This is only triggered when a shipping date has been set more than once on an order
     #
-    # @parameter [object]
+    # @param order [Object]
     def delayed order
         @order = order
 

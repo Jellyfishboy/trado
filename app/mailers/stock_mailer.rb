@@ -5,7 +5,7 @@ class StockMailer < ActionMailer::Base
 
     # Deliver an email detailing a collection of products which are low on stock to the administrator
     #
-    # @parameter [array]
+    # @param products [Array]
     def low products
         @restock = products
         
@@ -19,7 +19,8 @@ class StockMailer < ActionMailer::Base
     # Deliver an email to the customer when a product SKU is back in stock
     # This is only triggered if the customer has submitted their email address for notifications on the related product SKU
     #
-    # @parameter [object], [string]
+    # @param sku [Object]
+    # @param email [String]
     def notification sku, email
         @sku = sku
         @email = email

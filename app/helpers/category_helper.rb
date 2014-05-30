@@ -1,8 +1,6 @@
 module CategoryHelper
 
     def price_range product
-        min = product.skus.minimum(:price)
-        max = product.skus.maximum(:price)
-        min == max ? "#{format_currency(max)}".html_safe : "#{format_currency(min)} - #{format_currency(max)}".html_safe
+        product.skus.count == 1 ? format_currency(product.skus.first.price) : Store::settings.tax_breakdown ? "from #{format_currency(product.skus.minimum(:price))}" : "from #{format_currency(product.skus.minimum(:price))}"
     end
 end

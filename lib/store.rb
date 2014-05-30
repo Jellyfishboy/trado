@@ -4,7 +4,7 @@ module Store
 
         # Retrieves the store settings from the admin user
         #
-        # @return [Store::settings]
+        # @return [Object] current store settings
         def settings
           @@store_settings ||= StoreSetting.first
         end
@@ -19,7 +19,7 @@ module Store
 
         # Returns a divided value of the tax rate in the Store settings, ready for use in calculations
         #
-        # @returns [decimal]
+        # @return [Decimal] tax rate value ready to be used in calculations
         def tax_rate
             Store::settings.tax_rate/100
         end

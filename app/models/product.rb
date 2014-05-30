@@ -77,21 +77,21 @@ class Product < ActiveRecord::Base
 
   # Sets the related record's active field as false
   #
-  # @return [object]
+  # @return [Object] an inactive record
   def inactivate!
     self.update_column(:active, false)
   end
 
   # Sets the related record's active field as true
   #
-  # @return [object]
+  # @return [Object] an active record
   def activate!
     self.update_column(:active, true)
   end
 
   # Grabs an array of records which have their active field set to true
   #
-  # @return [array]
+  # @return [Array] list of active products
   def self.active
     where(['products.active = ?', true])
   end
@@ -100,7 +100,7 @@ class Product < ActiveRecord::Base
   # The sku association needs to map an attribute block in order to count the number of records successfully
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   #
-  # @return [boolean]
+  # @return [Boolean]
   def single_product
     if self.single && self.skus.map { |s| s.active }.count > 1
       errors.add(:single, " product cannot be set if the product has more than one SKU.")

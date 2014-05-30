@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
 
   # Adds a new cart item or increases the quantity and weight of a cart item - including any assocated accessories
   #
-  # @return [object]
+  # @return [Object] new or updated cart item
   def add_cart_item sku, item_quantity, accessory
     accessory_current_item = cart_items.where('sku_id = ?',sku.id).includes(:cart_item_accessory).where('cart_item_accessories.accessory_id = ?', accessory.id).first unless accessory.blank?
     # If it can find a SKU with the related accessory, it will assign the current_item. Otherwise it will just find the SKU normally.
@@ -45,7 +45,7 @@ class Cart < ActiveRecord::Base
 
   # Decreases the quantity and weight of a cart item, including any associated accessories
   #
-  # @return [object]
+  # @return [Object] current cart item
   def decrement_cart_item_quantity cart_item_id
     current_item = cart_items.find(cart_item_id)
     if current_item.quantity > 1
@@ -59,7 +59,7 @@ class Cart < ActiveRecord::Base
 
   # Calculates the total price of a cart
   #
-  # @return [decimal]
+  # @return [Decimal] total sum of cart items
   def total_price 
   	cart_items.to_a.sum { |item| item.total_price }
   end

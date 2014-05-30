@@ -33,7 +33,7 @@ class Address < ActiveRecord::Base
 
   # Combines the first and last name of an address
   #
-  # @return [string]
+  # @return [String] first and last name concatenated
   def full_name
     [first_name, last_name].join(' ')
   end

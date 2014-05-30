@@ -7,8 +7,8 @@ module Payatron4000
 
         # Convert a price into single digit currency
         #
-        # @parameter [decimal]
-        # @return [decimal]
+        # @param price [Decimal]
+        # @return [Decimal] price of an item
         def singularize_price price
             (price*100).round
         end
@@ -16,7 +16,7 @@ module Payatron4000
         # Creates a new stock level record for each order_item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
         #
-        # @parameter [hash object]
+        # @param order [Object]
         def stock_update order
             order.order_items.each do |item|
               sku = Sku.find(item.sku_id)
@@ -29,7 +29,7 @@ module Payatron4000
         # Destroys the cart and any associated cart_item & cart_items_accesory records
         # and sets the cart_id session value to nil
         # 
-        # @parameter [hash object]
+        # @param session [Object]
         def destroy_cart session
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
@@ -37,7 +37,8 @@ module Payatron4000
 
         # If address exists for an order, find and utilise it. If not, create a new address record
         #
-        # @parameter [integer, integer]
+        # @param order_id [Integer]
+        # @param address_id [Integer]
         def select_address order_id, address_id
             if address_id
                 Address.find(address_id)
@@ -48,7 +49,8 @@ module Payatron4000
 
         # Depending on the payment_status of the order, the relevant email template is sent
         #
-        # @parameter [hash object, string]
+        # @param order [Object]
+        # @param payment_status [String]
         def confirmation_email order, payment_status
             if payment_status == "Pending"
                 OrderMailer.pending(order).deliver

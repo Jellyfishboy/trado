@@ -51,7 +51,7 @@ class Sku < ActiveRecord::Base
 
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
   #
-  # @return [boolean]
+  # @return [Boolean]
   def stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
       errors.add(:sku, "stock warning level value must not be below your stock count.")
@@ -61,28 +61,28 @@ class Sku < ActiveRecord::Base
 
   # Sets the related record's active field as false
   #
-  # @return [object]
+  # @return [Object] an inactive record
   def inactivate!
     self.update_column(:active, false)
   end
 
   # Sets the related record's active field as true
   #
-  # @return [object]
+  # @return [object] an active record
   def activate!
     self.update_column(:active, true)
   end
 
   # Grabs an array of records which have their active field set to true
   #
-  # @return [array]
+  # @return [Array] list of active skus
   def self.active
     where(['skus.active = ?', true])
   end
 
   # Validate wether the current record is new
   #
-  # @return [boolean]
+  # @return [Boolean]
   def new_sku?
     return true if self.product.nil?
   end
@@ -90,14 +90,14 @@ class Sku < ActiveRecord::Base
   # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   #
-  # @return [boolean]
+  # @return [Boolean]
   def single_sku?
     return true if self.product.skus.map { |s| s.active }.count == 1
   end
 
   # Joins the parent product SKU and the current SKU with a hyphen
   #
-  # @return [string]
+  # @return [String] product SKU and current SKU concatenated
   def full_sku
     [product.sku, sku].join('-')
   end

@@ -26,7 +26,7 @@ class OrderItem < ActiveRecord::Base
 
   # Calculates the total price of an order item by multipling the item price by it's quantity
   #
-  # @return [decimal]
+  # @return [Decimal] total price of cart item
   def total_price 
     price * quantity
   end

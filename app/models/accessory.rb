@@ -35,22 +35,21 @@ class Accessory < ActiveRecord::Base
 
   # Sets the related record's active field as false
   #
-  # @return [object]
+  # @return [Object] an inactive record
   def inactivate!
-      self.active = false
-      save!
+      self.update_column(:active, false)
   end
 
   # Sets the related record's active field as true
   #
-  # @return [object]
+  # @return [Object] an active record
   def activate!
     self.update_column(:active, true)
   end
 
   # Grabs an array of records which have their active field set to true
   #
-  # @return [array]
+  # @return [Array] list of active accessories
   def self.active
     where(['accessories.active = ?', true])
   end

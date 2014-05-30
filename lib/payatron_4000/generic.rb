@@ -5,7 +5,8 @@ module Payatron4000
         # Upon successfully completing an order a new transaction record is created, stock is updated for the relevant SKU
         # and order status attribute set to active
         #
-        # @parameter [hash object, string]
+        # @param order[Object]
+        # @param payment_type [String]
         def self.successful order, payment_type
             Transaction.create( :fee => 0, 
                                 :gross_amount => order.gross_amount, 
@@ -25,7 +26,10 @@ module Payatron4000
         # Completes the order process by creating a transaction record, sending a confirmation email and redirects the user
         # Rollbar is notified with the relevant data if the email fails to send
         #
-        # @parameter [hash object, string, hash object, hash_object]
+        # @param order [Object]
+        # @param payment_type [String]
+        # @param session [Object]
+        # @param steps [Array]
         def self.complete order, payment_type, session, steps
             Payatron4000::Generic.successful(order, payment_type)
             Payatron4000::destroy_cart(session)

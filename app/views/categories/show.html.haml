@@ -47,7 +47,9 @@
                         = link_to (image_tag product.attachments.first.file.large, :alt => product.name, :width => 540, :height => 374), [product.category, product]
 
                     .main-titles.no-margin
-                      %h4.title= price_range(product)
+                      %h4.title
+                        = price_range(product)
+                        = excluding_tax
                       %h5.no-margin.isotope--title= truncate product.name, :length => 35
         %hr/
       / /main content

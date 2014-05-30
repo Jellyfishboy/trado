@@ -29,7 +29,7 @@ class StockLevel < ActiveRecord::Base
 
   # Validation to check to prevent a negative stock value; if not the case modify the sku stock with the associated stock level adjustment value
   #
-  # @return [boolean]
+  # @return [Boolean]
   def stock_level_adjustment
     unless !Store::positive?(self.adjustment) && self.adjustment.abs > self.sku.stock
       if Store::positive?(self.adjustment)
@@ -45,7 +45,7 @@ class StockLevel < ActiveRecord::Base
 
   # Validation to check whether the adjustment value is above or below zero
   #
-  # @return [boolean]
+  # @return [Boolean]
   def adjustment_value
     if self.adjustment == 0
       errors.add(:adjustment, "must be greater or less than zero.")

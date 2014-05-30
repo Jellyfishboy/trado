@@ -59,7 +59,8 @@ class Order < ActiveRecord::Base
 
   # Update the current order's net_amount, tax_amount and gross_amount attribute values
   #
-  # @parameter [hash object, decimal]
+  # @param cart [Object]
+  # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
     net_amount = cart.total_price + self.shipping.price
     self.update_attributes( :net_amount => net_amount,
@@ -71,8 +72,8 @@ class Order < ActiveRecord::Base
 
   # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order
   #
-  # @parameter [hash object]
-  # @return [hash object]
+  # @param cart [Object]
+  # @return [Object] calculated tier for the current cart dimensions
   def tier cart
       max_length = cart.skus.map(&:length).max
       max_thickness = cart.skus.map(&:thickness).max
@@ -104,42 +105,42 @@ class Order < ActiveRecord::Base
 
   # Determines whether the shipping date of the current order is nil
   #
-  # @return [boolean]
+  # @return [Boolean]
   def shipping_date_nil?
     return true unless self.shipping_date.nil?
   end
 
   # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job
   #
-  # @return [boolean]
+  # @return [Boolean]
   def active?
     status == 'active'
   end
 
   # Returns a boolean on whether the order is marked as completed
   #
-  # @return [boolean]
+  # @return [Boolean]
   def completed?
     transactions.where(:payment_status => 'Completed').blank? ? false : true
   end
 
   # Detects if the current status of the order is 'billing'. See wicked gem for more info
   #
-  # @return [boolean]
+  # @return [Boolean]
   def active_or_billing?
     status == 'billing' ? true : active?
   end
 
   # Detects if the current status of the order is 'shipping'. See wicked gem for more info
   #
-  # @return [boolean]
+  # @return [Boolean]
   def active_or_shipping?
     status == 'shipping' ? true : active?
   end
 
   # Detects if the current status of the order is 'payment'. See wicked gem for more info
   #
-  # @return [boolean]
+  # @return [Boolean]
   def active_or_payment?
     status == 'payment' ? true : active?
   end

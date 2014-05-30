@@ -4,7 +4,7 @@ class OrderMailer < ActionMailer::Base
 
     # Deliver an email to the customer when an order has been received
     #
-    # @parameter [object]
+    # @param order [Object]
     def received order
         @order = order
 
@@ -18,7 +18,7 @@ class OrderMailer < ActionMailer::Base
     # Deliver an email to the customer when a payment is currently pending for an order
     # This applys to the Paypal checkout process only
     #
-    # @parameter [object]
+    # @param order [Object]
     def pending order
         @order = order
 
