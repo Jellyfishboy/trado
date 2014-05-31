@@ -124,7 +124,7 @@
                 = f.label :country, :class => 'control-label' do
                   Country
                   %span.red-clr.bold *
-                .controls.update_shipping
+                .controls.update-shipping
                   = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
                   = errors_for @shipping_address, :country
               .shipping-methods

@@ -90,7 +90,7 @@ trado.app =
 
     updateShipping: function()
     {
-        $('.update_shipping #address_country').change(function() 
+        $('.update-shipping #address_country').change(function() 
         {
             if (this.value !== "") 
             {
