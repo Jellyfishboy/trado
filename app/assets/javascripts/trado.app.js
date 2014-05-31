@@ -90,15 +90,16 @@ trado.app =
 
     updateShipping: function()
     {
-        $('.update_shipping #address_country').change(function() {
-            if (this.value !== "") {
+        $('.update_shipping #address_country').change(function() 
+        {
+            if (this.value !== "") 
+            {
                 $.ajax('/order/shippings/update', 
                 {
                     type: 'GET',
                     data: 
                     {
-                        'country_id': this.value,
-                        'tier_id': $('.shipping-methods').attr('data-tier')
+                        'country_id': this.value
                     },
                     dataType: 'html',
                     success: function(data) 
@@ -116,8 +117,10 @@ trado.app =
 
     submitAll: function()
     {
-        $('#update_quantity').click(function() {
-            $('.edit_cart_item').each(function() {
+        $('#update_quantity').click(function() 
+        {
+            $('.edit_cart_item').each(function() 
+            {
                 return $(this).submit();
             });
         });

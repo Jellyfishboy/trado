@@ -127,7 +127,7 @@
                 .controls.update_shipping
                   = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
                   = errors_for @shipping_address, :country
-              .shipping-methods{ 'data-tier' => "#{@calculated_tier}" }
+              .shipping-methods
                 .control-group
                   = f.label :shipping_id, :class => 'control-label' do
                     Shipping options

@@ -69,23 +69,7 @@ class Order < ActiveRecord::Base
     )
     self.save!
   end
-
-  # Calculate the relevant shipping tier for an order, taking into account length, thickness and weight of the total order
-  #
-  # @param cart [Object]
-  # @return [Object] calculated tier for the current cart dimensions
-  def tier cart
-      max_length = cart.skus.map(&:length).max
-      max_thickness = cart.skus.map(&:thickness).max
-      total_weight = cart.cart_items.map(&:weight).sum
-      # FIXME: Possibly quite slow. Alot of repetition here so will revise later
-      tier_raffle = []
-      tier_raffle << Tier.where('? >= length_start AND ? <= length_end',max_length, max_length).pluck(:id)
-      tier_raffle << Tier.where('? >= thickness_start AND ? <= thickness_end', max_thickness, max_thickness).pluck(:id)
-      tier_raffle << Tier.where('? >= weight_start AND ? <= weight_end', total_weight, total_weight).pluck(:id)
-      return tier_raffle.max.first
-  end
-
+  
   # If you set the shipping date for an order more than once, send a delayed shipping email
   #
   def delayed_shipping

@@ -19,7 +19,6 @@ class Orders::BuildController < ApplicationController
     case step
     when :shipping
       @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
-      @calculated_tier = @order.tier(current_cart)
     end
     case step 
     when :payment
