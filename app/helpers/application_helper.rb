@@ -138,8 +138,10 @@ module ApplicationHelper
     # @param price [Decimal]
     # @return [String] price with the currency value outlined in the store settings, and additional tax if required
     def format_currency price
-      price = Store::settings.tax_breakdown ? price : price*Store::tax_rate+price unless params[:controller].split('/').first == 'admin'
-      number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
+        if defined?(params)
+            price = Store::settings.tax_breakdown ? price : price*Store::tax_rate+price unless !defined?(params) && params[:controller].split('/').first == 'admin'
+        end
+        number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
     end
     
     # Creates HTML elements and an error associated with the attribute, if one exists

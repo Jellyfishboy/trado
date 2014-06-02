@@ -45,15 +45,9 @@ describe Order do
 
     describe "Calculating an order" do
 
-        it "should set the sub_total, tax and total to nil"
-        it "should set the sub_total as the cart.total_price"
-        it "should set the tax using the sub_total and order shipping price"
-        it "should set the total using the sub_total, tax and order shipping price"
-    end
-
-    describe "Calculating the shipping tier" do
-
-        it "should return the correct shipping tier for the highest dimensions"
+        it "should update the order's net amount attribute"
+        it "should update the order's tax amount attribute"
+        it "should update the order's gross amount attribute"
     end
 
     describe "Managing an order shipping" do

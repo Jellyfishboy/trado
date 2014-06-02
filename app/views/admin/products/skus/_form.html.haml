@@ -7,7 +7,7 @@
         .modal-header
           %h3#skuModalLabel
             Edit SKU
-            = "#{@form_sku.product.sku}-#{@form_sku.sku}"
+            = @form_sku.full_sku
         .modal-body
           %fieldset.widget.widget-content.widget-last
             .form-group

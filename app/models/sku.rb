@@ -9,7 +9,7 @@
 # Table name: skus
 #
 #  id                         :integer          not null, primary key
-#  sku                        :string(255)      
+#  code                       :string(255)      
 #  length                     :decimal          precision(8), scale(2) 
 #  weight                     :decimal          precision(8), scale(2) 
 #  thickness                  :decimal          precision(8), scale(2) 
@@ -26,19 +26,18 @@
 #
 class Sku < ActiveRecord::Base
   
-  attr_accessible :cost_value, :price, :sku, :stock, :stock_warning_level, :length, 
+  attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
   :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id
   
   validates :price, :cost_value, :length, 
   :weight, :thickness, :attribute_value, 
-  :attribute_type_id,                                         :presence => true
-  validates :price, :cost_value,                              :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
-  validates :length, :weight, :thickness,                     :numericality => { :greater_than_or_equal_to => 0 }
-  validates :stock, :stock_warning_level,                     :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
-  validate :stock_values,                                     :on => :create
-  validates :attribute_value,                                 :uniqueness => { :scope => [:product_id, :active] }
-  validates :sku,                                             :uniqueness => { :scope => [:product_id, :active] }, :presence => true, :if => :new_sku?
-  validates :attribute_value, :attribute_type_id,             :presence => true
+  :attribute_type_id, :code,                                          :presence => true
+  validates :price, :cost_value,                                      :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
+  validates :length, :weight, :thickness,                             :numericality => { :greater_than_or_equal_to => 0 }
+  validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validate :stock_values,                                             :on => :create
+  validates :attribute_value, :code,                                  :uniqueness => { :scope => [:product_id, :active] }
+  # validates :code,                                                    :uniqueness => { :scope => [:product_id, :active] }, :if => :new_sku?
   
   belongs_to :product
   belongs_to :attribute_type
@@ -85,7 +84,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [String] product SKU and current SKU concatenated
   def full_sku
-    [product.sku, sku].join('-')
+    [product.sku, code].join('-')
   end
 
 end

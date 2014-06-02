@@ -15,11 +15,12 @@ describe Category do
     it { expect(subject).to validate_uniqueness_of(:name) }
 
     describe "Default scope" do
+        Category.destroy_all
         let!(:category_1) { create(:category, sorting: 2) }
         let!(:category_2) { create(:category, sorting: 0) }
         let!(:category_3) { create(:category, sorting: 1) }
 
-        it "should return an array of products ordered by descending weighting" do
+        it "should return an array of categories ordered by ascending sorting value" do
             expect(Category.last(3)).to match_array([category_2, category_3, category_1])
         end
     end

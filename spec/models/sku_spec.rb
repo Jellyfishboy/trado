@@ -18,8 +18,9 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:length) }
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:thickness) }
+    it { expect(subject).to validate_presence_of(:attribute_value) }
     it { expect(subject).to validate_presence_of(:attribute_type_id) }
-    # before { subject.stub(:stock_changed?) { true } }
+    it { expect(subject).to validate_presence_of(:code) }
     it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:stock_warning_level) }
 
@@ -31,7 +32,7 @@ describe Sku do
 
     it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
     before { subject.stub(:new_sku?) { true } }
-    it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
+    it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:product_id, :active]) }
 
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }

@@ -23,9 +23,9 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
     describe "Listing all products" do
-        let!(:accessory_1) { create(:accessory, active: true) }
-        let!(:accessory_2) { create(:accessory) }
-        let!(:accessory_3) { create(:accessory, active: true) }
+        let!(:accessory_1) { create(:accessory) }
+        let!(:accessory_2) { create(:accessory, active: false) }
+        let!(:accessory_3) { create(:accessory) }
 
         it "should return an array of 'active' accessorys" do
             expect(Accessory.active).to match_array([accessory_1, accessory_3])

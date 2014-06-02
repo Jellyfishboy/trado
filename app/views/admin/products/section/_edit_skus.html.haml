@@ -6,7 +6,7 @@
   %table.table.table-striped.table-bordered.table-hover.table-margin
     %thead
       %tr
-        %th SKU
+        %th Code
         %th Weight
         %th Length
         %th Thickness
@@ -20,7 +20,7 @@
     %tbody#sku_fields.edit-field
       - @product.skus.active.each do |sku|
         %tr{ :id => "sku_#{sku.id}" }
-          %td= "#{sku.product.sku}-#{sku.sku}"
+          %td= sku.code
           %td= sku.weight
           %td= sku.length
           %td= sku.thickness
