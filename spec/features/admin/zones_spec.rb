@@ -49,6 +49,6 @@ feature 'Zone management' do
         zone.reload
         expect(zone.name).to eq 'Asia'
         expect(zone.countries.count).to eq 1
-        expect(zone.countries.first.name).to eq 'uk'
+        expect(zone.countries.first.name).to eq 'Jamaica'
     end
 end
