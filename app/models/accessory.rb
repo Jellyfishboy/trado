@@ -33,20 +33,6 @@ class Accessory < ActiveRecord::Base
   validates :name, :part_number,                    :presence => true, :uniqueness => { :scope => :active }
   validates :part_number,                           :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
 
-  # Sets the related record's active field as false
-  #
-  # @return [Object] an inactive record
-  def inactivate!
-      self.update_column(:active, false)
-  end
-
-  # Sets the related record's active field as true
-  #
-  # @return [Object] an active record
-  def activate!
-    self.update_column(:active, true)
-  end
-
   # Grabs an array of records which have their active field set to true
   #
   # @return [Array] list of active accessories

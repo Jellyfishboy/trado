@@ -22,23 +22,6 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
-    describe "When a used accessory is updated or deleted" do
-        let(:accessory) { create(:accessory, active: true) }
-
-        it "should set the record as inactive" do
-            accessory.inactivate!
-            expect(accessory.active).to eq false
-        end
-    end
-
-    describe "When the new accessory fails to update" do
-        let(:accessory) { create(:accessory) }
-
-        it "should set the record as active" do
-            accessory.activate!
-            expect(accessory.active).to eq true
-        end
-    end
     describe "Listing all products" do
         let!(:accessory_1) { create(:accessory, active: true) }
         let!(:accessory_2) { create(:accessory) }

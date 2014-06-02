@@ -7,6 +7,5 @@ FactoryGirl.define do
         factory :invalid_country do
             name nil
         end
-
     end
 end

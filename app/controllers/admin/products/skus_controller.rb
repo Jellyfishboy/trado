@@ -16,7 +16,7 @@ class Admin::Products::SkusController < ApplicationController
   def update
     @sku = Sku.find(params[:id])
     unless @sku.orders.empty? || params[:sku][:stock]
-      @sku.inactivate!
+      Store::inactivate!(@sku)
       @sku = Sku.new(params[:sku])
       @old_sku = Sku.find(params[:id])
       @sku.product_id = @old_sku.product.id
@@ -27,13 +27,13 @@ class Admin::Products::SkusController < ApplicationController
     respond_to do |format|
       if @sku.update_attributes(params[:sku])
         if @old_sku
-          @old_sku.inactivate!
+          Store::inactivate!(@old_sku)
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all
         end
         format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
       else
         @form_sku = Sku.find(params[:id])
-        @form_sku.activate!
+        Store::activate!(@form_sku)
         @form_sku.attributes = params[:sku]
         format.json { render :json => { :errors => @sku.errors.full_messages}, :status => 422 }
       end
@@ -56,12 +56,12 @@ class Admin::Products::SkusController < ApplicationController
         if @sku.carts.empty? && @sku.orders.empty?
           @sku.destroy        
         elsif @sku.carts.empty? && !@sku.orders.empty?
-          @sku.inactivate!
+          Store::inactivate!(@sku)
         elsif !@sku.carts.empty? && @sku.orders.empty?
           CartItem.where('sku_id = ?', @sku.id).destroy_all
           @sku.destroy   
         else
-          @sku.inactivate!
+          Store::inactivate!(@sku)
           CartItem.where('sku_id = ?', @sku.id).destroy_all
         end
         format.js { render :partial => "admin/products/skus/destroy", :format => [:js] }

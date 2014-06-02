@@ -39,24 +39,6 @@ describe Product do
     it { expect(subject).to accept_nested_attributes_for(:attachments) }
     it { expect(subject).to accept_nested_attributes_for(:tags) }
 
-    describe "When a used product is updated or deleted" do
-        let(:product) { create(:product, active: true) }
-
-        it "should set the record as inactive" do
-            product.inactivate!
-            expect(product.active).to eq false
-        end
-    end
-
-    describe "When the product fails to update" do
-        let(:product) { create(:product) }
-
-        it "should set the record as active" do
-            product.activate!
-            expect(product.active).to eq true
-        end
-    end
-
     describe "Listing all products" do
         let!(:product_1) { create(:product) }
         let!(:product_2) { create(:product, active: true) }

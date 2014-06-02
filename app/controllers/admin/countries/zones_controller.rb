@@ -36,7 +36,8 @@ class Admin::Countries::ZonesController < ApplicationController
 
     respond_to do |format|
       if @zone.save
-        format.html { redirect_to admin_countries_zones_url, notice: 'Zone was successfully created.' }
+        flash[:success] = 'Zone was successfully created.'
+        format.html { redirect_to admin_countries_zones_url }
         format.json { render json: @zone, status: :created, location: @zone }
       else
         format.html { render action: "new" }
@@ -51,7 +52,8 @@ class Admin::Countries::ZonesController < ApplicationController
     @zone = Zone.find(params[:id])
     respond_to do |format|
       if @zone.update_attributes(params[:zone])
-        format.html { redirect_to admin_countries_zones_url, notice: 'Zone was successfully updated.' }
+        flash[:success] = 'Zone was successfully updated.'
+        format.html { redirect_to admin_countries_zones_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,6 +69,7 @@ class Admin::Countries::ZonesController < ApplicationController
     @zone.destroy
 
     respond_to do |format|
+      flas[:success] = 'Zone was successfully deleted.'
       format.html { redirect_to admin_countries_zones_url }
       format.json { head :no_content }
     end

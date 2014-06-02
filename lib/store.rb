@@ -30,6 +30,20 @@ module Store
         def positive? number
           return true if number > 0
         end
+
+        # Sets the record's active field to false
+        #
+        # @return [Object] an inactive record
+        def inactivate! record
+            record.update_column(:active, false)
+        end
+
+        # Sets the record's active field to true
+        #
+        # @return [Object] an active record
+        def activate! record
+            record.update_column(:active, true)
+        end
         
     end
 end

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'bigdecimal'
 
 describe CartItem do
 

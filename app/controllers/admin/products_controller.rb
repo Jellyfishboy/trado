@@ -73,14 +73,14 @@ class Admin::ProductsController < ApplicationController
     if @product.carts.empty? && @product.orders.empty?
       @product.destroy
     elsif @product.carts.empty? && !@product.orders.empty?
-      @product.skus.map { |s| s.inactivate! }
-      @product.inactivate!
+      @product.skus.map { |s| Store::inactivate!(s) }
+      Store::inactivate!(@product)
     elsif !@product.carts.empty? && @product.orders.empty?
       CartItem.where(:sku_id, @product.skus.pluck(:id)).destroy_all
       @product.destroy
     else
-      @product.skus.map { |s| s.inactivate! }
-      @product.inactivate!
+      @product.skus.map { |s| Store::inactivate!(s) }
+      Store::inactivate!(@product)
       CartItem.where(:sku_id, @product.skus.pluck(:id)).destroy_all
     end
 

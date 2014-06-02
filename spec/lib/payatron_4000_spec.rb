@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'bigdecimal'
 
 describe Payatron4000 do
     

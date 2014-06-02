@@ -33,25 +33,6 @@ describe Sku do
     before { subject.stub(:new_sku?) { true } }
     it { expect(create(:sku)).to validate_uniqueness_of(:sku).scoped_to([:product_id, :active]) }
 
-    describe "When a used SKU is updated or deleted" do
-        let(:sku) { create(:sku, active: true) }
-
-        it "should set the record as inactive" do
-            sku.inactivate!
-            expect(sku.active).to eq false
-        end
-
-    end
-
-    describe "When the new SKU fails to update" do
-        let(:sku) { create(:sku) }
-
-        it "should set the record as active" do
-            sku.activate!
-            expect(sku.active).to eq true
-        end
-    end
-
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
         

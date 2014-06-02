@@ -35,7 +35,8 @@ class Admin::AccessoriesController < ApplicationController
 
     respond_to do |format|
       if @accessory.save
-        format.html { redirect_to admin_accessories_url, notice: 'Accessory was successfully created.' }
+        flash[:success] = 'Accessory was successfully created.'
+        format.html { redirect_to admin_accessories_url }
         format.json { render json: @accessory, status: :created, location: @accessory }
       else
         format.html { render action: "new" }
@@ -54,7 +55,7 @@ class Admin::AccessoriesController < ApplicationController
   def update
     @accessory = Accessory.find(params[:id])
     unless @accessory.orders.empty?
-      @accessory.inactivate!
+      Store::inactivate!(@accessory)
       @accessory = Accessory.new(params[:accessory])
       @old_accessory = Accessory.find(params[:id])
     end
@@ -64,14 +65,15 @@ class Admin::AccessoriesController < ApplicationController
 
         if @old_accessory
           @old_accessory.accessorisations.pluck(:product_id).map { |t| Accessorisation.create(:product_id => t, :accessory_id => @accessory.id) }
-          @old_accessory.inactivate!
+          Store::inactivate!(@old_accessory)
           CartItemAccessory.where('accessory_id = ?', @old_accessory.id).destroy_all
         end
-        format.html { redirect_to admin_accessories_url, notice: 'Accessory was successfully updated.' }
+        flash[:success] = 'Accessory was successfully updated.'
+        format.html { redirect_to admin_accessories_url }
         format.json { head :no_content }
       else
         @form_accessory = Accessory.find(params[:id])
-        @form_accessory.activate!
+        Store::activate!(@form_accessory)
         @form_accessory.attributes = params[:accessory]
         format.html { render action: "edit" }
         format.json { render json: @accessory.errors, status: :unprocessable_entity }
@@ -92,17 +94,17 @@ class Admin::AccessoriesController < ApplicationController
     if @accessory.carts.empty? && @accessory.orders.empty?
       @accessory.destroy        
     elsif @accessory.carts.empty? && !@accessory.orders.empty?
-      @accessory.inactivate!
+      Store::inactivate!(@accessory)
     elsif !@accessory.carts.empty? && @accessory.orders.empty?
       CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all
       @accessory.destroy   
     else
-      @accessory.inactivate!
+      Store::inactivate!(@accessory)
       CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all
     end
       
     respond_to do |format|
-      flash[:success] =  "Accessory was successfully deleted."
+      flash[:success] =  'Accessory was successfully deleted.'
       format.html { redirect_to admin_accessories_url }
       format.json { head :no_content }
     end

@@ -20,23 +20,6 @@ describe Shipping do
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
-    describe "When a used shipping is updated or deleted" do
-        let(:shipping) { create(:shipping, active: true) }
-
-        it "should set the record as inactive" do
-            shipping.inactivate!
-            expect(shipping.active).to eq false
-        end
-    end
-
-    describe "When the new shipping fails to update" do
-        let(:shipping) { create(:shipping) }
-
-        it "should set the record as active" do
-            shipping.activate!
-            expect(shipping.active).to eq true
-        end
-    end
     describe "Listing all products" do
         let!(:shipping_1) { create(:shipping, active: true) }
         let!(:shipping_2) { create(:shipping) }

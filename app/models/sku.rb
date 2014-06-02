@@ -58,21 +58,7 @@ class Sku < ActiveRecord::Base
       return false
     end
   end
-
-  # Sets the related record's active field as false
-  #
-  # @return [Object] an inactive record
-  def inactivate!
-    self.update_column(:active, false)
-  end
-
-  # Sets the related record's active field as true
-  #
-  # @return [object] an active record
-  def activate!
-    self.update_column(:active, true)
-  end
-
+  
   # Grabs an array of records which have their active field set to true
   #
   # @return [Array] list of active skus
