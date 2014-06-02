@@ -69,7 +69,7 @@ class Admin::Countries::ZonesController < ApplicationController
     @zone.destroy
 
     respond_to do |format|
-      flas[:success] = 'Zone was successfully deleted.'
+      flash[:success] = 'Zone was successfully deleted.'
       format.html { redirect_to admin_countries_zones_url }
       format.json { head :no_content }
     end

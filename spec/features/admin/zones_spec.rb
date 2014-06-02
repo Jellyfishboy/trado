@@ -51,4 +51,21 @@ feature 'Zone management' do
         expect(zone.countries.count).to eq 1
         expect(zone.countries.first.name).to eq 'Jamaica'
     end
+
+    scenario "should delete a zone", js: true do
+        zone = create(:zone)
+
+        visit admin_countries_zones_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Zone, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Zone was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Zones'
+        end
+    end
 end

@@ -31,6 +31,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers'

@@ -67,6 +67,22 @@ feature 'Country management' do
         within 'h2' do
             expect(page).to have_content 'Zones'
         end
+    end
 
+    scenario "should delete a country", js: true do
+        country = create(:country)
+
+        visit admin_countries_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Country, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Country was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Countries'
+        end
     end
 end

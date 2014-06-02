@@ -55,4 +55,21 @@ feature 'Accessory management' do
         expect(accessory.weight).to eq BigDecimal.new("5.87")
         expect(accessory.active).to eq true
     end
+
+    scenario "should delete an accessory", js: true do
+        accessory = create(:accessory)
+
+        visit admin_accessories_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Accessory, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Accessory was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Accessories'
+        end
+    end
 end

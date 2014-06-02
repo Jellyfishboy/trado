@@ -55,21 +55,21 @@ feature 'Category management' do
         expect(category.visible).to eq true
     end
 
-    scenario "should delete a category" do
+    scenario "should delete a category", js: true do
         category = create(:category)
-        
+
         visit admin_categories_path
-        within 'tbody' do
-            first('tr').find('td:last-child a:last-child').click
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+            # page.driver.browser.switch_to.alert.dismiss() if ENV['FF'] == true
+        }.to change(Category, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Category was successfully deleted.')
         end
-        # expect{
-        #     page.evaluate_script('window.confirm = function() { return true; }')
-        # }.to change(Category, :count).by(-1)
-        # within '.alert' do
-        #     expect(page).to have_content('Category was successfully deleted.')
-        # end
-        # within 'h2' do
-        #     expect(page).to have_content 'Categories'
-        # end
+        within 'h2' do
+            expect(page).to have_content 'Categories'
+        end
     end
 end
