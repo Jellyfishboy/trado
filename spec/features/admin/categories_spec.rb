@@ -5,6 +5,26 @@ feature 'Category management' do
     store_setting
     feature_login_admin
 
+    scenario 'should display an index of categories' do
+        category = create(:category)
+
+        visit admin_root_path
+        find('a[data-original-title="Categories"]').click
+        expect(current_path).to eq admin_root_path
+        within 'h2' do
+            expect(page).to have_content 'Categories'
+        end
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Categories'
+        end
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'Name'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content category.name
+        end
+    end
+
     scenario 'should add a new category' do
 
         visit admin_categories_path

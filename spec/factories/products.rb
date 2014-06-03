@@ -6,12 +6,16 @@ FactoryGirl.define do
         description { Faker::Lorem.characters(20) }
         sku { Faker::Lorem.characters(5) }
         sequence(:part_number) { |n| n }
-        featured false
-        active false
+        featured { false }
+        active { false }
         sequence(:weighting) { |n| n }
-        single false
+        single { false }
 
         association :category
+
+        after(:create) do |product, evaluator|
+            create(:product_attachment, attachable: product)
+        end
 
         factory :product_skus do 
             after(:create) do |product, evaluator|

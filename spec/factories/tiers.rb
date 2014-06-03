@@ -10,5 +10,11 @@ FactoryGirl.define do
         factory :invalid_tier do
             length_start nil
         end
+
+        factory :tier_with_shippings do
+            length_start { 0 }
+            weight_end { 1 }
+            shippings { [create(:shipping, name: 'Royal Mail 1st class', active: true),create(:shipping, name: '48H Parcelforce', active: true)] }
+        end
     end
 end

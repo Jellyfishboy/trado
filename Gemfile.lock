@@ -402,7 +402,7 @@ GEM
       sexp_processor (~> 4.0)
     ruby_parser (3.3.0)
       sexp_processor (~> 4.1)
-    rubyzip (1.1.4)
+    rubyzip (1.1.0)
     safe_yaml (0.9.7)
     sass (3.2.13)
     sass-rails (3.2.6)
@@ -412,8 +412,8 @@ GEM
     searchkick (0.5.3)
       tire
       tire-contrib
-    selenium-webdriver (2.42.0)
-      childprocess (>= 0.5.0)
+    selenium-webdriver (2.39.0)
+      childprocess (>= 0.2.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)

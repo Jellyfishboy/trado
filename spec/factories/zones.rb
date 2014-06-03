@@ -4,10 +4,7 @@ FactoryGirl.define do
 
     factory :zone_with_countries do
         name { 'EU' }
-        after(:create) do |zone, evaluator|
-            zone.countries << create(:country, name: 'United Kingdom')
-            zone.countries << create(:country, name: 'Jamaica')
-        end
+        countries { [create(:country, name: 'United Kingdom'),create(:country, name: 'Jamaica')] }
     end
   end
 end

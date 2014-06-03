@@ -1,0 +1,6 @@
+$('#transaction-form').modal('hide');
+$('tr#transaction_<%= @transaction.id %>').html('<%=j render :partial => "admin/orders/transactions/table" %>');
+$('.widget-header').before('<div class="alert alert-success alert-no-margin animated fadeInDown transaction-update-alert"><i class="icon-checkmark-circle"></i>Successfully updated transaction for Order #<%= @transaction.order.id %>.</div>').delay(5000).queue(function(next){
+        $('.transaction-update-alert').addClass('fadeOutUp').delay(800).hide(1);
+        next();
+});

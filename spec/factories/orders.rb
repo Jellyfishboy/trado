@@ -13,6 +13,7 @@ FactoryGirl.define do
         tax_amount { |n| n }
         gross_amount { |n| n }
         terms { true }
+        
 
         association :shipping
         association :ship_address, factory: :address
@@ -22,10 +23,43 @@ FactoryGirl.define do
             count 1
         end
 
-        factory :complete_order do
+        factory :pending_order do
+            # has_many through relationship generation
+            transactions { [create(:transaction, payment_status: 'Pending')] }
+
             after(:create) do |order, evaluator|
                 create(:order_item, quantity: 5, order: order)
             end
+        end
+
+        factory :undispatched_complete_order do
+            transactions { [create(:transaction)] }
+
+            after(:create) do |order, evaluator|
+                create(:order_item, quantity: 5, order: order)
+            end
+        end
+
+        factory :complete_order do
+            # has_many through relationship generation
+            transactions { [create(:transaction)] }
+            shipping_status { 'Dispatched' }
+
+            after(:create) do |order, evaluator|
+                create(:order_item, quantity: 5, order: order)
+            end
+        end
+
+        factory :nil_actual_shipping_order do
+            actual_shipping_cost { nil }
+        end
+
+        factory :nil_shipping_date_order do
+            shipping_date { nil }
+        end
+
+        factory :cheque_order do
+            transactions { [create(:transaction, payment_status: 'Pending', payment_type: 'Cheque')] }
         end
     end
 end
