@@ -57,7 +57,9 @@ Trado::Application.routes.draw do
       resources :orders, :only => [:index, :show, :update, :edit] do
         get 'shipping', on: :member
       end
-      resources :transactions, :only => [:edit, :update]
+      namespace :orders do
+        resources :transactions, :only => [:edit, :update]
+      end
       namespace :products do
         resources :attachments, :only => :destroy
         resources :tags, :only => :index

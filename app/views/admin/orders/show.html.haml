@@ -72,71 +72,75 @@
   .twelvecol
     .widget-sub-heading
       %h3 Order items
-    %table.table.table-striped.table-bordered.table-hover.table-margin
-      %thead
-        %tr
-          %th Item
-          %th SKU
-          %th Item price
-          %th Qty
-          %th Total
-      %tbody
-        - @order.order_items.each do |item|
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-margin
+        %thead
+          %tr
+            %th Item
+            %th SKU
+            %th Item price
+            %th Qty
+            %th Total
+        %tbody
+          - @order.order_items.each do |item|
+            %tr
+              %td
+                = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
+                .item-sub= sku_attribute_values item.sku, item.sku.product.single
+                - unless item.order_item_accessory.nil?
+                  .item-sub.label.label-blue= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
+              %td= item.sku.full_sku
+              %td= format_currency item.price
+              %td= item.quantity
+              %td= format_currency item.total_price
           %tr
             %td
-              = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
-              .item-sub= sku_attribute_values item.sku, item.sku.product.single
-              - unless item.order_item_accessory.nil?
-                .item-sub.label.label-blue= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
-            %td= "#{item.sku.product.sku}-#{item.sku.sku}"
-            %td= format_currency item.price
-            %td= item.quantity
-            %td= format_currency item.total_price
-        %tr
-          %td
-            = @order.shipping.name
-            .item-sub= @order.ship_address.country
-          %td -
-          %td= format_currency @order.shipping.price
-          %td 1
-          %td= format_currency @order.shipping.price
-        %tr
-          %td.align-right.border-top{colspan: "4"}
-            %b Subtotal:
-          %td.border-top= format_currency @order.net_amount
-        %tr
-          %td.align-right{colspan: "4"}
-            %b Tax:
-          %td= format_currency @order.tax_amount
-        %tr.focused
-          %td.align-right{colspan: "4"}
-            %b Total:
-          %td= format_currency @order.gross_amount
+              = @order.shipping.name
+              .item-sub= @order.ship_address.country
+            %td -
+            %td= format_currency @order.shipping.price
+            %td 1
+            %td= format_currency @order.shipping.price
+          %tr
+            %td.align-right.border-top{colspan: "4"}
+              %b Subtotal:
+            %td.border-top= format_currency @order.net_amount
+          %tr
+            %td.align-right{colspan: "4"}
+              %b Tax:
+            %td= format_currency @order.tax_amount
+          %tr.focused
+            %td.align-right{colspan: "4"}
+              %b Total:
+            %td= format_currency @order.gross_amount
     .widget-sub-heading
       %h3 Transactions
-    %table.table.table-striped.table-bordered.table-hover
-      %thead
-        %tr
-          %th Transaction Type
-          %th Payment type
-          %th PayPal ID
-          %th Payment status
-          %th Fee
-          %th Net amount
-          %th Gross amount
-          %th Last updated
-          %th
-      %tbody
-        - @order.transactions.each do |transaction|
-          %tr{:id => "transaction_#{transaction.id}" }
-            %td= transaction.transaction_type
-            %td= transaction.payment_type 
-            %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id
-            %td= payment_status transaction.payment_status
-            %td= format_currency transaction.fee
-            %td= format_currency transaction.net_amount
-            %td= format_currency transaction.gross_amount
-            %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
-            - if transaction.payment_status == 'Pending' && transaction.payment_type != 'express-checkout'
-              = table_commands transaction, nil, nil, nil, 3
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Transaction Type
+            %th Payment type
+            %th PayPal ID
+            %th Payment status
+            %th Fee
+            %th Net amount
+            %th Gross amount
+            %th Last updated
+            %th
+        %tbody
+          - @order.transactions.each do |transaction|
+            %tr{:id => "transaction_#{transaction.id}" }
+              %td= transaction.transaction_type
+              %td= transaction.payment_type 
+              %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id
+              %td= payment_status transaction.payment_status
+              %td= format_currency transaction.fee
+              %td= format_currency transaction.net_amount
+              %td= format_currency transaction.gross_amount
+              %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
+              - if transaction.payment_status == 'Pending' && transaction.payment_type != 'express-checkout'
+                = table_commands transaction, nil, nil, nil, 3
+              - else
+                %td
 #transaction-modal

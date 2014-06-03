@@ -8,10 +8,7 @@ FactoryGirl.define do
         factory :shipping_with_zones do
             name { 'Royal mail 1st class' }
             active { true }
-            after(:create) do |shipping, evaluator|
-                shipping.zones << create(:zone, name: 'EU')
-                shipping.zones << create(:zone, name: 'Asia')
-            end
+            zones { [create(:zone, name: 'EU'),create(:zone, name: 'Asia')]}
         end
     end
 end

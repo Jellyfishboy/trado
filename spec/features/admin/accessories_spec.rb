@@ -5,6 +5,26 @@ feature 'Accessory management' do
     store_setting
     feature_login_admin
 
+    scenario 'should display an index of accessories' do
+        accessory = create(:accessory)
+
+        visit admin_root_path
+        find('a[data-original-title="Accessories"]').click
+        expect(current_path).to eq admin_accessories_path
+        within 'h2' do
+            expect(page).to have_content 'Accessories'
+        end
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Accessories'
+        end
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'Part no.'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content accessory.part_number
+        end
+    end
+
     scenario 'should add a new accessory' do
 
         visit admin_accessories_path

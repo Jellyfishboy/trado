@@ -64,7 +64,6 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :shipping
-      @calculated_tier = @order.tier(current_cart)
       @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
       # Update billing attributes
       if @shipping_address.update_attributes(params[:address])

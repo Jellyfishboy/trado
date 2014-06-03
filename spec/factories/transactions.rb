@@ -9,6 +9,5 @@ FactoryGirl.define do
         sequence(:net_amount) { |n| n }
         status_reason 'none'
         
-        association :order
     end
 end

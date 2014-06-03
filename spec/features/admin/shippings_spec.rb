@@ -5,6 +5,26 @@ feature 'Shipping management' do
     store_setting
     feature_login_admin
 
+    scenario 'should display an index of shippings' do
+        shipping = create(:shipping, active: true)
+
+        visit admin_root_path
+        find('a[data-original-title="Shippings"]').click
+        expect(current_path).to eq admin_shippings_path
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Shipping methods'
+        end
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'Name'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content shipping.name
+        end
+    end
+
     scenario 'should add a new shipping' do
 
         visit admin_shippings_path
@@ -27,7 +47,7 @@ feature 'Shipping management' do
         end
     end
 
-    scenario 'should edit an shipping' do
+    scenario 'should edit a shipping' do
         shipping = create(:shipping_with_zones)
 
         visit admin_shippings_path
@@ -53,6 +73,28 @@ feature 'Shipping management' do
         expect(shipping.name).to eq 'Royal mail 1st class'
         expect(shipping.zones.count).to eq 1
         expect(shipping.zones.first.name).to eq 'EU'
+    end
+
+    scenario 'should display an index of tiers' do
+        tier = create(:tier)
+
+        visit admin_shippings_path
+        within '.page-header' do
+            find(:xpath, "//a[@title='Tiers']").click
+        end
+        expect(current_path).to eq admin_shippings_tiers_path
+        within 'h2' do
+            expect(page).to have_content 'Tiers'
+        end
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Tiers'
+        end
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'ID'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content tier.id
+        end
     end
 
     scenario "should delete a shipping", js: true do

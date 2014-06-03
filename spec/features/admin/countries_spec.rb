@@ -5,6 +5,26 @@ feature 'Country management' do
     store_setting
     feature_login_admin
 
+    scenario 'should display an index of countries' do
+        country = create(:country)
+
+        visit admin_root_path
+        find('a[data-original-title="Countries"]').click
+        expect(current_path).to eq admin_countries_path
+        within 'h2' do
+            expect(page).to have_content 'Countries'
+        end
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Countries'
+        end
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'Name'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content country.name
+        end
+    end
+
     scenario 'should add a new country' do
 
         visit admin_countries_path
@@ -54,18 +74,25 @@ feature 'Country management' do
         expect(country.iso).to eq 'CA'
     end
 
-    scenario 'should navigate to the zone index' do
+    scenario 'should display an index of zones' do
+        zone = create(:zone)
 
         visit admin_countries_path
         within '.page-header' do
             find(:xpath, "//a[@title='Zones']").click
         end
         expect(current_path).to eq admin_countries_zones_path
+        within 'h2' do
+            expect(page).to have_content 'Zones'
+        end
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Zones'
         end
-        within 'h2' do
-            expect(page).to have_content 'Zones'
+        within 'thead tr th:first-child' do
+            expect(page).to have_content 'Name'
+        end
+        within 'tbody tr td:first-child' do
+            expect(page).to have_content zone.name
         end
     end
 
