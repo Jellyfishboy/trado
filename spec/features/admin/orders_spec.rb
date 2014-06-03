@@ -123,7 +123,7 @@ feature 'Order management' do
 
         within '.modal#shipping-form' do
             expect(find('.modal-header h3')).to have_content "Dispatch ##{order.id}"
-            fill_in('order_shipping_date' with: Date.new("01/01/2015"))
+            fill_in('order_shipping_date', with: Date.new("01/01/2015"))
             click_button 'Submit'
         end
         expect(current_path).to eq admin_orders_path
