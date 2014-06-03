@@ -98,7 +98,7 @@ feature 'Shipping management' do
     end
 
     scenario "should delete a shipping", js: true do
-        shipping = create(:shipping)
+        shipping = create(:shipping, active: true)
 
         visit admin_shippings_path
         expect{

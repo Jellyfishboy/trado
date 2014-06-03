@@ -36,7 +36,8 @@ class Admin::Shippings::TiersController < ApplicationController
 
     respond_to do |format|
       if @tier.save
-        format.html { redirect_to admin_shippings_tiers_url, notice: 'Tier was successfully created.' }
+        flash[:success] = 'Tier was successfully created.'
+        format.html { redirect_to admin_shippings_tiers_url }
         format.json { render json: @tier, status: :created, location: @tier }
       else
         format.html { render action: "new" }
@@ -51,7 +52,8 @@ class Admin::Shippings::TiersController < ApplicationController
     @tier = Tier.find(params[:id])
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
-        format.html { redirect_to admin_shippings_tiers_url, notice: 'Tier was successfully updated.' }
+        flash[:success] = 'Tier was successfully updated.'
+        format.html { redirect_to admin_shippings_tiers_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -67,6 +69,7 @@ class Admin::Shippings::TiersController < ApplicationController
     @tier.destroy
 
     respond_to do |format|
+      flash[:success] = 'Tier was successfully deleted.'
       format.html { redirect_to admin_shippings_tiers_url }
       format.json { head :no_content }
     end
