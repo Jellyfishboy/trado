@@ -36,11 +36,11 @@
           - Shipping.active.all.each do |shipping|
             .checkbox.blocked
               %label
-              = hidden_field_tag "tier[shipping_ids][]", ""
-              = check_box_tag "tier[shipping_ids][]", shipping.id, @tier.shipping_ids.include?(shipping.id)
-              = shipping.name
-              = ' - '
-              %b= format_currency shipping.price
+                = hidden_field_tag "tier[shipping_ids][]", ""
+                = check_box_tag "tier[shipping_ids][]", shipping.id, @tier.shipping_ids.include?(shipping.id)
+                = shipping.name
+                = ' - '
+                %b= format_currency shipping.price
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

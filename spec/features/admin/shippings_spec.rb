@@ -1,0 +1,74 @@
+require 'spec_helper'
+
+feature 'Shipping management' do
+
+    store_setting
+    feature_login_admin
+
+    scenario 'should add a new shipping' do
+
+        visit admin_shippings_path
+        find('.page-header a:first-child').click
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'New'
+        end
+        expect{
+            fill_in('shipping_name', with: 'Royal mail')
+            fill_in('shipping_price', with: '4.78')
+            fill_in('shipping_description', with: 'Speedy delivery within the UK.')
+            click_button 'Submit'
+        }.to change(Shipping, :count).by(1)
+        expect(current_path).to eq admin_shippings_path
+        within '.alert' do
+            expect(page).to have_content 'Shipping was successfully created.'
+        end
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end
+    end
+
+    scenario 'should edit an shipping' do
+        shipping = create(:shipping_with_zones)
+
+        visit admin_shippings_path
+        within 'tbody' do
+            first('tr').find('td:last-child').first(:link).click
+        end
+        expect(current_path).to eq edit_admin_shipping_path(shipping)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
+        fill_in('shipping_price', with: '4.92')
+        find('.form-last div:last-child label input[type="checkbox"]').set(false)
+        click_button 'Submit'
+        expect(current_path).to eq admin_shippings_path
+        within '.alert' do
+            expect(page).to have_content 'Shipping was successfully updated.'
+        end
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end 
+        shipping.reload
+        expect(shipping.price).to eq BigDecimal.new("4.92")
+        expect(shipping.name).to eq 'Royal mail 1st class'
+        expect(shipping.zones.count).to eq 1
+        expect(shipping.zones.first.name).to eq 'EU'
+    end
+
+    scenario "should delete a shipping", js: true do
+        shipping = create(:shipping)
+
+        visit admin_shippings_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Shipping, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Shipping was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end
+    end
+end
