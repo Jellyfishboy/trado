@@ -373,4 +373,14 @@ feature 'Product management' do
         expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
     end
 
+    scenario 'should display a warning if no shippings tiers and/or sku attribute types have been created' do
+
+        visit admin_products_path
+        find('.page-header a:first-child').click
+        expect(current_path).to eq admin_products_path
+        within '.alert' do
+            expect(page).to have_content 'You do not currently have any shipping tiers and/or sku attribute types. Please add some before creating a product.'
+        end
+    end
+
 end

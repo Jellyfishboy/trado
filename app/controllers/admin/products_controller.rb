@@ -20,7 +20,7 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       unless Tier.all.count > 0 || AttributeType.all.count > 0
         format.html { redirect_to admin_products_url }
-        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add one before creating a product."
+        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add some before creating a product."
       else
         format.html
       end
