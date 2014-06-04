@@ -49,6 +49,21 @@ feature 'Product management' do
         end
     end
 
-    scenario 'should delete a product'
+    scenario "should delete a product", js: true do
+        product = create(:product_skus, active: true)
+
+        visit admin_products_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Product, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Product was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Products'
+        end
+    end
 
 end
