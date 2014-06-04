@@ -78,7 +78,7 @@ feature 'Product management' do
     #     # expect(current_path).to eq category_product_path()
     # end
 
-    # scenario 'should edit a product'
+    scenario 'should edit a product'
 
     # scenario 'should display an index of attribute types' do
     #     attribute_type = create(:attribute_type)
@@ -119,41 +119,149 @@ feature 'Product management' do
     #     end
     # end
 
-    # scenario 'should add a new attachment field to the product form'
-    # scenario 'should add a new table row of SKU fields to the product form'
-    # scenario 'should add a stock level record to a product SKU'
-    scenario 'should edit a product SKU', js: true do
-        product = create(:product_sku, active: true)
-        sku = product.skus.first
+    # scenario 'should add a stock level record to a product SKU', js: true do
+    #     product = create(:product_sku_stock_count, active: true)
+    #     sku = product.skus.first
+
+    #     visit admin_products_path
+    #     within 'tbody' do
+    #         first('tr').find('td:last-child').first(:link).click
+    #     end
+    #     expect(current_path).to eq edit_admin_product_path(product)
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Edit'
+    #     end
+    #     find('#sku_fields tr td:last-child a.new_stock_levels').click
+    #     sleep 1
+
+    #     within '.modal#stock-level-form' do
+    #         expect(find('.modal-header h3')).to have_content "Stock levels for #{sku.full_sku}"
+    #         expect(find('.modal-body p:first-child')).to have_content "Stock level total is #{sku.stock}"
+    #         expect(find('tbody')).to have_selector('tr.tr-red', count: 0)
+    #         expect(find('tbody')).to have_selector('tr.tr-green', count: 0)
+    #         fill_in('stock_level_description', with: 'Description for the new stock level adjustment.')
+    #         fill_in('stock_level_adjustment', with: '5')
+    #         click_button 'Add'
+    #         sleep 1
+
+    #         expect(find('tbody')).to have_selector('tr.tr-green', count: 1)
+    #     end
+
+    #     sku.reload
+    #     expect(sku.stock).to eq 15
+    #     expect(sku.stock_levels.count).to eq 1
+    #     expect(sku.stock_levels.first.description).to eq 'Description for the new stock level adjustment.'
+    #     expect(sku.stock_levels.first.adjustment).to eq 5
+    # end
+
+    scenario 'should add a new product SKU'
+
+    # scenario 'should edit a product SKU', js: true do
+    #     product = create(:product_sku, active: true)
+    #     sku = product.skus.first
+
+    #     visit admin_products_path
+    #     within 'tbody' do
+    #         first('tr').find('td:last-child').first(:link).click
+    #     end
+    #     expect(current_path).to eq edit_admin_product_path(product)
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Edit'
+    #     end
+    #     find('#sku_fields tr td:last-child a:nth-child(2)').click
+    #     sleep 1
+
+    #     within '.modal#sku-form' do
+    #         expect(find('.modal-header h3')).to have_content "Edit SKU #{sku.full_sku}"
+    #         fill_in('sku_length', with: '10.3')
+    #         fill_in('sku_cost_value', with: '28.98')
+    #         fill_in('sku_price', with: '55.22')
+    #         click_button 'Submit'
+    #     end
+    #     sleep 1
+
+    #     expect(current_path).to eq edit_admin_product_path(product)
+    #     within '.sku-update-alert' do
+    #         expect(page).to have_content 'Successfully updated the SKU.'
+    #     end
+    #     sku.reload
+    #     expect(sku.length).to eq BigDecimal.new("10.3")
+    #     expect(sku.cost_value).to eq BigDecimal.new("28.98")
+    #     expect(sku.price).to eq BigDecimal.new("55.22")
+    # end
+
+    scenario 'should delete a product SKU'
+
+    # scenario 'should add a new attachment field to the product form', js: true do
+    #     create(:attribute_type)
+    #     create(:tier)
+
+    #     visit admin_products_path
+    #     find('.page-header a:first-child').click
+    #     expect(current_path).to eq new_admin_product_path
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'New'
+    #     end
+    #     expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
+    #     find('a[data-original-title="Add attachment"]').click
+    #     expect(find('#attachment_fields')).to have_selector('div.new-file', count: 2)
+    # end
+
+    # scenario 'should add a new table row of SKU fields to the product form', js: true do
+    #     create(:attribute_type)
+    #     create(:tier)
+
+    #     visit admin_products_path
+    #     find('.page-header a:first-child').click
+    #     expect(current_path).to eq new_admin_product_path
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'New'
+    #     end
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 1)
+    #     find('a[data-original-title="Add SKU"]').click
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 2)
+    # end
+
+    # scenario 'should delete a table row of SKU fields in new product, apart from last row', js: true  do
+    #     create(:attribute_type)
+    #     create(:tier)
+
+    #     visit admin_products_path
+    #     find('.page-header a:first-child').click
+    #     expect(current_path).to eq new_admin_product_path
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'New'
+    #     end
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 1)
+    #     find('a[data-original-title="Add SKU"]').click
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 2)
+    #     find('#sku_fields tr:last-child td:last-child a:last-child').click
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 1)
+    #     find('#sku_fields tr:last-child td:last-child a:last-child').click
+    #     expect(find('#sku_fields')).to have_selector('tr', count: 1)
+    # end
+
+    scenario 'should delete an attachment field in new product, apart from last field', js: true do
+        create(:attribute_type)
+        create(:tier)
 
         visit admin_products_path
-        within 'tbody' do
-            first('tr').find('td:last-child').first(:link).click
-        end
-        expect(current_path).to eq edit_admin_product_path(product)
+        find('.page-header a:first-child').click
+        expect(current_path).to eq new_admin_product_path
         within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Edit'
+            expect(page).to have_content 'New'
         end
-        find('#sku_fields tr td:last-child a:nth-child(2)').click
-        sleep 1
-
-        within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "Edit SKU #{sku.full_sku}"
-            fill_in('sku_length', with: '10.3')
-            fill_in('sku_cost_value', with: '28.98')
-            fill_in('sku_price', with: '55.22')
-            click_button 'Submit'
-        end
-        sleep 1
-
-        expect(current_path).to eq edit_admin_product_path(product)
-        within '.sku-update-alert' do
-            expect(page).to have_content 'Successfully updated the SKU.'
-        end
-        sku.reload
-        expect(sku.length).to eq BigDecimal.new("10.3")
-        expect(sku.cost_value).to eq BigDecimal.new("28.98")
-        expect(sku.price).to eq BigDecimal.new("55.22")
+        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
+        find('a[data-original-title="Add attachment"]').click
+        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 2)
+        find('#attachment_fields div.new-file:first-child a:last-child').click
+        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
+        find('#attachment_fields div.new-file:first-child a:last-child').click
+        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
     end
+
+    scenario 'should delete a table row of SKU fields in edit product'
+    scenario 'should delete an attachment field in edit product'
+    scenario 'should delete an attachment'
 
 end

@@ -8,24 +8,27 @@
     = link_to admin_products_skus_attribute_types_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Attribute types" do
       %i.icon-filter-2
     %h2.widget.widget-header Products
-  .table-responsive
-    %table.table.table-striped.table-bordered.table-hover
-      %thead
-        %tr
-          %th SKU
-          %th Part no.
-          %th{colspan: "2"} Name
-          %th Net price
-          %th Gross price
-          %th
-      %tbody
-        - @products.each do |product|
+  - if @products.empty?
+    %p You don't have any products yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
           %tr
-            %td= product.sku
-            %td= product.part_number
-            %td{width: "85"}= image_tag product.attachments.first.file.square, :height => "75", :width => "75"
-            %td= link_to product.name, [product.category, product]
-            %td= format_currency product.skus.first.price
-            %td= gross_price product.skus.first.price
-            = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
-            
+            %th SKU
+            %th Part no.
+            %th{colspan: "2"} Name
+            %th Net price
+            %th Gross price
+            %th
+        %tbody
+          - @products.each do |product|
+            %tr
+              %td= product.sku
+              %td= product.part_number
+              %td{width: "85"}= image_tag product.attachments.first.file.square, :height => "75", :width => "75"
+              %td= link_to product.name, [product.category, product]
+              %td= format_currency product.skus.first.price
+              %td= gross_price product.skus.first.price
+              = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
+              

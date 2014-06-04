@@ -1,11 +1,11 @@
 .widget-sub-heading.attachment-heading
   %h3 Attachments
   .pull-right
-    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#image_fields", 'Add image'
+    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#attachment_fields", 'Add attachment'
 %fieldset.widget.widget-content.attachment-form
   .row
     .twelvecol
-      #image_fields.edit-field
+      #attachment_fields.edit-field
         - @product.attachments.each do |attach|
           .attachments.current-file{ :id => "attachment_#{attach.id}" }
             = image_tag attach.file.square, :height => 140, :width => 140

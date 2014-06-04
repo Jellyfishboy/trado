@@ -5,6 +5,7 @@ class Admin::Products::Skus::StockLevelsController < ApplicationController
   #
   # Modal trigger for displaying a form to add a stock level adjustment 
   def new 
+    @sku = Sku.find(params[:sku_id])
     render :partial => 'admin/products/skus/stock_levels/new', :format => [:js]
   end
 
