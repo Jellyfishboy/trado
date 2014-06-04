@@ -53,7 +53,7 @@ class Admin::ProductsController < ApplicationController
       if @product.update_attributes(params[:product])
         Tag.del(params[:taggings], @product.id)
         Tag.add(params[:taggings], @product.id)
-        format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
+        format.js { render :js => "window.location.replace('#{admin_products_url}');"}
       else
         format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 
       end

@@ -2,7 +2,6 @@ module CustomMacro
 
     # Creates the store settings record for use within the application
     #
-    # @return [Object] current store settings
     def store_setting
         before(:each) do
             store_setting = create(:attached_store_setting)
@@ -22,4 +21,5 @@ module CustomMacro
             click_button 'Login'
         end
     end
+
 end

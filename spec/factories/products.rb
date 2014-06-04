@@ -17,15 +17,21 @@ FactoryGirl.define do
             create(:product_attachment, attachable: product)
         end
 
-        factory :product_skus do 
-            after(:create) do |product, evaluator|
-                create_list(:sku, 3, product: product)
-            end
-        end
-
         factory :product_sku do
             after(:create) do |product, evaluator|
                 create(:sku, product: product, code: '55', active: true)
+            end
+
+            factory :multiple_attachment_product do
+                after(:create) do |product, evaluator|
+                    create(:product_attachment, attachable: product)
+                end
+            end
+        end
+
+        factory :product_skus do 
+            after(:create) do |product, evaluator|
+                create_list(:sku, 3, product: product, active: true)
             end
         end
 
@@ -38,7 +44,6 @@ FactoryGirl.define do
         factory :notified_product do
             after(:create) do |product, evaluator|
                 create(:sku_in_stock, product: product)
-                create(:product_attachment, attachable: product)
             end
         end
 
@@ -46,19 +51,16 @@ FactoryGirl.define do
         factory :stock_warning_product_1 do
             after(:create) do |product, evaluator|
                 build(:sku, product: product, stock: 5, stock_warning_level: 10).save(validate: false)
-                create(:product_attachment, attachable: product)
             end
         end
         factory :stock_warning_product_2 do
             after(:create) do |product, evaluator|
                 build(:sku, product: product, stock: 20, stock_warning_level: 5).save(validate: false)
-                create(:product_attachment, attachable: product)
             end
         end
         factory :stock_warning_product_3 do
             after(:create) do |product, evaluator|
                 build(:sku, product: product, stock: 7, stock_warning_level: 15).save(validate: false)
-                create(:product_attachment, attachable: product)
             end
         end
     end
