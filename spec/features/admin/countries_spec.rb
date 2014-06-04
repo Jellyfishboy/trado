@@ -29,6 +29,7 @@ feature 'Country management' do
 
         visit admin_countries_path
         find('.page-header a:first-child').click
+        expect(current_path).to eq new_admin_country_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end

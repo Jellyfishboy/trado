@@ -9,6 +9,7 @@ feature 'Attribute type management' do
 
         visit admin_products_skus_attribute_types_path
         find('.page-header a').click
+        expect(current_path).to eq new_admin_products_skus_attribute_type_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end

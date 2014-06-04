@@ -29,6 +29,7 @@ feature 'Accessory management' do
 
         visit admin_accessories_path
         find('.page-header a').click
+        expect(current_path).to eq new_admin_accessory_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end

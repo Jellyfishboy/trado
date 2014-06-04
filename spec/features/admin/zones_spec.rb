@@ -9,6 +9,7 @@ feature 'Zone management' do
 
         visit admin_countries_zones_path
         find('.page-header a').click
+        expect(current_path).to eq new_admin_countries_zone_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end

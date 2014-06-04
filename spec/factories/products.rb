@@ -25,7 +25,7 @@ FactoryGirl.define do
 
         factory :product_sku do
             after(:create) do |product, evaluator|
-                create(:sku, product: product, code: '55')
+                create(:sku, product: product, code: '55', active: true)
             end
         end
 

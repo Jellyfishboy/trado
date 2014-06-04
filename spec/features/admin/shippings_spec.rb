@@ -29,6 +29,7 @@ feature 'Shipping management' do
 
         visit admin_shippings_path
         find('.page-header a:first-child').click
+        expect(current_path).to eq new_admin_shipping_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end

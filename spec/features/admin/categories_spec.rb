@@ -29,6 +29,7 @@ feature 'Category management' do
 
         visit admin_categories_path
         find('.page-header a').click
+        expect(current_path).to eq new_admin_category_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end
