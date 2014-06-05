@@ -29,16 +29,6 @@ class Product < ActiveRecord::Base
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
   :short_description, :related_ids, :single
 
-  validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               :presence => true
-  validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
-  validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
-  validates :description,                                     :length => {:minimum => 20, :message => :too_short }
-  validates :skus,                                            :tier => true, :on => :save
-  validates :short_description,                               :length => { :maximum => 100, :message => :too_long }
-  validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }                                                         
-  validate :single_product
-
   has_many :searches
   has_many :skus,                                             :dependent => :delete_all
   has_many :orders,                                           :through => :skus
@@ -53,6 +43,16 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
+
+  validates :name, :meta_description, :description, 
+  :part_number, :sku, :weighting, :category_id,               :presence => true
+  validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
+  validates :name, :meta_description,                         :length => {:minimum => 10, :message => :too_short }
+  validates :description,                                     :length => {:minimum => 20, :message => :too_short }
+  validates :skus,                                            :tier => true, :on => :save
+  validates :short_description,                               :length => { :maximum => 100, :message => :too_long }
+  validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }                                                         
+  validate :single_product
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags

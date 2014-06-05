@@ -3,10 +3,6 @@ class Admin::AdminController < ApplicationController
     before_filter :authenticate_user!
     layout 'admin'
 
-    def dashboard 
-
-    end
-
     def settings
         @settings = Store::settings
         @attachment = @settings.build_attachment unless @settings.attachment

@@ -20,9 +20,15 @@ FactoryGirl.define do
             end
         end
 
-        factory :sku_stock_level do
+        factory :positive_stock_level_sku do
             after(:create) do |sku, evaluator|
                 create(:stock_level, adjustment: 3, sku: sku)
+            end
+        end
+
+        factory :negative_stock_level_sku do
+            after(:create) do |sku, evaluator|
+                create(:stock_level, adjustment: -3, sku: sku)
             end
         end
     end

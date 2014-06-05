@@ -17,8 +17,8 @@ class RelatedProduct < ActiveRecord::Base
 
     attr_accessible :product_id, :related_id
 
-    validates :related_id,              :uniqueness => { :scope => :product_id }
-
     belongs_to :product
+
+    validates :related_id,              :uniqueness => { :scope => :product_id }
 
 end

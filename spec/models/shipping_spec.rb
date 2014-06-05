@@ -15,7 +15,7 @@ describe Shipping do
     it { expect(subject).to validate_presence_of(:price) }
     it { expect(subject).to validate_presence_of(:description) }
 
-    it { expect(subject).to validate_uniqueness_of(:name) }
+    it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
 
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }

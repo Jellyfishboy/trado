@@ -20,8 +20,8 @@ class Notification < ActiveRecord::Base
 
   attr_accessible :notifiable_id, :notifiable_type, :email, :sent, :sent_at
 
-  validates :email,         :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :uniqueness => { :scope => :notifiable_id, :message => 'has already been created.' }
-
   belongs_to :notifiable, polymorphic: true
+
+  validates :email,         :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :uniqueness => { :scope => :notifiable_id, :message => 'has already been created.' }
 
 end

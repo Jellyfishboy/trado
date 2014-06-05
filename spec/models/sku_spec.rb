@@ -3,14 +3,14 @@ require 'spec_helper'
 describe Sku do
 
     # ActiveRecord relations
-    it { expect(subject).to belong_to(:product) }
-    it { expect(subject).to belong_to(:attribute_type) }
     it { expect(subject).to have_many(:cart_items) }
     it { expect(subject).to have_many(:carts).through(:cart_items) }
     it { expect(subject).to have_many(:order_items).dependent(:restrict) }
     it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict) }
     it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:stock_levels) }
+    it { expect(subject).to have_many(:stock_levels).dependent(:delete_all) }
+    it { expect(subject).to belong_to(:product) }
+    it { expect(subject).to belong_to(:attribute_type) }
 
     # Validation
     it { expect(subject).to validate_presence_of(:price) }
@@ -31,7 +31,7 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1).only_integer }
 
     it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
-    before { subject.stub(:new_sku?) { true } }
+    # before { subject.stub(:new_sku?) { true } }
     it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:product_id, :active]) }
 
     describe "When creating a new SKU" do

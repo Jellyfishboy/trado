@@ -27,7 +27,7 @@ class StoreSetting < ActiveRecord::Base
 
   has_one :attachment,                                                  as: :attachable, :dependent => :destroy
 
-  validates :name, :email, :tax_name, :currency,                        :presence => true
+  validates :name, :email, :tax_name, :currency, :tax_rate,             :presence => true
 
   accepts_nested_attributes_for :attachment
   

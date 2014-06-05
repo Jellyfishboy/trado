@@ -18,28 +18,22 @@ class StockLevel < ActiveRecord::Base
 
   attr_accessible :adjustment, :description, :sku_id
 
+  belongs_to :sku
+
   validates :description, :adjustment,                      :presence => true
   validate :adjustment_value
-
-  belongs_to :sku
 
   before_save :stock_level_adjustment
 
   default_scope order('created_at DESC')
 
-  # Validation to check to prevent a negative stock value; if not the case modify the sku stock with the associated stock level adjustment value
+  # Modify the sku stock with the associated stock level adjustment value
   #
-  # @return [Boolean]
   def stock_level_adjustment
-    unless !Store::positive?(self.adjustment) && self.adjustment.abs > self.sku.stock
-      if Store::positive?(self.adjustment)
-        self.sku.update_column(:stock, self.sku.stock + self.adjustment)
-      else
-        self.sku.update_column(:stock, self.sku.stock - self.adjustment.abs)
-      end
+    if Store::positive?(self.adjustment)
+      self.sku.update_column(:stock, self.sku.stock + self.adjustment)
     else
-      errors.add(:stock_level, "can't reduce the SKU stock to a negative value.")
-      return false
+      self.sku.update_column(:stock, self.sku.stock - self.adjustment.abs)
     end
   end
 

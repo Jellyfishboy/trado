@@ -27,6 +27,10 @@ FactoryGirl.define do
                     create(:product_attachment, attachable: product)
                 end
             end
+
+            factory :tags_with_product do
+                tags { [create(:tag, name: 'tag #1'), create(:tag, name: 'tag #2'), create(:tag, name: 'tag #3')] }
+            end
         end
 
         factory :product_skus do 
