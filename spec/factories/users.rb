@@ -6,16 +6,18 @@ FactoryGirl.define do
         password { Faker::Lorem.characters(8) }
         password_confirmation { "#{password}" }
         remember_me false
-        role 'user'
 
-        factory :admin do
-            role 'admin'
+        factory :standard_user do
+            roles { [create(:role)] }
         end
 
-        factory :attached_admin do
-            role 'admin'
-            after(:create) do |user, evaluator|
-                create(:user_attachment, attachable: user)
+        factory :admin do
+            roles { [create(:role, name: 'admin')] }
+
+            factory :attached_admin do
+                after(:create) do |user, evaluator|
+                    create(:user_attachment, attachable: user)
+                end
             end
         end
     end

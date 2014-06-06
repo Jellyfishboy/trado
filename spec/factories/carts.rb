@@ -1,5 +1,6 @@
 FactoryGirl.define do
     factory :cart do
+        
         ignore do
             cart_item_count 3
         end

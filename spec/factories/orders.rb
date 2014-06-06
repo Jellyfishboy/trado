@@ -22,7 +22,7 @@ FactoryGirl.define do
         ignore do
             count 1
         end
-
+        
         factory :pending_order do
             # has_many through relationship generation
             transactions { [create(:transaction, payment_status: 'Pending')] }

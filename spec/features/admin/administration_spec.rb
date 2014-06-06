@@ -47,7 +47,7 @@ feature 'Administration management' do
         within '.alert' do
             expect(page).to have_content 'Profile was successfully updated.'
         end
-        admin = User.where('role = ?', 'admin').first
+        admin = User.includes(:roles).where('roles.name = ?', 'admin').first
         expect(admin.first_name).to eq 'Tom'
         expect(admin.last_name).to eq 'Dallimore'
     end

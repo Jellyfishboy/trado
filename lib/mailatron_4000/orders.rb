@@ -10,5 +10,16 @@ module Mailatron4000
             end
         end
 
+        # Depending on the payment_status of the order, the relevant email template is sent
+        #
+        # @param order [Object]
+        def self.confirmation_email order
+            if order.transactions.last.payment_status == "Pending"
+                OrderMailer.pending(order).deliver
+            else
+                OrderMailer.received(order).deliver
+            end
+        end
+
     end
 end

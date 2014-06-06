@@ -26,4 +26,28 @@ describe Mailatron4000::Orders do
         end
     end
 
+    describe "When completing an order" do
+
+        context "if the payment status is pending" do
+            let(:pending) { create(:pending_order) }
+
+            it "should send a pending email confirmation" do
+                expect{
+                    Mailatron4000::Orders.confirmation_email(pending)
+                }.to change {
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
+        end
+
+        context "if the payment status is completed" do
+            let(:completed) { create(:complete_order) }
+
+            it "should send a received email confirmation" do
+                expect{
+                    Mailatron4000::Orders.confirmation_email(completed)
+                }.to change {
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
+        end
+    end
 end

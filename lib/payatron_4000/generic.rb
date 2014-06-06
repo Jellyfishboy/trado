@@ -38,7 +38,7 @@ module Payatron4000
                                                                                        :id => steps.last
             )
             begin
-                Payatron4000::confirmation_email(order, order.transactions.last.payment_status)
+                Mailatron4000::Orders.confirmation_email(order)
             rescue
                 Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
             end

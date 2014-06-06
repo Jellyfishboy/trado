@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140602184359) do
+ActiveRecord::Schema.define(:version => 20140606124713) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -165,6 +165,13 @@ ActiveRecord::Schema.define(:version => 20140602184359) do
     t.boolean  "terms"
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -204,14 +211,9 @@ ActiveRecord::Schema.define(:version => 20140602184359) do
   add_index "related_products", ["related_id", "product_id"], :name => "index_related_products_on_related_id_and_product_id", :unique => true
 
   create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.string   "name",       :default => "user"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "searches", :force => true do |t|
@@ -332,7 +334,6 @@ ActiveRecord::Schema.define(:version => 20140602184359) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
-    t.string   "role",                   :default => "user"
     t.string   "first_name",             :default => "Joe"
     t.string   "last_name",              :default => "Bloggs"
   end

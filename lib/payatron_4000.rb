@@ -34,7 +34,7 @@ module Payatron4000
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
         end
-
+        
         # If address exists for an order, find and utilise it. If not, create a new address record
         #
         # @param order_id [Integer]
@@ -47,16 +47,6 @@ module Payatron4000
             end
         end
 
-        # Depending on the payment_status of the order, the relevant email template is sent
-        #
-        # @param order [Object]
-        # @param payment_status [String]
-        def confirmation_email order, payment_status
-            if payment_status == "Pending"
-                OrderMailer.pending(order).deliver
-            else
-                OrderMailer.received(order).deliver
-            end
-        end
+        
     end  
 end
