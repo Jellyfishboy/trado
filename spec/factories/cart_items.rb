@@ -21,9 +21,17 @@ FactoryGirl.define do
         end
 
         factory :update_cart_item_weight do
-            weight BigDecimal.new("13.5")
             after(:create) do |cart_item, evaluator|
-                accessory = create(:accessory, weight: BigDecimal.new("2.5"))
+                accessory = create(:accessory, weight: '2.5')
+                create(:cart_item_accessory, cart_item: cart_item, accessory: accessory)
+            end
+        end
+
+        # tier calculation factories 
+
+        factory :cart_item_1 do
+            after(:create) do |cart_item, evaluator|
+                accessory = create(:accessory, weight: '3.5')
                 create(:cart_item_accessory, cart_item: cart_item, accessory: accessory)
             end
         end

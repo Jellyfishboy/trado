@@ -40,7 +40,7 @@ group :test do
   gem 'guard-spork'
   # Testing postgresql on Travis CI
   gem 'pg'
-  gem 'email_spec'
+  # gem 'email_spec'
 end
 
 group :development, :test do

@@ -28,7 +28,7 @@ module Store
         #
         # @return [boolean]
         def positive? number
-          return true if number > 0
+          return number > 0 ? true : false
         end
 
         # Sets the record's active field to false

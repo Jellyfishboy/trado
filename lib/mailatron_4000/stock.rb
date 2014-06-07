@@ -7,7 +7,7 @@ module Mailatron4000
         end
 
         def self.notify
-            @skus = Sku.where('stock > stock_warning_level').joins("INNER JOIN notifications ON skus.id = notifications.notifiable_id").where('notifications.sent = ? ', false)
+            @skus = Sku.where('stock > stock_warning_level').includes(:notifications).where(:notifications => { :sent => false })
             @skus.each do |sku|
                 sku.notifications.each do |notify|
                     StockMailer.notification(sku, notify.email).deliver

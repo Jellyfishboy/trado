@@ -44,10 +44,23 @@ describe Order do
     end
 
     describe "Calculating an order" do
+        let!(:cart) { create(:full_cart) }
+        let!(:tax) { BigDecimal.new("0.2") }
+        let(:order) { create(:order) }
 
-        it "should update the order's net amount attribute"
-        it "should update the order's tax amount attribute"
-        it "should update the order's gross amount attribute"
+        before(:each) do
+            order.calculate(cart, tax)
+        end
+
+        it "should update the order's net amount attribute" do
+            expect(order.net_amount).to eq cart.total_price + order.shipping.price
+        end
+        it "should update the order's tax amount attribute" do
+            expect(order.tax_amount).to eq (cart.total_price + order.shipping.price) * tax
+        end
+        it "should update the order's gross amount attribute" do
+            expect(order.gross_amount).to eq (cart.total_price + order.shipping.price) + ((cart.total_price + order.shipping.price) * tax)
+        end
     end
 
     describe "Managing an order shipping" do
@@ -89,6 +102,22 @@ describe Order do
             expect(order.shipping_date_nil?).to be_false
         end
 
+        it "should return true if the shipping_date is not nil" do
+            expect(order_3.shipping_date_nil?).to be_true
+        end
+
+    end
+
+    describe "When calculating whether an order is completed" do
+        let(:complete) { create(:complete_order) }
+        let(:pending) { create(:pending_order) }
+        it "should return true if the any associated transactions have they payment_status attribute set to 'Completed" do
+            expect(complete.completed?).to be_true
+        end
+
+        it "should return false if there are no associated transaction records which have a their payment_status attribute set to 'Completed'" do
+            expect(pending.completed?).to be_false
+        end
     end
 
     describe "Multi form methods" do

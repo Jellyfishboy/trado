@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where('status = ?', 'active').joins(:transactions).group('orders.id').having('count(transactions.id) > ?', 0).order('orders.created_at desc').page(params[:page])
+    @orders = Order.where('status = ?', 'active').includes(:transactions).group('orders.id').having('count(transactions.id) > ?', 0).order('orders.created_at desc').page(params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }

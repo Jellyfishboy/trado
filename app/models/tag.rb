@@ -23,7 +23,7 @@ class Tag < ActiveRecord::Base
   def self.add value, product_id
     @tags = value.split(/,\s*/)   
     @tags.each do |t|
-        next unless Tag.where('name = ?', t).includes(:taggings).where(:taggings => { :product_id => product_id }).empty?
+        next unless Tag.where('name = ?', t).joins(:taggings).where(:taggings => { :product_id => product_id }).empty?
         new_tag = Tag.find_by_name(t).nil? ? Tag.create(name: t) : Tag.find_by_name(t)
         Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
     end
@@ -35,10 +35,10 @@ class Tag < ActiveRecord::Base
   # @return [nil]
   def self.del value, product_id
     if value.blank?
-      Tag.includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all 
+      Tag.joins(:taggings).where(:taggings => { :product_id => product_id }).destroy_all 
     else
       @tags = value.split(/,\s*/)
-      Tag.where('name NOT IN (?)', @tags).includes(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
+      Tag.where('name NOT IN (?)', @tags).joins(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
     end
   end
 

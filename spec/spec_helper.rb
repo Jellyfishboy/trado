@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'spork'
-require "email_spec"
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -39,10 +38,6 @@ Spork.prefork do
 
     # Devise helpers
     config.include Devise::TestHelpers, :type => :controller
-
-    # email_spec helpers/matchers
-    config.include(EmailSpec::Helpers)
-    config.include(EmailSpec::Matchers)
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false

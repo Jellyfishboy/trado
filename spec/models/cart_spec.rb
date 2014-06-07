@@ -9,9 +9,9 @@ describe Cart do
 
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
-        let!(:cart_item_1) { create(:cart_item, price: 12, quantity: 1, cart: cart) }
-        let!(:cart_item_2) { create(:cart_item, price: 6.50, quantity: 4, cart: cart) }
-        let!(:cart_item_3) { create(:cart_item, price: 3.20, quantity: 2, cart: cart) }
+        let!(:cart_item_1) { create(:cart_item, price: "12", quantity: 1, cart: cart) }
+        let!(:cart_item_2) { create(:cart_item, price: "6.50", quantity: 4, cart: cart) }
+        let!(:cart_item_3) { create(:cart_item, price: "3.20", quantity: 2, cart: cart) }
 
         it "should iterate through all cart items and calculate the sum" do
             expect(cart.cart_items.count).to eq 3
@@ -27,68 +27,6 @@ describe Cart do
 
         it "should remove any carts which are more than 12 hours old" do
             expect(Cart.clear_carts).to match_array([cart_2, cart_3])
-        end
-    end
-
-    describe "When adding a product to the cart" do
-
-        context "incrementing a current cart item" do
-
-            context "with accessory" do
-
-                it "should increment the cart items quantity and weight with the accessory weight"
-
-            end
-
-            context "without an accessory" do
-
-                it "should increment just the cart item's quantity and weight"
-
-            end
-
-
-        end
-
-        context "creating a new cart item" do
-
-            context "with accessory" do
-
-                it "should create a new cart item, with the weight and price of the accessory, and create a cart item accessory"
-
-            end
-
-            context "without an accessory" do
-
-                it "should create just a new cart item"
-
-            end
-
-        end
-
-    end
-
-    describe "When removing cart items from the cart" do
-
-        context "with quantity more than 0" do
-
-            context "with accessory" do
-
-                it "should decrement the cart items quantity and weight with the accessory weight"
-
-            end
-
-            context "without acccessory" do
-
-                it "should decrement just the cart item's quantity and weight"
-
-            end
-
-        end
-
-        context "with quantity at 0" do
-
-            it "should destroy the cart item"
-
         end
     end
 

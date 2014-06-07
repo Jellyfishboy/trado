@@ -1,16 +1,16 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-  # adapter: mysql2  # Rails 3.x uses the mysql2 adapter
-  # encoding: utf8
-  # database: gimson_robotics_db
-  # host: localhost 
-  # pool: 30
-  # username: root
-  # password:
-  # socket: /tmp/mysql.sock
+  # adapter: sqlite3
+  # database: db/development.sqlite3
+  # pool: 5
+  # timeout: 5000
+  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
+  encoding: utf8
+  database: gimson_robotics_db
+  host: localhost 
+  pool: 30
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
