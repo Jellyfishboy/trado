@@ -84,36 +84,47 @@ describe CartItem do
             end
         end
 
-        # context "if its updating an existing cart item" do
+        context "if its updating an existing cart item" do
 
-        #     context "and the cart item does not have an accessory" do
+            context "and the cart item does not have an accessory" do
+                let!(:current_cart) { create(:cart) }
+                let!(:sku) { create(:sku) }
+                let!(:cart_item_1) { create(:cart_item, cart: current_cart, sku: sku, quantity: 12) }
+                let!(:cart_item_2) { create(:cart_item, cart: current_cart, sku: sku, quantity: 14) }
+                let!(:accessory) { create(:accessory) }
+                let!(:cart_item_accessory) { create(:cart_item_accessory, cart_item: cart_item_2, accessory: accessory, quantity: 14) }
+                let(:param) { Hash({:accessory_id => accessory.id }) }
+                let(:build_cart_item) { CartItem.increment(sku, 3, param, current_cart) }
 
-        #         it "should update the cart item's quantity" do
+                it "should update the correct cart item's quantity" do
+                    expect{
+                        build_cart_item
+                    }.to change{
+                        cart_item_1.quantity
+                    }.from(12).to(15)
+                end
+                
+                it "should update the cart item's weight" do
 
-        #         end
+                end
 
-        #         it "should update the cart item's weight" do
+            end
 
-        #         end
+            # context "and the cart item has an accessory" do
 
-        #     end
+            #     it "should update the cart item's quantity" do
 
-        #     context "and the cart item has an accessory" do
+            #     end
 
-        #         it "should update the cart item's quantity" do
+            #     it "should update the cart item's weight, including the accessory weight" do
 
-        #         end
+            #     end
 
-        #         it "should update the cart item's weight, including the accessory weight" do
+            #     it "should update the associated cart item accessory quantity" do
 
-        #         end
-
-        #         it "should update the associated cart item accessory quantity" do
-
-        #         end
-
-        #     end
-        # end
+            #     end
+            # end
+        end
 
     end
 
