@@ -35,6 +35,13 @@ class CartItem < ActiveRecord::Base
   	price * quantity
   end
 
+  # Adds a new cart item or increases the quantity and weight of a cart item - including any assocated accessories
+  #
+  # @param sku [Object]
+  # @param quantity [String]
+  # @param accessory [String]
+  # @paam cart [Object]
+  # @return [Decimal] cart item
   def self.increment sku, quantity, accessory, cart
     accessory = Accessory.find(accessory[:accessory_id]) unless accessory.nil?
     current_item = accessory.blank? ? cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => nil }).first : cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => accessory.id }).first

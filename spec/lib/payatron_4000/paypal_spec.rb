@@ -10,13 +10,12 @@ describe Payatron4000::Paypal do
 
         it "should retrieve the details for the PayPal express session"
         it "should update the order with a token and payer_id"
-        it "should set the session paypal_email as the current PayPal user"
     end
 
     describe "Successful order" do
 
         it "should create a successful transaction"
-        it "should set the order status as active"
+        it "should set the order status attribute as 'active'"
     end
 
     describe "Failed order" do
@@ -26,8 +25,8 @@ describe Payatron4000::Paypal do
         # let(:failed) { Payatron4000::Paypal.failed(failed_response, order) }
 
         it "should create a transaction record"
-        it "should set the transaction record as failed"
-        it "should set the order status as active"
+        it "should set the transaction record payment type attribute as failed"
+        it "should set the order status attribute as 'active'"
     end
 
 end

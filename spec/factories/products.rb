@@ -39,6 +39,10 @@ FactoryGirl.define do
             end
         end
 
+        factory :build_product_skus do
+            skus { build_list(:sku, 3, active: true) }
+        end
+
         factory :product_sku_stock_count do
             after(:create) do |product, evaluator|
                 create(:sku, product: product, stock: 10, active: true)

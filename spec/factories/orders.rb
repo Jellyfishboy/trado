@@ -50,6 +50,16 @@ FactoryGirl.define do
             end
         end
 
+        factory :complete_accessory_order do
+            # has_many through relationship generation
+            transactions { [create(:transaction)] }
+            shipping_status { 'Dispatched' }
+
+            after(:create) do |order, evaluator|
+                create(:accessory_order_item, quantity: 5, order: order)
+            end
+        end
+
         factory :nil_actual_shipping_order do
             transactions { [create(:transaction, payment_status: 'Pending')] }
             actual_shipping_cost { nil }

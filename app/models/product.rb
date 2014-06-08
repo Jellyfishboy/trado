@@ -88,6 +88,7 @@ class Product < ActiveRecord::Base
   #
   # @return [Boolean]
   def single_product
+    
     if self.single && self.skus.map { |s| s.active }.count > 1
       errors.add(:single, " product cannot be set if the product has more than one SKU.")
       return false
