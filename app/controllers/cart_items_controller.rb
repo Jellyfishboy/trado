@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
   # POST /cart_items.json
   def create
     @sku = Sku.find(params[:cart_item][:sku_id])
-    @cart_item = CartItem.increment!(@sku, params[:cart_item][:quantity], params[:cart_item][:cart_item_accessory])
+    @cart_item = CartItem.increment!(@sku, params[:cart_item][:quantity], params[:cart_item][:cart_item_accessory], current_cart)
     # Need to query the database again since it will need to retrieve the quantity sum of cart_items with accessories and without accessories
     @quantity = current_cart.cart_items.where('sku_id = ?', @cart_item.sku_id).sum(:quantity) + @cart_item.quantity
     respond_to do |format|

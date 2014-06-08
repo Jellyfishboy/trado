@@ -35,18 +35,18 @@ class CartItem < ActiveRecord::Base
   	price * quantity
   end
 
-  def increment! sku, quantity, accessory
+  def self.increment sku, quantity, accessory, cart
     accessory = Accessory.find(accessory[:accessory_id]) unless accessory.nil?
-    current_item = accessory.blank? ? cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => nil }).first : cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => accessory.id }).first
+    current_item = accessory.blank? ? cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => nil }).first : cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => accessory.id }).first
 
     if (current_item && current_item.cart_item_accessory.nil?) || (current_item && !current_item.cart_item_accessory.nil?)
       current_item.update_quantity((current_item.quantity+quantity.to_i), accessory)
       current_item.update_weight(current_item.quantity, sku.weight, accessory)
     else 
       if accessory.blank?
-        current_item = cart_items.build(:price => sku.price, :sku_id => sku.id)
+        current_item = cart.cart_items.build(:price => sku.price, :sku_id => sku.id)
       else
-        current_item = cart_items.build(:price => (sku.price + accessory.price), :sku_id => sku.id)
+        current_item = cart.cart_items.build(:price => (sku.price + accessory.price), :sku_id => sku.id)
         current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory.id)
       end
       current_item.update_quantity(quantity.to_i, accessory)
