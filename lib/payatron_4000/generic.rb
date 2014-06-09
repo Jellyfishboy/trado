@@ -29,13 +29,12 @@ module Payatron4000
         # @param order [Object]
         # @param payment_type [String]
         # @param session [Object]
-        # @param steps [Array]
-        def self.complete order, payment_type, session, steps
+        def self.complete order, payment_type, session
             Payatron4000::Generic.successful(order, payment_type)
             Payatron4000::destroy_cart(session)
             order.reload
             redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
-                                                                                       :id => steps.last
+                                                                                       :id => 'confirm'
             )
             begin
                 Mailatron4000::Orders.confirmation_email(order)

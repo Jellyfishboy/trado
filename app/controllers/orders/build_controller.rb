@@ -26,7 +26,7 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :confirm
-      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], session, @order) if params[:token]
+      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token]
     end
     render_wizard
   end
@@ -86,9 +86,9 @@ class Orders::BuildController < ApplicationController
       if @order.update_attributes(params[:order])
         @order.transfer(current_cart) if @order.transactions.blank?
         unless session[:payment_type].nil?
-          Payatron4000::Generic.complete(@order, session[:payment_type], session, steps)
+          Payatron4000::Generic.complete(@order, session[:payment_type], session)
         else
-          Payatron4000::Paypal.complete(@order, session, steps)
+          Payatron4000::Paypal.complete(@order, session)
         end
       else
         render_wizard @order

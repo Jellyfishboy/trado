@@ -61,12 +61,9 @@ module Payatron4000
         #
         # @param token [String]
         # @param payer_id [Integer]
-        # @param session [Object]
         # @param order [Object]
-        def self.assign_paypal_token token, payer_id, session, order
-            details = EXPRESS_GATEWAY.details_for(token)
+        def self.assign_paypal_token token, payer_id, order
             order.update_attributes(:express_token => token, :express_payer_id => payer_id)
-            order.save!
         end
 
         # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
@@ -74,8 +71,7 @@ module Payatron4000
         #
         # @param order [Object]
         # @param session [Object
-        # @param steps [Array]
-        def self.complete order, session, steps
+        def self.complete order, session
           response = EXPRESS_GATEWAY.purchase(Payatron4000::singularize_price(order.gross_amount), 
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
@@ -88,7 +84,7 @@ module Payatron4000
             end
             order.reload
             redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
-                                                                                       :id => steps.last
+                                                                                       :id => 'confirm'
             )
             begin
               Mailatron4000::Orders.confirmation_email(order)
@@ -102,7 +98,7 @@ module Payatron4000
               Rollbar.report_exception(e)
             end
             redirect_to Rails.application.routes.url_helpers.failure_order_build_url( :order_id => order.id, 
-                                                                                      :id => steps.last, 
+                                                                                      :id => 'confirm', 
                                                                                       :response => response.message, 
                                                                                       :error_code => response.params["error_codes"]
             )

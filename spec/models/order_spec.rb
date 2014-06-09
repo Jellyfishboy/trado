@@ -47,7 +47,6 @@ describe Order do
         let!(:cart) { create(:full_cart) }
         let!(:tax) { BigDecimal.new("0.2") }
         let(:order) { create(:order) }
-
         before(:each) do
             order.calculate(cart, tax)
         end

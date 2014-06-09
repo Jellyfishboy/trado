@@ -1,3 +1,5 @@
+require 'store/price'
+
 module Store
 
     class << self

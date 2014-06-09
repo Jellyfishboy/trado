@@ -73,5 +73,9 @@ FactoryGirl.define do
         factory :cheque_order do
             transactions { [create(:transaction, payment_status: 'Pending', payment_type: 'Cheque')] }
         end
+
+        factory :bank_transfer_order do
+            transactions { [create(:transaction, payment_status: 'Pending', payment_type: 'Bank transfer')] }
+        end
     end
 end

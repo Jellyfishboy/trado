@@ -95,9 +95,10 @@ feature 'Product management' do
         find('#product_single').set(true)
         find("#product_accessory_ids_").set(true)
         click_button 'Submit'
-        sleep 2
-
+        sleep 5
+        
         expect(current_path).to eq admin_products_path
+
         within 'h2' do
             expect(page).to have_content 'Products'
         end 

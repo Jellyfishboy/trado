@@ -41,7 +41,7 @@ describe Payatron4000 do
             end
         end
 
-        context "if the order item does not have an accessory" do
+        context "if the order item has an accessory" do
             let(:order) { create(:complete_accessory_order) }
 
             it "should have the order id and accessory name in the description" do
@@ -52,8 +52,8 @@ describe Payatron4000 do
     end
 
     describe "After successfully completing an order" do
-        let!(:cart) { create(:cart) }
-        let!(:session) { Hash({:cart_id => cart.id}) }
+        let(:cart) { create(:cart) }
+        let(:session) { Hash({:cart_id => cart.id}) }
         let(:destroy_cart) { Payatron4000::destroy_cart(session) }
 
         it "should destroy the originating cart and it's cart items" do

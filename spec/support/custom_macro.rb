@@ -16,8 +16,8 @@ module CustomMacro
             admin = create(:attached_admin)
 
             visit admin_root_path
-            fill_in 'Email', with: admin.email
-            fill_in 'Password', with: admin.password
+            fill_in('user_email', with: admin.email)
+            fill_in('user_password', with: admin.password)
             click_button 'Login'
         end
     end
