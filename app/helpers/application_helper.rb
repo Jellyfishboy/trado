@@ -36,14 +36,6 @@ module ApplicationHelper
         render("admin/products/" + association.to_s + "/fields", :f => builder)
       end
     end
-
-    # Returns a string of a formatted currency, using the currency unit and tax rate set in the Store settings
-    #
-    # @param net_price [Decimal]
-    # @return [String] gross price with the currency value outlined in the store settings
-    def gross_price  net_price
-      format_currency net_price*Store::tax_rate + net_price
-    end
     
     # If the string parameter equals the current controller value in the parameters hash, return a string
     #
@@ -128,21 +120,29 @@ module ApplicationHelper
     def table_commands object, show, edit, delete, type
       render :partial => 'shared/table_actions', :locals => { :object => object, :view => show, :edit => edit, :del => delete, :type => type }
     end
+
+    # # Returns a string of a formatted currency, using the currency unit and tax rate set in the Store settings
+    # #
+    # # @param net_price [Decimal]
+    # # @return [String] gross price with the currency value outlined in the store settings
+    # def gross_price  net_price
+    #   format_currency net_price*Store::tax_rate + net_price
+    # end
     
-    # Controllers within the admin namespace do not enable this method to be subject to tax
-    # Controllers within the storefront enable this method to be subject to tax
-    # If the StoreSetting tax_breakdown property is set to false
-    # However if the StoreSetting tax_breakdown property is set to true
-    # The method is not subject to tax, but 'inc. VAT' text snippets appear, which utilise the gross_price method labelled above
-    #
-    # @param price [Decimal]
-    # @return [String] price with the currency value outlined in the store settings, and additional tax if required
-    def format_currency price
-        if defined?(params)
-            price = Store::settings.tax_breakdown ? price : price*Store::tax_rate+price unless !defined?(params) && params[:controller].split('/').first == 'admin'
-        end
-        number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
-    end
+    # # Controllers within the admin namespace do not enable this method to be subject to tax
+    # # Controllers within the storefront enable this method to be subject to tax
+    # # If the StoreSetting tax_breakdown property is set to false
+    # # However if the StoreSetting tax_breakdown property is set to true
+    # # The method is not subject to tax, but 'inc. VAT' text snippets appear, which utilise the gross_price method labelled above
+    # #
+    # # @param price [Decimal]
+    # # @return [String] price with the currency value outlined in the store settings, and additional tax if required
+    # def format_currency price
+    #     if defined?(params)
+    #         price = Store::settings.tax_breakdown ? price : price*Store::tax_rate+price unless !defined?(params) && params[:controller].split('/').first == 'admin'
+    #     end
+    #     number_to_currency(price, :unit => Store::settings.currency, :precision => (price.round == price) ? 0 : 2)
+    # end
     
     # Creates HTML elements and an error associated with the attribute, if one exists
     #

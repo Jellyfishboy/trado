@@ -5,14 +5,6 @@ module Payatron4000
 
     class << self
 
-        # Convert a price into single digit currency
-        #
-        # @param price [Decimal]
-        # @return [Decimal] price of an item
-        def singularize_price price
-            (price*100).round
-        end
-
         # Creates a new stock level record for each order_item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
         #
