@@ -104,7 +104,7 @@ class Orders::BuildController < ApplicationController
   #
   def express
     session[:payment_type] = nil
-    response = EXPRESS_GATEWAY.setup_purchase(Payatron4000::singularize_price(@order.gross_amount), 
+    response = EXPRESS_GATEWAY.setup_purchase(Store::Price.new(@order.gross_amount, 'net').singularize, 
                                               Payatron4000::Paypal.express_setup_options( @order, 
                                                                                           steps, 
                                                                                           current_cart,

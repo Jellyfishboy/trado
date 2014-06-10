@@ -62,6 +62,13 @@ class CartItem < ActiveRecord::Base
     current_item
   end
 
+  # def self.updated_sku_weight product
+  #   CartItem.where(:sku_id => product.skus.map(&:id))
+  #   product.skus.each do |sku|
+  #     cart_item = CartItem.where(:sku_id => 1).select('id, weight, quantity').first
+  #     cart_item
+
+  # end
 
   # Decreases the quantity and weight of a cart item, including any associated accessories
   #
