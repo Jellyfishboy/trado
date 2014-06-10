@@ -26,7 +26,7 @@
               %td= accessory.part_number
               %td= accessory.name
               %td= accessory.weight
-              %td= format_currency accessory.cost_value
-              %td= format_currency accessory.price
-              %td= gross_price accessory.price
+              %td= Store::Price.new(accessory.cost_value, 'net').format
+              %td= Store::Price.new(accessory.price, 'net').format
+              %td= Store::Price.new(accessory.price, 'gross').format
               = table_commands accessory, accessory, edit_admin_accessory_path(accessory), admin_accessory_path(accessory), 0

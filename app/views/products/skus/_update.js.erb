@@ -1,10 +1,7 @@
 <%  @accessory_price = Accessory.where('id = ?', params[:accessory_id]).pluck(:price).first ? Accessory.where('id = ?', params[:accessory_id]).pluck(:price).first : 0
     @sku = Sku.find(params[:sku_id])
     @notification = Notification.new %>
-$('.product-title .price').html('<%= format_currency (@sku.price+@accessory_price) %>');
-<% if Store::settings.tax_breakdown %>
-    $('.product-title .gross_price').html('<%= gross_price (@sku.price+@accessory_price) %> inc. <%= Store::settings.tax_name %>');
-<% end %>
+$('.product-title .price').html('<%= Store::Price.new(@sku.price+@accessory_price).markup %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
     $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"fa fa-envelope\"></i> &nbsp; Notify me</a>");

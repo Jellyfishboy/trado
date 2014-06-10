@@ -6,6 +6,6 @@
 %td= @sku.attribute_type.name
 %td= @sku.stock
 %td= @sku.stock_warning_level
-%td= format_currency @sku.cost_value
-%td= format_currency @sku.price
+%td= Store::Price.new(@sku.cost_value, 'net').format
+%td= Store::Price.new(@sku.price, 'net').format
 = table_commands @sku, admin_products_sku_path(@sku), edit_admin_products_sku_path(@sku), admin_products_sku_path(@sku), 1

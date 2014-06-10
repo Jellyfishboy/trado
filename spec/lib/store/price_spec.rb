@@ -65,4 +65,27 @@ describe Store::Price do
         end
     end
 
+    describe "When rendering price markup for a view" do
+
+        context "if the tax breakdown Store setting is true" do
+            let(:sku) { create(:sku, price: '48.93') }
+
+            it "should have the correct elements" do
+                Store::reset_settings
+                StoreSetting.destroy_all
+                create(:store_setting, tax_breakdown: true)
+                Store::settings
+                expect(Store::Price.new(sku.price).markup).to include("<span>#{Store::Price.new(sku.price, 'gross').format}</span>")
+            end
+        end
+
+        context "if the tax breakdown Store setting is false" do
+            let(:sku) { create(:sku, price: '48.93') }
+
+            it "should have the correct elements" do
+                expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).format}</span>")
+            end
+        end
+    end
+
 end

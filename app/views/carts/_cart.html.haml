@@ -5,8 +5,7 @@
       (
       = current_cart.cart_items.sum('quantity')
       )
-  %p.dark-clr.hidden-tablet= format_currency current_cart.total_price
-  = excluding_tax
+  %p.dark-clr.hidden-tablet= Store::Price.new(current_cart.total_price).format
   = link_to new_order_path, :class => 'btn btn-danger' do
     %i.fa.fa-shopping-cart
 .open-panel
@@ -34,16 +33,12 @@
             = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
               %i.fa.fa-times-circle
         .price
-          %strong= format_currency item.total_price
-          = excluding_tax
+          %strong= Store::Price.new(item.total_price).format
     .summary
       .line
         .row-fluid
-          .span6 
-            Subtotal
-            = excluding_tax
-            = ":"
-          .span6.align-right.size-16= format_currency current_cart.total_price
+          .span6 Subtotal
+          .span6.align-right.size-16= Store::Price.new(current_cart.total_price).format
     .proceed
       = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT

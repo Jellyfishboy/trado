@@ -28,7 +28,7 @@
               %td= product.part_number
               %td{width: "85"}= image_tag product.attachments.first.file.square, :height => "75", :width => "75"
               %td= link_to product.name, [product.category, product]
-              %td= format_currency product.skus.first.price
-              %td= gross_price product.skus.first.price
+              %td= Store::Price.new(product.skus.first.price, 'net').format
+              %td= Store::Price.new(product.skus.first.price, 'gross').format
               = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
               

@@ -36,14 +36,12 @@
             %span.light= @product.name
           .meta
             %span.tag.price
-              = format_currency @skus.first.price
-              = excluding_tax
+              = Store::Price.new(@skus.first.price).markup
             %span.stock
               - if @skus.first.stock > 0
                 %span.btn.btn-success In Stock
               - else 
                 %span.btn.btn-danger Out of Stock
-            %div.gross_price= "#{gross_price @skus.first.price} inc. #{Store::settings.tax_name}".html_safe if Store::settings.tax_breakdown
         .product-description
           %p= @product.short_description
           %hr/
@@ -156,7 +154,7 @@
                     = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
                 .main-titles.no-margin
                   %h4.title
-                    %span= format_currency product.skus.first.price
+                    %span= Store::Price.new(product.skus.first.price).markup
                   %h5.no-margin= truncate product.name, :length => 35
                 %p.desc= truncate product.short_description
           / /product

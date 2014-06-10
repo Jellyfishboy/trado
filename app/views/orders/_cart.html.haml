@@ -10,7 +10,7 @@
     %td.qty
       = form_for item, :remote => true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
-    %td.price= format_currency item.total_price
+    %td.price= Store::Price.new(item.total_price).format
   - unless item.cart_item_accessory.blank?
     %tr.accessory_row
       %td.image
@@ -27,4 +27,4 @@
 %tr
   %td.stronger Subtotal:
   %td.stronger
-    .size-16.align-right.total_price= format_currency current_cart.total_price
+    .size-16.align-right.total_price= Store::Price.new(current_cart.total_price).format

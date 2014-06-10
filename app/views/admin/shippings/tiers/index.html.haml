@@ -42,5 +42,5 @@
                     %li
                       = shipping.name
                       = ' - '
-                      %b= format_currency shipping.price
+                      %b= Store::Price.new(shipping.price, 'net').format
               = table_commands tier, tier, edit_admin_shippings_tier_path(tier), admin_shippings_tier_path(tier), 0

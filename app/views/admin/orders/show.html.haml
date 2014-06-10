@@ -35,7 +35,7 @@
           %i.icon-coin
           = succeed ":" do
             %b Actual shipping cost
-          = format_currency @order.actual_shipping_cost unless @order.actual_shipping_cost.nil?
+          = Store::Price.new(@order.actual_shipping_cost, 'net').format unless @order.actual_shipping_cost.nil?
   .fourcol
     .widget-sub-heading
       %h3 Billing address
@@ -90,29 +90,29 @@
                 - unless item.order_item_accessory.nil?
                   .item-sub.label.label-blue= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
               %td= item.sku.full_sku
-              %td= format_currency item.price
+              %td= Store::Price.new(item.price, 'net').format
               %td= item.quantity
-              %td= format_currency item.total_price
+              %td= Store::Price.new(item.total_price, 'net').format
           %tr
             %td
               = @order.shipping.name
               .item-sub= @order.ship_address.country
             %td -
-            %td= format_currency @order.shipping.price
+            %td= Store::Price.new(@order.shipping.price, 'net').format
             %td 1
-            %td= format_currency @order.shipping.price
+            %td= Store::Price.new(@order.shipping.price, 'net').format
           %tr
             %td.align-right.border-top{colspan: "4"}
               %b Subtotal:
-            %td.border-top= format_currency @order.net_amount
+            %td.border-top= Store::Price.new(@order.net_amount, 'net').format
           %tr
             %td.align-right{colspan: "4"}
               %b Tax:
-            %td= format_currency @order.tax_amount
+            %td= Store::Price.new(@order.tax_amount, 'net').format
           %tr.focused
             %td.align-right{colspan: "4"}
               %b Total:
-            %td= format_currency @order.gross_amount
+            %td= Store::Price.new(@order.gross_amount, 'net').format
     .widget-sub-heading
       %h3 Transactions
     .table-responsive
@@ -135,9 +135,9 @@
               %td= transaction.payment_type 
               %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id
               %td= payment_status transaction.payment_status
-              %td= format_currency transaction.fee
-              %td= format_currency transaction.net_amount
-              %td= format_currency transaction.gross_amount
+              %td= Store::Price.new(transaction.fee, 'net').format
+              %td= Store::Price.new(transaction.net_amount, 'net').format
+              %td= Store::Price.new(transaction.gross_amount, 'net').format
               %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
               - if transaction.payment_status == 'Pending' && transaction.payment_type != 'express-checkout'
                 = table_commands transaction, nil, nil, nil, 3

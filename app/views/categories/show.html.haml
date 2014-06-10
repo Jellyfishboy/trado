@@ -48,8 +48,7 @@
 
                     .main-titles.no-margin
                       %h4.title
-                        = price_range(product)
-                        = excluding_tax
+                        = Store::Price.new(product.skus.first.price, true).markup
                       %h5.no-margin.isotope--title= truncate product.name, :length => 35
         %hr/
       / /main content

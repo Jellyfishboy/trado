@@ -160,7 +160,8 @@ module ApplicationHelper
     # Creates a JavaScript tag, targeting the associated JavaScript file within the asset pipeline
     # This method is used for page specific JavaScript files
     #
-    # @param files [Object]
+    # @overload set(value)
+    #   @param [String] javascript file name
     # @return [String] javascript tags
     def javascript(*files)
       content_for(:footer) { javascript_include_tag(*files) }

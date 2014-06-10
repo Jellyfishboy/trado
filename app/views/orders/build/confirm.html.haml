@@ -75,7 +75,7 @@
                         = item.sku.product.name
                         %div= sku_attribute_values(item.sku, item.sku.product.single)
                       %td.qty= item.quantity
-                      %td.price= format_currency item.total_price
+                      %td.price= Store::Price.new(item.total_price).format
                     - unless item.cart_item_accessory.blank?
                       %tr.accessory_row
                         %td.image
@@ -91,26 +91,26 @@
                       = @order.shipping.name
                       %div= @order.ship_address.country
                     %td.qty 1
-                    %td.price= format_currency @order.shipping.price
+                    %td.price= Store::Price.new(@order.shipping.price).format
                   - if Store::settings.tax_breakdown
                     %tr
                       %td{colspan: "2"}
                       \ 
                       %td.stronger Subtotal:
                       %td.stronger
-                        .align-right= format_currency(@order.net_amount)
+                        .align-right= Store::Price.new(@order.net_amount).format
                     %tr
                       %td{colspan: "2", rowspan: "1"}
                       \ 
                       %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
                       %td.stronger
-                        .align-right= format_currency(@order.tax_amount)
+                        .align-right= Store::Price.new(@order.tax_amount).format
                   %tr
                     %td{colspan: "2", rowspan: "1"}
 
                     %td.stronger Total:
                     %td.stronger
-                      .size-16.align-right.total_price= format_currency(@order.net_amount)
+                      .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').format
               %div.right-align.terms-checkbox 
                 = f.check_box :terms
                 = errors_for @order, :terms

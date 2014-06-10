@@ -33,6 +33,6 @@
                     %li
                       = zone.name
               %td= shipping.tiers.map(&:id).join(', ')
-              %td= format_currency shipping.price
-              %td= gross_price shipping.price
+              %td= Store::Price.new(shipping.price, 'net').format
+              %td= Store::Price.new(shipping.price, 'gross').format
               = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  0

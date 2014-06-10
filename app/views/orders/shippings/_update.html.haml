@@ -9,4 +9,4 @@
         = radio_button_tag "order[shipping_id]", shipping.id, :checked => 'checked'
         %h5= shipping.name
         %p= shipping.description
-        %h6= format_currency shipping.price
+        %h6= Store::Price.new(shipping.price).markup

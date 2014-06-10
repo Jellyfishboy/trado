@@ -1,0 +1,4 @@
+.price
+    = range ? "from #{net}" : net
+    - unless gross.nil? || range
+        %span= number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2) 

@@ -5,7 +5,7 @@ module ProductHelper
     end
 
     def accessory_details accessory
-        "#{accessory.name} (+#{format_currency(accessory.price)})".html_safe
+        "#{accessory.name} (+#{Store::Price.new(accessory.price).format})".html_safe
     end
 
     def coloured_row adjustment

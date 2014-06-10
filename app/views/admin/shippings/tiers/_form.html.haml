@@ -40,7 +40,7 @@
                 = check_box_tag "tier[shipping_ids][]", shipping.id, @tier.shipping_ids.include?(shipping.id)
                 = shipping.name
                 = ' - '
-                %b= format_currency shipping.price
+                %b= Store::Price.new(shipping.price, 'net').format
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
