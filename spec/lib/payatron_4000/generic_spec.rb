@@ -44,14 +44,14 @@ describe Payatron4000::Generic do
         end
     end
 
-    # describe "When completing an order" do
-    #     let(:order) { create(:order) }
-    #     let(:cart) { create(:cart) }
-    #     let(:session) { Hash({:cart_id => cart.id}) }
+    describe "When completing an order" do
+        let(:order) { create(:order) }
+        let(:cart) { create(:cart) }
+        let(:session) { Hash({:cart_id => cart.id}) }
 
-    #     it "should redirect to the succesful order page" do
-    #         expect(Payatron4000::Generic.complete(order, 'Cheque', session)).to redirect_to(success_order_build_url(:order_id => order.id, :id => 'confirm'))
-    #     end
-    # end
+        it "should redirect to the succesful order page" do
+            expect(Payatron4000::Generic.complete(order, 'Cheque', session)).to redirect_to(success_order_build_url(:order_id => order.id, :id => 'confirm'))
+        end
+    end
 
 end

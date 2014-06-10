@@ -2,14 +2,6 @@ require 'spec_helper'
 
 describe Payatron4000 do
 
-    describe "When sending order information to third party services" do
-        let(:sku) { create(:sku, price: BigDecimal.new("12.50"), stock: 20) }
-
-        it "should return a price in a single integer" do
-            expect(Payatron4000::singularize_price(sku.price)).to eq 1250
-        end   
-    end
-
     describe "After creating a transaction record for the associated order" do
         let(:order) { create(:complete_order) }
         let(:update) { Payatron4000::stock_update(order) }

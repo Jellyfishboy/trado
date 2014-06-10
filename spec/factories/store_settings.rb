@@ -2,9 +2,9 @@ FactoryGirl.define do
     factory :store_setting do
         name { Faker::Lorem.word }
         email { Faker::Internet.email }
-        currency { Faker::Lorem.characters(1) }
+        currency { '£' }
         tax_name { Faker::Lorem.word }
-        sequence(:tax_rate) { |n| n }
+        tax_rate { '20.0' }
         tax_breakdown { false }
         ga_code { Faker::Lorem.characters(8) }
         ga_active { true }

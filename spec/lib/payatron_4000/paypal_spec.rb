@@ -102,26 +102,26 @@ describe Payatron4000::Paypal do
         end
     end
 
-    # describe "When completing an order" do
+    describe "When completing an order" do
 
-    #     context "if the payment was successful" do
-    #         let(:cart) { create(:cart) }
-    #         let(:session) { Hash({:cart_id => cart.id}) }
-    #         let(:order) { create(:order) }
+        context "if the payment was successful" do
+            let(:cart) { create(:cart) }
+            let(:session) { Hash({:cart_id => cart.id}) }
+            let(:order) { create(:order) }
 
-    #         it "should redirect to the succesful order page" do
-    #             # Payatron4000::Paypal.complete.stub(:response).and_return(OpenStruct.new(:success => true))
-    #             expect(Payatron4000::Paypal.complete(order, session)).to redirect_to(success_order_build_url(:order_id => order.id, :id => 'confirm'))
-    #         end
-    #     end
+            it "should redirect to the succesful order page" do
+                # Payatron4000::Paypal.complete.stub(:response).and_return(OpenStruct.new(:success => true))
+                expect(Payatron4000::Paypal.complete(order, session)).to redirect_to(success_order_build_url(:order_id => order.id, :id => 'confirm'))
+            end
+        end
 
-    #     context "if the payment was unsuccessful" do
+        context "if the payment was unsuccessful" do
 
-    #         it "should redirect to the failed order page" do
+            it "should redirect to the failed order page" do
 
-    #         end
-    #     end
-    # end
+            end
+        end
+    end
 
     describe "Successful order" do
         let(:order) { create(:order) }
