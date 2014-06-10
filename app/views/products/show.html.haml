@@ -154,7 +154,7 @@
                     = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
                 .main-titles.no-margin
                   %h4.title
-                    %span= Store::Price.new(product.skus.first.price).markup
+                    %span= Store::Price.new(product.skus.first.price, true).markup
                   %h5.no-margin= truncate product.name, :length => 35
                 %p.desc= truncate product.short_description
           / /product
