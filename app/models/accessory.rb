@@ -33,11 +33,24 @@ class Accessory < ActiveRecord::Base
   validates :name, :part_number,                    :presence => true, :uniqueness => { :scope => :active }
   validates :part_number,                           :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
 
+  after_update :update_cart_item_accessories_weight
+
   # Grabs an array of records which have their active field set to true
   #
   # @return [Array] list of active accessories
   def self.active
     where(['accessories.active = ?', true])
+  end
+
+  # If the record's weight has changed, update all associated cart_item_accessorie parent cart_item records with the new weight
+  #
+  def update_cart_item_accessories_weight
+    if self.weight_changed?
+      cart_item_accessories = CartItemAccessory.where(:accessory_id => id)
+      cart_item_accessories.each do |item|
+        item.cart_item.update_column(:weight, (item.quantity*(item.cart_item.sku.weight + weight)))
+      end
+    end
   end
 
 end

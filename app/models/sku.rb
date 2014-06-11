@@ -48,6 +48,8 @@ class Sku < ActiveRecord::Base
   validates :attribute_value, :code,                                  :uniqueness => { :scope => [:product_id, :active] }
   # validates :code,                                                    :uniqueness => { :scope => [:product_id, :active] }, :if => :new_sku?
 
+  after_update :update_cart_items_weight
+
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
   #
   # @return [Boolean]
@@ -63,6 +65,15 @@ class Sku < ActiveRecord::Base
   # @return [Array] list of active skus
   def self.active
     where(['skus.active = ?', true])
+  end
+
+  # If the record's weight has changed, update all associated cart_items records with the new weight
+  #
+  def update_cart_items_weight
+    cart_items = CartItem.where(:sku_id => id)
+    cart_items.each do |item|
+      item.update_column(:weight, (weight*item.quantity))
+    end
   end
 
   # # Validate wether the current record is new

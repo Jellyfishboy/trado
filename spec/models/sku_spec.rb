@@ -61,4 +61,15 @@ describe Sku do
         end
     end
 
+    describe "After updating a SKU" do
+        let!(:sku) { create(:sku, weight: '2.4') }
+        let!(:cart_item) { create(:cart_item, quantity: 4, weight: '9.6', sku: sku) }
+
+        it "should update the associated cart_item records weight" do
+            expect(cart_item.weight).to eq BigDecimal.new("9.6")
+            sku.update_attributes(:weight => '4.4')
+            cart_item.reload
+            expect(cart_item.weight).to eq BigDecimal.new("17.6")
+        end
+    end
 end

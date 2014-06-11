@@ -32,4 +32,18 @@ describe Accessory do
         end
     end
 
+    describe "After updating an accessory" do
+        let!(:accessory) { create(:accessory, weight: '2.3') }
+        let!(:sku) { create(:sku, weight: '14.9') }
+        let!(:cart_item) { create(:cart_item, weight: '44.5', quantity: 5, sku: sku) }
+        let!(:cart_item_accessory) { create(:cart_item_accessory, accessory: accessory, quantity: 5, cart_item: cart_item) }
+
+        it "should update any associated cart_item_accessories with the new weight" do
+            expect(cart_item.weight).to eq BigDecimal.new("44.5")
+            accessory.update_attributes(:weight => '3.4')
+            cart_item.reload
+            expect(cart_item.weight).to eq BigDecimal.new("91.5")
+        end
+    end
+
 end
