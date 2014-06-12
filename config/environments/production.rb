@@ -87,6 +87,7 @@ Trado::Application.configure do
 
   # Paypal
   config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = Settings.mailer.production.host
     paypal_options = {
       login: Settings.paypal.production.login,
       password: Settings.paypal.production.password,

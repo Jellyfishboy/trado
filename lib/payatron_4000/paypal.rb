@@ -83,25 +83,19 @@ module Payatron4000
               Rollbar.report_exception(e)
             end
             order.reload
-            redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
-                                                                                       :id => 'confirm'
-            )
             begin
               Mailatron4000::Orders.confirmation_email(order)
             rescue
                 Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
             end
+            return Rails.application.routes.url_helpers.success_order_build_url(:order_id => order.id, :id => 'confirm')
           else
             begin
               Payatron4000::Paypal.failed(response, order)
             rescue Exception => e
               Rollbar.report_exception(e)
             end
-            redirect_to Rails.application.routes.url_helpers.failure_order_build_url( :order_id => order.id, 
-                                                                                      :id => 'confirm', 
-                                                                                      :response => response.message, 
-                                                                                      :error_code => response.params["error_codes"]
-            )
+            return Rails.application.routes.url_helpers.failure_order_build_url( :order_id => order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
           end
         end
 

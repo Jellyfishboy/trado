@@ -33,14 +33,12 @@ module Payatron4000
             Payatron4000::Generic.successful(order, payment_type)
             Payatron4000::destroy_cart(session)
             order.reload
-            redirect_to Rails.application.routes.url_helpers.success_order_build_url(  :order_id => order.id, 
-                                                                                       :id => 'confirm'
-            )
             begin
                 Mailatron4000::Orders.confirmation_email(order)
             rescue
                 Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
             end
+            return Rails.application.routes.url_helpers.success_order_build_url(:order_id => order.id, :id => 'confirm')
         end
     end
 end

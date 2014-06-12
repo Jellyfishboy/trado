@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Payatron4000::Generic do
 
+    store_setting
+
     describe "When creating a successful order" do
         let(:order) { create(:order, status: 'billing') }
         let(:successful_order) { Payatron4000::Generic.successful(order, nil)}
@@ -48,9 +50,23 @@ describe Payatron4000::Generic do
         let(:order) { create(:order) }
         let(:cart) { create(:cart) }
         let(:session) { Hash({:cart_id => cart.id}) }
+        let(:successful_order) { Payatron4000::Generic.complete(order, 'Cheque', session) }
 
-        it "should redirect to the succesful order page" do
-            expect(Payatron4000::Generic.complete(order, 'Cheque', session)).to redirect_to(success_order_build_url(:order_id => order.id, :id => 'confirm'))
+        it "should create a new transaction record" do
+            expect{
+                successful_order
+            }.to change(Transaction, :count).by(1)
+        end
+
+        it "should result in an email being sent" do
+            expect{
+                successful_order
+            }.to change {
+                ActionMailer::Base.deliveries.count }.by(1)
+        end
+
+        it "should return a redirect URL to the succesful order page" do
+            expect(successful_order).to eq "http://localhost:3000/orders/#{order.id}/build/confirm/success"
         end
     end
 

@@ -53,6 +53,7 @@ Trado::Application.configure do
 
   # PayPal settings
   config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = Settings.mailer.development.host
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
       login: Settings.paypal.development.login,

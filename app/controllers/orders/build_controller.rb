@@ -86,10 +86,12 @@ class Orders::BuildController < ApplicationController
       if @order.update_attributes(params[:order])
         @order.transfer(current_cart) if @order.transactions.blank?
         unless session[:payment_type].nil?
-          Payatron4000::Generic.complete(@order, session[:payment_type], session)
+          url = Payatron4000::Generic.complete(@order, session[:payment_type], session)
         else
-          Payatron4000::Paypal.complete(@order, session)
+          url = Payatron4000::Paypal.complete(@order, session)
         end
+        binding.pry
+        redirect_to url
       else
         render_wizard @order
       end

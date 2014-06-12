@@ -5,14 +5,14 @@ mailer:
         domain: localhost:3000
         user_name: user@example.com
         password: password123
-        host: http://localhost:3000
+        host: localhost:3000
     production:
         server: smtp.example.com
         port: 587
         domain: 10.1.2.56
         user_name: user@example.com
         password: password123
-        host: http://10.1.2.56
+        host: 10.1.2.56
 paypal:
     development:
         login: user@example.com
