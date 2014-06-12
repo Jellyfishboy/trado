@@ -44,7 +44,7 @@ describe Payatron4000 do
     end
 
     describe "After successfully completing an order" do
-        let(:cart) { create(:cart) }
+        let!(:cart) { create(:cart) }
         let(:session) { Hash({:cart_id => cart.id}) }
         let(:destroy_cart) { Payatron4000::destroy_cart(session) }
 

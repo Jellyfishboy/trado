@@ -3,6 +3,6 @@
 %td= link_to @transaction.paypal_id, "#{Global.paypal.transaction_link}#{@transaction.paypal_id}", :target => '_blank' if @transaction.paypal_id
 %td= payment_status @transaction.payment_status
 %td= Store::Price.new(@transaction.fee, 'net').format
-%td= Store::Price.new(transaction.net_amount, 'net').format
+%td= Store::Price.new(@transaction.net_amount, 'net').format
 %td= Store::Price.new(@transaction.gross_amount, 'net').format
 %td.align-left= @transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
