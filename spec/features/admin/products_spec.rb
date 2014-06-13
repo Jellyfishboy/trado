@@ -310,7 +310,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 2)
-        find('div.current-file:last-child a:last-child').click
+        find('div.current-file:first-child a:last-child').click
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
         expect(product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do
@@ -330,7 +330,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        find('div.current-file:last-child a:last-child').click
+        find('div.current-file:first-child a:last-child').click
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
         within '.failed-attachment-destroy-alert' do
             expect(page).to have_content 'Failed to remove the attachment from the database (you must have at least one image attachment per product).'

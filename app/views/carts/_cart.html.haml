@@ -5,7 +5,7 @@
       (
       = current_cart.cart_items.sum('quantity')
       )
-  %p.dark-clr.hidden-tablet= Store::Price.new(current_cart.total_price).format
+  %p.dark-clr.hidden-tablet= Store::Price.new(current_cart.total_price).markup
   = link_to new_order_path, :class => 'btn btn-danger' do
     %i.fa.fa-shopping-cart
 .open-panel
