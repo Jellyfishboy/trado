@@ -36,9 +36,11 @@ feature 'Product management' do
     #     within '#breadcrumbs li.current' do
     #         expect(page).to have_content 'New'
     #     end
+    #     script = "$('input[type=file]').show();"
+    #     page.execute_script(script)
     #     expect{
     #         # Product information
-    #         select(product.category.id, from: 'product_category_id')
+    #         select(product.category.name.to_s, from: 'product_category_id')
     #         fill_in('product_part_number', with: '3452')
     #         fill_in('product_sku', with: 'GA')
     #         fill_in('product_name', with: 'product #1 with minimum 10 characters')
@@ -51,7 +53,7 @@ feature 'Product management' do
     #         find('#product_single').set(true)
 
     #         # Attachment
-    #         attach_file('product_attachments_attributes_new_attachments_file', File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg'))
+    #         attach_file('product_attachments_attributes_new_attachments_file', File.expand_path("spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg"))
 
     #         # SKU details
     #         fill_in('product_skus_attributes_new_skus_code', with: '25')
@@ -59,14 +61,14 @@ feature 'Product management' do
     #         fill_in('product_skus_attributes_new_skus_length', with: '10')
     #         fill_in('product_skus_attributes_new_skus_thickness', with: '7')
     #         fill_in('product_skus_attributes_new_skus_attribute_value', with: '5')
-    #         select(attribute_type.id, from: 'product_skus_attributes_new_skus_attribute_type_id')
+    #         select(attribute_type.name.to_s, from: 'product_skus_attributes_new_skus_attribute_type_id')
     #         fill_in('product_skus_attributes_new_skus_stock', with: '20')
     #         fill_in('product_skus_attributes_new_skus_stock_warning_level', with: '5')
     #         fill_in('product_skus_attributes_new_skus_cost_value', with: '2.56')
     #         fill_in('product_skus_attributes_new_skus_price', with: '78.90')
 
     #         # Accessories
-    #         find("#product_accessory_ids_[value='#{accessory.id}']").set(true)
+    #         # find("#product_accessory_ids_[value='#{accessory.id}']").set(true)
 
     #         # Related products
     #         find("#product_related_ids_[value='#{product.id}']").set(true)
@@ -310,7 +312,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 2)
-        find('div.current-file:last-child a:last-child').click
+        find('div.current-file:first-child a:last-child').click
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
         expect(product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do
@@ -330,7 +332,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        find('div.current-file:last-child a:last-child').click
+        find('div.current-file:first-child a:last-child').click
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
         within '.failed-attachment-destroy-alert' do
             expect(page).to have_content 'Failed to remove the attachment from the database (you must have at least one image attachment per product).'

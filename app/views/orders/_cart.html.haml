@@ -19,12 +19,24 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
-
+- if Store::settings.tax_breakdown
+  %tr
+    %td{colspan: "2"}
+    \ 
+    %td.stronger Subtotal:
+    %td.stronger
+      .align-right= Store::Price.new(current_cart.total_price).format
+  %tr
+    %td{colspan: "2", rowspan: "1"}
+    \ 
+    %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+    %td.stronger
+      .align-right= Store::Price.new((current_cart.total_price*Store::tax_rate)).format
 %tr
   %td{colspan: "2", rowspan: "2"}
     .alert.alert-info
       Shipping cost will be calculated later in the order process.
 %tr
-  %td.stronger Subtotal:
+  %td.stronger Total:
   %td.stronger
-    .size-16.align-right.total_price= Store::Price.new(current_cart.total_price).format
+    .size-16.align-right.total_price= Store::Price.new(current_cart.total_price, 'gross').format
