@@ -105,7 +105,7 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.successful response, order
-            Transaction.create( :fee => response.params['PaymentInfo']['FeeAmount'], 
+            Transaction.new( :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => order.id, 
                                 :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
@@ -115,7 +115,7 @@ module Payatron4000
                                 :payment_type => response.params['PaymentInfo']['TransactionType'],
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
                                 :status_reason => response.params['PaymentInfo']['PendingReason']
-            )
+            ).save(validate: false)
             Payatron4000::stock_update(order)
             order.update_column(:status, 'active')
         end
@@ -126,7 +126,7 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.failed response, order
-            Transaction.create( :fee => 0, 
+            Transaction.new( :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
                                 :payment_status => 'Failed', 
@@ -135,7 +135,7 @@ module Payatron4000
                                 :paypal_id => '', 
                                 :payment_type => 'express-checkout',
                                 :net_amount => order.net_amount,
-                                :status_reason => response.message)
+                                :status_reason => response.message).save(validate: false)
             order.update_column(:status, 'active')
         end
 

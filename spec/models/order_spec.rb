@@ -11,6 +11,8 @@ describe Order do
     it { expect(subject).to belong_to(:ship_address).class_name('Address').dependent(:destroy) }
     it { expect(subject).to belong_to(:bill_address).class_name('Address').dependent(:destroy) }
 
+    it { expect(subject).to validate_presence_of(:actual_shipping_cost]) }
+
     before { subject.stub(:active_or_payment?) { true } }
     it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
 

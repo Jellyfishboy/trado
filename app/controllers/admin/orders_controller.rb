@@ -22,14 +22,21 @@ class Admin::OrdersController < ApplicationController
   # PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
-    @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
+    
     respond_to do |format|
+      begin
+        @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
+      rescue
+         format.json { render :json => { :errors => ['Shipping date can\'t be blank'] }, :status => 422 }
+      end
       if @order.update_attributes(params[:order])
         if params[:order][:shipping_date]
           format.js { render :partial => 'admin/orders/shipping/success', :format => [:js] }
         else
           format.js { render :partial => 'admin/orders/success', :format => [:js] }
         end
+      else 
+        format.json { render :json => { :errors => @order.errors.full_messages }, :status => 422 }
       end
     end
   end

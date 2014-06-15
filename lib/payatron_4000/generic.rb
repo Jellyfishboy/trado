@@ -8,7 +8,7 @@ module Payatron4000
         # @param order[Object]
         # @param payment_type [String]
         def self.successful order, payment_type
-            Transaction.create( :fee => 0, 
+            Transaction.new( :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
                                 :payment_status => 'Pending', 
@@ -18,7 +18,7 @@ module Payatron4000
                                 :payment_type => payment_type,
                                 :net_amount => order.net_amount,
                                 :status_reason => nil
-            )
+            ).save(validate: false)
             Payatron4000::stock_update(order)
             order.update_column(:status, 'active')
         end
