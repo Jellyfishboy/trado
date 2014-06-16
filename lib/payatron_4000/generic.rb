@@ -36,7 +36,7 @@ module Payatron4000
             begin
                 Mailatron4000::Orders.confirmation_email(order)
             rescue
-                Rollbar.report_message("Confirmation email failed to send", "info", :order => order)
+                Rollbar.report_message("Order #{order.id} confirmation email failed to send", "info", :order => order)
             end
             return Rails.application.routes.url_helpers.success_order_build_url(:order_id => order.id, :id => 'confirm')
         end

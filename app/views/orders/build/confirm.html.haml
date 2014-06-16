@@ -90,7 +90,7 @@
                     %td.desc
                       = @order.shipping.name
                       %div= @order.ship_address.country
-                    %td.qty 1
+                    %td.qty
                     %td.price= Store::Price.new(@order.shipping.price).format
                   - if Store::settings.tax_breakdown
                     %tr

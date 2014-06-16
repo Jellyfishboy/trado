@@ -41,8 +41,7 @@ class Order < ActiveRecord::Base
   belongs_to :ship_address,                                             class_name: 'Address', :dependent => :destroy
   belongs_to :bill_address,                                             class_name: 'Address', :dependent => :destroy
 
-  validates :actual_shipping_cost,                                      :presence => true
-  # add if condition to actual_shipping_cost field validation, returning true if the order has a transaction record
+  validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
@@ -53,7 +52,7 @@ class Order < ActiveRecord::Base
   #
   def transfer cart
   	cart.cart_items.each do |item|
-      @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => self.id)
+      @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => id)
       @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
       @order_item.save!
   	end
@@ -64,7 +63,7 @@ class Order < ActiveRecord::Base
   # @param cart [Object]
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
-    net_amount = cart.total_price + self.shipping.price
+    net_amount = cart.total_price + shipping.price
     self.update_attributes( :net_amount => net_amount,
                             :tax_amount => net_amount*current_tax_rate,
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
@@ -75,7 +74,7 @@ class Order < ActiveRecord::Base
   # If you set the shipping date for an order more than once, send a delayed shipping email
   #
   def delayed_shipping
-    if self.shipping_date_changed? && self.shipping_date_was
+    if shipping_date_changed? && shipping_date_was
       ShippingMailer.delayed(self).deliver
     end
   end
@@ -83,7 +82,7 @@ class Order < ActiveRecord::Base
   # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email
   #
   def ship_order_today
-    if self.shipping_date.to_date == Date.today
+    if shipping_date.to_date == Date.today
       self.update_column(:shipping_status, "Dispatched")
       ShippingMailer.complete(self).deliver
     end
@@ -93,7 +92,7 @@ class Order < ActiveRecord::Base
   #
   # @return [Boolean]
   def shipping_date_nil?
-    return true unless self.shipping_date.nil?
+    return true unless shipping_date.nil?
   end
 
   # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job
@@ -129,6 +128,10 @@ class Order < ActiveRecord::Base
   # @return [Boolean]
   def active_or_payment?
     status == 'payment' ? true : active?
+  end
+
+  def has_transaction?
+    transactions.empty? ? false : true
   end
 
 end

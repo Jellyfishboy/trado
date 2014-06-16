@@ -90,7 +90,6 @@ class Orders::BuildController < ApplicationController
         else
           url = Payatron4000::Paypal.complete(@order, session)
         end
-        binding.pry
         redirect_to url
       else
         render_wizard @order

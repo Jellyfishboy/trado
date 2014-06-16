@@ -11,13 +11,17 @@ describe Order do
     it { expect(subject).to belong_to(:ship_address).class_name('Address').dependent(:destroy) }
     it { expect(subject).to belong_to(:bill_address).class_name('Address').dependent(:destroy) }
 
-    it { expect(subject).to validate_presence_of(:actual_shipping_cost]) }
+    context "When the order has a an associated transaction record" do
+        before { subject.stub(:has_transaction?) { true } }
+        it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
+    end
 
-    before { subject.stub(:active_or_payment?) { true } }
-    it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
+    context "When the status of the order is 'active' or 'payment'" do
+        before { subject.stub(:active_or_payment?) { true } }
+        it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
+    end
 
     context "If current order status is at shipping" do
-        
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to validate_presence_of(:shipping_id).with_message('Shipping option is required') }
