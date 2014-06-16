@@ -130,6 +130,9 @@ class Order < ActiveRecord::Base
     status == 'payment' ? true : active?
   end
 
+  # If the order has an associated transaction record, it returns true
+  #
+  # @return [Boolean]
   def has_transaction?
     transactions.empty? ? false : true
   end

@@ -1,7 +1,9 @@
 <% content_for :title, "Stock reminder for #{@sku.product.name}" %>
 <% content_for :header_1, "Stock reminder" %>
 <% content_for :header_2, @sku.product.name %>
-
+<style type="text/css">
+.price span { display: block; }
+</style>
 <tr>
     <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
     <td align="left" width="500">

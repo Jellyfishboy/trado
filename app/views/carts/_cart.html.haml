@@ -35,10 +35,19 @@
         .price
           %strong= Store::Price.new(item.total_price).format
     .summary
+      - if Store::settings.tax_breakdown
+        .line
+          .row-fluid
+            .span6 Subtotal
+            .span6.align-right= Store::Price.new(current_cart.total_price, 'net').format
+        .line
+          .row-fluid
+            .span6= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+            .span6.align-right= Store::Price.new((current_cart.total_price*Store::tax_rate)).format
       .line
         .row-fluid
-          .span6 Subtotal
-          .span6.align-right.size-16= Store::Price.new(current_cart.total_price).format
+          .span6 Total
+          .span6.align-right.size-16= Store::Price.new(current_cart.total_price, 'gross').format
     .proceed
       = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
