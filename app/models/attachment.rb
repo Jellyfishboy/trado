@@ -18,12 +18,19 @@
 class Attachment < ActiveRecord::Base
   attr_accessible :attachable_id, :attachable_type, :file, :default
 
-  belongs_to :attachable, polymorphic: true
+  belongs_to :attachable,           polymorphic: true
 
-  mount_uploader :file, FileUploader
+  mount_uploader :file,             FileUploader
 
   validates :file,                  :format => { :with => %r{\.(gif|png|jpg|jpeg)$}i, :message => "must be a URL for GIF, JPG or PNG image." }
   validates :file,                  :presence => true
-  # validates :default,               :uniqueness => { :scope => :attachable_id }
+
+  before_save :set_default_attachment
+
+  def set_default_attachment
+    if default && default_changed?
+        self.class.where('id != ? and default', id).update_all(default: false)
+    end
+  end
 
 end

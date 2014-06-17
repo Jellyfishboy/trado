@@ -54,6 +54,7 @@ trado.admin =
             if (obj === "attachments") 
             {
                 $elem.next("input[type=file]").remove();
+                // $elem.next("input[type=radio]").remove();
             }
             return $elem.remove();
         }

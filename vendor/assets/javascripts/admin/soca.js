@@ -9,7 +9,7 @@
       return $(".user-menu .fa-caret-up").css('color', '#ffffff');
     });
     attachment_ui();
-    $('.current-file').click(function() {
+    $('.current-file:not(.icon-close)').click(function() {
       $(this).next('input[type="radio"]').prop('checked', true);
       $('.current-file').removeClass('default');
       return $(this).addClass('default');
