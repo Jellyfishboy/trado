@@ -1,7 +1,7 @@
 FactoryGirl.define do
     factory :attachment do
       file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg')) }
-      default false
+      default_record { false }
 
       factory :png_attachment do
         file { File.open(File.join(Rails.root, '/spec/dummy_data/GR12-12V-planetary-gearmotor-overview.png')) }
