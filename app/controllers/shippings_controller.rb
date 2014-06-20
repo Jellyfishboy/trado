@@ -7,7 +7,7 @@ class ShippingsController < ApplicationController
     # When selecting a shipping country in the order process, the shipping results are updated automatically
     def update
         @tiers = Shipatron4000::tier(current_cart)
-        @shippings = Shipping.joins(:tiereds, :countries).where(:tiereds => { :tier_id => @tiers }, :countries => { :name => 'United Kingdom' }).order('price ASC').all
+        @shippings = Shipping.joins(:tiereds, :countries).where(:tiereds => { :tier_id => @tiers }, :countries => { :name => params[:country_id] }).order('price ASC').all
         render :partial => "orders/shippings/update"
     end
 end

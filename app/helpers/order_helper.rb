@@ -16,6 +16,5 @@ module OrderHelper
       else
         "<span class='label label-red label-small'>#{status}</span>".html_safe
       end
-    end
-    
+    end    
 end
