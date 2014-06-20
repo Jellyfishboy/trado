@@ -19,21 +19,21 @@ trado.app =
             errors = $.parseJSON(xhr.responseJSON.errors);
             $.each(errors, function(key, value) 
             {
-                var $element, $error_target;
+                var $element, $errorTarget;
                 $element = $("input[name*='" + key + "']");
                 if ($element.length == 0)
                 {
                     $element =  $("select[name*='" + key + "']");
                 }
-                $error_target = '.error-explanation';
-                if ($element.parent().next().is($error_target)) 
+                $errorTarget = '.error-explanation';
+                if ($element.parent().next().is($errorTarget)) 
                 {
-                    return $($error_target).html('<span>' + key + '</span> ' + value);
+                    return $($errorTarget).html('<span>' + key + '</span> ' + value);
                 } 
                 else 
                 {
                     $element.wrap('<div class="field-with-errors"></div>');
-                    return $element.parent().after('<span class="' + $error_target.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>');
+                    return $element.parent().after('<span class="' + $errorTarget.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>');
                 }
             });
         });

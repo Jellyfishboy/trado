@@ -16,14 +16,14 @@
 //= require trado.misc
 //= require trado.animation
 //= require trado.modal
-
+//= require trado.tracking
 //= require trado.app
 
 var trackingCode = "<%= Store::settings.ga_code %>"
 
 $(document).ready(function()
 {
-    // trado.tracking.init();
+    trado.tracking.init();
     trado.modal.loading('.paypal_checkout', '#paypalModal');
     trado.modal.loading('.confirm_order', '#confirmOrderModal');
     trado.modal.open('.notify_me', '#notifyMeModal');

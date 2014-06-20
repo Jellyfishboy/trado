@@ -43,7 +43,7 @@ class CartItem < ActiveRecord::Base
   # @paam cart [Object]
   # @return [Decimal] cart item
   def self.increment sku, quantity, accessory, cart
-    accessory = accessory[:accessory_id].blank? ? nil : Accessory.find(accessory[:accessory_id]) 
+    accessory = accessory.nil? ? nil : accessory[:accessory_id].blank? ? nil : Accessory.find(accessory[:accessory_id]) 
     current_item = accessory.nil? ? cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => nil }).first : cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => accessory.id }).first
 
     if (current_item && current_item.cart_item_accessory.nil?) || (current_item && !current_item.cart_item_accessory.nil?)
