@@ -3,7 +3,9 @@ class ErrorsController < ApplicationController
     skip_before_filter :authenticate_user!
     
     def show
-        render status_code.to_s, :status => status_code
+        namespace = params[:controller].split('/').first
+        prefix = namespace == 'admin' ? 'admin' : 'application'
+        render "#{prefix}/#{status_code.to_s}", :status => status_code
     end
 
     protected
