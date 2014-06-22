@@ -46,7 +46,7 @@ class Order < ActiveRecord::Base
   validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
 
-  after_update :delayed_shipping, :ship_order_today,                    :if => :shipping_date_nil?
+  after_update :ship_order_today,                                       :if => :shipping_date_nil?
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
@@ -69,14 +69,6 @@ class Order < ActiveRecord::Base
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )
     self.save!
-  end
-  
-  # If you set the shipping date for an order more than once, send a delayed shipping email
-  #
-  def delayed_shipping
-    if shipping_date_changed? && shipping_date_was
-      ShippingMailer.delayed(self).deliver
-    end
   end
 
   # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email

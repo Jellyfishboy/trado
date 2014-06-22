@@ -90,19 +90,6 @@ describe Order do
             end
         end
 
-        context "if order had a shipping date and was changed again" do
-            before(:each) do
-                order_3.stub(:shipping_date_changed?) { true }
-                order_3.stub(:shipping_date_was) { true }
-            end
-            it "should send a delayed_shipping email" do
-                expect {
-                    order_3.delayed_shipping
-                }.to change {
-                    ActionMailer::Base.deliveries.count }.by(1)
-            end
-        end
-
         it "should return false if the shipping_date is nil" do
             expect(order.shipping_date_nil?).to be_false
         end
