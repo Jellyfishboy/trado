@@ -8,6 +8,7 @@ vendor/assets/components
 .gitkeep
 config/settings.yml
 db/test.sqlite3
+db/development.sqlite3
 doc/*
 .yardoc
 
