@@ -42,14 +42,18 @@
             %span Countries
     .all-wrapper
       %header
-        #logo.desktop= image_tag Store::settings.attachment.file.square, :width => 60, :height => 60 if Store::settings.attachment
+        #logo.desktop
+          - if Store::settings.attachment.nil?
+            = image_tag Store::settings.attachment.file.square, :width => 60, :height => 60
+          - else
+            = image_tag 'fallback/square/default.png', :width => 60, :height => 60
         %label#menu-trigger.mobile{for: "menu-trigger-input", href: "#"}
           %i.icon-menu-2
         .dropdown.user-menu
-          - if current_user.attachment
-            = image_tag current_user.attachment.file.square, 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
+          - if current_user.attachment.nil?
+            = image_tag 'fallback/square/default.png', 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
           - else 
-            %a{'data-toggle' => 'dropdown', :href => '#'}
+            = image_tag current_user.attachment.file.square, 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
           %i.fa.fa-caret-up
           %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
             %li
