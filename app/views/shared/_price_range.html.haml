@@ -1,0 +1,2 @@
+.price
+    = Store::settings.tax_breakdown? ? (range ? "from #{price} Exc #{Store::settings.tax_name}" : "#{price} Exc #{Store::settings.tax_name}") : (range ? "from #{price}" : price) 

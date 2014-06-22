@@ -1,4 +1,4 @@
 .price
-    = gross.nil? ? (range ? "from #{net}" : net) : (range ? "from #{net} Exc #{Store::settings.tax_name}" : "#{net} Exc #{Store::settings.tax_name}")
+    = gross.nil? ? price : "#{price} Exc #{Store::settings.tax_name}"
     - unless gross.nil?
-        %span= range ? nil : "#{number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2)} Inc #{Store::settings.tax_name}" 
+        %span= "#{number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2)} Inc #{Store::settings.tax_name}"

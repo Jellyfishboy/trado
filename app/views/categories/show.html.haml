@@ -48,7 +48,7 @@
 
                     .main-titles.no-margin
                       %h4.title
-                        = Store::Price.new(product.skus.first.price, true).markup
+                        = Store::Price.new(product.skus.first.price, product.skus.count).range
                       %h5.no-margin.isotope--title= truncate product.name, :length => 35
         %hr/
       / /main content
