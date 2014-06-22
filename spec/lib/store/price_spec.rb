@@ -134,5 +134,4 @@ describe Store::Price do
             end
         end
     end
-
 end

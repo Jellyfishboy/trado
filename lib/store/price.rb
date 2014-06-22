@@ -15,8 +15,9 @@ module Store
         # If the second item in the parameter array is a boolean and equals true, set the price DOM elements to price range
         #
         # @overload set(args)
-        #   @param [Object] SKU record
-        #   @param [String][Boolean] tax type | price range
+        #   @param [Decimal] record price
+        #   @param [String] tax type
+        #   @param [Integer] total record count
         # @return [Decimal] price
         def initialize *args
             @count = parameterize(args, Integer)
