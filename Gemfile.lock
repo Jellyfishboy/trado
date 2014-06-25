@@ -177,6 +177,9 @@ GEM
     fssm (0.2.10)
     global (0.0.3)
       activesupport
+    gon (5.0.4)
+      actionpack (>= 2.3.0)
+      json
     guard (2.5.1)
       formatador (>= 0.2.4)
       listen (~> 2.6)
@@ -478,6 +481,7 @@ GEM
       rails (>= 3.0.7)
     win32-process (0.7.4)
       ffi (>= 1.0.0)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -509,6 +513,7 @@ DEPENDENCIES
   foreman (~> 0.61.0)
   friendly_id (~> 4.0.10)
   global
+  gon
   guard-rspec
   guard-spork
   haml

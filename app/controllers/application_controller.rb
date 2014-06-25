@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, :set_tracking_code
     helper_method :current_cart, :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
 
     protected
+
+    def set_tracking_code
+      gon.trackingCode = Store::settings.ga_code
+    end
 
   	def current_cart
       Cart.find(session[:cart_id]) #searches for cart in session
