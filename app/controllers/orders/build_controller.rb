@@ -168,11 +168,11 @@ class Orders::BuildController < ApplicationController
   def purge
     @order = Order.find(params[:order_id])
     if @order.completed?
-      flash[:error] = "Cannot delete a completed order."
+      flash_message :error, "Cannot delete a completed order."
       redirect_to root_url
     else
       @order.destroy
-      flash[:success] = "Your order has been deleted."
+      flash_message :success, "Your order has been deleted."
       redirect_to root_url
     end
   end
@@ -185,7 +185,7 @@ class Orders::BuildController < ApplicationController
   def accessible_order
     @order = Order.find(params[:order_id])
     if @order.completed? || current_cart.cart_items.empty?
-      flash[:error] = "You do not have permission to amend this order."
+      flash_message :error, "You do not have permission to amend this order."
       redirect_to root_url
     end
   end

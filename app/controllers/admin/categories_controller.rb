@@ -36,7 +36,7 @@ class Admin::CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        flash[:success] = 'Category was successfully created.'
+        flash_message :success, 'Category was successfully created.'
         format.html { redirect_to admin_categories_url }
         format.json { render json: @category, status: :created, location: @category }
       else
@@ -53,7 +53,7 @@ class Admin::CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        flash[:success] = 'Category was successfully updated.'
+        flash_message :success, 'Category was successfully updated.'
         format.html { redirect_to admin_categories_url }
         format.json { head :no_content }
       else
@@ -70,7 +70,7 @@ class Admin::CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      flash[:success] = 'Category was successfully deleted.'
+      flash_message :success, 'Category was successfully deleted.'
       format.html { redirect_to admin_categories_url }
       format.json { head :no_content }
     end

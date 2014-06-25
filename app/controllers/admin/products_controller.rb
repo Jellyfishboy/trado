@@ -18,9 +18,9 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     respond_to do |format|
-      unless Tier.all.count > 0 || AttributeType.all.count > 0
+      unless AttributeType.all.count > 0
         format.html { redirect_to admin_products_url }
-        flash[:error] = "You do not currently have any shipping tiers and/or sku attribute types. Please add some before creating a product."
+        flash_message :error, "You must have at least one AttributeType record before creating your first product. Create one #{view_context.link_to 'here', new_admin_products_skus_attribute_type_path}.".html_safe
       else
         format.html
       end
@@ -87,7 +87,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      flash[:success] = "Product was successfully deleted."
+      flash_message :success, "Product was successfully deleted."
       format.html { redirect_to admin_products_url }
     end
   end

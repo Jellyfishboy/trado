@@ -36,7 +36,7 @@ class Admin::ShippingsController < ApplicationController
     
     respond_to do |format|
       if @shipping.save
-        flash[:success] = 'Shipping was successfully created.'
+        flash_message :success, 'Shipping was successfully created.'
         format.html { redirect_to admin_shippings_url }
         format.json { render json: @shipping, status: :created, location: @shipping }
       else
@@ -68,7 +68,7 @@ class Admin::ShippingsController < ApplicationController
           @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
           Store::inactivate!(@old_shipping)
         end
-        flash[:success] = 'Shipping was successfully updated.'
+        flash_message :success, 'Shipping was successfully updated.'
         format.html { redirect_to admin_shippings_url }
         format.json { head :no_content }
       else
@@ -90,7 +90,7 @@ class Admin::ShippingsController < ApplicationController
     @shipping.orders.empty? ? @shipping.destroy : Store::inactivate!(@shipping)
 
     respond_to do |format|
-      flash[:success] = 'Shipping was successfully deleted.'
+      flash_message :success, 'Shipping was successfully deleted.'
       format.html { redirect_to admin_shippings_url }
       format.json { head :no_content }
     end

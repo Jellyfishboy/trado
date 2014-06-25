@@ -1,7 +1,7 @@
 .eightcol
   .page-header
     %h2.widget.widget-header= "#{yield :breadcrumb} zone"
-  = form_for [:admin, :countries, @zone], :html => { :role => 'form' } do |f|
+  = form_for [:admin, @zone], :html => { :role => 'form' } do |f|
     - if @zone.errors.any?
       #errors
         %ul

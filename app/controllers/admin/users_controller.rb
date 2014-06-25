@@ -18,11 +18,11 @@ class Admin::UsersController < ApplicationController
 
         respond_to do |format|
           if @user.update_attributes(params[:user])
-            flash[:success] = 'Profile was successfully updated.'
+            flash_message :success, 'Profile was successfully updated.'
             format.html { redirect_to admin_root_url }
             format.json { head :no_content }
           else
-            flash[:error] = 'There was an error when attempting to update your profile details.'
+            flash_message :error, 'There was an error when attempting to update your profile details.'
             format.html { render action: "edit" }
           end
         end

@@ -1,11 +1,12 @@
-- content_for :title, 'Country zones'
+- content_for :title, 'Zones'
 - content_for :breadcrumb, 'Zones'
-- breadcrumb_add 'Countries', admin_countries_path
 
 .twelvecol
   .page-header
-    = link_to new_admin_countries_zone_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add zone" do
+    = link_to new_admin_zone_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add zone" do
       %i.icon-plus
+    = link_to admin_zones_countries_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Countries" do
+      %i.icon-earth
     %h2.widget.widget-header Zones
   - if @zones.empty?
     %p You don't have any zones yet.
@@ -26,4 +27,4 @@
                   - zone.countries.each do |country|
                     %li
                       = country.name
-              = table_commands zone, admin_countries_zone_path(zone), edit_admin_countries_zone_path(zone), admin_countries_zone_path(zone), 0
+              = table_commands zone, admin_zone_path(zone), edit_admin_zone_path(zone), admin_zone_path(zone), 0

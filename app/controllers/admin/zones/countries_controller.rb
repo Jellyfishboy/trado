@@ -1,4 +1,4 @@
-class Admin::CountriesController < ApplicationController
+class Admin::Zones::CountriesController < ApplicationController
 
   before_filter :authenticate_user!
   layout 'admin'
@@ -8,7 +8,7 @@ class Admin::CountriesController < ApplicationController
     @countries = Country.order('name ASC').all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @countries }
     end
   end
@@ -19,7 +19,7 @@ class Admin::CountriesController < ApplicationController
     @country = Country.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @country }
     end
   end
@@ -36,8 +36,9 @@ class Admin::CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.save
-        flash[:success] = 'Country was successfully created.'
-        format.html { redirect_to admin_countries_url }
+        flash_message :success, 'Country was successfully created.'
+        flash_message :notice, 'Hint: Remember to create a zone record so you can start associating your countries with your shipping methods.' if Zone.all.count < 1
+        format.html { redirect_to admin_zones_countries_url }
         format.json { render json: @country, status: :created, location: @country }
       else
         format.html { render action: "new" }
@@ -53,8 +54,8 @@ class Admin::CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.update_attributes(params[:country])
-        flash[:success] = 'Country was successfully updated.'
-        format.html { redirect_to admin_countries_url }
+        flash_message :success, 'Country was successfully updated.'
+        format.html { redirect_to admin_zones_countries_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -70,8 +71,8 @@ class Admin::CountriesController < ApplicationController
     @country.destroy
 
     respond_to do |format|
-      flash[:success] = 'Country was successfully deleted.'
-      format.html { redirect_to admin_countries_url }
+      flash_message :success,'Country was successfully deleted.'
+      format.html { redirect_to admin_zones_countries_url }
       format.json { head :no_content }
     end
   end

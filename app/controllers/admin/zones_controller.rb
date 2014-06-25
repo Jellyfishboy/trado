@@ -1,4 +1,4 @@
-class Admin::Countries::ZonesController < ApplicationController
+class Admin::ZonesController < ApplicationController
 
   before_filter :authenticate_user!
   layout "admin"
@@ -36,8 +36,8 @@ class Admin::Countries::ZonesController < ApplicationController
 
     respond_to do |format|
       if @zone.save
-        flash[:success] = 'Zone was successfully created.'
-        format.html { redirect_to admin_countries_zones_url }
+        flash_message :success, 'Zone was successfully created.'
+        format.html { redirect_to admin_zones_url }
         format.json { render json: @zone, status: :created, location: @zone }
       else
         format.html { render action: "new" }
@@ -52,8 +52,8 @@ class Admin::Countries::ZonesController < ApplicationController
     @zone = Zone.find(params[:id])
     respond_to do |format|
       if @zone.update_attributes(params[:zone])
-        flash[:success] = 'Zone was successfully updated.'
-        format.html { redirect_to admin_countries_zones_url }
+        flash_message :success, 'Zone was successfully updated.'
+        format.html { redirect_to admin_zones_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,8 +69,8 @@ class Admin::Countries::ZonesController < ApplicationController
     @zone.destroy
 
     respond_to do |format|
-      flash[:success] = 'Zone was successfully deleted.'
-      format.html { redirect_to admin_countries_zones_url }
+      flash_message :success, 'Zone was successfully deleted.'
+      format.html { redirect_to admin_zones_url }
       format.json { head :no_content }
     end
   end

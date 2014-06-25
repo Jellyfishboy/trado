@@ -36,10 +36,10 @@
           = link_to admin_shippings_path do
             %i.icon-airplane
             %span Shipping
-        %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/zones')}"}
-          = link_to admin_countries_path do
-            %i.icon-earth
-            %span Countries
+        %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
+          = link_to admin_zones_path do
+            %i.icon-location
+            %span Zones
     .all-wrapper
       %header
         #logo.desktop
@@ -85,18 +85,13 @@
           %li{:class => "#{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/tiers')}"}
             = link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Shippings' do
               %i.icon-airplane
-          %li{:class => "#{active_controller?('admin/countries')} #{active_controller?('admin/countries/tax_rates')} #{active_controller?('admin/countries/zones')}"}
-            = link_to admin_countries_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Countries' do
-              %i.icon-earth
+          %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
+            = link_to admin_zones_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Zones' do
+              %i.icon-location
       .main
         .container
           .row
-            - if flash[:notice] or flash[:error] or flash[:success]
-              %div.alert{:class => (if flash[:success] then "alert-success" elsif flash[:notice] then "alert-info" elsif flash[:error] then "alert-warning" end) }
-                = if flash[:success] then "<i class='icon-checkmark-circle'></i>".html_safe elsif flash[:notice] then "<i class='icon-info-2'></i>".html_safe elsif flash[:error] then "<i class='icon-spam'></i>".html_safe end
-                = raw flash[:error]
-                = raw flash[:notice]
-                = raw flash[:success]
+            = render_flash
             = render_breadcrumbs 0
             = yield
 

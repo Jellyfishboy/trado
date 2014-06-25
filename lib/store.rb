@@ -45,7 +45,6 @@ module Store
         # @return [Object] an active record
         def activate! record
             record.update_column(:active, true)
-        end
-        
+        end    
     end
 end

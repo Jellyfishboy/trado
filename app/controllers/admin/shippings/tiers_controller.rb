@@ -36,7 +36,8 @@ class Admin::Shippings::TiersController < ApplicationController
 
     respond_to do |format|
       if @tier.save
-        flash[:success] = 'Tier was successfully created.'
+        flash_message :success, 'Tier was successfully created.'
+        flash_message :notice, 'Hint: Remember to create a shipping method record so you can start to display shipping results in your order process.' if Shipping.active.all.count < 1
         format.html { redirect_to admin_shippings_tiers_url }
         format.json { render json: @tier, status: :created, location: @tier }
       else
@@ -52,7 +53,7 @@ class Admin::Shippings::TiersController < ApplicationController
     @tier = Tier.find(params[:id])
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
-        flash[:success] = 'Tier was successfully updated.'
+        flash_message :success, 'Tier was successfully updated.'
         format.html { redirect_to admin_shippings_tiers_url }
         format.json { head :no_content }
       else
@@ -69,7 +70,7 @@ class Admin::Shippings::TiersController < ApplicationController
     @tier.destroy
 
     respond_to do |format|
-      flash[:success] = 'Tier was successfully deleted.'
+      flash_message :success, 'Tier was successfully deleted.'
       format.html { redirect_to admin_shippings_tiers_url }
       format.json { head :no_content }
     end

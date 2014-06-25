@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-
+    include ApplicationHelper
     before_filter :authenticate_user!, :set_tracking_code
     helper_method :current_cart, :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
-        flash[:error] = exception.message
+        flash_message :error, exception.message
         puts exception.message
         redirect_to store_url
     end

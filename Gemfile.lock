@@ -145,6 +145,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
+    fast_blank (0.0.2)
     fattr (2.2.1)
     ffi (1.9.3)
     ffi (1.9.3-x86-mingw32)
@@ -509,6 +510,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  fast_blank
   fog
   foreman (~> 0.61.0)
   friendly_id (~> 4.0.10)

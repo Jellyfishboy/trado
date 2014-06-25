@@ -53,7 +53,7 @@ Trado::Application.routes.draw do
       mount RailsAdmin::Engine => '/db'
       mount RailsEmailPreview::Engine => '/crm'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
-      resources :accessories, :shippings, :products, :categories, :countries, :except => :show
+      resources :accessories, :shippings, :products, :categories, :zones, :except => :show
       resources :orders, :only => [:index, :show, :update, :edit] do
         get 'shipping', on: :member
       end
@@ -72,8 +72,8 @@ Trado::Application.routes.draw do
       namespace :shippings do
         resources :tiers, :except => :show
       end
-      namespace :countries do
-        resources :zones, :except => :show
+      namespace :zones do
+        resources :countries, except: :show
       end
       get '/settings' => 'admin#settings'
       put '/settings/update' => 'admin#update'

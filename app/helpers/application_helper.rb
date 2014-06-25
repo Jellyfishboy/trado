@@ -140,7 +140,29 @@ module ApplicationHelper
     # @overload set(value)
     #   @param [String] javascript file name
     # @return [String] javascript tags
-    def javascript(*files)
+    def javascript *files
       content_for(:footer) { javascript_include_tag(*files) }
+    end
+
+    # Adds a message to the relevant flash type array (error, notice or success) 
+    #
+    # @param [Symbol] flash type
+    # @param [String] message
+    def flash_message type, text
+        flash[type] ||= []
+        flash[type] << text
+    end   
+
+    # Iterates through each flash message in the array and renders it to the DOM with a partial
+    #
+    # @return [String] HTML elements
+    def render_flash
+        rendered = []
+        flash.each do |type, messages|
+            messages.each do |m|
+                rendered << render(partial: 'shared/flash', locals: { :type => type, :message => m }) unless m.blank?
+            end
+        end
+        rendered.join('').html_safe
     end
 end

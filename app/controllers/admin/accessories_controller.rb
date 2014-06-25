@@ -35,7 +35,7 @@ class Admin::AccessoriesController < ApplicationController
 
     respond_to do |format|
       if @accessory.save
-        flash[:success] = 'Accessory was successfully created.'
+        flash_message :success, 'Accessory was successfully created.'
         format.html { redirect_to admin_accessories_url }
         format.json { render json: @accessory, status: :created, location: @accessory }
       else
@@ -68,7 +68,7 @@ class Admin::AccessoriesController < ApplicationController
           Store::inactivate!(@old_accessory)
           CartItemAccessory.where('accessory_id = ?', @old_accessory.id).destroy_all
         end
-        flash[:success] = 'Accessory was successfully updated.'
+        flash_message :success, 'Accessory was successfully updated.'
         format.html { redirect_to admin_accessories_url }
         format.json { head :no_content }
       else
@@ -104,7 +104,7 @@ class Admin::AccessoriesController < ApplicationController
     end
       
     respond_to do |format|
-      flash[:success] =  'Accessory was successfully deleted.'
+      flash_message :success, 'Accessory was successfully deleted.'
       format.html { redirect_to admin_accessories_url }
       format.json { head :no_content }
     end
