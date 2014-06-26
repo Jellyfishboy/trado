@@ -42,7 +42,7 @@ feature 'Accessory management' do
             click_button 'Submit'
         }.to change(Accessory, :count).by(1)
         expect(current_path).to eq admin_accessories_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Accessory was successfully created.'
         end
         within 'h2' do
@@ -65,7 +65,7 @@ feature 'Accessory management' do
         fill_in('accessory_weight', with: '5.87')
         click_button 'Submit'
         expect(current_path).to eq admin_accessories_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Accessory was successfully updated.'
         end
         within 'h2' do
@@ -86,7 +86,7 @@ feature 'Accessory management' do
                 first('tr').find('td:last-child a:last-child').click
             end
         }.to change(Accessory, :count).by(-1)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content('Accessory was successfully deleted.')
         end
         within 'h2' do

@@ -19,7 +19,7 @@ feature 'Attribute type management' do
             click_button 'Submit'
         }.to change(AttributeType, :count).by(1)
         expect(current_path).to eq admin_products_skus_attribute_types_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Attribute type was successfully created.'
         end
         within 'h2' do
@@ -42,7 +42,7 @@ feature 'Attribute type management' do
         fill_in('attribute_type_measurement', with: 'Kg')
         click_button 'Submit'
         expect(current_path).to eq admin_products_skus_attribute_types_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Attribute type was successfully updated.'
         end
         within 'h2' do
@@ -61,9 +61,8 @@ feature 'Attribute type management' do
             within 'tbody' do
                 first('tr').find('td:last-child a:last-child').click
             end
-            # page.driver.browser.switch_to.alert.dismiss() if ENV['FF'] == true
         }.to change(AttributeType, :count).by(-1)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content('Attribute type was successfully deleted.')
         end
         within 'h2' do

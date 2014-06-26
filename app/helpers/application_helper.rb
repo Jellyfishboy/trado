@@ -159,8 +159,12 @@ module ApplicationHelper
     def render_flash
         rendered = []
         flash.each do |type, messages|
-            messages.each do |m|
-                rendered << render(partial: 'shared/flash', locals: { :type => type, :message => m }) unless m.blank?
+            if messages.is_a?(String)
+                rendered << render(partial: 'shared/flash', locals: { :type => type, :message => messages })
+            else
+                messages.each do |m|
+                    rendered << render(partial: 'shared/flash', locals: { :type => type, :message => m }) unless m.blank?
+                end
             end
         end
         rendered.join('').html_safe

@@ -94,8 +94,9 @@ feature 'Order management' do
     end
 
     scenario 'should update the shipping cost value of an order', js: true do
-        order = create(:nil_actual_shipping_order)
-
+        order = build(:nil_actual_shipping_order)
+        order.save(validate: false)
+        
         visit admin_orders_path
         find('tbody tr:first-child td:last-child a.edit_order_attributes').click
         sleep 1
@@ -105,7 +106,7 @@ feature 'Order management' do
             click_button 'Submit'
         end
         expect(current_path).to eq admin_orders_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content "Successfully updated Order ##{order.id}"
         end
         order.reload
@@ -129,7 +130,7 @@ feature 'Order management' do
 
         expect(current_path).to eq admin_orders_path
         order.reload
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content "Successfully updated the dispatch date for Order ##{order.id} to #{order.shipping_date.strftime("#{order.shipping_date.day.ordinalize} %b %Y")}"
         end
         expect(order.shipping_date.to_s).to eq "2015-02-14 00:00:00 UTC"
@@ -159,7 +160,7 @@ feature 'Order management' do
             click_button 'Submit'
         end
         expect(current_path).to eq admin_order_path(order)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content "Successfully updated transaction for Order ##{order.id}"
         end
         order.reload

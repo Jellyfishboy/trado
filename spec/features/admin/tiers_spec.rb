@@ -23,7 +23,7 @@ feature 'Tier management' do
             click_button 'Submit'
         }.to change(Tier, :count).by(1)
         expect(current_path).to eq admin_shippings_tiers_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Tier was successfully created.'
         end
         within 'h2' do
@@ -47,7 +47,7 @@ feature 'Tier management' do
         find('.form-last div:last-child label input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_shippings_tiers_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Tier was successfully updated.'
         end
         within 'h2' do
@@ -69,7 +69,7 @@ feature 'Tier management' do
                 first('tr').find('td:last-child a:last-child').click
             end
         }.to change(Tier, :count).by(-1)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content('Tier was successfully deleted.')
         end
         within 'h2' do

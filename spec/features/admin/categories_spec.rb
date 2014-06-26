@@ -42,7 +42,7 @@ feature 'Category management' do
             click_button 'Submit'
         }.to change(Category, :count).by(1)
         expect(current_path).to eq admin_categories_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Category was successfully created.'
         end
         within 'h2' do
@@ -65,7 +65,7 @@ feature 'Category management' do
         fill_in('category_sorting', with: '5')
         click_button 'Submit'
         expect(current_path).to eq admin_categories_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Category was successfully updated.'
         end
         within 'h2' do
@@ -85,9 +85,8 @@ feature 'Category management' do
             within 'tbody' do
                 first('tr').find('td:last-child a:last-child').click
             end
-            # page.driver.browser.switch_to.alert.dismiss() if ENV['FF'] == true
         }.to change(Category, :count).by(-1)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content('Category was successfully deleted.')
         end
         within 'h2' do
