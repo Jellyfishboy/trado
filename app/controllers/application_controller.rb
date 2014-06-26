@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound #starts an exception clause if no cart is found in sessions
   		cart = Cart.create #creates a new cart
   		session[:cart_id] = cart.id #assigns the new session with the new cart id
-  		cart #initializes the cart
+  		cart # returns cart object
   	end
 
     def category_list
-      Category.where('visible = ?', true).joins(:products).group("category_id HAVING count(products.id) > 0").order('sorting ASC')
+      Category.where('visible = ?', true).joins(:products).group("categories.id, products.id").having("count(products.id) > 0").order('sorting ASC')
     end
 
     def after_sign_out_path_for(resource_or_scope)

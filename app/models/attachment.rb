@@ -22,7 +22,8 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file,             FileUploader
 
-  validates :file,                  :presence => true, :format => { :with => %r{\.(gif|png|jpg|jpeg)$}i, :message => "must be a URL for GIF, JPG, JPEG or PNG image." }     
+  validates :file,                  :format => { :with => %r{\.(gif|png|jpg|jpeg)$}i, :message => "must be a URL for GIF, JPG, JPEG or PNG image." }
+  validates :file,                  presence: true, :if => :not_setting_attachment?
 
   default_scope order('default_record DESC')
 
@@ -33,6 +34,10 @@ class Attachment < ActiveRecord::Base
   #
   def set_default_attachment
     id != nil && default_record && default_record_changed? ? self.class.where('id != ?', id).update_all(default_record: false) : nil
+  end
+
+  def not_setting_attachment?
+    return true unless attachable_type == 'StoreSetting' || attachable_type == 'User'
   end
 
 end

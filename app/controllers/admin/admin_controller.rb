@@ -12,6 +12,7 @@ class Admin::AdminController < ApplicationController
         @settings = Store::settings
         
         respond_to do |format|
+          binding.pry
           if @settings.update_attributes(params[:store_setting])
             Store::reset_settings
             flash_message :success, 'Store settings were successfully updated.'
