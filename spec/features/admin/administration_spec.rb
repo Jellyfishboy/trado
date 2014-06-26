@@ -13,7 +13,6 @@ feature 'Administration management' do
         expect(current_path).to eq admin_settings_path
 
         fill_in('store_setting_name', with: 'Test store name')
-        attach_file('store_setting_attachment_attributes_file', File.expand_path("spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg"))
         fill_in('store_setting_tax_name', with: 'Tax')
         find('#store_setting_tax_breakdown').set(true)
         click_button 'Submit'
@@ -21,6 +20,7 @@ feature 'Administration management' do
         within '.alert.alert-success' do
             expect(page).to have_content 'Store settings were successfully updated.'
         end
+        Store::reset_settings
         expect(Store::settings.name).to eq 'Test store name'
         expect(Store::settings.tax_name).to eq 'Tax'
         expect(Store::settings.tax_breakdown).to eq true

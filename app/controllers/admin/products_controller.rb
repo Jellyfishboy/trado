@@ -39,7 +39,6 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        Attachment.find(params[:default_attachment]).update_attributes(default_record: true)
         Tag.add(params[:taggings], @product.id)
         format.js { render :js => "window.location.replace('#{category_product_url(@product.category, @product)}');"}
       else
@@ -53,7 +52,7 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       if @product.update_attributes(params[:product])
         binding.pry
-        Attachment.find(params[:default_attachment]).update_attributes(default_record: true)
+        # Attachment.find(params[:default_attachment]).update_attributes(default_record: true)
         Tag.del(params[:taggings], @product.id)
         Tag.add(params[:taggings], @product.id)
         format.js { render :js => "window.location.replace('#{admin_products_url}');"}
