@@ -5,7 +5,7 @@ class Admin::AdminController < ApplicationController
 
     def settings
         @settings = Store::settings
-        @attachment = @settings.build_attachment unless @settings.attachment
+        @settings.build_attachment unless @settings.attachment
     end
 
     def update
