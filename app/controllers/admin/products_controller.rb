@@ -52,6 +52,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        binding.pry
         Attachment.find(params[:default_attachment]).update_attributes(default_record: true)
         Tag.del(params[:taggings], @product.id)
         Tag.add(params[:taggings], @product.id)

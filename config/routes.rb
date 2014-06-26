@@ -60,8 +60,8 @@ Trado::Application.routes.draw do
       namespace :orders do
         resources :transactions, :only => [:edit, :update]
       end
+      resources :attachments, :only => [:destroy, :update]
       namespace :products do
-        resources :attachments, :only => :destroy
         resources :tags, :only => :index
         resources :skus, :only =>  [:destroy, :edit, :update]
         namespace :skus do

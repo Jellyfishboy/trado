@@ -36,6 +36,9 @@ class Attachment < ActiveRecord::Base
     id != nil && default_record && default_record_changed? ? self.class.where('id != ?', id).update_all(default_record: false) : nil
   end
 
+  # If the attachment is a StoreSetting or User, ignore the presence validation
+  #
+  # @return [Boolean] 
   def not_setting_attachment?
     return true unless attachable_type == 'StoreSetting' || attachable_type == 'User'
   end

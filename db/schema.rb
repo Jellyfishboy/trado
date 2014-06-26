@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                                                 :null => false
-    t.datetime "updated_at",                                                                 :null => false
-    t.integer  "part_number", :limit => 255
-    t.decimal  "price",                      :precision => 8, :scale => 2
-    t.decimal  "weight",                     :precision => 8, :scale => 2
-    t.decimal  "cost_value",                 :precision => 8, :scale => 2
-    t.boolean  "active",                                                   :default => true
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
+    t.integer  "part_number"
+    t.decimal  "price",       :precision => 8, :scale => 2
+    t.decimal  "weight",      :precision => 8, :scale => 2
+    t.decimal  "cost_value",  :precision => 8, :scale => 2
+    t.boolean  "active",                                    :default => true
   end
 
   create_table "accessorisations", :force => true do |t|
@@ -114,6 +114,12 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "notifications", :force => true do |t|
     t.string   "email"
     t.integer  "notifiable_id"
@@ -126,21 +132,21 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
 
   create_table "order_item_accessories", :force => true do |t|
     t.integer  "order_item_id"
-    t.decimal  "price"
+    t.decimal  "price",         :precision => 10, :scale => 0
     t.integer  "quantity"
     t.integer  "accessory_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
   create_table "order_items", :force => true do |t|
-    t.decimal  "price",                     :precision => 8, :scale => 2
+    t.decimal  "price",      :precision => 8, :scale => 2
     t.integer  "quantity"
-    t.integer  "sku_id",     :limit => 255
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.integer  "sku_id"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.integer  "order_id"
-    t.decimal  "weight",                    :precision => 8, :scale => 2
+    t.decimal  "weight",     :precision => 8, :scale => 2
   end
 
   create_table "orders", :force => true do |t|
@@ -151,7 +157,7 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.datetime "created_at",                                                                :null => false
     t.datetime "updated_at",                                                                :null => false
     t.decimal  "actual_shipping_cost", :precision => 8, :scale => 2
-    t.string   "status"
+    t.string   "status",                                             :default => "review"
     t.string   "express_token"
     t.string   "express_payer_id"
     t.integer  "shipping_id"
@@ -175,18 +181,19 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "weighting"
-    t.integer  "part_number",       :limit => 255
+    t.integer  "part_number"
     t.string   "sku"
     t.integer  "category_id"
     t.string   "slug"
     t.string   "meta_description"
     t.boolean  "featured"
-    t.boolean  "active",                           :default => true
+    t.boolean  "active",            :default => true
     t.text     "short_description"
     t.boolean  "single"
+    t.text     "specification"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -195,12 +202,29 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
+    t.integer  "year",       :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
 
   create_table "related_products", :id => false, :force => true do |t|
     t.integer "product_id"
@@ -309,6 +333,7 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
   create_table "transactions", :force => true do |t|
     t.string   "paypal_id"
     t.string   "transaction_type"
+    t.string   "payment_type"
     t.decimal  "fee",              :precision => 8, :scale => 2
     t.string   "payment_status"
     t.integer  "order_id"
@@ -318,7 +343,6 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.datetime "updated_at",                                     :null => false
     t.decimal  "net_amount",       :precision => 8, :scale => 2
     t.string   "status_reason"
-    t.string   "payment_type"
   end
 
   create_table "users", :force => true do |t|

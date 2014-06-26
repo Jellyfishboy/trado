@@ -1,18 +1,18 @@
 development:
-  # adapter: mysql2  # Rails 3.x uses the mysql2 adapter
-  # encoding: utf8
-  # database: gimson_robotics_db
-  # host: localhost 
-  # pool: 30
-  # username: root
-  # password:
-  # socket: /tmp/mysql.sock
-  adapter: postgresql
-  encoding: unicode
-  database: trado_dev
-  pool: 5
-  username: postgres
-  password: admin
+  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
+  encoding: utf8
+  database: gimson_robotics_db
+  host: localhost 
+  pool: 30
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+  # adapter: postgresql
+  # encoding: unicode
+  # database: trado_dev
+  # pool: 5
+  # username: postgres
+  # password: admin
   # adapter: sqlite3
   # database: db/development.sqlite3
   # pool: 5

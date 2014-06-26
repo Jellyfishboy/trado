@@ -12,17 +12,13 @@ class Admin::AdminController < ApplicationController
         @settings = Store::settings
         
         respond_to do |format|
-          binding.pry
           if @settings.update_attributes(params[:store_setting])
             Store::reset_settings
             flash_message :success, 'Store settings were successfully updated.'
             format.html { redirect_to admin_root_path }
-            format.json { head :no_content }
           else
-            format.html { render action: "settings" }
-            format.json { render json: @settings.errors, status: :unprocessable_entity }
+            format.html { render action: "settings" } 
           end
         end
     end
-    
 end
