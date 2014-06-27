@@ -31,10 +31,11 @@ test:
   # socket: /tmp/mysql.sock
   adapter: postgresql
   encoding: unicode
-  database: trado_dev
+  database: trado_test_dev
+  host: localhost
   pool: 5
-  username: postgres
-  password: admin
+  username: tomdallimore
+  password:
   # adapter: sqlite3
   # database: db/test.sqlite3
   # pool: 5
