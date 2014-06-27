@@ -6,6 +6,7 @@ describe Attachment do
     it { expect(subject).to belong_to(:attachable) }
 
     # Validations
+    before { subject.stub(:not_setting_attachment?) { true } }
     it { expect(subject).to validate_presence_of(:file) }
 
     it { expect(create(:attachment)).to allow_value(".jpg").for(:file) }
@@ -50,4 +51,30 @@ describe Attachment do
         end
     end
 
+    describe "When calculating the type of an attachment" do
+        let(:setting) { create(:store_setting_attachment) }
+        let(:user) { create(:user_attachment) }
+        let(:product) { create(:product_attachment) }
+
+        context "if the type is StoreSetting" do
+
+            it "should return false" do
+                expect(setting.not_setting_attachment?).to be_false
+            end
+        end
+
+        context "if the type is User" do
+
+            it "should return false" do
+                expect(user.not_setting_attachment?).to be_false
+            end
+        end
+
+        context "if the type is Product" do
+
+            it "should return true" do
+                expect(product.not_setting_attachment?).to be_true
+            end
+        end
+    end
 end
