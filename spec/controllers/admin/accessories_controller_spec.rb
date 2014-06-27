@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Admin::AccessoriesController do
 
+    store_setting
     login_admin
 
     describe 'GET #index' do
