@@ -30,7 +30,6 @@ feature 'Country management' do
     end
 
     scenario 'should add a new country and display a zone hint when zone records are not present in the database' do
-        Zone.destroy_all
 
         visit admin_zones_countries_path
         find('.page-header a:first-child').click

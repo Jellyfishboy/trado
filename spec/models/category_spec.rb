@@ -15,7 +15,6 @@ describe Category do
     it { expect(subject).to validate_uniqueness_of(:name) }
 
     describe "Default scope" do
-        Category.destroy_all
         let!(:category_1) { create(:category, sorting: 2) }
         let!(:category_2) { create(:category, sorting: 0) }
         let!(:category_3) { create(:category, sorting: 1) }

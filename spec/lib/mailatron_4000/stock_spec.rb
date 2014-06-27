@@ -6,7 +6,7 @@ describe Mailatron4000::Stock do
 
     describe "Automated stock warning level" do
 
-        before(:all) do
+        before(:each) do
             create(:stock_warning_product_1)
             create(:stock_warning_product_2)
             create(:stock_warning_product_3)
@@ -25,7 +25,7 @@ describe Mailatron4000::Stock do
 
     describe "Notifying of new stock" do
 
-        before(:all) do
+        before(:each) do
             create(:notified_product)
         end
         context "if there are any notifications" do

@@ -6,7 +6,6 @@ feature 'Category management' do
     feature_login_admin
 
     scenario 'should display an index of categories' do
-        Category.destroy_all
         category = create(:category)
 
         visit admin_root_path

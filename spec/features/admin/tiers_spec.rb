@@ -33,7 +33,6 @@ feature 'Tier management' do
     end
 
     scenario 'should add a new tier and display a shipping hint when shipping records are not present in the database' do
-        Shipping.destroy_all
 
         visit admin_shippings_tiers_path
         find('.page-header a').click
