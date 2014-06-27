@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe CategoriesController do
 
+    store_setting
+
     describe 'GET#show' do
         it "assigns the requested category to @category" do
             category = create(:category)

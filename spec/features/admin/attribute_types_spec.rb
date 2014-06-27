@@ -28,6 +28,7 @@ feature 'Attribute type management' do
     end
 
     scenario 'should edit an attribute type' do
+        Sku.destroy_all
         AttributeType.destroy_all
         attribute_type = create(:attribute_type)
 
