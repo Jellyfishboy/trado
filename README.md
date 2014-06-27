@@ -1,6 +1,6 @@
 #Trado
 
-[![Build Status](https://magnum.travis-ci.com/Jellyfishboy/trado.png?token=QokxWaDSkksHTjy7pT4N&branch=master)](https://magnum.travis-ci.com/Jellyfishboy/trado)
+[![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 
 Trado is an automated enterprise e-commerce solution, built to be easy to manage and lightweight.
 
