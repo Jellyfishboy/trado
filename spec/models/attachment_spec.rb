@@ -56,7 +56,7 @@ describe Attachment do
         let(:user) { create(:user_attachment) }
         let(:product) { create(:product_attachment) }
 
-        context "if the type if StoreSetting" do
+        context "if the type is StoreSetting" do
 
             it "should return false" do
                 expect(setting.not_setting_attachment?).to be_false
