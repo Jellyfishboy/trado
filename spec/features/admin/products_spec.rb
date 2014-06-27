@@ -377,6 +377,7 @@ feature 'Product management' do
     end
 
     scenario 'should display a warning if no shippings tiers and/or sku attribute types have been created' do
+        AttributeType.destroy_all
 
         visit admin_products_path
         find('.page-header a:first-child').click
