@@ -25,7 +25,6 @@ feature 'Administration management' do
             expect(page).to have_content 'Store settings were successfully updated.'
         end
         Store::reset_settings
-        binding.pry
         expect(Store::settings.name).to eq 'Test store name'
         expect(Store::settings.tax_name).to eq 'Tax'
         expect(Store::settings.tax_breakdown).to eq true
