@@ -29,9 +29,9 @@ describe Attachment do
 
             it "should update all other records default_record property to false" do
                 attachment_1.reload
-                expect(attachment_1.default_record).to eq false
-                expect(attachment_2.default_record).to eq true
-                expect(attachment_3.default_record).to eq false
+                expect(attachment_1.default_record).to be_false
+                expect(attachment_2.default_record).to be_true
+                expect(attachment_3.default_record).to be_false
             end
         end
 
@@ -44,10 +44,34 @@ describe Attachment do
             end
 
             it "should not do anything" do
-                expect(attachment_1.default_record).to eq true
-                expect(attachment_2.default_record).to eq false
-                expect(attachment_3.default_record).to eq false
+                expect(attachment_1.default_record).to be_true
+                expect(attachment_2.default_record).to be_false
+                expect(attachment_3.default_record).to be_false
             end
+        end
+    end
+
+    describe "When updating an attachment" do
+        let!(:product) { create(:product) }
+        let!(:attachment_1) { create(:attachment, attachable: product) }
+        let!(:attachment_2) { create(:attachment, attachable: product, default_record: true) }
+
+        it "should set the targeted attachment default_record propety to true" do
+            expect{
+                Attachment.set_default(attachment_1.id)
+            }.to change{
+                attachment_1.reload
+                attachment_1.default_record
+            }.from(false).to(true)
+        end
+
+        it "should set all other attachments associated to the parent record" do
+            expect{
+                Attachment.set_default(attachment_1.id)
+            }.to change{
+                attachment_2.reload
+                attachment_2.default_record
+            }.from(true).to(false)
         end
     end
 

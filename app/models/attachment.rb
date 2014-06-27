@@ -27,13 +27,16 @@ class Attachment < ActiveRecord::Base
 
   default_scope order('default_record DESC')
 
-  before_save :set_default_attachment
-
-  # Before saving an existing attachment, if the default_record property has been changed and is set to true
-  # Update all other attachment default_record properties with a false value
+  # Finds an attachment with the passed in parameter and updates it's default_record property true
+  # Then updates all other attachments default_record proeprty who are associated to the parent object to false
   #
-  def set_default_attachment
-    id != nil && default_record && default_record_changed? ? self.class.where('id != ?', id).update_all(default_record: false) : nil
+  # @param id [Integer]
+  def self.set_default id
+    unless id.nil?
+      @attachment = Attachment.find(id)
+      @attachment.update_column(:default_record, true)
+      Attachment.where('id != ? AND attachable_id = ?', @attachment.id, @attachment.attachable.id).update_all(default_record: false) if @attachment.default_record
+    end
   end
 
   # If the attachment is a StoreSetting or User, ignore the presence validation

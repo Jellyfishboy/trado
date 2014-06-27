@@ -61,7 +61,7 @@ class Product < ActiveRecord::Base
   searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope order('weighting DESC')
-
+  
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -94,5 +94,4 @@ class Product < ActiveRecord::Base
       return false
     end
   end
-
 end
