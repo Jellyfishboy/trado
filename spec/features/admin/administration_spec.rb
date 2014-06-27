@@ -6,6 +6,10 @@ feature 'Administration management' do
     feature_login_admin
 
     scenario 'should edit the store settings' do
+        Store::reset_settings
+        StoreSetting.destroy_all
+        settings = create(:store_setting)
+        Store::settings
 
         visit admin_root_path
         find('.user-menu').click
@@ -21,6 +25,7 @@ feature 'Administration management' do
             expect(page).to have_content 'Store settings were successfully updated.'
         end
         Store::reset_settings
+        binding.pry
         expect(Store::settings.name).to eq 'Test store name'
         expect(Store::settings.tax_name).to eq 'Tax'
         expect(Store::settings.tax_breakdown).to eq true
