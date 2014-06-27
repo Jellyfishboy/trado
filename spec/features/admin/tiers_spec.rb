@@ -5,7 +5,8 @@ feature 'Tier management' do
     store_setting
     feature_login_admin
 
-    scenario 'should add a new tier' do
+    scenario 'should add a new tier and not display a shipping hint when shipping records are present in the database' do
+        create(:shipping, active: true)
 
         visit admin_shippings_tiers_path
         find('.page-header a').click
@@ -25,6 +26,36 @@ feature 'Tier management' do
         expect(current_path).to eq admin_shippings_tiers_path
         within '.alert.alert-success' do
             expect(page).to have_content 'Tier was successfully created.'
+        end
+        within 'h2' do
+            expect(page).to have_content 'Tiers'
+        end
+    end
+
+    scenario 'should add a new tier and display a shipping hint when shipping records are not present in the database' do
+        Shipping.destroy_all
+
+        visit admin_shippings_tiers_path
+        find('.page-header a').click
+        expect(current_path).to eq new_admin_shippings_tier_path
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'New'
+        end
+        expect{
+            fill_in('tier_length_start', with: '0')
+            fill_in('tier_length_end', with: '22.8')
+            fill_in('tier_weight_start', with: '0')
+            fill_in('tier_weight_end', with: '100.20')
+            fill_in('tier_thickness_start', with: '0')
+            fill_in('tier_thickness_end', with: '89.76')
+            click_button 'Submit'
+        }.to change(Tier, :count).by(1)
+        expect(current_path).to eq admin_shippings_tiers_path
+        within '.alert.alert-success' do
+            expect(page).to have_content 'Tier was successfully created.'
+        end
+        within '.alert.alert-info' do
+            expect(page).to have_content 'Hint: Remember to create a shipping method record so you can start to display shipping results in your order process.'
         end
         within 'h2' do
             expect(page).to have_content 'Tiers'

@@ -5,7 +5,8 @@ feature 'Country management' do
     store_setting
     feature_login_admin
 
-    scenario 'should add a new country' do
+    scenario 'should add a new country and not display a zone hint when zone records are present in the database' do
+        create(:zone)
 
         visit admin_zones_countries_path
         find('.page-header a:first-child').click
@@ -22,6 +23,33 @@ feature 'Country management' do
         expect(current_path).to eq admin_zones_countries_path
         within '.alert.alert-success' do
             expect(page).to have_content 'Country was successfully created.'
+        end
+        within 'h2' do
+            expect(page).to have_content 'Countries'
+        end
+    end
+
+    scenario 'should add a new country and display a zone hint when zone records are not present in the database' do
+        Zone.destroy_all
+
+        visit admin_zones_countries_path
+        find('.page-header a:first-child').click
+        expect(current_path).to eq new_admin_zones_country_path
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'New'
+        end
+        expect{
+            fill_in('country_name', with: 'United Kingdom')
+            fill_in('country_language', with: 'English')
+            fill_in('country_iso', with: 'EN')
+            click_button 'Submit'
+        }.to change(Country, :count).by(1)
+        expect(current_path).to eq admin_zones_countries_path
+        within '.alert.alert-success' do
+            expect(page).to have_content 'Country was successfully created.'
+        end
+        within '.alert.alert-info' do
+            expect(page).to have_content 'Hint: Remember to create a zone record so you can start associating your countries with your shipping methods.'
         end
         within 'h2' do
             expect(page).to have_content 'Countries'
