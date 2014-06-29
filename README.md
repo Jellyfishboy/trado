@@ -4,6 +4,8 @@
 
 Trado is an automated enterprise e-commerce solution, built to be easy to manage and lightweight.
 
+[Release notes](http://release.tomdallimore.com)
+
 #Configuration
 
 ##How to configure
