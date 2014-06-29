@@ -20,6 +20,8 @@ class Category < ActiveRecord::Base
   attr_accessible :description, :name, :visible, :sorting
 
   has_many :products
+  has_many :skus,                                        through: :products
+  has_many :attribute_types,                             through: :skus
 
   validates :name,:description, :sorting,                :presence => true
   validates :name,                                       :uniqueness => true

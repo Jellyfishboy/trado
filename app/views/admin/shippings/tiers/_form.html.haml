@@ -30,10 +30,10 @@
         = f.text_field :thickness_end, :class => 'form-control'
       .form-group.form-last
         = f.label 'Shipping methods'
-        - if Shipping.active.all.empty? 
+        - if @shippings.empty? 
           %p No shipping options to select.
         - else
-          - Shipping.active.all.each do |shipping|
+          - @shippings.each do |shipping|
             .checkbox.blocked
               %label
                 = hidden_field_tag "tier[shipping_ids][]", ""

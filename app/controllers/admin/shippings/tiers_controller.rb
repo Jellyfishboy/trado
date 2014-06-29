@@ -1,11 +1,11 @@
 class Admin::Shippings::TiersController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :active_shippings, only: [:new, :edit, :update]
   layout "admin"
   # GET /tiers
   # GET /tiers.json
   def index
-    @tiers = Tier.all
+    @tiers = Tier.includes(:shippings).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -74,5 +74,14 @@ class Admin::Shippings::TiersController < ApplicationController
       format.html { redirect_to admin_shippings_tiers_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  # Retrieves an instantiates an array of active shippings
+  #
+  # @return [Array] active shippings
+  def active_shippings
+    @shippings = Shipping.active.all
   end
 end

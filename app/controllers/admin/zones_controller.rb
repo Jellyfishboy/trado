@@ -5,7 +5,7 @@ class Admin::ZonesController < ApplicationController
   # GET /zones
   # GET /zones.json
   def index
-    @zones = Zone.all
+    @zones = Zone.includes(:countries).all
 
     respond_to do |format|
       format.html # index.html.erb

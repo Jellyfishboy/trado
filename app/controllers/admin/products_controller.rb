@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.active.all
-
+    @categories = Category.includes(:products, :skus, :attribute_types).where(:products => { active: true }, :skus => { active: true } ).all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = Product.includes(:skus, :accessories, :attachments).where(:skus => { active:true }).find(params[:id])
   end
 
   # POST /products
@@ -48,7 +48,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id]).includes(:skus).where(:skus => { active:true })
     respond_to do |format|
       if @product.update_attributes(params[:product])
         Attachment.set_default(params[:default_attachment])

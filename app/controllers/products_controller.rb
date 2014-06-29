@@ -5,11 +5,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = Product.includes(:accessories, :skus).where(:accessories => { active: true }, :skus => { active: true }).find(params[:id])
     @cart_item = CartItem.new
     @cart_item_accessory = @cart_item.build_cart_item_accessory unless @product.accessories.empty?
     @notification = Notification.new
-    @skus = @product.skus.active.order('cast(attribute_value as unsigned) asc')
+    @skus = @product.skus.order('cast(attribute_value as unsigned) asc')
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }

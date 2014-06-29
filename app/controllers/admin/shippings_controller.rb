@@ -5,7 +5,7 @@ class Admin::ShippingsController < ApplicationController
   # GET /shippings
   # GET /shippings.json
   def index
-    @shippings = Shipping.active.all
+    @shippings = Shipping.active.includes(:zones, :tiers).all
 
     respond_to do |format|
       format.html # index.html.erb

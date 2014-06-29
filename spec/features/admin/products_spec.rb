@@ -17,12 +17,6 @@ feature 'Product management' do
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Products'
         end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'SKU'
-        end
-        within 'tbody tr td:first-child' do
-            expect(page).to have_content product.sku
-        end
     end
 
     # scenario 'should add a new product', js: true do
@@ -141,7 +135,7 @@ feature 'Product management' do
 
         visit admin_products_path
         expect{
-            within 'tbody' do
+            within 'thead.main-table + tbody' do
                 first('tr').find('td:last-child a:last-child').click
             end
         }.to change(Product, :count).by(-1)
@@ -158,8 +152,8 @@ feature 'Product management' do
         sku = product.skus.first
 
         visit admin_products_path
-        within 'tbody' do
-            first('tr').find('td:last-child').first(:link).click
+        within 'thead.main-table + tbody' do
+            first('tr').find('td.table-actions').first(:link).click
         end
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
@@ -195,8 +189,8 @@ feature 'Product management' do
         sku = product.skus.first
 
         visit admin_products_path
-        within 'tbody' do
-            first('tr').find('td:last-child').first(:link).click
+        within 'thead.main-table + tbody' do
+            first('tr').find('td.table-actions').first(:link).click
         end
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
@@ -228,7 +222,7 @@ feature 'Product management' do
         product = create(:product_skus, active: true)
 
         visit admin_products_path
-        find('tbody tr td:last-child').first(:link).click
+        find('.table-actions').first(:link).click
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -248,7 +242,7 @@ feature 'Product management' do
         product = create(:product_sku, active: true)
 
         visit admin_products_path
-        find('tbody tr td:last-child').first(:link).click
+        find('.table-actions').first(:link).click
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -305,7 +299,7 @@ feature 'Product management' do
         product = create(:multiple_attachment_product, active: true)
 
         visit admin_products_path
-        find('tbody tr td:last-child').first(:link).click
+        find('.table-actions').first(:link).click
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -325,7 +319,7 @@ feature 'Product management' do
         product = create(:product_sku, active: true)
 
         visit admin_products_path
-        find('tbody tr td:last-child').first(:link).click
+        find('.table-actions').first(:link).click
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'

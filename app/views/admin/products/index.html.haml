@@ -11,24 +11,39 @@
   - if @products.empty?
     %p You don't have any products yet.
   - else
-    .table-responsive
-      %table.table.table-striped.table-bordered.table-hover
-        %thead
-          %tr
-            %th SKU
-            %th Part no.
-            %th{colspan: "2"} Name
-            %th Net price
-            %th Gross price
-            %th
-        %tbody
-          - @products.each do |product|
-            %tr
-              %td= product.sku
-              %td= product.part_number
-              %td{width: "85"}= image_tag product.attachments.first.file.square, :height => "75", :width => "75"
-              %td= link_to product.name, [product.category, product]
-              %td= Store::Price.new(product.skus.first.price, 'net').format
-              %td= Store::Price.new(product.skus.first.price, 'gross').format
-              = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
+    - @categories.each do |category|
+      - unless category.products.empty?
+        .widget-sub-heading
+          %h3= category.name
+        .table-responsive
+          %table.table.table-striped.table-bordered.table-hover.table-margin
+            %thead.main-table
+              %tr
+                %th SKU
+                %th Part no.
+                %th Name
+                %th.inner-table
+                  %table
+                    %thead
+                      %tr
+                        %th Variant
+                        %th Net price
+                        %th Gross Price
+                %th
+            %tbody
+              - category.products.each do |product|
+                %tr
+                  %td= product.sku
+                  %td= product.part_number
+                  %td= link_to product.name, [product.category, product]
+                  %td.inner-table
+                    %table
+                      %tbody
+                        - product.skus.each do |sku|
+                          %tr
+                            %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}"
+                            %td= Store::Price.new(sku.price, 'net').format
+                            %td= Store::Price.new(sku.price, 'gross').format
+                  = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
+
               

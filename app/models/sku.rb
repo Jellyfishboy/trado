@@ -27,7 +27,7 @@
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
-  :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id
+  :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id, :active
   
   has_many :cart_items
   has_many :carts,                                  :through => :cart_items
