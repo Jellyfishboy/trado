@@ -59,9 +59,9 @@
               = f.hidden_field :sku_id, :value => @product.skus.first.id
             - else
               = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku, sku.product.single), sku.id ] } )
-            - unless @product.accessories.empty?
+            - unless @product.accessories.active.empty?
               = f.fields_for @cart_item_accessory do |ff|
-                = ff.select :accessory_id, options_for_select(@product.accessories.map { |a| [accessory_details(a), a.id]}), :prompt => "Select accessory"
+                = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "Select accessory"
             - if @skus.first.stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}") do
                 %i.fa.fa-shopping-cart
