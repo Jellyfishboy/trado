@@ -30,23 +30,22 @@ class Sku < ActiveRecord::Base
   :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id, :active
   
   has_many :cart_items
-  has_many :carts,                                  :through => :cart_items
-  has_many :order_items,                            :dependent => :restrict
-  has_many :orders,                                 :through => :order_items, :dependent => :restrict
-  has_many :notifications,                          as: :notifiable, :dependent => :delete_all
-  has_many :stock_levels,                           :dependent => :delete_all
-  belongs_to :product
+  has_many :carts,                                                    :through => :cart_items
+  has_many :order_items,                                              :dependent => :restrict
+  has_many :orders,                                                   :through => :order_items, :dependent => :restrict
+  has_many :notifications,                                            as: :notifiable, :dependent => :delete_all
+  has_many :stock_levels,                                             :dependent => :delete_all
+  belongs_to :product,                                                inverse_of: :skus
   belongs_to :attribute_type
 
   validates :price, :cost_value, :length, 
-  :weight, :thickness, :attribute_value, 
-  :attribute_type_id, :code,                                          :presence => true
+  :weight, :thickness, :code,                                          :presence => true
   validates :price, :cost_value,                                      :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,                             :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
   validate :stock_values,                                             :on => :create
   validates :attribute_value, :code,                                  :uniqueness => { :scope => [:product_id, :active] }
-  # validates :code,                                                    :uniqueness => { :scope => [:product_id, :active] }, :if => :new_sku?
+  validates :attribute_value, :attribute_type_id,                     presence: true, :if => :not_single_sku?
 
   after_update :update_cart_items_weight
 
@@ -76,20 +75,15 @@ class Sku < ActiveRecord::Base
     end
   end
 
-  # # Validate wether the current record is new
-  # #
-  # # @return [Boolean]
-  # def new_sku?
-  #   return true if self.product.nil?
-  # end
-
-  # # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
-  # # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
-  # #
-  # # @return [Boolean]
-  # def single_sku?
-  #   return true if self.product.skus.map { |s| s.active }.count == 1
-  # end
+  # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
+  # and the product has been set to single
+  # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
+  # so the count is completed using the active field being set to true
+  #
+  # @return [Boolean]
+  def not_single_sku?
+    return true unless self.product.skus.map { |s| s.active }.count == 1 && self.product.single
+  end
 
   # Joins the parent product SKU and the current SKU with a hyphen
   #

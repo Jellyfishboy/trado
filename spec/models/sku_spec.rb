@@ -18,11 +18,13 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:length) }
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:thickness) }
-    it { expect(subject).to validate_presence_of(:attribute_value) }
-    it { expect(subject).to validate_presence_of(:attribute_type_id) }
     it { expect(subject).to validate_presence_of(:code) }
     it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:stock_warning_level) }
+
+    before { subject.stub(:not_single_sku?) { true } }
+    it { expect(subject).to validate_presence_of(:attribute_value) }
+    it { expect(subject).to validate_presence_of(:attribute_type_id) }
 
     it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
@@ -31,7 +33,6 @@ describe Sku do
     it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1).only_integer }
 
     it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
-    # before { subject.stub(:new_sku?) { true } }
     it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:product_id, :active]) }
 
     describe "When creating a new SKU" do
@@ -58,6 +59,25 @@ describe Sku do
 
         it "should return a string value of the product SKU and the child SKU joined by a hyphen" do
             expect(product.skus.first.full_sku).to eq 'GA280-55'
+        end
+    end
+
+    describe "When creating or updating a product" do
+
+        context "if the product has a one SKU and it's single_product field is set to true" do
+            let!(:product) { create(:product_sku, single: true) }
+
+            it "should return false for attribute validation" do
+                expect(product.skus.first.not_single_sku?).to be_false
+            end
+        end
+
+        context "if the product has more than one SKU and/or it's single_product field is set to false" do
+            let!(:product) { create(:product_skus, single: false) }
+
+            it "should return true for attribute validation" do
+                expect(product.skus.first.not_single_sku?).to be_true
+            end
         end
     end
 
