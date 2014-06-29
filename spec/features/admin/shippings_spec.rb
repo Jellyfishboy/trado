@@ -98,20 +98,20 @@ feature 'Shipping management' do
         end
     end
 
-    # scenario "should delete a shipping", js: true do
-    #     shipping = create(:shipping, active: true)
+    scenario "should delete a shipping", js: true do
+        shipping = create(:shipping, active: true)
 
-    #     visit admin_shippings_path
-    #     expect{
-    #         within 'tbody' do
-    #             first('tr').find('td:last-child a:last-child').click
-    #         end
-    #     }.to change(Shipping, :count).by(-1)
-    #     within '.alert' do
-    #         expect(page).to have_content('Shipping was successfully deleted.')
-    #     end
-    #     within 'h2' do
-    #         expect(page).to have_content 'Shipping methods'
-    #     end
-    # end
+        visit admin_shippings_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Shipping, :count).by(-1)
+        within '.alert' do
+            expect(page).to have_content('Shipping was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end
+    end
 end
