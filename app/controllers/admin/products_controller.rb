@@ -48,7 +48,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id]).includes(:skus).where(:skus => { active:true })
+    @product = Product.includes(:skus).where(:skus => { active:true }).find(params[:id])
     respond_to do |format|
       if @product.update_attributes(params[:product])
         Attachment.set_default(params[:default_attachment])
