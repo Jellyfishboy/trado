@@ -39,7 +39,7 @@ class Sku < ActiveRecord::Base
   belongs_to :attribute_type
 
   validates :price, :cost_value, :length, 
-  :weight, :thickness, :code,                                          :presence => true
+  :weight, :thickness, :code,                                         :presence => true
   validates :price, :cost_value,                                      :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
   validates :length, :weight, :thickness,                             :numericality => { :greater_than_or_equal_to => 0 }
   validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
