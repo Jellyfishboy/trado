@@ -1,4 +1,5 @@
-- content_for :title, '500 Error'
+- content_for :title, '422 Error'
+- content_for :breadcrumb, '422'
 
 .darker-stripe
 .container
@@ -6,10 +7,10 @@
     .row
       %section.span12
         .container-error
-          %h1 500 Error
+          %h1 422 Error
         %hr/
         %p.center-align.size-16
-          We are sorry, but something went wrong. We have been notified of the issue.
+          The change you wanted was rejected. Maybe you tried to change something you didn't have access to.
         %p.center-align.size-16.push-down-50
           Go
           = "#{link_to 'Home', root_path}.".html_safe
