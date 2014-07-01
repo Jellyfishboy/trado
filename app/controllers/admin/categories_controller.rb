@@ -67,10 +67,10 @@ class Admin::CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
+    @result = Store::last_record(@category, Category.all.count)
 
     respond_to do |format|
-      flash_message :success, 'Category was successfully deleted.'
+      flash_message @result[0], @result[1]
       format.html { redirect_to admin_categories_url }
       format.json { head :no_content }
     end

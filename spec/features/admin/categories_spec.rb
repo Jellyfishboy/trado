@@ -76,8 +76,8 @@ feature 'Category management' do
         expect(category.visible).to eq true
     end
 
-    scenario "should delete a category", js: true do
-        category = create(:category)
+    scenario "should delete a category if there is more than one record" do
+        category = create_list(:category, 2)
 
         visit admin_categories_path
         expect{
@@ -87,6 +87,23 @@ feature 'Category management' do
         }.to change(Category, :count).by(-1)
         within '.alert.alert-success' do
             expect(page).to have_content('Category was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Categories'
+        end
+    end
+
+    scenario "should not delete a category if there is only one record" do
+        category = create(:category)
+
+        visit admin_categories_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Category, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete category - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Categories'

@@ -66,10 +66,10 @@ class Admin::ZonesController < ApplicationController
   # DELETE /zones/1.json
   def destroy
     @zone = Zone.find(params[:id])
-    @zone.destroy
+    @result = Store::last_record(@zone, Zone.all.count)
 
     respond_to do |format|
-      flash_message :success, 'Zone was successfully deleted.'
+      flash_message @result[0], @result[1]
       format.html { redirect_to admin_zones_url }
       format.json { head :no_content }
     end

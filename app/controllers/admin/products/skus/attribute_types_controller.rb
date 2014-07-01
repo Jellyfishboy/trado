@@ -67,10 +67,10 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
   # DELETE /attribute_types/1.json
   def destroy
     @attribute_type = AttributeType.find(params[:id])
-    @attribute_type.destroy
+    @result = Store::last_record(@attribute_type, AttributeType.all.count)
 
     respond_to do |format|
-      flash_message :success, 'Attribute type was successfully deleted.'
+      flash_message @result[0], @result[1]
       format.html { redirect_to admin_products_skus_attribute_types_url }
       format.json { head :no_content }
     end

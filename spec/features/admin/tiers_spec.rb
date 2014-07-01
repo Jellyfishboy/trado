@@ -90,8 +90,8 @@ feature 'Tier management' do
         expect(tier.shippings.first.name).to eq 'Royal Mail 1st class'
     end
 
-    scenario "should delete a tier", js: true do
-        tier = create(:tier)
+    scenario "should delete a tier if there is more than one record" do
+        tier = create_list(:tier, 2)
 
         visit admin_shippings_tiers_path
         expect{
@@ -101,6 +101,23 @@ feature 'Tier management' do
         }.to change(Tier, :count).by(-1)
         within '.alert.alert-success' do
             expect(page).to have_content('Tier was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Tiers'
+        end
+    end
+
+    scenario "should not delete a tier if there is only one record" do
+        tier = create(:tier)
+
+        visit admin_shippings_tiers_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Tier, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete tier - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Tiers'

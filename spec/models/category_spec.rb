@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Category do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:products) }
+    it { expect(subject).to have_many(:products).dependent(:restrict) }
     it { expect(subject).to have_many(:skus).through(:products) }
     it { expect(subject).to have_many(:attribute_types).through(:skus) }
 

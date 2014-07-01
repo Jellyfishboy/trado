@@ -40,7 +40,7 @@ feature 'Shipping management' do
             click_button 'Submit'
         }.to change(Shipping, :count).by(1)
         expect(current_path).to eq admin_shippings_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Shipping was successfully created.'
         end
         within 'h2' do
@@ -63,7 +63,7 @@ feature 'Shipping management' do
         find('.form-last div:last-child label input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_shippings_path
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content 'Shipping was successfully updated.'
         end
         within 'h2' do
@@ -98,8 +98,8 @@ feature 'Shipping management' do
         end
     end
 
-    scenario "should delete a shipping", js: true do
-        shipping = create(:shipping, active: true)
+    scenario "should delete a shipping if there is more than one record" do
+        shipping = create_list(:shipping, 2, active: true)
 
         visit admin_shippings_path
         expect{
@@ -107,8 +107,25 @@ feature 'Shipping management' do
                 first('tr').find('td:last-child a:last-child').click
             end
         }.to change(Shipping, :count).by(-1)
-        within '.alert' do
+        within '.alert.alert-success' do
             expect(page).to have_content('Shipping was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Shipping methods'
+        end
+    end
+
+    scenario "should not delete a shipping if there is only one record" do
+        shipping = create(:shipping, active: true)
+
+        visit admin_shippings_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Shipping, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete shipping - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Shipping methods'

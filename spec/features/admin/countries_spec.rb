@@ -82,8 +82,8 @@ feature 'Country management' do
         expect(country.iso).to eq 'CA'
     end
     
-    scenario "should delete a country", js: true do
-        country = create(:country)
+    scenario "should delete a country if there is more than one record" do
+        country = create_list(:country, 2)
 
         visit admin_zones_countries_path
         expect{
@@ -93,6 +93,23 @@ feature 'Country management' do
         }.to change(Country, :count).by(-1)
         within '.alert.alert-success' do
             expect(page).to have_content('Country was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Countries'
+        end
+    end
+
+    scenario "should not delete a country if there is only one record" do
+        country = create(:country)
+
+        visit admin_zones_countries_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Country, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete country - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Countries'

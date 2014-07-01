@@ -67,10 +67,10 @@ class Admin::Shippings::TiersController < ApplicationController
   # DELETE /tiers/1.json
   def destroy
     @tier = Tier.find(params[:id])
-    @tier.destroy
+    @result = Store::last_record(@tier, Tier.all.count)
 
     respond_to do |format|
-      flash_message :success, 'Tier was successfully deleted.'
+      flash_message @result[0], @result[1]
       format.html { redirect_to admin_shippings_tiers_url }
       format.json { head :no_content }
     end

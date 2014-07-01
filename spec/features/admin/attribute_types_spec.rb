@@ -53,8 +53,8 @@ feature 'Attribute type management' do
         expect(attribute_type.measurement).to eq 'Kg'
     end
 
-    scenario "should delete an attribute type", js: true do
-        attribute_type = create(:attribute_type)
+    scenario "should delete an attribute type if there is more than one record" do
+        attribute_type = create_list(:attribute_type, 2)
 
         visit admin_products_skus_attribute_types_path
         expect{
@@ -64,6 +64,23 @@ feature 'Attribute type management' do
         }.to change(AttributeType, :count).by(-1)
         within '.alert.alert-success' do
             expect(page).to have_content('Attribute type was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Attribute types'
+        end
+    end
+
+    scenario "should not delete an attribute type if there is only one record" do
+        attribute_type = create(:attribute_type)
+
+        visit admin_products_skus_attribute_types_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(AttributeType, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete attribute type - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Attribute types'

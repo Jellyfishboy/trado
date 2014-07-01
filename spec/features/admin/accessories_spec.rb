@@ -77,7 +77,7 @@ feature 'Accessory management' do
         expect(accessory.active).to eq true
     end
 
-    scenario "should delete an accessory", js: true do
+    scenario "should delete an accessory" do
         accessory = create(:accessory)
 
         visit admin_accessories_path

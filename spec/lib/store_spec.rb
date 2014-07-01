@@ -63,4 +63,42 @@ describe Store do
             expect(product.active).to be_true
         end
     end
+
+    describe "When rendering an object's parent class name" do
+        let(:attribute_type) { create(:attribute_type) }
+
+        it "should return a string" do
+            expect(Store::class_name(attribute_type)).to eq 'Attribute Type'
+        end
+    end
+
+    describe "When deleting a record" do
+
+        context "if it is the last record" do
+            let!(:category) { create(:category) }
+
+            it "should return a failed string message" do
+                expect(Store::last_record(category, Category.all.count)).to match_array([:error, 'Failed to delete category - you must have at least one record.'])
+            end
+
+            it "should not delete the record" do
+                expect{
+                    Store::last_record(category, Category.all.count)
+                }.to change(Category, :count).by(0)
+            end
+        end
+
+        context "if it is not the last record" do
+            let!(:category) { create_list(:category, 3) }
+
+            it "should return a success string message" do
+                expect(Store::last_record(category.first, Category.all.count)).to match_array([:success, 'Category was successfully deleted.'])
+            end
+            it "should delete the record" do
+                expect{
+                    Store::last_record(category.first, Category.all.count)
+                }.to change(Category, :count).by(-1)
+            end
+        end
+    end
 end

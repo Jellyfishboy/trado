@@ -103,6 +103,7 @@ describe Admin::CategoriesController do
     
     describe 'DELETE #destroy' do
         before :each do
+            create(:category)
             @category = create(:category)
         end
         it "deletes the category from the database"  do

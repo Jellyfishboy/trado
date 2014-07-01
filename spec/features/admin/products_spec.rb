@@ -130,7 +130,7 @@ feature 'Product management' do
         end
     end
 
-    scenario "should delete a product", js: true do
+    scenario "should delete a product" do
         product = create(:product_skus, active: true)
 
         visit admin_products_path

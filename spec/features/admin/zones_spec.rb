@@ -95,8 +95,8 @@ feature 'Zone management' do
         end
     end
 
-    scenario "should delete a zone", js: true do
-        zone = create(:zone)
+    scenario "should delete a zone if there is more than one record" do
+        zone = create_list(:zone, 2)
 
         visit admin_zones_path
         expect{
@@ -106,6 +106,23 @@ feature 'Zone management' do
         }.to change(Zone, :count).by(-1)
         within '.alert.alert-success' do
             expect(page).to have_content('Zone was successfully deleted.')
+        end
+        within 'h2' do
+            expect(page).to have_content 'Zones'
+        end
+    end
+
+    scenario "should not delete a zone if there is only one record" do
+        zone = create(:zone)
+
+        visit admin_zones_path
+        expect{
+            within 'tbody' do
+                first('tr').find('td:last-child a:last-child').click
+            end
+        }.to change(Zone, :count).by(0)
+        within '.alert.alert-warning' do
+            expect(page).to have_content('Failed to delete zone - you must have at least one record.')
         end
         within 'h2' do
             expect(page).to have_content 'Zones'

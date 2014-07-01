@@ -68,10 +68,10 @@ class Admin::Zones::CountriesController < ApplicationController
   # DELETE /countries/1.json
   def destroy
     @country = Country.find(params[:id])
-    @country.destroy
+    @result = Store::last_record(@country, Country.all.count)
 
     respond_to do |format|
-      flash_message :success,'Country was successfully deleted.'
+      flash_message @result[0], @result[1]
       format.html { redirect_to admin_zones_countries_url }
       format.json { head :no_content }
     end

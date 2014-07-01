@@ -28,6 +28,7 @@ module Store
 
         # Detects whether an integer is positive
         #
+        # @param number [Integer]
         # @return [boolean]
         def positive? number
           return number > 0 ? true : false
@@ -35,6 +36,7 @@ module Store
 
         # Sets the record's active field to false
         #
+        # @param record [Object]
         # @return [Object] an inactive record
         def inactivate! record
             record.update_column(:active, false)
@@ -42,9 +44,35 @@ module Store
 
         # Sets the record's active field to true
         #
+        # @param record [Object]
         # @return [Object] an active record
         def activate! record
             record.update_column(:active, true)
         end    
+
+        # Parses the object's parent class name into a camelcase string
+        #
+        # @param object [Object]
+        # @return [String] class name to string
+        def class_name object
+            return object.class.to_s.split(/(?=[A-Z])/).join(' ')
+        end
+
+        # Checks if the class record count is less than 2
+        # If its less than two return a failed string message
+        # If its more then destroy the passed in object and return success string message
+        #
+        # @param object [Object]
+        # @param count [Integer]
+        # @return [Array] flash status symbol and message
+        def last_record object, count
+            if count < 2
+                return [:error, "Failed to delete #{Store::class_name(object).downcase} - you must have at least one record."]
+            else
+                object.destroy
+                return [:success, "#{Store::class_name(object).capitalize} was successfully deleted."]
+            end
+        end
+
     end
 end

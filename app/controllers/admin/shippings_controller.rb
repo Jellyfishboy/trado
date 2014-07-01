@@ -87,10 +87,18 @@ class Admin::ShippingsController < ApplicationController
   def destroy
     @shipping = Shipping.find(params[:id])
 
-    @shipping.orders.empty? ? @shipping.destroy : Store::inactivate!(@shipping)
+    if @shipping.orders.empty?
+      @result = Store::last_record(@shipping, Shipping.active.all.count)
+    else
+      Store::inactivate!(@shipping)
+    end
 
     respond_to do |format|
-      flash_message :success, 'Shipping was successfully deleted.'
+      if @result.nil?
+        flash_message :success, 'Shipping was successfully deleted.'
+      else
+        flash_message @result[0], @result[1]
+      end
       format.html { redirect_to admin_shippings_url }
       format.json { head :no_content }
     end
