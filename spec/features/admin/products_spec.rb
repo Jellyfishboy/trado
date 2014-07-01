@@ -74,39 +74,39 @@ feature 'Product management' do
     #     # expect(current_path).to eq category_product_path()
     # end
 
-    # scenario 'should edit a product', js: true do
-    #     product = create(:product_sku, active: true, single: false)
-    #     accessory = create(:accessory)
+    scenario 'should edit a product', js: true do
+        product = create(:product_sku, active: true, single: false)
+        accessory = create(:accessory)
 
-    #     visit admin_products_path
-    #     find('tbody tr td:last-child').first(:link).click
-    #     expect(current_path).to eq edit_admin_product_path(product)
-    #     within '#breadcrumbs li.current' do
-    #         expect(page).to have_content 'Edit'
-    #     end
+        visit admin_products_path
+        find('.table-actions').first(:link).click
+        expect(current_path).to eq edit_admin_product_path(product)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
 
-    #     fill_in('product_name', with: 'product #1 woooppeeee')
-    #     fill_in('product_weighting', with: '10')
-    #     fill_in('product_sku', with: 'TA')
-    #     find('#product_single').set(true)
-    #     find("#product_accessory_ids_").set(true)
-    #     click_button 'Submit'
-    #     sleep 5
+        fill_in('product_name', with: 'product #1 woooppeeee')
+        fill_in('product_weighting', with: '10')
+        fill_in('product_sku', with: 'TA')
+        find('#product_single').set(true)
+        find("#product_accessory_ids_").set(true)
+        click_button 'Submit'
+        sleep 5
         
-    #     expect(current_path).to eq admin_products_path
+        expect(current_path).to eq admin_products_path
 
-    #     within 'h2' do
-    #         expect(page).to have_content 'Products'
-    #     end 
-    #     product.reload
-    #     expect(product.name).to eq 'product #1 woooppeeee'
-    #     expect(product.weighting).to eq BigDecimal.new("10")
-    #     expect(product.sku).to eq 'TA'
-    #     expect(product.single).to eq true
-    #     expect(product.accessories.count).to eq 1
-    #     expect(product.accessories.first.name).to eq accessory.name
-    #     expect(product.accessories.first.price).to eq accessory.price
-    # end
+        within 'h2' do
+            expect(page).to have_content 'Products'
+        end 
+        product.reload
+        expect(product.name).to eq 'product #1 woooppeeee'
+        expect(product.weighting).to eq BigDecimal.new("10")
+        expect(product.sku).to eq 'TA'
+        expect(product.single).to eq true
+        expect(product.accessories.count).to eq 1
+        expect(product.accessories.first.name).to eq accessory.name
+        expect(product.accessories.first.price).to eq accessory.price
+    end
 
     scenario 'should display an index of attribute types' do
         attribute_type = create(:attribute_type)
@@ -149,6 +149,7 @@ feature 'Product management' do
 
     scenario 'should add a stock level record to a product SKU', js: true do
         product = create(:product_sku_stock_count, active: true)
+        product.reload
         sku = product.skus.first
 
         visit admin_products_path
@@ -186,6 +187,7 @@ feature 'Product management' do
 
     scenario 'should edit a product SKU', js: true do
         product = create(:product_sku, active: true)
+        product.reload
         sku = product.skus.first
 
         visit admin_products_path

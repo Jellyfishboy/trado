@@ -82,7 +82,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [Boolean]
   def not_single_sku?
-    return true unless self.product.skus.map { |s| s.active }.count == 1 && self.product.single
+    return true unless self.product && self.product.skus.map { |s| s.active }.count == 1 && self.product.single
   end
 
   # Joins the parent product SKU and the current SKU with a hyphen

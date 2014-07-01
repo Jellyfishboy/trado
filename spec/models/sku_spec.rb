@@ -55,10 +55,11 @@ describe Sku do
     end
 
     describe "Displaying a full SKU value" do
-        let(:product) { create(:product_sku, sku: 'GA280') }
+        let(:product) { create(:product_sku, sku: 'GA180') }
 
         it "should return a string value of the product SKU and the child SKU joined by a hyphen" do
-            expect(product.skus.first.full_sku).to eq 'GA280-55'
+            product.reload
+            expect(product.skus.first.full_sku).to eq 'GA180-55'
         end
     end
 
@@ -68,6 +69,7 @@ describe Sku do
             let!(:product) { create(:product_sku, single: true) }
 
             it "should return false for attribute validation" do
+                product.reload
                 expect(product.skus.first.not_single_sku?).to be_false
             end
         end
@@ -76,6 +78,7 @@ describe Sku do
             let!(:product) { create(:product_skus, single: false) }
 
             it "should return true for attribute validation" do
+                product.reload
                 expect(product.skus.first.not_single_sku?).to be_true
             end
         end
