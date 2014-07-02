@@ -107,9 +107,8 @@ describe Payatron4000::Paypal do
     describe "When completing an order" do
 
         context "if the payment was successful" do
-            let!(:cart) { create(:cart) }
-            let(:session) { Hash({:cart_id => cart.id}) }
-            let(:order) { create(:order) }
+            let!(:order) { create(:order) }
+            let(:session) { Hash({:cart_id => order.cart.id}) }
             let(:successful_order) { Payatron4000::Paypal.complete(order, session) }
             before(:each) do
                 EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {   'FeeAmount' => '2.34', 
