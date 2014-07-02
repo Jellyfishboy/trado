@@ -14,11 +14,11 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     case step
     when :billing
-      @billing_address = Payatron4000::select_address(@order.id, @order.bill_address_id)
+      @billing_address = @order.bill_address!
     end
     case step
     when :shipping
-      @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
+      @shipping_address = @order.ship_address!
     end
     case step 
     when :payment
@@ -45,11 +45,9 @@ class Orders::BuildController < ApplicationController
     case step 
     when :billing
 
-      @billing_address = Payatron4000::select_address(@order.id, @order.bill_address_id)
+      @billing_address = @order.bill_address!
       # Update billing attributes
       if @billing_address.update_attributes(params[:address])
-        # Add billing ID to order record
-        @order.update_column(:bill_address_id, @billing_address.id) unless @order.bill_address_id
         # Update order attributes in the form
         unless @order.update_attributes(params[:order])
           # if unsuccessful re-render the form with order errors
@@ -64,11 +62,9 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :shipping
-      @shipping_address = Payatron4000::select_address(@order.id, @order.ship_address_id)
+      @shipping_address = @order.ship_address!
       # Update billing attributes
       if @shipping_address.update_attributes(params[:address])
-        # Add billing ID to order record
-        @order.update_column(:ship_address_id, @shipping_address.id) unless @order.ship_address_id
         # Update order attributes in the form
         unless @order.update_attributes(params[:order])
           # if unsuccessful re-render the form with order errors

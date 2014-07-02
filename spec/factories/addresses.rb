@@ -11,6 +11,7 @@ FactoryGirl.define do
         postcode { Faker::Address.zip_code }
         country { Faker::Address.country }
         telephone { Faker::PhoneNumber.phone_number }
-        
+
+        association :order
     end
 end

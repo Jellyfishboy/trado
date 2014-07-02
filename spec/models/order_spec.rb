@@ -9,8 +9,8 @@ describe Order do
     it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
     it { expect(subject).to belong_to(:shipping) }
     it { expect(subject).to belong_to(:cart) }
-    it { expect(subject).to belong_to(:ship_address).class_name('Address').dependent(:destroy) }
-    it { expect(subject).to belong_to(:bill_address).class_name('Address').dependent(:destroy) }
+    it { expect(subject).to have_one(:ship_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
+    it { expect(subject).to have_one(:bill_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
     context "When the order has a an associated transaction record" do
         before { subject.stub(:has_transaction?) { true } }
@@ -168,6 +168,67 @@ describe Order do
                 expect{
                     Order.clear_orders
                 }.to change(Order, :count).by(-2)
+            end
+        end
+    end
+
+    describe "When instantiating the order bill_address" do
+
+        context "if a bill_address record exists" do
+            let(:order) { create(:bill_address_order) }
+            let(:address) { order.bill_address! }
+
+            it "should return the record with the correct addressable_type field value for the record" do
+                binding.pry
+                expect(address.addressable_type).to eq 'OrderBillAddress'
+            end
+
+            it "should return the record with the correct order_id field value for the record" do
+                expect(address.order_id).to eq order.id
+            end
+        end
+
+        context "if the bill_address does not exist" do
+            let(:order) { create(:order) }
+            let(:address) { order.bill_address! }
+
+            it "should have the correct field values" do
+                expect(address.addressable_type).to eq 'OrderBillAddress'
+                expect(address.order_id).to eq order.id
+            end
+
+            it "should have a nil first_name value" do
+                expect(address.first_name).to be_nil
+            end
+        end
+    end
+
+    describe "When instantiating the order ship_address" do
+
+        context "if a ship_address record exists" do
+            let(:order) { create(:ship_address_order) }
+            let(:address) { order.ship_address! }
+
+            it "should return the record with the correct addressable_type field value for the record" do
+                expect(address.addressable_type).to eq 'OrderShipAddress'
+            end
+
+            it "should return the record with the correct order_id field value for the record" do
+                expect(address.order_id).to eq order.id
+            end
+        end
+
+        context "if the ship_address does not exist" do
+            let(:order) { create(:order) }
+            let(:address) { order.ship_address! }
+
+            it "should have the correct field values" do
+                expect(address.addressable_type).to eq 'OrderShipAddress'
+                expect(address.order_id).to eq order.id
+            end
+
+            it "should have a nil first_name value" do
+                expect(address.first_name).to be_nil
             end
         end
     end

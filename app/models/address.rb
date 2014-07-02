@@ -27,9 +27,13 @@
 class Address < ActiveRecord::Base
 
   attr_accessible :active, :address, :city, :company, :country, :county, :addressable_id,
-  :addressable_type, :default, :first_name, :last_name, :postcode, :telephone
+  :addressable_type, :default, :first_name, :last_name, :postcode, :telephone, :order_id
 
-  validates :first_name, :last_name, :address, :city, :postcode, :country,               :presence => true
+  belongs_to :order
+  belongs_to :addressable,                                          polymorphic: true
+
+  validates :first_name, :last_name, 
+  :address, :city, :postcode, :country,                             presence: true
 
   # Combines the first and last name of an address
   #

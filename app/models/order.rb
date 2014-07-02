@@ -14,8 +14,6 @@
 #  status                   :string(255)          
 #  user_id                  :integer     
 #  cart_id                  :integer
-#  bill_address_id          :integer     
-#  ship_address_id          :integer     
 #  tax_number               :integer 
 #  shipping_id              :integer        
 #  shipping_status          :string(255)      default('Pending')   
@@ -32,7 +30,7 @@
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :shipping_id, :status, :ip_address, :user_id, :cart_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id,
+  :email, :shipping_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms
   
   has_many :order_items,                                                :dependent => :delete_all
@@ -40,8 +38,8 @@ class Order < ActiveRecord::Base
 
   belongs_to :cart
   belongs_to :shipping
-  belongs_to :ship_address,                                             class_name: 'Address', :dependent => :destroy
-  belongs_to :bill_address,                                             class_name: 'Address', :dependent => :destroy
+  has_one :ship_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderShipAddress' }, dependent: :destroy
+  has_one :bill_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderBillAddress' }, dependent: :destroy
 
   validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
@@ -139,4 +137,11 @@ class Order < ActiveRecord::Base
     where("updated_at < ? AND status != ?", 12.hours.ago, 'active').destroy_all
   end
 
+  def bill_address!
+    bill_address.nil? ? build_bill_address : bill_address
+  end
+
+  def ship_address!
+    ship_address.nil? ? build_ship_address : ship_address
+  end
 end

@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
 
   skip_before_filter :authenticate_user!
+  before_filter :void_shipping
 
   # POST /cart_items
   # POST /cart_items.json
@@ -50,4 +51,10 @@ class CartItemsController < ApplicationController
       end
     end
   end  
+
+  private
+
+  def void_shipping
+    current_cart.order.update_column(:shipping_id, nil) unless current_cart.order.nil? || current_cart.order.shipping_id.nil?
+  end
 end

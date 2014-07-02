@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Address do
+
+    # ActiveRecord relations
+    it { expect(subject).to belong_to(:order) }
+    it { expect(subject).to belong_to(:addressable) }
     
     # Validations
     it { expect(subject).to validate_presence_of(:first_name) }

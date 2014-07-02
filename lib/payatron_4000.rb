@@ -25,20 +25,6 @@ module Payatron4000
         def destroy_cart session
             Cart.destroy(session[:cart_id])
             session[:cart_id] = nil
-        end
-        
-        # If address exists for an order, find and utilise it. If not, create a new address record
-        #
-        # @param order_id [Integer]
-        # @param address_id [Integer]
-        def select_address order_id, address_id
-            if address_id
-                Address.find(address_id)
-            else
-                Address.new(:addressable_id => order_id, :addressable_type => 'Order')
-            end
-        end
-
-        
+        end      
     end  
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702144455) do
+ActiveRecord::Schema.define(:version => 20140702205600) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20140702144455) do
     t.datetime "updated_at",                          :null => false
     t.integer  "addressable_id"
     t.string   "addressable_type"
+    t.integer  "order_id"
   end
 
   create_table "attachments", :force => true do |t|
@@ -163,8 +164,6 @@ ActiveRecord::Schema.define(:version => 20140702144455) do
     t.integer  "shipping_id"
     t.string   "ip_address"
     t.integer  "user_id"
-    t.integer  "bill_address_id"
-    t.integer  "ship_address_id"
     t.decimal  "net_amount",           :precision => 8, :scale => 2
     t.decimal  "gross_amount",         :precision => 8, :scale => 2
     t.decimal  "tax_amount",           :precision => 8, :scale => 2
