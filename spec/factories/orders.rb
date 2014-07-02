@@ -15,6 +15,7 @@ FactoryGirl.define do
         terms { true }
         
 
+        association :cart
         association :shipping
         association :ship_address, factory: :address
         association :bill_address, factory: :address

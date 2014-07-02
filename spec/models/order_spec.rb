@@ -8,6 +8,7 @@ describe Order do
     it { expect(subject).to have_many(:order_items).dependent(:delete_all) }
     it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
     it { expect(subject).to belong_to(:shipping) }
+    it { expect(subject).to belong_to(:cart) }
     it { expect(subject).to belong_to(:ship_address).class_name('Address').dependent(:destroy) }
     it { expect(subject).to belong_to(:bill_address).class_name('Address').dependent(:destroy) }
 
@@ -133,6 +134,41 @@ describe Order do
         it "should return true for a payment or active order" do
             expect(order_1.active_or_payment?).to be_true
             expect(order_4.active_or_payment?).to be_true
+        end
+    end
+
+    describe "During a daily scheduled task" do
+
+        context "if the orders are more than 12 hours old but their status is set to active" do
+            let!(:order_1) { create(:order, updated_at: 11.hours.ago) }
+            let!(:order_2) { create(:order, updated_at: 13.hours.ago) }
+            let!(:order_3) { create(:order, updated_at: 28.hours.ago) }
+
+            it "should select the correct orders" do
+                expect(Order.clear_orders).to match_array([])
+            end
+
+            it "should not remove any orders" do
+                expect{
+                    Order.clear_orders
+                }.to change(Order, :count).by(0)
+            end
+        end
+
+        context "if the orders are more than 12 years old and their status is not set to active" do
+            let!(:order_1) { create(:order, updated_at: 11.hours.ago, status: 'shipping') }
+            let!(:order_2) { create(:order, updated_at: 13.hours.ago, status: 'review') }
+            let!(:order_3) { create(:order, updated_at: 28.hours.ago, status: 'billing') }
+
+            it "should select the correct orders" do
+                expect(Order.clear_orders).to match_array([order_2, order_3])
+            end
+
+            it "should remove the orders" do
+                expect{
+                    Order.clear_orders
+                }.to change(Order, :count).by(-2)
+            end
         end
     end
 end

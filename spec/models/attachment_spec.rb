@@ -6,8 +6,10 @@ describe Attachment do
     it { expect(subject).to belong_to(:attachable) }
 
     # Validations
-    before { subject.stub(:not_setting_attachment?) { true } }
-    it { expect(subject).to validate_presence_of(:file) }
+    context "When the attachment is not related to StoreSetting or User" do
+        before { subject.stub(:not_setting_attachment?) { true } }
+        it { expect(subject).to validate_presence_of(:file) }
+    end
 
     it { expect(create(:attachment)).to allow_value(".jpg").for(:file) }
     it { expect(create(:png_attachment)).to allow_value(".png").for(:file) }

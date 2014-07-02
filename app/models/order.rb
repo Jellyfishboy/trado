@@ -38,10 +38,10 @@ class Order < ActiveRecord::Base
   has_many :order_items,                                                :dependent => :delete_all
   has_many :transactions,                                               :dependent => :delete_all
 
+  belongs_to :cart
   belongs_to :shipping
   belongs_to :ship_address,                                             class_name: 'Address', :dependent => :destroy
   belongs_to :bill_address,                                             class_name: 'Address', :dependent => :destroy
-  belongs_to :cart
 
   validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
@@ -53,7 +53,7 @@ class Order < ActiveRecord::Base
   # Upon completing an order, transfer the cart item data to new order item records 
   #
   def transfer cart
-    @order.order_items.destroy_all
+    self.order_items.destroy_all
   	cart.cart_items.each do |item|
       @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => id)
       @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
@@ -136,7 +136,7 @@ class Order < ActiveRecord::Base
   #
   # @return [nil]
   def self.clear_orders
-    where("updated_at < ? AND status IS NOT ?", 12.hours.ago, 'active').destroy_all
+    where("updated_at < ? AND status != ?", 12.hours.ago, 'active').destroy_all
   end
 
 end

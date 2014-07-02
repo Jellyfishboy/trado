@@ -6,6 +6,7 @@ describe Cart do
     it { expect(subject).to have_many(:cart_items).dependent(:delete_all) }
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
+    it { expect(subject).to have_one(:order) }
 
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
@@ -21,13 +22,21 @@ describe Cart do
     end
 
     describe "During a daily scheduled task" do
-        let!(:cart_1) { create(:cart, updated_at: 11.hours.ago) }
-        let!(:cart_2) { create(:cart, updated_at: 13.hours.ago) }
-        let!(:cart_3) { create(:cart, updated_at: 28.hours.ago) }
 
-        it "should remove any carts which are more than 12 hours old" do
-            expect(Cart.clear_carts).to match_array([cart_2, cart_3])
+        context "if the carts are more than 12 hours old" do
+            let!(:cart_1) { create(:cart, updated_at: 11.hours.ago) }
+            let!(:cart_2) { create(:cart, updated_at: 13.hours.ago) }
+            let!(:cart_3) { create(:cart, updated_at: 28.hours.ago) }
+
+            it "should select the correct carts" do
+                expect(Cart.clear_carts).to match_array([cart_2, cart_3])
+            end
+
+            it "should remove the carts" do
+                expect{
+                    Cart.clear_carts
+                }.to change(Cart, :count).by(-2)
+            end
         end
     end
-
 end

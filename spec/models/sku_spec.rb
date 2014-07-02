@@ -22,9 +22,11 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:stock_warning_level) }
 
-    before { subject.stub(:not_single_sku?) { true } }
-    it { expect(subject).to validate_presence_of(:attribute_value) }
-    it { expect(subject).to validate_presence_of(:attribute_type_id) }
+    context "When the skus parent product has more than one sku" do
+        before { subject.stub(:not_single_sku?) { true } }
+        it { expect(subject).to validate_presence_of(:attribute_value) }
+        it { expect(subject).to validate_presence_of(:attribute_type_id) }
+    end
 
     it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
