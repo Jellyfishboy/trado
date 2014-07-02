@@ -84,7 +84,7 @@ class Orders::BuildController < ApplicationController
     case step
     when :confirm
       if @order.update_attributes(params[:order])
-        @order.transfer(current_cart) if @order.transactions.blank?
+        @order.transfer(current_cart)
         unless session[:payment_type].nil?
           url = Payatron4000::Generic.complete(@order, session[:payment_type], session)
         else

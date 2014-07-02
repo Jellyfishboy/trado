@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
       flash_message :notice, "Your cart is empty."
       redirect_to root_url
     else
-      @order = Order.create(:ip_address => request.remote_ip)
+      @order = current_cart.order.nil? ? Order.create(ip_address: request.remote_ip, cart_id: current_cart.id) : current_cart.order
       redirect_to order_build_path(:order_id => @order.id, :id => steps.first)
     end
   end

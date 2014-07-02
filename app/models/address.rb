@@ -14,7 +14,7 @@
 #  last_name                :string(255) 
 #  address                  :string(255)      
 #  company                  :string(255)  
-#  telephone                :integer      
+#  telephone                :string(255)        
 #  city                     :string(255) 
 #  county                   :string(255)      
 #  country                  :string(255)      
@@ -37,5 +37,4 @@ class Address < ActiveRecord::Base
   def full_name
     [first_name, last_name].join(' ')
   end
-  
 end

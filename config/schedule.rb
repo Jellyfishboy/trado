@@ -20,7 +20,10 @@
 # Learn more: http://github.com/javan/whenever
 set :output "/var/log/gimson_robotics/schedule.log"
 
-every 1.day do
+every 1.day, :at => '4:00am' do
+    rake 'Order.clear_orders'
+end
+every 1.day do, :at => '4:10am'
     runner "Cart.clear_carts"
 end
 
@@ -30,10 +33,6 @@ end
 
 every 1.day, :at => '7:00 am' do
     runner "Mailatron4000::Orders.dispatch_all"
-end
-
-every 1.day, :at => '8:00am' do
-    rake 'cleanup:orders'
 end
 
 every 1.day, :at => '8:30 am' do

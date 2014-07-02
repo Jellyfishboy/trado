@@ -13,6 +13,7 @@
 #  email                    :string(255)     
 #  status                   :string(255)          
 #  user_id                  :integer     
+#  cart_id                  :integer
 #  bill_address_id          :integer     
 #  ship_address_id          :integer     
 #  tax_number               :integer 
@@ -31,7 +32,7 @@
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :shipping_id, :status, :ip_address, :user_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id,
+  :email, :shipping_id, :status, :ip_address, :user_id, :cart_id, :bill_address_id, :ship_address_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms
   
   has_many :order_items,                                                :dependent => :delete_all
@@ -40,6 +41,7 @@ class Order < ActiveRecord::Base
   belongs_to :shipping
   belongs_to :ship_address,                                             class_name: 'Address', :dependent => :destroy
   belongs_to :bill_address,                                             class_name: 'Address', :dependent => :destroy
+  belongs_to :cart
 
   validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
@@ -51,6 +53,7 @@ class Order < ActiveRecord::Base
   # Upon completing an order, transfer the cart item data to new order item records 
   #
   def transfer cart
+    @order.order_items.destroy_all
   	cart.cart_items.each do |item|
       @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => id)
       @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
@@ -98,7 +101,7 @@ class Order < ActiveRecord::Base
   #
   # @return [Boolean]
   def completed?
-    transactions.where(:payment_status => 'Completed').blank? ? false : true
+    transactions.where(payment_status: 'Completed').blank? ? false : true
   end
 
   # Detects if the current status of the order is 'billing'. See wicked gem for more info
@@ -127,6 +130,13 @@ class Order < ActiveRecord::Base
   # @return [Boolean]
   def has_transaction?
     transactions.empty? ? false : true
+  end
+
+  # Deletes redundant orders which are more than 12 hours old
+  #
+  # @return [nil]
+  def self.clear_orders
+    where("updated_at < ? AND status IS NOT ?", 12.hours.ago, 'active').destroy_all
   end
 
 end

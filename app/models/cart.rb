@@ -17,6 +17,7 @@ class Cart < ActiveRecord::Base
   has_many :cart_item_accessories,              :through => :cart_items
   
   has_many :skus,                               :through => :cart_items
+  has_one :order
 
   # Calculates the total price of a cart
   #

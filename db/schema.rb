@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140626142019) do
+ActiveRecord::Schema.define(:version => 20140702144455) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.string   "county"
     t.string   "postcode"
     t.string   "country"
-    t.integer  "telephone"
+    t.string   "telephone"
     t.boolean  "active",           :default => true
     t.boolean  "default",          :default => false
     t.datetime "created_at",                          :null => false
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20140626142019) do
     t.decimal  "gross_amount",         :precision => 8, :scale => 2
     t.decimal  "tax_amount",           :precision => 8, :scale => 2
     t.boolean  "terms"
+    t.integer  "cart_id"
   end
 
   create_table "permissions", :force => true do |t|
