@@ -78,7 +78,7 @@ describe Store do
             let!(:category) { create(:category) }
 
             it "should return a failed string message" do
-                expect(Store::last_record(category, Category.all.count)).to match_array([:error, 'Failed to delete category - you must have at least one record.'])
+                expect(Store::last_record(category, Category.all.count)).to match_array([:error, 'Failed to delete category - you must have at least one.'])
             end
 
             it "should not delete the record" do

@@ -1,18 +1,18 @@
 development:
-  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
-  encoding: utf8
-  database: gimson_robotics_db
-  host: localhost 
-  pool: 30
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-  # adapter: postgresql
-  # encoding: unicode
-  # database: trado_dev
-  # pool: 5
-  # username: tomdallimore
+  # adapter: mysql2  # Rails 3.x uses the mysql2 adapter
+  # encoding: utf8
+  # database: gimson_robotics_db
+  # host: localhost 
+  # pool: 30
+  # username: root
   # password:
+  # socket: /tmp/mysql.sock
+  adapter: postgresql
+  encoding: unicode
+  database: trado_dev
+  pool: 5
+  username: postgres
+  password: admin
   # adapter: sqlite3
   # database: db/development.sqlite3
   # pool: 5
@@ -22,21 +22,20 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
-  encoding: utf8
-  database: trado_test_db
-  host: localhost 
-  pool: 30
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-  # adapter: postgresql
-  # encoding: unicode
-  # database: trado_test_dev
-  # host: localhost
-  # pool: 5
-  # username: tomdallimore
+  # adapter: mysql2  # Rails 3.x uses the mysql2 adapter
+  # encoding: utf8
+  # database: trado_test_db
+  # host: localhost 
+  # pool: 30
+  # username: root
   # password:
+  # socket: /tmp/mysql.sock
+  adapter: postgresql
+  encoding: unicode
+  database: trado_test_dev
+  pool: 5
+  username: postgres
+  password: admin
   # adapter: sqlite3
   # database: db/test.sqlite3
   # pool: 5

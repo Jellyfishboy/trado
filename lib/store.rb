@@ -67,7 +67,7 @@ module Store
         # @return [Array] flash status symbol and message
         def last_record object, count
             if count < 2
-                return [:error, "Failed to delete #{Store::class_name(object).downcase} - you must have at least one record."]
+                return [:error, "Failed to delete #{Store::class_name(object).downcase} - you must have at least one."]
             else
                 object.destroy
                 return [:success, "#{Store::class_name(object).capitalize} was successfully deleted."]

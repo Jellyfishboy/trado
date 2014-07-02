@@ -117,7 +117,7 @@ feature 'Tier management' do
             end
         }.to change(Tier, :count).by(0)
         within '.alert.alert-warning' do
-            expect(page).to have_content('Failed to delete tier - you must have at least one record.')
+            expect(page).to have_content('Failed to delete tier - you must have at least one.')
         end
         within 'h2' do
             expect(page).to have_content 'Tiers'

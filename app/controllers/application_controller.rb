@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   	end
 
     def category_list
-      Category.where('visible = ?', true).joins(:products).group("categories.id, products.id").having("count(products.id) > 0").order('sorting ASC')
+      Category.where('visible = ?', true).joins(:products).group("categories.id").having("count(products.id) > 0").order('sorting ASC')
     end
 
     def after_sign_out_path_for(resource_or_scope)

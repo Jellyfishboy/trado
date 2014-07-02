@@ -125,7 +125,7 @@ feature 'Shipping management' do
             end
         }.to change(Shipping, :count).by(0)
         within '.alert.alert-warning' do
-            expect(page).to have_content('Failed to delete shipping - you must have at least one record.')
+            expect(page).to have_content('Failed to delete shipping - you must have at least one.')
         end
         within 'h2' do
             expect(page).to have_content 'Shipping methods'
