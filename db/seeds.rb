@@ -33,7 +33,7 @@ Attachment.create(  attachable_id: @store_setting.id,
                             active: true,
                             category_id: @category.id
                         )
-@accessory = Accessory.create(name: 'Accessory #1', part_number: '2', price: '1.56', weight: '300', cost_value: '6.78', active: true)
+@accessory = Accessory.create(name: 'Accessory #1', part_number: '2', price: '1.56', weight: '10', cost_value: '6.78', active: true)
 Accessorisation.create(accessory_id: @accessory.id, product_id: @product.id)
 @tag_1 = Tag.create(name: 'Motor')
 @tag_2 = Tag.create(name: 'New')
@@ -71,7 +71,7 @@ Attachment.create(  attachable_id: @product.id,
 Tier.create(length_start: '0', 
             length_end: '100',
              weight_start: '0', 
-             weight_end: '50', 
+             weight_end: '1000', 
              thickness_start: '0', 
              thickness_end: '100', 
              shipping_ids: [@shipping.id]

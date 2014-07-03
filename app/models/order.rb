@@ -47,7 +47,7 @@ class Order < ActiveRecord::Base
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
 
   after_create :create_addresses
-  after_update :ship_order_today                                        :if => :shipping_date_nil?
+  after_update :ship_order_today,                                       :if => :shipping_date_nil?
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #

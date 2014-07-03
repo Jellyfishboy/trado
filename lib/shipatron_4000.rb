@@ -10,7 +10,6 @@ module Shipatron4000
             max_length = cart.skus.map(&:length).max
             max_thickness = cart.skus.map(&:thickness).max
             total_weight = cart.cart_items.map(&:weight).sum
-            
             return Tier.where('? >= length_start AND ? <= length_end AND ? >= thickness_start AND ? <= thickness_end AND ? >= weight_start AND ? <= weight_end', max_length, max_length, max_thickness, max_thickness, total_weight, total_weight).pluck(:id)
         end
     end
