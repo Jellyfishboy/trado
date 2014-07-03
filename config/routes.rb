@@ -23,8 +23,8 @@ Trado::Application.routes.draw do
     :registrations => "users/registrations",
     :sessions => "users/sessions"
      }
-  resources :orders, :only => :new do
-    resources :build, controller: 'orders/build', :only => [:show,:update] do
+  resources :orders, :only => [:new, :update] do
+    resources :build, controller: 'orders/build', :only => [:show, :update] do
       member do
         get 'express'
         get 'cheque'

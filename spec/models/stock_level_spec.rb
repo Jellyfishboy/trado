@@ -21,7 +21,7 @@ describe StockLevel do
 
     describe "Validating the stock value before an adjustment value is applied" do
 
-        it "should call stock_level_adjustment before a save" do
+        it "should call stock_level_adjustment method before a save" do
             StockLevel._save_callbacks.select { |cb| cb.kind.eql?(:before) }.map(&:raw_filter).include?(:stock_level_adjustment).should == true
         end
 

@@ -12,12 +12,12 @@ describe Order do
     it { expect(subject).to have_one(:ship_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
     it { expect(subject).to have_one(:bill_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
-    context "When the order has a an associated transaction record" do
+    context "If the order has a an associated transaction record" do
         before { subject.stub(:has_transaction?) { true } }
         it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
     end
 
-    context "When the status of the order is 'active' or 'payment'" do
+    context "If the status of the order is 'active' or 'payment'" do
         before { subject.stub(:active_or_payment?) { true } }
         it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
     end
@@ -30,7 +30,7 @@ describe Order do
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
 
-    describe "Adding cart_items to an order" do
+    describe "When adding cart_items to an order" do
         let(:cart) { create(:full_cart) }
         let(:order) { create(:order) }
 
@@ -50,7 +50,7 @@ describe Order do
         end
     end
 
-    describe "Calculating an order" do
+    describe "When calculating an order" do
         let!(:cart) { create(:full_cart) }
         let!(:tax) { BigDecimal.new("0.2") }
         let(:order) { create(:order) }
@@ -69,12 +69,16 @@ describe Order do
         end
     end
 
-    describe "Managing an order shipping" do
+    describe "When updating an order" do
         let(:order) { create(:order, shipping_date: nil) }
         let(:order_2) { create(:order, shipping_date: Time.now) }
         let!(:order_3) { create(:order) }
 
-        context "if order date is today" do
+        it "should call ship_order_today method after" do
+            Order._update_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:ship_order_today).should == true
+        end
+
+        context "if order shipping date is today" do
 
             it "should update the order as dispatched" do
                 expect {
@@ -90,15 +94,6 @@ describe Order do
                     ActionMailer::Base.deliveries.count }.by(1)
             end
         end
-
-        it "should return false if the shipping_date is nil" do
-            expect(order.shipping_date_nil?).to be_false
-        end
-
-        it "should return true if the shipping_date is not nil" do
-            expect(order_3.shipping_date_nil?).to be_true
-        end
-
     end
 
     describe "When calculating whether an order is completed" do
@@ -172,33 +167,25 @@ describe Order do
         end
     end
 
-    describe "When instantiating the order bill_address" do
+    describe "After creating a new order" do
+        let(:order) { create(:order) }
 
-        context "if a bill_address record exists" do
-            let(:order) { create(:bill_address_order) }
-            let(:address) { order.bill_address! }
-
-            it "should return the record with the correct addressable_type field value for the record" do
-                expect(address.addressable_type).to eq 'OrderBillAddress'
-            end
-
-            it "should return the record with the correct order_id field value for the record" do
-                expect(address.order_id).to eq order.id
-            end
+        it "should call create_addresses method after" do
+            Order._create_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:create_addresses).should == true
         end
 
-        context "if the bill_address does not exist" do
-            let(:order) { create(:order) }
-            let(:address) { order.bill_address! }
+        it "should create a new bill_address and ship_address record" do
+            expect{
+                order
+            }.to change(Address, :count).by(2)
+        end
 
-            it "should have the correct field values" do
-                expect(address.addressable_type).to eq 'OrderBillAddress'
-                expect(address.order_id).to eq order.id
-            end
+        it "should have the correct type for the bill_address record" do
+            expect(order.bill_address.addressable_type).to eq 'OrderBillAddress'
+        end
 
-            it "should have a nil first_name value" do
-                expect(address.first_name).to be_nil
-            end
+        it "should have the correct type for the ship_address record" do
+            expect(order.ship_address.addressable_type).to eq 'OrderShipAddress'
         end
     end
 end

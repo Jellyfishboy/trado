@@ -14,7 +14,7 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     case step
     when :billing
-      @billing_address = @order.bill_address!
+      @billing_address = @order.bill_address
     end
     case step
     when :shipping
@@ -45,7 +45,7 @@ class Orders::BuildController < ApplicationController
     case step 
     when :billing
 
-      @billing_address = @order.bill_address!
+      @billing_address = @order.bill_address
       # Update billing attributes
       if @billing_address.update_attributes(params[:address])
         # Update order attributes in the form
