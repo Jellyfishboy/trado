@@ -201,34 +201,4 @@ describe Order do
             end
         end
     end
-
-    describe "When instantiating the order ship_address" do
-
-        context "if a ship_address record exists" do
-            let(:order) { create(:ship_address_order) }
-            let(:address) { order.ship_address! }
-
-            it "should return the record with the correct addressable_type field value for the record" do
-                expect(address.addressable_type).to eq 'OrderShipAddress'
-            end
-
-            it "should return the record with the correct order_id field value for the record" do
-                expect(address.order_id).to eq order.id
-            end
-        end
-
-        context "if the ship_address does not exist" do
-            let(:order) { create(:order) }
-            let(:address) { order.ship_address! }
-
-            it "should have the correct field values" do
-                expect(address.addressable_type).to eq 'OrderShipAddress'
-                expect(address.order_id).to eq order.id
-            end
-
-            it "should have a nil first_name value" do
-                expect(address.first_name).to be_nil
-            end
-        end
-    end
 end

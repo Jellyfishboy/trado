@@ -137,11 +137,11 @@ class Order < ActiveRecord::Base
     where("updated_at < ? AND status != ?", 12.hours.ago, 'active').destroy_all
   end
 
+  # If an order has a bill_address record, return it
+  # Else build a new record
+  #
+  # @return [Object] address record
   def bill_address!
     bill_address.nil? ? build_bill_address : bill_address
-  end
-
-  def ship_address!
-    ship_address.nil? ? build_ship_address : ship_address
   end
 end
