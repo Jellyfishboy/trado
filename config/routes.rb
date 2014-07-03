@@ -31,7 +31,9 @@ Trado::Application.routes.draw do
         get 'bank_transfer'
         get 'success'
         get 'failure'
+        put 'estimate'
         get 'purge'
+        delete 'purge_estimate'
       end
     end
   end

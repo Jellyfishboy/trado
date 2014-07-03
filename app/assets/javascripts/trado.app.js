@@ -63,7 +63,7 @@ trado.app =
                 {
                     return $(this).val($(this).next('div').text());
                 });
-                $('.field-with-errors').each(function() 
+                $('.field_with_errors').each(function() 
                 {
                     return $(this).children('input').val($(this).next('div').text());
                 });
@@ -94,7 +94,7 @@ trado.app =
 
     updateShipping: function()
     {
-        $('.update-shipping #address_country').change(function() 
+        $('.update-shipping select').change(function() 
         {
             if (this.value !== "") 
             {

@@ -1,0 +1,21 @@
+#estimateDeliveryModal.modal.fade{"aria-hidden" => "false", "aria-labelledby" => "estimateDeliveryModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#estimateDeliveryModalLabel
+      %span.light Estimate
+      Shipping
+  = form_for @order, url: estimate_order_build_path, :html => { :method => :put, :remote => true, :class => 'remote-form' } do |f|
+    .modal-body
+      .control-group
+        = f.fields_for :ship_address do |ff|
+          = ff.label :country, :class => 'control-label'
+          .controls.update-shipping
+            = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
+      .shipping-methods
+        .control-group
+          = f.label :shipping_id, :class => 'control-label' do
+            Shipping options
+          .controls
+            %p.shipping-notice Select a country to view the available shipping options.
+    .modal-footer
+      = f.submit "Submit", :class => 'btn btn-primary higher bold'

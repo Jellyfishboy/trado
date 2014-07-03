@@ -47,7 +47,6 @@
             / ==========
             / = Shipping addr form =
             / ==========
-
             = form_for @shipping_address, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout shipping_address' } do |f|
               .control-group
                 %label.control-label
@@ -125,7 +124,7 @@
                   Country
                   %span.red-clr.bold *
                 .controls.update-shipping
-                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
+                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => @shipping_address.country), { include_blank: 'Please select...'})
                   = errors_for @shipping_address, :country
               .shipping-methods
                 .control-group
@@ -133,7 +132,14 @@
                     Shipping options
                     %span.red-clr.bold *
                   .controls
-                    %p.shipping_notice Select a shipping country to view the available shipping options.
+                    - unless @order.shipping_id.nil?
+                      %div.option
+                        = radio_button_tag "order[shipping_id]", @order.shipping.id, true
+                        %h5= @order.shipping.name
+                        %p= truncate @order.shipping.description, length: 100
+                        %h6= Store::Price.new(@order.shipping.price).markup
+                    - else
+                      %p.shipping_notice Select a shipping country to view the available shipping options.
               .control-group
                 .controls
                   = errors_for @order, :shipping_id

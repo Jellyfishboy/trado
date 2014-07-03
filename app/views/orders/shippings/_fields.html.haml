@@ -5,5 +5,5 @@
         %div.option
             = radio_button_tag "order[shipping_id]", shipping.id, index == 0 ? true : false
             %h5= shipping.name
-            %p= shipping.description
+            %p= truncate shipping.description, length: 100
             %h6= Store::Price.new(shipping.price).markup

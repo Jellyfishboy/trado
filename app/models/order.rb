@@ -31,7 +31,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :shipping_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms
+  :net_amount, :tax_amount, :gross_amount, :terms, :ship_address_attributes
   
   has_many :order_items,                                                :dependent => :delete_all
   has_many :transactions,                                               :dependent => :delete_all
@@ -41,13 +41,15 @@ class Order < ActiveRecord::Base
   has_one :ship_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderShipAddress' }, dependent: :destroy
   has_one :bill_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderBillAddress' }, dependent: :destroy
 
-  validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
+  # validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
 
   after_create :create_addresses
   after_update :ship_order_today,                                       :if => :shipping_date_nil?
+
+  accepts_nested_attributes_for :ship_address
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
@@ -70,7 +72,7 @@ class Order < ActiveRecord::Base
                             :tax_amount => net_amount*current_tax_rate,
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )
-    self.save!
+    self.save(validate: false)
   end
 
   # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email

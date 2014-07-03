@@ -1,3 +1,4 @@
+- @cart_total = @order.nil? || @order.shipping.nil? ? current_cart.total_price : (current_cart.total_price + @order.shipping.price)
 - current_cart.cart_items.each do |item|
   %tr
     %td.image
@@ -19,19 +20,30 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
+- unless @order.nil? || @order.shipping.nil?
+  %tr
+    %td.image
+      = image_tag "delivery.png", :alt => @order.shipping.name
+    %td.desc
+      = @order.shipping.name
+      = link_to purge_estimate_order_build_path, method: :delete, remote: true, :title => 'Remove item' do
+        %i.fa.fa-times-circle
+      %div= @order.ship_address.country
+    %td.qty
+    %td.price= Store::Price.new(@order.shipping.price).format
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2"}
     \ 
     %td.stronger Subtotal:
     %td.stronger
-      .align-right= Store::Price.new(current_cart.total_price).format
+      .align-right= Store::Price.new(@cart_total).format
   %tr
     %td{colspan: "2", rowspan: "1"}
     \ 
     %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
     %td.stronger
-      .align-right= Store::Price.new((current_cart.total_price*Store::tax_rate)).format
+      .align-right= Store::Price.new((@cart_total*Store::tax_rate)).format
 %tr
   %td{colspan: "2", rowspan: "2"}
     .alert.alert-info
@@ -39,4 +51,4 @@
 %tr
   %td.stronger Total:
   %td.stronger
-    .size-16.align-right.total_price= Store::Price.new(current_cart.total_price, 'gross').format
+    .size-16.align-right.total_price= Store::Price.new(@cart_total, 'gross').format
