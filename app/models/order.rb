@@ -47,7 +47,7 @@ class Order < ActiveRecord::Base
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
 
   after_create :create_addresses
-  after_update :ship_order_today
+  after_update :ship_order_today                                        :if => :shipping_date_nil?
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
@@ -80,6 +80,13 @@ class Order < ActiveRecord::Base
       self.update_column(:shipping_status, "Dispatched")
       ShippingMailer.complete(self).deliver
     end
+  end
+
+  # Determines whether the shipping date of the current order is nil
+  #
+  # @return [Boolean]
+  def shipping_date_nil?
+    return true unless shipping_date.nil?
   end
 
   # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job

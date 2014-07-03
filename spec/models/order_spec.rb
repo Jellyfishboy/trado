@@ -94,6 +94,14 @@ describe Order do
                     ActionMailer::Base.deliveries.count }.by(1)
             end
         end
+
+        it "should return false if the shipping_date is nil" do
+            expect(order.shipping_date_nil?).to be_false
+        end
+
+        it "should return true if the shipping_date is not nil" do
+            expect(order_3.shipping_date_nil?).to be_true
+        end
     end
 
     describe "When calculating whether an order is completed" do
