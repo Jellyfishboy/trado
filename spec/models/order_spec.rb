@@ -179,7 +179,6 @@ describe Order do
             let(:address) { order.bill_address! }
 
             it "should return the record with the correct addressable_type field value for the record" do
-                binding.pry
                 expect(address.addressable_type).to eq 'OrderBillAddress'
             end
 
