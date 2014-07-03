@@ -41,10 +41,10 @@ class Order < ActiveRecord::Base
   has_one :ship_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderShipAddress' }, dependent: :destroy
   has_one :bill_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderBillAddress' }, dependent: :destroy
 
-  # validates :actual_shipping_cost,                                      :presence => true, :if => :has_transaction?
+  validates :actual_shipping_cost,                                      :presence => true, :if => :completed?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
   validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
-  validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_payment?
+  validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
 
   after_create :create_addresses
   after_update :ship_order_today,                                       :if => :shipping_date_nil?
@@ -126,13 +126,13 @@ class Order < ActiveRecord::Base
     status == 'payment' ? true : active?
   end
 
-  # If the order has an associated transaction record, it returns true
+  # Detects if the current status of the order is 'confirm'. See wicked gem for more info
   #
   # @return [Boolean]
-  def has_transaction?
-    transactions.empty? ? false : true
+  def active_or_confirm?
+    status == 'confirm' ? true : active?
   end
-
+  
   # Deletes redundant orders which are more than 12 hours old
   #
   # @return [nil]

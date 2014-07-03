@@ -30,11 +30,7 @@ class Admin::OrdersController < ApplicationController
          format.json { render :json => { :errors => ['Shipping date can\'t be blank'] }, :status => 422 }
       end
       if @order.update_attributes(params[:order])
-        if params[:order][:shipping_date]
-          format.js { render :partial => 'admin/orders/shipping/success', :format => [:js] }
-        else
-          format.js { render :partial => 'admin/orders/success', :format => [:js] }
-        end
+        format.js { render :partial => 'admin/orders/success', :format => [:js] }
       else 
         format.json { render :json => { :errors => @order.errors.full_messages }, :status => 422 }
       end
@@ -44,16 +40,11 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    begin
-      @order = Order.find(params[:id])
-    rescue Exception => e
-      Rollbar.report_exception(e)
-      redirect_to store_url, :notice => 'Invalid order'
-    else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @order }
-      end
+    @order = Order.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @order }
     end
   end
 

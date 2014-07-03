@@ -22,10 +22,10 @@ feature 'Order management' do
             expect(page).to have_content 'Order no.'
         end
         within 'tbody tr:first-child td:last-child' do
-            expect(page).to have_selector('a', count: 1)
+            expect(page).to have_selector('a', count: 0)
         end
         within 'tbody tr:last-child td:last-child' do
-            expect(page).to have_selector('a', count: 2)
+            expect(page).to have_selector('a', count: 1)
         end
     end
 
@@ -93,8 +93,8 @@ feature 'Order management' do
         end
     end
 
-    scenario 'should update the shipping cost value of an order', js: true do
-        order = build(:nil_actual_shipping_order)
+    scenario 'should update the dispatch details for an order', js: true do
+        order = build(:edit_dispatch_order)
         order.save(validate: false)
         
         visit admin_orders_path
@@ -102,39 +102,21 @@ feature 'Order management' do
         sleep 1
 
         within '.modal#order-form' do
+            expect(find('.modal-header h3')).to have_content "Dispatch Order ##{order.id}"
+            page.execute_script("$('#order_shipping_date').val('14/02/2015')")
             fill_in('order_actual_shipping_cost', with: '1.24')
             click_button 'Submit'
         end
+        sleep 1
+
         expect(current_path).to eq admin_orders_path
-        within '.alert.alert-success' do
-            expect(page).to have_content "Successfully updated Order ##{order.id}"
-        end
         order.reload
+        within '.alert.alert-success' do
+            expect(page).to have_content "Successfully updated dispatch details for Order ##{order.id} to #{order.shipping_date.strftime("#{order.shipping_date.day.ordinalize} %b %Y")}."
+        end
         expect(order.actual_shipping_cost).to eq BigDecimal.new('1.24')
-    end
-
-
-    scenario 'should add the dispatch date to an order, when payment status complete', js: true do
-        order = create(:nil_shipping_date_order)
-
-        visit admin_orders_path
-        find('tbody tr td:last-child a.order_shipping').click
-        sleep 1
-
-        within '.modal#shipping-form' do
-            expect(find('.modal-header h3')).to have_content "Dispatch Order ##{order.id}"
-            page.execute_script("$('#order_shipping_date').val('14/02/2015')")
-            click_button 'Submit'
-        end
-        sleep 1
-
-        expect(current_path).to eq admin_orders_path
-        order.reload
-        within '.alert.alert-success' do
-            expect(page).to have_content "Successfully updated the dispatch date for Order ##{order.id} to #{order.shipping_date.strftime("#{order.shipping_date.day.ordinalize} %b %Y")}"
-        end
         expect(order.shipping_date.to_s).to eq "2015-02-14 00:00:00 UTC"
-    end 
+    end
 
     scenario 'should update the payment status of a cheque or bank transfer based order transaction', js: true do
         order = create(:cheque_order)

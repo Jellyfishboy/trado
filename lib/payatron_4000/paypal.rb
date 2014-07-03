@@ -38,7 +38,7 @@ module Payatron4000
               :handling          => 0,
               :token             => order.express_token,
               :payer_id          => order.express_payer_id,
-              :currency          => 'GBP'
+              :currency          => 'GBP',
             }
         end
 
@@ -63,7 +63,9 @@ module Payatron4000
         # @param payer_id [Integer]
         # @param order [Object]
         def self.assign_paypal_token token, payer_id, order
-            order.update_attributes(:express_token => token, :express_payer_id => payer_id)
+            order.express_token = token
+            order.express_payer_id = payer_id
+            order.save(validate: false)
         end
 
         # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
@@ -135,7 +137,8 @@ module Payatron4000
                                 :paypal_id => '', 
                                 :payment_type => 'express-checkout',
                                 :net_amount => order.net_amount,
-                                :status_reason => response.message).save(validate: false)
+                                :status_reason => response.message
+            ).save(validate: false)
             order.update_column(:status, 'active')
         end
 

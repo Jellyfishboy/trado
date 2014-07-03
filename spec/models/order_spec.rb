@@ -12,13 +12,14 @@ describe Order do
     it { expect(subject).to have_one(:ship_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
     it { expect(subject).to have_one(:bill_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
-    context "If the order has a an associated transaction record" do
-        before { subject.stub(:has_transaction?) { true } }
+    # Validations
+    context "If the order has a an associated completed transaction record" do
+        before { subject.stub(:completed?) { true } }
         it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
     end
 
-    context "If the status of the order is 'active' or 'payment'" do
-        before { subject.stub(:active_or_payment?) { true } }
+    context "If the status of the order is 'active' or 'confirm'" do
+        before { subject.stub(:active_or_confirm?) { true } }
         it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
     end
 
@@ -29,6 +30,9 @@ describe Order do
         it { expect(subject).to allow_value("test@test.com").for(:email) }
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
+
+    # Nested attributes
+    it { expect(subject).to accept_nested_attributes_for(:ship_address) }
 
     describe "When adding cart_items to an order" do
         let(:cart) { create(:full_cart) }
@@ -121,6 +125,7 @@ describe Order do
         let(:order_2) { create(:order, status: 'billing') }
         let(:order_3) { create(:order, status: 'shipping') }
         let(:order_4) { create(:order, status: 'payment') }
+        let(:order_5) { create(:order, status: 'confirm') }
 
         it "should return true for an active order" do
             expect(order_1.active?).to be_true
@@ -137,6 +142,10 @@ describe Order do
         it "should return true for a payment or active order" do
             expect(order_1.active_or_payment?).to be_true
             expect(order_4.active_or_payment?).to be_true
+        end
+        it "should return true for a payment or active order" do
+            expect(order_1.active_or_confirm?).to be_true
+            expect(order_5.active_or_confirm?).to be_true
         end
     end
 

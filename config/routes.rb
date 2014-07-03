@@ -56,9 +56,7 @@ Trado::Application.routes.draw do
       mount RailsEmailPreview::Engine => '/crm'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :zones, :except => :show
-      resources :orders, :only => [:index, :show, :update, :edit] do
-        get 'shipping', on: :member
-      end
+      resources :orders, :only => [:index, :show, :update, :edit]
       namespace :orders do
         resources :transactions, :only => [:edit, :update]
       end

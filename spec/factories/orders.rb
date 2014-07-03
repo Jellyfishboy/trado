@@ -59,13 +59,9 @@ FactoryGirl.define do
             end
         end
 
-        factory :nil_actual_shipping_order do
-            transactions { [create(:transaction, payment_status: 'Pending')] }
-            actual_shipping_cost { nil }
-        end
-
-        factory :nil_shipping_date_order do
+        factory :edit_dispatch_order do
             transactions { [create(:transaction)] }
+            actual_shipping_cost { nil }
             shipping_date { nil }
         end
 

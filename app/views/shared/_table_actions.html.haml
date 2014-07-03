@@ -7,23 +7,19 @@
     / Edit SKU
     %a.edit_sku_attributes{href: "#", id: object.id}
       %i.icon-pencil
-  - elsif type == 2
-    / Edit order
-    %a.edit_order_attributes{href: "#", id: object.id}
-      %i.icon-pencil
   - elsif type == 3
     / Edit transaction
     %a.edit_transaction_attributes{href: "#", id: object.id}
       %i.icon-pencil
-  - else
+  - elsif type != 2
     / Edit record
     = link_to edit do
       %i.icon-pencil
 
-  / Update order shipping date
-  - if type == 2 && object.shipping_status == "Pending" && object.transactions.last.payment_status == "Completed"
-    %a.order_shipping{href: "#", id: object.id}
-      %i.icon-airplane
+  / Dispatch order
+  - if type == 2 && object.transactions.last.payment_status == "Completed"
+    %a.edit_order_attributes{href: "#", id: object.id}
+      %i.icon-pencil
   / Delete record
   - unless type == 2 || type == 1 || type == 3
     = link_to del, :method => :delete, :confirm => 'Are you sure?' do

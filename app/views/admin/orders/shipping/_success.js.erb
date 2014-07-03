@@ -1,5 +1,0 @@
-$('.widget-header').before('<div class="alert alert-success alert-no-margin animated fadeInDown order-shipping-alert"><i class="icon-checkmark-circle"></i>Successfully updated the dispatch date for Order #<%= @order.id %> to <%= @order.shipping_date.strftime("#{@order.shipping_date.day.ordinalize} %b %Y") %>.</div>').delay(3500).queue(function(next){
-    $('.order-shipping-alert').addClass('fadeOutUp').delay(1200).hide(1);
-    next();
-});
-$('#shipping-form').modal('hide');
