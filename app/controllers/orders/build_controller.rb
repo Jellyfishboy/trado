@@ -3,7 +3,9 @@ class Orders::BuildController < ApplicationController
 
   skip_before_filter :authenticate_user!
 
-  before_filter :accessible_order, :except => [:success, :failure]
+  before_filter :check_order_status, only: :show
+
+  before_filter :accessible_order, except: [:success, :failure]
 
   steps :review, :billing, :shipping, :payment, :confirm
 
@@ -32,7 +34,7 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :confirm
-      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token]
+      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
     end
     render_wizard
   end
@@ -110,7 +112,16 @@ class Orders::BuildController < ApplicationController
                                                                                           order_build_url(:order_id => @order.id, :id => 'payment')
                                               )
     )
-    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+    # if response.success?
+      redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+    # else
+    #   begin
+    #     Payatron4000::Paypal.failed(response, @order)
+    #   rescue Exception => e
+    #     Rollbar.report_exception(e)
+    #   end
+    #   redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
+    # end
   end
 
   # Payment method for a bank transfer, which sets the payment_type session value to Bank tranfer
@@ -142,7 +153,8 @@ class Orders::BuildController < ApplicationController
   #
   def failure
     @order = Order.find(params[:order_id])
-    redirect_to root_url unless @order.transactions.last.payment_status == 'Failed'
+    Rollbar.report_message("Order ##{@order.id}. Paypal #{params[:error_code]} error: #{params[:response]}", "info", :order => @order) unless params[:response].nil? || params[:error_code].nil?
+    redirect_to root_url unless @order.transactions.last.payment_status == 'Failed' 
   end
 
   # When an order has failed, the user has an option to discard order. However it's details are retained in the database.
@@ -181,6 +193,18 @@ class Orders::BuildController < ApplicationController
       flash_message :error, "You do not have permission to amend this order."
       redirect_to root_url
     end
+  end
+
+  # Before filter method to validate whether the user is allowed to access a specific step in the order process
+  # If not they are redirected to the required step before proceeding further
+  #
+  def check_order_status
+    @order = Order.find(params[:order_id])
+    route = (steps.last(3).include?(params[:id].to_sym) && @order.bill_address.first_name.nil?) ? 'billing' 
+            : (steps.last(2).include?(params[:id].to_sym) && @order.ship_address.first_name.nil?) ? 'shipping' 
+            : steps.last(1).include?(params[:id].to_sym) && ((params[:token].nil? || params[:PayerID].nil?) || session[:payment_type].nil?) ? 'payment' 
+            : nil
+    redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?
   end
 
 end

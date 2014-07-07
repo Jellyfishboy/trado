@@ -107,7 +107,7 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.successful response, order
-            Transaction.new( :fee => response.params['PaymentInfo']['FeeAmount'], 
+            Transaction.new(    :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => order.id, 
                                 :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
@@ -128,7 +128,7 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.failed response, order
-            Transaction.new( :fee => 0, 
+            Transaction.new(    :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
                                 :payment_status => 'Failed', 
