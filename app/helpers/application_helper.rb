@@ -157,16 +157,16 @@ module ApplicationHelper
     #
     # @return [String] HTML elements
     def render_flash
-        rendered = []
+        flash_array = []
         flash.each do |type, messages|
             if messages.is_a?(String)
-                rendered << render(partial: 'shared/flash', locals: { :type => type, :message => messages })
+                flash_array << render(partial: 'shared/flash', locals: { :type => type, :message => messages })
             else
                 messages.each do |m|
-                    rendered << render(partial: 'shared/flash', locals: { :type => type, :message => m }) unless m.blank?
+                    flash_array << render(partial: 'shared/flash', locals: { :type => type, :message => m }) unless m.blank?
                 end
             end
         end
-        rendered.join('').html_safe
+        flash_array.join('').html_safe
     end
 end

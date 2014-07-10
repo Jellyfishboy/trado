@@ -112,16 +112,18 @@ class Orders::BuildController < ApplicationController
                                                                                           order_build_url(:order_id => @order.id, :id => 'payment')
                                               )
     )
-    # if response.success?
+    if response.success?
       redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
-    # else
-    #   begin
-    #     Payatron4000::Paypal.failed(response, @order)
-    #   rescue Exception => e
-    #     Rollbar.report_exception(e)
-    #   end
-    #   redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
-    # end
+    else
+      begin
+        Payatron4000::Paypal.failed(response, @order)
+      rescue Exception => e
+        Rollbar.report_exception(e)
+      end
+      @order.update_column(:cart_id, nil)
+      Rollbar.report_message("Order ##{@order.id}. Paypal #{response.params["error_codes"]} error: #{response.message}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
+      redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
+    end
   end
 
   # Payment method for a bank transfer, which sets the payment_type session value to Bank tranfer
@@ -153,7 +155,7 @@ class Orders::BuildController < ApplicationController
   #
   def failure
     @order = Order.find(params[:order_id])
-    Rollbar.report_message("Order ##{@order.id}. Paypal #{params[:error_code]} error: #{params[:response]}", "info", :order => @order) unless params[:response].nil? || params[:error_code].nil?
+    Rollbar.report_message("Order ##{@order.id}. Paypal #{params[:error_code]} error: #{params[:response]}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
     redirect_to root_url unless @order.transactions.last.payment_status == 'Failed' 
   end
 
