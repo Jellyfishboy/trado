@@ -43,7 +43,7 @@ feature 'Order management' do
         end
         within '.row .fourcol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content order.email
-            expect(find('li:nth-child(3) span')).to have_content 'Pending'
+            expect(find('li:nth-child(2) span')).to have_content 'Pending'
         end
         within '.row .fourcol:nth-child(2) .widget-content' do
             expect(page).to have_content order.bill_address.full_name
@@ -57,7 +57,6 @@ feature 'Order management' do
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content order.transactions.last.transaction_type
             expect(find('tr td:nth-child(4) span')).to have_content 'Pending'
-            expect(find('tr td:last-child')).to have_selector('a', count: 1)
         end
     end
 
@@ -75,7 +74,7 @@ feature 'Order management' do
         end
         within '.row .fourcol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content order.email
-            expect(find('li:nth-child(3) span')).to have_content 'Dispatched'
+            expect(find('li:nth-child(2) span')).to have_content 'Dispatched'
         end
         within '.row .fourcol:nth-child(2) .widget-content' do
             expect(page).to have_content order.bill_address.full_name
@@ -117,36 +116,4 @@ feature 'Order management' do
         expect(order.actual_shipping_cost).to eq BigDecimal.new('1.24')
         expect(order.shipping_date.to_s).to eq "2015-02-14 00:00:00 UTC"
     end
-
-    scenario 'should update the payment status of a cheque or bank transfer based order transaction', js: true do
-        order = create(:cheque_order)
-
-        visit admin_orders_path
-        find('tbody tr td:first-child a').click
-        expect(current_path).to eq admin_order_path(order)
-        within 'h2' do
-            expect(page).to have_content "Order ##{order.id}"
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content "Order ##{order.id}"
-        end
-        within 'table:not(.table-margin) tbody' do
-            expect(find('tr td:nth-child(2)')).to have_content 'Cheque'
-            find('tr td:last-child a.edit_transaction_attributes').click
-        end
-        sleep 1
-
-        within '.modal#transaction-form' do
-            expect(find('.modal-header h3')).to have_content "Edit transaction for Order ##{order.id}"
-            find('#transaction_payment_status').set(true)
-            click_button 'Submit'
-        end
-        expect(current_path).to eq admin_order_path(order)
-        within '.alert.alert-success' do
-            expect(page).to have_content "Successfully updated transaction for Order ##{order.id}"
-        end
-        order.reload
-        expect(order.transactions.first.payment_status).to eq 'Completed'
-    end
-
 end

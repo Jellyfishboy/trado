@@ -7,10 +7,6 @@
     / Edit SKU
     %a.edit_sku_attributes{href: "#", id: object.id}
       %i.icon-pencil
-  - elsif type == 3
-    / Edit transaction
-    %a.edit_transaction_attributes{href: "#", id: object.id}
-      %i.icon-pencil
   - elsif type != 2
     / Edit record
     = link_to edit do

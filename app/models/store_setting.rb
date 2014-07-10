@@ -16,14 +16,12 @@
 #  currency                 :string(255)            default('£')
 #  ga_code                  :string(255)
 #  ga_active                :boolean                default(false)
-#  cheque                   :boolean                default(false)
-#  bank_transfer            :boolean                default(false)
 #  created_at               :datetime               not null
 #  updated_at               :datetime               not null
 #
 class StoreSetting < ActiveRecord::Base
 
-  attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, :ga_active, :ga_code, :cheque, :bank_transfer, :attachment_attributes
+  attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, :ga_active, :ga_code, :attachment_attributes
 
   has_one :attachment,                                                  as: :attachable, :dependent => :destroy
 

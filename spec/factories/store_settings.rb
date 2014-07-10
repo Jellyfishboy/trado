@@ -8,8 +8,6 @@ FactoryGirl.define do
         tax_breakdown { false }
         ga_code { Faker::Lorem.characters(8) }
         ga_active { true }
-        cheque { false }
-        bank_transfer { false }
 
         factory :attached_store_setting do
             after(:create) do |store_setting, evaluator|

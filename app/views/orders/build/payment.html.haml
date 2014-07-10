@@ -57,24 +57,6 @@
                 = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_order_build_path, :class => 'paypal_checkout'
               %p Speedy, secure and safe transactions with a trusted service.
             %hr/
-            - if Store::settings.cheque
-              = link_to cheque_order_build_path do
-                %span.btn.btn-danger.circle.pull-left
-                  %i.fa.fa-chevron-right
-              .shifted-left-45.clearfix
-                %h3.no-margin
-                  %span= link_to 'Cheque', cheque_order_build_path
-                %p Cheque sent within the UK, payable to 'Gimson Robotics'.
-              %hr/
-            - if Store::settings.bank_transfer
-              = link_to bank_transfer_order_build_path do
-                %span.btn.btn-danger.circle.pull-left
-                  %i.fa.fa-chevron-right
-              .shifted-left-45.clearfix
-                %h3.no-margin
-                  %span= link_to 'Bank transfer', bank_transfer_order_build_path
-                %p Bank transfer from within the UK.
-              %hr/
             %p.right-align 
               Select a payment method above to complete your order.
     / /main content

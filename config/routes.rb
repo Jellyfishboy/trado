@@ -27,8 +27,6 @@ Trado::Application.routes.draw do
     resources :build, controller: 'orders/build', :only => [:show, :update] do
       member do
         get 'express'
-        get 'cheque'
-        get 'bank_transfer'
         get 'success'
         get 'failure'
         put 'estimate'
@@ -57,9 +55,6 @@ Trado::Application.routes.draw do
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :zones, :except => :show
       resources :orders, :only => [:index, :show, :update, :edit]
-      namespace :orders do
-        resources :transactions, :only => [:edit, :update]
-      end
       resources :attachments, :only => [:destroy, :update]
       namespace :products do
         resources :tags, :only => :index

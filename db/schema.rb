@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702205600) do
+ActiveRecord::Schema.define(:version => 20140710195438) do
 
   create_table "accessories", :force => true do |t|
     t.string   "name"
@@ -294,8 +294,6 @@ ActiveRecord::Schema.define(:version => 20140702205600) do
     t.string   "ga_code",                                     :default => "UA-XXXXX-X"
     t.boolean  "ga_active",                                   :default => false
     t.decimal  "tax_rate",      :precision => 8, :scale => 2, :default => 20.0
-    t.boolean  "cheque",                                      :default => false
-    t.boolean  "bank_transfer",                               :default => false
     t.boolean  "tax_breakdown",                               :default => false
   end
 

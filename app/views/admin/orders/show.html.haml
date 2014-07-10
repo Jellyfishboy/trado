@@ -134,8 +134,5 @@
               %td= Store::Price.new(transaction.net_amount, 'net').format
               %td= Store::Price.new(transaction.gross_amount, 'net').format
               %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
-              - if transaction.payment_status == 'Pending' && transaction.payment_type != 'express-checkout'
-                = table_commands transaction, nil, nil, nil, 3
-              - else
-                %td
+              %td
 #transaction-modal

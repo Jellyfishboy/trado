@@ -83,12 +83,7 @@ class Orders::BuildController < ApplicationController
     when :confirm
       if @order.update_attributes(params[:order])
         @order.transfer(current_cart)
-        unless session[:payment_type].nil?
-          url = Payatron4000::Generic.complete(@order, session[:payment_type], session)
-        else
-          url = Payatron4000::Paypal.complete(@order, session)
-        end
-        redirect_to url
+        redirect_to Payatron4000::Paypal.complete(@order, session)
       else
         render_wizard @order
       end
@@ -98,11 +93,9 @@ class Orders::BuildController < ApplicationController
   ## PAYMENT TYPES ##
 
   # Prepares the order data and redirects to the PayPal login page to review the order
-  # Set the payment_type session value to nil in order to prevent the wrong complete method being fired in the purchase method below
   # Bespoke PayPal method
   #
   def express
-    session[:payment_type] = nil
     response = EXPRESS_GATEWAY.setup_purchase(Store::Price.new(@order.gross_amount, 'net').singularize, 
                                               Payatron4000::Paypal.express_setup_options( @order, 
                                                                                           steps, 
@@ -124,22 +117,6 @@ class Orders::BuildController < ApplicationController
       Rollbar.report_message("Order ##{@order.id}. Paypal #{response.params["error_codes"]} error: #{response.message}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
       redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
     end
-  end
-
-  # Payment method for a bank transfer, which sets the payment_type session value to Bank tranfer
-  # Redirect to last step in the order process
-  #
-  def bank_transfer
-    session[:payment_type] = 'Bank transfer' 
-    redirect_to order_build_url(:order_id => @order.id, :id => steps.last)
-  end
-
-  # Payment method for a cheque, which sets the payment_type session value to Cheque
-  # Redirect to last step in the order process
-  #
-  def cheque
-    session[:payment_type] = 'Cheque'
-    redirect_to order_build_url(:order_id => @order.id, :id => steps.last)
   end
 
   ## END OF PAYMENT TYPES ##  
@@ -204,7 +181,7 @@ class Orders::BuildController < ApplicationController
     @order = Order.find(params[:order_id])
     route = (steps.last(3).include?(params[:id].to_sym) && @order.bill_address.first_name.nil?) ? 'billing' 
             : (steps.last(2).include?(params[:id].to_sym) && @order.ship_address.first_name.nil?) ? 'shipping' 
-            : steps.last(1).include?(params[:id].to_sym) && ((params[:token].nil? || params[:PayerID].nil?) || session[:payment_type].nil?) ? 'payment' 
+            : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?
   end
