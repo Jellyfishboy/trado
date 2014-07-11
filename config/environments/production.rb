@@ -17,7 +17,17 @@ Trado::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
-  config.assets.precompile += ['administration.js', 'administration.css','rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'custom.css', 'css3-fallback.js', 'modernizr/modernizr.js', 'orders.js', 'products.js', 'typeahead.js/dist/typeahead.jquery.min.js']
+  config.assets.precompile += [ 'administration.js', 
+                                'administration.css',
+                                'rails_admin/rails_admin.css', 
+                                'rails_admin/rails_admin.js', 
+                                'custom.css', 
+                                'css3-fallback.js', 
+                                'modernizr/modernizr.js', 
+                                'orders.js', 
+                                'products.js', 
+                                'typeahead.js/dist/typeahead.jquery.min.js'
+                              ]
 
   # Generate digests for assets URLs
   config.assets.digest = true
