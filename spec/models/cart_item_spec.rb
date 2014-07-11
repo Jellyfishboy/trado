@@ -176,56 +176,6 @@ describe CartItem do
 
     end
 
-    describe "When deleting a cart item" do
-
-        context "if the cart item quantity is more than 1" do
-
-            context "if the cart item does not have an accessory" do
-                let!(:cart_item) { create(:cart_item, quantity: 5)}
-                before(:each) do
-                    cart_item.decrement!
-                end
-
-                it "should update the cart item's quantity" do
-                    expect(cart_item.quantity).to eq 4
-                end
-
-                it "should update the cart item's weight" do
-                    expect(cart_item.weight).to eq (cart_item.sku.weight*4)
-                end
-            end
-
-            context "if the cart item has an accessory" do
-                let!(:cart_item) { create(:accessory_cart_item, quantity: 3) }
-                before(:each) do
-                    cart_item.decrement!
-                end
-
-                it "should update the cart item's quantity" do
-                    expect(cart_item.quantity).to eq 2
-                end
-
-                it "should update the cart item's weight, including the accessory weight" do
-                    expect(cart_item.weight).to eq ((cart_item.sku.weight + cart_item.cart_item_accessory.accessory.weight)*2)
-                end
-
-                it "should update the associated cart item accessory quantity" do
-                    expect(cart_item.cart_item_accessory.quantity).to eq 2
-                end
-            end
-        end
-
-        context "if the cart item quantity is 1" do
-            let!(:cart_item) { create(:cart_item, quantity: 1) }
-
-            it "should destroy the cart item" do
-                expect{
-                    cart_item.decrement!
-                }.to change(CartItem, :count).by(-1)
-            end
-        end
-    end
-
     describe  "Updating quantity" do
         let!(:cart_item) { create(:update_cart_item_quantity) }
 

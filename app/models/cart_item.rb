@@ -62,17 +62,6 @@ class CartItem < ActiveRecord::Base
     current_item
   end
 
-  # Decreases the quantity and weight of a cart item, including any associated accessories
-  #
-  def decrement!  
-    if quantity > 1
-      self.update_quantity((quantity-1), cart_item_accessory)
-      self.update_weight((quantity), sku.weight, cart_item_accessory ? cart_item_accessory.accessory : nil)
-    else
-      self.destroy
-    end
-  end
-
   # Updates the quantity of a cart item, taking into account associated accessories
   #
   # @return [Object] current cart item

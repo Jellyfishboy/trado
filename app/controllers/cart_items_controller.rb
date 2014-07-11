@@ -38,18 +38,11 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # DELETE /cart_items/1
-  # DELETE /cart_items/1.json
   def destroy
     @cart_item = CartItem.find(params[:id])
-    @cart_item.decrement!
+    @cart_item.destroy
     
-    respond_to do |format|
-      if @cart_item.save
-        format.js { render :partial => 'carts/update', :formats => [:js] }
-        format.json { head :no_content }
-      end
-    end
+    format.js { render :partial => 'carts/update', :formats => [:js] }
   end  
 
   private
