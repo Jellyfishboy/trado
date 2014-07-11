@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 
-Trado is an automated enterprise e-commerce solution, built to be easy to manage and lightweight.
+Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal, indexed searching and Google Analytics.
 
 [Release notes](http://release.tomdallimore.com)
 
@@ -169,7 +169,7 @@ You will need to modify the following section in the *config/settings.yml* file,
 ##Content delivery network
 
 
-Ensuring swift response times in your application is an important attribute for your end user experience. In order to improve the speed of Trado, a content delivery network configuration has been introduced. To ensure consistency AWS (Amazon web services) Cloudfront has been utilised.
+Ensuring swift response times in your application is an important attribute for your end user experience. In order to improve the speed of Trado, a content delivery network configuration has been introduced - to ensure consistency AWS (Amazon web services) Cloudfront has been utilised.
 
 You will need to modify the following section in the *config/settings.yml* file, if you are using AWS as your storage provider:
 
@@ -216,5 +216,5 @@ You will need to modify the following section in the *config/settings.yml* file:
 * Send a pull request against the *development* branch
 
 ##Copyright
-
-Copyright (c) 2014 Tom Dallimore. See LICENSE for details.
+Copyright (c) 2014 [Tom Dallimore](http://www.tomdallimore.com) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Licenced under the MIT licence.
