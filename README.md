@@ -216,5 +216,5 @@ You will need to modify the following section in the *config/settings.yml* file:
 * Send a pull request against the *development* branch
 
 ##Copyright
-
-Copyright (c) 2014 Tom Dallimore. See LICENSE for details.
+Copyright (c) 2014 [Tom Dallimore](http://www.tomdallimore.com) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Licenced under the MIT licence.
