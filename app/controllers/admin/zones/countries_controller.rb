@@ -1,9 +1,9 @@
 class Admin::Zones::CountriesController < ApplicationController
 
+  before_filter :set_country, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
   layout 'admin'
-  # GET /countries
-  # GET /countries.json
+
   def index
     @countries = Country.order('name ASC').all
 
@@ -13,8 +13,6 @@ class Admin::Zones::CountriesController < ApplicationController
     end
   end
 
-  # GET /countries/new
-  # GET /countries/new.json
   def new
     @country = Country.new
 
@@ -24,13 +22,9 @@ class Admin::Zones::CountriesController < ApplicationController
     end
   end
 
-  # GET /countries/1/edit
   def edit
-    @country = Country.find(params[:id])
   end
 
-  # POST /countries
-  # POST /countries.json
   def create
     @country = Country.new(params[:country])
 
@@ -47,10 +41,7 @@ class Admin::Zones::CountriesController < ApplicationController
     end
   end
 
-  # PUT /countries/1
-  # PUT /countries/1.json
   def update
-    @country = Country.find(params[:id])
 
     respond_to do |format|
       if @country.update_attributes(params[:country])
@@ -64,10 +55,7 @@ class Admin::Zones::CountriesController < ApplicationController
     end
   end
 
-  # DELETE /countries/1
-  # DELETE /countries/1.json
   def destroy
-    @country = Country.find(params[:id])
     @result = Store::last_record(@country, Country.all.count)
 
     respond_to do |format|
@@ -76,4 +64,10 @@ class Admin::Zones::CountriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def set_country
+      @country = Country.find(params[:id])
+    end
 end

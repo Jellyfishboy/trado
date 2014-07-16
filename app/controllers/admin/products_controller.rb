@@ -2,19 +2,16 @@ class Admin::ProductsController < ApplicationController
 
   before_filter :authenticate_user!
   layout 'admin'
-  # GET /products
-  # GET /products.json
+
   def index
     @products = Product.active.all
     @categories = Category.includes(:products, :skus, :attribute_types).where(:products => { active: true }, :skus => { active: true } ).all
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @products }
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
   def new
     @product = Product.new
     respond_to do |format|
@@ -32,8 +29,6 @@ class Admin::ProductsController < ApplicationController
     @product = Product.includes(:skus, :accessories, :attachments).where(:skus => { active:true }).find(params[:id])
   end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.new(params[:product])
 

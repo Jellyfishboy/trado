@@ -2,8 +2,6 @@ class Admin::AttachmentsController < ApplicationController
   
   before_filter :authenticate_user!
 
-  # DELETE /attachments/1
-  # DELETE /attachments/1.json
   def destroy
     @attachment = Attachment.find(params[:id])
     respond_to do |format|

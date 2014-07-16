@@ -1,36 +1,30 @@
 class Admin::Products::Skus::AttributeTypesController < ApplicationController
 
+  before_filter :set_attribute_type, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!
   layout 'admin'
-  # GET /attribute_types
-  # GET /attribute_types.json
+
   def index
     @attribute_types = AttributeType.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @attribute_types }
     end
   end
 
-  # GET /attribute_types/new
-  # GET /attribute_types/new.json
   def new
     @attribute_type = AttributeType.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @attribute_type }
     end
   end
 
-  # GET /attribute_types/1/edit
   def edit
-    @attribute_type = AttributeType.find(params[:id])
   end
 
-  # POST /attribute_types
-  # POST /attribute_types.json
   def create
     @attribute_type = AttributeType.new(params[:attribute_type])
 
@@ -46,10 +40,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
     end
   end
 
-  # PUT /attribute_types/1
-  # PUT /attribute_types/1.json
   def update
-    @attribute_type = AttributeType.find(params[:id])
 
     respond_to do |format|
       if @attribute_type.update_attributes(params[:attribute_type])
@@ -63,10 +54,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
     end
   end
 
-  # DELETE /attribute_types/1
-  # DELETE /attribute_types/1.json
   def destroy
-    @attribute_type = AttributeType.find(params[:id])
     @result = Store::last_record(@attribute_type, AttributeType.all.count)
 
     respond_to do |format|
@@ -75,4 +63,10 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def set_attribute_type
+      @attribute_type = AttributeType.find(params[:id])
+    end
 end

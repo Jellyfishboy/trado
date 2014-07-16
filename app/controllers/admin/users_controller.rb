@@ -1,11 +1,11 @@
 class Admin::UsersController < ApplicationController
 
+  before_filter :set_user
   before_filter :authenticate_user!, :except => :new
   load_and_authorize_resource
   layout 'admin'
 
     def edit
-        @user = current_user
         @attachment = @user.build_attachment unless @user.attachment
         respond_to do |format|
             format.html
@@ -14,7 +14,6 @@ class Admin::UsersController < ApplicationController
     end
 
     def update
-        @user = current_user
 
         respond_to do |format|
           if @user.update_attributes(params[:user])
@@ -27,5 +26,11 @@ class Admin::UsersController < ApplicationController
           end
         end
     end
+
+    private
+
+      def set_user
+        @user = current_user
+      end
     
 end

@@ -1,35 +1,30 @@
 class Admin::AccessoriesController < ApplicationController
   
+  before_filter :set_accessory, only: [:update, :destroy]
   before_filter :authenticate_user!
   layout 'admin'
-  # GET /accessories
-  # GET /accessories.json
+
   def index
     @accessories = Accessory.where('active = ?', true)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @accessories }
     end
   end
 
-  # GET /accessories/new
-  # GET /accessories/new.json
   def new
     @accessory = Accessory.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @accessory }
     end
   end
 
-  # GET /accessories/1/edit
   def edit
     @form_accessory = Accessory.find(params[:id])
   end
 
-  # POST /accessories
-  # POST /accessories.json
   def create
     @accessory = Accessory.new(params[:accessory])
 
@@ -53,7 +48,6 @@ class Admin::AccessoriesController < ApplicationController
   # Set the old accessory as inactive. (It is now archived for reference by previous orders).
   # Delete any cart item accessories associated with the old accessory.
   def update
-    @accessory = Accessory.find(params[:id])
     unless @accessory.orders.empty?
       Store::inactivate!(@accessory)
       @accessory = Accessory.new(params[:accessory])
@@ -89,8 +83,6 @@ class Admin::AccessoriesController < ApplicationController
   # If there are carts but no orders: delete all cart item accessories then delete the accessory.
   # If there are orders and carts: deactivate the accessory and delete all cart item accessories.
   def destroy
-    @accessory = Accessory.find(params[:id])
-    
     if @accessory.carts.empty? && @accessory.orders.empty?
       @accessory.destroy        
     elsif @accessory.carts.empty? && !@accessory.orders.empty?
@@ -109,4 +101,10 @@ class Admin::AccessoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def set_accessory
+      @accessory = Accessory.find(params[:id])
+    end
 end

@@ -1,36 +1,30 @@
 class Admin::Shippings::TiersController < ApplicationController
 
+  before_filter :set_tier, only: [:edit, :update, :destroy]
   before_filter :authenticate_user!, :active_shippings, only: [:new, :edit, :update]
   layout "admin"
-  # GET /tiers
-  # GET /tiers.json
+
   def index
     @tiers = Tier.includes(:shippings).all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @tiers }
     end
   end
 
-  # GET /tiers/new
-  # GET /tiers/new.json
   def new
     @tier = Tier.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @tier }
     end
   end
 
-  # GET /tiers/1/edit
   def edit
-    @tier = Tier.find(params[:id])
   end
 
-  # POST /tiers
-  # POST /tiers.json
   def create
     @tier = Tier.new(params[:tier])
 
@@ -47,10 +41,7 @@ class Admin::Shippings::TiersController < ApplicationController
     end
   end
 
-  # PUT /tiers/1
-  # PUT /tiers/1.json
   def update
-    @tier = Tier.find(params[:id])
     respond_to do |format|
       if @tier.update_attributes(params[:tier])
         flash_message :success, 'Tier was successfully updated.'
@@ -63,10 +54,7 @@ class Admin::Shippings::TiersController < ApplicationController
     end
   end
 
-  # DELETE /tiers/1
-  # DELETE /tiers/1.json
   def destroy
-    @tier = Tier.find(params[:id])
     @result = Store::last_record(@tier, Tier.all.count)
 
     respond_to do |format|
@@ -78,10 +66,14 @@ class Admin::Shippings::TiersController < ApplicationController
 
   private
 
-  # Retrieves an instantiates an array of active shippings
-  #
-  # @return [Array] active shippings
-  def active_shippings
-    @shippings = Shipping.active.all
-  end
+    # Retrieves an instantiates an array of active shippings
+    #
+    # @return [Array] active shippings
+    def active_shippings
+      @shippings = Shipping.active.all
+    end
+
+    def set_tier
+      @tier = Tier.find(params[:id])
+    end
 end

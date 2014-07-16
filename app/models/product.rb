@@ -64,7 +64,7 @@ class Product < ActiveRecord::Base
   default_scope order('weighting DESC')
   
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   # Search paramters for elasticsearch
   #

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -49,24 +49,22 @@ group :development, :test do
   gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'compass-rails'
-  gem 'jquery-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'asset_sync'
-end
+# Gems
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'compass-rails'
+gem 'jquery-rails'
+gem 'uglifier', '>= 1.0.3'
+gem 'asset_sync'
 
+# Web server
 gem 'unicorn', :platforms => :ruby
 
 # AJAX file upload
 gem 'remotipart', '~> 1.2'
 
 # Logging/Monitoring
-gem 'rollbar', '~> 0.12.17'
+gem 'rollbar'
 gem 'newrelic_rpm'
 
 # Search
@@ -85,16 +83,13 @@ gem 'devise'
 gem 'cancan'
 
 # Friendly URLs
-gem 'friendly_id', '~> 4.0.10'
+gem 'friendly_id'
 
 # Image uploader
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
 gem 'unf' # Dependency for fog
-
-# Administration
-gem 'rails_admin'
 
 # Email preview
 gem 'rails_email_preview', '~> 0.2.19'
@@ -112,4 +107,4 @@ gem 'gon'
 gem 'fast_blank'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt', :platforms => :ruby

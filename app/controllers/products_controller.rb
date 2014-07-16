@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @notification = Notification.new
     @skus = @product.skus.active.order('cast(attribute_value as integer) asc')
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @product }
     end
   end

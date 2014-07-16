@@ -29,7 +29,7 @@ Trado::Application.routes.draw do
         get 'express'
         get 'success'
         get 'failure'
-        put 'estimate'
+        patch 'estimate'
         get 'purge'
         delete 'purge_estimate'
       end
@@ -71,9 +71,9 @@ Trado::Application.routes.draw do
         resources :countries, except: :show
       end
       get '/settings' => 'admin#settings'
-      put '/settings/update' => 'admin#update'
+      patch '/settings/update' => 'admin#update'
       get '/profile' => 'users#edit'
-      put '/profile/update' => 'users#update'
+      patch '/profile/update' => 'users#update'
   end
 
 end

@@ -1,5 +1,6 @@
 class Admin::Products::SkusController < ApplicationController
 
+  before_filter :set_sku, except: :edit
   before_filter :authenticate_user!
 
   def edit
@@ -14,7 +15,6 @@ class Admin::Products::SkusController < ApplicationController
   # Set the old SKU as inactive. (It is now archived for reference by previous orders).
   # Delete any cart items associated with the old sku.
   def update
-    @sku = Sku.find(params[:id])
     unless @sku.orders.empty? || params[:sku][:stock]
       Store::inactivate!(@sku)
       @sku = Sku.new(params[:sku])
@@ -49,7 +49,6 @@ class Admin::Products::SkusController < ApplicationController
   # If there are carts but no orders: delete all cart items then delete the sku.
   # If there are orders and carts: deactivate the sku and delete all cart items.
   def destroy
-    @sku = Sku.find(params[:id])
 
     respond_to do |format|      
       if @sku.product.skus.active.count > 1
@@ -70,4 +69,10 @@ class Admin::Products::SkusController < ApplicationController
       end
     end
   end
+
+  private
+
+    def set_sku
+      @sku = Sku.find(params[:id])
+    end
 end
