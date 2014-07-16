@@ -39,10 +39,8 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
-    
-    format.js { render :partial => 'carts/update', :formats => [:js] }
+    CartItem.destroy(params[:id])
+    render partial: 'carts/update', format: [:js]
   end  
 
   private
