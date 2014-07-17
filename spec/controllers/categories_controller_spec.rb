@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CategoriesController do
 
@@ -7,12 +7,12 @@ describe CategoriesController do
     describe 'GET#show' do
         it "assigns the requested category to @category" do
             category = create(:category)
-            get :show, id: category
+            get :show, id: category.id
             expect(assigns(:category)).to eq category
         end
         it "renders the :show template" do
             category = create(:category)
-            get :show, id: category 
+            get :show, id: category.id
             expect(response).to render_template :show
         end 
     end

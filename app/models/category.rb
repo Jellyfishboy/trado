@@ -19,7 +19,7 @@ class Category < ActiveRecord::Base
 
   attr_accessible :description, :name, :visible, :sorting
 
-  has_many :products,                                    dependent: :restrict
+  has_many :products,                                    dependent: :restrict_with_exception
   has_many :skus,                                        through: :products
   has_many :attribute_types,                             through: :skus
 
@@ -27,9 +27,9 @@ class Category < ActiveRecord::Base
   validates :name,                                       :uniqueness => true
   validates :sorting,                                    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
 
-  default_scope order('sorting ASC')
+  default_scope { order(sorting: :asc) }
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
 end

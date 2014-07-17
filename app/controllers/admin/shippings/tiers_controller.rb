@@ -1,11 +1,12 @@
 class Admin::Shippings::TiersController < ApplicationController
 
-  before_filter :set_tier, only: [:edit, :update, :destroy]
-  before_filter :authenticate_user!, :active_shippings, only: [:new, :edit, :update]
+  before_action :set_tier, only: [:edit, :update, :destroy]
+  before_action :get_associations, except: [:index, :destroy, :set_tier]
+  before_action :authenticate_user!
   layout "admin"
 
   def index
-    @tiers = Tier.includes(:shippings).all
+    @tiers = Tier.includes(:shippings).load
 
     respond_to do |format|
       format.html
@@ -31,7 +32,7 @@ class Admin::Shippings::TiersController < ApplicationController
     respond_to do |format|
       if @tier.save
         flash_message :success, 'Tier was successfully created.'
-        flash_message :notice, 'Hint: Remember to create a shipping method record so you can start to display shipping results in your order process.' if Shipping.active.all.count < 1
+        flash_message :notice, 'Hint: Remember to create a shipping method record so you can start to display shipping results in your order process.' if Shipping.active.load.count < 1
         format.html { redirect_to admin_shippings_tiers_url }
         format.json { render json: @tier, status: :created, location: @tier }
       else
@@ -43,7 +44,7 @@ class Admin::Shippings::TiersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @tier.update_attributes(params[:tier])
+      if @tier.update(params[:tier])
         flash_message :success, 'Tier was successfully updated.'
         format.html { redirect_to admin_shippings_tiers_url }
         format.json { head :no_content }
@@ -69,8 +70,8 @@ class Admin::Shippings::TiersController < ApplicationController
     # Retrieves an instantiates an array of active shippings
     #
     # @return [Array] active shippings
-    def active_shippings
-      @shippings = Shipping.active.all
+    def get_associations
+      @shippings = Shipping.active.load
     end
 
     def set_tier

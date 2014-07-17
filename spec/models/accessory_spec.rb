@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Accessory do
 
@@ -40,7 +40,7 @@ describe Accessory do
 
         it "should update any associated cart_item_accessories with the new weight" do
             expect(cart_item.weight).to eq BigDecimal.new("44.5")
-            accessory.update_attributes(:weight => '3.4')
+            accessory.update(:weight => '3.4')
             cart_item.reload
             expect(cart_item.weight).to eq BigDecimal.new("91.5")
         end

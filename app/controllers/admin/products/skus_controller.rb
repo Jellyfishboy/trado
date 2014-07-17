@@ -1,7 +1,7 @@
 class Admin::Products::SkusController < ApplicationController
 
-  before_filter :set_sku, except: :edit
-  before_filter :authenticate_user!
+  before_action :set_sku, except: :edit
+  before_action :authenticate_user!
 
   def edit
     @form_sku = Sku.find(params[:id])
@@ -25,7 +25,7 @@ class Admin::Products::SkusController < ApplicationController
     end
 
     respond_to do |format|
-      if @sku.update_attributes(params[:sku])
+      if @sku.update(params[:sku])
         if @old_sku
           Store::inactivate!(@old_sku)
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all

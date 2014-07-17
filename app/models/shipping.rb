@@ -24,12 +24,12 @@ class Shipping < ActiveRecord::Base
   has_many :destinations,                               :dependent => :delete_all
   has_many :zones,                                      :through => :destinations
   has_many :countries,                                  :through => :zones
-  has_many :orders,                                     :dependent => :restrict
+  has_many :orders,                                     :dependent => :restrict_with_exception
 
   validates :name, :price, :description,                :presence => true
   validates :name,                                      :uniqueness => { :scope => :active }, :length => {:minimum => 10, :message => :too_short}
   validates :description,                               :length => { :maximum => 180, :message => :too_long }
-  validates :price,                                     :format => { :with => /^(\$)?(\d+)(\.|,)?\d{0,2}?$/ }
+  validates :price,                                     :format => { :with => /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
   # Grabs an array of records which have their active field set to true
   #

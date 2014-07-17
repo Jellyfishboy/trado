@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::AccessoriesController do
 
@@ -33,12 +33,12 @@ describe Admin::AccessoriesController do
     describe 'GET #edit' do
         it "assigns the requested accessory to @accessory" do
             accessory = create(:accessory)
-            get :edit , id: accessory
+            get :edit , id: accessory.id
             expect(assigns(:form_accessory)).to eq accessory
         end
         it "renders the :edit template" do
             accessory = create(:accessory)
-            get :edit, id: accessory
+            get :edit, id: accessory.id
             expect(response).to render_template :edit
         end
     end
@@ -74,27 +74,27 @@ describe Admin::AccessoriesController do
         end
         context "with valid attributes" do
             it "locates the requested @accessory" do
-                put :update, id: @accessory, accessory: attributes_for(:accessory)
+                put :update, id: @accessory.id, accessory: attributes_for(:accessory)
                 expect(assigns(:accessory)).to eq(@accessory)
             end
             it "updates the accessory in the database" do
-                put :update, id: @accessory, accessory: attributes_for(:accessory, name: 'accessory #2')
+                put :update, id: @accessory.id, accessory: attributes_for(:accessory, name: 'accessory #2')
                 @accessory.reload
                 expect(@accessory.name).to eq('accessory #2')
             end
             it "redirects to the accessories#index" do
-                put :update, id: @accessory, accessory: attributes_for(:accessory)
+                put :update, id: @accessory.id, accessory: attributes_for(:accessory)
                 expect(response).to redirect_to admin_accessories_url
             end
         end
         context "with invalid attributes" do 
             it "does not update the accessory" do
-                put :update, id: @accessory, accessory: attributes_for(:invalid_accessory)
+                put :update, id: @accessory.id, accessory: attributes_for(:invalid_accessory)
                 @accessory.reload
                 expect(@accessory.name).to eq('accessory #1')
             end
             it "re-renders the #edit template" do
-                put :update, id: @accessory, accessory: attributes_for(:invalid_accessory)
+                put :update, id: @accessory.id, accessory: attributes_for(:invalid_accessory)
                 expect(response).to render_template :edit
             end
         end 
@@ -106,11 +106,11 @@ describe Admin::AccessoriesController do
         end
         it "deletes the accessory from the database"  do
             expect {
-                delete :destroy, id: @accessory
+                delete :destroy, id: @accessory.id
             }.to change(Accessory, :count).by(-1)
         end
         it "redirects to accessories#index" do
-            delete :destroy, id: @accessory
+            delete :destroy, id: @accessory.id
             expect(response).to redirect_to admin_accessories_url
         end
     end

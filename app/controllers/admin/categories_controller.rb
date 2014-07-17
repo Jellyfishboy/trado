@@ -1,7 +1,7 @@
 class Admin::CategoriesController < ApplicationController
   
-  before_filter :set_category, only: [:edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
@@ -43,7 +43,7 @@ class Admin::CategoriesController < ApplicationController
   def update
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @category.update(params[:category])
         flash_message :success, 'Category was successfully updated.'
         format.html { redirect_to admin_categories_url }
         format.json { head :no_content }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Store do
 
@@ -34,14 +34,14 @@ describe Store do
         context "if its a positive value" do
 
             it "should return true" do
-                expect(Store::positive?(5)).to be_true
+                expect(Store::positive?(5)).to eq true
             end
         end
 
         context "if its a negative value" do
 
             it "should return false" do
-                expect(Store::positive?(-50)).to be_false
+                expect(Store::positive?(-50)).to eq false
             end
         end
     end
@@ -51,7 +51,7 @@ describe Store do
 
         it "should set the record as inactive" do
             Store::inactivate!(product)
-            expect(product.active).to be_false
+            expect(product.active).to eq false
         end
     end
 
@@ -60,7 +60,7 @@ describe Store do
 
         it "should set the record as active" do
             Store::activate!(product)
-            expect(product.active).to be_true
+            expect(product.active).to eq true
         end
     end
 

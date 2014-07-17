@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Tier management' do
 
@@ -74,7 +74,7 @@ feature 'Tier management' do
         end
         fill_in('tier_length_start', with: '4.92')
         fill_in('tier_weight_end', with: '215.67')
-        find('.form-last div:last-child label input[type="checkbox"]').set(false)
+        find('.form-last div:nth-child(3) label input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_shippings_tiers_path
         within '.alert.alert-success' do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Product management' do
 
@@ -89,7 +89,7 @@ feature 'Product management' do
         fill_in('product_weighting', with: '10')
         fill_in('product_sku', with: 'TA')
         find('#product_single').set(true)
-        find("#product_accessory_ids_").set(true)
+        find("#product_accessory_ids_#{accessory.id}").set(true)
         click_button 'Submit'
         sleep 5
         

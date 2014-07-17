@@ -38,8 +38,8 @@ class Order < ActiveRecord::Base
 
   belongs_to :cart
   belongs_to :shipping
-  has_one :ship_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderShipAddress' }, dependent: :destroy
-  has_one :bill_address,                                                class_name: 'Address', conditions: { addressable_type: 'OrderBillAddress' }, dependent: :destroy
+  has_one :ship_address,                                                -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
+  has_one :bill_address,                                                -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 
   validates :actual_shipping_cost,                                      :presence => true, :if => :completed?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
@@ -68,7 +68,7 @@ class Order < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
     net_amount = cart.total_price + shipping.price
-    self.update_attributes( :net_amount => net_amount,
+    self.update( :net_amount => net_amount,
                             :tax_amount => net_amount*current_tax_rate,
                             :gross_amount => net_amount + (net_amount*current_tax_rate)
     )

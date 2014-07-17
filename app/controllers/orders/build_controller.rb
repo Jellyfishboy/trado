@@ -1,11 +1,11 @@
 class Orders::BuildController < ApplicationController
   include Wicked::Wizard
 
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
-  before_filter :check_order_status, only: :show
+  before_action :check_order_status, only: :show
 
-  before_filter :accessible_order, except: [:success, :failure]
+  before_action :accessible_order, except: [:success, :failure]
 
   steps :review, :billing, :shipping, :payment, :confirm
 
@@ -49,9 +49,9 @@ class Orders::BuildController < ApplicationController
 
       @billing_address = @order.bill_address
       # Update billing attributes
-      if @billing_address.update_attributes(params[:address])
+      if @billing_address.update(params[:address])
         # Update order attributes in the form
-        unless @order.update_attributes(params[:order])
+        unless @order.update(params[:order])
           # if unsuccessful re-render the form with order errors
           render_wizard @order
         else
@@ -66,9 +66,9 @@ class Orders::BuildController < ApplicationController
     when :shipping
       @shipping_address = @order.ship_address
       # Update billing attributes
-      if @shipping_address.update_attributes(params[:address])
+      if @shipping_address.update(params[:address])
         # Update order attributes in the form
-        unless @order.update_attributes(params[:order])
+        unless @order.update(params[:order])
           # if unsuccessful re-render the form with order errors
           render_wizard @order
         else
@@ -81,7 +81,7 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :confirm
-      if @order.update_attributes(params[:order])
+      if @order.update(params[:order])
         @order.transfer(current_cart)
         redirect_to Payatron4000::Paypal.complete(@order, session)
       else
@@ -146,7 +146,7 @@ class Orders::BuildController < ApplicationController
 
   def estimate
     respond_to do |format|
-      if @order.update_attributes(params[:order])
+      if @order.update(params[:order])
         format.js { render partial: 'orders/shippings/estimate/success', format: [:js] }
       else
         format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }

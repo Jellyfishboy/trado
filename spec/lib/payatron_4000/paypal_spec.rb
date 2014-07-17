@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Payatron4000::Paypal do
 
@@ -201,7 +201,7 @@ describe Payatron4000::Paypal do
                                                                         'PendingReason' => nil } })  }
         let(:successful) { Payatron4000::Paypal.successful(response, order) }
         before(:each) do
-            unless example.metadata[:skip_before]
+            unless RSpec.current_example.metadata[:skip_before]
                 successful
             end
         end
@@ -239,7 +239,7 @@ describe Payatron4000::Paypal do
         let(:response) { OpenStruct.new(:message => 'Failed order.')  }
         let(:failed) { Payatron4000::Paypal.failed(response, order) }
         before(:each) do
-            unless example.metadata[:skip_before]
+            unless RSpec.current_example.metadata[:skip_before]
                 failed
             end
         end

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    before_filter :authenticate_user!, :set_tracking_code
+    before_action :authenticate_user!, :set_tracking_code
     helper_method :current_cart, :category_list
 
     rescue_from CanCan::AccessDenied do |exception|
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   	end
 
     def category_list
-      Category.joins(:products).where('visible = ?', true).order('sorting ASC')
+      Category.joins(:products).where('visible = ?', true).order(sorting: :asc)
     end
 
     def after_sign_out_path_for(resource_or_scope)

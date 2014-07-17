@@ -9,7 +9,7 @@
         - @product.attachments.each do |attach|
           .attachments.current-file{ :id => "attachment_#{attach.id}", :class => attach.default_record ? 'default' : nil }
             = image_tag attach.file.square, :height => 140, :width => 140
-            = link_to admin_attachment_path(attach), :method => :delete, :confirm => 'Are you sure?', :remote => true do
+            = link_to admin_attachment_path(attach), :method => :delete, data: { confirm: 'Are you sure?'}, :remote => true do
               %i.icon-close
           - if attach.default_record
             = radio_button_tag :default_attachment, attach.id, checked: true

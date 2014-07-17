@@ -22,10 +22,10 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file,             FileUploader
 
-  validates :file,                  :format => { :with => %r{\.(gif|png|jpg|jpeg)$}i, :message => "must be a URL for GIF, JPG, JPEG or PNG image." }
+  validates :file,                  :format => { :with => /\.(gif|jpg|png)\z/i, :message => "must be a URL for GIF, JPG, JPEG or PNG image." }
   validates :file,                  presence: true, :if => :not_setting_attachment?
 
-  default_scope order('default_record DESC')
+  default_scope { order(default_record: :desc) }
 
   # Finds an attachment with the passed in parameter and updates it's default_record property true
   # Then updates all other attachments default_record proeprty who are associated to the parent object to false

@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
 
-  before_filter :set_cart_item, except: :create
-  skip_before_filter :authenticate_user!
-  before_filter :void_shipping
+  before_action :set_cart_item, except: :create
+  skip_before_action :authenticate_user!
+  before_action :void_shipping
 
   def create
     @sku = Sku.find(params[:cart_item][:sku_id])
@@ -26,7 +26,7 @@ class CartItemsController < ApplicationController
       if @cart_item.quantity == 0 
           @cart_item.destroy 
       else
-        if @cart_item.update_attributes(params[:cart_item])
+        if @cart_item.update(params[:cart_item])
           format.js { render :partial => 'carts/update', :format => [:js] }
           format.json { head :no_content }
         else

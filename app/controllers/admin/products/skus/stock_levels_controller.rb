@@ -1,6 +1,6 @@
 class Admin::Products::Skus::StockLevelsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   # New stock level
   #
   # Modal trigger for displaying a form to add a stock level adjustment 

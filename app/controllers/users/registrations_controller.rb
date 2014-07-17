@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-    before_filter :check_permissions, :except => [:new, :create]
-    skip_before_filter :require_no_authentication
+    before_action :check_permissions, :except => [:new, :create]
+    skip_before_action :require_no_authentication
 
     def check_permissions
         authorize! :create, resource

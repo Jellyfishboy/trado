@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
-  before_filter :set_user
-  before_filter :authenticate_user!, :except => :new
+  before_action :set_user
+  before_action :authenticate_user!, :except => :new
   load_and_authorize_resource
   layout 'admin'
 
@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     def update
 
         respond_to do |format|
-          if @user.update_attributes(params[:user])
+          if @user.update(params[:user])
             flash_message :success, 'Profile was successfully updated.'
             format.html { redirect_to admin_root_url }
             format.json { head :no_content }

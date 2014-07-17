@@ -1,11 +1,11 @@
 class Admin::Zones::CountriesController < ApplicationController
 
-  before_filter :set_country, only: [:edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_country, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
-    @countries = Country.order('name ASC').all
+    @countries = Country.order(name: :asc).load
 
     respond_to do |format|
       format.html
@@ -44,7 +44,7 @@ class Admin::Zones::CountriesController < ApplicationController
   def update
 
     respond_to do |format|
-      if @country.update_attributes(params[:country])
+      if @country.update(params[:country])
         flash_message :success, 'Country was successfully updated.'
         format.html { redirect_to admin_zones_countries_url }
         format.json { head :no_content }

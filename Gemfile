@@ -16,12 +16,10 @@ group :development do
     gem 'better_errors'
     gem 'binding_of_caller'
     gem 'meta_request'
-    gem 'haml-rails'
     gem 'quiet_assets'
     # gem 'rack-mini-profiler'
     gem 'capistrano', '~> 2.15'
     gem 'bullet'
-    gem 'haml'
     gem 'metric_fu'
     gem 'capistrano-unicorn', :require => false, :platforms => :ruby
 end
@@ -35,9 +33,9 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'faker'
-  gem 'spork'
-  gem 'guard-rspec', :require => false
-  gem 'guard-spork'
+  # gem 'spork'
+  # gem 'guard-rspec', :require => false
+  # gem 'guard-spork'
   # Testing postgresql on Travis CI
   gem 'pg'
   # gem 'email_spec'
@@ -46,13 +44,15 @@ end
 group :development, :test do
   gem 'pry'
   gem 'sqlite3'
-  gem 'terminal-notifier-guard', :platforms => :ruby
+  # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
-# Gems
+# Assets
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails'
+gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'asset_sync'
@@ -74,6 +74,7 @@ gem 'searchkick'
 gem 'global'
 gem 'wicked'
 gem 'foreman',   '~> 0.61.0'
+gem 'protected_attributes'
 
 # Transaction handler
 gem 'activemerchant'

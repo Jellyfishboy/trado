@@ -1,6 +1,6 @@
 class Admin::Products::TagsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # A JSON index of all the tags in the database for the tagsinput typeahead functionality
   #

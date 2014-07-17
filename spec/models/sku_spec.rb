@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Sku do
 
@@ -92,7 +92,7 @@ describe Sku do
 
         it "should update the associated cart_item records weight" do
             expect(cart_item.weight).to eq BigDecimal.new("9.6")
-            sku.update_attributes(:weight => '4.4')
+            sku.update(:weight => '4.4')
             cart_item.reload
             expect(cart_item.weight).to eq BigDecimal.new("17.6")
         end

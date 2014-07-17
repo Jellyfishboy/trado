@@ -1,6 +1,6 @@
 class Admin::AttachmentsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def destroy
     @attachment = Attachment.find(params[:id])

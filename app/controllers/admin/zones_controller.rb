@@ -1,11 +1,12 @@
 class Admin::ZonesController < ApplicationController
 
-  before_filter :set_zone, only: [:edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_zone, only: [:edit, :update, :destroy]
+  before_action :get_associations, except: [:index, :destroy, :set_zone]
+  before_action :authenticate_user!
   layout "admin"
 
   def index
-    @zones = Zone.includes(:countries).all
+    @zones = Zone.includes(:countries).load
 
     respond_to do |format|
       format.html
@@ -43,7 +44,7 @@ class Admin::ZonesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @zone.update_attributes(params[:zone])
+      if @zone.update(params[:zone])
         flash_message :success, 'Zone was successfully updated.'
         format.html { redirect_to admin_zones_url }
         format.json { head :no_content }
@@ -68,5 +69,9 @@ class Admin::ZonesController < ApplicationController
 
     def set_zone
       @zone = Zone.find(params[:id])
+    end
+
+    def get_associations
+      @countries = Country.all
     end
 end

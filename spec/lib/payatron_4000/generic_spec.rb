@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Payatron4000::Generic do
 
@@ -8,7 +8,7 @@ describe Payatron4000::Generic do
         let(:order) { create(:order, status: 'billing') }
         let(:successful_order) { Payatron4000::Generic.successful(order, nil)}
         before(:each) do
-            unless example.metadata[:skip_before]
+            unless RSpec.current_example.metadata[:skip_before]
                 successful_order
             end
         end

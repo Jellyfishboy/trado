@@ -12,15 +12,13 @@ Trado::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.js_compressor = :uglifier
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
   config.assets.precompile += [ 'administration.js', 
                                 'administration.css',
-                                'rails_admin/rails_admin.css', 
-                                'rails_admin/rails_admin.js', 
                                 'custom.css', 
                                 'css3-fallback.js', 
                                 'modernizr/modernizr.js', 
@@ -36,6 +34,12 @@ Trado::Application.configure do
 
   # Logs more concise errors
   config.lograge.enabled = true
+
+  # Eager load code on boot. This eager loads most of Rails and
+  # your application in memory, allowing both thread web servers
+  # and those relying on copy on write to perform better.
+  # Rake tasks automatically ignore this option for performance.
+  config.eager_load = true
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -111,8 +115,4 @@ Trado::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end

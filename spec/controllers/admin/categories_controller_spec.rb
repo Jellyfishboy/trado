@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::CategoriesController do
 
@@ -32,12 +32,12 @@ describe Admin::CategoriesController do
     describe 'GET #edit' do
         it "assigns the requested category to @category" do
             category = create(:category)
-            get :edit , id: category
+            get :edit , id: category.id
             expect(assigns(:category)).to eq category
         end
         it "renders the :edit template" do
             category = create(:category)
-            get :edit, id: category
+            get :edit, id: category.id
             expect(response).to render_template :edit
         end
     end
@@ -73,29 +73,29 @@ describe Admin::CategoriesController do
         end
         context "with valid attributes" do
             it "locates the requested @category" do
-                put :update, id: @category, category: attributes_for(:category)
+                put :update, id: @category.id, category: attributes_for(:category)
                 expect(assigns(:category)).to eq(@category)
             end
             it "updates the category in the database" do
-                put :update, id: @category, category: attributes_for(:category, name: 'Category #2', visible: true)
+                put :update, id: @category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
                 @category.reload
                 expect(@category.name).to eq('Category #2')
                 expect(@category.visible).to eq(true)
             end
             it "redirects to the categories#index" do
-                put :update, id: @category, category: attributes_for(:category)
+                put :update, id: @category.id, category: attributes_for(:category)
                 expect(response).to redirect_to admin_categories_url
             end
         end
         context "with invalid attributes" do 
             it "does not update the category" do
-                put :update, id: @category, category: attributes_for(:category, name: nil, visible: true)
+                put :update, id: @category.id, category: attributes_for(:category, name: nil, visible: true)
                 @category.reload
                 expect(@category.name).to eq('Category #1')
                 expect(@category.visible).to eq(false)
             end
             it "re-renders the #edit template" do
-                put :update, id: @category, category: attributes_for(:invalid_category)
+                put :update, id: @category.id, category: attributes_for(:invalid_category)
                 expect(response).to render_template :edit
             end
         end 
@@ -108,11 +108,11 @@ describe Admin::CategoriesController do
         end
         it "deletes the category from the database"  do
             expect {
-                delete :destroy, id: @category
+                delete :destroy, id: @category.id
             }.to change(Category, :count).by(-1)
         end
         it "redirects to categories#index" do
-            delete :destroy, id: @category
+            delete :destroy, id: @category.id
             expect(response).to redirect_to admin_categories_url
         end
     end

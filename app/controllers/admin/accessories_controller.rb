@@ -1,7 +1,7 @@
 class Admin::AccessoriesController < ApplicationController
   
-  before_filter :set_accessory, only: [:update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_accessory, only: [:update, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
@@ -55,7 +55,7 @@ class Admin::AccessoriesController < ApplicationController
     end
 
     respond_to do |format|
-      if @accessory.update_attributes(params[:accessory])
+      if @accessory.update(params[:accessory])
 
         if @old_accessory
           @old_accessory.accessorisations.pluck(:product_id).map { |t| Accessorisation.create(:product_id => t, :accessory_id => @accessory.id) }

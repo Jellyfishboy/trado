@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature 'Zone management' do
 
@@ -58,7 +58,7 @@ feature 'Zone management' do
             expect(page).to have_content 'Edit'
         end
         fill_in('zone_name', with: 'Asia')
-        find('.form-last div:last-child label input[type="checkbox"]').set(false)
+        find('.form-last div:nth-child(3) label input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_zones_path
         within '.alert.alert-success' do

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
   
   # GET /products/1
   # GET /products/1.json

@@ -1,6 +1,6 @@
 class Admin::TransactionsController < ApplicationController
 
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
   include ActiveMerchant::Billing::Integrations
 

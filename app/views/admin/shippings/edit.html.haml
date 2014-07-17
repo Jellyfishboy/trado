@@ -25,15 +25,14 @@
         = f.text_area :description, :class => 'form-control', :rows => 7
       .form-group.form-last
         = f.label 'Zones'
-        - if Zone.all.empty?
+        - if @zones.empty?
           %p No zones to select.
         - else
-          - Zone.all.each do |zone|
+          = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @form_shipping.zones.map(&:id) do |c|
             .checkbox.blocked
               %label
-                = hidden_field_tag "shipping[zone_ids][]", ''
-                = check_box_tag "shipping[zone_ids][]", zone.id, @form_shipping.zone_ids.include?(zone.id)
-                = zone.name
+                = c.check_box
+                = c.label
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

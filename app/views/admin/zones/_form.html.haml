@@ -15,15 +15,14 @@
         = f.text_field :name, :class => 'form-control'
       .form-group.form-last
         = f.label 'Countries'
-        - if Country.all.empty?
+        - if @countries.empty?
           %p No zones to select.
         - else
-          - Country.all.each do |country|
+          = f.collection_check_boxes :country_ids, @countries, :id, :name, checked: @zone.countries.map(&:id) do |c|
             .checkbox.blocked
               %label
-                = hidden_field_tag "zone[country_ids][]", ''
-                = check_box_tag "zone[country_ids][]", country.id, @zone.country_ids.include?(country.id)
-                = country.name
+                = c.check_box
+                = c.label
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

@@ -20,12 +20,12 @@ class StockLevel < ActiveRecord::Base
 
   belongs_to :sku
 
-  validates :description, :adjustment,                      :presence => true
+  validates :description, :adjustment,                      presence: true
   validate :adjustment_value
 
   before_save :stock_level_adjustment
 
-  default_scope order('created_at DESC')
+  default_scope { order(created_at: :desc) }
 
   # Modify the sku stock with the associated stock level adjustment value
   #

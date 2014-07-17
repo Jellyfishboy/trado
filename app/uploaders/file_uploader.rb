@@ -3,8 +3,8 @@
 class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
   include CarrierWave::MiniMagick
-  include Sprockets::Helpers::RailsHelper
-  include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Rails::Helper
+  # include Sprockets::Helpers::IsolatedHelper
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

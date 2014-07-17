@@ -1,11 +1,12 @@
 class Admin::ShippingsController < ApplicationController
 
-  before_filter :set_shipping, only: [:update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_shipping, only: [:update, :destroy]
+  before_action :get_associations, except: [:index, :destroy, :set_shipping]
+  before_action :authenticate_user!
   layout "admin"
 
   def index
-    @shippings = Shipping.active.includes(:zones, :tiers).all
+    @shippings = Shipping.active.includes(:zones, :tiers).load
 
     respond_to do |format|
       format.html
@@ -57,7 +58,7 @@ class Admin::ShippingsController < ApplicationController
     end
 
     respond_to do |format|
-      if @shipping.update_attributes(params[:shipping])
+      if @shipping.update(params[:shipping])
 
         if @old_shipping
           @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
@@ -82,7 +83,7 @@ class Admin::ShippingsController < ApplicationController
   def destroy
 
     if @shipping.orders.empty?
-      @result = Store::last_record(@shipping, Shipping.active.all.count)
+      @result = Store::last_record(@shipping, Shipping.active.load.count)
     else
       Store::inactivate!(@shipping)
     end
@@ -102,5 +103,9 @@ class Admin::ShippingsController < ApplicationController
 
     def set_shipping
       @shipping = Shipping.find(params[:id])
+    end
+
+    def get_associations
+      @zones = Zone.all
     end
 end

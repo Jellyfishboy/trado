@@ -1,11 +1,12 @@
 class Admin::ProductsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :get_associations, except: [:index, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
-    @products = Product.active.all
-    @categories = Category.includes(:products, :skus, :attribute_types).where(:products => { active: true }, :skus => { active: true } ).all
+    @products = Product.active.load
+    @categories = Category.includes(:products, :skus, :attribute_types).where(:products => { active: true }, :skus => { active: true } ).load
     respond_to do |format|
       format.html
       format.json { render json: @products }
@@ -45,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.includes(:skus).where(:skus => { active:true }).find(params[:id])
     respond_to do |format|
-      if @product.update_attributes(params[:product])
+      if @product.update(params[:product])
         Attachment.set_default(params[:default_attachment])
         Tag.del(params[:taggings], @product.id)
         Tag.add(params[:taggings], @product.id)
@@ -85,4 +86,12 @@ class Admin::ProductsController < ApplicationController
       format.html { redirect_to admin_products_url }
     end
   end
+
+  private
+
+    def get_associations
+      @accessories = Accessory.active.load
+      @products = Product.all
+      @categories = Category.all
+    end
 end

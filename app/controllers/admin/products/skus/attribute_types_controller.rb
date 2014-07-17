@@ -1,7 +1,7 @@
 class Admin::Products::Skus::AttributeTypesController < ApplicationController
 
-  before_filter :set_attribute_type, only: [:edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_attribute_type, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
@@ -43,7 +43,7 @@ class Admin::Products::Skus::AttributeTypesController < ApplicationController
   def update
 
     respond_to do |format|
-      if @attribute_type.update_attributes(params[:attribute_type])
+      if @attribute_type.update(params[:attribute_type])
         flash_message :success, 'Attribute type was successfully updated.'
         format.html { redirect_to admin_products_skus_attribute_types_url }
         format.json { head :no_content }

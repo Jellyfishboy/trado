@@ -1,11 +1,11 @@
 class Admin::OrdersController < ApplicationController
 
-  before_filter :set_order, only: [:show, :edit, :update]
-  before_filter :authenticate_user!
+  before_action :set_order, only: [:show, :edit, :update]
+  before_action :authenticate_user!
   layout 'admin'
 
   def index
-    @orders = Order.includes(:transactions).where('status = ?', 'active').order('orders.created_at desc')
+    @orders = Order.includes(:transactions).where('status = ?', 'active').order('orders.created_at DESC')
     respond_to do |format|
       format.html
       format.json { render json: @orders }
@@ -32,7 +32,7 @@ class Admin::OrdersController < ApplicationController
       rescue
          format.json { render :json => { :errors => ['Shipping date can\'t be blank'] }, :status => 422 }
       end
-      if @order.update_attributes(params[:order])
+      if @order.update(params[:order])
         format.js { render :partial => 'admin/orders/success', :format => [:js] }
       else 
         format.json { render :json => { :errors => @order.errors.full_messages }, :status => 422 }

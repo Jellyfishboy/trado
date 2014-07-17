@@ -3,28 +3,24 @@
 %fieldset.widget.widget-content
   .row
     .twelvecol
-      - if Accessory.all.empty?
+      - if @accessories.empty?
         %p No accessories to select.
       - else
-        - Accessory.all.each do |accessory|
+        = f.collection_check_boxes :accessory_ids, @accessories, :id, :name, checked: @product.accessories.map(&:id) do |c|
           .checkbox
             %label
-              = hidden_field_tag "product[accessory_ids][]", ""
-              = check_box_tag "product[accessory_ids][]", accessory.id, @product.accessory_ids.include?(accessory.id)
-              = accessory.name
+              = c.check_box
+              = c.label
 .widget-sub-heading
   %h3 Related products
 %fieldset.widget.widget-content
   .row
     .twelvecol
-      - if Product.all.empty?
+      - if @products.where.not(name: @product.name).empty?
         %p No related products to select.
       - else
-        - Product.all.each do |related_product|
-          - if related_product == @product
-            - next
+        = f.collection_check_boxes :related_ids, @products.where.not(name: @product.name), :id, :name, checked: @product.related.map(&:id) do |c|
           .checkbox
             %label
-              = hidden_field_tag "product[related_ids][]", ""
-              = check_box_tag "product[related_ids][]", related_product.id, @product.related_ids.include?(related_product.id)
-              = related_product.name
+              = c.check_box
+              = c.label
