@@ -109,4 +109,4 @@ gem 'gon'
 gem 'fast_blank'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt', :platforms => :ruby
+gem 'bcrypt-ruby', '~> 3.0.0'
