@@ -75,7 +75,6 @@ gem 'global'
 gem 'wicked'
 gem 'foreman',   '~> 0.61.0'
 gem 'protected_attributes'
-gem 'nokogiri'
 
 # Transaction handler
 gem 'activemerchant'
