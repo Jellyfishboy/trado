@@ -28,6 +28,8 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
@@ -35,12 +37,9 @@ group :test do
   # gem 'spork'
   # gem 'guard-rspec', :require => false
   # gem 'guard-spork'
-  # Testing postgresql on Travis CI
   gem 'pg'
   # gem 'email_spec'
 end
-gem 'capybara'
-gem 'capybara-screenshot'
 
 group :development, :test do
   gem 'pry'
@@ -76,6 +75,7 @@ gem 'global'
 gem 'wicked'
 gem 'foreman',   '~> 0.61.0'
 gem 'protected_attributes'
+gem 'nokogiri'
 
 # Transaction handler
 gem 'activemerchant'
