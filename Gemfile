@@ -5,9 +5,10 @@ gem 'rails', '4.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'pg'
+
 # Production gems
 group :production do
-  gem 'mysql2', :platforms => :ruby
   gem 'lograge'
 end
 
@@ -37,13 +38,11 @@ group :test do
   # gem 'spork'
   # gem 'guard-rspec', :require => false
   # gem 'guard-spork'
-  gem 'pg'
   # gem 'email_spec'
 end
 
 group :development, :test do
   gem 'pry'
-  gem 'sqlite3'
   # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 

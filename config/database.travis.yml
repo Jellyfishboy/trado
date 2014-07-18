@@ -1,31 +1,37 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
+# sqlite: &sqlite
+#   adapter: sqlite3
+#   database: db/<%= Rails.env %>.sqlite3
 
-mysql: &mysql
-  adapter: mysql2
-  username: travis
-  password:
-  database: trado_<%= Rails.env %>_db
+# mysql: &mysql
+#   adapter: mysql2
+#   username: travis
+#   password:
+#   database: trado_<%= Rails.env %>_db
 
-postgresql: &postgresql
+# postgresql: &postgresql
+#   adapter: postgresql
+#   username: postgres
+#   password:
+#   database: trado_<%= Rails.env %>_db
+#   min_messages: ERROR
+
+# defaults: &defaults
+#   pool: 5
+#   timeout: 5000
+#   host: localhost
+#   <<: *<%= ENV['DB'] || "postgresql" %>
+
+# development:
+#   <<: *defaults
+
+# test:
+#   <<: *defaults
+
+# production:
+#   <<: *defaults
+test:
   adapter: postgresql
   username: postgres
   password:
   database: trado_<%= Rails.env %>_db
   min_messages: ERROR
-
-defaults: &defaults
-  pool: 5
-  timeout: 5000
-  host: localhost
-  <<: *<%= ENV['DB'] || "postgresql" %>
-
-development:
-  <<: *defaults
-
-test:
-  <<: *defaults
-
-production:
-  <<: *defaults
