@@ -28,8 +28,6 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
@@ -41,6 +39,8 @@ group :test do
   gem 'pg'
   # gem 'email_spec'
 end
+gem 'capybara'
+gem 'capybara-screenshot'
 
 group :development, :test do
   gem 'pry'
