@@ -5,8 +5,8 @@ describe Sku do
     # ActiveRecord relations
     it { expect(subject).to have_many(:cart_items) }
     it { expect(subject).to have_many(:carts).through(:cart_items) }
-    it { expect(subject).to have_many(:order_items).dependent(:restrict) }
-    it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict) }
+    it { expect(subject).to have_many(:order_items).dependent(:restrict_with_exception) }
+    it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
     it { expect(subject).to have_many(:stock_levels).dependent(:delete_all) }
     it { expect(subject).to belong_to(:product) }
@@ -72,7 +72,7 @@ describe Sku do
 
             it "should return false for attribute validation" do
                 product.reload
-                expect(product.skus.first.not_single_sku?).to be_false
+                expect(product.skus.first.not_single_sku?).to eq false
             end
         end
 
@@ -81,7 +81,7 @@ describe Sku do
 
             it "should return true for attribute validation" do
                 product.reload
-                expect(product.skus.first.not_single_sku?).to be_true
+                expect(product.skus.first.not_single_sku?).to eq true
             end
         end
     end

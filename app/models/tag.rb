@@ -35,10 +35,10 @@ class Tag < ActiveRecord::Base
   # @return [nil]
   def self.del value, product_id
     if value.blank?
-      Tag.joins(:taggings).where(:taggings => { :product_id => product_id }).destroy_all 
+      Tag.joins(:taggings).where(:taggings => { :product_id => product_id }).readonly(false).destroy_all 
     else
       @tags = value.split(/,\s*/)
-      Tag.where('name NOT IN (?)', @tags).joins(:taggings).where(:taggings => { :product_id => product_id }).destroy_all
+      Tag.where.not(name: @tags).joins(:taggings).where(:taggings => { :product_id => product_id }).readonly(false).destroy_all
     end
   end
 

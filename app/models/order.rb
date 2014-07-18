@@ -88,7 +88,7 @@ class Order < ActiveRecord::Base
   #
   # @return [Boolean]
   def shipping_date_nil?
-    return true unless shipping_date.nil?
+    return shipping_date.nil? ? false : true 
   end
 
   # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job

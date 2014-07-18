@@ -20,7 +20,7 @@ describe Order do
 
     context "If the status of the order is 'active' or 'confirm'" do
         before { subject.stub(:active_or_confirm?) { true } }
-        it { expect(subject).to ensure_inclusion_of(:terms).in_array(%w(true)) }
+        it { expect(subject).to ensure_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
     end
 
     context "If current order status is at shipping" do
@@ -100,11 +100,11 @@ describe Order do
         end
 
         it "should return false if the shipping_date is nil" do
-            expect(order.shipping_date_nil?).to be_false
+            expect(order.shipping_date_nil?).to eq false
         end
 
         it "should return true if the shipping_date is not nil" do
-            expect(order_3.shipping_date_nil?).to be_true
+            expect(order_3.shipping_date_nil?).to eq true
         end
     end
 
@@ -112,11 +112,11 @@ describe Order do
         let(:complete) { create(:complete_order) }
         let(:pending) { create(:pending_order) }
         it "should return true if the any associated transactions have they payment_status attribute set to 'Completed" do
-            expect(complete.completed?).to be_true
+            expect(complete.completed?).to eq true
         end
 
         it "should return false if there are no associated transaction records which have a their payment_status attribute set to 'Completed'" do
-            expect(pending.completed?).to be_false
+            expect(pending.completed?).to eq false
         end
     end
 
@@ -128,24 +128,24 @@ describe Order do
         let(:order_5) { create(:order, status: 'confirm') }
 
         it "should return true for an active order" do
-            expect(order_1.active?).to be_true
+            expect(order_1.active?).to eq true
         end
 
         it "should return true for a billing or active order" do
-            expect(order_1.active_or_billing?).to be_true
-            expect(order_2.active_or_billing?).to be_true
+            expect(order_1.active_or_billing?).to eq true
+            expect(order_2.active_or_billing?).to eq true
         end
         it "should return true for a shipping or active order" do
-            expect(order_1.active_or_shipping?).to be_true
-            expect(order_3.active_or_shipping?).to be_true
+            expect(order_1.active_or_shipping?).to eq true
+            expect(order_3.active_or_shipping?).to eq true
         end
         it "should return true for a payment or active order" do
-            expect(order_1.active_or_payment?).to be_true
-            expect(order_4.active_or_payment?).to be_true
+            expect(order_1.active_or_payment?).to eq true
+            expect(order_4.active_or_payment?).to eq true
         end
         it "should return true for a payment or active order" do
-            expect(order_1.active_or_confirm?).to be_true
-            expect(order_5.active_or_confirm?).to be_true
+            expect(order_1.active_or_confirm?).to eq true
+            expect(order_5.active_or_confirm?).to eq true
         end
     end
 

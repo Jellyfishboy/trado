@@ -19,11 +19,11 @@ describe User do
         let(:user) { create(:standard_user) }
 
         it "should return true if the symbol parameter matches a role attached to the user" do
-            expect(admin.role?(:admin)).to be_true
+            expect(admin.role?(:admin)).to eq true
         end
 
         it "should return false if the symbol parameter doesn't match a role attached to the user" do
-            expect(user.role?(:admin)).to be_false
+            expect(user.role?(:admin)).to eq false
         end
     end
 

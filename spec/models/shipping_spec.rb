@@ -8,7 +8,7 @@ describe Shipping do
     it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
     it { expect(subject).to have_many(:zones).through(:destinations) }
     it { expect(subject).to have_many(:countries).through(:zones) }
-    it { expect(subject).to have_many(:orders).dependent(:restrict) }
+    it { expect(subject).to have_many(:orders).dependent(:restrict_with_exception) }
 
     # Validations
     it { expect(subject).to validate_presence_of(:name) }

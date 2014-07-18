@@ -12,7 +12,7 @@ describe Tag do
         let(:generate_tags) { Tag.add(tags, product.id) }
 
         before(:each) do
-            unless example.metadata[:skip_before]
+            unless RSpec.current_example.metadata[:skip_before]
                 generate_tags
             end
         end

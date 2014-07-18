@@ -47,21 +47,21 @@ describe Attachment do
         context "if the type is StoreSetting" do
 
             it "should return false" do
-                expect(setting.not_setting_attachment?).to be_false
+                expect(setting.not_setting_attachment?).to eq false
             end
         end
 
         context "if the type is User" do
 
             it "should return false" do
-                expect(user.not_setting_attachment?).to be_false
+                expect(user.not_setting_attachment?).to eq false
             end
         end
 
         context "if the type is Product" do
 
             it "should return true" do
-                expect(product.not_setting_attachment?).to be_true
+                expect(product.not_setting_attachment?).to eq true
             end
         end
     end

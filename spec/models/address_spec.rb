@@ -28,7 +28,7 @@ describe Address do
             let(:address) { create(:validation_bill_address) }
 
             it "should return true" do
-                expect(address.shipping_stage?).to be_true
+                expect(address.shipping_stage?).to eq true
             end
         end
 
@@ -36,7 +36,7 @@ describe Address do
             let(:address) { create(:validation_ship_address) }
 
             it "should return true" do
-                expect(address.shipping_stage?).to be_true
+                expect(address.shipping_stage?).to eq true
             end
         end
 
@@ -44,7 +44,7 @@ describe Address do
             let(:address) { create(:validation_review_address) }
 
             it "should return nil" do
-                expect(address.shipping_stage?).to be_nil
+                expect(address.shipping_stage?).to eq nil
             end
         end
     end
