@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'thin'
 
 # Production gems
 group :production do
@@ -18,6 +19,7 @@ group :development do
     gem 'binding_of_caller'
     gem 'meta_request'
     gem 'quiet_assets'
+    gem 'spring'
     # gem 'rack-mini-profiler'
     gem 'capistrano', '~> 2.15'
     gem 'bullet'
@@ -74,6 +76,7 @@ gem 'global'
 gem 'wicked'
 gem 'foreman',   '~> 0.61.0'
 gem 'protected_attributes'
+gem 'tzinfo-data'
 
 # Transaction handler
 gem 'activemerchant'
