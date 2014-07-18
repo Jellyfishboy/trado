@@ -8,7 +8,7 @@ Trado::Application.configure do
   config.cache_classes = true
 
   # Eager load code on boot.
-  config.eager_load = true
+  config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true

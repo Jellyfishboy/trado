@@ -33,5 +33,5 @@ test:
   adapter: postgresql
   username: postgres
   password:
-  database: trado_<%= Rails.env %>_db
+  database: trado_test
   min_messages: ERROR
