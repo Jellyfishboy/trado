@@ -10,6 +10,7 @@ branches:
         - master
 before_install:
     - sudo apt-get install -qq openjdk-6-jre
+    - gem install nokogiri
 env:
     - DB=sqlite
     - DB=mysql
