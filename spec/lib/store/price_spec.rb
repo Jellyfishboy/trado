@@ -122,7 +122,6 @@ describe Store::Price do
             end
 
             it "should have the correct elements" do
-                binding.pry
                 expect(Store::Price.new(sku.price).markup).to include("<span>#{Store::Price.new(sku.price, 'gross').format} Inc VAT</span>")
             end
         end

@@ -57,7 +57,6 @@ module Store
         #
         # @return [String] HTML for both net and gross prices
         def markup
-            binding.pry
             render :partial => 'shared/price', :locals => { :price => format, :gross => Store::settings.tax_breakdown ? taxify(@price) : nil }, :format => [:html]
         end
 

@@ -378,7 +378,7 @@ feature 'Product management' do
         find('.page-header a:first-child').click
         expect(current_path).to eq admin_products_path
         within '.alert.alert-warning' do
-            expect(page).to have_content "You must have at least one AttributeType record before creating your first product. Create one here."
+            expect(page).to have_content "You must have at least one AttributeType record before creating your first product. Create one <a href=\"/admin/products/skus/attribute_types/new\">here</a>."
         end
     end
 
