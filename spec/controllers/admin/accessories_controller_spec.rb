@@ -68,7 +68,7 @@ describe Admin::AccessoriesController do
         end 
     end
 
-    describe 'PUT #update' do
+    describe 'PATCH #update' do
         before :each do
             @accessory = create(:accessory, name: 'accessory #1')
         end

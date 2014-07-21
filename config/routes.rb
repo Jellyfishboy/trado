@@ -8,8 +8,8 @@ Trado::Application.routes.draw do
 
   # Custom routes
   get '/order/shippings/update' => 'shippings#update'
-  get '/product/skus/update' => 'skus#update'
-  get '/product/accessories/update' => 'accessories#update'
+  get '/product/skus/:id' => 'skus#update'
+  get '/product/accessories/:id' => 'accessories#update'
   get '/search' => 'search#results'
   get '/search/autocomplete' => 'search#autocomplete'
 
@@ -41,7 +41,6 @@ Trado::Application.routes.draw do
   resources :cart_item_accessories, only: [:update, :destroy]
   resources :notifications, only: :create
   resources :addresses, only: [:new, :create, :update]
-  resources :skus, only: :edit
   resources :shippings, only: [:update]
 
   

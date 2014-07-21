@@ -4,7 +4,7 @@ describe CategoriesController do
 
     store_setting
 
-    describe 'GET#show' do
+    describe 'GET #show' do
         it "assigns the requested category to @category" do
             category = create(:category)
             get :show, id: category.id

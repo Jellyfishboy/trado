@@ -1,8 +1,10 @@
 class SkusController < ApplicationController
 
+    skip_before_action :authenticate_user!
+    
     # Update SKU
     #
-    # Modal trigger for displaying a form to update the SKU selection on the product page
+    # Update the price of a product when selecting a SKU
     def update
         render :partial => 'products/skus/update', :format => [:js]
     end
