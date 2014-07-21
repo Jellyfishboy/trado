@@ -4,11 +4,12 @@ feature 'Administration management' do
 
     store_setting
     feature_login_admin
+    given(:store_setting) { create(:store_setting) }
 
     scenario 'should edit the store settings' do
         Store::reset_settings
         StoreSetting.destroy_all
-        settings = create(:store_setting)
+        store_setting
         Store::settings
 
         visit admin_root_path

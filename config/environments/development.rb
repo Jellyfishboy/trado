@@ -16,6 +16,8 @@ Trado::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
   
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailatron_4000/previews"
+
   # Set default URL
   config.action_mailer.default_url_options = { :host => Settings.mailer.development.host }
 

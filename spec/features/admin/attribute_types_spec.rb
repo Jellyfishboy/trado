@@ -4,6 +4,8 @@ feature 'Attribute type management' do
 
     store_setting
     feature_login_admin
+    given(:attribute_type) { create(:attribute_type) }
+    given(:attribute_types) { create_list(:attribute_type, 2) }
 
     scenario 'should add a new attribute type' do
 
@@ -28,7 +30,7 @@ feature 'Attribute type management' do
     end
 
     scenario 'should edit an attribute type' do
-        attribute_type = create(:attribute_type)
+        attribute_type
 
         visit admin_products_skus_attribute_types_path
         within 'tbody' do
@@ -54,7 +56,7 @@ feature 'Attribute type management' do
     end
 
     scenario "should delete an attribute type if there is more than one record" do
-        attribute_type = create_list(:attribute_type, 2)
+        attribute_types
 
         visit admin_products_skus_attribute_types_path
         expect{
@@ -71,7 +73,7 @@ feature 'Attribute type management' do
     end
 
     scenario "should not delete an attribute type if there is only one record" do
-        attribute_type = create(:attribute_type)
+        attribute_type
 
         visit admin_products_skus_attribute_types_path
         expect{

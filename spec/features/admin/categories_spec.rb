@@ -4,9 +4,12 @@ feature 'Category management' do
 
     store_setting
     feature_login_admin
+    given(:category_1) { create(:category) }
+    given(:category_2) { create(:category) }
+    given(:categories) { create_list(:category, 2) }
 
     scenario 'should display an index of categories' do
-        category = create(:category)
+        category_1
 
         visit admin_root_path
         find('a[data-original-title="Categories"]').click
@@ -21,7 +24,7 @@ feature 'Category management' do
             expect(page).to have_content 'Name'
         end
         within 'tbody tr td:first-child' do
-            expect(page).to have_content category.name
+            expect(page).to have_content category_1.name
         end
     end
 
@@ -50,13 +53,13 @@ feature 'Category management' do
     end
 
     scenario 'should edit a category' do
-        category = create(:category, sorting: 0)
+        category_2
 
         visit admin_categories_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_category_path(category)
+        expect(current_path).to eq edit_admin_category_path(category_2)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -70,14 +73,14 @@ feature 'Category management' do
         within 'h2' do
             expect(page).to have_content 'Categories'
         end 
-        category.reload
-        expect(category.name).to eq 'category #2'
-        expect(category.sorting).to eq 5
-        expect(category.visible).to eq true
+        category_2.reload
+        expect(category_2.name).to eq 'category #2'
+        expect(category_2.sorting).to eq 5
+        expect(category_2.visible).to eq true
     end
 
     scenario "should delete a category if there is more than one record" do
-        category = create_list(:category, 2)
+        categories
 
         visit admin_categories_path
         expect{
@@ -94,7 +97,7 @@ feature 'Category management' do
     end
 
     scenario "should not delete a category if there is only one record" do
-        category = create(:category)
+        category_1
 
         visit admin_categories_path
         expect{

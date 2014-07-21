@@ -4,9 +4,11 @@ feature 'Accessory management' do
 
     store_setting
     feature_login_admin
+    given(:accessory_1) { create(:accessory) }
+    given(:accessory_2) { create(:accessory, weight: 2) }
 
     scenario 'should display an index of accessories' do
-        accessory = create(:accessory)
+        accessory_1
 
         visit admin_root_path
         find('a[data-original-title="Accessories"]').click
@@ -21,7 +23,7 @@ feature 'Accessory management' do
             expect(page).to have_content 'Part no.'
         end
         within 'tbody tr td:first-child' do
-            expect(page).to have_content accessory.part_number
+            expect(page).to have_content accessory_1.part_number
         end
     end
 
@@ -51,13 +53,13 @@ feature 'Accessory management' do
     end
 
     scenario 'should edit an accessory' do
-        accessory = create(:accessory, weight: 2)
-        
+        accessory_2
+
         visit admin_accessories_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_accessory_path(accessory)
+        expect(current_path).to eq edit_admin_accessory_path(accessory_2)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -71,14 +73,14 @@ feature 'Accessory management' do
         within 'h2' do
             expect(page).to have_content 'Accessories'
         end 
-        accessory.reload
-        expect(accessory.name).to eq 'accessory #2'
-        expect(accessory.weight).to eq BigDecimal.new("5.87")
-        expect(accessory.active).to eq true
+        accessory_2.reload
+        expect(accessory_2.name).to eq 'accessory #2'
+        expect(accessory_2.weight).to eq BigDecimal.new("5.87")
+        expect(accessory_2.active).to eq true
     end
 
     scenario "should delete an accessory" do
-        accessory = create(:accessory)
+        accessory_1
 
         visit admin_accessories_path
         expect{

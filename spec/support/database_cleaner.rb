@@ -12,7 +12,12 @@ RSpec.configure do |config|
 
   # Only runs on examples which have been flagged with ':js => true'. Used for capybara and selenium for integration testing. These types of tests wont
   # work with transactions, so sets the database strategy as truncation.
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  # Need to set app feature specs as truncaton strategy, as transaction does not reset the primary key for the Shipatron4000::tier method spec
+  config.before(:each, type: :feature) do
     DatabaseCleaner.strategy = :truncation
   end
 

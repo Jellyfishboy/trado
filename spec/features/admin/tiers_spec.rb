@@ -4,9 +4,13 @@ feature 'Tier management' do
 
     store_setting
     feature_login_admin
+    given(:shipping) { create(:shipping, active: true) }
+    given(:tier) { create(:tier) }
+    given(:tier_with_shippings) { create(:tier_with_shippings) }
+    given(:tiers) { create_list(:tier, 2) }
 
     scenario 'should add a new tier and not display a shipping hint when shipping records are present in the database' do
-        create(:shipping, active: true)
+        shipping
 
         visit admin_shippings_tiers_path
         find('.page-header a').click
@@ -62,13 +66,13 @@ feature 'Tier management' do
     end
 
     scenario 'should edit an tier' do
-        tier = create(:tier_with_shippings)
+        tier_with_shippings
 
         visit admin_shippings_tiers_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_shippings_tier_path(tier)
+        expect(current_path).to eq edit_admin_shippings_tier_path(tier_with_shippings)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -83,15 +87,15 @@ feature 'Tier management' do
         within 'h2' do
             expect(page).to have_content 'Tiers'
         end 
-        tier.reload
-        expect(tier.length_start).to eq BigDecimal.new("4.92")
-        expect(tier.weight_end).to eq BigDecimal.new("215.67")
-        expect(tier.shippings.count).to eq 1
-        expect(tier.shippings.first.name).to eq 'Royal Mail 1st class'
+        tier_with_shippings.reload
+        expect(tier_with_shippings.length_start).to eq BigDecimal.new("4.92")
+        expect(tier_with_shippings.weight_end).to eq BigDecimal.new("215.67")
+        expect(tier_with_shippings.shippings.count).to eq 1
+        expect(tier_with_shippings.shippings.first.name).to eq 'Royal Mail 1st class'
     end
 
     scenario "should delete a tier if there is more than one record" do
-        tier = create_list(:tier, 2)
+        tiers
 
         visit admin_shippings_tiers_path
         expect{
@@ -108,7 +112,7 @@ feature 'Tier management' do
     end
 
     scenario "should not delete a tier if there is only one record" do
-        tier = create(:tier)
+        tier
 
         visit admin_shippings_tiers_path
         expect{

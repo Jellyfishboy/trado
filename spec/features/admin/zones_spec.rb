@@ -4,9 +4,13 @@ feature 'Zone management' do
 
     store_setting
     feature_login_admin
+    given(:zone) { create(:zone) }
+    given(:zones) { create_list(:zone, 2) }
+    given(:zone_with_countries) { create(:zone_with_countries) }
+    given(:country) { create(:country) }
 
     scenario 'should display an index of zones' do
-        zone = create(:zone)
+        zone
 
         visit admin_root_path
         find('a[data-original-title="Zones"]').click
@@ -47,13 +51,13 @@ feature 'Zone management' do
     end
 
     scenario 'should edit an zone' do
-        zone = create(:zone_with_countries)
+        zone_with_countries
         
         visit admin_zones_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_zone_path(zone)
+        expect(current_path).to eq edit_admin_zone_path(zone_with_countries)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -67,14 +71,14 @@ feature 'Zone management' do
         within 'h2' do
             expect(page).to have_content 'Zones'
         end 
-        zone.reload
-        expect(zone.name).to eq 'Asia'
-        expect(zone.countries.count).to eq 1
-        expect(zone.countries.first.name).to eq 'Jamaica'
+        zone_with_countries.reload
+        expect(zone_with_countries.name).to eq 'Asia'
+        expect(zone_with_countries.countries.count).to eq 1
+        expect(zone_with_countries.countries.first.name).to eq 'Jamaica'
     end
 
     scenario 'should display an index of countries' do
-        country = create(:country)
+        country
 
         visit admin_zones_path
         within '.page-header' do
@@ -96,7 +100,7 @@ feature 'Zone management' do
     end
 
     scenario "should delete a zone if there is more than one record" do
-        zone = create_list(:zone, 2)
+        zones
 
         visit admin_zones_path
         expect{
@@ -113,7 +117,7 @@ feature 'Zone management' do
     end
 
     scenario "should not delete a zone if there is only one record" do
-        zone = create(:zone)
+        zone
 
         visit admin_zones_path
         expect{

@@ -4,9 +4,13 @@ feature 'Country management' do
 
     store_setting
     feature_login_admin
+    given(:zone) { create(:zone) }
+    given(:country_1) { create(:country) }
+    given(:country_2) { create(:country, language: 'English') }
+    given(:countries) { create_list(:country, 2) }
 
     scenario 'should add a new country and not display a zone hint when zone records are present in the database' do
-        create(:zone)
+        zone
 
         visit admin_zones_countries_path
         find('.page-header a:first-child').click
@@ -56,13 +60,13 @@ feature 'Country management' do
     end
 
     scenario 'should edit a country' do
-        country = create(:country, language: 'English')
+        country_2
 
         visit admin_zones_countries_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_zones_country_path(country)
+        expect(current_path).to eq edit_admin_zones_country_path(country_2)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -76,14 +80,14 @@ feature 'Country management' do
         within 'h2' do
             expect(page).to have_content 'Countries'
         end 
-        country.reload
-        expect(country.name).to eq 'Canada'
-        expect(country.language).to eq 'English'
-        expect(country.iso).to eq 'CA'
+        country_2.reload
+        expect(country_2.name).to eq 'Canada'
+        expect(country_2.language).to eq 'English'
+        expect(country_2.iso).to eq 'CA'
     end
     
     scenario "should delete a country if there is more than one record" do
-        country = create_list(:country, 2)
+        countries
 
         visit admin_zones_countries_path
         expect{
@@ -100,7 +104,7 @@ feature 'Country management' do
     end
 
     scenario "should not delete a country if there is only one record" do
-        country = create(:country)
+        country_1
 
         visit admin_zones_countries_path
         expect{

@@ -94,9 +94,6 @@ gem 'carrierwave'
 gem 'fog'
 gem 'unf' # Dependency for fog
 
-# Email preview
-gem 'rails_email_preview', '~> 0.2.19'
-
 # Sitemap
 gem 'sitemap_generator'
 

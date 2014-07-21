@@ -48,7 +48,6 @@ Trado::Application.routes.draw do
 
   namespace :admin do
       root to: "categories#index"
-      mount RailsEmailPreview::Engine => '/crm'
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :zones, except: :show
       resources :orders, only: [:index, :show, :update, :edit]

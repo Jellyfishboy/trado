@@ -4,9 +4,17 @@ feature 'Product management' do
 
     store_setting
     feature_login_admin
+    given(:product) { create(:product_sku, active: true) }
+    given(:not_single_product) { create(:product_sku, active: true, single: false) }
+    given(:tier) { create(:tier) }
+    given(:attribute_type) { create(:attribute_type) }
+    given(:accessory) { create(:accessory) }
+    given(:product_skus) { create(:product_skus, active: true) }
+    given(:product_sku_stock_count) { create(:product_sku_stock_count, active: true) }
+    given(:multi_attachment_product) { create(:multiple_attachment_product, active: true) }
 
     scenario 'should display an index of products' do
-        product = create(:product_sku, active: true)
+        product
 
         visit admin_root_path
         find('a[data-original-title="Products"]').click
@@ -75,12 +83,12 @@ feature 'Product management' do
     # end
 
     scenario 'should edit a product', js: true do
-        product = create(:product_sku, active: true, single: false)
-        accessory = create(:accessory)
+        not_single_product
+        accessory
 
         visit admin_products_path
         find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(not_single_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -98,18 +106,18 @@ feature 'Product management' do
         within 'h2' do
             expect(page).to have_content 'Products'
         end 
-        product.reload
-        expect(product.name).to eq 'product #1 woooppeeee'
-        expect(product.weighting).to eq BigDecimal.new("10")
-        expect(product.sku).to eq 'TA'
-        expect(product.single).to eq true
-        expect(product.accessories.count).to eq 1
-        expect(product.accessories.first.name).to eq accessory.name
-        expect(product.accessories.first.price).to eq accessory.price
+        not_single_product.reload
+        expect(not_single_product.name).to eq 'product #1 woooppeeee'
+        expect(not_single_product.weighting).to eq BigDecimal.new("10")
+        expect(not_single_product.sku).to eq 'TA'
+        expect(not_single_product.single).to eq true
+        expect(not_single_product.accessories.count).to eq 1
+        expect(not_single_product.accessories.first.name).to eq accessory.name
+        expect(not_single_product.accessories.first.price).to eq accessory.price
     end
 
     scenario 'should display an index of attribute types' do
-        attribute_type = create(:attribute_type)
+        attribute_type
 
         visit admin_products_path
         within '.page-header' do
@@ -131,7 +139,7 @@ feature 'Product management' do
     end
 
     scenario "should delete a product" do
-        product = create(:product_skus, active: true)
+        product_skus
 
         visit admin_products_path
         expect{
@@ -148,15 +156,15 @@ feature 'Product management' do
     end
 
     scenario 'should add a stock level record to a product SKU', js: true do
-        product = create(:product_sku_stock_count, active: true)
-        product.reload
-        sku = product.skus.first
+        product_sku_stock_count
+        product_sku_stock_count.reload
+        sku = product_sku_stock_count.skus.first
 
         visit admin_products_path
         within 'thead.main-table + tbody' do
             first('tr').find('td.table-actions').first(:link).click
         end
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(product_sku_stock_count)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -186,7 +194,7 @@ feature 'Product management' do
     # SKUS
 
     scenario 'should edit a product SKU', js: true do
-        product = create(:product_sku, active: true)
+        product
         product.reload
         sku = product.skus.first
 
@@ -221,11 +229,11 @@ feature 'Product management' do
     end
 
     scenario 'should delete a product SKU', js: true do
-        product = create(:product_skus, active: true)
+        product_skus
 
         visit admin_products_path
         find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(product_skus)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -233,15 +241,15 @@ feature 'Product management' do
         expect(find('#sku_fields')).to have_selector('tr', count: 3)
         find('#sku_fields tr:last-child td:last-child a:last-child').click
         expect(find('#sku_fields')).to have_selector('tr', count: 2)
-        expect(product.skus.count).to eq 2
+        expect(product_skus.skus.count).to eq 2
         within '.sku-destroy-alert' do
             expect(page).to have_content 'Successfully deleted the SKU.'
         end
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(product_skus)
     end
 
     scenario 'should create an error when trying to delete a product\'s last SKU', js: true do
-        product = create(:product_sku, active: true)
+        product
 
         visit admin_products_path
         find('.table-actions').first(:link).click
@@ -260,8 +268,8 @@ feature 'Product management' do
     end
 
     scenario 'should add a new table row of SKU fields to the product form', js: true do
-        create(:attribute_type)
-        create(:tier)
+        attribute_type
+        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -276,8 +284,8 @@ feature 'Product management' do
     end
 
     scenario 'should delete a table row of SKU fields in new product, apart from last row', js: true  do
-        create(:attribute_type)
-        create(:tier)
+        attribute_type
+        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -298,11 +306,11 @@ feature 'Product management' do
     # ATTACHMENTS
 
     scenario 'should delete an attachment', js: true do
-        product = create(:multiple_attachment_product, active: true)
+        multi_attachment_product
 
         visit admin_products_path
         find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -310,15 +318,15 @@ feature 'Product management' do
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 2)
         find('div.current-file:first-child a:last-child').click
         expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        expect(product.attachments.count).to eq 1
+        expect(multi_attachment_product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do
             expect(page).to have_content 'Successfully deleted the attachment.'
         end
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
     end
 
     scenario 'should create an error when trying to delete a product\'s last attachment', js: true do
-        product = create(:product_sku, active: true)
+        product
 
         visit admin_products_path
         find('.table-actions').first(:link).click
@@ -337,8 +345,8 @@ feature 'Product management' do
     end
 
     scenario 'should add a new attachment field to the product form', js: true do
-        create(:attribute_type)
-        create(:tier)
+        attribute_type
+        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -353,8 +361,8 @@ feature 'Product management' do
     end
 
     scenario 'should delete an attachment field in new product, apart from last field', js: true do
-        create(:attribute_type)
-        create(:tier)
+        attribute_type
+        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click

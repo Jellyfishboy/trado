@@ -2,13 +2,6 @@ module Store
 
     class Price < AbstractController::Base
         include ActionView::Helpers::NumberHelper
-        include AbstractController::Rendering
-        include AbstractController::Helpers
-        include AbstractController::Translation
-        include AbstractController::AssetPaths
-        include Rails.application.routes.url_helpers
-        helper ApplicationHelper
-        self.view_paths = "app/views"
 
         # Initial price logic which determines and executes tax calculations
         # You can override the tax calculation logic with a string in the second item of the parameter array
@@ -48,7 +41,7 @@ module Store
         #
         # @return [String] HTML elements
         def range
-            render :partial => 'shared/price_range', :locals => { :price => format, :range => @range }, :format => [:html]
+            Renderer.render :partial => 'shared/price_range', :locals => { :price => format, :range => @range }, :format => [:html]
         end
 
         # Render the markup when displaying the net and gross price if tax breakdown set to true
@@ -57,7 +50,7 @@ module Store
         #
         # @return [String] HTML for both net and gross prices
         def markup
-            render :partial => 'shared/price', :locals => { :price => format, :gross => Store::settings.tax_breakdown ? taxify(@price) : nil }, :format => [:html]
+            Renderer.render :partial => 'shared/price', :locals => { :price => format, :gross => Store::settings.tax_breakdown ? taxify(@price) : nil }, :format => [:html]
         end
 
         private
