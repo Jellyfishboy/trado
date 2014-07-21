@@ -5,6 +5,8 @@ script:
     - RAILS_ENV=test bundle exec rake db:setup --trace
     - bundle exec rake db:test:prepare
     - bundle exec rspec spec/
+services:
+    - elasticsearch
 before_install:
     - sudo apt-get install -qq openjdk-6-jre
 before_script:
