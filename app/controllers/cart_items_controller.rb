@@ -11,8 +11,6 @@ class CartItemsController < ApplicationController
     respond_to do |format|
         if @cart_item.save
           format.js { render :partial => 'carts/update', :formats => [:js] }
-        else
-          format.json { render json: @cart_item.errors, status: :unprocessable_entity }
         end
     end
   end
@@ -37,6 +35,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_item.destroy
     render partial: 'carts/update', format: [:js]
   end  
 
