@@ -6,10 +6,11 @@ describe Admin::AccessoriesController do
     login_admin
 
     describe 'GET #index' do
+        let!(:accessory_1) { create(:accessory, active: false) }
+        let!(:accessory_2) { create(:accessory, active: true) }
+        let!(:accessory_3) { create(:accessory, active: true) }
+
         it "populates an array of active accessories" do
-            accessory_1 = create(:accessory, active: false)
-            accessory_2 = create(:accessory, active: true)
-            accessory_3 = create(:accessory, active: true)
             get :index
             expect(assigns(:accessories)).to match_array([accessory_2, accessory_3])
         end
@@ -31,13 +32,13 @@ describe Admin::AccessoriesController do
     end
 
     describe 'GET #edit' do
+        let!(:accessory) { create(:accessory) }
+
         it "assigns the requested accessory to @accessory" do
-            accessory = create(:accessory)
             get :edit , id: accessory.id
             expect(assigns(:form_accessory)).to eq accessory
         end
         it "renders the :edit template" do
-            accessory = create(:accessory)
             get :edit, id: accessory.id
             expect(response).to render_template :edit
         end
@@ -69,32 +70,31 @@ describe Admin::AccessoriesController do
     end
 
     describe 'PATCH #update' do
-        before :each do
-            @accessory = create(:accessory, name: 'accessory #1')
-        end
+        let!(:accessory) { create(:accessory, name: 'accessory #1') }
+
         context "with valid attributes" do
             it "locates the requested @accessory" do
-                put :update, id: @accessory.id, accessory: attributes_for(:accessory)
-                expect(assigns(:accessory)).to eq(@accessory)
+                put :update, id: accessory.id, accessory: attributes_for(:accessory)
+                expect(assigns(:accessory)).to eq(accessory)
             end
             it "updates the accessory in the database" do
-                put :update, id: @accessory.id, accessory: attributes_for(:accessory, name: 'accessory #2')
-                @accessory.reload
-                expect(@accessory.name).to eq('accessory #2')
+                put :update, id: accessory.id, accessory: attributes_for(:accessory, name: 'accessory #2')
+                accessory.reload
+                expect(accessory.name).to eq('accessory #2')
             end
             it "redirects to the accessories#index" do
-                put :update, id: @accessory.id, accessory: attributes_for(:accessory)
+                put :update, id: accessory.id, accessory: attributes_for(:accessory)
                 expect(response).to redirect_to admin_accessories_url
             end
         end
         context "with invalid attributes" do 
             it "does not update the accessory" do
-                put :update, id: @accessory.id, accessory: attributes_for(:invalid_accessory)
-                @accessory.reload
-                expect(@accessory.name).to eq('accessory #1')
+                put :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
+                accessory.reload
+                expect(accessory.name).to eq('accessory #1')
             end
             it "re-renders the #edit template" do
-                put :update, id: @accessory.id, accessory: attributes_for(:invalid_accessory)
+                put :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
                 expect(response).to render_template :edit
             end
         end 
@@ -102,15 +102,17 @@ describe Admin::AccessoriesController do
     
     describe 'DELETE #destroy' do
         before :each do
-            @accessory = create(:accessory)
+            create(:accessory)
         end
+        let!(:accessory) { create(:accessory) }
+
         it "deletes the accessory from the database"  do
             expect {
-                delete :destroy, id: @accessory.id
+                delete :destroy, id: accessory.id
             }.to change(Accessory, :count).by(-1)
         end
         it "redirects to accessories#index" do
-            delete :destroy, id: @accessory.id
+            delete :destroy, id: accessory.id
             expect(response).to redirect_to admin_accessories_url
         end
     end

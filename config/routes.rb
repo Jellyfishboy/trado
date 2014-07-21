@@ -43,7 +43,6 @@ Trado::Application.routes.draw do
   resources :addresses, only: [:new, :create, :update]
   resources :shippings, only: [:update]
 
-  
 
   namespace :admin do
       root to: "categories#index"

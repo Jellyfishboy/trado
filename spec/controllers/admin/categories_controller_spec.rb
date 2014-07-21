@@ -6,9 +6,10 @@ describe Admin::CategoriesController do
     login_admin
 
     describe 'GET #index' do
+        let!(:category_1) { create(:category) }
+        let!(:category_2) { create(:category) }
+
         it "populates an array of all categories" do
-            category_1 = create(:category)
-            category_2 = create(:category)
             get :index
             expect(assigns(:categories)).to match_array([category_1, category_2])
         end
@@ -30,13 +31,13 @@ describe Admin::CategoriesController do
     end
 
     describe 'GET #edit' do
+        let!(:category) { create(:category) }
+
         it "assigns the requested category to @category" do
-            category = create(:category)
             get :edit , id: category.id
             expect(assigns(:category)).to eq category
         end
         it "renders the :edit template" do
-            category = create(:category)
             get :edit, id: category.id
             expect(response).to render_template :edit
         end
@@ -68,34 +69,33 @@ describe Admin::CategoriesController do
     end
 
     describe 'PUT #update' do
-        before :each do
-            @category = create(:category, name: 'Category #1', visible: false)
-        end
+        let!(:category) { create(:category, name: 'Category #1', visible: false) }
+
         context "with valid attributes" do
             it "locates the requested @category" do
-                put :update, id: @category.id, category: attributes_for(:category)
-                expect(assigns(:category)).to eq(@category)
+                put :update, id: category.id, category: attributes_for(:category)
+                expect(assigns(:category)).to eq(category)
             end
             it "updates the category in the database" do
-                put :update, id: @category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
-                @category.reload
-                expect(@category.name).to eq('Category #2')
-                expect(@category.visible).to eq(true)
+                put :update, id: category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
+                category.reload
+                expect(category.name).to eq('Category #2')
+                expect(category.visible).to eq(true)
             end
             it "redirects to the categories#index" do
-                put :update, id: @category.id, category: attributes_for(:category)
+                put :update, id: category.id, category: attributes_for(:category)
                 expect(response).to redirect_to admin_categories_url
             end
         end
         context "with invalid attributes" do 
             it "does not update the category" do
-                put :update, id: @category.id, category: attributes_for(:category, name: nil, visible: true)
-                @category.reload
-                expect(@category.name).to eq('Category #1')
-                expect(@category.visible).to eq(false)
+                put :update, id: category.id, category: attributes_for(:category, name: nil, visible: true)
+                category.reload
+                expect(category.name).to eq('Category #1')
+                expect(category.visible).to eq(false)
             end
             it "re-renders the #edit template" do
-                put :update, id: @category.id, category: attributes_for(:invalid_category)
+                put :update, id: category.id, category: attributes_for(:invalid_category)
                 expect(response).to render_template :edit
             end
         end 
@@ -104,15 +104,16 @@ describe Admin::CategoriesController do
     describe 'DELETE #destroy' do
         before :each do
             create(:category)
-            @category = create(:category)
         end
+        let!(:category) { create(:category) }
+        
         it "deletes the category from the database"  do
             expect {
-                delete :destroy, id: @category.id
+                delete :destroy, id: category.id
             }.to change(Category, :count).by(-1)
         end
         it "redirects to categories#index" do
-            delete :destroy, id: @category.id
+            delete :destroy, id: category.id
             expect(response).to redirect_to admin_categories_url
         end
     end

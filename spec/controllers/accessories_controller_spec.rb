@@ -9,7 +9,7 @@ describe AccessoriesController do
 
         it "should render the accessory update partial" do
             xhr :get, :update, id: accessory.id
-            expect(response).to render_template(:partial => 'products/accessories/_update')
+            expect(response).to render_template(partial: 'products/accessories/_update')
         end
     end  
 end

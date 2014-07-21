@@ -8,6 +8,6 @@ class ShippingsController < ApplicationController
     def update
         @tiers = Shipatron4000::tier(current_cart)
         @shippings = Shipping.joins(:tiereds, :countries).where(tiereds: { :tier_id => @tiers }, countries: { :name => params[:country_id] }).order(price: :asc).all
-        render :partial => "orders/shippings/fields"
+        render partial: "orders/shippings/fields"
     end
 end

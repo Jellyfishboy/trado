@@ -5,13 +5,13 @@ describe CategoriesController do
     store_setting
 
     describe 'GET #show' do
-        it "assigns the requested category to @category" do
-            category = create(:category)
+        let(:category) { create(:category) }
+        
+        it "should assign the requested category to @category" do
             get :show, id: category.id
             expect(assigns(:category)).to eq category
         end
-        it "renders the :show template" do
-            category = create(:category)
+        it "should render the :show template" do
             get :show, id: category.id
             expect(response).to render_template :show
         end 

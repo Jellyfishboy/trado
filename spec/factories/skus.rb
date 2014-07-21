@@ -8,7 +8,7 @@ FactoryGirl.define do
         sequence(:length) { |n| n }
         sequence(:weight) { |n| n }
         sequence(:thickness) { |n| n }
-        sequence(:attribute_value) { |n| "#{Faker::Lorem.word}#{n}" }
+        sequence(:attribute_value) { |n| n }
         active { false }
 
         association :attribute_type

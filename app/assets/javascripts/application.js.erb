@@ -40,7 +40,7 @@ $(document).ajaxComplete(function()
 {
     trado.modal.open('.notify_me', '#notifyMeModal');
     trado.animation.loadingSettings();
-    trado.app.updatePrice('/product/skus/update?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+    trado.app.updatePrice('/product/skus/', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
     trado.app.selectShipping();
     trado.app.jsonErrors();
 });

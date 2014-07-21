@@ -31,6 +31,10 @@ FactoryGirl.define do
             factory :tags_with_product do
                 tags { [create(:tag, name: 'tag #1'), create(:tag, name: 'tag #2'), create(:tag, name: 'tag #3')] }
             end
+
+            factory :product_accessory do
+                accessories { [create(:accessory)] }
+            end
         end
 
         factory :product_skus do 
