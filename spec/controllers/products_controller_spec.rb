@@ -43,6 +43,7 @@ describe ProductsController do
 
         it "should assign the requested product skus to @skus" do
             get :show, { category_id: category.id, id: product.id }
+            product.reload
             expect(assigns(:skus)).to match_array(product.skus)
         end 
 

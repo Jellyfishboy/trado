@@ -10,6 +10,15 @@ FactoryGirl.define do
                 create_list(:accessory_cart_item, evaluator.cart_item_count, cart: cart)
                 create(:cart_item, cart: cart)
             end
+
+
+        end
+
+        factory :cart_order do
+            after(:create) do |cart, evaluator|
+                create(:cart_item, cart: cart)
+                create(:order, cart: cart)
+            end
         end
 
         factory :tier_calculated_cart do
