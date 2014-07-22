@@ -36,6 +36,14 @@ module ApplicationHelper
         render("admin/products/" + association.to_s + "/fields", :f => builder)
       end
     end
+
+    # Returns an array of categories which are visible and ordered by their ascending weighting value
+    # Including product data for the links
+    #
+    # @return [Array] list of categories
+    def category_list
+      Category.joins(:products).where('visible = ?', true).order(sorting: :asc)
+    end
     
     # If the string parameter equals the current controller value in the parameters hash, return a string
     #

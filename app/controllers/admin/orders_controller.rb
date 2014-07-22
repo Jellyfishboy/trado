@@ -6,18 +6,9 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.includes(:transactions).where('status = ?', 'active').order('orders.created_at DESC')
-    respond_to do |format|
-      format.html
-      format.json { render json: @orders }
-    end
   end
 
   def show
-    
-    respond_to do |format|
-      format.html
-      format.json { render json: @order }
-    end
   end
 
   def edit

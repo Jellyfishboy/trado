@@ -31,7 +31,7 @@ describe Admin::CategoriesController do
     end
 
     describe 'GET #edit' do
-        let!(:category) { create(:category) }
+        let(:category) { create(:category) }
 
         it "should assign the requested category to @category" do
             get :edit , id: category.id
@@ -73,46 +73,68 @@ describe Admin::CategoriesController do
 
         context "with valid attributes" do
             it "should locate the requested @category" do
-                put :update, id: category.id, category: attributes_for(:category)
+                patch :update, id: category.id, category: attributes_for(:category)
                 expect(assigns(:category)).to eq(category)
             end
             it "should update the category in the database" do
-                put :update, id: category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
+                patch :update, id: category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
                 category.reload
                 expect(category.name).to eq('Category #2')
                 expect(category.visible).to eq(true)
             end
             it "should redirect to the categories#index" do
-                put :update, id: category.id, category: attributes_for(:category)
+                patch :update, id: category.id, category: attributes_for(:category)
                 expect(response).to redirect_to admin_categories_url
             end
         end
         context "with invalid attributes" do 
             it "should not update the category" do
-                put :update, id: category.id, category: attributes_for(:category, name: nil, visible: true)
+                patch :update, id: category.id, category: attributes_for(:category, name: nil, visible: true)
                 category.reload
                 expect(category.name).to eq('Category #1')
                 expect(category.visible).to eq(false)
             end
             it "should re-render the #edit template" do
-                put :update, id: category.id, category: attributes_for(:invalid_category)
+                patch :update, id: category.id, category: attributes_for(:invalid_category)
                 expect(response).to render_template :edit
             end
         end 
     end
     
     describe 'DELETE #destroy' do
-        before :each do
-            create(:category)
-        end
         let!(:category) { create(:category) }
         
-        it "should delete the category from the database"  do
-            expect {
+        context "if there is more than one category in the database" do
+            before :each do
+                create(:category)
+            end
+
+            it "should flash a success message" do
                 delete :destroy, id: category.id
-            }.to change(Category, :count).by(-1)
+                expect(subject.request.flash[:success]).to_not be_nil
+            end
+
+            it "should delete the category from the database"  do
+                expect {
+                    delete :destroy, id: category.id
+                }.to change(Category, :count).by(-1)
+            end
         end
-        it "should redirect to categories#index" do
+
+        context "if there is only one category in the database" do
+
+            it "should flash a error message" do
+                delete :destroy, id: category.id
+                expect(subject.request.flash[:error]).to_not be_nil
+            end
+
+            it "should not delete the category from the database"  do
+                expect {
+                    delete :destroy, id: category.id
+                }.to change(Category, :count).by(0)
+            end
+        end
+        it "should redirect to categorys#index" do
             delete :destroy, id: category.id
             expect(response).to redirect_to admin_categories_url
         end

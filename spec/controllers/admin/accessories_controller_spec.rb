@@ -32,7 +32,7 @@ describe Admin::AccessoriesController do
     end
 
     describe 'GET #edit' do
-        let!(:accessory) { create(:accessory) }
+        let(:accessory) { create(:accessory) }
 
         it "assigns the requested accessory to @accessory" do
             get :edit , id: accessory.id
@@ -74,27 +74,27 @@ describe Admin::AccessoriesController do
 
         context "with valid attributes" do
             it "locates the requested @accessory" do
-                put :update, id: accessory.id, accessory: attributes_for(:accessory)
+                patch :update, id: accessory.id, accessory: attributes_for(:accessory)
                 expect(assigns(:accessory)).to eq(accessory)
             end
             it "updates the accessory in the database" do
-                put :update, id: accessory.id, accessory: attributes_for(:accessory, name: 'accessory #2')
+                patch :update, id: accessory.id, accessory: attributes_for(:accessory, name: 'accessory #2')
                 accessory.reload
                 expect(accessory.name).to eq('accessory #2')
             end
             it "redirects to the accessories#index" do
-                put :update, id: accessory.id, accessory: attributes_for(:accessory)
+                patch :update, id: accessory.id, accessory: attributes_for(:accessory)
                 expect(response).to redirect_to admin_accessories_url
             end
         end
         context "with invalid attributes" do 
             it "does not update the accessory" do
-                put :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
+                patch :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
                 accessory.reload
                 expect(accessory.name).to eq('accessory #1')
             end
             it "re-renders the #edit template" do
-                put :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
+                patch :update, id: accessory.id, accessory: attributes_for(:invalid_accessory)
                 expect(response).to render_template :edit
             end
         end 

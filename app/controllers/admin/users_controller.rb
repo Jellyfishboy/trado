@@ -7,10 +7,6 @@ class Admin::UsersController < ApplicationController
 
     def edit
         @attachment = @user.build_attachment unless @user.attachment
-        respond_to do |format|
-            format.html
-            format.json { render :json => @user }   
-        end
     end
 
     def update

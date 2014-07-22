@@ -4,13 +4,11 @@ class Admin::AttachmentsController < ApplicationController
 
   def destroy
     @attachment = Attachment.find(params[:id])
-    respond_to do |format|
-      if @attachment.attachable.attachments.count > 1
-        @attachment.destroy
-        format.js { render :partial => "admin/products/attachments/destroy", :format => [:js] }
-      else
-        format.js { render :partial => "admin/products/attachments/failed_destroy", :format => [:js] }
-      end
+    if @attachment.attachable.attachments.count > 1
+      @attachment.destroy
+      render :partial => "admin/products/attachments/destroy", :format => [:js]
+    else
+      render :partial => "admin/products/attachments/failed_destroy", :format => [:js]
     end
   end
 end

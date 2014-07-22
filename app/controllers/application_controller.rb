@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
     before_action :authenticate_user!, :set_tracking_code
-    helper_method :current_cart, :category_list
+    helper_method :current_cart
 
     rescue_from CanCan::AccessDenied do |exception|
         flash_message :error, exception.message
@@ -22,10 +22,6 @@ class ApplicationController < ActionController::Base
   		session[:cart_id] = cart.id #assigns the new session with the new cart id
   		cart # returns cart object
   	end
-
-    def category_list
-      Category.joins(:products).where('visible = ?', true).order(sorting: :asc)
-    end
 
     def after_sign_out_path_for(resource_or_scope)
         admin_root_path
