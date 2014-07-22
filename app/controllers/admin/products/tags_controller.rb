@@ -6,10 +6,7 @@ class Admin::Products::TagsController < ApplicationController
   #
   # @return [JSON object]
   def index 
-    @tags = Tag.all.map { |t| t.name }
-    
-    respond_to do |format|
-      format.json { render json: @tags }
-    end
+    @tags = Tag.all.map(&:name)
+    render json: @tags
   end
 end

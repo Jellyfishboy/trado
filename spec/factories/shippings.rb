@@ -10,5 +10,9 @@ FactoryGirl.define do
             active { true }
             zones { [create(:zone, name: 'EU'),create(:zone, name: 'Asia')]}
         end
+
+        factory :invalid_shipping do
+            name { nil }
+        end
     end
 end
