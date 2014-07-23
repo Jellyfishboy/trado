@@ -15,14 +15,9 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    respond_to do |format|
-      unless AttributeType.all.count > 0
-        format.html { redirect_to admin_products_url }
-        flash_message :error, "You must have at least one Attribute type record before creating your first product. Create one #{view_context.link_to 'here', new_admin_products_skus_attribute_type_path}.".html_safe
-      else
-        format.html
-      end
-      format.json { render json: @product }
+    unless AttributeType.any?
+      redirect_to admin_products_url
+      flash_message :error, "You must have at least one Attribute type record before creating your first product. Create one #{view_context.link_to 'here', new_admin_products_skus_attribute_type_path}.".html_safe
     end
   end
 

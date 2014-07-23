@@ -177,11 +177,11 @@ describe Payatron4000::Paypal do
                 }.to change(Transaction, :count).by(1)
             end
 
-            it "should not result in an email being sent" do
+            it "should result in an email being sent" do
                 expect{
                     failed_order
                 }.to change {
-                    ActionMailer::Base.deliveries.count }.by(0)
+                    ActionMailer::Base.deliveries.count }.by(1)
             end
 
             it "should return a redirect URL to the failed order page" do

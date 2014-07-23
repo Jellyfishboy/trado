@@ -29,6 +29,7 @@ describe Admin::TransactionsController do
                                     }
         }    
         context "with correct parameters" do
+            
             before(:each) do
                 successful_request
                 order.reload
@@ -42,12 +43,12 @@ describe Admin::TransactionsController do
                 expect(order.transactions.last.payment_status).to eq 'Completed'
             end
 
-            # it "should send an order received email" do
-            #     expect{
-            #         successful_request
-            #     }.to change{
-            #         ActionMailer::Base.deliveries.count }.by(1)
-            # end
+            it "should send an order received email" do
+                expect{
+                    successful_request
+                }.to change{
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
 
             it "should render nothing" do
                 expect(response.body).to be_blank
@@ -65,12 +66,12 @@ describe Admin::TransactionsController do
                 expect(order.transactions.last.payment_status).to eq 'Failed'
             end
  
-            # it "should send an order failed email" do
-            #     expect{
-            #         failed_request
-            #     }.to change{
-            #         ActionMailer::Base.deliveries.count }.by(1)
-            # end
+            it "should send an order failed email" do
+                expect{
+                    failed_request
+                }.to change{
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
 
             it "should render nothing" do
                 expect(response.body).to be_blank
