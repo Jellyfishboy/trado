@@ -26,7 +26,7 @@ class Transaction < ActiveRecord::Base
   attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 
   :tax_amount, :paypal_id, :transaction_type, :net_amount, :status_reason
 
-  validates :payment_status,                                :inclusion => { :in => ['Completed', 'Pending'], :message => 'must be set for the order.'}
+  validates :payment_status,                                :inclusion => { :in => ['Completed', 'Pending', 'Failed'], :message => 'must be set for the order.'}
   
   belongs_to :order
   

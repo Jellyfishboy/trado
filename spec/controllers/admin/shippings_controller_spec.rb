@@ -72,28 +72,99 @@ describe Admin::ShippingsController do
     describe 'PATCH #update' do
         let!(:shipping) { create(:shipping, name: 'shipping #1', active: true) }
 
+        context "if the shipping has associated orders" do
+            let(:new_shipping) { attributes_for(:shipping, active: true) }
+            before(:each) do
+                create(:order, shipping_id: shipping.id)
+            end
+
+            it "should set the shipping as inactive" do
+                expect{
+                    patch :update, id: shipping.id, shipping: new_shipping
+                    shipping.reload
+                }.to change{
+                    shipping.active
+                }.from(true).to(false)
+            end
+
+            it "should assign new shipping attributes to @shipping" do
+                patch :update, id: shipping.id, shipping: new_shipping
+                expect(assigns(:shipping).description).to eq new_shipping[:description]
+                expect(assigns(:shipping).name).to eq new_shipping[:name]
+            end
+
+            it "should assign the inactive old shipping to @old_shipping" do
+                patch :update, id: shipping.id, shipping: new_shipping
+                expect(assigns(:old_shipping)).to eq shipping
+            end
+        end
+
         context "with valid attributes" do
-            it "locates the requested @shipping" do
-                patch :update, id: shipping.id, shipping: attributes_for(:shipping, active: true)
-                expect(assigns(:shipping)).to eq(shipping)
+
+            context "if the shipping has associated orders" do
+                let(:new_shipping) { attributes_for(:shipping, active: true) }
+                before(:each) do
+                    create(:order, shipping_id: shipping.id)
+                    create_list(:tiered, 3, shipping_id: shipping.id)
+                end
+
+                it "should save new tiereds to the database" do
+                    expect{
+                        patch :update, id: shipping.id, shipping: new_shipping
+                    }.to change(Tiered, :count).by(3)
+                end
+
+                it "should save a new shipping to the database" do
+                    expect {
+                        patch :update, id: shipping.id, shipping: new_shipping
+                    }.to change(Shipping, :count).by(1)
+                end
             end
-            it "updates the shipping in the database" do
-                patch :update, id: shipping.id, shipping: attributes_for(:shipping, name: 'shipping #2', active: true)
-                shipping.reload
-                expect(shipping.name).to eq('shipping #2')
+
+            context "if the shipping has no associated orders" do
+
+                it "should locate the requested @shipping" do
+                    patch :update, id: shipping.id, shipping: attributes_for(:shipping, active: true)
+                    expect(assigns(:shipping)).to eq(shipping)
+                end
+
+                it "should update the shipping in the database" do
+                    patch :update, id: shipping.id, shipping: attributes_for(:shipping, name: 'shipping #2', active: true)
+                    shipping.reload
+                    expect(shipping.name).to eq('shipping #2')
+                end
             end
+            
             it "redirects to the shippings#index" do
                 patch :update, id: shipping.id, shipping: attributes_for(:shipping, active: true)
                 expect(response).to redirect_to admin_shippings_url
             end
         end
         context "with invalid attributes" do 
-            it "does not update the shipping" do
-                patch :update, id: shipping.id, shipping: attributes_for(:invalid_shipping, active: true)
+            let(:new_shipping) { attributes_for(:invalid_shipping, active: true) }
+            before(:each) do
+                patch :update, id: shipping.id, shipping: new_shipping
+            end
+
+            it "should not update the shipping" do
                 shipping.reload
                 expect(shipping.name).to eq('shipping #1')
             end
-            it "re-renders the #edit template" do
+
+            it "should assign the old_shipping to @form_shipping" do
+                expect(assigns(:form_shipping)).to eq shipping
+            end
+
+            it "should set the old_shipping as active" do
+                expect(shipping.active).to eq true
+            end
+
+            it "should assign the @form_shipping attributes with the current params shipping" do
+                expect(assigns(:form_shipping).attributes["description"]). to eq new_shipping[:description]
+                expect(assigns(:form_shipping).attributes["name"]).to eq new_shipping[:name]
+            end
+
+            it "should re-render the #edit template" do
                 patch :update, id: shipping.id, shipping: attributes_for(:invalid_shipping, active: true)
                 expect(response).to render_template :edit
             end

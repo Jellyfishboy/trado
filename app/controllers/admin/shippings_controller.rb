@@ -51,19 +51,18 @@ class Admin::ShippingsController < ApplicationController
   def update
     unless @shipping.orders.empty?
       Store::inactivate!(@shipping)
+      @old_shipping = @shipping
       @shipping = Shipping.new(params[:shipping])
-      @old_shipping = Shipping.find(params[:id])
     end
 
     if @shipping.update(params[:shipping])
       if @old_shipping
         @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
-        Store::inactivate!(@old_shipping)
       end
       flash_message :success, 'Shipping was successfully updated.'
       redirect_to admin_shippings_url
     else
-      @form_shipping = Shipping.find(params[:id])
+      @form_shipping = @old_shipping ||= Shipping.find(params[:id])
       Store::activate!(@form_shipping)
       @form_shipping.attributes = params[:shipping]
       render action: "edit"

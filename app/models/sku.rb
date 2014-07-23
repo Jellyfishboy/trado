@@ -42,7 +42,7 @@ class Sku < ActiveRecord::Base
   :weight, :thickness, :code,                                         :presence => true
   validates :price, :cost_value,                                      :format => { :with => /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
   validates :length, :weight, :thickness,                             :numericality => { :greater_than_or_equal_to => 0 }
-  validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :new_record?
   validate :stock_values,                                             :on => :create
   validates :attribute_value, :code,                                  :uniqueness => { :scope => [:product_id, :active] }
   validates :attribute_value, :attribute_type_id,                     presence: true, :if => :not_single_sku?
@@ -82,7 +82,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [Boolean]
   def not_single_sku?
-    return self.product && self.product.skus.map { |s| s.active }.count == 1 && self.product.single ? false : true
+    return self.product && self.product.skus.map(&:active).count == 1 && self.product.single ? false : true
   end
 
   # Joins the parent product SKU and the current SKU with a hyphen

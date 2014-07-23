@@ -28,4 +28,18 @@ class OrderMailer < ActionMailer::Base
              template_name: 'pending'
         )
     end
+
+    # Deliver an email to the customer if the 
+    # This applys to the Paypal checkout process only
+    #
+    # @param order [Object]
+    def failed order
+        @order = order
+        
+        mail(to: order.email, 
+             subject: "Gimson Robotics ##{@order.id} failed",
+             template_path: 'mailer/orders',
+             template_name: 'failed'
+        )
+    end
 end

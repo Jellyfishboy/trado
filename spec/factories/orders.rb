@@ -31,6 +31,10 @@ FactoryGirl.define do
             end
         end
 
+        factory :ipn_order do
+            transactions { [create(:transaction, payment_status: 'Pending', gross_amount: '234.71')] }
+        end
+
         factory :undispatched_complete_order do
             transactions { [create(:transaction)] }
 

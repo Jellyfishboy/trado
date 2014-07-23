@@ -8,7 +8,7 @@
 # Table name: cart_item_accessories
 #
 #  id                   :integer          not null, primary key
-#  cart_item_id         :integer          
+#  order_item_id        :integer          
 #  price                :decimal          precision(8), scale(2)
 #  quantity             :integer          
 #  accessory_id         :integer

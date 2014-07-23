@@ -50,56 +50,32 @@ class Admin::AccessoriesController < ApplicationController
   def update
     unless @accessory.orders.empty?
       Store::inactivate!(@accessory)
+      @old_accessory = @accessory
       @accessory = Accessory.new(params[:accessory])
-      @old_accessory = Accessory.find(params[:id])
     end
 
-    respond_to do |format|
-      if @accessory.update(params[:accessory])
-
-        if @old_accessory
-          @old_accessory.accessorisations.pluck(:product_id).map { |t| Accessorisation.create(:product_id => t, :accessory_id => @accessory.id) }
-          Store::inactivate!(@old_accessory)
-          CartItemAccessory.where('accessory_id = ?', @old_accessory.id).destroy_all
-        end
-        flash_message :success, 'Accessory was successfully updated.'
-        format.html { redirect_to admin_accessories_url }
-        format.json { head :no_content }
-      else
-        @form_accessory = Accessory.find(params[:id])
-        Store::activate!(@form_accessory)
-        @form_accessory.attributes = params[:accessory]
-        format.html { render action: "edit" }
-        format.json { render json: @accessory.errors, status: :unprocessable_entity }
+    if @accessory.update(params[:accessory])
+      if @old_accessory
+        @old_accessory.accessorisations.pluck(:product_id).map { |t| Accessorisation.create(:product_id => t, :accessory_id => @accessory.id) }
+        CartItemAccessory.where('accessory_id = ?', @old_accessory.id).destroy_all
       end
+      flash_message :success, 'Accessory was successfully updated.'
+      redirect_to admin_accessories_url
+    else
+      @form_accessory = @old_accessory ||= Accessory.find(params[:id])
+      Store::activate!(@form_accessory)
+      @form_accessory.attributes = params[:accessory]
+      render action: "edit"
     end
   end
 
   # Destroying an accessory
   #
-  # Various if statements to handle how a Accessory is dealt with then checking order and cart associations
-  # If there are no carts or orders: destroy the accessory.
-  # If there are orders but no carts: deactivate the accessory.
-  # If there are carts but no orders: delete all cart item accessories then delete the accessory.
-  # If there are orders and carts: deactivate the accessory and delete all cart item accessories.
   def destroy
-    if @accessory.carts.empty? && @accessory.orders.empty?
-      @accessory.destroy        
-    elsif @accessory.carts.empty? && !@accessory.orders.empty?
-      Store::inactivate!(@accessory)
-    elsif !@accessory.carts.empty? && @accessory.orders.empty?
-      CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all
-      @accessory.destroy   
-    else
-      Store::inactivate!(@accessory)
-      CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all
-    end
-      
-    respond_to do |format|
-      flash_message :success, 'Accessory was successfully deleted.'
-      format.html { redirect_to admin_accessories_url }
-      format.json { head :no_content }
-    end
+    @accessory.orders.empty? ? @accessory.destroy : Store::inactivate!(@accessory)
+    CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all unless @accessory.carts.empty?
+    flash_message :success, 'Accessory was successfully deleted.'
+    redirect_to admin_accessories_url
   end
 
   private

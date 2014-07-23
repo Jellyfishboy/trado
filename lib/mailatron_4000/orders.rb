@@ -14,10 +14,12 @@ module Mailatron4000
         #
         # @param order [Object]
         def self.confirmation_email order
-            if order.transactions.last.payment_status == "Pending"
+            if order.transactions.last.payment_status == "Completed"
+                OrderMailer.received(order).deliver
+            elsif order.transactions.last.payment_status == "Pending"
                 OrderMailer.pending(order).deliver
             else
-                OrderMailer.received(order).deliver
+                OrderMailer.failed(order).deliver
             end
         end
 

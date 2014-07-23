@@ -37,5 +37,9 @@ FactoryGirl.define do
                 create(:cart_item, quantity: 5, sku: sku)
             end
         end
+
+        factory :invalid_sku do
+            code { nil }
+        end
     end
 end

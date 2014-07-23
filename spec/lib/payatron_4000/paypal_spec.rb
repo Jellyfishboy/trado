@@ -111,18 +111,18 @@ describe Payatron4000::Paypal do
             let(:session) { Hash({:cart_id => order.cart.id}) }
             let(:successful_order) { Payatron4000::Paypal.complete(order, session) }
             before(:each) do
-                EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {   'FeeAmount' => '2.34', 
-                                                                                                                    'TransactionID' => '78232', 
-                                                                                                                    'GrossAmount' => '67.23',
-                                                                                                                    'PaymentStatus' => 'Completed',
-                                                                                                                    'TaxAmount' => '15.66',
-                                                                                                                    'TransactionType' => 'express-checkout',
-                                                                                                                    'PendingReason' => nil 
-                                                                                                            }
-                                                                                            },
+                EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {  'FeeAmount' => '2.34', 
+                                                                                                    'TransactionID' => '78232', 
+                                                                                                    'GrossAmount' => '67.23',
+                                                                                                    'PaymentStatus' => 'Completed',
+                                                                                                    'TaxAmount' => '15.66',
+                                                                                                    'TransactionType' => 'express-checkout',
+                                                                                                    'PendingReason' => nil 
+                                                                                                }
+                                                                                },
                                                                                 :success? => true 
-                                                                            )
-                                                            }
+                                                                )
+                                                }
             end
 
             it "should create a tranasction record" do
@@ -157,18 +157,18 @@ describe Payatron4000::Paypal do
             let(:order) { create(:order) }
             let(:failed_order) { Payatron4000::Paypal.complete(order, session) }
             before(:each) do
-                EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {   'FeeAmount' => '', 
-                                                                                                                    'TransactionID' => '', 
-                                                                                                                    'GrossAmount' => '',
-                                                                                                                    'PaymentStatus' => 'Failed',
-                                                                                                                    'TaxAmount' => '',
-                                                                                                                    'TransactionType' => '',
-                                                                                                                    'PendingReason' => nil 
-                                                                                                            }
-                                                                                            },
+                EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {  'FeeAmount' => '', 
+                                                                                                    'TransactionID' => '', 
+                                                                                                    'GrossAmount' => '',
+                                                                                                    'PaymentStatus' => 'Failed',
+                                                                                                    'TaxAmount' => '',
+                                                                                                    'TransactionType' => '',
+                                                                                                    'PendingReason' => nil 
+                                                                                                }
+                                                                                },
                                                                                 :success? => false 
-                                                                            )
-                                                            }
+                                                                )
+                                                }
             end
 
             it "should create a tranasction record" do
@@ -198,7 +198,11 @@ describe Payatron4000::Paypal do
                                                                         'PaymentStatus' => 'Completed',
                                                                         'TaxAmount' => '15.66',
                                                                         'TransactionType' => 'express-checkout',
-                                                                        'PendingReason' => nil } })  }
+                                                                        'PendingReason' => nil 
+                                                                    } 
+                                                    }
+                                        )  
+                        }
         let(:successful) { Payatron4000::Paypal.successful(response, order) }
         before(:each) do
             unless RSpec.current_example.metadata[:skip_before]
