@@ -20,7 +20,11 @@ describe Admin::Products::Skus::StockLevelsController do
     end
 
     describe 'POST #create' do
-        let(:sku) { create(:sku) }
+        let!(:sku) { create(:sku) }
+        before(:each) do
+            # Since a new stock level is created when a new SKU is created, we need to clear the StockLevel table
+            StockLevel.destroy_all
+        end
 
         context "with valid attributes" do
 
