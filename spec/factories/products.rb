@@ -59,6 +59,10 @@ FactoryGirl.define do
             end
         end
 
+        factory :invalid_product do
+            name { nil }
+        end
+
         # Factories for stock_spec:automated stock warning level
         factory :stock_warning_product_1 do
             after(:create) do |product, evaluator|

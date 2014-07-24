@@ -39,8 +39,8 @@ class Admin::Products::SkusController < ApplicationController
   #
   def destroy  
     if @sku.product.skus.active.count > 1
-      @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
       CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
+      @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
       render :partial => "admin/products/skus/destroy", :format => [:js]
     else
       render :partial => 'admin/products/skus/failed_destroy',:format => [:js]

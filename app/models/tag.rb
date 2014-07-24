@@ -21,11 +21,13 @@ class Tag < ActiveRecord::Base
   # Creates or updates the list of tags for an object
   #
   def self.add value, product_id
-    @tags = value.split(/,\s*/)   
-    @tags.each do |t|
-        next unless Tag.where('name = ?', t).joins(:taggings).where(:taggings => { :product_id => product_id }).empty?
-        new_tag = Tag.find_by_name(t).nil? ? Tag.create(name: t) : Tag.find_by_name(t)
-        Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
+    unless value.nil?
+      @tags = value.split(/,\s*/)   
+      @tags.each do |t|
+          next unless Tag.where('name = ?', t).joins(:taggings).where(:taggings => { :product_id => product_id }).empty?
+          new_tag = Tag.find_by_name(t).nil? ? Tag.create(name: t) : Tag.find_by_name(t)
+          Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
+      end
     end
   end
 

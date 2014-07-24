@@ -10,22 +10,22 @@ describe Admin::AccessoriesController do
         let!(:accessory_2) { create(:accessory, active: true) }
         let!(:accessory_3) { create(:accessory, active: true) }
 
-        it "populates an array of active accessories" do
+        it "should populate an array of active accessories" do
             get :index
             expect(assigns(:accessories)).to match_array([accessory_2, accessory_3])
         end
-        it "renders the :index template" do
+        it "should render the :index template" do
             get :index
             expect(response).to render_template :index
         end
     end
 
     describe 'GET #new' do
-        it "assigns a new accessory to @accessory" do
+        it "should assign a new accessory to @accessory" do
             get :new
             expect(assigns(:accessory)).to be_a_new(Accessory)
         end
-        it "renders the :new template" do
+        it "should render the :new template" do
             get :new
             expect(response).to render_template :new
         end
@@ -34,11 +34,11 @@ describe Admin::AccessoriesController do
     describe 'GET #edit' do
         let(:accessory) { create(:accessory) }
 
-        it "assigns the requested accessory to @accessory" do
+        it "should assign the requested accessory to @accessory" do
             get :edit , id: accessory.id
             expect(assigns(:form_accessory)).to eq accessory
         end
-        it "renders the :edit template" do
+        it "should render the :edit template" do
             get :edit, id: accessory.id
             expect(response).to render_template :edit
         end
@@ -46,23 +46,23 @@ describe Admin::AccessoriesController do
     
     describe "POST #create" do
         context "with valid attributes" do
-            it "saves the new accessory in the database" do
+            it "should save the new accessory in the database" do
                 expect {
                     post :create, accessory: attributes_for(:accessory)
                 }.to change(Accessory, :count).by(1)
             end
-            it "redirects to accessories#index"  do
+            it "should redirect to accessories#index"  do
                 post :create, accessory: attributes_for(:accessory)
                 expect(response).to redirect_to admin_accessories_url
             end
         end
         context "with invalid attributes" do
-            it "does not save the new accessory in the database" do
+            it "should not save the new accessory in the database" do
                 expect {
                     post :create, accessory: attributes_for(:invalid_accessory)
                 }.to_not change(Accessory, :count)
             end
-            it "re-renders the :new template" do
+            it "should re-render the :new template" do
                 post :create, accessory: attributes_for(:invalid_accessory)
                 expect(response).to render_template :new
             end
@@ -186,6 +186,11 @@ describe Admin::AccessoriesController do
         let(:cart) { create(:cart) }
         let(:cart_item) { create(:cart_item, cart_id: cart.id) }
 
+        it "should assign the requested accessory to @accessory" do
+            delete :destroy, id: accessory.id
+            expect(assigns(:accessory)).to eq accessory
+        end
+
         context "if the accessory has associated orders" do
             before(:each) do
                 create(:order_item_accessory, accessory_id: accessory.id, order_item_id: order_item.id)
@@ -209,7 +214,7 @@ describe Admin::AccessoriesController do
 
         context "if the accessory has no associated orders" do
 
-            it "deletes the accessory from the database"  do
+            it "should delete the accessory from the database"  do
                 expect {
                     delete :destroy, id: accessory.id
                 }.to change(Accessory, :count).by(-1)
@@ -228,7 +233,7 @@ describe Admin::AccessoriesController do
             end
         end
 
-        it "redirects to accessories#index" do
+        it "should redirect to accessories#index" do
             delete :destroy, id: accessory.id
             expect(response).to redirect_to admin_accessories_url
         end

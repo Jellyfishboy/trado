@@ -37,7 +37,7 @@ describe Admin::Products::Skus::StockLevelsController do
         end
 
         context "with invalid attributes" do
-            let(:errors) { "{\"adjustment\":[\"can't be blank\"]}" }
+            let(:errors) { ["Adjustment can't be blank"] }
 
             it "should not save the stock level to the database" do
                 expect{
@@ -47,7 +47,12 @@ describe Admin::Products::Skus::StockLevelsController do
 
             it "should return a JSON object of errors" do
                 xhr :get, :create, stock_level: attributes_for(:stock_level, adjustment: nil, sku_id: sku.id)
-                expect(assigns(:stock_level).errors.to_json(root: true)).to eq errors
+                expect(assigns(:stock_level).errors.full_messages).to eq errors
+            end
+
+            it "should return a 422 status code" do
+                xhr :get, :create, stock_level: attributes_for(:stock_level, adjustment: nil, sku_id: sku.id)
+                expect(response.status).to eq 422
             end
         end
     end

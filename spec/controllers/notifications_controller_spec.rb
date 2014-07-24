@@ -33,6 +33,11 @@ describe NotificationsController do
                 xhr :post, :create, notification: attributes_for(:notification, email: nil)
                 expect(assigns(:notification).errors.to_json(root: true)).to eq errors
             end
+
+            it "should return a 422 status code" do
+                xhr :post, :create, notification: attributes_for(:notification, email: nil)
+                expect(response.status).to eq 422
+            end
         end
     end
 end
