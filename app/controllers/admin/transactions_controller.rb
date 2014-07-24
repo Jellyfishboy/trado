@@ -21,6 +21,6 @@ class Admin::TransactionsController < ApplicationController
       end
     end
 
-    render :nothing => true
+    render nothing: true
   end
 end
