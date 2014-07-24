@@ -49,6 +49,8 @@ class Sku < ActiveRecord::Base
 
   after_update :update_cart_items_weight
 
+  after_create :create_stock_level
+
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
   #
   # @return [Boolean]
@@ -92,4 +94,9 @@ class Sku < ActiveRecord::Base
     [product.sku, code].join('-')
   end
 
+  # After creating a SKU record, also create a stock level record which logs the intiial stock value
+  #
+  def create_stock_level
+    StockLevel.create(description: 'Initial stock', adjustment: stock, sku_id: id)
+  end
 end

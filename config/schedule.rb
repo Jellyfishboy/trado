@@ -21,7 +21,7 @@
 set :output "/var/log/gimson_robotics/schedule.log"
 
 every 1.day, :at => '4:00am' do
-    rake 'Order.clear_orders'
+    runner 'Order.clear_orders'
 end
 every 1.day do, :at => '4:10am'
     runner "Cart.clear_carts"

@@ -32,6 +32,13 @@ describe ProductHelper do
 
     describe '#accessory_details' do
         let(:accessory) { create(:accessory, name: 'Accessory #1', price: '8.67') }
+        let(:store_setting) { create(:store_setting, tax_breakdown: false) }
+        before(:each) do
+            Store::reset_settings
+            StoreSetting.destroy_all
+            store_setting
+            Store::settings
+        end
 
         it "should return a html_safe string" do
             expect(helper.accessory_details(accessory)).to eq 'Accessory #1 (+£10.40)'

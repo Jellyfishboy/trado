@@ -106,12 +106,19 @@ describe Admin::ShippingsController do
                 before(:each) do
                     create(:order, shipping_id: shipping.id)
                     create_list(:tiered, 3, shipping_id: shipping.id)
+                    create_list(:destination, 4, shipping_id: shipping.id)
                 end
 
                 it "should save new tiereds to the database" do
                     expect{
                         patch :update, id: shipping.id, shipping: new_shipping
                     }.to change(Tiered, :count).by(3)
+                end
+
+                it "should save new destinations to the database" do
+                    expect{
+                        patch :update, id: shipping.id, shipping: new_shipping
+                    }.to change(Destination, :count).by(4)
                 end
 
                 it "should save a new shipping to the database" do

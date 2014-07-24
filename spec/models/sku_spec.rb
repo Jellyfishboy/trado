@@ -39,10 +39,27 @@ describe Sku do
 
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
+        let(:create_sku) { create(:sku, stock: 55) }
         
         it "should validate whether the stock value is higher than stock_warning_level" do
             expect(sku).to have(1).error_on(:sku)
             expect(sku.errors.messages[:sku]).to eq ["stock warning level value must not be below your stock count."]
+        end
+
+        it "should create a new stock level record" do
+            expect{
+                create_sku
+            }.to change(StockLevel, :count).by(1)
+        end
+
+        it "should set the stock level record as 'Initial stock'" do
+            create_sku
+            expect(create_sku.stock_levels.first.description).to eq 'Initial stock'
+        end
+
+        it "should set the stock level record adjustment as the SKU's stock" do
+            create_sku
+            expect(create_sku.stock_levels.first.adjustment).to eq 55
         end
     end
 

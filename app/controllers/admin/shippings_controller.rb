@@ -58,6 +58,7 @@ class Admin::ShippingsController < ApplicationController
     if @shipping.update(params[:shipping])
       if @old_shipping
         @old_shipping.tiereds.pluck(:tier_id).map { |t| Tiered.create(:tier_id => t, :shipping_id => @shipping.id) }
+        @old_shipping.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :shipping_id => @shipping.id) }
       end
       flash_message :success, 'Shipping was successfully updated.'
       redirect_to admin_shippings_url
