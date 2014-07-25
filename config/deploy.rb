@@ -39,6 +39,10 @@ namespace :configure do
   task :database, :roles => :app do
     run "yes | cp /home/configs/database.yml /home/gimsonrobotics/current/config"
   end
+  desc "Update crontab configuration"
+  task :crontab, :roles => :app do
+    run "cd /home/gimsonrobotics/current && whenever --update-crontab #{application}"
+  end
 end
 namespace :database do
   desc "Migrate the database"
@@ -76,7 +80,8 @@ default_run_options[:pty] = true
 
 after :deploy, 'configure:application'
 after 'configure:application', 'configure:database'
-after 'configure:database', 'database:migrate'
+after 'configure:database', 'configure:crontab'
+after 'configure:crontab', 'database:migrate'
 after 'database:migrate', 'assets:bower'
 after 'assets:bower', 'assets:compile'
 after 'assets:compile', 'assets:refresh_sitemaps'

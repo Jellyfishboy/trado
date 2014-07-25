@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :zone do
-    name { Faker::Lorem.word }
+    name { Faker::Address.country }
 
     factory :zone_with_countries do
         name { 'EU' }

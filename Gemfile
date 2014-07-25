@@ -99,7 +99,7 @@ gem 'unf' # Dependency for fog
 gem 'sitemap_generator'
 
 # Processing
-gem 'whenever', :require => false
+gem 'whenever', '>= 0.8.4', :require => false
 
 # JS Variables
 gem 'gon'
