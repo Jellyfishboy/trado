@@ -24,7 +24,14 @@ class Admin::Products::SkusController < ApplicationController
 
     respond_to do |format|
       if @sku.update(params[:sku])
-        CartItem.where('sku_id = ?', @old_sku.id).destroy_all if @old_sku
+        if @old_sku
+          @old_sku.stock_levels.each do |sl|
+            new_stock_level = sl.dup
+            new_stock_level.sku_id = @sku.id
+            new_stock_level.save!
+          end
+          CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
+        end
         format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
       else
         @form_sku = @old_sku ||= Sku.find(params[:id])

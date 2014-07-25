@@ -57,6 +57,7 @@ describe Admin::Products::SkusController do
         end
 
         context "with valid attributes" do
+            let!(:stock_level) { create(:stock_level, sku_id: sku.id, description: 'New stock #1') }
 
             context "if the sku has associated orders" do
                 before(:each) do
@@ -75,6 +76,18 @@ describe Admin::Products::SkusController do
                         xhr :patch, :update, id: sku.id, sku: new_sku
                     }.to change(Sku, :count).by(1)
                 end
+
+                it "should duplicate and save all stock level records" do
+                    expect{
+                        xhr :patch, :update, id: sku.id, sku: new_sku
+                    }.to change(StockLevel, :count).by(1)
+                end
+
+                it "should have the correct stock level data" do
+                    xhr :patch, :update, id: sku.id, sku: new_sku
+                    sku = Sku.last
+                    expect(sku.stock_levels.last.description).to eq 'New stock #1'
+                end
             end
 
             context "if the sku has no associated orders" do
@@ -88,6 +101,12 @@ describe Admin::Products::SkusController do
                     xhr :patch, :update, id: sku.id, sku: attributes_for(:sku, code: 'sku234', active: true)
                     sku.reload
                     expect(sku.code).to eq('sku234')
+                end
+
+                it "should not duplicate any stock level records" do
+                    expect{
+                        xhr :patch, :update, id: sku.id, sku: attributes_for(:sku, active: true)
+                    }.to_not change(StockLevel, :count)
                 end
             end
             
