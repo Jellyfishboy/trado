@@ -19,7 +19,7 @@
 //= require trado.tracking
 //= require trado.app
 
-$(document).ready(function()
+ready = function()
 {
     trado.tracking.init();
     trado.modal.loading('.paypal_checkout', '#paypalModal');
@@ -34,8 +34,10 @@ $(document).ready(function()
     trado.app.selectShipping();
     trado.app.updateShipping();
     trado.app.duplicateAddress();
-});
-    
+};
+$(document).ready(ready);
+$(document).on('page:load', ready)
+
 $(document).ajaxComplete(function()
 {
     trado.modal.open('.notify_me', '#notifyMeModal');

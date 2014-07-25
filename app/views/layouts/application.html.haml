@@ -28,7 +28,7 @@
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(wf, s);
       })();
-    = stylesheet_link_tag :application, :media => "all"
+    = stylesheet_link_tag :application, "data-turbolinks-track" => true
     %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
@@ -275,7 +275,7 @@
         / /bottom footer
       / /footer
     %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
-    = javascript_include_tag :application    
+    = javascript_include_tag :application, "data-turbolinks-track" => true 
     :javascript
       Modernizr.load([
           {
