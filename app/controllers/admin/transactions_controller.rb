@@ -12,9 +12,9 @@ class Admin::TransactionsController < ApplicationController
       transaction = Transaction.where('order_id = ?', notify.params['invoice']).first
       if notify.complete? and transaction.gross_amount.to_s == notify.params['mc_gross']
         transaction.fee = notify.params['mc_fee']
-        transaction.payment_status = notify.params['payment_status']
+        transaction.completed!
       else
-        transaction.payment_status = 'Failed'
+        transaction.failed!
       end
       if transaction.save
         Mailatron4000::Orders.confirmation_email(transaction.order) rescue Rollbar.report_message("PayPal IPN: Order #{transaction.order.id} confirmation email failed to send", "info", :order => transaction.order)

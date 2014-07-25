@@ -24,7 +24,7 @@ describe Payatron4000::Generic do
         end
 
         it "should set the payment status of the transaction to 'Pending'" do
-            expect(order.transactions.first.payment_status).to eq 'Pending'
+            expect(order.transactions.first.payment_status).to eq 'pending'
         end
 
         context "if the payment type is 'Cheque'" do

@@ -6,15 +6,16 @@ describe Mailatron4000::Orders do
 
     describe "Dispatching orders" do
 
-        let!(:order){ create(:order, shipping_date: Time.now) }
+        let!(:order){ create(:pending_order, shipping_date: Time.now) }
         
         context "if order delivery date is today" do
 
             it "should update the order as dispatched" do
                 expect {
                     Mailatron4000::Orders.dispatch_all
+                    order.reload
                 }.to change {
-                    Order.first.shipping_status }.to('Dispatched')
+                    order.shipping_status }.to('dispatched')
             end
 
             it "should deliver an order_shipped email" do
@@ -45,6 +46,17 @@ describe Mailatron4000::Orders do
             it "should send a received email confirmation" do
                 expect{
                     Mailatron4000::Orders.confirmation_email(completed)
+                }.to change {
+                    ActionMailer::Base.deliveries.count }.by(1)
+            end
+        end
+
+        context "if the payment status is failed" do
+            let(:failed) { create(:failed_order) }
+
+            it "should send a received email confirmation" do
+                expect{
+                    Mailatron4000::Orders.confirmation_email(failed)
                 }.to change {
                     ActionMailer::Base.deliveries.count }.by(1)
             end

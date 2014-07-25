@@ -1,10 +1,13 @@
 module Mailatron4000
     class Orders
 
+        # Iterate through all order records which have a shipping status of 'pending'
+        # If their shipping date is today, mark as dispatched and send an email
+        #
         def self.dispatch_all
-            Order.all.each do |order|
+            Order.pending.each do |order|
                 if order.shipping_date.to_date == Date.today
-                    order.update_column(:shipping_status, "Dispatched")
+                    order.dispatched!
                     ShippingMailer.complete(order).deliver
                 end
             end
@@ -14,11 +17,11 @@ module Mailatron4000
         #
         # @param order [Object]
         def self.confirmation_email order
-            if order.transactions.last.payment_status == "Completed"
+            if order.transactions.last.completed?
                 OrderMailer.received(order).deliver
-            elsif order.transactions.last.payment_status == "Pending"
+            elsif order.transactions.last.pending?
                 OrderMailer.pending(order).deliver
-            else
+            elsif order.transactions.last.failed?
                 OrderMailer.failed(order).deliver
             end
         end

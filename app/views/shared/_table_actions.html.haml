@@ -13,7 +13,7 @@
       %i.icon-pencil
 
   / Dispatch order
-  - if type == 2 && object.transactions.last.payment_status == "Completed"
+  - if type == 2 && object.transactions.last.completed?
     %a.edit_order_attributes{href: "#/", id: object.id}
       %i.icon-pencil
   / Delete record

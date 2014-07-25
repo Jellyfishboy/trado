@@ -4,7 +4,7 @@ describe Payatron4000 do
 
     describe "After creating a transaction record for the associated order" do
         let(:order) { create(:complete_order) }
-        let(:update) { Payatron4000::stock_update(order) }
+        let(:update) { Payatron4000::update_stock(order) }
 
         it "should update the relevant SKU's stock" do
             expect {
@@ -28,7 +28,7 @@ describe Payatron4000 do
             let(:order) { create(:complete_order) }
 
             it "should have only the order id in the description" do
-                Payatron4000::stock_update(order)
+                Payatron4000::update_stock(order)
                 expect(order.order_items.first.sku.stock_levels.first.description).to eq "Order ##{order.id}"
             end
         end
@@ -37,7 +37,7 @@ describe Payatron4000 do
             let(:order) { create(:complete_accessory_order) }
 
             it "should have the order id and accessory name in the description" do
-                Payatron4000::stock_update(order)
+                Payatron4000::update_stock(order)
                 expect(order.order_items.first.sku.stock_levels.first.description).to eq "Order ##{order.id} (+ #{order.order_items.first.order_item_accessory.accessory.name})"
             end
         end

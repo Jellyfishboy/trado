@@ -221,7 +221,7 @@ describe Payatron4000::Paypal do
         end
 
         it "should set the transaction record payment status attribute as 'Completed'" do
-            expect(order.transactions.first.payment_status).to eq 'Completed'
+            expect(order.transactions.first.payment_status).to eq 'completed'
         end
 
         it "should set the correct paypal id for the transaction" do
@@ -264,7 +264,7 @@ describe Payatron4000::Paypal do
         end
 
         it "should set the transaction record payment status attribute as 'Failed'" do
-            expect(order.transactions.first.payment_status).to eq 'Failed'
+            expect(order.transactions.first.payment_status).to eq 'failed'
         end
 
         it "should set the correct value for the status reason attribute on the transaction record" do

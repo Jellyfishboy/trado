@@ -9,7 +9,7 @@ module Payatron4000
         # Also updates the related SKU's stock value
         #
         # @param order [Object]
-        def stock_update order
+        def update_stock order
             order.order_items.each do |item|
               sku = Sku.find(item.sku_id)
               description = item.order_item_accessory.nil? ? "Order ##{order.id}" : "Order ##{order.id} (+ #{item.order_item_accessory.accessory.name})"

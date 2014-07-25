@@ -11,7 +11,7 @@ module Payatron4000
             Transaction.new( :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
-                                :payment_status => 'Pending', 
+                                :payment_status => 'pending', 
                                 :transaction_type => 'Credit', 
                                 :tax_amount => order.tax_amount, 
                                 :paypal_id => nil, 
@@ -19,7 +19,7 @@ module Payatron4000
                                 :net_amount => order.net_amount,
                                 :status_reason => nil
             ).save(validate: false)
-            Payatron4000::stock_update(order)
+            Payatron4000::update_stock(order)
             order.update_column(:status, 'active')
         end
 

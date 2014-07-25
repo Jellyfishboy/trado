@@ -40,7 +40,7 @@ describe Admin::TransactionsController do
             end
 
             it "should set the payment status provided by PayPal" do
-                expect(order.transactions.last.payment_status).to eq 'Completed'
+                expect(order.transactions.last.payment_status).to eq 'completed'
             end
 
             it "should send an order received email" do
@@ -60,7 +60,7 @@ describe Admin::TransactionsController do
             end
 
             it "should set the transaction payment status to failed" do
-                expect(order.transactions.last.payment_status).to eq 'Failed'
+                expect(order.transactions.last.payment_status).to eq 'failed'
             end
  
             it "should send an order failed email" do

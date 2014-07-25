@@ -4,7 +4,7 @@ FactoryGirl.define do
         email { Faker::Internet.email }
         status { 'active' }
         sequence(:tax_number) { |n| n }
-        shipping_status { 'Pending' }
+        shipping_status { 'pending' }
         shipping_date { Date.new(2014, 1, 29) }
         sequence(:actual_shipping_cost) { |n| n }
         express_token { Faker::Lorem.characters(8) }
@@ -24,7 +24,7 @@ FactoryGirl.define do
         
         factory :pending_order do
             # has_many through relationship generation
-            transactions { [create(:transaction, payment_status: 'Pending')] }
+            transactions { [create(:transaction, payment_status: 'pending')] }
 
             after(:create) do |order, evaluator|
                 create(:order_item, quantity: 5, order: order)
@@ -32,7 +32,7 @@ FactoryGirl.define do
         end
 
         factory :ipn_order do
-            transactions { [create(:transaction, payment_status: 'Pending', gross_amount: '234.71')] }
+            transactions { [create(:transaction, payment_status: 'pending', gross_amount: '234.71')] }
         end
 
         factory :undispatched_complete_order do
@@ -46,7 +46,17 @@ FactoryGirl.define do
         factory :complete_order do
             # has_many through relationship generation
             transactions { [create(:transaction)] }
-            shipping_status { 'Dispatched' }
+            shipping_status { 'dispatched' }
+
+            after(:create) do |order, evaluator|
+                create(:order_item, quantity: 5, order: order)
+            end
+        end
+
+        factory :failed_order do
+            # has_many through relationship generation
+            transactions { [create(:transaction, payment_status: 'failed')] }
+            shipping_status { 'pending' }
 
             after(:create) do |order, evaluator|
                 create(:order_item, quantity: 5, order: order)
@@ -56,7 +66,7 @@ FactoryGirl.define do
         factory :complete_accessory_order do
             # has_many through relationship generation
             transactions { [create(:transaction)] }
-            shipping_status { 'Dispatched' }
+            shipping_status { 'dispatched' }
 
             after(:create) do |order, evaluator|
                 create(:accessory_order_item, quantity: 5, order: order)
@@ -70,11 +80,11 @@ FactoryGirl.define do
         end
 
         factory :cheque_order do
-            transactions { [create(:transaction, payment_status: 'Pending', payment_type: 'Cheque')] }
+            transactions { [create(:transaction, payment_status: 'pending', payment_type: 'Cheque')] }
         end
 
         factory :bank_transfer_order do
-            transactions { [create(:transaction, payment_status: 'Pending', payment_type: 'Bank transfer')] }
+            transactions { [create(:transaction, payment_status: 'pending', payment_type: 'Bank transfer')] }
         end
 
         factory :bill_address_order do

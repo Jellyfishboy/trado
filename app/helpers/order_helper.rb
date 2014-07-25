@@ -1,20 +1,11 @@
 module OrderHelper
 
-    def shipping_status status
-      if status == "Pending"
-        "<span class='label label-orange label-small'>#{status}</span>".html_safe
-      elsif status == "Dispatched"
-        "<span class='label label-green label-small'>#{status}</span>".html_safe
-      end
+    def status_label record, status
+        if record.class == Order
+            class_name = record.dispatched? ? 'green' : record.pending? ? 'orange' : 'red'
+        elsif record.class == Transaction
+            class_name = record.completed? ? 'green' : record.pending? ? 'orange' : 'red'
+        end
+      "<span class='label label-#{class_name} label-small'>#{status.capitalize}</span>".html_safe
     end
-    
-    def payment_status status
-      if status == "Completed"
-        "<span class='label label-green label-small'>#{status}</span>".html_safe
-      elsif status == "Pending"
-        "<span class='label label-orange label-small'>#{status}</span>".html_safe
-      else
-        "<span class='label label-red label-small'>#{status}</span>".html_safe
-      end
-    end    
 end

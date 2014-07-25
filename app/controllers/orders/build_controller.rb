@@ -125,7 +125,7 @@ class Orders::BuildController < ApplicationController
   #
   def success
     @order = Order.find(params[:order_id])
-    redirect_to root_url unless @order.transactions.last.payment_status == 'Pending' || @order.transactions.last.payment_status == 'Completed'
+    redirect_to root_url unless @order.transactions.last.pending? || @order.transactions.last.completed?
   end
 
   # Renders the failed order page, however redirected if the order payment stautus it not Failed
@@ -133,7 +133,7 @@ class Orders::BuildController < ApplicationController
   def failure
     @order = Order.find(params[:order_id])
     Rollbar.report_message("Order ##{@order.id}. Paypal #{params[:error_code]} error: #{params[:response]}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
-    redirect_to root_url unless @order.transactions.last.payment_status == 'Failed' 
+    redirect_to root_url unless @order.transactions.last.failed?
   end
 
   # When an order has failed, the user has an option to discard order. However it's details are retained in the database.

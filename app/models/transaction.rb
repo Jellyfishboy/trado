@@ -14,7 +14,7 @@
 #  tax_amount                   :decimal          precision(8), scale(2)  
 #  fee                          :decimal          precision(8), scale(2)  
 #  payment_type                 :string(255)
-#  payment_status               :string(255)   
+#  payment_status               :integer 
 #  paypal_id                    :string(255) 
 #  transaction_type             :string(255)  
 #  status_reason                :string(255)      
@@ -25,9 +25,9 @@ class Transaction < ActiveRecord::Base
 
   attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 
   :tax_amount, :paypal_id, :transaction_type, :net_amount, :status_reason
-
-  validates :payment_status,                                :inclusion => { :in => ['Completed', 'Pending', 'Failed'], :message => 'must be set for the order.'}
   
   belongs_to :order
+
+  enum payment_status: [:pending, :completed, :failed]
   
 end

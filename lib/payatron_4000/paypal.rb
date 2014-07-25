@@ -108,7 +108,7 @@ module Payatron4000
             Transaction.new(    :fee => response.params['PaymentInfo']['FeeAmount'], 
                                 :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
                                 :order_id => order.id, 
-                                :payment_status => response.params['PaymentInfo']['PaymentStatus'], 
+                                :payment_status => response.params['PaymentInfo']['PaymentStatus'].downcase, 
                                 :transaction_type => 'Credit', 
                                 :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
                                 :paypal_id => response.params['PaymentInfo']['TransactionID'], 
@@ -116,7 +116,7 @@ module Payatron4000
                                 :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
                                 :status_reason => response.params['PaymentInfo']['PendingReason']
             ).save(validate: false)
-            Payatron4000::stock_update(order)
+            Payatron4000::update_stock(order)
             order.update_column(:status, 'active')
         end
 
@@ -129,7 +129,7 @@ module Payatron4000
             Transaction.new(    :fee => 0, 
                                 :gross_amount => order.gross_amount, 
                                 :order_id => order.id, 
-                                :payment_status => 'Failed', 
+                                :payment_status => 'failed', 
                                 :transaction_type => 'Credit', 
                                 :tax_amount => order.tax_amount, 
                                 :paypal_id => '', 

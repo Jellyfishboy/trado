@@ -24,8 +24,8 @@
             %tr
               %td= link_to order.id, [:admin, order]
               %td= link_to order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank' if order.transactions.last.paypal_id
-              %td= shipping_status order.shipping_status
-              %td= payment_status order.transactions.last.payment_status
+              %td= status_label order, order.shipping_status
+              %td= status_label order.transactions.last, order.transactions.last.payment_status
               %td= Store::Price.new(order.gross_amount, 'net').format
               %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
               = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2

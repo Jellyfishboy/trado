@@ -16,7 +16,7 @@
 #  cart_id                  :integer
 #  tax_number               :integer 
 #  shipping_id              :integer        
-#  shipping_status          :string(255)      default('Pending')   
+#  shipping_status          :integer          default(0)   
 #  shipping_date            :datetime 
 #  actual_shipping_cost     :decimal          precision(8), scale(2) 
 #  express_token            :string(255) 
@@ -47,9 +47,10 @@ class Order < ActiveRecord::Base
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
 
   after_create :create_addresses
-  after_update :ship_order_today,                                       :if => :shipping_date_nil?
 
   accepts_nested_attributes_for :ship_address
+
+  enum shipping_status: [:pending, :dispatched]
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
@@ -74,23 +75,7 @@ class Order < ActiveRecord::Base
     )
     self.save(validate: false)
   end
-
-  # When shipping date for an order is set, if it's today, mark the order as dispatched and send the relevant email
-  #
-  def ship_order_today
-    if shipping_date.to_date == Date.today
-      self.update_column(:shipping_status, "Dispatched")
-      ShippingMailer.complete(self).deliver
-    end
-  end
-
-  # Determines whether the shipping date of the current order is nil
-  #
-  # @return [Boolean]
-  def shipping_date_nil?
-    return shipping_date.nil? ? false : true 
-  end
-
+  
   # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job
   #
   # @return [Boolean]
@@ -102,7 +87,7 @@ class Order < ActiveRecord::Base
   #
   # @return [Boolean]
   def completed?
-    transactions.where(payment_status: 'Completed').blank? ? false : true
+    transactions.last.completed? unless transactions.empty?
   end
 
   # Detects if the current status of the order is 'billing'. See wicked gem for more info

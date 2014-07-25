@@ -13,17 +13,17 @@ describe Order do
     it { expect(subject).to have_one(:bill_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
     # Validations
-    context "If the order has a an associated completed transaction record" do
+    context "if the order has a an associated completed transaction record" do
         before { subject.stub(:completed?) { true } }
         it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
     end
 
-    context "If the status of the order is 'active' or 'confirm'" do
+    context "if the status of the order is 'active' or 'confirm'" do
         before { subject.stub(:active_or_confirm?) { true } }
         it { expect(subject).to ensure_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
     end
 
-    context "If current order status is at shipping" do
+    context "if current order status is at shipping" do
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to validate_presence_of(:shipping_id).with_message('Shipping option is required') }
@@ -70,41 +70,6 @@ describe Order do
         end
         it "should update the order's gross amount attribute" do
             expect(order.gross_amount).to eq (cart.total_price + order.shipping.price) + ((cart.total_price + order.shipping.price) * tax)
-        end
-    end
-
-    describe "When updating an order" do
-        let(:order) { create(:order, shipping_date: nil) }
-        let(:order_2) { create(:order, shipping_date: Time.now) }
-        let!(:order_3) { create(:order) }
-
-        it "should call ship_order_today method after" do
-            Order._update_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:ship_order_today).should == true
-        end
-
-        context "if order shipping date is today" do
-
-            it "should update the order as dispatched" do
-                expect {
-                    order_2.ship_order_today
-                }.to change {
-                    order_2.shipping_status }.to("Dispatched")
-            end
-
-            it "should send an order_shipped email" do
-                expect {
-                    order_2.ship_order_today
-                }.to change {
-                    ActionMailer::Base.deliveries.count }.by(1)
-            end
-        end
-
-        it "should return false if the shipping_date is nil" do
-            expect(order.shipping_date_nil?).to eq false
-        end
-
-        it "should return true if the shipping_date is not nil" do
-            expect(order_3.shipping_date_nil?).to eq true
         end
     end
 
