@@ -6,14 +6,14 @@ class BasePreview < ActionMailer::Preview
     #
     # @return [object]
     def mock_order
-        Order.where(status: 'active').last
+        Order.active.last
     end
 
     # Last SKU record in the database which has it's active attribute set to true
     #
     # @return [object]
     def mock_sku
-        Sku.where(active: true).last
+        Sku.active.last
     end
 
     # Array of the last 5 product records in the database

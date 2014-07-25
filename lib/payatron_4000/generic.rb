@@ -20,7 +20,8 @@ module Payatron4000
                                 :status_reason => nil
             ).save(validate: false)
             Payatron4000::update_stock(order)
-            order.update_column(:status, 'active')
+            order.status = :active
+            order.save(validate: false)
         end
 
         # Completes the order process by creating a transaction record, sending a confirmation email and redirects the user

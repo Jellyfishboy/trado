@@ -11,7 +11,7 @@
 #  id                       :integer          not null, primary key
 #  ip_address               :string(255)      
 #  email                    :string(255)     
-#  status                   :string(255)          
+#  status                   :integer          
 #  user_id                  :integer     
 #  cart_id                  :integer
 #  tax_number               :integer 
@@ -52,6 +52,8 @@ class Order < ActiveRecord::Base
 
   enum shipping_status: [:pending, :dispatched]
 
+  enum status: [:review, :billing, :shipping, :payment, :confirm, :active]
+
   # Upon completing an order, transfer the cart item data to new order item records 
   #
   def transfer cart
@@ -69,18 +71,11 @@ class Order < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
     net_amount = cart.total_price + shipping.price
-    self.update( :net_amount => net_amount,
-                            :tax_amount => net_amount*current_tax_rate,
-                            :gross_amount => net_amount + (net_amount*current_tax_rate)
-    )
+    self.update(  :net_amount => net_amount,
+                  :tax_amount => net_amount*current_tax_rate,
+                  :gross_amount => net_amount + (net_amount*current_tax_rate)
+              )
     self.save(validate: false)
-  end
-  
-  # Detects if the current status of the order is 'active'. Inactive orders are deleted on a daily cron job
-  #
-  # @return [Boolean]
-  def active?
-    status == 'active'
   end
 
   # Returns a boolean on whether the order is marked as completed
@@ -94,35 +89,35 @@ class Order < ActiveRecord::Base
   #
   # @return [Boolean]
   def active_or_billing?
-    status == 'billing' ? true : active?
+    billing? ? true : active?
   end
 
   # Detects if the current status of the order is 'shipping'. See wicked gem for more info
   #
   # @return [Boolean]
   def active_or_shipping?
-    status == 'shipping' ? true : active?
+    shipping? ? true : active?
   end
 
   # Detects if the current status of the order is 'payment'. See wicked gem for more info
   #
   # @return [Boolean]
   def active_or_payment?
-    status == 'payment' ? true : active?
+    payment? ? true : active?
   end
 
   # Detects if the current status of the order is 'confirm'. See wicked gem for more info
   #
   # @return [Boolean]
   def active_or_confirm?
-    status == 'confirm' ? true : active?
+    confirm? ? true : active?
   end
   
   # Deletes redundant orders which are more than 12 hours old
   #
   # @return [nil]
   def self.clear_orders
-    where("updated_at < ? AND status != ?", 12.hours.ago, 'active').destroy_all
+    where("updated_at < ? AND status != ?", 12.hours.ago, 5).destroy_all
   end
 
   private

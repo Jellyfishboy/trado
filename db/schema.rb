@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725123049) do
+ActiveRecord::Schema.define(version: 20140725181845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,10 +157,9 @@ ActiveRecord::Schema.define(version: 20140725123049) do
     t.string   "email"
     t.integer  "tax_number"
     t.datetime "shipping_date"
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.decimal  "actual_shipping_cost", precision: 8, scale: 2
-    t.string   "status",                                       default: "review"
     t.string   "express_token"
     t.string   "express_payer_id"
     t.integer  "shipping_id"
@@ -172,6 +171,7 @@ ActiveRecord::Schema.define(version: 20140725123049) do
     t.boolean  "terms"
     t.integer  "cart_id"
     t.integer  "shipping_status",                              default: 0
+    t.integer  "status",                                       default: 0
   end
 
   create_table "permissions", force: true do |t|

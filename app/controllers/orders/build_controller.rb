@@ -14,12 +14,11 @@ class Orders::BuildController < ApplicationController
   #
   def show
     @cart = current_cart
+    #####
     # Sets current state of the order
-    if step == steps.last
-      @order.update_column(:status, 'active')
-    else
-      @order.update_column(:status, step.to_s)
-    end
+    @order.status = step == steps.last ? :active : step
+    @order.save!
+    #####
     case step
     when :billing
       @billing_address = @order.bill_address
@@ -46,7 +45,6 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     case step 
     when :billing
-
       @billing_address = @order.bill_address
       # Update billing attributes
       if @billing_address.update(params[:address])

@@ -46,6 +46,6 @@ class Address < ActiveRecord::Base
   #
   # @return [Boolean]
   def shipping_stage?
-    return true if self.order.status == 'billing' || self.order.status == 'shipping'
+    return true if self.order.billing? || self.order.shipping?
   end
 end

@@ -117,7 +117,8 @@ module Payatron4000
                                 :status_reason => response.params['PaymentInfo']['PendingReason']
             ).save(validate: false)
             Payatron4000::update_stock(order)
-            order.update_column(:status, 'active')
+            order.status = :active
+            order.save(validate: false)
         end
 
         
@@ -137,7 +138,8 @@ module Payatron4000
                                 :net_amount => order.net_amount,
                                 :status_reason => response.message
             ).save(validate: false)
-            order.update_column(:status, 'active')
+            order.status = :active
+            order.save(validate: false)
         end
 
     end
