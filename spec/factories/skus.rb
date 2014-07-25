@@ -14,6 +14,14 @@ FactoryGirl.define do
         association :attribute_type
         association :product
 
+        # skip after_create :create_stock_level
+        after(:build) { |sku| sku.class.skip_callback(:create, :after, :create_stock_level) }
+
+        # initialize after_create :create_stock_level
+        factory :sku_after_stock_level do
+            after(:create) { |sku| sku.send(:create_stock_level) }
+        end
+
         factory :sku_in_stock do
             after(:create) do |sku, evaluator|
                 create(:sku_notification, notifiable: sku)
