@@ -9,16 +9,19 @@ class Orders::BuildController < ApplicationController
 
   steps :review, :billing, :shipping, :payment, :confirm
 
+  ###################################
+  # ORDER VIEW LOGIC
+  ###################################
   # Displays the front-end content of each step, with specific methods throughout providing the relevant data
   # Steps include, in this order: review, billing, shipping, payment then confimration
   #
   def show
     @cart = current_cart
-    #####
+    ################
     # Sets current state of the order
     @order.status = step == steps.last ? :active : step
     @order.save(validate: false)
-    #####
+    ################
     case step
     when :billing
       @billing_address = @order.bill_address
@@ -37,7 +40,11 @@ class Orders::BuildController < ApplicationController
     end
     render_wizard
   end
+  ###################################
 
+  ###################################
+  # ORDER UPDATE LOGIC
+  ###################################
   # When advancing to the next step in the order process, the update method is called
   # Any bespoke business logic in each step is then triggered, for example: updating the address and the order status attribute value
   #
@@ -86,10 +93,12 @@ class Orders::BuildController < ApplicationController
         render_wizard @order
       end
     end
-   end
+  end
+  ###################################
 
-  ## PAYMENT TYPES ##
-
+  ################################### 
+  # ORDER PAYMENT TYPES 
+  ###################################
   # Prepares the order data and redirects to the PayPal login page to review the order
   # Bespoke PayPal method
   #
@@ -112,36 +121,55 @@ class Orders::BuildController < ApplicationController
         Rollbar.report_exception(e)
       end
       @order.update_column(:cart_id, nil)
-      Rollbar.report_message("Order ##{@order.id}. Paypal #{response.params["error_codes"]} error: #{response.message}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
       redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
     end
   end
+  ################################### 
 
-  ## END OF PAYMENT TYPES ##  
-
+  ###################################
+  # ORDER OUTCOME METHODS
+  ###################################
   # Renders the successful order page, however redirected if the order payment status is not Pending or completed.
   #
   def success
-    @order = Order.find(params[:order_id])
+    @order = Order.includes(:ship_address).find(params[:order_id])
     redirect_to root_url unless @order.transactions.last.pending? || @order.transactions.last.completed?
   end
 
   # Renders the failed order page, however redirected if the order payment stautus it not Failed
   #
   def failure
-    @order = Order.find(params[:order_id])
-    Rollbar.report_message("Order ##{@order.id}. Paypal #{params[:error_code]} error: #{params[:response]}", "info", :order => @order) unless params[:response].nil? && params[:error_code].nil?
-    redirect_to root_url unless @order.transactions.last.failed?
+    @order = Order.includes(:transactions).find(params[:order_id])
+    # redirect_to root_url unless @order.transactions.last.failed?
   end
 
-  # When an order has failed, the user has an option to discard order. However it's details are retained in the database.
+  # When an order has failed, the user has an option to retry the order
+  # Although if it has a PayPal error code of 10412 or 10415, create a new order and redirect to review
+  # 
+  def retry
+    @order = Order.includes(:transactions).find(params[:order_id])
+    @error_code = @order.transactions.last.error_code
+    if @error_code == 10412 || @error_code == 10415
+      @order.update_column(:cart_id, nil) 
+      redirect_to new_order_path
+    else
+      redirect_to order_build_url(order_id: @order.id, id: 'review')
+    end
+  end
+
+  # When an order has failed, the user has an option to discard order
+  # However it's details are retained in the database.
   #
   def purge
     @order.update_column(:cart_id, nil)
     flash_message :success, "Your order has been cancelled."
     redirect_to root_url
   end
+  ###################################
 
+  ###################################
+  # ORDER ESTIMATE SHIPPING
+  ###################################
   def estimate
     respond_to do |format|
       if @order.update(params[:order])
@@ -158,7 +186,11 @@ class Orders::BuildController < ApplicationController
     @order.update_column(:shipping_id, nil)
     render :partial => 'orders/shippings/estimate/success', :format => [:js]
   end
+  ###################################
 
+  ###################################
+  # ORDER PRIVATE METHODS
+  ###################################
   private
 
   # Before filter method to check if the order has an associated transaction record with a payment_status of completed
@@ -183,5 +215,6 @@ class Orders::BuildController < ApplicationController
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?
   end
+  ###################################
 
 end

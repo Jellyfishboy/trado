@@ -28,7 +28,8 @@ Trado::Application.routes.draw do
         get 'success'
         get 'failure'
         patch 'estimate'
-        get 'purge'
+        get 'retry'
+        delete 'purge'
         delete 'purge_estimate'
       end
     end

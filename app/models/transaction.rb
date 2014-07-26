@@ -17,14 +17,15 @@
 #  payment_status               :integer 
 #  paypal_id                    :string(255) 
 #  transaction_type             :string(255)  
-#  status_reason                :string(255)      
+#  status_reason                :string(255)     
+#  error_code                   :string(255) 
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #
 class Transaction < ActiveRecord::Base
 
   attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 
-  :tax_amount, :paypal_id, :transaction_type, :net_amount, :status_reason
+  :tax_amount, :paypal_id, :transaction_type, :net_amount, :status_reason, :error_code
   
   belongs_to :order
 

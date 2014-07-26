@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_user!, :set_tracking_code
     helper_method :current_cart
 
-    rescue_from CanCan::AccessDenied do |exception|
-        flash_message :error, exception.message
-        puts exception.message
-        redirect_to store_url
-    end
-
     protected
 
     def set_tracking_code

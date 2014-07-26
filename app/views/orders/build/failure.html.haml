@@ -14,15 +14,13 @@
                 %p 
                     Unfortunately the payment for your order was unsuccessful.
 
-                %p= "Your order may have failed for the following reason(s): <strong>#{params[:response]}</strong>".html_safe unless params[:response].nil?
+                %p= "Your order may have failed for the following reason(s): <strong>#{@order.transactions.last.status_reason}</strong>".html_safe unless @order.transactions.last.status_reason.nil?
 
-                %p= "Error code: <strong>#{params[:error_code]}</strong>".html_safe unless params[:error_code].nil?
+                %p= "Error code: <strong>#{@order.transactions.last.error_code}</strong>".html_safe unless @order.transactions.last.error_code.nil?
 
                 %p 
                     If you would like further assistance, please do not hesitate to 
                     %a{:href => 'mailto:gimsonrobotics@gmail.com'} contact
                     us.
-
-                - unless params[:error_code].to_i == 10415
-                    = link_to "Try again", order_build_url(:order_id => @order.id, :id => 'payment'), :class => 'btn btn-primary higher bold'
-                    = link_to "Cancel order", purge_order_build_path, :class => 'btn btn-danger bold higher'
+                = link_to "Try again", retry_order_build_url, :class => 'btn btn-primary higher bold'
+                = link_to "Cancel order", purge_order_build_path, method: :delete, :class => 'btn btn-danger bold higher'

@@ -136,7 +136,8 @@ module Payatron4000
                                 :paypal_id => '', 
                                 :payment_type => 'express-checkout',
                                 :net_amount => order.net_amount,
-                                :status_reason => response.message
+                                :status_reason => response.message,
+                                :error_code => response.params["error_codes"].to_i
             ).save(validate: false)
             order.status = :active
             order.save(validate: false)
