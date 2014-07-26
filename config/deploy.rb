@@ -41,7 +41,7 @@ namespace :configure do
   end
   desc "Update crontab configuration"
   task :crontab, :roles => :app do
-    run "cd /home/gimsonrobotics/current && whenever --update-crontab #{application}"
+    run "cd /home/gimsonrobotics/current && whenever --update-crontab gimson_robotics"
   end
 end
 namespace :database do
