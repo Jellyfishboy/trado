@@ -47,7 +47,7 @@
             / ==========
             / = Shipping addr form =
             / ==========
-            = form_for @shipping_address, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout shipping_address' } do |f|
+            = form_for @shipping_address, :url => wizard_path, :html => { method: :patch, :class => 'form-horizontal form-checkout shipping_address' } do |f|
               .control-group
                 %label.control-label
                   Use billing address?

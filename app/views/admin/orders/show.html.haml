@@ -122,7 +122,6 @@
             %th Net amount
             %th Gross amount
             %th Last updated
-            %th
         %tbody
           - @order.transactions.each do |transaction|
             %tr{:id => "transaction_#{transaction.id}" }
@@ -134,5 +133,4 @@
               %td= Store::Price.new(transaction.net_amount, 'net').format
               %td= Store::Price.new(transaction.gross_amount, 'net').format
               %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
-              %td
 #transaction-modal

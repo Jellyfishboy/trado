@@ -48,7 +48,7 @@
             / = Shipping addr form =
             / ==========
             /= @billing_address
-            = form_for @billing_address, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+            = form_for @billing_address, :url => wizard_path, :html => { method: :patch, :class => 'form-horizontal form-checkout' } do |f|
               .control-group
                 = f.label :first_name, :class => 'control-label' do
                   First name

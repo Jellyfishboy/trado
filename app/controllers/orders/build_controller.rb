@@ -17,7 +17,7 @@ class Orders::BuildController < ApplicationController
     #####
     # Sets current state of the order
     @order.status = step == steps.last ? :active : step
-    @order.save!
+    @order.save(validate: false)
     #####
     case step
     when :billing

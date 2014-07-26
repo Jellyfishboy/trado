@@ -57,7 +57,7 @@
             /   You are currently logged in with the following PayPal account:
             /   %b
             /     = session["paypal_email"]
-            = form_for @order, :url => wizard_path, :html => { :method => :put, :class => 'form-horizontal form-checkout' } do |f|
+            = form_for @order, :url => wizard_path, :html => { method: :patch, :class => 'form-horizontal form-checkout' } do |f|
               %table.table.table-items
                 %thead
                   %tr

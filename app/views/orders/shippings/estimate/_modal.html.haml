@@ -4,7 +4,7 @@
     %h3#estimateDeliveryModalLabel
       %span.light Estimate
       Shipping
-  = form_for @order, url: estimate_order_build_path, :html => { :method => :put, :remote => true, :class => 'remote-form' } do |f|
+  = form_for @order, url: estimate_order_build_path, :html => { method: :patch, :remote => true, :class => 'remote-form' } do |f|
     .modal-body
       .control-group
         = f.fields_for :ship_address do |ff|
