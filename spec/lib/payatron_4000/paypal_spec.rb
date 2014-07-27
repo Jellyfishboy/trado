@@ -164,7 +164,8 @@ describe Payatron4000::Paypal do
                                                                                                     'TaxAmount' => '',
                                                                                                     'TransactionType' => '',
                                                                                                     'PendingReason' => nil 
-                                                                                                }
+                                                                                                },
+                                                                                'error_codes' => 14012
                                                                                 },
                                                                                 :success? => false 
                                                                 )
@@ -199,7 +200,7 @@ describe Payatron4000::Paypal do
                                                                         'TaxAmount' => '15.66',
                                                                         'TransactionType' => 'express-checkout',
                                                                         'PendingReason' => nil 
-                                                                    } 
+                                                                    },
                                                     }
                                         )  
                         }
@@ -240,7 +241,7 @@ describe Payatron4000::Paypal do
     describe "Failed order" do
 
         let(:order) { create(:order, tax_amount: '7.44') }
-        let(:response) { OpenStruct.new(:message => 'Failed order.')  }
+        let(:response) { OpenStruct.new(:message => 'Failed order.', :params => { 'error_codes' => 14012 }) }
         let(:failed) { Payatron4000::Paypal.failed(response, order) }
         before(:each) do
             unless RSpec.current_example.metadata[:skip_before]
