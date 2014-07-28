@@ -34,6 +34,11 @@ class CartItemsController < ApplicationController
     end
 
     def void_shipping
-      current_cart.order.update_column(:shipping_id, nil) unless current_cart.order.nil? || current_cart.order.shipping_id.nil?
+      order = current_cart.order
+      unless order.nil? || order.shipping_id.nil? || orders.tiers.nil?
+        order.shipping_id = nil
+        order.tiers = nil
+        order.save(validate: false)
+      end
     end
 end

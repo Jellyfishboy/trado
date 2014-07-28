@@ -3,7 +3,7 @@
 - else
     - @shippings.each_with_index do |shipping, index|
         %div.option
-            = radio_button_tag "order[shipping_id]", shipping.id, index == 0 ? true : false
+            = radio_button_tag "order[shipping_id]", shipping.id, @shipping_id.nil? (index == 0 ? true : false) : (shipping.id == @shipping_id ? true : false)
             %h5= shipping.name
             %p= truncate shipping.description, length: 100
             %h6= Store::Price.new(shipping.price).markup

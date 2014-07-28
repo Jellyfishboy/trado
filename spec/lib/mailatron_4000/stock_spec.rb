@@ -4,25 +4,6 @@ describe Mailatron4000::Stock do
 
     store_setting
 
-    describe "Automated stock warning level" do
-
-        before(:each) do
-            create(:stock_warning_product_1)
-            create(:stock_warning_product_2)
-            create(:stock_warning_product_3)
-        end
-
-        context "if there is low stock" do
-
-            it "should email administrator a list of products" do
-                expect {
-                    Mailatron4000::Stock.warning
-                }.to change {
-                    ActionMailer::Base.deliveries.count }.by(1)
-            end
-        end
-    end 
-
     describe "Notifying of new stock" do
 
         before(:each) do

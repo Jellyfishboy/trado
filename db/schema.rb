@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726222719) do
+ActiveRecord::Schema.define(version: 20140728125029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20140726222719) do
     t.integer  "cart_id"
     t.integer  "shipping_status",                              default: 0
     t.integer  "status",                                       default: 0
+    t.integer  "tiers",                                                                 array: true
   end
 
   create_table "permissions", force: true do |t|
@@ -267,6 +268,8 @@ ActiveRecord::Schema.define(version: 20140726222719) do
     t.string   "ga_code",                               default: "UA-XXXXX-X"
     t.boolean  "ga_active",                             default: false
     t.decimal  "tax_rate",      precision: 8, scale: 2, default: 20.0
+    t.boolean  "cheque",                                default: false
+    t.boolean  "bank_transfer",                         default: false
     t.boolean  "tax_breakdown",                         default: false
     t.boolean  "alert_active",                          default: false
     t.text     "alert_message",                         default: "Type your alert message here..."

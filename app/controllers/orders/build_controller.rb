@@ -23,11 +23,16 @@ class Orders::BuildController < ApplicationController
     @order.save(validate: false)
     ################
     case step
+    when :review
+      Shipatron4000::tier(current_cart, @order) if @order.tiers.nil?
+    end
+    case step
     when :billing
       @billing_address = @order.bill_address
     end
     case step
     when :shipping
+      Shipatron4000::tier(current_cart, @order) if @order.tiers.nil?
       @shipping_address = @order.ship_address
     end
     case step 
@@ -120,7 +125,7 @@ class Orders::BuildController < ApplicationController
       rescue Exception => e
         Rollbar.report_exception(e)
       end
-      @order.update_column(:cart_id, nil)
+      @order.update_column(:cart_id, nil) 
       redirect_to failure_order_build_url( :order_id => @order.id, :id => 'confirm', :response => response.message, :error_code => response.params["error_codes"])
     end
   end
@@ -208,13 +213,13 @@ class Orders::BuildController < ApplicationController
   # If not they are redirected to the required step before proceeding further
   #
   def check_order_status
+    binding.pry
     @order = Order.find(params[:order_id])
     route = (steps.last(3).include?(params[:id].to_sym) && @order.bill_address.first_name.nil?) ? 'billing' 
-            : (steps.last(2).include?(params[:id].to_sym) && @order.ship_address.first_name.nil?) ? 'shipping' 
+            : (steps.last(2).include?(params[:id].to_sym) && @order.ship_address.first_name.nil? || @order.shipping_id.nil?) ? 'shipping' 
             : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?
   end
   ###################################
-
 end
