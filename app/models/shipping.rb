@@ -31,6 +31,10 @@ class Shipping < ActiveRecord::Base
   validates :description,                               :length => { :maximum => 180, :message => :too_long }
   validates :price,                                     :format => { :with => /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
+  default_scope { order(price: :asc) }
+  
+  scope :find_collection,                               ->(cart, country) { joins(:tiereds, :countries).where(tiereds: { :tier_id => cart.order.tiers }, countries: { :name => country }).load }
+
   # Grabs an array of records which have their active field set to true
   #
   # @return [array] list of active shippings

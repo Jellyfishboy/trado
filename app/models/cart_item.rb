@@ -26,7 +26,7 @@ class CartItem < ActiveRecord::Base
 
   accepts_nested_attributes_for :cart_item_accessory
 
-  scope :find_sku, ->(sku) { where('sku_id = ?',sku.id).includes(:cart_item_accessory) }
+  scope :find_sku,                           ->(sku) { where('sku_id = ?',sku.id).includes(:cart_item_accessory) }
 
   # Calculates the total price of a cart item by multipling the item price by it's quantity
   #

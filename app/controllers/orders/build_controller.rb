@@ -34,6 +34,7 @@ class Orders::BuildController < ApplicationController
     when :shipping
       Shipatron4000::tier(current_cart, @order) if @order.tiers.nil?
       @shipping_address = @order.ship_address
+      @shippings = Shipping.find_collection(current_cart, @shipping_address.country) unless @order.shipping_id.nil?
     end
     case step 
     when :payment
@@ -155,9 +156,9 @@ class Orders::BuildController < ApplicationController
     @order = Order.includes(:transactions).find(params[:order_id])
     @error_code = @order.transactions.last.error_code
     if @error_code == 10412 || @error_code == 10415
-      @order.update_column(:cart_id, nil) 
       redirect_to new_order_path
     else
+      @order.update_column(:cart_id, session[:cart_id])
       redirect_to order_build_url(order_id: @order.id, id: 'review')
     end
   end
@@ -188,7 +189,9 @@ class Orders::BuildController < ApplicationController
   # Destroys the estimated shipping item from the cart by setting all the session stores values to nil
   #
   def purge_estimate
-    @order.update_column(:shipping_id, nil)
+    @order.shipping_id = nil
+    @order.ship_address.country = nil
+    @order.save(validate: false)
     render :partial => 'orders/shippings/estimate/success', :format => [:js]
   end
   ###################################
@@ -213,10 +216,9 @@ class Orders::BuildController < ApplicationController
   # If not they are redirected to the required step before proceeding further
   #
   def check_order_status
-    binding.pry
     @order = Order.find(params[:order_id])
     route = (steps.last(3).include?(params[:id].to_sym) && @order.bill_address.first_name.nil?) ? 'billing' 
-            : (steps.last(2).include?(params[:id].to_sym) && @order.ship_address.first_name.nil? || @order.shipping_id.nil?) ? 'shipping' 
+            : (steps.last(2).include?(params[:id].to_sym) && (@order.ship_address.first_name.nil? || @order.shipping_id.nil?)) ? 'shipping' 
             : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?

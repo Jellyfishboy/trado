@@ -133,7 +133,7 @@
                     %span.red-clr.bold *
                   .controls
                     - unless @order.shipping_id.nil?
-                      = Shipatron4000::shippings(@shipping_address.country, current_cart)
+                      = render partial: "orders/shippings/fields", :locals => { shippings: @shippings, shipping_id: @order.shipping_id }
                     - else
                       %p.shipping_notice Select a shipping country to view the available shipping options.
               .control-group
