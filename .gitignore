@@ -11,7 +11,6 @@ db/test.sqlite3
 db/development.sqlite3
 doc/*
 .yardoc
-Gemfile.lock
 
 public/uploads/attachment
 
