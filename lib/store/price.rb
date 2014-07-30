@@ -41,7 +41,7 @@ module Store
         #
         # @return [String] HTML elements
         def range
-            Renderer.render :partial => 'shared/price_range', :locals => { :price => format, :range => @range }, :format => [:html]
+            Renderer.render :partial => 'shared/price/range', :locals => { :price => format, :range => @range }, :format => [:html]
         end
 
         # Render the markup when displaying the net and gross price if tax breakdown set to true
@@ -50,7 +50,7 @@ module Store
         #
         # @return [String] HTML for both net and gross prices
         def markup
-            Renderer.render :partial => 'shared/price', :locals => { :price => format, :gross => Store::settings.tax_breakdown ? taxify(@price) : nil }, :format => [:html]
+            Renderer.render :partial => 'shared/price/single', :locals => { :price => format, :gross => Store::settings.tax_breakdown ? taxify(@price) : nil }, :format => [:html]
         end
 
         private

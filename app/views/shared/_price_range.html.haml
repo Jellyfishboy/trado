@@ -1,2 +1,0 @@
-.price
-    = Store::settings.tax_breakdown? ? (range ? "<span>from</span> #{price} Exc #{Store::settings.tax_name}".html_safe : "#{price} Exc #{Store::settings.tax_name}") : (range ? "<span>from</span> #{price}".html_safe : price) 

@@ -1,4 +1,0 @@
-.price
-    = gross.nil? ? price : "#{price} Exc #{Store::settings.tax_name}"
-    - unless gross.nil?
-        %span= "#{number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2)} Inc #{Store::settings.tax_name}"

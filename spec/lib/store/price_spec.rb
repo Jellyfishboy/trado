@@ -122,7 +122,7 @@ describe Store::Price do
             end
 
             it "should have the correct elements" do
-                expect(Store::Price.new(sku.price).markup).to include("<span>#{Store::Price.new(sku.price, 'gross').format} Inc VAT</span>")
+                expect(Store::Price.new(sku.price).markup).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').format} Inc VAT</span>")
             end
         end
 
