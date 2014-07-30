@@ -33,7 +33,7 @@ module Store
         #
         # @return [String] price with currency
         def format
-            number_to_currency(@price, :unit => Store::settings.currency, :precision => (@price.round == @price) ? 0 : 2)
+            number_to_currency(@price, :unit => Store::settings.currency, :precision => 2)
         end
 
         # Renders the DOM elements for a product with more than one SKU and thereby more than one price
