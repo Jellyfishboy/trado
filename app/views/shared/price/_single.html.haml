@@ -1,4 +1,4 @@
 .price
     = price
-    %span= "<span class='tax-suffix'>#{number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2)} Inc #{Store::settings.tax_name}</span>".html_safe unless gross.nil?
+    %span.tax-suffix= "#{number_to_currency(gross, :unit => Store::settings.currency, :precision => (gross.round == gross) ? 0 : 2)} Inc #{Store::settings.tax_name}" unless gross.nil?
        
