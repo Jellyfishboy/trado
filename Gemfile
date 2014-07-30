@@ -6,7 +6,6 @@ gem 'rails', '4.1.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
 
 # Production gems
 group :production do
@@ -25,6 +24,7 @@ group :development do
     gem 'bullet'
     gem 'metric_fu'
     gem 'capistrano-unicorn', :require => false, :platforms => :ruby
+    gem 'thin'
 end
 
 group :test do
