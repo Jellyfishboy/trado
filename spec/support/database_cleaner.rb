@@ -16,11 +16,6 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  # Need to set app feature specs as truncaton strategy, as transaction does not reset the primary key for the Shipatron4000::tier method spec
-  config.before(:each, type: :feature) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
   # Execute the aforementioned cleanup strategy before and after.
   config.before(:each) do
     DatabaseCleaner.start
