@@ -1,6 +1,7 @@
-<%  @accessory_price = Accessory.where('id = ?', params[:accessory_id]).pluck(:price).first ? Accessory.where('id = ?', params[:accessory_id]).pluck(:price).first : 0
-    @sku = Sku.find(params[:sku_id])
-    @notification = Notification.new %>
+<% @accessory_price =  Accessory.where(id: params[:accessory_id]).pluck(:price).first ? Accessory.where(id: params[:accessory_id]).pluck(:price).first : 0
+   @sku = Sku.find(params[:sku_id])
+   @notification = Notification.new 
+%>
 $('.product-title span.price').html('<%=j Store::Price.new(@sku.price + @accessory_price).markup %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');

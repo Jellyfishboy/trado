@@ -8,8 +8,8 @@ Trado::Application.routes.draw do
 
   # Custom routes
   get '/order/shippings/update' => 'shippings#update'
-  get '/product/skus/:id' => 'skus#update'
-  get '/product/accessories/:id' => 'accessories#update'
+  get '/product/skus' => 'skus#update'
+  get '/product/accessories' => 'accessories#update'
   get '/search' => 'search#results'
   get '/search/autocomplete' => 'search#autocomplete'
 

@@ -28,8 +28,8 @@ ready = function()
     trado.modal.open('#estimate-shipping', '#estimateDeliveryModal');
     trado.app.submitAll();
     trado.animation.loadingSettings();
-    trado.app.updatePrice('/product/skus/', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
-    trado.app.updatePrice('/product/accessories/', '&sku_id=', '#cart_item_cart_item_accessory_accessory_id', '#cart_item_sku_id');
+    trado.app.updatePrice('/product/skus/?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
+    trado.app.updatePrice('/product/accessories/?accessory_id=', '&sku_id=', '#cart_item_cart_item_accessory_accessory_id', '#cart_item_sku_id');
     trado.app.typeahead();
     trado.app.selectShipping();
     trado.app.updateShipping();
@@ -42,7 +42,6 @@ $(document).ajaxComplete(function()
 {
     trado.modal.open('.notify_me', '#notifyMeModal');
     trado.animation.loadingSettings();
-    trado.app.updatePrice('/product/skus/', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
     trado.app.selectShipping();
     trado.app.jsonErrors();
 });
