@@ -25,6 +25,8 @@ group :development do
     gem 'metric_fu'
     gem 'capistrano-unicorn', :require => false, :platforms => :ruby
     gem 'thin'
+    gem 'highline'
+    gem 'colorize'
 end
 
 group :test do
