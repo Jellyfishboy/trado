@@ -5,7 +5,7 @@ category = Category.create({
     name: 'Category #1', 
     description: 'This is your first category.', 
     visible: true, 
-    sorting: 1000
+    sorting: 0
 })
 attribute_type = AttributeType.create({
     name: 'Weight', 

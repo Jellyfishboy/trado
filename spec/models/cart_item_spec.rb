@@ -10,6 +10,16 @@ describe CartItem do
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:cart_item_accessory) }
 
+    describe "Default scope" do
+        let!(:cart_item_1) { create(:cart_item, created_at: 1.hour.ago) }
+        let!(:cart_item_2) { create(:cart_item, created_at: 6.hours.ago) }
+        let!(:cart_item_3) { create(:cart_item, created_at: Time.now) }
+
+        it "should return an array of cart items ordered by descending created_at" do
+            expect(CartItem.last(3)).to match_array([cart_item_3, cart_item_1, cart_item_2])
+        end
+    end
+
     describe "When calculating a cart item total" do
         let!(:cart_item) { build(:cart_item, price: 12, quantity: 7) }
         it "should return the sum of price multiplied by quantity" do
