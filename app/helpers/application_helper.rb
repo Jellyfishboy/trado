@@ -42,7 +42,7 @@ module ApplicationHelper
     #
     # @return [Array] list of categories
     def category_list
-      Category.joins(:products).where('visible = ?', true).order(sorting: :asc)
+      Category.joins(:products).where('visible = ?', true).group('categories.id').order(sorting: :asc)
     end
     
     # If the string parameter equals the current controller value in the parameters hash, return a string
