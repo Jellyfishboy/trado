@@ -35,7 +35,7 @@ class CartItemsController < ApplicationController
 
     def void_shipping
       order = current_cart.order
-      unless order.nil? || order.shipping_id.nil? || orders.tiers.nil?
+      unless order.nil? || order.shipping_id.nil? || order.tiers.nil?
         order.shipping_id = nil
         order.tiers = nil
         order.save(validate: false)
