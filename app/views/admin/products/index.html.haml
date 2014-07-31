@@ -33,9 +33,9 @@
             %tbody
               - category.products.each do |product|
                 %tr
-                  %td= product.sku
-                  %td= product.part_number
-                  %td= link_to product.name, [product.category, product]
+                  %td.sku= product.sku
+                  %td.part-no= product.part_number
+                  %td.name= link_to product.name, [product.category, product]
                   %td.inner-table
                     %table
                       %tbody

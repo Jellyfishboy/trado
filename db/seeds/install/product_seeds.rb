@@ -4,7 +4,7 @@ puts 'Executing product seeds'.colorize(:green)
 category = Category.create({
     name: 'Category #1', 
     description: 'This is your first category.', 
-    visible: true, 
+    active: true, 
     sorting: 0
 })
 attribute_type = AttributeType.create({
