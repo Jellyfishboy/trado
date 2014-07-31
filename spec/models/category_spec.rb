@@ -16,6 +16,16 @@ describe Category do
 
     it { expect(subject).to validate_uniqueness_of(:name) }
 
+    describe "Listing all categories" do
+        let!(:category_1) { create(:category) }
+        let!(:category_2) { create(:category, active: false) }
+        let!(:category_3) { create(:category) }
+
+        it "should return an array of 'active' categories" do
+            expect(Category.active).to match_array([category_1, category_3])
+        end
+    end
+
     describe "Default scope" do
         let!(:category_1) { create(:category, sorting: 2) }
         let!(:category_2) { create(:category, sorting: 0) }

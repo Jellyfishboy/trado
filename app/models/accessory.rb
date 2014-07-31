@@ -35,13 +35,8 @@ class Accessory < ActiveRecord::Base
 
   after_update :update_cart_item_accessories_weight
 
-  # Grabs an array of records which have their active field set to true
-  #
-  # @return [Array] list of active accessories
-  def self.active
-    where(['accessories.active = ?', true])
-  end
-
+  include ActiveScope
+  
   # If the record's weight has changed, update all associated cart_item_accessorie parent cart_item records with the new weight
   #
   def update_cart_item_accessories_weight

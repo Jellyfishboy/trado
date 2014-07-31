@@ -37,12 +37,12 @@ module ApplicationHelper
       end
     end
 
-    # Returns an array of categories which are visible and ordered by their ascending weighting value
+    # Returns an array of categories which are active and ordered by their ascending sorting value
     # Including product data for the links
     #
     # @return [Array] list of categories
     def category_list
-      Category.joins(:products).where('visible = ?', true).group('categories.id').order(sorting: :asc)
+      Category.joins(:products).active.group('categories.id').order(sorting: :asc)
     end
     
     # If the string parameter equals the current controller value in the parameters hash, return a string

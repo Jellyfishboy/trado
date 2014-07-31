@@ -22,7 +22,7 @@ describe Accessory do
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
-    describe "Listing all products" do
+    describe "Listing all accessories" do
         let!(:accessory_1) { create(:accessory) }
         let!(:accessory_2) { create(:accessory, active: false) }
         let!(:accessory_3) { create(:accessory) }

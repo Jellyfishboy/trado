@@ -12,7 +12,7 @@ describe ApplicationHelper do
             create(:product, category_id: category_2.id, active: true)
         end
 
-        it "should return a list of visible categories sorted by their sorting attribute value" do
+        it "should return a list of active categories sorted by their sorting attribute value" do
             expect(helper.category_list).to match_array([category_1, category_2])
         end
     end

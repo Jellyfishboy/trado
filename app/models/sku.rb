@@ -51,6 +51,8 @@ class Sku < ActiveRecord::Base
 
   after_create :create_stock_level
 
+  include ActiveScope
+
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU
   #
   # @return [Boolean]
@@ -59,13 +61,6 @@ class Sku < ActiveRecord::Base
       errors.add(:sku, "stock warning level value must not be below your stock count.")
       return false
     end
-  end
-  
-  # Grabs an array of records which have their active field set to true
-  #
-  # @return [Array] list of active skus
-  def self.active
-    where(['skus.active = ?', true])
   end
 
   # If the record's weight has changed, update all associated cart_items records with the new weight

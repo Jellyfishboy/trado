@@ -11,6 +11,7 @@ db/test.sqlite3
 db/development.sqlite3
 doc/*
 .yardoc
+*.gitkeep
 
 public/uploads/attachment
 

@@ -62,6 +62,8 @@ class Product < ActiveRecord::Base
   searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope { order('weighting DESC') }
+
+  include ActiveScope
   
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
@@ -74,13 +76,6 @@ class Product < ActiveRecord::Base
       name: name,
       conversions: searches.group("query").count
     }
-  end
-  
-  # Grabs an array of records which have their active field set to true
-  #
-  # @return [Array] list of active products
-  def self.active
-    where(['products.active = ?', true])
   end
 
   # Detects if a product has more than one SKU when attempting to set the single product field as true

@@ -9,7 +9,7 @@
 #  id                   :integer            not null, primary key
 #  name                 :string(255)      
 #  description          :text             
-#  visible              :boolean            default(false)
+#  active               :boolean            default(false)
 #  slug                 :string(255)
 #  sorting              :integer            default(0)
 #  created_at           :datetime           not null
@@ -17,7 +17,7 @@
 #
 class Category < ActiveRecord::Base
 
-  attr_accessible :description, :name, :visible, :sorting
+  attr_accessible :description, :name, :active, :sorting
 
   has_many :products,                                    dependent: :restrict_with_exception
   has_many :skus,                                        through: :products
@@ -28,6 +28,7 @@ class Category < ActiveRecord::Base
   validates :sorting,                                    :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
 
   default_scope { order(sorting: :asc) }
+  include ActiveScope
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]

@@ -20,7 +20,7 @@ describe Shipping do
     it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
-    describe "Listing all products" do
+    describe "Listing all shippings" do
         let!(:shipping_1) { create(:shipping, active: true) }
         let!(:shipping_2) { create(:shipping) }
         let!(:shipping_3) { create(:shipping, active: true) }

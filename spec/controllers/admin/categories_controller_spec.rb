@@ -69,7 +69,7 @@ describe Admin::CategoriesController do
     end
 
     describe 'PUT #update' do
-        let!(:category) { create(:category, name: 'Category #1', visible: false) }
+        let!(:category) { create(:category, name: 'Category #1', active: false) }
 
         context "with valid attributes" do
             it "should locate the requested @category" do
@@ -77,10 +77,10 @@ describe Admin::CategoriesController do
                 expect(assigns(:category)).to eq(category)
             end
             it "should update the category in the database" do
-                patch :update, id: category.id, category: attributes_for(:category, name: 'Category #2', visible: true)
+                patch :update, id: category.id, category: attributes_for(:category, name: 'Category #2', active: true)
                 category.reload
                 expect(category.name).to eq('Category #2')
-                expect(category.visible).to eq(true)
+                expect(category.active).to eq(true)
             end
             it "should redirect to the categories#index" do
                 patch :update, id: category.id, category: attributes_for(:category)
@@ -89,10 +89,10 @@ describe Admin::CategoriesController do
         end
         context "with invalid attributes" do 
             it "should not update the category" do
-                patch :update, id: category.id, category: attributes_for(:category, name: nil, visible: true)
+                patch :update, id: category.id, category: attributes_for(:category, name: nil, active: true)
                 category.reload
                 expect(category.name).to eq('Category #1')
-                expect(category.visible).to eq(false)
+                expect(category.active).to eq(false)
             end
             it "should re-render the #edit template" do
                 patch :update, id: category.id, category: attributes_for(:invalid_category)

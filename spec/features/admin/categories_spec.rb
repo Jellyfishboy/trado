@@ -40,7 +40,7 @@ feature 'Category management' do
             fill_in('category_name', with: 'category #1')
             fill_in('category_description', with: 'Lorem mofo tellivizzle sit amizzle, dawg adipiscing elit. Nullizzle sapien velit, boom shackalack volutpizzle, suscipit dang, gravida vel, fo shizzle my nizzle.')
             fill_in('category_sorting', with: '0')
-            find('#category_visible').set(true)
+            find('#category_active').set(true)
             click_button 'Submit'
         }.to change(Category, :count).by(1)
         expect(current_path).to eq admin_categories_path
@@ -76,7 +76,7 @@ feature 'Category management' do
         category_2.reload
         expect(category_2.name).to eq 'category #2'
         expect(category_2.sorting).to eq 5
-        expect(category_2.visible).to eq true
+        expect(category_2.active).to eq true
     end
 
     scenario "should delete a category if there is more than one record" do

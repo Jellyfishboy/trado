@@ -33,13 +33,8 @@ class Shipping < ActiveRecord::Base
 
   default_scope { order(price: :asc) }
   
+  include ActiveScope
   scope :find_collection,                               ->(cart, country) { joins(:tiereds, :countries).where(tiereds: { :tier_id => cart.order.tiers }, countries: { :name => country }).load }
 
-  # Grabs an array of records which have their active field set to true
-  #
-  # @return [array] list of active shippings
-  def self.active
-    where(['shippings.active = ?', true])
-  end
 
 end

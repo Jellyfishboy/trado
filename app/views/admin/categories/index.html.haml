@@ -25,6 +25,6 @@
               %td= link_to category.name, category
               %td= category.description
               %td= category.sorting
-              %td= category.visible ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe
+              %td= category.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe
               %td= category.products.count
               = table_commands category, category, edit_admin_category_path(category), admin_category_path(category), 0
