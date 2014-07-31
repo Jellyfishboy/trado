@@ -1,6 +1,6 @@
 Trado::Application.routes.draw do
 
-  root to: 'store#index'
+  root to: 'store#home'
 
   # Standard pages
   get '/about' => 'store#about'
