@@ -9,20 +9,23 @@
             %li
               %i.icon-cancel-circle
               = msg  
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'
-      .form-group.form-last
-        = f.label 'Countries'
-        - if @countries.empty?
-          %p No zones to select.
-        - else
+    .widget-sub-heading
+      %h3 Countries
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-form
+        %thead
+          %tr
+            %th Name
+            %th.align-center Select
+        %tbody
           = f.collection_check_boxes :country_ids, @countries, :id, :name, checked: @zone.countries.map(&:id) do |c|
-            .checkbox.blocked
-              %label
-                = c.check_box
-                = c.label
+            %tr
+              %td= c.label
+              %td= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

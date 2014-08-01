@@ -13,26 +13,29 @@
             %li
               %i.icon-cancel-circle
               = msg 
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'
       .form-group
         = f.label :price
         = f.text_field :price, :class => 'form-control calculate-tax', :autocomplete => 'off'
-      .form-group
+      .form-group.form-last
         = f.label :description
         = f.text_area :description, :class => 'form-control', :rows => 7
-      .form-group.form-last
-        = f.label 'Zones'
-        - if @zones.empty?
-          %p No zones to select.
-        - else
+    .widget-sub-heading
+      %h3 Zones
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-form
+        %thead
+          %tr
+            %th Name
+            %th.align-center Select
+        %tbody
           = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @shipping.zones.map(&:id) do |c|
-            .checkbox.blocked
-              %label
-                = c.check_box
-                = c.label
+            %tr
+              %td= c.label
+              %td= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

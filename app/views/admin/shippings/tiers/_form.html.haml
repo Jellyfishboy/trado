@@ -9,7 +9,7 @@
             %li
               %i.icon-cancel-circle
               = msg 
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         = f.label :length_start
         = f.text_field :length_start, :class => 'form-control'
@@ -28,16 +28,21 @@
       .form-group
         = f.label :thickness_end
         = f.text_field :thickness_end, :class => 'form-control'
-      .form-group.form-last
-        = f.label 'Shipping methods'
-        - if @shippings.empty? 
-          %p No shipping options to select.
-        - else
+    .widget-sub-heading
+      %h3 Shippings
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-form
+        %thead
+          %tr
+            %th Name
+            %th Net price
+            %th.align-center Select
+        %tbody
           = f.collection_check_boxes :shipping_ids, @shippings, :id, :name, checked: @tier.shippings.map(&:id) do |c|
-            .checkbox.blocked
-              %label
-                = c.check_box
-                = c.label
+            %tr
+              %td= c.label
+              %td= Store::Price.new(c.object.price, 'net').format
+              %td= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

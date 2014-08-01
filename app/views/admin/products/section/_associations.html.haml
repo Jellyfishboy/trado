@@ -1,26 +1,42 @@
 .widget-sub-heading
   %h3 Accessories
-%fieldset.widget.widget-content
-  .row
-    .twelvecol
-      - if @accessories.empty?
-        %p No accessories to select.
-      - else
-        = f.collection_check_boxes :accessory_ids, @accessories, :id, :name, checked: @product.accessories.map(&:id) do |c|
-          .checkbox
-            %label
-              = c.check_box
-              = c.label
+- if @accessories.empty?
+  %fieldset.widget.widget-content
+    %p No accessories to select.
+- else
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-form.table-margin
+    %thead
+      %tr
+        %th Part no.
+        %th Name
+        %th Weight (g)
+        %th.align-center Select
+    %tbody
+      = f.collection_check_boxes :accessory_ids, @accessories, :id, :name, checked: @product.accessories.map(&:id) do |c|
+        %tr
+          %td= c.object.part_number
+          %td= c.label
+          %td= c.object.weight
+          %td= c.check_box
 .widget-sub-heading
   %h3 Related products
-%fieldset.widget.widget-content
-  .row
-    .twelvecol
-      - if @products.where.not(name: @product.name).empty?
-        %p No related products to select.
-      - else
-        = f.collection_check_boxes :related_ids, @products.where.not(name: @product.name), :id, :name, checked: @product.related.map(&:id) do |c|
-          .checkbox
-            %label
-              = c.check_box
-              = c.label
+- if @products.where.not(name: @product.name).empty?
+  %fieldset.widget.widget-content
+    %p No related products to select.
+- else
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-form.table-margin
+    %thead
+      %tr
+        %th SKU
+        %th Part no.
+        %th Name
+        %th.align-center Select
+    %tbody
+      = f.collection_check_boxes :related_ids, @products.where.not(name: @product.name), :id, :name, checked: @product.related.map(&:id) do |c|
+        %tr
+          %td= c.object.sku
+          %td= c.object.part_number
+          %td= c.label
+          %td= c.check_box
