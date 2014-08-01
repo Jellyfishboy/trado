@@ -78,7 +78,7 @@ feature 'Tier management' do
         end
         fill_in('tier_length_start', with: '4.92')
         fill_in('tier_weight_end', with: '215.67')
-        find('.form-last div:nth-child(3) label input[type="checkbox"]').set(false)
+        find('table tbody tr:first-child td:last-child input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_shippings_tiers_path
         within '.alert.alert-success' do
@@ -91,7 +91,7 @@ feature 'Tier management' do
         expect(tier_with_shippings.length_start).to eq BigDecimal.new("4.92")
         expect(tier_with_shippings.weight_end).to eq BigDecimal.new("215.67")
         expect(tier_with_shippings.shippings.count).to eq 1
-        expect(tier_with_shippings.shippings.first.name).to eq 'Royal Mail 1st class'
+        expect(tier_with_shippings.shippings.first.name).to eq '48H Parcelforce'
     end
 
     scenario "should delete a tier if there is more than one record" do

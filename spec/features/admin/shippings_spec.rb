@@ -64,7 +64,7 @@ feature 'Shipping management' do
             expect(page).to have_content 'Edit'
         end
         fill_in('shipping_price', with: '4.92')
-        find('.form-last div:nth-child(3) label input[type="checkbox"]').set(false)
+        find('table tbody tr:first-child td:last-child input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_shippings_path
         within '.alert.alert-success' do
@@ -77,7 +77,7 @@ feature 'Shipping management' do
         expect(shipping_with_zones.price).to eq BigDecimal.new("4.92")
         expect(shipping_with_zones.name).to eq 'Royal mail 1st class'
         expect(shipping_with_zones.zones.count).to eq 1
-        expect(shipping_with_zones.zones.first.name).to eq 'EU'
+        expect(shipping_with_zones.zones.first.name).to eq 'Asia'
     end
 
     scenario 'should display an index of tiers' do

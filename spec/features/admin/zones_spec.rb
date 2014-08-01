@@ -62,7 +62,7 @@ feature 'Zone management' do
             expect(page).to have_content 'Edit'
         end
         fill_in('zone_name', with: 'Asia')
-        find('.form-last div:nth-child(3) label input[type="checkbox"]').set(false)
+        find('table tbody tr:first-child td:last-child input[type="checkbox"]').set(false)
         click_button 'Submit'
         expect(current_path).to eq admin_zones_path
         within '.alert.alert-success' do
@@ -74,7 +74,7 @@ feature 'Zone management' do
         zone_with_countries.reload
         expect(zone_with_countries.name).to eq 'Asia'
         expect(zone_with_countries.countries.count).to eq 1
-        expect(zone_with_countries.countries.first.name).to eq 'Jamaica'
+        expect(zone_with_countries.countries.first.name).to eq 'United Kingdom'
     end
 
     scenario 'should display an index of countries' do
