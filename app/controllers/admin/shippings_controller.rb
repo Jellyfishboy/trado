@@ -92,5 +92,6 @@ class Admin::ShippingsController < ApplicationController
 
     def get_associations
       @zones = Zone.all
+      @tiers = Tier.all
     end
 end

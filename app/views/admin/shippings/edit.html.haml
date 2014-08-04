@@ -13,7 +13,7 @@
             %li
               %i.icon-cancel-circle
               = msg 
-    %fieldset.widget.widget-content.widget-last
+    %fieldset.widget.widget-content
       .form-group
         = f.label :name
         = f.text_field :name, :class => 'form-control'
@@ -26,7 +26,7 @@
     .widget-sub-heading
       %h3 Zones
     .table-responsive
-      %table.table.table-striped.table-bordered.table-hover.table-form
+      %table.table.table-striped.table-bordered.table-hover.table-form.table-margin
         %thead
           %tr
             %th Name
@@ -36,6 +36,25 @@
             %tr
               %td= c.label
               %td.align-center= c.check_box
+    .widget-sub-heading
+      %h3 Tiers
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-form
+        %thead
+          %tr
+            %th ID
+            %th Length (mm)
+            %th Weight (g)
+            %th Thickness (mm)
+            %th.align-center Select
+        %tbody
+          = f.collection_check_boxes :tier_ids, @tiers, :id, :id, checked: @form_shipping.tiers.map(&:id) do |c|
+            %tr
+              %td= c.label
+              %td= "#{c.object.length_start} - #{c.object.length_end}"
+              %td= "#{c.object.weight_start} - #{c.object.weight_end}"
+              %td= "#{c.object.thickness_start} - #{c.object.thickness_end}"
+              %td= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

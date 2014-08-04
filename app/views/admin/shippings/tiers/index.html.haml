@@ -24,18 +24,9 @@
           - @tiers.each do |tier|
             %tr
               %td= tier.id
-              %td
-                = tier.length_start
-                = '- '
-                = tier.length_end
-              %td
-                = tier.weight_start
-                = ' - '
-                = tier.weight_end
-              %td
-                = tier.thickness_start
-                = ' - '
-                = tier.thickness_end
+              %td= "#{tier.length_start} - #{tier.length_end}"
+              %td= "#{tier.weight_start} - #{tier.weight_end}"
+              %td= "#{tier.thickness_start} - #{tier.thickness_end}"
               %td
                 %ul 
                   - tier.shippings.active.each do |shipping|
