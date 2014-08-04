@@ -6,6 +6,6 @@ var trado =
     form: {},
     app: {},
     admin: {},
-    misc: {}
-
+    misc: {},
+    filter: {}
 };

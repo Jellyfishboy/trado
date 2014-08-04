@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.active.load
-    @categories = Category.includes(:products, :skus, :attribute_types).where(products: { active: true }, skus: { active: true } ).load
+    @categories = Category.joins(:products).group('categories.id').all
     respond_to do |format|
       format.html
       format.json { render json: @products }

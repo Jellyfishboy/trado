@@ -1,5 +1,7 @@
 - content_for :title, 'Products'
 - content_for :breadcrumb, 'Products'
+- javascript 'mixitup/build/jquery.mixitup.min'
+- javascript 'filters/product'
 
 .twelvecol
   .page-header
@@ -8,42 +10,50 @@
     = link_to admin_products_skus_attribute_types_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Attribute types" do
       %i.icon-filter-2
     %h2.widget.widget-header Products
+  .widget-controls
+    %select#filter-product-category.form-select
+      %option.filter{"data-filter" => "all"} Show all
+      - @categories.each do |category|
+        %option.filter{"data-filter" => ".category-#{category.slug}"}= category.name
+    %span Filter by:
+    %select#sort-product.form-select.widget-control-margin
+      %option.sort{"data-sort" => "default"} Weighting ↑
+      %option.sort{"data-sort" => "weighting:asc"} Weighting ↓
+      %option.sort{"data-sort" => "name:desc"} Name ↑
+      %option.sort{"data-sort" => "name:asc"} Name ↓
+    %span Sort by:
   - if @products.empty?
     %p You don't have any products yet.
   - else
-    - @categories.each do |category|
-      - unless category.products.empty?
-        .widget-sub-heading
-          %h3= category.name
-        .table-responsive
-          %table.table.table-striped.table-bordered.table-hover.table-margin
-            %thead.main-table
-              %tr
-                %th SKU
-                %th Part no.
-                %th Name
-                %th.inner-table
-                  %table
-                    %thead
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover.table-margin
+        %thead.main-table
+          %tr
+            %th SKU
+            %th Part no.
+            %th Name
+            %th.inner-table
+              %table
+                %thead
+                  %tr
+                    %th Variant
+                    %th Net price
+                    %th Gross Price
+            %th
+        %tbody.mixitup
+          - @products.each do |product|
+            %tr.mix{:class => "category-#{product.category.slug}", "data-name" => product.name, "data-weighting" => product.weighting}
+              %td.sku= product.sku
+              %td.part-no= product.part_number
+              %td.name= link_to product.name, [product.category, product], target: '_blank'
+              %td.inner-table
+                %table
+                  %tbody
+                    - product.skus.each do |sku|
                       %tr
-                        %th Variant
-                        %th Net price
-                        %th Gross Price
-                %th
-            %tbody
-              - category.products.each do |product|
-                %tr
-                  %td.sku= product.sku
-                  %td.part-no= product.part_number
-                  %td.name= link_to product.name, [product.category, product], target: '_blank'
-                  %td.inner-table
-                    %table
-                      %tbody
-                        - product.skus.each do |sku|
-                          %tr
-                            %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}" unless sku.attribute_value.nil? && sku.attribute_type.nil?
-                            %td= Store::Price.new(sku.price, 'net').format
-                            %td= Store::Price.new(sku.price, 'gross').format
-                  = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
+                        %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}" unless sku.attribute_value.nil? && sku.attribute_type.nil?
+                        %td= Store::Price.new(sku.price, 'net').format
+                        %td= Store::Price.new(sku.price, 'gross').format
+              = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
 
               

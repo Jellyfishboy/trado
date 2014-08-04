@@ -1,5 +1,7 @@
-$(document).ajaxComplete(function(){
-    $(".datepicker").datepicker({
+$(document).ajaxComplete(function()
+{
+    $(".datepicker").datepicker(
+    {
       format: "dd/mm/yyyy",
       startDate: "0"
     });

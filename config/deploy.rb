@@ -3,7 +3,7 @@ set :user, 'root'
 set :scm, 'git'
 set :repository, 'git@github.com:Jellyfishboy/trado.git'
 set :scm_verbose, true
-set :domain, '141.0.175.166'
+set :domain, '37.139.0.243'
 set :deploy_to, '/home/gimsonrobotics/'
 set :branch, 'master'
 

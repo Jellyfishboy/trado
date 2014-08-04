@@ -22,8 +22,8 @@
         %tbody
           - @orders.each do |order|
             %tr
-              %td= link_to order.id, [:admin, order]
-              %td= link_to order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank' if order.transactions.last.paypal_id
+              %td= order.id
+              %td= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank')
               %td= status_label order, order.shipping_status
               %td= status_label order.transactions.last, order.transactions.last.payment_status
               %td= Store::Price.new(order.gross_amount, 'net').format

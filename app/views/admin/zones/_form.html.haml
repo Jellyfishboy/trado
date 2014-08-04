@@ -25,7 +25,7 @@
           = f.collection_check_boxes :country_ids, @countries, :id, :name, checked: @zone.countries.map(&:id) do |c|
             %tr
               %td= c.label
-              %td= c.check_box
+              %td.align-center= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

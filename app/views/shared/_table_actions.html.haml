@@ -1,4 +1,8 @@
 %td.table-actions
+  / View order
+  - if type == 2
+    = link_to view do
+      %i.icon-search
   / Update stock level
   - if type == 1
     %a.new_stock_levels{href: "#/", id: object.id}

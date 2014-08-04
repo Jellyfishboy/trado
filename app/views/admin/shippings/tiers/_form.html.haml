@@ -42,7 +42,7 @@
             %tr
               %td= c.label
               %td= Store::Price.new(c.object.price, 'net').format
-              %td= c.check_box
+              %td.align-center= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

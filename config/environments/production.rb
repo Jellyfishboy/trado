@@ -24,6 +24,8 @@ Trado::Application.configure do
                                 'modernizr/modernizr.js', 
                                 'orders.js', 
                                 'products.js', 
+                                'filter.js',
+                                'mixitup/build/jquery.mixitup.min',
                                 'typeahead.js/dist/typeahead.jquery.min.js'
                               ]
 

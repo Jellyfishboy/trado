@@ -71,6 +71,7 @@ trado.admin =
             $('.loading-overlay').css('height', '100%').addClass('active');
             $('.loading5').addClass('active');
         });
-    }
+    },
+    
 
 }
