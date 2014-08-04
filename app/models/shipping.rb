@@ -17,7 +17,7 @@
 #
 class Shipping < ActiveRecord::Base
 
-  attr_accessible :name, :price, :description, :active, :zone_ids
+  attr_accessible :name, :price, :description, :active, :zone_ids, :tier_ids
 
   has_many :tiereds,                                    :dependent => :delete_all
   has_many :tiers,                                      :through => :tiereds
