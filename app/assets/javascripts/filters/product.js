@@ -1,9 +1,9 @@
 //= require trado.filter
 
-productReady = function()
+ready = function()
 {
     trado.filter.tableRowTarget();
     trado.filter.products();
 };
 $(document).ready(ready);
-$(document).on('page:load', productReady)
+$(document).on('page:load', ready)

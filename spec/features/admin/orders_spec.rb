@@ -27,10 +27,10 @@ feature 'Order management' do
             expect(page).to have_content 'Order no.'
         end
         within 'tbody tr:first-child td:last-child' do
-            expect(page).to have_selector('a', count: 0)
+            expect(page).to have_selector('a', count: 1)
         end
         within 'tbody tr:last-child td:last-child' do
-            expect(page).to have_selector('a', count: 1)
+            expect(page).to have_selector('a', count: 2)
         end
     end
 
@@ -38,7 +38,7 @@ feature 'Order management' do
         pending
 
         visit admin_orders_path
-        find('tbody tr td:first-child a').click
+        find('tbody tr td:last-child a:first-child').click
         expect(current_path).to eq admin_order_path(pending)
         within 'h2' do
             expect(page).to have_content "Order ##{pending.id}"
@@ -69,7 +69,7 @@ feature 'Order management' do
         complete
 
         visit admin_orders_path
-        find('tbody tr td:first-child a').click
+        find('tbody tr td:last-child a:first-child').click
         expect(current_path).to eq admin_order_path(complete)
         within 'h2' do
             expect(page).to have_content "Order ##{complete.id}"

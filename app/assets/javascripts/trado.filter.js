@@ -5,7 +5,7 @@ trado.filter =
     ///////////////////////////////////
     tableRowTarget: function()
     {
-        $("tr.mixitup").mixItUp(
+        $("tbody.mixitup").mixItUp(
         {
           layout: 
           {
