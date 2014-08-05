@@ -24,6 +24,7 @@ Trado::Application.configure do
                                 'modernizr/modernizr.js', 
                                 'products.js', 
                                 'filter.js',
+                                'admin/soca.datepicker.js',
                                 'typeahead.js/dist/typeahead.jquery.min.js'
                               ]
 

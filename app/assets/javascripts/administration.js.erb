@@ -26,12 +26,6 @@ ready = function()
     trado.modal.ajaxOpen('.edit_order_attributes', '/admin/orders/', '/edit');
     trado.modal.ajaxOpen('.new_stock_levels', '/admin/products/skus/stock_levels/new?sku_id=', null);
     trado.modal.ajaxOpen('.edit_sku_attributes', '/admin/products/skus/', '/edit');
-
 };
 $(document).ready(ready);
-$(document).on('page:load', ready)
-
-$(document).ajaxComplete(function()
-{
-    soca.misc.datepicker();
-});
+$(document).on('page:load', ready);
