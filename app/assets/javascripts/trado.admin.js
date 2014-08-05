@@ -28,19 +28,6 @@ trado.admin =
       });
     },
 
-    taxField: function()
-    {   
-        var $elem = $('.calculate-tax');
-        $elem.each(function() 
-        {
-            return $(this).closest('input').after('<div class="gross label label-green">Gross amount: ' + parseFloat(trado.misc.taxify(this.value), 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>');
-        });
-        $elem.bind("input", function() 
-        {
-            return $(this).next('.gross').text('Gross amount: ' + parseFloat(trado.misc.taxify(this.value)).toFixed(2));
-        });
-    },
-
     addField: function(link, association, content, target) 
     {
         var newId, regExp;
