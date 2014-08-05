@@ -22,10 +22,8 @@ Trado::Application.configure do
                                 'custom.css', 
                                 'css3-fallback.js', 
                                 'modernizr/modernizr.js', 
-                                'orders.js', 
                                 'products.js', 
                                 'filter.js',
-                                'mixitup/build/jquery.mixitup.min',
                                 'typeahead.js/dist/typeahead.jquery.min.js'
                               ]
 

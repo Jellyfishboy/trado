@@ -54,7 +54,7 @@
               %td= "#{c.object.length_start} - #{c.object.length_end}"
               %td= "#{c.object.weight_start} - #{c.object.weight_end}"
               %td= "#{c.object.thickness_start} - #{c.object.thickness_end}"
-              %td= c.check_box
+              %td.align-center= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

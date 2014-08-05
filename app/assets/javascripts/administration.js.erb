@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require admin/soca
-//= require admin/bootstrap.min
 //= require jquery.scrollTo/jquery.scrollTo.min
 //= require _trado
 //= require trado.misc
@@ -12,9 +11,17 @@ var taxRate = "<%= Store::settings.tax_rate %>";
      
 ready = function()
 {
+    soca.animation.loading();
+    soca.animation.colourCaveat();
+    soca.animation.attachmentHandler();
+    soca.filter.tableRowTarget();
+    soca.filter.products();
+    soca.misc.updateTableHeight();
+    soca.mobile.disableScrolling();
+    soca.mobile.disableTooltips();
+    
     trado.admin.taxField();
     trado.admin.jsonErrors();
-    trado.admin.loadingSubmit();
 
     trado.modal.open('.store-setting-attachment', '#store-setting-attachment-form');
 
@@ -25,3 +32,8 @@ ready = function()
 };
 $(document).ready(ready);
 $(document).on('page:load', ready)
+
+$(document).ajaxComplete(function()
+{
+    soca.misc.datepicker();
+});

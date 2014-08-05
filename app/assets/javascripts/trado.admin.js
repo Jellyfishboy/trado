@@ -33,7 +33,7 @@ trado.admin =
         var $elem = $('.calculate-tax');
         $elem.each(function() 
         {
-            return $(this).closest('input').after('<div class="gross">Gross amount: ' + parseFloat(trado.misc.taxify(this.value), 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>');
+            return $(this).closest('input').after('<div class="gross label label-green">Gross amount: ' + parseFloat(trado.misc.taxify(this.value), 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString() + '</div>');
         });
         $elem.bind("input", function() 
         {
@@ -64,14 +64,4 @@ trado.admin =
             return $elem.remove();
         }
     },
-    loadingSubmit: function()
-    {
-        $('input[type=submit]').on('click', function()
-        {
-            $('.loading-overlay').css('height', '100%').addClass('active');
-            $('.loading5').addClass('active');
-        });
-    },
-    
-
 }
