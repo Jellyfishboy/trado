@@ -15,11 +15,4 @@ class BasePreview < ActionMailer::Preview
     def mock_sku
         Sku.active.last
     end
-
-    # Array of the last 5 product records in the database
-    #
-    # @return [array]
-    def mock_skus
-        Sku.last(3)
-    end
 end

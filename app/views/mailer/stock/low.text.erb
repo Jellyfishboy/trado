@@ -1,8 +1,0 @@
-You are running low on stock for the following items:
-
-<% @restock.each do |sku| %>
-    <%= link_to sku.product.name, [sku.product.category, sku.product] %>
-    <%= sku.stock %>
-<% end %>
-
-This is an automated email. Please do not respond to it.

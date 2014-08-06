@@ -8,4 +8,8 @@ class OrderMailerPreview < BasePreview
     def pending
         OrderMailer.pending(mock_order)
     end
+
+    def failed
+        OrderMailer.failed(mock_order)
+    end
 end
