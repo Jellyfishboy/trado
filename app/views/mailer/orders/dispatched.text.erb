@@ -1,12 +1,11 @@
-<% content_for :title, "Your #{Store::settings.name} order ##{@order.id}" %>
 <% content_for :header_1, Store::settings.name %>
-<% content_for :header_2, "Order pending" %>
+<% content_for :header_2, "Dispatch confirmation" %>
 
 Order #<%= @order.id %>
 
 Hello,
 
-Thanks for your order. We'll let you know once your payment has cleared and your order has been confirmed.
+We thought you'd like to know that we've dispatched your item(s). Your order is on the way, and can no longer be changed.
 
 Your delivery option
 ---------------------
@@ -54,4 +53,5 @@ Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>
 
 Questions about your order? Contact support@trado.io, quoting your order number.
 
-<% content_for :additional_info, 'This email confirms the order you have placed, it is not a confirmation of the payment status being completed. You will receive a follow up email shortly when your payment has cleared.' %>
+Thanks for shopping with us!
+<%= Store::settings.name %>

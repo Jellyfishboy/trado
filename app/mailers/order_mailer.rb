@@ -2,16 +2,16 @@ class OrderMailer < ActionMailer::Base
     layout 'email'
     default :from => "Tom Dallimore <tom.alan.dallimore@googlemail.com>"
 
-    # Deliver an email to the customer when an order has been received
+    # Deliver an email to the customer when an order has been completed
     #
     # @param order [Object]
-    def received order
+    def completed order
         @order = order
 
         mail(to: order.email, 
              subject: "Gimson Robotics ##{@order.id} order confirmation",
              template_path: 'mailer/orders',
-             template_name: 'received'
+             template_name: 'completed'
         )
     end
 
@@ -40,6 +40,19 @@ class OrderMailer < ActionMailer::Base
              subject: "Gimson Robotics ##{@order.id} failed",
              template_path: 'mailer/orders',
              template_name: 'failed'
+        )
+    end
+
+    # Deliver an email to the customer when the order has been set to dispatched
+    #
+    # @param order [Object]
+    def dispatched order
+        @order = order
+
+        mail(to: order.email, 
+             subject: "Gimson Robotics ##{@order.id} order shipped",
+             template_path: 'mailer/orders',
+             template_name: 'dispatched'
         )
     end
 end

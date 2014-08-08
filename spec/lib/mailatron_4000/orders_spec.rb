@@ -43,7 +43,7 @@ describe Mailatron4000::Orders do
         context "if the payment status is completed" do
             let(:completed) { create(:complete_order) }
 
-            it "should send a received email confirmation" do
+            it "should send a completed email confirmation" do
                 expect{
                     Mailatron4000::Orders.confirmation_email(completed)
                 }.to change {
@@ -54,7 +54,7 @@ describe Mailatron4000::Orders do
         context "if the payment status is failed" do
             let(:failed) { create(:failed_order) }
 
-            it "should send a received email confirmation" do
+            it "should send a completed email confirmation" do
                 expect{
                     Mailatron4000::Orders.confirmation_email(failed)
                 }.to change {

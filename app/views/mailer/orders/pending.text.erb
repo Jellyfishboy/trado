@@ -1,0 +1,56 @@
+<% content_for :header_1, Store::settings.name %>
+<% content_for :header_2, "Order pending" %>
+
+Order #<%= @order.id %>
+
+Hello,
+
+Thanks for your order. We'll let you know once your payment has cleared and your order has been confirmed.
+
+Your delivery option
+---------------------
+<%= @order.shipping.name %>
+
+Your order will be sent to
+---------------------
+<%= @order.ship_address.full_name %>
+
+<%= @order.ship_address.address %>
+<%= @order.ship_address.city %>
+<%= @order.ship_address.postcode %>
+<%= @order.ship_address.country %>
+
+<%= @order.ship_address.telephone %>
+
+Payment method
+---------------------
+
+Your billing address
+---------------------
+<%= @order.bill_address.full_name %>
+
+<%= @order.bill_address.address %>
+<%= @order.bill_address.city %>
+<%= @order.bill_address.postcode %>
+<%= @order.bill_address.country %>
+
+<%= @order.bill_address.telephone %>
+
+Order details
+---------------------
+Order #<%= @order.id %>
+Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b %Y") %>
+
+<% @order.order_items.each do |item| %>
+    <%= item.sku.product.name %> | <%= Store::Price.new(item.price, 'net').format %> | <%= item.quantity %> | <%= Store::Price.new(item.total_price, 'net').format %>
+<% end %>
+
+Subtotal: <%= Store::Price.new(@order.net_amount, 'net').format %>
+Delivery & handling: <%= Store::Price.new(@order.shipping.price, 'net').format %>
+Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').format %>
+<%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').format %>
+Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>
+
+Questions about your order? Contact support@trado.io, quoting your order number.
+
+<% content_for :additional_info, 'This email confirms the order you have placed, it is not a confirmation of the payment status being completed. You will receive a follow up email shortly when your payment has cleared.' %>

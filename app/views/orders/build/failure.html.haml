@@ -12,9 +12,9 @@
                     %span.light Order
                     Unsuccessful
                 %p 
-                    Unfortunately the payment for your order was unsuccessful.
+                    Unfortunately your order was unsuccessful.
 
-                %p= "Your order may have failed for the following reason(s): <strong>#{@order.transactions.last.status_reason}</strong>".html_safe unless @order.transactions.last.status_reason.nil?
+                %p= "Your order was unsuccessful for the following reason(s): <strong>#{@order.transactions.last.status_reason}</strong>".html_safe unless @order.transactions.last.status_reason.nil?
 
                 %p= "Error code: <strong>#{@order.transactions.last.error_code}</strong>".html_safe unless @order.transactions.last.error_code.nil?
 

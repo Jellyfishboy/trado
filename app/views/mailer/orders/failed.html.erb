@@ -1,0 +1,60 @@
+<% content_for :title, "Your #{Store::settings.name} order ##{@order.id} has been unsuccessful" %>
+<% content_for :header_1, Store::settings.name %>
+<% content_for :header_2, "Order unsuccessful" %>
+
+Order #<%= @order.id %>
+
+Hello,
+
+Unfortunately your order was unsuccessful. 
+
+<% unless @order.transactions.last.status_reason.nil? %>
+Your order was unsuccessful for the following reason(s): 
+<%= @order.transactions.last.status_reason %>
+<% end %>
+
+Your delivery option
+---------------------
+<%= @order.shipping.name %>
+
+Your delivery address
+---------------------
+<%= @order.ship_address.full_name %>
+
+<%= @order.ship_address.address %>
+<%= @order.ship_address.city %>
+<%= @order.ship_address.postcode %>
+<%= @order.ship_address.country %>
+
+<%= @order.ship_address.telephone %>
+
+Payment method
+---------------------
+
+Your billing address
+---------------------
+<%= @order.bill_address.full_name %>
+
+<%= @order.bill_address.address %>
+<%= @order.bill_address.city %>
+<%= @order.bill_address.postcode %>
+<%= @order.bill_address.country %>
+
+<%= @order.bill_address.telephone %>
+
+Order details
+---------------------
+Order #<%= @order.id %>
+Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b %Y") %>
+
+<% @order.order_items.each do |item| %>
+    <%= item.sku.product.name %> | <%= Store::Price.new(item.price, 'net').format %> | <%= item.quantity %> | <%= Store::Price.new(item.total_price, 'net').format %>
+<% end %>
+
+Subtotal: <%= Store::Price.new(@order.net_amount, 'net').format %>
+Delivery & handling: <%= Store::Price.new(@order.shipping.price, 'net').format %>
+Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').format %>
+<%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').format %>
+Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>
+
+If you would like assistance with your order, please don't hesitate to contact us at support@trado.io, quoting your order number.

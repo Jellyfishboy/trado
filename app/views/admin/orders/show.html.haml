@@ -89,12 +89,10 @@
               %td= item.quantity
               %td= Store::Price.new(item.total_price, 'net').format
           %tr
-            %td
-              = @order.shipping.name
-              .item-sub= @order.ship_address.country
+            %td= @order.shipping.name
             %td -
             %td= Store::Price.new(@order.shipping.price, 'net').format
-            %td 1
+            %td -
             %td= Store::Price.new(@order.shipping.price, 'net').format
           %tr
             %td.align-right.border-top{colspan: "4"}

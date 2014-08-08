@@ -8,7 +8,7 @@ module Mailatron4000
             Order.pending.each do |order|
                 if order.shipping_date.to_date == Date.today
                     order.dispatched!
-                    ShippingMailer.complete(order).deliver
+                    OrderMailer.dispatched(order).deliver
                 end
             end
         end
@@ -18,7 +18,7 @@ module Mailatron4000
         # @param order [Object]
         def self.confirmation_email order
             if order.transactions.last.completed?
-                OrderMailer.received(order).deliver
+                OrderMailer.completed(order).deliver
             elsif order.transactions.last.pending?
                 OrderMailer.pending(order).deliver
             elsif order.transactions.last.failed?

@@ -1,9 +1,8 @@
 class OrderMailerPreview < BasePreview
 
-    def received
-        OrderMailer.received(mock_order)
+    def completed
+        OrderMailer.completed(mock_order)
     end
-
 
     def pending
         OrderMailer.pending(mock_order)
@@ -11,5 +10,9 @@ class OrderMailerPreview < BasePreview
 
     def failed
         OrderMailer.failed(mock_order)
+    end
+
+    def dispatched
+        OrderMailer.dispatched(mock_order)
     end
 end

@@ -82,7 +82,15 @@ strong { font-weight:bold;}
                     </tr>
                     <tr align="left">
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '42' %></td>
-                        <td align="left" width="500" height="37"><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Please do not reply to this message; it was sent from an unmonitored email address. This message is a service email related to your use of <%= Store::settings.name %>.</p><p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #9e9e9e !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Copyright 2014 <%= Store::settings.name %>. All rights reserved.</p></td>
+                        <td align="left" width="500" height="37">
+                            <% unless yield(:additional_info).nil? %>
+                                <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">
+                                    <%= yield :additional_info %>
+                                </p> 
+                            <% end %>
+                            <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #666666 !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Please do not reply to this message; it was sent from an unmonitored email address. This message is a service email related to your use of <%= Store::settings.name %>.</p>
+                            <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #9e9e9e !important; font-size: 10px; line-height: 14px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Copyright 2014 <%= Store::settings.name %>. All rights reserved.</p>
+                        </td>
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '42' %></td>
                     </tr>
                     <tr>

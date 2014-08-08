@@ -43,7 +43,7 @@ describe Admin::TransactionsController do
                 expect(order.transactions.last.payment_status).to eq 'completed'
             end
 
-            it "should send an order received email" do
+            it "should send an order completed email" do
                 expect(ActionMailer::Base.deliveries.count).to eq 1
             end
 
