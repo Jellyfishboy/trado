@@ -70,11 +70,11 @@ class Order < ActiveRecord::Base
   # @param cart [Object]
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
-    net_amount = cart.total_price + shipping.price
-    self.update(  :net_amount => net_amount,
-                  :tax_amount => net_amount*current_tax_rate,
-                  :gross_amount => net_amount + (net_amount*current_tax_rate)
-              )
+    tax_amount = (cart.total_price + shipping.price)*current_tax_rate
+    self.update(  :net_amount => cart.total_price,
+                  :tax_amount => tax_amount,
+                  :gross_amount => cart.total_price + shipping.price + tax_amount
+    )
     self.save(validate: false)
   end
 

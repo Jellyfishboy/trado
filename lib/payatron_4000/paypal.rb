@@ -13,7 +13,7 @@ module Payatron4000
         # @return [Object] order data from the store for PayPal
         def self.express_setup_options order, steps, cart, ip_address, return_url, cancel_url
             {
-              :subtotal          => Store::Price.new(order.net_amount - order.shipping.price, 'net').singularize,
+              :subtotal          => Store::Price.new(order.net_amount, 'net').singularize,
               :shipping          => Store::Price.new(order.shipping.price, 'net').singularize,
               :tax               => Store::Price.new(order.tax_amount, 'net').singularize,
               :handling          => 0,
@@ -32,7 +32,7 @@ module Payatron4000
         # @return [Object] current customer order
         def self.express_purchase_options order
             {
-              :subtotal          => Store::Price.new(order.net_amount - order.shipping.price, 'net').singularize,
+              :subtotal          => Store::Price.new(order.net_amount, 'net').singularize,
               :shipping          => Store::Price.new(order.shipping.price, 'net').singularize,
               :tax               => Store::Price.new(order.tax_amount, 'net').singularize,
               :handling          => 0,

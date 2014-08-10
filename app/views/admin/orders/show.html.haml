@@ -1,5 +1,5 @@
 - content_for :title, "Order ##{@order.id}"
-- content_for :breadcrumb, "Order ##{@order.id}"
+- content_for :breadcrumb, "##{@order.id}"
 - breadcrumb_add 'Orders', admin_orders_path
 
 .twelvecol
@@ -31,6 +31,11 @@
           = succeed ":" do
             %b Actual shipping cost
           = Store::Price.new(@order.actual_shipping_cost, 'net').format unless @order.actual_shipping_cost.nil?
+        %li
+          %i.icon-airplane
+          = succeed ":" do
+            %b Delivery option
+          = @order.shipping.name
   .fourcol
     .widget-sub-heading
       %h3 Billing address
@@ -44,6 +49,7 @@
       = @order.bill_address.postcode
       %br/
       = @order.bill_address.country
+      %br/
       %br/
       = @order.bill_address.telephone
       %br/
@@ -60,6 +66,7 @@
       = @order.ship_address.postcode
       %br/
       = @order.ship_address.country
+      %br/
       %br/
       = @order.ship_address.telephone
       %br/
@@ -89,15 +96,13 @@
               %td= item.quantity
               %td= Store::Price.new(item.total_price, 'net').format
           %tr
-            %td= @order.shipping.name
-            %td -
-            %td= Store::Price.new(@order.shipping.price, 'net').format
-            %td -
-            %td= Store::Price.new(@order.shipping.price, 'net').format
-          %tr
             %td.align-right.border-top{colspan: "4"}
               %b Subtotal:
             %td.border-top= Store::Price.new(@order.net_amount, 'net').format
+          %tr
+            %td.align-right{colspan: "4"}
+              %b Delivery/handling:
+            %td= Store::Price.new(@order.shipping.price, 'net').format
           %tr
             %td.align-right{colspan: "4"}
               %b Tax:
