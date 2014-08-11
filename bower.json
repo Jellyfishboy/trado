@@ -15,7 +15,8 @@
     "fontawesome": "~4.0.3",
     "icomoon": "~0.0.1",
     "jquery.scrollTo": "~1.4.11",
-    "typeahead.js": "~0.10.2"
+    "typeahead.js": "~0.10.2",
+    "chosen": "~1.1.0"
   },
   "resolutions": {
     "jquery": "1.7.2"
