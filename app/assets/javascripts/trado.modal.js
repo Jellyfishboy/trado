@@ -22,6 +22,8 @@ trado.modal =
     {   
         $('body').on('click', elem, function() 
         {
+            // Stop the page transition animation style disabling the z-index order for the modal
+            $('.main .container').removeClass('fadeIn');
             var id;
             id = $(this).attr('id');
             if (urlEnd)

@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require admin/soca
 //= require jquery.scrollTo/jquery.scrollTo.min
@@ -6,6 +7,7 @@
 //= require trado.misc
 //= require trado.modal
 //= require trado.admin
+//= require turbolinks
 
 var taxRate = "<%= Store::settings.tax_rate %>";
      
@@ -22,10 +24,30 @@ ready = function()
     soca.mobile.disableTooltips();
 
     trado.admin.jsonErrors();
-    trado.modal.open('.store-setting-attachment', '#store-setting-attachment-form');
     trado.modal.ajaxOpen('.edit_order_attributes', '/admin/orders/', '/edit');
     trado.modal.ajaxOpen('.new_stock_levels', '/admin/products/skus/stock_levels/new?sku_id=', null);
     trado.modal.ajaxOpen('.edit_sku_attributes', '/admin/products/skus/', '/edit');
 };
 $(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).on('page:change page:load', function()
+{
+    $('[data-toggle=tooltip]').tooltip('hide');
+    $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
+});
+$(document).on('page:fetch', function()
+{
+    $('.main .container').addClass('animated fadeOut');
+    return $('.loading5').addClass('active');
+});
+
+$(document).on("page:receive", function(){
+    $('.loading-overlay').removeClass('active');
+    return $('.loading5').removeClass('active');
+});
+
+// document.addEventListener('page:change', function() {
+//     document.getElementById('primary-content').className += 'animated fadeIn';
+// });
+// document.addEventListener('page:fetch', function() {
+//         document.getElementById('primary-content').className += 'animated fadeOut';
+// });

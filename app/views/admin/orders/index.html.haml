@@ -29,6 +29,4 @@
               %td= Store::Price.new(order.gross_amount, 'net').format
               %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
               = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2
-
-#shipping-modal
 #order-modal

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Country do
 
     # ActiveRecord
-    it { expect(subject).to belong_to(:zone)
+    it { expect(subject).to belong_to(:zone) }
 
     #Validations
     it { expect(subject).to validate_presence_of(:name) }
