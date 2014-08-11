@@ -24,7 +24,7 @@ feature 'Zone management' do
         within 'thead tr th:first-child' do
             expect(page).to have_content 'Name'
         end
-        within 'tbody tr td:first-child' do
+        within '.page-header + .widget-sub-heading h3' do
             expect(page).to have_content zone.name
         end
     end
@@ -54,8 +54,8 @@ feature 'Zone management' do
         zone_with_countries
         
         visit admin_zones_path
-        within 'tbody' do
-            first('tr').find('td:last-child').first(:link).click
+        within '.page-header + .widget-sub-heading .pull-right' do
+            first(:link).click
         end
         expect(current_path).to eq edit_admin_zone_path(zone_with_countries)
         within '#breadcrumbs li.current' do
@@ -104,8 +104,8 @@ feature 'Zone management' do
 
         visit admin_zones_path
         expect{
-            within 'tbody' do
-                first('tr').find('td:last-child a:last-child').click
+            within '.page-header + .widget-sub-heading .pull-right' do
+                find('a:last-child').click
             end
         }.to change(Zone, :count).by(-1)
         within '.alert.alert-success' do
@@ -121,8 +121,8 @@ feature 'Zone management' do
 
         visit admin_zones_path
         expect{
-            within 'tbody' do
-                first('tr').find('td:last-child a:last-child').click
+            within '.page-header + .widget-sub-heading .pull-right' do
+                find('a:last-child').click
             end
         }.to change(Zone, :count).by(0)
         within '.alert.alert-warning' do

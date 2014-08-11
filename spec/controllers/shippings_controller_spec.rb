@@ -10,14 +10,13 @@ describe ShippingsController do
         let(:tier_2) { create(:tier) }
         let(:tier_3) { create(:tier) }
         let(:zone) { create(:zone, name: 'EU') }
-        let(:country) { create(:country, name: 'United Kingdom') }
+        let(:country) { create(:country, name: 'United Kingdom', zone_id: zone.id) }
         let(:shipping_1) { create(:shipping) }
         let(:shipping_2) { create(:shipping) }
         let(:shipping_3) { create(:shipping) }
         let!(:order) { create(:order, cart_id: cart.id, tiers: [tier_1.id,tier_2.id]) }
         
         before(:each) do
-            create(:zonification, country_id: country.id, zone_id: zone.id)
             create(:destination, zone_id: zone.id, shipping_id: shipping_1.id)
             create(:destination, zone_id: zone.id, shipping_id: shipping_2.id)
             create(:destination, zone_id: zone.id, shipping_id: shipping_3.id)
