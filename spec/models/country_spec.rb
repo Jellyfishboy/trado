@@ -3,8 +3,7 @@ require 'rails_helper'
 describe Country do
 
     # ActiveRecord
-    it { expect(subject).to have_many(:zonifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:zones).through(:zonifications) }
+    it { expect(subject).to belong_to(:zone)
 
     #Validations
     it { expect(subject).to validate_presence_of(:name) }

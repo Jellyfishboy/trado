@@ -11,6 +11,7 @@
 #  name                 :string(255)     
 #  language             :string(255)
 #  iso                  :string(255)
+#  zone_id              :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
@@ -18,9 +19,7 @@ class Country < ActiveRecord::Base
 
   attr_accessible :name, :iso, :available, :language
 
-  has_many :zonifications,                      :dependent => :delete_all
-  has_many :zones,                              :through => :zonifications
-
+  belongs_to :zone
 
   validates :name,                              :uniqueness => true, :presence => true
 

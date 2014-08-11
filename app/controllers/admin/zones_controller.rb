@@ -1,6 +1,6 @@
 class Admin::ZonesController < ApplicationController
 
-  before_action :set_zone, only: [:edit, :update, :destroy]
+  before_action :set_zone, only: [:edit, :update, :destroy, :get_associations]
   before_action :get_associations, except: [:index, :destroy, :set_zone]
   before_action :authenticate_user!
   layout "admin"
@@ -72,6 +72,6 @@ class Admin::ZonesController < ApplicationController
     end
 
     def get_associations
-      @countries = Country.all
+      @countries = Country.where("zone_id = #{@zone.id} OR zone_id IS NULL").load
     end
 end
