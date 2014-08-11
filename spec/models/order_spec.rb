@@ -63,7 +63,7 @@ describe Order do
         end
 
         it "should update the order's net amount attribute" do
-            expect(order.net_amount).to eq cart.total_price + order.shipping.price
+            expect(order.net_amount).to eq cart.total_price
         end
         it "should update the order's tax amount attribute" do
             expect(order.tax_amount).to eq (cart.total_price + order.shipping.price) * tax

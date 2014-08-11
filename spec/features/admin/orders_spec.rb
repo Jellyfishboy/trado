@@ -44,7 +44,7 @@ feature 'Order management' do
             expect(page).to have_content "Order ##{pending.id}"
         end
         within '#breadcrumbs li.current' do
-            expect(page).to have_content "Order ##{pending.id}"
+            expect(page).to have_content "##{pending.id}"
         end
         within '.row .fourcol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content pending.email
@@ -57,7 +57,7 @@ feature 'Order management' do
             expect(page).to have_content pending.ship_address.address
         end
         within '.table-margin tbody' do
-            expect(find('tr:nth-child(2) td:first-child')).to have_content pending.shipping.name
+            expect(find('tr:nth-child(3) td:last-child')).to have_content pending.shipping.price
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content pending.transactions.last.transaction_type
@@ -75,7 +75,7 @@ feature 'Order management' do
             expect(page).to have_content "Order ##{complete.id}"
         end
         within '#breadcrumbs li.current' do
-            expect(page).to have_content "Order ##{complete.id}"
+            expect(page).to have_content "##{complete.id}"
         end
         within '.row .fourcol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content complete.email
@@ -88,7 +88,7 @@ feature 'Order management' do
             expect(page).to have_content complete.ship_address.address
         end
         within '.table-margin tbody' do
-            expect(find('tr:nth-child(2) td:first-child')).to have_content complete.shipping.name
+            expect(find('tr:nth-child(3) td:last-child')).to have_content complete.shipping.price
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content complete.transactions.last.transaction_type

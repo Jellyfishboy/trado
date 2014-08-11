@@ -14,7 +14,7 @@ describe Payatron4000::Paypal do
         let(:express_options) { Payatron4000::Paypal.express_setup_options(order, steps, cart, ip_address, return_url, cancel_url) }
 
         it "should set the correct subtotal" do
-            expect(express_options[:subtotal]).to eq (1250 - Store::Price.new(order.shipping.price, 'net').singularize)
+            expect(express_options[:subtotal]).to eq (1250)
         end
 
         it "should set the correct tax" do
@@ -43,7 +43,7 @@ describe Payatron4000::Paypal do
         let(:express_purchase) { Payatron4000::Paypal.express_purchase_options(order) }
 
         it "should set the correct subtotal" do
-            expect(express_purchase[:subtotal]).to eq (8923 - Store::Price.new(order.shipping.price, 'net').singularize)
+            expect(express_purchase[:subtotal]).to eq (8923)
         end
 
         it "should set the correct tax" do
