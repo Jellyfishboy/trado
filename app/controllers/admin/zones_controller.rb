@@ -72,6 +72,6 @@ class Admin::ZonesController < ApplicationController
     end
 
     def get_associations
-      @countries = Country.where("zone_id = #{@zone.id} OR zone_id IS NULL").load
+      @countries = @zone.nil? ? Country.where(zone_id: nil).load : Country.where("zone_id = #{@zone.id} OR zone_id IS NULL").load
     end
 end
