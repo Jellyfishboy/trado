@@ -209,7 +209,7 @@ You will need to modify the following section in the *config/settings.yml* file:
 
 ## Versioning
 
-Soca follows Semantic Versioning 2.0 as defined at
+Trado follows Semantic Versioning 2.0 as defined at
 <http://semver.org>.
 
 ##How to contribute
