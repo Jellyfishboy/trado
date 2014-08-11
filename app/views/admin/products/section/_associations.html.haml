@@ -19,7 +19,7 @@
             %td= c.object.part_number
             %td= c.label
             %td= c.object.weight
-            %td= c.check_box
+            %td.align-center= c.check_box
 .widget-sub-heading
   %h3 Related products
 - if @products.where.not(name: @product.name).empty?
@@ -41,4 +41,4 @@
             %td= c.object.sku
             %td= c.object.part_number
             %td= c.label
-            %td= c.check_box
+            %td.align-center= c.check_box
