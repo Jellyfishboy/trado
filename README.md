@@ -207,6 +207,11 @@ You will need to modify the following section in the *config/settings.yml* file:
     rollbar:
         access_token: hex123
 
+## Versioning
+
+Soca follows Semantic Versioning 2.0 as defined at
+<http://semver.org>.
+
 ##How to contribute
 
 * Fork the project
