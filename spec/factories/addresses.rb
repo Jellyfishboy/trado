@@ -14,12 +14,12 @@ FactoryGirl.define do
 
         association :order
 
-        factory :validation_bill_address do
+        factory :validation_billing_address do
             addressable_type { 'OrderBillAddress' }
             order_id { create(:order, status: 'billing').id }
         end
 
-        factory :validation_ship_address do
+        factory :validation_delivery_address do
             addressable_type { 'OrderShipAddress' }
             order_id { create(:order, status: 'shipping').id }
         end

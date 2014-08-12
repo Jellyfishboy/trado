@@ -31,7 +31,7 @@ class Admin::Zones::CountriesController < ApplicationController
     respond_to do |format|
       if @country.save
         flash_message :success, 'Country was successfully created.'
-        flash_message :notice, 'Hint: Remember to create a zone record so you can start associating your countries with your shipping methods.' if Zone.all.count < 1
+        flash_message :notice, 'Hint: Remember to create a zone record so you can start associating your countries with your delivery services.' if Zone.all.count < 1
         format.html { redirect_to admin_zones_countries_url }
         format.json { render json: @country, status: :created, location: @country }
       else

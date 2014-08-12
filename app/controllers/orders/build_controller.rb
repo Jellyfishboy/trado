@@ -7,13 +7,13 @@ class Orders::BuildController < ApplicationController
 
   before_action :accessible_order, except: [:success, :failure]
 
-  steps :review, :billing, :shipping, :payment, :confirm
+  steps :review, :billing, :delivery, :payment, :confirm
 
   ###################################
   # ORDER VIEW LOGIC
   ###################################
   # Displays the front-end content of each step, with specific methods throughout providing the relevant data
-  # Steps include, in this order: review, billing, shipping, payment then confimration
+  # Steps include, in this order: review, billing, delivery, payment then confimration
   #
   def show
     @cart = current_cart
@@ -24,12 +24,12 @@ class Orders::BuildController < ApplicationController
     ################
     case step
     when :billing
-      @billing_address = @order.bill_address
+      @billing_address = @order.billing_address
     end
     case step
-    when :shipping
-      @shipping_address = @order.ship_address
-      @shippings = Shipping.find_collection(current_cart, @shipping_address.country) unless @order.shipping_id.nil?
+    when :delivery
+      @delivery_address = @order.delivery_address
+      @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @delivery_address.country) unless @order.delivery_service_price_id.nil?
     end
     case step 
     when :payment
@@ -53,7 +53,7 @@ class Orders::BuildController < ApplicationController
     @cart = current_cart
     case step 
     when :billing
-      @billing_address = @order.bill_address
+      @billing_address = @order.billing_address
       # Update billing attributes
       if @billing_address.update(params[:address])
         # Update order attributes in the form
@@ -70,19 +70,19 @@ class Orders::BuildController < ApplicationController
     end
     case step
     when :shipping
-      @shipping_address = @order.ship_address
+      @delivery_address = @order.delivery_address
       # Update billing attributes
-      if @shipping_address.update(params[:address])
+      if @delivery_address.update(params[:address])
         # Update order attributes in the form
         unless @order.update(params[:order])
           # if unsuccessful re-render the form with order errors
           render_wizard @order
         else
           # else continue to the next stage
-          render_wizard @shipping_address
+          render_wizard @delivery_address
         end
       else
-        render_wizard @shipping_address
+        render_wizard @delivery_address
       end
     end
     case step
@@ -133,7 +133,7 @@ class Orders::BuildController < ApplicationController
   # Renders the successful order page, however redirected if the order payment status is not Pending or completed.
   #
   def success
-    @order = Order.includes(:ship_address).find(params[:order_id])
+    @order = Order.includes(:delivery_address).find(params[:order_id])
     redirect_to root_url unless @order.transactions.last.pending? || @order.transactions.last.completed?
   end
 
@@ -169,25 +169,25 @@ class Orders::BuildController < ApplicationController
   ###################################
 
   ###################################
-  # ORDER ESTIMATE SHIPPING
+  # ORDER ESTIMATE DELIVERY PRICE
   ###################################
   def estimate
     respond_to do |format|
       if @order.update(params[:order])
-        format.js { render partial: 'orders/shippings/estimate/success', format: [:js] }
+        format.js { render partial: 'orders/delivery_service_prices/estimate/success', format: [:js] }
       else
         format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
       end
     end
   end
 
-  # Destroys the estimated shipping item from the cart by setting all the session stores values to nil
+  # Destroys the estimated delivery price item from the cart by setting all the session stores values to nil
   #
   def purge_estimate
-    @order.shipping_id = nil
-    @order.ship_address.country = nil
+    @order.delivery_service_price_id = nil
+    @order.delivery_address.country = nil
     @order.save(validate: false)
-    render :partial => 'orders/shippings/estimate/success', :format => [:js]
+    render :partial => 'orders/delivery_service_prices/estimate/success', :format => [:js]
   end
   ###################################
 
@@ -212,8 +212,8 @@ class Orders::BuildController < ApplicationController
   #
   def check_order_status
     @order = Order.find(params[:order_id])
-    route = (steps.last(3).include?(params[:id].to_sym) && @order.bill_address.first_name.nil?) ? 'billing' 
-            : (steps.last(2).include?(params[:id].to_sym) && (@order.ship_address.first_name.nil? || @order.shipping_id.nil?)) ? 'shipping' 
+    route = (steps.last(3).include?(params[:id].to_sym) && @order.billing_address.first_name.nil?) ? 'billing' 
+            : (steps.last(2).include?(params[:id].to_sym) && (@order.delivery_address.first_name.nil? || @order.delivery_service_price_id.nil?)) ? 'delivery' 
             : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?

@@ -1,15 +1,15 @@
-- content_for :title, 'Edit shipping method'
+- content_for :title, 'Edit delivery service price'
 - content_for :breadcrumb, 'Edit'
-- breadcrumb_add 'Shipping methods', admin_shippings_path
+- breadcrumb_add 'Delivery service prices', admin_delivery_service_prices_path
 
 .eightcol
   .page-header
-    %h2.widget.widget-header Edit shipping method
-  = form_for [:admin, @form_shipping], :html => { :role => 'form' } do |f|
-    - if @shipping && @shipping.errors.any?
+    %h2.widget.widget-header Edit delivery service price
+  = form_for [:admin, @form_delivery_service_price], :html => { :role => 'form' } do |f|
+    - if @delivery_service_price && @delivery_service_price.errors.any?
       #errors
         %ul
-          - @shipping.errors.full_messages.each do |msg|
+          - @delivery_service_price.errors.full_messages.each do |msg|
             %li
               %i.icon-cancel-circle
               = msg 
@@ -32,7 +32,7 @@
             %th Name
             %th.align-center Select
         %tbody
-          = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @form_shipping.zones.map(&:id) do |c|
+          = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @form_delivery_service_price.zones.map(&:id) do |c|
             %tr
               %td= c.label
               %td.align-center= c.check_box

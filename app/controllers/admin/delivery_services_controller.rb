@@ -8,10 +8,6 @@ class Admin::DeliveryServicesController < ApplicationController
     @delivery_services = DeliveryService.all
   end
 
-  # GET /delivery_services/1
-  def show
-  end
-
   # GET /delivery_services/new
   def new
     @delivery_service = DeliveryService.new
@@ -23,10 +19,11 @@ class Admin::DeliveryServicesController < ApplicationController
 
   # POST /delivery_services
   def create
-    @delivery_service = DeliveryService.new(delivery_service_params)
+    @delivery_service = DeliveryService.new(params[:delivery_service])
 
     if @delivery_service.save
-      redirect_to @delivery_service, notice: 'Delivery service was successfully created.'
+      flash_message :success, 'Delivery service was successfully created.'
+      redirect_to admin_delivery_services_url
     else
       render :new
     end
@@ -35,7 +32,8 @@ class Admin::DeliveryServicesController < ApplicationController
   # PATCH/PUT /delivery_services/1
   def update
     if @delivery_service.update(delivery_service_params)
-      redirect_to @delivery_service, notice: 'Delivery service was successfully updated.'
+      flash_message :success, 'Delivery service was successfully updated.'
+      redirect_to admin_delivery_services_url
     else
       render :edit
     end
@@ -44,17 +42,13 @@ class Admin::DeliveryServicesController < ApplicationController
   # DELETE /delivery_services/1
   def destroy
     @delivery_service.destroy
-    redirect_to delivery_services_url, notice: 'Delivery service was successfully destroyed.'
+    flash_message :success, 'Delivery service was successfully destroyed.'
+    redirect_to admin_delivery_services_url 
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_delivery_service
       @delivery_service = DeliveryService.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def delivery_service_params
-      params.require(:delivery_service).permit(:name, :description, :courier_name)
     end
 end

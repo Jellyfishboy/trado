@@ -51,10 +51,10 @@ feature 'Order management' do
             expect(find('li:nth-child(2) span')).to have_content 'Pending'
         end
         within '.row .fourcol:nth-child(2) .widget-content' do
-            expect(page).to have_content pending.bill_address.full_name
+            expect(page).to have_content pending.billing_address.full_name
         end
         within '.row .fourcol.last .widget-content' do
-            expect(page).to have_content pending.ship_address.address
+            expect(page).to have_content pending.delivery_address.address
         end
         within '.table-margin tbody' do
             expect(find('tr:nth-child(3) td:last-child')).to have_content pending.shipping.price
@@ -82,10 +82,10 @@ feature 'Order management' do
             expect(find('li:nth-child(2) span')).to have_content 'Dispatched'
         end
         within '.row .fourcol:nth-child(2) .widget-content' do
-            expect(page).to have_content complete.bill_address.full_name
+            expect(page).to have_content complete.billing_address.full_name
         end
         within '.row .fourcol.last .widget-content' do
-            expect(page).to have_content complete.ship_address.address
+            expect(page).to have_content complete.delivery_address.address
         end
         within '.table-margin tbody' do
             expect(find('tr:nth-child(3) td:last-child')).to have_content complete.shipping.price

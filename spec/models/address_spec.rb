@@ -7,12 +7,12 @@ describe Address do
     it { expect(subject).to belong_to(:addressable) }
     
     # Validations
-    it { expect(create(:validation_bill_address)).to validate_presence_of(:first_name) }
-    it { expect(create(:validation_bill_address)).to validate_presence_of(:last_name) }
-    it { expect(create(:validation_bill_address)).to validate_presence_of(:address) }
-    it { expect(create(:validation_ship_address)).to validate_presence_of(:city) }
-    it { expect(create(:validation_ship_address)).to validate_presence_of(:postcode) }
-    it { expect(create(:validation_ship_address)).to validate_presence_of(:country) }
+    it { expect(create(:validation_billing_address)).to validate_presence_of(:first_name) }
+    it { expect(create(:validation_billing_address)).to validate_presence_of(:last_name) }
+    it { expect(create(:validation_billing_address)).to validate_presence_of(:address) }
+    it { expect(create(:validation_delivery_address)).to validate_presence_of(:city) }
+    it { expect(create(:validation_delivery_address)).to validate_presence_of(:postcode) }
+    it { expect(create(:validation_delivery_address)).to validate_presence_of(:country) }
 
     describe "When displaying an address" do
         let!(:address) { create(:address, first_name: 'John', last_name: 'Doe') }
@@ -25,7 +25,7 @@ describe Address do
     describe "When determining if validation should occur" do
 
         context "if the order status is 'billing'" do
-            let(:address) { create(:validation_bill_address) }
+            let(:address) { create(:validation_billing_address) }
 
             it "should return true" do
                 expect(address.shipping_stage?).to eq true
@@ -33,7 +33,7 @@ describe Address do
         end
 
         context "if the order status is 'shipping'" do
-            let(:address) { create(:validation_ship_address) }
+            let(:address) { create(:validation_delivery_address) }
 
             it "should return true" do
                 expect(address.shipping_stage?).to eq true

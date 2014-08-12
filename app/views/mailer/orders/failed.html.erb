@@ -19,28 +19,28 @@ Your delivery option
 
 Your delivery address
 ---------------------
-<%= @order.ship_address.full_name %>
+<%= @order.delivery_address.full_name %>
 
-<%= @order.ship_address.address %>
-<%= @order.ship_address.city %>
-<%= @order.ship_address.postcode %>
-<%= @order.ship_address.country %>
+<%= @order.delivery_address.address %>
+<%= @order.delivery_address.city %>
+<%= @order.delivery_address.postcode %>
+<%= @order.delivery_address.country %>
 
-<%= @order.ship_address.telephone %>
+<%= @order.delivery_address.telephone %>
 
 Payment method
 ---------------------
 
 Your billing address
 ---------------------
-<%= @order.bill_address.full_name %>
+<%= @order.billing_address.full_name %>
 
-<%= @order.bill_address.address %>
-<%= @order.bill_address.city %>
-<%= @order.bill_address.postcode %>
-<%= @order.bill_address.country %>
+<%= @order.billing_address.address %>
+<%= @order.billing_address.city %>
+<%= @order.billing_address.postcode %>
+<%= @order.billing_address.country %>
 
-<%= @order.bill_address.telephone %>
+<%= @order.billing_address.telephone %>
 
 Order details
 ---------------------

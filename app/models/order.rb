@@ -8,47 +8,47 @@
 #
 # Table name: orders
 #
-#  id                       :integer          not null, primary key
-#  ip_address               :string(255)      
-#  email                    :string(255)     
-#  status                   :integer          
-#  user_id                  :integer     
-#  cart_id                  :integer
-#  tax_number               :integer 
-#  shipping_id              :integer        
-#  shipping_status          :integer          default(0)   
-#  shipping_date            :datetime 
-#  actual_shipping_cost     :decimal          precision(8), scale(2) 
-#  express_token            :string(255) 
-#  express_payer_id         :string(255) 
-#  net_amount               :decimal          precision(8), scale(2)
-#  tax_amount               :decimal          precision(8), scale(2) 
-#  gross_amount             :decimal          precision(8), scale(2) 
-#  terms                    :boolean          
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  id                                     :integer          not null, primary key
+#  ip_address                             :string(255)      
+#  email                                  :string(255)     
+#  status                                 :integer          
+#  user_id                                :integer     
+#  cart_id                                :integer
+#  tax_number                             :integer 
+#  delivery_service_price_id              :integer        
+#  shipping_status                        :integer          default(0)   
+#  shipping_date                          :datetime 
+#  actual_shipping_cost                   :decimal          precision(8), scale(2) 
+#  express_token                          :string(255) 
+#  express_payer_id                       :string(255) 
+#  net_amount                             :decimal          precision(8), scale(2)
+#  tax_amount                             :decimal          precision(8), scale(2) 
+#  gross_amount                           :decimal          precision(8), scale(2) 
+#  terms                                  :boolean          
+#  created_at                             :datetime         not null
+#  updated_at                             :datetime         not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :shipping_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms, :tiers, :ship_address_attributes
+  :email, :delivery_service_price_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
+  :net_amount, :tax_amount, :gross_amount, :terms, :tiers, :delivery_address_attributes
   
   has_many :order_items,                                                :dependent => :delete_all
   has_many :transactions,                                               :dependent => :delete_all
 
   belongs_to :cart
-  belongs_to :shipping
-  has_one :ship_address,                                                -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
-  has_one :bill_address,                                                -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
+  belongs_to :delivery_service_price
+  has_one :delivery_address,                                                -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
+  has_one :billing_address,                                                -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 
   validates :actual_shipping_cost,                                      :presence => true, :if => :completed?
   validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :shipping_id,                                               :presence => { :message => 'Shipping option is required'}, :if => :active_or_shipping?                                                                                                                  
+  validates :delivery_service_price_id,                                 :presence => { :message => 'You must select a delivery price.'}, :if => :active_or_shipping?                                                                                                                  
   validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
 
   after_create :create_addresses
 
-  accepts_nested_attributes_for :ship_address
+  accepts_nested_attributes_for :delivery_address
 
   enum shipping_status: [:pending, :dispatched]
 
@@ -70,10 +70,10 @@ class Order < ActiveRecord::Base
   # @param cart [Object]
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
-    tax_amount = (cart.total_price + shipping.price)*current_tax_rate
+    tax_amount = (cart.total_price + delivery_service_price.price)*current_tax_rate
     self.update(  :net_amount => cart.total_price,
                   :tax_amount => tax_amount,
-                  :gross_amount => cart.total_price + shipping.price + tax_amount
+                  :gross_amount => cart.total_price + delivery_service_price.price + tax_amount
     )
     self.save(validate: false)
   end
@@ -125,7 +125,7 @@ class Order < ActiveRecord::Base
   # After creating order record, create a ship and bill address to accompany it
   #
   def create_addresses
-    self.build_ship_address.save(validate: false)
-    self.build_bill_address.save(validate: false)
+    self.build_delivery_address.save(validate: false)
+    self.build_billing_address.save(validate: false)
   end
 end

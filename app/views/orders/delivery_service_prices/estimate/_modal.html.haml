@@ -7,7 +7,7 @@
   = form_for @order, url: estimate_order_build_path, :html => { method: :patch, :remote => true, :class => 'remote-form' } do |f|
     .modal-body
       .control-group
-        = f.fields_for :ship_address do |ff|
+        = f.fields_for :delivery_address do |ff|
           = ff.label :country, :class => 'control-label'
           .controls.update-shipping
             = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})

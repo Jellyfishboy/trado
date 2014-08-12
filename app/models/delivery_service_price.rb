@@ -1,6 +1,6 @@
 # DeliveryServicePrice Documentation
 #
-# The delivery_service_price table contains a list of available shipping prices for a delivery price. 
+# The delivery_service_price table contains a list of available delivery prices for a type of delivery service. 
 # Each with a description and price and dimension parameters.
 
 # == Schema Information
@@ -26,15 +26,15 @@ class DeliveryServicePrice < ActiveRecord::Base
   attr_accessible :code, :price, :description, :min_weight, :max_weight, :min_length, :max_length, 
   :min_thickness, :max_thickness, :active, :zone_ids
 
-  has_many :destinations,                               :dependent => :delete_all
-  has_many :zones,                                      :through => :destinations
-  has_many :countries,                                  :through => :zones
-  has_many :orders,                                     :dependent => :restrict_with_exception
+  has_many :destinations,                               dependent: :delete_all
+  has_many :zones,                                      through: :destinations
+  has_many :countries,                                  through: :zones
+  has_many :orders,                                     dependent: :restrict_with_exception
 
-  validates :name, :price, :description,                :presence => true
-  validates :name,                                      :uniqueness => { :scope => :active }, :length => {:minimum => 10, :message => :too_short}
-  validates :description,                               :length => { :maximum => 180, :message => :too_long }
-  validates :price,                                     :format => { :with => /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
+  validates :name, :price, :description,                presence: true
+  validates :name,                                      uniqueness: { scope: :active }, length: { minimum: 10, message: :too_short }
+  validates :description,                               length: { maximum: 180, message: :too_long }
+  validates :price,                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
   default_scope { order(price: :asc) }
   

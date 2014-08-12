@@ -59,7 +59,7 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :first_name, :class => 'span4 use-billing', :id => 'shipping_first_name'
-                  %div= @order.bill_address.first_name
+                  %div= @order.billing_address.first_name
                   = errors_for @shipping_address, :first_name
               .control-group
                 = f.label :last_name, :class => 'control-label' do
@@ -67,7 +67,7 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :last_name, :class => 'span4 use-billing', :id => 'shipping_last_name'
-                  %div= @order.bill_address.last_name
+                  %div= @order.billing_address.last_name
                   = errors_for @shipping_address, :last_name
               = fields_for @order do |ff|
                 .control-group
@@ -82,20 +82,20 @@
                   Telephone
                 .controls
                   = f.text_field :telephone, :class => 'span4 use-billing', :id => 'shipping_telephone'
-                  %div= @order.bill_address.telephone
+                  %div= @order.billing_address.telephone
               .control-group
                 = f.label :company, :class => 'control-label' do
                   Company
                 .controls
                   = f.text_field :company, :class => 'span4 use-billing', :id => 'shipping_company'
-                  %div= @order.bill_address.company
+                  %div= @order.billing_address.company
               .control-group
                 = f.label :address, :class => 'control-label' do
                   Street address
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :address, :class => 'span4 use-billing', :id => 'shipping_address'
-                  %div= @order.bill_address.address
+                  %div= @order.billing_address.address
                   = errors_for @shipping_address, :address
               .control-group
                 = f.label :city, :class => 'control-label' do
@@ -103,7 +103,7 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :city, :class => 'span4 use-billing', :id => 'shipping_city'
-                  %div= @order.bill_address.city
+                  %div= @order.billing_address.city
                   = errors_for @shipping_address, :city
               .control-group
                 = f.label :postcode, :class => 'control-label' do
@@ -111,14 +111,14 @@
                   %span.red-clr.bold *
                 .controls
                   = f.text_field :postcode, :class => 'span4 use-billing', :id => 'shipping_postcode'
-                  %div= @order.bill_address.postcode
+                  %div= @order.billing_address.postcode
                   = errors_for @shipping_address, :postcode
               .control-group
                 = f.label :county, :class => 'control-label' do
                   County
                 .controls
                   = f.text_field :county, :class => 'span4 use-billing', :id => 'shipping_county'
-                  %div= @order.bill_address.county
+                  %div= @order.billing_address.county
               .control-group
                 = f.label :country, :class => 'control-label' do
                   Country

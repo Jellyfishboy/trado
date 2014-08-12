@@ -1,23 +1,26 @@
-%h1 Listing delivery_services
+- content_for :title, 'Delivery services'
+- content_for :breadcrumb, 'Delivery services'
 
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Courier name
-    %th
-    %th
-    %th
-
-  - @delivery_services.each do |delivery_service|
-    %tr
-      %td= delivery_service.name
-      %td= delivery_service.description
-      %td= delivery_service.courier_name
-      %td= link_to 'Show', delivery_service
-      %td= link_to 'Edit', edit_delivery_service_path(delivery_service)
-      %td= link_to 'Destroy', delivery_service, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Delivery service', new_delivery_service_path
+.twelvecol
+  .page-header
+    = link_to new_admin_delivery_service_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add delivery service" do
+      %i.icon-plus
+    %h2.widget.widget-header Delivery services
+  - if @delivery_services.empty?
+    %p You don't have any delivery services yet.
+  - else
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Name
+            %th Courier name
+            %th Description
+            %th
+        %tbody
+          - @delivery_services.each do |delivery_service|
+            %tr
+              %td= delivery_service.name
+              %td= delivery_service.courier_name
+              %td= delivery_service.description
+              = table_commands delivery_service, admin_delivery_service_path(delivery_service), edit_admin_delivery_service_path(delivery_service), admin_delivery_service_path(delivery_service),  0

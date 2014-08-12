@@ -1,11 +1,11 @@
-- content_for :title, 'Shipping methods'
-- content_for :breadcrumb, 'Shipping methods'
+- content_for :title, 'Delivery service prices'
+- content_for :breadcrumb, 'Delivery service prices'
 
 .twelvecol
   .page-header
-    = link_to new_admin_shipping_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add shipping" do
+    = link_to new_admin_delivery_service_price_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add delivery service price" do
       %i.icon-plus
-    %h2.widget.widget-header Shipping methods
+    %h2.widget.widget-header Delivery service prices
   - if @shippings.empty?
     %p You don't have any shippings yet.
   - else

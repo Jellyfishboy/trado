@@ -28,7 +28,7 @@
       = @order.shipping.name
       = link_to purge_estimate_order_build_path, method: :delete, remote: true, :title => 'Remove item' do
         %i.fa.fa-times-circle
-      %div= @order.ship_address.country
+      %div= @order.delivery_address.country
     %td.qty
     %td.price= Store::Price.new(@order.shipping.price).format
 - if Store::settings.tax_breakdown

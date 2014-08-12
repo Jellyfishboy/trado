@@ -1,5 +1,28 @@
-%h1 New delivery_service
+- content_for :title, 'New delivery service'
+- content_for :breadcrumb, 'New'
+- breadcrumb_add 'Delivery services', admin_delivery_services_path
 
-= render 'form'
-
-= link_to 'Back', delivery_services_path
+.eightcol
+  .page-header
+    %h2.widget.widget-header New delivery service
+  = form_for [:admin, @delivery_service], :html => { :role => 'form' } do |f|
+    - if @delivery_service && @delivery_service.errors.any?
+      #errors
+        %ul
+          - @delivery_service.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg 
+    %fieldset.widget.widget-content.widget-last
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => 'form-control'
+      .form-group
+        = f.label :courier_name
+        = f.text_field :courier_name, :class => 'form-control'
+      .form-group
+        = f.label :description
+        = f.text_area :description, :class => 'form-control', :rows => 7
+    .form-action
+      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+.fourcol.last

@@ -40,35 +40,35 @@
     .widget-sub-heading
       %h3 Billing address
     .widget.widget-content
-      = @order.bill_address.full_name
+      = @order.billing_address.full_name
       %br/
-      = @order.bill_address.address
+      = @order.billing_address.address
       %br/
-      = @order.bill_address.city
+      = @order.billing_address.city
       %br/
-      = @order.bill_address.postcode
+      = @order.billing_address.postcode
       %br/
-      = @order.bill_address.country
+      = @order.billing_address.country
       %br/
       %br/
-      = @order.bill_address.telephone
+      = @order.billing_address.telephone
       %br/
   .fourcol.last
     .widget-sub-heading
       %h3 Shipping address
     .widget.widget-content
-      = @order.ship_address.full_name
+      = @order.delivery_address.full_name
       %br/
-      = @order.ship_address.address
+      = @order.delivery_address.address
       %br/
-      = @order.ship_address.city
+      = @order.delivery_address.city
       %br/
-      = @order.ship_address.postcode
+      = @order.delivery_address.postcode
       %br/
-      = @order.ship_address.country
+      = @order.delivery_address.country
       %br/
       %br/
-      = @order.ship_address.telephone
+      = @order.delivery_address.telephone
       %br/
 .row
   .twelvecol

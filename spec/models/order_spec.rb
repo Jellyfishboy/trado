@@ -9,8 +9,8 @@ describe Order do
     it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
     it { expect(subject).to belong_to(:shipping) }
     it { expect(subject).to belong_to(:cart) }
-    it { expect(subject).to have_one(:ship_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
-    it { expect(subject).to have_one(:bill_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
+    it { expect(subject).to have_one(:delivery_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
+    it { expect(subject).to have_one(:billing_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
     # Validations
     context "if the order has a an associated completed transaction record" do
@@ -26,13 +26,13 @@ describe Order do
     context "if current order status is at shipping" do
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
-        it { expect(subject).to validate_presence_of(:shipping_id).with_message('Shipping option is required') }
+        it { expect(subject).to validate_presence_of(:delivery_service_price_id).with_message('Shipping option is required') }
         it { expect(subject).to allow_value("test@test.com").for(:email) }
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
 
     # Nested attributes
-    it { expect(subject).to accept_nested_attributes_for(:ship_address) }
+    it { expect(subject).to accept_nested_attributes_for(:delivery_address) }
 
     describe "When adding cart_items to an order" do
         let(:cart) { create(:full_cart) }
@@ -156,18 +156,18 @@ describe Order do
             Order._create_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:create_addresses).should == true
         end
 
-        it "should create a new bill_address and ship_address record" do
+        it "should create a new billing_address and delivery_address record" do
             expect{
                 order
             }.to change(Address, :count).by(2)
         end
 
-        it "should have the correct type for the bill_address record" do
-            expect(order.bill_address.addressable_type).to eq 'OrderBillAddress'
+        it "should have the correct type for the billing_address record" do
+            expect(order.billing_address.addressable_type).to eq 'OrderBillAddress'
         end
 
-        it "should have the correct type for the ship_address record" do
-            expect(order.ship_address.addressable_type).to eq 'OrderShipAddress'
+        it "should have the correct type for the delivery_address record" do
+            expect(order.delivery_address.addressable_type).to eq 'OrderShipAddress'
         end
     end
 end
