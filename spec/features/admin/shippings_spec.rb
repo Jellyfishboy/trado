@@ -80,28 +80,6 @@ feature 'Shipping management' do
         expect(shipping_with_zones.zones.first.name).to eq 'Asia'
     end
 
-    scenario 'should display an index of tiers' do
-        tier
-
-        visit admin_shippings_path
-        within '.page-header' do
-            find(:xpath, "//a[@title='Tiers']").click
-        end
-        expect(current_path).to eq admin_shippings_tiers_path
-        within 'h2' do
-            expect(page).to have_content 'Tiers'
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Tiers'
-        end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'ID'
-        end
-        within 'tbody tr td:first-child' do
-            expect(page).to have_content tier.id
-        end
-    end
-
     scenario "should delete a shipping if there is more than one record" do
         shippings
 

@@ -50,6 +50,9 @@ Trado::Application.routes.draw do
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       resources :accessories, :shippings, :products, :categories, :zones, except: :show
       resources :orders, only: [:index, :show, :update, :edit]
+      resources :delivery_services do
+        resources :delivery_service_prices
+      end
       resources :attachments, only: [:destroy, :update]
       namespace :products do
         resources :tags, only: :index
@@ -58,9 +61,6 @@ Trado::Application.routes.draw do
           resources :attribute_types, except: :show
           resources :stock_levels, only: [:create, :new]
         end
-      end
-      namespace :shippings do
-        resources :tiers, except: :show
       end
       namespace :zones do
         resources :countries, except: :show

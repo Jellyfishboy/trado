@@ -23,16 +23,11 @@ class Orders::BuildController < ApplicationController
     @order.save(validate: false)
     ################
     case step
-    when :review
-      Shipatron4000::tier(current_cart, @order) if @order.tiers.nil?
-    end
-    case step
     when :billing
       @billing_address = @order.bill_address
     end
     case step
     when :shipping
-      Shipatron4000::tier(current_cart, @order) if @order.tiers.nil?
       @shipping_address = @order.ship_address
       @shippings = Shipping.find_collection(current_cart, @shipping_address.country) unless @order.shipping_id.nil?
     end

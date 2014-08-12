@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   skip_before_action :authenticate_user!
 
-  steps :review, :billing, :shipping, :payment, :confirm
+  steps :review, :billing, :delivery, :payment, :confirm
 
   def new
     if current_cart.cart_items.empty?

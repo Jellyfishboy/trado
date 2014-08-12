@@ -5,8 +5,6 @@
   .page-header
     = link_to new_admin_shipping_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add shipping" do
       %i.icon-plus
-    = link_to admin_shippings_tiers_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Tiers" do
-      %i.icon-bars-2
     %h2.widget.widget-header Shipping methods
   - if @shippings.empty?
     %p You don't have any shippings yet.
@@ -18,7 +16,6 @@
             %th Name
             %th Description
             %th Zones
-            %th Tier(s)
             %th Net price
             %th Gross price
             %th
@@ -32,7 +29,6 @@
                   - shipping.zones.each do |zone|
                     %li
                       = zone.name
-              %td= shipping.tiers.map(&:id).join(', ')
               %td= Store::Price.new(shipping.price, 'net').format
               %td= Store::Price.new(shipping.price, 'gross').format
               = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  0

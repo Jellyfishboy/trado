@@ -33,7 +33,7 @@
           = link_to admin_orders_path do
             %i.icon-cart
             %span Orders
-        %li{:class => "#{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/tiers')}"}
+        %li{:class => active_controller?('admin/shippings')}
           = link_to admin_shippings_path do
             %i.icon-airplane
             %span Shipping
@@ -83,7 +83,7 @@
           %li{:class => active_controller?('admin/orders')}
             = link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Orders' do
               %i.icon-cart
-          %li{:class => "#{active_controller?('admin/shippings')} #{active_controller?('admin/shippings/tiers')}"}
+          %li{:class => active_controller?('admin/shippings')}
             = link_to admin_shippings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Shippings' do
               %i.icon-airplane
           %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}

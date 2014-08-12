@@ -75,15 +75,15 @@ trado.app =
         });
     },
 
-    selectShipping: function() 
+    selectDeliveryServicePrice: function() 
     {
-        $('.shipping-methods .option').click(function() 
+        $('.delivery-service-prices .option').click(function() 
         {
             $(this).find('input:radio').prop('checked', true);
             $('.option').removeClass('active');
             return $(this).addClass('active');
         });
-        $('.shipping-methods .option input:radio').each(function() 
+        $('.delivery-service-prices .option input:radio').each(function() 
         {
             if ($(this).is(':checked')) 
             {
@@ -92,13 +92,13 @@ trado.app =
         });
     },
 
-    updateShipping: function()
+    updateDeliveryServicePrice: function()
     {
-        $('.update-shipping select').change(function() 
+        $('.update-delivery-service-price select').change(function() 
         {
             if (this.value !== "") 
             {
-                $.ajax('/order/shippings/update', 
+                $.ajax('/order/delivery_service_prices/update', 
                 {
                     type: 'GET',
                     data: 
@@ -108,13 +108,13 @@ trado.app =
                     dataType: 'html',
                     success: function(data) 
                     {
-                        return $('.shipping-methods .control-group .controls').html(data);
+                        return $('.delivery-service-prices .control-group .controls').html(data);
                     }
                 });
             } 
             else 
             {
-                return $('.shipping-methods .control-group .controls').html('<p class="shipping_notice">Select a shipping country to view the available shipping options.</p>');
+                return $('.delivery-service-prices .control-group .controls').html('<p class="delivery_service_prices_notice">Select a delivery country to view the available delivery prices.</p>');
             }
         });
     },

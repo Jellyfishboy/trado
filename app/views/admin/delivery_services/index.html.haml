@@ -1,0 +1,23 @@
+%h1 Listing delivery_services
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Courier name
+    %th
+    %th
+    %th
+
+  - @delivery_services.each do |delivery_service|
+    %tr
+      %td= delivery_service.name
+      %td= delivery_service.description
+      %td= delivery_service.courier_name
+      %td= link_to 'Show', delivery_service
+      %td= link_to 'Edit', edit_delivery_service_path(delivery_service)
+      %td= link_to 'Destroy', delivery_service, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Delivery service', new_delivery_service_path

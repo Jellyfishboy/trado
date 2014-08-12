@@ -1,1 +1,0 @@
-require File.join('validators/tier_validator')
