@@ -18,7 +18,8 @@ class Zone < ActiveRecord::Base
 
   has_many :destinations,               :dependent => :delete_all
   has_many :shippings,                  :through => :destinations
-  has_many :countries
+  has_many :zonifications,              :dependent => :delete_all
+  has_many :countries,                  :through => :zonifications
 
   validates :name,                      :uniqueness => true, :presence => true
   

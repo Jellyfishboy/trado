@@ -20,17 +20,8 @@
         %i.icon-spam.icon-cancel-circle 
         There are no available countries to select
     - else
-      .table-responsive
-        %table.table.table-striped.table-bordered.table-hover.table-form
-          %thead
-            %tr
-              %th Name
-              %th.align-center Select
-          %tbody
-            = f.collection_check_boxes :country_ids, @countries, :id, :name, checked: @zone.countries.map(&:id) do |c|
-              %tr
-                %td= c.label
-                %td.align-center= c.check_box
+      .widget.widget-content.widget-last
+        = f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', :multiple => true, :data => {:placeholder => "Please select associated countries..."}}
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
