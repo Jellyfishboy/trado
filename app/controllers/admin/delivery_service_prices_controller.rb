@@ -7,11 +7,6 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
   def index
     @delivery_service_prices = DeliveryServicePrice.active.load
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @delivery_service_prices }
-    end
   end
 
 

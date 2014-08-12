@@ -51,7 +51,7 @@ Trado::Application.routes.draw do
       resources :accessories, :shippings, :products, :categories, :zones, except: :show
       resources :orders, only: [:index, :show, :update, :edit]
       resources :delivery_services, except: :show do
-        resources :delivery_service_prices, as: 'prices', except: :show
+        resources :delivery_service_prices, as: 'prices', path: 'prices', except: :show
       end
       resources :attachments, only: [:destroy, :update]
       namespace :products do

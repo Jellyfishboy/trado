@@ -24,4 +24,6 @@ class DeliveryService < ActiveRecord::Base
     validates :description,                                 length: { maximum: 180, message: :too_long }
 
     default_scope { order(courier_name: :desc) }
+
+    include ActiveScope
 end
