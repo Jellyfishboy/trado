@@ -13,8 +13,8 @@ zone = Zone.create({
 delivery_service = DeliveryService.create({
     name: '1st class', 
     courier_name: 'Royal Mail', 
-    description: 'Standard Royal Mail delivery service within 1-2 business days.', 
-    })
+    description: 'Standard Royal Mail delivery service within 1-2 business days.'
+})
 DeliveryServicePrice.create({
     code: 'RM1 500g', 
     price: '5.67', 

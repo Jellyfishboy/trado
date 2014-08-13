@@ -1,11 +1,12 @@
-- content_for :title, 'Edit delivery service price'
+- content_for :title, 'Edit delivery pricing'
 - content_for :breadcrumb, 'Edit'
-- breadcrumb_add 'Delivery service prices', admin_delivery_service_prices_path
+- breadcrumb_add 'Delivery services', admin_delivery_services_path
+- breadcrumb_add @form_delivery_service_price.delivery_service.full_name, admin_delivery_service_prices_path
 
 .eightcol
   .page-header
-    %h2.widget.widget-header Edit delivery service price
-  = form_for [:admin, @form_delivery_service_price], :html => { :role => 'form' } do |f|
+    %h2.widget.widget-header Edit delivery pricing
+  = form_for @form_delivery_service_price, url: admin_delivery_service_price_path(@form_delivery_service_price.delivery_service, @form_delivery_service_price), html: { role: 'form' } do |f|
     - if @delivery_service_price && @delivery_service_price.errors.any?
       #errors
         %ul
@@ -15,8 +16,8 @@
               = msg 
     %fieldset.widget.widget-content
       .form-group
-        = f.label :name
-        = f.text_field :name, :class => 'form-control'
+        = f.label :code
+        = f.text_field :code, :class => 'form-control'
       .form-group
         = f.label :price
         = f.text_field :price, :class => 'form-control calculate-tax', :autocomplete => 'off'
@@ -24,9 +25,30 @@
         = f.label :description
         = f.text_area :description, :class => 'form-control', :rows => 7
     .widget-sub-heading
+      %h3 Dimension allowance
+    %fieldset.widget.widget-content
+      .form-group
+        = f.label :min_weight
+        = f.text_field :min_weight, :class => 'form-control'
+      .form-group
+        = f.label :max_weight
+        = f.text_field :max_weight, :class => 'form-control'
+      .form-group
+        = f.label :min_length
+        = f.text_field :min_length, :class => 'form-control'
+      .form-group
+        = f.label :max_length
+        = f.text_field :max_length, :class => 'form-control'
+      .form-group
+        = f.label :min_thickness
+        = f.text_field :min_thickness, :class => 'form-control'
+      .form-group
+        = f.label :max_thickness
+        = f.text_field :max_thickness, :class => 'form-control'
+    .widget-sub-heading
       %h3 Zones
     .table-responsive
-      %table.table.table-striped.table-bordered.table-hover.table-form.table-margin
+      %table.table.table-striped.table-bordered.table-hover.table-form
         %thead
           %tr
             %th Name

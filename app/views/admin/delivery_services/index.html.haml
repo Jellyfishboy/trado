@@ -13,14 +13,29 @@
       %table.table.table-striped.table-bordered.table-hover
         %thead
           %tr
-            %th Name
             %th Courier name
+            %th Name
             %th Description
+            %th.inner-table
+              %table
+                %thead
+                  %tr
+                    %th Code
+                    %th Net price
+                    %th Gross Price
             %th
         %tbody
           - @delivery_services.each do |delivery_service|
             %tr
-              %td= delivery_service.name
               %td= delivery_service.courier_name
+              %td= delivery_service.name
               %td= delivery_service.description
-              = table_commands delivery_service, admin_delivery_service_path(delivery_service), edit_admin_delivery_service_path(delivery_service), admin_delivery_service_path(delivery_service),  0
+              %td.inner-table
+                %table
+                  %tbody
+                    - delivery_service.prices.each do |delivery_price|
+                      %tr
+                        %td= delivery_price.code
+                        %td= Store::Price.new(delivery_price.price, 'net').format
+                        %td.align-left= Store::Price.new(delivery_price.price, 'gross').format
+              = table_commands delivery_service, admin_delivery_service_prices_path(delivery_service), edit_admin_delivery_service_path(delivery_service), admin_delivery_service_path(delivery_service),  3

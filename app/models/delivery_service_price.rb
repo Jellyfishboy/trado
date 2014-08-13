@@ -25,15 +25,16 @@
 class DeliveryServicePrice < ActiveRecord::Base
 
   attr_accessible :code, :price, :description, :min_weight, :max_weight, :min_length, :max_length, 
-  :min_thickness, :max_thickness, :active, :zone_ids
+  :min_thickness, :max_thickness, :active, :zone_ids, :delivery_service_id
 
   has_many :destinations,                               dependent: :delete_all
   has_many :zones,                                      through: :destinations
   has_many :countries,                                  through: :zones
   has_many :orders,                                     dependent: :restrict_with_exception
+  belongs_to :delivery_service
 
-  validates :code, :price, :description,                presence: true
-  validates :code,                                      uniqueness: { scope: :active }, length: { minimum: 10, message: :too_short }
+  validates :code, :price,                              presence: true
+  validates :code,                                      uniqueness: { scope: [:active, :delivery_service_id] }
   validates :description,                               length: { maximum: 180, message: :too_long }
   validates :price,                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
@@ -41,6 +42,5 @@ class DeliveryServicePrice < ActiveRecord::Base
   
   include ActiveScope
   scope :find_collection,                               ->(cart, country) { joins(:tiereds, :countries).where(tiereds: { :tier_id => cart.order.tiers }, countries: { :name => country }).load }
-
 
 end

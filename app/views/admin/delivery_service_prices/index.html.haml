@@ -1,34 +1,35 @@
-- content_for :title, 'Delivery service prices'
-- content_for :breadcrumb, 'Delivery service prices'
+- content_for :title, "Delivery pricing for #{@delivery_service.full_name}"
+- content_for :breadcrumb, @delivery_service.full_name
+- breadcrumb_add 'Delivery services', admin_delivery_services_path
 
 .twelvecol
   .page-header
-    = link_to new_admin_delivery_service_price_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add delivery service price" do
+    = link_to new_admin_delivery_service_price_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add delivery pricing" do
       %i.icon-plus
-    %h2.widget.widget-header Delivery service prices
-  - if @shippings.empty?
-    %p You don't have any shippings yet.
+    %h2.widget.widget-header= "Delivery pricing for #{@delivery_service.full_name}" 
+  - if @delivery_service_prices.empty?
+    %p= "You don't have any prices for #{@delivery_service.full_name} yet."
   - else
     .table-responsive
       %table.table.table-striped.table-bordered.table-hover
         %thead
           %tr
-            %th Name
+            %th Code
             %th Description
-            %th Zones
+            %th Weight parameters
+            %th Length parameters
+            %th Thickness parameters
             %th Net price
             %th Gross price
             %th
         %tbody
-          - @shippings.each do |shipping|
+          - @delivery_service_prices.each do |delivery_price|
             %tr
-              %td= shipping.name
-              %td= shipping.description
-              %td
-                %ul 
-                  - shipping.zones.each do |zone|
-                    %li
-                      = zone.name
-              %td= Store::Price.new(shipping.price, 'net').format
-              %td= Store::Price.new(shipping.price, 'gross').format
-              = table_commands shipping, admin_shipping_path(shipping), edit_admin_shipping_path(shipping), admin_shipping_path(shipping),  0
+              %td= delivery_price.code
+              %td= delivery_price.description
+              %td= dimension_range(delivery_price.min_weight, delivery_price.max_weight)
+              %td= dimension_range(delivery_price.min_length, delivery_price.max_length)
+              %td= dimension_range(delivery_price.min_thickness, delivery_price.max_thickness)
+              %td= Store::Price.new(delivery_price.price, 'net').format
+              %td= Store::Price.new(delivery_price.price, 'gross').format
+              = table_commands delivery_price, admin_delivery_service_prices_path(@delivery_service, delivery_price), edit_admin_delivery_service_price_path(@delivery_service, delivery_price), admin_delivery_service_price_path(@delivery_service, delivery_price),  0

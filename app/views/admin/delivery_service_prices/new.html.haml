@@ -1,41 +1,53 @@
-- content_for :title, 'New shipping'
+- content_for :title, 'New delivery pricing'
 - content_for :breadcrumb, 'New'
-- breadcrumb_add 'Shipping', admin_shippings_path
+- breadcrumb_add 'Delivery services', admin_delivery_services_path
+- breadcrumb_add @delivery_service_price.delivery_service.full_name, admin_delivery_service_prices_path
 
 .eightcol
   .page-header
-    %h2.widget.widget-header New shipping method
-  = form_for [:admin, @shipping], :html => { :role => 'form' } do |f|
-    - if @shipping && @shipping.errors.any?
+    %h2.widget.widget-header New delivery pricing
+  = form_for @delivery_service_price, url: admin_delivery_service_prices_path(@delivery_service, @delivery_service_price), html: { role: 'form', method: :post } do |f|
+    - if @delivery_service_price && @delivery_service_price.errors.any?
       #errors
         %ul
-          - @shipping.errors.full_messages.each do |msg|
+          - @delivery_service_price.errors.full_messages.each do |msg|
             %li
               %i.icon-cancel-circle
               = msg 
     %fieldset.widget.widget-content
       .form-group
-        = f.label :name
-        = f.text_field :name, :class => 'form-control'
+        = f.label :code
+        = f.text_field :code, :class => 'form-control'
       .form-group
         = f.label :price
         = f.text_field :price, :class => 'form-control calculate-tax', :autocomplete => 'off'
-      .form-group.form-last
+      .form-group
         = f.label :description
         = f.text_area :description, :class => 'form-control', :rows => 7
     .widget-sub-heading
-      %h3 Zones
-    .table-responsive
-      %table.table.table-striped.table-bordered.table-hover.table-form.table-margin
-        %thead
-          %tr
-            %th Name
-            %th.align-center Select
-        %tbody
-          = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @shipping.zones.map(&:id) do |c|
-            %tr
-              %td= c.label
-              %td.align-center= c.check_box
+      %h3 Dimension allowance
+    %fieldset.widget.widget-content
+      .form-group
+        = f.label :min_weight
+        = f.text_field :min_weight, :class => 'form-control'
+      .form-group
+        = f.label :max_weight
+        = f.text_field :max_weight, :class => 'form-control'
+      .form-group
+        = f.label :min_length
+        = f.text_field :min_length, :class => 'form-control'
+      .form-group
+        = f.label :max_length
+        = f.text_field :max_length, :class => 'form-control'
+      .form-group
+        = f.label :min_thickness
+        = f.text_field :min_thickness, :class => 'form-control'
+      .form-group
+        = f.label :max_thickness
+        = f.text_field :max_thickness, :class => 'form-control'
+    .widget-sub-heading
+      %h3 Countries
+      
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

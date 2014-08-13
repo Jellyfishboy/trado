@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Shipping do
+describe DeliveryServicePrice do
 
     # ActiveRecord relations
     it { expect(subject).to have_many(:tiereds).dependent(:delete_all) }

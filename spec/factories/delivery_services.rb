@@ -1,9 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :delivery_service do
-    name "MyString"
-    description "MyString"
-    courier_name "MyString"
-  end
+    factory :delivery_service do
+        name { Faker::Lorem.word }
+        description { Faker::Lorem.characters(50) }
+        courier_name { Faker::Lorem.word }
+        active { false }
+    end
 end

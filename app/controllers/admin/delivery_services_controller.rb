@@ -5,7 +5,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
   # GET /delivery_services
   def index
-    @delivery_services = DeliveryService.all
+    @delivery_services = DeliveryService.includes(:prices).load
   end
 
   # GET /delivery_services/new
@@ -31,7 +31,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
   # PATCH/PUT /delivery_services/1
   def update
-    if @delivery_service.update(delivery_service_params)
+    if @delivery_service.update(params[:delivery_service])
       flash_message :success, 'Delivery service was successfully updated.'
       redirect_to admin_delivery_services_url
     else

@@ -18,12 +18,17 @@
 class DeliveryService < ActiveRecord::Base
     attr_accessible :name, :description, :courier_name, :active
 
-    has_many :delivery_service_prices
+    has_many :prices,                                       class_name: 'DeliveryServicePrice', dependent: :delete_all
 
     validates :name, :courier_name,                         presence: true
+    validates :name,                                        uniqueness: { scope: :courier_name }
     validates :description,                                 length: { maximum: 180, message: :too_long }
 
     default_scope { order(courier_name: :desc) }
 
     include ActiveScope
+
+    def full_name
+        [courier_name, name].join(' ')
+    end
 end

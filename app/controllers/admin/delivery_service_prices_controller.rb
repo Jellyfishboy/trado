@@ -2,21 +2,18 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
   before_action :set_delivery_service_price, only: [:update, :destroy]
   before_action :get_associations, except: [:index, :destroy, :set_delivery_service_price]
+  before_action :set_delivery_service, only: [:new, :create]
   before_action :authenticate_user!
   layout "admin"
 
   def index
-    @delivery_service_prices = DeliveryServicePrice.active.load
+    @delivery_service = DeliveryService.includes(:prices).find(params[:delivery_service_id])
+    @delivery_service_prices = @delivery_service.prices
   end
 
 
   def new
-    @delivery_service_price = DeliveryServicePrice.new
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @delivery_service_price }
-    end
+    @delivery_service_price = @delivery_service.prices.build
   end
 
   def edit
@@ -24,16 +21,13 @@ class Admin::DeliveryServicePricesController < ApplicationController
   end
 
   def create
-    @delivery_service_price = DeliveryServicePrice.new(params[:delivery_service_price])
+    @delivery_service_price = @delivery_service.prices.build(params[:delivery_service_price])
     
-    respond_to do |format|
-      if @delivery_service_price.save
-        flash_message :success, 'Delivery service price was successfully created.'
-        format.html { redirect_to admin_delivery_service_prices_url }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @delivery_service_price.errors, status: :unprocessable_entity }
-      end
+    if @delivery_service_price.save
+      flash_message :success, 'Delivery service price was successfully created.'
+      redirect_to admin_delivery_service_prices_url
+    else
+      render :new
     end
   end
 
@@ -81,6 +75,10 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
     def set_delivery_service_price
       @delivery_service_price = DeliveryServicePrice.find(params[:id])
+    end
+
+    def set_delivery_service
+      @delivery_service = DeliveryService.find(params[:delivery_service_id])
     end
 
     def get_associations
