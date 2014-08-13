@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812185001) do
+ActiveRecord::Schema.define(version: 20140813083449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,17 +113,18 @@ ActiveRecord::Schema.define(version: 20140812185001) do
 
   create_table "delivery_service_prices", force: true do |t|
     t.string   "code"
-    t.decimal  "price",         precision: 8, scale: 2
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.decimal  "price",               precision: 8, scale: 2
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.text     "description"
-    t.boolean  "active",                                default: true
-    t.decimal  "min_weight",    precision: 8, scale: 2
-    t.decimal  "max_weight",    precision: 8, scale: 2
-    t.decimal  "min_length",    precision: 8, scale: 2
-    t.decimal  "max_length",    precision: 8, scale: 2
-    t.decimal  "min_thickness", precision: 8, scale: 2
-    t.decimal  "max_thickness", precision: 8, scale: 2
+    t.boolean  "active",                                      default: true
+    t.decimal  "min_weight",          precision: 8, scale: 2
+    t.decimal  "max_weight",          precision: 8, scale: 2
+    t.decimal  "min_length",          precision: 8, scale: 2
+    t.decimal  "max_length",          precision: 8, scale: 2
+    t.decimal  "min_thickness",       precision: 8, scale: 2
+    t.decimal  "max_thickness",       precision: 8, scale: 2
+    t.integer  "delivery_service_id"
   end
 
   create_table "delivery_services", force: true do |t|

@@ -7,19 +7,20 @@
 #
 # Table name: delivery_service_prices
 #
-#  id                 :integer          not null, primary key
-#  code               :string(255)          
-#  price              :decimal          precision(8), scale(2)
-#  description        :text          
-#  min_weight         :decimal          precision(8), scale(2)
-#  max_weight         :decimal          precision(8), scale(2)
-#  min_length         :decimal          precision(8), scale(2)
-#  max_length         :decimal          precision(8), scale(2)
-#  min_thickness      :decimal          precision(8), scale(2)
-#  max_thickness      :decimal          precision(8), scale(2)
-#  active             :boolean          default(true)
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                       :integer          not null, primary key
+#  code                     :string(255)          
+#  price                    :decimal          precision(8), scale(2)
+#  description              :text          
+#  min_weight               :decimal          precision(8), scale(2)
+#  max_weight               :decimal          precision(8), scale(2)
+#  min_length               :decimal          precision(8), scale(2)
+#  max_length               :decimal          precision(8), scale(2)
+#  min_thickness            :decimal          precision(8), scale(2)
+#  max_thickness            :decimal          precision(8), scale(2)
+#  delivery_service_id      :integer          not null
+#  active                   :boolean          default(true)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
 #
 class DeliveryServicePrice < ActiveRecord::Base
 
@@ -31,8 +32,8 @@ class DeliveryServicePrice < ActiveRecord::Base
   has_many :countries,                                  through: :zones
   has_many :orders,                                     dependent: :restrict_with_exception
 
-  validates :name, :price, :description,                presence: true
-  validates :name,                                      uniqueness: { scope: :active }, length: { minimum: 10, message: :too_short }
+  validates :code, :price, :description,                presence: true
+  validates :code,                                      uniqueness: { scope: :active }, length: { minimum: 10, message: :too_short }
   validates :description,                               length: { maximum: 180, message: :too_long }
   validates :price,                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
