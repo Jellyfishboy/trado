@@ -1,14 +1,11 @@
 require 'rails_helper'
 
-describe ShippingsController do
+describe DeliveryServicePricesController do
 
     store_setting
 
     describe 'GET #update' do
         let!(:cart) { create(:cart) }
-        let(:tier_1) { create(:tier) }
-        let(:tier_2) { create(:tier) }
-        let(:tier_3) { create(:tier) }
         let(:zone) { create(:zone, name: 'EU') }
         let(:country) { create(:country, name: 'United Kingdom', zone_id: zone.id) }
         let(:shipping_1) { create(:shipping) }
@@ -20,9 +17,6 @@ describe ShippingsController do
             create(:destination, zone_id: zone.id, shipping_id: shipping_1.id)
             create(:destination, zone_id: zone.id, shipping_id: shipping_2.id)
             create(:destination, zone_id: zone.id, shipping_id: shipping_3.id)
-            create(:tiered, shipping_id: shipping_1.id, tier_id: tier_1.id)
-            create(:tiered, shipping_id: shipping_2.id, tier_id: tier_2.id)
-            create(:tiered, shipping_id: shipping_3.id, tier_id: tier_3.id)
             controller.stub(:current_cart).and_return(cart)
         end
 

@@ -3,30 +3,42 @@ require 'rails_helper'
 describe DeliveryServicePrice do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:tiereds).dependent(:delete_all) }
-    it { expect(subject).to have_many(:tiers).through(:tiereds) }
     it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
     it { expect(subject).to have_many(:zones).through(:destinations) }
     it { expect(subject).to have_many(:countries).through(:zones) }
     it { expect(subject).to have_many(:orders).dependent(:restrict_with_exception) }
 
     # Validations
-    it { expect(subject).to validate_presence_of(:name) }
+    it { expect(subject).to validate_presence_of(:code) }
     it { expect(subject).to validate_presence_of(:price) }
-    it { expect(subject).to validate_presence_of(:description) }
+    it { expect(subject).to validate_presence_of(:min_weight) }
+    it { expect(subject).to validate_presence_of(:max_weight) }
+    it { expect(subject).to validate_presence_of(:min_length) }
+    it { expect(subject).to validate_presence_of(:max_length) }
+    it { expect(subject).to validate_presence_of(:min_thickness) }
+    it { expect(subject).to validate_presence_of(:max_thickness) }
 
-    it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
+    it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:active, :delivery_service_id]) }
 
-    it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
+    describe "Default scope" do
+        let!(:delivery_service_price_1) { create(:delivery_service_price, price: '1.22') }
+        let!(:delivery_service_price_2) { create(:delivery_service_price, price: '5.67') }
+        let!(:delivery_service_price_3) { create(:delivery_service_price, price: '110.23') }
+
+        it "should return an array of products ordered by descending weighting" do
+            expect(DeliveryServicePrice.last(3)).to match_array([delivery_service_price_1, delivery_service_price_2, delivery_service_price_3])
+        end
+    end
+
     describe "Listing all shippings" do
-        let!(:shipping_1) { create(:shipping, active: true) }
-        let!(:shipping_2) { create(:shipping) }
-        let!(:shipping_3) { create(:shipping, active: true) }
+        let!(:delivery_service_price_1) { create(:delivery_service_price, active: true) }
+        let!(:delivery_service_price_2) { create(:delivery_service_price) }
+        let!(:delivery_service_price_3) { create(:delivery_service_price, active: true) }
 
         it "should return an array of 'active' shippings" do
-            expect(Shipping.active).to match_array([shipping_1, shipping_3])
+            expect(DeliveryServicePrice.active).to match_array([delivery_service_price_1, delivery_service_price_3])
         end
     end
 

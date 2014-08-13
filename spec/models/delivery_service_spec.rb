@@ -11,16 +11,6 @@ describe DeliveryService do
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:courier_name) }
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
-    describe "Listing all delivery services" do
-        let!(:delivery_service_1) { create(:delivery_service) }
-        let!(:delivery_service_2) { create(:delivery_service, active: true) }
-        let!(:delivery_service_3) { create(:delivery_service, active: true) }
-
-        it "should return an array of active delivery services" do
-            expect(DeliveryService.active).to match_array([delivery_service_2, delivery_service_3])
-        end
-    end
-
     describe "Default scope" do
         let!(:delivery_service_1) { create(:delivery_service, courier_name: 'abc') }
         let!(:delivery_service_2) { create(:delivery_service, courier_name: 'zaa') }
@@ -28,6 +18,16 @@ describe DeliveryService do
 
         it "should return an array of products ordered by descending weighting" do
             expect(DeliveryService.last(3)).to match_array([delivery_service_1, delivery_service_3, delivery_service_2])
+        end
+    end
+
+    describe "Listing all delivery services" do
+        let!(:delivery_service_1) { create(:delivery_service) }
+        let!(:delivery_service_2) { create(:delivery_service, active: true) }
+        let!(:delivery_service_3) { create(:delivery_service, active: true) }
+
+        it "should return an array of active delivery services" do
+            expect(DeliveryService.active).to match_array([delivery_service_2, delivery_service_3])
         end
     end
 
