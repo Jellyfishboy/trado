@@ -8,7 +8,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
   def index
     @delivery_service = DeliveryService.includes(:prices).find(params[:delivery_service_id])
-    @delivery_service_prices = @delivery_service.prices
+    @delivery_service_prices = @delivery_service.prices.active
   end
 
 

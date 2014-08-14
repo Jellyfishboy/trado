@@ -132,7 +132,7 @@ describe Admin::AccessoriesController do
             context "if the accessory has no associated orders" do
 
                 it "should locate the requested @accessory" do
-                    patch :update, id: accessory.id, accessory: attributes_for(:accessory, active: true)
+                    patch :update, id: accessory.id, accessory: new_accessory
                     expect(assigns(:accessory)).to eq(accessory)
                 end
 
@@ -141,10 +141,16 @@ describe Admin::AccessoriesController do
                     accessory.reload
                     expect(accessory.name).to eq('accessory #2')
                 end
+
+                it "should not save a new accessory to the database" do
+                    expect {
+                        patch :update, id: accessory.id, accessory: new_accessory
+                    }.to change(Accessory, :count).by(0)
+                end
             end
             
             it " should redirect to the accessories#index" do
-                patch :update, id: accessory.id, accessory: attributes_for(:accessory, active: true)
+                patch :update, id: accessory.id, accessory: new_accessory
                 expect(response).to redirect_to admin_accessories_url
             end
         end

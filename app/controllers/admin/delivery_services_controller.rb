@@ -5,7 +5,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
   # GET /delivery_services
   def index
-    @delivery_services = DeliveryService.includes(:prices).load
+    @delivery_services = DeliveryService.includes(:prices).active.load
   end
 
   # GET /delivery_services/new
@@ -39,7 +39,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
     if @delivery_service.update(params[:delivery_service])
       if @old_delivery_service
-        @old_shipping.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :delivery_service_id => @delivery_service.id) }
+        @old_delivery_service.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :delivery_service_id => @delivery_service.id) }
       end
       flash_message :success, 'Delivery service was successfully updated.'
       redirect_to admin_delivery_services_url

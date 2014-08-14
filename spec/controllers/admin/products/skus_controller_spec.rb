@@ -91,9 +91,10 @@ describe Admin::Products::SkusController do
             end
 
             context "if the sku has no associated orders" do
+                let(:new_sku) { attributes_for(:sku, active: true) }
 
                 it "should locate the requested @sku" do
-                    xhr :patch, :update, id: sku.id, sku: attributes_for(:sku, active: true)
+                    xhr :patch, :update, id: sku.id, sku: new_sku
                     expect(assigns(:sku)).to eq(sku)
                 end
 
@@ -105,8 +106,14 @@ describe Admin::Products::SkusController do
 
                 it "should not duplicate any stock level records" do
                     expect{
-                        xhr :patch, :update, id: sku.id, sku: attributes_for(:sku, active: true)
+                        xhr :patch, :update, id: sku.id, sku: new_sku
                     }.to_not change(StockLevel, :count)
+                end
+
+                it "should not save a new sku to the database" do
+                    expect {
+                        xhr :patch, :update, id: sku.id, sku: new_sku
+                    }.to change(Sku, :count).by(0)
                 end
             end
             

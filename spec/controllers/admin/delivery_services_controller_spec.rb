@@ -72,9 +72,9 @@ describe Admin::DeliveryServicesController do
     describe 'PATCH #update' do
         let!(:delivery_service) { create(:delivery_service, name: 'delivery_service #1', active: true) }
         let!(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id) }
+        let(:new_delivery_service) { attributes_for(:delivery_service, active: true) }
 
         context "if the delivery_service has associated orders" do
-            let(:new_delivery_service) { attributes_for(:delivery_service, active: true) }
             before(:each) do
                 create(:order, delivery_service_price_id: delivery_service_price.id)
             end
@@ -103,7 +103,6 @@ describe Admin::DeliveryServicesController do
         context "with valid attributes" do
 
             context "if the delivery_service has associated orders" do
-                let(:new_delivery_service) { attributes_for(:delivery_service, active: true) }
                 let!(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id) }
 
                 before(:each) do
@@ -127,7 +126,7 @@ describe Admin::DeliveryServicesController do
             context "if the delivery_service has no associated orders" do
 
                 it "should locate the requested @delivery_service" do
-                    patch :update, id: delivery_service.id, delivery_service: attributes_for(:delivery_service, active: true)
+                    patch :update, id: delivery_service.id, delivery_service: new_delivery_service
                     expect(assigns(:delivery_service)).to eq(delivery_service)
                 end
 
@@ -135,6 +134,12 @@ describe Admin::DeliveryServicesController do
                     patch :update, id: delivery_service.id, delivery_service: attributes_for(:delivery_service, name: 'delivery_service #2', active: true)
                     delivery_service.reload
                     expect(delivery_service.name).to eq('delivery_service #2')
+                end
+
+                it "should not save a new delivery_service to the database" do
+                    expect {
+                        patch :update, id: delivery_service.id, delivery_service: new_delivery_service
+                    }.to change(DeliveryService, :count).by(0)
                 end
             end
             
@@ -214,7 +219,7 @@ describe Admin::DeliveryServicesController do
 
         context "if there are associated orders" do
             before(:each) do
-                create(:order, delivery_service_id: delivery_service_price.id)
+                create(:order, delivery_service_price_id: delivery_service_price.id)
             end
 
             it "should flash a success message" do

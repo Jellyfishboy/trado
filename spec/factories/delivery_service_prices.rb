@@ -12,5 +12,9 @@ FactoryGirl.define do
         active { false }
 
         association :delivery_service
+
+        factory :invalid_delivery_service_price do
+            code { nil }
+        end
     end
 end
