@@ -4,5 +4,9 @@ FactoryGirl.define do
         description { Faker::Lorem.characters(50) }
         courier_name { Faker::Lorem.word }
         active { false }
+
+        factory :invalid_delivery_service do
+            name { nil }
+        end
     end
 end

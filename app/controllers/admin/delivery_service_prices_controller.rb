@@ -53,7 +53,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
       @form_delivery_service_price = @old_delivery_service_price ||= DeliveryServicePrice.find(params[:id])
       Store::activate!(@form_delivery_service_price)
       @form_delivery_service_price.attributes = params[:delivery_service_price]
-      render action: "edit"
+      render :edit
     end
   end
 

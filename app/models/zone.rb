@@ -16,11 +16,11 @@ class Zone < ActiveRecord::Base
 
   attr_accessible :name, :country_ids
 
-  has_many :destinations,                       :dependent => :delete_all
-  has_many :delivery_service_prices,            :through => :destinations
-  has_many :zonifications,                      :dependent => :delete_all
-  has_many :countries,                          :through => :zonifications
+  has_many :destinations,                       dependent: :delete_all
+  has_many :delivery_services,                  through: :destinations
+  has_many :zonifications,                      dependent: :delete_all
+  has_many :countries,                          through: :zonifications
 
-  validates :name,                              :uniqueness => true, :presence => true
+  validates :name,                              uniqueness: true, presence: true
   
 end

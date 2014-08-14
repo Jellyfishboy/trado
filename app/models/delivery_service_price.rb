@@ -27,9 +27,6 @@ class DeliveryServicePrice < ActiveRecord::Base
   attr_accessible :code, :price, :description, :min_weight, :max_weight, :min_length, :max_length, 
   :min_thickness, :max_thickness, :active, :zone_ids, :delivery_service_id
 
-  has_many :destinations,                                               dependent: :delete_all
-  has_many :zones,                                                      through: :destinations
-  has_many :countries,                                                  through: :zones
   has_many :orders,                                                     dependent: :restrict_with_exception
   belongs_to :delivery_service
 
