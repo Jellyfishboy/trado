@@ -9,7 +9,7 @@ We thought you'd like to know that we've dispatched your item(s). Your order is 
 
 Your delivery option
 ---------------------
-<%= @order.shipping.name %>
+<%= @order.delivery.name %>
 
 Your order will be sent to
 ---------------------
@@ -46,7 +46,7 @@ Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b
 <% end %>
 
 Subtotal: <%= Store::Price.new(@order.net_amount, 'net').format %>
-Delivery & handling: <%= Store::Price.new(@order.shipping.price, 'net').format %>
+Delivery & handling: <%= Store::Price.new(@order.delivery.price, 'net').format %>
 Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').format %>
 <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').format %>
 Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>

@@ -16,15 +16,15 @@ FactoryGirl.define do
       end
 
       factory :product_attachment do
-        association :attachable, :factory => :product
+        association :attachable, factory: :product
       end
 
       factory :store_setting_attachment do
-        association :attachable, :factory => :store_setting
+        association :attachable, factory: :store_setting
       end
 
       factory :user_attachment do
-        association :attachable, :factory => :user
+        association :attachable, factory: :user
       end
     end
 end

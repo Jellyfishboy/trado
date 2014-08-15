@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814154325) do
+ActiveRecord::Schema.define(version: 20140815121844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,22 +182,22 @@ ActiveRecord::Schema.define(version: 20140814154325) do
     t.string   "email"
     t.integer  "tax_number"
     t.datetime "shipping_date"
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
-    t.decimal  "actual_shipping_cost",      precision: 8, scale: 2
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.decimal  "actual_shipping_cost", precision: 8, scale: 2
     t.string   "express_token"
     t.string   "express_payer_id"
-    t.integer  "delivery_service_price_id"
+    t.integer  "delivery_id"
     t.string   "ip_address"
     t.integer  "user_id"
-    t.decimal  "net_amount",                precision: 8, scale: 2
-    t.decimal  "gross_amount",              precision: 8, scale: 2
-    t.decimal  "tax_amount",                precision: 8, scale: 2
+    t.decimal  "net_amount",           precision: 8, scale: 2
+    t.decimal  "gross_amount",         precision: 8, scale: 2
+    t.decimal  "tax_amount",           precision: 8, scale: 2
     t.boolean  "terms"
     t.integer  "cart_id"
-    t.integer  "shipping_status",                                   default: 0
-    t.integer  "status",                                            default: 0
-    t.integer  "tiers",                                                                      array: true
+    t.integer  "shipping_status",                              default: 0
+    t.integer  "status",                                       default: 0
+    t.integer  "tiers",                                                                 array: true
   end
 
   create_table "permissions", force: true do |t|

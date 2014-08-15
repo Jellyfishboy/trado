@@ -65,9 +65,9 @@
             - unless @cart.cart_items.empty?
               %p.right-align
                 In the next step you will choose your billing address  
-                %a.btn.higher.bold#estimate-shipping ESTIMATE SHIPPING  
+                %a.btn.higher.bold#estimate-delivery-service-price ESTIMATE SHIPPING  
                 %a.btn.higher.bold#update_quantity UPDATE
                 = link_to "CONTINUE", next_wizard_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container
-= render 'orders/shippings/estimate/modal'
+= render 'orders/delivery_service_prices/estimate/modal'

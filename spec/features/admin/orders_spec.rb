@@ -57,7 +57,7 @@ feature 'Order management' do
             expect(page).to have_content pending.delivery_address.address
         end
         within '.table-margin tbody' do
-            expect(find('tr:nth-child(3) td:last-child')).to have_content pending.shipping.price
+            expect(find('tr:nth-child(3) td:last-child')).to have_content pending.delivery.price
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content pending.transactions.last.transaction_type
@@ -88,7 +88,7 @@ feature 'Order management' do
             expect(page).to have_content complete.delivery_address.address
         end
         within '.table-margin tbody' do
-            expect(find('tr:nth-child(3) td:last-child')).to have_content complete.shipping.price
+            expect(find('tr:nth-child(3) td:last-child')).to have_content complete.delivery.price
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content complete.transactions.last.transaction_type

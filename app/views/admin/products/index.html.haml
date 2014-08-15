@@ -12,7 +12,7 @@
     %select#filter-product-category.form-select
       %option.filter{"data-filter" => "all"} Show all
       - @categories.each do |category|
-        %option.filter{"data-filter" => ".category-#{category.slug}"}= category.name
+        %option.filter{"data-filter" => ".category-#{category.slug}"} = category.name
     %span Filter by:
     %select#sort-product.form-select.widget-control-margin
       %option.sort{"data-sort" => "default"} Weighting ↑

@@ -86,12 +86,12 @@
                           = item.cart_item_accessory.quantity
                   %tr
                     %td.image
-                      = image_tag "delivery.png", :alt => @order.shipping.name
+                      = image_tag "delivery.png", :alt => @order.delivery.name
                     %td.desc
-                      = @order.shipping.name
+                      = @order.delivery.name
                       %div= @order.delivery_address.country
                     %td.qty
-                    %td.price= Store::Price.new(@order.shipping.price).format
+                    %td.price= Store::Price.new(@order.delivery.price).format
                   - if Store::settings.tax_breakdown
                     %tr
                       %td{colspan: "2"}

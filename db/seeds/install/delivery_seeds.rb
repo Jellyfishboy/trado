@@ -1,5 +1,5 @@
 puts '-----------------------------'
-puts 'Executing shipping seeds'.colorize(:green)
+puts 'Executing delivery service seeds'.colorize(:green)
 
 country = Country.create({
     name: 'United Kingdom', 

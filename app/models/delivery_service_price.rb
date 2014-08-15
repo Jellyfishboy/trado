@@ -27,7 +27,7 @@ class DeliveryServicePrice < ActiveRecord::Base
   attr_accessible :code, :price, :description, :min_weight, :max_weight, :min_length, :max_length, 
   :min_thickness, :max_thickness, :active, :zone_ids, :delivery_service_id
 
-  has_many :orders,                                                     dependent: :restrict_with_exception
+  has_many :orders,                                                     foreign_key: :delivery_id, dependent: :restrict_with_exception
   belongs_to :delivery_service
 
   validates :code, :price, :min_weight, :max_weight,

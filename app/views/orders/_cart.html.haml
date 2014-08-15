@@ -1,4 +1,4 @@
-- @cart_total = @order.nil? || @order.shipping.nil? ? current_cart.total_price : (current_cart.total_price + @order.shipping.price)
+- @cart_total = @order.nil? || @order.delivery.nil? ? current_cart.total_price : (current_cart.total_price + @order.delivery.price)
 - current_cart.cart_items.each do |item|
   %tr
     %td.image
@@ -20,17 +20,17 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
-- unless @order.nil? || @order.shipping.nil?
+- unless @order.nil? || @order.delivery.nil?
   %tr
     %td.image
-      = image_tag "delivery.png", :alt => @order.shipping.name
+      = image_tag "delivery.png", :alt => @order.delivery.name
     %td.desc
-      = @order.shipping.name
+      = @order.delivery.name
       = link_to purge_estimate_order_build_path, method: :delete, remote: true, :title => 'Remove item' do
         %i.fa.fa-times-circle
       %div= @order.delivery_address.country
     %td.qty
-    %td.price= Store::Price.new(@order.shipping.price).format
+    %td.price= Store::Price.new(@order.delivery.price).format
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2"}

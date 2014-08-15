@@ -14,7 +14,7 @@ Your order was unsuccessful for the following reason(s):
 
 Your delivery option
 ---------------------
-<%= @order.shipping.name %>
+<%= @order.delivery.name %>
 
 Your delivery address
 ---------------------
@@ -51,7 +51,7 @@ Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b
 <% end %>
 
 Subtotal: <%= Store::Price.new(@order.net_amount, 'net').format %>
-Delivery & handling: <%= Store::Price.new(@order.shipping.price, 'net').format %>
+Delivery & handling: <%= Store::Price.new(@order.delivery.price, 'net').format %>
 Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').format %>
 <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').format %>
 Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>

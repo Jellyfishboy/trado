@@ -35,7 +35,7 @@
           %i.icon-airplane
           = succeed ":" do
             %b Delivery option
-          = @order.shipping.name
+          = @order.delivery.name
   .fourcol
     .widget-sub-heading
       %h3 Billing address
@@ -102,7 +102,7 @@
           %tr
             %td.align-right{colspan: "4"}
               %b Delivery/handling:
-            %td= Store::Price.new(@order.shipping.price, 'net').format
+            %td= Store::Price.new(@order.delivery.price, 'net').format
           %tr
             %td.align-right{colspan: "4"}
               %b Tax:

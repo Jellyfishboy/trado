@@ -16,7 +16,7 @@ FactoryGirl.define do
         
 
         association :cart
-        association :delivery_service_price
+        association :delivery, factory: :delivery_service_price
         
         ignore do
             count 1

@@ -76,7 +76,7 @@ describe Admin::DeliveryServicesController do
 
         context "if the delivery_service has associated orders" do
             before(:each) do
-                create(:order, delivery_service_price_id: delivery_service_price.id)
+                create(:order, delivery_id: delivery_service_price.id)
             end
 
             it "should set the delivery_service as inactive" do
@@ -103,10 +103,11 @@ describe Admin::DeliveryServicesController do
         context "with valid attributes" do
 
             context "if the delivery_service has associated orders" do
-                let!(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id) }
-
+                let!(:delivery_service_price_2) { create(:delivery_service_price, delivery_service_id: delivery_service.id) }
+                let!(:delivery_service_price_3) { create(:delivery_service_price, delivery_service_id: delivery_service.id) }
                 before(:each) do
-                    create(:order, delivery_service_price_id: delivery_service_price.id)
+                    create(:order, delivery_id: delivery_service_price.id)
+                    create(:order, delivery_id: delivery_service_price_3.id)
                     create_list(:destination, 4, delivery_service_id: delivery_service.id)
                 end
 
@@ -120,6 +121,16 @@ describe Admin::DeliveryServicesController do
                     expect {
                         patch :update, id: delivery_service.id, delivery_service: new_delivery_service
                     }.to change(DeliveryService, :count).by(1)
+                end
+
+                it "should transfer any active delivery service prices to the new delivery service record" do
+                    patch :update, id: delivery_service.id, delivery_service: new_delivery_service
+                    expect(assigns(:delivery_service).prices.count).to eq 1
+                end
+
+                it "should remove any delivery service prices which do not have associated orders from the old delivery service record" do
+                    patch :update, id: delivery_service.id, delivery_service: new_delivery_service
+                    expect(assigns(:old_delivery_service).prices.count).to eq 2
                 end
             end
 
@@ -219,7 +230,7 @@ describe Admin::DeliveryServicesController do
 
         context "if there are associated orders" do
             before(:each) do
-                create(:order, delivery_service_price_id: delivery_service_price.id)
+                create(:order, delivery_id: delivery_service_price.id)
             end
 
             it "should flash a success message" do
@@ -234,6 +245,12 @@ describe Admin::DeliveryServicesController do
                 }.to change{
                     delivery_service.active
                 }.from(true).to(false)
+            end
+
+            it "should not delete the delivery_service from the database"  do
+                expect {
+                    delete :destroy, id: delivery_service.id
+                }.to change(DeliveryService, :count).by(0)
             end
         end
 

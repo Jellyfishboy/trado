@@ -7,7 +7,7 @@ describe Order do
     # ActiveRecord relations
     it { expect(subject).to have_many(:order_items).dependent(:delete_all) }
     it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
-    it { expect(subject).to belong_to(:shipping) }
+    it { expect(subject).to belong_to(:delivery).class_name('DeliveryServicePrice') }
     it { expect(subject).to belong_to(:cart) }
     it { expect(subject).to have_one(:delivery_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
     it { expect(subject).to have_one(:billing_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
@@ -26,7 +26,7 @@ describe Order do
     context "if current order status is at shipping" do
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
-        it { expect(subject).to validate_presence_of(:delivery_service_price_id).with_message('Shipping option is required') }
+        it { expect(subject).to validate_presence_of(:delivery_id).with_message('Shipping option is required') }
         it { expect(subject).to allow_value("test@test.com").for(:email) }
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
@@ -66,10 +66,10 @@ describe Order do
             expect(order.net_amount).to eq cart.total_price
         end
         it "should update the order's tax amount attribute" do
-            expect(order.tax_amount).to eq (cart.total_price + order.shipping.price) * tax
+            expect(order.tax_amount).to eq (cart.total_price + order.delivery.price) * tax
         end
         it "should update the order's gross amount attribute" do
-            expect(order.gross_amount).to eq (cart.total_price + order.shipping.price) + ((cart.total_price + order.shipping.price) * tax)
+            expect(order.gross_amount).to eq (cart.total_price + order.delivery.price) + ((cart.total_price + order.delivery.price) * tax)
         end
     end
 

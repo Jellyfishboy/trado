@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :zone do
-    name { Faker::Address.country }
+    sequence(:name) { |n| "#{Faker::Address.country}#{n}" }
 
     factory :zone_with_countries do
         name { 'EU' }

@@ -29,7 +29,7 @@ class Orders::BuildController < ApplicationController
     case step
     when :delivery
       @delivery_address = @order.delivery_address
-      @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @delivery_address.country) unless @order.delivery_service_price_id.nil?
+      @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @delivery_address.country) unless @order.delivery_id.nil?
     end
     case step 
     when :payment
@@ -184,7 +184,7 @@ class Orders::BuildController < ApplicationController
   # Destroys the estimated delivery price item from the cart by setting all the session stores values to nil
   #
   def purge_estimate
-    @order.delivery_service_price_id = nil
+    @order.delivery_id = nil
     @order.delivery_address.country = nil
     @order.save(validate: false)
     render :partial => 'orders/delivery_service_prices/estimate/success', :format => [:js]
@@ -213,7 +213,7 @@ class Orders::BuildController < ApplicationController
   def check_order_status
     @order = Order.find(params[:order_id])
     route = (steps.last(3).include?(params[:id].to_sym) && @order.billing_address.first_name.nil?) ? 'billing' 
-            : (steps.last(2).include?(params[:id].to_sym) && (@order.delivery_address.first_name.nil? || @order.delivery_service_price_id.nil?)) ? 'delivery' 
+            : (steps.last(2).include?(params[:id].to_sym) && (@order.delivery_address.first_name.nil? || @order.delivery_id.nil?)) ? 'delivery' 
             : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?

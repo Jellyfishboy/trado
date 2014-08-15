@@ -45,19 +45,6 @@
       .form-group
         = f.label :max_thickness
         = f.text_field :max_thickness, :class => 'form-control'
-    .widget-sub-heading
-      %h3 Zones
-    .table-responsive
-      %table.table.table-striped.table-bordered.table-hover.table-form
-        %thead
-          %tr
-            %th Name
-            %th.align-center Select
-        %tbody
-          = f.collection_check_boxes :zone_ids, @zones, :id, :name, checked: @form_delivery_service_price.zones.map(&:id) do |c|
-            %tr
-              %td= c.label
-              %td.align-center= c.check_box
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

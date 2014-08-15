@@ -3,7 +3,7 @@ require 'rails_helper'
 describe DeliveryServicePrice do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:orders).dependent(:restrict_with_exception) }
+    it { expect(subject).to have_many(:orders).dependent(:restrict_with_exception).with_foreign_key('delivery_id') }
     it { expect(subject).to belong_to(:delivery_service) }
 
     # Validations

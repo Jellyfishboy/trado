@@ -380,7 +380,7 @@ feature 'Product management' do
         expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
     end
 
-    scenario 'should display a warning if no shippings tiers and/or sku attribute types have been created' do
+    scenario 'should display a warning if no sku attribute types have been created' do
         
         visit admin_products_path
         find('.page-header a:first-child').click

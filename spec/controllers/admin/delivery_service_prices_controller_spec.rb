@@ -75,175 +75,174 @@ describe Admin::DeliveryServicePricesController do
         end 
     end
 
-    # describe 'PATCH #update' do
-    #     let!(:delivery_service_price) { create(:delivery_service_price, name: 'delivery_service_price #1', active: true) }
+    describe 'PATCH #update' do
+        let!(:delivery_service) { create(:delivery_service, active: true) }
+        let!(:delivery_service_price) { create(:delivery_service_price, code: 'delivery_service_price #1', active: true, delivery_service_id: delivery_service.id) }
+        let(:new_delivery_service_price) { attributes_for(:delivery_service_price, active: true) }
 
-    #     context "if the delivery_service_price has associated orders" do
-    #         let(:new_delivery_service_price) { attributes_for(:delivery_service_price, active: true) }
-    #         before(:each) do
-    #             create(:order, delivery_service_price_id: delivery_service_price.id)
-    #         end
+        context "if the delivery_service_price has associated orders" do
+            before(:each) do
+                create(:order, delivery_id: delivery_service_price.id)
+            end
 
-    #         it "should set the delivery_service_price as inactive" do
-    #             expect{
-    #                 patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #                 delivery_service_price.reload
-    #             }.to change{
-    #                 delivery_service_price.active
-    #             }.from(true).to(false)
-    #         end
+            it "should set the delivery_service_price as inactive" do
+                expect{
+                    patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                    delivery_service_price.reload
+                }.to change{
+                    delivery_service_price.active
+                }.from(true).to(false)
+            end
 
-    #         it "should assign new delivery_service_price attributes to @delivery_service_price" do
-    #             patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #             expect(assigns(:delivery_service_price).description).to eq new_delivery_service_price[:description]
-    #             expect(assigns(:delivery_service_price).name).to eq new_delivery_service_price[:name]
-    #         end
+            it "should assign new delivery_service_price attributes to @delivery_service_price" do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                expect(assigns(:delivery_service_price).description).to eq new_delivery_service_price[:description]
+                expect(assigns(:delivery_service_price).code).to eq new_delivery_service_price[:code]
+            end
 
-    #         it "should assign the inactive old delivery_service_price to @old_delivery_service_price" do
-    #             patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #             expect(assigns(:old_delivery_service_price)).to eq delivery_service_price
-    #         end
-    #     end
+            it "should assign the inactive old delivery_service_price to @old_delivery_service_price" do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                expect(assigns(:old_delivery_service_price)).to eq delivery_service_price
+            end
 
-    #     context "with valid attributes" do
+            it "should assign the old_delivery_service_price delivery_service_id to @delivery_service_price" do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                expect(assigns(:delivery_service_price).delivery_service_id).to eq assigns(:old_delivery_service_price).delivery_service_id
+            end
+        end
 
-    #         context "if the delivery_service_price has associated orders" do
-    #             let(:new_delivery_service_price) { attributes_for(:delivery_service_price, active: true) }
-    #             before(:each) do
-    #                 create(:order, delivery_service_price_id: delivery_service_price.id)
-    #                 create_list(:tiered, 3, delivery_service_price_id: delivery_service_price.id)
-    #                 create_list(:destination, 4, delivery_service_price_id: delivery_service_price.id)
-    #             end
+        context "with valid attributes" do
 
-    #             it "should save new tiereds to the database" do
-    #                 expect{
-    #                     patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #                 }.to change(Tiered, :count).by(3)
-    #             end
+            context "if the delivery_service_price has associated orders" do
+                let(:new_delivery_service_price) { attributes_for(:delivery_service_price, active: true) }
+                before(:each) do
+                    create(:order, delivery_id: delivery_service_price.id)
+                end
 
-    #             it "should save new destinations to the database" do
-    #                 expect{
-    #                     patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #                 }.to change(Destination, :count).by(4)
-    #             end
+                it "should save a new delivery_service_price to the database" do
+                    expect {
+                        patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                    }.to change(DeliveryServicePrice, :count).by(1)
+                end
+            end
 
-    #             it "should save a new delivery_service_price to the database" do
-    #                 expect {
-    #                     patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #                 }.to change(DeliverySevicePrice, :count).by(1)
-    #             end
-    #         end
+            context "if the delivery_service_price has no associated orders" do
 
-    #         context "if the delivery_service_price has no associated orders" do
+                it "should locate the requested @delivery_service_price" do
+                    patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                    expect(assigns(:delivery_service_price)).to eq(delivery_service_price)
+                end
 
-    #             it "should locate the requested @delivery_service_price" do
-    #                 patch :update, id: delivery_service_price.id, delivery_service_price: attributes_for(:delivery_service_price, active: true)
-    #                 expect(assigns(:delivery_service_price)).to eq(delivery_service_price)
-    #             end
-
-    #             it "should update the delivery_service_price in the database" do
-    #                 patch :update, id: delivery_service_price.id, delivery_service_price: attributes_for(:delivery_service_price, name: 'delivery_service_price #2', active: true)
-    #                 delivery_service_price.reload
-    #                 expect(delivery_service_price.name).to eq('delivery_service_price #2')
-    #             end
-    #         end
+                it "should update the delivery_service_price in the database" do
+                    patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: attributes_for(:delivery_service_price, code: 'delivery_service_price #2', active: true)
+                    delivery_service_price.reload
+                    expect(delivery_service_price.code).to eq('delivery_service_price #2')
+                end
+            end
             
-    #         it "redirects to the delivery_service_prices#index" do
-    #             patch :update, id: delivery_service_price.id, delivery_service_price: attributes_for(:delivery_service_price, active: true)
-    #             expect(response).to redirect_to admin_delivery_service_prices_url
-    #         end
-    #     end
-    #     context "with invalid attributes" do 
-    #         let(:new_delivery_service_price) { attributes_for(:invalid_delivery_service_price, active: true) }
-    #         before(:each) do
-    #             patch :update, id: delivery_service_price.id, delivery_service_price: new_delivery_service_price
-    #         end
+            it "redirects to the delivery_service_prices#index" do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                expect(response).to redirect_to admin_delivery_service_prices_url
+            end
+        end
+        context "with invalid attributes" do 
+            let(:new_delivery_service_price) { attributes_for(:invalid_delivery_service_price, active: true) }
+            before(:each) do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+            end
 
-    #         it "should not update the delivery_service_price" do
-    #             delivery_service_price.reload
-    #             expect(delivery_service_price.name).to eq('delivery_service_price #1')
-    #         end
+            it "should not update the delivery_service_price" do
+                delivery_service_price.reload
+                expect(delivery_service_price.code).to eq('delivery_service_price #1')
+            end
 
-    #         it "should assign the old_delivery_service_price to @form_delivery_service_price" do
-    #             expect(assigns(:form_delivery_service_price)).to eq delivery_service_price
-    #         end
+            it "should assign the old_delivery_service_price to @form_delivery_service_price" do
+                expect(assigns(:form_delivery_service_price)).to eq delivery_service_price
+            end
 
-    #         it "should set the old_delivery_service_price as active" do
-    #             expect(delivery_service_price.active).to eq true
-    #         end
+            it "should set the old_delivery_service_price as active" do
+                expect(delivery_service_price.active).to eq true
+            end
 
-    #         it "should assign the @form_delivery_service_price attributes with the current params delivery_service_price" do
-    #             expect(assigns(:form_delivery_service_price).attributes["description"]). to eq new_delivery_service_price[:description]
-    #             expect(assigns(:form_delivery_service_price).attributes["name"]).to eq new_delivery_service_price[:name]
-    #         end
+            it "should assign the @form_delivery_service_price attributes with the current params delivery_service_price" do
+                expect(assigns(:form_delivery_service_price).attributes["description"]). to eq new_delivery_service_price[:description]
+                expect(assigns(:form_delivery_service_price).attributes["code"]).to eq new_delivery_service_price[:code]
+            end
 
-    #         it "should re-render the #edit template" do
-    #             patch :update, id: delivery_service_price.id, delivery_service_price: attributes_for(:invalid_delivery_service_price, active: true)
-    #             expect(response).to render_template :edit
-    #         end
-    #     end 
-    # end
+            it "should re-render the #edit template" do
+                patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
+                expect(response).to render_template :edit
+            end
+        end 
+    end
     
-    # describe 'DELETE #destroy' do
-    #     let!(:delivery_service_price) { create(:delivery_service_price, active: true) }
+    describe 'DELETE #destroy' do
+        let!(:delivery_service) { create(:delivery_service, active: true) }
+        let!(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id) }
 
-    #     context "if there are no associated orders" do
+        context "if there are no associated orders" do
         
-    #         context "if there is more than one delivery_service_price in the database" do
-    #             before :each do
-    #                 create(:delivery_service_price, active: true)
-    #             end
+            context "if there is more than one delivery_service_price in the database" do
+                before :each do
+                    create(:delivery_service_price, active: true)
+                end
 
-    #             it "should flash a success message" do
-    #                 delete :destroy, id: delivery_service_price.id
-    #                 expect(subject.request.flash[:success]).to_not be_nil
-    #             end
+                it "should flash a success message" do
+                    delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                    expect(subject.request.flash[:success]).to_not be_nil
+                end
 
-    #             it "should delete the delivery_service_price from the database"  do
-    #                 expect {
-    #                     delete :destroy, id: delivery_service_price.id
-    #                 }.to change(DeliverySevicePrice, :count).by(-1)
-    #             end
-    #         end
+                it "should delete the delivery_service_price from the database"  do
+                    expect {
+                        delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                    }.to change(DeliveryServicePrice, :count).by(-1)
+                end
+            end
 
-    #         context "if there is only one delivery_service_price in the database" do
+            context "if there is only one delivery_service_price in the database" do
 
-    #             it "should flash a error message" do
-    #                 delete :destroy, id: delivery_service_price.id
-    #                 expect(subject.request.flash[:error]).to_not be_nil
-    #             end
+                it "should flash a error message" do
+                    delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                    expect(subject.request.flash[:error]).to_not be_nil
+                end
 
-    #             it "should not delete the delivery_service_price from the database"  do
-    #                 expect {
-    #                     delete :destroy, id: delivery_service_price.id
-    #                 }.to change(DeliverySevicePrice, :count).by(0)
-    #             end
-    #         end
-    #     end
+                it "should not delete the delivery_service_price from the database"  do
+                    expect {
+                        delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                    }.to change(DeliveryServicePrice, :count).by(0)
+                end
+            end
+        end
 
-    #     context "if there are associated orders" do
-    #         before(:each) do
-    #             create(:order, delivery_service_price_id: delivery_service_price.id)
-    #         end
+        context "if there are associated orders" do
+            before(:each) do
+                create(:order, delivery_id: delivery_service_price.id)
+            end
 
-    #         it "should flash a success message" do
-    #             delete :destroy, id: delivery_service_price.id
-    #             expect(subject.request.flash[:success]).to_not be_nil
-    #         end
+            it "should flash a success message" do
+                delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                expect(subject.request.flash[:success]).to_not be_nil
+            end
 
-    #         it "should set the delivery_service_price as inactive" do
-    #             expect{
-    #                 delete :destroy, id: delivery_service_price.id
-    #                 delivery_service_price.reload
-    #             }.to change{
-    #                 delivery_service_price.active
-    #             }.from(true).to(false)
-    #         end
-    #     end
+            it "should set the delivery_service_price as inactive" do
+                expect{
+                    delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                    delivery_service_price.reload
+                }.to change{
+                    delivery_service_price.active
+                }.from(true).to(false)
+            end
+            
+            it "should not delete the delivery_service_price from the database"  do
+                expect {
+                    delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+                }.to change(DeliveryServicePrice, :count).by(0)
+            end
+        end
 
-    #     it "should redirect to delivery_service_prices#index" do
-    #         delete :destroy, id: delivery_service_price.id
-    #         expect(response).to redirect_to admin_delivery_service_prices_url
-    #     end
-    # end
+        it "should redirect to delivery_service_prices#index" do
+            delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
+            expect(response).to redirect_to admin_delivery_service_prices_url
+        end
+    end
 end

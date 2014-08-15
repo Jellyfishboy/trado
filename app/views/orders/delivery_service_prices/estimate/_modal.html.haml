@@ -9,13 +9,13 @@
       .control-group
         = f.fields_for :delivery_address do |ff|
           = ff.label :country, :class => 'control-label'
-          .controls.update-shipping
+          .controls.update-delivery-service-price
             = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
-      .shipping-methods
+      .delivery-service-prices
         .control-group
-          = f.label :shipping_id, :class => 'control-label' do
+          = f.label :delivery_id, :class => 'control-label' do
             Shipping options
           .controls
-            %p.shipping-notice Select a country to view the available shipping options.
+            %p.delivery-service-price-notice Select a country to view the available delivery services.
     .modal-footer
       = f.submit "Submit", :class => 'btn btn-primary higher bold'

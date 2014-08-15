@@ -47,7 +47,7 @@
             / ==========
             / = Shipping addr form =
             / ==========
-            = form_for @shipping_address, :url => wizard_path, :html => { method: :patch, :class => 'form-horizontal form-checkout shipping_address' } do |f|
+            = form_for @delivery_address, :url => wizard_path, :html => { method: :patch, :class => 'form-horizontal form-checkout delivery_address' } do |f|
               .control-group
                 %label.control-label
                   Use billing address?
@@ -58,17 +58,17 @@
                   First name
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :first_name, :class => 'span4 use-billing', :id => 'shipping_first_name'
+                  = f.text_field :first_name, :class => 'span4 use-billing', :id => 'delivery_first_name'
                   %div= @order.billing_address.first_name
-                  = errors_for @shipping_address, :first_name
+                  = errors_for @delivery_address, :first_name
               .control-group
                 = f.label :last_name, :class => 'control-label' do
                   Last name
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :last_name, :class => 'span4 use-billing', :id => 'shipping_last_name'
+                  = f.text_field :last_name, :class => 'span4 use-billing', :id => 'delivery_last_name'
                   %div= @order.billing_address.last_name
-                  = errors_for @shipping_address, :last_name
+                  = errors_for @delivery_address, :last_name
               = fields_for @order do |ff|
                 .control-group
                   = ff.label :email, :class => 'control-label' do
@@ -81,64 +81,64 @@
                 = f.label :telephone, :class => 'control-label' do
                   Telephone
                 .controls
-                  = f.text_field :telephone, :class => 'span4 use-billing', :id => 'shipping_telephone'
+                  = f.text_field :telephone, :class => 'span4 use-billing', :id => 'delivery_telephone'
                   %div= @order.billing_address.telephone
               .control-group
                 = f.label :company, :class => 'control-label' do
                   Company
                 .controls
-                  = f.text_field :company, :class => 'span4 use-billing', :id => 'shipping_company'
+                  = f.text_field :company, :class => 'span4 use-billing', :id => 'delivery_company'
                   %div= @order.billing_address.company
               .control-group
                 = f.label :address, :class => 'control-label' do
                   Street address
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :address, :class => 'span4 use-billing', :id => 'shipping_address'
+                  = f.text_field :address, :class => 'span4 use-billing', :id => 'delivery_address'
                   %div= @order.billing_address.address
-                  = errors_for @shipping_address, :address
+                  = errors_for @delivery_address, :address
               .control-group
                 = f.label :city, :class => 'control-label' do
                   City
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :city, :class => 'span4 use-billing', :id => 'shipping_city'
+                  = f.text_field :city, :class => 'span4 use-billing', :id => 'delivery_city'
                   %div= @order.billing_address.city
-                  = errors_for @shipping_address, :city
+                  = errors_for @delivery_address, :city
               .control-group
                 = f.label :postcode, :class => 'control-label' do
                   Postcode
                   %span.red-clr.bold *
                 .controls
-                  = f.text_field :postcode, :class => 'span4 use-billing', :id => 'shipping_postcode'
+                  = f.text_field :postcode, :class => 'span4 use-billing', :id => 'delivery_postcode'
                   %div= @order.billing_address.postcode
-                  = errors_for @shipping_address, :postcode
+                  = errors_for @delivery_address, :postcode
               .control-group
                 = f.label :county, :class => 'control-label' do
                   County
                 .controls
-                  = f.text_field :county, :class => 'span4 use-billing', :id => 'shipping_county'
+                  = f.text_field :county, :class => 'span4 use-billing', :id => 'delivery_county'
                   %div= @order.billing_address.county
               .control-group
                 = f.label :country, :class => 'control-label' do
                   Country
                   %span.red-clr.bold *
-                .controls.update-shipping
-                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => @shipping_address.country), { include_blank: 'Please select...'})
-                  = errors_for @shipping_address, :country
-              .shipping-methods
+                .controls.update-delivery-service-price
+                  = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => @delivery_address.country), { include_blank: 'Please select...'})
+                  = errors_for @delivery_address, :country
+              .delivery-service-prices
                 .control-group
-                  = f.label :shipping_id, :class => 'control-label' do
+                  = f.label :delivery_id, :class => 'control-label' do
                     Shipping options
                     %span.red-clr.bold *
                   .controls
-                    - unless @order.shipping_id.nil?
-                      = render partial: "orders/shippings/fields", :locals => { shippings: @shippings, shipping_id: @order.shipping_id }
+                    - unless @order.delivery_id.nil?
+                      = render partial: "orders/delivery_service_prices/fields", :locals => { delivery_service_prices: @delivery_id, delivery_id: @order.delivery_id }
                     - else
-                      %p.shipping_notice Select a shipping country to view the available shipping options.
+                      %p.delivery_service_price_notice Select a country to view the available delivery services.
               .control-group
                 .controls
-                  = errors_for @order, :shipping_id
+                  = errors_for @order, :delivery_id
               %hr/
               %p.right-align
                 In the next step you will choose a payment method

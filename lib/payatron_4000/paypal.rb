@@ -14,7 +14,7 @@ module Payatron4000
         def self.express_setup_options order, steps, cart, ip_address, return_url, cancel_url
             {
               :subtotal          => Store::Price.new(order.net_amount, 'net').singularize,
-              :shipping          => Store::Price.new(order.shipping.price, 'net').singularize,
+              :shipping          => Store::Price.new(order.delivery.price, 'net').singularize,
               :tax               => Store::Price.new(order.tax_amount, 'net').singularize,
               :handling          => 0,
               :order_id          => order.id,
@@ -33,7 +33,7 @@ module Payatron4000
         def self.express_purchase_options order
             {
               :subtotal          => Store::Price.new(order.net_amount, 'net').singularize,
-              :shipping          => Store::Price.new(order.shipping.price, 'net').singularize,
+              :shipping          => Store::Price.new(order.delivery.price, 'net').singularize,
               :tax               => Store::Price.new(order.tax_amount, 'net').singularize,
               :handling          => 0,
               :token             => order.express_token,
