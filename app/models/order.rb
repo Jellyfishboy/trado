@@ -8,7 +8,7 @@
 #
 # Table name: orders
 #
-#  id                                     :integer          not null, primary key
+#  id                                     :integer              not null, primary key
 #  ip_address                             :string(255)      
 #  email                                  :string(255)     
 #  status                                 :integer          
@@ -16,35 +16,36 @@
 #  cart_id                                :integer
 #  tax_number                             :integer 
 #  delivery_id                            :integer        
-#  shipping_status                        :integer          default(0)   
+#  shipping_status                        :integer              default(0)   
 #  shipping_date                          :datetime 
-#  actual_shipping_cost                   :decimal          precision(8), scale(2) 
+#  actual_shipping_cost                   :decimal              precision(8), scale(2) 
 #  express_token                          :string(255) 
 #  express_payer_id                       :string(255) 
-#  net_amount                             :decimal          precision(8), scale(2)
-#  tax_amount                             :decimal          precision(8), scale(2) 
-#  gross_amount                           :decimal          precision(8), scale(2) 
+#  net_amount                             :decimal              precision(8), scale(2)
+#  tax_amount                             :decimal              precision(8), scale(2) 
+#  gross_amount                           :decimal              precision(8), scale(2) 
 #  terms                                  :boolean          
-#  created_at                             :datetime         not null
-#  updated_at                             :datetime         not null
+#  delivery_service_prices                :integer(array)       
+#  created_at                             :datetime             not null
+#  updated_at                             :datetime             not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms, :tiers, :delivery_address_attributes
+  :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes
   
-  has_many :order_items,                                                :dependent => :delete_all
-  has_many :transactions,                                               :dependent => :delete_all
+  has_many :order_items,                                                dependent: :delete_all
+  has_many :transactions,                                               dependent: :delete_all
 
   belongs_to :cart
   belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'
   has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
   has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 
-  validates :actual_shipping_cost,                                      :presence => true, :if => :completed?
-  validates :email,                                                     :presence => { :message => 'is required' }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :delivery_id,                                 :presence => { :message => 'You must select a delivery price.'}, :if => :active_or_shipping?                                                                                                                  
-  validates :terms,                                                     :inclusion => { :in => [true], :message => 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
+  validates :actual_shipping_cost,                                      presence: true, :if => :completed?
+  validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
+  validates :delivery_id,                                               presence: { message: 'You must select a delivery service.'}, :if => :active_or_shipping?                                                                                                                  
+  validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
 
   after_create :create_addresses
 
@@ -70,15 +71,15 @@ class Order < ActiveRecord::Base
   # @param cart [Object]
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
-    tax_amount = (cart.total_price + delivery_service_price.price)*current_tax_rate
+    tax_amount = (cart.total_price + delivery.price)*current_tax_rate
     self.update(  :net_amount => cart.total_price,
                   :tax_amount => tax_amount,
-                  :gross_amount => cart.total_price + delivery_service_price.price + tax_amount
+                  :gross_amount => cart.total_price + delivery.price + tax_amount
     )
     self.save(validate: false)
   end
 
-  # Returns a boolean on whether the order is marked as completed
+  # Returns true if the last associated transaction to the order is complete
   #
   # @return [Boolean]
   def completed?

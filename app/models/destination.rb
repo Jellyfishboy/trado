@@ -17,6 +17,6 @@ class Destination < ActiveRecord::Base
   attr_accessible :zone_id, :delivery_service_id
 
   belongs_to :zone
-  belongs_to :delivery_service_price
+  belongs_to :delivery_service
 
 end

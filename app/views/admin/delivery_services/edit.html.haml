@@ -24,14 +24,14 @@
         = f.label :description
         = f.text_area :description, :class => 'form-control', :rows => 7
     .widget-sub-heading
-      %h3 Countries
-    - if @countries.empty?
+      %h3 Zones
+    - if @zones.empty?
       .label.label-orange 
         %i.icon-spam.icon-cancel-circle 
-        There are no available countries to select
+        There are no available zones to select
     - else
       .widget.widget-content.widget-last
-        = f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', :multiple => true, :data => {:placeholder => "Please select associated countries..."}}
+        = f.collection_select :zone_ids, @zones, :id, :name, {}, {:class => 'chosen', :multiple => true, :data => {:placeholder => "Please select associated zones..."}}
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

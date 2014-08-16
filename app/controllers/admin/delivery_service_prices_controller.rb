@@ -1,7 +1,6 @@
 class Admin::DeliveryServicePricesController < ApplicationController
 
   before_action :set_delivery_service_price, only: [:update, :destroy]
-  before_action :get_associations, except: [:index, :destroy, :set_delivery_service_price]
   before_action :set_delivery_service, only: [:new, :create]
   before_action :authenticate_user!
   layout "admin"
@@ -76,9 +75,5 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
     def set_delivery_service
       @delivery_service = DeliveryService.find(params[:delivery_service_id])
-    end
-
-    def get_associations
-      @zones = Zone.all
     end
 end

@@ -6,7 +6,6 @@ feature 'Product management' do
     feature_login_admin
     given(:product) { create(:product_sku, active: true) }
     given(:not_single_product) { create(:product_sku, active: true, single: false) }
-    given(:tier) { create(:tier) }
     given(:attribute_type) { create(:attribute_type) }
     given(:accessory) { create(:accessory) }
     given(:product_skus) { create(:product_skus, active: true) }
@@ -269,7 +268,6 @@ feature 'Product management' do
 
     scenario 'should add a new table row of SKU fields to the product form', js: true do
         attribute_type
-        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -285,7 +283,6 @@ feature 'Product management' do
 
     scenario 'should delete a table row of SKU fields in new product, apart from last row', js: true  do
         attribute_type
-        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -346,7 +343,6 @@ feature 'Product management' do
 
     scenario 'should add a new attachment field to the product form', js: true do
         attribute_type
-        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click
@@ -362,7 +358,6 @@ feature 'Product management' do
 
     scenario 'should delete an attachment field in new product, apart from last field', js: true do
         attribute_type
-        tier
 
         visit admin_products_path
         find('.page-header a:first-child').click

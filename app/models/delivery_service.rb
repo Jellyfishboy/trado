@@ -16,7 +16,7 @@
 #  updated_at         :datetime         not null
 #
 class DeliveryService < ActiveRecord::Base
-    attr_accessible :name, :description, :courier_name, :active
+    attr_accessible :name, :description, :courier_name, :active, :zone_ids
 
     has_many :prices,                                       class_name: 'DeliveryServicePrice', dependent: :delete_all
     has_many :destinations,                                 dependent: :delete_all
@@ -32,6 +32,9 @@ class DeliveryService < ActiveRecord::Base
 
     include ActiveScope
 
+    # Returns a string of the courier_name and name attributes concatenated
+    #
+    # @return [String] courier and name
     def full_name
         [courier_name, name].join(' ')
     end

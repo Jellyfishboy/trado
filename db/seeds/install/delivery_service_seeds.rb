@@ -13,7 +13,8 @@ zone = Zone.create({
 delivery_service = DeliveryService.create({
     name: '1st class', 
     courier_name: 'Royal Mail', 
-    description: 'Standard Royal Mail delivery service within 1-2 business days.'
+    description: 'Standard Royal Mail delivery service within 1-2 business days.',
+    zone_ids: [zone.id]
 })
 DeliveryServicePrice.create({
     code: 'RM1 500g', 
@@ -25,8 +26,8 @@ DeliveryServicePrice.create({
     max_length: '100',
     min_thickness: '0',
     max_thickness: '50',
-    delivery_service_id: delivery_service.id,
-    zone_ids: [zone.id]
+    delivery_service_id: delivery_service.id
+    
 })
 DeliveryServicePrice.create({
     code: 'RM1 1kg', 
@@ -35,9 +36,8 @@ DeliveryServicePrice.create({
     min_weight: '0',
     max_weight: '1000',
     min_length: '0',
-    max_length: '100',
+    max_length: '150',
     min_thickness: '0',
-    max_thickness: '50',
-    delivery_service_id: delivery_service.id,
-    zone_ids: [zone.id]
+    max_thickness: '100',
+    delivery_service_id: delivery_service.id
 })

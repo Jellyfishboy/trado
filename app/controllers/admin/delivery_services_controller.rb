@@ -1,5 +1,7 @@
 class Admin::DeliveryServicesController < ApplicationController
+
   before_action :set_delivery_service, only: [:show, :edit, :update, :destroy]
+  before_action :get_associations, except: [:index, :destroy, :set_delivery_service]
   before_action :authenticate_user!
   layout "admin"
 
@@ -72,5 +74,9 @@ class Admin::DeliveryServicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_delivery_service
       @delivery_service = DeliveryService.find(params[:id])
+    end
+
+    def get_associations
+      @zones = Zone.all
     end
 end

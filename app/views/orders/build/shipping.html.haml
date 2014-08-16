@@ -133,7 +133,7 @@
                     %span.red-clr.bold *
                   .controls
                     - unless @order.delivery_id.nil?
-                      = render partial: "orders/delivery_service_prices/fields", :locals => { delivery_service_prices: @delivery_id, delivery_id: @order.delivery_id }
+                      = render partial: "orders/delivery_service_prices/fields", :locals => { delivery_service_prices: @delivery_service_prices, delivery_id: @order.delivery_id }
                     - else
                       %p.delivery_service_price_notice Select a country to view the available delivery services.
               .control-group

@@ -7,12 +7,12 @@ module Shipatron4000
         # @param cart [Object]
         # @param order [Ojbect]
         # @return [Array] calculated tiers for the current cart dimensions
-        def tier cart, order
-            max_length = cart.skus.map(&:length).max
-            max_thickness = cart.skus.map(&:thickness).max
+        def delivery_prices cart, order
+            length = cart.skus.map(&:length).max
+            thickness = cart.skus.map(&:thickness).max
             total_weight = cart.cart_items.map(&:weight).sum
-            tiers = Tier.where('? >= length_start AND ? <= length_end AND ? >= thickness_start AND ? <= thickness_end AND ? >= weight_start AND ? <= weight_end', max_length, max_length, max_thickness, max_thickness, total_weight, total_weight).pluck(:id)
-            order.update_column(:tiers, tiers)
+            delivery_service_prices = DeliveryServicePrice.where('? >= min_weight AND ? <= max_weight AND ? >= min_length AND ? <= max_length AND ? >= min_thickness AND ? <= max_thickness', total_weight, total_weight, length, length, thickness, thickness).pluck(:id)
+            order.update_column(:delivery_service_prices, delivery_service_prices)
         end
     end
 end

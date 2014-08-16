@@ -3,6 +3,7 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, except: :create
   skip_before_action :authenticate_user!
   before_action :void_delivery_service
+  after_action :set_order_delivery_services
 
   def create
     @sku = Sku.find(params[:cart_item][:sku_id])
@@ -35,9 +36,16 @@ class CartItemsController < ApplicationController
 
     def void_delivery_service
       order = current_cart.order
-      unless order.nil? || order.delivery_serice_id.nil?
-        order.delivery_serice_id = nil
+      unless order.nil? || order.delivery_id.nil? || order.delivery_service_prices.nil?
+        order.delivery_id = nil
+        order.delivery_address.country = nil
+        order.delivery_service_prices = nil
         order.save(validate: false)
       end
+    end
+
+    def set_order_delivery_services
+      order = current_cart.order
+      Shipatron4000::delivery_prices(current_cart, order) unless order.nil?
     end
 end

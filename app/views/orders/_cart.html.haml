@@ -23,9 +23,9 @@
 - unless @order.nil? || @order.delivery.nil?
   %tr
     %td.image
-      = image_tag "delivery.png", :alt => @order.delivery.name
+      = image_tag "delivery.png", :alt => @order.delivery.full_name
     %td.desc
-      = @order.delivery.name
+      = @order.delivery.full_name
       = link_to purge_estimate_order_build_path, method: :delete, remote: true, :title => 'Remove item' do
         %i.fa.fa-times-circle
       %div= @order.delivery_address.country

@@ -26,7 +26,7 @@ describe Order do
     context "if current order status is at shipping" do
         before { subject.stub(:active_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
-        it { expect(subject).to validate_presence_of(:delivery_id).with_message('Shipping option is required') }
+        it { expect(subject).to validate_presence_of(:delivery_id).with_message('You must select a delivery service.') }
         it { expect(subject).to allow_value("test@test.com").for(:email) }
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end

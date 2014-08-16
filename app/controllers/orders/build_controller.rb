@@ -7,13 +7,13 @@ class Orders::BuildController < ApplicationController
 
   before_action :accessible_order, except: [:success, :failure]
 
-  steps :review, :billing, :delivery, :payment, :confirm
+  steps :review, :billing, :shipping, :payment, :confirm
 
   ###################################
   # ORDER VIEW LOGIC
   ###################################
   # Displays the front-end content of each step, with specific methods throughout providing the relevant data
-  # Steps include, in this order: review, billing, delivery, payment then confimration
+  # Steps include, in this order: review, billing, shipping, payment then confimration
   #
   def show
     @cart = current_cart
@@ -27,7 +27,7 @@ class Orders::BuildController < ApplicationController
       @billing_address = @order.billing_address
     end
     case step
-    when :delivery
+    when :shipping
       @delivery_address = @order.delivery_address
       @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @delivery_address.country) unless @order.delivery_id.nil?
     end
@@ -213,7 +213,7 @@ class Orders::BuildController < ApplicationController
   def check_order_status
     @order = Order.find(params[:order_id])
     route = (steps.last(3).include?(params[:id].to_sym) && @order.billing_address.first_name.nil?) ? 'billing' 
-            : (steps.last(2).include?(params[:id].to_sym) && (@order.delivery_address.first_name.nil? || @order.delivery_id.nil?)) ? 'delivery' 
+            : (steps.last(2).include?(params[:id].to_sym) && (@order.delivery_address.first_name.nil? || @order.delivery_id.nil?)) ? 'shipping' 
             : steps.last(1).include?(params[:id].to_sym) && (params[:token].nil? || params[:PayerID].nil?) ? 'payment' 
             : nil
     redirect_to order_build_url(order_id: @order.id, id: route) unless route.nil?

@@ -52,7 +52,7 @@ feature 'Country management' do
             expect(page).to have_content 'Country was successfully created.'
         end
         within '.alert.alert-info' do
-            expect(page).to have_content 'Hint: Remember to create a zone record so you can start associating your countries with your shipping methods.'
+            expect(page).to have_content 'Hint: Remember to create a zone record so you can start associating your countries with your delivery services.'
         end
         within 'h2' do
             expect(page).to have_content 'Countries'
