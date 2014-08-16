@@ -36,6 +36,13 @@ ready = function()
     trado.app.selectDeliveryServicePrice();
     trado.app.updateDeliveryServicePrice();
     trado.app.duplicateAddress();
+
+    // Reset estimate shipping modal
+    $('#estimateDeliveryModal').on('hidden', function () 
+    {
+        $('.modal select').val("");
+        $('.delivery-service-prices .control-group .controls').html("<p class='delivery-service-price-notice'> elect a country to view the available delivery services.</p>");
+    });
 };
 $(document).ready(ready);
 
