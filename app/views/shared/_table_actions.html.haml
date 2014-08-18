@@ -1,6 +1,6 @@
 %td.table-actions
   / View order
-  - if type == 2 || type == 3
+  - if type == 2 || type == 4
     = link_to view do
       %i.icon-search
   / Update stock level
@@ -21,10 +21,10 @@
     %a.edit_order_attributes{href: "#/", id: object.id}
       %i.icon-pencil
   / Delete record
-  - unless type == 2 || type == 1 || type == 3
+  - unless type == 2 || type == 1 || type == 4
     = link_to del, :method => :delete, data: { confirm: 'Are you sure?' } do
       %i.icon-remove
   / AJAX delete record (SKU)
-  - if type == 1 || type == 3
+  - if type == 1 || type == 4
     = link_to del, :method => :delete, data: { confirm: 'Are you sure?' }, :remote => true do
       %i.icon-remove
