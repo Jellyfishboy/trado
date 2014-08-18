@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     else
       if current_cart.order.nil? 
         @order = Order.create(ip_address: request.remote_ip, cart_id: current_cart.id)
+        Shipatron4000::delivery_prices(current_cart, @order)
       else
         @order = current_cart.order
       end

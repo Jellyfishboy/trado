@@ -21,5 +21,4 @@ module CustomMacro
             click_button 'Login'
         end
     end
-
 end

@@ -86,9 +86,9 @@
                           = item.cart_item_accessory.quantity
                   %tr
                     %td.image
-                      = image_tag "delivery.png", :alt => @order.delivery.name
+                      = image_tag "delivery.png", :alt => @order.delivery.full_name
                     %td.desc
-                      = @order.delivery.name
+                      = @order.delivery.full_name
                       %div= @order.delivery_address.country
                     %td.qty
                     %td.price= Store::Price.new(@order.delivery.price).format

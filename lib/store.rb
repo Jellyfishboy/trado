@@ -37,7 +37,6 @@ module Store
         # Sets the record's active field to false
         #
         # @param record [Object]
-        # @return [Object] an inactive record
         def inactivate! record
             record.update_column(:active, false)
         end
@@ -45,9 +44,15 @@ module Store
         # Sets the record's active field to true
         #
         # @param record [Object]
-        # @return [Object] an active record
         def activate! record
             record.update_column(:active, true)
+        end
+
+        # Sets the collection of records' active field to false
+        #
+        # @param record [Array]
+        def inactivate_all! records
+            records.update_all(active: false)
         end    
 
         # Parses the object's parent class name into a camelcase string

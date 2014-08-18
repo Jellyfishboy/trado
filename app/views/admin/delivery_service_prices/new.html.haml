@@ -26,7 +26,7 @@
         = f.text_area :description, :class => 'form-control', :rows => 7
     .widget-sub-heading
       %h3 Dimension allowance
-    %fieldset.widget.widget-content
+    %fieldset.widget.widget-content.widget-last
       .form-group
         = f.label :min_weight
         = f.text_field :min_weight, :class => 'form-control'
@@ -45,9 +45,6 @@
       .form-group
         = f.label :max_thickness
         = f.text_field :max_thickness, :class => 'form-control'
-    .widget-sub-heading
-      %h3 Countries
-      
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

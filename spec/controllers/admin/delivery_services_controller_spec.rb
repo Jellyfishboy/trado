@@ -108,13 +108,6 @@ describe Admin::DeliveryServicesController do
                 before(:each) do
                     create(:order, delivery_id: delivery_service_price.id)
                     create(:order, delivery_id: delivery_service_price_3.id)
-                    create_list(:destination, 4, delivery_service_id: delivery_service.id)
-                end
-
-                it "should save new destinations to the database" do
-                    expect{
-                        patch :update, id: delivery_service.id, delivery_service: new_delivery_service
-                    }.to change(Destination, :count).by(4)
                 end
 
                 it "should save a new delivery_service to the database" do
@@ -126,6 +119,11 @@ describe Admin::DeliveryServicesController do
                 it "should transfer any active delivery service prices to the new delivery service record" do
                     patch :update, id: delivery_service.id, delivery_service: new_delivery_service
                     expect(assigns(:delivery_service).prices.count).to eq 1
+                end
+
+                it "should set all the old delivery service prices as inactive" do
+                    patch :update, id: delivery_service.id, delivery_service: new_delivery_service
+                    expect(assigns(:old_delivery_service).prices.pluck(:active)).to eq [false, false]
                 end
 
                 it "should remove any delivery service prices which do not have associated orders from the old delivery service record" do

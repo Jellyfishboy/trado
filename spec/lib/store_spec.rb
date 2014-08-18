@@ -55,6 +55,16 @@ describe Store do
         end
     end
 
+    describe "When archiving child records" do
+        let!(:product) { create(:product) }
+        let!(:skus) { create_list(:sku, 3, product_id: product.id) }
+
+        it "should set all the records as inactive" do
+            Store::inactivate_all!(product.skus)
+            expect(product.skus.pluck(:active)).to eq [false, false, false]
+        end
+    end
+
     describe "When the record fails to update" do
         let(:product) { create(:product) }
 

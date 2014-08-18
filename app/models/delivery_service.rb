@@ -25,7 +25,7 @@ class DeliveryService < ActiveRecord::Base
     has_many :orders,                                       through: :prices
 
     validates :name, :courier_name,                         presence: true
-    validates :name,                                        uniqueness: { scope: :courier_name }
+    validates :name,                                        uniqueness: { scope: [:active, :courier_name] }
     validates :description,                                 length: { maximum: 180, message: :too_long }
 
     default_scope { order(courier_name: :desc) }

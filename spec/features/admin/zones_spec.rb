@@ -6,7 +6,7 @@ feature 'Zone management' do
     feature_login_admin
     given(:zone) { create(:zone) }
     given(:zones) { create_list(:zone, 2) }
-    given(:zone_with_countries) { create(:zone_with_countries) }
+    given(:zone_with_country) { create(:zone_with_country) }
     given(:country) { create(:country) }
 
     scenario 'should display an index of zones' do
@@ -50,19 +50,21 @@ feature 'Zone management' do
         end
     end
 
-    scenario 'should edit an zone' do
-        zone_with_countries
+    scenario 'should edit a zone', js: true do
+        country
+        zone_with_country
         
         visit admin_zones_path
         within '.page-header + .widget-sub-heading .pull-right' do
             first(:link).click
         end
-        expect(current_path).to eq edit_admin_zone_path(zone_with_countries)
+        expect(zone_with_country.countries.count).to eq 2
+        expect(current_path).to eq edit_admin_zone_path(zone_with_country)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
         fill_in('zone_name', with: 'Asia')
-        find('table tbody tr:first-child td:last-child input[type="checkbox"]').set(false)
+        find('.chosen-choices li:nth-child(2) a').click
         click_button 'Submit'
         expect(current_path).to eq admin_zones_path
         within '.alert.alert-success' do
@@ -71,10 +73,10 @@ feature 'Zone management' do
         within 'h2' do
             expect(page).to have_content 'Zones'
         end 
-        zone_with_countries.reload
-        expect(zone_with_countries.name).to eq 'Asia'
-        expect(zone_with_countries.countries.count).to eq 1
-        expect(zone_with_countries.countries.first.name).to eq 'United Kingdom'
+        zone_with_country.reload
+        expect(zone_with_country.name).to eq 'Asia'
+        expect(zone_with_country.countries.count).to eq 1
+        expect(zone_with_country.countries.first.name).to eq 'Jamaica'
     end
 
     scenario 'should display an index of countries' do

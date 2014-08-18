@@ -38,7 +38,7 @@ class DeliveryServicePrice < ActiveRecord::Base
   validates :price,                                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
   default_scope { order(price: :asc) }
-  scope :find_collection,                                               ->(cart, country) { joins(:countries).where(delivery_service_prices: { id: cart.order.delivery_service_prices }, countries: { :name => country }).load }
+  scope :find_collection,                                               ->(cart, country) { joins(:countries).where(delivery_service_prices: { id: cart.order.delivery_service_prices }, countries: { :name => country }).distinct.load }
 
   include ActiveScope
 
