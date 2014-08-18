@@ -4,7 +4,7 @@
     %td.image
       = link_to (image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
     %td.desc
-      = item.sku.product.name
+      = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
       = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
         %i.fa.fa-times-circle
       %div= sku_attribute_values(item.sku, item.sku.product.single)
