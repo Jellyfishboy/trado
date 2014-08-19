@@ -6,7 +6,7 @@
       = current_cart.cart_items.sum('quantity')
       )
   %p.dark-clr.hidden-tablet= Store::Price.new(current_cart.total_price).markup
-  = link_to new_order_path, :class => 'btn btn-danger' do
+  = link_to order_link(current_cart), :class => 'btn btn-danger' do
     %i.fa.fa-shopping-cart
 .open-panel
   - if current_cart.cart_items.empty?
@@ -49,6 +49,6 @@
           .span6 Total
           .span6.align-right.size-16= Store::Price.new(current_cart.total_price, 'gross').format
     .proceed
-      = link_to new_order_path, :class => 'btn btn-danger pull-right bold higher' do
+      = link_to order_link(current_cart), :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
         %i.fa.fa-shopping-cart

@@ -3,9 +3,9 @@ require 'highline/import'
 namespace :trado do
     task :install => :environment do
         puts 'Trado -> Installing Trado for the first time...'.colorize(:cyan)
-        puts 'Dropping the databases'.colorize(:green)
+        puts 'Dropping the database'.colorize(:green)
         Rake::Task['db:drop'].invoke     
-        puts 'Creating the databases'.colorize(:green)
+        puts 'Creating the database'.colorize(:green)
         Rake::Task['db:create'].invoke
         puts 'Loading the new schema'.colorize(:green)
         Rake::Task['db:schema:load'].invoke

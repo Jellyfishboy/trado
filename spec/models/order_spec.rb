@@ -24,7 +24,7 @@ describe Order do
     end
 
     context "if current order status is at shipping" do
-        before { subject.stub(:active_or_shipping?) { true } }
+        before { subject.stub(:active_or_review_or_shipping?) { true } }
         it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to validate_presence_of(:delivery_id).with_message('service must be selected.') }
         it { expect(subject).to allow_value("test@test.com").for(:email) }
@@ -91,16 +91,27 @@ describe Order do
         let(:order_3) { create(:order, status: 'shipping') }
         let(:order_4) { create(:order, status: 'payment') }
         let(:order_5) { create(:order, status: 'confirm') }
-        let(:order_6) { create(:order, status: 'review')}
+        let(:order_6) { create(:order, status: 'review') }
+        let(:order_7) { build(:order, status: 'review') }
 
         it "should return true for an active order" do
             expect(order_1.active?).to eq true
         end
 
-        it "should return true for a review or shipping or active order" do
-            expect(order_6.active_or_review_or_shipping?).to eq true
-            expect(order_3.active_or_review_or_shipping?).to eq true
-            expect(order_1.active_or_review_or_shipping?).to eq true
+        context "if the order is a current record" do
+
+            it "should return true for a review or shipping or active order" do
+                expect(order_6.active_or_review_or_shipping?).to eq true
+                expect(order_3.active_or_review_or_shipping?).to eq true
+                expect(order_1.active_or_review_or_shipping?).to eq true
+            end
+        end
+
+        context "if the order is a new record" do
+
+            it "should return true for a review order" do
+                expect(order_7.active_or_review_or_shipping?).to eq false
+            end
         end
 
         it "should return true for a billing or active order" do
