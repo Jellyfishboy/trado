@@ -22,6 +22,6 @@ class Notification < ActiveRecord::Base
 
   belongs_to :notifiable, polymorphic: true
 
-  validates :email,         :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :uniqueness => { :scope => :notifiable_id, :message => 'has already been created.' }
+  validates :email,         :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :uniqueness => { :scope => :notifiable_id, :message => 'notification has already been created.' }
 
 end

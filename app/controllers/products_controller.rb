@@ -10,10 +10,6 @@ class ProductsController < ApplicationController
     @cart_item_accessory = @cart_item.build_cart_item_accessory unless @product.accessories.empty?
     @notification = Notification.new
     @skus = @product.skus.active.order('cast(attribute_value as integer) asc')
-    respond_to do |format|
-      format.html
-      format.json { render json: @product }
-    end
   end
   
 end
