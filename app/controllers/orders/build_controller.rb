@@ -141,14 +141,13 @@ class Orders::BuildController < ApplicationController
   #
   def failure
     @order = Order.includes(:transactions).find(params[:order_id])
-    # redirect_to root_url unless @order.transactions.last.failed?
+    redirect_to root_url unless @order.transactions.last.failed?
   end
 
   # When an order has failed, the user has an option to retry the order
   # Although if it has a PayPal error code of 10412 or 10415, create a new order and redirect to review
   # 
   def retry
-    @order = Order.includes(:transactions).find(params[:order_id])
     @error_code = @order.transactions.last.error_code
     if @error_code == 10412 || @error_code == 10415
       redirect_to new_order_path

@@ -44,7 +44,7 @@ class Order < ActiveRecord::Base
 
   validates :actual_shipping_cost,                                      presence: true, :if => :completed?
   validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :delivery_id,                                               presence: { message: 'You must select a delivery service.'}, :if => :active_or_shipping?                                                                                                                  
+  validates :delivery_id,                                               presence: { message: 'service must be selected.'}, :if => :active_or_review_or_shipping?                                                                                                                  
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
 
   after_create :create_addresses
@@ -84,6 +84,10 @@ class Order < ActiveRecord::Base
   # @return [Boolean]
   def completed?
     transactions.last.completed? unless transactions.empty?
+  end
+
+  def active_or_review_or_shipping?
+    review? ? true : billing? ? true : active?
   end
 
   # Detects if the current status of the order is 'billing'. See wicked gem for more info

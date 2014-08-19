@@ -20,6 +20,8 @@ trado.app =
             $.each(errors, function(key, value) 
             {
                 var $element, $errorTarget;
+                tempKey = key.split('_');
+                key = tempKey[tempKey.length-1] == "id" ? tempKey[0] : key
                 $element = $("input[name*='" + key + "']");
                 if ($element.length == 0)
                 {
