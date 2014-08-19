@@ -8,9 +8,9 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.save
         # TODO: Extend this JS response to work with other kind of notifications
-        format.js { render :partial => 'products/notify/success', :format => [:js] }
+        format.js { render partial: 'products/notify/success', format: [:js] }
       else
-        format.json { render :json => { :errors => @notification.errors.to_json(root: true) }, :status => 422 }
+        format.json { render json: { errors: @notification.errors.to_json(root: true) }, status: 422 }
       end
     end
   end
