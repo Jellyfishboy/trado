@@ -155,9 +155,9 @@
                 .main-titles.no-margin
                   %h4.title
                     %span= Store::Price.new(product.skus.first.price, product.skus.count).range
-                  %h5.no-margin= truncate product.name, :length => 35
+                  %h5.no-margin= truncate product.name, length: 35
                 %p.desc= truncate product.short_description
           / /product
 #notify_me_form
   - unless @skus.first.stock > 0
-    = render :partial => 'products/notify/modal', :locals => { :sku => @skus.first, :notification => @notification }
+    = render partial: 'products/notify/modal', locals: { sku: @skus.first, notification: @notification }
