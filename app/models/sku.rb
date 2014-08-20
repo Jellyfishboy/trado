@@ -66,7 +66,7 @@ class Sku < ActiveRecord::Base
   # If the record's weight has changed, update all associated cart_items records with the new weight
   #
   def update_cart_items_weight
-    cart_items = CartItem.where(:sku_id => id)
+    cart_items = CartItem.where(sku_id: id)
     cart_items.each do |item|
       item.update_column(:weight, (weight*item.quantity))
     end

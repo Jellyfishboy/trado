@@ -24,20 +24,47 @@ describe StockLevel do
         it "should call stock_level_adjustment method before a save" do
             StockLevel._save_callbacks.select { |cb| cb.kind.eql?(:before) }.map(&:raw_filter).include?(:stock_level_adjustment).should == true
         end
+        let!(:sku) { create(:sku, stock: 10) }
+        before(:each) do
+            create(:stock_level, adjustment: 10, description: 'Initial stock', sku_id: sku.id)
+        end
 
         context "if the adjustment value results in a negative stock value" do
-             let!(:sku) { create(:negative_stock_level_sku, stock: 8) }
+            let!(:stock_level) { create(:stock_level, adjustment: -5, description: 'Order #1', sku_id: sku.id)}
 
             it "should update the SKU stock value with the associated stock level adjustment value" do
+                sku.reload
                 expect(sku.stock).to eq 5
             end
         end
 
         context "if the adjustment value results in a positive stock value" do
-            let(:sku) { create(:positive_stock_level_sku, stock: 10) }
+            let!(:stock_level) { create(:stock_level, adjustment: 3, description: 'New stock', sku_id: sku.id) }
 
             it "should update the SKU stock value with the associated stock level adjustment value" do
+                sku.reload
                 expect(sku.stock).to eq 13
+            end
+        end
+    end
+
+    describe "Determing if this is the first stock level record for a SKU" do
+
+        context "if the SKU has no prior stock level records" do
+            let!(:sku) { create(:sku, active: true) }
+            let(:stock_level) { build(:stock_level, sku_id: sku.id) }
+
+            it "should return false" do
+                expect(stock_level.not_initial_stock_level?).to eq false
+            end
+        end
+
+        context "if the SKU has prior stock level records" do
+            let!(:sku) { create(:sku_after_stock_level) }
+            let(:stock_level) { build(:stock_level, sku_id: sku.id) }
+
+            it "should return true" do
+                expect(stock_level.not_initial_stock_level?).to eq true
             end
         end
     end

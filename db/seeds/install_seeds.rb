@@ -1,5 +1,5 @@
 puts "-----------------------------"
-puts "Executing install seeds:".colorize(:green)
+puts "Starting install seeds:".colorize(:cyan)
 
 require File.dirname(__FILE__) +  '/install/admin_seeds'
 require File.dirname(__FILE__) +  '/install/product_seeds'

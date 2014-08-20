@@ -23,7 +23,7 @@ class StockLevel < ActiveRecord::Base
   validates :description, :adjustment,                      presence: true
   validate :adjustment_value
 
-  before_save :stock_level_adjustment
+  before_save :stock_level_adjustment, :if => :not_initial_stock_level?
 
   default_scope { order(created_at: :desc) }
 
@@ -35,6 +35,14 @@ class StockLevel < ActiveRecord::Base
     else
       self.sku.update_column(:stock, self.sku.stock - self.adjustment.abs)
     end
+  end
+
+  # Determines whether this is the first stock level record for a SKU
+  # If so, ignore the execution of the stock_level_adjustment method
+  #
+  # @return [Boolean]
+  def not_initial_stock_level?
+    return sku.stock_levels.count == 0 ? false : true
   end
 
   # Validation to check whether the adjustment value is above or below zero
