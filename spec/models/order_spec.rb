@@ -23,10 +23,14 @@ describe Order do
         it { expect(subject).to ensure_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
     end
 
-    context "if current order status is at shipping" do
+    context "if the current order status is at review or shipping" do
         before { subject.stub(:active_or_review_or_shipping?) { true } }
-        it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to validate_presence_of(:delivery_id).with_message('service must be selected.') }
+    end
+
+    context "if current order status is at shipping" do
+        before { subject.stub(:active_or_shipping?) { true } }
+        it { expect(subject).to validate_presence_of(:email).with_message('is required') }
         it { expect(subject).to allow_value("test@test.com").for(:email) }
         it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }
     end
