@@ -110,38 +110,44 @@ describe Store::Price do
         end
     end
 
-    # describe "When rendering the range of a price for a view" do
+    describe "When rendering the range of a price for a view" do
+        let!(:product) { create(:product, active: true) }
+        let!(:sku) { create(:sku, price: '109.93', active: true, product_id: product.id) }
+        let!(:sku_2) { create(:sku, active: true, product_id: product.id) }
 
-    #     context "if the tax breakdown Store setting is true" do
-    #         let!(:product) { create(:product, active: true) }
-    #         let!(:sku) { create(:sku, price: '109.93', active: true, product_id: product.id) }
-    #         let!(:sku_2) { create(:sku, active: true, product_id: product.id) }
-    #         before(:each) do
-    #             Store::reset_settings
-    #             StoreSetting.destroy_all
-    #             create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
-    #             Store::settings
-    #         end
+        context "if the tax breakdown Store setting is true" do            
+            before(:each) do
+                Store::reset_settings
+                StoreSetting.destroy_all
+                create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
+                Store::settings
+            end
 
-    #         it "should have the correct elements" do
-    #             expect(Store::Price.new(sku.price).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(sku.price, 'gross').single}")
-    #             expect(Store::Price.new(sku.price).range).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').single} inc VAT</span>")
-    #         end
-    #     end
+            it "should have the correct elements" do
+                expect(Store::Price.new(sku.price, product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(sku.price, 'net').single}")
+                expect(Store::Price.new(sku.price, product.skus.count).range).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').single} inc VAT</span>")
+            end
+        end
 
-    #     context "if the tax breakdown Store setting is false" do
-    #         let!(:sku) { create(:sku, price: '48.93') }
+        context "if the tax breakdown Store setting is false" do
+            before(:each) do
+                Store::reset_settings
+                StoreSetting.destroy_all
+                create(:store_setting, tax_breakdown: false, tax_name: 'VAT')
+                Store::settings
+            end
 
-    #         it "should have the correct elements" do
-    #             expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).single}</span>")
-    #         end
-    #     end
-    # end
+            it "should have the correct elements" do
+                expect(Store::Price.new(sku.price, product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(sku.price, 'gross').single}")
+                expect(Store::Price.new(sku.price, product.skus.count).range).to_not include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').single} inc VAT</span>")
+            end
+        end
+    end
 
     describe "When rendering the markup of a price for a view" do
+        let!(:sku) { create(:sku, price: '48.93') }
 
         context "if the tax breakdown Store setting is true" do
-            let!(:sku) { create(:sku, price: '48.93') }
             before(:each) do
                 Store::reset_settings
                 StoreSetting.destroy_all
@@ -155,7 +161,6 @@ describe Store::Price do
         end
 
         context "if the tax breakdown Store setting is false" do
-            let!(:sku) { create(:sku, price: '48.93') }
 
             it "should have the correct elements" do
                 expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).single}</span>")
