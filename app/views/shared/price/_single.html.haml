@@ -1,4 +1,4 @@
 .price
     = price
-    %span.tax-suffix= "#{number_to_currency(gross, :unit => Store::settings.currency, :precision => 2)} inc #{Store::settings.tax_name}" unless gross.nil?
+    %span.tax-suffix= "#{gross} inc #{Store::settings.tax_name}" unless gross.nil?
        

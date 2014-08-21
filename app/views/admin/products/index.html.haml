@@ -50,8 +50,8 @@
                     - product.skus.each do |sku|
                       %tr
                         %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}" unless sku.attribute_value.nil? && sku.attribute_type.nil?
-                        %td= Store::Price.new(sku.price, 'net').format
-                        %td.align-left= Store::Price.new(sku.price, 'gross').format
+                        %td= Store::Price.new(sku.price, 'net').single
+                        %td.align-left= Store::Price.new(sku.price, 'gross').single
               = table_commands product, [product.category, product], edit_admin_product_path(product), admin_product_path(product), 0
 
               

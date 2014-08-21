@@ -57,7 +57,7 @@ describe Store::Price do
         end
     end
 
-    describe "When formatting a price ready for a view" do
+    describe "When rendering a single price for a view" do
 
         context "if the tax breakdown Store setting is true" do
             before(:each) do
@@ -71,7 +71,7 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '11.50') }
                 
                 it "should return a formatted decimal price with tax" do
-                    expect(Store::Price.new(sku.price, 'gross').format).to eq '£13.80'
+                    expect(Store::Price.new(sku.price, 'gross').single).to eq '£13.80'
                 end
             end
 
@@ -79,7 +79,7 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '22.67') }
                 
                 it "should return a formatted decimal price without tax" do
-                    expect(Store::Price.new(sku.price).format).to eq '£22.67'
+                    expect(Store::Price.new(sku.price).single).to eq '£22.67'
                 end
             end
         end
@@ -96,7 +96,7 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '22.67') }
 
                 it "should return a formatted decimal price without tax" do
-                    expect(Store::Price.new(sku.price, 'net').format).to eq '£22.67'
+                    expect(Store::Price.new(sku.price, 'net').single).to eq '£22.67'
                 end
             end
 
@@ -104,13 +104,41 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '283.67') }
 
                 it "should return a formatted decimal price with tax" do
-                    expect(Store::Price.new(sku.price).format).to eq '£340.40'
+                    expect(Store::Price.new(sku.price).single).to eq '£340.40'
                 end
             end
         end
     end
 
-    describe "When rendering price markup for a view" do
+    # describe "When rendering the range of a price for a view" do
+
+    #     context "if the tax breakdown Store setting is true" do
+    #         let!(:product) { create(:product, active: true) }
+    #         let!(:sku) { create(:sku, price: '109.93', active: true, product_id: product.id) }
+    #         let!(:sku_2) { create(:sku, active: true, product_id: product.id) }
+    #         before(:each) do
+    #             Store::reset_settings
+    #             StoreSetting.destroy_all
+    #             create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
+    #             Store::settings
+    #         end
+
+    #         it "should have the correct elements" do
+    #             expect(Store::Price.new(sku.price).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(sku.price, 'gross').single}")
+    #             expect(Store::Price.new(sku.price).range).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').single} inc VAT</span>")
+    #         end
+    #     end
+
+    #     context "if the tax breakdown Store setting is false" do
+    #         let!(:sku) { create(:sku, price: '48.93') }
+
+    #         it "should have the correct elements" do
+    #             expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).single}</span>")
+    #         end
+    #     end
+    # end
+
+    describe "When rendering the markup of a price for a view" do
 
         context "if the tax breakdown Store setting is true" do
             let!(:sku) { create(:sku, price: '48.93') }
@@ -122,7 +150,7 @@ describe Store::Price do
             end
 
             it "should have the correct elements" do
-                expect(Store::Price.new(sku.price).markup).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').format} inc VAT</span>")
+                expect(Store::Price.new(sku.price).markup).to include("<span class='tax-suffix'>#{Store::Price.new(sku.price, 'gross').single} inc VAT</span>")
             end
         end
 
@@ -130,7 +158,7 @@ describe Store::Price do
             let!(:sku) { create(:sku, price: '48.93') }
 
             it "should have the correct elements" do
-                expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).format}</span>")
+                expect(Store::Price.new(sku.price).markup).to_not include("<span>#{Store::Price.new(sku.price).single}</span>")
             end
         end
     end

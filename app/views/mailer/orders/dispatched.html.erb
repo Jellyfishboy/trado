@@ -43,14 +43,14 @@ Order #<%= @order.id %>
 Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b %Y") %>
 
 <% @order.order_items.each do |item| %>
-    <%= item.sku.product.name %> | <%= Store::Price.new(item.price, 'net').format %> | <%= item.quantity %> | <%= Store::Price.new(item.total_price, 'net').format %>
+    <%= item.sku.product.name %> | <%= Store::Price.new(item.price, 'net').single %> | <%= item.quantity %> | <%= Store::Price.new(item.total_price, 'net').single %>
 <% end %>
 
-Subtotal: <%= Store::Price.new(@order.net_amount, 'net').format %>
-Delivery & handling: <%= Store::Price.new(@order.delivery.price, 'net').format %>
-Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').format %>
-<%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').format %>
-Total: <%= Store::Price.new(@order.gross_amount, 'net').format %>
+Subtotal: <%= Store::Price.new(@order.net_amount, 'net').single %>
+Delivery & handling: <%= Store::Price.new(@order.delivery.price, 'net').single %>
+Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(@order.net_amount, 'net').single %>
+<%= Store::settings.tax_name %>: <%= Store::Price.new(@order.tax_amount, 'net').single %>
+Total: <%= Store::Price.new(@order.gross_amount, 'net').single %>
 
 Questions about your order? Contact support@trado.io, quoting your order number.
 

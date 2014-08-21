@@ -75,7 +75,7 @@
                         = item.sku.product.name
                         %div= sku_attribute_values(item.sku, item.sku.product.single)
                       %td.qty= item.quantity
-                      %td.price= Store::Price.new(item.total_price).format
+                      %td.price= Store::Price.new(item.total_price).single
                     - unless item.cart_item_accessory.blank?
                       %tr.accessory_row
                         %td.image
@@ -91,26 +91,26 @@
                       = @order.delivery.full_name
                       %div= @order.delivery_address.country
                     %td.qty
-                    %td.price= Store::Price.new(@order.delivery.price).format
+                    %td.price= Store::Price.new(@order.delivery.price).single
                   - if Store::settings.tax_breakdown
                     %tr
                       %td{colspan: "2"}
                       \ 
                       %td.stronger Subtotal:
                       %td.stronger
-                        .align-right= Store::Price.new(@order.net_amount).format
+                        .align-right= Store::Price.new(@order.net_amount).single
                     %tr
                       %td{colspan: "2", rowspan: "1"}
                       \ 
                       %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
                       %td.stronger
-                        .align-right= Store::Price.new(@order.tax_amount).format
+                        .align-right= Store::Price.new(@order.tax_amount).single
                   %tr
                     %td{colspan: "2", rowspan: "1"}
 
                     %td.stronger Total:
                     %td.stronger
-                      .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').format
+                      .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').single
               %div.right-align.terms-checkbox 
                 = f.check_box :terms
                 = errors_for @order, :terms

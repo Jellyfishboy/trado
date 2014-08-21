@@ -33,21 +33,21 @@
             = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
               %i.fa.fa-times-circle
         .price
-          %strong= Store::Price.new(item.total_price).format
+          %strong= Store::Price.new(item.total_price).single
     .summary
       - if Store::settings.tax_breakdown
         .line
           .row-fluid
             .span6 Subtotal
-            .span6.align-right= Store::Price.new(current_cart.total_price, 'net').format
+            .span6.align-right= Store::Price.new(current_cart.total_price, 'net').single
         .line
           .row-fluid
             .span6= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
-            .span6.align-right= Store::Price.new((current_cart.total_price*Store::tax_rate)).format
+            .span6.align-right= Store::Price.new((current_cart.total_price*Store::tax_rate)).single
       .line
         .row-fluid
           .span6 Total
-          .span6.align-right.size-16= Store::Price.new(current_cart.total_price, 'gross').format
+          .span6.align-right.size-16= Store::Price.new(current_cart.total_price, 'gross').single
     .proceed
       = link_to order_link(current_cart), :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT
