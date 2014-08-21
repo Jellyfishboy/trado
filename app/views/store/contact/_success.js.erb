@@ -1,0 +1,20 @@
+if (!$('.contact-alert').is(':visible')) {
+    trado.animation.alert(
+        '.contact-form-container h3',
+        'success',
+        'contact-alert',
+        '<button data-dismiss="alert" class="close" type="button">×</button>Thank your for your message; we will be in contact shortly.',
+        5000
+    )
+}
+<% @contact = Contact.new %>
+$form = $('.contact-form-container form')
+$form[0].reset();
+$form.find('input').each(function()
+{
+    if ($(this).parent().hasClass('field-with-errors'))
+    {
+        $(this).unwrap();
+        $(this).next().remove();
+    }
+});

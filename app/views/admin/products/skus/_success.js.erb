@@ -1,7 +1,9 @@
 $('#sku-form').modal('hide');
 $('tr#sku_<%= @sku.id %>').html('<%=j render :partial => "admin/products/skus/table" %>');
-$('.sku-heading').before('<div class="alert alert-success alert-no-margin animated fadeInDown sku-update-alert"><i class="icon-checkmark-circle"></i>Successfully updated the SKU.</div>').delay(3500).queue(function(next){
-        $('.sku-update-alert').addClass('fadeOutUp').delay(800).hide(1);
-        next();
-    });
+trado.animation.alert(
+    '.sku-heading',
+    'success',
+    '<i class="icon-checkmark-circle"></i>Successfully updated the SKU.',
+    3500
+)
 $('body').scrollTo('.sku-heading', 800);

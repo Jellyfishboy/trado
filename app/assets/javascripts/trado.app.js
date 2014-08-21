@@ -17,21 +17,35 @@ trado.app =
         {
             var errors;
             errors = $.parseJSON(xhr.responseJSON.errors);
+            //removes the old error elements
+            $('input').each(function()
+            {
+                if ($(this).parent().hasClass('field-with-errors'))
+                {
+                    $(this).unwrap();
+                    $(this).next().remove();
+                }
+            });
+            // iterates through the list of errors
             $.each(errors, function(key, value) 
             {
                 var $element, $errorTarget;
+                // assigns a recognisable key for input element identification
                 tempKey = key.split('_');
                 key = tempKey[tempKey.length-1] == "id" ? tempKey[0] : key
+                // selects the element
                 $element = $("input[name*='" + key + "']");
                 if ($element.length == 0)
                 {
                     $element =  $("select[name*='" + key + "']");
                 }
                 $errorTarget = '.error-explanation';
+                // updates the error messages
                 if ($element.parent().next().is($errorTarget)) 
                 {
                     return $($errorTarget).html('<span>' + key + '</span> ' + value);
                 } 
+                // adds the error elements, if requried
                 else 
                 {
                     $element.wrap('<div class="field-with-errors"></div>');

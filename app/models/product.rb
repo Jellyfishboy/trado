@@ -30,14 +30,14 @@ class Product < ActiveRecord::Base
   :short_description, :related_ids, :single, :active
 
   has_many :searches
-  has_many :skus,                                             :dependent => :delete_all, inverse_of: :product
-  has_many :orders,                                           :through => :skus
-  has_many :carts,                                            :through => :skus
-  has_many :taggings,                                         :dependent => :delete_all
-  has_many :tags,                                             :through => :taggings, :dependent => :delete_all
-  has_many :attachments,                                      as: :attachable, :dependent => :delete_all
-  has_many :accessorisations,                                 :dependent => :delete_all
-  has_many :accessories,                                      :through => :accessorisations
+  has_many :skus,                                             dependent: :delete_all, inverse_of: :product
+  has_many :orders,                                           through: :skus
+  has_many :carts,                                            through: :skus
+  has_many :taggings,                                         dependent: :delete_all
+  has_many :tags,                                             through: :taggings, dependent: :delete_all
+  has_many :attachments,                                      as: :attachable, dependent: :delete_all
+  has_many :accessorisations,                                 dependent: :delete_all
+  has_many :accessories,                                      through: :accessorisations
   has_and_belongs_to_many :related,                           class_name: "Product", 
                                                               join_table: :related_products, 
                                                               foreign_key: :product_id, 
@@ -45,13 +45,13 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               :presence => true
-  validates :part_number, :sku, :name,                        :uniqueness => { :scope => :active }
-  validates :meta_description,                                :length => { :maximum => 150, :message => :too_long }
-  validates :name,                                            :length => { :minimum => 10, :message => :too_short }
-  validates :description,                                     :length => { :minimum => 20, :message => :too_short }
-  validates :short_description,                               :length => { :maximum => 150, :message => :too_long }
-  validates :part_number,                                     :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }                                                         
+  :part_number, :sku, :weighting, :category_id,               presence: true
+  validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
+  validates :meta_description,                                length: { maximum: 150, message: :too_long }
+  validates :name,                                            length: { minimum: 10, message: :too_short }
+  validates :description,                                     length: { minimum: 20, message: :too_short }
+  validates :short_description,                               length: { maximum: 150, message: :too_long }
+  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }                                                         
   validate :single_product
 
   accepts_nested_attributes_for :attachments

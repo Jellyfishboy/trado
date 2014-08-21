@@ -1,3 +1,5 @@
+- content_for :title, 'Contact Us'
+- content_for :breadcrumb, 'Contact Us'
 / ==========
 / = Breadcrumbs =
 / ==========
@@ -42,24 +44,26 @@
           %h3.push-down-25
             %span.light Send
             a Message
-          %form#commentform.form.form-inline.form-contact{action: "#", method: "post"}
+          = form_for @contact, html: { :class => 'form form-inline form-contact remote-form', id: 'commentform', method: :post, remote: true } do |f|
             %p.push-down-20
-              %input#author{"aria-required" => "true", name: "author", required: "", size: "30", tabindex: "1", type: "text", value: ""}/
-              %label{for: "author"}
+              = f.text_field :name, tabindex: 1
+              %label
                 Name
                 %span.red-clr.bold *
             %p.push-down-20
-              %input#email{"aria-required" => "true", name: "email", required: "", size: "30", tabindex: "2", type: "email", value: ""}/
-              %label{for: "email"}
-                Mail
+              = f.text_field :email, tabindex: 2
+              %label
+                Email
                 %span.red-clr.bold *
             %p.push-down-20
-              %input#url{name: "url", size: "30", tabindex: "3", type: "text", value: ""}/
-              %label{for: "url"} Website
+              = f.text_field :website, taxindex: 3
+              %label
+                Website
+                %span.red-clr.bold
             %p.push-down-20
-              %textarea#comment.input-block-level{cols: "70", name: "comment", placeholder: "Your Message goes here ...", required: "", rows: "7", tabindex: "4"}
+              = f.text_area :message, cols: 70, placeholder: 'Your message goes here...', rows: 7, taxindex: 4, :class => 'input-block-level'
             %p
-              %button#submit.btn.btn-primary.bold{tabindex: "5", type: "submit"} SEND EMAIL
+              = f.submit 'Send email', tabindex: 5, :class => 'btn btn-primary bold'
         %hr/
         / ==========
         / = Company Info with Google Maps =
