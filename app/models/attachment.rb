@@ -22,7 +22,7 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file,             FileUploader
 
-  validates :file,                  :format => { :with => /\.(gif|jpg|png)\z/i, :message => "must be a URL for GIF, JPG, JPEG or PNG image." }
+  validates :file,                  format: { with: /\.(gif|jpg|png)\z/i, message: "must be a URL for GIF, JPG, JPEG or PNG image." }
   validates :file,                  presence: true, :if => :not_setting_attachment?
 
   default_scope { order(default_record: :desc) }

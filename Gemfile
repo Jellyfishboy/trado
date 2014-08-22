@@ -65,6 +65,10 @@ gem 'unicorn', :platforms => :ruby
 
 # AJAX file upload
 gem 'remotipart', '~> 1.2'
+################
+# Fix for upload bug for Carrierwave and Rails 4.1
+################
+gem 'activesupport-json_encoder'
 
 # Logging/Monitoring
 gem 'rollbar'
