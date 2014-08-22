@@ -21,7 +21,7 @@ describe NotificationsController do
         end
 
         context "with invalid attributes" do
-            let(:errors) { "{\"email\":[\"can't be blank\",\"is invalid\"]}" }
+            let(:errors) { "{\"email\":[\"is required\",\"is invalid\"]}" }
 
             it "should not save the notification to the database" do
                 expect{

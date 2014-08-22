@@ -3,7 +3,8 @@ $('tr#sku_<%= @sku.id %>').html('<%=j render :partial => "admin/products/skus/ta
 trado.animation.alert(
     '.sku-heading',
     'success',
+    'sku-update-alert',
     '<i class="icon-checkmark-circle"></i>Successfully updated the SKU.',
     3500
-)
+);
 $('body').scrollTo('.sku-heading', 800);

@@ -25,7 +25,8 @@ trado.animation =
 
     alert: function(beforeElement, alertType, uniqueClass, message, delayCount)
     {
-        $(beforeElement).before('<div class="alert alert-' + alertType + ' animated fadeInDown ' + uniqueClass + '">' + message + '</div>').delay(delayCount).queue(function(next){
+        $(beforeElement).before('<div class="alert alert-' + alertType + ' animated fadeInDown ' + uniqueClass + '">' + message + '</div>').delay(delayCount).queue(function(next)
+        {
             $('.' + uniqueClass).addClass('fadeOutUp').delay(800).hide(1);
             next();
         });

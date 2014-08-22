@@ -73,6 +73,6 @@ Trado::Application.routes.draw do
   end
 
   # redirect unknown URLs to 404 error page
-  match '*path', via: :all, to: 'errors#show', code: code
+  match '*path', via: :all, to: 'errors#show', code: 404
 
 end
