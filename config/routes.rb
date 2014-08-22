@@ -72,4 +72,7 @@ Trado::Application.routes.draw do
       patch '/profile/update' => 'users#update'
   end
 
+  # redirect unknown URLs to 404 error page
+  match '*path', via: :all, to: 'errors#show', code: code
+
 end
