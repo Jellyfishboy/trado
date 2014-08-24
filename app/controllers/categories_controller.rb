@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     
 
     def show
-      @category = Category.find(params[:id])
+      @category = Category.includes(:products).active.where(products: { status: 1 } ).find(params[:id])
       respond_to do |format|
         format.html
         format.json { render json: @category }

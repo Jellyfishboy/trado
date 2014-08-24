@@ -12,4 +12,9 @@ module ProductHelper
         Store::positive?(adjustment) ? "tr-green" : "tr-red"
     end
 
+    def product_filter_classes product
+        product_category = product.category.nil? ? nil : "product-category-#{product.category.slug}"
+        product_featured = product.featured? ? "product-featured" : nil
+        return "product-#{product.status} #{product_category} #{product_featured}"
+    end
 end

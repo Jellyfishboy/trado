@@ -1,9 +1,0 @@
-.widget-sub-heading
-  %h3 Attachments
-  .pull-right
-    = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f, :attachments,"#attachment_fields", 'Add attachment'
-%fieldset.widget.widget-content.attachment-form
-  .row
-    .twelvecol
-      #attachment_fields
-        = add_foreign_field f, :attachments

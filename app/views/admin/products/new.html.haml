@@ -6,19 +6,4 @@
 .twelvecol
   .page-header
     %h2.widget.widget-header New product
-  = form_for [:admin, @product], :html => { :role => 'form' }, :remote => true do |f|
-    #errors.json
-      %ul
-    
-    = render 'admin/products/section/basic_details', :f => f
-
-    = render 'admin/products/section/new_images', :f => f
-
-    = render 'admin/products/section/new_skus', :f => f
-
-    = render 'admin/products/section/associations', :f => f
-
-    = render 'admin/products/section/new_tags', :f => f
-
-    .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+  = render "form"

@@ -45,13 +45,13 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               presence: true
-  validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
-  validates :meta_description,                                length: { maximum: 150, message: :too_long }
-  validates :name,                                            length: { minimum: 10, message: :too_short }
-  validates :description,                                     length: { minimum: 20, message: :too_short }
-  validates :short_description,                               length: { maximum: 150, message: :too_long }
-  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }                                                         
+  :part_number, :sku, :weighting, :category_id,               presence: true, :if => :published?
+  validates :part_number, :sku, :name,                        uniqueness: { scope: :active }, :if => :published?
+  validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
+  validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
+  validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
+  validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
+  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
   validate :single_product
 
   accepts_nested_attributes_for :attachments
@@ -61,6 +61,8 @@ class Product < ActiveRecord::Base
   searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope { order('weighting DESC') }
+
+  enum status: [:draft, :published]
 
   include ActiveScope
   

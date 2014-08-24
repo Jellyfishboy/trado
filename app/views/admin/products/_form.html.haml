@@ -1,0 +1,20 @@
+= form_for [:admin, @product], html: {role: 'form', method: :patch}, remote: true do |f|
+    #errors.json
+        %ul
+      
+    = render 'admin/products/section/basic_details', :f => f
+
+    = render 'admin/products/section/images', :f => f
+
+    = render 'admin/products/section/skus', :f => f
+
+    = render 'admin/products/section/associations', :f => f
+
+    = render 'admin/products/section/tags', :f => f
+
+    .form-action
+        = f.submit 'Publish', :class => 'btn btn-green btn-large'
+        = f.submit 'Save', :class => 'btn btn-blue btn-large'
+
+#stock-level-modal
+#sku-modal

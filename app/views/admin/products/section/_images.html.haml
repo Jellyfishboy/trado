@@ -15,3 +15,4 @@
             = radio_button_tag :default_attachment, attach.id, checked: true
           - else
             = radio_button_tag :default_attachment, attach.id
+      = add_foreign_field f, :attachments
