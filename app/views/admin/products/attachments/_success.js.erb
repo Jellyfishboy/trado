@@ -1,0 +1,9 @@
+$('#attachment-form').modal('hide');
+$('#attachments').append('<%=j render partial: "admin/products/attachments/single", locals: { attachment: @attachment } %>');
+trado.animation.alert(
+    '.attachment-heading',
+    'success',
+    'attachment-create-alert',
+    '<i class="icon-checkmark-circle"></i>Successfully created an attachment.',
+    3500
+);

@@ -25,18 +25,16 @@ class Attachment < ActiveRecord::Base
   validates :file,                  format: { with: /\.(gif|jpg|png)\z/i, message: "must be a URL for GIF, JPG, JPEG or PNG image." }
   validates :file,                  presence: true, :if => :not_setting_attachment?
 
+  after_save :set_default
+
   default_scope { order(default_record: :desc) }
 
   # Finds an attachment with the passed in parameter and updates it's default_record property true
   # Then updates all other attachments default_record proeprty who are associated to the parent object to false
   #
   # @param id [Integer]
-  def self.set_default id
-    unless id.nil?
-      @attachment = Attachment.find(id)
-      @attachment.update_column(:default_record, true)
-      Attachment.where('id != ? AND attachable_id = ?', @attachment.id, @attachment.attachable.id).update_all(default_record: false) if @attachment.default_record
-    end
+  def set_default
+    Attachment.where('id != ? AND attachable_id = ?', self.id, self.attachable.id).update_all(default_record: false) if self.default_record
   end
 
   # If the attachment is a StoreSetting or User, ignore the presence validation

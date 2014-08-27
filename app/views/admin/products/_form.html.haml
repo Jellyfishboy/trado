@@ -1,10 +1,14 @@
-= form_for [:admin, @product], html: {role: 'form', method: :patch}, remote: true do |f|
-    #errors.json
-        %ul
-      
+= form_for [:admin, @product], html: {role: 'form', method: :patch} do |f|
+    - if @product.errors.any?
+        #errors
+            %ul
+                - @product.errors.full_messages.each do |msg|
+                    %li
+                        %i.icon-cancel-circle
+                        = msg  
     = render 'admin/products/section/basic_details', :f => f
 
-    = render 'admin/products/section/images', :f => f
+    = render 'admin/products/section/attachments', :f => f
 
     = render 'admin/products/section/skus', :f => f
 
@@ -18,3 +22,4 @@
 
 #stock-level-modal
 #sku-modal
+#attachment-modal

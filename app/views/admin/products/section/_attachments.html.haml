@@ -1,0 +1,13 @@
+.widget-sub-heading.attachment-heading
+  %h3 Attachments
+  .pull-right
+    %a.new-attachment{href: "#/", id: @product.id}
+      %i.icon-plus
+%fieldset.widget.widget-content.attachment-form
+  .row
+    .twelvecol
+      #attachments
+        - @product.attachments.each do |attach|
+          = render partial: 'admin/products/attachments/single', locals: { attachment: attach } 
+      / .attachments
+      /   %i.icon-upload-3

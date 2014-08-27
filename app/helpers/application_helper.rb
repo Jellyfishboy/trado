@@ -1,41 +1,41 @@
 module ApplicationHelper
 
-    # Destroy generated form field object and trigger the associated JavaScript function to remove it from the DOM too
-    #
-    # @param name [String]
-    # @param f [Object]
-    # @param obj [Object]
-    def link_to_remove_fields name, f, obj
-      f.hidden_field(:_destroy) + link_to(name, '#/', onclick: "trado.admin.removeField(this, '#{obj}')")
-    end
+    # # Destroy generated form field object and trigger the associated JavaScript function to remove it from the DOM too
+    # #
+    # # @param name [String]
+    # # @param f [Object]
+    # # @param obj [Object]
+    # def link_to_remove_fields name, f, obj
+    #   f.hidden_field(:_destroy) + link_to(name, '#/', onclick: "trado.admin.removeField(this, '#{obj}')")
+    # end
       
-    # Create a new form field object and trigger the associated JavaScript to add the field elements to the DOM
-    #
-    # @param name [String]
-    # @param f [Object]
-    # @param association [Symbol]
-    # @param target [String]
-    # @param tooltip [String]
-    # @return [Object] new form field using Ajax
-    def link_to_add_fields name, f, association, target, tooltip
-      new_object = f.object.class.reflect_on_association(association).klass.new
-      fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-        render("admin/products/" + association.to_s + "/fields", :f => builder)
-      end
-      link_to name, '#/', onclick: "trado.admin.addField(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{target}\")", 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => tooltip
-    end
+    # # Create a new form field object and trigger the associated JavaScript to add the field elements to the DOM
+    # #
+    # # @param name [String]
+    # # @param f [Object]
+    # # @param association [Symbol]
+    # # @param target [String]
+    # # @param tooltip [String]
+    # # @return [Object] new form field using Ajax
+    # def link_to_add_fields name, f, association, target, tooltip
+    #   new_object = f.object.class.reflect_on_association(association).klass.new
+    #   fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+    #     render("admin/products/" + association.to_s + "/fields", :f => builder)
+    #   end
+    #   link_to name, '#/', onclick: "trado.admin.addField(this, \"#{association}\", \"#{escape_javascript(fields)}\", \"#{target}\")", 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => tooltip
+    # end
 
-    # Add a single form field object to the DOM
-    #
-    # @param f [Object]
-    # @param association [Symbol]
-    # @return [Object] new form field
-    def add_foreign_field f, association
-      new_object = f.object.class.reflect_on_association(association).klass.new
-      f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-        render("admin/products/" + association.to_s + "/fields", :f => builder)
-      end
-    end
+    # # Add a single form field object to the DOM
+    # #
+    # # @param f [Object]
+    # # @param association [Symbol]
+    # # @return [Object] new form field
+    # def add_foreign_field f, association
+    #   new_object = f.object.class.reflect_on_association(association).klass.new
+    #   f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+    #     render("admin/products/" + association.to_s + "/fields", :f => builder)
+    #   end
+    # end
 
     # Returns an array of categories which are active and ordered by their ascending sorting value
     # Including product data for the links

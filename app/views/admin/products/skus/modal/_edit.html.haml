@@ -1,7 +1,7 @@
 #sku-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "skuModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      = form_for [:admin, :products, @form_sku], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+      = form_for [:admin, :products, @form_sku], html: { role: 'form', method: :patch }, remote: true do |f|
         #errors.json
           %ul
         .modal-header
@@ -24,7 +24,7 @@
               = f.text_field :attribute_value, :class => 'form-control'
             .form-group
               = f.label :attribute_type_id
-              = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { :include_blank => 'Select...'}, { :class => 'form-control' })
+              = f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { include_blank: 'Select...'}, { :class => 'form-control' })
             .form-group
               = f.label :stock_warning_level
               = f.text_field :stock_warning_level, :class => 'form-control'

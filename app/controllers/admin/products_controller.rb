@@ -3,6 +3,7 @@ class Admin::ProductsController < ApplicationController
   before_action :get_associations, except: [:index, :destroy]
   before_action :clean_drafts, only: :index
   before_action :authenticate_user!
+  before_action :set_product, only: [:edit, :update]
   layout 'admin'
 
   def index
@@ -16,31 +17,62 @@ class Admin::ProductsController < ApplicationController
       flash_message :error, "You must have at least one attribute type record before creating your first product. Create one #{view_context.link_to 'now', new_admin_products_skus_attribute_type_path}.".html_safe
     else
       @product = Product.create
+      redirect_to edit_admin_product_path(@product)
     end
   end
 
   def edit
-    @product = Product.includes(:skus, :accessories, :attachments).find(params[:id])
+
   end
 
   def update
-    @product = Product.includes(:skus).find(params[:id])
-    if 
+    @product.attributes = params[:product]
+    @product.save(validate: false)
+    if params[:commit] == "Save"
       @product.status = :draft
-    else
+      message = "Your product has been saved successfully as a draft."
+    elsif params[:commit] == "Publish"
       @product.status = :published
+      message = "Your product has been published successfully. It is now live in your store."
     end
-
-    respond_to do |format|
-      if @product.update(params[:product])
-        Tag.del(params[:taggings], @product.id)
-        Tag.add(params[:taggings], @product.id)
-        format.js { render :js => "window.location.replace('#{admin_products_url}');"}
-      else
-        format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 
-      end
+    if @product.update(params[:product])
+      flash_message :success, message
+      redirect_to admin_products_url
+    else
+      render action: "edit"
     end
   end
+
+  #   respond_to do |format|
+  #     if @product.update(params[:product])
+  #       Tag.del(params[:taggings], @product.id)
+  #       Tag.add(params[:taggings], @product.id)
+  #       format.js { render :js => "window.location.replace('#{admin_products_url}');"}
+  #     else
+  #       format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 
+  #     end
+  #   end
+  # end
+
+  # def draft
+  #   @product.draft!
+  #   @product.save!
+
+  #   flash_message :success, 'Draft product was saved successfully.'
+  #   redirect_to admin_products_url
+  # end
+
+  # def publish
+  #   @product.save(validate: false)
+  #   @product.published!
+
+  #   if @product.save
+  #     flash_message :success, 'Published product was saved successfully.'
+  #     redirect_to admin_products_url
+  #   else
+  #     render action: "edit"
+  #   end
+  # end
 
   # Destroying a product
   #
@@ -68,5 +100,9 @@ class Admin::ProductsController < ApplicationController
 
     def clean_drafts
       Product.where(name: nil).where(sku: nil).where(part_number: nil).destroy_all
+    end
+
+    def set_product
+      @product = Product.includes(:skus, :accessories, :attachments).find(params[:id])
     end
 end

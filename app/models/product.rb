@@ -53,6 +53,8 @@ class Product < ActiveRecord::Base
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
   validate :single_product
+  validate :attachment_count
+  validate :sku_count
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -79,13 +81,32 @@ class Product < ActiveRecord::Base
     }
   end
 
+  # Calculate if a product has at least one associated attachment
+  # If no associated attachments exist, return an error
+  #
+  def attachment_count
+    if self.attachments.count == 0
+      errors.add(:product, " must have at least one attachment.")
+      return false
+    end
+  end
+
+  # Calculate if a product has at least one associated SKU
+  # If no associated SKUs exist, return an error
+  #
+  def sku_count
+    if self.skus.count == 0
+      errors.add(:product, " must have at least one SKU.")
+      return false
+    end
+  end
+
   # Detects if a product has more than one SKU when attempting to set the single product field as true
   # The sku association needs to map an attribute block in order to count the number of records successfully
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   #
   # @return [Boolean]
   def single_product
-    
     if self.single && self.skus.map(&:active).count > 1
       errors.add(:single, " product cannot be set if the product has more than one SKU.")
       return false
