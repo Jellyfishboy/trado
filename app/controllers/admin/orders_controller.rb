@@ -24,7 +24,7 @@ class Admin::OrdersController < ApplicationController
          format.json { render :json => { :errors => ['Shipping date can\'t be blank'] }, :status => 422 }
       end
       if @order.update(params[:order])
-        format.js { render :partial => 'admin/orders/success', :format => [:js] }
+        format.js { render :partial => 'admin/orders/update', :format => [:js] }
       else 
         format.json { render :json => { :errors => @order.errors.full_messages }, :status => 422 }
       end

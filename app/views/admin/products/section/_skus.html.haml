@@ -1,7 +1,8 @@
 .widget-sub-heading.sku-heading
   %h3 SKUs
   .pull-right
-    / = link_to_add_fields "<i class='icon-plus'></i>".html_safe, f,:skus,"#sku_fields", 'Add SKU'
+    = link_to new_admin_product_sku_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add SKU' do
+      %i.icon-plus
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover.table-margin
     %thead
@@ -17,17 +18,7 @@
         %th Cost value
         %th Price
         %th
-    %tbody#sku_fields.edit-field
+    %tbody#sku-fields
       - @product.skus.each do |sku|
         %tr{ :id => "sku_#{sku.id}" }
-          %td= sku.code
-          %td= sku.weight
-          %td= sku.length
-          %td= sku.thickness
-          %td= sku.attribute_value
-          %td= sku.attribute_type.name
-          %td= sku.stock
-          %td= sku.stock_warning_level
-          %td= Store::Price.new(sku.cost_value, 'net').single
-          %td= Store::Price.new(sku.price, 'net').single
-          = table_commands sku, admin_products_sku_path(sku), edit_admin_products_sku_path(sku), admin_products_sku_path(sku), 1
+          = render partial: 'admin/products/skus/single', locals: { sku: sku }

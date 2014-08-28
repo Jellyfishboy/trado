@@ -5,11 +5,11 @@
       %i.icon-search
   / Update stock level
   - if type == 1
-    %a.new_stock_levels{href: "#/", id: object.id}
+    = link_to new_admin_product_sku_stock_level_path(object.product, object), remote: true do
       %i.icon-plus
   - if type == 1
     / Edit SKU
-    %a.edit_sku_attributes{href: "#/", id: object.id}
+    = link_to edit_admin_product_sku_path(object.product, object), remote: true do
       %i.icon-pencil
   - elsif type != 2
     / Edit record

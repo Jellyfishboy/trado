@@ -1,2 +1,3 @@
-$('#stock-level-modal').html('<%=j render :partial => "admin/products/skus/stock_levels/form" %>');
-$('#stock-level-form').modal('show');
+$('.main .container').removeClass('fadeIn');
+$('#stock-level-modal').html('<%=j render :partial => "admin/products/skus/stock_levels/modal" %>');
+soca.modal.standard('#stock-level-form');

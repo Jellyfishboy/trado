@@ -1,4 +1,0 @@
-$('#stock-level-modal').html('<%=j render :partial => "admin/products/skus/stock_levels/form" %>');
-$('.modal-backdrop').remove();
-$('#stock-level-form').modal('show');
-$('tr#sku_<%= @sku.id %> td:nth-child(7)').text('<%= @sku.stock %>');

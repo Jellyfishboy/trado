@@ -10,6 +10,7 @@ FactoryGirl.define do
         active { false }
         sequence(:weighting) { |n| n }
         single { false }
+        status { 1 }
 
         association :category
 

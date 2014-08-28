@@ -53,8 +53,8 @@ class Product < ActiveRecord::Base
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
   validate :single_product
-  validate :attachment_count
-  validate :sku_count
+  validate :attachment_count,                                 :if => :published?
+  validate :sku_count,                                        :if => :published?
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -100,7 +100,7 @@ class Product < ActiveRecord::Base
       return false
     end
   end
-
+  
   # Detects if a product has more than one SKU when attempting to set the single product field as true
   # The sku association needs to map an attribute block in order to count the number of records successfully
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have

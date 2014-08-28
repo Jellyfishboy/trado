@@ -1,14 +1,21 @@
 #attachment-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "attachmentModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      = form_for [:admin, @attachment], html: { role: 'form' }, remote: true do |f|
+      = form_for [:admin, @product, @attachment], html: { role: 'form' }, remote: true do |f|
         #errors.json
           %ul
+        .loading5
+          %i
+          %i
+          %i
+          %i
+        .loading-overlay
         .modal-header
           %h3#skuModalLabel
-            New attachment
+            = @attachment.id.nil? ? "New attachment" : "Edit attachment"
         .modal-body
           %fieldset.widget.widget-content.widget-last
+            = image_tag @attachment.file.square, width: 100, height: 100 unless @attachment.file.nil?
             .form-group
               = f.label :file
               = f.file_field :file, :class => 'form-control'

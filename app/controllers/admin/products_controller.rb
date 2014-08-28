@@ -43,37 +43,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  #   respond_to do |format|
-  #     if @product.update(params[:product])
-  #       Tag.del(params[:taggings], @product.id)
-  #       Tag.add(params[:taggings], @product.id)
-  #       format.js { render :js => "window.location.replace('#{admin_products_url}');"}
-  #     else
-  #       format.json { render :json => { :errors => @product.errors.full_messages}, :status => 422 } 
-  #     end
-  #   end
-  # end
-
-  # def draft
-  #   @product.draft!
-  #   @product.save!
-
-  #   flash_message :success, 'Draft product was saved successfully.'
-  #   redirect_to admin_products_url
-  # end
-
-  # def publish
-  #   @product.save(validate: false)
-  #   @product.published!
-
-  #   if @product.save
-  #     flash_message :success, 'Published product was saved successfully.'
-  #     redirect_to admin_products_url
-  #   else
-  #     render action: "edit"
-  #   end
-  # end
-
   # Destroying a product
   #
   def destroy
@@ -99,7 +68,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def clean_drafts
-      Product.where(name: nil).where(sku: nil).where(part_number: nil).destroy_all
+      Product.where('name IS NULL').where('sku IS NULL').where('part_number IS NULL').destroy_all
     end
 
     def set_product

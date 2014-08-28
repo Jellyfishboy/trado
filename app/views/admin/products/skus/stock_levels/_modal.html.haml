@@ -1,10 +1,15 @@
 #stock-level-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "stockLevelModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      = form_for [:admin, :products, :skus, @sku.stock_levels.build], :html => { :role => 'form' }, :remote => true do |f|
-        = f.hidden_field :sku_id, :value => @sku.id
+      = form_for [:admin, @product, @sku, @stock_level], html: { role: 'form' }, remote: true do |f|
         #errors.json
           %ul
+        .loading5
+          %i
+          %i
+          %i
+          %i
+        .loading-overlay
         .modal-header
           %h3#stockLevelModalLabel
             Stock levels for 

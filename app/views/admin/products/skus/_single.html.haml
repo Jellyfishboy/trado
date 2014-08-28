@@ -1,0 +1,11 @@
+%td= sku.code
+%td= sku.length
+%td= sku.weight
+%td= sku.thickness
+%td= sku.attribute_value
+%td= sku.attribute_type.name
+%td= sku.stock
+%td= sku.stock_warning_level
+%td= Store::Price.new(sku.cost_value, 'net').single
+%td= Store::Price.new(sku.price, 'net').single
+= table_commands sku, admin_product_sku_path(sku.product, sku), edit_admin_product_sku_path(sku.product, sku), admin_product_sku_path(sku.product, sku), 1

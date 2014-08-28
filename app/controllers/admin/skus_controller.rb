@@ -1,11 +1,28 @@
-class Admin::Products::SkusController < ApplicationController
+class Admin::SkusController < ApplicationController
 
-  before_action :set_sku, except: :edit
+  before_action :set_product
+  before_action :set_sku, except: [:edit, :new, :create]
   before_action :authenticate_user!
+
+  def new
+    @form_sku = @product.skus.build
+    render partial: 'admin/products/skus/new_edit', format: [:js]
+  end
+
+  def create
+    @form_sku = @product.skus.build(params[:sku])
+    respond_to do |format|
+      if @form_sku.save
+        format.js { render partial: 'admin/products/skus/create', format: [:js] }
+      else
+        format.json { render json: { errors: @form_sku.errors.full_messages }, status: 422 }
+      end
+    end
+  end
 
   def edit
     @form_sku = Sku.find(params[:id])
-    render :partial => 'admin/products/skus/edit', :format => [:js]
+    render :partial => 'admin/products/skus/new_edit', :format => [:js]
   end
 
   # Updating a SKU
@@ -32,7 +49,7 @@ class Admin::Products::SkusController < ApplicationController
           end
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
         end
-        format.js { render :partial => 'admin/products/skus/success', :format => [:js] }
+        format.js { render :partial => 'admin/products/skus/update', :format => [:js] }
       else
         @form_sku = @old_sku ||= Sku.find(params[:id])
         Store::activate!(@form_sku)
@@ -45,16 +62,16 @@ class Admin::Products::SkusController < ApplicationController
   # Destroying a SKU
   #
   def destroy  
-    if @sku.product.skus.active.count > 1
-      CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
-      @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
-      render :partial => "admin/products/skus/destroy", :format => [:js]
-    else
-      render :partial => 'admin/products/skus/failed_destroy',:format => [:js]
-    end
+    CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
+    @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
+    render :partial => "admin/products/skus/destroy", :format => [:js]
   end
 
   private
+
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
 
     def set_sku
       @sku = Sku.find(params[:id])

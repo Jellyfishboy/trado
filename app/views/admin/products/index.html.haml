@@ -10,6 +10,7 @@
     %h2.widget.widget-header Products
   .widget-controls
     %select#filter-product-category.form-select
+      %option.filter{"data-filter" => "all"} Show all
       %option.filter{"data-filter" => ".product-published"} Published
       %option.filter{"data-filter" => ".product-draft"} Draft
       %option.filter{"data-filter" => ".product-featured"} Featured

@@ -1,13 +1,12 @@
 .widget-sub-heading.attachment-heading
   %h3 Attachments
   .pull-right
-    %a.new-attachment{href: "#/", id: @product.id}
+    = link_to new_admin_product_attachment_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add attachment' do
       %i.icon-plus
 %fieldset.widget.widget-content.attachment-form
   .row
     .twelvecol
       #attachments
+        = "You currently have no attachments for this product." if @product.attachments.empty?
         - @product.attachments.each do |attach|
-          = render partial: 'admin/products/attachments/single', locals: { attachment: attach } 
-      / .attachments
-      /   %i.icon-upload-3
+          = render partial: 'admin/products/attachments/single', locals: { attachment: attach }
