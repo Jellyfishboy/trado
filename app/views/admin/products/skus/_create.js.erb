@@ -1,5 +1,10 @@
 $('#sku-form').modal('hide');
-$('tbody#sku-fields').html('<% @form_sku.product.skus.each do |sku| %><tr id=\'sku_<%= sku.id %>\'><%=j render :partial => "admin/products/skus/single", locals: { sku: sku } %></tr><% end %>');
+<% if @product.skus.count == 1 %>
+    $('.sku-heading + .label-orange').remove();
+    $('.sku-heading').after('<%=j render "admin/products/skus/table" %>');
+<% else %>
+    $('tbody#sku-fields').html('<% @form_sku.product.skus.each do |sku| %><tr id=\'sku_<%= sku.id %>\'><%=j render :partial => "admin/products/skus/single", locals: { sku: sku } %></tr><% end %>');
+<% end %>
 trado.animation.alert(
     '.sku-heading',
     'success',

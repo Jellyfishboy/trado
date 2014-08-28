@@ -3,22 +3,9 @@
   .pull-right
     = link_to new_admin_product_sku_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add SKU' do
       %i.icon-plus
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover.table-margin
-    %thead
-      %tr
-        %th Code
-        %th Weight
-        %th Length
-        %th Thickness
-        %th Attribute value
-        %th Attribute type
-        %th Stock
-        %th Stock warning level
-        %th Cost value
-        %th Price
-        %th
-    %tbody#sku-fields
-      - @product.skus.each do |sku|
-        %tr{ :id => "sku_#{sku.id}" }
-          = render partial: 'admin/products/skus/single', locals: { sku: sku }
+- if @product.skus.empty?
+  .label.label-orange.label-margin
+    %i.icon-spam.icon-cancel-circle 
+    You currently have no SKUs for this product
+- else
+  = render 'admin/products/skus/table'

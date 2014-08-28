@@ -37,10 +37,10 @@
               = f.text_field :stock_warning_level, :class => 'form-control'
             .form-group
               = f.label :cost_value
-              = f.text_field :cost_value, :class => 'form-control'
+              = f.text_field :cost_value, :class => 'form-control calculate-tax'
             .form-group.form-last
               = f.label :price
-              = f.text_field :price, :class => 'form-control'
+              = f.text_field :price, :class => 'form-control calculate-tax'
         .modal-footer
           %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
           = f.submit 'Submit', :class => 'btn btn-blue btn-large'

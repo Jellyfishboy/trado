@@ -43,6 +43,10 @@ $(document).on("page:receive", function(){
     return $('.loading5').removeClass('active');
 });
 
+$(document).ajaxComplete(function()
+{
+    soca.misc.taxField();
+});
 // document.addEventListener('page:change', function() {
 //     document.getElementById('primary-content').className += 'animated fadeIn';
 // });
