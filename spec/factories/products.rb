@@ -10,12 +10,20 @@ FactoryGirl.define do
         active { false }
         sequence(:weighting) { |n| n }
         single { false }
-        status { 1 }
+        status { 0 }
 
         association :category
 
         after(:create) do |product, evaluator|
             create(:product_attachment, attachable: product)
+        end
+
+        factory :product_sku_attachment do
+            active { true }
+            after(:create) do |product, evaluator|
+                create(:sku, product: product)
+                create(:product_attachment, attachable: product)
+            end
         end
 
         factory :product_sku do

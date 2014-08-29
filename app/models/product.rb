@@ -46,7 +46,7 @@ class Product < ActiveRecord::Base
 
   validates :name, :meta_description, :description, 
   :part_number, :sku, :weighting, :category_id,               presence: true, :if => :published?
-  validates :part_number, :sku, :name,                        uniqueness: { scope: :active }, :if => :published?
+  validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
   validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?

@@ -6,6 +6,10 @@ describe CategoriesController do
 
     describe 'GET #show' do
         let(:category) { create(:category) }
+        before(:each) do
+            let(:product) { create(:product_sku_attachment) }
+            product.status = 1
+        end
         
         it "should assign the requested category to @category" do
             get :show, id: category.id

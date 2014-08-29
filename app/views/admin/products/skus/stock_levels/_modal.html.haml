@@ -38,3 +38,5 @@
                     %td= stock.created_at.strftime('%d/%m/%Y at %I:%M%p')
                     %td.fifty= stock.description
                     %td.align-left= stock.adjustment
+        .modal-footer
+          %button.btn.btn-orange.btn-large{"data-dismiss" => "modal", type: "button"} Close
