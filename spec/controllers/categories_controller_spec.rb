@@ -6,8 +6,8 @@ describe CategoriesController do
 
     describe 'GET #show' do
         let(:category) { create(:category) }
+        let!(:product) { create(:product_sku_attachment) }
         before(:each) do
-            let(:product) { create(:product_sku_attachment) }
             product.status = 1
         end
         
