@@ -20,10 +20,11 @@ FactoryGirl.define do
 
         factory :product_sku_attachment do
             active { true }
-            after(:create) do |product, evaluator|
-                create(:sku, product: product)
-                create(:product_attachment, attachable: product)
+            after(:build) do |product, evaluator|
+                product.skus << build(:sku, product: nil)
+                product.attachments << build(:product_attachment, attachable: nil)
             end
+            status { 1 }
         end
 
         factory :product_sku do

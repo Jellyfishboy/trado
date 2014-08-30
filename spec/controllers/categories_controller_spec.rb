@@ -6,12 +6,10 @@ describe CategoriesController do
 
     describe 'GET #show' do
         let(:category) { create(:category) }
-        let!(:product) { create(:product_sku_attachment) }
-        before(:each) do
-            product.status = 1
-        end
+        let!(:product) { create(:product_sku_attachment, category_id: category.id) }
         
         it "should assign the requested category to @category" do
+            binding.pry
             get :show, id: category.id
             expect(assigns(:category)).to eq category
         end

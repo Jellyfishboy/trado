@@ -10,6 +10,6 @@ module OrderHelper
     end
 
     def order_link cart
-        return cart.order.nil? ? new_order_path : order_build_path(:order_id => current_cart.order.id, :id => 'review')
+        return cart.order.nil? ? new_order_path : order_build_path(:order_id => cart.order.id, :id => 'review')
     end
 end

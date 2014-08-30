@@ -15,7 +15,7 @@
       %option.filter{"data-filter" => ".product-draft"} Draft
       %option.filter{"data-filter" => ".product-featured"} Featured
       - @categories.each do |category|
-        %option.filter{"data-filter" => ".product-category-#{category.slug}"}= category.name
+        %option.filter{"data-filter" => ".category-#{category.slug}"}= category.name
     %span Filter by:
     %select#sort-product.form-select.widget-control-margin
       %option.sort{"data-sort" => "default"} Weighting ↑

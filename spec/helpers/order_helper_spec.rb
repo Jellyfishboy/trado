@@ -36,4 +36,23 @@ describe OrderHelper do
             end
         end
     end
+
+    describe '#order_link' do
+        let!(:cart) { create(:full_cart) }
+
+        context "if the cart has an associated order" do
+            let!(:order) { create(:order, cart_id: cart.id) }
+
+            it "should return the order review path" do
+                expect(order_link(cart)).to eq "/orders/#{order.id}/build/review"
+            end
+        end
+
+        context "if the cart does not have an associated order" do
+
+            it "should return the new order path" do
+                expect(order_link(cart)).to eq '/orders/new'
+            end
+        end
+    end
 end
