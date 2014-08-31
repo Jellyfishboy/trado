@@ -8,6 +8,10 @@ describe Admin::CategoriesController do
     describe 'GET #index' do
         let!(:category_1) { create(:category) }
         let!(:category_2) { create(:category) }
+        before(:each) do
+            create(:product_sku_attachment, category_id: category_1.id)
+            create(:product_sku_attachment, category_id: category_2.id)
+        end
 
         it "should populate an array of all categories" do
             get :index

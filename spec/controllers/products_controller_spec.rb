@@ -6,7 +6,7 @@ describe ProductsController do
 
     describe 'GET #show' do
         let(:category) { create(:category) }
-        let(:product) { create(:product_sku, active: true, category: category) }
+        let(:product) { create(:product_sku_attachment, active: true, category: category) }
 
         it "should assign the request product to @product" do
             get :show, { category_id: category.id, id: product.id }
@@ -28,7 +28,7 @@ describe ProductsController do
         end
 
         context "if the product has no accessories" do
-            let(:product) { create(:product_sku, active: true) }
+            let(:product) { create(:product_sku_attachment, active: true) }
 
             it "should set @cart_item_accessory as nil" do
                 get :show, { category_id: category.id, id: product.id }

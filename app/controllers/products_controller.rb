@@ -1,9 +1,7 @@
 class ProductsController < ApplicationController
 
   skip_before_action :authenticate_user!
-  
-  # GET /products/1
-  # GET /products/1.json
+
   def show
     @product = Product.includes(:accessories, :skus).published.find(params[:id])
     @cart_item = CartItem.new

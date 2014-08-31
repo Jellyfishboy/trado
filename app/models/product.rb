@@ -85,7 +85,7 @@ class Product < ActiveRecord::Base
   # If no associated attachments exist, return an error
   #
   def attachment_count
-    if self.attachments.count == 0
+    if self.attachments.map(&:default_record).count == 0
       errors.add(:product, " must have at least one attachment.")
       return false
     end
@@ -95,7 +95,7 @@ class Product < ActiveRecord::Base
   # If no associated SKUs exist, return an error
   #
   def sku_count
-    if self.skus.count == 0
+    if self.skus.map(&:active).count == 0
       errors.add(:product, " must have at least one SKU.")
       return false
     end

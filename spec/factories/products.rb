@@ -20,11 +20,15 @@ FactoryGirl.define do
 
         factory :product_sku_attachment do
             active { true }
+            status { 1 }
             after(:build) do |product, evaluator|
-                product.skus << build(:sku, product: nil)
+                product.skus << build(:sku, product: nil, active: true)
                 product.attachments << build(:product_attachment, attachable: nil)
             end
-            status { 1 }
+
+            factory :product_accessory do
+                accessories { [create(:accessory)] }
+            end
         end
 
         factory :product_sku do
@@ -40,11 +44,7 @@ FactoryGirl.define do
 
             factory :tags_with_product do
                 tags { [create(:tag, name: 'tag #1'), create(:tag, name: 'tag #2'), create(:tag, name: 'tag #3')] }
-            end
-
-            factory :product_accessory do
-                accessories { [create(:accessory)] }
-            end
+            end 
         end
 
         factory :product_skus do 
@@ -55,6 +55,10 @@ FactoryGirl.define do
 
         factory :build_product_skus do
             skus { build_list(:sku, 3, active: true) }
+        end
+
+        factory :build_product_attachment do
+            attachments { build_list(:product_attachment, 2) }
         end
 
         factory :product_sku_stock_count do
