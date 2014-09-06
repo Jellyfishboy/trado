@@ -82,6 +82,7 @@ describe Product do
 
             it "should produce an error" do
                 product.valid?
+                binding.pry
                 expect(product).to have(1).errors_on(:product)
                 expect(product.errors.messages[:product]).to eq [" must have at least one attachment."]
             end

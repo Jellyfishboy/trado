@@ -86,37 +86,37 @@ describe Admin::ProductsController do
         let!(:product) { create(:product_sku_attachment, name: 'Product #1', featured: false) }
         let!(:product_attributes) { attributes_for(:product_sku_attachment, category_id: category.id) }
 
-        it "should assign the requested product to @product" do
-            patch :update, id: product.id, product: product_attributes
-            expect(assigns(:product)).to eq product
-        end
+        # it "should assign the requested product to @product" do
+        #     patch :update, id: product.id, product: product_attributes
+        #     expect(assigns(:product)).to eq product
+        # end
 
         context "if the commit type was 'Save'" do
             before(:each) do
-                controller.stub(:params) { { commit: 'Save' } }
+                # controller.stub(:params) { { commit: 'Save' } }
             end
 
             it "should set the product status to 'draft'" do
-                patch :update, id: product.id, product: product_attributes 
+                patch :update, id: product.id, product: product_attributes, commit: 'Save'
                 expect(assigns(:product).status).to eq "draft"
             end
 
             it "should set the correct string for the message variable" do
-                patch :update, id: product.id, product: product_attributes 
+                patch :update, id: product.id, product: product_attributes, commit: 'Save' 
                 expect(assigns(:message)).to eq "Your product has been saved successfully as a draft."
             end
         end
 
-        context "if the commit type was 'Publish'" do
+        # context "if the commit type was 'Publish'" do
 
-            it "should set the product status to 'published'" do
+        #     it "should set the product status to 'published'" do
 
-            end
+        #     end
 
-            it "should set the correct string for the message variable" do
+        #     it "should set the correct string for the message variable" do
 
-            end
-        end
+        #     end
+        # end
 
         context "with valid attributes" do
 

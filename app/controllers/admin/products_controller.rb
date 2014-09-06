@@ -30,13 +30,13 @@ class Admin::ProductsController < ApplicationController
     @product.save(validate: false)
     if params[:commit] == "Save"
       @product.status = :draft
-      message = "Your product has been saved successfully as a draft."
+      @message = "Your product has been saved successfully as a draft."
     elsif params[:commit] == "Publish"
       @product.status = :published
-      message = "Your product has been published successfully. It is now live in your store."
+      @message = "Your product has been published successfully. It is now live in your store."
     end
     if @product.update(params[:product])
-      flash_message :success, message
+      flash_message :success, @message
       redirect_to admin_products_url
     else
       render action: "edit"
