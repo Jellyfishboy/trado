@@ -6,6 +6,7 @@ describe OrderItem do
     it { expect(subject).to belong_to(:sku) }
     it { expect(subject).to belong_to(:order) }
     it { expect(subject).to have_one(:order_item_accessory).dependent(:delete) }
+    it { expect(subject).to have_one(:product).through(:sku) }
 
     describe "Calculating the total price of a cart item" do
        

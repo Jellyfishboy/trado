@@ -20,9 +20,10 @@ class OrderItem < ActiveRecord::Base
 
   attr_accessible :price, :quantity, :sku_id, :order_id, :weight
 
-  has_one :order_item_accessory,            :dependent => :delete
+  has_one :order_item_accessory,            dependent: :delete
   belongs_to :sku
   belongs_to :order  
+  has_one :product,                         through: :sku
 
   # Calculates the total price of an order item by multipling the item price by it's quantity
   #

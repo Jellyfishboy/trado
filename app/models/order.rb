@@ -36,6 +36,7 @@ class Order < ActiveRecord::Base
   
   has_many :order_items,                                                dependent: :delete_all
   has_many :transactions,                                               dependent: :delete_all
+  has_many :products,                                                   through: :order_items
 
   belongs_to :cart
   belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'

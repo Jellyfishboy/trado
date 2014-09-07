@@ -20,6 +20,7 @@
 #  single                   :boolean
 #  active                   :boolean          default(true)
 #  category_id              :integer    
+#  order_count              :integer          default(0)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
@@ -27,7 +28,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids, :single, :active
+  :short_description, :related_ids, :single, :active, :order_count
 
   has_many :searches
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
