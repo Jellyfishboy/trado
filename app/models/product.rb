@@ -46,14 +46,16 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               presence: true
+  :part_number, :sku, :weighting, :category_id,               presence: true, :if => :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
-  validates :meta_description,                                length: { maximum: 150, message: :too_long }
-  validates :name,                                            length: { minimum: 10, message: :too_short }
-  validates :description,                                     length: { minimum: 20, message: :too_short }
-  validates :short_description,                               length: { maximum: 150, message: :too_long }
-  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }                                                         
+  validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
+  validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
+  validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
+  validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
+  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
   validate :single_product
+  validate :attachment_count,                                 :if => :published?
+  validate :sku_count,                                        :if => :published?
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -62,6 +64,8 @@ class Product < ActiveRecord::Base
   searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
 
   default_scope { order('weighting DESC') }
+
+  enum status: [:draft, :published]
 
   include ActiveScope
   
@@ -78,13 +82,32 @@ class Product < ActiveRecord::Base
     }
   end
 
+  # Calculate if a product has at least one associated attachment
+  # If no associated attachments exist, return an error
+  #
+  def attachment_count
+    if self.attachments.map(&:default_record).count == 0
+      errors.add(:product, " must have at least one attachment.")
+      return false
+    end
+  end
+
+  # Calculate if a product has at least one associated SKU
+  # If no associated SKUs exist, return an error
+  #
+  def sku_count
+    if self.skus.map(&:active).count == 0
+      errors.add(:product, " must have at least one SKU.")
+      return false
+    end
+  end
+  
   # Detects if a product has more than one SKU when attempting to set the single product field as true
   # The sku association needs to map an attribute block in order to count the number of records successfully
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   #
   # @return [Boolean]
   def single_product
-    
     if self.single && self.skus.map(&:active).count > 1
       errors.add(:single, " product cannot be set if the product has more than one SKU.")
       return false

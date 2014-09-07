@@ -1,5 +1,5 @@
 $('#sku-form').modal('hide');
-$('tr#sku_<%= @sku.id %>').html('<%=j render :partial => "admin/products/skus/table" %>');
+$('tr#sku_<%= @sku.id %>').html('<%=j render :partial => "admin/products/skus/single", locals: { sku: @sku } %>');
 trado.animation.alert(
     '.sku-heading',
     'success',

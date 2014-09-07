@@ -59,7 +59,7 @@ describe Admin::OrdersController do
 
             it "should render the success partial" do
                 xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
-                expect(response).to render_template(partial: 'admin/orders/_success')
+                expect(response).to render_template(partial: 'admin/orders/_update')
             end
         end
 

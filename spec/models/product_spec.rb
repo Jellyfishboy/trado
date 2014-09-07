@@ -15,24 +15,28 @@ describe Product do
 
 
     # Validation
-    it { expect(subject).to validate_presence_of(:name) }
-    it { expect(subject).to validate_presence_of(:meta_description) }
-    it { expect(subject).to validate_presence_of(:description) }
-    it { expect(subject).to validate_presence_of(:part_number) }
-    it { expect(subject).to validate_presence_of(:sku) }
-    it { expect(subject).to validate_presence_of(:category_id) }
-    it { expect(subject).to validate_presence_of(:weighting) }
+    context "When the product is being published" do
 
-    it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
-    it { expect(subject).to validate_uniqueness_of(:sku).scoped_to(:active) }
-    it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
+        it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
+        it { expect(subject).to validate_uniqueness_of(:sku).scoped_to(:active) }
+        it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }
 
-    it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
+        before { subject.stub(:published?) { true } }
+        it { expect(subject).to validate_presence_of(:name) }
+        it { expect(subject).to validate_presence_of(:meta_description) }
+        it { expect(subject).to validate_presence_of(:description) }
+        it { expect(subject).to validate_presence_of(:part_number) }
+        it { expect(subject).to validate_presence_of(:sku) }
+        it { expect(subject).to validate_presence_of(:category_id) }
+        it { expect(subject).to validate_presence_of(:weighting) }
 
-    it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
-    it { expect(subject).to ensure_length_of(:meta_description).is_at_most(150) }
-    it { expect(subject).to ensure_length_of(:description).is_at_least(20) }
-    it { expect(subject).to ensure_length_of(:short_description).is_at_most(150) }
+        it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
+
+        it { expect(subject).to ensure_length_of(:name).is_at_least(10) }
+        it { expect(subject).to ensure_length_of(:meta_description).is_at_most(150) }
+        it { expect(subject).to ensure_length_of(:description).is_at_least(20) }
+        it { expect(subject).to ensure_length_of(:short_description).is_at_most(150) }
+    end
 
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:skus) }
@@ -67,6 +71,33 @@ describe Product do
                 product.valid?
                 expect(product).to have(1).errors_on(:single)
                 expect(product.errors.messages[:single]).to eq [" product cannot be set if the product has more than one SKU."]
+            end
+        end
+    end
+
+    describe "Validating the product associated attachment count" do
+        let!(:product) { build(:build_product_skus, active: true) }
+
+        context "if the product has no associated attachments" do
+
+            it "should produce an error" do
+                product.valid?
+                binding.pry
+                expect(product).to have(1).errors_on(:product)
+                expect(product.errors.messages[:product]).to eq [" must have at least one attachment."]
+            end
+        end
+    end
+
+    describe "Validating the product associated SKU count" do
+        let!(:product) { build(:build_product_attachment, active: true) }
+
+        context "if the product has no associated SKUs" do
+
+            it "should produce an error" do
+                product.valid?
+                expect(product).to have(1).errors_on(:product)
+                expect(product.errors.messages[:product]).to eq [" must have at least one SKU."]
             end
         end
     end

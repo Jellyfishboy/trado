@@ -1,0 +1,16 @@
+.widget-sub-heading.attachment-heading
+  %h3 Attachments
+  .pull-right
+    = link_to new_admin_product_attachment_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add attachment' do
+      %i.icon-plus
+- if @product.attachments.empty?
+  .label.label-orange.label-margin
+    %i.icon-spam.icon-cancel-circle 
+    You currently have no attachments for this product
+- else
+  %fieldset.widget.widget-content.attachment-form
+    .row
+      .twelvecol
+        #attachments
+          - @product.attachments.each do |attach|
+            = render partial: 'admin/products/attachments/single', locals: { attachment: attach }

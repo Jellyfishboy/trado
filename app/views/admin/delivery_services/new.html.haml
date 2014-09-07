@@ -5,7 +5,7 @@
 .eightcol
   .page-header
     %h2.widget.widget-header New delivery service
-  = form_for [:admin, @delivery_service], :html => { :role => 'form' } do |f|
+  = form_for [:admin, @delivery_service], html: { role: 'form' } do |f|
     - if @delivery_service && @delivery_service.errors.any?
       #errors
         %ul

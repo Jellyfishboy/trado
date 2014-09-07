@@ -11,8 +11,11 @@
   .widget-controls
     %select#filter-product-category.form-select
       %option.filter{"data-filter" => "all"} Show all
+      %option.filter{"data-filter" => ".product-published"} Published
+      %option.filter{"data-filter" => ".product-draft"} Draft
+      %option.filter{"data-filter" => ".product-featured"} Featured
       - @categories.each do |category|
-        %option.filter{"data-filter" => ".category-#{category.slug}"} = category.name
+        %option.filter{"data-filter" => ".category-#{category.slug}"}= category.name
     %span Filter by:
     %select#sort-product.form-select.widget-control-margin
       %option.sort{"data-sort" => "default"} Weighting ↑
@@ -40,10 +43,10 @@
             %th
         %tbody.mixitup
           - @products.each do |product|
-            %tr.mix{:class => "category-#{product.category.slug}", "data-name" => product.slug, "data-weighting" => product.weighting}
+            %tr.mix{:class => product_filter_classes(product), "data-name" => product.slug, "data-weighting" => product.weighting}
               %td.sku= product.sku
               %td.part-no= product.part_number
-              %td.name= link_to product.name, [product.category, product], target: '_blank'
+              %td.name= product.name
               %td.inner-table
                 %table
                   %tbody

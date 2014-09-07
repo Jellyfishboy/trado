@@ -16,22 +16,18 @@ describe Attachment do
     it { expect(create(:gif_attachment)).to allow_value(".gif").for(:file) }
 
     describe "When updating an attachment" do
+
+        it "should call the set_default method after save" do
+            Attachment._save_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:set_default).should == true
+        end
         let!(:product) { create(:product) }
-        let!(:attachment_1) { create(:attachment, attachable: product) }
+        let(:attachment_1) { create(:attachment, attachable: product, default_record: true) }
         let!(:attachment_2) { create(:attachment, attachable: product, default_record: true) }
 
-        it "should set the targeted attachment default_record propety to true" do
-            expect{
-                Attachment.set_default(attachment_1.id)
-            }.to change{
-                attachment_1.reload
-                attachment_1.default_record
-            }.from(false).to(true)
-        end
 
         it "should set all other attachments associated to the parent record" do
             expect{
-                Attachment.set_default(attachment_1.id)
+                attachment_1
             }.to change{
                 attachment_2.reload
                 attachment_2.default_record

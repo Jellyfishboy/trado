@@ -1,11 +1,19 @@
-%td= @sku.code
-%td= @sku.weight
-%td= @sku.length
-%td= @sku.thickness
-%td= @sku.attribute_value
-%td= @sku.attribute_type.name
-%td= @sku.stock
-%td= @sku.stock_warning_level
-%td= Store::Price.new(@sku.cost_value, 'net').single
-%td= Store::Price.new(@sku.price, 'net').single
-= table_commands @sku, admin_products_sku_path(@sku), edit_admin_products_sku_path(@sku), admin_products_sku_path(@sku), 1
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-margin
+    %thead
+      %tr
+        %th Code
+        %th Weight
+        %th Length
+        %th Thickness
+        %th Attribute value
+        %th Attribute type
+        %th Stock
+        %th Stock warning level
+        %th Cost value
+        %th Price
+        %th
+    %tbody#sku-fields
+      - @product.skus.each do |sku|
+        %tr{ :id => "sku_#{sku.id}" }
+          = render partial: 'admin/products/skus/single', locals: { sku: sku }

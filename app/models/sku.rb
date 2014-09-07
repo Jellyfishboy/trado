@@ -51,6 +51,8 @@ class Sku < ActiveRecord::Base
 
   after_create :create_stock_level
 
+  default_scope { order(code: :asc) }
+
   include ActiveScope
 
   # Validation check to ensure the stock value is higher than the stock warning level value when creating a new SKU

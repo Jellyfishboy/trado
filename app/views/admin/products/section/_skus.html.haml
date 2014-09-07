@@ -1,0 +1,11 @@
+.widget-sub-heading.sku-heading
+  %h3 SKUs
+  .pull-right
+    = link_to new_admin_product_sku_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add SKU' do
+      %i.icon-plus
+- if @product.skus.empty?
+  .label.label-orange.label-margin
+    %i.icon-spam.icon-cancel-circle 
+    You currently have no SKUs for this product
+- else
+  = render 'admin/products/skus/table'

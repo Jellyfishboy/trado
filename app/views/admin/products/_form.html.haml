@@ -1,0 +1,25 @@
+= form_for [:admin, @product], html: {role: 'form', method: :patch} do |f|
+    - if @product.errors.any?
+        #errors
+            %ul
+                - @product.errors.full_messages.each do |msg|
+                    %li
+                        %i.icon-cancel-circle
+                        = msg  
+    = render 'admin/products/section/basic_details', :f => f
+
+    = render 'admin/products/section/attachments', :f => f
+
+    = render 'admin/products/section/skus', :f => f
+
+    = render 'admin/products/section/associations', :f => f
+
+    = render 'admin/products/section/tags', :f => f
+
+    .form-action
+        = f.submit 'Publish', :class => 'btn btn-green btn-large'
+        = f.submit 'Save', :class => 'btn btn-blue btn-large'
+
+#stock-level-modal
+#sku-modal
+#attachment-modal

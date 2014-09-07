@@ -89,8 +89,6 @@ feature 'Delivery service management' do
         delivery_service_with_zones.reload
         expect(delivery_service_with_zones.name).to eq '1st Class'
         expect(delivery_service_with_zones.courier_name).to eq 'Royal Mail'
-        # expect(delivery_service_with_zones.zones.count).to eq 1
-        # expect(delivery_service_with_zones.zones.first.name).to eq 'Asia'
     end
 
     scenario "should delete a delivery service if there is more than one record" do
