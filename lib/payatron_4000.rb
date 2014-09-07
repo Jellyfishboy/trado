@@ -27,6 +27,10 @@ module Payatron4000
             session[:cart_id] = nil
         end      
 
+        # Increments the order count attribute for each product in an order by one
+        # The order count attribute is used for determing popularity in the store sorting tool
+        #
+        # @param products [Array]
         def increment_product_order_count products
             products.each do |product|
                 product.increment!(:order_count)

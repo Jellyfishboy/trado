@@ -45,8 +45,10 @@ describe Payatron4000 do
 
     describe "After successfully completing an order" do
         let!(:cart) { create(:cart) }
+        let!(:complete_order) { create(:pending_order, cart_id: cart.id) }
         let(:session) { Hash({:cart_id => cart.id}) }
         let(:destroy_cart) { Payatron4000::destroy_cart(session) }
+        let(:increment_product_order_count) { Payatron4000::increment_product_order_count(cart.order.products) }
 
         it "should destroy the originating cart and it's cart items" do
             expect{
@@ -58,6 +60,14 @@ describe Payatron4000 do
             expect(session[:cart_id]).to eq cart.id
             destroy_cart
             expect(session[:cart_id]).to eq nil
+        end
+
+        it "should update all the associated products order count attribute value" do
+            expect{
+                increment_product_order_count
+            }.to change{
+                cart.order.products.first.order_count
+            }.from(0).to(1)
         end
     end
 end

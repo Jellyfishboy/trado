@@ -11,6 +11,7 @@ FactoryGirl.define do
         sequence(:weighting) { |n| n }
         single { false }
         status { 0 }
+        order_count { 0 }
 
         association :category
 

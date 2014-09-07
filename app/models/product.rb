@@ -8,7 +8,7 @@
 #
 # Table name: products
 #
-#  id                       :integer          not null, primary key
+#  id                       :integer            not null, primary key
 #  part_number              :string      
 #  name                     :string(255)
 #  description              :text
@@ -18,11 +18,12 @@
 #  sku                      :string(255)
 #  featured                 :boolean 
 #  single                   :boolean
-#  active                   :boolean          default(true)
+#  active                   :boolean            default(true)
 #  category_id              :integer    
-#  order_count              :integer          default(0)
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  status                   :integer            default(0)
+#  order_count              :integer            default(0)
+#  created_at               :datetime           not null
+#  updated_at               :datetime           not null
 #
 class Product < ActiveRecord::Base
 

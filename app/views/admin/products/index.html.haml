@@ -22,6 +22,7 @@
       %option.sort{"data-sort" => "weighting:asc"} Weighting ↓
       %option.sort{"data-sort" => "name:desc"} Name ↑
       %option.sort{"data-sort" => "name:asc"} Name ↓
+      %option.sort{"data-sort" => "popularity:desc"} Popularity
     %span Sort by:
   - if @products.empty?
     %p You don't have any products yet.
@@ -43,7 +44,7 @@
             %th
         %tbody.mixitup
           - @products.each do |product|
-            %tr.mix{:class => product_filter_classes(product), "data-name" => product.slug, "data-weighting" => product.weighting}
+            %tr.mix{:class => product_filter_classes(product), "data-name" => product.slug, "data-weighting" => product.weighting, "data-popularity" => product.order_count}
               %td.sku= product.sku
               %td.part-no= product.part_number
               %td.name= product.name

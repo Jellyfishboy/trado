@@ -9,15 +9,15 @@ module Payatron4000
         # @param payment_type [String]
         def self.successful order, payment_type
             Transaction.new( :fee => 0, 
-                                :gross_amount => order.gross_amount, 
-                                :order_id => order.id, 
-                                :payment_status => 'pending', 
-                                :transaction_type => 'Credit', 
-                                :tax_amount => order.tax_amount, 
-                                :paypal_id => nil, 
-                                :payment_type => payment_type,
-                                :net_amount => order.net_amount,
-                                :status_reason => nil
+                :gross_amount => order.gross_amount, 
+                :order_id => order.id, 
+                :payment_status => 'pending', 
+                :transaction_type => 'Credit', 
+                :tax_amount => order.tax_amount, 
+                :paypal_id => nil, 
+                :payment_type => payment_type,
+                :net_amount => order.net_amount,
+                :status_reason => nil
             ).save(validate: false)
             Payatron4000::update_stock(order)
             order.status = :active
