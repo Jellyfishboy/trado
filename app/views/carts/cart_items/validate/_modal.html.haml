@@ -1,0 +1,11 @@
+#validateCartItemModal.modal.fade{"aria-hidden" => "false", "aria-labelledby" => "validateCartItemModalLabel", role: "dialog", tabindex: "-1", style: 'display:none;'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#notifyMeModalLabel
+      %span.light Insufficient
+      Stock
+  .modal-body
+    %p There is not enough stock for the following item:
+    %p
+      %b= "#{sku.product.name}"
+      = "(#{sku_attribute_values(sku, sku.product.single)})" unless sku.product.single

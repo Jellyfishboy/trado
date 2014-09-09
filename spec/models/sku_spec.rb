@@ -9,6 +9,7 @@ describe Sku do
     it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
     it { expect(subject).to have_many(:stock_levels).dependent(:delete_all) }
+    it { expect(subject).to have_one(:category).through(:product) }
     it { expect(subject).to belong_to(:product) }
     it { expect(subject).to belong_to(:attribute_type) }
 

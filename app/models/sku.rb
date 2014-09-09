@@ -30,21 +30,22 @@ class Sku < ActiveRecord::Base
   :weight, :thickness, :product_id, :attribute_value, :attribute_type_id, :accessory_id, :active
   
   has_many :cart_items
-  has_many :carts,                                                    :through => :cart_items
-  has_many :order_items,                                              :dependent => :restrict_with_exception
-  has_many :orders,                                                   :through => :order_items, :dependent => :restrict_with_exception
-  has_many :notifications,                                            as: :notifiable, :dependent => :delete_all
-  has_many :stock_levels,                                             :dependent => :delete_all
+  has_many :carts,                                                    through: :cart_items
+  has_many :order_items,                                              dependent: :restrict_with_exception
+  has_many :orders,                                                   through: :order_items, dependent: :restrict_with_exception
+  has_many :notifications,                                            as: :notifiable, dependent: :delete_all
+  has_many :stock_levels,                                             dependent: :delete_all
+  has_one :category,                                                  through: :product
   belongs_to :product,                                                inverse_of: :skus
   belongs_to :attribute_type
 
   validates :price, :cost_value, :length, 
-  :weight, :thickness, :code,                                         :presence => true
-  validates :price, :cost_value,                                      :format => { :with => /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
-  validates :length, :weight, :thickness,                             :numericality => { :greater_than_or_equal_to => 0 }
-  validates :stock, :stock_warning_level,                             :presence => true, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }, :if => :new_record?
-  validate :stock_values,                                             :on => :create
-  validates :attribute_value, :code,                                  :uniqueness => { :scope => [:product_id, :active] }
+  :weight, :thickness, :code,                                         presence: true
+  validates :price, :cost_value,                                      format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
+  validates :length, :weight, :thickness,                             numericality: { greater_than_or_equal_to: 0 }
+  validates :stock, :stock_warning_level,                             presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :new_record?
+  validate :stock_values,                                             on: :create
+  validates :attribute_value, :code,                                  uniqueness: { scope: [:product_id, :active] }
   validates :attribute_value, :attribute_type_id,                     presence: true, :if => :not_single_sku?
 
   after_update :update_cart_items_weight

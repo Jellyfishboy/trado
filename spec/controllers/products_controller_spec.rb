@@ -36,11 +36,6 @@ describe ProductsController do
             end
         end
 
-        it "should build a new notification and assign it to @notification" do
-            get :show, { category_id: category.id, id: product.id }
-            expect(assigns(:notification)).to be_a_new(Notification)
-        end
-
         it "should assign the requested product skus to @skus" do
             get :show, { category_id: category.id, id: product.id }
             product.reload

@@ -5,7 +5,7 @@
       %span.light Notify
       Me
   .modal-body
-    = form_for notification, html: { method: :post, remote: true, :class => 'remote-form' } do |f|
+    = form_for notification, url: category_product_sku_notifications_path(sku.product.category, sku.product, sku), html: { method: :post, remote: true, :class => 'remote-form' } do |f|
       %p 
         Please enter your email address and we'll let you know when
         %strong
@@ -16,8 +16,5 @@
         = f.label :email, :class => 'control-label hidden shown-ie8'
         .controls
           = f.text_field :email, id: 'inputEmail', :class => 'input-block-level', placeholder: 'Email'
-      / FIXME: This is a possible security risk as the user can modify it.
-      = f.hidden_field :notifiable_id, value: sku.id
-      = f.hidden_field :notifiable_type, value: 'Sku'
       = button_tag(type: 'submit', :class => 'btn btn-primary input-block-level bold higher') do
         SUBMIT

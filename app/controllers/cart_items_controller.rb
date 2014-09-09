@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
 
-  before_action :set_cart_item, except: :create
   skip_before_action :authenticate_user!
+  before_action :set_validate_cart_item, except: :destroy
   before_action :void_delivery_service
   after_action :set_order_delivery_services
 
@@ -24,15 +24,12 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     render partial: 'carts/update', format: [:js]
   end  
 
   private
-
-    def set_cart_item
-      @cart_item = CartItem.find(params[:id])
-    end
 
     def void_delivery_service
       order = current_cart.order
@@ -47,5 +44,15 @@ class CartItemsController < ApplicationController
     def set_order_delivery_services
       order = current_cart.order
       Shipatron4000::delivery_prices(current_cart, order) unless order.nil?
+    end
+
+    def set_validate_cart_item
+      @cart_item = CartItem.find(params[:id]) unless params[:id].nil?
+      @sku = @cart_item.nil? ? Sku.find(params[:cart_item][:sku_id]) : @cart_item.sku
+      @quantity = (current_cart.cart_items.where(sku_id: @sku.id).sum(:quantity)) + params[:cart_item][:quantity].to_i
+      if @quantity > @sku.stock
+        render partial: 'carts/cart_items/validate/failed', format: [:js], object: @sku
+        return false
+      end
     end
 end

@@ -70,4 +70,5 @@
                 = link_to "CONTINUE", next_wizard_path, :class => 'btn btn-primary higher bold'
     / /main content
 / /container
-= render 'orders/delivery_service_prices/estimate/modal'
+= render partial: 'orders/delivery_service_prices/estimate/modal', format: [:html]
+= render partial: 'carts/cart_items/validate/modal', format: [:html]

@@ -1,13 +1,11 @@
 <% @accessory_price =  Accessory.where(id: params[:accessory_id]).pluck(:price).first ? Accessory.where(id: params[:accessory_id]).pluck(:price).first : 0
    @sku = Sku.find(params[:sku_id])
-   @notification = Notification.new 
 %>
 $('.product-title span.price').html('<%=j Store::Price.new(@sku.price + @accessory_price).markup %>');
 <% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
-    $('.add_to_cart').replaceWith("<a class=\"btn btn-warning pull-right notify_me\" href=\"#\"><i class=\"fa fa-envelope\"></i> &nbsp; Notify me</a>");
-    $('#notify_me_form').html("<%=j render :partial => 'products/notify/modal', :locals => { :sku => @sku, :notification => @notification } %>")
+    $('.add-to-cart').replaceWith("<%=j link_to('<i class=\'fa fa-envelope\'></i> Notify me'.html_safe, notify_category_product_sku_path(@sku.product.category, @sku.product, @sku), :class => 'btn btn-warning pull-right notify-me', remote: true) %>");
 <% else %>
     $('.stock').html('<span class="btn btn-success">In Stock</span>');
-    $('.notify_me').replaceWith("<button class=\"btn btn-danger pull-right add_to_cart\" type=\"submit\"><i class=\"fa fa-shopping-cart\"></i> &nbsp; Add To Cart</button>");
+    $('.notify-me').replaceWith("<button class=\"btn btn-danger pull-right add-to-cart\" type=\"submit\"><i class=\"fa fa-shopping-cart\"></i> &nbsp; Add To Cart</button>");
 <% end %>

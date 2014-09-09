@@ -20,7 +20,7 @@ class CartItem < ActiveRecord::Base
 
   attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :cart_item_accessory_attributes
 
-  has_one :cart_item_accessory,             :dependent => :delete
+  has_one :cart_item_accessory,             dependent: :delete
   belongs_to :cart
   belongs_to :sku 
 
@@ -46,17 +46,17 @@ class CartItem < ActiveRecord::Base
   # @return [Decimal] cart item
   def self.increment sku, quantity, accessory, cart
     accessory = accessory.nil? ? nil : accessory[:accessory_id].blank? ? nil : Accessory.find(accessory[:accessory_id]) 
-    current_item = accessory.nil? ? cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => nil }).first : cart.cart_items.find_sku(sku).where(:cart_item_accessories => { :accessory_id => accessory.id }).first
+    current_item = accessory.nil? ? cart.cart_items.find_sku(sku).where(cart_item_accessories: { accessory_id: nil }).first : cart.cart_items.find_sku(sku).where(cart_item_accessories: { accessory_id: accessory.id }).first
 
     if (current_item && current_item.cart_item_accessory.nil?) || (current_item && !current_item.cart_item_accessory.nil?)
       current_item.update_quantity((current_item.quantity+quantity.to_i), accessory)
       current_item.update_weight(current_item.quantity, sku.weight, accessory)
     else 
       if accessory.blank?
-        current_item = cart.cart_items.build(:price => sku.price, :sku_id => sku.id)
+        current_item = cart.cart_items.build(price: sku.price, sku_id: sku.id)
       else
-        current_item = cart.cart_items.build(:price => (sku.price + accessory.price), :sku_id => sku.id)
-        current_item.build_cart_item_accessory(:price => accessory.price, :accessory_id => accessory.id)
+        current_item = cart.cart_items.build(price: (sku.price + accessory.price), sku_id: sku.id)
+        current_item.build_cart_item_accessory(price: accessory.price, accessory_id: accessory.id)
       end
       current_item.update_quantity(quantity.to_i, accessory)
       current_item.update_weight(quantity, sku.weight, accessory)

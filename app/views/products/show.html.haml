@@ -63,13 +63,13 @@
               = f.fields_for @cart_item_accessory do |ff|
                 = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "No accessory (+£0.00)"
             - if @skus.first.stock > 0
-              = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add_to_cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}") do
+              = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}") do
                 %i.fa.fa-shopping-cart
                 \  Add To Cart
             - else
-              %a.btn.btn-warning.pull-right.notify_me{href: "#"}
+              = link_to notify_category_product_sku_path(@product.category, @product, @skus.first), :class => 'btn btn-warning pull-right notify-me', remote: true do
                 %i.fa.fa-envelope
-                Notify me
+                &nbsp; Notify me
           %hr/
           / ==========.order('attribute_value desc')
           / = Share buttons =
@@ -80,14 +80,6 @@
                 Share this item with friends:
               .span6
                 .social-networks
-                  / AddThis Button BEGIN
-                  .addthis_toolbox.addthis_default_style
-                    %a.addthis_button_facebook_like{"fb:like:layout" => "button_count"}
-                    %a.addthis_button_tweet
-                    %a.addthis_button_pinterest_pinit
-                    %a.addthis_counter.addthis_pill_style
-                  %script{src: "//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-517459541beb3977", type: "text/javascript"}
-                  / AddThis Button END
           / More Buttons
           .store-buttons
             %i.fa.fa-envelope
@@ -158,6 +150,5 @@
                   %h5.no-margin= truncate product.name, length: 35
                 %p.desc= truncate product.short_description
           / /product
-#notify_me_form
-  - unless @skus.first.stock > 0
-    = render partial: 'products/notify/modal', locals: { sku: @skus.first, notification: @notification }
+#notifyMeForm
+= render partial: 'carts/cart_items/validate/modal', format: [:html], locals: { sku: @skus.first }

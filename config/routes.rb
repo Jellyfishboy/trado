@@ -20,7 +20,23 @@ Trado::Application.routes.draw do
 
 
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
+  resources :users
+  resources :contacts, only: :create
+  resources :delivery_service_prices, only: :update
+
+  resources :categories, only: :show do
+    resources :products, only: :show do
+      resources :skus, only: [] do
+        get 'notify', on: :member
+        resources :notifications, only: :create
+      end
+    end
+  end
   
+  resources :cart_items, only: [:create, :update, :destroy] do
+    resources :cart_item_accessories, only: [:update, :destroy]
+  end
+
   resources :orders, only: [:new, :update] do
     resources :build, controller: 'orders/build', only: [:show, :update] do
       member do
@@ -33,18 +49,8 @@ Trado::Application.routes.draw do
         delete 'purge_estimate'
       end
     end
+    resources :addresses, only: [:new, :create, :update]
   end
-  resources :categories, only: :show do
-    resources :products, only: :show
-  end
-  resources :users
-  resources :cart_items, only: [:create,:update,:destroy]
-  resources :cart_item_accessories, only: [:update, :destroy]
-  resources :notifications, only: :create
-  resources :addresses, only: [:new, :create, :update]
-  resources :delivery_service_prices, only: [:update]
-  resources :contacts, only: :create
-
 
   namespace :admin do
       root to: "categories#index"
