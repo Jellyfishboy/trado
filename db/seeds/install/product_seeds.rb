@@ -22,7 +22,8 @@ product_1 = Product.create({
     featured: false,
     single: false,
     active: true,
-    category_id: category.id
+    category_id: category.id,
+    status: 1
 })
 product_2 = Product.create({
     part_number: '2', 

@@ -11,7 +11,7 @@ namespace :trado do
         Rake::Task['db:schema:load'].invoke
         puts 'Seeding the database'.colorize(:green)
         `bundle exec rake db:seed SEED_TYPE=install --trace`
-        puts 'Trado -> Finished installation - you can now spin up the application server'.colorize(:orange)
+        puts 'Trado -> Finished installation - you can now spin up the application server'.colorize(:cyan)
     end
 
     task :demo => :environment do
