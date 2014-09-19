@@ -133,16 +133,5 @@ trado.app =
                 return $('.delivery-service-prices .control-group .controls').html('<p class="delivery_service_prices_notice">Select a delivery country to view the available delivery prices.</p>');
             }
         });
-    },
-
-    submitAll: function()
-    {
-        $('#update_quantity').click(function() 
-        {
-            $('.edit_cart_item').each(function() 
-            {
-                return $(this).submit();
-            });
-        });
     }
 }
