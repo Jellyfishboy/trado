@@ -1,3 +1,7 @@
+$form = $('.contact-form-container form')
+// grant access to form fields and stop the loading animation
+$form.css('pointer-events', 'none');
+$form.spin(false);
 if (!$('.contact-alert').is(':visible')) {
     trado.animation.alert(
         '.contact-form-container h3',
@@ -8,7 +12,6 @@ if (!$('.contact-alert').is(':visible')) {
     )
 }
 <% @contact = Contact.new %>
-$form = $('.contact-form-container form')
 $form[0].reset();
 $form.find('input').each(function()
 {

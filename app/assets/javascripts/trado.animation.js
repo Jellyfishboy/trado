@@ -30,5 +30,14 @@ trado.animation =
             $('.' + uniqueClass).addClass('fadeOutUp').delay(800).hide(1);
             next();
         });
+    },
+
+    loadingForm: function ()
+    {
+        $('form.loading-form input[type=submit]').click(function()
+        {
+            $(this).closest('form').spin('standard');
+            $(this).closest('form').css('pointer-events', 'none');
+        });
     }
 }

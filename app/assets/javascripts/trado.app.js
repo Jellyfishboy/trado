@@ -15,9 +15,16 @@ trado.app =
     {
         $(document).on("ajax:error", "form.remote-form", function(evt, xhr, status, error) 
         {
+
             var errors;
             errors = $.parseJSON(xhr.responseJSON.errors);
-            //removes the old error elements
+            if ($(this).hasClass('loading-form'))
+            {
+                // grant access to form fields and stop the loading animation
+                $(this).css('pointer-events', 'auto');
+                $(this).spin(false);
+            }
+            // removes the old error elements
             $('input').each(function()
             {
                 if ($(this).parent().hasClass('field-with-errors'))
