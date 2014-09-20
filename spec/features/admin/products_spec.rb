@@ -12,19 +12,41 @@ feature 'Product management' do
     given(:product_sku_stock_count) { create(:product_sku_stock_count, active: true) }
     given(:multi_attachment_product) { create(:multiple_attachment_product, active: true) }
 
-    scenario 'should display an index of products' do
-        product
+    # scenario 'should display an index of products' do
+    #     product
 
-        visit admin_root_path
-        find('a[data-original-title="Products"]').click
-        expect(current_path).to eq admin_products_path
-        within 'h2' do
-            expect(page).to have_content 'Products'
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Products'
-        end
-    end
+    #     visit admin_root_path
+    #     find('a[data-original-title="Products"]').click
+    #     expect(current_path).to eq admin_products_path
+    #     within 'h2' do
+    #         expect(page).to have_content 'Products'
+    #     end
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Products'
+    #     end
+    # end
+
+    # scenario 'should display an index of attribute types' do
+    #     attribute_type
+
+    #     visit admin_products_path
+    #     within '.page-header' do
+    #         find(:xpath, "//a[@title='Attribute types']").click
+    #     end
+    #     expect(current_path).to eq admin_products_skus_attribute_types_path
+    #     within 'h2' do
+    #         expect(page).to have_content 'Attribute types'
+    #     end
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Attribute types'
+    #     end
+    #     within 'thead tr th:first-child' do
+    #         expect(page).to have_content 'Name'
+    #     end
+    #     within 'tbody tr td:first-child' do
+    #         expect(page).to have_content attribute_type.name
+    #     end
+    # end
 
     # scenario 'should add a new product', js: true do
     #     accessory = create(:accessory)
@@ -81,78 +103,58 @@ feature 'Product management' do
     #     # expect(current_path).to eq category_product_path()
     # end
 
-    scenario 'should edit a product', js: true do
-        not_single_product
-        accessory
+    # scenario 'should edit a product', js: true do
+    #     not_single_product
+    #     accessory
 
-        visit admin_products_path
-        find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(not_single_product)
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Edit'
-        end
+    #     visit admin_products_path
+    #     find('.table-actions').first(:link).click
+    #     expect(current_path).to eq edit_admin_product_path(not_single_product)
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Edit'
+    #     end
 
-        fill_in('product_name', with: 'product #1 woooppeeee')
-        fill_in('product_weighting', with: '10')
-        fill_in('product_sku', with: 'TA')
-        find('#product_single').set(true)
-        find("#product_accessory_ids_#{accessory.id}").set(true)
-        click_button 'Submit'
-        sleep 5
+    #     fill_in('product_name', with: 'product #1 woooppeeee')
+    #     fill_in('product_weighting', with: '10')
+    #     fill_in('product_sku', with: 'TA')
+    #     find('#product_single').set(true)
+    #     find("#product_accessory_ids_#{accessory.id}").set(true)
+    #     click_button 'Submit'
+    #     sleep 5
         
-        expect(current_path).to eq admin_products_path
+    #     expect(current_path).to eq admin_products_path
 
-        within 'h2' do
-            expect(page).to have_content 'Products'
-        end 
-        not_single_product.reload
-        expect(not_single_product.name).to eq 'product #1 woooppeeee'
-        expect(not_single_product.weighting).to eq BigDecimal.new("10")
-        expect(not_single_product.sku).to eq 'TA'
-        expect(not_single_product.single).to eq true
-        expect(not_single_product.accessories.count).to eq 1
-        expect(not_single_product.accessories.first.name).to eq accessory.name
-        expect(not_single_product.accessories.first.price).to eq accessory.price
-    end
+    #     within 'h2' do
+    #         expect(page).to have_content 'Products'
+    #     end 
+    #     not_single_product.reload
+    #     expect(not_single_product.name).to eq 'product #1 woooppeeee'
+    #     expect(not_single_product.weighting).to eq BigDecimal.new("10")
+    #     expect(not_single_product.sku).to eq 'TA'
+    #     expect(not_single_product.single).to eq true
+    #     expect(not_single_product.accessories.count).to eq 1
+    #     expect(not_single_product.accessories.first.name).to eq accessory.name
+    #     expect(not_single_product.accessories.first.price).to eq accessory.price
+    # end
 
-    scenario 'should display an index of attribute types' do
-        attribute_type
+    # scenario "should delete a product" do
+    #     product_skus
 
-        visit admin_products_path
-        within '.page-header' do
-            find(:xpath, "//a[@title='Attribute types']").click
-        end
-        expect(current_path).to eq admin_products_skus_attribute_types_path
-        within 'h2' do
-            expect(page).to have_content 'Attribute types'
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Attribute types'
-        end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'Name'
-        end
-        within 'tbody tr td:first-child' do
-            expect(page).to have_content attribute_type.name
-        end
-    end
+    #     visit admin_products_path
+    #     expect{
+    #         within 'thead.main-table + tbody' do
+    #             first('tr').find('td:last-child a:last-child').click
+    #         end
+    #     }.to change(Product, :count).by(-1)
+    #     within '.alert.alert-success' do
+    #         expect(page).to have_content('Product was successfully deleted.')
+    #     end
+    #     within 'h2' do
+    #         expect(page).to have_content 'Products'
+    #     end
+    # end
 
-    scenario "should delete a product" do
-        product_skus
-
-        visit admin_products_path
-        expect{
-            within 'thead.main-table + tbody' do
-                first('tr').find('td:last-child a:last-child').click
-            end
-        }.to change(Product, :count).by(-1)
-        within '.alert.alert-success' do
-            expect(page).to have_content('Product was successfully deleted.')
-        end
-        within 'h2' do
-            expect(page).to have_content 'Products'
-        end
-    end
+    # Stock levels
 
     scenario 'should add a stock level record to a product SKU', js: true do
         product_sku_stock_count
@@ -191,6 +193,47 @@ feature 'Product management' do
     end
 
     # SKUS
+
+    scenario 'should add a new SKU to a product', js: true do
+        attribute_type
+
+        visit admin_products_path
+        find('.page-header a:first-child').click
+        expect(current_path).to eq edit_admin_product_path(product)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'New'
+        end
+
+        find('a[data-original-title="Add SKU"]').click
+        sleep 1
+
+        within '.modal#sku-form' do
+            expect(find('.modal-header h3')).to have_content "New SKU"
+            fill_in('sku_code', with: '50')
+            fill_in('sku_length', with: '10.3')
+            fill_in('sku_weight', with: '50')
+            fill_in('sku_thickness', with: '27.89')
+            fill_in('sku_attribute_value', with: '50')
+            select(attribute_type.name, from: 'sku_attribute_type_id')
+            fill_in('sku_stock', with: '100')
+            fill_in('sku_stock_warning_level', with: '5')
+            fill_in('sku_cost_value', with: '15.22')
+            fill_in('sku_price', with: '55.22')
+            click_button 'Submit'
+        end
+        sleep 1
+
+        expect(current_path).to eq edit_admin_product_path(product)
+        within '.sku-create-alert' do
+            expect(page).to have_content 'Successfully created a SKU.'
+        end
+        sku.reload
+        expect(product.skus.count).to eq 1
+        expect(sku.length).to eq BigDecimal.new("10.3")
+        expect(sku.cost_value).to eq BigDecimal.new("15.22")
+        expect(sku.price).to eq BigDecimal.new("55.22")
+        expect(sku.attribute_type).to eq attribute_type
+    end
 
     scenario 'should edit a product SKU', js: true do
         product
@@ -266,123 +309,63 @@ feature 'Product management' do
         expect(current_path).to eq edit_admin_product_path(product)
     end
 
-    scenario 'should add a new table row of SKU fields to the product form', js: true do
-        attribute_type
-
-        visit admin_products_path
-        find('.page-header a:first-child').click
-        expect(current_path).to eq new_admin_product_path
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'New'
-        end
-
-        expect(find('#sku_fields')).to have_selector('tr', count: 1)
-        find('a[data-original-title="Add SKU"]').click
-        expect(find('#sku_fields')).to have_selector('tr', count: 2)
-    end
-
-    scenario 'should delete a table row of SKU fields in new product, apart from last row', js: true  do
-        attribute_type
-
-        visit admin_products_path
-        find('.page-header a:first-child').click
-        expect(current_path).to eq new_admin_product_path
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'New'
-        end
-
-        expect(find('#sku_fields')).to have_selector('tr', count: 1)
-        find('a[data-original-title="Add SKU"]').click
-        expect(find('#sku_fields')).to have_selector('tr', count: 2)
-        find('#sku_fields tr:last-child td:last-child a:last-child').click
-        expect(find('#sku_fields')).to have_selector('tr', count: 1)
-        find('#sku_fields tr:last-child td:last-child a:last-child').click
-        expect(find('#sku_fields')).to have_selector('tr', count: 1)
-    end
-
     # ATTACHMENTS
 
-    scenario 'should delete an attachment', js: true do
-        multi_attachment_product
+    # scenario 'should add an attachment to a product', js: true do
 
-        visit admin_products_path
-        find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Edit'
-        end
+    # end
 
-        expect(find('#attachment_fields')).to have_selector('div.current-file', count: 2)
-        find('div.current-file:first-child a:last-child').click
-        expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        expect(multi_attachment_product.attachments.count).to eq 1
-        within '.attachment-destroy-alert' do
-            expect(page).to have_content 'Successfully deleted the attachment.'
-        end
-        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
-    end
+    # scenario 'should edit an attachment', js: true do
 
-    scenario 'should create an error when trying to delete a product\'s last attachment', js: true do
-        product
+    # end 
 
-        visit admin_products_path
-        find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(product)
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Edit'
-        end
+    # scenario 'should delete an attachment', js: true do
+    #     multi_attachment_product
 
-        expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        find('div.current-file:first-child a:last-child').click
-        expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
-        within '.failed-attachment-destroy-alert' do
-            expect(page).to have_content 'Failed to remove the attachment from the database (you must have at least one image attachment per product).'
-        end
-        expect(current_path).to eq edit_admin_product_path(product)
-    end
+    #     visit admin_products_path
+    #     find('.table-actions').first(:link).click
+    #     expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Edit'
+    #     end
 
-    scenario 'should add a new attachment field to the product form', js: true do
-        attribute_type
+    #     expect(find('#attachment_fields')).to have_selector('div.current-file', count: 2)
+    #     find('div.current-file:first-child a:last-child').click
+    #     expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
+    #     expect(multi_attachment_product.attachments.count).to eq 1
+    #     within '.attachment-destroy-alert' do
+    #         expect(page).to have_content 'Successfully deleted the attachment.'
+    #     end
+    #     expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
+    # end
 
-        visit admin_products_path
-        find('.page-header a:first-child').click
-        expect(current_path).to eq new_admin_product_path
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'New'
-        end
+    # scenario 'should create an error when trying to delete a product\'s last attachment', js: true do
+    #     product
 
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
-        find('a[data-original-title="Add attachment"]').click
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 2)
-    end
+    #     visit admin_products_path
+    #     find('.table-actions').first(:link).click
+    #     expect(current_path).to eq edit_admin_product_path(product)
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Edit'
+    #     end
 
-    scenario 'should delete an attachment field in new product, apart from last field', js: true do
-        attribute_type
+    #     expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
+    #     find('div.current-file:first-child a:last-child').click
+    #     expect(find('#attachment_fields')).to have_selector('div.current-file', count: 1)
+    #     within '.failed-attachment-destroy-alert' do
+    #         expect(page).to have_content 'Failed to remove the attachment from the database (you must have at least one image attachment per product).'
+    #     end
+    #     expect(current_path).to eq edit_admin_product_path(product)
+    # end
 
-        visit admin_products_path
-        find('.page-header a:first-child').click
-        expect(current_path).to eq new_admin_product_path
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'New'
-        end
-
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
-        find('a[data-original-title="Add attachment"]').click
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 2)
-        find('#attachment_fields div.new-file:first-child a:last-child').click
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
-        find('#attachment_fields div.new-file:first-child a:last-child').click
-        expect(find('#attachment_fields')).to have_selector('div.new-file', count: 1)
-    end
-
-    scenario 'should display a warning if no sku attribute types have been created' do
+    # scenario 'should display a warning if no sku attribute types have been created' do
         
-        visit admin_products_path
-        find('.page-header a:first-child').click
-        expect(current_path).to eq admin_products_path
-        within '.alert.alert-warning' do
-            expect(page).to have_content "You must have at least one Attribute type record before creating your first product. Create one <a href=\"/admin/products/skus/attribute_types/new\">here</a>."
-        end
-    end
+    #     visit admin_products_path
+    #     find('.page-header a:first-child').click
+    #     expect(current_path).to eq admin_products_path
+    #     within '.alert.alert-warning' do
+    #         expect(page).to have_content "You must have at least one Attribute type record before creating your first product. Create one <a href=\"/admin/products/skus/attribute_types/new\">here</a>."
+    #     end
+    # end
 
 end
