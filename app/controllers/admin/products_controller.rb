@@ -36,6 +36,8 @@ class Admin::ProductsController < ApplicationController
       @message = "Your product has been published successfully. It is now live in your store."
     end
     if @product.update(params[:product])
+      Tag.add(params[:taggings], @product.id)
+      Tag.del(params[:taggings], @product.id)
       flash_message :success, @message
       redirect_to admin_products_url
     else

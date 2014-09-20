@@ -24,8 +24,7 @@ class Tag < ActiveRecord::Base
     unless value.nil?
       @tags = value.split(/,\s*/)   
       @tags.each do |t|
-          next unless Tag.where('name = ?', t).joins(:taggings).where(:taggings => { :product_id => product_id }).empty?
-          new_tag = Tag.find_by_name(t).nil? ? Tag.create(name: t) : Tag.find_by_name(t)
+          new_tag = Tag.where(name: t).first_or_create
           Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
       end
     end
