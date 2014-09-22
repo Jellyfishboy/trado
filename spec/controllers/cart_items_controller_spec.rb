@@ -37,7 +37,7 @@ describe CartItemsController do
 
             it "should save a new cart item accessory to the database" do
                 expect{
-                    xhr :post, :create, cart_item: attributes_for(:cart_item, sku_id: sku.id, cart_item_accessory: attributes_for(:cart_item_accessory, accessory_id: accessory.id))
+                    xhr :post, :create, cart_item: attributes_for(:cart_item, sku_id: sku.id, quantity: 2,cart_item_accessory: attributes_for(:cart_item_accessory, accessory_id: accessory.id))
                 }.to change(CartItemAccessory, :count).by(1)
             end
         end
