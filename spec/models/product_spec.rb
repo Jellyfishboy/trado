@@ -76,13 +76,12 @@ describe Product do
     end
 
     describe "Validating the product associated attachment count" do
-        let!(:product) { build(:build_product_skus, active: true) }
+        let!(:product) { build(:build_product_skus) }
 
         context "if the product has no associated attachments" do
 
             it "should produce an error" do
                 product.valid?
-                binding.pry
                 expect(product).to have(1).errors_on(:product)
                 expect(product.errors.messages[:product]).to eq [" must have at least one attachment."]
             end
@@ -90,7 +89,7 @@ describe Product do
     end
 
     describe "Validating the product associated SKU count" do
-        let!(:product) { build(:build_product_attachment, active: true) }
+        let!(:product) { build(:build_product_attachment) }
 
         context "if the product has no associated SKUs" do
 

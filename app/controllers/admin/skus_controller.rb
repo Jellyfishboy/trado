@@ -22,7 +22,7 @@ class Admin::SkusController < ApplicationController
 
   def edit
     @form_sku = Sku.find(params[:id])
-    render :partial => 'admin/products/skus/new_edit', :format => [:js]
+    render partial: 'admin/products/skus/new_edit', format: [:js]
   end
 
   # Updating a SKU
@@ -49,12 +49,12 @@ class Admin::SkusController < ApplicationController
           end
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
         end
-        format.js { render :partial => 'admin/products/skus/update', :format => [:js] }
+        format.js { render partial: 'admin/products/skus/update', format: [:js] }
       else
         @form_sku = @old_sku ||= Sku.find(params[:id])
         Store::activate!(@form_sku)
         @form_sku.attributes = params[:sku]
-        format.json { render :json => { :errors => @sku.errors.full_messages}, :status => 422 }
+        format.json { render json: { errors: @sku.errors.full_messages}, status: 422 }
       end
     end
   end
@@ -64,7 +64,7 @@ class Admin::SkusController < ApplicationController
   def destroy  
     CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
     @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
-    render :partial => "admin/products/skus/destroy", :format => [:js]
+    render partial: "admin/products/skus/destroy", format: [:js]
   end
 
   private

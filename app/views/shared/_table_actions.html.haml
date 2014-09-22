@@ -16,9 +16,9 @@
     = link_to edit do
       %i.icon-pencil
 
-  / Dispatch order
+  / Edit order
   - if type == 2 && object.transactions.last.completed?
-    %a.edit_order_attributes{href: "#/", id: object.id}
+    = link_to edit_admin_order_path(object), remote: true do
       %i.icon-pencil
   / Delete record
   - unless type == 2 || type == 1 || type == 4

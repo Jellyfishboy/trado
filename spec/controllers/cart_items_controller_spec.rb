@@ -25,16 +25,14 @@ describe CartItemsController do
         end
 
         context "with valid attributes" do
-            let!(:sku) { create(:sku) }
 
             it "should render the update partial" do
-                xhr :post, :create, cart_item: attributes_for(:cart_item, sku_id: sku.id)
+                xhr :post, :create, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
                 expect(response).to render_template(partial: 'carts/_update')
             end
         end
 
         context "if the product has an accessory" do
-            let!(:sku) { create(:sku) }
             let!(:accessory) { create(:accessory) }
 
             it "should save a new cart item accessory to the database" do
@@ -43,6 +41,24 @@ describe CartItemsController do
                 }.to change(CartItemAccessory, :count).by(1)
             end
         end
+
+        context "if the cart item quantity is less than the SKU stock count" do
+            let!(:sku) { create(:sku, stock: 15) }
+
+            it "should render the update partial" do
+                xhr :post, :create, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
+                expect(response).to render_template(partial: 'carts/_update')
+            end
+        end
+
+        context "if the cart item quantity is more than the SKU stock count" do
+            let!(:sku) { create(:sku, stock: 15) }
+
+            it "should render the cart items validate failed partial" do
+                xhr :post, :create, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
+                expect(response).to render_template(partial: 'carts/cart_items/validate/_failed')
+            end
+        end 
     end
 
     describe 'PATCH #update' do
@@ -93,6 +109,26 @@ describe CartItemsController do
                 expect(response).to render_template(partial: 'carts/_update')
             end
         end
+
+        context "if the cart item quantity is less than the SKU stock count" do
+            let!(:sku) { create(:sku, stock: 15) }
+            let!(:cart_item) { create(:cart_item, sku_id: sku.id, quantity: 14) }
+
+            it "should render the update partial" do
+                xhr :patch, :update, id: cart_item.id, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
+                expect(response).to render_template(partial: 'carts/_update')
+            end
+        end
+
+        context "if the cart item quantity is more than the SKU stock count" do
+            let!(:sku) { create(:sku, stock: 15) }
+            let!(:cart_item) { create(:cart_item, sku_id: sku.id, quantity: 14) }
+
+            it "should render the cart items validate failed partial" do
+                xhr :patch, :update, id: cart_item.id, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
+                expect(response).to render_template(partial: 'carts/cart_items/validate/_failed')
+            end
+        end 
     end
 
     describe 'DELETE #destroy' do

@@ -12,7 +12,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
-    render :partial => 'admin/orders/edit', :format => [:js]
+    render partial: 'admin/orders/edit', format: [:js]
   end
 
   def update
@@ -21,12 +21,12 @@ class Admin::OrdersController < ApplicationController
       begin
         @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
       rescue
-         format.json { render :json => { :errors => ['Shipping date can\'t be blank'] }, :status => 422 }
+         format.json { render json: { errors: ['Shipping date can\'t be blank'] }, status: 422 }
       end
       if @order.update(params[:order])
-        format.js { render :partial => 'admin/orders/update', :format => [:js] }
+        format.js { render partial: 'admin/orders/update', format: [:js] }
       else 
-        format.json { render :json => { :errors => @order.errors.full_messages }, :status => 422 }
+        format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
       end
     end
   end

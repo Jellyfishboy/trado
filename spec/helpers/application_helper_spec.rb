@@ -8,8 +8,8 @@ describe ApplicationHelper do
         let!(:category_1) { create(:category, sorting: 0) }
         let!(:category_2) { create(:category, sorting: 1) }
         before(:each) do
-            create(:product, category_id: category_1.id, active: true)
-            create(:product, category_id: category_2.id, active: true)
+            create(:product_sku_attachment, category_id: category_1.id)
+            create(:product_sku_attachment, category_id: category_2.id)
         end
 
         it "should return a list of active categories sorted by their sorting attribute value" do

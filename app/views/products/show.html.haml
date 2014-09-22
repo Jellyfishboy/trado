@@ -113,7 +113,7 @@
               %strong Giftwrap
               in the order process. Eligible items can be giftwrapped for as little as £0.99, and larger items may be presented in gift bags.
 / /container
-- if @product.category.products.count > 1
+- if @product.category.products.published.count > 1
   / ==========
   / = Related Products =
   / ==========
@@ -132,7 +132,7 @@
       / = Related products =
       / ==========
       .row.popup-products
-        - @product.category.products.first(4).each do |product|
+        - @product.category.products.published.first(4).each do |product|
           - if product == @product
             - next
           / ==========

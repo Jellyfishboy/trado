@@ -55,10 +55,14 @@ FactoryGirl.define do
         end
 
         factory :build_product_skus do
+            active { true }
+            status { 1 }
             skus { build_list(:sku, 3, active: true) }
         end
 
         factory :build_product_attachment do
+            active { true }
+            status { 1 }
             attachments { build_list(:product_attachment, 2) }
         end
 

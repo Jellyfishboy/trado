@@ -21,7 +21,7 @@ describe Order do
 
     context "if the status of the order is 'active' or 'confirm'" do
         before { subject.stub(:active_or_confirm?) { true } }
-        it { expect(subject).to ensure_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
+        it { expect(subject).to validate_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
     end
 
     context "if the current order status is at review or shipping" do
