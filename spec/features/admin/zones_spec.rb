@@ -29,7 +29,8 @@ feature 'Zone management' do
         end
     end
 
-    scenario 'should add a new zone' do
+    scenario 'should add a new zone', js: true do
+        country
 
         visit admin_zones_path
         find('.page-header a:first-child').click
@@ -39,8 +40,14 @@ feature 'Zone management' do
         end
         expect{
             fill_in('zone_name', with: 'Africa')
+            select_from_chosen(country.name, from: 'zone_country_ids')
             click_button 'Submit'
         }.to change(Zone, :count).by(1)
+
+        zone = Zone.first
+        expect(zone.name).to eq 'Africa'
+        expect(zone.countries.first.name).to eq country.name
+
         expect(current_path).to eq admin_zones_path
         within '.alert.alert-success' do
             expect(page).to have_content 'Zone was successfully created.'

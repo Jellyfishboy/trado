@@ -4,6 +4,7 @@ feature 'Delivery service management' do
 
     store_setting
     feature_login_admin
+    given(:zone) { create(:zone) }
     given(:delivery_service) { create(:delivery_service, active: true) }
     given(:delivery_service_with_zones) { create(:delivery_service_with_zones) }
     given(:delivery_services) { create_list(:delivery_service, 2, active: true) }
@@ -43,7 +44,8 @@ feature 'Delivery service management' do
         end
     end
 
-    scenario 'should add a new delivery service' do
+    scenario 'should add a new delivery service', js: true do
+        zone
 
         visit admin_delivery_services_path
         find('.page-header a:first-child').click
@@ -52,11 +54,19 @@ feature 'Delivery service management' do
             expect(page).to have_content 'New'
         end
         expect{
-            fill_in('delivery_service_courier_name', with: 'Royal mail')
+            fill_in('delivery_service_courier_name', with: 'Royal Mail')
             fill_in('delivery_service_name', with: 'Next day delivery')
             fill_in('delivery_service_description', with: 'Speedy delivery within the UK.')
+            select_from_chosen(zone.name, from: 'delivery_service_zone_ids')
             click_button 'Submit'
         }.to change(DeliveryService, :count).by(1)
+
+        delivery_service = DeliveryService.first
+        expect(delivery_service.courier_name).to eq 'Royal Mail'
+        expect(delivery_service.name).to eq 'Next day delivery'
+        expect(delivery_service.description).to eq 'Speedy delivery within the UK.'
+        expect(delivery_service.zones.first.name).to eq zone.name
+
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do
             expect(page).to have_content 'Delivery service was successfully created.'
@@ -66,7 +76,7 @@ feature 'Delivery service management' do
         end
     end
 
-    scenario 'should edit a delivery service' do
+    scenario 'should edit a delivery service', js: true do
         delivery_service_with_zones
 
         visit admin_delivery_services_path
@@ -78,6 +88,7 @@ feature 'Delivery service management' do
             expect(page).to have_content 'Edit'
         end
         fill_in('delivery_service_name', with: '1st Class')
+        find('.chosen-choices li:nth-child(2) a').click
         click_button 'Submit'
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do
@@ -89,6 +100,7 @@ feature 'Delivery service management' do
         delivery_service_with_zones.reload
         expect(delivery_service_with_zones.name).to eq '1st Class'
         expect(delivery_service_with_zones.courier_name).to eq 'Royal Mail'
+        expect(delivery_service_with_zones.zones.first.name).to eq 'EU'
     end
 
     scenario "should delete a delivery service if there is more than one record" do

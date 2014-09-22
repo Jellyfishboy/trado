@@ -31,6 +31,9 @@ RSpec.configure do |config|
 
   config.extend CustomMacro
 
+  # Custom utility methods
+  config.include Utilities
+
   # Devise helpers
   config.include Devise::TestHelpers, type: :controller
 
