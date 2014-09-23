@@ -9,21 +9,20 @@
 #
 #  id                             :integer              not null, primary key
 #  estimate_delivery_id           :integer
-#  estimate_country_id            :integer
+#  estimate_country_name          :integer
 #  delivery_service_prices        :integer(array)
 #  created_at                     :datetime             not null
 #  updated_at                     :datetime             not null
 #
 class Cart < ActiveRecord::Base
-  attr_accessible :estimate_delivery_id, :estimate_country_id
+  attr_accessible :estimate_delivery_id, :estimate_country_name
 
-  has_many :cart_items,                         dependent: :delete_all
-  has_many :cart_item_accessories,              through: :cart_items
+  has_many :cart_items,                             dependent: :delete_all
+  has_many :cart_item_accessories,                  through: :cart_items
   
-  has_many :skus,                               through: :cart_items
+  has_many :skus,                                   through: :cart_items
   has_one :order
-  belongs_to :delivery,                         class_name: 'DeliveryServicePrice', foreign_key: 'estimate_delivery_id'
-  belongs_to :country,                          foreign_key: 'estimate_country_id'
+  belongs_to :estimate_delivery,                    class_name: 'DeliveryServicePrice'
 
   # Calculates the total price of a cart
   #

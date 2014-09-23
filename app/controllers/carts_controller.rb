@@ -10,6 +10,7 @@ class CartsController < ApplicationController
         @order = Order.new
         @delivery_address = @order.build_delivery_address
         @billing_address = @order.build_billing_address
+        @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, current_cart.estimate_country_name) unless current_cart.estimate_delivery_id.nil?
     end
 
     def estimate
@@ -23,7 +24,7 @@ class CartsController < ApplicationController
     end
 
     def purge_estimate
-        current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_id: nil)
+        current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_name: nil)
         render :partial => 'carts/delivery_service_prices/estimate/success', :format => [:js]
     end
 end
