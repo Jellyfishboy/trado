@@ -23,163 +23,163 @@
             / ==========
             / = Checkout form
             / ==========
-            = form_for @order, url: confirm_orders_path, html: { method: :patch, :class => 'form-horizontal form-checkout delivery_address', remote: true } do |f|
-              %h3 Delivery address
-              = f.fields_for :delivery_address do |ff|
-                .control-group
-                  %label.control-label
-                    Use billing address?
-                  .controls
-                    %input.use-billing-address{type: 'checkbox'}
-                .control-group
-                  = ff.label :first_name, :class => 'control-label' do
-                    First name
-                    %span.red-clr.bold *
-                  .controls
-                    = ff.text_field :first_name, :class => 'span4 use-billing', id: 'delivery_first_name'
-                    = errors_for @delivery_address, :first_name
-                .control-group
-                  = ff.label :last_name, :class => 'control-label' do
-                    Last name
-                    %span.red-clr.bold *
-                  .controls
-                    = ff.text_field :last_name, :class => 'span4 use-billing', id: 'delivery_last_name'
-                    = errors_for @delivery_address, :last_name
-                .control-group
-                  = f.label :email, :class => 'control-label' do
-                    Email
-                    %span.red-clr.bold *
-                  .controls
-                    = f.text_field :email, :class => 'span4', id: 'email'
-                  = errors_for @order, :email
-                .control-group
-                  = ff.label :telephone, :class => 'control-label' do
-                    Telephone
-                  .controls
-                    = ff.text_field :telephone, :class => 'span4 use-billing', id: 'delivery_telephone'
-                .control-group
-                  = ff.label :company, :class => 'control-label' do
-                    Company
-                  .controls
-                    = ff.text_field :company, :class => 'span4 use-billing', id: 'delivery_company'
-                .control-group
-                  = ff.label :address, :class => 'control-label' do
-                    Street address
-                    %span.red-clr.bold *
-                  .controls
-                    = ff.text_field :address, :class => 'span4 use-billing', id: 'delivery_address'
-                    = errors_for @delivery_address, :address
-                .control-group
-                  = ff.label :city, :class => 'control-label' do
-                    City
-                    %span.red-clr.bold *
-                  .controls
-                    = ff.text_field :city, :class => 'span4 use-billing', id: 'delivery_city'
-                    = errors_for @delivery_address, :city
-                .control-group
-                  = f.label :postcode, :class => 'control-label' do
-                    Postcode
-                    %span.red-clr.bold *
-                  .controls
-                    = ff.text_field :postcode, :class => 'span4 use-billing', id: 'delivery_postcode'
-                    = errors_for @delivery_address, :postcode
-                .control-group
-                  = ff.label :county, :class => 'control-label' do
-                    County
-                  .controls
-                    = ff.text_field :county, :class => 'span4 use-billing', id: 'delivery_county'
-                .control-group
-                  = ff.label :country, :class => 'control-label' do
-                    Country
-                    %span.red-clr.bold *
-                  .controls.update-delivery-service-price
-                    = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => @delivery_address.country), { include_blank: 'Please select...'})
-                    = errors_for @delivery_address, :country
-              .delivery-service-prices
-                .control-group
-                  = f.label :delivery_id, :class => 'control-label' do
-                    Shipping options
-                    %span.red-clr.bold *
-                  .controls
-                    - unless @order.delivery_id.nil?
-                      = render partial: "orders/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, delivery_id: @order.delivery_id }
-                    - else
-                      %p.delivery_service_price_notice Select a country to view the available delivery services.
+            = form_for @order, url: confirm_orders_path, html: { method: :patch, :class => 'row form-checkout delivery_address', remote: true } do |f|
+              .span6
+                %h3 Delivery address
+                %hr
+                = f.fields_for :delivery_address do |ff|
+                  .row
+                    .span6
+                      / .control-group
+                      /   %label.control-label
+                      /     Use billing address?
+                      /   .controls
+                      /     %input.use-billing-address{type: 'checkbox'}
+                    .span3
                       .control-group
+                        = ff.label :first_name, :class => 'control-label' do
+                          First name
+                          %span.red-clr.bold *
                         .controls
-                          = errors_for @order, :delivery_id
-              %h3 Payment details
-              .control-group
-                = image_tag 'paypal-icon.png'
-                .controls
-                  = radio_button_tag :payment_method, 'paypal', true
-              %h3 Billing address
-              = f.fields_for :billing_address do |fff|
+                          = ff.text_field :first_name, :class => 'use-billing', id: 'delivery_first_name'
+                      .control-group
+                        = f.label :email, :class => 'control-label' do
+                          Email
+                          %span.red-clr.bold *
+                        .controls
+                          = f.text_field :email, :class => 'span4', id: 'email'
+                      .control-group
+                        = ff.label :company, :class => 'control-label' do
+                          Company
+                        .controls
+                          = ff.text_field :company, :class => 'use-billing', id: 'delivery_company'
+                      .control-group
+                        = ff.label :city, :class => 'control-label' do
+                          City
+                          %span.red-clr.bold *
+                        .controls
+                          = ff.text_field :city, :class => 'use-billing', id: 'delivery_city'
+                      .control-group
+                        = ff.label :county, :class => 'control-label' do
+                          County
+                        .controls
+                          = ff.text_field :county, :class => 'use-billing', id: 'delivery_county'
+                    .span3
+                      .control-group
+                        = ff.label :last_name, :class => 'control-label' do
+                          Last name
+                          %span.red-clr.bold *
+                        .controls
+                          = ff.text_field :last_name, :class => 'use-billing', id: 'delivery_last_name'
+                      .control-group
+                        = ff.label :telephone, :class => 'control-label' do
+                          Telephone
+                        .controls
+                          = ff.text_field :telephone, :class => 'use-billing', id: 'delivery_telephone'
+                      .control-group
+                        = ff.label :address, :class => 'control-label' do
+                          Street address
+                          %span.red-clr.bold *
+                        .controls
+                          = ff.text_field :address, :class => 'use-billing', id: 'delivery_address'
+                      .control-group
+                        = f.label :postcode, :class => 'control-label' do
+                          Postcode
+                          %span.red-clr.bold *
+                        .controls
+                          = ff.text_field :postcode, :class => 'use-billing', id: 'delivery_postcode'
+                      .control-group
+                        = ff.label :country, :class => 'control-label' do
+                          Country
+                          %span.red-clr.bold *
+                        .controls.update-delivery-service-price
+                          = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => @delivery_address.country), { include_blank: 'Please select...'})
+                .delivery-service-prices
+                  .control-group
+                    = f.label :delivery_id, :class => 'control-label' do
+                      Shipping options
+                      %span.red-clr.bold *
+                    .controls
+                      - unless @order.delivery_id.nil?
+                        = render partial: "orders/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, delivery_id: @order.delivery_id }
+                      - else
+                        %p.delivery_service_price_notice Select a country to view the available delivery services.
+                        .control-group
+                          .controls
+                            = errors_for @order, :delivery_id
+                %h3 Payment details
+                %hr
                 .control-group
-                  = fff.label :first_name, :class => 'control-label' do
-                    First name
-                    %span.red-clr.bold *
+                  = image_tag 'paypal-icon.png'
                   .controls
-                    = fff.text_field :first_name, :class => 'span4', :id => 'billing_first_name'
-                    = errors_for @billing_address, :first_name
-                .control-group
-                  = fff.label :last_name, :class => 'control-label' do
-                    Last name
-                    %span.red-clr.bold *
-                  .controls
-                    = fff.text_field :last_name, :class => 'span4', :id => 'billing_last_name'
-                    = errors_for @billing_address, :last_name
-                .control-group
-                  = fff.label :telephone, :class => 'control-label' do
-                    Telephone
-                  .controls
-                    = fff.text_field :telephone, :class => 'span4', :id => 'billing_telephone'
-                .control-group
-                  = fff.label :company, :class => 'control-label' do
-                    Company
-                  .controls
-                    = fff.text_field :company, :class => 'span4', :id => 'billing_company'
-                .control-group
-                  = f.label :tax_number, :class => 'control-label' do
-                    Tax number
-                  .controls
-                    = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
-                .control-group
-                  = fff.label :address, :class => 'control-label' do
-                    Street address
-                    %span.red-clr.bold *
-                  .controls
-                    = fff.text_field :address, :class => 'span4', :id => 'billing_address'
-                    = errors_for @billing_address, :address
-                .control-group
-                  = fff.label :city, :class => 'control-label' do
-                    City
-                    %span.red-clr.bold *
-                  .controls
-                    = fff.text_field :city, :class => 'span4', :id => 'billing_city'
-                    = errors_for @billing_address, :city
-                .control-group
-                  = fff.label :postcode, :class => 'control-label' do
-                    Postcode
-                    %span.red-clr.bold *
-                  .controls
-                    = fff.text_field :postcode, :class => 'span4', :id => 'billing_postcode'
-                    = errors_for @billing_address, :postcode
-                .control-group
-                  = fff.label :county, :class => 'control-label' do
-                    County
-                  .controls
-                    = fff.text_field :county, :class => 'span4', :id => 'billing_county'
-                .control-group
-                  = fff.label :country, :class => 'control-label' do
-                    Country
-                    %span.red-clr.bold *
-                  .controls
-                    = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @billing_address.country), { :include_blank => 'Please select...'})
-                    = errors_for @billing_address, :country
-              = f.check_box :terms
-              = errors_for @order, :terms
-              %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
-              = f.submit 'Place Order', :class => 'btn btn-primary higher bold'
+                    = radio_button_tag :payment_method, 'paypal', true
+                %h3 Billing address
+                %hr
+                = f.fields_for :billing_address do |fff|
+                  .row
+                    .span3
+                      .control-group
+                        = fff.label :first_name, :class => 'control-label' do
+                          First name
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.text_field :first_name, :class => 'span4', :id => 'billing_first_name'
+                      .control-group
+                        = fff.label :telephone, :class => 'control-label' do
+                          Telephone
+                        .controls
+                          = fff.text_field :telephone, :class => 'span4', :id => 'billing_telephone'
+                      .control-group
+                        = f.label :tax_number, :class => 'control-label' do
+                          Tax number
+                        .controls
+                          = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
+                      .control-group
+                        = fff.label :city, :class => 'control-label' do
+                          City
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.text_field :city, :class => 'span4', :id => 'billing_city'
+                      .control-group
+                        = fff.label :county, :class => 'control-label' do
+                          County
+                        .controls
+                          = fff.text_field :county, :class => 'span4', :id => 'billing_county'
+                    .span3
+                      .control-group
+                        = fff.label :last_name, :class => 'control-label' do
+                          Last name
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.text_field :last_name, :class => 'span4', :id => 'billing_last_name'
+                      .control-group
+                        = fff.label :company, :class => 'control-label' do
+                          Company
+                        .controls
+                          = fff.text_field :company, :class => 'span4', :id => 'billing_company'
+                      .control-group
+                        = fff.label :address, :class => 'control-label' do
+                          Street address
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.text_field :address, :class => 'span4', :id => 'billing_address'
+                      .control-group
+                        = fff.label :postcode, :class => 'control-label' do
+                          Postcode
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.text_field :postcode, :class => 'span4', :id => 'billing_postcode'
+                      .control-group
+                        = fff.label :country, :class => 'control-label' do
+                          Country
+                          %span.red-clr.bold *
+                        .controls
+                          = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @billing_address.country), { :include_blank => 'Please select...'})
+                = f.check_box :terms
+                = errors_for @order, :terms
+                %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
+                = f.submit 'Place Order', :class => 'btn btn-primary higher bold'
+              .span4
+
     / /main content
 / /container
