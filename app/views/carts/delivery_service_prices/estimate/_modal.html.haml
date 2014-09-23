@@ -1,0 +1,20 @@
+#estimateDeliveryModal.modal.fade{"aria-hidden" => "false", "aria-labelledby" => "estimateDeliveryModalLabel", role: "dialog", tabindex: "-1", style: 'display:none;'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#estimateDeliveryModalLabel
+      %span.light Estimate
+      Shipping
+  = form_for current_cart, url: estimate_carts_path, :html => { method: :patch, :remote => true, :class => 'remote-form' } do |f|
+    .modal-body
+      .control-group
+        = f.label 'Country', :class => 'control-label'
+        .controls.update-delivery-service-price
+          = f.select(:estimate_country_id, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
+      .delivery-service-prices
+        .control-group
+          = f.label :estimate_delivery_id, :class => 'control-label' do
+            Shipping options
+          .controls
+            %p.delivery-service-price-notice Select a country to view the available delivery services.
+    .modal-footer
+      = f.submit "Submit", :class => 'btn btn-primary higher bold'

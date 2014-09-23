@@ -26,13 +26,13 @@ describe DeliveryServicePricesController do
         end
 
         it "should assign a collection of available delivery service prices to @delivery_service_prices" do
-            xhr :get, :update, { 'country_id' => country_1.name }
+            xhr :get, :update, { 'country_id' => country_1.id }
             expect(assigns(:delivery_service_prices)).to match_array([delivery_service_price_1, delivery_service_price_2])
         end
 
         it "should render a delivery service prices partial" do
-            xhr :get, :update, { 'country_id' => country_1.name }
-            expect(response).to render_template(partial: 'orders/delivery_service_prices/_fields')
+            xhr :get, :update, { 'country_id' => country_1.id }
+            expect(response).to render_template(partial: 'carts/delivery_service_prices/_fields')
         end
     end
 end

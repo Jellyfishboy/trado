@@ -7,7 +7,7 @@ Trado::Application.routes.draw do
   get '/contact' => 'contacts#new'
 
   # Custom routes
-  get '/order/delivery_service_prices/update' => 'delivery_service_prices#update'
+  get '/carts/delivery_service_prices/update' => 'delivery_service_prices#update'
   get '/product/skus' => 'skus#update'
   get '/product/accessories' => 'accessories#update'
   get '/search' => 'search#results'
@@ -33,22 +33,26 @@ Trado::Application.routes.draw do
     end
   end
   
-  resources :cart_items, only: [:create, :update, :destroy] do
-    resources :cart_item_accessories, only: [:update, :destroy]
+  resources :carts, only: [] do
+    collection do
+      get 'mycart'
+      get 'checkout'
+      patch 'estimate'
+      delete 'purge_estimate'
+    end
+    resources :cart_items, only: [:create, :update, :destroy] do
+      resources :cart_item_accessories, only: [:update, :destroy]
+    end
   end
 
-  resources :orders, only: [:new, :update] do
-    resources :build, controller: 'orders/build', only: [:show, :update] do
-      member do
-        get 'express'
-        get 'success'
-        get 'failure'
-        patch 'estimate'
-        get 'retry'
-        delete 'purge'
-        delete 'purge_estimate'
-      end
+  resources :orders, only: [:destroy] do
+    member do
+      patch 'complete'
+      get 'success'
+      get 'failed'
+      get 'retry'
     end
+    patch 'confirm', on: :collection
     resources :addresses, only: [:new, :create, :update]
   end
 

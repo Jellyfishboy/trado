@@ -20,9 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 set :output, "/var/log/gimson_robotics/schedule.log"
 
-every 1.day, :at => '4:00am' do
-    runner 'Order.clear_orders'
-end
 every 1.day, :at => '4:10am' do
     runner "Cart.clear_carts"
 end

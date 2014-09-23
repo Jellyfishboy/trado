@@ -11,7 +11,6 @@
 #  id                                     :integer              not null, primary key
 #  ip_address                             :string(255)      
 #  email                                  :string(255)     
-#  status                                 :integer          
 #  user_id                                :integer     
 #  cart_id                                :integer
 #  tax_number                             :integer 
@@ -24,14 +23,13 @@
 #  net_amount                             :decimal              precision(8), scale(2)
 #  tax_amount                             :decimal              precision(8), scale(2) 
 #  gross_amount                           :decimal              precision(8), scale(2) 
-#  terms                                  :boolean          
-#  delivery_service_prices                :integer(array)       
+#  terms                                  :boolean                 
 #  created_at                             :datetime             not null
 #  updated_at                             :datetime             not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
-  :email, :delivery_id, :status, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
+  :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes
   
   has_many :order_items,                                                dependent: :delete_all
@@ -44,17 +42,13 @@ class Order < ActiveRecord::Base
   has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 
   validates :actual_shipping_cost,                                      presence: true, :if => :completed?
-  validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :if => :active_or_shipping?
-  validates :delivery_id,                                               presence: { message: 'service must be selected.'}, :if => :active_or_review_or_shipping?                                                                                                                  
-  validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }, :if => :active_or_confirm?
-
-  after_create :create_addresses
+  validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :delivery_id,                                               presence: { message: 'service must be selected.'}                                                                                                                  
+  validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }
 
   accepts_nested_attributes_for :delivery_address
 
   enum shipping_status: [:pending, :dispatched]
-
-  enum status: [:review, :billing, :shipping, :payment, :confirm, :active]
 
   # Upon completing an order, transfer the cart item data to new order item records 
   #
@@ -85,53 +79,5 @@ class Order < ActiveRecord::Base
   # @return [Boolean]
   def completed?
     transactions.last.completed? unless transactions.empty?
-  end
-
-  def active_or_review_or_shipping?
-    id.nil? ? false : review? ? true : shipping? ? true : active?
-  end
-
-  # Detects if the current status of the order is 'billing'. See wicked gem for more info
-  #
-  # @return [Boolean]
-  def active_or_billing?
-    billing? ? true : active?
-  end
-
-  # Detects if the current status of the order is 'shipping'. See wicked gem for more info
-  #
-  # @return [Boolean]
-  def active_or_shipping?
-    shipping? ? true : active?
-  end
-
-  # Detects if the current status of the order is 'payment'. See wicked gem for more info
-  #
-  # @return [Boolean]
-  def active_or_payment?
-    payment? ? true : active?
-  end
-
-  # Detects if the current status of the order is 'confirm'. See wicked gem for more info
-  #
-  # @return [Boolean]
-  def active_or_confirm?
-    confirm? ? true : active?
-  end
-  
-  # Deletes redundant orders which are more than 12 hours old
-  #
-  # @return [nil]
-  def self.clear_orders
-    where("updated_at < ? AND status != ?", 12.hours.ago, 5).destroy_all
-  end
-
-  private
-
-  # After creating order record, create a ship and bill address to accompany it
-  #
-  def create_addresses
-    self.build_delivery_address.save(validate: false)
-    self.build_billing_address.save(validate: false)
   end
 end

@@ -2,8 +2,8 @@ class CartItemsController < ApplicationController
 
   skip_before_action :authenticate_user!
   before_action :set_validate_cart_item, except: :destroy
-  before_action :void_delivery_service
-  after_action :set_order_delivery_services
+  before_action :void_delivery_services
+  after_action :set_delivery_services
 
   def create
     @sku = Sku.find(params[:cart_item][:sku_id])
@@ -31,19 +31,14 @@ class CartItemsController < ApplicationController
 
   private
 
-    def void_delivery_service
-      order = current_cart.order
-      unless order.nil? || order.delivery_id.nil? || order.delivery_service_prices.nil?
-        order.delivery_id = nil
-        order.delivery_address.country = nil
-        order.delivery_service_prices = nil
-        order.save(validate: false)
+    def void_delivery_services
+      unless current_cart.estimate_delivery_id.nil? || current_cart.delivery_service_prices.nil? 
+        current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_id: nil, delivery_service_prices: nil)
       end
     end
 
-    def set_order_delivery_services
-      order = current_cart.order
-      Shipatron4000::delivery_prices(current_cart, order) unless order.nil?
+    def set_delivery_services
+      current_cart.calculate_delivery_services
     end
 
     def set_validate_cart_item

@@ -121,7 +121,7 @@ trado.app =
         {
             if (this.value !== "") 
             {
-                $.ajax('/order/delivery_service_prices/update', 
+                $.ajax('/carts/delivery_service_prices/update', 
                 {
                     type: 'GET',
                     data: 

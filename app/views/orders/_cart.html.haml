@@ -1,15 +1,15 @@
-- @cart_total = @order.nil? || @order.delivery.nil? ? current_cart.total_price : (current_cart.total_price + @order.delivery.price)
+- @cart_total = current_cart.delivery.nil? ? current_cart.total_price : (current_cart.total_price + current_cart.delivery.price)
 - current_cart.cart_items.each do |item|
   %tr
     %td.image
       = link_to (image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124), [item.sku.product.category, item.sku.product]
     %td.desc
       = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
-      = link_to item, :method => :delete, :remote => true, :title => 'Remove item' do
+      = link_to [current_cart, item], :method => :delete, :remote => true, :title => 'Remove item' do
         %i.fa.fa-times-circle
       %div= sku_attribute_values(item.sku, item.sku.product.single)
     %td.qty
-      = form_for item, remote: true do |f|
+      = form_for [current_cart, item], remote: true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
         = f.submit 'Update', :class => 'btn btn-small'
     %td.price= Store::Price.new(item.total_price).single
@@ -21,17 +21,17 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
-- unless @order.nil? || @order.delivery.nil?
+- unless current_cart.delivery.nil?
   %tr
     %td.image
-      = image_tag "delivery.png", :alt => @order.delivery.full_name
+      = image_tag "delivery.png", :alt => current_cart.delivery.full_name
     %td.desc
-      = @order.delivery.full_name
-      = link_to purge_estimate_order_build_path, method: :delete, remote: true, :title => 'Remove item' do
+      = current_cart.delivery.full_name
+      = link_to purge_estimate_carts_path, method: :delete, remote: true, :title => 'Remove item' do
         %i.fa.fa-times-circle
-      %div= @order.delivery_address.country
+      %div= current_cart.country.name
     %td.qty
-    %td.price= Store::Price.new(@order.delivery.price).single
+    %td.price= Store::Price.new(current_cart.delivery.price).single
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2"}

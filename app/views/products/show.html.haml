@@ -49,7 +49,7 @@
           / ==========
           / = Add to cart form =
           / ==========
-          = form_for @cart_item, :html => { :method => :post, :remote => true, :class => 'form form-inline clearfix product_sku_form' } do |f|
+          = form_for [current_cart, @cart_item], :html => { :method => :post, :remote => true, :class => 'form form-inline clearfix product_sku_form' } do |f|
             .numbered
               = f.text_field :quantity, :value => 1, :class => 'tiny-size'
               %span.clickable.add-one.fa.fa-plus-square
