@@ -180,6 +180,63 @@
                 %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
                 = f.submit 'Place Order', :class => 'btn btn-primary higher bold'
               .span4
+                %h3 Order summary
+                %hr
+                %table.table.table-items
+                  %thead
+                    %tr
+                      %th{colspan: "2"} Item
+                      %th
+                        .align-center Quantity
+                      %th
+                        .align-right Price
+                  %tbody
+                    - current_cart.cart_items.each do |item|
+                      %tr
+                        %td.image
+                          = image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124
+                        %td.desc
+                          = item.sku.product.name
+                          %div= sku_attribute_values(item.sku, item.sku.product.single)
+                        %td.qty= item.quantity
+                        %td.price= Store::Price.new(item.total_price).single
+                      - unless item.cart_item_accessory.blank?
+                        %tr.accessory_row
+                          %td.image
+                            = image_tag 'http://placehold.it/124x124', :height => 124, :width => 124
+                          %td.desc
+                            = item.cart_item_accessory.accessory.name
+                          %td.qty
+                            = item.cart_item_accessory.quantity
+                    / %tr
+                    /   %td.image
+                    /     = image_tag "delivery.png", :alt => current_cart.delivery.full_name
+                    /   %td.desc
+                    /     = current_cart.delivery.full_name
+                    /     %div= current_cart.country
+                    /   %td.qty
+                    /   %td.price= Store::Price.new(current_cart.delivery.price).single
+                    - if Store::settings.tax_breakdown
+                      %tr
+                        %td{colspan: "2"}
+                        \ 
+                        %td.stronger Subtotal:
+                        %td.stronger
+                          / .align-right= Store::Price.new(@order.net_amount).single
+                      %tr
+                        %td{colspan: "2", rowspan: "1"}
+                        \ 
+                        %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+                        %td.stronger
+                          / .align-right= Store::Price.new(@order.tax_amount).single
+                    %tr
+                      %td{colspan: "2", rowspan: "1"}
+
+                      %td.stronger Total:
+                      %td.stronger
+                        / .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').single
+                %p.right-align  
+                  = f.submit 'Place order', :class => 'btn btn-primary higher bold confirm_order'
 
     / /main content
 / /container

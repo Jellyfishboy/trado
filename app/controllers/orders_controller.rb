@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
     #   end
     # end  
 
+    # TODO Check there is a params[:payment_method] value before continuing, if not redirect to checkout
     def confirm
       @order = Order.new(params[:order])
 

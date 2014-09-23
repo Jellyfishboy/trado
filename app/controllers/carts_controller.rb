@@ -5,6 +5,7 @@ class CartsController < ApplicationController
     def mycart
     end
 
+    # TODO Need to calculate the net, tax, delivery and gross amount for the cart and transfer to the order once completed
     def checkout
         @order = Order.new
         @delivery_address = @order.build_delivery_address
