@@ -51,17 +51,20 @@
                             Company
                           .controls
                             = ff.text_field :company, :class => 'use-billing', id: 'delivery_company'
+                            = errors_for @order, 'delivery_address.company'
                         .control-group
                           = ff.label :city, :class => 'control-label' do
                             City
                             %span.red-clr.bold *
                           .controls
                             = ff.text_field :city, :class => 'use-billing', id: 'delivery_city'
+                            = errors_for @order, 'delivery_address.city'
                         .control-group
                           = ff.label :county, :class => 'control-label' do
                             County
                           .controls
                             = ff.text_field :county, :class => 'use-billing', id: 'delivery_county'
+                            = errors_for @order, 'delivery_address.county'
                       .span3
                         .control-group
                           = ff.label :last_name, :class => 'control-label' do
@@ -69,29 +72,34 @@
                             %span.red-clr.bold *
                           .controls
                             = ff.text_field :last_name, :class => 'use-billing', id: 'delivery_last_name'
+                            = errors_for @order, 'delivery_address.last_name'
                         .control-group
                           = ff.label :telephone, :class => 'control-label' do
                             Telephone
                           .controls
                             = ff.text_field :telephone, :class => 'use-billing', id: 'delivery_telephone'
+                            = errors_for @order, 'delivery_address.telephone'
                         .control-group
                           = ff.label :address, :class => 'control-label' do
                             Street address
                             %span.red-clr.bold *
                           .controls
                             = ff.text_field :address, :class => 'use-billing', id: 'delivery_address'
+                            = errors_for @order, 'delivery_address.address'
                         .control-group
                           = f.label :postcode, :class => 'control-label' do
                             Postcode
                             %span.red-clr.bold *
                           .controls
                             = ff.text_field :postcode, :class => 'use-billing', id: 'delivery_postcode'
+                            = errors_for @order, 'delivery_address.postcode'
                         .control-group
                           = ff.label :country, :class => 'control-label' do
                             Country
                             %span.red-clr.bold *
                           .controls.update-delivery-service-price
                             = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => current_cart.estimate_country_name), { include_blank: 'Please select...'})
+                            = errors_for @order, 'delivery_address.country'
                   .delivery-service-prices
                     .control-group
                       = f.label :delivery_id, :class => 'control-label' do
@@ -104,6 +112,7 @@
                           %p.delivery_service_price_notice Select a country to view the available delivery services.
                           .control-group
                             .controls
+                              = errors_for @order, :delivery_id
                   %h3 Payment details
                   %hr
                   .control-group
@@ -121,27 +130,32 @@
                             %span.red-clr.bold *
                           .controls
                             = fff.text_field :first_name, :class => 'span4', :id => 'billing_first_name'
+                            = errors_for @order, 'billing_address.first_name'
                         .control-group
                           = fff.label :telephone, :class => 'control-label' do
                             Telephone
                           .controls
                             = fff.text_field :telephone, :class => 'span4', :id => 'billing_telephone'
+                            = errors_for @order, 'billing_address.telephone'
                         .control-group
                           = f.label :tax_number, :class => 'control-label' do
                             Tax number
                           .controls
                             = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
+                            = errors_for @order, 'billing_address.tax_number'
                         .control-group
                           = fff.label :city, :class => 'control-label' do
                             City
                             %span.red-clr.bold *
                           .controls
                             = fff.text_field :city, :class => 'span4', :id => 'billing_city'
+                            = errors_for @order, 'billing_address.city'
                         .control-group
                           = fff.label :county, :class => 'control-label' do
                             County
                           .controls
                             = fff.text_field :county, :class => 'span4', :id => 'billing_county'
+                            = errors_for @order, 'billing_address.county'
                       .span3
                         .control-group
                           = fff.label :last_name, :class => 'control-label' do
@@ -149,29 +163,34 @@
                             %span.red-clr.bold *
                           .controls
                             = fff.text_field :last_name, :class => 'span4', :id => 'billing_last_name'
+                            = errors_for @order, 'billing_address.last_name'
                         .control-group
                           = fff.label :company, :class => 'control-label' do
                             Company
                           .controls
                             = fff.text_field :company, :class => 'span4', :id => 'billing_company'
+                            = errors_for @order, 'billing_address.company'
                         .control-group
                           = fff.label :address, :class => 'control-label' do
                             Street address
                             %span.red-clr.bold *
                           .controls
                             = fff.text_field :address, :class => 'span4', :id => 'billing_address'
+                            = errors_for @order, 'billing_address.address'
                         .control-group
                           = fff.label :postcode, :class => 'control-label' do
                             Postcode
                             %span.red-clr.bold *
                           .controls
                             = fff.text_field :postcode, :class => 'span4', :id => 'billing_postcode'
+                            = errors_for @order, 'billing_address.postcode'
                         .control-group
                           = fff.label :country, :class => 'control-label' do
                             Country
                             %span.red-clr.bold *
                           .controls
                             = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), { :include_blank => 'Please select...'})
+                            = errors_for @order, 'billing_address.country'
                   = f.check_box :terms
                   = errors_for @order, :terms
                   %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
@@ -215,7 +234,7 @@
                           Delivery:
                           %div.normal= current_cart.estimate_delivery.full_name unless current_cart.estimate_delivery.nil?
                         %td.stronger
-                          .align-right= Store::Price.new(current_cart.estimate_delivery.price, 'net').single
+                          .align-right= Store::Price.new(cart_delivery_price(current_cart.estimate_delivery), 'net').single
                       - if Store::settings.tax_breakdown
                         %tr.no-border
                           %td.stronger{colspan: "3"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"

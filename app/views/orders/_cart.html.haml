@@ -21,35 +21,35 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
-- unless current_cart.estimate_delivery.nil?
-  %tr
-    %td.image
-      = image_tag "delivery.png", :alt => current_cart.estimate_delivery.full_name
-    %td.desc
-      = current_cart.estimate_delivery.full_name
-      = link_to purge_estimate_carts_path, method: :delete, remote: true, :title => 'Remove item' do
-        %i.fa.fa-times-circle
-      %div= current_cart.estimate_country_name
-    %td.qty
-    %td.price= Store::Price.new(current_cart.estimate_delivery.price).single
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2"}
     \ 
-    %td.stronger Subtotal:
+    %td.stronger{colspan: "2"} Subtotal:
     %td.stronger
-      .align-right= Store::Price.new(@cart_total).single
+      .align-right= Store::Price.new(current_cart.total_price).single
+%tr
+  %td{colspan: "2", rowspan: "1"}
+  \ 
+  %td.stronger{colspan: "2"}
+    Delivery:
+    - unless current_cart.estimate_delivery.nil?
+      %div.normal
+        = current_cart.estimate_delivery.full_name 
+        = link_to purge_estimate_carts_path, method: :delete, remote: true, :title => 'Remove item' do
+          %i.fa.fa-times-circle
+  %td.stronger
+    .align-right= Store::Price.new(cart_delivery_price(current_cart.estimate_delivery), 'net').single
+- if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2", rowspan: "1"}
     \ 
-    %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+    %td.stronger{colspan: "2"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
     %td.stronger
       .align-right= Store::Price.new((@cart_total*Store::tax_rate)).single
 %tr
-  %td{colspan: "2", rowspan: "2"}
-    .alert.alert-info
-      Shipping cost will be calculated later in the order process.
-%tr
-  %td.stronger Total:
+  %td{colspan: "2", rowspan: "1"}
+  \
+  %td.stronger{colspan: "2"} Total:
   %td.stronger
     .size-16.align-right.total_price= Store::Price.new(@cart_total, 'gross').single
