@@ -61,6 +61,21 @@ textarea {
   {
     width:90%;
   }
+  tr.no-border td
+  {
+    border-top: 0;
+  }
+  div.normal
+  {
+    font-weight: normal;
+  }
+  table.order-summary
+  {
+    .qty, .price
+    {
+      width: auto;
+    }
+  }
 }
 .accessory_row td {
   border-top:0px;

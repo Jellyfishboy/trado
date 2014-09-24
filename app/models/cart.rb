@@ -31,10 +31,23 @@ class Cart < ActiveRecord::Base
   	cart_items.to_a.sum { |item| item.total_price }
   end
 
-  # Calculate the relevant shipping tiers for a cart, taking into account length, thickness and weight of the total cart
+  # Calculate the total for the order summary when completing the checkout process
   #
-  # @param cart [Object]
-  # @return [Array] calculated tiers for the current cart dimensions
+  # @param current_tax_rate [Decimal]
+  # @return [Hash] net, tax and gross amounts for an order
+  def calculate current_tax_rate
+    @net_amount = total_price
+    @tax_amount = estimate_delivery.nil? ? (@net_amount * current_tax_rate) : (@net_amount + estimate_delivery.price)*current_tax_rate
+    @gross_amount = estimate_delivery.nil? ? (@net_amount + @tax_amount) : (@net_amount + estimate_delivery.price + @tax_amount)
+    return {
+      :net_amount => @net_amount,
+      :tax_amount => @tax_amount,
+      :gross_amount => @gross_amount
+    }
+  end
+
+  # Calculate the relevant delivery service prices for a cart, taking into account length, thickness and weight of the total cart
+  #
   def calculate_delivery_services
     length = skus.map(&:length).max
     thickness = skus.map(&:thickness).max

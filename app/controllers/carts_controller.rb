@@ -10,6 +10,7 @@ class CartsController < ApplicationController
         @order = Order.new
         @delivery_address = @order.build_delivery_address
         @billing_address = @order.build_billing_address
+        @cart_total = current_cart.calculate(Store::tax_rate)
         @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, current_cart.estimate_country_name) unless current_cart.estimate_delivery_id.nil?
     end
 

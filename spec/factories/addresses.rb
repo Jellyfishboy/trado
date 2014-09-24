@@ -13,21 +13,5 @@ FactoryGirl.define do
         telephone { Faker::PhoneNumber.phone_number }
 
         association :order
-
-        factory :validation_billing_address do
-            addressable_type { 'OrderBillAddress' }
-            order_id { create(:order, status: 'billing').id }
-        end
-
-        factory :validation_delivery_address do
-            addressable_type { 'OrderShipAddress' }
-            order_id { create(:order, status: 'shipping').id }
-        end
-
-        factory :validation_review_address do
-            addressable_type { 'OrderShipAddress' }
-            order_id { create(:order, status: 'review').id }
-        end
-
     end
 end

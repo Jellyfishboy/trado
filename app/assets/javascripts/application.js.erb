@@ -19,6 +19,7 @@
 //= require trado.modal
 //= require trado.tracking
 //= require trado.app
+//= require theia-sticky-sidebar/js/theia-sticky-sidebar
 //= require turbolinks
 
 ready = function()
@@ -42,6 +43,12 @@ ready = function()
     {
         $('.modal select').val("");
         $('.delivery-service-prices .control-group .controls').html("<p class='delivery-service-price-notice'> elect a country to view the available delivery services.</p>");
+    });
+
+    // Initialise floating sidebar for checkout order summary
+    $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(
+    {
+        additionalMarginTop: 70
     });
 };
 $(document).ready(ready);

@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
         else
           format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
         end
+      end
     end
 
     def complete

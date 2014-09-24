@@ -50,8 +50,9 @@ class Order < ActiveRecord::Base
 
   enum shipping_status: [:pending, :dispatched]
 
-  # Upon completing an order, transfer the cart item data to new order item records 
+  # Upon completing the checkout process, transfer the cart item data to new order item records 
   #
+  # @param cart [Object]
   def transfer cart
     self.order_items.destroy_all
   	cart.cart_items.each do |item|
