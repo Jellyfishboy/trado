@@ -23,6 +23,7 @@ describe Order do
 
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:delivery_address) }
+    it { expect(subject).to accept_nested_attributes_for(:billing_address) }
 
     describe "When adding cart_items to an order" do
         let(:cart) { create(:full_cart) }

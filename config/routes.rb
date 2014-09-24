@@ -40,6 +40,7 @@ Trado::Application.routes.draw do
       patch 'estimate'
       delete 'purge_estimate'
     end
+    post 'confirm', on: :collection
     resources :cart_items, only: [:create, :update, :destroy] do
       resources :cart_item_accessories, only: [:update, :destroy]
     end
@@ -47,12 +48,11 @@ Trado::Application.routes.draw do
 
   resources :orders, only: [:destroy] do
     member do
-      patch 'complete'
       get 'success'
       get 'failed'
       get 'retry'
+      get 'confirm'
     end
-    patch 'confirm', on: :collection
     resources :addresses, only: [:new, :create, :update]
   end
 

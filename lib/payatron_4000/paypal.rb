@@ -2,16 +2,35 @@ module Payatron4000
 
     class Paypal
 
-        # Creates the payment information object for PayPal to parse in the login step
+        def self.build_order cart, order, ip_address
+          response = EXPRESS_GATEWAY.setup_purchase(
+                        Store::Price.new(order.gross_amount, 'net').singularize, 
+                        Payatron4000::Paypal.express_setup_options( 
+                          order,
+                          cart,
+                          ip_address, 
+                          Rails.application.routes.url_helpers.confirm_order_url(order), 
+                          Rails.application.routes.url_helpers.checkout_carts_url
+                        )
+          )
+          if response.success?
+            return EXPRESS_GATEWAY.redirect_url_for(response.token)
+          else
+            Payatron4000::Paypal.failed(response, order)
+            order.update_column(:cart_id, nil) 
+            return failed_order_url(order)
+          end
+        end
+
+        # Creates the payment information object for PayPal to parse in the login
         #
         # @param order [Object]
-        # @param steps [Array]
         # @param cart [Object]
         # @param ip_address [String]
         # @param return_url [String]
         # @param cancel_url [String]
         # @return [Object] order data from the store for PayPal
-        def self.express_setup_options order, steps, cart, ip_address, return_url, cancel_url
+        def self.express_setup_options order, cart, ip_address, return_url, cancel_url
             {
               :subtotal          => Store::Price.new(order.net_amount, 'net').singularize,
               :shipping          => Store::Price.new(order.delivery.price, 'net').singularize,

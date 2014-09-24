@@ -30,7 +30,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes
+  :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes
   
   has_many :order_items,                                                dependent: :delete_all
   has_many :transactions,                                               dependent: :delete_all
@@ -47,6 +47,7 @@ class Order < ActiveRecord::Base
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }
 
   accepts_nested_attributes_for :delivery_address
+  accepts_nested_attributes_for :billing_address
 
   enum shipping_status: [:pending, :dispatched]
 
@@ -68,9 +69,9 @@ class Order < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
     tax_amount = (cart.total_price + delivery.price)*current_tax_rate
-    self.update(  :net_amount => cart.total_price,
-                  :tax_amount => tax_amount,
-                  :gross_amount => cart.total_price + delivery.price + tax_amount
+    self.update(:net_amount => cart.total_price,
+                :tax_amount => tax_amount,
+                :gross_amount => cart.total_price + delivery.price + tax_amount
     )
     self.save(validate: false)
   end

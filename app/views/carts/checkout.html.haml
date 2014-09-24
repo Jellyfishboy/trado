@@ -24,19 +24,13 @@
             / ==========
             / = Checkout form
             / ==========
-            = form_for @order, url: confirm_orders_path, html: { method: :patch, :class => 'row form-checkout remote-form', remote: true } do |f|
+            = form_for @order, url: confirm_carts_path, html: { method: :post, :class => 'row form-checkout remote-form' } do |f|
               .span6.content
                 .theiaStickySidebar
                   %h3 Delivery address
                   %hr
                   = f.fields_for :delivery_address do |ff|
                     .row
-                      .span6
-                        / .control-group
-                        /   %label.control-label
-                        /     Use billing address?
-                        /   .controls
-                        /     %input.use-billing-address{type: 'checkbox'}
                       .span3
                         .control-group
                           = ff.label :first_name, :class => 'control-label' do
@@ -44,12 +38,14 @@
                             %span.red-clr.bold *
                           .controls
                             = ff.text_field :first_name, :class => 'use-billing', id: 'delivery_first_name'
+                            = errors_for @order, 'delivery_address.first_name'
                         .control-group
                           = f.label :email, :class => 'control-label' do
                             Email
                             %span.red-clr.bold *
                           .controls
                             = f.text_field :email, :class => 'span4', id: 'email'
+                            = errors_for @order, :email
                         .control-group
                           = ff.label :company, :class => 'control-label' do
                             Company
@@ -175,7 +171,7 @@
                             Country
                             %span.red-clr.bold *
                           .controls
-                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, :selected => @billing_address.country), { :include_blank => 'Please select...'})
+                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), { :include_blank => 'Please select...'})
                   = f.check_box :terms
                   = errors_for @order, :terms
                   %p Tick this box to acknowledge that you have read and agree with our terms and conditions.

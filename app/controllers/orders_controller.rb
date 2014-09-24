@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
     skip_before_action :authenticate_user!
-    before_action :set_order, except: [:confirm, :success, :failed]
+    before_action :set_order, except: [:success, :failed]
 
     # def new
     #   if current_cart.cart_items.empty?
@@ -18,20 +18,21 @@ class OrdersController < ApplicationController
     #   end
     # end  
 
-    # TODO Check there is a params[:payment_method] value before continuing, if not redirect to checkout
+    # def build
+    #   @order = Order.new(params[:order])
+    #   respond_to do |format|
+    #     if @order.save
+    #       @order.calculate(current_cart, Store::tax_rate)
+    #       format.html { redirect_to Payatron4000::select_pay_provider(current_cart, @order, params[:payment_method], request.remote_ip) }
+    #     else
+    #       binding.pry
+    #       # format.json { render json: @order.errors, status: 422 }
+    #       # format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
+    #     end
+    #   end
+    # end
+
     def confirm
-      @order = Order.new(params[:order])
-
-      respond_to do |format|
-        if @order.save
-          
-        else
-          format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
-        end
-      end
-    end
-
-    def complete
 
     end
 

@@ -5,6 +5,12 @@ module Payatron4000
 
     class << self
 
+        def select_pay_provider cart, order, payment_type, ip_address
+            if payment_type == 'paypal'
+                return Payatron4000::Paypal.build_order(cart, order, ip_address)
+            end
+        end
+
         # Creates a new stock level record for each order_item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
         #
