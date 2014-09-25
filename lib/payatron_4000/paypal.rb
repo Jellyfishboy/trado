@@ -10,7 +10,7 @@ module Payatron4000
                           cart,
                           ip_address, 
                           Rails.application.routes.url_helpers.confirm_order_url(order), 
-                          Rails.application.routes.url_helpers.checkout_carts_url
+                          Rails.application.routes.url_helpers.mycart_carts_url
                         )
           )
           if response.success?
@@ -97,23 +97,15 @@ module Payatron4000
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
           if response.success?
-            begin 
-              Payatron4000::Paypal.successful(response, order)
-              Payatron4000::destroy_cart(session)
-            rescue Exception => e
-              Rollbar.report_exception(e)
-            end
+            Payatron4000::Paypal.successful(response, order)
+            Payatron4000::destroy_cart(session)
             order.reload
-            Mailatron4000::Orders.confirmation_email(order) rescue Rollbar.report_message("Order #{order.id} confirmation email failed to send", "info", order: order)
+            Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.success_order_build_url(order_id: order.id, id: 'confirm')
           else
-            begin
-              Payatron4000::Paypal.failed(response, order)
-            rescue Exception => e
-              Rollbar.report_exception(e)
-            end
+            Payatron4000::Paypal.failed(response, order)
             order.reload
-            Mailatron4000::Orders.confirmation_email(order) rescue Rollbar.report_message("Order #{order.id} confirmation email failed to send", "info", order: order)
+            Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.failure_order_build_url( order_id: order.id, id: 'confirm')
           end
         end

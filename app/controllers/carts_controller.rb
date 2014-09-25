@@ -20,7 +20,6 @@ class CartsController < ApplicationController
                 @order.calculate(current_cart, Store::tax_rate)
                 format.html { redirect_to Payatron4000::select_pay_provider(current_cart, @order, params[:payment_method], request.remote_ip) }
             else
-                binding.pry
                 format.html { render action: 'checkout' }
             end
         end

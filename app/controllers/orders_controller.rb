@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     # end
 
     def confirm
-
+      Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
     end
 
     def success
