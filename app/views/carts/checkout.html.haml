@@ -103,11 +103,11 @@
                   .delivery-service-prices
                     .control-group
                       = f.label :delivery_id, :class => 'control-label' do
-                        Shipping options
+                        Delivery options
                         %span.red-clr.bold *
                       .controls
                         - unless current_cart.estimate_delivery_id.nil?
-                          = render partial: "carts/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, estimate_delivery_id: current_cart.estimate_delivery_id }
+                          = render partial: "carts/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, estimate_delivery_id: current_cart.estimate_delivery_id, field_target: 'order[delivery_id]' }
                         - else
                           %p.delivery_service_price_notice Select a country to view the available delivery services.
                           .control-group

@@ -126,7 +126,8 @@ trado.app =
                     type: 'GET',
                     data: 
                     {
-                        'country_id': this.value
+                        'country_id': this.value,
+                        'object_type': this.name.split('[')[0]
                     },
                     dataType: 'html',
                     success: function(data) 
