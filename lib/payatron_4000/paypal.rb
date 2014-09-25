@@ -101,17 +101,16 @@ module Payatron4000
             Payatron4000::destroy_cart(session)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
-            return Rails.application.routes.url_helpers.success_order_build_url(order_id: order.id, id: 'confirm')
+            return Rails.application.routes.url_helpers.success_order_url(order)
           else
             Payatron4000::Paypal.failed(response, order)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
-            return Rails.application.routes.url_helpers.failure_order_build_url( order_id: order.id, id: 'confirm')
+            return Rails.application.routes.url_helpers.failed_order_url(order)
           end
         end
 
         # Upon successfully completing an order with a PayPal payment option a new transaction record is created, stock is updated for the relevant SKU
-        # and order status attribute set to active
         #
         # @param response [Object]
         # @param order [Object]
@@ -129,8 +128,6 @@ module Payatron4000
             ).save(validate: false)
             Payatron4000::update_stock(order)
             Payatron4000::increment_product_order_count(order.products)
-            order.status = :active
-            order.save(validate: false)
         end
 
         
@@ -151,8 +148,7 @@ module Payatron4000
                               :status_reason => response.message,
                               :error_code => response.params["error_codes"].to_i
             ).save(validate: false)
-            order.status = :active
-            order.save(validate: false)
+            Payatron4000::increment_product_order_count(order.products)
         end
 
     end

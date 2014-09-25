@@ -16,7 +16,7 @@ describe Order do
     # Validations
     it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
     it { expect(subject).to validate_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
-    it { expect(subject).to validate_presence_of(:delivery_id).with_message('service must be selected.') }
+    it { expect(subject).to validate_presence_of(:delivery_id).with_message('Delivery option must be selected.') }
     it { expect(subject).to validate_presence_of(:email).with_message('is required') }
     it { expect(subject).to allow_value("test@test.com").for(:email) }
     it { expect(subject).to_not allow_value("test@test").for(:email).with_message(/invalid/) }

@@ -43,7 +43,7 @@ class Order < ActiveRecord::Base
 
   validates :actual_shipping_cost,                                      presence: true, :if => :completed?
   validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :delivery_id,                                               presence: { message: 'service must be selected.'}                                                                                                                  
+  validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }
 
   accepts_nested_attributes_for :delivery_address

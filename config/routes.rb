@@ -52,6 +52,7 @@ Trado::Application.routes.draw do
       get 'failed'
       get 'retry'
       get 'confirm'
+      post 'complete'
     end
     resources :addresses, only: [:new, :create, :update]
   end

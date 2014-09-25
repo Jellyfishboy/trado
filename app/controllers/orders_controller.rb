@@ -36,6 +36,10 @@ class OrdersController < ApplicationController
       Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
     end
 
+    def complete
+      redirect_to Payatron4000::Paypal.complete(@order, session)
+    end
+
     def success
       @order = Order.includes(:delivery_address).find(params[:order_id])
       redirect_to root_url unless @order.transactions.last.pending? || @order.transactions.last.completed?
