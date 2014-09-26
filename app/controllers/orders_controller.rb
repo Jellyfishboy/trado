@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
     skip_before_action :authenticate_user!
-    before_action :set_order, except: [:success, :failed]
+    before_action :set_order, only: [:destroy, :retry, :complete]
 
     # def new
     #   if current_cart.cart_items.empty?
@@ -33,10 +33,12 @@ class OrdersController < ApplicationController
     # end
 
     def confirm
+      @order = Order.includes(:delivery_address, :billing_address).find(params[:id])
       Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
     end
 
     def complete
+      @order.transfer(current_cart)
       redirect_to Payatron4000::Paypal.complete(@order, session)
     end
 
