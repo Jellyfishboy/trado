@@ -98,7 +98,7 @@
                             Country
                             %span.red-clr.bold *
                           .controls.update-delivery-service-price
-                            = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, :selected => current_cart.estimate_country_name), { include_blank: 'Please select...'})
+                            = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, selected: selected_country(current_cart, @delivery_address)), { include_blank: 'Please select...'})
                             = errors_for @order, 'delivery_address.country'
                   .delivery-service-prices
                     .control-group
@@ -106,8 +106,8 @@
                         Delivery options
                         %span.red-clr.bold *
                       .controls
-                        - unless current_cart.estimate_delivery_id.nil?
-                          = render partial: "carts/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, estimate_delivery_id: current_cart.estimate_delivery_id, field_target: 'order[delivery_id]' }
+                        - unless @delivery_id.nil?
+                          = render partial: "carts/delivery_service_prices/fields", locals: { delivery_service_prices: @delivery_service_prices, delivery_id: @delivery_id, field_target: 'order[delivery_id]' }
                         - else
                           %p.delivery_service_price_notice Select a country to view the available delivery services.
                           .control-group
@@ -118,7 +118,7 @@
                   .control-group
                     = image_tag 'paypal-icon.png'
                     .controls
-                      = radio_button_tag :payment_method, 'paypal', true
+                      = f.radio_button :payment_method, 'paypal', checked: true
                   %h3 Billing address
                   %hr
                   = f.fields_for :billing_address do |fff|
@@ -189,7 +189,7 @@
                             Country
                             %span.red-clr.bold *
                           .controls
-                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }), { :include_blank => 'Please select...'})
+                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, selected: selected_country(current_cart, @billing_address)), { include_blank: 'Please select...'})
                             = errors_for @order, 'billing_address.country'
                   = f.check_box :terms
                   = errors_for @order, :terms

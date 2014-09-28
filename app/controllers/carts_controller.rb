@@ -6,19 +6,28 @@ class CartsController < ApplicationController
     def mycart
     end
 
-    # TODO Need to calculate the net, tax, delivery and gross amount for the cart and transfer to the order once completed
     def checkout
-        @order = Order.new
-        @delivery_address = @order.build_delivery_address
-        @billing_address = @order.build_billing_address
+        if current_cart.order.nil?
+            @order = Order.new
+            @delivery_id = current_cart.estimate_delivery_id
+            @delivery_address = @order.build_delivery_address
+            @billing_address = @order.build_billing_address
+        else
+            @order = current_cart.order
+            @delivery_id = @order.delivery_id
+            @delivery_address = @order.delivery_address
+            @billing_address = @order.billing_address
+        end
+        binding.pry
     end
 
     def confirm
-        @order = Order.new(params[:order])
+        @order.attributes = params[:order]
         respond_to do |format|
             if @order.save
+                @order.update_column(:cart_id, current_cart.id)
                 @order.calculate(current_cart, Store::tax_rate)
-                format.html { redirect_to Payatron4000::select_pay_provider(current_cart, @order, params[:payment_method], request.remote_ip) }
+                format.html { redirect_to Payatron4000::select_pay_provider(current_cart, @order, request.remote_ip) }
             else
                 format.html { render action: 'checkout' }
             end
@@ -43,7 +52,9 @@ class CartsController < ApplicationController
     private
 
     def set_cart_details
+        @order = current_cart.order.nil? ? Order.new : current_cart.order
         @cart_total = current_cart.calculate(Store::tax_rate)
-        @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, current_cart.estimate_country_name) unless current_cart.estimate_delivery_id.nil?
+        @country = @order.delivery_address.nil? ? current_cart.estimate_country_name : @order.delivery_address.country
+        @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
     end
 end

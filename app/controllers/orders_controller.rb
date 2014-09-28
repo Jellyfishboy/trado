@@ -34,6 +34,8 @@ class OrdersController < ApplicationController
 
     def confirm
       @order = Order.includes(:delivery_address, :billing_address).find(params[:id])
+      @delivery_address = @order.delivery_address
+      @billing_address = @order.billing_address
       Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
     end
 

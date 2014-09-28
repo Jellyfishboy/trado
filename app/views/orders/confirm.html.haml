@@ -22,16 +22,50 @@
                 .span2
                   .right-align
                     = image_tag 'webmarket/buttons/security.jpg', :alt => 'Security', :width => 92, :height => 65
-            / ==========
-            / = Selected Items =
-            / ==========
-            / %span.icon-stack
-            /   %i.icon-circle-blank.icon-stack-base
-            /   %i.icon-ok
-            / %p
-            /   You are currently logged in with the following PayPal account:
-            /   %b
-            /     = session["paypal_email"]
+            .row
+              .span3
+                %h3 Delivery address
+                %hr
+                = @delivery_address.full_name
+                %br
+                = @order.email           
+                %br
+                = @delivery_address.telephone
+                %br
+                = @delivery_address.company
+                %br
+                = @delivery_address.address
+                %br
+                = @delivery_address.city
+                %br
+                = @delivery_address.postcode
+                %br
+                = @delivery_address.county
+                %br
+                = @delivery_address.country
+              .span3
+                %h3 Billing address
+                %hr
+                = @billing_address.full_name
+                %br
+                = @order.email           
+                %br
+                = @billing_address.telephone
+                %br
+                = @billing_address.company
+                %br
+                = @billing_address.address
+                %br
+                = @billing_address.city
+                %br
+                = @billing_address.postcode
+                %br
+                = @billing_address.county
+                %br
+                = @billing_address.country
+              .span4
+                %h3 Payment details
+                %hr
             %table.table.table-items
               %thead
                 %tr
@@ -88,6 +122,7 @@
                   %td.stronger
                     .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').single
             %p.right-align  
+              = link_to 'EDIT ORDER', checkout_carts_path, :class => 'btn higher bold'
               = link_to 'CONFIRM ORDER', complete_order_path(@order), method: :post, :class => 'btn btn-primary higher bold confirm_order'
     / /main content
 / /container

@@ -5,8 +5,8 @@ module Payatron4000
 
     class << self
 
-        def select_pay_provider cart, order, payment_type, ip_address
-            if payment_type == 'paypal'
+        def select_pay_provider cart, order, ip_address
+            if order.payment_method == 'paypal'
                 return Payatron4000::Paypal.build_order(cart, order, ip_address)
             end
         end

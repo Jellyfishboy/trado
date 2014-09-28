@@ -24,13 +24,14 @@
 #  tax_amount                             :decimal              precision(8), scale(2) 
 #  gross_amount                           :decimal              precision(8), scale(2) 
 #  terms                                  :boolean                 
+#  payment_method                         :string(255)
 #  created_at                             :datetime             not null
 #  updated_at                             :datetime             not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes
+  :net_amount, :tax_amount, :gross_amount, :terms, :payment_method, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes
   
   has_many :order_items,                                                dependent: :delete_all
   has_many :transactions,                                               dependent: :delete_all
