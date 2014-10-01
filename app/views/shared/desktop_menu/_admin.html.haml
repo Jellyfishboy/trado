@@ -19,7 +19,7 @@
       %i.icon-location
 %ul#secondary-menu
   %li
-    %a{'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Pages', :href => "#"}
+    = link_to admin_pages_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Pages' do
       %i.icon-file-2
   %li{:class => active_controller?('admin/settings')}
     = link_to admin_settings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Settings' do
