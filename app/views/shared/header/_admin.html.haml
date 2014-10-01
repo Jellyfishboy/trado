@@ -1,0 +1,23 @@
+%header
+  #logo.desktop
+    - if Store::settings.attachment.nil?
+      = image_tag 'fallback/square/default.png', :width => 60, :height => 60
+    - else
+      = image_tag Store::settings.attachment.file.square, :width => 60, :height => 60
+  %label#trigger.mobile
+    %i.icon-menu-2
+  .dropdown.user-menu
+    - if current_user.attachment.nil?
+      = image_tag 'fallback/square/default.png', 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
+    - else 
+      = image_tag current_user.attachment.file.square, 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
+    %i.fa.fa-caret-up
+    %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
+      %li
+        = link_to admin_profile_path do
+          %i.icon-user
+          Profile
+      %li
+        = link_to destroy_user_session_path, :method => :delete do
+          %i.icon-switch
+          Logout

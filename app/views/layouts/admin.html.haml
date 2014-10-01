@@ -14,92 +14,25 @@
     = javascript_include_tag "modernizr/modernizr"
     = javascript_include_tag :administration, "data-turbolinks-track" => true
   %body
-    %input#menu-trigger-input.menu-trigger-handler{name: "menu-trigger-input", onclick: "null", type: "checkbox"}/
-    #slide-menu.mobile
-      %ul
-        %li{:class => active_controller?('admin/categories')}
-          = link_to admin_root_path do
-            %i.icon-lab
-            %span Categories
-        %li{:class => active_controller?('admin/products')}
-          = link_to admin_products_path do
-            %i.fa.fa-th-large
-            %span Products
-        %li{:class => active_controller?('admin/accessories')}
-          = link_to admin_accessories_path do
-            %i.icon-power-cord
-            %span Accessories
-        %li{:class => active_controller?('admin/orders')}
-          = link_to admin_orders_path do
-            %i.icon-cart
-            %span Orders
-        %li{:class => "#{active_controller?('admin/delivery_services')} #{active_controller?('admin/delivery_service_prices')}"}
-          = link_to admin_delivery_services_path do
-            %i.icon-airplane
-            %span Delivery
-        %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
-          = link_to admin_zones_path do
-            %i.icon-location
-            %span Zones
     .all-wrapper
-      %header
-        #logo.desktop
-          - if Store::settings.attachment.nil?
-            = image_tag 'fallback/square/default.png', :width => 60, :height => 60
-          - else
-            = image_tag Store::settings.attachment.file.square, :width => 60, :height => 60
-        %label#menu-trigger.mobile{for: "menu-trigger-input", href: "#"}
-          %i.icon-menu-2
-        .dropdown.user-menu
-          - if current_user.attachment.nil?
-            = image_tag 'fallback/square/default.png', 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
-          - else 
-            = image_tag current_user.attachment.file.square, 'data-toggle' => 'dropdown', :width => 40, :height => 40, :href => '#'
-          %i.fa.fa-caret-up
-          %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
-            %li
-              = link_to admin_profile_path do
-                %i.icon-user
-                Profile
-            %li
-              = link_to admin_settings_path do
-                %i.icon-cog
-                Settings
-            %li
-              = link_to destroy_user_session_path, :method => :delete do
-                %i.icon-switch
-                Logout
-      #sidebar.desktop
-        %ul
-          %li{:class => active_controller?('admin/categories')}
-            = link_to admin_root_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Categories' do
-              %i.icon-lab
-          %li{:class => active_controller?('admin/products')}
-            = link_to admin_products_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Products' do
-              %i.fa.fa-th-large
-          %li{:class => active_controller?('admin/accessories')}
-            = link_to admin_accessories_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories' do
-              %i.icon-power-cord
-          %li{:class => active_controller?('admin/orders')}
-            = link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Orders' do
-              %i.icon-cart
-          %li{:class => "#{active_controller?('admin/delivery_services')} #{active_controller?('admin/delivery_service_prices')}"}
-            = link_to admin_delivery_services_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Delivery' do
-              %i.icon-airplane
-          %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
-            = link_to admin_zones_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Zones' do
-              %i.icon-location
-      .main
-        .loading5
-          %i
-          %i
-          %i
-          %i
-        .loading-overlay
-        .container
-          .row
-            = render_flash
-            = render_breadcrumbs 0
-            = yield
+      #mp-pusher.mp-pusher
+        = render 'shared/mobile_menu/admin'
+        .scroller
+          .scroller-inner
+            = render 'shared/header/admin'
+            #sidebar.desktop
+              = render 'shared/desktop_menu/admin'
+            .main
+              .loading5
+                %i
+                %i
+                %i
+                %i
+              .loading-overlay
+              .container
+                .row
+                  = render_flash
+                  = render_breadcrumbs 0
+                  = yield
 
     = yield :footer

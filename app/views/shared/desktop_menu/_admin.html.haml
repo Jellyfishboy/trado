@@ -1,0 +1,26 @@
+%ul
+  %li{:class => active_controller?('admin/categories')}
+    = link_to admin_root_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Categories' do
+      %i.icon-lab
+  %li{:class => active_controller?('admin/products')}
+    = link_to admin_products_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Products' do
+      %i.fa.fa-th-large
+  %li{:class => active_controller?('admin/accessories')}
+    = link_to admin_accessories_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Accessories' do
+      %i.icon-power-cord
+  %li{:class => active_controller?('admin/orders')}
+    = link_to admin_orders_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Orders' do
+      %i.icon-cart
+  %li{:class => "#{active_controller?('admin/delivery_services')} #{active_controller?('admin/delivery_service_prices')}"}
+    = link_to admin_delivery_services_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Delivery' do
+      %i.icon-airplane
+  %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
+    = link_to admin_zones_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Zones' do
+      %i.icon-location
+%ul#secondary-menu
+  %li
+    %a{'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Pages', :href => "#"}
+      %i.icon-file-2
+  %li{:class => active_controller?('admin/settings')}
+    = link_to admin_settings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Settings' do
+      %i.icon-cog
