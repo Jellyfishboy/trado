@@ -18,9 +18,9 @@
     = link_to admin_zones_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Zones' do
       %i.icon-location
 %ul#secondary-menu
-  %li
+  %li{:class => active_controller?('admin/pages')}
     = link_to admin_pages_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Pages' do
       %i.icon-file-2
-  %li{:class => active_controller?('admin/settings')}
+  %li{:class => active_controller?('admin/admin')}
     = link_to admin_settings_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Settings' do
       %i.icon-cog
