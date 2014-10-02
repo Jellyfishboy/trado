@@ -1,4 +1,4 @@
-class Contact
+class Message
     include ActiveModel::Validations
     include ActiveModel::Conversion
     extend ActiveModel::Naming

@@ -6,20 +6,10 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @categories }
-    end
   end
 
   def new
     @category = Category.new
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @category }
-    end
   end
 
   def edit
@@ -28,40 +18,28 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
 
-    respond_to do |format|
-      if @category.save
-        flash_message :success, 'Category was successfully created.'
-        format.html { redirect_to admin_categories_url }
-        format.json { render json: @category, status: :created, location: @category }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+      flash_message :success, 'Category was successfully created.'
+      redirect_to admin_categories_url
+    else
+      render action: "new"
     end
   end
 
   def update
-
-    respond_to do |format|
-      if @category.update(params[:category])
-        flash_message :success, 'Category was successfully updated.'
-        format.html { redirect_to admin_categories_url }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.update(params[:category])
+      flash_message :success, 'Category was successfully updated.'
+      redirect_to admin_categories_url
+    else
+      render action: "edit"
     end
   end
 
   def destroy
     @result = Store::last_record(@category, Category.all.count)
 
-    respond_to do |format|
-      flash_message @result[0], @result[1]
-      format.html { redirect_to admin_categories_url }
-      format.json { head :no_content }
-    end
+    flash_message @result[0], @result[1]
+    redirect_to admin_categories_url
   end
 
   private

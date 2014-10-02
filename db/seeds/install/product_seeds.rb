@@ -11,7 +11,7 @@ attribute_type = AttributeType.create({
     name: 'Weight', 
     measurement: 'g'
 })
-product_1 = Product.create({
+product_1 = Product.new({
     part_number: '1', 
     name: 'Your first product', 
     description: 'Pellentesque pimpin\' bow wow wow. Sed erizzle. For sure izzle mah nizzle dapibus turpis tempus crazy. Maurizzle pellentesque nibh izzle ghetto. Bow wow wow izzle tortor. Pellentesque eleifend rhoncizzle dizzle. In hizzle crackalackin platea dictumst. Get down get down dapibizzle. Curabitizzle tellizzle the bizzle, pretizzle yo mamma, mattizzle rizzle, eleifend vitae, nunc. Uhuh ... yih! suscipizzle. Sizzle sempizzle velit izzle purus.',
@@ -25,7 +25,8 @@ product_1 = Product.create({
     category_id: category.id,
     status: 1
 })
-product_2 = Product.create({
+product_1.save(validate: false)
+product_2 = Product.new({
     part_number: '2', 
     name: 'Product #2', 
     description: 'Pellentesque pimpin\' bow wow wow. Sed erizzle. For sure izzle mah nizzle dapibus turpis tempus crazy. Maurizzle pellentesque nibh izzle ghetto. Bow wow wow izzle tortor. Pellentesque eleifend rhoncizzle dizzle. In hizzle crackalackin platea dictumst. Get down get down dapibizzle. Curabitizzle tellizzle the bizzle, pretizzle yo mamma, mattizzle rizzle, eleifend vitae, nunc. Uhuh ... yih! suscipizzle. Sizzle sempizzle velit izzle purus.',
@@ -36,8 +37,10 @@ product_2 = Product.create({
     featured: false,
     single: true,
     active: true,
-    category_id: category.id    
+    category_id: category.id,
+    status: 1    
 })
+product_2.save(validate: false)
 RelatedProduct.create(product_id: product_1.id, related_id: product_2.id)
 accessory = Accessory.create({
     name: 'Accessory #1', 

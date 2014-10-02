@@ -21,7 +21,7 @@
     = link_to edit_admin_order_path(object), remote: true do
       %i.icon-pencil
   / Delete record
-  - unless type == 2 || type == 1 || type == 4
+  - unless type == 2 || type == 1 || type == 4 || type == 5
     = link_to del, :method => :delete, data: { confirm: 'Are you sure?' } do
       %i.icon-remove
   / AJAX delete record (SKU)

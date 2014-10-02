@@ -22,7 +22,7 @@
         %tbody
           - @categories.each do |category|
             %tr
-              %td= category.name, category
+              %td= category.name
               %td= category.description
               %td= category.sorting
               %td= category.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe

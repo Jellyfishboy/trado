@@ -16,6 +16,6 @@
           - @pages.each do |page|
             %tr
               %td= page.title
-              %td= page.visible ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe 
-              %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
-              = table_commands category, category, edit_admin_category_path(category), admin_category_path(category), 0
+              %td= page.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe 
+              %td= page.updated_at.strftime('%d/%m/%Y at %I:%M%p')
+              = table_commands page, admin_page_path(page), edit_admin_page_path(page), admin_page_path(page), 5

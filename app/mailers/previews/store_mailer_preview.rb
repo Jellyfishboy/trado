@@ -1,6 +1,6 @@
 class StoreMailerPreview < BasePreview
 
-    def contact
+    def message
         params = 
         {
             :name =>  'Tom Dallimore',
@@ -8,6 +8,6 @@ class StoreMailerPreview < BasePreview
             :website => 'http://www.tomdallimore.com',
             :message => 'Hi, this is a message'
         }
-        StoreMailer.contact(params)
+        StoreMailer.message(params)
     end
 end

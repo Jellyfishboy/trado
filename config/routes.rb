@@ -2,10 +2,6 @@ Trado::Application.routes.draw do
 
   root to: 'store#home'
 
-  # Standard pages
-  get '/about' => 'store#about'
-  get '/contact' => 'contacts#new'
-
   # Custom routes
   get '/order/delivery_service_prices/update' => 'delivery_service_prices#update'
   get '/product/skus' => 'skus#update'
@@ -55,7 +51,7 @@ Trado::Application.routes.draw do
   namespace :admin do
       root to: "categories#index"
       post '/paypal/ipn' => 'transactions#paypal_ipn'
-      resources :accessories, :categories, :zones, :pages, except: :show
+      resources :accessories, :categories, :zones, except: :show
       resources :products, except: [:show, :create] do
         resources :attachments, except: [:index, :show]
         resources :skus, except: [:index, :show] do
@@ -76,12 +72,15 @@ Trado::Application.routes.draw do
       namespace :zones do
         resources :countries, except: :show
       end
+      resources :pages, except: [:show, :destroy]
       get '/settings' => 'admin#settings'
       patch '/settings/update' => 'admin#update'
       get '/profile' => 'users#edit'
       patch '/profile/update' => 'users#update'
   end
 
+  # Generate dynamic page routes
+  DynamicRouter.load
   # # redirect unknown URLs to 404 error page
   # match '*path', via: :all, to: 'errors#show', code: 404
 

@@ -4,6 +4,7 @@ FactoryGirl.define do
         content { Faker::Lorem.paragraphs(3) }
         page_title { Faker::Lorem.sentence }
         meta_description { Faker::Lorem.sentence }
-        visible { true }
+        slug { Faker::Lorem.word }
+        active { true }
     end
 end

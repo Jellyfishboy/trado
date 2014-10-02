@@ -9,4 +9,5 @@ require_dependency 'payatron_4000'
 require_dependency 'deep_struct'
 require_dependency 'store'
 require_dependency 'renderer'
+require_dependency 'dynamic_router'
 

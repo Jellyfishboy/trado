@@ -1,11 +1,18 @@
 module ApplicationHelper
 
-    # Returns an array of categories which are active and ordered by their ascending sorting value
-    # Including product data for the links
+    # Returns an array of categories which are active
+    # Including published product data for the links
     #
     # @return [Array] list of categories
     def category_list
-      Category.joins(:products).active.where(products: { status: 1 } ).group('categories.id').order(sorting: :asc)
+      Category.joins(:products).active.where(products: { status: 1 } ).group('categories.id')
+    end
+
+    # Returns an array of pages which are active 
+    #
+    # @return [Array] list of pages
+    def page_list
+        Page.active.all
     end
     
     # If the string parameter equals the current controller value in the parameters hash, return a string
@@ -32,9 +39,14 @@ module ApplicationHelper
     #
     # @param controller [String]
     # @param action [String]
+    # @param id [Integer]
     # @return [String] class name for a HTML element
-    def active_page? controller, action
-      "active" if params[:controller] == controller && params[:action] == action
+    def active_page? controller, action, id
+        if id.nil?
+            "active" if params[:controller] == controller && params[:action] == action
+        else
+            "active" if params[:controller] == controller && params[:id] == id
+        end
     end
 
     # Create a new object to start building breadcrumbs for the store area

@@ -1,25 +1,58 @@
-= form_for @page do |f|
-  - if @page.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
-      %ul
-        - @page.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :content
-    = f.text_area :content
-  .field
-    = f.label :page_title
-    = f.text_field :page_title
-  .field
-    = f.label :meta_description
-    = f.text_field :meta_description
-  .field
-    = f.label :visible
-    = f.check_box :visible
-  .actions
-    = f.submit 'Save'
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Edit page
+  = form_for [:admin, @page], :html => { :role => 'form' } do |f|
+    - if @page.errors.any?
+      #errors
+        %ul
+          - @page.errors.full_messages.each do |msg|
+            %li
+              %i.icon-cancel-circle
+              = msg  
+    .threecol
+      %h3 Write your page
+      %p Give your page a title and add your page content.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label :title
+          = f.text_field :title, :class => 'form-control'
+        .form-group.form-last
+          = f.label :content
+          = f.text_area :content, :class => 'form-control', :rows => 8
+    .threecol
+      %h3 Search engines
+      %p Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label :page_title
+          = f.text_field :page_title, :class => 'form-control'
+        .form-group
+          = f.label :meta_description
+          = f.text_area :meta_description, :class => 'form-control', :rows => 4
+        .form-group.form-last
+          = f.label :slug
+          = f.text_field :slug, :class => 'form-control'
+    .threecol
+      %h3 Visiblity
+      %p Set if the page is visible on your storefront.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .radio
+          %label
+            = f.radio_button :active, true
+            Visible
+        .radio
+          %label
+            = f.radio_button :active, false
+            Hidden
+    .threecol
+      %h3 Template
+      %p Select the template this page will use on your storefront.
+    .ninecol.last
+      %fieldset.widget.widget-content.widget-last
+        = f.select :template_type, options_for_select(@template_types.keys.map { |type| [type.titleize, type] }, @page.template_type), { include_blank: false }, { :class => "form-control" }
+      .form-action
+        = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+.fourcol.last
