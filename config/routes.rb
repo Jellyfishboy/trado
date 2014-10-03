@@ -19,6 +19,9 @@ Trado::Application.routes.draw do
   resources :users
   resources :contacts, only: :create
   resources :delivery_service_prices, only: :update
+  resources :pages, only: [] do
+    post 'send_message', on: :collection
+  end
 
   resources :categories, only: :show do
     resources :products, only: :show do
@@ -72,7 +75,7 @@ Trado::Application.routes.draw do
       namespace :zones do
         resources :countries, except: :show
       end
-      resources :pages, except: [:show, :destroy]
+      resources :pages, except: [:show, :destroy, :new, :create]
       get '/settings' => 'admin#settings'
       patch '/settings/update' => 'admin#update'
       get '/profile' => 'users#edit'
