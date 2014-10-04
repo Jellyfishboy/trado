@@ -1,25 +1,31 @@
 class PagesController < ApplicationController
 
     skip_before_action :authenticate_user!
+    before_action :set_page, except: :send_contact_message
 
     def standard
-        @page = Page.find(params[:id])
     end
 
     def contact
-        @message = Message.new
+        @contact_message = ContactMessage.new
     end
 
-    def send_message
-        @message = Message.new(params[:message])
+    def send_contact_message
+        @contact_message = ContactMessage.new(params[:contact_message])
 
         respond_to do |format|
-            if @message.valid?
-                format.js { render partial: 'pages/message/success', format: [:js], status: 200 }
-                StoreMailer.message(params[:message]).deliver
+            if @contact_message.valid?
+                format.js { render partial: 'pages/contact_message/success', format: [:js], status: 200 }
+                StoreMailer.contact_message(params[:contact_message]).deliver
             else
-                format.json { render json: { errors: @message.errors.to_json(root: true) }, status: 422 }
+                format.json { render json: { errors: @contact_message.errors.to_json(root: true) }, status: 422 }
             end
         end
+    end
+
+    private
+
+    def set_page
+        @page = Page.find(params[:id])
     end
 end

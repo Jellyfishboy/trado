@@ -1,3 +1,20 @@
+GIT
+  remote: git://github.com/nixme/jazz_hands.git
+  revision: 5e4b48f145883ecb14b55bf04eacc28ac9662676
+  branch: bring-your-own-debugger
+  specs:
+    jazz_hands (0.5.2)
+      awesome_print (~> 1.2)
+      coolline (>= 0.4.2)
+      hirb (~> 0.7.1)
+      pry (~> 0.9.12)
+      pry-doc (~> 0.4.6)
+      pry-git (~> 0.2.3)
+      pry-rails (~> 0.3.2)
+      pry-remote (>= 0.1.7)
+      pry-stack_explorer (~> 0.4.9)
+      railties (>= 3.0, < 5.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -60,6 +77,9 @@ GEM
     bullet (4.13.2)
       activesupport (>= 3.0.0)
       uniform_notifier (>= 1.6.0)
+    byebug (2.7.0)
+      columnize (~> 0.3)
+      debugger-linecache (~> 1.2)
     callsite (0.0.11)
     cancan (1.6.10)
     cane (2.6.2)
@@ -111,15 +131,19 @@ GEM
     coffee-script-source (1.8.0)
     colored (1.2)
     colorize (0.7.3)
+    columnize (0.8.9)
     compass (0.12.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    coolline (0.5.0)
+      unicode_utils (~> 1.4)
     daemons (1.1.9)
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -127,6 +151,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    diffy (3.0.6)
     elasticsearch (1.0.5)
       elasticsearch-api (= 1.0.5)
       elasticsearch-transport (= 1.0.5)
@@ -192,6 +217,10 @@ GEM
       json
       multi_json
       request_store (>= 1.0.5)
+    grit (2.5.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -287,12 +316,31 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
+    posix-spawn (0.3.9)
     protected_attributes (1.0.8)
       activemodel (>= 4.0.1, < 5.0)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
       slop (~> 3.4)
+    pry-byebug (1.3.2)
+      byebug (~> 2.7)
+      pry (~> 0.9.12)
+    pry-doc (0.4.6)
+      pry (>= 0.9)
+      yard (>= 0.8)
+    pry-git (0.2.3)
+      diffy
+      grit
+      pry (>= 0.9.8)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
+    pry-stack_explorer (0.4.9.1)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -417,6 +465,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.6)
+    unicode_utils (1.4.0)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -432,6 +481,7 @@ GEM
       rails (>= 3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yard (0.8.7.4)
 
 PLATFORMS
   ruby
@@ -466,6 +516,7 @@ DEPENDENCIES
   haml
   haml-rails
   highline
+  jazz_hands!
   jquery-rails
   jquery-turbolinks
   lograge
@@ -476,7 +527,7 @@ DEPENDENCIES
   pg
   poltergeist
   protected_attributes
-  pry
+  pry-byebug
   quiet_assets
   rails (= 4.1.0)
   remotipart (~> 1.2)

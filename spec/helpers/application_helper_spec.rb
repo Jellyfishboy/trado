@@ -17,6 +17,15 @@ describe ApplicationHelper do
         end
     end
 
+    describe '#page_list' do
+        let!(:page_1) { create(:standard_page, title: 'apple') }
+        let!(:page_2) { create(:contact_page, title: 'orange') }
+
+        it "should return a list of active pages sorted by their title value" do
+            expect(helper.page_list).to match_array([page_1, page_2])
+        end
+    end
+
     describe '#active_controller?' do
         before(:each) do
             helper.stub(:params) { { controller: 'product' } }
@@ -86,17 +95,26 @@ describe ApplicationHelper do
             helper.stub(:params) { { controller: 'product', action: 'show' } }
         end
 
-        context "if the controller and action parameter equals the parameter[:controller] and params[:action] value" do
+        context "if the controller and action parameter equals the params[:controller] and params[:action] value" do
 
             it "should return the 'active' class name" do
-                expect(helper.active_page?('product', 'show')).to eq 'active'
+                expect(helper.active_page?('product', 'show', nil)).to eq 'active'
             end
         end
 
-        context "if the controller and action parameter does not equal the parameter[:controller] or params[:action] value" do
+        context "if the controller and action parameter does not equal the params[:controller] or params[:action] value" do
 
             it "should return nil" do
-                expect(helper.active_page?('category', 'show')).to eq nil
+                expect(helper.active_page?('category', 'show', nil)).to eq nil
+            end
+        end
+
+        context "if the controller and id parameter equals the params[:controller] and params[:id]" do
+            before(:each) do
+                helper.stub(:params) { { controller: 'pages', action: 'standard', id: 1} }
+            end
+            it "should return the 'active' class name" do
+                expect(helper.active_page?('pages', 'standard', 1)).to eq 'active'
             end
         end
     end

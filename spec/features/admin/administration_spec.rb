@@ -13,8 +13,7 @@ feature 'Administration management' do
         Store::settings
 
         visit admin_root_path
-        find('.user-menu').click
-        find('ul[role="menu"] li:nth-child(2) a').click
+        find('a[data-original-title="Settings"]').click
         expect(current_path).to eq admin_settings_path
 
         fill_in('store_setting_name', with: 'Test store name')

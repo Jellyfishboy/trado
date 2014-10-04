@@ -1,5 +1,6 @@
-- content_for :title, 'Contact Us'
-- content_for :breadcrumb, 'Contact Us'
+- content_for :title, @page.page_title
+- content_for :meta_description, @page.meta_description
+- content_for :breadcrumb, @page.title
 / ==========
 / = Breadcrumbs =
 / ==========
@@ -23,8 +24,7 @@
       .span12
         .title-area
           %h1.inline
-            %span.light Contact
-            Us
+            %span.light= @page.title
       / ==========
       / = Main content =
       / ==========
@@ -34,8 +34,7 @@
         / ==========
         %article.post
           .post-inner
-            %p
-              The simple contact form below comes packed within this theme. To use the inbuilt form, simply create a page and use the page template “Contact”. The form will automatically insert below any page content. The form includes jQuery validation to enhance user experience and the recipient email can be configured from the theme options.
+            = raw @page.content
         %hr/
         / ==========
         / = Contact Form =
@@ -44,7 +43,7 @@
           %h3.push-down-25
             %span.light Send
             a Message
-          = form_for @message, url: send_message_pages_path, html: { :class => 'form form-inline form-contact remote-form loading-form', id: 'commentform', method: :post, remote: true } do |f|
+          = form_for @contact_message, url: send_message_pages_path, html: { :class => 'form form-inline form-contact remote-form loading-form', id: 'commentform', method: :post, remote: true } do |f|
             %p.push-down-20
               = f.text_field :name, tabindex: 1
               %label
@@ -64,83 +63,3 @@
               = f.text_area :message, cols: 70, placeholder: 'Your message goes here...', rows: 7, tabindex: 4, :class => 'input-block-level'
             %p
               = f.submit 'Send email', tabindex: 5, :class => 'btn btn-primary bold'
-        %hr/
-        / ==========
-        / = Company Info with Google Maps =
-        / ==========
-        %article.company-info
-          .row
-            .span3
-              %h3.push-down-30
-                %span.light Company
-                Info
-              %p
-                %strong.opensans.dark-clr IMAGINARY COMPANY LTD.
-                %br/
-                Wall street 17,
-                %br/
-                1000 New York,
-                %br/
-                United States
-              %p
-                %strong.opensans.dark-clr Phone number:
-                00386 31 567 537
-                %br/
-                %strong.opensans.dark-clr Fax:
-                00386 31 567 538
-                %br/
-                %strong.opensans.dark-clr Email:
-                %a{href: "#"} info@webmarket.com
-            .span5
-              .add-googlemap{"data-addr" => "Prešernov Trg, Ljubljana", "data-height" => "205", "data-title" => "Webmarket Business", "data-type" => "roadmap", "data-zoom" => "14"}
-      / /main content
-      / ==========
-      / = Sidebar =
-      / ==========
-      %aside.span4
-        / ==========
-        / = Opening Times Widget =
-        / ==========
-        #opening_time-4.sidebar-item.opening-time
-          .underlined
-            %h3
-              %span.light Opening
-              Time
-          .time-table
-            %dl.week-day
-              %dt
-                Monday
-              %dd
-                8:00 - 16:00
-            %dl.week-day.light-bg
-              %dt
-                Tuesday
-              %dd
-                8:00 - 16:00
-            %dl.week-day
-              %dt
-                Wednesday
-              %dd
-                8:00 - 16:00
-            %dl.week-day.light-bg.today
-              %dt
-                Thursday
-              %dd
-                10:00 - 15:00
-            %dl.week-day
-              %dt
-                Friday
-              %dd
-                8:00 - 16:00
-            %dl.week-day.light-bg
-              %dt
-                Saturday
-              %dd
-                8:00 - 16:00
-            %dl.week-day.closed
-              %dt
-                Sunday
-              %dd
-                CLOSED
-      / /sidebar
-/ /container

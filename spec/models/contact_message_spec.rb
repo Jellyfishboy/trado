@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Contact do
+describe ContactMessage do
 
     # Validations
     it { expect(subject).to validate_presence_of(:name) } 

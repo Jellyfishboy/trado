@@ -20,7 +20,7 @@ Trado::Application.routes.draw do
   resources :contacts, only: :create
   resources :delivery_service_prices, only: :update
   resources :pages, only: [] do
-    post 'send_message', on: :collection
+    post 'send_contact_message', on: :collection
   end
 
   resources :categories, only: :show do

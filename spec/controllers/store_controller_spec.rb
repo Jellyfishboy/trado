@@ -11,12 +11,4 @@ describe StoreController do
             expect(response).to render_template :home
         end
     end
-
-    describe 'GET #about' do
-
-        it "should render the :about template" do
-            get :about
-            expect(response).to render_template :about
-        end
-    end
 end

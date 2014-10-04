@@ -24,7 +24,7 @@ class Page < ActiveRecord::Base
     validates :title, :content, :page_title, :meta_description,                 presence: true
     validates :title, :slug,                                                    uniqueness: true
     validates :page_title,                                                      length: { maximum: 70, message: :too_long }
-    validates :meta_description,                                                length: { maximum: 160, message: :too_long }
+    validates :meta_description,                                                length: { maximum: 150, message: :too_long }
 
     enum template_type: [:standard, :contact]
 

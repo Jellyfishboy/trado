@@ -46,7 +46,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'   # This may or may not work with 2.1.2 either, so remove if you still get errorrs
   # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
