@@ -43,7 +43,7 @@
           %h3.push-down-25
             %span.light Send
             a Message
-          = form_for @contact_message, url: send_message_pages_path, html: { :class => 'form form-inline form-contact remote-form loading-form', id: 'commentform', method: :post, remote: true } do |f|
+          = form_for @contact_message, url: send_contact_message_pages_path, html: { :class => 'form form-inline form-contact remote-form loading-form', id: 'commentform', method: :post, remote: true } do |f|
             %p.push-down-20
               = f.text_field :name, tabindex: 1
               %label

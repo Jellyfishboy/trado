@@ -417,7 +417,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachments')).to have_selector('div.attachments', count: 2)
-        find('div.attachments:first-child a:last-child').click
+        find('div.attachments:first-child a:last-child').trigger('click')
         expect(find('#attachments')).to have_selector('div.attachments', count: 1)
         expect(multi_attachment_product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do

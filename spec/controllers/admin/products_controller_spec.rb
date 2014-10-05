@@ -5,81 +5,81 @@ describe Admin::ProductsController do
     store_setting
     login_admin
 
-    describe 'GET #index' do
-        let!(:category_1) { create(:category, sorting: 1) }
-        let!(:category_2) { create(:category, sorting: 0) }
-        let!(:product_1) { create(:product_sku, weighting: 2000, active: true, category_id: category_1.id) }
-        let!(:product_2) { create(:product_sku, weighting: 1000, active: true, category_id: category_2.id) }
-        let!(:product_3) { create(:product_sku, weighting: 3000, active: false, category_id: category_1.id) }
+    # describe 'GET #index' do
+    #     let!(:category_1) { create(:category, sorting: 1) }
+    #     let!(:category_2) { create(:category, sorting: 0) }
+    #     let!(:product_1) { create(:product_sku, weighting: 2000, active: true, category_id: category_1.id) }
+    #     let!(:product_2) { create(:product_sku, weighting: 1000, active: true, category_id: category_2.id) }
+    #     let!(:product_3) { create(:product_sku, weighting: 3000, active: false, category_id: category_1.id) }
 
-        it "should populate an array of all products" do
-            get :index
-            expect(assigns(:products)).to match_array([product_2, product_1])
-        end
+    #     it "should populate an array of all products" do
+    #         get :index
+    #         expect(assigns(:products)).to match_array([product_2, product_1])
+    #     end
 
-        it "should populate an array of all categories" do
-            get :index
-            expect(assigns(:categories)).to match_array([category_2, category_1])
-        end
+    #     it "should populate an array of all categories" do
+    #         get :index
+    #         expect(assigns(:categories)).to match_array([category_2, category_1])
+    #     end
 
-        it "should render the :index template" do
-            get :index
-            expect(response).to render_template :index
-        end
-    end
+    #     it "should render the :index template" do
+    #         get :index
+    #         expect(response).to render_template :index
+    #     end
+    # end
 
-    describe 'GET #new' do
+    # describe 'GET #new' do
 
-        context "if there are no Attribute types" do
+    #     context "if there are no Attribute types" do
 
-            it "should flash an error message" do
-                get :new
-                expect(subject.request.flash[:error]).to_not be_nil
-            end
+    #         it "should flash an error message" do
+    #             get :new
+    #             expect(subject.request.flash[:error]).to_not be_nil
+    #         end
 
-            it "should redirect to the products#index" do
-                get :new
-                expect(response).to redirect_to(admin_products_url)
-            end
+    #         it "should redirect to the products#index" do
+    #             get :new
+    #             expect(response).to redirect_to(admin_products_url)
+    #         end
 
-            it "should not save a new product to the database" do
-                expect {
-                    get :new
-                }.to_not change(Product, :count)
-            end
-        end
+    #         it "should not save a new product to the database" do
+    #             expect {
+    #                 get :new
+    #             }.to_not change(Product, :count)
+    #         end
+    #     end
 
-        context "if there are Attribute types" do
-            before(:each) do
-                create(:attribute_type)
-            end
+    #     context "if there are Attribute types" do
+    #         before(:each) do
+    #             create(:attribute_type)
+    #         end
 
-            it "should create a new product" do
-                expect {
-                    get :new
-                }.to change(Product, :count).by(1)
-            end
+    #         it "should create a new product" do
+    #             expect {
+    #                 get :new
+    #             }.to change(Product, :count).by(1)
+    #         end
 
-            it "should redirect to the edit product path" do
-                get :new
-                expect(response).to redirect_to(edit_admin_product_path(assigns(:product)))
-            end
-        end
-    end
+    #         it "should redirect to the edit product path" do
+    #             get :new
+    #             expect(response).to redirect_to(edit_admin_product_path(assigns(:product)))
+    #         end
+    #     end
+    # end
 
-    describe 'GET #edit' do
-        let(:product) { create(:product_sku, active: true) }
+    # describe 'GET #edit' do
+    #     let(:product) { create(:product_sku, active: true) }
 
-        it "should assign the requested product to @product" do
-            get :edit, id: product.id
-            expect(assigns(:product)).to eq product
-        end
+    #     it "should assign the requested product to @product" do
+    #         get :edit, id: product.id
+    #         expect(assigns(:product)).to eq product
+    #     end
 
-        it "should render the :edit template" do
-            get :edit, id: product.id
-            expect(response).to render_template :edit
-        end
-    end
+    #     it "should render the :edit template" do
+    #         get :edit, id: product.id
+    #         expect(response).to render_template :edit
+    #     end
+    # end
 
     describe 'PATCH #update' do
         let!(:category) { create(:category) }
@@ -127,109 +127,108 @@ describe Admin::ProductsController do
 
 
             it "should save the product" do
-                patch :update, id: product.id, product: attributes_for(:product_sku, category_id: category.id, name: 'Product #2', featured: true, commit: 'Save')
+                patch :update, id: product.id, product: attributes_for(:product_sku, category_id: category.id, name: 'Product #2', featured: true), commit: 'Save'
                 product.reload
                 expect(product.name).to eq('Product #2')
                 expect(product.featured).to eq(true)
             end
 
             it "should redirect to products#index" do
-                patch :update, id: product.id, product: attributes_for(:product_sku, category_id: category.id, commit: 'Save')
+                patch :update, id: product.id, product: attributes_for(:product_sku, category_id: category.id), commit: 'Save'
                 expect(response).to redirect_to(admin_products_url)
             end
         end
 
         context "with invalid attributes" do
-            before(:each) do
-                patch :update, id: product.id, product: attributes_for(:invalid_product, category_id: category.id, commit: 'Publish')
-            end
 
             it "should not update the product" do
+                patch :update, id: product.id, product: attributes_for(:invalid_product, category_id: category.id),commit: 'Publish'
                 expect(product.name).to eq 'Product #1'
                 expect(product.featured).to eq false
             end
 
             it "should render the :edit template" do
+                patch :update, id: product.id, product: attributes_for(:invalid_product, category_id: category.id), commit: 'Publish'
                 expect(response).to render_template :edit
             end
         end
     end
 
-    describe 'DELETE #destroy' do
-        let!(:product) { create(:product_skus, active: true) }
-        let(:order) { create(:order) }
-        let(:cart) { create(:cart) }
+    # describe 'DELETE #destroy' do
+    #     let!(:product) { create(:product_skus, active: true) }
+    #     let(:order) { create(:order) }
+    #     let(:cart) { create(:cart) }
 
-        it "should assign the requested product to @product" do
-            delete :destroy, id: product.id
-            expect(assigns(:product)).to eq product
-        end
+    #     it "should assign the requested product to @product" do
+    #         delete :destroy, id: product.id
+    #         expect(assigns(:product)).to eq product
+    #     end
 
-        context "if the product has associated orders" do
-            before(:each) do
-                product.reload
-                create(:order_item, sku_id: product.skus.first.id, order_id: order.id)
-            end
+    #     context "if the product has associated orders" do
+    #         before(:each) do
+    #             product.reload
+    #             create(:order_item, sku_id: product.skus.first.id, order_id: order.id)
+    #         end
 
-            it "should set the product as inactive" do
-                expect{
-                    delete :destroy, id: product.id
-                    product.reload
-                }.to change{
-                    product.active
-                }.from(true).to(false)
-            end
+    #         it "should set the product as inactive" do
+    #             expect{
+    #                 delete :destroy, id: product.id
+    #                 product.reload
+    #             }.to change{
+    #                 product.active
+    #             }.from(true).to(false)
+    #         end
 
-            it "should not delete the product from the database" do
-                expect{
-                    delete :destroy, id: product.id
-                }.to change(Product, :count).by(0)
-            end
+    #         it "should not delete the product from the database" do
+    #             expect{
+    #                 delete :destroy, id: product.id
+    #             }.to change(Product, :count).by(0)
+    #         end
 
-            it "should not delete any associated SKUs from the database" do
-                expect{
-                    delete :destroy, id: product.id
-                }.to change(Sku, :count).by(0)
-            end
+    #         it "should not delete any associated SKUs from the database" do
+    #             expect{
+    #                 delete :destroy, id: product.id
+    #             }.to change(Sku, :count).by(0)
+    #         end
 
-            it "should set the associated SKUs as inactive" do
-                delete :destroy, id: product.id
-                product.reload
-                expect(product.skus.map(&:active)).to eq [false, false, false]
-            end
-        end
+    #         it "should set the associated SKUs as inactive" do
+    #             delete :destroy, id: product.id
+    #             product.reload
+    #             expect(product.skus.map(&:active)).to eq [false, false, false]
+    #         end
+    #     end
 
-        context "if the product has no associated orders" do
+    #     context "if the product has no associated orders" do
 
-            it "should delete the product from the database"  do
-                expect {
-                    delete :destroy, id: product.id
-                }.to change(Product, :count).by(-1)
-            end
+    #         it "should delete the product from the database"  do
+    #             expect {
+    #                 delete :destroy, id: product.id
+    #             }.to change(Product, :count).by(-1)
+    #         end
 
-            it "should delete associated SKUs from the database" do
-                expect{
-                    delete :destroy, id: product.id
-                }.to change(Sku, :count).by(-3)
-            end
-        end
+    #         it "should delete associated SKUs from the database" do
+    #             expect{
+    #                 delete :destroy, id: product.id
+    #             }.to change(Sku, :count).by(-3)
+    #         end
+    #     end
 
-        context "if the product has associated carts" do
-            before(:each) do
-                product.reload
-                create_list(:cart_item, 2, sku_id: product.skus.first.id, cart_id: cart.id)
-            end
+    #     context "if the product has associated carts" do
+    #         before(:each) do
+    #             product.reload
+    #             create_list(:cart_item, 2, sku_id: product.skus.first.id, cart_id: cart.id)
+    #         end
 
-            it "should delete all associated cart item products from the database" do
-                expect{
-                    delete :destroy, id: product.id
-                }.to change(CartItem, :count).by(-2)
-            end
-        end
+    #         it "should delete all associated cart item products from the database" do
+    #             expect{
+    #                 delete :destroy, id: product.id
+    #             }.to change(CartItem, :count).by(-2)
+    #         end
+    #     end
 
-        it "should redirect to products#index" do
-            delete :destroy, id: product.id
-            expect(response).to redirect_to admin_products_url
-        end
-    end
+    #     it "should redirect to products#index" do
+    #         delete :destroy, id: product.id
+    #         expect(response).to redirect_to admin_products_url
+    #     end
+    # end
 end

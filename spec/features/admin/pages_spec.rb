@@ -4,14 +4,14 @@ feature 'Page management' do
 
     store_setting
     feature_login_admin
-    given(:page) { create(:standard_page) }
+    given(:single_page) { create(:standard_page) }
 
     scenario 'should display an index of pages' do
-        page
+        single_page
 
         visit admin_root_path
         find('a[data-original-title="Pages"]').click
-        expect(current_path).to eq admin_root_path
+        expect(current_path).to eq admin_pages_path
         within 'h2' do
             expect(page).to have_content 'Pages'
         end
@@ -22,18 +22,18 @@ feature 'Page management' do
             expect(page).to have_content 'Title'
         end
         within 'tbody tr td:first-child' do
-            expect(page).to have_content page.title
+            expect(page).to have_content single_page.title
         end
     end
 
     scenario 'should edit a page' do
-        page
+        single_page
 
         visit admin_pages_path
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_page_path(page)
+        expect(current_path).to eq edit_admin_page_path(single_page)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
@@ -47,8 +47,8 @@ feature 'Page management' do
         within 'h2' do
             expect(page).to have_content 'Pages'
         end 
-        page.reload
-        expect(page.title).to eq 'page #2'
-        expect(page.page_title).to eq 'page title ting'
+        single_page.reload
+        expect(single_page.title).to eq 'page #2'
+        expect(single_page.page_title).to eq 'page title ting'
     end
 end
