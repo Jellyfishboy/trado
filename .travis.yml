@@ -5,9 +5,9 @@ branches:
     only:
         - master
 script:
-    - bundle exec rake db:test:prepare
     - RAILS_ENV=test bundle exec rake db:create --trace
     - RAILS_ENV=test bundle exec rake db:schema:load --trace
+    - bundle exec rake db:test:prepare
     - bundle exec rspec spec/
 services:
     - elasticsearch
@@ -15,7 +15,7 @@ before_install:
     - sudo apt-get install -qq openjdk-6-jre
 before_script:
     - cp config/database.travis.yml config/database.yml
-    - psql -c 'create database trado_test_db' -U postgres
+    - psql -c 'create database trado_test' -U postgres
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
     - npm install bower -g
