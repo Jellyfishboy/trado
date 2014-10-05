@@ -1,3 +1,5 @@
+- javascript 'redactor-rails'
+
 .twelvecol
   .page-header
     %h2.widget.widget-header Edit page
@@ -19,7 +21,7 @@
           = f.text_field :title, :class => 'form-control'
         .form-group.form-last
           = f.label :content
-          = f.text_area :content, :class => 'form-control', :rows => 8
+          = f.text_area :content, :class => 'form-control redactor', :rows => 8
     .threecol
       %h3 Search engines
       %p Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.

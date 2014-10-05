@@ -47,7 +47,7 @@ end
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'pry-byebug'   # This may or may not work with 2.1.2 either, so remove if you still get errorrs
+  gem 'pry-byebug'
   # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
@@ -86,6 +86,7 @@ gem 'protected_attributes'
 gem 'tzinfo-data'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
+gem 'redactor-rails'
 
 # Transaction handler
 gem 'activemerchant'

@@ -22,9 +22,10 @@ Trado::Application.configure do
                                 'custom.css', 
                                 'css3-fallback.js', 
                                 'modernizr/modernizr.js', 
-                                'products.js', 
+                                'products.js',
+                                'redactor-rails.js',
                                 'admin/soca.datepicker.js',
-                                'typeahead.js/dist/typeahead.jquery.min.js'
+                                'typeahead.js/dist/typeahead.jquery.min.js',
                               ]
 
   # Generate digests for assets URLs
