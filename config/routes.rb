@@ -84,7 +84,7 @@ Trado::Application.routes.draw do
   end
 
   # Generate dynamic page routes
-  DynamicRouter.load
+  DynamicRouter::load
   # # redirect unknown URLs to 404 error page
   # match '*path', via: :all, to: 'errors#show', code: 404
 
