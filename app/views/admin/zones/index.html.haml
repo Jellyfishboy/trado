@@ -12,7 +12,7 @@
     .widget-sub-heading
       %h3= zone.name
       .pull-right
-        = table_commands zone, admin_zone_path(zone), edit_admin_zone_path(zone), admin_zone_path(zone), 0
+        = table_commands zone, 'edit', 'delete'
     %table.table.table-striped.table-bordered.table-hover.table-margin.table-zone
       %thead
         %tr

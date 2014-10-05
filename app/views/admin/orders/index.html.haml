@@ -28,5 +28,5 @@
               %td= status_label order.transactions.last, order.transactions.last.payment_status
               %td= Store::Price.new(order.gross_amount, 'net').single
               %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
-              = table_commands order, admin_order_path(order), admin_order_path(order), admin_order_path(order), 2
+              = table_commands order, 'show', 'remote-edit'
 #order-modal

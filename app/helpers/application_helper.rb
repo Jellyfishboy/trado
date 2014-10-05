@@ -5,7 +5,7 @@ module ApplicationHelper
     #
     # @return [Array] list of categories
     def category_list
-      Category.joins(:products).active.where(products: { status: 1 } ).group('categories.id')
+        Category.joins(:products).active.where(products: { status: 1 } ).group('categories.id')
     end
 
     # Returns an array of pages which are active 
@@ -20,7 +20,7 @@ module ApplicationHelper
     # @param controller [String]
     # @return [String] class name for a HTML element
     def active_controller? controller
-      "current" if params[:controller] == controller
+        "current" if params[:controller] == controller
     end
 
     # Either the id or category_id value from the parameters hash is assigned to an instance variable
@@ -29,9 +29,9 @@ module ApplicationHelper
     # @param id [Integer]
     # @return [String] class name for a HTML element
     def active_category? id
-      category = params[:category_id]
-      category ||= params[:id]
-      "active" if category == id
+        category = params[:category_id]
+        category ||= params[:id]
+        "active" if category == id
     end
 
     # If the controller and action values from the parameter hash are equal to the parameters
@@ -53,7 +53,7 @@ module ApplicationHelper
     #
     # @return [Object] breadcrumbs for the current page in the store area
     def create_store_breadcrumbs
-      @app_breadcrumbs ||= [ { :title => 'Home', :url => root_path }]
+        @app_breadcrumbs ||= [ { :title => 'Home', :url => root_path }]
     end
 
     # Add a new breadcrumb to the storefront breadcrumb object using the parameters
@@ -61,14 +61,14 @@ module ApplicationHelper
     # @param title [String]
     # @param url [String]
     def store_breadcrumb_add title, url
-      create_store_breadcrumbs << { :title => title, :url => url }
+        create_store_breadcrumbs << { :title => title, :url => url }
     end
 
     # Create a new object to start building breadcrumbs for the administration area
     #
     # @return [Object] breadcrumbs for the current page in the administration area
     def create_admin_breadcrumbs
-      @admin_breadcrumbs ||= [ { :title => Store::settings.name, :url => admin_root_path}]
+        @admin_breadcrumbs ||= [ { :title => Store::settings.name, :url => admin_root_path}]
     end
 
     # Add a new breadcrumb to the administration area breadcrumb object using the parameters
@@ -76,7 +76,7 @@ module ApplicationHelper
     # @param title [String]
     # @param url [String]
     def breadcrumb_add title, url
-      create_admin_breadcrumbs << { :title => title, :url => url }
+        create_admin_breadcrumbs << { :title => title, :url => url }
     end
 
     # Renders the HTML elements for the breadcrumbs
@@ -84,11 +84,11 @@ module ApplicationHelper
     # @param type [Integer]
     # @return [String] HTML elements
     def render_breadcrumbs type
-      if type == 0
-        render :partial => 'shared/breadcrumbs/admin', :locals => { :breadcrumbs => create_admin_breadcrumbs }
-      else 
-        render :partial => 'shared/breadcrumbs/store', :locals => { :breadcrumbs => create_store_breadcrumbs }
-      end
+        if type == 0
+            render :partial => 'shared/breadcrumbs/admin', :locals => { :breadcrumbs => create_admin_breadcrumbs }
+        else 
+            render :partial => 'shared/breadcrumbs/store', :locals => { :breadcrumbs => create_store_breadcrumbs }
+        end
     end
 
     # Creates HTML elements for the table actions with the administration area
@@ -100,8 +100,12 @@ module ApplicationHelper
     # @param delete [Object]
     # @param type [Integer]
     # @return [String] HTML elements
-    def table_commands object, show, edit, delete, type
-      render :partial => 'shared/table_actions', :locals => { :object => object, :view => show, :edit => edit, :del => delete, :type => type }
+    def table_commands object, *args
+        show = args.include?('show')
+        edit = args.include?('edit') || args.include?('remote-edit')
+        remote_edit = args.include?('remote-edit')
+        delete = args.include?('delete')
+        render partial: 'shared/table_actions', locals: { object: object, show: show, edit: edit, del: delete, remote_edit: remote_edit }
     end
     
     # Creates HTML elements and an error associated with the attribute, if one exists
@@ -110,11 +114,11 @@ module ApplicationHelper
     # @param attribute [Object]
     # @return [String] error message
     def errors_for model, attribute
-      if model.errors[attribute].present?
-        content_tag :span, :class => 'error-explanation' do
-          model.errors[attribute].join(", ")
+        if model.errors[attribute].present?
+            content_tag :span, :class => 'error-explanation' do
+                model.errors[attribute].join(", ")
+            end
         end
-      end
     end
 
     # Creates a JavaScript tag, targeting the associated JavaScript file within the asset pipeline
@@ -124,7 +128,7 @@ module ApplicationHelper
     #   @param [String] javascript file name
     # @return [String] javascript tags
     def javascript *files
-      content_for(:footer) { javascript_include_tag(*files) }
+        content_for(:footer) { javascript_include_tag(*files) }
     end
 
     # Adds a message to the relevant flash type array (error, notice or success) 
