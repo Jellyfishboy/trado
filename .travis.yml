@@ -5,9 +5,9 @@ branches:
     only:
         - master
 script:
+    - bundle exec rake db:test:prepare
     - RAILS_ENV=test bundle exec rake db:create --trace
     - RAILS_ENV=test bundle exec rake db:schema:load --trace
-    - bundle exec rake db:test:prepare
     - bundle exec rspec spec/
 services:
     - elasticsearch
