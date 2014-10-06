@@ -1,5 +1,3 @@
-require 'highline/import'
-
 namespace :trado do
     task :install => :environment do
         puts 'Trado -> Installing Trado for the first time...'.colorize(:cyan)
