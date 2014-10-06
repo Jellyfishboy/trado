@@ -14,5 +14,5 @@ doc/*
 *.gitkeep
 
 public/uploads/attachment
-
 public/assets
+public/shared/sitemap.xml.gz
