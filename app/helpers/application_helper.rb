@@ -104,7 +104,7 @@ module ApplicationHelper
         show = args.include?('show')
         edit = args.include?('edit') || args.include?('remote-edit')
         remote_edit = args.include?('remote-edit')
-        delete = args.include?('delete')
+        delete = args.include?('delete')        
         render partial: 'shared/table_actions', locals: { object: object, show: show, edit: edit, del: delete, remote_edit: remote_edit }
     end
     

@@ -3,9 +3,11 @@
     = link_to object do
       %i.icon-search
   - if edit
-    = link_to edit_polymorphic_path([:admin, object]), remote: remote_edit do
+    = link_to edit_polymorphic_path(object), remote: remote_edit do
       %i.icon-pencil
-
+  / - elsif edit && !parent_object.nil?
+  /   = link_to edit_polymorphic_path([:admin, parent_object, object]), remote: remote_edit do
+  /     %i.icon-pencil
 
 
   / / Update stock level
@@ -23,5 +25,5 @@
   /     %i.icon-pencil
   / Delete record
   - if del
-    = link_to [:admin, object], method: :delete, data: { confirm: 'Are you sure?' } do
+    = link_to object, method: :delete, data: { confirm: 'Are you sure?' } do
       %i.icon-remove

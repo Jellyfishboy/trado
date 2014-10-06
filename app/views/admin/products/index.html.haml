@@ -56,6 +56,6 @@
                         %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}" unless sku.attribute_value.nil? && sku.attribute_type.nil?
                         %td= Store::Price.new(sku.price, 'net').single
                         %td.align-left= Store::Price.new(sku.price, 'gross').single
-              = table_commands product, 'edit', 'delete'
+              = table_commands [:admin, product], 'edit', 'delete'
 
               

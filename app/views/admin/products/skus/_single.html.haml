@@ -8,4 +8,4 @@
 %td= sku.stock_warning_level
 %td= Store::Price.new(sku.cost_value, 'net').single
 %td= Store::Price.new(sku.price, 'net').single
-= table_commands sku, admin_product_sku_path(sku.product, sku), edit_admin_product_sku_path(sku.product, sku), admin_product_sku_path(sku.product, sku), 1
+= table_commands [:admin, sku.product, sku], 'remote-edit', 'delete'
