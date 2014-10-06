@@ -23,7 +23,6 @@ Trado::Application.configure do
                                 'css3-fallback.js', 
                                 'modernizr/modernizr.js', 
                                 'products.js',
-                                'redactor-rails.js',
                                 'admin/soca.datepicker.js',
                                 'typeahead.js/dist/typeahead.jquery.min.js',
                               ]
