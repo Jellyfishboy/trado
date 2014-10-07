@@ -11,15 +11,8 @@
       %h3= zone.name
       .pull-right
         = table_commands zone, admin_zone_path(zone), edit_admin_zone_path(zone), admin_zone_path(zone), 0
-    %table.table.table-striped.table-bordered.table-hover.table-margin.table-zone
-      %thead
-        %tr
-          %th Name
-          %th Language
-          %th ISO 3166-1-alpha-2
+    %table.table.table-striped.table-bordered.table-hover.table-margin
       %tbody
         - zone.countries.each do |country|
           %tr
-            %td= country.name
-            / %td= country.language
-            / %td.align-left= country.iso
+            %td.align-left= country.name
