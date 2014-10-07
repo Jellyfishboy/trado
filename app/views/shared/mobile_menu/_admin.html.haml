@@ -27,9 +27,13 @@
           %span Zones
     %ul#mobile-secondary-menu
       %li
-        %a{href: '#'}
+        = link_to admin_pages_path do
           %i.icon-file-2
           %span Pages
+      %li
+        = link_to root_path, target: '_blank' do
+          %i.icon-screen
+          %span Storefront
       %li
         = link_to admin_settings_path do
           %i.icon-cog
