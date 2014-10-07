@@ -2,11 +2,12 @@
 class RedactorRailsDocumentUploader < CarrierWave::Uploader::Base
   include RedactorRails::Backend::CarrierWave
 
-  # storage :fog
-  storage :file
-
   def store_dir
-    "system/redactor_assets/documents/#{model.id}"
+    if Rails.env.production?
+      "redactor_assets/pictures/#{model.user_id}/#{model.assetable_id}"
+    else
+      "uploads/redactor_assets/pictures/#{model.user_id}/#{model.assetable_id}"
+    end
   end
 
   def extension_white_list
