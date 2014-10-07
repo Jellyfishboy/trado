@@ -73,9 +73,6 @@ Trado::Application.routes.draw do
           resources :attribute_types, except: :show
         end
       end
-      namespace :zones do
-        resources :countries, except: :show
-      end
       resources :pages, except: [:show, :destroy, :new, :create]
       get '/settings' => 'admin#settings'
       patch '/settings/update' => 'admin#update'

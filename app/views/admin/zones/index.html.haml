@@ -5,8 +5,6 @@
   .page-header
     = link_to new_admin_zone_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add zone" do
       %i.icon-plus
-    = link_to admin_zones_countries_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Countries" do
-      %i.icon-earth
     %h2.widget.widget-header Zones
   - @zones.each do |zone|
     .widget-sub-heading
@@ -23,5 +21,5 @@
         - zone.countries.each do |country|
           %tr
             %td= country.name
-            %td= country.language
-            %td.align-left= country.iso
+            / %td= country.language
+            / %td.align-left= country.iso

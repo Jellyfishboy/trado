@@ -83,29 +83,7 @@ feature 'Zone management' do
         zone_with_country.reload
         expect(zone_with_country.name).to eq 'Asia'
         expect(zone_with_country.countries.count).to eq 1
-        expect(zone_with_country.countries.first.name).to eq 'Jamaica'
-    end
-
-    scenario 'should display an index of countries' do
-        country
-
-        visit admin_zones_path
-        within '.page-header' do
-            find(:xpath, "//a[@title='Countries']").click
-        end
-        expect(current_path).to eq admin_zones_countries_path
-        within 'h2' do
-            expect(page).to have_content 'Countries'
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Countries'
-        end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'Name'
-        end
-        within 'tbody tr td:first-child' do
-            expect(page).to have_content country.name
-        end
+        expect(zone_with_country.countries.first.name).to eq 'United Kingdom'
     end
 
     scenario "should delete a zone if there is more than one record" do
