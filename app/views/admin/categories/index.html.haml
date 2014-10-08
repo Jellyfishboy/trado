@@ -27,4 +27,4 @@
               %td= category.sorting
               %td= category.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe
               %td= category.products.count
-              = table_commands [:admin, category], "edit", "delete"
+              = table_actions [:admin, category], "edit", "delete"

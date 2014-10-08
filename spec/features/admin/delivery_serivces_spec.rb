@@ -32,7 +32,7 @@ feature 'Delivery service management' do
         within 'thead.main-table + tbody' do
             first('tr').find('td:not(.align-left):last-child').first(:link).click
         end
-        expect(current_path).to eq admin_delivery_service_prices_path(delivery_service)
+        expect(current_path).to eq admin_delivery_service_delivery_service_prices_path(delivery_service)
         within '#breadcrumbs li.current' do
             expect(page).to have_content delivery_service.full_name
         end

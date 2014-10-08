@@ -29,4 +29,4 @@
               %td= Store::Price.new(accessory.cost_value, 'net').single
               %td= Store::Price.new(accessory.price, 'net').single
               %td= Store::Price.new(accessory.price, 'gross').single
-              = table_commands [:admin, accessory], 'edit', 'delete'
+              = table_actions [:admin, accessory], 'edit', 'delete'

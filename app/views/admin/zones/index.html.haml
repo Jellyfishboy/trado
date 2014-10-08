@@ -10,7 +10,7 @@
     .widget-sub-heading
       %h3= zone.name
       .pull-right
-        = table_commands [:admin, zone], 'edit', 'delete'
+        = table_actions [:admin, zone], 'edit', 'delete'
     %table.table.table-striped.table-bordered.table-hover.table-margin
       %tbody
         - zone.countries.each do |country|

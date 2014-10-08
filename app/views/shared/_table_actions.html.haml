@@ -2,28 +2,18 @@
   - if show
     = link_to object do
       %i.icon-search
-  - if edit
+  - if delivery_service_record
+    = link_to admin_delivery_service_delivery_service_prices_path(object.last) do
+      %i.icon-search
+  - if sku_record
+    = link_to new_admin_product_sku_stock_level_path(object.last.product, object.last), remote: true do
+      %i.icon-plus
+  - if order_record && object.last.transactions.last.completed?
     = link_to edit_polymorphic_path(object), remote: remote_edit do
       %i.icon-pencil
-  / - elsif edit && !parent_object.nil?
-  /   = link_to edit_polymorphic_path([:admin, parent_object, object]), remote: remote_edit do
-  /     %i.icon-pencil
-
-
-  / / Update stock level
-  / - if type == 1
-  /   = link_to new_admin_product_sku_stock_level_path(object.product, object), remote: true do
-  /     %i.icon-plus
-  / - if type == 1
-  /   / Edit SKU
-  /   = link_to edit_admin_product_sku_path(object.product, object), remote: true do
-  /     %i.icon-pencil
-
-  / / Edit order
-  / - if type == 2 && object.transactions.last.completed?
-  /   = link_to edit_admin_order_path(object), remote: true do
-  /     %i.icon-pencil
-  / Delete record
+  - if edit && !order_record
+    = link_to edit_polymorphic_path(object), remote: remote_edit do
+      %i.icon-pencil
   - if del
-    = link_to object, method: :delete, data: { confirm: 'Are you sure?' } do
+    = link_to object, method: :delete, remote: remote_delete, data: { confirm: 'Are you sure?' } do
       %i.icon-remove

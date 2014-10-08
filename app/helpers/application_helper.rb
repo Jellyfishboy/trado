@@ -100,12 +100,27 @@ module ApplicationHelper
     # @param delete [Object]
     # @param type [Integer]
     # @return [String] HTML elements
-    def table_commands object, *args
+    def table_actions object, *args
         show = args.include?('show')
         edit = args.include?('edit') || args.include?('remote-edit')
         remote_edit = args.include?('remote-edit')
-        delete = args.include?('delete')        
-        render partial: 'shared/table_actions', locals: { object: object, show: show, edit: edit, del: delete, remote_edit: remote_edit }
+        delete = args.include?('delete')  || args.include?('remote-delete')
+        remote_delete = args.include?('remote-delete')
+        order_record = Store::class_name(object.last) == 'Order'
+        sku_record = Store::class_name(object.last) == 'Sku'
+        delivery_service_record = Store::class_name(object.last) == 'Delivery Service'      
+        render partial: 'shared/table_actions', locals: 
+        { 
+            object: object, 
+            show: show, 
+            edit: edit, 
+            del: delete, 
+            remote_edit: remote_edit,
+            remote_delete: remote_delete, 
+            order_record: order_record, 
+            sku_record: sku_record, 
+            delivery_service_record: delivery_service_record 
+        }
     end
     
     # Creates HTML elements and an error associated with the attribute, if one exists

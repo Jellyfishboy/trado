@@ -38,4 +38,4 @@
                         %td= delivery_price.code
                         %td= Store::Price.new(delivery_price.price, 'net').single
                         %td.align-left= Store::Price.new(delivery_price.price, 'gross').single
-              = table_commands [:admin, delivery_service], 'edit', 'delete'
+              = table_actions [:admin, delivery_service], 'edit', 'delete'

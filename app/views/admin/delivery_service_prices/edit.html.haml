@@ -1,12 +1,12 @@
 - content_for :title, 'Edit delivery pricing'
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Delivery services', admin_delivery_services_path
-- breadcrumb_add @form_delivery_service_price.delivery_service.full_name, admin_delivery_service_prices_path
+- breadcrumb_add @form_delivery_service_price.delivery_service.full_name, admin_delivery_service_delivery_service_prices_path
 
 .eightcol
   .page-header
     %h2.widget.widget-header Edit delivery pricing
-  = form_for @form_delivery_service_price, url: admin_delivery_service_price_path(@form_delivery_service_price.delivery_service, @form_delivery_service_price), html: { role: 'form' } do |f|
+  = form_for @form_delivery_service_price, url: admin_delivery_service_delivery_service_price_path(@form_delivery_service_price.delivery_service, @form_delivery_service_price), html: { role: 'form' } do |f|
     - if @delivery_service_price && @delivery_service_price.errors.any?
       #errors
         %ul

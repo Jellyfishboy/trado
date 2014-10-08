@@ -24,7 +24,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
     
     if @delivery_service_price.save
       flash_message :success, 'Delivery service price was successfully created.'
-      redirect_to admin_delivery_service_prices_url
+      redirect_to admin_delivery_service_delivery_service_prices_url
     else
       render :new
     end
@@ -44,7 +44,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
     if @delivery_service_price.update(params[:delivery_service_price])
       flash_message :success, 'Delivery service price was successfully updated.'
-      redirect_to admin_delivery_service_prices_url
+      redirect_to admin_delivery_service_delivery_service_prices_url
     else
       @form_delivery_service_price = @old_delivery_service_price ||= DeliveryServicePrice.find(params[:id])
       Store::activate!(@form_delivery_service_price)
@@ -64,7 +64,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
     end
     @result = [:success, 'Delivery service price was successfully deleted.'] if @result.nil?
     flash_message @result[0], @result[1]
-    redirect_to admin_delivery_service_prices_url
+    redirect_to admin_delivery_service_delivery_service_prices_url
   end
 
   private

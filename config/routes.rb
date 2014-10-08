@@ -64,7 +64,7 @@ Trado::Application.routes.draw do
       end
       resources :orders, only: [:index, :show, :update, :edit]
       resources :delivery_services, except: :show do
-        resources :delivery_service_prices, as: 'prices', path: 'prices', except: :show
+        resources :delivery_service_prices, path: 'prices', except: :show
       end
       
       namespace :products do
