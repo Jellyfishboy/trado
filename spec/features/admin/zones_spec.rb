@@ -10,7 +10,7 @@ feature 'Zone management' do
     given(:country) { create(:country) }
 
     scenario 'should display an index of zones' do
-        zone
+        zone_with_country
 
         visit admin_root_path
         find('a[data-original-title="Zones"]').click
@@ -21,11 +21,11 @@ feature 'Zone management' do
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Zones'
         end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'Name'
-        end
         within '.page-header + .widget-sub-heading h3' do
-            expect(page).to have_content zone.name
+            expect(page).to have_content zone_with_country.name
+        end
+        within 'tbody tr:first-child td' do
+            expect(page).to have_content zone_with_country.countries.first.name
         end
     end
 
