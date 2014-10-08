@@ -43,6 +43,14 @@ describe Admin::PagesController do
             patch :update, id: page.id, page: attributes_for(:page)
             expect(assigns(:template_types).keys.map{|type| type }).to eq ["standard","contact"] 
         end
+
+        context "if the page's slug attribute has illegal characters" do
+            it "should strip them out and replace with hyphens" do
+                patch :update, id: page.id, page: attributes_for(:page, slug: 'about. 1& haha woop')
+                page.reload
+                expect(page.slug).to eq 'about-1-haha-woop'
+            end
+        end
         context "with valid attributes" do
             it "should locate the requested @page" do
                 patch :update, id: page.id, page: attributes_for(:page)

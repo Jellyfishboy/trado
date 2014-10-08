@@ -79,5 +79,13 @@ module Store
             end
         end
 
+        def database_exists?
+            ActiveRecord::Base.connection
+        rescue ActiveRecord::NoDatabaseError
+            false
+        else
+            true
+        end
+
     end
 end

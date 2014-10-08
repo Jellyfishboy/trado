@@ -3,10 +3,13 @@
 //= require jquery_ujs
 //= require admin/soca
 //= require jquery.scrollTo/jquery.scrollTo.min
-//= require turbolinks
 //= require _trado
 //= require trado.misc
 //= require trado.animation
+//= require redactor-rails/redactor
+//= require redactor-rails/config
+//= require redactor-rails/index
+//= require turbolinks
 
 var taxRate = "<%= Store::settings.tax_rate %>";
      
@@ -21,14 +24,16 @@ ready = function()
     soca.misc.updateTableHeight();
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
-    $('.redactor').redactor({
-        minHeight: 300
-    });
 };
 
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
+    $('.redactor').redactor({
+        replaceDivs: false,
+        convertDivs: false,
+        minHeight: 300
+    });
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
 });

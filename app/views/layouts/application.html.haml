@@ -123,7 +123,7 @@
                         = link_to category.name, category
                     - page_list.each do | page|
                       %li{ :class => active_page?('pages', page.template_type, page.id) }
-                        = link_to page.title, send("#{page.slug}_path"), title: page.title
+                        = link_to page.title, send("#{page.slug.split('-').join('_')}_path"), title: page.title
                   / ==========
                   / = Search form =
                   / ==========

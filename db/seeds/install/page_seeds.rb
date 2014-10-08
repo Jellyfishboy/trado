@@ -10,7 +10,7 @@ about_page = Page.new({
     active: true,
     template_type: 0
 })
-about_page.save(validate: false)
+about_page.save!
 contact_page = Page.new({
     title: 'Contact',
     content: 'The content for your Contact page',
@@ -18,9 +18,9 @@ contact_page = Page.new({
     meta_description: 'Short description about how to contact your store for the search engines',
     slug: 'contact',
     active: true,
-    template_type: 0
+    template_type: 1
 })
-contact_page.save(validate: false)
+contact_page.save!
 terms_page = Page.new({
     title: 'Terms & Conditions',
     content: 'The content for your Terms & Conditions page',
@@ -30,7 +30,7 @@ terms_page = Page.new({
     active: true,
     template_type: 0    
 })
-terms_page.save(validate: false)
+terms_page.save!
 faq_page = Page.new({
     title: 'FAQ',
     content: 'The content for your FAQ page',
@@ -40,4 +40,14 @@ faq_page = Page.new({
     active: true,
     template_type: 0
 })
-faq_page.save(validate: false)
+faq_page.save!
+delivery_page = Page.new({
+    title: 'Delivery',
+    content: 'The content for your Delivery page',
+    page_title: 'Delivery',
+    meta_description: 'Short description about your Delivery for your store for the search engines',
+    slug: 'delivery',
+    active: true,
+    template_type: 0
+})
+delivery_page.save!

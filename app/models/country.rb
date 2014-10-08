@@ -8,21 +8,16 @@
 # Table name: countries
 #
 #  id                   :integer          not null, primary key
-#  name                 :string(255)     
-#  language             :string(255)
-#  iso                  :string(255)
+#  name                 :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
 class Country < ActiveRecord::Base
 
-  attr_accessible :name, :iso, :available, :language
+  attr_accessible :name
 
   has_many :zonifications,                      :dependent => :delete_all
   has_many :zones,                              :through => :zonifications
 
   validates :name,                              :uniqueness => true, :presence => true
-
-  default_scope { order(name: :asc) }
-
 end

@@ -15,7 +15,6 @@ before_install:
     - sudo apt-get install -qq openjdk-6-jre
 before_script:
     - cp config/database.travis.yml config/database.yml
-    - psql -c 'create database trado_test_db' -U postgres
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
     - npm install bower -g
