@@ -1,7 +1,7 @@
 .eightcol
   .page-header
     %h2.widget.widget-header= "#{yield :breadcrumb} category"
-  = form_for [:admin, @category], :html => { :role => 'form' } do |f|
+  = form_for [:admin, @category], html: { role: 'form' } do |f|
     - if @category.errors.any?
       #errors
         %ul
@@ -15,10 +15,16 @@
         = f.text_field :name, :class => 'form-control'
       .form-group
         = f.label :description
-        = f.text_area :description, :class => 'form-control', :rows => 8
+        = f.text_area :description, :class => 'form-control', rows: 8
       .form-group
         = f.label :sorting
         = f.text_field :sorting, :class => 'form-control'
+      .form-group
+        = f.label :page_title
+        = f.text_field :page_title, :class => 'form-control'
+      .form-group
+        = f.label :meta_description
+        = f.text_field :meta_description, :class => 'form-control'
       .form-group.form-last
         .checkbox
           %label

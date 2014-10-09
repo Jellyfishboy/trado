@@ -8,7 +8,6 @@ module DynamicRouter
             if Store::database_exists? && Page.table_exists?
                 Trado::Application.routes.draw do 
                     Page.active.all.each do |page|
-                        puts "Routing #{page.slug}"
                         get "/#{page.slug}", to: "pages##{page.template_type}", defaults: { id: page.id }
                     end
                 end
