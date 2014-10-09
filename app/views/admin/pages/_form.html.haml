@@ -2,13 +2,15 @@
   .page-header
     %h2.widget.widget-header Edit page
   = form_for [:admin, @page], :html => { :role => 'form' } do |f|
-    - if @page.errors.any?
-      #errors
-        %ul
-          - @page.errors.full_messages.each do |msg|
-            %li
-              %i.icon-cancel-circle
-              = msg  
+    .threecol
+    .ninecol.last
+      - if @page.errors.any?
+        #errors
+          %ul
+            - @page.errors.full_messages.each do |msg|
+              %li
+                %i.icon-cancel-circle
+                = msg  
     .threecol
       %h3 Write your page
       %p Give your page a title and add your page content.

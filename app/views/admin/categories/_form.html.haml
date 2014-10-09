@@ -19,10 +19,11 @@
       .form-group
         = f.label :sorting
         = f.text_field :sorting, :class => 'form-control'
-      .checkbox
-        %label
-          = f.check_box :active
-          Active
+      .form-group.form-last
+        .checkbox
+          %label
+            = f.check_box :active
+            Active
     .form-action
       = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

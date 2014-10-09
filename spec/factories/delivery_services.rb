@@ -5,10 +5,10 @@ FactoryGirl.define do
         courier_name { Faker::Lorem.word }
         active { false }
 
-        factory :delivery_service_with_zones do
+        factory :delivery_service_with_countries do
             courier_name { 'Royal Mail' }
             active { true }
-            zones { [create(:zone, name: 'EU'),create(:zone, name: 'Asia')]}
+            countries { [create(:country, name: 'United Kingdom'),create(:country, name: 'China')]}
         end
 
         factory :invalid_delivery_service do

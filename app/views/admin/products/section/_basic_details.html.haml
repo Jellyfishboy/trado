@@ -4,7 +4,7 @@
   .row
     .twelvecol
       .form-group
-        = f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id ] }, @product.category_id ), { :include_blank => "Please select category..."}, { :class => 'form-control' }
+        = f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id ] }, @product.category_id ), { include_blank: "Please select category..."}, { :class => 'form-control' }
   .row
     .fourcol
       .form-group

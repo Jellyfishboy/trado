@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007095235) do
+ActiveRecord::Schema.define(version: 20141009055819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20141007095235) do
 
   create_table "destinations", force: true do |t|
     t.integer  "delivery_service_id"
-    t.integer  "zone_id"
+    t.integer  "country_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
@@ -368,18 +368,5 @@ ActiveRecord::Schema.define(version: 20141007095235) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "zones", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "zonifications", force: true do |t|
-    t.integer  "country_id"
-    t.integer  "zone_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

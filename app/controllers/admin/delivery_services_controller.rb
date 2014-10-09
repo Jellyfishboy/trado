@@ -1,26 +1,22 @@
 class Admin::DeliveryServicesController < ApplicationController
 
   before_action :set_delivery_service, only: [:show, :edit, :update, :destroy]
-  before_action :get_associations, except: [:index, :destroy, :set_delivery_service]
+  before_action :get_associations, except: [:index, :destroy, :copy_countries, :set_countries]
   before_action :authenticate_user!
   layout "admin"
 
-  # GET /delivery_services
   def index
     @delivery_services = DeliveryService.includes(:prices).active.load
   end
 
-  # GET /delivery_services/new
   def new
     @delivery_service = DeliveryService.new
   end
 
-  # GET /delivery_services/1/edit
   def edit
     @form_delivery_service = DeliveryService.find(params[:id])
   end
 
-  # POST /delivery_services
   def create
     @delivery_service = DeliveryService.new(params[:delivery_service])
 
@@ -71,13 +67,23 @@ class Admin::DeliveryServicesController < ApplicationController
     redirect_to admin_delivery_services_url
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_delivery_service
-      @delivery_service = DeliveryService.find(params[:id])
-    end
+  def copy_countries
+    @delivery_services = params[:id].nil? ? DeliveryService.active.load : DeliveryService.where('id != ?', params[:id]).active.load
+    render partial: 'admin/delivery_services/countries/copy', format: [:js]
+  end
 
-    def get_associations
-      @zones = Zone.all
-    end
+  def set_countries
+    @delivery_service = DeliveryService.includes(:countries).find(params[:delivery_service_id])
+    render partial: 'admin/delivery_services/countries/set', format: [:js]
+  end
+
+  private
+
+  def set_delivery_service
+    @delivery_service = DeliveryService.find(params[:id])
+  end
+
+  def get_associations
+    @countries = Country.all
+  end
 end

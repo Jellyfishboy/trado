@@ -1,7 +1,7 @@
 #order-form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "orderModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
-      = form_for [:admin, @order], :html => { :role => 'form', :method => "put" }, :remote => true do |f|
+      = form_for [:admin, @order], html: { role: 'form', method: :patch }, remote: true do |f|
         #errors.json
           %ul
         .modal-header
@@ -12,8 +12,8 @@
           %fieldset.widget.widget-content.widget-last
             .form-group
               = f.label :shipping_date
-              = f.text_field :shipping_date, :class => 'form-control datepicker', :autocomplete => 'off', :value => (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y'))
-            .form-group
+              = f.text_field :shipping_date, :class => 'form-control datepicker', autocomplete: 'off', value: (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y'))
+            .form-group.form-last
               = f.label :actual_shipping_cost
               = f.text_field :actual_shipping_cost, :class => 'form-control'
         .modal-footer

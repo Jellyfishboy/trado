@@ -14,9 +14,6 @@
   %li{:class => "#{active_controller?('admin/delivery_services')} #{active_controller?('admin/delivery_service_prices')}"}
     = link_to admin_delivery_services_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Delivery' do
       %i.icon-airplane
-  %li{:class => "#{active_controller?('admin/zones/countries')} #{active_controller?('admin/zones')}"}
-    = link_to admin_zones_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Zones' do
-      %i.icon-location
 %ul#secondary-menu
   %li{:class => active_controller?('admin/pages')}
     = link_to admin_pages_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Pages' do

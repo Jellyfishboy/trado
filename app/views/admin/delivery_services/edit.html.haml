@@ -2,36 +2,44 @@
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Delivery services', admin_delivery_services_path
 
-.eightcol
+.twelvecol
   .page-header
     %h2.widget.widget-header Edit delivery service
-  = form_for [:admin, @delivery_service], :html => { :role => 'form' } do |f|
-    - if @delivery_service && @delivery_service.errors.any?
-      #errors
-        %ul
-          - @delivery_service.errors.full_messages.each do |msg|
-            %li
-              %i.icon-cancel-circle
-              = msg 
-    %fieldset.widget.widget-content
-      .form-group
-        = f.label :courier_name
-        = f.text_field :courier_name, :class => 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, :class => 'form-control'
-      .form-group
-        = f.label :description
-        = f.text_area :description, :class => 'form-control', :rows => 7
-    .widget-sub-heading
-      %h3 Zones
-    - if @zones.empty?
-      .label.label-orange 
-        %i.icon-spam.icon-cancel-circle 
-        There are no available zones to select
-    - else
+  = form_for [:admin, @delivery_service], html: { role: 'form' } do |f|
+    .threecol
+    .ninecol.last
+      - if @delivery_service && @delivery_service.errors.any?
+        #errors
+          %ul
+            - @delivery_service.errors.full_messages.each do |msg|
+              %li
+                %i.icon-cancel-circle
+                = msg 
+    .threecol
+      %h3 Delivery service details
+      %p Set the courier company name, name of your delivery service and a description. 
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label :courier_name
+          = f.text_field :courier_name, :class => 'form-control'
+        .form-group
+          = f.label :name
+          = f.text_field :name, :class => 'form-control'
+        .form-group.form-last
+          = f.label :description
+          = f.text_area :description, :class => 'form-control', rows: 7
+    .threecol
+      %h3 Country of destination
+      %p
+        Select the countries which are available for this delivery service, or
+        = link_to 'copy', copy_countries_admin_delivery_services_path, remote: true
+        an existing service country list.
+    .ninecol.last
       .widget.widget-content.widget-last
-        = f.collection_select :zone_ids, @zones, :id, :name, {}, {:class => 'chosen', :multiple => true, :data => {:placeholder => "Please select associated zones..."}}
-    .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+        .form-group
+          = f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Please select associated countries..."}}
+      .form-action
+        = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last
+#delivery-service-modal

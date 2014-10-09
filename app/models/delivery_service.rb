@@ -16,12 +16,11 @@
 #  updated_at         :datetime         not null
 #
 class DeliveryService < ActiveRecord::Base
-    attr_accessible :name, :description, :courier_name, :active, :zone_ids
+    attr_accessible :name, :description, :courier_name, :active, :country_ids
 
     has_many :prices,                                       class_name: 'DeliveryServicePrice', dependent: :delete_all
     has_many :destinations,                                 dependent: :delete_all
-    has_many :zones,                                        through: :destinations
-    has_many :countries,                                    -> { uniq }, through: :zones                                                     
+    has_many :countries,                                    through: :destinations                                                     
     has_many :orders,                                       through: :prices
 
     validates :name, :courier_name,                         presence: true
