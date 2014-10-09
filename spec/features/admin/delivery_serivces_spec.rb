@@ -103,6 +103,47 @@ feature 'Delivery service management' do
         expect(delivery_service_with_countries.countries.first.name).to eq 'United Kingdom'
     end
 
+    scenario "should copy the countries between delivery services", js: true do
+        delivery_service_with_countries
+
+        visit admin_delivery_services_path
+        find('.page-header a:first-child').click
+        expect(current_path).to eq new_admin_delivery_service_path
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'New'
+        end
+        expect{
+            fill_in('delivery_service_courier_name', with: 'Royal Mail')
+            fill_in('delivery_service_name', with: 'Next day delivery')
+            fill_in('delivery_service_description', with: 'Speedy delivery within the UK.')
+            find('form div:nth-child(6) p a').click
+            sleep 1
+
+            within '.modal#delivery-service-form' do
+                expect(find('.modal-header h3')).to have_content "Copy delivery service countries"
+                select(delivery_service_with_countries.name, from: 'delivery_service_id')
+                click_button 'Submit'
+            end
+            sleep 1
+            expect(current_path).to eq new_admin_delivery_service_path
+            click_button 'Submit'
+        }.to change(DeliveryService, :count).by(1)
+
+        delivery_service = DeliveryService.find_by_name('Next day delivery')
+        expect(delivery_service.courier_name).to eq 'Royal Mail'
+        expect(delivery_service.name).to eq 'Next day delivery'
+        expect(delivery_service.description).to eq 'Speedy delivery within the UK.'
+        expect(delivery_service.countries.first.name).to eq delivery_service_with_countries.countries.first.name
+
+        expect(current_path).to eq admin_delivery_services_path
+        within '.alert.alert-success' do
+            expect(page).to have_content 'Delivery service was successfully created.'
+        end
+        within 'h2' do
+            expect(page).to have_content 'Delivery services'
+        end
+    end
+
     scenario "should delete a delivery service if there is more than one record" do
         delivery_services
 
