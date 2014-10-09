@@ -34,7 +34,7 @@ class Attachment < ActiveRecord::Base
   #
   # @param id [Integer]
   def set_default
-    Attachment.where('id != ? AND attachable_id = ?', self.id, self.attachable.id).update_all(default_record: false) if self.default_record
+    Attachment.where('id != ? AND attachable_id = ?', id, attachable.id).update_all(default_record: false) if default_record
   end
 
   # If the attachment is a StoreSetting or User, ignore the presence validation
