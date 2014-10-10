@@ -1,4 +1,4 @@
-- content_for :title, @product.name
+- content_for :title, @product.page_title
 - content_for :breadcrumb, @product.name
 - store_breadcrumb_add @product.category.name, category_path(@product.category)
 - content_for :meta_description, @product.meta_description

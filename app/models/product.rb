@@ -13,6 +13,7 @@
 #  name                     :string(255)
 #  description              :text
 #  short_description        :text
+#  page_title               :string(255)
 #  meta_description         :string(255)
 #  weighting                :integer 
 #  sku                      :string(255)
@@ -28,7 +29,7 @@
 #
 class Product < ActiveRecord::Base
 
-  attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
+  attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
   :short_description, :related_ids, :single, :active, :status, :order_count
 
@@ -48,8 +49,10 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               presence: true, :if => :published?
+  :part_number, :sku, :weighting, :category_id,
+  :page_title,                                                presence: true, :if => :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
+  validates :page_title,                                      length: { maximum: 70, message: :too_long }
   validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?

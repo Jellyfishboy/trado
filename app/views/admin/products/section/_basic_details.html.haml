@@ -25,9 +25,13 @@
         = f.text_field :short_description, :class => 'form-control'
     .fourcol
       .form-group
+        = f.label :page_title
+        = f.text_field :page_title, :class => 'form-control'
+    .fourcol.last
+      .form-group
         = f.label :meta_description
         = f.text_field :meta_description, :class => 'form-control'
-    .fourcol.last
+    .fourcol
       .form-group
         = f.label :weighting
         = f.text_field :weighting, :class => 'form-control'

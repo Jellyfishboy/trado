@@ -69,6 +69,7 @@ feature 'Product management' do
         fill_in('product_name', with: 'product #1 with minimum 10 characters')
         fill_in('product_short_description', with: 'Short description for product.')
         fill_in('product_meta_description', with: 'Meta description for product with minimum 10 characters.')
+        fill_in('product_page_title', with: 'Page title for a product')
         fill_in('product_weighting', with: '10')
         fill_in('product_description', with: 'Description for product which must contain at least 20 characters.')
 
