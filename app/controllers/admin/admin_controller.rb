@@ -23,7 +23,7 @@ class Admin::AdminController < ApplicationController
 
     private
 
-        def set_setting
-            @settings = Store::settings
-        end
+    def set_setting
+        @settings = Store::settings
+    end
 end

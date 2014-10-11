@@ -25,8 +25,8 @@
           %div= image_tag @settings.attachment.file.square, :width => 75, :height => 75
           %div= ff.file_field :file
       .form-group.form-last
-        = f.label 'Currency unit'
-        = f.text_field :currency, :class => 'form-control'
+        = f.label 'Store theme'
+        = f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').capitalize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' }
     .widget-sub-heading
       %h3 Tax
     %fieldset.widget.widget-content
@@ -34,10 +34,13 @@
         = f.label 'Name'
         = f.text_field :tax_name, :class => 'form-control'
       .form-group
+        = f.label 'Currency unit'
+        = f.text_field :currency, :class => 'form-control'
+      .form-group
         = f.label 'Rate'
         = f.text_field :tax_rate, :class => 'form-control'
       %p If you would like your customers to view your product prices without tax and view the tax total in the checkout process, then please select the checkbox below.
-      .form-group
+      .form-group.form-last
         .checkbox
           %label
             = f.check_box :tax_breakdown

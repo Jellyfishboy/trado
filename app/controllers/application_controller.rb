@@ -2,8 +2,14 @@ class ApplicationController < ActionController::Base
     include ApplicationHelper
     before_action :authenticate_user!, :set_tracking_code
     helper_method :current_cart
+    helper_method :theme_presenter
+    layout "../themes/#{Store::settings.theme_name}/layout/application"
 
     protected
+
+    def theme_presenter
+      @theme_presenter ||= ThemePresenter.new(theme: Store::settings.theme)
+    end
 
     def set_tracking_code
       gon.trackingCode = Store::settings.ga_code
