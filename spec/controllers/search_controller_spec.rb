@@ -6,9 +6,6 @@ describe SearchController do
 
     describe 'GET #result' do
         let!(:product) { create(:product, name: 'product #1', active: true) }
-        before(:each) do
-            Product.reindex
-        end
 
         it "should assign the query search results to @products" do
             get :results, query: 'product'
@@ -23,9 +20,6 @@ describe SearchController do
 
     describe 'GET #autocomplete' do
         let!(:product) { create(:product, name: 'product #1', active: true) }
-        before(:each) do
-            Product.reindex
-        end
 
         it "should assign the query search results to @json_products" do
             xhr :get, :autocomplete, query: 'product'

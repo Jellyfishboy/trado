@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.1.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 
 # Production gems
@@ -74,17 +71,16 @@ gem 'activesupport-json_encoder'
 gem 'rollbar'
 gem 'newrelic_rpm'
 
-# Search
-gem 'searchkick'
-
 # Misc
 gem 'global'
 gem 'wicked'
-gem 'foreman',   '~> 0.61.0'
 gem 'protected_attributes'
 gem 'tzinfo-data'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
+
+# Pagination
+gem 'kaminari'
+
+# RTE
 gem 'redactor-rails'
 
 # Transaction handler
@@ -106,7 +102,7 @@ gem 'unf' # Dependency for fog
 # Sitemap
 gem 'sitemap_generator'
 
-# Processing
+# Background processing
 gem 'whenever', '>= 0.8.4', :require => false
 
 # JS Variables
@@ -114,6 +110,8 @@ gem 'gon'
 
 # Performance
 gem 'fast_blank'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

@@ -33,7 +33,6 @@ class Product < ActiveRecord::Base
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
   :short_description, :related_ids, :single, :active, :status, :order_count
 
-  has_many :searches
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
   has_many :orders,                                           through: :skus
   has_many :carts,                                            through: :skus
@@ -61,14 +60,14 @@ class Product < ActiveRecord::Base
   validate :single_product
   validate :attachment_count,                                 :if => :published?
   validate :sku_count,                                        :if => :published?
-
+  
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
-
   default_scope { order('weighting DESC') }
+
+  scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name ILIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
   enum status: [:draft, :published]
 
@@ -76,16 +75,6 @@ class Product < ActiveRecord::Base
   
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
-
-  # Search paramters for elasticsearch
-  #
-  # @return [nil]
-  def search_data
-    {
-      name: name,
-      conversions: searches.group("query").count
-    }
-  end
 
   # Calculate if a product has at least one associated attachment
   # If no associated attachments exist, return an error
