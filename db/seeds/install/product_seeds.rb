@@ -5,7 +5,9 @@ category = Category.create({
     name: 'Category #1', 
     description: 'This is your first category.', 
     active: true, 
-    sorting: 0
+    sorting: 0,
+    page_title: 'Page title for your category',
+    meta_description: 'Meta description for your category'
 })
 attribute_type = AttributeType.create({
     name: 'Weight', 
@@ -17,6 +19,7 @@ product_1 = Product.new({
     description: 'Pellentesque pimpin\' bow wow wow. Sed erizzle. For sure izzle mah nizzle dapibus turpis tempus crazy. Maurizzle pellentesque nibh izzle ghetto. Bow wow wow izzle tortor. Pellentesque eleifend rhoncizzle dizzle. In hizzle crackalackin platea dictumst. Get down get down dapibizzle. Curabitizzle tellizzle the bizzle, pretizzle yo mamma, mattizzle rizzle, eleifend vitae, nunc. Uhuh ... yih! suscipizzle. Sizzle sempizzle velit izzle purus.',
     short_description: 'Lorem ipsizzle fizzle sit amet, consectetuer adipiscing elit. Nullam sapien velizzle, away volutpizzle, suscipit fo shizzle, gravida gangsta, away.',
     meta_description: 'Lorem ipsizzle fizzle sit amet, consectetuer adipiscing elit. Nullam sapien velizzle, away volutpizzle, suscipit fo shizzle, gravida gangsta, away. ',
+    page_title: 'Page title for your product',
     weighting: 1000,
     sku: 'TRAD',
     featured: false,
@@ -25,6 +28,7 @@ product_1 = Product.new({
     category_id: category.id,
     status: 1
 })
+product_1.send :set_slug
 product_1.save(validate: false)
 product_2 = Product.new({
     part_number: '2', 
@@ -32,6 +36,7 @@ product_2 = Product.new({
     description: 'Pellentesque pimpin\' bow wow wow. Sed erizzle. For sure izzle mah nizzle dapibus turpis tempus crazy. Maurizzle pellentesque nibh izzle ghetto. Bow wow wow izzle tortor. Pellentesque eleifend rhoncizzle dizzle. In hizzle crackalackin platea dictumst. Get down get down dapibizzle. Curabitizzle tellizzle the bizzle, pretizzle yo mamma, mattizzle rizzle, eleifend vitae, nunc. Uhuh ... yih! suscipizzle. Sizzle sempizzle velit izzle purus.',
     short_description: 'Lorem ipsizzle fizzle sit amet, consectetuer adipiscing elit. Nullam sapien velizzle, away volutpizzle, suscipit fo shizzle, gravida gangsta, away.',
     meta_description: 'Lorem ipsizzle fizzle sit amet, consectetuer adipiscing elit. Nullam sapien velizzle, away volutpizzle, suscipit fo shizzle, gravida gangsta, away. ',
+    page_title: 'Page title for your product',
     weighting: 2000,
     sku: 'DO',
     featured: false,
@@ -40,6 +45,7 @@ product_2 = Product.new({
     category_id: category.id,
     status: 1    
 })
+product_2.send :set_slug
 product_2.save(validate: false)
 RelatedProduct.create(product_id: product_1.id, related_id: product_2.id)
 accessory = Accessory.create({

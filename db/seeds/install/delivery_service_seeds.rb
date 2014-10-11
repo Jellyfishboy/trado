@@ -5,7 +5,7 @@ delivery_service = DeliveryService.create({
     name: '1st class', 
     courier_name: 'Royal Mail', 
     description: 'Standard Royal Mail delivery service within 1-2 business days.',
-    country_ids: [uk_country]
+    country_ids: [uk_country.id]
 })
 DeliveryServicePrice.create({
     code: 'RM1 500g', 
