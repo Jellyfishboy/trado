@@ -13,12 +13,15 @@
                 = msg  
     .threecol
       %h3 Write your page
-      %p Give your page a title and add your page content.
+      %p Set the title for your page, menu item and add your page content.
     .ninecol.last
       %fieldset.widget.widget-content
         .form-group
           = f.label :title
           = f.text_field :title, :class => 'form-control'
+        .form-group
+          = f.label :menu_title
+          = f.text_field :menu_title, :class => 'form-control'
         .form-group.form-last
           = f.label :content
           = f.text_area :content, :class => 'form-control redactor', :rows => 8

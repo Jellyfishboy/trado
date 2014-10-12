@@ -9,6 +9,7 @@
 #
 #  id                       :integer            not null, primary key
 #  title                    :string(255)
+#  menu_title               :string(255)
 #  content                  :text
 #  page_title               :string(255)
 #  meta_description         :string(255)
@@ -19,10 +20,10 @@
 #  updated_at               :datetime           not null
 #
 class Page < ActiveRecord::Base
-    attr_accessible :title, :content, :page_title, :meta_description, :slug, :active, :template_type
+    attr_accessible :title, :menu_title, :content, :page_title, :meta_description, :slug, :active, :template_type
 
     validates :title, :content, :page_title, :meta_description,                 presence: true
-    validates :title, :slug,                                                    uniqueness: true
+    validates :title, :slug, :menu_title,                                       uniqueness: true
     validates :page_title,                                                      length: { maximum: 70, message: :too_long }
     validates :meta_description,                                                length: { maximum: 150, message: :too_long }
 

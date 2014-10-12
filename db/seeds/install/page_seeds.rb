@@ -3,6 +3,7 @@ puts 'Executing page seeds'.colorize(:green)
 
 about_page = Page.new({
     title: 'About',
+    menu_title: 'About',
     content: 'The content for your About page',
     page_title: 'About',
     meta_description: 'Short description about your store for search engines',
@@ -13,6 +14,7 @@ about_page = Page.new({
 about_page.save!
 contact_page = Page.new({
     title: 'Contact',
+    menu_title: 'Contact',
     content: 'The content for your Contact page',
     page_title: 'Contact',
     meta_description: 'Short description about how to contact your store for the search engines',
@@ -23,6 +25,7 @@ contact_page = Page.new({
 contact_page.save!
 terms_page = Page.new({
     title: 'Terms & Conditions',
+    menu_title: 'T&C',
     content: 'The content for your Terms & Conditions page',
     page_title: 'Contact',
     meta_description: 'Short description about your Terms & Conditions for your store for the search engines',
@@ -32,7 +35,8 @@ terms_page = Page.new({
 })
 terms_page.save!
 faq_page = Page.new({
-    title: 'FAQ',
+    title: 'Frequently asked questions',
+    menu_title: 'FAQ',
     content: 'The content for your FAQ page',
     page_title: 'Contact',
     meta_description: 'Short description about your FAQ for your store for the search engines',
@@ -43,6 +47,7 @@ faq_page = Page.new({
 faq_page.save!
 delivery_page = Page.new({
     title: 'Delivery',
+    menu_title: 'Delivery',
     content: 'The content for your Delivery page',
     page_title: 'Delivery',
     meta_description: 'Short description about your Delivery for your store for the search engines',
