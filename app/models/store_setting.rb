@@ -26,12 +26,20 @@ class StoreSetting < ActiveRecord::Base
 
     has_one :attachment,                                                  as: :attachable, dependent: :destroy
 
-    validates :name, :email, :tax_name, :currency, :tax_rate,
-    :theme_name,                                                          presence: true
+    validates :name, :email, :tax_name, :currency, 
+    :tax_rate, :theme_name,                                               presence: true
 
     accepts_nested_attributes_for :attachment
+
+    before_save :reset_settings
   
     def theme
         Theme.new(self)
+    end
+
+    private
+
+    def reset_settings
+        Store::reset_settings
     end
 end

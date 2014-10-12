@@ -10,5 +10,5 @@ trado.misc =
         {
             return null;
         }
-    },
+    }
 }

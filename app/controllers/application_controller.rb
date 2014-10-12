@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     before_action :authenticate_user!, :set_tracking_code
     helper_method :current_cart
     helper_method :theme_presenter
-    layout "../themes/#{Store::settings.theme_name}/layout/application"
 
     protected
 

@@ -29,7 +29,7 @@
           s.parentNode.insertBefore(wf, s);
       })();
     = stylesheet_link_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true
-    = javascript_include_tag :application, "data-turbolinks-track" => true 
+    = javascript_include_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true 
     %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
@@ -274,14 +274,6 @@
                 = "© Copyright 2013. All rights reserved - #{Store::settings.name}"
         / /bottom footer
       / /footer
-    %script{src: "http://maps.googleapis.com/maps/api/js?sensor=false", type: "text/javascript"}
-    :javascript
-      Modernizr.load([
-          {
-              test: Modernizr.csstransitions,
-              nope: ['#{asset_path("css3-fallback.js")}']
-          }
-      ]);
     - if Store::settings.ga_active
       :javascript
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011153508) do
+ActiveRecord::Schema.define(version: 20141012172812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20141011153508) do
     t.boolean  "alert_active",                          default: false
     t.text     "alert_message",                         default: "Type your alert message here..."
     t.string   "alert_type",                            default: "warning"
-    t.string   "theme_name"
+    t.string   "theme_name",                            default: "redlight"
   end
 
   create_table "taggings", force: true do |t|

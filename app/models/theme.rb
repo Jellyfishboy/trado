@@ -2,7 +2,6 @@ class Theme
     attr_reader :store_setting, :name
 
     def initialize store_setting
-        @store_setting = store_setting
         @name = store_setting.theme_name
     end
 

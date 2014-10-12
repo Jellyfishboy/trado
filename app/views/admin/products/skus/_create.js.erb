@@ -5,7 +5,7 @@ $('#sku-form').modal('hide');
 <% else %>
     $('tbody#sku-fields').html('<% @form_sku.product.skus.each do |sku| %><tr id=\'sku_<%= sku.id %>\'><%=j render :partial => "admin/products/skus/single", locals: { sku: sku } %></tr><% end %>');
 <% end %>
-trado.animation.alert(
+soca.animation.alert(
     '.sku-heading',
     'success',
     'sku-create-alert',
