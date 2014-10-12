@@ -1,20 +1,17 @@
 class Theme
+    attr_reader :store_setting, :name
 
     def initialize store_setting
         @store_setting = store_setting
-        @theme_name = @store_setting.theme_name
-    end
-
-    def name
-        @theme_name
+        @name = store_setting.theme_name
     end
 
     def page_root
-        return "themes/#{@theme_name}/"
+        return "themes/#{name}/"
     end
 
     def email_root
-        return "themes/#{@theme_name}/mailer/"
+        return "themes/#{name}/mailer/"
     end
 
     def views
