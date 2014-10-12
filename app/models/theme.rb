@@ -10,17 +10,17 @@ class Theme
     end
 
     def page_root
-        return "app/views/themes/#{@theme_name}/"
+        return "themes/#{@theme_name}/"
     end
 
     def email_root
-        return "app/views/themes/#{@theme_name}/mailer/"
+        return "themes/#{@theme_name}/mailer/"
     end
 
     def views
-        files = Dir.chdir(page_root){ Dir.glob("**/*") }
+        files = Dir.chdir('app/views/' + page_root){ Dir.glob("**/*") }
         files.map do |path| 
-            next if path.include?('layout') || path.include?('shared') || path.include?('mailer')
+            next if path.include?('layout') || path.include?('mailer')
             path = path.split('.')[0].split('/')
             if path.last.include?('_')
                 formatted_file = path.last.delete('_')
@@ -33,7 +33,7 @@ class Theme
     end
 
     def emails
-        files = Dir.chdir(email_root){ Dir.glob("**/*") }
+        files = Dir.chdir('app/views/' + email_root){ Dir.glob("**/*") }
         files.map do |path|
             path.split('.')[0]
         end.compact

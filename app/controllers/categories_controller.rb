@@ -5,9 +5,7 @@ class CategoriesController < ApplicationController
 
     def show
       @category = Category.includes(:products).active.where(products: { status: 1 } ).find(params[:id])
-      respond_to do |format|
-        format.html
-        format.json { render json: @category }
-      end
+      
+      render theme_presenter.page_template_path('categories/show'), format: [:html]
     end
 end

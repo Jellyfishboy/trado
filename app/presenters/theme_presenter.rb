@@ -3,7 +3,7 @@ class ThemePresenter < ActivePresenter::Base
 
     def page_template_path page
         unless theme.views.include?(page)
-            raise ActionController::RoutingError.new("Template missing for page '#{page}' in '#{theme.page_root}'")
+            raise ActionController::RoutingError.new("Template missing for view '#{page}' in '#{theme.page_root}'")
         end
 
         theme.page_root + page

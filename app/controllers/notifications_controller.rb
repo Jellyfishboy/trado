@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
       
       respond_to do |format|
         if @notification.save
-          format.js { render partial: 'products/skus/notify/success', format: [:js] }
+          format.js { render partial: theme_presenter.page_template_path('products/skus/notify/success'), format: [:js] }
         else
           format.json { render json: { errors: @notification.errors.to_json(root: true) }, status: 422 }
         end

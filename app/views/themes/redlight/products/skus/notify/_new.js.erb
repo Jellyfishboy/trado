@@ -1,2 +1,2 @@
-$('#notifyMeForm').html('<%=j render partial: "products/skus/notify/modal", format: [:html], locals: { notification: @notification, sku: @sku } %>');
+$('#notifyMeForm').html('<%=j render partial: theme_presenter.page_template_path("products/skus/notify/modal"), format: [:html], locals: { notification: @notification, sku: @sku } %>');
 $('#notifyMeModal').modal('show');

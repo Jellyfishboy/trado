@@ -136,7 +136,7 @@
               / ==========
               .span3
                 #cartContainer.cart-container
-                  = render theme_presenter.page_template_path('carts/cart')
+                  = render partial: theme_presenter.page_template_path('carts/cart'), format: [:html]
       / ==========
       / = Main container =
       / ==========

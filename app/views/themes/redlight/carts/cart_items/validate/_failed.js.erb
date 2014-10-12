@@ -1,2 +1,2 @@
-$('#validateCartItem').html('<%=j render partial: "carts/cart_items/validate/modal", format: [:html], locals: { sku: @sku } %>');
+$('#validateCartItem').html('<%=j render partial: theme_presenter.page_template_path("carts/cart_items/validate/modal"), format: [:html], locals: { sku: @sku } %>');
 $('#validateCartItemModal').modal('show');
