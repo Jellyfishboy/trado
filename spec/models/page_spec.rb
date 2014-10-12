@@ -4,11 +4,13 @@ describe Page do
 
     # Validations
     it { expect(subject).to validate_presence_of(:title) }
+    it { expect(subject).to validate_presence_of(:menu_title) }
     it { expect(subject).to validate_presence_of(:content) }
     it { expect(subject).to validate_presence_of(:page_title) }
     it { expect(subject).to validate_presence_of(:meta_description) }
 
     it { expect(subject).to validate_uniqueness_of(:title) }
+    it { expect(subject).to validate_uniqueness_of(:menu_title) }
     it { expect(subject).to validate_uniqueness_of(:slug) }
 
     it { expect(subject).to ensure_length_of(:page_title).is_at_most(70) }
