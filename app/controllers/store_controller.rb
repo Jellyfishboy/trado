@@ -5,5 +5,7 @@ class StoreController < ApplicationController
   def home
   	@new_products = Product.active.published.order(created_at: :desc).first(8)
     @featured_products = Product.active.published.where(featured: true).first(4)
+    
+    render theme_presenter.page_template_path('store/home'), layout: theme_presenter.layout_template_path
   end
 end

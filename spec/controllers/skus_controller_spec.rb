@@ -9,7 +9,7 @@ describe SkusController do
 
         it "should render the SKU update partial" do
             xhr :get, :update, id: sku.id
-            expect(response).to render_template(partial: 'products/skus/_update')
+            expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/products/skus/_update")
         end
     end  
 end

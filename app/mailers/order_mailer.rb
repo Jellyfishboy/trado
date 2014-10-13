@@ -1,6 +1,4 @@
 class OrderMailer < ActionMailer::Base
-    layout 'email'
-    default :from => "Tom Dallimore <tom.alan.dallimore@googlemail.com>"
 
     # Deliver an email to the customer when an order has been completed
     #
@@ -9,10 +7,12 @@ class OrderMailer < ActionMailer::Base
         @order = order
 
         mail(to: order.email, 
-             subject: "Gimson Robotics ##{@order.id} order confirmation",
-             template_path: 'mailer/orders',
-             template_name: 'completed'
-        )
+            from: "#{Store::settings.name} <#{Store::settings.email}>",
+            subject: "#{Store::settings.name} ##{@order.id} order confirmation"
+        ) do |format|
+            format.html { render "themes/#{Store::settings.theme.name}/emails/orders/completed", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store::settings.theme.name}/emails/orders/completed", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+        end
     end
 
     # Deliver an email to the customer when a payment is currently pending for an order
@@ -23,10 +23,12 @@ class OrderMailer < ActionMailer::Base
         @order = order
 
         mail(to: order.email, 
-             subject: "Gimson Robotics ##{@order.id} pending payment",
-             template_path: 'mailer/orders',
-             template_name: 'pending'
-        )
+            from: "#{Store::settings.name} <#{Store::settings.email}>",
+            subject: "#{Store::settings.name} ##{@order.id} pending payment"
+        ) do |format|
+            format.html { render "themes/#{Store::settings.theme.name}/emails/orders/pending", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store::settings.theme.name}/emails/orders/pending", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+        end
     end
 
     # Deliver an email to the customer if the 
@@ -37,10 +39,12 @@ class OrderMailer < ActionMailer::Base
         @order = order
         
         mail(to: order.email, 
-             subject: "Gimson Robotics ##{@order.id} failed",
-             template_path: 'mailer/orders',
-             template_name: 'failed'
-        )
+            from: "#{Store::settings.name} <#{Store::settings.email}>",
+            subject: "#{Store::settings.name} ##{@order.id} failed"
+        ) do |format|
+            format.html { render "themes/#{Store::settings.theme.name}/emails/orders/failed", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store::settings.theme.name}/emails/orders/failed", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+        end
     end
 
     # Deliver an email to the customer when the order has been set to dispatched
@@ -49,10 +53,12 @@ class OrderMailer < ActionMailer::Base
     def dispatched order
         @order = order
 
-        mail(to: order.email, 
-             subject: "Gimson Robotics ##{@order.id} order shipped",
-             template_path: 'mailer/orders',
-             template_name: 'dispatched'
-        )
+        mail(to: order.email,
+            from: "#{Store::settings.name} <#{Store::settings.email}>", 
+            subject: "#{Store::settings.name} ##{@order.id} order shipped"
+        ) do |format|
+            format.html { render "themes/#{Store::settings.theme.name}/emails/orders/dispatched", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store::settings.theme.name}/emails/orders/dispatched", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+        end
     end
 end

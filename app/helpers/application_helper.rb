@@ -85,9 +85,9 @@ module ApplicationHelper
     # @return [String] HTML elements
     def render_breadcrumbs type
         if type == 0
-            render :partial => 'shared/breadcrumbs/admin', :locals => { :breadcrumbs => create_admin_breadcrumbs }
+            render partial: 'shared/breadcrumbs', locals: { breadcrumbs: create_admin_breadcrumbs }
         else 
-            render :partial => 'shared/breadcrumbs/store', :locals => { :breadcrumbs => create_store_breadcrumbs }
+            render partial: theme_presenter.page_template_path('shared/breadcrumbs'), locals: { breadcrumbs: create_store_breadcrumbs }
         end
     end
 
@@ -109,7 +109,7 @@ module ApplicationHelper
         order_record = Store::class_name(object.last) == 'Order'
         sku_record = Store::class_name(object.last) == 'Sku'
         delivery_service_record = Store::class_name(object.last) == 'Delivery Service'      
-        render partial: 'shared/table_actions', locals: 
+        render partial: 'shared/table_actions', format: [:html], locals: 
         { 
             object: object, 
             show: show, 
@@ -162,10 +162,10 @@ module ApplicationHelper
         flash_array = []
         flash.each do |type, messages|
             if messages.is_a?(String)
-                flash_array << render(partial: 'shared/flash/admin', locals: { :type => type, :message => messages })
+                flash_array << render(partial: 'shared/flash', format: [:html], locals: { type: type, message: messages })
             else
                 messages.each do |m|
-                    flash_array << render(partial: 'shared/flash/admin', locals: { :type => type, :message => m }) unless m.blank?
+                    flash_array << render(partial: 'shared/flash', format: [:html], locals: { type: type, message: m }) unless m.blank?
                 end
             end
         end

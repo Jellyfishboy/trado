@@ -1,6 +1,5 @@
 Trado::Application.routes.draw do
 
-  mount RedactorRails::Engine => '/redactor_rails'
   root to: 'store#home'
 
   # Custom routes
@@ -14,6 +13,7 @@ Trado::Application.routes.draw do
   %w( 404 422 500 ).each do |code|
     get code, to: "errors#show", code: code
   end
+
 
 
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
@@ -55,6 +55,7 @@ Trado::Application.routes.draw do
   namespace :admin do
       root to: "categories#index"
       post '/paypal/ipn' => 'transactions#paypal_ipn'
+      mount RedactorRails::Engine => '/redactor_rails'
       resources :accessories, :categories, except: :show
       resources :products, except: [:show, :create] do
         resources :attachments, except: [:index, :show]

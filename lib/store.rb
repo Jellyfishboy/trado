@@ -1,4 +1,5 @@
 require 'store/price'
+require 'store/theme_tools'
 
 module Store
 

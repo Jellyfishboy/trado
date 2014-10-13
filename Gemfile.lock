@@ -31,6 +31,7 @@ GEM
       activesupport (= 4.1.0)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_presenter (3.2.2)
     active_utils (2.2.3)
       activesupport (>= 2.3.11)
       i18n
@@ -478,6 +479,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_presenter
   activemerchant
   activesupport-json_encoder
   asset_sync

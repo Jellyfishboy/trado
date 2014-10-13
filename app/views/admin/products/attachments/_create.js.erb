@@ -1,6 +1,6 @@
 $('#attachment-form').modal('hide');
 $('#attachments').html('<% @product.attachments.each do |attach| %><%=j render partial: "admin/products/attachments/single", locals: { attachment: attach } %><% end %>');
-trado.animation.alert(
+soca.animation.alert(
     '.attachment-heading',
     'success',
     'attachment-create-alert',

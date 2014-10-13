@@ -6,7 +6,7 @@ class SkusController < ApplicationController
     #
     # Update the price of a product when selecting a SKU
     def update
-        render partial: 'products/skus/update', format: [:js]
+        render partial: theme_presenter.page_template_path('products/skus/update'), format: [:js]
     end
 
     # Notify me SKU
@@ -15,6 +15,6 @@ class SkusController < ApplicationController
     def notify
         @sku = Sku.find(params[:id])
         @notification = Notification.new
-        render partial: 'products/skus/notify/new', format: [:js]
+        render partial: theme_presenter.page_template_path('products/skus/notify/new'), format: [:js]
     end
 end
