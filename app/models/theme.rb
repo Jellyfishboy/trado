@@ -1,8 +1,8 @@
 class Theme
-    attr_reader :store_setting, :name
+    attr_reader :name
 
-    def initialize store_setting
-        @name = store_setting.theme_name
+    def initialize theme_name
+        @name = theme_name
     end
 
     def page_root

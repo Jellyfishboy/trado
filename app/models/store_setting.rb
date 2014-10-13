@@ -34,12 +34,13 @@ class StoreSetting < ActiveRecord::Base
     before_save :reset_settings
   
     def theme
-        Theme.new(self)
+        @@theme ||= Theme.new(self.theme_name)
     end
 
     private
 
     def reset_settings
+        @@theme = nil
         Store::reset_settings
     end
 end

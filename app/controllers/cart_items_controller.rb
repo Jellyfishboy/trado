@@ -20,7 +20,7 @@ class CartItemsController < ApplicationController
       @cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, @accessory)
       @cart_item.save!
     end
-    render partial: theme_presenter.page_template_path(partial: 'carts/update'), format: [:js]
+    render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
   end
 
   def destroy
