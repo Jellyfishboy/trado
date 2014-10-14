@@ -26,7 +26,7 @@
           %div= ff.file_field :file
       .form-group.form-last
         = f.label 'Store theme'
-        = f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').capitalize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' }
+        = f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' }
     .widget-sub-heading
       %h3 Tax
     %fieldset.widget.widget-content
