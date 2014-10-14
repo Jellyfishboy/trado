@@ -36,7 +36,7 @@
             %span.light= @product.name
           .meta
             %span.tag.price
-              = Store::Price.new(@skus.first.price).markup
+              = Store::Price.new(price: @skus.first.price).markup
             %span.stock
               - if @skus.first.stock > 0
                 %span.btn.btn-success In Stock
@@ -146,7 +146,7 @@
                     = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
                 .main-titles.no-margin
                   %h4.title
-                    %span= Store::Price.new(product.skus.first.price, product.skus.count).range
+                    %span= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range
                   %h5.no-margin= truncate product.name, length: 35
                 %p.desc= truncate product.short_description
           / /product

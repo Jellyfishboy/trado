@@ -1,21 +1,20 @@
 module Store
 
     class Price < AbstractController::Base
-        attr_reader :product_data, :count, :tax_type, :price
+        attr_reader :count, :tax_type, :price
         include ActionView::Helpers::NumberHelper
 
         # Initial price logic which builds product data object
         #
-        # @overload set(args)
+        # @overload set(data)
         #   @param [Decimal] price
         #   @param [String] tax type
         #   @param [Integer] total record count
         # @return [Decimal] price
-        def initialize *data
-            @product_data = pricify(data)
-            @count = product_data.count
-            @tax_type = product_data.tax_type
-            @price = product_data.price
+        def initialize data
+            @count      = data[:count]
+            @tax_type   = data[:tax_type]
+            @price      = data[:price]
         end
 
         # Price logic
@@ -39,7 +38,7 @@ module Store
         #
         # @return [boolean]
         def range_price
-            count.nil? ? nil : count > 1 ? true : false
+            count.nil? || count < 2 ? false : true
         end
 
         # Convert a price into an integer
@@ -82,24 +81,6 @@ module Store
         # @return [String] price with currency
         def format price
             price.nil? ? nil : number_to_currency(price, unit: Store::settings.currency, precision: 2)
-        end
-
-        # # Clever method to filter out the string, integer and ActiveRecord::Base values from an array
-        # # Assigning them to their respective variables
-        # #
-        # # @return [Integer / ActiveRecord::Base / String]
-        # def parameterize *opts
-        #     opts[0].each_with_index do |a, index|
-        #         return nil if opts[0].count == 1
-        #         next if index == 0
-        #         return a if a.is_a?(opts[1])
-        #     end
-        #     return nil
-        # end
-
-        ProductData = Struct.new(:price, :tax_type, :count)
-        def pricify data
-            ProductData.new(data[0], data[1], data[2])
         end
 
         # Calculate and add tax to a price

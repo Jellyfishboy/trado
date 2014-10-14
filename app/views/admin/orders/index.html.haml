@@ -26,7 +26,7 @@
               %td= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", :target => '_blank')
               %td= status_label order, order.shipping_status
               %td= status_label order.transactions.last, order.transactions.last.payment_status
-              %td= Store::Price.new(order.gross_amount, 'net').single
+              %td= Store::Price.new(price: order.gross_amount, tax_type: 'net').single
               %td= order.updated_at.strftime('%d/%m/%Y at %I:%M%p')
               = table_actions [:admin, order], 'show', 'remote-edit'
 #order-modal

@@ -46,7 +46,7 @@
                         <tr>
                             <td>
                                 <p style="font-weight: bold; letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #34353e !important; font-size: 14px; line-height: 16px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0; ">
-                                    <%= Store::Price.new(@sku.product.skus.first.price).markup %>
+                                    <%= Store::Price.new(price: @sku.product.skus.first.price).markup %>
                                 </p>
                             </td>
                         </tr>

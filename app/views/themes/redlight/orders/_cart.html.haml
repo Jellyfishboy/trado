@@ -12,7 +12,7 @@
       = form_for item, remote: true do |f|
         = f.text_field :quantity, :value => item.quantity, :class => 'tiny-size'
         = f.submit 'Update', :class => 'btn btn-small'
-    %td.price= Store::Price.new(item.total_price).single
+    %td.price= Store::Price.new(price: item.total_price).single
   - unless item.cart_item_accessory.blank?
     %tr.accessory_row
       %td.image
@@ -31,20 +31,20 @@
         %i.fa.fa-times-circle
       %div= @order.delivery_address.country
     %td.qty
-    %td.price= Store::Price.new(@order.delivery.price).single
+    %td.price= Store::Price.new(price:@order.delivery.price).single
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2"}
     \ 
     %td.stronger Subtotal:
     %td.stronger
-      .align-right= Store::Price.new(@cart_total).single
+      .align-right= Store::Price.new(price: @cart_total).single
   %tr
     %td{colspan: "2", rowspan: "1"}
     \ 
     %td.stronger= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
     %td.stronger
-      .align-right= Store::Price.new((@cart_total*Store::tax_rate)).single
+      .align-right= Store::Price.new(price: (@cart_total*Store::tax_rate)).single
 %tr
   %td{colspan: "2", rowspan: "2"}
     .alert.alert-info
@@ -52,4 +52,4 @@
 %tr
   %td.stronger Total:
   %td.stronger
-    .size-16.align-right.total_price= Store::Price.new(@cart_total, 'gross').single
+    .size-16.align-right.total_price= Store::Price.new(price: @cart_total, tax_type: 'gross').single

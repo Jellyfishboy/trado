@@ -26,7 +26,7 @@
               %td= accessory.part_number
               %td= accessory.name
               %td= accessory.weight
-              %td= Store::Price.new(accessory.cost_value, 'net').single
-              %td= Store::Price.new(accessory.price, 'net').single
-              %td= Store::Price.new(accessory.price, 'gross').single
+              %td= Store::Price.new(price: accessory.cost_value, tax_type: 'net').single
+              %td= Store::Price.new(price: accessory.price, tax_type: 'net').single
+              %td= Store::Price.new(price: accessory.price, tax_type: 'gross').single
               = table_actions [:admin, accessory], 'edit', 'delete'

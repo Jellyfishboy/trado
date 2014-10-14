@@ -104,7 +104,7 @@ class Orders::BuildController < ApplicationController
   # Bespoke PayPal method
   #
   def express
-    response = EXPRESS_GATEWAY.setup_purchase(Store::Price.new(@order.gross_amount, 'net').singularize, 
+    response = EXPRESS_GATEWAY.setup_purchase(Store::Price.new(price: @order.gross_amount, tax_type: 'net').singularize, 
                                               Payatron4000::Paypal.express_setup_options( @order, 
                                                                                           steps, 
                                                                                           current_cart,
