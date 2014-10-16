@@ -20,7 +20,7 @@
     an existing service country list.
 .ninecol.last
   .widget.widget-content.widget-last
-    .form-group
+    .form-group.form-last
       = f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}}
   .form-action
     = f.submit 'Submit', :class => 'btn btn-blue btn-large'
