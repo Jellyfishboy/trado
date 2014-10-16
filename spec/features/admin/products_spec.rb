@@ -121,10 +121,10 @@ feature 'Product management' do
         # End SKU
 
         # Accessories
-        find("#product_accessory_ids_#{accessory.id}").set(true)
+        select_from_chosen(accessory.name, from: "product_accessory_ids")
 
         # Related products
-        find("#product_related_ids_#{product_1.id}").set(true)
+        select_from_chosen(product_1.name, from: "product_related_ids")
 
         click_button 'Publish'
 
@@ -150,7 +150,7 @@ feature 'Product management' do
         end
     end
 
-    scenario 'should edit a product (draft)' do
+    scenario 'should edit a product (draft)', js: true do
         not_single_product
         accessory
 
@@ -165,7 +165,7 @@ feature 'Product management' do
         fill_in('product_weighting', with: '10')
         fill_in('product_sku', with: 'TA')
         find('#product_single').set(true)
-        find("#product_accessory_ids_#{accessory.id}").set(true)
+        select_from_chosen(accessory.name, from: "product_accessory_ids")
         click_button 'Save'
         sleep 5
         
