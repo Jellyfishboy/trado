@@ -40,7 +40,7 @@
           = f.text_field :tax_rate, :class => 'form-control'
     .threecol
       %h3 Currency & price display
-      %p  Set the currency unit you are operating with in your store and whether you would like your customers to view the tax difference in your product prices.
+      %p  Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
     .ninecol.last
       %fieldset.widget.widget-content
         .form-group
@@ -49,11 +49,11 @@
         .radio
           %label
             = f.radio_button :tax_breakdown, true
-            Visible
+            Price inc. & exc. tax
         .radio
           %label
             = f.radio_button :tax_breakdown, false
-            Hidden
+            Price inc. tax
     .threecol
       %h3 Google Analytics
       %p Enable and set the web tracking code for your store. 
