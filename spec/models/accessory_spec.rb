@@ -15,6 +15,8 @@ describe Accessory do
     # Validations
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:part_number) }
+    it { expect(subject).to validate_presence_of(:weight) }
+    it { expect(subject).to validate_presence_of(:price) }
 
     it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
 

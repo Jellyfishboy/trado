@@ -22,16 +22,17 @@ class Accessory < ActiveRecord::Base
   attr_accessible :name, :part_number, :price, :weight, :cost_value, :active
 
   has_many :cart_item_accessories
-  has_many :cart_items,                             :through => :cart_item_accessories
-  has_many :carts,                                  :through => :cart_items
-  has_many :order_item_accessories,                 :dependent => :restrict_with_exception
-  has_many :order_items,                            :through => :order_item_accessories, :dependent => :restrict_with_exception
-  has_many :orders,                                 :through => :order_items
-  has_many :accessorisations,                       :dependent => :delete_all
-  has_many :products,                               :through => :accessorisations
+  has_many :cart_items,                                   through: :cart_item_accessories
+  has_many :carts,                                        through: :cart_items
+  has_many :order_item_accessories,                       dependent: :restrict_with_exception
+  has_many :order_items,                                  through: :order_item_accessories, dependent: :restrict_with_exception
+  has_many :orders,                                       through: :order_items
+  has_many :accessorisations,                             dependent: :delete_all
+  has_many :products,                                     through: :accessorisations
 
-  validates :name, :part_number,                    :presence => true, :uniqueness => { :scope => :active }
-  validates :part_number,                           :numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
+  validates :name, :part_number, :weight,
+  :price,                                                 presence: true, uniqueness: { scope: :active }
+  validates :part_number,                                 numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   after_update :update_cart_item_accessories_weight
 

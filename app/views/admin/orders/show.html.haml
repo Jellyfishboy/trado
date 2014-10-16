@@ -128,7 +128,7 @@
             %th Last updated
         %tbody
           - @order.transactions.each do |transaction|
-            %tr{:id => "transaction_#{transaction.id}" }
+            %tr{id: "transaction_#{transaction.id}" }
               %td= transaction.transaction_type
               %td= transaction.payment_type 
               %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id

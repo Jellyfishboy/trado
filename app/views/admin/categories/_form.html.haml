@@ -1,54 +1,40 @@
-.twelvecol
-  .page-header
-    %h2.widget.widget-header= "#{yield :breadcrumb} category"
-  = form_for [:admin, @category], html: { role: 'form' } do |f|
-    .threecol
-    .ninecol.last
-      - if @category.errors.any?
-        #errors
-          %ul
-            - @category.errors.full_messages.each do |msg|
-              %li
-                %i.icon-cancel-circle
-                = msg  
-    .threecol
-      %h3 Write your page
-      %p Set the name, description and sorting order for your category.
-    .ninecol.last
-      %fieldset.widget.widget-content
-        .form-group
-          = f.label :name
-          = f.text_field :name, :class => 'form-control'
-        .form-group
-          = f.label :description
-          = f.text_area :description, :class => 'form-control', rows: 8
-        .form-group
-          = f.label :sorting
-          = f.text_field :sorting, :class => 'form-control'
-    .threecol
-      %h3 Search engines
-      %p Set up the page title and meta description to help define how a page is shown in search engines.
-    .ninecol.last
-      %fieldset.widget.widget-content
-        .form-group
-          = f.label :page_title
-          = f.text_field :page_title, :class => 'form-control'
-        .form-group
-          = f.label :meta_description
-          = f.text_field :meta_description, :class => 'form-control'
-    .threecol
-      %h3 Visiblity
-      %p Set if the category is visible on your storefront.
-    .ninecol.last
-      %fieldset.widget.widget-content.widget-last
-        .radio
-          %label
-            = f.radio_button :active, true
-            Visible
-        .radio
-          %label
-            = f.radio_button :active, false
-            Hidden
-      .form-action
-        = f.submit 'Submit', :class => 'btn btn-blue btn-large'
-.fourcol.last
+.threecol
+  %h3 Category details
+  %p Set the name, description and sorting order for your category.
+.ninecol.last
+  %fieldset.widget.widget-content
+    .form-group
+      = f.label :name
+      = f.text_field :name, :class => 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_area :description, :class => 'form-control', rows: 8
+    .form-group
+      = f.label :sorting
+      = f.text_field :sorting, :class => 'form-control'
+.threecol
+  %h3 Search engines
+  %p Set up the page title and meta description to help define how a page is shown in search engines.
+.ninecol.last
+  %fieldset.widget.widget-content
+    .form-group
+      = f.label :page_title
+      = f.text_field :page_title, :class => 'form-control'
+    .form-group
+      = f.label :meta_description
+      = f.text_field :meta_description, :class => 'form-control'
+.threecol
+  %h3 Visiblity
+  %p Set if the category is visible on your storefront.
+.ninecol.last
+  %fieldset.widget.widget-content.widget-last
+    .radio
+      %label
+        = f.radio_button :active, true
+        Visible
+    .radio
+      %label
+        = f.radio_button :active, false
+        Hidden
+  .form-action
+    = f.submit 'Submit', :class => 'btn btn-blue btn-large'

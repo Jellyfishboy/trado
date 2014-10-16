@@ -2,4 +2,12 @@
 - content_for :breadcrumb, 'New'
 - breadcrumb_add 'Categories', admin_categories_path
 
-= render "form"
+.twelvecol
+  .page-header
+    %h2.widget.widget-header New category
+  = form_for [:admin, @category], html: { role: 'form' } do |f|
+    .threecol
+    .ninecol.last
+      = render partial: 'shared/errors', locals: { object: @category }
+    = render partial: 'form', locals: { f: f }
+.fourcol.last
