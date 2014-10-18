@@ -2,6 +2,7 @@ log/*
 tmp
 *.DS_Store
 .env
+.ruby-version
 vendor/cache/*
 tmp/cache/*
 vendor/assets/components
