@@ -69,11 +69,13 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
   private
 
-    def set_delivery_service_price
-      @delivery_service_price = DeliveryServicePrice.find(params[:id])
-    end
+  def 
 
-    def set_delivery_service
-      @delivery_service = DeliveryService.find(params[:delivery_service_id])
-    end
+  def set_delivery_service_price
+    @delivery_service_price = DeliveryServicePrice.find(params[:id])
+  end
+
+  def set_delivery_service
+    @delivery_service = DeliveryService.find(params[:delivery_service_id])
+  end
 end
