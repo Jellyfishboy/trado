@@ -2,34 +2,13 @@
 - content_for :breadcrumb, 'Edit'
 - breadcrumb_add 'Accessories', admin_accessories_path
 
-.eightcol
+.twelvecol
   .page-header
     %h2.widget.widget-header Edit accessory
-  = form_for [:admin, @form_accessory], :html => { :role => 'form' } do |f|
-    - if @accessory && @accessory.errors.any?
-      #errors
-        %ul
-          - @accessory.errors.full_messages.each do |msg|
-            %li
-              %i.icon-cancel-circle
-              = msg  
-    %fieldset.widget.widget-content.widget-last
-      .form-group
-        = f.label :part_number
-        = f.text_field :part_number, :class => 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, :class => 'form-control'
-      .form-group
-        = f.label 'Weight (g)'
-        = f.text_field :weight, :class => 'form-control'
-      .form-group
-        = f.label :cost_value
-        = f.text_field :cost_value, :class => 'form-control calculate-tax', :autocomplete => 'off'
-      .form-group.form-last
-        = f.label 'Net price'
-        = f.text_field :price, :class => 'form-control calculate-tax', :autocomplete => 'off'
-    .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+  = form_for [:admin, @form_accessory], html: { role: 'form' } do |f|
+    .threecol
+    .ninecol.last
+      = render partial: 'shared/errors', locals: { object: @accessory }
+    = render partial: 'form', locals: { f: f }
 .fourcol.last
 

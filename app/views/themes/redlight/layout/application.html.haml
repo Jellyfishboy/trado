@@ -1,0 +1,286 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %title 
+      = yield :title
+      = " - #{Store::settings.name} | The linear actuator and electric motor specialist"
+    %meta{:content => "#{yield :meta_description}", :name => "description"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = include_gon(watch: true)
+    :javascript
+      WebFontConfig = {
+          google : {
+              families : ['Open+Sans:400,700,400italic,700italic:latin,latin-ext,cyrillic', 'Pacifico::latin']
+          }
+      };
+      (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+      })();
+    = stylesheet_link_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true
+    = javascript_include_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true 
+    %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
+  %body
+    /[if lt IE 7]
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    .master-wrapper
+      / ==========
+      / = Header =
+      / ==========
+      %header#header
+        .darker-row
+          .container
+            .row
+              .span4
+                .higher-line
+              .span8
+                .topmost-line
+                  .lang-currency
+                    .dropdown.js-selectable-dropdown
+                      %a.selected{"data-toggle" => "dropdown", href: "#"}
+                        %span.js-change-text
+                          %i.famfamfam-flag-gb
+                          English (EN)
+                        %b.caret
+                      %ul.dropdown-menu.js-possibilities{"aria-labelledby" => "dLabel", role: "menu"}
+                        %li
+                          %a{href: "#"}
+                            %i.famfamfam-flag-gb
+                            English (EN)
+                    .dropdown.js-selectable-dropdown
+                      %a.selected{"data-toggle" => "dropdown", href: "#"}
+                        %span.js-change-text GBP (£)
+                        %b.caret
+                      %ul.dropdown-menu.js-possibilities{"aria-labelledby" => "dLabel", role: "menu"}
+                        %li
+                          %a{href: "#"} GBP (£)
+        .container
+          .row
+            / ==========
+            / = Logo =
+            / ==========
+            .span7
+              = link_to root_path, :class => 'brand' do
+                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => Store::settings.name
+                %span.pacifico= Store::settings.name
+                %span.tagline The linear actuator and electric motor specialist
+            / ==========
+            / = Social Icons =
+            / ==========
+            .span5
+              .top-right
+                .icons
+                  %a{href: "http://www.facebook.com/ProteusNet"}
+                    %span.zocial-facebook
+                  %a{href: "skype:primozcigler?call"}
+                    %span.zocial-skype
+                  %a{href: "https://twitter.com/proteusnetcom"}
+                    %span.zocial-twitter
+                  %a{href: "http://eepurl.com/xFPYD"}
+                    %span.zocial-rss
+                  %a{href: "#"}
+                    %span.zocial-wordpress
+                  %a{href: "#"}
+                    %span.zocial-android
+                  %a{href: "#"}
+                    %span.zocial-html5
+                  %a{href: "#"}
+                    %span.zocial-windows
+                  %a{href: "#"}
+                    %span.zocial-apple
+      / ==========
+      / = Main Menu / navbar =
+      / ==========
+      #stickyNavbar.navbar.navbar-static-top
+        .navbar-inner
+          .container
+            .row
+              .span9
+                %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                / ==========
+                / = Menu =
+                / ==========
+                .nav-collapse.collapse
+                  %ul#mainNavigation.nav
+                    %li{ :class => active_page?(controller: 'store', action: 'index') }
+                      %a.title{href: root_path, title: "Home"} Home
+                    - category_list.each do |category|
+                      %li{ :class => active_category?(category.slug) }
+                        = link_to category.name, category
+                    - page_list.each do | page|
+                      %li{ :class => active_page?(controller: 'pages', slug: page.slug) }
+                        = link_to page.render_menu_title, p_path(slug: page.slug), title: page.title
+                  / ==========
+                  / = Search form =
+                  / ==========
+                  = form_tag search_path, :method => :get, :class => 'navbar-form pull-right' do
+                    = button_tag(:type => 'submit') do
+                      %span.icon-search
+                    = text_field_tag(:query, params[:query], :autocomplete => 'off', :tabindex => "1", :class => 'span1', :id => 'navSearchInput' )
+              / ==========
+              / = Cart =
+              / ==========
+              .span3
+                #cartContainer.cart-container
+                  = render partial: theme_presenter.page_template_path('carts/cart'), format: [:html]
+      / ==========
+      / = Main container =
+      / ==========
+      = yield
+      / ==========
+      / = Footer =
+      / ==========
+      %footer
+        / ==========
+        / ==========
+        / = Upper footer =
+        .foot-light
+          .container
+            .row
+              .span4
+                %h2.pacifico
+                  = Store::settings.name
+                  = image_tag "webmarket/webmarket.png", :alt => Store::settings.name
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis
+              .span4
+                .main-titles.lined
+                  %h3.title Facebook
+                .bordered
+                  .fill-iframe
+                    .fb-like-box{"data-colorscheme" => "dark", "data-header" => "false", "data-height" => "200", "data-href" => "https://www.facebook.com/ProteusNet", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "292"}
+              .span4
+                .main-titles.lined
+                  %h3.title
+                    %span.light Newsletters
+                    Signup
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam tincidunt vestibulum risus et gravida.
+                / Begin MailChimp Signup Form
+                #mc_embed_signup
+                  %form#mc-embedded-subscribe-form.validate.form.form-inline{action: "http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&id=5dad3f35e9", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank"}
+                    .mc-field-group
+                      %input#mce-EMAIL.required.email{name: "EMAIL", placeholder: "Enter your e-mail address", type: "email", value: ""}/
+                      %input#mc-embedded-subscribe.btn.btn-primary{name: "subscribe", type: "submit", value: "Send"}/
+                    #mce-responses.clear
+                      #mce-error-response.response{style: "display:none"}
+                      #mce-success-response.response{style: "display:none"}
+                / End mc_embed_signup
+        / /upper footer
+        / ==========
+        / = Middle footer =
+        / ==========
+        .foot-dark
+          .container
+            .row
+              / ==========
+              / = Menu 1 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    Products
+                %ul.nav.bold
+                  %li
+                    %a{href: "#"} Home
+                  %li
+                    %a{href: "#"} Pages
+                  %li
+                    %a{href: "#"} About Us
+                  %li
+                    %a{href: "#"} Shortcodes
+                  %li
+                    %a{href: "#"} Gallery
+                  %li
+                    %a{href: "#"} Contact Us
+              / ==========
+              / = Menu 2 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    Support
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+              / ==========
+              / = Menu 3 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    General
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+              / ==========
+              / = Menu 4 =
+              / ==========
+              .span3
+                .main-titles.lined
+                  %h3.title
+                    Contact
+                %ul.nav
+                  %li
+                    %a{href: "#"} Lorem Ipsum Dolor Sit
+                  %li
+                    %a{href: "#"} Amet Webmarket Signup
+                  %li
+                    %a{href: "#"} Brands
+                  %li
+                    %a{href: "#"} Latest Tweets Sometging
+                  %li
+                    %a{href: "#"} Ipsum Sit Lorem Amet
+        / /middle footer
+        / ==========
+        / = Bottom Footer =
+        / ==========
+        .foot-last
+          %a#toTheTop{href: "#"}
+            %span.fa.fa-chevron-up
+          .container
+            .row
+              .span6
+                = "© Copyright 2013. All rights reserved - #{Store::settings.name}"
+        / /bottom footer
+      / /footer
+    - if Store::settings.ga_active
+      :javascript
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', gon.trackingCode, {'cookieDomain': 'none'});
+        ga('send', 'pageview');
+.search-data-query

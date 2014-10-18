@@ -12,7 +12,6 @@ class Admin::AdminController < ApplicationController
     
         respond_to do |format|
           if @settings.update(params[:store_setting])
-            Store::reset_settings
             flash_message :success, 'Store settings were successfully updated.'
             format.html { redirect_to admin_root_path }
           else
@@ -23,7 +22,7 @@ class Admin::AdminController < ApplicationController
 
     private
 
-        def set_setting
-            @settings = Store::settings
-        end
+    def set_setting
+        @settings = Store::settings
+    end
 end

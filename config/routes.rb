@@ -2,10 +2,6 @@ Trado::Application.routes.draw do
 
   root to: 'store#home'
 
-  # Standard pages
-  get '/about' => 'store#about'
-  get '/contact' => 'contacts#new'
-
   # Custom routes
   get '/carts/delivery_service_prices/update' => 'delivery_service_prices#update'
   get '/product/skus' => 'skus#update'
@@ -18,11 +14,19 @@ Trado::Application.routes.draw do
     get code, to: "errors#show", code: code
   end
 
+  # Pages system
+  namespace :p do
+    get ':slug', to: 'pages#show'
+    resources :pages, only: [] do
+      post 'send_contact_message', on: :collection
+    end
+  end
 
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   resources :users
   resources :contacts, only: :create
   resources :delivery_service_prices, only: :update
+  
 
   resources :categories, only: :show do
     resources :products, only: :show do
@@ -60,7 +64,8 @@ Trado::Application.routes.draw do
   namespace :admin do
       root to: "categories#index"
       post '/paypal/ipn' => 'transactions#paypal_ipn'
-      resources :accessories, :categories, :zones, except: :show
+      mount RedactorRails::Engine => '/redactor_rails'
+      resources :accessories, :categories, except: :show
       resources :products, except: [:show, :create] do
         resources :attachments, except: [:index, :show]
         resources :skus, except: [:index, :show] do
@@ -69,7 +74,11 @@ Trado::Application.routes.draw do
       end
       resources :orders, only: [:index, :show, :update, :edit]
       resources :delivery_services, except: :show do
-        resources :delivery_service_prices, as: 'prices', path: 'prices', except: :show
+        collection do
+          get 'copy_countries'
+          post 'set_countries'
+        end
+        resources :delivery_service_prices, path: 'prices', except: :show
       end
       
       namespace :products do
@@ -78,9 +87,7 @@ Trado::Application.routes.draw do
           resources :attribute_types, except: :show
         end
       end
-      namespace :zones do
-        resources :countries, except: :show
-      end
+      resources :pages, except: [:show, :destroy, :new, :create]
       get '/settings' => 'admin#settings'
       patch '/settings/update' => 'admin#update'
       get '/profile' => 'users#edit'

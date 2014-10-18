@@ -36,6 +36,6 @@
                     - delivery_service.prices.each do |delivery_price|
                       %tr
                         %td= delivery_price.code
-                        %td= Store::Price.new(delivery_price.price, 'net').single
-                        %td.align-left= Store::Price.new(delivery_price.price, 'gross').single
-              = table_commands delivery_service, admin_delivery_service_prices_path(delivery_service), edit_admin_delivery_service_path(delivery_service), admin_delivery_service_path(delivery_service), 4
+                        %td= Store::Price.new(price: delivery_price.price, tax_type: 'net').single
+                        %td.align-left= Store::Price.new(price: delivery_price.price, tax_type: 'gross').single
+              = table_actions [:admin, delivery_service], 'edit', 'delete'

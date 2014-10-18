@@ -1,0 +1,55 @@
+- content_for :title, @category.page_title
+- content_for :breadcrumb, @category.name
+- content_for :meta_description, @category.meta_description
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+= render_breadcrumbs 1
+.container
+  .push-up.blocks-spacer
+    .row
+      / ==========
+      / = Main content =
+      / ==========
+      %section.span12
+        / ==========
+        / = Title =
+        / ==========
+        .underlined.push-down-20
+          .row
+            .span6
+              %h3
+                %span.light All
+                Products
+            .span6.align-right.sm-align-left
+              #tourStep4.form-inline.sorting-by
+                %label.black-clr{for: "isotopeSorting"} Sort:
+                %select#isotopeSorting.span3
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"true\"}"} By Price (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"price\", \"sortAscending\":\"false\"}"} By Price (High to Low) ↓
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"true\"}"} By Name (Low to High) ↑
+                  %option{value: "{\"sortBy\":\"name\", \"sortAscending\":\"false\"}"} By Name (High to Low) ↓
+        / /title
+        / ==========
+        / = Products =
+        / ==========
+        .row.popup-products
+          #isotopeContainer.isotope-container
+            - @category.products.each do |product|
+              / ==========
+              / = Single Product =
+              / ==========
+              .span3.isotope--target.filter--accessories{"data-brand" => product.name, "data-price" => product.skus.first.price}
+                .product
+                  .product-inner
+                    .product-img
+                      .picture
+                        = link_to (image_tag product.attachments.first.file.large, :alt => product.name, :width => 540, :height => 374), [product.category, product]
+
+                    .main-titles.no-margin
+                      %h4.title
+                        = Store::Price.new(price: product.skus.first.price, count: product.skus.count).range
+                      %h5.no-margin.isotope--title= truncate product.name, :length => 35
+        %hr/
+      / /main content
+/ /container

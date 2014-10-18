@@ -1,0 +1,57 @@
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Edit page
+  = form_for [:admin, @page], html: { role: 'form' } do |f|
+    .threecol
+    .ninecol.last
+      = render partial: 'shared/errors', locals: { object: @page }
+    .threecol
+      %h3 Write your page
+      %p Set the title for your page, menu item and add your page content.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label :title
+          = f.text_field :title, :class => 'form-control'
+        .form-group
+          = f.label :menu_title
+          = f.text_field :menu_title, :class => 'form-control'
+        .form-group.form-last
+          = f.label :content
+          = f.text_area :content, :class => 'form-control redactor', rows: 8
+    .threecol
+      %h3 Search engines
+      %p Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label :page_title
+          = f.text_field :page_title, :class => 'form-control'
+        .form-group
+          = f.label :meta_description
+          = f.text_area :meta_description, :class => 'form-control', rows: 4
+        .form-group.form-last
+          = f.label :slug
+          = f.text_field :slug, :class => 'form-control'
+    .threecol
+      %h3 Visiblity
+      %p Set if the page is visible on your storefront.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .radio
+          %label
+            = f.radio_button :active, true
+            Visible
+        .radio
+          %label
+            = f.radio_button :active, false
+            Hidden
+    .threecol
+      %h3 Template
+      %p Select the template this page will use on your storefront.
+    .ninecol.last
+      %fieldset.widget.widget-content.widget-last
+        = f.select :template_type, options_for_select(@template_types.keys.map { |type| [type.titleize, type] }, @page.template_type), { include_blank: false }, { :class => "form-control" }
+      .form-action
+        = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+.fourcol.last

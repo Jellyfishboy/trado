@@ -1,4 +1,5 @@
 require 'store/price'
+require 'store/theme_tools'
 
 module Store
 
@@ -79,5 +80,13 @@ module Store
             end
         end
 
+        # Parameterizes strings and replaces underscores with hyphens
+        #
+        # @param slug [String]
+        # @return [String] url friendly slug
+        def parameterize_slug slug
+            slug = slug.parameterize.split('_').join('-')
+            return slug
+        end
     end
 end

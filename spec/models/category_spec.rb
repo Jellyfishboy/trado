@@ -11,10 +11,15 @@ describe Category do
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:description) }
     it { expect(subject).to validate_presence_of(:sorting) }
+    it { expect(subject).to validate_presence_of(:page_title) }
+    it { expect(subject).to validate_presence_of(:meta_description) }
 
     it { expect(subject).to validate_numericality_of(:sorting).is_greater_than_or_equal_to(0).only_integer } 
 
     it { expect(subject).to validate_uniqueness_of(:name) }
+
+    it { expect(subject).to ensure_length_of(:page_title).is_at_most(70) }
+    it { expect(subject).to ensure_length_of(:meta_description).is_at_most(150) }
 
     describe "Listing all categories" do
         let!(:category_1) { create(:category) }

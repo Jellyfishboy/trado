@@ -2,9 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.1.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 
 # Production gems
@@ -25,7 +22,6 @@ group :development do
     gem 'metric_fu'
     gem 'capistrano-unicorn', :require => false, :platforms => :ruby
     gem 'thin'
-    gem 'highline'
     gem 'colorize'
 end
 
@@ -46,7 +42,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
   # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
@@ -74,16 +71,17 @@ gem 'activesupport-json_encoder'
 gem 'rollbar'
 gem 'newrelic_rpm'
 
-# Search
-gem 'searchkick'
-
 # Misc
 gem 'global'
-gem 'foreman',   '~> 0.61.0'
 gem 'protected_attributes'
 gem 'tzinfo-data'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
+gem 'active_presenter'
+
+# Pagination
+gem 'kaminari'
+
+# RTE
+gem 'redactor-rails'
 
 # Transaction handler
 gem 'activemerchant'
@@ -104,7 +102,7 @@ gem 'unf' # Dependency for fog
 # Sitemap
 gem 'sitemap_generator'
 
-# Processing
+# Background processing
 gem 'whenever', '>= 0.8.4', :require => false
 
 # JS Variables
@@ -112,6 +110,8 @@ gem 'gon'
 
 # Performance
 gem 'fast_blank'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

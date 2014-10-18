@@ -1,5 +1,4 @@
 class Admin::ProductsController < ApplicationController
-
   before_action :get_associations, except: [:index, :destroy]
   before_action :clean_drafts, only: :index
   before_action :authenticate_user!
@@ -16,7 +15,8 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_products_url
       flash_message :error, "You must have at least one attribute type record before creating your first product. Create one #{view_context.link_to 'now', new_admin_products_skus_attribute_type_path}.".html_safe
     else
-      @product = Product.create
+      @product = Product.new
+      @product.save(validate: false)
       redirect_to edit_admin_product_path(@product)
     end
   end
@@ -30,9 +30,11 @@ class Admin::ProductsController < ApplicationController
     @product.save(validate: false)
     if params[:commit] == "Save"
       @product.status = :draft
+      params[:product][:status] = 'draft'
       @message = "Your product has been saved successfully as a draft."
     elsif params[:commit] == "Publish"
       @product.status = :published
+      params[:product][:status] = 'published'
       @message = "Your product has been published successfully. It is now live in your store."
     end
     if @product.update(params[:product])
@@ -70,7 +72,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def clean_drafts
-      Product.where('name IS NULL').where('sku IS NULL').where('part_number IS NULL').destroy_all
+      Product.where("name = :blank_value OR name IS :nil_value OR sku = :blank_value OR sku IS :nil_value OR part_number = :nil_value", nil_value: nil, blank_value: '').destroy_all
     end
 
     def set_product

@@ -15,5 +15,5 @@
         %th
     %tbody#sku-fields
       - @product.skus.each do |sku|
-        %tr{ :id => "sku_#{sku.id}" }
+        %tr{id: "sku_#{sku.id}" }
           = render partial: 'admin/products/skus/single', locals: { sku: sku }

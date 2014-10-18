@@ -1,0 +1,26 @@
+.threecol
+  %h3 Delivery service details
+  %p Set the courier company name, name and description of your delivery service. 
+.ninecol.last
+  %fieldset.widget.widget-content
+    .form-group
+      = f.label :courier_name
+      = f.text_field :courier_name, :class => 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, :class => 'form-control'
+    .form-group.form-last
+      = f.label :description
+      = f.text_area :description, :class => 'form-control', rows: 7
+.threecol
+  %h3 Country of destination
+  %p
+    Select the countries which are available for this delivery service, or
+    = link_to 'copy', copy_countries_admin_delivery_services_path, remote: true
+    an existing service country list.
+.ninecol.last
+  .widget.widget-content.widget-last
+    .form-group.form-last
+      = f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}}
+  .form-action
+    = f.submit 'Submit', :class => 'btn btn-blue btn-large'

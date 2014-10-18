@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 
-Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal, indexed searching and Google Analytics.
+Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal and Google Analytics.
 
 [Release notes](http://release.tomdallimore.com)
 
@@ -55,20 +55,6 @@ This file is initialized upon running the rails server, before any other configu
         host: http://www.example.com
     rollbar:
         access_token: hex123
-
-##Search
-
-The search engine implementation within Trado is built using **Elasticsearch**. There are three reasons why Trado uses Elasticsearch: auto completion, conversion and personalisation. Auto completion allows search results to be suggested and returned as JSON to the user on the fly. Whereas conversion and personalisation can tailor these suggestions either by frequently visited results or a users recent purchases. This functionality allows the platform to deliver a rich user experience when navigating around the site.
-
-You will need to ensure Elasticsearch has been successfully installed on your environment. Head over to the [Elasticsearch official site](http://www.elasticsearch.org) for more information on installing the service on your operating system.
-
-In order for Rails to communicate with the Elasticsearch server, a gem has been added to the application called [**searchkick**](https://github.com/ankane/searchkick). When operating, the Elasticsearch server usually runs on port 9200 - this can be customised along with several other settings.
-
-If you decide to modify the setup of Elasticsearch, you will need to reindex the index database. This has already been setup in a daily cron job for the conversions, however you can trigger it with the following command:
-
-    rake searchkick:reindex class=PRODUCT
-
-Please note, this example is using product as the target model; be sure to replace this with your relevant model.
 
 ##Mail
 

@@ -1,59 +1,75 @@
 - content_for :title, 'Settings'
 - content_for :breadcrumb, 'Settings'
 
-.eightcol
+.twelvecol
   .page-header
     %h2.widget.widget-header Settings
-  = form_for @settings, :url => admin_settings_update_path, :html => { :role => 'form' } do |f|
-    - if @settings.errors.any?
-      #errors
-        %ul
-          - @settings.errors.full_messages.each do |msg|
-            %li
-              %i.icon-cancel-circle
-              = msg  
-    %fieldset.widget.widget-content
-      .form-group
-        = f.label 'Store name'
-        = f.text_field :name, :class => 'form-control'
-      .form-group
-        = f.label 'Store email address'
-        = f.text_field :email, :class => 'form-control'
-      = f.fields_for :attachment do |ff|
+  = form_for @settings, url: admin_settings_update_path, html: { role: 'form' } do |f|
+    .threecol
+    .ninecol.last
+      = render partial: 'shared/errors', locals: { object: @settings }
+    .threecol
+      %h3 Store details
+      %p Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+    .ninecol.last
+      %fieldset.widget.widget-content
         .form-group
-          = ff.label "Store logo"
-          %div= image_tag @settings.attachment.file.square, :width => 75, :height => 75
-          %div= ff.file_field :file
-      .form-group.form-last
-        = f.label 'Currency unit'
-        = f.text_field :currency, :class => 'form-control'
-    .widget-sub-heading
-      %h3 Tax
-    %fieldset.widget.widget-content
-      .form-group
-        = f.label 'Name'
-        = f.text_field :tax_name, :class => 'form-control'
-      .form-group
-        = f.label 'Rate'
-        = f.text_field :tax_rate, :class => 'form-control'
-      %p If you would like your customers to view your product prices without tax and view the tax total in the checkout process, then please select the checkbox below.
-      .form-group
-        .checkbox
+          = f.label 'Store name'
+          = f.text_field :name, :class => 'form-control'
+        .form-group
+          = f.label 'Store email address'
+          = f.text_field :email, :class => 'form-control'
+        = f.fields_for :attachment do |ff|
+          .form-group
+            = ff.label "Store logo"
+            %div= image_tag @settings.attachment.file.square, width: 75, height: 75
+            %div= ff.file_field :file
+        .form-group.form-last
+          = f.label 'Store theme'
+          = f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' }
+    .threecol
+      %h3 Tax details
+      %p Set the name and percentage rate of your tax.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label 'Name'
+          = f.text_field :tax_name, :class => 'form-control'
+        .form-group.form-last
+          = f.label 'Rate'
+          = f.text_field :tax_rate, :class => 'form-control'
+    .threecol
+      %h3 Currency & price display
+      %p  Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label 'Currency unit'
+          = f.text_field :currency, :class => 'form-control'
+        .radio
           %label
-            = f.check_box :tax_breakdown
-            Breakdown
-          
-    .widget-sub-heading
+            = f.radio_button :tax_breakdown, true
+            Price inc. & exc. tax
+        .radio
+          %label
+            = f.radio_button :tax_breakdown, false
+            Price inc. tax
+    .threecol
       %h3 Google Analytics
-    %fieldset.widget.widget-content.widget-last
-      .form-group
-        .checkbox
+      %p Enable and set the web tracking code for your store. 
+    .ninecol.last
+      %fieldset.widget.widget-content.widget-last
+        .form-group
+          = f.label 'Web tracking code'
+          = f.text_field :ga_code, :class => 'form-control'
+        .radio
           %label
-            = f.check_box :ga_active
-            Active
-      .form-group.form-last
-        = f.label 'Web tracking code'
-        = f.text_field :ga_code, :class => 'form-control'
-    .form-action
-      = f.submit 'Submit', :class => 'btn btn-blue btn-large'
+            = f.radio_button :ga_active, true
+            Enabled
+        .radio
+          %label
+            = f.radio_button :ga_active, false
+            Disabled
+      .form-action
+        = f.submit 'Submit', :class => 'btn btn-blue btn-large'
 .fourcol.last

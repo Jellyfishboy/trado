@@ -1,6 +1,7 @@
 FactoryGirl.define do
     factory :product do
         sequence(:name)  { |n| "#{Faker::Lorem.word}#{Faker::Lorem.characters(8)}#{n}" }
+        page_title { Faker::Lorem.characters(30) }
         meta_description { Faker::Lorem.characters(10) }
         short_description { Faker::Lorem.characters(15) } 
         description { Faker::Lorem.characters(20) }
@@ -10,7 +11,7 @@ FactoryGirl.define do
         active { false }
         sequence(:weighting) { |n| n }
         single { false }
-        status { 0 }
+        status { 'draft' }
         order_count { 0 }
 
         association :category
@@ -21,7 +22,7 @@ FactoryGirl.define do
 
         factory :product_sku_attachment do
             active { true }
-            status { 1 }
+            status { 'published' }
             after(:build) do |product, evaluator|
                 product.skus << build(:sku, product: nil, active: true)
                 product.attachments << build(:product_attachment, attachable: nil)
@@ -56,13 +57,13 @@ FactoryGirl.define do
 
         factory :build_product_skus do
             active { true }
-            status { 1 }
+            status { 'published' }
             skus { build_list(:sku, 3, active: true) }
         end
 
         factory :build_product_attachment do
             active { true }
-            status { 1 }
+            status { 'published' }
             attachments { build_list(:product_attachment, 2) }
         end
 

@@ -1,0 +1,15 @@
+$('#estimateDeliveryModal').modal('hide');
+$('.checkout-container .table-items tbody').html("<%=j render partial: theme_presenter.page_template_path('orders/cart'), format: [:html] %>");
+$(".total_price").addClass("update").delay(1000).queue(function(next){
+      $(this).removeClass("update");
+      next();
+  });
+if (!$('.order-alert').is(':visible')) {
+    trado.animation.alert(
+        '.checkout-container .table-items',
+        'success',
+        'order-alert',
+        '<button data-dismiss="alert" class="close" type="button">×</button>Your cart has been updated successfully.',
+        2300
+    )
+}

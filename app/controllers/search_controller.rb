@@ -1,16 +1,16 @@
 class SearchController < ApplicationController
 
     skip_before_action :authenticate_user!
+    before_action :set_query
     
     def results
-        @products = Product.search params[:query], page: params[:page], per_page: 30, fields: [:name, :part_number, :sku]
-        respond_to do |format|
-            format.html
-        end
+        @products = Product.search(@query, params[:page], 30, 300)
+
+        render theme_presenter.page_template_path('search/results'), format: [:html], layout: theme_presenter.layout_template_path
     end
 
     def autocomplete
-        @json_products = Product.search(params[:query], fields: [{name: :word_start}], limit: 5, partial: true).map do |p|
+        @json_products = Product.search(@query, params[:page], 4, 4).map do |p|
                         {
                                 :value => p.name,
                                 :tokens => p.name,
@@ -19,9 +19,13 @@ class SearchController < ApplicationController
                                 :product_slug => p.slug,
                                 :image => p.attachments.first.file.square
                         }
-        end
-        respond_to do |format|
-            format.json { render json: @json_products }
-        end
+        end 
+        render json: @json_products
     end 
+
+    private 
+
+    def set_query
+        @query = "%#{params[:query]}%"
+    end
 end

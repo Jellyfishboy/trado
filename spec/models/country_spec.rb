@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Country do
 
     # ActiveRecord
-    it { expect(subject).to have_many(:zonifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:zones).through(:zonifications) }
+    it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:delivery_services).through(:destinations) }
 
     #Validations
     it { expect(subject).to validate_presence_of(:name) }
@@ -19,5 +19,4 @@ describe Country do
             expect(Country.all).to match_array([country_2, country_1, country_3])
         end
     end
-
 end

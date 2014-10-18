@@ -1,0 +1,21 @@
+- content_for :title, 'Pages'
+- content_for :breadcrumb, 'Pages'
+
+.twelvecol
+  .page-header
+    %h2.widget.widget-header Pages
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Title
+            %th Visible
+            %th Last updated
+            %th
+        %tbody
+          - @pages.each do |page|
+            %tr
+              %td= page.title
+              %td= page.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe 
+              %td= page.updated_at.strftime('%d/%m/%Y at %I:%M%p')
+              = table_actions [:admin, page], 'edit'

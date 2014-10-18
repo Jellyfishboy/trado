@@ -12,9 +12,9 @@ feature 'Delivery service price management' do
 
     scenario 'should add a new delivery service price' do
 
-        visit admin_delivery_service_prices_path(delivery_service)
+        visit admin_delivery_service_delivery_service_prices_path(delivery_service)
         find('.page-header a:first-child').click
-        expect(current_path).to eq new_admin_delivery_service_price_path(delivery_service)
+        expect(current_path).to eq new_admin_delivery_service_delivery_service_price_path(delivery_service)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
         end
@@ -30,7 +30,7 @@ feature 'Delivery service price management' do
             fill_in('delivery_service_price_max_thickness', with: '20')
             click_button 'Submit'
         }.to change(DeliveryServicePrice, :count).by(1)
-        expect(current_path).to eq admin_delivery_service_prices_path(delivery_service)
+        expect(current_path).to eq admin_delivery_service_delivery_service_prices_path(delivery_service)
         within '.alert.alert-success' do
             expect(page).to have_content 'Delivery service price was successfully created.'
         end
@@ -42,18 +42,18 @@ feature 'Delivery service price management' do
     scenario 'should edit a delivery service price' do
         delivery_service_price
 
-        visit admin_delivery_service_prices_path(delivery_service)
+        visit admin_delivery_service_delivery_service_prices_path(delivery_service)
         within 'tbody' do
             first('tr').find('td:last-child').first(:link).click
         end
-        expect(current_path).to eq edit_admin_delivery_service_price_path(delivery_service, delivery_service_price)
+        expect(current_path).to eq edit_admin_delivery_service_delivery_service_price_path(delivery_service, delivery_service_price)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
         fill_in('delivery_service_price_price', with: '2.55')
         fill_in('delivery_service_price_max_weight', with: '489')
         click_button 'Submit'
-        expect(current_path).to eq admin_delivery_service_prices_path(delivery_service)
+        expect(current_path).to eq admin_delivery_service_delivery_service_prices_path(delivery_service)
         within '.alert.alert-success' do
             expect(page).to have_content 'Delivery service price was successfully updated.'
         end
@@ -69,7 +69,7 @@ feature 'Delivery service price management' do
     scenario "should delete a delivery service price if there is more than one record" do
         delivery_service_prices
 
-        visit admin_delivery_service_prices_path(delivery_service)
+        visit admin_delivery_service_delivery_service_prices_path(delivery_service)
         expect{
             within 'tbody' do
                 first('tr').find('td:last-child a:last-child').click
@@ -86,7 +86,7 @@ feature 'Delivery service price management' do
     scenario "should not delete a delivery service price if there is only one record" do
         delivery_service_price
 
-        visit admin_delivery_service_prices_path(delivery_service)
+        visit admin_delivery_service_delivery_service_prices_path(delivery_service)
         expect{
             within 'tbody' do
                 first('tr').find('td:last-child a:last-child').click

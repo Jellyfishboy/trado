@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928083253) do
+ActiveRecord::Schema.define(version: 20141012172812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,19 +99,19 @@ ActiveRecord::Schema.define(version: 20140928083253) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "active",      default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "active",           default: false
     t.string   "slug"
-    t.integer  "sorting",     default: 0
+    t.integer  "sorting",          default: 0
+    t.string   "page_title"
+    t.string   "meta_description"
   end
 
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "iso"
-    t.string   "language"
   end
 
   create_table "delivery_service_prices", force: true do |t|
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20140928083253) do
 
   create_table "destinations", force: true do |t|
     t.integer  "delivery_service_id"
-    t.integer  "zone_id"
+    t.integer  "country_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
@@ -202,6 +202,19 @@ ActiveRecord::Schema.define(version: 20140928083253) do
     t.string   "payment_method"
   end
 
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "page_title"
+    t.string   "meta_description"
+    t.boolean  "active",           default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.integer  "template_type"
+    t.string   "menu_title"
+  end
+
   create_table "permissions", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -226,7 +239,25 @@ ActiveRecord::Schema.define(version: 20140928083253) do
     t.boolean  "single"
     t.integer  "status",            default: 0
     t.integer  "order_count",       default: 0
+    t.string   "page_title"
   end
+
+  create_table "redactor_assets", force: true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
   create_table "related_products", id: false, force: true do |t|
     t.integer "product_id"
@@ -240,15 +271,6 @@ ActiveRecord::Schema.define(version: 20140928083253) do
     t.string   "name",       default: "user"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-  end
-
-  create_table "searches", force: true do |t|
-    t.string   "query"
-    t.datetime "searched_at"
-    t.datetime "converted_at"
-    t.integer  "product_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "skus", force: true do |t|
@@ -293,6 +315,7 @@ ActiveRecord::Schema.define(version: 20140928083253) do
     t.boolean  "alert_active",                          default: false
     t.text     "alert_message",                         default: "Type your alert message here..."
     t.string   "alert_type",                            default: "warning"
+    t.string   "theme_name",                            default: "redlight"
   end
 
   create_table "taggings", force: true do |t|
@@ -343,18 +366,5 @@ ActiveRecord::Schema.define(version: 20140928083253) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "zones", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "zonifications", force: true do |t|
-    t.integer  "country_id"
-    t.integer  "zone_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

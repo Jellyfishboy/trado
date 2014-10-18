@@ -1,5 +1,5 @@
 <% @stock_level = @sku.stock_levels.build %>
-$('#stock-level-modal').html('<%=j render :partial => "admin/products/skus/stock_levels/modal" %>');
+$('#stock-level-modal').html('<%=j render partial: "admin/products/skus/stock_levels/modal" %>');
 $('.modal-backdrop').remove();
 soca.modal.standard('#stock-level-form');
 $('tr#sku_<%= @sku.id %> td:nth-child(7)').text('<%= @sku.stock %>');

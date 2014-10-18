@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :destination do
-        association :zone
+        association :country
         association :delivery_service
     end
 end

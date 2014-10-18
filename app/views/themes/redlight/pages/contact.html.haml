@@ -1,0 +1,65 @@
+- content_for :title, @page.page_title
+- content_for :meta_description, @page.meta_description
+- content_for :breadcrumb, @page.title
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+.darker-stripe
+  .container
+    .row
+      .span12
+        %ul.breadcrumb
+          %li
+            %a{href: "index.html"} Webmarket
+          %li
+            %span.fa.fa-chevron-right
+          %li
+            %a{href: "contact.html"} Contact Us
+.container
+  .push-up.top-equal.blocks-spacer-last
+    .row
+      / ==========
+      / = Main Title =
+      / ==========
+      .span12
+        .title-area
+          %h1.inline
+            %span.light= @page.title
+      / ==========
+      / = Main content =
+      / ==========
+      %section.span8.single.single-page
+        / ==========
+        / = Post =
+        / ==========
+        %article.post
+          .post-inner
+            = raw @page.content
+        %hr/
+        / ==========
+        / = Contact Form =
+        / ==========
+        %section.contact-form-container
+          %h3.push-down-25
+            %span.light Send
+            a Message
+          = form_for @contact_message, url: send_contact_message_p_pages_path, html: { :class => 'form form-inline form-contact remote-form loading-form', id: 'commentform', method: :post, remote: true } do |f|
+            %p.push-down-20
+              = f.text_field :name, tabindex: 1
+              %label
+                Name
+                %span.red-clr.bold *
+            %p.push-down-20
+              = f.text_field :email, tabindex: 2
+              %label
+                Email
+                %span.red-clr.bold *
+            %p.push-down-20
+              = f.text_field :website, tabindex: 3
+              %label
+                Website
+                %span.red-clr.bold
+            %p.push-down-20
+              = f.text_area :message, cols: 70, placeholder: 'Your message goes here...', rows: 7, tabindex: 4, :class => 'input-block-level'
+            %p
+              = f.submit 'Send email', tabindex: 5, :class => 'btn btn-primary bold'

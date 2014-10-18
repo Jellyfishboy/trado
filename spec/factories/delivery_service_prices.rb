@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :delivery_service_price do
-        code { Faker::Lorem.word }
+        sequence(:code) { |n| "#{Faker::Lorem.word}#{n}" }
         sequence(:price) { |n| n }
         description { Faker::Lorem.characters(100) }
         sequence(:min_weight) { |n| n }

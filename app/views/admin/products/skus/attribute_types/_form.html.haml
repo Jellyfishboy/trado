@@ -1,7 +1,7 @@
 .eightcol
   .page-header
     %h2.widget.widget-header= "#{yield :breadcrumb} attribute type"
-  = form_for [:admin, :products, :skus, @attribute_type], :html => { :role => 'form' } do |f|
+  = form_for [:admin, :products, :skus, @attribute_type], html: { role: 'form' } do |f|
     - if @attribute_type.errors.any?
       #errors
         %ul

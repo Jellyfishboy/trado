@@ -16,17 +16,32 @@
 #  currency                 :string(255)            default('£')
 #  ga_code                  :string(255)
 #  ga_active                :boolean                default(false)
+#  theme_name               :string(255)
 #  created_at               :datetime               not null
 #  updated_at               :datetime               not null
 #
 class StoreSetting < ActiveRecord::Base
 
-  attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, :ga_active, :ga_code, :attachment_attributes
+    attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, :ga_active, :ga_code, :theme_name, :attachment_attributes
 
-  has_one :attachment,                                                  as: :attachable, :dependent => :destroy
+    has_one :attachment,                                                  as: :attachable, dependent: :destroy
 
-  validates :name, :email, :tax_name, :currency, :tax_rate,             :presence => true
+    validates :name, :email, :tax_name, :currency, 
+    :tax_rate, :theme_name,                                               presence: true
 
-  accepts_nested_attributes_for :attachment
+    accepts_nested_attributes_for :attachment
+
+    before_save :reset_settings
   
+    def theme
+        Theme.new(self.theme_name)
+        # @@theme ||= Theme.new(self.theme_name)
+    end
+
+    private
+
+    def reset_settings
+        @@theme = nil
+        Store::reset_settings
+    end
 end

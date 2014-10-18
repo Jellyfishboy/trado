@@ -1,0 +1,7 @@
+- if object && object.errors.any?
+    #errors
+        %ul
+            - object.errors.full_messages.each do |msg|
+                %li
+                    %i.icon-cancel-circle
+                    = msg  

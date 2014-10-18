@@ -59,7 +59,7 @@ describe Admin::DeliveryServicePricesController do
             end
             it "redirects to delivery_service_price#index"  do
                 post :create, delivery_service_id: delivery_service.id, delivery_service_price: attributes_for(:delivery_service_price, active: true)
-                expect(response).to redirect_to admin_delivery_service_prices_url
+                expect(response).to redirect_to admin_delivery_service_delivery_service_prices_url
             end
         end
         context "with invalid attributes" do
@@ -142,7 +142,7 @@ describe Admin::DeliveryServicePricesController do
             
             it "redirects to the delivery_service_prices#index" do
                 patch :update, id: delivery_service_price.id, delivery_service_id: delivery_service.id, delivery_service_price: new_delivery_service_price
-                expect(response).to redirect_to admin_delivery_service_prices_url
+                expect(response).to redirect_to admin_delivery_service_delivery_service_prices_url
             end
         end
         context "with invalid attributes" do 
@@ -242,7 +242,7 @@ describe Admin::DeliveryServicePricesController do
 
         it "should redirect to delivery_service_prices#index" do
             delete :destroy, id: delivery_service_price.id, delivery_service_id: delivery_service.id
-            expect(response).to redirect_to admin_delivery_service_prices_url
+            expect(response).to redirect_to admin_delivery_service_delivery_service_prices_url
         end
     end
 end

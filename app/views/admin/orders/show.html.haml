@@ -30,7 +30,7 @@
           %i.icon-coin
           = succeed ":" do
             %b Actual shipping cost
-          = Store::Price.new(@order.actual_shipping_cost, 'net').single unless @order.actual_shipping_cost.nil?
+          = Store::Price.new(price: @order.actual_shipping_cost, tax_type: 'net').single unless @order.actual_shipping_cost.nil?
         %li
           %i.icon-airplane
           = succeed ":" do
@@ -92,29 +92,29 @@
                 - unless item.order_item_accessory.nil?
                   .item-sub.label.label-blue= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe
               %td= item.sku.full_sku
-              %td= Store::Price.new(item.price, 'net').single
+              %td= Store::Price.new(price: item.price, tax_type: 'net').single
               %td= item.quantity
-              %td= Store::Price.new(item.total_price, 'net').single
+              %td= Store::Price.new(price: item.total_price, tax_type: 'net').single
           %tr
             %td.align-right.border-top{colspan: "4"}
               %b Subtotal:
-            %td.border-top= Store::Price.new(@order.net_amount, 'net').single
+            %td.border-top= Store::Price.new(price: @order.net_amount, tax_type: 'net').single
           %tr
             %td.align-right{colspan: "4"}
               %b Delivery/handling:
-            %td= Store::Price.new(@order.delivery.price, 'net').single
+            %td= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single
           %tr
             %td.align-right{colspan: "4"}
               %b Tax:
-            %td= Store::Price.new(@order.tax_amount, 'net').single
+            %td= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single
           %tr.focused
             %td.align-right{colspan: "4"}
               %b Total:
-            %td= Store::Price.new(@order.gross_amount, 'net').single
+            %td= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single
     .widget-sub-heading
       %h3 Transactions
     .table-responsive
-      %table.table.table-striped.table-bordered.table-hover
+      %table.table.table-striped.table-bordered.table-hover.table-last
         %thead
           %tr
             %th Transaction Type
@@ -128,14 +128,14 @@
             %th Last updated
         %tbody
           - @order.transactions.each do |transaction|
-            %tr{:id => "transaction_#{transaction.id}" }
+            %tr{id: "transaction_#{transaction.id}" }
               %td= transaction.transaction_type
               %td= transaction.payment_type 
               %td= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id
               %td= status_label transaction, transaction.payment_status
               %td= transaction.error_code.nil? ? "-" : transaction.error_code
-              %td= Store::Price.new(transaction.fee, 'net').single
-              %td= Store::Price.new(transaction.net_amount, 'net').single
-              %td= Store::Price.new(transaction.gross_amount, 'net').single
+              %td= Store::Price.new(price: transaction.fee, tax_type: 'net').single
+              %td= Store::Price.new(price: transaction.net_amount, tax_type: 'net').single
+              %td= Store::Price.new(price: transaction.gross_amount, tax_type: 'net').single
               %td.align-left= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P')
 #transaction-modal

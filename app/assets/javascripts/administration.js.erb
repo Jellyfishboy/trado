@@ -3,10 +3,10 @@
 //= require jquery_ujs
 //= require admin/soca
 //= require jquery.scrollTo/jquery.scrollTo.min
+//= require redactor-rails/redactor
+//= require redactor-rails/config
+//= require redactor-rails/index
 //= require turbolinks
-//= require _trado
-//= require trado.misc
-//= require trado.animation
 
 var taxRate = "<%= Store::settings.tax_rate %>";
      
@@ -19,12 +19,18 @@ ready = function()
     soca.misc.taxField();
     soca.misc.multiSelect();
     soca.misc.updateTableHeight();
-    soca.mobile.disableScrolling();
     soca.mobile.disableTooltips();
+    soca.mobile.triggerMenu();
 };
+
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
+    $('.redactor').redactor({
+        replaceDivs: false,
+        convertDivs: false,
+        minHeight: 300
+    });
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
 });
@@ -43,9 +49,3 @@ $(document).ajaxComplete(function()
 {
     soca.misc.taxField();
 });
-// document.addEventListener('page:change', function() {
-//     document.getElementById('primary-content').className += 'animated fadeIn';
-// });
-// document.addEventListener('page:fetch', function() {
-//         document.getElementById('primary-content').className += 'animated fadeOut';
-// });

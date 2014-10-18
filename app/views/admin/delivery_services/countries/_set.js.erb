@@ -1,0 +1,3 @@
+$('#delivery_service_country_ids').val(<%= raw(@delivery_service.countries.map{ |c| c.id.to_s }) %>);
+$('#delivery_service_country_ids').trigger('chosen:updated');
+$('#delivery-service-form').modal('hide');

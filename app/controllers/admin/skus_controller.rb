@@ -69,11 +69,11 @@ class Admin::SkusController < ApplicationController
 
   private
 
-    def set_product
-      @product = Product.find(params[:product_id])
-    end
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
-    def set_sku
-      @sku = Sku.find(params[:id])
-    end
+  def set_sku
+    @sku = Sku.find(params[:id])
+  end
 end

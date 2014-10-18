@@ -4,6 +4,8 @@ FactoryGirl.define do
         description { Faker::Lorem.paragraph(1) }
         active { true }
         sorting { Faker::Number.digit }
+        page_title { Faker::Lorem.characters(20) }
+        meta_description { Faker::Lorem.characters(100) }
 
         factory :invalid_category do
             name nil

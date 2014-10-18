@@ -22,7 +22,7 @@ Trado::Application.configure do
                                 'custom.css', 
                                 'css3-fallback.js', 
                                 'modernizr/modernizr.js', 
-                                'products.js', 
+                                'products.js',
                                 'admin/soca.datepicker.js',
                                 'typeahead.js/dist/typeahead.jquery.min.js',
                                 'theia-sticky-sidebar/js/theia-sticky-sidebar.js'

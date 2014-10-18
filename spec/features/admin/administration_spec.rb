@@ -13,13 +13,12 @@ feature 'Administration management' do
         Store::settings
 
         visit admin_root_path
-        find('.user-menu').click
-        find('ul[role="menu"] li:nth-child(2) a').click
+        find('a[data-original-title="Settings"]').click
         expect(current_path).to eq admin_settings_path
 
         fill_in('store_setting_name', with: 'Test store name')
         fill_in('store_setting_tax_name', with: 'Tax')
-        find('#store_setting_tax_breakdown').set(true)
+        find('#store_setting_tax_breakdown_true').set(true)
         click_button 'Submit'
         expect(current_path).to eq admin_root_path
         within '.alert.alert-success' do

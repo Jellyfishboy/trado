@@ -69,6 +69,7 @@ feature 'Product management' do
         fill_in('product_name', with: 'product #1 with minimum 10 characters')
         fill_in('product_short_description', with: 'Short description for product.')
         fill_in('product_meta_description', with: 'Meta description for product with minimum 10 characters.')
+        fill_in('product_page_title', with: 'Page title for a product')
         fill_in('product_weighting', with: '10')
         fill_in('product_description', with: 'Description for product which must contain at least 20 characters.')
 
@@ -120,10 +121,10 @@ feature 'Product management' do
         # End SKU
 
         # Accessories
-        find("#product_accessory_ids_#{accessory.id}").set(true)
+        select_from_chosen(accessory.name, from: "product_accessory_ids")
 
         # Related products
-        find("#product_related_ids_#{product_1.id}").set(true)
+        select_from_chosen(product_1.name, from: "product_related_ids")
 
         click_button 'Publish'
 
@@ -149,7 +150,7 @@ feature 'Product management' do
         end
     end
 
-    scenario 'should edit a product (draft)' do
+    scenario 'should edit a product (draft)', js: true do
         not_single_product
         accessory
 
@@ -164,7 +165,7 @@ feature 'Product management' do
         fill_in('product_weighting', with: '10')
         fill_in('product_sku', with: 'TA')
         find('#product_single').set(true)
-        find("#product_accessory_ids_#{accessory.id}").set(true)
+        select_from_chosen(accessory.name, from: "product_accessory_ids")
         click_button 'Save'
         sleep 5
         
@@ -417,7 +418,7 @@ feature 'Product management' do
         end
 
         expect(find('#attachments')).to have_selector('div.attachments', count: 2)
-        find('div.attachments:first-child a:last-child').click
+        find('div.attachments:first-child a:last-child').trigger('click')
         expect(find('#attachments')).to have_selector('div.attachments', count: 1)
         expect(multi_attachment_product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do

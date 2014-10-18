@@ -13,6 +13,7 @@
 #  name                     :string(255)
 #  description              :text
 #  short_description        :text
+#  page_title               :string(255)
 #  meta_description         :string(255)
 #  weighting                :integer 
 #  sku                      :string(255)
@@ -22,16 +23,16 @@
 #  category_id              :integer    
 #  status                   :integer            default(0)
 #  order_count              :integer            default(0)
+#  slug                     :string(255)
 #  created_at               :datetime           not null
 #  updated_at               :datetime           not null
 #
 class Product < ActiveRecord::Base
 
-  attr_accessible :name, :meta_description, :description, :weighting, :sku, :part_number, 
+  attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids, :single, :active, :order_count
+  :short_description, :related_ids, :single, :active, :status, :order_count
 
-  has_many :searches
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
   has_many :orders,                                           through: :skus
   has_many :carts,                                            through: :skus
@@ -46,9 +47,11 @@ class Product < ActiveRecord::Base
                                                               association_foreign_key: :related_id
   belongs_to :category
 
-  validates :name, :meta_description, :description, 
-  :part_number, :sku, :weighting, :category_id,               presence: true, :if => :published?
+  validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
+  validates :meta_description, :description, 
+  :weighting, :category_id, :page_title,                      presence: true, :if => :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
+  validates :page_title,                                      length: { maximum: 70, message: :too_long }
   validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
@@ -57,14 +60,14 @@ class Product < ActiveRecord::Base
   validate :single_product
   validate :attachment_count,                                 :if => :published?
   validate :sku_count,                                        :if => :published?
-
+  
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  searchkick word_start: [:name, :part_number, :sku], conversions: "conversions"
-
   default_scope { order('weighting DESC') }
+
+  scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name ILIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
   enum status: [:draft, :published]
 
@@ -72,16 +75,6 @@ class Product < ActiveRecord::Base
   
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
-
-  # Search paramters for elasticsearch
-  #
-  # @return [nil]
-  def search_data
-    {
-      name: name,
-      conversions: searches.group("query").count
-    }
-  end
 
   # Calculate if a product has at least one associated attachment
   # If no associated attachments exist, return an error

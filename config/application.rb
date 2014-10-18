@@ -14,7 +14,6 @@ rescue Exception => ex
     puts "You must setup a configuration file in 'config/settings.yml' before running the application.".colorize(:red)
     puts "Use the config/settings.example.yml file as a starting point.".colorize(:red)
     puts ex.message.colorize(:cyan)
-    return false
 end
 
 module Trado

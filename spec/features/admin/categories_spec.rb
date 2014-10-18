@@ -40,7 +40,9 @@ feature 'Category management' do
             fill_in('category_name', with: 'category #1')
             fill_in('category_description', with: 'Lorem mofo tellivizzle sit amizzle, dawg adipiscing elit. Nullizzle sapien velit, boom shackalack volutpizzle, suscipit dang, gravida vel, fo shizzle my nizzle.')
             fill_in('category_sorting', with: '0')
-            find('#category_active').set(true)
+            fill_in('category_page_title', with: 'Lorem mofo tellivizzle sit amizzle.')
+            fill_in('category_meta_description', with: 'Lorem mofo tellivizzle sit amizzle, dawg adipiscing elit. Nullizzle sapien velit.')
+            find('#category_active_true').set(true)
             click_button 'Submit'
         }.to change(Category, :count).by(1)
         expect(current_path).to eq admin_categories_path

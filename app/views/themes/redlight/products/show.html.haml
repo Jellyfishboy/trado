@@ -1,0 +1,154 @@
+- content_for :title, @product.page_title
+- content_for :breadcrumb, @product.name
+- store_breadcrumb_add @product.category.name, category_path(@product.category)
+- content_for :meta_description, @product.meta_description
+/ ==========
+/ = Breadcrumbs =
+/ ==========
+= render_breadcrumbs 1
+/ ==========
+/ = Main container =
+/ ==========
+.container
+  .push-up.top-equal.blocks-spacer
+    / ==========
+    / = Product =
+    / ==========
+    .row.blocks-spacer
+      / ==========
+      / = Preview Images =
+      / ==========
+      .span5
+        .product-preview
+          .picture
+            = image_tag @product.attachments.first.file.large, :id => "mainPreviewImg", :alt => @product.name, :width => 940, :height => 940
+          .thumbs.clearfix
+            - @product.attachments.each_with_index do |image, index|
+              .thumb{:class => "#{ "active" if index == 0 }"}
+                %a{href: "#mainPreviewImg"}
+                  = image_tag image.file.large, :width => 940, :height => 940
+      / ==========
+      / = Title and short desc =
+      / ==========
+      .span7
+        .product-title
+          %h1.name
+            %span.light= @product.name
+          .meta
+            %span.tag.price
+              = Store::Price.new(price: @skus.first.price).markup
+            %span.stock
+              - if @skus.first.stock > 0
+                %span.btn.btn-success In Stock
+              - else 
+                %span.btn.btn-danger Out of Stock
+        .product-description
+          %p= @product.short_description
+          %hr/
+          / ==========
+          / ==========
+          / = Add to cart form =
+          / ==========
+          = form_for [current_cart, @cart_item], :html => { :method => :post, :remote => true, :class => 'form form-inline clearfix product_sku_form' } do |f|
+            .numbered
+              = f.text_field :quantity, :value => 1, :class => 'tiny-size'
+              %span.clickable.add-one.fa.fa-plus-square
+              %span.clickable.remove-one.fa.fa-minus-square
+            \ 
+            - if @product.single
+              = f.hidden_field :sku_id, :value => @product.skus.first.id
+            - else
+              = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku, sku.product.single), sku.id ] } )
+            - unless @product.accessories.active.empty?
+              = f.fields_for @cart_item_accessory do |ff|
+                = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "No accessory (+£0.00)"
+            - if @skus.first.stock > 0
+              = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}") do
+                %i.fa.fa-shopping-cart
+                \  Add To Cart
+            - else
+              = link_to notify_category_product_sku_path(@product.category, @product, @skus.first), :class => 'btn btn-warning pull-right notify-me', remote: true do
+                %i.fa.fa-envelope
+                &nbsp; Notify me
+          %hr/
+          / ==========.order('attribute_value desc')
+          / = Share buttons =
+          / ==========
+          .share-item.push-down-20
+            .row-fluid
+              .span6
+                Share this item with friends:
+              .span6
+                .social-networks
+          / More Buttons
+          .store-buttons
+            %i.fa.fa-envelope
+            %a{href: "#"} Email to a friend
+            \
+    / ==========
+    / = Tabs with more info =
+    / ==========
+    .row
+      .span12
+        %ul#myTab.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", href: "#tab-1"} Details
+          %li
+            %a{"data-toggle" => "tab", href: "#tab-2"} SHIPPING DETAILS
+        .tab-content
+          #tab-1.fade.in.tab-pane.active
+            %h3 Product Description
+            %p=raw @product.description
+          #tab-2.fade.tab-pane
+            %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            %p
+              %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/royal-mail.png"}/
+              %img.img-polaroid{alt: "", src: "http://www.tfingi.com/repo/ups-logo.png"}/
+            %p Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            %h6
+              %em.fa.fa-gift
+              Giftwrap?
+            %p
+              Let us take care of giftwrapping your presents by selecting
+              %strong Giftwrap
+              in the order process. Eligible items can be giftwrapped for as little as £0.99, and larger items may be presented in gift bags.
+/ /container
+- if @product.category.products.published.count > 1
+  / ==========
+  / = Related Products =
+  / ==========
+  .boxed-area.no-bottom
+    .container
+      / ==========
+      / = Title =
+      / ==========
+      .row
+        .span12
+          .main-titles.lined
+            %h2.title
+              %span.light Related
+              Products
+      / ==========
+      / = Related products =
+      / ==========
+      .row.popup-products
+        - @product.category.products.published.first(4).each do |product|
+          - if product == @product
+            - next
+          / ==========
+          / = Products =
+          / ==========
+          .span3
+            .product
+              .product-inner
+                .product-img
+                  .picture
+                    = link_to (image_tag product.attachments.first.file, :alt => product.name, :height => 374, :width => 540), [product.category, product]
+                .main-titles.no-margin
+                  %h4.title
+                    %span= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range
+                  %h5.no-margin= truncate product.name, length: 35
+                %p.desc= truncate product.short_description
+          / /product
+#notifyMeForm
+#validateCartItem
