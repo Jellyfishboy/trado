@@ -4,7 +4,7 @@ module Payatron4000
 
         def self.build_order cart, order, ip_address
           response = EXPRESS_GATEWAY.setup_purchase(
-                        Store::Price.new(order.gross_amount, 'net').singularize, 
+                        Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
                         Payatron4000::Paypal.express_setup_options( 
                           order,
                           cart,

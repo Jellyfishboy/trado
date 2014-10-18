@@ -66,6 +66,7 @@
               .span4
                 %h3 Payment details
                 %hr
+            %h3 Order details
             %table.table.table-items
               %thead
                 %tr
@@ -107,7 +108,7 @@
                     %div.normal
                       = @order.delivery.full_name 
                   %td.stronger
-                    .align-right= Store::Price.new(price: @order.delivery.price, 'net').single
+                    .align-right= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single
                 - if Store::settings.tax_breakdown
                   %tr
                     %td{colspan: "2", rowspan: "1"}

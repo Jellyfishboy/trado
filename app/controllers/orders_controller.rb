@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
       Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) if params[:token] && params[:PayerID]
+      render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
     end
 
     def complete
@@ -47,11 +48,13 @@ class OrdersController < ApplicationController
     def success
       @order = Order.includes(:delivery_address).find(params[:order_id])
       redirect_to root_url unless @order.transactions.last.pending? || @order.transactions.last.completed?
+      render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
     end
 
     def failed
       @order = Order.includes(:transactions).find(params[:id])
       redirect_to root_url unless @order.transactions.last.failed?
+      render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
     end
 
     def retry

@@ -37,7 +37,7 @@ class DeliveryServicePrice < ActiveRecord::Base
   validates :description,                                               length: { maximum: 180, message: :too_long }
   validates :price,                                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
-  # default_scope { order(price: :asc) }
+  default_scope { order(price: :asc) }
   scope :find_collection,                                               ->(cart, country) { joins(:countries).where(delivery_service_prices: { id: cart.delivery_service_prices }, countries: { name: country }).distinct.load }
 
   include ActiveScope
