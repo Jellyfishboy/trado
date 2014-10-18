@@ -100,7 +100,7 @@ feature 'Delivery service management' do
         delivery_service_with_countries.reload
         expect(delivery_service_with_countries.name).to eq '1st Class'
         expect(delivery_service_with_countries.courier_name).to eq 'Royal Mail'
-        expect(delivery_service_with_countries.countries.first.name).to eq 'United Kingdom'
+        expect(delivery_service_with_countries.countries.first.name).to eq 'China'
     end
 
     scenario "should copy the countries between delivery services", js: true do
@@ -133,7 +133,7 @@ feature 'Delivery service management' do
         expect(delivery_service.courier_name).to eq 'Royal Mail'
         expect(delivery_service.name).to eq 'Next day delivery'
         expect(delivery_service.description).to eq 'Speedy delivery within the UK.'
-        expect(delivery_service.countries.first.name).to eq delivery_service_with_countries.countries.first.name
+        expect(delivery_service.countries.first.name).to eq delivery_service_with_countries.countries.last.name
 
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do

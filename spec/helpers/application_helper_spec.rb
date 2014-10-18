@@ -98,23 +98,23 @@ describe ApplicationHelper do
         context "if the controller and action parameter equals the params[:controller] and params[:action] value" do
 
             it "should return the 'active' class name" do
-                expect(helper.active_page?('product', 'show', nil)).to eq 'active'
+                expect(helper.active_page?(controller: 'product', action: 'show')).to eq 'active'
             end
         end
 
         context "if the controller and action parameter does not equal the params[:controller] or params[:action] value" do
 
             it "should return nil" do
-                expect(helper.active_page?('category', 'show', nil)).to eq nil
+                expect(helper.active_page?(controller: 'category', action: 'show')).to eq nil
             end
         end
 
         context "if the controller and id parameter equals the params[:controller] and params[:id]" do
             before(:each) do
-                helper.stub(:params) { { controller: 'pages', action: 'standard', id: 1} }
+                helper.stub(:params) { { controller: 'pages', action: 'standard', slug: 'contact-us'} }
             end
             it "should return the 'active' class name" do
-                expect(helper.active_page?('pages', 'standard', 1)).to eq 'active'
+                expect(helper.active_page?(controller: 'pages', action: 'show', slug: 'contact-us')).to eq 'active'
             end
         end
     end
