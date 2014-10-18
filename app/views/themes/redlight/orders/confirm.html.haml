@@ -83,7 +83,7 @@
                       = item.sku.product.name
                       %div= sku_attribute_values(item.sku, item.sku.product.single)
                     %td.qty= item.quantity
-                    %td.price= Store::Price.new(item.total_price).single
+                    %td.price= Store::Price.new(price: item.total_price).single
                   - unless item.cart_item_accessory.blank?
                     %tr.accessory_row
                       %td.image
@@ -98,7 +98,7 @@
                     \ 
                     %td.stronger{colspan: "2"} Subtotal:
                     %td.stronger
-                      .align-right= Store::Price.new(@order.net_amount).single
+                      .align-right= Store::Price.new(price: @order.net_amount).single
                 %tr
                   %td{colspan: "2", rowspan: "1"}
                   \ 
@@ -107,20 +107,20 @@
                     %div.normal
                       = @order.delivery.full_name 
                   %td.stronger
-                    .align-right= Store::Price.new(@order.delivery.price, 'net').single
+                    .align-right= Store::Price.new(price: @order.delivery.price, 'net').single
                 - if Store::settings.tax_breakdown
                   %tr
                     %td{colspan: "2", rowspan: "1"}
                     \ 
                     %td.stronger{colspan: "2"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
                     %td.stronger
-                      .align-right= Store::Price.new(@order.tax_amount).single
+                      .align-right= Store::Price.new(price: @order.tax_amount).single
                 %tr
                   %td{colspan: "2", rowspan: "1"}
 
                   %td.stronger{colspan: "2"} Total:
                   %td.stronger
-                    .size-16.align-right.total_price= Store::Price.new(@order.gross_amount, 'net').single
+                    .size-16.align-right.total_price= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single
             %p.right-align  
               = link_to 'EDIT ORDER', checkout_carts_path, :class => 'btn higher bold'
               = link_to 'CONFIRM ORDER', complete_order_path(@order), method: :post, :class => 'btn btn-primary higher bold confirm_order'

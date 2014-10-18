@@ -6,4 +6,4 @@
             = radio_button_tag field_target, delivery_price.id, delivery_id.nil? ? (index == 0 ? true : false) : (delivery_price.id == delivery_id ? true : false)
             %h5= delivery_price.full_name
             %p= truncate delivery_price.full_description, length: 100
-            %h6= Store::Price.new(delivery_price.price).markup
+            %h6= Store::Price.new(price: delivery_price.price).markup

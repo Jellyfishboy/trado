@@ -8,6 +8,6 @@ class DeliveryServicePricesController < ApplicationController
     def update
         @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, params[:country_id])
         @field_target = params[:object_type] == 'cart' ? 'cart[estimate_delivery_id]' : 'order[delivery_id]'
-        render partial: "carts/delivery_service_prices/fields", :locals => { delivery_service_prices: @delivery_service_prices, delivery_id: current_cart.estimate_delivery_id, field_target: @field_target }
+        render partial: theme_presenter.page_template_path("carts/delivery_service_prices/fields"), format: [:html], locals: { delivery_service_prices: @delivery_service_prices, delivery_id: current_cart.estimate_delivery_id, field_target: @field_target }
     end
 end

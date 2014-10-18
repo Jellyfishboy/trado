@@ -1,6 +1,6 @@
-$("#cartContainer").html("<%=j render partial: theme_presenter.page_template_path('carts/cart'), format: [:html] %>");
+$("#cartContainer").html("<%=j render partial: theme_presenter.page_template_path('carts/popup'), format: [:html] %>");
 <% unless current_cart.cart_items.count == 0 %>
-    $('.checkout-container .table-items tbody').html("<%=j render partial: theme_presenter.page_template_path('orders/cart'), format: [:html] %>");
+    $('.checkout-container .table-items tbody').html("<%=j render partial: theme_presenter.page_template_path('carts/cart'), format: [:html] %>");
 <% else %>
     $('.checkout-container .right-align').remove();
     $('.checkout-container .table-items').html('<h4>Your cart is empty</h4>');

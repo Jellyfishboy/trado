@@ -4,6 +4,8 @@ class CartsController < ApplicationController
     before_action :set_cart_details, only: [:checkout, :confirm]
 
     def mycart
+
+        render theme_presenter.page_template_path('carts/mycart'), layout: theme_presenter.layout_template_path
     end
 
     def checkout
@@ -18,7 +20,7 @@ class CartsController < ApplicationController
             @delivery_address = @order.delivery_address
             @billing_address = @order.billing_address
         end
-        binding.pry
+        render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
     end
 
     def confirm
@@ -37,7 +39,7 @@ class CartsController < ApplicationController
     def estimate
         respond_to do |format|
           if current_cart.update(params[:cart])
-            format.js { render partial: 'carts/delivery_service_prices/estimate/success', format: [:js] }
+            format.js { render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js] }
           else
             format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
           end
@@ -46,7 +48,7 @@ class CartsController < ApplicationController
 
     def purge_estimate
         current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_name: nil)
-        render :partial => 'carts/delivery_service_prices/estimate/success', :format => [:js]
+        render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
     end
 
     private

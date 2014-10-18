@@ -52,21 +52,21 @@ describe DeliveryServicePrice do
 
     describe "Displaying a delivery service description" do
 
-        context "if the delivery service has a description value" do
+        context "if the delivery service price has a description value" do
             let!(:delivery_service) { create(:delivery_service, description: 'Hi this is a delivery service description.', active: true) }
-            let(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id, description: 'This is a delivery service price description.') }
-
-            it "should return the delivery service description" do
-                expect(delivery_service_price.full_description).to eq 'Hi this is a delivery service description.'
-            end
-        end
-
-        context "if the delivery service has a nil description value" do
-            let!(:delivery_service) { create(:delivery_service, description: nil, active: true) }
             let(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id, description: 'This is a delivery service price description.') }
 
             it "should return the delivery service price description" do
                 expect(delivery_service_price.full_description).to eq 'This is a delivery service price description.'
+            end
+        end
+
+        context "if the delivery service price has a nil description value" do
+            let!(:delivery_service) { create(:delivery_service, description: 'Hi this is a delivery service description.', active: true) }
+            let(:delivery_service_price) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service.id, description: nil) }
+
+            it "should return the delivery service description" do
+                expect(delivery_service_price.full_description).to eq 'Hi this is a delivery service description.'
             end
         end
     end

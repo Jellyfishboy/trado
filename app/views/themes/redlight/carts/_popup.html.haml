@@ -1,0 +1,54 @@
+.cart
+  %p.items
+    CART
+    %span.dark-clr
+      (
+      = current_cart.cart_items.sum('quantity')
+      )
+  %p.dark-clr.hidden-tablet= Store::Price.new(price: current_cart.total_price).markup
+  = link_to mycart_carts_path, :class => 'btn btn-danger' do
+    %i.fa.fa-shopping-cart
+.open-panel
+  - if current_cart.cart_items.empty?
+    .item-in-cart.clearfix
+      .desc
+        %strong
+          %p You have no items in your cart.
+  - else 
+    - current_cart.cart_items.each do |item|
+      .item-in-cart.clearfix
+        .image
+          = link_to (image_tag item.sku.product.attachments.first.file.square, alt: item.sku.product.name, height: 124, width: 124), [item.sku.product.category, item.sku.product]
+        .desc
+          %strong
+            = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
+          %div
+            = sku_attribute_values(item.sku, item.sku.product.single)
+            - unless item.cart_item_accessory.blank?
+              = "<i class='fa fa-code-fork'></i> #{item.cart_item_accessory.accessory.name}".html_safe
+          %span.light-clr.qty
+            Qty:
+            = item.quantity
+            \ 
+            = link_to [current_cart, item], method: :delete, remote: true, title: 'Remove item' do
+              %i.fa.fa-times-circle
+        .price
+          %strong= Store::Price.new(price: item.total_price).single
+    .summary
+      - if Store::settings.tax_breakdown
+        .line
+          .row-fluid
+            .span6 Subtotal
+            .span6.align-right= Store::Price.new(price: current_cart.total_price, tax_type: 'net').single
+        .line
+          .row-fluid
+            .span6= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+            .span6.align-right= Store::Price.new(price:(current_cart.total_price*Store::tax_rate)).single
+      .line
+        .row-fluid
+          .span6 Total
+          .span6.align-right.size-16= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single
+    .proceed
+      = link_to mycart_carts_path, :class => 'btn btn-danger pull-right bold higher' do
+        CHECKOUT
+        %i.fa.fa-shopping-cart

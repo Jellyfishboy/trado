@@ -33,11 +33,11 @@ class DeliveryServicePrice < ActiveRecord::Base
 
   validates :code, :price, :min_weight, :max_weight,
   :min_length, :max_length, :min_thickness, :max_thickness,             presence: true
-  validates :code,                                                      uniqueness: { scope: [:active, :delivery_service_id] }
+  # validates :code,                                                      uniqueness: { scope: [:active, :delivery_service_id] }
   validates :description,                                               length: { maximum: 180, message: :too_long }
   validates :price,                                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 
-  default_scope { order(price: :asc) }
+  # default_scope { order(price: :asc) }
   scope :find_collection,                                               ->(cart, country) { joins(:countries).where(delivery_service_prices: { id: cart.delivery_service_prices }, countries: { name: country }).distinct.load }
 
   include ActiveScope
@@ -49,12 +49,12 @@ class DeliveryServicePrice < ActiveRecord::Base
     delivery_service.full_name
   end
 
-  # If the parent delivery service has no description use the delivery service price description
-  # The delivery service description wills override the delivery service price
+  # If the delivery service price has no description, use the delivery service description
+  # Individual delivery service price descriptions will override the delivery service description
   #
   # @return [String] delivery description
   def full_description
-    delivery_service.description.nil? ? description : delivery_service.description
+    description.nil? ? delivery_service.description : description
   end
 
 end
