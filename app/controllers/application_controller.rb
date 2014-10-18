@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     protected
 
     def theme_presenter
-      @theme_presenter ||= ThemePresenter.new(theme: Store::settings.theme)
+      ThemePresenter.new(theme: Store::settings.theme)
     end
 
     def set_tracking_code

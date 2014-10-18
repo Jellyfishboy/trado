@@ -41,11 +41,11 @@ module ApplicationHelper
     # @param action [String]
     # @param id [Integer]
     # @return [String] class name for a HTML element
-    def active_page? controller, action, id
-        if id.nil?
-            "active" if params[:controller] == controller && params[:action] == action
+    def active_page? data
+        if data[:slug].nil?
+            "active" if params[:controller] == data[:controller] && params[:action] == data[:action]
         else
-            "active" if params[:controller] == controller && params[:id] == id
+            "active" if params[:controller] == data[:controller] && params[:slug] == data[:slug]
         end
     end
 

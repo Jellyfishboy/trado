@@ -1,16 +1,15 @@
-class PagesController < ApplicationController
+class P::PagesController < ApplicationController
 
     skip_before_action :authenticate_user!
     before_action :set_page, except: :send_contact_message
 
-    def standard
-        render theme_presenter.page_template_path('pages/standard'), format: [:html], layout: theme_presenter.layout_template_path
-    end
-
-    def contact
-        @contact_message = ContactMessage.new
-
-        render theme_presenter.page_template_path('pages/contact'), format: [:html], layout: theme_presenter.layout_template_path
+    def show
+        if @page.contact?
+            @contact_message = ContactMessage.new 
+            render theme_presenter.page_template_path('pages/contact'), format: [:html], layout: theme_presenter.layout_template_path
+        else
+            render theme_presenter.page_template_path('pages/standard'), format: [:html], layout: theme_presenter.layout_template_path
+        end
     end
 
     def send_contact_message
@@ -29,6 +28,6 @@ class PagesController < ApplicationController
     private
 
     def set_page
-        @page = Page.find(params[:id])
+        @page = Page.find_by_slug(params[:slug])
     end
 end

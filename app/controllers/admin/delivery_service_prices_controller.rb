@@ -69,8 +69,6 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
   private
 
-  def 
-
   def set_delivery_service_price
     @delivery_service_price = DeliveryServicePrice.find(params[:id])
   end

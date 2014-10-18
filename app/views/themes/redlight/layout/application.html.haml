@@ -116,14 +116,14 @@
                 / ==========
                 .nav-collapse.collapse
                   %ul#mainNavigation.nav
-                    %li{ :class => active_page?('store', 'index', nil) }
+                    %li{ :class => active_page?(controller: 'store', action: 'index') }
                       %a.title{href: root_path, title: "Home"} Home
                     - category_list.each do |category|
                       %li{ :class => active_category?(category.slug) }
                         = link_to category.name, category
                     - page_list.each do | page|
-                      %li{ :class => active_page?('pages', page.template_type, page.id) }
-                        = link_to page.menu_title, send("#{page.slug.split('-').join('_')}_path"), title: page.title
+                      %li{ :class => active_page?(controller: 'pages', slug: page.slug) }
+                        = link_to page.render_menu_title, p_path(slug: page.slug), title: page.title
                   / ==========
                   / = Search form =
                   / ==========

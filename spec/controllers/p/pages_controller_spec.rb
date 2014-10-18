@@ -1,42 +1,36 @@
 require 'rails_helper'
 
-describe PagesController do
+describe P::PagesController do
 
     store_setting
 
-    # describe 'GET #standard' do
-    #     let!(:page) { create(:standard_page) }
-    #     before(:each) do
-    #         DynamicRouter.load
-    #     end
+    describe 'GET #standard' do
+        let!(:page) { create(:standard_page) }
 
-    #     it 'should assign the requested page to @page' do
-    #         get :standard, id: page.id
-    #         expect(assigns(:page)).to eq page
-    #     end
+        it 'should assign the requested page to @page' do
+            get :show, slug: page.slug
+            expect(assigns(:page)).to eq page
+        end
 
-    #     it "should render the :standard template" do
-    #         get :standard, id: page.id
-    #         expect(response).to render_template :standard
-    #     end
-    # end
+        it "should render the :standard template" do
+            get :show, slug: page.slug
+            expect(response).to render_template :standard
+        end
+    end
 
-    # describe 'GET #contact' do
-    #     let!(:page) { create(:contact_page) }
-    #     before(:each) do
-    #         DynamicRouter.load
-    #     end
+    describe 'GET #contact' do
+        let!(:page) { create(:contact_page) }
 
-    #     it 'should assign the requested page to @page' do
-    #         get :contact, id: page.id
-    #         expect(assigns(:page)).to eq page
-    #     end
+        it 'should assign the requested page to @page' do
+            get :show, slug: page.slug
+            expect(assigns(:page)).to eq page
+        end
 
-    #     it 'should render the :contact template' do
-    #         get :contact, id: page.id
-    #         expect(response).to render_template :contact
-    #     end
-    # end 
+        it 'should render the :contact template' do
+            get :show, slug: page.slug
+            expect(response).to render_template :contact
+        end
+    end 
 
     describe 'POST #send_contact_message' do
         context "with valid attributes" do

@@ -3,7 +3,6 @@ class Admin::PagesController < ApplicationController
   layout 'admin'
   before_action :set_page, only: [:edit, :update]
   before_action :list_template_types, only: [:edit, :update]
-  after_action :reload_routes, only: [:update]
 
   def index
     @pages = Page.all
@@ -30,9 +29,5 @@ class Admin::PagesController < ApplicationController
 
   def list_template_types
     @template_types = Page.template_types
-  end
-
-  def reload_routes
-    DynamicRouter.reload
   end
 end
