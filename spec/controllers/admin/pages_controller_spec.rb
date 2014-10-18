@@ -46,7 +46,7 @@ describe Admin::PagesController do
 
         context "if the page's slug attribute has illegal characters" do
             it "should strip them out and replace with hyphens" do
-                patch :update, id: page.id, page: attributes_for(:page, slug: 'about. 1& haha woop')
+                patch :update, id: page.id, page: attributes_for(:page, slug: 'about. 1& haha_woop')
                 page.reload
                 expect(page.slug).to eq 'about-1-haha-woop'
             end

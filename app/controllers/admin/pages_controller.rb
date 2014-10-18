@@ -12,7 +12,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def update
-    params[:page][:slug] = params[:page][:slug].parameterize
+    params[:page][:slug] = Store.parameterize_slug(params[:page][:slug])
     if @page.update(params[:page])
       flash_message :success, 'Page was successfully updated.'
       redirect_to admin_pages_url
