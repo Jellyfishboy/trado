@@ -48,7 +48,6 @@ describe Payatron4000 do
         let!(:complete_order) { create(:pending_order, cart_id: cart.id) }
         let(:session) { Hash({:cart_id => cart.id}) }
         let(:destroy_cart) { Payatron4000::destroy_cart(session) }
-        let(:increment_product_order_count) { Payatron4000::increment_product_order_count(cart.order.products) }
 
         it "should destroy the originating cart and it's cart items" do
             expect{
@@ -64,10 +63,16 @@ describe Payatron4000 do
 
         it "should update all the associated products order count attribute value" do
             expect{
-                increment_product_order_count
+                Payatron4000::increment_product_order_count(cart.order.products)
             }.to change{
                 cart.order.products.first.order_count
             }.from(0).to(1)
+        end
+
+        it "should decommission an order by setting the cart_id attribute to nil" do
+            expect(complete_order.cart_id).to_not eq nil
+            Payatron4000::decommission_order(complete_order)
+            expect(complete_order.cart_id).to eq nil
         end
     end
 

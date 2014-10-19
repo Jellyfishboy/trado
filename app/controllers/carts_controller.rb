@@ -9,15 +9,11 @@ class CartsController < ApplicationController
 
     def checkout
         if current_cart.order.nil?
-            @order = Order.new
             @delivery_id = current_cart.estimate_delivery_id
             @delivery_address = @order.build_delivery_address
             @billing_address = @order.build_billing_address
         else
-            @order = current_cart.order
             @delivery_id = @order.delivery_id
-            @delivery_address = @order.delivery_address
-            @billing_address = @order.billing_address
         end
         render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
     end

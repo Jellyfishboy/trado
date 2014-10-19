@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     end
 
     def destroy
-      @order.update_column(:cart_id, nil)
+      Payatron4000::decommission_order(@order)
       flash_message :success, "Your order has been cancelled."
       redirect_to root_url
     end

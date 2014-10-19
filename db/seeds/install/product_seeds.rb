@@ -1,5 +1,5 @@
 puts '-----------------------------'
-puts 'Executing product seeds'.colorize(:green)
+Rails.logger.info 'Executing product seeds'.colorize(:green)
 
 category = Category.create({
     name: 'Category #1', 

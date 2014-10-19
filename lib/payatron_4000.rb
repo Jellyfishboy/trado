@@ -41,6 +41,13 @@ module Payatron4000
             session[:cart_id] = nil
         end      
 
+        # Unlinks the order from the cart stored in session, making it inactive
+        #
+        # @param order [Object]
+        def decommission_order order
+            order.update_column(:cart_id, nil)
+        end
+
         # Increments the order count attribute for each product in an order by one
         # The order count attribute is used for determing popularity in the store sorting tool
         #

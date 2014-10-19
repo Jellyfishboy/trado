@@ -1,5 +1,5 @@
 puts '-----------------------------'
-puts 'Executing page seeds'.colorize(:green)
+Rails.logger.info 'Executing page seeds'.colorize(:green)
 
 about_page = Page.new({
     title: 'About',

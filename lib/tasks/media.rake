@@ -16,7 +16,7 @@ namespace :media do
             attachment.file.recreate_versions! 
             attachment.save! 
           rescue => e
-            puts  "ERROR: Attachment: #{attachment.id} -> #{e.to_s}"
+            Rails.logger.error  "ERROR: Attachment: #{attachment.id} -> #{e.to_s}"
           end
         end
     end

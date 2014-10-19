@@ -1,5 +1,5 @@
 puts '-----------------------------'
-puts 'Executing delivery service seeds'.colorize(:green)
+Rails.logger.info 'Executing delivery service seeds'.colorize(:green)
 uk_country = Country.find_by_name('United Kingdom')
 delivery_service = DeliveryService.create({
     name: '1st class', 

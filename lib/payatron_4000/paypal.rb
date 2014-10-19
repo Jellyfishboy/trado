@@ -25,7 +25,7 @@ module Payatron4000
             return EXPRESS_GATEWAY.redirect_url_for(response.token)
           else
             Payatron4000::Paypal.failed(response, order)
-            order.update_column(:cart_id, nil) 
+            Payatron4000::decommission_order(order)
             return failed_order_url(order)
           end
         end
@@ -104,9 +104,10 @@ module Payatron4000
           response = EXPRESS_GATEWAY.purchase(Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
+          Payatron4000::decommission_order(order)
           if response.success?
             Payatron4000::Paypal.successful(response, order)
-            Payatron4000::destroy_cart(session)
+            Payatron4000::destroy_cart(session, order)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.success_order_url(order)
