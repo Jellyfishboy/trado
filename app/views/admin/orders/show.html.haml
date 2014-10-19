@@ -101,7 +101,7 @@
             %td.border-top= Store::Price.new(price: @order.net_amount, tax_type: 'net').single
           %tr
             %td.align-right{colspan: "4"}
-              %b Delivery/handling:
+              %b Delivery:
             %td= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single
           %tr
             %td.align-right{colspan: "4"}

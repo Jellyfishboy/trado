@@ -118,7 +118,7 @@
                   .control-group
                     = image_tag 'paypal-icon.png'
                     .controls
-                      = f.radio_button :payment_method, 'paypal', checked: true
+                      = radio_button_tag :payment_method, 'paypal', checked: true
                   %h3 Billing address
                   %hr
                   = f.fields_for :billing_address do |fff|
@@ -191,7 +191,7 @@
                           .controls
                             = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, selected: selected_country(current_cart, @billing_address)), { include_blank: 'Please select...'})
                             = errors_for @order, 'billing_address.country'
-                  = f.check_box :terms
+                  = f.check_box :terms, checked: false
                   = errors_for @order, :terms
                   %p Tick this box to acknowledge that you have read and agree with our terms and conditions.
                   = f.submit 'Place Order', :class => 'btn btn-primary higher bold'
@@ -225,16 +225,17 @@
                               = item.cart_item_accessory.accessory.name
                             %td.qty
                               = item.cart_item_accessory.quantity
-                      %tr
-                        %td.stronger{colspan: "3"} Subtotal:
-                        %td.stronger
-                          .align-right= Store::Price.new(price: @cart_total[:net_amount], tax_type: 'net').single
-                      %tr.no-border
+                      - if Store::settings.tax_breakdown
+                        %tr
+                          %td.stronger{colspan: "3"} Subtotal:
+                          %td.stronger
+                            .align-right= Store::Price.new(price: @cart_total[:net_amount]).single
+                      %tr{ :class => Store::settings.tax_breakdown ? 'no-border' : nil}
                         %td.stronger{colspan: "3"}
                           Delivery:
                           %div.normal= current_cart.estimate_delivery.full_name unless current_cart.estimate_delivery.nil?
                         %td.stronger
-                          .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery), tax_type: 'net').single
+                          .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
                       - if Store::settings.tax_breakdown
                         %tr.no-border
                           %td.stronger{colspan: "3"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"

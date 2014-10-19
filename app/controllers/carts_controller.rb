@@ -4,7 +4,6 @@ class CartsController < ApplicationController
     before_action :set_cart_details, only: [:checkout, :confirm]
 
     def mycart
-
         render theme_presenter.page_template_path('carts/mycart'), layout: theme_presenter.layout_template_path
     end
 
@@ -25,9 +24,10 @@ class CartsController < ApplicationController
 
     def confirm
         @order.attributes = params[:order]
+        session[:payment_method] = params[:payment_method]
         if @order.save
             @order.calculate(current_cart, Store::tax_rate)
-            redirect_to Payatron4000::select_pay_provider(current_cart, @order, request.remote_ip)
+            redirect_to Payatron4000::select_pay_provider(current_cart, @order, session[:payment_method], request.remote_ip)
         else
             render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end

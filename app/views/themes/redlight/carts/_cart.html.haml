@@ -39,7 +39,7 @@
         = link_to purge_estimate_carts_path, method: :delete, remote: true, title: 'Remove item' do
           %i.fa.fa-times-circle
   %td.stronger
-    .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery), tax_type: 'net').single
+    .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
 - if Store::settings.tax_breakdown
   %tr
     %td{colspan: "2", rowspan: "1"}

@@ -46,9 +46,7 @@
               .span3
                 %h3 Billing address
                 %hr
-                = @billing_address.full_name
-                %br
-                = @order.email           
+                = @billing_address.full_name       
                 %br
                 = @billing_address.telephone
                 %br
@@ -66,6 +64,8 @@
               .span4
                 %h3 Payment details
                 %hr
+                  - if session[:payment_method] == 'paypal'
+                    = image_tag 'paypal-icon.png'
             %h3 Order details
             %table.table.table-items
               %thead

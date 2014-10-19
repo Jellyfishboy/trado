@@ -22,5 +22,5 @@
                     If you would like further assistance, please do not hesitate to 
                     %a{:href => 'mailto:gimsonrobotics@gmail.com'} contact
                     us.
-                = link_to "Try again", retry_order_build_url, :class => 'btn btn-primary higher bold'
-                = link_to "Cancel order", purge_order_build_path, method: :delete, :class => 'btn btn-danger bold higher'
+                = link_to "Try again", retry_order_url, :class => 'btn btn-primary higher bold'
+                = link_to "Cancel order", order_path, method: :delete, :class => 'btn btn-danger bold higher'

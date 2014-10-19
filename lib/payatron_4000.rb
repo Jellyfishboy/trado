@@ -10,10 +10,11 @@ module Payatron4000
         #
         # @param cart [Object]
         # @param order [Object]
+        # @param payment_method [String]
         # @param ip_address [String]
         # @return [String] redirect url
-        def select_pay_provider cart, order, ip_address
-            if order.payment_method == 'paypal'
+        def select_pay_provider cart, order, payment_method, ip_address
+            if payment_method == 'paypal'
                 return Payatron4000::Paypal.build_order(cart, order, ip_address)
             end
         end

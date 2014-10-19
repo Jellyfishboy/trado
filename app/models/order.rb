@@ -23,15 +23,15 @@
 #  net_amount                             :decimal              precision(8), scale(2)
 #  tax_amount                             :decimal              precision(8), scale(2) 
 #  gross_amount                           :decimal              precision(8), scale(2) 
-#  terms                                  :boolean                 
-#  payment_method                         :string(255)
+#  terms                                  :boolean
 #  created_at                             :datetime             not null
 #  updated_at                             :datetime             not null
 #
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-  :net_amount, :tax_amount, :gross_amount, :terms, :payment_method, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes
+  :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, 
+  :delivery_address_attributes, :billing_address_attributes
   
   has_many :order_items,                                                dependent: :delete_all
   has_many :transactions,                                               dependent: :delete_all
@@ -47,6 +47,8 @@ class Order < ActiveRecord::Base
   validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
 
+  scope :active,                                                        -> { where.not(transactions: { order_id: nil } ) }
+
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address
 
@@ -58,8 +60,8 @@ class Order < ActiveRecord::Base
   def transfer cart
     self.order_items.destroy_all
   	cart.cart_items.each do |item|
-      @order_item = order_items.build(:price => item.price, :quantity => item.quantity, :sku_id => item.sku_id, :weight => item.weight, :order_id => id)
-      @order_item.build_order_item_accessory(:accessory_id => item.cart_item_accessory.accessory_id, :price => item.cart_item_accessory.price, :quantity => item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
+      @order_item = order_items.build(price: item.price, quantity: item.quantity, sku_id: item.sku_id, weight: item.weight, order_id: id)
+      @order_item.build_order_item_accessory(accessory_id: item.cart_item_accessory.accessory_id, price: item.cart_item_accessory.price, quantity: item.cart_item_accessory.quantity) unless item.cart_item_accessory.nil?
       @order_item.save!
   	end
   end
