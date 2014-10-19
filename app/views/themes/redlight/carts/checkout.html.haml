@@ -98,7 +98,7 @@
                             Country
                             %span.red-clr.bold *
                           .controls.update-delivery-service-price
-                            = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, selected: selected_country(current_cart, @delivery_address)), { include_blank: 'Please select...'})
+                            = ff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, selected_country(current_cart, @order.delivery_address)), { include_blank: 'Please select...'})
                             = errors_for @order, 'delivery_address.country'
                   .delivery-service-prices
                     .control-group
@@ -118,7 +118,7 @@
                   .control-group
                     = image_tag 'paypal-icon.png'
                     .controls
-                      = radio_button_tag :payment_method, 'paypal', checked: true
+                      = radio_button_tag :payment_type, 'express-checkout', checked: true
                   %h3 Billing address
                   %hr
                   = f.fields_for :billing_address do |fff|
@@ -189,7 +189,7 @@
                             Country
                             %span.red-clr.bold *
                           .controls
-                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, selected: selected_country(current_cart, @billing_address)), { include_blank: 'Please select...'})
+                            = fff.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name ] }, selected: selected_country(current_cart, @order.billing_address)), { include_blank: 'Please select...'})
                             = errors_for @order, 'billing_address.country'
                   = f.check_box :terms, checked: false
                   = errors_for @order, :terms

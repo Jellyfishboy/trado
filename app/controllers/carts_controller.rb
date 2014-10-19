@@ -20,13 +20,17 @@ class CartsController < ApplicationController
 
     def confirm
         @order.attributes = params[:order]
-        session[:payment_method] = params[:payment_method]
+        session[:payment_type] = params[:payment_type]
         if @order.save
             @order.calculate(current_cart, Store::tax_rate)
-            redirect_to Payatron4000::select_pay_provider(current_cart, @order, session[:payment_method], request.remote_ip)
+            redirect_to Payatron4000::select_pay_provider(current_cart, @order, session[:payment_type], request.remote_ip)
         else
             render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end
+    rescue ActiveMerchant::ConnectionError
+        flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'  
+        Rails.logger.error "#{session[:payment_type]}: This API is temporarily unavailable."
+        redirect_to mycart_carts_url
     end
 
     def estimate

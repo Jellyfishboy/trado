@@ -159,6 +159,5 @@ module Payatron4000
             ).save(validate: false)
             Payatron4000::increment_product_order_count(order.products)
         end
-
     end
 end

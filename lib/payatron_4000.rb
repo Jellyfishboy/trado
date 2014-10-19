@@ -6,15 +6,15 @@ module Payatron4000
     class << self
 
         # Select the correct pay provider and build the order
-        # Dependent on the payment method used by the user
+        # Dependent on the payment payment_type used by the user
         #
         # @param cart [Object]
         # @param order [Object]
-        # @param payment_method [String]
+        # @param payment_type [String]
         # @param ip_address [String]
         # @return [String] redirect url
-        def select_pay_provider cart, order, payment_method, ip_address
-            if payment_method == 'paypal'
+        def select_pay_provider cart, order, payment_type, ip_address
+            if payment_type == 'express-checkout'
                 return Payatron4000::Paypal.build_order(cart, order, ip_address)
             end
         end

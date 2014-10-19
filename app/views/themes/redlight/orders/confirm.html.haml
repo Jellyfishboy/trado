@@ -64,7 +64,7 @@
               .span4
                 %h3 Payment details
                 %hr
-                  - if session[:payment_method] == 'paypal'
+                  - if session[:payment_type] == 'express-checkout'
                     = image_tag 'paypal-icon.png'
             %h3 Order details
             %table.table.table-items
