@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
     # end
 
     def confirm
+      binding.pry
       @order = Order.includes(:delivery_address, :billing_address).find(params[:id])
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
@@ -59,7 +60,7 @@ class OrdersController < ApplicationController
 
     def retry
       @error_code = @order.transactions.last.error_code
-      @order.update_column(:cart_id, session[:cart_id]) unless @error_code == 10412 || @error_code == 10415
+      @order.update_column(:cart_id, session[:cart_id]) unless Payatron4000::fatal_error_code?(@error_code)
       redirect_to mycart_carts_url
     end
 

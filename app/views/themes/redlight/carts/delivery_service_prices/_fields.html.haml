@@ -1,7 +1,7 @@
 - if delivery_service_prices.nil? || delivery_service_prices.empty?
     %p.shipping_notice Sorry, we do not ship to this country. Please check out our delivery and returns page for more information.
 - else
-    - delivery_service_prices.each_with_index do |delivery_price, index|
+    - delivery_service_prices.order(price: :asc).each_with_index do |delivery_price, index|
         %div.option
             = radio_button_tag field_target, delivery_price.id, delivery_id.nil? ? (index == 0 ? true : false) : (delivery_price.id == delivery_id ? true : false)
             %h5= delivery_price.full_name

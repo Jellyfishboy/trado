@@ -2,6 +2,14 @@ module Payatron4000
 
     class Paypal
 
+        # Builds the a PayPal purchase request from the order data
+        # If successful, redirect to PayPal for the user to login
+        # If unsuccessful, redirect to failed order page
+        #
+        # @param cart [Object]
+        # @param order [Object]
+        # @param ip_address [String]
+        # @return [String] redirect url
         def self.build_order cart, order, ip_address
           response = EXPRESS_GATEWAY.setup_purchase(
                         Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
@@ -115,8 +123,7 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.successful response, order
-            Transaction.new(  :fee => response.params['PaymentInfo']['FeeAmount'], 
-                              :gross_amount => response.params['PaymentInfo']['GrossAmount'], 
+            Transaction.new(  :fee => response.params['PaymentInfo']['FeeAmount'],  
                               :order_id => order.id, 
                               :payment_status => response.params['PaymentInfo']['PaymentStatus'].downcase, 
                               :transaction_type => 'Credit', 
@@ -124,6 +131,7 @@ module Payatron4000
                               :paypal_id => response.params['PaymentInfo']['TransactionID'], 
                               :payment_type => response.params['PaymentInfo']['TransactionType'],
                               :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
+                              :gross_amount => response.params['PaymentInfo']['GrossAmount'],
                               :status_reason => response.params['PaymentInfo']['PendingReason']
             ).save(validate: false)
             Payatron4000::update_stock(order)

@@ -25,14 +25,11 @@ class CartsController < ApplicationController
 
     def confirm
         @order.attributes = params[:order]
-        respond_to do |format|
-            if @order.save
-                @order.update_column(:cart_id, current_cart.id)
-                @order.calculate(current_cart, Store::tax_rate)
-                format.html { redirect_to Payatron4000::select_pay_provider(current_cart, @order, request.remote_ip) }
-            else
-                format.html { render action: 'checkout' }
-            end
+        if @order.save
+            @order.calculate(current_cart, Store::tax_rate)
+            redirect_to Payatron4000::select_pay_provider(current_cart, @order, request.remote_ip)
+        else
+            render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end
     end
 

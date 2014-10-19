@@ -15,7 +15,7 @@ describe Order do
 
     # Validations
     it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
-    it { expect(subject).to validate_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to complete your order.') }
+    it { expect(subject).to validate_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to place your order.') }
     it { expect(subject).to validate_presence_of(:delivery_id).with_message('Delivery option must be selected.') }
     it { expect(subject).to validate_presence_of(:email).with_message('is required') }
     it { expect(subject).to allow_value("test@test.com").for(:email) }
@@ -53,6 +53,9 @@ describe Order do
             order.calculate(cart, tax)
         end
 
+        it "should update the order's cart_id attribute" do
+            expect(order.cart_id).to eq cart.id
+        end
         it "should update the order's net amount attribute" do
             expect(order.net_amount).to eq cart.total_price
         end

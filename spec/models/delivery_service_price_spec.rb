@@ -21,17 +21,7 @@ describe DeliveryServicePrice do
 
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
-    describe "Default scope" do
-        let!(:delivery_service_price_1) { create(:delivery_service_price, price: '1.22') }
-        let!(:delivery_service_price_2) { create(:delivery_service_price, price: '5.67') }
-        let!(:delivery_service_price_3) { create(:delivery_service_price, price: '110.23') }
-
-        it "should return an array of products ordered by descending weighting" do
-            expect(DeliveryServicePrice.last(3)).to match_array([delivery_service_price_1, delivery_service_price_2, delivery_service_price_3])
-        end
-    end
-
-    describe "Listing all shippings" do
+    describe "Listing all delivery service price" do
         let!(:delivery_service_price_1) { create(:delivery_service_price, active: true) }
         let!(:delivery_service_price_2) { create(:delivery_service_price) }
         let!(:delivery_service_price_3) { create(:delivery_service_price, active: true) }

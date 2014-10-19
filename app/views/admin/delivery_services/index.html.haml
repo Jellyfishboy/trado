@@ -33,7 +33,7 @@
               %td.inner-table
                 %table
                   %tbody
-                    - delivery_service.prices.each do |delivery_price|
+                    - delivery_service.prices.order(price: :asc).each do |delivery_price|
                       %tr
                         %td= delivery_price.code
                         %td= Store::Price.new(price: delivery_price.price, tax_type: 'net').single

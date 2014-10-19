@@ -3,6 +3,7 @@ tmp
 *.DS_Store
 .env
 .ruby-version
+dump.rdb
 vendor/cache/*
 tmp/cache/*
 vendor/assets/components

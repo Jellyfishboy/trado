@@ -45,7 +45,7 @@ class Order < ActiveRecord::Base
   validates :actual_shipping_cost,                                      presence: true, :if => :completed?
   validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
-  validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to complete your order.' }
+  validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address
@@ -70,14 +70,16 @@ class Order < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   def calculate cart, current_tax_rate
     tax_amount = (cart.total_price + delivery.price)*current_tax_rate
-    self.update(:net_amount => cart.total_price,
-                :tax_amount => tax_amount,
-                :gross_amount => cart.total_price + delivery.price + tax_amount
+    self.update(
+      :cart_id => cart.id,
+      :net_amount => cart.total_price,
+      :tax_amount => tax_amount,
+      :gross_amount => cart.total_price + delivery.price + tax_amount
     )
     self.save(validate: false)
   end
 
-  # Returns true if the last associated transaction to the order is complete
+  # Returns true if the last associated transaction to the order is marked as complete
   #
   # @return [Boolean]
   def completed?

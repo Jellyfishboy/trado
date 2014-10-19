@@ -70,4 +70,15 @@ describe Payatron4000 do
             }.from(0).to(1)
         end
     end
+
+    describe "When checking if a transaction has a fatal error code" do
+
+        it "should return true if the error code is listed as fatal" do
+            expect(Payatron4000::fatal_error_code?(10415)).to eq true
+        end
+
+        it "should return false if the error code is not listed as fatal" do
+            expect(Payatron4000::fatal_error_code?(10413)).to eq false
+        end
+    end
 end

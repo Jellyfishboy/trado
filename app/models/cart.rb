@@ -49,18 +49,17 @@ class Cart < ActiveRecord::Base
   # Calculate the relevant delivery service prices for a cart, taking into account length, thickness and weight of the total cart
   #
   def calculate_delivery_services
-    length = skus.map(&:length).max
-    thickness = skus.map(&:thickness).max
-    total_weight = cart_items.map(&:weight).sum
-    delivery_service_prices = DeliveryServicePrice.where('? >= min_weight AND ? <= max_weight AND ? >= min_length AND ? <= max_length AND ? >= min_thickness AND ? <= max_thickness', total_weight, total_weight, length, length, thickness, thickness).pluck(:id)
-    self.update_column(:delivery_service_prices, delivery_service_prices)
+    @length = skus.map(&:length).max
+    @thickness = skus.map(&:thickness).max
+    @total_weight = cart_items.map(&:weight).sum
+    @delivery_service_prices = DeliveryServicePrice.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
+    self.update_column(:delivery_service_prices, @delivery_service_prices)
   end
   
   private
 
   # Deletes redundant carts which are more than 12 hours old
   #
-  # @return [nil]
   def self.clear_carts
     where("updated_at < ?", 12.hours.ago).destroy_all
   end

@@ -5,6 +5,13 @@ module Payatron4000
 
     class << self
 
+        # Select the correct pay provider and build the order
+        # Dependent on the payment method used by the user
+        #
+        # @param cart [Object]
+        # @param order [Object]
+        # @param ip_address [String]
+        # @return [String] redirect url
         def select_pay_provider cart, order, ip_address
             if order.payment_method == 'paypal'
                 return Payatron4000::Paypal.build_order(cart, order, ip_address)
@@ -41,6 +48,20 @@ module Payatron4000
             products.each do |product|
                 product.increment!(:order_count)
             end
+        end
+
+        # A list of fatal error codes for an order
+        # If the passed in error code parameter is included in the fatal codes array, return true
+        #
+        # @param error_code [Integer] payment error code
+        # @return [Boolean]
+        def fatal_error_code? error_code
+            @fatal_codes =
+            [
+                10412, # PayPal: Payment has already been made for this InvoiceID.
+                10415 # PayPal: A successful transaction has already been completed for this token.
+            ]
+            return @fatal_codes.include?(error_code) ? true : false
         end
     end  
 end
