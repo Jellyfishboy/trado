@@ -28,7 +28,7 @@
           = f.label 'Store theme'
           = f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' }
     .threecol
-      %h3 Tax details
+      %h3 Tax
       %p Set the name and percentage rate of your tax.
     .ninecol.last
       %fieldset.widget.widget-content
@@ -54,6 +54,14 @@
           %label
             = f.radio_button :tax_breakdown, false
             Price inc. tax
+    .threecol
+      %h3 PayPal
+      %p  Select the currency you will be accepting with your PayPal account.
+    .ninecol.last
+      %fieldset.widget.widget-content
+        .form-group
+          = f.label 'Currency code'
+          = f.select :paypal_currency_code, options_for_select(Payatron4000::Paypal.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' }
     .threecol
       %h3 Google Analytics
       %p Enable and set the web tracking code for your store. 

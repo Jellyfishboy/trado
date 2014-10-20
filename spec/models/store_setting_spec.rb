@@ -11,5 +11,6 @@ describe StoreSetting do
     it { expect(subject).to validate_presence_of(:tax_name) }
     it { expect(subject).to validate_presence_of(:currency) }
     it { expect(subject).to validate_presence_of(:tax_rate) }
+    it { expect(subject).to validate_presence_of(:paypal_currency_code) }
     
 end

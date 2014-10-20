@@ -49,7 +49,7 @@ module Payatron4000
               :ip                => ip_address,
               :return_url        => return_url,
               :cancel_return_url => cancel_url,
-              :currency          => 'GBP',
+              :currency          => Store.settings.paypal_currency_code,
             }
         end
 
@@ -65,7 +65,7 @@ module Payatron4000
               :handling          => 0,
               :token             => order.express_token,
               :payer_id          => order.express_payer_id,
-              :currency          => 'GBP',
+              :currency          => Store.settings.paypal_currency_code,
             }
         end
 
@@ -158,6 +158,36 @@ module Payatron4000
                               :error_code => response.params["error_codes"].to_i
             ).save(validate: false)
             Payatron4000::increment_product_order_count(order.products)
+        end
+
+        # A list of available currency codes for the PayPal payment system
+        #
+        # @return [Array] available currency codes
+        def self.currency_codes
+          return [
+            "AUD",
+            "CAD",
+            "CZK",
+            "DKK",
+            "EUR",
+            "HKD",
+            "HUF",
+            "ILS",
+            "JPY",
+            "MXN",
+            "NOK",
+            "NZD",
+            "PHP",
+            "PLN",
+            "GBP",
+            "RUB",
+            "SGD",
+            "SEK",
+            "CHF",
+            "TWD",
+            "THB",
+            "USD"
+          ]
         end
     end
 end
