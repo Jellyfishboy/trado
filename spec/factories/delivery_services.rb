@@ -11,6 +11,11 @@ FactoryGirl.define do
             countries { [create(:country, name: 'United Kingdom'),create(:country, name: 'China')]}
         end
 
+        factory :delivery_service_with_country do
+            active { true }
+            countries { [create(:country, name: 'Tawain')] }
+        end
+
         factory :invalid_delivery_service do
             name { nil }
         end
