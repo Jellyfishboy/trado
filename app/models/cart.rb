@@ -52,7 +52,7 @@ class Cart < ActiveRecord::Base
     @length = skus.map(&:length).max
     @thickness = skus.map(&:thickness).max
     @total_weight = cart_items.map(&:weight).sum
-    @delivery_service_prices = DeliveryServicePrice.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
+    @delivery_service_prices = DeliveryServicePrice.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).active.select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
     self.update_column(:delivery_service_prices, @delivery_service_prices)
   end
   

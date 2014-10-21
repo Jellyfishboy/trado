@@ -33,7 +33,7 @@ class DeliveryServicePrice < ActiveRecord::Base
 
   validates :code, :price, :min_weight, :max_weight,
   :min_length, :max_length, :min_thickness, :max_thickness,             presence: true
-  # validates :code,                                                      uniqueness: { scope: [:active, :delivery_service_id] }
+  validates :code,                                                      uniqueness: { scope: [:active, :delivery_service_id] }
   validates :description,                                               length: { maximum: 180, message: :too_long }
   validates :price,                                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
 

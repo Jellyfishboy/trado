@@ -21,6 +21,14 @@ describe DeliveryServicePrice do
 
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
+    describe "Retrieving the related delivery service prices for a country" do
+        let!(:delivery_service) { create(:delivery_service_with_countries) }
+        let!(:delivery_service_price_1) { create(:delivery_service_price, active: true) }
+        let!(:delivery_service_price_2) { create(:delivery_service_price, active: true) }
+        let!(:delivery_service_price_3) { create(:delivery_service_price, active: true) }
+
+    end
+
     describe "Listing all delivery service price" do
         let!(:delivery_service_price_1) { create(:delivery_service_price, active: true) }
         let!(:delivery_service_price_2) { create(:delivery_service_price) }
