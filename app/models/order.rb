@@ -47,7 +47,9 @@ class Order < ActiveRecord::Base
   validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
 
-  scope :active,                                                        -> { where.not(transactions: { order_id: nil } ) }
+  default_scope { order(created_at: :desc) }
+
+  scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address

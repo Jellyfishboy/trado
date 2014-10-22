@@ -14,6 +14,7 @@ describe Order do
     it { expect(subject).to have_one(:billing_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
 
     # Validations
+    before { subject.stub(:completed?) { true } }
     it { expect(subject).to validate_presence_of(:actual_shipping_cost) }
     it { expect(subject).to validate_inclusion_of(:terms).in_array([true]).with_message('You must tick the box in order to place your order.') }
     it { expect(subject).to validate_presence_of(:delivery_id).with_message('Delivery option must be selected.') }
@@ -24,6 +25,27 @@ describe Order do
     # Nested attributes
     it { expect(subject).to accept_nested_attributes_for(:delivery_address) }
     it { expect(subject).to accept_nested_attributes_for(:billing_address) }
+
+    describe "Default scope" do
+        let!(:order_1) { create(:order, created_at: 1.hour.ago) }
+        let!(:order_2) { create(:order, created_at: 6.hours.ago) }
+        let!(:order_3) { create(:order, created_at: Time.now) }
+
+        it "should return an array of orders ordered by descending created at value" do
+            expect(Order.last(3)).to match_array([order_3, order_1, order_2])
+        end
+    end
+
+    describe "Retrieving records which have associated transaction records" do
+        let!(:order_1) { create(:order) }
+        let!(:order_2) { create(:pending_order) }
+        let!(:order_3) { create(:complete_order) }
+        let!(:order_4) { create(:failed_order) }
+
+        it "should return order records which have at least one associated transaction record" do
+            expect(Order.active).to match_array [order_2, order_3, order_4]
+        end
+    end
 
     describe "When adding cart_items to an order" do
         let(:cart) { create(:full_cart) }
