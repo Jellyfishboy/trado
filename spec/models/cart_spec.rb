@@ -7,6 +7,7 @@ describe Cart do
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
     it { expect(subject).to have_one(:order) }
+    it { expect(subject).to belong_to(:estimate_delivery).class_name('DeliveryServicePrice') }
 
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
@@ -18,6 +19,59 @@ describe Cart do
             expect(cart.cart_items.count).to eq 3
             expect(cart.cart_items.sum('quantity')).to eq 7
             expect(cart.total_price).to eq BigDecimal.new("44.40")
+        end
+    end
+
+    describe "When viewing a cart" do
+        let(:cart) { create(:full_cart) }
+        let(:calculated_cart) { cart.calculate(20.0)}
+
+        it "should return a hash containing the correct net amount total" do
+            expect(calculated_cart[:net_amount]).to eq cart.total_price
+        end
+
+        context "if the cart has no associated delivery estimate" do
+
+            it "should return a hash containing the correct tax amount total" do
+                expect(calculated_cart[:tax_amount]).to eq cart.total_price * 20.0
+            end
+
+            it "should return a hash containing the correct gross amount total" do
+                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + (cart.total_price * 20.0))
+            end
+        end
+
+        context "if the cart has an associated delivery estimate" do
+            let!(:delivery) { create(:delivery_service_price) }
+            let(:cart) { create(:full_cart, estimate_delivery_id: delivery.id)}
+            let(:calculated_cart) { cart.calculate(20.0) }
+
+            it "should return a hash containing the correct tax amount total, with the delivery esimate price" do
+                expect(calculated_cart[:tax_amount]).to eq (cart.total_price + cart.estimate_delivery.price) * 20.0
+            end
+
+            it "should return a hash containing the correct gross amount total, wih the delivery estimate price" do
+                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + cart.estimate_delivery.price + ((cart.total_price + cart.estimate_delivery.price) * 20.0))
+            end
+        end
+    end
+
+    # weight 22.67
+    # length 67.2
+    # thickness 12.34
+    describe "Calculating the relevant delivery service prices for a cart" do
+        let(:cart) { create(:tier_calculated_cart) }
+        let!(:delivery_service) { create(:delivery_service, active: true)}
+        let!(:delivery_service_price_1) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '26.75', min_length: '0', max_length: '103.23', min_thickness: '0', max_thickness: '22.71') }
+        let!(:delivery_service_price_2) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '18.75', min_length: '0', max_length: '119.23', min_thickness: '0', max_thickness: '49.90') }
+        let!(:delivery_service_price_3) { create(:delivery_service_price, active: true, min_weight: '22.67', max_weight: '46.75', min_length: '66.82', max_length: '201.45', min_thickness: '12.33', max_thickness: '52.62') }
+
+        it "should update the cart with the available delivery service prices" do
+            expect{
+                cart.calculate_delivery_services
+            }.to change{
+                cart.delivery_service_prices
+            }.from(nil).to([delivery_service_price_1.id,delivery_service_price_3.id])
         end
     end
 
