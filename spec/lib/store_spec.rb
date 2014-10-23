@@ -111,4 +111,11 @@ describe Store do
             end
         end
     end
+
+    describe "When creating/updating a page" do
+
+        it "should parameterize it's slug attribute, including removing underscores" do
+            expect(Store.parameterize_slug('haha *@look_at_me !here')).to eq 'haha-look-at-me-here'
+        end
+    end
 end
