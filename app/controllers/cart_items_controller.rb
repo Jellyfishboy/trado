@@ -33,7 +33,7 @@ class CartItemsController < ApplicationController
 
   def void_delivery_services
     unless current_cart.estimate_delivery_id.nil? || current_cart.delivery_service_prices.nil? 
-      current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_name: nil, delivery_service_prices: nil)
+      current_cart.update(estimate_delivery_id: nil, estimate_country_name: nil, delivery_service_prices: nil)
     end
   end
 

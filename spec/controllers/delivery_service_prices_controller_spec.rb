@@ -27,13 +27,8 @@ describe DeliveryServicePricesController do
         end
 
         it "should render a delivery service prices partial" do
-<<<<<<< HEAD
-            xhr :get, :update, { 'country_id' => country_1.id }
-            expect(response).to render_template(partial: 'carts/delivery_service_prices/_fields')
-=======
             xhr :get, :update, { 'country_id' => country_1.name }
             expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/orders/delivery_service_prices/_fields")
->>>>>>> master
         end
     end
 end
