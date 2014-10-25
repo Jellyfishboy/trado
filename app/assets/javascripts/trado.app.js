@@ -47,6 +47,8 @@ trado.app =
                     $element =  $("select[name*='" + key + "']");
                 }
                 $errorTarget = '.error-explanation';
+                //cleans the value
+                key = key.split('_').join(' ');
                 // updates the error messages
                 if ($element.parent().next().is($errorTarget)) 
                 {

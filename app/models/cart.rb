@@ -24,6 +24,8 @@ class Cart < ActiveRecord::Base
   has_one :order
   belongs_to :estimate_delivery,                    class_name: 'DeliveryServicePrice'
 
+  validates :estimate_country_name,                 presence: true
+
   # Calculates the total price of a cart
   #
   # @return [Decimal] total sum of cart items

@@ -4,12 +4,12 @@
     %h3#estimateDeliveryModalLabel
       %span.light Estimate
       Shipping
-  = form_for current_cart, url: estimate_carts_path, :html => { method: :patch, :remote => true, :class => 'remote-form' } do |f|
+  = form_for current_cart, url: estimate_carts_path, html: { method: :patch, remote: true, :class => 'remote-form' } do |f|
     .modal-body
       .control-group
         = f.label 'Country', :class => 'control-label'
         .controls.update-delivery-service-price
-          = f.select(:estimate_country_name, options_for_select(Country.all.map { |country| [country.name, country.name] }), { :include_blank => 'Please select...'})
+          = f.select(:estimate_country_name, options_for_select(Country.all.map { |country| [country.name, country.name] }), { include_blank: 'Please select...'})
       .delivery-service-prices
         .control-group
           = f.label :estimate_delivery_id, :class => 'control-label' do

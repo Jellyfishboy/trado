@@ -34,11 +34,12 @@ class CartsController < ApplicationController
     end
 
     def estimate
+        @cart = current_cart
         respond_to do |format|
-          if current_cart.update(params[:cart])
+          if @cart.update(params[:cart])
             format.js { render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js] }
           else
-            format.json { render json: { errors: @order.errors.to_json(root: true) }, status: 422 }
+            format.json { render json: { errors: @cart.errors.to_json(root: true) }, status: 422 }
           end
         end
     end

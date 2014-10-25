@@ -15,14 +15,15 @@ class ApplicationController < ActionController::Base
     end
 
   	def current_cart
-      Cart.find(session[:cart_id]) #searches for cart in session
-    rescue ActiveRecord::RecordNotFound #starts an exception clause if no cart is found in sessions
-  		cart = Cart.create #creates a new cart
-  		session[:cart_id] = cart.id #assigns the new session with the new cart id
-  		cart # returns cart object
+      Cart.find(session[:cart_id])
+    rescue ActiveRecord::RecordNotFound
+  		cart = Cart.new 
+      cart.save(validate: false)
+  		session[:cart_id] = cart.id
+  		return cart
   	end
 
-    def after_sign_out_path_for(resource_or_scope)
+    def after_sign_out_path_for resource_or_scope
         admin_root_path
     end
 end

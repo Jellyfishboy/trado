@@ -9,6 +9,9 @@ describe Cart do
     it { expect(subject).to have_one(:order) }
     it { expect(subject).to belong_to(:estimate_delivery).class_name('DeliveryServicePrice') }
 
+    # Validations
+    it { expect(subject).to validate_presence_of(:estimate_country_name) }
+
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
         let!(:cart_item_1) { create(:cart_item, price: "12", quantity: 1, cart: cart) }
