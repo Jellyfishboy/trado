@@ -1,10 +1,10 @@
 module Store
 
     class Price < AbstractController::Base
-        attr_reader :count, :tax_type, :price
+        attr_reader :price, :tax_type, :count
         include ActionView::Helpers::NumberHelper
 
-        # Initial price logic which builds product data object
+        # Initial price logic which builds attributes to force behaviour, not data interaction
         #
         # @overload set(data)
         #   @param [Decimal] price
@@ -12,9 +12,9 @@ module Store
         #   @param [Integer] total record count
         # @return [Decimal] price
         def initialize data
-            @count      = data[:count]
-            @tax_type   = data[:tax_type]
             @price      = data[:price]
+            @tax_type   = data[:tax_type]
+            @count      = data[:count]
         end
 
         # Price logic

@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
     def complete
       @order.transfer(current_cart)
-      redirect_to Payatron4000::Paypal.complete(@order, session)
+      redirect_to Store::PayProvider.new(order: @order, session: session).complete
     end
 
     def success
