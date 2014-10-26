@@ -238,10 +238,6 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
-    lograge (0.3.0)
-      actionpack (>= 3)
-      activesupport (>= 3)
-      railties (>= 3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -511,7 +507,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari
-  lograge
   meta_request
   metric_fu
   mini_magick
