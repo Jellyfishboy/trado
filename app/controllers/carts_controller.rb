@@ -30,7 +30,7 @@ class CartsController < ApplicationController
     rescue ActiveMerchant::ConnectionError
         flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'  
         Rails.logger.error "#{session[:payment_type]}: This API is temporarily unavailable."
-        redirect_to mycart_carts_url
+        redirect_to checkout_carts_url
     end
 
     def estimate

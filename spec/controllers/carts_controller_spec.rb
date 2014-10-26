@@ -16,7 +16,7 @@ describe CartsController do
         let!(:delivery_service_price) { create(:delivery_service_price) }
         let!(:cart) { create(:cart, estimate_delivery_id: delivery_service_price.id, estimate_country_name: 'United Kingdom') }
         before(:each) do
-            controller.stub(:current_cart).and_return(cart)
+            stub_current_cart(cart)
         end
 
         it "should assign the calculated cart values to @cart_total" do
@@ -95,7 +95,7 @@ describe CartsController do
     describe 'POST #confirm' do
         let!(:cart) { create(:cart) }
         before(:each) do
-            controller.stub(:current_cart).and_return(cart)
+            stub_current_cart(cart)
         end
 
         it "should assign the payment_type parameter to the session store" do
@@ -140,7 +140,7 @@ describe CartsController do
     describe 'PATCH #estimate' do
         let!(:cart) { create(:cart, estimate_country_name: 'United Kingdom') }
         before(:each) do
-            controller.stub(:current_cart).and_return(cart)
+            stub_current_cart(cart)
         end
 
         context "with valid attributes" do
@@ -170,7 +170,7 @@ describe CartsController do
         let!(:delivery_service_price) { create(:delivery_service_price) }
         let!(:cart) { create(:cart, estimate_country_name: 'China', estimate_delivery_id: delivery_service_price.id) }
         before(:each) do
-            controller.stub(:current_cart).and_return(cart)
+            stub_current_cart(cart)
         end
 
         it "should update the cart estimate_delivery_id attribute value to nil" do

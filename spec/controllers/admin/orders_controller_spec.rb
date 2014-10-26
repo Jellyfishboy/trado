@@ -6,12 +6,12 @@ describe Admin::OrdersController do
     login_admin
 
     describe 'GET #index' do
-        let!(:order_1) { create(:order) }
-        let!(:order_2) { create(:order) }
+        let!(:order_1) { create(:complete_order, created_at: 2.hours.ago) }
+        let!(:order_2) { create(:complete_order, created_at: Time.now) }
 
         it "should populate an array of all orders" do
             get :index
-            expect(assigns(:orders)).to match_array([order_1, order_2])
+            expect(assigns(:orders)).to match_array([order_2, order_1])
         end
         it "should render the :index template" do
             get :index

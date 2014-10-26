@@ -17,7 +17,7 @@ describe DeliveryServicePricesController do
         before(:each) do
             create(:destination, country_id: country_1.id, delivery_service_id: delivery_service_1.id)
             create(:destination, country_id: country_2.id, delivery_service_id: delivery_service_2.id)
-            controller.stub(:current_cart).and_return(cart)
+            stub_current_cart(cart)
         end
 
         it "should assign a collection of available delivery service prices to @delivery_service_prices" do

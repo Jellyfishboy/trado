@@ -4,6 +4,40 @@ describe Payatron4000::Paypal do
 
     store_setting
 
+    describe "When building an order ready for PayPal authentication" do
+        let(:cart) { create(:cart) }
+        let(:order) { create(:order, cart_id: cart.id) }
+        let(:failed_build) { Payatron4000::Paypal.build(cart, order, '127.0.0.123') }
+        before(:each) do
+            EXPRESS_GATEWAY.stub(:setup_purchase) { OpenStruct.new( :message => 'Failed order.', 
+                                                                    :params => { 'error_codes' => 14012 },
+                                                                    :success? => false
+                                                                )
+                                                }
+        end
+
+        context "if the PayPal response was unsuccessful" do
+
+            it "should save a failed transaction record to the database" do
+                expect{
+                    failed_build
+                }.to change(Transaction, :count).by(1)
+            end
+
+            it "should decommission the order" do
+                expect{
+                    failed_build
+                }.to change{
+                    order.cart_id
+                }.from(cart.id).to(nil)
+            end
+
+            it "should return the failed order url" do
+                expect(failed_build).to eq "http://localhost:3000/orders/#{order.id}/failed"
+            end
+        end
+    end
+
     describe "When requesting an order object for reviewal in PayPal" do
         let(:order) { create(:order, net_amount: '12.5', tax_amount: '4.56') }
         let(:steps) { ['review', 'billing', 'shipping', 'payment', 'confirm'] }
@@ -11,7 +45,7 @@ describe Payatron4000::Paypal do
         let(:ip_address) { "10.1.5.25" }
         let(:return_url) { "/return_url" }
         let(:cancel_url) { "/cancel_url" }
-        let(:express_options) { Payatron4000::Paypal.express_setup_options(order, steps, cart, ip_address, return_url, cancel_url) }
+        let(:express_options) { Payatron4000::Paypal.express_setup_options(order, cart, ip_address, return_url, cancel_url) }
 
         it "should set the correct subtotal" do
             expect(express_options[:subtotal]).to eq (1250)
@@ -107,7 +141,7 @@ describe Payatron4000::Paypal do
     describe "When completing an order" do
 
         context "if the payment was successful" do
-            let!(:order) { create(:order) }
+            let!(:order) { create(:addresses_order) }
             let(:session) { Hash({:cart_id => order.cart.id}) }
             let(:successful_order) { Payatron4000::Paypal.complete(order, session) }
             before(:each) do
@@ -145,7 +179,7 @@ describe Payatron4000::Paypal do
             end
 
             it "should return a redirect URL to the succesful order page" do
-                expect(successful_order).to eq "http://localhost:3000/orders/#{order.id}/build/confirm/success"
+                expect(successful_order).to eq "http://localhost:3000/orders/#{order.id}/success"
             end
             
         end
@@ -154,7 +188,7 @@ describe Payatron4000::Paypal do
 
             let!(:cart) { create(:cart) }
             let(:session) { Hash({:cart_id => cart.id}) }
-            let(:order) { create(:order) }
+            let(:order) { create(:addresses_order) }
             let(:failed_order) { Payatron4000::Paypal.complete(order, session) }
             before(:each) do
                 EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {  'FeeAmount' => '', 
@@ -186,7 +220,7 @@ describe Payatron4000::Paypal do
             end
 
             it "should return a redirect URL to the failed order page" do
-                expect(failed_order).to eq "http://localhost:3000/orders/#{order.id}/build/confirm/failure"
+                expect(failed_order).to eq "http://localhost:3000/orders/#{order.id}/failed"
             end
         end
     end
@@ -232,10 +266,6 @@ describe Payatron4000::Paypal do
         it "should set the correct gross amount for the transaction" do
             expect(order.transactions.first.gross_amount).to eq BigDecimal.new("67.23")
         end
-
-        it "should set the order status attribute as 'active'" do
-            expect(order.status).to eq 'active'
-        end
     end
 
     describe "Failed order" do
@@ -271,10 +301,5 @@ describe Payatron4000::Paypal do
         it "should set the correct value for the status reason attribute on the transaction record" do
             expect(order.transactions.first.status_reason).to eq 'Failed order.'
         end
-
-        it "should set the order status attribute as 'active'" do
-            expect(order.status).to eq 'active'
-        end
     end
-
 end

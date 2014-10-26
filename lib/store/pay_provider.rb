@@ -1,6 +1,5 @@
 module Store
 
-    # TODO: Fix bug in carts_controller_spec:109
     class PayProvider
         attr_reader :order, :cart, :ip_address, :provider, :session
 
@@ -30,11 +29,11 @@ module Store
             end
         end
 
-        # Triggers the build_order method, under the respective payment provider class
+        # Triggers the build method, under the respective payment provider class
         #
         # @return [String] redirect url
         def build
-            provider.build_order(order, cart, ip_address)
+            provider.build(order, cart, ip_address)
         end
 
         # Triggers the complete method, under the respective payment provider class

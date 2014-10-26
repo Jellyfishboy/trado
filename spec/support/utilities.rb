@@ -8,4 +8,10 @@ module Utilities
         page.execute_script("$('##{field[:id]}').val('#{option_value}')")
         page.execute_script("$('##{field[:id]}').trigger('liszt:updated').trigger('change')")
     end
+
+    # Stubs the application controller helper method, current cart with the cart object parameter
+    #
+    def stub_current_cart cart
+        controller.stub(:current_cart).and_return(cart)
+    end
 end

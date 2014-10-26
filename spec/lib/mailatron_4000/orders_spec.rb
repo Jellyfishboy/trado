@@ -5,8 +5,7 @@ describe Mailatron4000::Orders do
     store_setting
 
     describe "Dispatching orders" do
-
-        let!(:order){ create(:pending_order, shipping_date: Time.now) }
+        let!(:order){ create(:addresses_pending_order, shipping_date: Time.now) }
         
         context "if order delivery date is today" do
 
@@ -30,7 +29,7 @@ describe Mailatron4000::Orders do
     describe "When completing an order" do
 
         context "if the payment status is pending" do
-            let(:pending) { create(:pending_order) }
+            let!(:pending) { create(:addresses_pending_order) }
 
             it "should send a pending email confirmation" do
                 expect{
@@ -41,7 +40,7 @@ describe Mailatron4000::Orders do
         end
 
         context "if the payment status is completed" do
-            let(:completed) { create(:complete_order) }
+            let!(:completed) { create(:addresses_complete_order) }
 
             it "should send a completed email confirmation" do
                 expect{
@@ -52,8 +51,8 @@ describe Mailatron4000::Orders do
         end
 
         context "if the payment status is failed" do
-            let(:failed) { create(:failed_order) }
-
+            let!(:failed) { create(:addresses_failed_order) }
+            
             it "should send a completed email confirmation" do
                 expect{
                     Mailatron4000::Orders.confirmation_email(failed)

@@ -69,6 +69,7 @@ class Order < ActiveRecord::Base
   end
 
   # Update the current order's net_amount, tax_amount and gross_amount attribute values
+  # And assigns the order to the current_cart stored in session
   #
   # @param cart [Object]
   # @param current_tax_rate [Decimal]

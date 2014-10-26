@@ -64,7 +64,7 @@ describe CartItemsController do
         context "if the current cart has an estimate_delivery_id or delivery_service_prices value" do
             let!(:cart) { create(:cart, estimate_delivery_id: 1, delivery_service_prices: [1,2]) }
             before(:each) do
-                controller.stub(:current_cart).and_return(cart)
+                stub_current_cart(cart)
             end
 
             it "should set estimate_delivery_id attribute to nil value" do
@@ -79,9 +79,15 @@ describe CartItemsController do
                 expect{
                     xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
                 }.to change{
+                    cart.reload
                     cart.delivery_service_prices
                 }.from([1,2]).to([])
             end
+        end
+
+        it "should set the payment_type session store value to nil" do
+            xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
+            expect(session[:payment_type]).to eq nil
         end
     end
 

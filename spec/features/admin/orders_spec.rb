@@ -5,8 +5,8 @@ feature 'Order management' do
     store_setting
     feature_login_admin
     given(:undispatched) { create(:undispatched_complete_order) }
-    given(:pending) { create(:pending_order) }
-    given(:complete) { create(:complete_order) }
+    given(:pending) { create(:addresses_pending_order) }
+    given(:complete) { create(:addresses_complete_order) }
     given(:build_dispatch) { build(:edit_dispatch_order) }
 
 
