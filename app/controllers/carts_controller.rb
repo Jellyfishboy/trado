@@ -45,7 +45,9 @@ class CartsController < ApplicationController
     end
 
     def purge_estimate
-        current_cart.update_attributes(estimate_delivery_id: nil, estimate_country_name: nil)
+        current_cart.estimate_delivery_id = nil
+        current_cart.estimate_country_name = nil
+        current_cart.save(validate: false)
         render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
     end
 
