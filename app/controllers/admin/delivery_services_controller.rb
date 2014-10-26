@@ -1,6 +1,6 @@
 class Admin::DeliveryServicesController < ApplicationController
 
-  before_action :set_delivery_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_delivery_service, only: [:edit, :update, :destroy]
   before_action :get_associations, except: [:index, :destroy, :copy_countries, :set_countries]
   before_action :authenticate_user!
   layout "admin"
