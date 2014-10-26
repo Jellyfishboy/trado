@@ -106,7 +106,7 @@ describe CartsController do
         context "with valid attributes" do
             let!(:delivery_service_price) { create(:delivery_service_price) }
             before(:each) do
-                Store::PayProvider.stub(:new) { '/' }
+                Store::PayProvider.any_instance.stub(build: '/')
             end
 
             it "should not have a nil value for net_amount, tax_amount and gross_amount attributes for the new order" do
