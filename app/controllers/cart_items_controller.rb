@@ -33,8 +33,12 @@ class CartItemsController < ApplicationController
   private
 
   def void_delivery_services
-    unless current_cart.estimate_delivery_id.nil? || current_cart.delivery_service_prices.nil? 
-      current_cart.update(estimate_delivery_id: nil, estimate_country_name: nil, delivery_service_prices: nil)
+    @cart = current_cart
+    unless @cart.estimate_delivery_id.nil? && @cart.delivery_service_prices.nil?
+      @cart.estimate_delivery_id = nil
+      @cart.estimate_country_name = nil
+      @cart.delivery_service_prices = nil
+      @cart.save(validate: false)
     end
   end
 
