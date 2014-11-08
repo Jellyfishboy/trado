@@ -14,8 +14,8 @@
 class AttributeType < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :skus,       :dependent => :restrict_with_exception 
+  has_many :skus,       dependent: :restrict_with_exception 
 
-  validates :name,      :presence => true
+  validates :name,      presence: true
 
 end
