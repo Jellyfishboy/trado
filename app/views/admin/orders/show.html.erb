@@ -18,37 +18,27 @@
       <ul>
         <li>
           <i class="icon-envelop"></i>
-          <%= succeed ":" do %>
-            <b>Email</b>
-          <% end %>
+          <b>Email</b>:
           <%= @order.email %>
         </li>
         <li>
           <i class="icon-location"></i>
-          <%= succeed ":" do %>
-            <b>Status</b>
-          <% end %>
+          <b>Status</b>:
           <%= status_label @order, @order.shipping_status %>
         </li>
         <li>
           <i class="icon-calendar"></i>
-          <%= succeed ":" do %>
-            <b>Dispatch date</b>
-          <% end %>
+          <b>Dispatch date</b>:
           <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
         </li>
         <li>
           <i class="icon-coin"></i>
-          <%= succeed ":" do %>
-            <b>Actual shipping cost</b>
-          <% end %>
+          <b>Actual shipping cost</b>:
           <%= Store::Price.new(price: @order.actual_shipping_cost, tax_type: 'net').single unless @order.actual_shipping_cost.nil? %>
         </li>
         <li>
           <i class="icon-airplane"></i>
-          <%= succeed ":" do %>
-            <b>Delivery option</b>
-          <% end %>
+          <b>Delivery option</b>
           <%= @order.delivery.full_name %>
         </li>
       </ul>

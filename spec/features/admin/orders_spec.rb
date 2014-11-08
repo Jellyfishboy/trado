@@ -101,7 +101,7 @@ feature 'Order management' do
         build_dispatch.save(validate: false)
         
         visit admin_orders_path
-        find('tbody tr:first-child td:last-child a:last-child').click
+        find('tbody tr:first-child td:last-child a:last-child').trigger('click')
         sleep 1
 
         within '.modal#order-form' do
