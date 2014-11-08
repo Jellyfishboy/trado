@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>
+      <%= yield :title %>
+      <%= "- #{Store::settings.name} Administration" %>
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type"/>
+    <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag :administration, "data-turbolinks-track" => true %>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300" rel="stylesheet" type="text/css">/</link>
+    <link href="/stylesheets/font.css" media="screen" rel="stylesheet">/</link>
+    <%= javascript_include_tag "modernizr/modernizr" %>
+  </head>
+  <body>
+    <div class="all-wrapper">
+      <div class="main">
+        <div class="container">
+          <div class="row">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

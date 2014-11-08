@@ -1,0 +1,16 @@
+<% content_for :title, 'New accessory' %>
+<% content_for :breadcrumb, 'New' %>
+<% breadcrumb_add 'Accessories', admin_accessories_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">New accessory</h2>
+  </div>
+  <%= form_for [:admin, @accessory], html: { role: 'form' } do |f| %>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+      <%= render partial: 'shared/errors', locals: { object: @accessory } %>
+    </div>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>

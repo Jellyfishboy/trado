@@ -1,0 +1,51 @@
+<% content_for :title, 'Categories' %>
+<% content_for :breadcrumb, 'Categories' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_category_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add category" do %>
+      <i class="icon-plus"></i>
+    <% end %>
+    <h2 class="widget widget-header">Categories</h2>
+  </div>
+  <% if @categories.empty? %>
+    <p>You don't have any categories yet.</p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Sorting</th>
+            <th>Active</th>
+            <th>No. of products</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td>
+                <%= category.name %>
+              </td>
+              <td>
+                <%= category.description %>
+              </td>
+              <td>
+                <%= category.sorting %>
+              </td>
+              <td>
+                <%= category.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe %>
+              </td>
+              <td>
+                <%= category.products.count %>
+              </td>
+              <%= table_actions [:admin, category], "edit", "delete" %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

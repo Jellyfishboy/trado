@@ -1,0 +1,39 @@
+<div class="threecol">
+  <h3>Accessory details</h3>
+  <p>Set the name and part number for your accessory.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :part_number %>
+      <%= f.text_field :part_number, :class => 'form-control' %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Weight &amp; price</h3>
+  <p>Set the weight, net price and original cost value for your accessory.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content widget-last">
+    <div class="form-group">
+      <%= f.label 'Weight (g)' %>
+      <%= f.text_field :weight, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :cost_value %>
+      <%= f.text_field :cost_value, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+    </div>
+    <div class="form-group form-last">
+      <%= f.label 'Net price' %>
+      <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+    </div>
+  </fieldset>
+  <div class="form-action">
+    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+  </div>
+</div>

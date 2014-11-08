@@ -1,0 +1,55 @@
+<% content_for :title, 'Accessories' %>
+<% content_for :breadcrumb, 'Accessories' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_accessory_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add accessory" do %>
+      <i class="icon-plus"></i>
+    <% end %>
+    <h2 class="widget widget-header">Accessories</h2>
+  </div>
+  <% if @accessories.empty? %>
+    <p>You don't have any accessories yet.</p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Part no.</th>
+            <th>Name</th>
+            <th>Weight (g)</th>
+            <th>Cost value</th>
+            <th>Net price</th>
+            <th>Gross price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accessories.each do |accessory| %>
+            <tr>
+              <td>
+                <%= accessory.part_number %>
+              </td>
+              <td>
+                <%= accessory.name %>
+              </td>
+              <td>
+                <%= accessory.weight %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: accessory.cost_value, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: accessory.price, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: accessory.price, tax_type: 'gross').single %>
+              </td>
+              <%= table_actions [:admin, accessory], 'edit', 'delete' %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

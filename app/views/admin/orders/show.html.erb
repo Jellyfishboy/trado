@@ -1,0 +1,232 @@
+<% content_for :title, "Order ##{@order.id}" %>
+<% content_for :breadcrumb, "##{@order.id}" %>
+<% breadcrumb_add 'Orders', admin_orders_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">
+      <%= "Order ##{@order.id}" %>
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="fourcol">
+    <div class="widget-sub-heading">
+      <h3>Shipping details</h3>
+    </div>
+    <div class="widget widget-content">
+      <ul>
+        <li>
+          <i class="icon-envelop"></i>
+          <%= succeed ":" do %>
+            <b>Email</b>
+          <% end %>
+          <%= @order.email %>
+        </li>
+        <li>
+          <i class="icon-location"></i>
+          <%= succeed ":" do %>
+            <b>Status</b>
+          <% end %>
+          <%= status_label @order, @order.shipping_status %>
+        </li>
+        <li>
+          <i class="icon-calendar"></i>
+          <%= succeed ":" do %>
+            <b>Dispatch date</b>
+          <% end %>
+          <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
+        </li>
+        <li>
+          <i class="icon-coin"></i>
+          <%= succeed ":" do %>
+            <b>Actual shipping cost</b>
+          <% end %>
+          <%= Store::Price.new(price: @order.actual_shipping_cost, tax_type: 'net').single unless @order.actual_shipping_cost.nil? %>
+        </li>
+        <li>
+          <i class="icon-airplane"></i>
+          <%= succeed ":" do %>
+            <b>Delivery option</b>
+          <% end %>
+          <%= @order.delivery.full_name %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="fourcol">
+    <div class="widget-sub-heading">
+      <h3>Billing address</h3>
+    </div>
+    <div class="widget widget-content">
+      <%= @order.billing_address.full_name %>
+      <br/>
+      <%= @order.billing_address.address %>
+      <br/>
+      <%= @order.billing_address.city %>
+      <br/>
+      <%= @order.billing_address.postcode %>
+      <br/>
+      <%= @order.billing_address.country %>
+      <br/>
+      <br/>
+      <%= @order.billing_address.telephone %>
+      <br/>
+    </div>
+  </div>
+  <div class="fourcol last">
+    <div class="widget-sub-heading">
+      <h3>Shipping address</h3>
+    </div>
+    <div class="widget widget-content">
+      <%= @order.delivery_address.full_name %>
+      <br/>
+      <%= @order.delivery_address.address %>
+      <br/>
+      <%= @order.delivery_address.city %>
+      <br/>
+      <%= @order.delivery_address.postcode %>
+      <br/>
+      <%= @order.delivery_address.country %>
+      <br/>
+      <br/>
+      <%= @order.delivery_address.telephone %>
+      <br/>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="twelvecol">
+    <div class="widget-sub-heading">
+      <h3>Order items</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover table-margin">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>SKU</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |item| %>
+            <tr>
+              <td>
+                <%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %>
+                <div class="item-sub">
+                  <%= sku_attribute_values item.sku, item.sku.product.single %>
+                </div>
+                <% unless item.order_item_accessory.nil? %>
+                  <div class="item-sub label label-blue">
+                    <%= "<i class='icon-code-fork'></i> #{item.order_item_accessory.accessory.name}".html_safe %>
+                  </div>
+                <% end %>
+              </td>
+              <td>
+                <%= item.sku.full_sku %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: item.price, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= item.quantity %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: item.total_price, tax_type: 'net').single %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td class="align-right border-top" colspan="4">
+              <b>Subtotal:</b>
+            </td>
+            <td class="border-top">
+              <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-right" colspan="4">
+              <b>Delivery:</b>
+            </td>
+            <td>
+              <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-right" colspan="4">
+              <b>Tax:</b>
+            </td>
+            <td>
+              <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
+            </td>
+          </tr>
+          <tr class="focused">
+            <td class="align-right" colspan="4">
+              <b>Total:</b>
+            </td>
+            <td>
+              <%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="widget-sub-heading">
+      <h3>Transactions</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover table-last">
+        <thead>
+          <tr>
+            <th>Transaction Type</th>
+            <th>Payment type</th>
+            <th>PayPal ID</th>
+            <th>Payment status</th>
+            <th>Error code</th>
+            <th>Fee</th>
+            <th>Net amount</th>
+            <th>Gross amount</th>
+            <th>Last updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.transactions.each do |transaction| %>
+            <tr id="transaction_<%= transaction.id %>">
+              <td>
+                <%= transaction.transaction_type %>
+              </td>
+              <td>
+                <%= transaction.payment_type  %>
+              </td>
+              <td>
+                <%= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id %>
+              </td>
+              <td>
+                <%= status_label transaction, transaction.payment_status %>
+              </td>
+              <td>
+                <%= transaction.error_code.nil? ? "-" : transaction.error_code %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: transaction.fee, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: transaction.net_amount, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: transaction.gross_amount, tax_type: 'net').single %>
+              </td>
+              <td class="align-left">
+                <%= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P') %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div id="transaction-modal"></div>

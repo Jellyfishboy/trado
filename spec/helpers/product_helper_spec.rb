@@ -14,7 +14,7 @@ describe ProductHelper do
             end
 
             it "should return a string" do
-                expect(helper.sku_attribute_values(product.skus.first, product.single)).to eq "55.4 kg"
+                expect(helper.sku_attribute_values(product.skus.first, product.single)).to eq "55.4g"
             end
         end
 

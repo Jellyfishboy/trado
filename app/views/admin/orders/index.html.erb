@@ -1,0 +1,54 @@
+<% content_for :title, 'Orders' %>
+<% content_for :breadcrumb, 'Orders' %>
+<% javascript 'admin/soca.datepicker' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Orders</h2>
+  </div>
+  <% if @orders.empty? %>
+    <p>You don't have any orders yet.</p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Order no.</th>
+            <th>PayPal ID</th>
+            <th>Shipping status</th>
+            <th>Payment status</th>
+            <th>Gross amount</th>
+            <th>Last updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= order.id %>
+              </td>
+              <td>
+                <%= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
+              </td>
+              <td>
+                <%= status_label order, order.shipping_status %>
+              </td>
+              <td>
+                <%= status_label order.transactions.last, order.transactions.last.payment_status %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: order.gross_amount, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= order.updated_at.strftime('%d/%m/%Y at %I:%M%p') %>
+              </td>
+              <%= table_actions [:admin, order], 'show', 'remote-edit' %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
+<div id="order-modal"></div>

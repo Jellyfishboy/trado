@@ -1,0 +1,11 @@
+<% content_for :title, 'Edit product' %>
+<% content_for :breadcrumb, 'Edit' %>
+<% breadcrumb_add 'Products', admin_products_path %>
+<% javascript 'products' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Edit product</h2>
+  </div>
+  <%= render "form" %>
+</div>

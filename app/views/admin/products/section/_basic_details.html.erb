@@ -1,0 +1,87 @@
+<div class="widget-sub-heading">
+  <h3>Product information</h3>
+</div>
+<fieldset class="widget widget-content">
+  <div class="row">
+    <div class="twelvecol">
+      <div class="form-group">
+        <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id ] }, @product.category_id ), { include_blank: "Select category..."}, { :class => 'form-control' } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="fourcol">
+      <div class="form-group">
+        <%= f.label :part_number %>
+        <%= f.text_field :part_number, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="fourcol">
+      <div class="form-group">
+        <%= f.label :sku %>
+        <%= f.text_field :sku, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="fourcol last">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="fourcol">
+      <div class="form-group">
+        <%= f.label :short_description %>
+        <%= f.text_field :short_description, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="fourcol">
+      <div class="form-group">
+        <%= f.label :page_title %>
+        <%= f.text_field :page_title, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="fourcol last">
+      <div class="form-group">
+        <%= f.label :meta_description %>
+        <%= f.text_field :meta_description, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="fourcol">
+      <div class="form-group">
+        <%= f.label :weighting %>
+        <%= f.text_field :weighting, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelvecol">
+      <div class="form-group form-last">
+        <%= f.label :description %>
+        <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+</fieldset>
+<div class="widget-sub-heading">
+  <h3>Product options</h3>
+</div>
+<fieldset class="widget widget-content">
+  <div class="row">
+    <div class="twelvecol">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :featured %>
+          Featured
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :single %>
+          Single product
+        </label>
+      </div>
+    </div>
+  </div>
+</fieldset>

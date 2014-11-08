@@ -1,0 +1,16 @@
+<% content_for :title, 'New category' %>
+<% content_for :breadcrumb, 'New' %>
+<% breadcrumb_add 'Categories', admin_categories_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">New category</h2>
+  </div>
+  <%= form_for [:admin, @category], html: { role: 'form' } do |f| %>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+      <%= render partial: 'shared/errors', locals: { object: @category } %>
+    </div>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>

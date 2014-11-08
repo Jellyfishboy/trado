@@ -1,0 +1,55 @@
+<div class="threecol">
+  <h3>Delivery price details</h3>
+  <p>Set the code, price and description for this delivery price. </p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label :code %>
+      <%= f.text_field :code, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, :class => 'form-control', rows: 7 %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Dimension allowance</h3>
+  <p>Specify the dimension and weight allowance for this delivery price.  </p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content widget-last">
+    <div class="form-group">
+      <%= f.label :min_weight %>
+      <%= f.text_field :min_weight, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_weight %>
+      <%= f.text_field :max_weight, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :min_length %>
+      <%= f.text_field :min_length, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_length %>
+      <%= f.text_field :max_length, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :min_thickness %>
+      <%= f.text_field :min_thickness, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_thickness %>
+      <%= f.text_field :max_thickness, :class => 'form-control' %>
+    </div>
+  </fieldset>
+  <div class="form-action">
+    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+  </div>
+</div>

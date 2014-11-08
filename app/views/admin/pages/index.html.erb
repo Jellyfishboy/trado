@@ -1,0 +1,36 @@
+<% content_for :title, 'Pages' %>
+<% content_for :breadcrumb, 'Pages' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Pages</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Visible</th>
+            <th>Last updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pages.each do |page| %>
+            <tr>
+              <td>
+                <%= page.title %>
+              </td>
+              <td>
+                <%= page.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe  %>
+              </td>
+              <td>
+                <%= page.updated_at.strftime('%d/%m/%Y at %I:%M%p') %>
+              </td>
+              <%= table_actions [:admin, page], 'edit' %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

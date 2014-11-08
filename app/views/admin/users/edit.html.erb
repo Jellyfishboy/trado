@@ -1,0 +1,55 @@
+<% content_for :title, 'Profile' %>
+<% content_for :breadcrumb, 'Profile' %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Profile</h2>
+  </div>
+  <%= form_for @user, url: admin_profile_update_path, html: { role: 'form' } do |f| %>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+      <% if @user.errors.any? %>
+        <div id="errors">
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li>
+                <i class="icon-cancel-circle"></i>
+                <%= msg  %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <div class="threecol">
+      <h3>Profile settings</h3>
+      <p>Set the name and profile picture for your administration account.</p>
+    </div>
+    <div class="ninecol last">
+      <fieldset class="widget widget-content widget-last">
+        <div class="form-group">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, :class => 'form-control' %>
+        </div>
+        <%= f.fields_for :attachment do |ff| %>
+          <div class="form-group">
+            <%= ff.label "Profile picture" %>
+            <div>
+              <%= image_tag @user.attachment.file.square, width: 75, height: 75 %>
+            </div>
+            <div>
+              <%= ff.file_field :file %>
+            </div>
+          </div>
+        <% end %>
+      </fieldset>
+      <div class="form-action">
+        <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+      </div>
+    </div>
+  <% end %>
+</div>

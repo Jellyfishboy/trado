@@ -1,0 +1,64 @@
+<% content_for :title, "Delivery pricing for #{@delivery_service.full_name}" %>
+<% content_for :breadcrumb, @delivery_service.full_name %>
+<% breadcrumb_add 'Delivery services', admin_delivery_services_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <%= link_to new_admin_delivery_service_delivery_service_price_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add delivery pricing" do %>
+      <i class="icon-plus"></i>
+    <% end %>
+    <h2 class="widget widget-header">
+      <%= "Delivery pricing for #{@delivery_service.full_name}"  %>
+    </h2>
+  </div>
+  <% if @delivery_service_prices.empty? %>
+    <p>
+      <%= "You don't have any prices for #{@delivery_service.full_name} yet." %>
+    </p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Weight parameters</th>
+            <th>Length parameters</th>
+            <th>Thickness parameters</th>
+            <th>Net price</th>
+            <th>Gross price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @delivery_service_prices.each do |delivery_price| %>
+            <tr>
+              <td>
+                <%= delivery_price.code %>
+              </td>
+              <td>
+                <%= delivery_price.description %>
+              </td>
+              <td>
+                <%= dimension_range(delivery_price.min_weight, delivery_price.max_weight) %>
+              </td>
+              <td>
+                <%= dimension_range(delivery_price.min_length, delivery_price.max_length) %>
+              </td>
+              <td>
+                <%= dimension_range(delivery_price.min_thickness, delivery_price.max_thickness) %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: delivery_price.price, tax_type: 'net').single %>
+              </td>
+              <td>
+                <%= Store::Price.new(price: delivery_price.price, tax_type: 'gross').single %>
+              </td>
+              <%= table_actions [:admin, delivery_price.delivery_service, delivery_price], 'edit', 'delete' %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

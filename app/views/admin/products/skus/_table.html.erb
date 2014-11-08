@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover table-margin">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Weight</th>
+        <th>Length</th>
+        <th>Thickness</th>
+        <th>Attribute value</th>
+        <th>Attribute type</th>
+        <th>Stock</th>
+        <th>Stock warning level</th>
+        <th>Cost value</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="sku-fields">
+      <% @product.skus.each do |sku| %>
+        <tr id="sku_<%= sku.id %>">
+          <%= render partial: 'admin/products/skus/single', format: [:html], locals: { sku: sku } %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,10 @@
+<div class="widget-sub-heading">
+  <h3>Tags</h3>
+</div>
+<fieldset class="widget widget-content tag-form widget-last">
+  <div class="row">
+    <div class="twelvecol">
+      <%= text_field_tag :taggings, params[:taggings], 'data-role' => 'tagsinput', value: @product.tags.map(&:name).join(",") %>
+    </div>
+  </div>
+</fieldset>

@@ -1,0 +1,31 @@
+<td>
+  <%= sku.code %>
+</td>
+<td>
+  <%= sku.weight %>
+</td>
+<td>
+  <%= sku.length %>
+</td>
+<td>
+  <%= sku.thickness %>
+</td>
+<td>
+  <%= sku.attribute_value %>
+</td>
+<td>
+  <%= sku.attribute_type.name %>
+</td>
+<td>
+  <%= sku.stock %>
+</td>
+<td>
+  <%= sku.stock_warning_level %>
+</td>
+<td>
+  <%= Store::Price.new(price: sku.cost_value, tax_type: 'net').single %>
+</td>
+<td>
+  <%= Store::Price.new(price: sku.price, tax_type: 'net').single %>
+</td>
+<%= table_actions [:admin, sku.product, sku], 'remote-edit', 'remote-delete' %>

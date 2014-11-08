@@ -11,14 +11,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
-    unless AttributeType.any?
-      redirect_to admin_products_url
-      flash_message :error, "You must have at least one attribute type record before creating your first product. Create one #{view_context.link_to 'now', new_admin_products_skus_attribute_type_path}.".html_safe
-    else
-      @product = Product.new
-      @product.save(validate: false)
-      redirect_to edit_admin_product_path(@product)
-    end
+    @product = Product.new
+    @product.save(validate: false)
+    redirect_to edit_admin_product_path(@product)
   end
 
   def edit

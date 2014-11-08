@@ -1,0 +1,38 @@
+<div class="threecol">
+  <h3>Delivery service details</h3>
+  <p>Set the courier company name, name and description of your delivery service. </p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label :courier_name %>
+      <%= f.text_field :courier_name, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <div class="form-group form-last">
+      <%= f.label :description %>
+      <%= f.text_area :description, :class => 'form-control', rows: 7 %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Country of destination</h3>
+  <p>
+    Select the countries which are available for this delivery service, or
+    <%= link_to 'copy', copy_countries_admin_delivery_services_path, remote: true %>
+    an existing service country list.
+  </p>
+</div>
+<div class="ninecol last">
+  <div class="widget widget-content widget-last">
+    <div class="form-group form-last">
+      <%= f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}} %>
+    </div>
+  </div>
+  <div class="form-action">
+    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+  </div>
+</div>

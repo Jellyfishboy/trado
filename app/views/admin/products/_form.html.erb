@@ -1,0 +1,15 @@
+<%= form_for [:admin, @product], html: {role: 'form', method: :patch} do |f| %>
+  <%= render partial: 'shared/errors', format: [:html], locals: { object: @product }  %>
+  <%= render 'admin/products/section/basic_details', format: [:html], f: f %>
+  <%= render 'admin/products/section/attachments', format: [:html], f: f %>
+  <%= render 'admin/products/section/skus', format: [:html], f: f %>
+  <%= render 'admin/products/section/associations', format: [:html], f: f %>
+  <%= render 'admin/products/section/tags', format: [:html], f: f %>
+  <div class="form-action">
+    <%= f.submit 'Publish', :class => 'btn btn-green btn-large' %>
+    <%= f.submit 'Save', :class => 'btn btn-blue btn-large' %>
+  </div>
+<% end %>
+<div id="stock-level-modal"></div>
+<div id="sku-modal"></div>
+<div id="attachment-modal"></div>

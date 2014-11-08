@@ -1,0 +1,42 @@
+<div aria-hidden="true" aria-labelledby="attachmentModalLabel" class="modal fade" id="attachment-form" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for [:admin, @product, @attachment], html: { role: 'form' }, remote: true do |f| %>
+        <div class="json" id="errors">
+          <ul></ul>
+        </div>
+        <div class="loading5">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <div class="loading-overlay"></div>
+        <div class="modal-header">
+          <h3 id="skuModalLabel">
+            <%= @attachment.id.nil? ? "New attachment" : "Edit attachment" %>
+          </h3>
+        </div>
+        <div class="modal-body">
+          <fieldset class="widget widget-content widget-last">
+            <%= image_tag @attachment.file.square, width: 100, height: 100 unless @attachment.file.nil? %>
+            <div class="form-group">
+              <%= f.label :file %>
+              <%= f.file_field :file, :class => 'form-control' %>
+            </div>
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :default_record %>
+                Default
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+          <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="threecol">
+  <h3>Category details</h3>
+  <p>Set the name, description and sorting order for your category.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, :class => 'form-control', rows: 8 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :sorting %>
+      <%= f.text_field :sorting, :class => 'form-control' %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Search engines</h3>
+  <p>Set up the page title and meta description to help define how a page is shown in search engines.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label :page_title %>
+      <%= f.text_field :page_title, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :meta_description %>
+      <%= f.text_field :meta_description, :class => 'form-control' %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Visiblity</h3>
+  <p>Set if the category is visible on your storefront.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content widget-last">
+    <div class="radio">
+      <label>
+        <%= f.radio_button :active, true %>
+        Visible
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :active, false %>
+        Hidden
+      </label>
+    </div>
+  </fieldset>
+  <div class="form-action">
+    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+  </div>
+</div>

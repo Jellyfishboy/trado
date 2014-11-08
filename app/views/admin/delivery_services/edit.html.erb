@@ -1,0 +1,17 @@
+<% content_for :title, 'Edit delivery service' %>
+<% content_for :breadcrumb, 'Edit' %>
+<% breadcrumb_add 'Delivery services', admin_delivery_services_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Edit delivery service</h2>
+  </div>
+  <%= form_for [:admin, @delivery_service], html: { role: 'form' } do |f| %>
+    <div class="threecol"></div>
+    <div class="ninecol last">
+      <%= render partial: 'shared/errors', locals: { object: @delivery_service } %>
+    </div>
+    <%= render partial: 'form', locals: { f: f } %>
+  <% end %>
+</div>
+<div id="delivery-service-modal"></div>

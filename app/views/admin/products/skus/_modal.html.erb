@@ -1,0 +1,68 @@
+<div aria-hidden="true" aria-labelledby="skuModalLabel" class="modal fade" id="sku-form" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for [:admin, @product, @form_sku], html: { role: 'form' }, remote: true do |f| %>
+        <div class="json" id="errors">
+          <ul></ul>
+        </div>
+        <div class="modal-header">
+          <h3 id="skuModalLabel">
+            <%= @form_sku.id.nil? ? "New SKU" : "Edit #{@form_sku.full_sku} SKU" %>
+          </h3>
+        </div>
+        <div class="modal-body">
+          <fieldset class="widget widget-content widget-last">
+            <% if @form_sku.id.nil? %>
+              <div class="form-group">
+                <%= f.label :code %>
+                <%= f.text_field :code, :class => 'form-control' %>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label :length %>
+              <%= f.text_field :length, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :weight %>
+              <%= f.text_field :weight, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :thickness %>
+              <%= f.text_field :thickness, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :attribute_value %>
+              <%= f.text_field :attribute_value, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :attribute_type_id %>
+              <%= f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { include_blank: 'Select...'}, { :class => 'form-control' }) %>
+            </div>
+            <% if @form_sku.id.nil? %>
+              <div class="form-group">
+                <%= f.label :stock %>
+                <%= f.text_field :stock, :class => 'form-control' %>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label :stock_warning_level %>
+              <%= f.text_field :stock_warning_level, :class => 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :cost_value %>
+              <%= f.text_field :cost_value, :class => 'form-control calculate-tax' %>
+            </div>
+            <div class="form-group form-last">
+              <%= f.label :price %>
+              <%= f.text_field :price, :class => 'form-control calculate-tax' %>
+            </div>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+          <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
