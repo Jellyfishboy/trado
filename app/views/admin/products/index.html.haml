@@ -5,8 +5,6 @@
   .page-header
     = link_to new_admin_product_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add product" do
       %i.icon-plus
-    = link_to admin_products_skus_attribute_types_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Attribute types" do
-      %i.icon-filter-2
     %h2.widget.widget-header Products
   .widget-controls
     %select#filter-product-category.form-select

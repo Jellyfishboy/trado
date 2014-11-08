@@ -83,9 +83,6 @@ Trado::Application.routes.draw do
       
       namespace :products do
         resources :tags, only: :index
-        namespace :skus do
-          resources :attribute_types, except: :show
-        end
       end
       resources :pages, except: [:show, :destroy, :new, :create]
       get '/settings' => 'admin#settings'
