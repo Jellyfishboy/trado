@@ -3,7 +3,7 @@ namespace :trado do
         Rails.logger.info 'Trado -> Installing Trado for the first time...'.colorize(:cyan)
         Rails.logger.info 'Dropping the database'.colorize(:green)
         Rake::Task['db:drop'].invoke     
-        Rails 'Creating the database'.colorize(:green)
+        Rails.logger.info 'Creating the database'.colorize(:green)
         Rake::Task['db:create'].invoke
         Rails.logger.info 'Loading the new schema'.colorize(:green)
         Rake::Task['db:schema:load'].invoke

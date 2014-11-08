@@ -77,7 +77,7 @@ module Payatron4000
             cart.cart_items.collect do |item|
                 {
                   :name => item.sku.product.name,
-                  :description => "#{item.sku.attribute_value}#{item.sku.attribute_type.measurement unless item.sku.attribute_type.measurement.nil? }",
+                  :description => item.sku.attribute_value,
                   :amount => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
                   :quantity => item.quantity 
                 }

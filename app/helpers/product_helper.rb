@@ -1,7 +1,7 @@
 module ProductHelper
 
     def sku_attribute_values sku, single
-        "#{sku.attribute_value} #{sku.attribute_type.measurement unless sku.attribute_type.measurement.nil?}" unless single
+        sku.attribute_value unless single
     end
 
     def accessory_details accessory

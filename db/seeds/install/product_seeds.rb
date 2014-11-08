@@ -10,9 +10,16 @@ category = Category.create({
     meta_description: 'Meta description for your category'
 })
 attribute_type = AttributeType.create({
-    name: 'Weight', 
-    measurement: 'g'
+    name: 'Size',
 })
+AttributeType.create([
+    {
+        name: 'Color'
+    },
+    {
+        name: 'Style'
+    }
+])
 product_1 = Product.new({
     part_number: '1', 
     name: 'Your first product', 
@@ -82,7 +89,7 @@ Sku.create([
         length: '100', 
         weight: '20', 
         thickness: '75', 
-        attribute_value: '20', 
+        attribute_value: '20g', 
         attribute_type_id: attribute_type.id, 
         stock: 20, 
         stock_warning_level: 5, 
@@ -96,7 +103,7 @@ Sku.create([
         length: '128.67', 
         weight: '33', 
         thickness: '55', 
-        attribute_value: '33', 
+        attribute_value: '33g', 
         attribute_type_id: attribute_type.id, 
         stock: 40, 
         stock_warning_level: 5, 
@@ -110,7 +117,7 @@ Sku.create([
         length: '11.67', 
         weight: '13', 
         thickness: '15', 
-        attribute_value: '13', 
+        attribute_value: '13g', 
         attribute_type_id: attribute_type.id, 
         stock: 100, 
         stock_warning_level: 5, 

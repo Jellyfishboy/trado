@@ -51,7 +51,7 @@
                   %tbody
                     - product.skus.each do |sku|
                       %tr
-                        %td= "#{sku.attribute_value}#{sku.attribute_type.measurement}" unless sku.attribute_value.nil? && sku.attribute_type.nil?
+                        %td= sku.attribute_value
                         %td= Store::Price.new(price: sku.price, tax_type: 'net').single
                         %td.align-left= Store::Price.new(price: sku.price, tax_type: 'gross').single
               = table_actions [:admin, product], 'edit', 'delete'
