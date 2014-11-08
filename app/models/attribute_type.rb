@@ -8,12 +8,11 @@
 #
 #  id             :integer          not null, primary key
 #  name           :string(255)      
-#  measurement    :string(255)      
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 class AttributeType < ActiveRecord::Base
-  attr_accessible :measurement, :name
+  attr_accessible :name
 
   has_many :skus,       :dependent => :restrict_with_exception 
 
