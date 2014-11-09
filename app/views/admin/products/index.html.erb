@@ -14,11 +14,13 @@
       <option class="filter" data-filter=".product-published">Published</option>
       <option class="filter" data-filter=".product-draft">Draft</option>
       <option class="filter" data-filter=".product-featured">Featured</option>
-      <% @categories.each do |category| %>
-        <option class="filter" data-filter=".category-<%= category.slug %>">
-          <%= category.name %>
-        </option>
-      <% end %>
+      <optgroup label="Categories">
+        <% @categories.each do |category| %>
+          <option class="filter" data-filter=".category-<%= category.slug %>">
+            <%= category.name %>
+          </option>
+        <% end %>
+      </optgroup>
     </select>
     <span>Filter by:</span>
     <select class="form-select widget-control-margin" id="sort-product">
