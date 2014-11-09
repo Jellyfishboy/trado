@@ -19,7 +19,19 @@
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Country of destination</h3>
+  <h3>Order constraints</h3>
+  <p>Limit a delivery service by the total price of an order.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group form-last">
+      <%= f.label 'Price range' %>
+      <%= f.text_field :order_price_minimum, :class => 'form-control' %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3>Countries</h3>
   <p>
     Select the countries which are available for this delivery service, or
     <%= link_to 'copy', copy_countries_admin_delivery_services_path, remote: true %>
@@ -27,11 +39,11 @@
   </p>
 </div>
 <div class="ninecol last">
-  <div class="widget widget-content widget-last">
+  <fieldset class="widget widget-content widget-last">
     <div class="form-group form-last">
       <%= f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}} %>
     </div>
-  </div>
+  </fieldset>
   <div class="form-action">
     <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
   </div>

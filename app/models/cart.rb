@@ -51,10 +51,11 @@ class Cart < ActiveRecord::Base
   # Calculate the relevant delivery service prices for a cart, taking into account length, thickness and weight of the total cart
   #
   def calculate_delivery_services
+    @cart_total = current_cart.calculate(Store::tax_rate)
     @length = skus.map(&:length).max
     @thickness = skus.map(&:thickness).max
     @total_weight = cart_items.map(&:weight).sum
-    @delivery_service_prices = DeliveryServicePrice.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).active.select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
+    @delivery_service_prices = DeliveryServicePrice.joins(:delivery_service).active.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).where('? > delivery_services.order_price_minimum', @cart_total[:gross_amount]).where('? < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL', @cart_total[:gross_amount]).select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
     self.update_column(:delivery_service_prices, @delivery_service_prices)
   end
   

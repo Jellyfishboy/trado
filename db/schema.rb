@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108133847) do
+ActiveRecord::Schema.define(version: 20141109144051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,7 +135,9 @@ ActiveRecord::Schema.define(version: 20141108133847) do
     t.string   "courier_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",       default: true
+    t.boolean  "active",                                      default: true
+    t.decimal  "order_price_minimum", precision: 8, scale: 2, default: 0.0
+    t.decimal  "order_price_maximum", precision: 8, scale: 2
   end
 
   create_table "destinations", force: true do |t|
