@@ -116,18 +116,6 @@ feature 'Product management' do
         end
     end
 
-    scenario 'should display a warning if there are no SKU attribute types when trying to create a new product' do
-        
-        visit admin_products_path
-        expect{
-            find('.page-header a:first-child').click
-        }.to_not change(Product, :count)
-        expect(current_path).to eq admin_products_path
-        within '.alert.alert-warning' do
-            expect(page).to have_content "You must have at least one attribute type record before creating your first product. Create one <a href=\"/admin/products/skus/attribute_types/new\">now</a>."
-        end
-    end
-
     scenario 'should edit a product (draft)', js: true do
         not_single_product
         accessory
@@ -311,7 +299,7 @@ feature 'Product management' do
         end
 
         expect(find('#sku-fields')).to have_selector('tr', count: 3)
-        find('#sku-fields tr:last-child td:last-child a:last-child').click
+        find('#sku-fields tr:last-child td:last-child a:last-child').trigger('click')
         expect(find('#sku-fields')).to have_selector('tr', count: 2)
         expect(product_skus.skus.count).to eq 2
         within '.sku-destroy-alert' do
