@@ -3,6 +3,8 @@ FactoryGirl.define do
         name { Faker::Lorem.word }
         description { Faker::Lorem.characters(50) }
         courier_name { Faker::Lorem.word }
+        order_price_minimum { 0 }
+        order_price_maximum { nil }
         active { false }
 
         factory :delivery_service_with_countries do

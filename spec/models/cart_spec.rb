@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Cart do
 
+    store_setting
+
     # ActiveRecord relations
     it { expect(subject).to have_many(:cart_items).dependent(:delete_all) }
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
@@ -62,19 +64,29 @@ describe Cart do
     # weight 22.67
     # length 67.2
     # thickness 12.34
+    # Follows the following conditions:
+    # Lowest price delivery service price per delivery service
+    # Total cart dimensions must be within the delivery service price allocation
+    # Total cart price must be within the order constraints of the delivery service
     describe "Calculating the relevant delivery service prices for a cart" do
         let(:cart) { create(:tier_calculated_cart) }
-        let!(:delivery_service) { create(:delivery_service, active: true)}
-        let!(:delivery_service_price_1) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '26.75', min_length: '0', max_length: '103.23', min_thickness: '0', max_thickness: '22.71') }
-        let!(:delivery_service_price_2) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '18.75', min_length: '0', max_length: '119.23', min_thickness: '0', max_thickness: '49.90') }
-        let!(:delivery_service_price_3) { create(:delivery_service_price, active: true, min_weight: '22.67', max_weight: '46.75', min_length: '66.82', max_length: '201.45', min_thickness: '12.33', max_thickness: '52.62') }
 
-        it "should update the cart with the available delivery service prices" do
+        let!(:delivery_service) { create(:delivery_service, active: true)}
+        let!(:delivery_service_price_1) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '26.75', min_length: '0', max_length: '103.23', min_thickness: '0', max_thickness: '22.71', delivery_service_id: delivery_service.id, price: 1.2, code: 'DEL1') }
+        let!(:delivery_service_price_2) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '18.75', min_length: '0', max_length: '119.23', min_thickness: '0', max_thickness: '49.90', delivery_service_id: delivery_service.id, price: 3.44, code: 'DEL2') }
+        let!(:delivery_service_price_3) { create(:delivery_service_price, active: true, min_weight: '22.67', max_weight: '46.75', min_length: '66.82', max_length: '201.45', min_thickness: '12.33', max_thickness: '52.62', delivery_service_id: delivery_service.id, price: 23.24, code: 'DEL3') }
+
+        let!(:delivery_service_2) { create(:delivery_service, active: true, order_price_maximum: 20)}
+        let!(:delivery_service_price_4) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '34.75', min_length: '0', max_length: '1003.23', min_thickness: '0', max_thickness: '55.71', delivery_service_id: delivery_service_2.id, code: 'DEL4') }
+
+        let!(:delivery_service_3) { create(:delivery_service, active: true)}
+        let!(:delivery_service_price_5) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '34.75', min_length: '0', max_length: '1003.23', min_thickness: '0', max_thickness: '55.71', delivery_service_id: delivery_service_3.id, code: 'DEL5') }
+        it "should update the cart with the available delivery service prices, taking into consideration cart dimensions and cart total price" do
             expect{
-                cart.calculate_delivery_services
+                cart.calculate_delivery_services(Store::tax_rate)
             }.to change{
                 cart.delivery_service_prices
-            }.from(nil).to([delivery_service_price_1.id,delivery_service_price_3.id])
+            }.from(nil).to([delivery_service_price_1.id, delivery_service_price_5.id])
         end
     end
 
