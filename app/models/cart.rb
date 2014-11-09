@@ -51,7 +51,7 @@ class Cart < ActiveRecord::Base
   # Calculate the relevant delivery service prices for a cart, taking into account length, thickness and weight of the total cart
   #
   def calculate_delivery_services
-    @cart_total = current_cart.calculate(Store::tax_rate)
+    @cart_total = self.calculate(Store::tax_rate)
     @length = skus.map(&:length).max
     @thickness = skus.map(&:thickness).max
     @total_weight = cart_items.map(&:weight).sum
