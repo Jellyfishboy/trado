@@ -1,4 +1,4 @@
-%td.table-actions
+%td.table-actions{:class => ('triple-menu' if delivery_service_record) }
   - if show
     = link_to object do
       %i.icon-search
