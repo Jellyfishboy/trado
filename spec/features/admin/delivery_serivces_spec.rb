@@ -116,7 +116,7 @@ feature 'Delivery service management' do
             fill_in('delivery_service_courier_name', with: 'Royal Mail')
             fill_in('delivery_service_name', with: 'Next day delivery')
             fill_in('delivery_service_description', with: 'Speedy delivery within the UK.')
-            find('form div:nth-child(6) p a').click
+            find('form div:nth-child(8) p a').click
             sleep 1
 
             within '.modal#delivery-service-form' do
