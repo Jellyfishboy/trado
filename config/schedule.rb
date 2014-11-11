@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :output, "/var/log/gimson_robotics/schedule.log"
+set :output, "/var/log/your_app_name/schedule.log"
 
 every 1.day, :at => '4:10am' do
     runner "Cart.clear_carts"

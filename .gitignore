@@ -14,6 +14,7 @@ db/development.sqlite3
 doc/*
 .yardoc
 *.gitkeep
+config/deploy.rb
 
 public/uploads/attachment
 public/assets

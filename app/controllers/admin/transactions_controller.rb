@@ -18,7 +18,7 @@ class Admin::TransactionsController < ApplicationController
         transaction.failed!
       end
       if transaction.save
-        Mailatron4000::Orders.confirmation_email(transaction.order) rescue Rollbar.report_message("PayPal IPN: Order #{transaction.order.id} confirmation email failed to send", "info", :order => transaction.order)
+        Mailatron4000::Orders.confirmation_email(transaction.order) rescue Rails.logger.warn("PayPal IPN: Order #{transaction.order.id} confirmation email failed to send")
       end
     end
 

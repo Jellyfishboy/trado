@@ -96,7 +96,7 @@ module Payatron4000
         end
 
         # Completes the order process by communicating with PayPal; receives a response and in turn creates the relevant transaction records,
-        # sends a confirmation email and redirects the user. Rollbar is notified with the relevant data if the email fails to send
+        # sends a confirmation email and redirects the user.
         #
         # @param order [Object]
         # @param session [Object

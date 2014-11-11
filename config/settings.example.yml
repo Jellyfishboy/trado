@@ -35,7 +35,5 @@ aws:
         prefix: /assets
 sitemap:
     host: http://www.example.com
-rollbar:
-    access_token: hex123
 email:
     root: http://www.example.com/assets

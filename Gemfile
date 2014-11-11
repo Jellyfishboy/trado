@@ -4,11 +4,6 @@ gem 'rails', '4.1.0'
 
 gem 'pg'
 
-# Production gems
-group :production do
-  gem 'unicorn-worker-killer'
-end
-
 # Development gems
 group :development do
     gem 'better_errors'
@@ -19,8 +14,6 @@ group :development do
     # gem 'rack-mini-profiler'
     gem 'capistrano', '~> 2.15'
     gem 'bullet'
-    gem 'metric_fu'
-    gem 'capistrano-unicorn', :require => false, :platforms => :ruby
     gem 'thin'
     gem 'colorize'
 end
@@ -35,16 +28,12 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'faker'
-  # gem 'spork'
-  # gem 'guard-rspec', :require => false
-  # gem 'guard-spork'
-  # gem 'email_spec'
+  gem 'email_spec'
 end
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
-  # gem 'terminal-notifier-guard', :platforms => :ruby
 end
 
 # Assets
@@ -57,19 +46,12 @@ gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'asset_sync'
 
-# Web server
-gem 'unicorn', :platforms => :ruby
-
 # AJAX file upload
 gem 'remotipart', '~> 1.2'
 ################
 # Fix for upload bug for Carrierwave and Rails 4.1
 ################
 gem 'activesupport-json_encoder'
-
-# Logging/Monitoring
-gem 'rollbar'
-gem 'newrelic_rpm'
 
 # Misc
 gem 'global'
