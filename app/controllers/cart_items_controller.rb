@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_validate_cart_item, except: :destroy
   before_action :void_delivery_services
-  before_action :void_payment_type
+  before_action :void_session
   after_action :set_delivery_services
 
   def create
@@ -34,20 +34,20 @@ class CartItemsController < ApplicationController
 
   def void_delivery_services
     @cart = current_cart
-    unless @cart.estimate_delivery_id.nil? && @cart.delivery_service_prices.nil?
+    unless @cart.estimate_delivery_id.nil?
       @cart.estimate_delivery_id = nil
       @cart.estimate_country_name = nil
-      @cart.delivery_service_prices = nil
       @cart.save(validate: false)
     end
   end
 
-  def void_payment_type
+  def void_session
+    session[:delivery_service_prices] = nil
     session[:payment_type] = nil
   end
 
   def set_delivery_services
-    current_cart.calculate_delivery_services(Store::tax_rate)
+    session[:delivery_service_prices] = current_cart.calculate_delivery_services(Store::tax_rate)
   end
 
   def set_validate_cart_item

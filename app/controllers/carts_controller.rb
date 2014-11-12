@@ -58,6 +58,6 @@ class CartsController < ApplicationController
         @order = current_cart.order.nil? ? Order.new : current_cart.order
         @cart_total = current_cart.calculate(Store::tax_rate)
         @country = @order.delivery_address.nil? ? current_cart.estimate_country_name : @order.delivery_address.country
-        @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart, @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
+        @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
     end
 end

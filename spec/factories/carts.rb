@@ -2,7 +2,7 @@ FactoryGirl.define do
     factory :cart do
     estimate_delivery_id { nil }
     estimate_country_name { Faker::Address.country }
-    delivery_service_prices { nil }        
+        
         ignore do
             cart_item_count 3
         end

@@ -10,7 +10,6 @@
 #  id                             :integer              not null, primary key
 #  estimate_delivery_id           :integer
 #  estimate_country_name          :integer
-#  delivery_service_prices        :integer(array)
 #  created_at                     :datetime             not null
 #  updated_at                     :datetime             not null
 #
@@ -49,6 +48,7 @@ class Cart < ActiveRecord::Base
   end
 
   # Calculate the relevant delivery service prices for a cart, taking into account length, thickness and weight of the total cart
+  # Assign the result to the current session
   #
   def calculate_delivery_services current_tax_rate
     @cart_total = self.calculate(current_tax_rate)
@@ -57,7 +57,7 @@ class Cart < ActiveRecord::Base
     @total_weight = cart_items.map(&:weight).sum
     @delivery_service_prices = DeliveryServicePrice.active.where(':total_weight >= min_weight AND :total_weight <= max_weight AND :length >= min_length AND :length <= max_length AND :thickness >= min_thickness AND :thickness <= max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).select('DISTINCT ON (delivery_service_id) *').order('delivery_service_id, price ASC').map(&:id)
     @validated_prices = DeliveryServicePrice.joins(:delivery_service).where(delivery_service_prices: { id: @delivery_service_prices } ).where(':gross_amount > delivery_services.order_price_minimum AND (:gross_amount < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', gross_amount: @cart_total[:gross_amount]).map(&:id)
-    self.update_column(:delivery_service_prices, @validated_prices)
+    return @validated_prices
   end
   
   private
