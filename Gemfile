@@ -29,13 +29,13 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'email_spec'
-  gem 'mysql2'
-  gem 'sqlite3'
 end
 
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
+  gem 'mysql2'
+  gem 'sqlite3'
 end
 
 # Assets

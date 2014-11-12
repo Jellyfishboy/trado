@@ -6,6 +6,15 @@ development:
   username: tomdallimore
   password: 
 
+  # MySQL example developemnt
+  # adapter: mysql2
+  # encoding: utf8
+  # database: trado_dev
+  # host: localhost
+  # pool: 30
+  # username: root
+  # password:
+
 test:
   adapter: postgresql
   encoding: unicode
@@ -22,11 +31,13 @@ production:
   pool: 5
   username: postgres
   password: admin
+
+  # MySQL example production
   # adapter: mysql2
   # encoding: utf8
-  # database: travis_db
+  # database: trado
   # host: localhost
   # pool: 30
-  # username:
-  # password:
+  # username: root
+  # password: password
   # socket: /var/run/mysqld/mysqld.sock

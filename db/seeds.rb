@@ -1,5 +1,5 @@
-
-ActiveRecord::Base.connection.tables.each { |t| ActiveRecord::Base.connection.reset_pk_sequence!(t) }
+# Reset seed on id field - only works with postgresql
+# ActiveRecord::Base.connection.tables.each { |t| ActiveRecord::Base.connection.reset_pk_sequence!(t) }
 
 TYPE = ENV['SEED_TYPE']
 puts "-----------------------------"
