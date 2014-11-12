@@ -29,6 +29,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'email_spec'
+  gem 'mysql2'
+  gem 'sqlite3'
 end
 
 group :development, :test do
