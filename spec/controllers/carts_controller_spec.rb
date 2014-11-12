@@ -55,7 +55,7 @@ describe CartsController do
 
             it "should assign the available delivery service prices to @delivery_service_prices" do
                 get :checkout
-                expect(assigns(:delivery_service_prices)).to eq DeliveryServicePrice.find_collection(cart, cart.estimate_country_name)
+                expect(assigns(:delivery_service_prices)).to match_array(DeliveryServicePrice.find_collection([1,2], cart.estimate_country_name))
             end
         end
 

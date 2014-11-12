@@ -67,7 +67,7 @@ class Product < ActiveRecord::Base
 
   default_scope { order('weighting DESC') }
 
-  scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name ILIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+  scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
   enum status: [:draft, :published]
 
