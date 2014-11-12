@@ -5,7 +5,6 @@ describe DeliveryServicePricesController do
     store_setting
 
     describe 'GET #update' do
-        let!(:cart) { create(:cart, delivery_service_prices: [delivery_service_price_1.id,delivery_service_price_2.id,delivery_service_price_3.id]) }
         let(:country_1) { create(:country, name: 'United Kingdom') }
         let(:country_2) { create(:country, name: 'China') }
         let(:delivery_service_1) { create(:delivery_service, active: true) }
@@ -15,9 +14,9 @@ describe DeliveryServicePricesController do
         let!(:delivery_service_price_3) { create(:delivery_service_price, active: true, delivery_service_id: delivery_service_2.id) }
         
         before(:each) do
+            session[:delivery_service_prices] = [delivery_service_price_1.id,delivery_service_price_2.id,delivery_service_price_3.id]
             create(:destination, country_id: country_1.id, delivery_service_id: delivery_service_1.id)
             create(:destination, country_id: country_2.id, delivery_service_id: delivery_service_2.id)
-            stub_current_cart(cart)
         end
 
         it "should assign a collection of available delivery service prices to @delivery_service_prices" do

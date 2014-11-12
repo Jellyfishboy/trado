@@ -27,10 +27,9 @@ describe DeliveryServicePrice do
         let!(:delivery_service_price_1) { create(:delivery_service_price, active: true, delivery_service: delivery_service_1) }
         let!(:delivery_service_price_2) { create(:delivery_service_price, active: true, delivery_service: delivery_service_1) }
         let!(:delivery_service_price_3) { create(:delivery_service_price, active: true, delivery_service: delivery_service_2) }
-        let!(:cart) { create(:cart, delivery_service_prices: [delivery_service_price_1.id, delivery_service_price_2.id, delivery_service_price_3.id])}
 
         it "should return delivery service prices which are destined for a predetermined country" do
-            expect(DeliveryServicePrice.find_collection(cart, 'United Kingdom')).to match_array([delivery_service_price_1, delivery_service_price_2])
+            expect(DeliveryServicePrice.find_collection([delivery_service_price_1.id, delivery_service_price_2.id, delivery_service_price_3.id], 'United Kingdom')).to match_array([delivery_service_price_1, delivery_service_price_2])
         end
 
     end
