@@ -1,0 +1,32 @@
+<% content_for :title, 'Login' %>
+
+<div class="threecol"></div>
+<div class="sixcol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Administration login</h2>
+  </div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form' }) do |f| %>
+    <fieldset class="widget widget-content widget-last">
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, :autofocus => true, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => "form-control" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </label>
+        </div>
+      <% end %>
+    </fieldset>
+    <div class="form-action">
+      <input class="btn btn-blue btn-large" type="submit" value="Login"/>
+    </div>
+  <% end %>
+</div>
+<div class="threecol last"></div>
