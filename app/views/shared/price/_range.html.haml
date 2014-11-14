@@ -1,3 +1,0 @@
-.price
-    = range ? "<span class='range-prefix'>from</span> #{price}".html_safe : price
-    %span.tax-suffix=  "#{gross} inc #{Store::settings.tax_name}" if Store::settings.tax_breakdown?

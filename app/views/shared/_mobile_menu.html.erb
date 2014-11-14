@@ -1,0 +1,62 @@
+<nav class="mp-menu" id="mp-menu">
+  <div class="mp-level">
+    <ul>
+      <li>
+        <%= link_to admin_root_path do %>
+          <i class="icon-dashboard"></i>
+          <span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_categories_path do %>
+          <i class="icon-lab"></i>
+          <span>Categories</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_products_path do %>
+          <i class="fa fa-th-large"></i>
+          <span>Products</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_accessories_path do %>
+          <i class="icon-power-cord"></i>
+          <span>Accessories</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_orders_path do %>
+          <i class="icon-box-add"></i>
+          <span>Orders</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_delivery_services_path do %>
+          <i class="icon-airplane"></i>
+          <span>Delivery</span>
+        <% end %>
+      </li>
+    </ul>
+    <ul id="mobile-secondary-menu">
+      <li>
+        <%= link_to admin_pages_path do %>
+          <i class="icon-file-2"></i>
+          <span>Pages</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to root_path, target: '_blank' do %>
+          <i class="icon-screen"></i>
+          <span>Storefront</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_settings_path do %>
+          <i class="icon-cog"></i>
+          <span>Settings</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

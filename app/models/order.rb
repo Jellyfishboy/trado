@@ -47,9 +47,21 @@ class Order < ActiveRecord::Base
   validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
   validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
 
-  default_scope { order(created_at: :desc) }
-
   scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
+
+  scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
+
+  scope :pending_count,                                                 -> { last_transaction_collection.where("transactions.payment_status = 0").count }
+
+  scope :completed_count,                                               -> { last_transaction_collection.where("transactions.payment_status = 1").count }
+
+  scope :failed_count,                                                  -> { last_transaction_collection.where("transactions.payment_status = 2").count }
+
+  scope :gross_total,                                                   -> { last_transaction_collection.sum(:gross_amount) }
+
+  scope :net_total,                                                     -> { last_transaction_collection.sum(:net_amount) }
+
+  scope :tax_total,                                                     -> { last_transaction_collection.sum(:tax_amount) }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address
@@ -89,5 +101,16 @@ class Order < ActiveRecord::Base
   # @return [Boolean]
   def completed?
     transactions.last.completed? unless transactions.empty?
+  end
+
+  def self.dashboard_data
+    return {
+      :completed => completed_count,
+      :pending => pending_count,
+      :failed => failed_count,
+      :gross_total => gross_total,
+      :net_total => net_total,
+      :tax_total => tax_total
+    }
   end
 end

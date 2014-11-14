@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   layout 'admin'
 
   def index
-    @orders = Order.active
+    @orders = Order.active.order(created_at: :desc)
   end
 
   def show

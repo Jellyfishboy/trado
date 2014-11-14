@@ -62,7 +62,7 @@ Trado::Application.routes.draw do
   end
 
   namespace :admin do
-      root to: "categories#index"
+      root to: "admin#dashboard"
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       mount RedactorRails::Engine => '/redactor_rails'
       resources :accessories, :categories, except: :show

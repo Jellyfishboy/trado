@@ -1,0 +1,32 @@
+<td class="<%= ('triple-menu' if delivery_service_record) %> table-actions">
+  <% if show %>
+    <%= link_to object do %>
+      <i class="icon-search"></i>
+    <% end %>
+  <% end %>
+  <% if delivery_service_record %>
+    <%= link_to admin_delivery_service_delivery_service_prices_path(object.last) do %>
+      <i class="icon-search"></i>
+    <% end %>
+  <% end %>
+  <% if sku_record %>
+    <%= link_to new_admin_product_sku_stock_level_path(object.last.product, object.last), remote: true do %>
+      <i class="icon-plus"></i>
+    <% end %>
+  <% end %>
+  <% if order_record && object.last.transactions.last.completed? %>
+    <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
+      <i class="icon-pencil"></i>
+    <% end %>
+  <% end %>
+  <% if edit && !order_record %>
+    <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
+      <i class="icon-pencil"></i>
+    <% end %>
+  <% end %>
+  <% if del %>
+    <%= link_to object, method: :delete, remote: remote_delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="icon-remove"></i>
+    <% end %>
+  <% end %>
+</td>

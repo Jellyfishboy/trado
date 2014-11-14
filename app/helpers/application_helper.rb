@@ -18,9 +18,14 @@ module ApplicationHelper
     # If the string parameter equals the current controller value in the parameters hash, return a string
     #
     # @param controller [String]
+    # @param action [String]
     # @return [String] class name for a HTML element
-    def active_controller? controller
-        "current" if params[:controller] == controller
+    def active_controller? data
+        if data[:action].nil?
+            "current" if params[:controller] == data[:controller]
+        else
+            "current" if params[:controller] == data[:controller] && params[:action] == data[:action]
+        end
     end
 
     # Either the id or category_id value from the parameters hash is assigned to an instance variable

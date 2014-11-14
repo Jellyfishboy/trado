@@ -1,0 +1,10 @@
+<ol id="breadcrumbs">
+  <% breadcrumbs.each do |n| %>
+    <li>
+      <%= link_to n[:title], n[:url] %>
+    </li>
+  <% end %>
+  <li class="current">
+    <%= yield(:breadcrumb) %>
+  </li>
+</ol>

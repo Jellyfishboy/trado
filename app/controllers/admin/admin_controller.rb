@@ -1,8 +1,11 @@
 class Admin::AdminController < ApplicationController
-    
     before_action :set_setting
     before_action :authenticate_user!
     layout 'admin'
+
+    def dashboard
+        @dashboard = Order.dashboard_data
+    end
 
     def settings
         @settings.build_attachment unless @settings.attachment

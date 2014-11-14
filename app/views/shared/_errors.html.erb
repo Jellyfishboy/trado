@@ -1,0 +1,12 @@
+<% if object && object.errors.any? %>
+  <div id="errors">
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li>
+          <i class="icon-cancel-circle"></i>
+          <%= msg   %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

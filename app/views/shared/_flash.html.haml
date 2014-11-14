@@ -1,3 +1,0 @@
-%div.alert{:class => (if type.to_s == 'success' then "alert-success" elsif type.to_s == 'notice' then "alert-info" elsif type.to_s == 'error' then "alert-warning" end) }
-    = type.to_s == 'success' ? "<i class='icon-checkmark-circle'></i>".html_safe : type.to_s == 'notice' ? "<i class='icon-info-2'></i>".html_safe : type.to_s == 'error' ? "<i class='icon-spam'></i>".html_safe : nil
-    = message
