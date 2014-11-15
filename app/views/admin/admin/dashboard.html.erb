@@ -49,7 +49,7 @@
                 <canvas id="pieChart" width="300" height="300" class="pie-chart"></canvas>
             </div>
             <div class="ninecol last">
-                <div class="row">
+                <div class="row stack-stat">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="green-stat"><%= Store::Price.new(price: @dashboard[:gross_total]).single %></div>
