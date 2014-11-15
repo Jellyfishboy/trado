@@ -27,11 +27,13 @@
 #  created_at                             :datetime             not null
 #  updated_at                             :datetime             not null
 #
+require 'reportatron_4000'
+
 class Order < ActiveRecord::Base
   attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, 
-  :delivery_address_attributes, :billing_address_attributes
+  :delivery_address_attributes, :billing_address_attributes, :created_at
   
   has_many :order_items,                                                dependent: :delete_all
   has_many :transactions,                                               dependent: :delete_all
@@ -49,19 +51,21 @@ class Order < ActiveRecord::Base
 
   scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
+  scope :count_per_month,                                               -> { order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
+
   scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
 
-  scope :pending_count,                                                 -> { last_transaction_collection.where("transactions.payment_status = 0").count }
+  scope :pending_collection,                                            -> { last_transaction_collection.where("transactions.payment_status = 0") }
 
-  scope :completed_count,                                               -> { last_transaction_collection.where("transactions.payment_status = 1").count }
+  scope :completed_collection,                                          -> { last_transaction_collection.where("transactions.payment_status = 1") }
 
-  scope :failed_count,                                                  -> { last_transaction_collection.where("transactions.payment_status = 2").count }
+  scope :failed_collection,                                             -> { last_transaction_collection.where("transactions.payment_status = 2") }
 
-  scope :gross_total,                                                   -> { last_transaction_collection.sum(:gross_amount) }
+  scope :gross_total,                                                   -> { completed_collection.sum('transactions.gross_amount') }
 
-  scope :net_total,                                                     -> { last_transaction_collection.sum(:net_amount) }
+  scope :net_total,                                                     -> { completed_collection.sum('transactions.net_amount') }
 
-  scope :tax_total,                                                     -> { last_transaction_collection.sum(:tax_amount) }
+  scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address
@@ -105,12 +109,15 @@ class Order < ActiveRecord::Base
 
   def self.dashboard_data
     return {
-      :completed => completed_count,
-      :pending => pending_count,
-      :failed => failed_count,
+      :completed => completed_collection.count,
+      :pending => pending_collection.count,
+      :failed => failed_collection.count,
       :gross_total => gross_total,
       :net_total => net_total,
-      :tax_total => tax_total
+      :tax_total => tax_total,
+      :completed_per_month => Reportatron4000.parse_count_per_month(Order.completed_collection.count_per_month),
+      :failed_per_month => Reportatron4000.parse_count_per_month(Order.failed_collection.count_per_month),
+      :paypal_fee_total => completed_collection.sum('transactions.fee')
     }
   end
 end

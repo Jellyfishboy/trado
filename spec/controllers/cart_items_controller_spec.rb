@@ -72,13 +72,11 @@ describe CartItemsController do
             end
 
             it "should set estimate_delivery_id attribute to nil value" do
-                binding.pry
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
                 expect(cart.estimate_delivery_id).to eq nil
             end
 
             it "should set estimate_country_name attribute to nil value" do
-                binding.pry
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
                 expect(cart.estimate_country_name).to eq nil
             end

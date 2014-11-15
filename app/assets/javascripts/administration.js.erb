@@ -6,6 +6,7 @@
 //= require redactor-rails/redactor
 //= require redactor-rails/config
 //= require redactor-rails/index
+//= require admin/chart
 //= require turbolinks
 
 var taxRate = "<%= Store::settings.tax_rate %>";
@@ -21,6 +22,28 @@ ready = function()
     soca.misc.updateTableHeight();
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
+    var pieData = [
+        {
+            value: 70,
+            color:"#00aff1",
+            highlight: "",
+            label: "PayPal"
+        },
+        {
+            value: 20,
+            color: "#8DC73F",
+            highlight: "",
+            label: "Cheque"
+        },
+        {
+            value: 10,
+            color: "#F7941D",
+            highlight: "",
+            label: "Bank transfer"
+        }
+    ];
+    var ctx2 = $("#pieChart").get(0).getContext("2d");
+    var myDoughnutChart = new Chart(ctx2).Doughnut(pieData);
 };
 
 $(document).ready(ready);

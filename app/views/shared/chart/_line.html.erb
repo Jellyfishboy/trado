@@ -1,0 +1,24 @@
+<script>
+//<![CDATA[
+    Chart.defaults.global.responsive = true;
+    var dataOrders = {
+        labels: <%= raw(labels) %>,
+        datasets: [
+            <% datasets.each do |set| %>
+                {
+                    label: "<%= set.first.to_s.titleize %>",
+                    fillColor: "rgba(<%= set.last[:color] %>,0.2)",
+                    strokeColor: "rgba(<%= set.last[:color] %>,1)",
+                    pointColor: "rgba(<%= set.last[:color] %>,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(<%= set.last[:color] %>,1)",
+                    data: <%= set.last[:data] %>
+                },
+            <% end %>
+        ]
+    };
+    var ordersCtx = $("#ordersLineChart").get(0).getContext("2d");
+    var ordersChart = new Chart(ordersCtx).Line(dataOrders);
+//]]>
+</script>

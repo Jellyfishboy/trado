@@ -11,7 +11,12 @@
     <div class="widget widget-content">
         <div class="row">
             <div class="twelvecol">
-                <canvas id="lineChart" width="1140" height="400" class="line-chart"></canvas>
+                <canvas id="ordersLineChart" width="1140" height="400" class="line-chart"></canvas>
+                <%= render partial: 'shared/chart/line', format: [:html], locals: { 
+                        datasets:  Hash(completed: { color: "141,199,63", data: @dashboard[:completed_per_month]}, failed: { color: "205,38,38", data: @dashboard[:failed_per_month]}),
+                        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
+                    }
+                %>
             </div>
         </div>
         <div class="row">
@@ -35,12 +40,15 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="eightcol">
-            <div class="widget-sub-heading">
-                <h3>Revenue</h3>
+    <div class="widget-sub-heading">
+        <h3>Transactions</h3>
+    </div>
+    <div class="widget widget-content">
+        <div class="row">
+            <div class="threecol">
+                <canvas id="pieChart" width="300" height="300" class="pie-chart"></canvas>
             </div>
-            <div class="widget widget-content">
+            <div class="ninecol last">
                 <div class="row">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
@@ -56,21 +64,17 @@
                     </div>
                     <div class="fourcol last">
                         <div class="single-stat price-stat">
-                            <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:tax_total]).single %></div>
+                            <div class="red-stat"><%= Store::Price.new(price: @dashboard[:tax_total]).single %></div>
                             <div>Tax</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="fourcol last">
-            <div class="widget-sub-heading">
-                <h3>Transactions</h3>
-            </div>
-            <div class="widget widget-content">
                 <div class="row">
-                    <div class="twelvecol">
-                        <canvas id="pieChart" width="300" height="300" class="pie-chart"></canvas>
+                    <div class="fourcol">
+                        <div class="single-stat price-stat">
+                            <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:paypal_fee_total]).single %></div>
+                            <div>PayPal Fees</div>
+                        </div>
                     </div>
                 </div>
             </div>
