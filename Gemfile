@@ -92,6 +92,9 @@ gem 'whenever', '>= 0.8.4', :require => false
 # JS Variables
 gem 'gon'
 
+# GA
+gem 'google-api-client'
+
 # Performance
 gem 'fast_blank'
 gem 'jquery-turbolinks'
