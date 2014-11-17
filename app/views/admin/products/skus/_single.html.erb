@@ -2,15 +2,6 @@
   <%= sku.code %>
 </td>
 <td>
-  <%= sku.weight %>
-</td>
-<td>
-  <%= sku.length %>
-</td>
-<td>
-  <%= sku.thickness %>
-</td>
-<td>
   <%= sku.attribute_value %>
 </td>
 <td>
@@ -18,9 +9,6 @@
 </td>
 <td>
   <%= sku.stock %>
-</td>
-<td>
-  <%= sku.stock_warning_level %>
 </td>
 <td>
   <%= Store::Price.new(price: sku.cost_value, tax_type: 'net').single %>

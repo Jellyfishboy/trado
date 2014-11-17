@@ -1,17 +1,17 @@
-<div class="widget-sub-heading attachment-heading">
+
+<!-- <div class="widget-sub-heading attachment-heading">
   <h3>Attachments</h3>
   <div class="pull-right">
     <%= link_to new_admin_product_attachment_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add attachment' do %>
       <i class="icon-plus"></i>
     <% end %>
   </div>
+</div> -->
+<div class="threecol">
+  <h3>Images</h3>
+  <p>Upload and edit images of this product. You can also set the default image to display on the product page.</p>
 </div>
-<% if @product.attachments.empty? %>
-  <div class="label label-orange label-margin">
-    <i class="icon-spam icon-cancel-circle"></i>
-    You currently have no attachments for this product
-  </div>
-<% else %>
+<div class="ninecol last">
   <fieldset class="widget widget-content attachment-form">
     <div class="row">
       <div class="twelvecol">
@@ -23,4 +23,4 @@
       </div>
     </div>
   </fieldset>
-<% end %>
+</div>

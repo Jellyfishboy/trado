@@ -55,17 +55,19 @@ class Order < ActiveRecord::Base
 
   scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
 
-  scope :pending_collection,                                            -> { last_transaction_collection.where("transactions.payment_status = 0") }
+  scope :pending_collection,                                            -> { last_transaction_collection.where(transactions: { payment_status: 0 } ) }
 
-  scope :completed_collection,                                          -> { last_transaction_collection.where("transactions.payment_status = 1") }
+  scope :completed_collection,                                          -> { last_transaction_collection.where(transactions: { payment_status: 1 } ) }
 
-  scope :failed_collection,                                             -> { last_transaction_collection.where("transactions.payment_status = 2") }
+  scope :failed_collection,                                             -> { last_transaction_collection.where(transactions: { payment_status: 2 } ) }
 
   scope :gross_total,                                                   -> { completed_collection.sum('transactions.gross_amount') }
 
   scope :net_total,                                                     -> { completed_collection.sum('transactions.net_amount') }
 
   scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
+
+  scope :paypal,                                                 -> { completed_collection.where(transactions: { payment_type: 'express-checkout' }) }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address

@@ -1,7 +1,7 @@
 <script>
 //<![CDATA[
     Chart.defaults.global.responsive = true;
-    var dataOrders = {
+    var data<%= id %> = {
         labels: <%= raw(labels) %>,
         datasets: [
             <% datasets.each do |set| %>
@@ -18,7 +18,7 @@
             <% end %>
         ]
     };
-    var ordersCtx = $("#ordersLineChart").get(0).getContext("2d");
-    var ordersChart = new Chart(ordersCtx).Line(dataOrders);
+    var <%= id %>Ctx = $("#<%= id %>").get(0).getContext("2d");
+    var <%= id %> = new Chart(<%= id %>Ctx).Line(data<%= id %>);
 //]]>
 </script>

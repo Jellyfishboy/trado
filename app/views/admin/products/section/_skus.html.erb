@@ -1,4 +1,4 @@
-<div class="widget-sub-heading sku-heading">
+<!-- <div class="widget-sub-heading sku-heading">
   <h3>SKUs</h3>
   <div class="pull-right">
     <%= link_to new_admin_product_sku_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add SKU' do %>
@@ -6,11 +6,11 @@
     <% end %>
   </div>
 </div>
-<% if @product.skus.empty? %>
-  <div class="label label-orange label-margin">
-    <i class="icon-spam icon-cancel-circle"></i>
-    You currently have no SKUs for this product
-  </div>
-<% else %>
+ -->
+<div class="threecol">
+  <h3>SKU variants</h3>
+  <p>Configure the SKU options for selling this product.</p>
+</div>
+<div class="ninecol last">
   <%= render partial: 'admin/products/skus/table', format: [:html] %>
-<% end %>
+</div>
