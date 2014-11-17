@@ -21,7 +21,9 @@
           <tbody>
             <tr>
               <td>
-                <%= f.submit 'Add', :class => 'btn btn-blue btn-normal' %>
+                <%= button_tag(type: 'submit', :class => 'btn btn-blue btn-normal') do %>
+                  <i class="icon-plus"></i>
+                <% end %>
               </td>
               <td>
                 <%= f.text_field :description, :class => 'form-control' %>
