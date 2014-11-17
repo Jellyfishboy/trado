@@ -147,8 +147,8 @@ module ApplicationHelper
     # @overload set(value)
     #   @param [String] javascript file name
     # @return [String] javascript tags
-    def javascript *files
-        content_for(:footer) { javascript_include_tag(*files) }
+    def javascript location, *files
+        content_for(location) { javascript_include_tag(*files) }
     end
 
     # Adds a message to the relevant flash type array (error, notice or success) 
