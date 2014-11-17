@@ -1,15 +1,8 @@
 class Admin::StockLevelsController < ApplicationController
-
   before_action :set_sku
   before_action :set_product
   before_action :authenticate_user!
-  # New stock level
-  #
-  # Modal trigger for displaying a form to add a stock level adjustment 
-  def new 
-    @stock_level = @sku.stock_levels.build
-    render partial: 'admin/products/skus/stock_levels/new', format: [:js]
-  end
+
 
   def create
     @stock_level = @sku.stock_levels.build(params[:stock_level])

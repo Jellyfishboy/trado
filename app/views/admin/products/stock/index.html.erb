@@ -1,0 +1,47 @@
+<% content_for :title, 'Stock management' %>
+<% content_for :breadcrumb, 'Stock management' %>
+<% breadcrumb_add 'Products', admin_products_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header">Stock management</h2>
+  </div>
+  <% if @skus.empty? %>
+    <p>You don't have any Product SKUs yet.</p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="main-table">
+          <tr>
+            <th>SKU</th>
+            <th>Name</th>
+            <th>Variant</th>
+            <th>Stock</th>
+            <th>Stock warning level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @skus.each do |sku| %>
+            <tr>
+              <td>
+                <%= sku.full_sku %>
+              </td>
+              <td>
+                <%= sku.product.name %>
+              </td>
+              <td>
+                <%= sku.attribute_value %>
+              </td>
+              <td>
+                <%= sku.stock %>
+              </td>
+              <td>
+                <%= sku.stock_warning_level %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

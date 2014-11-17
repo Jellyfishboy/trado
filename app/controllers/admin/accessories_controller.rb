@@ -1,5 +1,4 @@
 class Admin::AccessoriesController < ApplicationController
-  
   before_action :set_accessory, only: [:update, :destroy]
   before_action :authenticate_user!
   layout 'admin'

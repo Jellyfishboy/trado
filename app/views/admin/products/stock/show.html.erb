@@ -1,0 +1,51 @@
+<% content_for :title, 'Stock management' %>
+<% content_for :breadcrumb, @sku.full_sku %>
+<% breadcrumb_add 'Products', admin_products_path %>
+<% breadcrumb_add 'Stock management', admin_products_stock_index_path %>
+
+<div class="twelvecol">
+  <div class="page-header">
+    <h2 class="widget widget-header"><%= @sku.full_sku %> stock management</h2>
+  </div>
+  <%= form_for [:admin, @sku.product, @sku, @stock_level], html: { role: 'form' }, remote: true do |f| %>
+    <div class="table-responsive">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th class="fifty">Description</th>
+              <th>Adjustment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= f.submit 'Add', :class => 'btn btn-blue btn-normal' %>
+              </td>
+              <td>
+                <%= f.text_field :description, :class => 'form-control' %>
+              </td>
+              <td>
+                <%= f.text_field :adjustment, :class => 'form-control' %>
+              </td>
+            </tr>
+            <% @sku.stock_levels.where('description IS NOT NULL').each do |stock| %>
+              <tr class="<%= coloured_row(stock.adjustment) %>">
+                <td>
+                  <%= stock.created_at.strftime('%d/%m/%Y at %I:%M%p') %>
+                </td>
+                <td class="fifty">
+                  <%= stock.description %>
+                </td>
+                <td class="align-left">
+                  <%= stock.adjustment %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>
