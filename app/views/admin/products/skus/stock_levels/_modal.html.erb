@@ -1,70 +1,31 @@
-<div aria-hidden="true" aria-labelledby="stockLevelModalLabel" class="modal fade" id="stock-level-form" role="dialog" tabindex="-1">
+<div aria-hidden="true" aria-labelledby="orderModalLabel" class="modal fade" id="order-form" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_for [:admin, @product, @sku, @stock_level], html: { role: 'form' }, remote: true do |f| %>
+      <%= form_for [:admin, @order], html: { role: 'form', method: :patch }, remote: true do |f| %>
         <div class="json" id="errors">
           <ul></ul>
         </div>
-        <div class="loading5">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-        <div class="loading-overlay"></div>
         <div class="modal-header">
-          <h3 id="stockLevelModalLabel">
-            Stock levels for 
-            <%= @sku.full_sku %>
+          <h3 id="orderModalLabel">
+            Dispatch Order
+            <%= "##{@order.id}" %>
           </h3>
         </div>
         <div class="modal-body">
-          <p>
-            Stock level total is
-            <b>
-              <%= @sku.stock %>
-            </b>
-          </p>
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th class="fifty">Description</th>
-                  <th>Adjustment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= f.submit 'Add', :class => 'btn btn-blue btn-normal' %>
-                  </td>
-                  <td>
-                    <%= f.text_field :description, :class => 'form-control' %>
-                  </td>
-                  <td>
-                    <%= f.text_field :adjustment, :class => 'form-control' %>
-                  </td>
-                </tr>
-                <% @sku.stock_levels.where('description IS NOT NULL').each do |stock| %>
-                  <tr class="<%= coloured_row(stock.adjustment) %>">
-                    <td>
-                      <%= stock.created_at.strftime('%d/%m/%Y at %I:%M%p') %>
-                    </td>
-                    <td class="fifty">
-                      <%= stock.description %>
-                    </td>
-                    <td class="align-left">
-                      <%= stock.adjustment %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+          <fieldset class="widget widget-content widget-last">
+            <div class="form-group">
+              <%= f.label :shipping_date %>
+              <%= f.text_field :shipping_date, :class => 'form-control datepicker', autocomplete: 'off', value: (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y')) %>
+            </div>
+            <div class="form-group form-last">
+              <%= f.label :actual_shipping_cost %>
+              <%= f.text_field :actual_shipping_cost, :class => 'form-control' %>
+            </div>
+          </fieldset>
         </div>
         <div class="modal-footer">
           <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+          <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
         </div>
       <% end %>
     </div>

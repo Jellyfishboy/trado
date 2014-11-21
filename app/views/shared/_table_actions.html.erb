@@ -9,11 +9,6 @@
       <i class="icon-search"></i>
     <% end %>
   <% end %>
-  <% if sku_record %>
-    <%= link_to new_admin_product_sku_stock_level_path(object.last.product, object.last), remote: true do %>
-      <i class="icon-plus"></i>
-    <% end %>
-  <% end %>
   <% if order_record && object.last.transactions.last.completed? %>
     <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
       <i class="icon-pencil"></i>

@@ -18,6 +18,7 @@
             <th>Variant</th>
             <th>Stock</th>
             <th>Stock warning level</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +39,10 @@
               <td>
                 <%= sku.stock_warning_level %>
               </td>
+              <td>
+                <%= link_to admin_products_stock_path(sku) do %>
+                  <i class="icon-search"></i>
+                <% end %>
             </tr>
           <% end %>
         </tbody>

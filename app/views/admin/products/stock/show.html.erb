@@ -5,49 +5,35 @@
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header"><%= @sku.full_sku %> stock management</h2>
+    <%= link_to new_admin_product_sku_stock_level_path(@sku.product, @sku), remote: true, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock level" do %>
+      <i class="icon-plus"></i>
+    <% end %>
+    <h2 class="widget widget-header"><%= @sku.full_sku %> stock history</h2>
   </div>
-  <%= form_for [:admin, @sku.product, @sku, @stock_level], html: { role: 'form' }, remote: true do |f| %>
-    <div class="table-responsive">
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th class="fifty">Description</th>
-              <th>Adjustment</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <%= button_tag(type: 'submit', :class => 'btn btn-blue btn-normal') do %>
-                  <i class="icon-plus"></i>
-                <% end %>
-              </td>
-              <td>
-                <%= f.text_field :description, :class => 'form-control' %>
-              </td>
-              <td>
-                <%= f.text_field :adjustment, :class => 'form-control' %>
-              </td>
-            </tr>
-            <% @sku.stock_levels.where('description IS NOT NULL').each do |stock| %>
-              <tr class="<%= coloured_row(stock.adjustment) %>">
-                <td>
-                  <%= stock.created_at.strftime('%d/%m/%Y at %I:%M%p') %>
-                </td>
-                <td class="fifty">
-                  <%= stock.description %>
-                </td>
-                <td class="align-left">
-                  <%= stock.adjustment %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <% end %>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th class="fifty">Description</th>
+          <th>Adjustment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sku.stock_levels.where('description IS NOT NULL').each do |stock| %>
+          <tr>
+            <td>
+              <%= stock.created_at.strftime('%d/%m/%Y at %I:%M%p') %>
+            </td>
+            <td class="fifty">
+              <%= stock.description %>
+            </td>
+            <td class="align-left">
+              <%= stock.adjustment %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

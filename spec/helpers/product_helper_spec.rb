@@ -45,25 +45,6 @@ describe ProductHelper do
         end
     end
 
-    describe '#coloured_row' do
-
-        context "if the parameter value is postive" do
-            let(:stock_level) { create(:stock_level, adjustment: 33) }
-
-            it "should return the 'tr-green' class name" do
-                expect(helper.coloured_row(stock_level.adjustment)).to eq 'tr-green'
-            end
-        end
-
-        context "if the parameter value is a negative" do
-            let(:stock_level) { create(:stock_level, adjustment: -5) }
-
-            it "should return the 'tr-red' class name" do
-                expect(helper.coloured_row(stock_level.adjustment)).to eq 'tr-red'
-            end
-        end
-    end
-
     describe '#product_filter_classes' do
 
         context "if the product has a category" do

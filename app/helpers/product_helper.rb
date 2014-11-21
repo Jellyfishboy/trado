@@ -8,10 +8,6 @@ module ProductHelper
         "#{accessory.name} (+#{Store::Price.new(price: accessory.price).single})".html_safe
     end
 
-    def coloured_row adjustment
-        Store::positive?(adjustment) ? "tr-green" : "tr-red"
-    end
-
     def product_filter_classes product
         product_category = product.category.nil? ? nil : " category-#{product.category.slug}"
         product_featured = product.featured? ? " product-featured" : nil
