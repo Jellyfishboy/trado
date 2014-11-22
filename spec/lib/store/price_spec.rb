@@ -125,7 +125,7 @@ describe Store::Price do
 
             it "should have the correct elements" do
                 expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(price: sku.price, tax_type: 'net').single}")
-                expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class='tax-suffix'>#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
+                expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class=\"tax-suffix\">#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
             end
         end
 
@@ -156,7 +156,7 @@ describe Store::Price do
             end
 
             it "should have the correct elements" do
-                expect(Store::Price.new(price: sku.price).markup).to include("<span class='tax-suffix'>#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
+                expect(Store::Price.new(price: sku.price).markup).to include("<span class=\"tax-suffix\">#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
             end
         end
 

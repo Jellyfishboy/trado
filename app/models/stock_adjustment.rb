@@ -34,9 +34,9 @@ class StockAdjustment < ActiveRecord::Base
   #
   def stock_adjustment
     if Store::positive?(self.adjustment)
-      self.stock_total = StockAdjustment.first.stock_total + self.adjustment
+      self.stock_total = self.sku.stock_adjustments.first.stock_total + self.adjustment
     else
-      self.stock_total = StockAdjustment.first.stock_total - self.adjustment.abs
+      self.stock_total = self.sku.stock_adjustments.first.stock_total - self.adjustment.abs
     end
   end
 

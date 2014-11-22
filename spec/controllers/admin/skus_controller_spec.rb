@@ -22,8 +22,8 @@ describe Admin::SkusController do
 
     describe 'PATCH #update' do
         let!(:product) { create(:product, active: true) }
-        let!(:sku) { create(:sku, code: 'sku123', active: true, product_id: product.id) }
-        let(:new_sku) { attributes_for(:sku, active: true, product_id: product.id) }
+        let!(:sku) { create(:skip_after_stock_adjustment_sku, code: 'sku123', active: true, product_id: product.id) }
+        let(:new_sku) { attributes_for(:skip_after_stock_adjustment_sku, active: true, product_id: product.id) }
         let(:order) { create(:order) }
 
         context "if the sku has associated orders" do
@@ -78,16 +78,16 @@ describe Admin::SkusController do
                     }.to change(Sku, :count).by(1)
                 end
 
-                it "should duplicate and save all stock level records" do
+                it "should duplicate and save all stock adjustment records" do
                     expect{
                         xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
                     }.to change(StockAdjustment, :count).by(1)
                 end
 
-                it "should have the correct stock level data" do
+                it "should have the correct stock adjustment data" do
                     xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
                     sku = Sku.last
-                    expect(sku.stock_adjustments.last.description).to eq 'New stock #1'
+                    expect(sku.stock_adjustments.first.description).to eq 'New stock #1'
                 end
             end
 
@@ -105,7 +105,7 @@ describe Admin::SkusController do
                     expect(sku.code).to eq('sku234')
                 end
 
-                it "should not duplicate any stock level records" do
+                it "should not duplicate any stock adjustment records" do
                     expect{
                         xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
                     }.to_not change(StockAdjustment, :count)

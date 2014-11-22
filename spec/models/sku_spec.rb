@@ -51,25 +51,25 @@ describe Sku do
 
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
-        let(:create_sku) { create(:sku_after_stock_adjustment, stock: 55) }
+        let(:create_sku) { create(:sku, stock: 55) }
         
         it "should validate whether the stock value is higher than stock_warning_level" do
             expect(sku).to have(1).error_on(:sku)
             expect(sku.errors.messages[:sku]).to eq ["stock warning level value must not be below your stock count."]
         end
 
-        it "should create a new stock level record" do
+        it "should create a new stock adjustment record" do
             expect{
                 create_sku
             }.to change(StockAdjustment, :count).by(1)
         end
 
-        it "should set the stock level record as 'Initial stock'" do
+        it "should set the stock adjustment record as 'Initial stock'" do
             create_sku
             expect(create_sku.stock_adjustments.first.description).to eq 'Initial stock'
         end
 
-        it "should set the stock level record adjustment as the SKU's stock" do
+        it "should set the stock adjustment record adjustment as the SKU's stock" do
             create_sku
             expect(create_sku.stock_adjustments.first.adjustment).to eq 55
         end
@@ -96,7 +96,7 @@ describe Sku do
 
     describe "When creating or updating a product" do
 
-        context "if the product has a one SKU and it's single_product field is set to true" do
+        context "if the product has a one SKU" do
             let!(:product) { create(:product_sku) }
 
             it "should return false for attribute validation" do
@@ -105,7 +105,7 @@ describe Sku do
             end
         end
 
-        context "if the product has more than one SKU and/or it's single_product field is set to false" do
+        context "if the product has more than one SKU" do
             let!(:product) { create(:product_skus) }
 
             it "should return true for attribute validation" do

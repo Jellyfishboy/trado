@@ -22,11 +22,11 @@ describe Admin::StockAdjustmentsController do
 
     describe 'POST #create' do
         let(:product) { create(:product) }
-        let(:sku) { create(:sku, product_id: product.id) }
+        let!(:sku) { create(:sku, product_id: product.id) }
 
         context "with valid attributes" do
 
-            it "should save a new stock level to the database" do
+            it "should save a new stock adjustment to the database" do
                 expect{
                     xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment)
                 }.to change(StockAdjustment, :count).by(1)
@@ -41,7 +41,7 @@ describe Admin::StockAdjustmentsController do
         context "with invalid attributes" do
             let(:errors) { ["Adjustment can't be blank"] }
 
-            it "should not save the stock level to the database" do
+            it "should not save the stock adjustment to the database" do
                 expect{
                     xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment, adjustment: nil)
                 }.to change(StockAdjustment, :count).by(0)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Product management' do
+feature 'Product management', broken: true do
 
     store_setting
     feature_login_admin
