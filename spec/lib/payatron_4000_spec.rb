@@ -13,15 +13,15 @@ describe Payatron4000 do
                 order.order_items.first.sku.stock }.by(-5)
         end
 
-        it "should create a new StockLevel record" do
+        it "should create a new StockAdjustment record" do
             expect{
                 update
-            }.to change(StockLevel, :count).by(1)
+            }.to change(StockAdjustment, :count).by(1)
         end
 
-        it "should have the correct adjustment in the StockLevel record" do
+        it "should have the correct adjustment in the StockAdjustment record" do
             update
-            expect(order.order_items.first.sku.stock_levels.first.adjustment).to eq -5
+            expect(order.order_items.first.sku.stock_adjustments.first.adjustment).to eq -5
         end
 
         context "if the order item has no accessory" do
@@ -29,7 +29,7 @@ describe Payatron4000 do
 
             it "should have only the order id in the description" do
                 Payatron4000::update_stock(order)
-                expect(order.order_items.first.sku.stock_levels.first.description).to eq "Order ##{order.id}"
+                expect(order.order_items.first.sku.stock_adjustments.first.description).to eq "Order ##{order.id}"
             end
         end
 
@@ -38,7 +38,7 @@ describe Payatron4000 do
 
             it "should have the order id and accessory name in the description" do
                 Payatron4000::update_stock(order)
-                expect(order.order_items.first.sku.stock_levels.first.description).to eq "Order ##{order.id} (+ #{order.order_items.first.order_item_accessory.accessory.name})"
+                expect(order.order_items.first.sku.stock_adjustments.first.description).to eq "Order ##{order.id} (+ #{order.order_items.first.order_item_accessory.accessory.name})"
             end
         end
     end

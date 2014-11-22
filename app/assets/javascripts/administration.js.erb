@@ -6,6 +6,8 @@
 //= require redactor-rails/redactor
 //= require redactor-rails/config
 //= require redactor-rails/index
+//= require _trado
+//= require trado.admin
 //= require turbolinks
 
 var taxRate = "<%= Store::settings.tax_rate %>";
@@ -21,6 +23,7 @@ ready = function()
     soca.misc.updateTableHeight();
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
+    trado.admin.jsonErrors();
 };
 
 $(document).ready(ready);

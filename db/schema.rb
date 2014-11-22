@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112083937) do
+ActiveRecord::Schema.define(version: 20141122081956) do
 
   # These are extensions that must be enabled in order to support this database
-  # enable_extension "plpgsql"
+  enable_extension "plpgsql"
 
   create_table "accessories", force: true do |t|
     t.string   "name"
@@ -289,12 +289,13 @@ ActiveRecord::Schema.define(version: 20141112083937) do
     t.boolean  "active",                                      default: true
   end
 
-  create_table "stock_levels", force: true do |t|
+  create_table "stock_adjustments", force: true do |t|
     t.string   "description"
-    t.integer  "adjustment",  default: 0
+    t.integer  "adjustment",  default: 1
     t.integer  "sku_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "stock_total"
   end
 
   create_table "store_settings", force: true do |t|

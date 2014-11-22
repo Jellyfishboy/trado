@@ -34,7 +34,7 @@ class Sku < ActiveRecord::Base
   has_many :order_items,                                              dependent: :restrict_with_exception
   has_many :orders,                                                   through: :order_items, dependent: :restrict_with_exception
   has_many :notifications,                                            as: :notifiable, dependent: :delete_all
-  has_many :stock_levels,                                             dependent: :delete_all
+  has_many :stock_adjustments,                                        dependent: :delete_all
   has_one :category,                                                  through: :product
   belongs_to :product,                                                inverse_of: :skus
   belongs_to :attribute_type
@@ -50,7 +50,7 @@ class Sku < ActiveRecord::Base
 
   after_update :update_cart_items_weight
 
-  after_create :create_stock_level
+  after_create :create_stock_adjustment
 
   default_scope { order(code: :asc) }
 
@@ -94,7 +94,7 @@ class Sku < ActiveRecord::Base
 
   # After creating a SKU record, also create a stock level record which logs the intiial stock value
   #
-  def create_stock_level
-    StockLevel.create(description: 'Initial stock', adjustment: stock, sku_id: id)
+  def create_stock_adjustment
+    StockAdjustment.create(description: 'Initial stock', adjustment: stock, sku_id: id, stock_total: stock)
   end
 end

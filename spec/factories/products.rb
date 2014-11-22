@@ -69,7 +69,7 @@ FactoryGirl.define do
 
         factory :product_sku_stock_count do
             after(:create) do |product, evaluator|
-                create(:sku_after_stock_level, product: product, stock: 10, active: true)
+                create(:sku_after_stock_adjustment, product: product, stock: 10, active: true)
             end
         end
 

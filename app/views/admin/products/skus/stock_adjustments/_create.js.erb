@@ -1,0 +1,9 @@
+$('tbody').html('<% @stock_adjustments.each do |adjustment| %><%=j render partial: "admin/products/skus/stock_adjustments/single", forrmat: [:html], locals: { stock_adjustment: adjustment } %><% end %>');
+$('#stock-adjustment-form').modal('hide');
+soca.animation.alert(
+    '.page-header', 
+    'success', 
+    'stock-adjustment-create-alert',
+    '<i class="icon-checkmark-circle"></i>Successfully created a new stock adjustment for <%= @sku.full_sku %>.',
+    5000
+)

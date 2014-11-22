@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::StockLevelsController do
+describe Admin::StockAdjustmentsController do
 
     store_setting
     login_admin
@@ -16,7 +16,7 @@ describe Admin::StockLevelsController do
 
         it "should render a new partial" do
             xhr :get, :new, product_id: product.id, sku_id: sku.id
-            expect(response).to render_template(partial: 'admin/products/skus/stock_levels/_new')
+            expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_new')
         end
     end
 
@@ -28,13 +28,13 @@ describe Admin::StockLevelsController do
 
             it "should save a new stock level to the database" do
                 expect{
-                    xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_level: attributes_for(:stock_level)
-                }.to change(StockLevel, :count).by(1)
+                    xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment)
+                }.to change(StockAdjustment, :count).by(1)
             end
 
             it "should render the success partial" do
-                xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_level: attributes_for(:stock_level)
-                expect(response).to render_template(partial: 'admin/products/skus/stock_levels/_create')
+                xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment)
+                expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_create')
             end
         end
 
@@ -43,17 +43,17 @@ describe Admin::StockLevelsController do
 
             it "should not save the stock level to the database" do
                 expect{
-                    xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_level: attributes_for(:stock_level, adjustment: nil)
-                }.to change(StockLevel, :count).by(0)
+                    xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment, adjustment: nil)
+                }.to change(StockAdjustment, :count).by(0)
             end
 
             it "should return a JSON object of errors" do
-                xhr :get, :create, product_id: product.id, sku_id: sku.id, stock_level: attributes_for(:stock_level, adjustment: nil)
-                expect(assigns(:stock_level).errors.full_messages).to eq errors
+                xhr :get, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment, adjustment: nil)
+                expect(assigns(:stock_adjustment).errors.full_messages).to eq errors
             end
 
             it "should return a 422 status code" do
-                xhr :get, :create, product_id: product.id, sku_id: sku.id, stock_level: attributes_for(:stock_level, adjustment: nil)
+                xhr :get, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment, adjustment: nil)
                 expect(response.status).to eq 422
             end
         end

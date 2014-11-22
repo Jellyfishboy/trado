@@ -42,10 +42,10 @@ class Admin::SkusController < ApplicationController
     respond_to do |format|
       if @sku.update(params[:sku])
         if @old_sku
-          @old_sku.stock_levels.each do |sl|
-            new_stock_level = sl.dup
-            new_stock_level.sku_id = @sku.id
-            new_stock_level.save!
+          @old_sku.stock_adjustments.each do |sa|
+            new_stock_adjustment = sa.dup
+            new_stock_adjustment.sku_id = @sku.id
+            new_stock_adjustment.save!
           end
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
         end

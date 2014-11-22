@@ -5,7 +5,7 @@
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_product_sku_stock_level_path(@sku.product, @sku), remote: true, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock level" do %>
+    <%= link_to new_admin_product_sku_stock_adjustment_path(@sku.product, @sku), remote: true, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock level" do %>
       <i class="icon-plus"></i>
     <% end %>
     <h2 class="widget widget-header"><%= @sku.full_sku %> stock history</h2>
@@ -20,20 +20,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @sku.stock_levels.where('description IS NOT NULL').each do |stock| %>
-          <tr>
-            <td>
-              <%= stock.created_at.strftime('%d/%m/%Y at %I:%M%p') %>
-            </td>
-            <td class="fifty">
-              <%= stock.description %>
-            </td>
-            <td class="align-left">
-              <%= stock.adjustment %>
-            </td>
-          </tr>
+        <% @stock_adjustments.each do |adjustment| %>
+          <%= render partial: 'admin/products/skus/stock_adjustments/single', format: [:html], locals: { stock_adjustment: adjustment } %>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
+<div id="stock-adjustment-modal"></div>

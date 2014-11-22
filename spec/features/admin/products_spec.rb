@@ -193,8 +193,8 @@ feature 'Product management' do
             expect(find('.modal-body p:first-child')).to have_content "Stock level total is #{sku.stock}"
             expect(find('tbody')).to have_selector('tr.tr-red', count: 0)
             expect(find('tbody')).to have_selector('tr.tr-green', count: 1)
-            fill_in('stock_level_description', with: 'Description for the new stock level adjustment.')
-            fill_in('stock_level_adjustment', with: '5')
+            fill_in('stock_adjustment_description', with: 'Description for the new stock level adjustment.')
+            fill_in('stock_adjustment_adjustment', with: '5')
             click_button 'Add'
             sleep 1
 
@@ -203,9 +203,9 @@ feature 'Product management' do
 
         sku.reload
         expect(sku.stock).to eq 15
-        expect(sku.stock_levels.count).to eq 2
-        expect(sku.stock_levels.first.description).to eq 'Description for the new stock level adjustment.'
-        expect(sku.stock_levels.first.adjustment).to eq 5
+        expect(sku.stock_adjustments.count).to eq 2
+        expect(sku.stock_adjustments.first.description).to eq 'Description for the new stock level adjustment.'
+        expect(sku.stock_adjustments.first.adjustment).to eq 5
     end
 
     # SKUS

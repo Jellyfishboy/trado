@@ -8,6 +8,7 @@ class Admin::Products::StockController < ApplicationController
 
     def show
         @sku = Sku.includes(:product).active.find(params[:id])
-        @stock_level = @sku.stock_levels.build
+        @stock_adjustments = @sku.stock_adjustments.where('description IS NOT NULL')
+        @stock_adjustment = @sku.stock_adjustments.build
     end
 end

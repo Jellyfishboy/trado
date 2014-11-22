@@ -69,7 +69,7 @@ Trado::Application.routes.draw do
       resources :products, except: [:show, :create] do
         resources :attachments, except: [:index, :show]
         resources :skus, except: [:index, :show] do
-          resources :stock_levels, only: [:create, :new]
+          resources :stock_adjustments, only: [:create, :new]
         end
       end
       resources :orders, only: [:index, :show, :update, :edit]

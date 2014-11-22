@@ -1,5 +1,5 @@
 FactoryGirl.define do
-    factory :stock_level do
+    factory :stock_adjustment do
         description { Faker::Lorem.word }
         adjustment { 5 }
         
