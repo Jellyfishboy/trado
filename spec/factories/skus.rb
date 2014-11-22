@@ -15,7 +15,7 @@ FactoryGirl.define do
         association :product
 
         # skip after_create :create_stock_adjustment
-        # after(:build) { |sku| sku.class.skip_callback(:create, :after, :create_stock_adjustment) }
+        after(:build) { |sku| sku.class.skip_callback(:create, :after, :create_stock_adjustment) }
 
         # initialize after_create :create_stock_adjustment
         factory :sku_after_stock_adjustment do

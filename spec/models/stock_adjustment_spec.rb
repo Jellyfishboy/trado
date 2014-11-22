@@ -34,7 +34,7 @@ describe StockAdjustment do
 
             it "should update the SKU stock value with the associated stock level adjustment value" do
                 sku.reload
-                expect(sku.stock).to eq 5
+                expect(sku.stock_total).to eq 5
             end
         end
 
@@ -43,12 +43,12 @@ describe StockAdjustment do
 
             it "should update the SKU stock value with the associated stock level adjustment value" do
                 sku.reload
-                expect(sku.stock).to eq 13
+                expect(sku.stock_total).to eq 13
             end
         end
     end
 
-    describe "Determing if this is the first stock level record for a SKU" do
+    describe "Determining if this is the first stock level record for a SKU" do
 
         context "if the SKU has no prior stock level records" do
             let!(:sku) { create(:sku, active: true) }
