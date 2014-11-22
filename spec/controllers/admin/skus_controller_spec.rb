@@ -21,7 +21,7 @@ describe Admin::SkusController do
     end
 
     describe 'PATCH #update' do
-        let!(:product) { create(:product, active: true, single: true) }
+        let!(:product) { create(:product, active: true) }
         let!(:sku) { create(:sku, code: 'sku123', active: true, product_id: product.id) }
         let(:new_sku) { attributes_for(:sku, active: true, product_id: product.id) }
         let(:order) { create(:order) }

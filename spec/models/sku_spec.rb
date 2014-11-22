@@ -97,7 +97,7 @@ describe Sku do
     describe "When creating or updating a product" do
 
         context "if the product has a one SKU and it's single_product field is set to true" do
-            let!(:product) { create(:product_sku, single: true) }
+            let!(:product) { create(:product_sku) }
 
             it "should return false for attribute validation" do
                 product.reload
@@ -106,7 +106,7 @@ describe Sku do
         end
 
         context "if the product has more than one SKU and/or it's single_product field is set to false" do
-            let!(:product) { create(:product_skus, single: false) }
+            let!(:product) { create(:product_skus) }
 
             it "should return true for attribute validation" do
                 product.reload

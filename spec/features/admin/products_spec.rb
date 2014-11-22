@@ -5,7 +5,7 @@ feature 'Product management' do
     store_setting
     feature_login_admin
     given(:product) { create(:product_sku, active: true) }
-    given(:not_single_product) { create(:product_sku, active: true, single: false) }
+    given(:not_single_product) { create(:product_sku, active: true) }
     given(:attribute_type) { create(:attribute_type) }
     given(:accessory) { create(:accessory) }
     given(:product_skus) { create(:product_skus, active: true) }
@@ -51,8 +51,6 @@ feature 'Product management' do
         fill_in('product_weighting', with: '10')
         fill_in('product_description', with: 'Description for product which must contain at least 20 characters.')
 
-        # Additional options
-        find('#product_single').set(true)
 
         # Start attachment
         find('a[data-original-title="Add attachment"]').click
@@ -130,7 +128,6 @@ feature 'Product management' do
         fill_in('product_name', with: 'product #1 woooppeeee')
         fill_in('product_weighting', with: '10')
         fill_in('product_sku', with: 'TA')
-        find('#product_single').set(true)
         select_from_chosen(accessory.name, from: "product_accessory_ids")
         click_button 'Save'
         sleep 5
@@ -168,44 +165,6 @@ feature 'Product management' do
         within 'h2' do
             expect(page).to have_content 'Products'
         end
-    end
-
-    # Stock levels
-
-    scenario 'should add a stock level record to a product SKU', js: true do
-        product_sku_stock_count
-        product_sku_stock_count.reload
-        sku = product_sku_stock_count.skus.first
-
-        visit admin_products_path
-        within 'thead.main-table + tbody' do
-            first('tr').find('td.table-actions').first(:link).click
-        end
-        expect(current_path).to eq edit_admin_product_path(product_sku_stock_count)
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Edit'
-        end
-        find('#sku-fields tr td:last-child').first(:link).click
-        sleep 1
-
-        within '.modal#stock-level-form' do
-            expect(find('.modal-header h3')).to have_content "Stock levels for #{sku.full_sku}"
-            expect(find('.modal-body p:first-child')).to have_content "Stock level total is #{sku.stock}"
-            expect(find('tbody')).to have_selector('tr.tr-red', count: 0)
-            expect(find('tbody')).to have_selector('tr.tr-green', count: 1)
-            fill_in('stock_adjustment_description', with: 'Description for the new stock level adjustment.')
-            fill_in('stock_adjustment_adjustment', with: '5')
-            click_button 'Add'
-            sleep 1
-
-            expect(find('tbody')).to have_selector('tr.tr-green', count: 2)
-        end
-
-        sku.reload
-        expect(sku.stock).to eq 15
-        expect(sku.stock_adjustments.count).to eq 2
-        expect(sku.stock_adjustments.first.description).to eq 'Description for the new stock level adjustment.'
-        expect(sku.stock_adjustments.first.adjustment).to eq 5
     end
 
     # SKUS
@@ -310,7 +269,7 @@ feature 'Product management' do
 
     # ATTACHMENTS
 
-    scenario 'should add an attachment to a product', js: true do
+    scenario 'should add an image to a product', js: true do
         product
         attribute_type
 
@@ -325,7 +284,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#attachment-form' do
-            expect(find('.modal-header h3')).to have_content "New attachment"
+            expect(find('.modal-header h3')).to have_content "New image"
             attach_file('attachment_file', File.expand_path("spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg"))
             find('#attachment_default_record').set(true)
             click_button 'Submit'
@@ -334,7 +293,7 @@ feature 'Product management' do
 
         expect(current_path).to eq edit_admin_product_path(product)
         within '.attachment-create-alert' do
-            expect(page).to have_content 'Successfully created an attachment.'
+            expect(page).to have_content 'Successfully created an image.'
         end
         product.reload
         attachment = product.attachments.first
@@ -342,7 +301,7 @@ feature 'Product management' do
         expect(attachment.default_record).to eq true
     end
 
-    scenario 'should edit an attachment', js: true do
+    scenario 'should edit an image', js: true do
         product
         attribute_type
         attachment = product.attachments.first
@@ -359,7 +318,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#attachment-form' do
-            expect(find('.modal-header h3')).to have_content "Edit attachment"
+            expect(find('.modal-header h3')).to have_content "Edit image"
             find('#attachment_default_record').set(true)
             click_button 'Submit'
         end
@@ -367,13 +326,13 @@ feature 'Product management' do
 
         expect(current_path).to eq edit_admin_product_path(product)
         within '.attachment-update-alert' do
-            expect(page).to have_content 'Successfully updated attachment.'
+            expect(page).to have_content 'Successfully updated image.'
         end
         attachment.reload
         expect(attachment.default_record).to eq true
     end 
 
-    scenario 'should delete an attachment', js: true do
+    scenario 'should delete an image', js: true do
         multi_attachment_product
 
         visit admin_products_path
@@ -388,7 +347,7 @@ feature 'Product management' do
         expect(find('#attachments')).to have_selector('div.attachments', count: 1)
         expect(multi_attachment_product.attachments.count).to eq 1
         within '.attachment-destroy-alert' do
-            expect(page).to have_content 'Successfully deleted the attachment.'
+            expect(page).to have_content 'Successfully deleted the image.'
         end
         expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
     end

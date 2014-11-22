@@ -11,9 +11,9 @@ feature 'Category management' do
     scenario 'should display an index of categories' do
         category_1
 
-        visit admin_root_path
+        visit admin_categories_path
         find('a[data-original-title="Categories"]').click
-        expect(current_path).to eq admin_root_path
+        expect(current_path).to eq admin_categories_path
         within 'h2' do
             expect(page).to have_content 'Categories'
         end

@@ -38,7 +38,6 @@ class StockAdjustment < ActiveRecord::Base
     else
       self.stock_total = StockAdjustment.first.stock_total - self.adjustment.abs
     end
-    binding.pry
   end
 
   # Determines whether this is the first stock level record for a SKU
