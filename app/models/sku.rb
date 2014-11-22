@@ -75,6 +75,14 @@ class Sku < ActiveRecord::Base
     end
   end
 
+  # Current stock for a SKU is the latest stock adjustment record
+  # Which is related to the SKU
+  #
+  # @return [Integer] Stock value
+  def stock
+    stock_adjustments.first.stock_total
+  end
+
   # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
   # and the product has been set to single
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have

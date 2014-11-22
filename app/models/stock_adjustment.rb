@@ -17,7 +17,7 @@
 #
 class StockAdjustment < ActiveRecord::Base
 
-  attr_accessible :adjustment, :description, :sku_id
+  attr_accessible :adjustment, :description, :sku_id, :stock_total
 
   belongs_to :sku
 
@@ -28,15 +28,17 @@ class StockAdjustment < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
+  scope :active,                                            -> { where('description IS NOT NULL') }
+
   # Modify the sku stock with the associated stock level adjustment value
   #
   def stock_adjustment
-    binding.pry
     if Store::positive?(self.adjustment)
-      stock_total = StockAdjustment.first.stock_total + self.adjustment
+      self.stock_total = StockAdjustment.first.stock_total + self.adjustment
     else
-      stock_total = StockAdjustment.first.stock_total - self.adjustment.abs
+      self.stock_total = StockAdjustment.first.stock_total - self.adjustment.abs
     end
+    binding.pry
   end
 
   # Determines whether this is the first stock level record for a SKU

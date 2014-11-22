@@ -15,7 +15,7 @@ class Admin::StockAdjustmentsController < ApplicationController
     @stock_adjustment = @sku.stock_adjustments.build(params[:stock_adjustment])
     respond_to do |format|
       if @stock_adjustment.save
-        @stock_adjustments = @sku.stock_adjustments.where('description IS NOT NULL')
+        @stock_adjustments = @sku.stock_adjustments.active
         format.js { render partial: 'admin/products/skus/stock_adjustments/create', format: [:js] }
       else
         format.json { render json: { errors: @stock_adjustment.errors.full_messages }, status: 422 }

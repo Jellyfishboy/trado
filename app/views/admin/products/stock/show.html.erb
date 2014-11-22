@@ -5,7 +5,7 @@
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_product_sku_stock_adjustment_path(@sku.product, @sku), remote: true, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock level" do %>
+    <%= link_to new_admin_product_sku_stock_adjustment_path(@sku.product, @sku), remote: true, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock adjustment" do %>
       <i class="icon-plus"></i>
     <% end %>
     <h2 class="widget widget-header"><%= @sku.full_sku %> stock history</h2>
@@ -17,6 +17,7 @@
           <th>Date</th>
           <th class="fifty">Description</th>
           <th>Adjustment</th>
+          <th>Stock</th>
         </tr>
       </thead>
       <tbody>
