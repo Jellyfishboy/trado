@@ -1,13 +1,16 @@
 <%= form_for [:admin, @product], html: {role: 'form', method: :patch} do |f| %>
   <%= render partial: 'shared/errors', format: [:html], locals: { object: @product }  %>
   <%= render 'admin/products/section/basic_details', format: [:html], f: f %>
-  <%= render 'admin/products/section/attachments', format: [:html], f: f %>
+  <%= render 'admin/products/section/images', format: [:html], f: f %>
   <%= render 'admin/products/section/skus', format: [:html], f: f %>
   <%= render 'admin/products/section/associations', format: [:html], f: f %>
-  <%= render 'admin/products/section/tags', format: [:html], f: f %>
-  <div class="form-action">
-    <%= f.submit 'Publish', :class => 'btn btn-green btn-large' %>
-    <%= f.submit 'Save', :class => 'btn btn-blue btn-large' %>
+  <%= render 'admin/products/section/additional_options', format: [:html], f: f %>
+  <div class="threecol"></div>
+  <div class="ninecol last">
+    <div class="form-action">
+      <%= f.submit 'Publish', :class => 'btn btn-green btn-large' %>
+      <%= f.submit 'Save', :class => 'btn btn-blue btn-large' %>
+    </div>
   </div>
 <% end %>
 <div id="sku-modal"></div>

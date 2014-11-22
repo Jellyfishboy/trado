@@ -1,16 +1,17 @@
-<!-- <div class="widget-sub-heading sku-heading">
-  <h3>SKUs</h3>
-  <div class="pull-right">
-    <%= link_to new_admin_product_sku_path(@product), remote: true, 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'data-original-title' => 'Add SKU' do %>
-      <i class="icon-plus"></i>
-    <% end %>
-  </div>
-</div>
- -->
 <div class="threecol">
   <h3>SKU variants</h3>
   <p>Configure the SKU variant options for selling this product.</p>
+  <%= link_to 'Add SKU', new_admin_product_sku_path(@product), remote: true, :class => 'btn btn-green btn-normal' %>
 </div>
 <div class="ninecol last">
-  <%= render partial: 'admin/products/skus/table', format: [:html] %>
+    <fieldset class="widget widget-content" id="skus">
+        <% if @product.skus.active.empty? %>
+          <div class="helper-notification">
+            <p>You do not have any SKU variants for this product.</p>
+            <i class="icon-tags"></i>
+          </div>
+        <% else %>
+            <%= render partial: 'admin/products/skus/table', format: [:html] %>
+        <% end %>
+    </fieldset>
 </div>

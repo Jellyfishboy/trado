@@ -31,11 +31,11 @@
               <%= f.text_field :thickness, :class => 'form-control' %>
             </div>
             <div class="form-group">
-              <%= f.label :attribute_value %>
+              <%= f.label 'Variant name' %>
               <%= f.text_field :attribute_value, :class => 'form-control' %>
             </div>
             <div class="form-group">
-              <%= f.label :attribute_type_id %>
+              <%= f.label 'Variant type' %>
               <%= f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { include_blank: 'Select...'}, { :class => 'form-control' }) %>
             </div>
             <% if @form_sku.id.nil? %>

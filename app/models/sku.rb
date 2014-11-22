@@ -79,7 +79,7 @@ class Sku < ActiveRecord::Base
   # Which is related to the SKU
   #
   # @return [Integer] Stock value
-  def stock
+  def stock_total
     stock_adjustments.first.stock_total
   end
 
