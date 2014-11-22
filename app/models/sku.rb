@@ -83,14 +83,13 @@ class Sku < ActiveRecord::Base
     stock_adjustments.first.stock_total
   end
 
-  # Validates the attribute_value and attribute_type_id if there is only one SKU associated with product
-  # and the product has been set to single
+  # Validates the attribute_value and attribute_type_id if there is only more than one SKU associated with product
   # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
   # so the count is completed using the active field being set to true
   #
   # @return [Boolean]
   def not_single_sku?
-    return self.product && self.product.skus.map(&:active).count == 1 && self.product.single ? false : true
+    return self.product && self.product.single? ? false : true
   end
 
   # Joins the parent product SKU and the current SKU with a hyphen

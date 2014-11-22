@@ -10,7 +10,6 @@ FactoryGirl.define do
         featured { false }
         active { false }
         sequence(:weighting) { |n| n }
-        single { false }
         status { 'draft' }
         order_count { 0 }
 

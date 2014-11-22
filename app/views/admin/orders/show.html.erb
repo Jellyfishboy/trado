@@ -107,7 +107,7 @@
               <td>
                 <%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %>
                 <div class="item-sub">
-                  <%= sku_attribute_values item.sku, item.sku.product.single %>
+                  <%= item.sku.attribute_value unless item.sku.product.single? %>
                 </div>
                 <% unless item.order_item_accessory.nil? %>
                   <div class="item-sub label label-blue">

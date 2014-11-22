@@ -18,7 +18,6 @@
 #  weighting                :integer 
 #  sku                      :string(255)
 #  featured                 :boolean 
-#  single                   :boolean
 #  active                   :boolean            default(true)
 #  category_id              :integer    
 #  status                   :integer            default(0)
@@ -31,7 +30,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids, :single, :active, :status, :order_count
+  :short_description, :related_ids, :active, :status, :order_count
 
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
   has_many :orders,                                           through: :skus
@@ -57,7 +56,6 @@ class Product < ActiveRecord::Base
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
-  validate :single_product
   validate :attachment_count,                                 :if => :published?
   validate :sku_count,                                        :if => :published?
   
@@ -96,15 +94,11 @@ class Product < ActiveRecord::Base
     end
   end
   
-  # Detects if a product has more than one SKU when attempting to set the single product field as true
-  # The sku association needs to map an attribute block in order to count the number of records successfully
-  # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
+  # If a product has only one SKU it returns true
+  # Else if the product has more than one SKU, returns false
   #
   # @return [Boolean]
-  def single_product
-    if self.single && self.skus.map(&:active).count > 1
-      errors.add(:single, " product cannot be set if the product has more than one SKU.")
-      return false
-    end
+  def single?
+    skus.map(&:active).count == 1 ? true : false
   end
 end

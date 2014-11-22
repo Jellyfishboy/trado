@@ -82,7 +82,7 @@
                       = image_tag item.sku.product.attachments.first.file.square, :alt => item.sku.product.name, :height => 124, :width => 124
                     %td.desc
                       = item.sku.product.name
-                      %div= sku_attribute_values(item.sku, item.sku.product.single)
+                      %div= item.sku.attribute_value unless item.sku.product.single?
                     %td.qty= item.quantity
                     %td.price= Store::Price.new(price: item.total_price).single
                   - unless item.cart_item_accessory.blank?

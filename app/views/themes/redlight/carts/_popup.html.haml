@@ -23,7 +23,7 @@
           %strong
             = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
           %div
-            = sku_attribute_values(item.sku, item.sku.product.single)
+            = item.sku.attribute_value unless item.sku.product.single?
             - unless item.cart_item_accessory.blank?
               = "<i class='fa fa-code-fork'></i> #{item.cart_item_accessory.accessory.name}".html_safe
           %span.light-clr.qty

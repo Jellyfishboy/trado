@@ -55,10 +55,10 @@
               %span.clickable.add-one.fa.fa-plus-square
               %span.clickable.remove-one.fa.fa-minus-square
             \ 
-            - if @product.single
+            - if @product.single?
               = f.hidden_field :sku_id, :value => @product.skus.first.id
             - else
-              = f.select :sku_id, options_for_select(@skus.map { |sku| [sku_attribute_values(sku, sku.product.single), sku.id ] } )
+              = f.select :sku_id, options_for_select(@skus.map { |sku| [sku.attribute_value, sku.id ] } )
             - unless @product.accessories.active.empty?
               = f.fields_for @cart_item_accessory do |ff|
                 = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "No accessory (+£0.00)"
