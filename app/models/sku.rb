@@ -80,7 +80,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [Integer] Stock value
   def stock_total
-    stock_adjustments.first.stock_total
+    stock_adjustments.empty? ? stock : stock_adjustments.first.stock_total
   end
 
   # Validates the attribute_value and attribute_type_id if there is only more than one SKU associated with product

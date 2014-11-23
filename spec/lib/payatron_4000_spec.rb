@@ -6,6 +6,12 @@ describe Payatron4000 do
         let(:order) { create(:complete_order) }
         let(:update) { Payatron4000::update_stock(order) }
 
+        it "should set the correct stock_total for the new stock_adjustment record" do
+            original_stock = order.order_items.first.sku.stock_adjustments.first.stock_total
+            update
+            expect(order.order_items.first.sku.stock_total).to eq original_stock - 5
+        end
+
         it "should update the relevant SKU's stock" do
             expect {
                 update
@@ -16,7 +22,7 @@ describe Payatron4000 do
         it "should create a new StockAdjustment record" do
             expect{
                 update
-            }.to change(StockAdjustment, :count).by(1)
+            }.to change(StockAdjustment, :count).by(3)
         end
 
         it "should have the correct adjustment in the StockAdjustment record" do

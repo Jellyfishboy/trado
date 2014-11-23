@@ -23,6 +23,11 @@ describe StockAdjustment do
                 sku.reload
                 expect(sku.stock_total).to eq 5
             end
+
+            it "should set the correct stock_total value for the new stock adjustment record" do
+                sku.reload
+                expect(sku.stock).to eq 5
+            end
         end
 
         context "if the adjustment value results in a positive stock value" do
@@ -31,6 +36,11 @@ describe StockAdjustment do
             it "should set the correct stock_total value for the new stock adjustment record" do
                 sku.reload
                 expect(sku.stock_total).to eq 13
+            end
+
+            it "should set the correct stock_total value for the new stock adjustment record" do
+                sku.reload
+                expect(sku.stock).to eq 13
             end
         end
     end

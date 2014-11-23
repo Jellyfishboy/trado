@@ -24,7 +24,7 @@ class StockAdjustment < ActiveRecord::Base
   validates :description, :adjustment,                      presence: true
   validate :adjustment_value
 
-  before_save :stock_adjustment, :if => :not_initial_stock_adjustment?
+  before_save :stock_adjustment,                            :if => :not_initial_stock_adjustment?
 
   default_scope { order(created_at: :desc) }
 
@@ -35,8 +35,10 @@ class StockAdjustment < ActiveRecord::Base
   def stock_adjustment
     if Store::positive?(self.adjustment)
       self.stock_total = self.sku.stock_adjustments.first.stock_total + self.adjustment
+      self.sku.update_column(:stock, self.sku.stock + self.adjustment)
     else
       self.stock_total = self.sku.stock_adjustments.first.stock_total - self.adjustment.abs
+      self.sku.update_column(:stock, self.sku.stock - self.adjustment.abs)
     end
   end
 
@@ -45,7 +47,7 @@ class StockAdjustment < ActiveRecord::Base
   #
   # @return [Boolean]
   def not_initial_stock_adjustment?
-    return sku.stock_adjustments.count == 0 ? false : true
+    return sku.stock_adjustments.active.count == 0 ? false : true
   end
 
   # Validation to check whether the adjustment value is above or below zero

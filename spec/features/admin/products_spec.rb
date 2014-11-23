@@ -57,7 +57,7 @@ feature 'Product management', broken: true do
         sleep 1
 
         within '.modal#attachment-form' do
-            expect(find('.modal-header h3')).to have_content "New attachment"
+            expect(find('.modal-header h3')).to have_content "Add image"
             attach_file('attachment_file', File.expand_path("spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg"))
             find('#attachment_default_record').set(true)
             click_button 'Submit'
@@ -66,7 +66,7 @@ feature 'Product management', broken: true do
 
         expect(current_path).to eq edit_admin_product_path(product)
         within '.attachment-create-alert' do
-            expect(page).to have_content 'Successfully created an attachment.'
+            expect(page).to have_content 'Successfully created an image.'
         end
         # End attachment
 
@@ -75,7 +75,7 @@ feature 'Product management', broken: true do
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "New SKU"
+            expect(find('.modal-header h3')).to have_content "Add SKU"
             fill_in('sku_code', with: '50')
             fill_in('sku_length', with: '10.3')
             fill_in('sku_weight', with: '50')
