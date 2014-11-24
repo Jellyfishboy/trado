@@ -14,32 +14,25 @@ class Admin::Skus::VariantsController < ApplicationController
                 values: params[type.name.downcase.to_sym].split(/,\s*/)
             }
         end
-        @total_skus = @variants.map { |v| v[:values].count }.inject(:*)
+        @total_skus = @variants.map do |v| 
+            v[:values].count == 0 ? 1 : v[:values].count
+        end.inject(:*)
+
         @skus = []
         @total_skus.times do
             sku = Sku.new
             sku.save(validate: false)
             @skus << sku
         end
+        
         @variants.each do |variant|
-            next if variant[:values].nil?
+            next if variant[:values].empty?
             iteration = @total_skus/variant[:values].count
             @skus.zip(variant[:values]*iteration).each do |sku, value|
                 break if value.nil?
                 SkuVariant.create(sku_id: sku.id, name: value, variant_type_id: variant[:id])
             end
         end
-        
-
-
-        # @variant_types.each do |type|
-        #     @values =  
-        #     next if @values.nil?
-        #     @values.each do |value|
-
-        #         SkuVariant.create(:sku_id:, name: value, variant_type_id: type.id)
-        #     end
-        # end
     end
 
     def destroy

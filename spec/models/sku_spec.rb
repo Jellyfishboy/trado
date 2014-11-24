@@ -11,7 +11,6 @@ describe Sku do
     it { expect(subject).to have_many(:stock_adjustments).dependent(:delete_all) }
     it { expect(subject).to have_one(:category).through(:product) }
     it { expect(subject).to belong_to(:product) }
-    it { expect(subject).to belong_to(:attribute_type) }
 
     # Validation
     it { expect(subject).to validate_presence_of(:price) }
@@ -23,19 +22,12 @@ describe Sku do
     it { expect(subject).to validate_presence_of(:stock) }
     it { expect(subject).to validate_presence_of(:stock_warning_level) }
 
-    context "When the skus parent product has more than one sku" do
-        before { subject.stub(:not_single_sku?) { true } }
-        it { expect(subject).to validate_presence_of(:attribute_value) }
-        it { expect(subject).to validate_presence_of(:attribute_type_id) }
-    end
-
     it { expect(subject).to validate_numericality_of(:length).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:weight).is_greater_than_or_equal_to(0) }
     it { expect(subject).to validate_numericality_of(:thickness).is_greater_than_or_equal_to(0) } 
     it { expect(subject).to validate_numericality_of(:stock).is_greater_than_or_equal_to(1).only_integer } 
     it { expect(subject).to validate_numericality_of(:stock_warning_level).is_greater_than_or_equal_to(1).only_integer }
 
-    it { expect(create(:sku)).to validate_uniqueness_of(:attribute_value).scoped_to([:product_id, :active]) }
     it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:product_id, :active]) }
 
 
@@ -91,27 +83,6 @@ describe Sku do
         it "should return a string value of the product SKU and the child SKU joined by a hyphen" do
             product.reload
             expect(product.skus.first.full_sku).to eq 'GA180-55'
-        end
-    end
-
-    describe "When creating or updating a product" do
-
-        context "if the product has a one SKU" do
-            let!(:product) { create(:product_sku) }
-
-            it "should return false for attribute validation" do
-                product.reload
-                expect(product.skus.first.not_single_sku?).to eq false
-            end
-        end
-
-        context "if the product has more than one SKU" do
-            let!(:product) { create(:product_skus) }
-
-            it "should return true for attribute validation" do
-                product.reload
-                expect(product.skus.first.not_single_sku?).to eq true
-            end
         end
     end
 
