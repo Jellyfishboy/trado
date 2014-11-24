@@ -30,7 +30,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids, :active, :status, :order_count
+  :short_description, :related_ids, :active, :status, :order_count, :variant_ids
 
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
   has_many :orders,                                           through: :skus
@@ -45,6 +45,8 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
+  has_many :variants,                                         through: :skus
+  has_many :variant_types,                                    through: :variants
 
   validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
   validates :meta_description, :description, 

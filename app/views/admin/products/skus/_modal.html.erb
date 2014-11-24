@@ -12,49 +12,75 @@
         </div>
         <div class="modal-body">
           <fieldset class="widget widget-content widget-last">
-            <% if @form_sku.id.nil? %>
-              <div class="form-group">
-                <%= f.label :code %>
-                <%= f.text_field :code, :class => 'form-control' %>
+            <div class="row">
+              <div class="sixcol">
+                  <div class="form-group">
+                    <label>SKU code</label>
+                    <% if @form_sku.id.nil? %>
+                      <%= f.text_field :code, :class => 'form-control' %>
+                    <% else %>
+                      <p><%= @form_sku.code %></p>
+                    <% end %>
+                  </div>
               </div>
-            <% end %>
-            <div class="form-group">
-              <%= f.label :length %>
-              <%= f.text_field :length, :class => 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :weight %>
-              <%= f.text_field :weight, :class => 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :thickness %>
-              <%= f.text_field :thickness, :class => 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label 'Variant name' %>
-              <%= f.text_field :attribute_value, :class => 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label 'Variant type' %>
-              <%= f.select(:attribute_type_id, options_for_select(AttributeType.all.map { |type| [type.name, type.id] }, @form_sku.attribute_type_id), { include_blank: 'Select...'}, { :class => 'form-control' }) %>
-            </div>
-            <% if @form_sku.id.nil? %>
-              <div class="form-group">
-                <%= f.label :stock %>
-                <%= f.text_field :stock, :class => 'form-control' %>
+              <div class="sixcol last">
+                <div class="form-group">
+                  <%= f.label 'Variant name' %>
+                  <%= f.text_field :attribute_value, :class => 'form-control' %>
+                </div>
               </div>
-            <% end %>
-            <div class="form-group">
-              <%= f.label :stock_warning_level %>
-              <%= f.text_field :stock_warning_level, :class => 'form-control' %>
             </div>
-            <div class="form-group">
-              <%= f.label :cost_value %>
-              <%= f.text_field :cost_value, :class => 'form-control calculate-tax' %>
+            <div class="row">
+              <div class="fourcol">
+                <div class="form-group">
+                  <%= f.label :length %>
+                  <%= f.text_field :length, :class => 'form-control' %>
+                </div>
+              </div>
+              <div class="fourcol">
+                <div class="form-group">
+                  <%= f.label :weight %>
+                  <%= f.text_field :weight, :class => 'form-control' %>
+                </div>
+              </div>
+              <div class="fourcol last">
+                <div class="form-group">
+                  <%= f.label :thickness %>
+                  <%= f.text_field :thickness, :class => 'form-control' %>
+                </div>
+              </div>
             </div>
-            <div class="form-group form-last">
-              <%= f.label :price %>
-              <%= f.text_field :price, :class => 'form-control calculate-tax' %>
+            <div class="row">
+              <div class="sixcol">
+                  <div class="form-group">
+                    <%= f.label :stock %>
+                    <% if @form_sku.id.nil? %>
+                      <%= f.text_field :stock, :class => 'form-control' %>
+                    <% else %>
+                      <p><%= @form_sku.stock_total %></p>
+                    <% end %>
+                  </div>
+              </div>
+              <div class="sixcol last">
+                <div class="form-group">
+                  <%= f.label :stock_warning_level %>
+                  <%= f.text_field :stock_warning_level, :class => 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="sixcol">
+                <div class="form-group form-last">
+                  <%= f.label :cost_value %>
+                  <%= f.text_field :cost_value, :class => 'form-control calculate-tax' %>
+                </div>
+              </div>
+              <div class="sixcol last">
+                <div class="form-group form-last">
+                  <%= f.label :price %>
+                  <%= f.text_field :price, :class => 'form-control calculate-tax' %>
+                </div>
+              </div>
             </div>
           </fieldset>
         </div>

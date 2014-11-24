@@ -23,7 +23,6 @@ class Category < ActiveRecord::Base
 
   has_many :products,                                    dependent: :restrict_with_exception
   has_many :skus,                                        through: :products
-  has_many :attribute_types,                             through: :skus
 
   validates :name,:description, :sorting,
   :page_title, :meta_description,                        presence: true

@@ -5,7 +5,6 @@ describe Category do
     # ActiveRecord relations
     it { expect(subject).to have_many(:products).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:skus).through(:products) }
-    it { expect(subject).to have_many(:attribute_types).through(:skus) }
 
     #Validations
     it { expect(subject).to validate_presence_of(:name) }

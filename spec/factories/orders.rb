@@ -59,8 +59,7 @@ FactoryGirl.define do
             shipping_status { 'dispatched' }
 
             after(:create) do |order, evaluator|
-                sku = create(:sku_after_stock_adjustment, active: true)
-                create(:order_item, quantity: 5, sku_id: sku.id, order: order)
+                create(:order_item, quantity: 5, order: order)
             end
 
             factory :addresses_complete_order do

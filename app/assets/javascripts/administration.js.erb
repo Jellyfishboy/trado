@@ -50,5 +50,6 @@ $(document).on("page:receive", function(){
 
 $(document).ajaxComplete(function()
 {
+    $('[data-role=tagsinput]').tagsinput();
     soca.misc.taxField();
 });

@@ -77,7 +77,8 @@ describe StockAdjustment do
         end
 
         context "if the adjustment value is a above zero" do
-            let(:stock_adjustment) { create(:stock_adjustment, adjustment: 3) }
+            let(:sku) { create(:skip_after_stock_adjustment_sku, active: true)}
+            let(:stock_adjustment) { create(:stock_adjustment, adjustment: 3, sku_id: sku.id) }
 
             it "should set the correct adjustment value" do
                 expect(stock_adjustment.adjustment).to eq 3

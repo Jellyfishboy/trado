@@ -3,7 +3,6 @@ FactoryGirl.define do
         description { Faker::Lorem.word }
         adjustment { 5 }
         stock_total { 5 }
-        
-        association :sku
+
     end
 end

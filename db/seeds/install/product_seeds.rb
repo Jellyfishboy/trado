@@ -9,15 +9,12 @@ category = Category.create({
     page_title: 'Page title for your category',
     meta_description: 'Meta description for your category'
 })
-attribute_type = AttributeType.create({
+variant_type = VariantType.create({
     name: 'Size',
 })
-AttributeType.create([
+VariantType.create([
     {
         name: 'Color'
-    },
-    {
-        name: 'Style'
     }
 ])
 product_1 = Product.new({
@@ -90,7 +87,6 @@ Sku.create([
         weight: '20', 
         thickness: '75', 
         attribute_value: '20g', 
-        attribute_type_id: attribute_type.id, 
         stock: 20, 
         stock_warning_level: 5, 
         cost_value: '5.56', 
@@ -104,7 +100,6 @@ Sku.create([
         weight: '33', 
         thickness: '55', 
         attribute_value: '33g', 
-        attribute_type_id: attribute_type.id, 
         stock: 40, 
         stock_warning_level: 5, 
         cost_value: '12.47', 

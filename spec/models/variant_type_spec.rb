@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AttributeType do
+describe VariantType do
 
     # ActiveRecord relations
     it { expect(subject).to have_many(:skus).dependent(:restrict_with_exception) }

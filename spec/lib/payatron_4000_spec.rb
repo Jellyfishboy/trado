@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Payatron4000 do
 
     describe "After creating a transaction record for the associated order" do
-        let(:order) { create(:complete_order) }
+        let!(:order) { create(:complete_order) }
         let(:update) { Payatron4000::update_stock(order) }
 
         it "should set the correct stock_total for the new stock_adjustment record" do
@@ -22,7 +22,7 @@ describe Payatron4000 do
         it "should create a new StockAdjustment record" do
             expect{
                 update
-            }.to change(StockAdjustment, :count).by(3)
+            }.to change(StockAdjustment, :count).by(1)
         end
 
         it "should have the correct adjustment in the StockAdjustment record" do
