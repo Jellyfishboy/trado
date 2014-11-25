@@ -16,7 +16,7 @@ class SkuVariant < ActiveRecord::Base
     attr_accessible :name, :sku_id, :variant_type_id
 
     belongs_to :sku
-    belongs_to :type,                       class_name: 'VariantType'
+    belongs_to :variant_type,                       class_name: 'VariantType'
 
     validates :name,                        presence: true
 end

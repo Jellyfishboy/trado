@@ -1,0 +1,9 @@
+$('#sku-variants-form').modal('hide');
+$('#skus').html('<%=j render "admin/products/skus/table" %>');
+soca.animation.alert(
+    '#skus',
+    'success',
+    'sku-variant-create-alert',
+    '<i class="icon-checkmark-circle"></i>Successfully created <%= pluralize(sku_count, "SKU") %> from the variant options.',
+    3500
+)

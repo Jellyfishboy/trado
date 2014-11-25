@@ -3,8 +3,9 @@
     <thead>
       <tr>
         <th>Code</th>
-        <th>Variant name</th>
-        <th>Variant type</th>
+        <% @product.variant_types.each do |type| %>
+          <th><%= type.name %></th>
+        <% end %>
         <th>Stock</th>
         <th>Cost value</th>
         <th>Price</th>

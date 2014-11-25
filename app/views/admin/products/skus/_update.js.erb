@@ -1,7 +1,7 @@
 $('#sku-form').modal('hide');
 $('tr#sku_<%= @sku.id %>').html('<%=j render partial: "admin/products/skus/single", locals: { sku: @sku } %>');
 soca.animation.alert(
-    '.sku-heading',
+    '#skus',
     'success',
     'sku-update-alert',
     '<i class="icon-checkmark-circle"></i>Successfully updated the SKU.',

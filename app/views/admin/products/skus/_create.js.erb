@@ -5,7 +5,7 @@ $('#sku-form').modal('hide');
     $('tbody#sku-fields').html('<% @form_sku.product.skus.each do |sku| %><tr id=\'sku_<%= sku.id %>\'><%=j render partial: "admin/products/skus/single", locals: { sku: sku } %></tr><% end %>');
 <% end %>
 soca.animation.alert(
-    '.sku-heading',
+    '#skus',
     'success',
     'sku-create-alert',
     '<i class="icon-checkmark-circle"></i>Successfully created a SKU.',

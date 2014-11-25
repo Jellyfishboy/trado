@@ -77,7 +77,6 @@
                     <% product.skus.each do |sku| %>
                       <tr>
                         <td>
-                          <%= sku.attribute_value %>
                         </td>
                         <td>
                           <%= Store::Price.new(price: sku.price, tax_type: 'net').single %>

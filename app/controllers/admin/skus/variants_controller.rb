@@ -20,7 +20,7 @@ class Admin::Skus::VariantsController < ApplicationController
 
         @skus = []
         @total_skus.times do
-            sku = Sku.new
+            sku = @product.skus.build
             sku.save(validate: false)
             @skus << sku
         end
@@ -33,6 +33,7 @@ class Admin::Skus::VariantsController < ApplicationController
                 SkuVariant.create(sku_id: sku.id, name: value, variant_type_id: variant[:id])
             end
         end
+        render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_skus }
     end
 
     def destroy

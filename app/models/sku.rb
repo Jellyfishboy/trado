@@ -34,7 +34,7 @@ class Sku < ActiveRecord::Base
   has_one :category,                                                  through: :product
   belongs_to :product,                                                inverse_of: :skus
   has_many :variants,                                                 dependent: :delete_all, class_name: 'SkuVariant'
-  has_many :variant_types,                                            through: :variants
+  has_many :variant_types,                                            -> { uniq }, through: :variants
 
   validates :price, :cost_value, :length, 
   :weight, :thickness, :code,                                         presence: true
@@ -48,7 +48,7 @@ class Sku < ActiveRecord::Base
 
   after_create :create_stock_adjustment
 
-  default_scope { order(code: :asc) }
+  # default_scope { order(code: :asc) }
 
   include ActiveScope
 

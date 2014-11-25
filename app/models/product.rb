@@ -45,8 +45,8 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
-  has_many :variants,                                         through: :skus
-  has_many :variant_types,                                    through: :variants
+  has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
+  has_many :variant_types,                                    -> { uniq }, through: :variants
 
   validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
   validates :meta_description, :description, 
