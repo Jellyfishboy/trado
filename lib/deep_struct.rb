@@ -21,5 +21,4 @@ class DeepStruct < OpenStruct
     def to_h
       @hash_table
     end
-
 end

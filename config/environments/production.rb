@@ -98,7 +98,6 @@ Trado::Application.configure do
     :user_name            => Settings.mailer.production.user_name,
     :password             => Settings.mailer.production.password,
     :enable_starttls_auto => true
-
   }
 
   # Paypal
