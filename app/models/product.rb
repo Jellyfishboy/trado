@@ -76,6 +76,11 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+
+  def variant_collection_by_type variant_type
+    variants.joins(:variant_type).where(variant_types: { name: variant_type })
+  end
+
   # Calculate if a product has at least one associated attachment
   # If no associated attachments exist, return an error
   #

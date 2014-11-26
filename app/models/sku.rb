@@ -23,7 +23,7 @@
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
-  :weight, :thickness, :product_id, :accessory_id, :active
+  :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes
   
   has_many :cart_items
   has_many :carts,                                                    through: :cart_items
@@ -47,6 +47,8 @@ class Sku < ActiveRecord::Base
   after_update :update_cart_items_weight
 
   after_create :create_stock_adjustment
+
+  accepts_nested_attributes_for :variants
 
   # default_scope { order(code: :asc) }
 

@@ -15,8 +15,8 @@ class Tag < ActiveRecord::Base
 
   attr_accessible :name
 
-  has_many :taggings,               :dependent => :delete_all
-  has_many :products,               :through => :taggings
+  has_many :taggings,                       dependent: :delete_all
+  has_many :products,                       through: :taggings
 
   # Creates or updates the list of tags for an object
   #
@@ -25,7 +25,7 @@ class Tag < ActiveRecord::Base
       @tags = value.split(/,\s*/)   
       @tags.each do |t|
           new_tag = Tag.where(name: t).first_or_create
-          Tagging.create(:product_id => product_id, :tag_id => new_tag.id)
+          Tagging.create(product_id: product_id, tag_id: new_tag.id)
       end
     end
   end
@@ -36,11 +36,10 @@ class Tag < ActiveRecord::Base
   # @return [nil]
   def self.del value, product_id
     if value.blank?
-      Tag.joins(:taggings).where(:taggings => { :product_id => product_id }).readonly(false).destroy_all 
+      Tag.joins(:taggings).where(taggings: { product_id: product_id }).readonly(false).destroy_all 
     else
       @tags = value.split(/,\s*/)
-      Tag.where.not(name: @tags).joins(:taggings).where(:taggings => { :product_id => product_id }).readonly(false).destroy_all
+      Tag.where.not(name: @tags).joins(:taggings).where(taggings: { product_id: product_id }).readonly(false).destroy_all
     end
   end
-
 end

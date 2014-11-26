@@ -7,25 +7,46 @@
         </div>
         <div class="modal-header">
           <h3 id="skuModalLabel">
-            <%= @form_sku.id.nil? ? "Add SKU" : "Edit #{@form_sku.full_sku} SKU" %>
+            <%= @form_sku.code.nil? ? "Edit SKU" : "Edit #{@form_sku.full_sku} SKU" %>
           </h3>
         </div>
         <div class="modal-body">
           <fieldset class="widget widget-content widget-last">
             <div clas="row">
-              <% @product.variant_types.each_with_index do |type, index| %>
-                <div class="sixcol <%= index == 0 ? nil : index % 2 ? 'last' : nil %>">
-                  <div class="form-group">
-                    <label><%= type.name %></label>
+              <% if @form_sku.id.nil? %>
+                <% @product.variant_types.each_with_index do |type, index| %>
+                  <div class="sixcol <%= index == 0 ? nil : index % 2 ? 'last' : nil %>">
+                    <div class="form-group">
+                      <label><%= type.name %></label>
+                      <% variant = @form_sku.variants.build(variant_type_id: type.id) %>
+                      <%= f.fields_for :variants, variant do |ff |%>
+                        <%= ff.text_field :name, :class => 'form-control' %>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
+              <% else %>
+                <% @form_sku.variants.each_with_index do |variant, index| %>
+                  <div class="sixcol <%= index == 0 ? nil : index % 2 ? 'last' : nil %>">
+                    <div class="form-group">
+                      <label><%= variant.variant_type.name %></label>
+                      <%= f.fields_for variant do |ff |%>
+                        <%= ff.text_field :name, :class => 'form-control' %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
               <% end %>
             </div>
             <div class="row">
               <div class="twelvecol">
                   <div class="form-group">
                     <label>SKU code</label>
-                    <%= f.text_field :code, :class => 'form-control' %>
+                    <% if @form_sku.code.nil? %>
+                      <%= f.text_field :code, :class => 'form-control' %>
+                    <% else %>
+                      <p><%= @form_sku.code %></p>
+                    <% end %>
                   </div>
               </div>  
             </div>
@@ -53,7 +74,11 @@
               <div class="sixcol">
                   <div class="form-group">
                     <%= f.label :stock %>
-                    <%= f.text_field :stock, :class => 'form-control' %>
+                    <% if @form_sku.stock.nil? %>
+                      <%= f.text_field :stock, :class => 'form-control' %>
+                    <% else %>
+                      <p><%= @form_sku.stock %></p>
+                    <% end %>
                   </div>
               </div>
               <div class="sixcol last">

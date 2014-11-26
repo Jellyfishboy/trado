@@ -36,6 +36,16 @@ class Admin::Skus::VariantsController < ApplicationController
         render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_skus }
     end
 
+    def update
+        @variant_array = []
+        @variant_types.each do |type|
+            @variant_array << params[type.name.downcase.to_sym].split(/,\s*/)
+        end
+        @product.skus.includes(:variants).where.not(sku_variants: { name: @variant_array.reject!(&:empty?) } ).destroy_all
+
+        render partial: 'admin/products/skus/variants/update', format: [:js]
+    end
+
     def destroy
 
     end

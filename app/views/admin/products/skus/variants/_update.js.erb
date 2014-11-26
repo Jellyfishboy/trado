@@ -1,5 +1,6 @@
+$('#sku-variants-form').modal('hide');
 <% unless @product.skus.active.empty? %>
-    $("tr#sku_<%= params[:id] %>").remove();
+    $('#skus').html('<%=j render "admin/products/skus/table" %>');
 <% else %>
     $('#add-sku-button').hide();
     $('#skus').html('<div class="helper-notification"><p>You do not have any SKU variants for this product.</p><i class="icon-tags"></i></div>')
@@ -7,7 +8,7 @@
 soca.animation.alert(
     '#skus',
     'success',
-    'sku-destroy-alert',
-    '<i class="icon-checkmark-circle"></i>Successfully deleted the SKU.',
+    'sku-variant-update-alert',
+    '<i class="icon-checkmark-circle"></i>Successfully deleted SKUs.',
     3500
 )

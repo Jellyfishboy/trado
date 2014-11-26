@@ -18,5 +18,5 @@ class SkuVariant < ActiveRecord::Base
     belongs_to :sku
     belongs_to :variant_type,                       class_name: 'VariantType'
 
-    validates :name,                        presence: true
+    validates :name,                                presence: true
 end
