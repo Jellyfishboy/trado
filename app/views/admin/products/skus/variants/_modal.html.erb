@@ -7,7 +7,7 @@
         </div>
         <div class="modal-header">
           <h3 id="skuVariantsModalLabel">
-            Add variant types for this product
+            Configure variant options
           </h3>
         </div>
         <div class="modal-body">
@@ -21,6 +21,9 @@
           </fieldset>
         </div>
         <div class="modal-footer">
+          <% unless @product.skus.active.empty? %>
+            <%= link_to "Reset variants", destroy_admin_product_skus_variants_path(@product), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-red btn-large float-left' %>
+          <% end %>
           <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
           <%= submit_tag 'Submit', :class => 'btn btn-blue btn-large' %>
         </div>

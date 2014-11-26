@@ -9,6 +9,6 @@ soca.animation.alert(
     '#skus',
     'success',
     'sku-variant-update-alert',
-    '<i class="icon-checkmark-circle"></i>Successfully deleted SKUs.',
+    '<i class="icon-checkmark-circle"></i>Successfully deleted <%= pluralize(variant_count, "variant") %>.',
     3500
 )
