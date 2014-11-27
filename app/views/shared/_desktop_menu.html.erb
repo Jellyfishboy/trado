@@ -9,7 +9,7 @@
       <i class="icon-lab"></i>
     <% end %>
   </li>
-  <li class="<%= active_controller?(controller: 'admin/products') %>">
+  <li class="<%= active_controller?(controller: 'admin/products') %> <%= active_controller?(controller: 'admin/products/stock') %>">
     <%= link_to admin_products_path, 'data-toggle' => 'tooltip', 'data-placement' => 'right', 'data-original-title' => 'Products' do %>
       <i class="fa fa-th-large"></i>
     <% end %>

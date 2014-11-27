@@ -44,9 +44,9 @@ class Sku < ActiveRecord::Base
   validate :stock_values,                                             on: :create
   validates :code,                                                    uniqueness: { scope: [:product_id, :active] }
 
-  after_update :update_cart_items_weight
+  after_update :update_cart_items_weight                             
 
-  after_create :create_stock_adjustment
+  after_update :create_stock_adjustment,                              :if => :no_stock_adjustments?                
 
   accepts_nested_attributes_for :variants
 
@@ -86,6 +86,10 @@ class Sku < ActiveRecord::Base
   # @return [String] product SKU and current SKU concatenated
   def full_sku
     [product.sku, code].join('-')
+  end
+
+  def no_stock_adjustments?
+    stock_adjustments.empty? ? true : false
   end
 
   # After creating a SKU record, also create a stock level record which logs the intiial stock value
