@@ -10,7 +10,7 @@
         Please enter your email address and we'll let you know when
         %strong
           = "#{sku.product.name} " 
-          = sku.attribute_value unless sku.product.single?
+          = render_variants(sku) unless sku.product.single?
         is back in stock!
       .control-group
         = f.label :email, :class => 'control-label hidden shown-ie8'

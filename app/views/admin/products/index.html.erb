@@ -77,6 +77,7 @@
                     <% product.skus.each do |sku| %>
                       <tr>
                         <td>
+                          <%= render_variants(sku) %>
                         </td>
                         <td>
                           <%= Store::Price.new(price: sku.price, tax_type: 'net').single %>

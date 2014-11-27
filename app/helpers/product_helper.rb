@@ -9,4 +9,8 @@ module ProductHelper
         product_featured = product.featured? ? " product-featured" : nil
         return "product-#{product.status}#{product_category}#{product_featured}"
     end
+
+    def render_variants sku
+        sku.variants.map{|v| v.name.titleize}.join(' / ')
+    end
 end

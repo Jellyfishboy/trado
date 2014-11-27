@@ -58,7 +58,7 @@
             - if @product.single?
               = f.hidden_field :sku_id, value: @product.skus.first.id
             - else
-              = f.select :sku_id, options_for_select(@skus.map { |s| [s.variants.map{|v| v.name.titleize}.join(' / '), s.id ] } )
+              = f.select :sku_id, options_for_select(@skus.map { |s| [render_variants(s), s.id ] } )
             - unless @product.accessories.active.empty?
               = f.fields_for @cart_item_accessory do |ff|
                 = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), prompt: "No accessory (+£0.00)"

@@ -31,7 +31,7 @@
                 <%= sku.product.name %>
               </td>
               <td>
-                <%= sku.attribute_value %>
+                <%= render_variants(sku) %>
               </td>
               <td>
                 <%= sku.stock_total %>
