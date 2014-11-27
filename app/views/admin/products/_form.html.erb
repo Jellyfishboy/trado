@@ -1,5 +1,8 @@
 <%= form_for [:admin, @product], html: {role: 'form', method: :patch} do |f| %>
-  <%= render partial: 'shared/errors', format: [:html], locals: { object: @product }  %>
+  <div class="threecol"></div>
+  <div class="ninecol last">
+    <%= render partial: 'shared/errors', format: [:html], locals: { object: @product }  %>
+  </div>
   <%= render 'admin/products/section/basic_details', format: [:html], f: f %>
   <%= render 'admin/products/section/images', format: [:html], f: f %>
   <%= render 'admin/products/section/skus', format: [:html], f: f %>

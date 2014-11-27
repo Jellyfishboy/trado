@@ -14,7 +14,7 @@
         <div class="loading-overlay"></div>
         <div class="modal-header">
           <h3 id="skuModalLabel">
-            <%= @form_sku.code.nil? ? "Edit SKU" : "Edit #{@form_sku.full_sku} SKU" %>
+            <%= @form_sku.id.nil? ? "Add variant" : @form_sku.code.nil? ? "Edit variant" : "Edit #{@form_sku.code} variant" %>
           </h3>
         </div>
         <div class="modal-body">
@@ -37,7 +37,7 @@
                   <div class="sixcol <%= index == 0 ? nil : index % 2 ? 'last' : nil %>">
                     <div class="form-group">
                       <label><%= variant.variant_type.name %></label>
-                      <%= f.fields_for variant do |ff |%>
+                      <%= f.fields_for :variants, variant do |ff |%>
                         <%= ff.text_field :name, :class => 'form-control' %>
                       <% end %>
                     </div>
@@ -48,7 +48,7 @@
             <div class="row">
               <div class="twelvecol">
                   <div class="form-group">
-                    <label>SKU code</label>
+                    <%= f.label :code %>
                     <% if @form_sku.code.nil? %>
                       <%= f.text_field :code, :class => 'form-control' %>
                     <% else %>

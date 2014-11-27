@@ -27,7 +27,7 @@ class Admin::Skus::VariantsController < ApplicationController
             sku.save(validate: false)
             @skus << sku
         end
-        @variants.sort_by{|v| v[:count] }.reverse.each_with_index do |variant, index|
+        @variants.each_with_index do |variant, index|
             possible_variants = @total_possible_skus/variant[:count]
             values = variant[:values]*possible_variants
             values = index != 0 ? values.sort_by!{|v| v.downcase } : values
