@@ -19,9 +19,11 @@ module Store
 
         # Price logic
         # You can override the tax calculation logic with a string in the second item of the parameter array
+        # If price is nil, set price to 0
         #
         # @return [Decimal] price
         def price
+            @price = @price.nil? ? 0 : @price
             Store::settings.tax_breakdown ? (tax_type == 'gross' ? taxify(@price) : @price) : (tax_type == 'net' ? @price : taxify(@price))
         end
 

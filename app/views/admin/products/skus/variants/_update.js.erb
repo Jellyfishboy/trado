@@ -2,7 +2,7 @@ $('#sku-variants-form').modal('hide');
 <% unless @product.skus.active.empty? %>
     $('#skus').html('<%=j render "admin/products/skus/table" %>');
 <% else %>
-    $('#add-sku-button').hide();
+    $('#add-sku-button').addClass('hide');
     $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>')
 <% end %>
 soca.animation.alert(

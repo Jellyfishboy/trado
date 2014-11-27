@@ -56,12 +56,12 @@
               %span.clickable.remove-one.fa.fa-minus-square
             \ 
             - if @product.single?
-              = f.hidden_field :sku_id, :value => @product.skus.first.id
+              = f.hidden_field :sku_id, value: @product.skus.first.id
             - else
-              = f.select :sku_id, options_for_select(@skus.map { |sku| [sku.attribute_value, sku.id ] } )
+              = f.select :sku_id, options_for_select(@skus.map { |s| [s.variants.map{|v| v.name.titleize}.join(' / '), s.id ] } )
             - unless @product.accessories.active.empty?
               = f.fields_for @cart_item_accessory do |ff|
-                = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), :prompt => "No accessory (+£0.00)"
+                = ff.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), prompt: "No accessory (+£0.00)"
             - if @skus.first.stock > 0
               = button_tag(:type => 'submit', :class => 'btn btn-danger pull-right add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}") do
                 %i.fa.fa-shopping-cart
@@ -71,7 +71,7 @@
                 %i.fa.fa-envelope
                 &nbsp; Notify me
           %hr/
-          / ==========.order('attribute_value desc')
+          / ==========
           / = Share buttons =
           / ==========
           .share-item.push-down-20

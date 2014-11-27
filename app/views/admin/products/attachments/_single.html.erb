@@ -1,5 +1,8 @@
 <div class="attachments <%= attachment.default_record ? 'default' : nil %>" id="attachment-<%= attachment.id %>">
-  <%= image_tag attachment.file.square, height: 140, width: 140 %>
+  <%= image_tag attachment.file.square, height: 150, width: 150 %>
+  <%= link_to admin_product_attachment_path(attachment.attachable, attachment), remote: true, :class => "label label-blue" do %>
+    <i class="icon-search"></i>
+  <% end %>
   <%= link_to edit_admin_product_attachment_path(attachment.attachable, attachment), remote: true, :class => "label label-green" do %>
     <i class="icon-pencil"></i>
   <% end %>

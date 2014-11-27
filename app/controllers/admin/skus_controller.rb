@@ -47,6 +47,11 @@ class Admin::SkusController < ApplicationController
             new_stock_adjustment.sku_id = @sku.id
             new_stock_adjustment.save!
           end
+          @old_sku.variants.each do |variant|
+            new_variant = variant.dup
+            new_variant.sku_id = @sku.id
+            new_variant.save!
+          end
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
         end
         format.js { render partial: 'admin/products/skus/update', format: [:js] }

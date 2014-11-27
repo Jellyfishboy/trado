@@ -67,7 +67,7 @@ Trado::Application.routes.draw do
       mount RedactorRails::Engine => '/redactor_rails'
       resources :accessories, :categories, except: :show
       resources :products, except: [:show, :create] do
-        resources :attachments, except: [:index, :show]
+        resources :attachments, except: :index
         resources :skus, except: [:index, :show] do
           resources :stock_adjustments, only: [:create, :new]
         end

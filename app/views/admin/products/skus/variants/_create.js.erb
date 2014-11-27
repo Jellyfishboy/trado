@@ -1,6 +1,6 @@
 $('#sku-variants-form').modal('hide');
 $('#skus').html('<%=j render "admin/products/skus/table" %>');
-$('#add-sku-button').show();
+$('#add-sku-button').removeClass('hide');
 soca.animation.alert(
     '#skus',
     'success',
