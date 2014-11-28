@@ -60,6 +60,7 @@ class Product < ActiveRecord::Base
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
   validate :attachment_count,                                 :if => :published?
   validate :sku_count,                                        :if => :published?
+  validate :sku_attributes,                                   :if => :published?
   
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
@@ -77,6 +78,9 @@ class Product < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
 
+  # Find all associated variants by their variant type
+  # @param variant_type [String]
+  #
   def variant_collection_by_type variant_type
     variants.joins(:variant_type).where(variant_types: { name: variant_type })
   end
@@ -96,7 +100,17 @@ class Product < ActiveRecord::Base
   #
   def sku_count
     if self.skus.map(&:active).count == 0
-      errors.add(:product, " must have at least one SKU.")
+      errors.add(:product, " must have at least one variant.")
+      return false
+    end
+  end
+
+  # Checks if all the associated skus are valid when publishing the product
+  # If not, returns a helpful error for the user
+  # 
+  def sku_attributes
+    if self.skus.active.map(&:valid?).include?(false)
+      errors.add(:base, "You must complete all variants before publishing the product.")
       return false
     end
   end

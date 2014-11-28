@@ -22,7 +22,7 @@
             <% @variant_types.each do |type| %>
               <div class="form-group">
                 <%= label_tag type.name %>
-                <%= text_field_tag type.name.downcase, params[type.name.to_sym], 'data-role' => 'tagsinput', value: @product.variant_collection_by_type(type.name).map(&:name).join(",") %>
+                <%= text_field_tag type.name.downcase, params[type.name.to_sym], value: @product.variant_collection_by_type(type.name).map(&:name).join(","), :class => 'tagsinput' %>
               </div>
             <% end %>
           </fieldset>

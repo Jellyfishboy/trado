@@ -1,4 +1,5 @@
 $('#sku-variants-form').modal('hide');
+<% @skus = @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc) %>
 <% unless @product.skus.active.empty? %>
     $('#skus').html('<%=j render "admin/products/skus/table" %>');
 <% else %>

@@ -3,6 +3,7 @@ class Admin::SkusController < ApplicationController
   before_action :set_product
   before_action :set_sku, except: [:edit, :new, :create]
   before_action :authenticate_user!
+  after_action :set_skus, only: :update
 
   def new
     @form_sku = @product.skus.build
