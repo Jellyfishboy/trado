@@ -60,6 +60,7 @@ gem 'global'
 gem 'protected_attributes'
 gem 'tzinfo-data'
 gem 'active_presenter'
+gem "auto_strip_attributes", "~> 2.0"
 
 # Pagination
 gem 'kaminari'

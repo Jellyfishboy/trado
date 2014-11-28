@@ -6,11 +6,12 @@
 #
 # Table name: sku_variants
 #
-#  id                       :integer          not null, primary key
+#  id                       :integer            not null, primary key
+#  name                     :string(255)
 #  sku_id                   :integer
 #  variant_type_id          :integer          
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  created_at               :datetime           not null
+#  updated_at               :datetime           not null
 #
 class SkuVariant < ActiveRecord::Base
     attr_accessible :name, :sku_id, :variant_type_id
@@ -19,4 +20,6 @@ class SkuVariant < ActiveRecord::Base
     belongs_to :variant_type,                       class_name: 'VariantType'
 
     validates :name,                                presence: true
+
+    auto_strip_attributes :name
 end

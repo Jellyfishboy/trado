@@ -43,6 +43,7 @@ class Sku < ActiveRecord::Base
   validates :stock, :stock_warning_level,                             presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :new_record?
   validate :stock_values,                                             on: :create
   validates :code,                                                    uniqueness: { scope: [:product_id, :active] }
+  validate :variant_duplication
 
   after_update :update_cart_items_weight                             
 
@@ -90,6 +91,16 @@ class Sku < ActiveRecord::Base
 
   def no_stock_adjustments?
     stock_adjustments.empty? ? true : false
+  end
+
+  def variant_duplication
+    return false if self.variants.map{|v| v.name.nil?}.include?(true)
+    @new_variant = self.variants.map{|v| v.name}.join('/')
+    @all_associated_variants = self.product.skus.active.where.not(id: self.id).map{|s| s.variants.map{|v| v.name}.join('/') }
+    if @all_associated_variants.include?(@new_variant)
+        errors.add(:base, "Variants combination already exists.")
+        return false
+    end
   end
 
   # After creating a SKU record, also create a stock level record which logs the intiial stock value
