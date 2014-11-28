@@ -6,6 +6,7 @@ class Admin::SkusController < ApplicationController
 
   def new
     @form_sku = @product.skus.build
+    @form_sku.variants.build
     render partial: 'admin/products/skus/new_edit', format: [:js]
   end
 

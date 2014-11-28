@@ -45,9 +45,9 @@ class Admin::Skus::VariantsController < ApplicationController
         @variant_types.each do |type|
             @variant_array << params[type.name.downcase.to_sym].split(/,\s*/)
         end
-        @missing_variants = @product.skus.includes(:variants).where.not(sku_variants: { name: @variant_array.reject(&:empty?) } )
-        @variant_count = @missing_variants.count
-        @missing_variants.destroy_all
+        @delete_variants = @product.skus.includes(:variants).where.not(sku_variants: { name: @variant_array.reject(&:empty?) } )
+        @variant_count = @delete_variants.count
+        @delete_variants.destroy_all
 
         render partial: 'admin/products/skus/variants/update', format: [:js], locals: { variant_count: @variant_count}
     end

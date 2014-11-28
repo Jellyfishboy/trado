@@ -30,17 +30,6 @@ describe Sku do
 
     it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:product_id, :active]) }
 
-
-    describe "Default scope" do
-        let!(:sku_1) { create(:sku, code: 200) }
-        let!(:sku_2) { create(:sku, code: 101) }
-        let!(:sku_3) { create(:sku, code: 55) }
-
-        it "should return an array of skus ordered by ascending code" do
-            expect(Sku.last(3)).to match_array([sku_3, sku_2, sku_1])
-        end
-    end
-
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
         let(:create_sku) { create(:sku, stock: 55) }

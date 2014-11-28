@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody id="sku-fields">
-      <% @product.skus.active.each do |sku| %>
+      <% @skus.each do |sku| %>
         <tr id="sku_<%= sku.id %>">
           <%= render partial: 'admin/products/skus/single', format: [:html], locals: { sku: sku } %>
         </tr>

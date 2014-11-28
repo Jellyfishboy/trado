@@ -3,7 +3,7 @@ class Admin::Products::StockController < ApplicationController
     layout 'admin'
 
     def index
-        @skus = Sku.includes(:product).active.all
+        @skus = Sku.includes(:product).complete.active.all
     end
 
     def show

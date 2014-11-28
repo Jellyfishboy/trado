@@ -67,7 +67,7 @@ class Order < ActiveRecord::Base
 
   scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
-  scope :paypal,                                                 -> { completed_collection.where(transactions: { payment_type: 'express-checkout' }) }
+  scope :paypal,                                                        -> { completed_collection.where(transactions: { payment_type: 'express-checkout' }) }
 
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address

@@ -14,7 +14,7 @@
         <div class="loading-overlay"></div>
         <div class="modal-header">
           <h3 id="skuModalLabel">
-            <%= @form_sku.id.nil? ? "Add variant" : @form_sku.code.nil? ? "Edit variant" : "Edit #{@form_sku.code} variant" %>
+            <%= @form_sku.id.nil? ? "Add variant" : @form_sku.code.nil? ? "Edit variant" : "Edit variant: #{@form_sku.code}" %>
           </h3>
         </div>
         <div class="modal-body">
@@ -25,8 +25,8 @@
                   <div class="sixcol <%= index == 0 ? nil : index % 2 ? 'last' : nil %>">
                     <div class="form-group">
                       <label><%= type.name %></label>
-                      <% variant = @form_sku.variants.build(variant_type_id: type.id) %>
-                      <%= f.fields_for :variants, variant do |ff |%>
+                      <%= f.fields_for :variants do |ff |%>
+                        <%= ff.hidden_field :variant_type_id, value: type.id %>
                         <%= ff.text_field :name, :class => 'form-control' %>
                       <% end %>
                     </div>
@@ -52,7 +52,7 @@
                     <% if @form_sku.code.nil? %>
                       <%= f.text_field :code, :class => 'form-control' %>
                     <% else %>
-                      <p><%= @form_sku.code %></p>
+                      <div class="form-disabled form-disabled-green"><%= @form_sku.code %></div>
                     <% end %>
                   </div>
               </div>  
@@ -84,7 +84,7 @@
                     <% if @form_sku.stock.nil? %>
                       <%= f.text_field :stock, :class => 'form-control' %>
                     <% else %>
-                      <p><%= @form_sku.stock %></p>
+                      <div class="form-disabled form-disabled-green"><%= @form_sku.stock %></div>
                     <% end %>
                   </div>
               </div>
