@@ -10,7 +10,10 @@
     </div>
     <div class="form-group">
       <%= f.label :price %>
-      <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      <div class="form-prefix">
+        <span><%= Store::settings.currency %></span>
+        <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      </div>
     </div>
     <div class="form-group">
       <%= f.label :description %>

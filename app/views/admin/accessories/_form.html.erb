@@ -26,11 +26,17 @@
     </div>
     <div class="form-group">
       <%= f.label :cost_value %>
-      <%= f.text_field :cost_value, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      <div class="form-prefix">
+        <span><%= Store::settings.currency %></span>
+        <%= f.text_field :cost_value, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      </div>
     </div>
     <div class="form-group form-last">
       <%= f.label 'Net price' %>
-      <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      <div class="form-prefix">
+        <span><%= Store::settings.currency %></span>
+        <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
+      </div>
     </div>
   </fieldset>
   <div class="form-action">
