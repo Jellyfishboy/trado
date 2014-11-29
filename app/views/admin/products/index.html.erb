@@ -36,7 +36,12 @@
     <span>Sort by:</span>
   </div>
   <% if @products.empty? %>
-    <p>You don't have any products yet.</p>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any products yet.</p>
+        <i class="fa fa-th-large"></i>
+      </div>
+    </div>
   <% else %>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover table-margin">
