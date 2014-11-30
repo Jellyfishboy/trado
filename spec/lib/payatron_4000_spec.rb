@@ -9,7 +9,7 @@ describe Payatron4000 do
         it "should set the correct stock_total for the new stock_adjustment record" do
             original_stock = order.order_items.first.sku.stock_adjustments.first.stock_total
             update
-            expect(order.order_items.first.sku.stock_total).to eq original_stock - 5
+            expect(order.order_items.first.sku.stock).to eq original_stock - 5
         end
 
         it "should update the relevant SKU's stock" do

@@ -54,7 +54,7 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id]) unless params[:id].nil?
     @sku = @cart_item.nil? ? Sku.find(params[:cart_item][:sku_id]) : @cart_item.sku
     @quantity = params[:action] == 'create' ? ((current_cart.cart_items.where(sku_id: @sku.id).sum(:quantity)) + params[:cart_item][:quantity].to_i) :  params[:cart_item][:quantity].to_i
-    if @quantity > @sku.stock_total
+    if @quantity > @sku.stock
       render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
       return false
     end

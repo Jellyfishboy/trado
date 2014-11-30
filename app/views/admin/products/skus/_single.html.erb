@@ -2,7 +2,7 @@
 <% sku.variants.each do |variant| %>
     <td><%= variant.name %></td>
 <% end %>
-<td><%= sku.stock_total %></td>
+<td><%= sku.stock %></td>
 <td><%= Store::Price.new(price: sku.cost_value, tax_type: 'net').single %></td>
 <td><%= Store::Price.new(price: sku.price, tax_type: 'net').single %></td>
 <%= table_actions [:admin, sku.product, sku], 'remote-edit', 'remote-delete' %>

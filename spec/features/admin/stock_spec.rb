@@ -54,7 +54,6 @@ feature 'Stock management' do
         end
         within 'tbody tr:first-child td:last-child' do
             expect(page).to have_content sku.stock
-            expect(page).to have_content sku.stock_total
         end
     end
 

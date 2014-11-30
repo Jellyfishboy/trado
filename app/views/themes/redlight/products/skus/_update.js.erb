@@ -2,7 +2,7 @@
    @sku = Sku.find(params[:sku_id])
 %>
 $('.product-title span.price').html('<%=j Store::Price.new(price: (@sku.price + @accessory_price)).markup %>');
-<% if @sku.stock_total < 1 %>
+<% if @sku.stock < 1 %>
     $('.stock').html('<span class="btn btn-danger">Out of Stock</span>');
     $('.add-to-cart').replaceWith("<%=j link_to('<i class=\'fa fa-envelope\'></i> Notify me'.html_safe, notify_category_product_sku_path(@sku.product.category, @sku.product, @sku), :class => 'btn btn-warning pull-right notify-me', remote: true) %>");
 <% else %>

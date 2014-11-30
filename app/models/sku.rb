@@ -74,14 +74,6 @@ class Sku < ActiveRecord::Base
     end
   end
 
-  # Current stock for a SKU is the latest stock adjustment record
-  # Which is related to the SKU
-  #
-  # @return [Integer] Stock value
-  def stock_total
-    stock_adjustments.empty? ? stock : stock_adjustments.first.stock_total
-  end
-
   # Joins the parent product SKU and the current SKU with a hyphen
   #
   # @return [String] product SKU and current SKU concatenated

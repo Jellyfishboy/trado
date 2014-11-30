@@ -19,12 +19,8 @@ describe StockAdjustment do
         context "if the adjustment value results in a negative stock value" do
             let!(:stock_adjustment) { create(:stock_adjustment, adjustment: -5, description: 'Order #1', sku_id: sku.id)}
 
-            it "should set the correct stock_total value for the new stock adjustment record" do
-                sku.reload
-                expect(sku.stock_total).to eq 5
-            end
 
-            it "should set the correct stock_total value for the new stock adjustment record" do
+            it "should set the correct value for the sku stock attribute" do
                 sku.reload
                 expect(sku.stock).to eq 5
             end
@@ -33,12 +29,7 @@ describe StockAdjustment do
         context "if the adjustment value results in a positive stock value" do
             let!(:stock_adjustment) { create(:stock_adjustment, adjustment: 3, description: 'New stock', sku_id: sku.id) }
 
-            it "should set the correct stock_total value for the new stock adjustment record" do
-                sku.reload
-                expect(sku.stock_total).to eq 13
-            end
-
-            it "should set the correct stock_total value for the new stock adjustment record" do
+            it "should set the correct value for the sku stock attribute" do
                 sku.reload
                 expect(sku.stock).to eq 13
             end
