@@ -79,7 +79,7 @@
               <td class="inner-table">
                 <table>
                   <tbody>
-                    <% product.skus.each do |sku| %>
+                    <% product.skus.active.each do |sku| %>
                       <tr>
                         <td>
                           <%= render_variants(sku) %>
