@@ -36,4 +36,22 @@ describe OrderHelper do
             end
         end
     end
+
+    describe '#selected_country' do
+        let!(:cart) { create(:cart) }
+
+        context "if the order_address parameter is nil" do
+
+            it "should return the estimate_country_name attribute from the cart parameter" do
+                expect(selected_country(cart, nil)).to eq cart.estimate_country_name
+            end
+        end
+
+        context "if the order_address parameter is not nil" do
+
+            it "should return the order_address parameter" do
+                expect(selected_country(cart, 'United Kingdom')).to eq 'United Kingdom'
+            end
+        end
+    end
 end

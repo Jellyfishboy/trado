@@ -77,7 +77,7 @@ module Payatron4000
             cart.cart_items.collect do |item|
                 {
                   :name               => item.sku.product.name,
-                  :description        => items.sku.variants.map{|v| v.name.titleize}.join(' / '),
+                  :description        => item.sku.variants.map{|v| v.name.titleize}.join(' / '),
                   :amount             => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
                   :quantity           => item.quantity 
                 }

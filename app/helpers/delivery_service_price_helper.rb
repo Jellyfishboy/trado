@@ -4,7 +4,12 @@ module DeliveryServicePriceHelper
         [min, max].join(' - ')
     end
 
-    def cart_delivery_price cart_delivery_price
-        return cart_delivery_price.nil? ? 0 : cart_delivery_price.price
+    # If not delivery price exists, fallback to zero.
+    #
+    # @param cart_delivery [Object]
+    # @return [Integer/Decimal] price of delivery
+    #
+    def cart_delivery_price cart_delivery
+        return cart_delivery.nil? ? 0 : cart_delivery.price
     end
 end

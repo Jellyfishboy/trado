@@ -106,8 +106,8 @@ describe Payatron4000::Paypal do
         end
 
         it "should set the correct description" do
-            expect(express_items[0][:description]).to eq cart_item_2.sku.attribute_value.to_s
-            expect(express_items[1][:description]).to eq cart_item_1.sku.attribute_value.to_s
+            expect(express_items[0][:description]).to eq cart_item_2.sku.variants.map{|v| v.name.titleize}.join(' / ')
+            expect(express_items[1][:description]).to eq cart_item_1.sku.variants.map{|v| v.name.titleize}.join(' / ')
         end
 
         it "should set the correct amount" do

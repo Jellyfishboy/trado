@@ -46,4 +46,12 @@ describe ProductHelper do
             end
         end
     end
+
+    describe '#render_variants' do
+        let!(:sku) { create(:sku) }
+
+        it "should return a string containing all the associated variants to a sku" do
+            expect(render_variants(sku)).to eq sku.variants.map{|v| v.name.titleize}.join(' / ')
+        end
+    end
 end
