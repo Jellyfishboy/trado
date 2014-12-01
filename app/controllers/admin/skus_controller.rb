@@ -67,9 +67,8 @@ class Admin::SkusController < ApplicationController
 
   # Destroying a SKU
   #
-  def destroy  
-    CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
-    @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
+  def destroy
+    Store.active_archive(CartItem, :sku_id, @sku)
     render partial: "admin/products/skus/destroy", format: [:js]
   end
 

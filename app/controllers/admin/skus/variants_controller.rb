@@ -56,8 +56,9 @@ class Admin::Skus::VariantsController < ApplicationController
     end
 
     def destroy
-        @product.skus.active.destroy_all
-
+        @product.skus.active.each do |sku|
+            Store.active_archive(CartItem, :sku_id, @accessory)
+        end
         render partial: 'admin/products/skus/variants/destroy', format: [:js]
     end
 
