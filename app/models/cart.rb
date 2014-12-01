@@ -55,8 +55,20 @@ class Cart < ActiveRecord::Base
     @length = skus.map(&:length).max
     @thickness = skus.map(&:thickness).max
     @total_weight = cart_items.map(&:weight).sum
-    @delivery_service_prices = DeliveryServicePrice.select('delivery_service_prices.id').active.where(':total_weight >= delivery_service_prices.min_weight AND :total_weight <= delivery_service_prices.max_weight AND :length >= delivery_service_prices.min_length AND :length <= delivery_service_prices.max_length AND :thickness >= delivery_service_prices.min_thickness AND :thickness <= delivery_service_prices.max_thickness', total_weight: @total_weight, length: @length, thickness: @thickness).joins(:delivery_service).where(':gross_amount > delivery_services.order_price_minimum AND (:gross_amount < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', gross_amount: @cart_total[:gross_amount]).joins('LEFT OUTER JOIN delivery_service_prices t2 ON (delivery_service_prices.delivery_service_id = t2.delivery_service_id AND delivery_service_prices.price > t2.price)').where('t2.delivery_service_id IS NULL').map(&:id)
-    return @delivery_service_prices
+    @initial_delivery_service_prices = DeliveryServicePrice.find_by_sql(['SELECT *
+      FROM   delivery_service_prices d1
+      WHERE  active = true
+      AND    ? BETWEEN min_weight AND max_weight AND ? BETWEEN min_length AND max_length AND ? BETWEEN min_thickness AND max_thickness
+      AND NOT EXISTS (
+         SELECT 1
+         FROM   delivery_service_prices d2
+         WHERE  active = true
+         AND    ? BETWEEN min_weight AND max_weight AND ? BETWEEN min_length AND max_length AND ? BETWEEN min_thickness AND max_thickness
+         AND    d2.delivery_service_id = d1.delivery_service_id
+         AND    d2.price < d1.price
+         )', @total_weight, @length, @thickness, @total_weight, @length, @thickness]).map(&:id)
+    @final_delivery_service_prices = DeliveryServicePrice.where(id: @initial_delivery_service_prices).joins(:delivery_service).where(':gross_amount > delivery_services.order_price_minimum AND (:gross_amount < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', gross_amount: @cart_total[:gross_amount]).map(&:id)
+    return @final_delivery_service_prices
   end
   
   private

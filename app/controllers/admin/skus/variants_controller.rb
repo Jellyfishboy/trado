@@ -56,7 +56,6 @@ class Admin::Skus::VariantsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         @product.skus.active.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end
