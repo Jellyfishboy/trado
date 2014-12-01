@@ -49,6 +49,8 @@ class Sku < ActiveRecord::Base
 
   after_update :create_stock_adjustment,                              :if => :no_stock_adjustments?                
 
+  before_destroy :set_product_as_draft,                               :if => :last_active_sku?
+
   accepts_nested_attributes_for :variants
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
@@ -81,10 +83,16 @@ class Sku < ActiveRecord::Base
     [product.sku, code].join('-')
   end
 
+  # If there are no associated stock adjustment records, return true
+  # Else return false
+  #
   def no_stock_adjustments?
     stock_adjustments.empty? ? true : false
   end
 
+  # Validates the variant combination against the other active SKUs associated with the product
+  # If variant combination already exists, return an error to the form
+  #
   def variant_duplication
     return false if self.variants.map{|v| v.name.nil?}.include?(true)
     @new_variant = self.variants.map{|v| v.name}.join('/')
@@ -93,6 +101,20 @@ class Sku < ActiveRecord::Base
         errors.add(:base, "Variants combination already exists.")
         return false
     end
+  end
+
+  # Updates the product's status to 'Draft'
+  #
+  def set_product_as_draft
+    product.draft!
+  end
+
+  # If the associated parent product has one SKU, return true
+  # Else return false
+  #
+  # @return [Boolean]
+  def last_active_sku?
+    product.skus.active.count == 1 ? true : false
   end
 
   # After creating a SKU record, also create a stock level record which logs the intiial stock value
