@@ -1,8 +1,11 @@
 class Admin::AttachmentsController < ApplicationController
-  
   before_action :set_product
-  before_action :set_attachment, only: [:edit, :destroy, :update]
+  before_action :set_attachment, except: [:new, :create]
   before_action :authenticate_user!
+
+  def show
+    render partial: 'admin/products/attachments/show', format: [:js]
+  end
 
   def new 
     @attachment = @product.attachments.build

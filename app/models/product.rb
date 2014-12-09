@@ -18,7 +18,6 @@
 #  weighting                :integer 
 #  sku                      :string(255)
 #  featured                 :boolean 
-#  single                   :boolean
 #  active                   :boolean            default(true)
 #  category_id              :integer    
 #  status                   :integer            default(0)
@@ -31,7 +30,7 @@ class Product < ActiveRecord::Base
 
   attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
-  :short_description, :related_ids, :single, :active, :status, :order_count
+  :short_description, :related_ids, :active, :status, :order_count, :variant_ids
 
   has_many :skus,                                             dependent: :delete_all, inverse_of: :product
   has_many :orders,                                           through: :skus
@@ -46,6 +45,8 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
+  has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
+  has_many :variant_types,                                    -> { uniq }, through: :variants
 
   validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
   validates :meta_description, :description, 
@@ -57,15 +58,15 @@ class Product < ActiveRecord::Base
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
-  validate :single_product
   validate :attachment_count,                                 :if => :published?
   validate :sku_count,                                        :if => :published?
+  validate :sku_attributes,                                   :if => :published?
   
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :skus
 
-  default_scope { order('weighting DESC') }
+  default_scope { order(weighting: :desc) }
 
   scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
 
@@ -75,6 +76,14 @@ class Product < ActiveRecord::Base
   
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
+
+
+  # Find all associated variants by their variant type
+  # @param variant_type [String]
+  #
+  def variant_collection_by_type variant_type
+    variants.joins(:variant_type).where(variant_types: { name: variant_type })
+  end
 
   # Calculate if a product has at least one associated attachment
   # If no associated attachments exist, return an error
@@ -91,20 +100,26 @@ class Product < ActiveRecord::Base
   #
   def sku_count
     if self.skus.map(&:active).count == 0
-      errors.add(:product, " must have at least one SKU.")
+      errors.add(:product, " must have at least one variant.")
+      return false
+    end
+  end
+
+  # Checks if all the associated skus are valid when publishing the product
+  # If not, returns a helpful error for the user
+  # 
+  def sku_attributes
+    if self.skus.active.map(&:valid?).include?(false)
+      errors.add(:base, "You must complete all variants before publishing the product.")
       return false
     end
   end
   
-  # Detects if a product has more than one SKU when attempting to set the single product field as true
-  # The sku association needs to map an attribute block in order to count the number of records successfully
-  # The standard self.skus.count is performed using the record ID, which none of the SKUs currently have
+  # If a product has only one SKU it returns true
+  # Else if the product has more than one SKU, returns false
   #
   # @return [Boolean]
-  def single_product
-    if self.single && self.skus.map(&:active).count > 1
-      errors.add(:single, " product cannot be set if the product has more than one SKU.")
-      return false
-    end
+  def single?
+    skus.map(&:active).count == 1 ? true : false
   end
 end

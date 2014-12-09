@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :sku do
-        code { |n| "5#{n}" }
+        sequence(:code) { |n| "5#{n}" }
         sequence(:cost_value) { |n| n }
         sequence(:price) { |n| n }
         stock { 30 }
@@ -8,18 +8,19 @@ FactoryGirl.define do
         sequence(:length) { |n| n }
         sequence(:weight) { |n| n }
         sequence(:thickness) { |n| n }
-        sequence(:attribute_value) { |n| n }
         active { false }
 
-        association :attribute_type
         association :product
 
-        # skip after_create :create_stock_level
-        after(:build) { |sku| sku.class.skip_callback(:create, :after, :create_stock_level) }
+        # skip after_create :create_stock_adjustment
+        # 
+        factory :skip_after_stock_adjustment_sku do
+            after(:build) { |sku| sku.class.skip_callback(:create, :after, :create_stock_adjustment) }
+        end
 
-        # initialize after_create :create_stock_level
-        factory :sku_after_stock_level do
-            after(:create) { |sku| sku.send(:create_stock_level) }
+        # initialize after_create :create_stock_adjustment
+        factory :sku_after_stock_adjustment do
+            after(:create) { |sku| sku.send(:create_stock_adjustment) }
         end
 
         factory :sku_in_stock do

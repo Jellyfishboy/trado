@@ -3,6 +3,7 @@ class Admin::ProductsController < ApplicationController
   before_action :clean_drafts, only: :index
   before_action :authenticate_user!
   before_action :set_product, only: [:edit, :update]
+  before_action :set_skus, only: [:edit, :update]
   layout 'admin'
 
   def index
@@ -17,7 +18,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -62,7 +62,7 @@ class Admin::ProductsController < ApplicationController
 
     def get_associations
       @accessories = Accessory.active.load
-      @products = Product.published.load
+      @products = Product.active.published.load
       @categories = Category.all
     end
 
@@ -71,6 +71,10 @@ class Admin::ProductsController < ApplicationController
     end
 
     def set_product
-      @product = Product.includes(:skus, :accessories, :attachments).find(params[:id])
+      @product = Product.includes(:skus, :accessories, :attachments, :variant_types).find(params[:id])
+    end
+
+    def set_skus
+      @skus = @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc)
     end
 end

@@ -1,0 +1,40 @@
+<div aria-hidden="true" aria-labelledby="skuVariantsModalLabel" class="modal fade" id="sku-variants-form" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag @product.skus.active.empty? ? admin_product_skus_variants_path(@product) : update_admin_product_skus_variants_path(@product), remote: true do |f| %>
+        <div class="json" id="errors">
+          <ul></ul>
+        </div>
+        <div class="loading5">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+        <div class="loading-overlay"></div>
+        <div class="modal-header">
+          <h3 id="skuVariantsModalLabel">
+            Configure variant options
+          </h3>
+        </div>
+        <div class="modal-body">
+          <fieldset class="widget widget-content widget-last">
+            <% @variant_types.each do |type| %>
+              <div class="form-group">
+                <%= label_tag type.name %>
+                <%= text_field_tag type.name.downcase, params[type.name.to_sym], value: @product.variant_collection_by_type(type.name).map(&:name).join(","), :class => 'tagsinput' %>
+              </div>
+            <% end %>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <% unless @product.skus.active.empty? %>
+            <%= link_to "Reset variants", destroy_admin_product_skus_variants_path(@product), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-red btn-large float-left' %>
+          <% end %>
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+          <%= submit_tag 'Submit', :class => 'btn btn-blue btn-large' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

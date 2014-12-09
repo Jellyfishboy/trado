@@ -7,7 +7,7 @@
       = link_to item.sku.product.name, [item.sku.product.category, item.sku.product]
       = link_to [current_cart, item], method: :delete, remote: true, title: 'Remove item' do
         %i.fa.fa-times-circle
-      %div= sku_attribute_values(item.sku, item.sku.product.single)
+      %div= render_variants(item.sku) unless item.sku.product.single?
     %td.qty
       = form_for [current_cart, item], remote: true do |f|
         = f.text_field :quantity, value: item.quantity, :class => 'tiny-size'

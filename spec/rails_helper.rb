@@ -24,6 +24,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  # Exclusions
+  config.filter_run_excluding broken: true
+
+  # Factory Girl helpers
   config.include FactoryGirl::Syntax::Methods
 
   # Controller macros

@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112083937) do
+ActiveRecord::Schema.define(version: 20141124125049) do
 
   # These are extensions that must be enabled in order to support this database
-  # enable_extension "plpgsql"
+  enable_extension "plpgsql"
 
   create_table "accessories", force: true do |t|
     t.string   "name"
@@ -60,12 +60,6 @@ ActiveRecord::Schema.define(version: 20141112083937) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "default_record",  default: false
-  end
-
-  create_table "attribute_types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "cart_item_accessories", force: true do |t|
@@ -235,7 +229,6 @@ ActiveRecord::Schema.define(version: 20141112083937) do
     t.boolean  "featured"
     t.boolean  "active",            default: true
     t.text     "short_description"
-    t.boolean  "single"
     t.integer  "status",            default: 0
     t.integer  "order_count",       default: 0
     t.string   "page_title"
@@ -272,6 +265,14 @@ ActiveRecord::Schema.define(version: 20141112083937) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "sku_variants", force: true do |t|
+    t.integer  "sku_id"
+    t.integer  "variant_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "skus", force: true do |t|
     t.decimal  "price",               precision: 8, scale: 2
     t.decimal  "cost_value",          precision: 8, scale: 2
@@ -284,17 +285,16 @@ ActiveRecord::Schema.define(version: 20141112083937) do
     t.decimal  "length",              precision: 8, scale: 2
     t.decimal  "weight",              precision: 8, scale: 2
     t.decimal  "thickness",           precision: 8, scale: 2
-    t.string   "attribute_value"
-    t.integer  "attribute_type_id"
     t.boolean  "active",                                      default: true
   end
 
-  create_table "stock_levels", force: true do |t|
+  create_table "stock_adjustments", force: true do |t|
     t.string   "description"
-    t.integer  "adjustment",  default: 0
+    t.integer  "adjustment",  default: 1
     t.integer  "sku_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "stock_total"
   end
 
   create_table "store_settings", force: true do |t|
@@ -361,5 +361,11 @@ ActiveRecord::Schema.define(version: 20141112083937) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "variant_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

@@ -6,6 +6,9 @@
     <%= link_to new_admin_product_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add product" do %>
       <i class="icon-plus"></i>
     <% end %>
+    <%= link_to admin_products_stock_index_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Stock management" do %>
+      <i class="icon-bars"></i>
+    <% end %>
     <h2 class="widget widget-header">Products</h2>
   </div>
   <div class="widget-controls">
@@ -33,7 +36,12 @@
     <span>Sort by:</span>
   </div>
   <% if @products.empty? %>
-    <p>You don't have any products yet.</p>
+    <div class="widget widget-content">
+      <div class="helper-notification">
+        <p>You don't have any products yet.</p>
+        <i class="fa fa-th-large"></i>
+      </div>
+    </div>
   <% else %>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover table-margin">
@@ -71,10 +79,10 @@
               <td class="inner-table">
                 <table>
                   <tbody>
-                    <% product.skus.each do |sku| %>
+                    <% product.skus.active.each do |sku| %>
                       <tr>
                         <td>
-                          <%= sku.attribute_value %>
+                          <%= render_variants(sku) %>
                         </td>
                         <td>
                           <%= Store::Price.new(price: sku.price, tax_type: 'net').single %>

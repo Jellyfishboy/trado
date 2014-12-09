@@ -10,7 +10,6 @@ FactoryGirl.define do
         featured { false }
         active { false }
         sequence(:weighting) { |n| n }
-        single { false }
         status { 'draft' }
         order_count { 0 }
 
@@ -69,7 +68,7 @@ FactoryGirl.define do
 
         factory :product_sku_stock_count do
             after(:create) do |product, evaluator|
-                create(:sku_after_stock_level, product: product, stock: 10, active: true)
+                create(:sku_after_stock_adjustment, product: product, stock: 10, active: true)
             end
         end
 

@@ -64,18 +64,6 @@ describe Product do
         end
     end
 
-    describe "Setting a product as a single product" do
-        let!(:product) { build(:build_product_skus, single: true) }
-        context "when the product has more than one SKUs" do
-
-            it "should produce an error" do
-                product.valid?
-                expect(product).to have(1).errors_on(:single)
-                expect(product.errors.messages[:single]).to eq [" product cannot be set if the product has more than one SKU."]
-            end
-        end
-    end
-
     describe "Validating the product associated attachment count" do
         let!(:product) { build(:build_product_skus) }
 

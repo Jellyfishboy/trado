@@ -67,9 +67,15 @@ Trado::Application.routes.draw do
       mount RedactorRails::Engine => '/redactor_rails'
       resources :accessories, :categories, except: :show
       resources :products, except: [:show, :create] do
-        resources :attachments, except: [:index, :show]
+        resources :attachments, except: :index
         resources :skus, except: [:index, :show] do
-          resources :stock_levels, only: [:create, :new]
+          resources :stock_adjustments, only: [:create, :new]
+        end
+        namespace :skus do
+          resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: [:new, :create] do
+            post 'update', on: :collection, as: 'update'
+            delete 'destroy', on: :collection, as: 'destroy'
+          end
         end
       end
       resources :orders, only: [:index, :show, :update, :edit]
@@ -83,6 +89,7 @@ Trado::Application.routes.draw do
       
       namespace :products do
         resources :tags, only: :index
+        resources :stock, only: [:index, :show]
       end
       resources :pages, except: [:show, :destroy, :new, :create]
       get '/settings' => 'admin#settings'

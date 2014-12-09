@@ -27,21 +27,44 @@ describe ApplicationHelper do
     end
 
     describe '#active_controller?' do
-        before(:each) do
-            helper.stub(:params) { { controller: 'product' } }
-        end
 
-        context "if the controller parameter equals the parameter[:controller] value" do
+        context "if action parameter is nil" do
+            before(:each) do
+                helper.stub(:params) { { controller: 'product' } }
+            end
 
-            it "should return the 'current' class name" do
-                expect(helper.active_controller?('product')).to eq 'current'
+            context "if the controller parameter equals the parameter[:controller] value" do
+
+                it "should return the 'current' class name" do
+                    expect(helper.active_controller?(controller: 'product')).to eq 'current'
+                end
+            end
+
+            context "if the controller parameter does not equal the parameter[:controller] value" do
+
+                it "should return nil" do
+                    expect(helper.active_controller?(controller: 'category')).to eq nil
+                end
             end
         end
 
-        context "if the controller parameter does not equal the parameter[:controller] value" do
+        context "if action parameter is not nil" do
+            before(:each) do
+                helper.stub(:params) { { controller: 'product', action: 'show' } }
+            end
 
-            it "should return nil" do
-                expect(helper.active_controller?('category')).to eq nil
+            context "if the controller parameter equals the parameter[:controller] value and the action parameter equal the parameter[:action]" do
+
+                it "should return the 'current' class name" do
+                    expect(helper.active_controller?(controller: 'product', action: 'show')).to eq 'current'
+                end
+            end
+
+            context "if the controller parameter does not equal the parameter[:controller] value and/or the action parameter does not equal the parameter[:action]" do
+
+                it "should return nil" do
+                    expect(helper.active_controller?(controller: 'category', action: 'show')).to eq nil
+                end
             end
         end
     end

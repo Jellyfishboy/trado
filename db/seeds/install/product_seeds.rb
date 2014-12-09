@@ -9,17 +9,6 @@ category = Category.create({
     page_title: 'Page title for your category',
     meta_description: 'Meta description for your category'
 })
-attribute_type = AttributeType.create({
-    name: 'Size',
-})
-AttributeType.create([
-    {
-        name: 'Color'
-    },
-    {
-        name: 'Style'
-    }
-])
 product_1 = Product.new({
     part_number: '1', 
     name: 'Your first product', 
@@ -33,7 +22,7 @@ product_1 = Product.new({
     single: false,
     active: true,
     category_id: category.id,
-    status: 1
+    status: 0
 })
 product_1.send :set_slug
 product_1.save(validate: false)
@@ -50,7 +39,7 @@ product_2 = Product.new({
     single: true,
     active: true,
     category_id: category.id,
-    status: 1    
+    status: 0    
 })
 product_2.send :set_slug
 product_2.save(validate: false)
@@ -83,50 +72,12 @@ Tagging.create([
         product_id: product_1.id
     }
 ])
-Sku.create([
-    {
-        code: '55', 
-        length: '100', 
-        weight: '20', 
-        thickness: '75', 
-        attribute_value: '20g', 
-        attribute_type_id: attribute_type.id, 
-        stock: 20, 
-        stock_warning_level: 5, 
-        cost_value: '5.56', 
-        price: '25.82', 
-        product_id: product_1.id, 
-        active: true
-    },
-    {
-        code: '33', 
-        length: '128.67', 
-        weight: '33', 
-        thickness: '55', 
-        attribute_value: '33g', 
-        attribute_type_id: attribute_type.id, 
-        stock: 40, 
-        stock_warning_level: 5, 
-        cost_value: '12.47', 
-        price: '67.13', 
-        product_id: product_1.id, 
-        active: true
-    },
-    {
-        code: '10', 
-        length: '11.67', 
-        weight: '13', 
-        thickness: '15', 
-        attribute_value: '13g', 
-        attribute_type_id: attribute_type.id, 
-        stock: 100, 
-        stock_warning_level: 5, 
-        cost_value: '1.47', 
-        price: '7.23', 
-        product_id: product_2.id, 
-        active: true
-    }
-])
+size_variant = VariantType.create({
+    name: 'Size',
+})
+color_variant = VariantType.create({
+        name: 'Color'
+})
 Attachment.create([
     {
         attachable_id: product_1.id, 

@@ -11,10 +11,12 @@ module Payatron4000
         # @param order [Object]
         def update_stock order
             order.order_items.each do |item|
-              sku = Sku.find(item.sku_id)
-              description = item.order_item_accessory.nil? ? "Order ##{order.id}" : "Order ##{order.id} (+ #{item.order_item_accessory.accessory.name})"
-              StockLevel.create(description: description, adjustment: "-#{item.quantity}", sku_id: item.sku_id)
-              sku.update_column(:stock, sku.stock-item.quantity)
+                sku = Sku.find(item.sku_id)
+                description = item.order_item_accessory.nil? ? "Order ##{order.id}" : "Order ##{order.id} (+ #{item.order_item_accessory.accessory.name})"
+                stock_adjustment = StockAdjustment.new(description: description, adjustment: -item.quantity, sku_id: item.sku_id)
+                stock_adjustment.stock_total = sku.stock_adjustments.first.stock_total - item.quantity
+                stock_adjustment.save!
+                sku.update_column(:stock, sku.stock - item.quantity)
             end
         end
 

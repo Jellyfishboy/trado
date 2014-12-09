@@ -24,6 +24,7 @@ Trado::Application.configure do
                                 'modernizr/modernizr.js', 
                                 'products.js',
                                 'admin/soca.datepicker.js',
+                                'admin/chart.js',
                                 'typeahead.js/dist/typeahead.jquery.min.js',
                                 'theia-sticky-sidebar/js/theia-sticky-sidebar.js'
                               ]
@@ -97,7 +98,6 @@ Trado::Application.configure do
     :user_name            => Settings.mailer.production.user_name,
     :password             => Settings.mailer.production.password,
     :enable_starttls_auto => true
-
   }
 
   # Paypal

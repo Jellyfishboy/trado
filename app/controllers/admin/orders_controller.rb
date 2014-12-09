@@ -16,7 +16,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-
     respond_to do |format|
       begin
         @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]

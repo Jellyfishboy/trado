@@ -14,6 +14,7 @@
     <link href="/stylesheets/font.css" media="screen" rel="stylesheet">
     <%= javascript_include_tag "modernizr/modernizr" %>
     <%= javascript_include_tag :administration, "data-turbolinks-track" => true %>
+    <%= yield :header %>
   </head>
   <body>
     <div class="all-wrapper">

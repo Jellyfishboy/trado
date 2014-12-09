@@ -1,30 +1,16 @@
-<div class="widget-sub-heading">
-  <h3>Accessories</h3>
+<div class="threecol">
+  <h3>Associations</h3>
+  <p>Select associated accessories and related products for your product (related products will be displayed on the product page).</p>
 </div>
-<% if @accessories.empty? %>
-  <div class="label label-orange label-margin">
-    <i class="icon-spam icon-cancel-circle"></i>
-    There are no accessories to select
-  </div>
-<% else %>
+<div class="ninecol last">
   <div class="widget widget-content">
-    <div class="form-group form-last">
+    <div class="form-group">
+      <label>Accessories</label>
       <%= f.collection_select :accessory_ids, @accessories, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated accessories..."}} %>
     </div>
-  </div>
-<% end %>
-<div class="widget-sub-heading">
-  <h3>Related products</h3>
-</div>
-<% if @products.where.not(name: @product.name).empty? %>
-  <div class="label label-orange label-margin">
-    <i class="icon-spam icon-cancel-circle"></i>
-    There are no related products to select
-  </div>
-<% else %>
-  <div class="widget widget-content">
     <div class="form-group form-last">
+      <label>Related products</label>
       <%= f.collection_select :related_ids, @products.where.not(name: @product.name), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select related products..."}} %>
     </div>
   </div>
-<% end %>
+</div>

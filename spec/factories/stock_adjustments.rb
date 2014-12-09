@@ -1,8 +1,8 @@
 FactoryGirl.define do
-    factory :stock_level do
+    factory :stock_adjustment do
         description { Faker::Lorem.word }
         adjustment { 5 }
-        
-        association :sku
+        stock_total { 5 }
+
     end
 end

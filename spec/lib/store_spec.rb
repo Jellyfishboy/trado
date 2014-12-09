@@ -75,10 +75,10 @@ describe Store do
     end
 
     describe "When rendering an object's parent class name" do
-        let(:attribute_type) { create(:attribute_type) }
+        let(:variant_type) { create(:variant_type) }
 
         it "should return a string" do
-            expect(Store::class_name(attribute_type)).to eq 'Attribute Type'
+            expect(Store::class_name(variant_type)).to eq 'Variant Type'
         end
     end
 

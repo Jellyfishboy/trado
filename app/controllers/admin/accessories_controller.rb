@@ -1,5 +1,4 @@
 class Admin::AccessoriesController < ApplicationController
-  
   before_action :set_accessory, only: [:update, :destroy]
   before_action :authenticate_user!
   layout 'admin'
@@ -72,8 +71,7 @@ class Admin::AccessoriesController < ApplicationController
   # Destroying an accessory
   #
   def destroy
-    CartItemAccessory.where('accessory_id = ?', @accessory.id).destroy_all unless @accessory.carts.empty?
-    @accessory.orders.empty? ? @accessory.destroy : Store::inactivate!(@accessory)
+    Store.active_archive(CartItemAccessory, :accessory_id, @accessory)
     flash_message :success, 'Accessory was successfully deleted.'
     redirect_to admin_accessories_url
   end

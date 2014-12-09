@@ -89,5 +89,10 @@ module Store
             slug = slug.parameterize.split('_').join('-')
             return slug
         end
+
+        def active_archive class_name, symbol, record
+            class_name.where(symbol => record.id).destroy_all unless record.carts.empty?
+            record.orders.empty? ? record.destroy : Store::inactivate!(record)
+        end
     end
 end

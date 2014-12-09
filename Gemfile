@@ -60,6 +60,7 @@ gem 'global'
 gem 'protected_attributes'
 gem 'tzinfo-data'
 gem 'active_presenter'
+gem "auto_strip_attributes", "~> 2.0"
 
 # Pagination
 gem 'kaminari'
@@ -91,6 +92,9 @@ gem 'whenever', '>= 0.8.4', :require => false
 
 # JS Variables
 gem 'gon'
+
+# GA
+gem 'google-api-client'
 
 # Performance
 gem 'fast_blank'

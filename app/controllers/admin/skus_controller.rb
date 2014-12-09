@@ -6,6 +6,7 @@ class Admin::SkusController < ApplicationController
 
   def new
     @form_sku = @product.skus.build
+    @form_sku.variants.build
     render partial: 'admin/products/skus/new_edit', format: [:js]
   end
 
@@ -42,10 +43,15 @@ class Admin::SkusController < ApplicationController
     respond_to do |format|
       if @sku.update(params[:sku])
         if @old_sku
-          @old_sku.stock_levels.each do |sl|
-            new_stock_level = sl.dup
-            new_stock_level.sku_id = @sku.id
-            new_stock_level.save!
+          @old_sku.stock_adjustments.each do |sa|
+            new_stock_adjustment = sa.dup
+            new_stock_adjustment.sku_id = @sku.id
+            new_stock_adjustment.save!
+          end
+          @old_sku.variants.each do |variant|
+            new_variant = variant.dup
+            new_variant.sku_id = @sku.id
+            new_variant.save!
           end
           CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
         end
@@ -61,9 +67,8 @@ class Admin::SkusController < ApplicationController
 
   # Destroying a SKU
   #
-  def destroy  
-    CartItem.where('sku_id = ?', @sku.id).destroy_all unless @sku.carts.empty?
-    @sku.orders.empty? ? @sku.destroy : Store::inactivate!(@sku)
+  def destroy
+    Store.active_archive(CartItem, :sku_id, @sku)
     render partial: "admin/products/skus/destroy", format: [:js]
   end
 

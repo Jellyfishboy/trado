@@ -8,4 +8,4 @@
     %p There is not enough stock for the following item:
     %p
       %b= "#{sku.product.name}"
-      = "(#{sku_attribute_values(sku, sku.product.single)})" unless sku.product.single
+      = render_variants(sku) unless sku.product.single?

@@ -76,10 +76,10 @@ module Payatron4000
         def self.express_items cart
             cart.cart_items.collect do |item|
                 {
-                  :name => item.sku.product.name,
-                  :description => item.sku.attribute_value,
-                  :amount => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
-                  :quantity => item.quantity 
+                  :name               => item.sku.product.name,
+                  :description        => item.sku.variants.map{|v| v.name.titleize}.join(' / '),
+                  :amount             => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
+                  :quantity           => item.quantity 
                 }
             end
         end
@@ -124,16 +124,16 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.successful response, order
-            Transaction.new(  :fee => response.params['PaymentInfo']['FeeAmount'],  
-                              :order_id => order.id, 
-                              :payment_status => response.params['PaymentInfo']['PaymentStatus'].downcase, 
-                              :transaction_type => 'Credit', 
-                              :tax_amount => response.params['PaymentInfo']['TaxAmount'], 
-                              :paypal_id => response.params['PaymentInfo']['TransactionID'], 
-                              :payment_type => response.params['PaymentInfo']['TransactionType'],
-                              :net_amount => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
-                              :gross_amount => response.params['PaymentInfo']['GrossAmount'],
-                              :status_reason => response.params['PaymentInfo']['PendingReason']
+            Transaction.new(  :fee                      => response.params['PaymentInfo']['FeeAmount'],  
+                              :order_id                 => order.id, 
+                              :payment_status           => response.params['PaymentInfo']['PaymentStatus'].downcase, 
+                              :transaction_type         => 'Credit', 
+                              :tax_amount               => response.params['PaymentInfo']['TaxAmount'], 
+                              :paypal_id                => response.params['PaymentInfo']['TransactionID'], 
+                              :payment_type             => response.params['PaymentInfo']['TransactionType'],
+                              :net_amount               => response.params['PaymentInfo']['GrossAmount'].to_d - response.params['PaymentInfo']['TaxAmount'].to_d,
+                              :gross_amount             => response.params['PaymentInfo']['GrossAmount'],
+                              :status_reason            => response.params['PaymentInfo']['PendingReason']
             ).save(validate: false)
             Payatron4000::update_stock(order)
             Payatron4000::increment_product_order_count(order.products)
@@ -145,17 +145,17 @@ module Payatron4000
         # @param response [Object]
         # @param order [Object]
         def self.failed response, order
-            Transaction.new(  :fee => 0, 
-                              :gross_amount => order.gross_amount, 
-                              :order_id => order.id, 
-                              :payment_status => 'failed', 
-                              :transaction_type => 'Credit', 
-                              :tax_amount => order.tax_amount, 
-                              :paypal_id => '', 
-                              :payment_type => 'express-checkout',
-                              :net_amount => order.net_amount,
-                              :status_reason => response.message,
-                              :error_code => response.params["error_codes"].to_i
+            Transaction.new(  :fee                        => 0, 
+                              :gross_amount               => order.gross_amount, 
+                              :order_id                   => order.id, 
+                              :payment_status             => 'failed', 
+                              :transaction_type           => 'Credit', 
+                              :tax_amount                 => order.tax_amount, 
+                              :paypal_id                  => nil, 
+                              :payment_type               => 'express-checkout',
+                              :net_amount                 => order.net_amount,
+                              :status_reason              => response.message,
+                              :error_code                 => response.params["error_codes"].to_i
             ).save(validate: false)
             Payatron4000::increment_product_order_count(order.products)
         end
