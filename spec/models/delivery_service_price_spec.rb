@@ -21,6 +21,8 @@ describe DeliveryServicePrice do
 
     it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
 
+    it { expect(subject).to validate_uniqueness_of(:price) }
+
     describe "Retrieving the related delivery service prices for a country" do
         let!(:delivery_service_1) { create(:delivery_service_with_countries) }
         let!(:delivery_service_2) { create(:delivery_service_with_country) }
