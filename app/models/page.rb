@@ -16,11 +16,13 @@
 #  slug                     :string(255)
 #  active                   :boolean
 #  template_type            :integer            default(0)
+#  sorting                  :integer            default(0)
 #  created_at               :datetime           not null
 #  updated_at               :datetime           not null
 #
 class Page < ActiveRecord::Base
-    attr_accessible :title, :menu_title, :content, :page_title, :meta_description, :slug, :active, :template_type
+    attr_accessible :title, :menu_title, :content, :page_title, :meta_description, 
+    :slug, :active, :template_type, :sorting
 
     validates :title, :content, :page_title, :meta_description, :menu_title,                presence: true
     validates :title, :slug, :menu_title,                                                   uniqueness: true
@@ -29,10 +31,9 @@ class Page < ActiveRecord::Base
 
     enum template_type: [:standard, :contact]
 
-    default_scope { order(title: :asc)}
+    default_scope { order(sorting: :asc) }
     
     include ActiveScope
-
 
     def render_menu_title
         menu_title.blank? ? title : menu_title

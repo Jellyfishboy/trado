@@ -9,6 +9,7 @@
         <thead>
           <tr>
             <th>Title</th>
+            <th>Sorting</th>
             <th>Visible</th>
             <th>Last updated</th>
             <th></th>
@@ -19,6 +20,9 @@
             <tr>
               <td>
                 <%= page.title %>
+              </td>
+              <td>
+                <%= page.sorting %>
               </td>
               <td>
                 <%= page.active ? "<i class='icon-checkmark icon-green'></i>".html_safe : "<i class='icon-close icon-red'></i>".html_safe  %>

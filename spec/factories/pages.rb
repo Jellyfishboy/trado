@@ -7,6 +7,7 @@ FactoryGirl.define do
         meta_description { Faker::Lorem.sentence }
         slug { Faker::Lorem.characters(10) }
         active { true }
+        sequence(:sorting) { |n| n }
 
         factory :standard_page do
             template_type { 0 }

@@ -17,11 +17,11 @@ describe Page do
     it { expect(subject).to ensure_length_of(:meta_description).is_at_most(150) }
 
     describe "Default scope" do
-        let!(:page_1) { create(:standard_page, title: 'zed') }
-        let!(:page_2) { create(:standard_page, title: 'adam') }
-        let!(:page_3) { create(:standard_page, title: 'harold') }
+        let!(:page_1) { create(:standard_page, sorting: 2) }
+        let!(:page_2) { create(:standard_page, sorting: 0) }
+        let!(:page_3) { create(:standard_page, sorting: 1) }
 
-        it "should return an array of pages ordered by ascending title value" do
+        it "should return an array of pages ordered by ascending sorting value" do
             expect(Page.last(3)).to match_array([page_2, page_3, page_1])
         end
     end
