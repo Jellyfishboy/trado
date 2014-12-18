@@ -13,7 +13,6 @@
 #  email                                  :string(255)     
 #  user_id                                :integer     
 #  cart_id                                :integer
-#  tax_number                             :integer 
 #  delivery_id                            :integer        
 #  shipping_status                        :integer              default(0)   
 #  shipping_date                          :datetime 
@@ -30,7 +29,7 @@
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
-  attr_accessible :tax_number, :shipping_status, :shipping_date, :actual_shipping_cost, 
+  attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, 
   :delivery_address_attributes, :billing_address_attributes, :created_at

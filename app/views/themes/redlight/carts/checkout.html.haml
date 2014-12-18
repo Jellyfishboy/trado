@@ -138,12 +138,6 @@
                             = fff.text_field :telephone, :class => 'span4', :id => 'billing_telephone'
                             = errors_for @order, 'billing_address.telephone'
                         .control-group
-                          = f.label :tax_number, :class => 'control-label' do
-                            Tax number
-                          .controls
-                            = f.text_field :tax_number, :class => 'span4', :id => 'tax_number'
-                            = errors_for @order, 'billing_address.tax_number'
-                        .control-group
                           = fff.label :city, :class => 'control-label' do
                             City
                             %span.red-clr.bold *
