@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Category do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:products).dependent(:restrict_with_exception) }
+    it { expect(subject).to have_many(:products) }
     it { expect(subject).to have_many(:skus).through(:products) }
 
     #Validations

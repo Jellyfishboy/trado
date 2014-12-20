@@ -21,7 +21,7 @@ class Category < ActiveRecord::Base
 
   attr_accessible :description, :name, :active, :sorting, :page_title, :meta_description
 
-  has_many :products,                                    dependent: :restrict_with_exception
+  has_many :products
   has_many :skus,                                        through: :products
 
   validates :name,:description, :sorting,
