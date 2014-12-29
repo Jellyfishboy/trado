@@ -44,6 +44,9 @@ Trado::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.action_controller.asset_host = Settings.mailer.development.host
+  config.action_mailer.asset_host = Settings.mailer.development.host
+
   # PayPal settings
   config.after_initialize do
     Rails.application.routes.default_url_options[:host] = Settings.mailer.development.host

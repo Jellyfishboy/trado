@@ -84,6 +84,8 @@ Trado::Application.configure do
   # Set default URL
   config.action_mailer.default_url_options = { :host => Settings.mailer.production.host }
 
+  config.action_mailer.asset_host = Settings.mailer.production.host
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 
