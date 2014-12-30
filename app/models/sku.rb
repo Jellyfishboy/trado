@@ -33,7 +33,7 @@ class Sku < ActiveRecord::Base
   has_many :stock_adjustments,                                        dependent: :delete_all
   has_one :category,                                                  through: :product
   belongs_to :product,                                                inverse_of: :skus
-  has_many :variants,                                                 dependent: :delete_all, class_name: 'SkuVariant'
+  has_many :variants,                                                 dependent: :delete_all, class_name: 'SkuVariant', inverse_of: :sku
   has_many :variant_types,                                            -> { uniq }, through: :variants
 
   validates :price, :cost_value, :length, 
@@ -94,6 +94,7 @@ class Sku < ActiveRecord::Base
   # If variant combination already exists, return an error to the form
   #
   def variant_duplication
+    binding.pry
     return false if self.variants.map{|v| v.name.nil?}.include?(true) || self.variants.empty?
     @new_variant = self.variants.map{|v| v.name}.join('/')
     @all_associated_variants = self.product.skus.active.where.not(id: self.id).map{|s| s.variants.map{|v| v.name}.join('/') }

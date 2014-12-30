@@ -89,4 +89,55 @@ describe Product do
             end
         end
     end
+
+    describe 'Checking if a product has a single associated Sku' do
+
+        context "if the product has one associated Sku" do
+            let!(:product) { create(:product_sku, active: true) }
+
+            it "should return true" do
+                expect(product.single?).to eq true
+            end
+        end
+
+        context "if the product has more than one associated Sku" do
+            let!(:product) { create(:product_skus, active: true) }
+
+            it "should return false" do
+                expect(product.single?).to eq false
+            end
+        end
+    end
+
+    describe 'Find all associated variants by the variant_type parameter for a product' do
+        let!(:product) { create(:product_sku, active: true) }
+        let!(:weight_variant_type) { create(:variant_type, name: 'Weight') }
+        let!(:color_variant_type) { create(:variant_type, name: 'Colour') }
+        let!(:weight_variant_1) { create(:sku_variant, name:'500g', sku_id: product.skus.first.id, variant_type_id: weight_variant_type.id) }
+        let!(:weight_variant_2) { create(:sku_variant, name: '1kg', sku_id: product.skus.first.id, variant_type_id: weight_variant_type.id) }
+
+        before(:each) do
+            create(:sku_variant, name: 'Red', sku_id: product.skus.first.id, variant_type_id: color_variant_type.id)
+        end
+
+        it "should return the correct list of variant names" do
+            expect(product.variant_collection_by_type('Weight')).to match_array([weight_variant_1, weight_variant_2])
+        end
+    end
+
+    describe 'Validating all Skus when a product is being published' do
+        let!(:product) { create(:product_sku_attachment, active: true) }
+        before(:each) do
+            build(:invalid_sku, active: true, product_id: product.id).save(validate: false)
+        end
+
+        context "with invalid attributes" do
+
+            it "should return an error" do
+                product.valid?
+                expect(product).to have(1).errors_on(:base)
+                expect(product.errors.messages[:base]).to eq ["You must complete all variants before publishing the product."]
+            end
+        end
+    end
 end
