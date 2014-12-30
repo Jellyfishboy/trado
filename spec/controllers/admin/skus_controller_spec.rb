@@ -5,6 +5,61 @@ describe Admin::SkusController do
     store_setting
     login_admin
 
+    describe 'GET #new' do
+        let!(:product) { create(:product, active: true) }
+
+        it "should create a new Sku record" do
+            xhr :get, :new, product_id: product.id
+            expect(assigns(:form_sku)).to be_a_new(Sku)
+        end
+
+        it "should create a new SkuVariant record" do
+            xhr :get, :new, product_id: product.id
+            expect(assigns(:variant)).to be_a_new(SkuVariant)
+        end
+
+        it "should render the new partial" do
+            xhr :get, :new, product_id: product.id
+            expect(response).to render_template(partial: 'admin/products/skus/_new_edit')
+        end
+    end
+
+    describe 'POST #create' do
+        let!(:product) { create(:product, active: true) }
+
+        context "with valid attributes" do
+
+            it "should save the new sku in the database" do
+                expect {
+                    xhr :post, :create, product_id: product.id, sku: attributes_for(:sku)
+                }.to change(Sku, :count).by(1)
+            end
+            it "should render the create partial"  do
+                xhr :post, :create, product_id: product.id, sku: attributes_for(:sku)
+                expect(response).to render_template(partial: 'admin/products/skus/_create')
+            end
+        end
+        context "with invalid attributes" do
+            let(:errors) { ["Code can't be blank"] }
+
+            it "should not save the new sku in the database" do
+                expect {
+                    xhr :post, :create, product_id: product.id, sku: attributes_for(:invalid_sku)
+                }.to_not change(Sku, :count)
+            end
+
+            it "should return a JSON object of errors" do
+                xhr :post, :create, product_id: product.id, sku: attributes_for(:invalid_sku)
+                expect(assigns(:form_sku).errors.full_messages).to eq errors
+            end
+
+            it "should return a 422 status code" do
+                xhr :post, :create, product_id: product.id, sku: attributes_for(:invalid_sku)
+                expect(response.status).to eq 422
+            end
+        end 
+    end
+
     describe 'GET #edit' do
         let(:product) { create(:product) }
         let(:sku) { create(:sku, product_id: product.id) }
@@ -25,6 +80,9 @@ describe Admin::SkusController do
         let!(:sku) { create(:skip_after_stock_adjustment_sku, code: 'sku123', active: true, product_id: product.id) }
         let(:new_sku) { attributes_for(:skip_after_stock_adjustment_sku, active: true, product_id: product.id) }
         let(:order) { create(:order) }
+        before(:each) do
+            create(:sku_variant, sku_id: sku.id)
+        end
 
         context "if the sku has associated orders" do
             before(:each) do
@@ -84,6 +142,12 @@ describe Admin::SkusController do
                     }.to change(StockAdjustment, :count).by(1)
                 end
 
+                it "should duplicate and save all sku variant records" do
+                    expect{
+                        xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
+                    }.to change(SkuVariant, :count).by(1)
+                end
+
                 it "should have the correct stock adjustment data" do
                     xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
                     sku = Sku.last
@@ -109,6 +173,12 @@ describe Admin::SkusController do
                     expect{
                         xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
                     }.to_not change(StockAdjustment, :count)
+                end
+
+                it "should not duplicate any sku variant records" do
+                    expect{
+                        xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
+                    }.to_not change(SkuVariant, :count)
                 end
 
                 it "should not save a new sku to the database" do

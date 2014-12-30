@@ -64,6 +64,8 @@ describe Admin::OrdersController do
         end
 
         context "with invalid attributes" do
+            let!(:order) { create(:complete_order, actual_shipping_cost: '2.55') }
+            let(:errors) { ["Actual shipping cost can't be blank"] }
 
             it "should not update the order" do
                 xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
@@ -71,7 +73,13 @@ describe Admin::OrdersController do
             end
 
             it "should return a JSON object of errors" do
+                xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
+                expect(assigns(:order).errors.full_messages).to eq errors
+            end
 
+            it "should return a 422 status code" do
+                xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
+                expect(response.status).to eq 422
             end
         end
     end
