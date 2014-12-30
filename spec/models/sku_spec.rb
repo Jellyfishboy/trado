@@ -32,7 +32,7 @@ describe Sku do
 
     describe "When creating a new SKU" do
         let!(:sku) { build(:sku, stock: 5, stock_warning_level: 10) }
-        let(:create_sku) { create(:sku, stock: 55) }
+        let(:create_sku) { create(:sku_after_stock_adjustment, stock: 55) }
         
         it "should validate whether the stock value is higher than stock_warning_level" do
             expect(sku).to have(1).error_on(:sku)

@@ -66,9 +66,8 @@ feature 'Stock management' do
         end
         expect(current_path).to eq admin_products_stock_index_path
         within 'tbody' do
-            first('tr').find('td:last-child').first(:link).trigger('click')
+            first('tr').find('td:last-child a:first-child').trigger('click')
         end
-        expect(current_path).to eq admin_products_stock_path(sku)
         within 'h2' do
             expect(page).to have_content "#{sku.full_sku} stock history"
         end
@@ -83,7 +82,7 @@ feature 'Stock management' do
 
         within '.modal#stock-adjustment-form' do
             expect(find('.modal-header h3')).to have_content "Add stock adjustment for #{sku.full_sku}"
-            fill_in('stock_adjustment_descrition', with: 'New stock')
+            fill_in('stock_adjustment_description', with: 'New stock')
             fill_in('stock_adjustment_adjustment', with: '5')
             click_button 'Submit'
         end

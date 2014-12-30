@@ -94,7 +94,7 @@ class Sku < ActiveRecord::Base
   # If variant combination already exists, return an error to the form
   #
   def variant_duplication
-    return false if self.variants.map{|v| v.name.nil?}.include?(true)
+    return false if self.variants.map{|v| v.name.nil?}.include?(true) || self.variants.empty?
     @new_variant = self.variants.map{|v| v.name}.join('/')
     @all_associated_variants = self.product.skus.active.where.not(id: self.id).map{|s| s.variants.map{|v| v.name}.join('/') }
     if @all_associated_variants.include?(@new_variant)

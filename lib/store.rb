@@ -90,6 +90,14 @@ module Store
             return slug
         end
 
+        # Active archiving logic when deleting a record
+        # Destroy any related cart items
+        # If the record has related orders, it should archive the record and set it's active attribute to true
+        #
+        # @param class_name [Class]
+        # @param symbol [Symbol]
+        # @param record [Object]
+        #
         def active_archive class_name, symbol, record
             class_name.where(symbol => record.id).destroy_all unless record.carts.empty?
             record.orders.empty? ? record.destroy : Store::inactivate!(record)

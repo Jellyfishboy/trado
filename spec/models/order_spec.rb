@@ -8,6 +8,7 @@ describe Order do
     it { expect(subject).to have_many(:order_items).dependent(:delete_all) }
     it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
     it { expect(subject).to have_many(:products).through(:order_items) }
+    it { expect(subject).to have_many(:skus).through(:order_items) }
     it { expect(subject).to belong_to(:delivery).class_name('DeliveryServicePrice') }
     it { expect(subject).to belong_to(:cart) }
     it { expect(subject).to have_one(:delivery_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }

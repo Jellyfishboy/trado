@@ -85,7 +85,7 @@ describe Product do
             it "should produce an error" do
                 product.valid?
                 expect(product).to have(1).errors_on(:product)
-                expect(product.errors.messages[:product]).to eq [" must have at least one SKU."]
+                expect(product.errors.messages[:product]).to eq [" must have at least one variant."]
             end
         end
     end

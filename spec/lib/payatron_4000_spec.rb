@@ -5,11 +5,14 @@ describe Payatron4000 do
     describe "After creating a transaction record for the associated order" do
         let!(:order) { create(:complete_order) }
         let(:update) { Payatron4000::update_stock(order) }
+        before(:each) do
+            create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20)
+        end
 
         it "should set the correct stock_total for the new stock_adjustment record" do
-            original_stock = order.order_items.first.sku.stock_adjustments.first.stock_total
+            original_stock = order.skus.first.stock
             update
-            expect(order.order_items.first.sku.stock).to eq original_stock - 5
+            expect(order.skus.first.stock).to eq original_stock - 5
         end
 
         it "should update the relevant SKU's stock" do
