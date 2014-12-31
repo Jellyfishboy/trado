@@ -17,15 +17,16 @@ class Admin::OrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      begin
-        @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time if params[:order][:shipping_date]
-      rescue
+      unless params[:order][:shipping_date].blank?
+        @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time
+
+        if @order.update(params[:order])
+          format.js { render partial: 'admin/orders/update', format: [:js] }
+        else 
+          format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
+        end
+      else
          format.json { render json: { errors: ['Shipping date can\'t be blank'] }, status: 422 }
-      end
-      if @order.update(params[:order])
-        format.js { render partial: 'admin/orders/update', format: [:js] }
-      else 
-        format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
       end
     end
   end

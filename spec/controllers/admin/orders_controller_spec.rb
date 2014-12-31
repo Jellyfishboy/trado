@@ -41,11 +41,11 @@ describe Admin::OrdersController do
         end
     end
 
-    describe 'PATCH #update' do
+    describe 'PUT #update' do
         let!(:order) { create(:order, actual_shipping_cost: '2.55') }
 
         it "should assign the requested order to @order" do
-            xhr :patch, :update , id: order.id
+            xhr :patch, :update , id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
             expect(assigns(:order)).to eq order
         end
 

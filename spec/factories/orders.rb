@@ -3,7 +3,7 @@ FactoryGirl.define do
         ip_address { Faker::Internet.ip_v4_address }
         email { Faker::Internet.email }
         shipping_status { 'pending' }
-        shipping_date { Date.new(2014, 1, 29) }
+        shipping_date { "31/12/2014" }
         sequence(:actual_shipping_cost) { |n| n }
         express_token { Faker::Lorem.characters(8) }
         express_payer_id { Faker::Lorem.characters(6) }
