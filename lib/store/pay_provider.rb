@@ -33,7 +33,7 @@ module Store
         #
         # @return [String] redirect url
         def build
-            provider.build(order, cart, ip_address)
+            provider.build(cart, order, ip_address)
         end
 
         # Triggers the complete method, under the respective payment provider class

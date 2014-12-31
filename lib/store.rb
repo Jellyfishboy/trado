@@ -84,6 +84,7 @@ module Store
         # Parameterizes strings and replaces underscores with hyphens
         #
         # @param slug [String]
+        #
         # @return [String] url friendly slug
         def parameterize_slug slug
             slug = slug.parameterize.split('_').join('-')
@@ -101,6 +102,16 @@ module Store
         def active_archive class_name, symbol, record
             class_name.where(symbol => record.id).destroy_all unless record.carts.empty?
             record.orders.empty? ? record.destroy : Store::inactivate!(record)
+        end
+
+        # Build the tracking url from the tracking_url and consignment parameters
+        #
+        # @param tracking_url [String]
+        # @param consignment_number [String]
+        #
+        # @return [String] complete tracking url
+        def tracking_url url, consignment_number
+            url.sub!('{{consignment_number}}', consignment_number)
         end
     end
 end

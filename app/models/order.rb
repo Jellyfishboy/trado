@@ -44,6 +44,7 @@ class Order < ActiveRecord::Base
   belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'
   has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
   has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
+  has_one :delivery_service,                                            through: :delivery
 
   validates :actual_shipping_cost,                                      presence: true, :if => :completed?
   validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }

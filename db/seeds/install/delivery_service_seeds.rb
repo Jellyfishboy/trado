@@ -22,7 +22,7 @@ DeliveryServicePrice.create({
 })
 DeliveryServicePrice.create({
     code: 'RM1 1kg', 
-    price: '5.67', 
+    price: '22.67', 
     description: 'Standard Royal Mail delivery service within 1-2 business days.', 
     min_weight: '0',
     max_weight: '1000',

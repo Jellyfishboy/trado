@@ -38,9 +38,16 @@
         </li>
         <li>
           <i class="icon-airplane"></i>
-          <b>Delivery option</b>
+          <b>Delivery option:</b>
           <%= @order.delivery.full_name %>
         </li>
+        <% unless @order.consignment_number.nil? || @order.delivery_service.tracking_url.nil? %>
+          <li>
+            <i class="icon-target"></i>
+            <b>Tracking:</b>
+            <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

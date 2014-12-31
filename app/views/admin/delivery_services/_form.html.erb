@@ -33,6 +33,19 @@
   </fieldset>
 </div>
 <div class="threecol">
+  <h3>Tracking</h3>
+  <p>Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.</p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group form-last">
+      <%= f.label :tracking_url %>
+      <%= f.text_field :tracking_url, :class => 'form-control' %>
+    </div>
+  </fieldset>
+  
+</div>
+<div class="threecol">
   <h3>Countries</h3>
   <p>
     Select the countries which are available for this delivery service, or
