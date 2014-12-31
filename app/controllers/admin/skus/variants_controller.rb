@@ -39,7 +39,7 @@ class Admin::Skus::VariantsController < ApplicationController
                 end
             end
 
-            render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_skus }
+            render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_possible_skus }
         end
     end
 

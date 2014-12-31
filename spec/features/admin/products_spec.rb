@@ -1,14 +1,17 @@
 require 'rails_helper'
 
-feature 'Product management', broken: true do
+feature 'Product management' do
 
     store_setting
     feature_login_admin
     given(:product) { create(:product_sku, active: true) }
     given(:not_single_product) { create(:product_sku, active: true) }
-    given(:attribute_type) { create(:attribute_type) }
     given(:accessory) { create(:accessory) }
     given(:product_skus) { create(:product_skus, active: true) }
+    given(:size_variant_type) { create(:variant_type, name: 'Size') }
+    given(:colour_variant_type) { create(:variant_type, name: 'Colour') }
+    given(:sku_variant_500) { create(:sku_variant, name: '500g', variant_type_id: size_variant_type.id, sku_id: product_skus.skus.first.id) }
+    given(:sku_variant_1000) { create(:sku_variant, name: '1kg', variant_type_id: size_variant_type.id, sku_id: product_skus.skus.last.id) }
     given(:product_sku_stock_count) { create(:product_sku_stock_count, active: true) }
     given(:multi_attachment_product) { create(:multiple_attachment_product, active: true) }
 
@@ -29,7 +32,7 @@ feature 'Product management', broken: true do
     scenario 'should add a new product (published)', js: true do
         accessory = create(:accessory)
         product_1 = create(:product_sku_attachment)
-        attribute_type = create(:attribute_type)
+        colour_variant_type
 
         visit admin_products_path
         expect{
@@ -53,7 +56,7 @@ feature 'Product management', broken: true do
 
 
         # Start attachment
-        find('a[data-original-title="Add attachment"]').click
+        find('a#add-image').click
         sleep 1
 
         within '.modal#attachment-form' do
@@ -70,18 +73,33 @@ feature 'Product management', broken: true do
         end
         # End attachment
 
-        # Start SKU
-        find('a[data-original-title="Add SKU"]').click
+        # Start variants
+        find('a#sku-variant-options-button').click
+        sleep 1
+
+        within '.modal#sku-variants-form' do
+            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            page.execute_script("$('#colour').val('Red')")
+            click_button 'Submit'
+        end
+        sleep 2
+
+        within '.sku-variant-create-alert' do
+            expect(page).to have_content "Successfully created 1 variant."
+        end
+        expect(product.skus.count).to eq 1
+        expect(product.variants.count).to eq 1
+        expect(product.variants.map(&:name)).to match_array(["Red"])
+
+        find('#sku-fields tr td:last-child').first(:link).trigger('click')
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "Add SKU"
+            expect(find('.modal-header h3')).to have_content "Edit variant"
             fill_in('sku_code', with: '50')
             fill_in('sku_length', with: '10.3')
             fill_in('sku_weight', with: '50')
             fill_in('sku_thickness', with: '27.89')
-            fill_in('sku_attribute_value', with: '50')
-            select(attribute_type.name, from: 'sku_attribute_type_id')
             fill_in('sku_stock', with: '100')
             fill_in('sku_stock_warning_level', with: '5')
             fill_in('sku_cost_value', with: '15.22')
@@ -91,9 +109,15 @@ feature 'Product management', broken: true do
         sleep 1
 
         expect(current_path).to eq edit_admin_product_path(product)
-        within '.sku-create-alert' do
-            expect(page).to have_content 'Successfully created a SKU.'
+        within '.sku-update-alert' do
+            expect(page).to have_content 'Successfully updated the variant.'
         end
+        sku = product.skus.first
+        sku.reload
+        expect(sku.length).to eq BigDecimal.new("10.3")
+        expect(sku.cost_value).to eq BigDecimal.new("15.22")
+        expect(sku.price).to eq BigDecimal.new("55.22")
+        expect(sku.stock).to eq 100
         # End SKU
 
         # Accessories
@@ -144,7 +168,6 @@ feature 'Product management', broken: true do
         expect(not_single_product.name).to eq 'product #1 woooppeeee'
         expect(not_single_product.weighting).to eq BigDecimal.new("10")
         expect(not_single_product.sku).to eq 'TA'
-        expect(not_single_product.single).to eq true
         expect(not_single_product.accessories.count).to eq 1
         expect(not_single_product.accessories.first.name).to eq accessory.name
         expect(not_single_product.accessories.first.price).to eq accessory.price
@@ -167,30 +190,122 @@ feature 'Product management', broken: true do
         end
     end
 
-    # SKUS
+    # VARIANTS
 
-    scenario 'should add a new SKU to a product', js: true do
-        product
-        attribute_type
+    scenario 'should add new variant options', js: true do
+        colour_variant_type
 
         visit admin_products_path
-        find('.table-actions').first(:link).click
+        expect{
+            find('.page-header a:first-child').click
+        }.to change(Product, :count).by(1)
+        product = Product.first
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
 
-        find('a[data-original-title="Add SKU"]').click
+        find('a#sku-variant-options-button').click
+        sleep 1
+
+        within '.modal#sku-variants-form' do
+            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            page.execute_script("$('#colour').val('Red,Blue')")
+            click_button 'Submit'
+        end
+        sleep 2
+
+        within '.sku-variant-create-alert' do
+            expect(page).to have_content "Successfully created 2 variants."
+        end
+        expect(product.variants.count).to eq 2
+        expect(product.variants.map(&:name)).to match_array(["Blue", "Red"])
+    end
+
+    scenario 'should update the variant options for a product', js: true do
+        product_skus
+        size_variant_type
+        sku_variant_500
+        sku_variant_1000
+
+        visit admin_products_path
+        find('.table-actions').first(:link).click
+        expect(current_path).to eq edit_admin_product_path(product_skus)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
+
+        find('a#sku-variant-options-button').click
+        sleep 1
+
+        within '.modal#sku-variants-form' do
+            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            find('.bootstrap-tagsinput .tag:first-child span').click
+            click_button 'Submit'
+        end
+        sleep 1
+
+        expect(product_skus.variants.count).to eq 1
+        expect(product_skus.variants.map(&:name)).to match_array(['1kg'])
+        within '.sku-variant-update-alert' do
+            expect(page).to have_content "Successfully deleted 1 variant."
+        end
+    end
+
+    scenario 'should reset variant options for a product', js: true do
+        product_skus
+        size_variant_type
+        sku_variant_500
+
+        visit admin_products_path
+        find('.table-actions').first(:link).click
+        expect(current_path).to eq edit_admin_product_path(product_skus)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
+
+        find('a#sku-variant-options-button').click
+        sleep 1
+
+        within '.modal#sku-variants-form' do
+            expect(find('.modal-header h3')).to have_content "Configure variant options"
+        end
+
+        within '.modal#sku-variants-form' do
+            find('.modal-footer').first(:link).click
+        end
+        sleep 1
+
+        expect(Sku.all.count).to eq 0
+        within '.sku-variant-reset-alert' do
+            expect(page).to have_content 'Successfully reset the variants for this product.'
+        end
+    end
+
+    # SKUS
+
+    scenario 'should add a new SKU to a product', js: true do
+        product_skus
+        size_variant_type
+        sku_variant_500
+
+        visit admin_products_path
+        find('.table-actions').first(:link).click
+        expect(current_path).to eq edit_admin_product_path(product_skus)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
+
+        find('a#add-sku-button').click
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "New SKU"
+            expect(find('.modal-header h3')).to have_content "Add variant"
+            fill_in('sku_variants_attributes_0_name', with: '1kg')
             fill_in('sku_code', with: '50')
             fill_in('sku_length', with: '10.3')
             fill_in('sku_weight', with: '50')
             fill_in('sku_thickness', with: '27.89')
-            fill_in('sku_attribute_value', with: '50')
-            select(attribute_type.name, from: 'sku_attribute_type_id')
             fill_in('sku_stock', with: '100')
             fill_in('sku_stock_warning_level', with: '5')
             fill_in('sku_cost_value', with: '15.22')
@@ -199,17 +314,17 @@ feature 'Product management', broken: true do
         end
         sleep 1
 
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(product_skus)
         within '.sku-create-alert' do
-            expect(page).to have_content 'Successfully created a SKU.'
+            expect(page).to have_content 'Successfully created a variant.'
         end
         product.reload
-        sku = product.skus.first
-        expect(product.skus.count).to eq 2 
+        sku = product_skus.skus.last
+        expect(product_skus.skus.count).to eq 4
         expect(sku.length).to eq BigDecimal.new("10.3")
         expect(sku.cost_value).to eq BigDecimal.new("15.22")
         expect(sku.price).to eq BigDecimal.new("55.22")
-        expect(sku.attribute_type).to eq attribute_type
+        expect(sku.variants.first.name).to eq '1kg'
     end
 
     scenario 'should edit a product SKU', js: true do
@@ -225,11 +340,11 @@ feature 'Product management', broken: true do
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
-        find('#sku-fields tr td:last-child a:nth-child(2)').click
+        find('#sku-fields tr td:last-child').first(:link).trigger('click')
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "Edit #{sku.full_sku} SKU"
+            expect(find('.modal-header h3')).to have_content "Edit variant: #{sku.code}"
             fill_in('sku_length', with: '10.3')
             fill_in('sku_cost_value', with: '28.98')
             fill_in('sku_price', with: '55.22')
@@ -239,7 +354,7 @@ feature 'Product management', broken: true do
 
         expect(current_path).to eq edit_admin_product_path(product)
         within '.sku-update-alert' do
-            expect(page).to have_content 'Successfully updated the SKU.'
+            expect(page).to have_content 'Successfully updated the variant.'
         end
         sku.reload
         expect(sku.length).to eq BigDecimal.new("10.3")
@@ -271,7 +386,6 @@ feature 'Product management', broken: true do
 
     scenario 'should add an image to a product', js: true do
         product
-        attribute_type
 
         visit admin_products_path
         find('.table-actions').first(:link).click
@@ -280,11 +394,11 @@ feature 'Product management', broken: true do
             expect(page).to have_content 'Edit'
         end
 
-        find('a[data-original-title="Add attachment"]').click
+        find('a#add-image').click
         sleep 1
 
         within '.modal#attachment-form' do
-            expect(find('.modal-header h3')).to have_content "New image"
+            expect(find('.modal-header h3')).to have_content "Add image"
             attach_file('attachment_file', File.expand_path("spec/dummy_data/GR12-12V-planetary-gearmotor-overview.jpg"))
             find('#attachment_default_record').set(true)
             click_button 'Submit'
@@ -303,7 +417,6 @@ feature 'Product management', broken: true do
 
     scenario 'should edit an image', js: true do
         product
-        attribute_type
         attachment = product.attachments.first
 
         visit admin_products_path
