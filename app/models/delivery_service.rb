@@ -14,11 +14,12 @@
 #  order_price_minimum            :decimal            precision(8), scale(2), default(0)
 #  order_price_maximum            :decimal            precision(8), scale(2)
 #  active                         :boolean            default(true)
+#  tracking_url                   :string(255)
 #  created_at                     :datetime           not null
 #  updated_at                     :datetime           not null
 #
 class DeliveryService < ActiveRecord::Base
-    attr_accessible :name, :description, :courier_name, :order_price_minimum, :order_price_maximum, :active, :country_ids
+    attr_accessible :name, :description, :courier_name, :order_price_minimum, :order_price_maximum, :active, :country_ids, :tracking_url
 
     has_many :prices,                                       class_name: 'DeliveryServicePrice', dependent: :delete_all
     has_many :destinations,                                 dependent: :delete_all
