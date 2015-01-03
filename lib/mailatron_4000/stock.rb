@@ -8,7 +8,7 @@ module Mailatron4000
             @skus = Sku.where('stock > stock_warning_level').includes(:notifications).where(notifications: { sent: false })
             @skus.each do |sku|
                 sku.notifications.each do |notify|
-                    StockMailer.notification(sku, notify.email).deliver
+                    StockMailer.notification(sku, notify.email).deliver_later
                     Mailatron4000::notification_sent(notify)
                 end
             end

@@ -18,7 +18,7 @@ class P::PagesController < ApplicationController
         respond_to do |format|
             if @contact_message.valid?
                 format.js { render partial: theme_presenter.page_template_path('pages/contact_message/success'), format: [:js], status: 200 }
-                StoreMailer.contact_message(params[:contact_message]).deliver
+                StoreMailer.contact_message(params[:contact_message]).deliver_later
             else
                 format.json { render json: { errors: @contact_message.errors.to_json(root: true) }, status: 422 }
             end
