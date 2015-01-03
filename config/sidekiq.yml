@@ -6,4 +6,5 @@
 # The 2 tells Sidekiq to check the associated queue twice as often
 :queues:
   - default
+  - mailers
   - [high_priority, 2]
