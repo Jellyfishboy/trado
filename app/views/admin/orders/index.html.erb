@@ -34,7 +34,7 @@
                 <%= order.id %>
               </td>
               <td>
-                <%= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
+                <%= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') unless order.transactions.last.paypal_id.nil? %>
               </td>
               <td>
                 <%= status_label order, order.shipping_status %>
