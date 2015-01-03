@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Trado::Application.routes.draw do
 
   root to: 'store#home'
@@ -65,6 +67,7 @@ Trado::Application.routes.draw do
       root to: "admin#dashboard"
       post '/paypal/ipn' => 'transactions#paypal_ipn'
       mount RedactorRails::Engine => '/redactor_rails'
+      mount Sidekiq::Web => '/sidekiq'
       resources :accessories, :categories, except: :show
       resources :products, except: [:show, :create] do
         resources :attachments, except: :index

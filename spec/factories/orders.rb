@@ -17,7 +17,7 @@ FactoryGirl.define do
         association :cart
         association :delivery, factory: :delivery_service_price
         
-        ignore do
+        transient do
             count 1
         end
         

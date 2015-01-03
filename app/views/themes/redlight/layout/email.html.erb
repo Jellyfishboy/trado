@@ -26,7 +26,7 @@ strong { font-weight:bold;}
                     <tr align="left">
                         <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '20', :height => '50' %></td>
                         <td>
-                            <%= link_to root_path, :target => '_blank' do %>
+                            <%= link_to root_url, target: '_blank' do %>
                                 <% if Store::settings.attachment %>
                                     <%= image_tag "#{Store::settings.attachment.file.square}", :alt => Store::settings.name, :style => 'display:block; border:none;', :width => 50, :height => 50 %>
                                 <% else %>

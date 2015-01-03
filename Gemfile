@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.0'
 
 gem 'pg'
 
@@ -47,6 +47,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'asset_sync'
+gem 'sprockets', '2.11.0'
 
 # AJAX file upload
 gem 'remotipart', '~> 1.2'
@@ -54,6 +55,11 @@ gem 'remotipart', '~> 1.2'
 # Fix for upload bug for Carrierwave and Rails 4.1
 ################
 gem 'activesupport-json_encoder'
+
+# Background processing
+gem 'sidekiq'
+gem 'sidekiq-failures'
+gem 'sinatra', :require => nil
 
 # Misc
 gem 'global'
@@ -70,6 +76,7 @@ gem 'redactor-rails'
 
 # Transaction handler
 gem 'activemerchant'
+gem 'offsite_payments'
 
 # Authenication
 gem 'devise'
