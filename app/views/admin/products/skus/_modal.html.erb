@@ -5,13 +5,7 @@
         <div class="json" id="errors">
           <ul></ul>
         </div>
-        <div class="loading5">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-        <div class="loading-overlay"></div>
+        <%= partial: 'shared/loading', format: [:html] %>
         <div class="modal-header">
           <h3 id="skuModalLabel">
             <%= @form_sku.id.nil? ? "Add variant" : @form_sku.code.nil? ? "Edit variant" : "Edit variant: #{@form_sku.code}" %>

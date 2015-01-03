@@ -10,7 +10,7 @@ class Admin::TransactionsController < ApplicationController
     notify = Paypal::Notification.new(request.raw_post)
     
     if notify.acknowledge
-      transaction = Transaction.where('order_id = ?', notify.params['invoice']).first
+      transaction = Transaction.where(order_id: notify.params['invoice']).first
       if notify.complete? and transaction.gross_amount.to_s == notify.params['mc_gross']
         transaction.fee = notify.params['mc_fee']
         transaction.completed!

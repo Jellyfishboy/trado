@@ -27,13 +27,7 @@
               <%= render partial: 'shared/desktop_menu', format: [:html] %>
             </div>
             <div class="main">
-              <div class="loading5">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-              <div class="loading-overlay"></div>
+              <%= partial: 'shared/loading', format: [:html] %>
               <div class="container">
                 <div class="row">
                   <%= render_flash %>
