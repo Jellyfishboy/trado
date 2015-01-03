@@ -8,6 +8,8 @@ env:
 branches:
     only:
         - master
+services:
+    - redis-server
 script:
     - RAILS_ENV=test bundle exec rake db:schema:load --trace
     - bundle exec rake db:test:prepare
