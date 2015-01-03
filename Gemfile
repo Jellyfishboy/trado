@@ -16,6 +16,7 @@ group :development do
     gem 'bullet'
     gem 'thin'
     gem 'colorize'
+    gem 'capistrano-sidekiq'
 end
 
 group :test do
