@@ -199,7 +199,11 @@
                 <%= transaction.payment_type  %>
               </td>
               <td>
-                <%= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank' if transaction.paypal_id %>
+                <% if transaction.paypal_id.nil? %>
+                  -
+                <% else %>
+                  <%= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank'  %>
+                <% end %>
               </td>
               <td>
                 <%= status_label transaction, transaction.payment_status %>
