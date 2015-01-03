@@ -57,6 +57,7 @@ feature 'Delivery service management' do
             fill_in('delivery_service_courier_name', with: 'Royal Mail')
             fill_in('delivery_service_name', with: 'Next day delivery')
             fill_in('delivery_service_description', with: 'Speedy delivery within the UK.')
+            fill_in('delivery_service_tracking_url', with: 'http://test.com/{{consignment_number}}')
             select_from_chosen(country.name, from: 'delivery_service_country_ids')
             click_button 'Submit'
         }.to change(DeliveryService, :count).by(1)
@@ -65,6 +66,7 @@ feature 'Delivery service management' do
         expect(delivery_service.courier_name).to eq 'Royal Mail'
         expect(delivery_service.name).to eq 'Next day delivery'
         expect(delivery_service.description).to eq 'Speedy delivery within the UK.'
+        expect(delivery_service.tracking_url).to eq 'http://test.com/{{consignment_number}}'
         expect(delivery_service.countries.first.name).to eq country.name
 
         expect(current_path).to eq admin_delivery_services_path
@@ -116,7 +118,7 @@ feature 'Delivery service management' do
             fill_in('delivery_service_courier_name', with: 'Royal Mail')
             fill_in('delivery_service_name', with: 'Next day delivery')
             fill_in('delivery_service_description', with: 'Speedy delivery within the UK.')
-            find('form div:nth-child(8) p a').click
+            find('form div:nth-child(10) p a').click
             sleep 1
 
             within '.modal#delivery-service-form' do

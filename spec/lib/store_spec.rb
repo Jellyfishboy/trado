@@ -158,4 +158,11 @@ describe Store do
             end
         end
     end
+
+    describe "When building the tracking url" do
+
+        it "should replace the regular expression" do
+            expect(Store.tracking_url('http://test.com/{{consignment_number}}', '12345')).to eq 'http://test.com/12345'
+        end
+    end
 end

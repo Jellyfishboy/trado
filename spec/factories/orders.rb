@@ -11,6 +11,7 @@ FactoryGirl.define do
         tax_amount { |n| n }
         gross_amount { |n| n }
         terms { true }
+        consignment_number { '123456' }
         
 
         association :cart

@@ -6,6 +6,7 @@ FactoryGirl.define do
         order_price_minimum { 0 }
         order_price_maximum { nil }
         active { false }
+        tracking_url { 'http://test.com/{{consignment_number}}' }
 
         factory :delivery_service_with_countries do
             courier_name { 'Royal Mail' }

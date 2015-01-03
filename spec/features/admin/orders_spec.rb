@@ -108,6 +108,7 @@ feature 'Order management' do
             expect(find('.modal-header h3')).to have_content "Dispatch Order ##{build_dispatch.id}"
             page.execute_script("$('#order_shipping_date').val('14/02/2015')")
             fill_in('order_actual_shipping_cost', with: '1.24')
+            fill_in('order_consignment_number', with: '123456')
             click_button 'Submit'
         end
         sleep 1
@@ -115,9 +116,10 @@ feature 'Order management' do
         expect(current_path).to eq admin_orders_path
         build_dispatch.reload
         within '.alert.alert-success' do
-            expect(page).to have_content "Successfully updated dispatch details for Order ##{build_dispatch.id} to #{build_dispatch.shipping_date.strftime("#{build_dispatch.shipping_date.day.ordinalize} %b %Y")}."
+            expect(page).to have_content "Successfully updated order ##{build_dispatch.id}"
         end
         expect(build_dispatch.actual_shipping_cost).to eq BigDecimal.new('1.24')
+        expect(build_dispatch.consignment_number).to eq '123456'
         expect(build_dispatch.shipping_date.to_s).to eq "2015-02-14 00:00:00 UTC"
     end
 end
