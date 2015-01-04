@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
-  before_action :set_order, only: [:show, :edit, :update]
+  before_action :set_order, except: :index
   before_action :authenticate_user!
   layout 'admin'
 
@@ -17,16 +17,26 @@ class Admin::OrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      unless params[:order][:shipping_date].blank?
-        @order.shipping_date = DateTime.strptime(params[:order][:shipping_date], "%d/%m/%Y").to_time
+      if @order.update(params[:order])
+        format.js { render partial: 'admin/orders/update', format: [:js] }
+        OrderMailer.tracking(@order).deliver_later if @order.dispatched?
+      else 
+        format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
+      end
+    end
+  end
 
-        if @order.update(params[:order])
-          format.js { render partial: 'admin/orders/update', format: [:js] }
-        else 
-          format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
-        end
-      else
-         format.json { render json: { errors: ['Shipping date can\'t be blank'] }, status: 422 }
+  def dispatcher
+    render partial: 'admin/orders/dispatch/dispatcher', format: [:js]
+  end
+
+  def dispatched
+    respond_to do |format|
+      @order.shipping_date = Time.now
+      @order.shipping_status = 'dispatched'
+      if @order.update(params[:order])
+        OrderMailer.dispatched(@order).deliver_later
+        format.js { render partial: 'admin/orders/dispatch/dispatched', format: [:js] }
       end
     end
   end

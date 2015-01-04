@@ -1,4 +1,4 @@
-class StoreMailerPreview < BasePreview
+class StoreMailerPreview < ActionMailer::Preview
 
     def contact_message
         params = 

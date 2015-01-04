@@ -29,30 +29,8 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
-            <tr>
-              <td>
-                <%= order.id %>
-              </td>
-              <td>
-                <% if order.transactions.last.paypal_id.nil? %>
-                  -
-                <% else %>
-                  <%= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
-                <% end %>
-              </td>
-              <td>
-                <%= status_label order, order.shipping_status %>
-              </td>
-              <td>
-                <%= status_label order.transactions.last, order.transactions.last.payment_status %>
-              </td>
-              <td>
-                <%= Store::Price.new(price: order.gross_amount, tax_type: 'net').single %>
-              </td>
-              <td>
-                <%= order.updated_at.strftime('%d/%m/%Y at %I:%M%p') %>
-              </td>
-              <%= table_actions [:admin, order], 'show', 'remote-edit' %>
+            <tr id="order_<%= order.id %>">
+              <%= render partial: 'admin/orders/single', format: [:js], locals: { order: order } %>
             </tr>
           <% end %>
         </tbody>
@@ -61,3 +39,4 @@
   <% end %>
 </div>
 <div id="order-modal"></div>
+<div id="dispatch-order-modal"></div>

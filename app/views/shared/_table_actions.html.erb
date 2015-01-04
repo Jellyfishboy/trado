@@ -9,14 +9,14 @@
       <i class="icon-search"></i>
     <% end %>
   <% end %>
-  <% if order_record && object.last.transactions.last.completed? %>
+  <% if edit %>
     <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
       <i class="icon-pencil"></i>
     <% end %>
   <% end %>
-  <% if edit && !order_record %>
-    <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
-      <i class="icon-pencil"></i>
+  <% if order_record && object.last.transactions.last.completed? && object.last.pending? %>
+    <%= link_to dispatcher_admin_order_path(object.last), remote: remote_edit do %>
+      <i class="icon-airplane"></i>
     <% end %>
   <% end %>
   <% if del %>

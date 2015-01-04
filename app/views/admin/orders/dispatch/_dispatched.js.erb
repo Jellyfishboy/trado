@@ -1,0 +1,9 @@
+$('#dispatch-order-form').modal('hide');
+$('tr#order_<%= @order.id %>').html('<%=j render partial: "admin/orders/single", format: [:html], locals: { order: @order } %>');
+soca.animation.alert(
+    '.widget-header', 
+    'success', 
+    'dispatch-order-alert',
+    '<i class="icon-checkmark-circle"></i>Successfully updated Order #<%= @order.id %> as being dispatched on <%= @order.updated_at.strftime("%d/%m/%Y") %>.',
+    5000
+)

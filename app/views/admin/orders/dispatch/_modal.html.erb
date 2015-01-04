@@ -1,0 +1,31 @@
+<div aria-hidden="true" aria-labelledby="dispatchOrderModalLabel" class="modal fade" id="dispatch-order-form" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for [:admin, @order], html: { role: 'form', method: :patch }, remote: true do |f| %>
+        <div class="json" id="errors">
+          <ul></ul>
+        </div>
+        <%= render partial: 'shared/loading', format: [:html] %>
+        <div class="modal-header">
+          <h3 id="dispatchOrderModalLabel">
+            Dispatch Order
+            <%= "##{@order.id}" %>
+          </h3>
+        </div>
+        <div class="modal-body">
+          <fieldset class="widget widget-content widget-last">
+            <% if @order.actual_shipping_cost.blank? %>
+              <p>You must set the <b>actual shipping cost</b> of an order before updating it for dispatch.</p>
+            <% else %>
+              <p>Would you like to update <b>Order #<%= @order.id %></b> as being dispatched today?</p>
+            <% end %>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+          <%= link_to 'Dispatch', dispatched_admin_order_path(@order), remote: true, method: :post, :class => 'btn btn-blue btn-large' unless @order.actual_shipping_cost.blank? %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

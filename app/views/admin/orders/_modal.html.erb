@@ -8,16 +8,12 @@
         <%= render partial: 'shared/loading', format: [:html] %>
         <div class="modal-header">
           <h3 id="orderModalLabel">
-            Dispatch Order
+            Edit Order
             <%= "##{@order.id}" %>
           </h3>
         </div>
         <div class="modal-body">
           <fieldset class="widget widget-content widget-last">
-            <div class="form-group">
-              <%= f.label :shipping_date %>
-              <%= f.text_field :shipping_date, :class => 'form-control datepicker', autocomplete: 'off', value: (@order.shipping_date.blank? ? '' : @order.shipping_date.strftime('%d/%m/%Y')) %>
-            </div>
             <div class="form-group">
               <%= f.label :actual_shipping_cost %>
               <div class="form-prefix">
