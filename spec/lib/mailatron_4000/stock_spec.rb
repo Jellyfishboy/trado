@@ -11,7 +11,7 @@ describe Mailatron4000::Stock do
         end
         context "if there are any notifications" do
 
-            it "should email a notification to each user" do
+            it "should email a notification to each user", broken: true do
                 expect {
                     Mailatron4000::Stock.notify
                 }.to change {
