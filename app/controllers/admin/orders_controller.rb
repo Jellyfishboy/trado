@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
     respond_to do |format|
       if @order.update(params[:order])
         format.js { render partial: 'admin/orders/update', format: [:js] }
-        OrderMailer.tracking(@order).deliver_later if @order.dispatched?
+        OrderMailer.tracking(@order).deliver_later if @order.completed? && @order.dispatched? && !@order.consignment_number.nil?
       else 
         format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
       end

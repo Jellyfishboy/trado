@@ -111,7 +111,7 @@ module Store
         #
         # @return [String] complete tracking url
         def tracking_url url, consignment_number
-            url.sub!('{{consignment_number}}', consignment_number)
+            url.sub('{{consignment_number}}', consignment_number)
         end
     end
 end
