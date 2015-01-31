@@ -91,6 +91,14 @@ describe Order do
         end
     end
 
+    describe "When displaying the payment type for an order" do
+        let(:paypal) { create(:paypal_order) }
+
+        it "should return the correct string for the associated transaction payment type attribute value" do
+            expect(paypal.payment_type).to eq 'paypal'
+        end
+    end
+
     describe "When calculating whether an order is completed" do
         let(:complete) { create(:complete_order) }
         let(:pending) { create(:pending_order) }

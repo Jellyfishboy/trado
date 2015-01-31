@@ -111,6 +111,13 @@ class Order < ActiveRecord::Base
     transactions.last.completed? unless transactions.empty?
   end
 
+  # Returns the payment type for a specific order
+  #
+  # @return [String]
+  def payment_type
+    transactions.order(created_at: :desc).first.payment_type
+  end
+
   def self.dashboard_data
     return {
       :completed => completed_collection.count,

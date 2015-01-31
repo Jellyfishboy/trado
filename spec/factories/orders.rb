@@ -70,6 +70,15 @@ FactoryGirl.define do
             end
         end
 
+        factory :paypal_order do
+            transactions { [create(:transaction, payment_type: 'paypal')] }
+            shipping_status { 'dispatched' }
+
+            after(:create) do |order, evaluator|
+                create(:order_item, quantity: 5, order: order)
+            end
+        end
+
         factory :failed_order do
             # has_many through relationship generation
             transactions { [create(:transaction, payment_status: 'failed')] }
