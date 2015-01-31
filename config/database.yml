@@ -22,6 +22,13 @@ test:
   pool: 5
   username: tomdallimore
   password: 
+  # adapter: mysql2
+  # encoding: utf8
+  # database: trado_test
+  # host: localhost
+  # pool: 30
+  # username: root
+  # password:
 
 
 production:
