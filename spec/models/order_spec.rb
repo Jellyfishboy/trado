@@ -92,10 +92,29 @@ describe Order do
     end
 
     describe "When displaying the payment type for an order" do
-        let(:paypal) { create(:paypal_order) }
+        let(:paypal_order) { create(:paypal_order) }
 
         it "should return the correct string for the associated transaction payment type attribute value" do
-            expect(paypal.payment_type).to eq 'paypal'
+            expect(paypal_order.payment_type).to eq 'paypal'
+        end
+    end
+
+    describe "When calculating if an order used paypal as the payment type" do
+
+        context "if the payment type is paypal" do
+            let(:paypal_order) { create(:paypal_order) }
+
+            it "should return true" do
+                expect(paypal_order.paypal?).to eq true
+            end
+        end
+
+        context "if the payment type is not paypal" do
+            let(:complete) { create(:complete_order) }
+
+            it "should return false" do
+                expect(complete.paypal?).to eq false
+            end
         end
     end
 

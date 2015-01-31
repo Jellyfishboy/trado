@@ -118,6 +118,13 @@ class Order < ActiveRecord::Base
     transactions.order(created_at: :desc).first.payment_type
   end
 
+  # Returns true if order payment type is paypal
+  #
+  # @return [Boolean]
+  def paypal?
+    payment_type == 'paypal' ? true : false
+  end
+
   def self.dashboard_data
     return {
       :completed => completed_collection.count,
