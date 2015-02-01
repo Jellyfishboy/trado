@@ -1,17 +1,10 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
     before_action :authenticate_user!, :set_tracking_code
-    before_action :set_cache_buster
     helper_method :current_cart
     helper_method :theme_presenter
 
     protected
-    
-    def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
 
     def theme_presenter
       ThemePresenter.new(theme: Store::settings.theme)
