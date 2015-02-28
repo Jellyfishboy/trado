@@ -122,4 +122,12 @@ class Product < ActiveRecord::Base
   def single?
     skus.map(&:active).count == 1 ? true : false
   end
+
+  # Due to the way the 'status' functionality has been set up
+  # The product needs to always update slug upon create/update
+  #
+  # @return [Boolean]
+  def should_generate_new_friendly_id?
+    true
+  end
 end
