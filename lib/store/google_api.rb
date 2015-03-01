@@ -12,8 +12,7 @@ module Store
         end
 
         def client
-            @cached_client ||= Google::APIClient.new
-            (
+            @cached_client ||= Google::APIClient.new(
                 application_name: application_name,
                 application_version: application_version
             )

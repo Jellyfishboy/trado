@@ -1,4 +1,4 @@
-require 'store/analytics'
+require 'store/google_api'
 require 'store/price'
 require 'store/pay_provider'
 require 'store/theme_tools'
