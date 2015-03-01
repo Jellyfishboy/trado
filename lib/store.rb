@@ -1,3 +1,4 @@
+require 'store/analytics'
 require 'store/price'
 require 'store/pay_provider'
 require 'store/theme_tools'
