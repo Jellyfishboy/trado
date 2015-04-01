@@ -1,6 +1,6 @@
 FactoryGirl.define do
     factory :category do
-        name { |n| "#{Faker::Lorem.characters(10)}#{n}" }
+        sequence(:name) { |n| "#{Faker::Lorem.characters(10)}#{n}" }
         description { Faker::Lorem.paragraph(1) }
         active { true }
         sorting { Faker::Number.digit }

@@ -7,9 +7,9 @@ FactoryGirl.define do
         sequence(:actual_shipping_cost) { |n| n }
         express_token { Faker::Lorem.characters(8) }
         express_payer_id { Faker::Lorem.characters(6) }
-        net_amount { |n| n }
-        tax_amount { |n| n }
-        gross_amount { |n| n }
+        sequence(:net_amount) { |n| n }
+        sequence(:tax_amount) { |n| n }
+        sequence(:gross_amount) { |n| n }
         terms { true }
         consignment_number { '123456' }
         

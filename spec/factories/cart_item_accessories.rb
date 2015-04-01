@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :cart_item_accessory do
-    price { |n| n }
-    quantity { |n| n }
+    sequence(:price) { |n| n }
+    sequence(:quantity) { |n| n }
     
     association :cart_item
     association :accessory
