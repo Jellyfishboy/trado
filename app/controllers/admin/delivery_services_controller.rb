@@ -37,7 +37,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
     if @delivery_service.update(params[:delivery_service])
       if @old_delivery_service
-        # @old_delivery_service.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :delivery_service_id => @delivery_service.id) }
+        @old_delivery_service.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :delivery_service_id => @delivery_service.id) }
         @old_delivery_service.prices.active.each do |price|
           new_price = price.dup
           new_price.delivery_service_id = @delivery_service.id
@@ -68,13 +68,15 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def copy_countries
-    @delivery_services = params[:id].nil? ? DeliveryService.active.load : DeliveryService.where('id != ?', params[:id]).active.load
-    render partial: 'admin/delivery_services/countries/copy', format: [:js]
+    @delivery_services = DeliveryService.where('id != ?', params[:delivery_service_id]).active.load
+    render json: { modal: render_to_string(partial: 'admin/delivery_services/countries/modal', locals: { delivery_services: @delivery_services }) }, status: 200
   end
 
   def set_countries
     @delivery_service = DeliveryService.includes(:countries).find(params[:delivery_service_id])
-    render partial: 'admin/delivery_services/countries/set', format: [:js]
+    render json: { countries: @delivery_service.countries.map{ |c| c.id.to_s } }, status: 200
+  rescue ActiveRecord::RecordNotFound
+    render json: { errors: 'You need to select a delivery service.' }, status: 422
   end
 
   private

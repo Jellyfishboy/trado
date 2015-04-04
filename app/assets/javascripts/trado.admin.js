@@ -26,5 +26,55 @@ trado.admin =
             $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px');
             return $('.new-file').children('div').empty();
       });
+    },
+
+    copyCountries: function()
+    {
+        var currentDeliveryService = $('#copy-countries').attr('data-delivery-service-id');
+        $('body').on('click', '#copy-countries', function ()
+        {
+            $.ajax(
+            {
+                url: '/admin/delivery_services/copy_countries',
+                type: "GET",
+                data: { delivery_service_id: currentDeliveryService },
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#delivery-service-modal').html(data.modal);
+                    soca.modal.standard('#delivery-service-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    setCountries: function()
+    {
+        $('body').on('click', '#set-countries', function ()
+        {
+            var currentDeliveryService = $('#delivery_service_id').val(),
+                errorContent = $('#delivery-service-form #errors');
+            $.ajax(
+            {
+                url: '/admin/delivery_services/set_countries',
+                type: "POST",
+                data: { delivery_service_id: currentDeliveryService },
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#delivery_service_country_ids').val(data.countries);
+                    $('#delivery_service_country_ids').trigger('chosen:updated');
+                    $('#delivery-service-form').modal('hide');
+                },
+                error: function(xhr, status, error)
+                {
+                    errorContent.find('ul').empty();
+                    errorContent.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + xhr.responseJSON.errors + '</li>');
+                }
+            });
+            return false;
+        });
     }
 }

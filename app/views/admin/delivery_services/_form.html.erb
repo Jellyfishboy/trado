@@ -49,7 +49,7 @@
   <h3>Countries</h3>
   <p>
     Select the countries which are available for this delivery service, or
-    <%= link_to 'copy', copy_countries_admin_delivery_services_path, remote: true %>
+    <a href="#" id="copy-countries" data-delivery-service-id="<%= @delivery_service.id %>">copy</a>
     an existing service country list.
   </p>
 </div>
