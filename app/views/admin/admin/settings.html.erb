@@ -17,16 +17,16 @@
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group">
-          <%= f.label 'Store name' %>
+          <%= f.label :name %>
           <%= f.text_field :name, :class => 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label 'Store email address' %>
+          <%= f.label :email %>
           <%= f.text_field :email, :class => 'form-control' %>
         </div>
         <%= f.fields_for :attachment do |ff| %>
           <div class="form-group">
-            <%= ff.label "Store logo" %>
+            <%= ff.label "Logo" %>
             <div>
               <%= image_tag @settings.attachment.file.square, width: 75, height: 75 %>
             </div>
@@ -36,7 +36,7 @@
           </div>
         <% end %>
         <div class="form-group form-last">
-          <%= f.label 'Store theme' %>
+          <%= f.label 'Theme' %>
           <%= f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
