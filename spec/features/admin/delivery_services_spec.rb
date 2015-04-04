@@ -124,7 +124,7 @@ feature 'Delivery service management' do
             within '.modal#delivery-service-form' do
                 expect(find('.modal-header h3')).to have_content "Copy delivery service countries"
                 select(delivery_service_with_countries.name, from: 'delivery_service_id')
-                click_button 'Submit'
+                find('#set-countries').click
             end
             sleep 1
             expect(current_path).to eq new_admin_delivery_service_path

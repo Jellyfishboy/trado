@@ -68,7 +68,7 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def copy_countries
-    @delivery_services = DeliveryService.where('id != ?', params[:delivery_service_id]).active.load
+    @delivery_services = params[:delivery_service_id].blank? ? DeliveryService.active.load : DeliveryService.where('id != ?', params[:delivery_service_id]).active.load
     render json: { modal: render_to_string(partial: 'admin/delivery_services/countries/modal', locals: { delivery_services: @delivery_services }) }, status: 200
   end
 
