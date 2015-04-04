@@ -18,6 +18,8 @@
 #  updated_at                   :datetime           not null
 #
 class Category < ActiveRecord::Base
+  include ActiveScope
+  include HasSlug
 
   attr_accessible :description, :name, :active, :sorting, :page_title, :meta_description
 
@@ -32,10 +34,6 @@ class Category < ActiveRecord::Base
   validates :meta_description,                                                length: { maximum: 150, message: :too_long }
 
   default_scope { order(sorting: :asc) }
-  include ActiveScope
-
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
 
   # Regenerate the slug attribute value if name is changed
   # Or the slug attribute value is blank
