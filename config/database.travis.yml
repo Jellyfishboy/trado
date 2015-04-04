@@ -1,7 +1,3 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
-
 mysql: &mysql
   adapter: mysql2
   username: travis

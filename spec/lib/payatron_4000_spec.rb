@@ -6,7 +6,7 @@ describe Payatron4000 do
         let!(:order) { create(:complete_order) }
         let(:update) { Payatron4000::update_stock(order) }
         before(:each) do
-            create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20)
+            create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20, created_at: 1.day.ago)
         end
 
         it "should set the correct stock_total for the new stock_adjustment record" do

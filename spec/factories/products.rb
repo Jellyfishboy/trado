@@ -30,6 +30,10 @@ FactoryGirl.define do
             factory :product_accessory do
                 accessories { [create(:accessory)] }
             end
+
+            factory :product_no_slug do
+                slug { nil }
+            end
         end
 
         factory :product_sku do
