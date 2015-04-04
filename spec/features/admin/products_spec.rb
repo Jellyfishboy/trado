@@ -39,6 +39,7 @@ feature 'Product management' do
             find('.page-header a:first-child').click
         }.to change(Product, :count).by(1)
         product = Product.first
+        binding.pry
         expect(current_path).to eq edit_admin_product_path(product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
