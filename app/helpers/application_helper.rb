@@ -107,7 +107,7 @@ module ApplicationHelper
     # @return [String] HTML elements
     def table_actions object, *args
         show = args.include?('show')
-        edit = args.include?('edit') || args.include?('remote-edit')
+        edit = args.include?('edit')
         remote_edit = args.include?('remote-edit')
         delete = args.include?('delete')  || args.include?('remote-delete')
         remote_delete = args.include?('remote-delete')

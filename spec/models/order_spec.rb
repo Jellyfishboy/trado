@@ -129,4 +129,13 @@ describe Order do
             expect(pending.completed?).to eq false
         end
     end
+
+    describe "When updating a record" do
+
+        let!(:order) { create(:complete_order) }
+
+        it "should call the consignment_number_mailer method after update" do
+            Order._update_callbacks.select { |cb| cb.kind.eql?(:after) }.map(&:raw_filter).include?(:consignment_number_mailer).should == true
+        end
+    end
 end

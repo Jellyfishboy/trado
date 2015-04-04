@@ -14,6 +14,8 @@ ready = function()
     trado.admin.jsonErrors();
     trado.admin.copyCountries();
     trado.admin.setCountries();
+    trado.admin.editOrder();
+    trado.admin.updateOrder();
 };
 
 $(document).ready(ready);

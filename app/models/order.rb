@@ -125,6 +125,13 @@ class Order < ActiveRecord::Base
     payment_type == 'paypal' ? true : false
   end
 
+  # Returns true if the order is completed, marked as dispatched, consignment is not nil and has changed
+  #
+  # @return [Boolean]
+  def new_order_tracking_mailer?
+    completed? && dispatched? && !consignment_number.nil? && consignment_number_changed? ? true : false
+  end
+
   def self.dashboard_data
     return {
       :completed => completed_collection.count,

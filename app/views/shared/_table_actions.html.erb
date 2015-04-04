@@ -10,14 +10,19 @@
     <% end %>
   <% end %>
   <% if edit %>
-    <%= link_to edit_polymorphic_path(object), remote: remote_edit do %>
+    <%= link_to edit_polymorphic_path(object) do %>
       <i class="icon-pencil"></i>
     <% end %>
   <% end %>
+  <% if remote_edit %>
+    <a href="#" data-record-id="<%= object.last.id %>" id="edit-record">
+      <i class="icon-pencil"></i>
+    </a>
+  <% end %>
   <% if order_record && object.last.transactions.last.completed? && object.last.pending? %>
-    <%= link_to dispatcher_admin_order_path(object.last), remote: remote_edit do %>
+    <a href="#" data-order-id="<%= object.last.id %>">
       <i class="icon-airplane"></i>
-    <% end %>
+    </a>
   <% end %>
   <% if del %>
     <%= link_to object, method: :delete, remote: remote_delete, data: { confirm: 'Are you sure?' } do %>

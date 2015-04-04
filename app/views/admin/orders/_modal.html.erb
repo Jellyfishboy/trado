@@ -1,7 +1,7 @@
 <div aria-hidden="true" aria-labelledby="orderModalLabel" class="modal fade" id="order-form" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_for [:admin, @order], html: { role: 'form', method: :patch }, remote: true do |f| %>
+      <%= form_for [:admin, @order], html: { role: 'form', method: :patch, id: @order.id }, remote: true, format: :json do |f| %>
         <div class="json" id="errors">
           <ul></ul>
         </div>

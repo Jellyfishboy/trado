@@ -1,5 +1,4 @@
 class Admin::OrdersController < ApplicationController
-
   before_action :set_order, except: :index
   before_action :authenticate_user!
   layout 'admin'
@@ -12,17 +11,15 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
-    render partial: 'admin/orders/edit', format: [:js]
+    render json: { modal: render_to_string(partial: 'admin/orders/modal') }, status: 200
   end
 
   def update
-    respond_to do |format|
-      if @order.update(params[:order])
-        format.js { render partial: 'admin/orders/update', format: [:js] }
-        OrderMailer.tracking(@order).deliver_later if @order.completed? && @order.dispatched? && !@order.consignment_number.nil?
-      else 
-        format.json { render json: { errors: @order.errors.full_messages }, status: 422 }
-      end
+    if @order.update(params[:order])
+      render json: { order_id: @order.id }, status: 200
+      OrderMailer.tracking(@order).deliver_later if @order.new_order_tracking_mailer?
+    else 
+      render json: { errors: @order.errors.full_messages }, status: 422
     end
   end
 

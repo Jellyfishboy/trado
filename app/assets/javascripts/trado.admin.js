@@ -30,9 +30,9 @@ trado.admin =
 
     copyCountries: function()
     {
-        var currentDeliveryService = $('#copy-countries').attr('data-delivery-service-id');
         $('body').on('click', '#copy-countries', function ()
         {
+            var currentDeliveryService = $(this).attr('data-delivery-service-id');
             $.ajax(
             {
                 url: '/admin/delivery_services/copy_countries',
@@ -72,6 +72,54 @@ trado.admin =
                 {
                     errorContent.find('ul').empty();
                     errorContent.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + xhr.responseJSON.errors + '</li>');
+                }
+            });
+            return false;
+        });
+    },
+
+    editOrder: function()
+    {
+        $('body').on('click', '#edit-record', function ()
+        {
+            var orderId = $(this).attr('data-record-id');
+            $.ajax(
+            {
+                url: '/admin/orders/' + orderId + '/edit',
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#order-modal').html(data.modal);
+                    soca.modal.standard('#order-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    updateOrder: function()
+    {
+        $("body").on("submit", '.edit_order', function() 
+        {
+            var orderId = $(this).attr('id');
+            $.ajax(
+            {
+                url: "/admin/orders/" + orderId,
+                type: 'PATCH',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#order-form').modal('hide');
+                    soca.animation.alert(
+                        '.widget-header', 
+                        'success', 
+                        'order-update-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully updated Order #' + data.order_id + '.',
+                        5000
+                    )     
                 }
             });
             return false;
