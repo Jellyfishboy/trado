@@ -106,7 +106,6 @@ feature 'Order management' do
 
         within '.modal#order-form' do
             expect(find('.modal-header h3')).to have_content "Edit Order ##{build_dispatch.id}"
-            fill_in('order_actual_shipping_cost', with: '1.24')
             fill_in('order_consignment_number', with: '123456')
             click_button 'Submit'
         end
@@ -117,7 +116,7 @@ feature 'Order management' do
         within '.alert.alert-success' do
             expect(page).to have_content "Successfully updated Order ##{build_dispatch.id}."
         end
-        expect(build_dispatch.actual_shipping_cost).to eq BigDecimal.new('1.24')
+        expect(build_dispatch.actual_shipping_cost).to eq BigDecimal.new('2.2')
         expect(build_dispatch.consignment_number).to eq '123456'
     end
 

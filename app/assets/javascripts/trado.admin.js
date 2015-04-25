@@ -106,7 +106,7 @@ trado.admin =
             var orderId = $(this).attr('id');
             $.ajax(
             {
-                url: "/admin/orders/" + orderId,
+                url: '/admin/orders/' + orderId,
                 type: 'PATCH',
                 data: $(this).serialize(),
                 dataType: 'json',
@@ -123,6 +123,53 @@ trado.admin =
                 }
             });
             return false;
+        });
+    },
+
+    dispatchOrderModal: function()
+    {
+        $('body').on('click', '#dispatcher', function()
+        {
+            var orderId = $(this).attr('data-order-id');
+            $.ajax(
+            {
+                url: '/admin/orders/' + orderId + '/dispatcher',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#dispatch-order-modal').html(data.modal);
+                    soca.modal.standard('#dispatch-order-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    dispatchOrder: function()
+    {
+        $('body').on('click', '#dispatch-order', function()
+        {
+            var orderId = $(this).attr('data-order-id');
+            $.ajax(
+            {
+                url: '/admin/orders/' + orderId + '/dispatched',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#dispatch-order-form').modal('hide');
+                    $('tr#order_' + data.order_id).html(data.row);
+                    soca.animation.alert(
+                        '.widget-header', 
+                        'success', 
+                        'dispatch-order-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully updated Order #' + data.order_id + ' as being dispatched on ' + data.date + '.',
+                        5000
+                    )
+                }
+            });
         });
     }
 }

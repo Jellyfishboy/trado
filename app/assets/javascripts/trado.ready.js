@@ -4,18 +4,24 @@ ready = function()
 {
     soca.animation.loading();
     soca.animation.colourCaveat();
+    
     soca.filter.tableRowTarget();
     soca.filter.products();
+
     soca.misc.taxField();
     soca.misc.multiSelect();
     soca.misc.updateTableHeight();
+
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
+
     trado.admin.jsonErrors();
     trado.admin.copyCountries();
     trado.admin.setCountries();
     trado.admin.editOrder();
     trado.admin.updateOrder();
+    trado.admin.dispatchOrderModal();
+    trado.admin.dispatchOrder();
 };
 
 $(document).ready(ready);

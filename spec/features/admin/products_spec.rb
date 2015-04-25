@@ -15,19 +15,19 @@ feature 'Product management' do
     given(:product_sku_stock_count) { create(:product_sku_stock_count, active: true) }
     given(:multi_attachment_product) { create(:multiple_attachment_product, active: true) }
 
-    scenario 'should display an index of products' do
-        product
+    # scenario 'should display an index of products' do
+    #     product
 
-        visit admin_root_path
-        find('a[data-original-title="Products"]').click
-        expect(current_path).to eq admin_products_path
-        within 'h2' do
-            expect(page).to have_content 'Products'
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Products'
-        end
-    end
+    #     visit admin_root_path
+    #     find('a[data-original-title="Products"]').click
+    #     expect(current_path).to eq admin_products_path
+    #     within 'h2' do
+    #         expect(page).to have_content 'Products'
+    #     end
+    #     within '#breadcrumbs li.current' do
+    #         expect(page).to have_content 'Products'
+    #     end
+    # end
 
     scenario 'should add a new product (published)', js: true do
         accessory = create(:accessory)
