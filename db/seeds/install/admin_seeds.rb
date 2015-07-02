@@ -1,5 +1,5 @@
 puts '-----------------------------'
-Rails.logger.info 'Executing admin seeds'.colorize(:green)
+puts 'Executing admin seeds'.colorize(:green)
 
 user = User.create({
     email: 'admin@example.com', 
