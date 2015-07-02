@@ -35,8 +35,7 @@ end
 group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
-  gem 'mysql2'
-  gem 'sqlite3'
+  # gem 'mysql2'
 end
 
 # Assets
