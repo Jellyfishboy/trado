@@ -4,7 +4,7 @@ class Admin::AttachmentsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    render partial: 'admin/products/attachments/show', format: [:js]
+    render json: { modal: render_to_string(partial: 'admin/products/attachments/preview') }, status: 200
   end
 
   def new 
@@ -38,7 +38,6 @@ class Admin::AttachmentsController < ApplicationController
   end
 
   def destroy
-    set_product
     attachment_id = @attachment.id
     @attachment.destroy
     if @product.attachments.empty?

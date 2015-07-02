@@ -204,5 +204,27 @@ trado.admin =
             });
             return false;
         });
+    },
+
+    showAttachment: function()
+    {
+        $('body').on('click', '.show-attachment', function ()
+        {
+            var productId = $(this).attr('data-product-id');
+            var attachmentId = $(this).attr('data-attachment-id');
+            $.ajax(
+            {
+                url: '/admin/products/' + productId + '/attachments/' + attachmentId,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#attachment-preview-modal').html(data.modal);
+                    soca.modal.standard('#attachment-preview-form');
+                }
+            });
+            return false;
+        });
     }
 }
