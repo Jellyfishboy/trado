@@ -171,5 +171,38 @@ trado.admin =
                 }
             });
         });
+    },
+
+    deleteAttachment: function()
+    {
+        $('body').on('click', '.attachment-delete', function()
+        {
+            var url = $(this).attr('data-url');
+            $.ajax(
+            {
+                url: url,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
+                {
+                    if (data.last_record)
+                    {
+                        $('#attachments').html(data.html)
+                    }
+                    else
+                    {
+                        $("#attachment-" + data.attachment_id).remove();
+                    }
+                    soca.animation.alert(
+                        '#attachments',
+                        'success',
+                        'attachment-destroy-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully deleted the image.',
+                        3500
+                    )
+                }
+            });
+            return false;
+        });
     }
 }

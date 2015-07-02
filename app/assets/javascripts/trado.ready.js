@@ -22,6 +22,7 @@ ready = function()
     trado.admin.updateOrder();
     trado.admin.dispatchOrderModal();
     trado.admin.dispatchOrder();
+    trado.admin.deleteAttachment();
 };
 
 $(document).ready(ready);

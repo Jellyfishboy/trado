@@ -38,8 +38,14 @@ class Admin::AttachmentsController < ApplicationController
   end
 
   def destroy
+    set_product
+    attachment_id = @attachment.id
     @attachment.destroy
-    render partial: "admin/products/attachments/destroy", format: [:js]
+    if @product.attachments.empty?
+        render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any images for this product.</p><i class="icon-images"></i></div>' }
+    else
+        render json: { last_record: false, attachment_id: attachment_id }
+    end
   end
 
   private

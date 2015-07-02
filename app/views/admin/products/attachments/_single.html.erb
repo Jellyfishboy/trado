@@ -1,4 +1,4 @@
-<div class="attachments <%= attachment.default_record ? 'default' : nil %>" id="attachment-<%= attachment.id %>">
+<div class="attachments <%= 'default' if attachment.default_record %>" id="attachment-<%= attachment.id %>">
   <%= image_tag attachment.file.square, height: 150, width: 150 %>
   <%= link_to admin_product_attachment_path(attachment.attachable, attachment), remote: true, :class => "label label-blue" do %>
     <i class="icon-search"></i>
@@ -6,7 +6,7 @@
   <%= link_to edit_admin_product_attachment_path(attachment.attachable, attachment), remote: true, :class => "label label-green" do %>
     <i class="icon-pencil"></i>
   <% end %>
-  <%= link_to admin_product_attachment_path(attachment.attachable, attachment), remote: true, method: :delete, :class => "label label-red", data: { confirm: 'Are you sure?' } do %>
+  <a href="#" data-url="<%= admin_product_attachment_path(attachment.attachable, attachment) %>" class="<%= Store::class_name_id(attachment) %>-delete label label-red">
     <i class="icon-remove"></i>
-  <% end %>
+  </a>
 </div>

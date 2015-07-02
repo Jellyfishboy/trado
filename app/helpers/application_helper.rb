@@ -109,7 +109,7 @@ module ApplicationHelper
         show = args.include?('show')
         edit = args.include?('edit')
         remote_edit = args.include?('remote-edit')
-        delete = args.include?('delete')  || args.include?('remote-delete')
+        delete = args.include?('delete')
         remote_delete = args.include?('remote-delete')
         order_record = Store::class_name(object.last) == 'Order'
         sku_record = Store::class_name(object.last) == 'Sku'

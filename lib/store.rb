@@ -66,6 +66,14 @@ module Store
             return object.class.to_s.split(/(?=[A-Z])/).join(' ')
         end
 
+        # Parse the object's parent class name into a element identifier safe string
+        #
+        # @params object [Object]
+        # @return [String] class name to string
+        def class_name_id object
+            return object.class.to_s.split(/(?=[A-Z])/).join('-').downcase
+        end
+
         # Checks if the class record count is less than 2
         # If its less than two return a failed string message
         # If its more then destroy the passed in object and return success string message

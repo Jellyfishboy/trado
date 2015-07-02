@@ -24,6 +24,11 @@
       <i class="icon-airplane"></i>
     </a>
   <% end %>
+  <% if remote_delete %>
+    <a href="#" data-url="<%= polymorphic_path(object) %>" class="<%= Store::class_name_id(object.last) %>-delete">
+      <i class="icon-remove"></i>
+    </a>
+  <% end %>
   <% if del %>
     <%= link_to object, method: :delete, remote: remote_delete, data: { confirm: 'Are you sure?' } do %>
       <i class="icon-remove"></i>
