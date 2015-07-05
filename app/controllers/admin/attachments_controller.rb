@@ -1,18 +1,20 @@
 class Admin::AttachmentsController < ApplicationController
-  before_action :set_product
-  before_action :set_attachment, except: [:new, :create]
   before_action :authenticate_user!
 
   def show
+    set_product
+    set_attachment
     render json: { modal: render_to_string(partial: 'admin/products/attachments/preview') }, status: 200
   end
 
   def new 
-    @attachment = @product.attachments.build
-    render partial: 'admin/products/attachments/new_edit', format: [:js]
+    set_product
+    new_attachment
+    render json: { modal: render_to_string(partial: 'admin/products/attachments/modal', locals: { url: admin_product_attachments_path, method: 'POST' }) }, status: 200
   end
 
   def create
+    set_product
     @attachment = @product.attachments.build(params[:attachment])
     respond_to do |format|
       if @attachment.save
@@ -24,10 +26,14 @@ class Admin::AttachmentsController < ApplicationController
   end
 
   def edit
-    render partial: 'admin/products/attachments/new_edit', format: [:js]
+    set_product
+    set_attachment
+    render json: { modal: render_to_string(partial: 'admin/products/attachments/modal', locals: { url: admin_product_attachment_path, method: 'PATCH' }) }, status: 200
   end
 
   def update
+    set_product
+    set_attachment
     respond_to do |format|
       if @attachment.update(params[:attachment])
         format.js { render partial: 'admin/products/attachments/update', format: [:js] }
@@ -38,6 +44,8 @@ class Admin::AttachmentsController < ApplicationController
   end
 
   def destroy
+    set_product
+    set_attachment
     attachment_id = @attachment.id
     @attachment.destroy
     if @product.attachments.empty?
@@ -49,11 +57,15 @@ class Admin::AttachmentsController < ApplicationController
 
   private
 
-    def set_product
-      @product = Product.find(params[:product_id])
-    end
+  def new_attachment
+    @attachment = @product.attachments.build
+  end
 
-    def set_attachment
-      @attachment = Attachment.find(params[:id])
-    end
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
+
+  def set_attachment
+    @attachment = Attachment.find(params[:id])
+  end
 end

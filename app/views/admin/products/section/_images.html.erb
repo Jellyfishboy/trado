@@ -1,7 +1,7 @@
 <div class="threecol">
   <h3>Images</h3>
   <p>Upload and edit images of this product. You can also set the default image to display on the product page.</p>
-  <%= link_to 'Add image', new_admin_product_attachment_path(@product), remote: true, id: 'add-image', :class => 'btn btn-green btn-normal' %>
+   <a href="#" class="btn btn-green btn-normal" id="add-image" data-url="<%= new_admin_product_attachment_path(@product) %>">Add Image</a>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content" id="attachments">

@@ -226,5 +226,26 @@ trado.admin =
             });
             return false;
         });
+    },
+
+    newAttachment: function()
+    {
+        $('body').on('click', '#add-image', function ()
+        {
+            var url = $(this).attr('data-url');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#attachment-modal').html(data.modal);
+                    soca.modal.standard('#attachment-form');
+                }
+            });
+            return false;
+        });
     }
 }
