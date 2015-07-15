@@ -16,12 +16,14 @@ class Admin::AttachmentsController < ApplicationController
   def create
     set_product
     @attachment = @product.attachments.build(params[:attachment])
-    respond_to do |format|
-      if @attachment.save
-        format.js { render partial: 'admin/products/attachments/create', format: [:js] }
+    if @attachment.save
+      if @product.attachments.count == 1
+          render json: { last_record: true, image: render_to_string(partial: 'admin/products/attachments/single') }, status: 200
       else
-        format.json { render json: { errors: @attachment.errors.full_messages }, status: 422 }
+          render json: { last_record: false, image: render_to_string(partial: 'admin/products/attachments/single') }, status: 200
       end
+    else
+      render json: { errors: @attachment.errors.full_messages }, status: 422
     end
   end
 
@@ -49,9 +51,9 @@ class Admin::AttachmentsController < ApplicationController
     attachment_id = @attachment.id
     @attachment.destroy
     if @product.attachments.empty?
-        render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any images for this product.</p><i class="icon-images"></i></div>' }
+      render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any images for this product.</p><i class="icon-images"></i></div>' }, status: 200
     else
-        render json: { last_record: false, attachment_id: attachment_id }
+      render json: { last_record: false, attachment_id: attachment_id }, status: 200
     end
   end
 

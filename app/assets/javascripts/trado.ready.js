@@ -15,7 +15,6 @@ ready = function()
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
 
-    trado.admin.jsonErrors();
     trado.admin.copyCountries();
     trado.admin.setCountries();
     trado.admin.editOrder();
@@ -25,6 +24,7 @@ ready = function()
     trado.admin.deleteAttachment();
     trado.admin.showAttachment();
     trado.admin.newAttachment();
+    trado.admin.amendAttachments();
 };
 
 $(document).ready(ready);

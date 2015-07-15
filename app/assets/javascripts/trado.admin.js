@@ -1,31 +1,26 @@
 trado.admin =
 {
-    jsonErrors: function()
+    jsonErrors: function(xhr, evt, status, form)
     {
-        $(document).on("ajax:error", "form", function(evt, xhr, status, error)
+        var content, value, _i, _len, _ref, $this;
+        $this = form;
+        content = $this.children('#errors');
+        content.find('ul').empty();
+        _ref = $.parseJSON(xhr.responseText).errors;
+        // Append errors to list on page
+        for (_i = 0, _len = _ref.length; _i < _len; _i++)
         {
-            var content, value, _i, _len, _ref;
-            content = $(this).children('#errors');
-            content.find('ul').empty();
-            _ref = $.parseJSON(xhr.responseText).errors;
-            // Append errors to list on page
-            for (_i = 0, _len = _ref.length; _i < _len; _i++)
-            {
-                value = _ref[_i];
-                content.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + value + '</li>');
-            }
-            // Scroll to error list
-            if (!$(this).parent().hasClass('modal-content'))
-            {
-                $('body').scrollTo('.page-header', 800);
-            }
-            // Fade out loading animation
-            $('.loading-overlay').css('height', '0').removeClass('active');
-            $('.loading5').removeClass('active');
-            // Reset attachment styles
-            $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px');
-            return $('.new-file').children('div').empty();
-      });
+            value = _ref[_i];
+            content.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + value + '</li>');
+        }
+        // Scroll to error list
+        if (!$this.parent().hasClass('modal-content'))
+        {
+            $('body').scrollTo('.page-header', 800);
+        }
+        // Fade out loading animation
+        $('.loading-overlay').css('height', '0').removeClass('active');
+        $('.loading5').removeClass('active');
     },
 
     copyCountries: function()
@@ -247,5 +242,73 @@ trado.admin =
             });
             return false;
         });
-    }
+    },
+
+    amendAttachments: function()
+    {
+        var files;
+        $('body').on('change', '#attachment_file', function()
+        {
+            files = event.target.files;
+        });
+        $('body').on('submit', '#amend_attachment', function(event)
+        {
+            event.stopPropagation(); // Stop stuff happening
+            event.preventDefault(); // Totally stop stuff happening
+
+            var $this = $(this);
+                url = $this.attr('action');
+                method = $this.attr('data-method'),
+                message = method === 'POST' ? 'created' : 'edited';
+                data = new FormData();
+
+            $.each(files, function(key, value)
+            {
+                data.append(key, value);
+            });
+
+            $.ajax(
+            {
+                url: url,   
+                type: method,
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#attachment-form').modal('hide');
+                    if (data.first_record)
+                    {
+                        $('#attachments').html(data.image);
+                    }
+                    else
+                    {
+                        if (method === 'POST')
+                        {
+                            $('#attachments').append(data.image);
+                        }
+                        else
+                        {
+                            $('#attachment-' + data.attachment_id).html(data.image);
+                        }
+                    }
+                    soca.animation.alert(
+                        '.widget-header', 
+                        'success', 
+                        'amend-attachment-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+                        5000
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 }
