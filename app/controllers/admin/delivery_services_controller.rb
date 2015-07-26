@@ -37,7 +37,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
     if @delivery_service.update(params[:delivery_service])
       if @old_delivery_service
-        @old_delivery_service.destinations.pluck(:zone_id).map { |z| Destination.create(:zone_id => z, :delivery_service_id => @delivery_service.id) }
+        @old_delivery_service.destinations.pluck(:country_id).map { |z| Destination.create(:country_id => z, :delivery_service_id => @delivery_service.id) }
         @old_delivery_service.prices.active.each do |price|
           new_price = price.dup
           new_price.delivery_service_id = @delivery_service.id

@@ -21,11 +21,6 @@ describe Admin::AttachmentsController do
                     xhr :delete, :destroy, product_id: attachment.attachable.id, id: attachment.id
                 }.to change(Attachment, :count).by(-1)
             end
-
-            it "should render the destroy partial" do
-                xhr :delete, :destroy, product_id: attachment.attachable.id, id: attachment.id
-                expect(response).to render_template(partial: 'admin/products/attachments/_destroy')
-            end
         end
     end
 end
