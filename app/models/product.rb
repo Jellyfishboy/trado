@@ -52,7 +52,7 @@ class Product < ActiveRecord::Base
   has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
   has_many :variant_types,                                    -> { uniq }, through: :variants
 
-  validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
+  validates :name, :sku, :part_number,                        presence: true
   validates :meta_description, :description, 
   :weighting, :category_id, :page_title,                      presence: true, :if => :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
