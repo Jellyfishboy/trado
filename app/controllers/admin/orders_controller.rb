@@ -45,7 +45,6 @@ class Admin::OrdersController < ApplicationController
   private
 
     def set_order
-      binding.pry
       @order ||= Order.find(params[:id])
     end
 
