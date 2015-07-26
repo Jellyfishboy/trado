@@ -4,8 +4,6 @@ module HasSkus
     included do
         validate :sku_count,                                        :if => :published?
         validate :sku_attributes,                                   :if => :published?
-
-        accepts_nested_attributes_for :skus
     end
 
     # Calculate if a product has at least one associated SKU

@@ -3,7 +3,6 @@ module HasAttachments
 
     included do
         validate :attachment_count,                                 :if => :published?
-        accepts_nested_attributes_for :attachments
     end
 
     # Calculate if a product has at least one associated attachment

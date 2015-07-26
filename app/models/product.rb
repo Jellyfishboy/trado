@@ -63,7 +63,9 @@ class Product < ActiveRecord::Base
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published
 
+  accepts_nested_attributes_for :skus
   accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :attachments
   
   default_scope { order(weighting: :desc) }
 
