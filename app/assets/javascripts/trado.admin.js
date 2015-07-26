@@ -246,6 +246,40 @@ trado.admin =
 
     amendAttachments: function()
     {
+        $('#amend_attachment').ajaxSubmit(
+        {
+            beforeSubmit: function(a,f,o) 
+            {
+                o.dataType = 'json';
+            },
+            complete: function(XMLHttpRequest, textStatus) 
+            {
+                var json = $.parseJSON(XMLHttpRequest.responseText)
+                $('#attachment-form').modal('hide');
+                if (data.first_record)
+                {
+                    $('#attachments').html(data.image);
+                }
+                else
+                {
+                    if (method === 'POST')
+                    {
+                        $('#attachments').append(data.image);
+                    }
+                    else
+                    {
+                        $('#attachment-' + data.attachment_id).html(data.image);
+                    }
+                }
+                soca.animation.alert(
+                    '.widget-header', 
+                    'success', 
+                    'amend-attachment-alert',
+                    '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+                    5000
+                )
+            },
+        });
         var files;
         $('body').on('change', '#attachment_file', function()
         {
