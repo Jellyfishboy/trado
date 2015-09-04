@@ -3,19 +3,23 @@ class Admin::SkusController < ApplicationController
 
   def new
     set_product
-    @form_sku = @product.skus.build
-    @variant = @form_sku.variants.build
-    render partial: 'admin/products/skus/new_edit', format: [:js]
+    unless @product.skus.active.empty?
+      @form_sku = @product.skus.build
+      @variant = @form_sku.variants.build
+      render partial: 'admin/products/skus/new_edit', format: [:js]
+    end
   end
 
   def create
     set_product
-    @form_sku = @product.skus.build(params[:sku])
-    respond_to do |format|
-      if @form_sku.save
-        format.js { render partial: 'admin/products/skus/create', format: [:js] }
-      else
-        format.json { render json: { errors: @form_sku.errors.full_messages }, status: 422 }
+    unless @product.skus.active.empty?
+      @form_sku = @product.skus.build(params[:sku])
+      respond_to do |format|
+        if @form_sku.save
+          format.js { render partial: 'admin/products/skus/create', format: [:js] }
+        else
+          format.json { render json: { errors: @form_sku.errors.full_messages }, status: 422 }
+        end
       end
     end
   end
