@@ -5,4 +5,11 @@
 <td><%= sku.stock %></td>
 <td><%= Store::Price.new(price: sku.cost_value, tax_type: 'net').single %></td>
 <td><%= Store::Price.new(price: sku.price, tax_type: 'net').single %></td>
-<%= table_actions [:admin, sku.product, sku], 'remote-edit', 'remote-delete' %>
+<td class="table-actions">
+    <%= link_to edit_admin_product_sku_path(sku.product, sku), remote: true do %>
+        <i class="icon-pencil"></i>
+    <% end %>
+    <a href="#" data-url="<%= admin_product_sku_path(sku.product, sku) %>" class="<%= Store::class_name_id(sku) %>-delete">
+        <i class="icon-remove"></i>
+    </a>
+</td>

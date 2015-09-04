@@ -1,13 +1,15 @@
 class Admin::Skus::VariantsController < ApplicationController
     before_filter :authenticate_user!
-    before_filter :set_product
-    before_filter :set_variant_types, except: :destroy
 
     def new
+        set_product
+        set_variant_types
         render partial: 'admin/products/skus/variants/new', format: [:js]
     end
 
     def create
+        set_product
+        set_variant_types
         @variants = @variant_types.map do |type|
             next if params[type.name.downcase.to_sym].blank? || params[type.name.downcase.to_sym].nil?
             {
@@ -44,6 +46,8 @@ class Admin::Skus::VariantsController < ApplicationController
     end
 
     def update
+        set_product
+        set_variant_types
         @variant_array = []
         @variant_types.each do |type|
             @variant_array << params[type.name.downcase.to_sym].split(/,\s*/)
@@ -57,6 +61,7 @@ class Admin::Skus::VariantsController < ApplicationController
     end
 
     def destroy
+        set_product
         @product.skus.active.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end

@@ -1,16 +1,15 @@
 class Admin::SkusController < ApplicationController
-
-  before_action :set_product
-  before_action :set_sku, except: [:edit, :new, :create]
   before_action :authenticate_user!
 
   def new
+    set_product
     @form_sku = @product.skus.build
     @variant = @form_sku.variants.build
     render partial: 'admin/products/skus/new_edit', format: [:js]
   end
 
   def create
+    set_product
     @form_sku = @product.skus.build(params[:sku])
     respond_to do |format|
       if @form_sku.save
@@ -22,6 +21,7 @@ class Admin::SkusController < ApplicationController
   end
 
   def edit
+    set_product
     @form_sku = Sku.find(params[:id])
     render partial: 'admin/products/skus/new_edit', format: [:js]
   end
@@ -33,6 +33,8 @@ class Admin::SkusController < ApplicationController
   # Set the old SKU as inactive. (It is now archived for reference by previous orders).
   # Delete any cart items associated with the old sku.
   def update
+    set_product
+    set_sku
     unless @sku.orders.empty?
       Store::inactivate!(@sku)
       @old_sku = @sku
@@ -65,20 +67,29 @@ class Admin::SkusController < ApplicationController
     end
   end
 
-  # Destroying a SKU
-  #
   def destroy
-    Store.active_archive(CartItem, :sku_id, @sku)
-    render partial: "admin/products/skus/destroy", format: [:js]
+    set_product
+    set_sku
+    archive_sku_and_associated
+    sku_id = @sku.id
+    if @product.skus.active.empty?
+      render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>' }, status: 200
+    else
+      render json: { last_record: false, sku_id: sku_id }, status: 200
+    end
   end
 
   private
 
+  def archive_sku_and_associated
+    Store.active_archive(CartItem, :sku_id, @sku)
+  end
+
   def set_product
-    @product = Product.find(params[:product_id])
+    @product ||= Product.find(params[:product_id])
   end
 
   def set_sku
-    @sku = Sku.find(params[:id])
+    @sku ||= Sku.find(params[:id])
   end
 end

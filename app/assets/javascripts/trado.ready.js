@@ -24,7 +24,8 @@ ready = function()
     trado.admin.deleteAttachment();
     trado.admin.showAttachment();
     trado.admin.newAttachment();
-    trado.admin.amendAttachments();
+    // trado.admin.amendAttachments();
+    trado.admin.deleteSku();
 };
 
 $(document).ready(ready);

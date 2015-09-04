@@ -244,105 +244,139 @@ trado.admin =
         });
     },
 
-    amendAttachments: function()
+    // amendAttachments: function()
+    // {
+    //     $('#amend_attachment').ajaxSubmit(
+    //     {
+    //         beforeSubmit: function(a,f,o) 
+    //         {
+    //             o.dataType = 'json';
+    //         },
+    //         complete: function(XMLHttpRequest, textStatus) 
+    //         {
+    //             var json = $.parseJSON(XMLHttpRequest.responseText)
+    //             $('#attachment-form').modal('hide');
+    //             if (data.first_record)
+    //             {
+    //                 $('#attachments').html(data.image);
+    //             }
+    //             else
+    //             {
+    //                 if (method === 'POST')
+    //                 {
+    //                     $('#attachments').append(data.image);
+    //                 }
+    //                 else
+    //                 {
+    //                     $('#attachment-' + data.attachment_id).html(data.image);
+    //                 }
+    //             }
+    //             soca.animation.alert(
+    //                 '.widget-header', 
+    //                 'success', 
+    //                 'amend-attachment-alert',
+    //                 '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+    //                 5000
+    //             )
+    //         },
+    //     });
+    //     var files;
+    //     $('body').on('change', '#attachment_file', function()
+    //     {
+    //         files = event.target.files;
+    //     });
+    //     $('body').on('submit', '#amend_attachment', function(event)
+    //     {
+    //         event.stopPropagation(); // Stop stuff happening
+    //         event.preventDefault(); // Totally stop stuff happening
+
+    //         var $this = $(this);
+    //             url = $this.attr('action');
+    //             method = $this.attr('data-method'),
+    //             message = method === 'POST' ? 'created' : 'edited';
+    //             data = new FormData();
+
+    //         $.each(files, function(key, value)
+    //         {
+    //             data.append(key, value);
+    //         });
+
+    //         $.ajax(
+    //         {
+    //             url: url,   
+    //             type: method,
+    //             data: data,
+    //             cache: false,
+    //             processData: false,
+    //             contentType: false,
+    //             dataType: 'json',
+    //             success: function (data)
+    //             {
+    //                 $('#attachment-form').modal('hide');
+    //                 if (data.first_record)
+    //                 {
+    //                     $('#attachments').html(data.image);
+    //                 }
+    //                 else
+    //                 {
+    //                     if (method === 'POST')
+    //                     {
+    //                         $('#attachments').append(data.image);
+    //                     }
+    //                     else
+    //                     {
+    //                         $('#attachment-' + data.attachment_id).html(data.image);
+    //                     }
+    //                 }
+    //                 soca.animation.alert(
+    //                     '.widget-header', 
+    //                     'success', 
+    //                     'amend-attachment-alert',
+    //                     '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+    //                     5000
+    //                 )
+    //             },
+    //             error: function(xhr, evt, status)
+    //             {
+
+    //                 trado.admin.jsonErrors(xhr, evt, status, $this);
+    //             }
+    //         });
+    //         return false;
+    //     });
+    // },
+
+    deleteSku: function()
     {
-        $('#amend_attachment').ajaxSubmit(
+        $('body').on('click', '.sku-delete', function()
         {
-            beforeSubmit: function(a,f,o) 
-            {
-                o.dataType = 'json';
-            },
-            complete: function(XMLHttpRequest, textStatus) 
-            {
-                var json = $.parseJSON(XMLHttpRequest.responseText)
-                $('#attachment-form').modal('hide');
-                if (data.first_record)
-                {
-                    $('#attachments').html(data.image);
-                }
-                else
-                {
-                    if (method === 'POST')
-                    {
-                        $('#attachments').append(data.image);
-                    }
-                    else
-                    {
-                        $('#attachment-' + data.attachment_id).html(data.image);
-                    }
-                }
-                soca.animation.alert(
-                    '.widget-header', 
-                    'success', 
-                    'amend-attachment-alert',
-                    '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
-                    5000
-                )
-            },
-        });
-        var files;
-        $('body').on('change', '#attachment_file', function()
-        {
-            files = event.target.files;
-        });
-        $('body').on('submit', '#amend_attachment', function(event)
-        {
-            event.stopPropagation(); // Stop stuff happening
-            event.preventDefault(); // Totally stop stuff happening
-
-            var $this = $(this);
-                url = $this.attr('action');
-                method = $this.attr('data-method'),
-                message = method === 'POST' ? 'created' : 'edited';
-                data = new FormData();
-
-            $.each(files, function(key, value)
-            {
-                data.append(key, value);
-            });
-
+            var url = $(this).attr('data-url');
             $.ajax(
             {
-                url: url,   
-                type: method,
-                data: data,
-                cache: false,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                success: function (data)
+                url: url,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
                 {
-                    $('#attachment-form').modal('hide');
-                    if (data.first_record)
+                    if (data.last_record)
                     {
-                        $('#attachments').html(data.image);
+                        $('#add-sku-button').addClass('hide');
+                        $('#skus').html(data.html)
                     }
                     else
                     {
-                        if (method === 'POST')
-                        {
-                            $('#attachments').append(data.image);
-                        }
-                        else
-                        {
-                            $('#attachment-' + data.attachment_id).html(data.image);
-                        }
+                        $("#sku-" + data.sku_id).remove();
                     }
                     soca.animation.alert(
-                        '.widget-header', 
-                        'success', 
-                        'amend-attachment-alert',
-                        '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
-                        5000
+                        '#skus',
+                        'success',
+                        'sku-destroy-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully deleted the variant.',
+                        3500
                     )
-                },
-                error: function(xhr, evt, status)
-                {
-
-                    trado.admin.jsonErrors(xhr, evt, status, $this);
                 }
             });
             return false;
         });
-    },
+    }
 }
