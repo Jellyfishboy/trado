@@ -6,7 +6,7 @@ class Admin::SkusController < ApplicationController
     unless @product.skus.active.empty?
       @form_sku = @product.skus.build
       @variant = @form_sku.variants.build
-      render partial: 'admin/products/skus/new_edit', format: [:js]
+      render json: { modal: render_to_string(partial: 'admin/products/skus/modal', locals: { url: admin_product_attachments_path, method: 'POST' }) }, status: 200
     end
   end
 
