@@ -9,7 +9,7 @@
     <%= link_to edit_admin_product_sku_path(sku.product, sku), remote: true do %>
         <i class="icon-pencil"></i>
     <% end %>
-    <a href="#" data-url="<%= admin_product_sku_path(sku.product, sku) %>" class="<%= Store::class_name_id(sku) %>-delete">
+    <%= link_to admin_product_sku_path(sku.product, sku), remote: true, :class => "#{Store::class_name_id(sku)}-delete" do %>
         <i class="icon-remove"></i>
-    </a>
+    <% end %>
 </td>
