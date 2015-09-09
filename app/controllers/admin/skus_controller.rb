@@ -6,7 +6,7 @@ class Admin::SkusController < ApplicationController
     unless @product.skus.active.empty?
       @form_sku = @product.skus.build
       @variant = @form_sku.variants.build
-      render json: { modal: render_to_string(partial: 'admin/products/skus/modal', locals: { url: admin_product_attachments_path, method: 'POST' }) }, status: 200
+      render json: { modal: render_to_string(partial: 'admin/products/skus/modal', locals: { url: admin_product_skus_path, method: 'POST' }) }, status: 200
     end
   end
 
@@ -14,12 +14,14 @@ class Admin::SkusController < ApplicationController
     set_product
     unless @product.skus.active.empty?
       @form_sku = @product.skus.build(params[:sku])
-      respond_to do |format|
-        if @form_sku.save
-          format.js { render partial: 'admin/products/skus/create', format: [:js] }
+      if @form_sku.save
+        if @product.skus.count == 1
+            render json: { last_record: true, table: render_to_string(partial: 'admin/products/skus/table') }, status: 200
         else
-          format.json { render json: { errors: @form_sku.errors.full_messages }, status: 422 }
+            render json: { last_record: false, row: render_to_string(partial: 'admin/products/skus/single'), sku_id: @form_sku.id }, status: 200
         end
+      else
+        render json: { errors: @form_sku.errors.full_messages }, status: 422
       end
     end
   end
@@ -27,7 +29,7 @@ class Admin::SkusController < ApplicationController
   def edit
     set_product
     @form_sku = Sku.find(params[:id])
-    render partial: 'admin/products/skus/new_edit', format: [:js]
+    render json: { modal: render_to_string(partial: 'admin/products/skus/modal', locals: { url: admin_product_sku_path, method: 'PATCH' }) }, status: 200
   end
 
   # Updating a SKU

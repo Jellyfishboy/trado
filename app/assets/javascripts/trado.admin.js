@@ -400,4 +400,67 @@ trado.admin =
             return false;
         });
     },
+
+    editSku: function()
+    {
+        $('body').on('click', '.edit-sku-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#sku-modal').html(data.modal);
+                    soca.modal.standard('#sku-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    amendSkus: function()
+    {
+        $('body').on('submit', '.amend-sku', function()
+        {
+            var $this = $(this);
+                url = $this.attr('action');
+                method = $this.attr('data-method');
+                
+            $.ajax(
+            {
+                url: url,
+                type: method,
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#sku-form').modal('hide');
+                    if (data.first_record)
+                    {
+                        $('#sku-table').html(data.table);
+                    }
+                    else
+                    {
+                        if (method === 'POST')
+                        {
+                            $('#sku-fields').append("<tr id=\'sku-" + data.sku_id + "\'>" + data.row +"</tr>");
+                        }
+                        else
+                        {
+                            $('tr#sku-' + data.sku_id).html(data.row);
+                        }
+                    }
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 }
