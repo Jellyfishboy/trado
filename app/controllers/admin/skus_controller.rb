@@ -15,11 +15,7 @@ class Admin::SkusController < ApplicationController
     unless @product.skus.active.empty?
       @form_sku = @product.skus.build(params[:sku])
       if @form_sku.save
-        if @product.skus.count == 1
-            render json: { last_record: true, table: render_to_string(partial: 'admin/products/skus/table') }, status: 200
-        else
-            render json: { last_record: false, row: render_to_string(partial: 'admin/products/skus/single'), sku_id: @form_sku.id }, status: 200
-        end
+          render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @form_sku }), sku_id: @form_sku.id }, status: 200
       else
         render json: { errors: @form_sku.errors.full_messages }, status: 422
       end

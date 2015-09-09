@@ -439,20 +439,13 @@ trado.admin =
                 success: function (data)
                 {
                     $('#sku-form').modal('hide');
-                    if (data.first_record)
+                    if (method === 'POST')
                     {
-                        $('#sku-table').html(data.table);
+                        $('#sku-fields').append("<tr id=\'sku-" + data.sku_id + "\'>" + data.row +"</tr>");
                     }
                     else
                     {
-                        if (method === 'POST')
-                        {
-                            $('#sku-fields').append("<tr id=\'sku-" + data.sku_id + "\'>" + data.row +"</tr>");
-                        }
-                        else
-                        {
-                            $('tr#sku-' + data.sku_id).html(data.row);
-                        }
+                        $('tr#sku-' + data.sku_id).html(data.row);
                     }
                 },
                 error: function(xhr, evt, status)
