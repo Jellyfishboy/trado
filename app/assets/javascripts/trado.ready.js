@@ -26,6 +26,7 @@ ready = function()
     trado.admin.newAttachment();
     // trado.admin.amendAttachments();
     trado.admin.deleteSku();
+    trado.admin.newSku();
 };
 
 $(document).ready(ready);

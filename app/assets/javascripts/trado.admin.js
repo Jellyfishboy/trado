@@ -384,7 +384,7 @@ trado.admin =
     {
         $('body').on('click', '#add-sku-button', function ()
         {
-            var url = $(this).attr('data-url');
+            var url = $(this).attr('href');
             $.ajax(
             {
                 url: url,
@@ -393,8 +393,8 @@ trado.admin =
                 success: function(data)
                 {
                     $('.main .container').removeClass('fadeIn');
-                    $('#attachment-modal').html(data.modal);
-                    soca.modal.standard('#attachment-form');
+                    $('#sku-modal').html(data.modal);
+                    soca.modal.standard('#sku-form');
                 }
             });
             return false;
