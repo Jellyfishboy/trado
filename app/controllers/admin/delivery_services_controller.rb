@@ -6,7 +6,7 @@ class Admin::DeliveryServicesController < ApplicationController
   layout "admin"
 
   def index
-    @delivery_services = DeliveryService.active.load
+    @delivery_services = DeliveryService.active.includes(:prices).load
   end
 
   def new
