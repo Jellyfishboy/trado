@@ -29,6 +29,8 @@ ready = function()
     trado.admin.newSku();
     trado.admin.editSku();
     trado.admin.amendSkus();
+
+    trado.admin.newStockAdjustment();
 };
 
 $(document).ready(ready);

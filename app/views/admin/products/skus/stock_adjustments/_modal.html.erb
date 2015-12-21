@@ -1,7 +1,7 @@
 <div aria-hidden="true" aria-labelledby="stockAdjustmentModalLabel" class="modal fade" id="stock-adjustment-form" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_for [:admin, @product, @sku, @stock_adjustment], html: { role: 'form' }, remote: true do |f| %>
+      <%= form_for [:admin, @product, @sku, @stock_adjustment], html: { role: 'form', :class => 'amend-stock-adjustment' }, remote: true do |f| %>
         <div class="json" id="errors">
           <ul></ul>
         </div>

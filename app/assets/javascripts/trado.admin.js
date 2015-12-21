@@ -466,4 +466,58 @@ trado.admin =
             return false;
         });
     },
+
+    newStockAdjustment: function()
+    {
+        $('body').on('click', '#add-stock-adjustment-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#stock-adjustment-modal').html(data.modal);
+                    soca.modal.standard('#stock-adjustment-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    createStockAdjustments: function()
+    {
+        $('body').on('submit', '.amend-stock-adjustment', function()
+        {
+            var $this = $(this),
+                url = $this.attr('action');
+                
+            $.ajax(
+            {
+                url: url,
+                type: 'POST',
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#stock-table tbody').append(data.row);
+                    soca.animation.alert(
+                        '.page-header',
+                        'success',
+                        'stock-adjustment-create-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully created a new stock adjustment for ' + data.sku_name +'.',
+                        5000
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 }
