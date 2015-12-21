@@ -44,28 +44,26 @@ class Admin::SkusController < ApplicationController
       @sku.product_id = @old_sku.product.id
     end
 
-    respond_to do |format|
-      if @sku.update(params[:sku])
-        if @old_sku
-          @old_sku.stock_adjustments.each do |sa|
-            new_stock_adjustment = sa.dup
-            new_stock_adjustment.sku_id = @sku.id
-            new_stock_adjustment.save!
-          end
-          @old_sku.variants.each do |variant|
-            new_variant = variant.dup
-            new_variant.sku_id = @sku.id
-            new_variant.save!
-          end
-          CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
+    if @sku.update(params[:sku])
+      if @old_sku
+        @old_sku.stock_adjustments.each do |sa|
+          new_stock_adjustment = sa.dup
+          new_stock_adjustment.sku_id = @sku.id
+          new_stock_adjustment.save!
         end
-        format.js { render partial: 'admin/products/skus/update', format: [:js] }
-      else
-        @form_sku = @old_sku ||= Sku.find(params[:id])
-        Store::activate!(@form_sku)
-        @form_sku.attributes = params[:sku]
-        format.json { render json: { errors: @sku.errors.full_messages}, status: 422 }
+        @old_sku.variants.each do |variant|
+          new_variant = variant.dup
+          new_variant.sku_id = @sku.id
+          new_variant.save!
+        end
+        CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
       end
+      render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @sku }), sku_id: @sku.id }, status: 200
+    else
+      @form_sku = @old_sku ||= Sku.find(params[:id])
+      Store::activate!(@form_sku)
+      @form_sku.attributes = params[:sku]
+      render json: { errors: @sku.errors.full_messages}, status: 422
     end
   end
 

@@ -426,9 +426,10 @@ trado.admin =
     {
         $('body').on('submit', '.amend-sku', function()
         {
-            var $this = $(this);
-                url = $this.attr('action');
-                method = $this.attr('data-method');
+            var $this = $(this),
+                url = $this.attr('action'),
+                method = $this.attr('data-method'),
+                messageVerb;
                 
             $.ajax(
             {
@@ -441,12 +442,21 @@ trado.admin =
                     $('#sku-form').modal('hide');
                     if (method === 'POST')
                     {
+                        messageVerb = 'created';
                         $('#sku-fields').append("<tr id=\'sku-" + data.sku_id + "\'>" + data.row +"</tr>");
                     }
                     else
-                    {
+                    {   
+                        messageVerb = 'updated';
                         $('tr#sku-' + data.sku_id).html(data.row);
                     }
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-' + messageVerb + '-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + messageVerb + ' a variant.',
+                        3500
+                    )
                 },
                 error: function(xhr, evt, status)
                 {
