@@ -29,6 +29,8 @@
 class Product < ActiveRecord::Base
   include ActiveScope
   include HasSlug
+  include HasSkus
+  include HasAttachments
 
   attr_accessible :name, :page_title, :meta_description, :description, :weighting, :sku, :part_number, 
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
@@ -50,7 +52,7 @@ class Product < ActiveRecord::Base
   has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
   has_many :variant_types,                                    -> { uniq }, through: :variants
 
-  validates :name, :sku, :part_number,                        presence: true, :if => :draft? || :published?
+  validates :name, :sku, :part_number,                        presence: true
   validates :meta_description, :description, 
   :weighting, :category_id, :page_title,                      presence: true, :if => :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
@@ -59,15 +61,12 @@ class Product < ActiveRecord::Base
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
   validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
-  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?                                                         
-  validate :attachment_count,                                 :if => :published?
-  validate :sku_count,                                        :if => :published?
-  validate :sku_attributes,                                   :if => :published?
-  
-  accepts_nested_attributes_for :attachments
-  accepts_nested_attributes_for :tags
-  accepts_nested_attributes_for :skus
+  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published
 
+  accepts_nested_attributes_for :skus
+  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :attachments
+  
   default_scope { order(weighting: :desc) }
 
   scope :search,                                              ->(query, page, per_page_count, limit_count) { where("name LIKE :search OR sku LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
@@ -79,36 +78,6 @@ class Product < ActiveRecord::Base
   #
   def variant_collection_by_type variant_type
     variants.joins(:variant_type).where(variant_types: { name: variant_type })
-  end
-
-  # Calculate if a product has at least one associated attachment
-  # If no associated attachments exist, return an error
-  #
-  def attachment_count
-    if self.attachments.map(&:default_record).count == 0
-      errors.add(:product, " must have at least one attachment.")
-      return false
-    end
-  end
-
-  # Calculate if a product has at least one associated SKU
-  # If no associated SKUs exist, return an error
-  #
-  def sku_count
-    if self.skus.map(&:active).count == 0
-      errors.add(:product, " must have at least one variant.")
-      return false
-    end
-  end
-
-  # Checks if all the associated skus are valid when publishing the product
-  # If not, returns a helpful error for the user
-  # 
-  def sku_attributes
-    if self.skus.active.map(&:valid?).include?(false)
-      errors.add(:base, "You must complete all variants before publishing the product.")
-      return false
-    end
   end
   
   # If a product has only one SKU it returns true

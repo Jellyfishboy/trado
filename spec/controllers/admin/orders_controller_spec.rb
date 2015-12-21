@@ -35,10 +35,6 @@ describe Admin::OrdersController do
             xhr :get, :edit , id: order.id
             expect(assigns(:order)).to eq order
         end
-        it "should render the edit partial" do
-            xhr :get, :edit, id: order.id
-            expect(response).to render_template(partial: 'admin/orders/_edit')
-        end
     end
 
     describe 'PUT #update' do
@@ -55,11 +51,6 @@ describe Admin::OrdersController do
                 xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
                 order.reload
                 expect(order.actual_shipping_cost).to eq BigDecimal.new("1.88")
-            end
-
-            it "should render the success partial" do
-                xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
-                expect(response).to render_template(partial: 'admin/orders/_update')
             end
         end
 

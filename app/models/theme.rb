@@ -14,7 +14,7 @@ class Theme
     end
 
     def views
-        files = Dir.chdir('app/views/' + page_root){ Dir.glob("**/*") }
+        files = Dir.chdir(Rails.root.join('app/views/', page_root)){ Dir.glob("**/*") }
         files.map do |path| 
             next if path.include?('layout') || path.include?('mailer')
             path = path.split('.')[0].split('/')
@@ -29,7 +29,7 @@ class Theme
     end
 
     def emails
-        files = Dir.chdir('app/views/' + email_root){ Dir.glob("**/*") }
+        files = Dir.chdir(Rails.root.join('app/views/', email_root)){ Dir.glob("**/*") }
         files.map do |path|
             path.split('.')[0]
         end.compact

@@ -25,7 +25,6 @@ describe CartItemsController do
         end
 
         it "should save a new cart item to the database", broken: true do
-            binding.pry
             expect{
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
             }.to change(CartItem, :count).by(1)
