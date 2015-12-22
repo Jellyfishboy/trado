@@ -31,6 +31,7 @@ ready = function()
     trado.admin.amendSkus();
 
     trado.admin.newStockAdjustment();
+    trado.admin.createStockAdjustments();
 };
 
 $(document).ready(ready);

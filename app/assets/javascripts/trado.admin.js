@@ -503,7 +503,9 @@ trado.admin =
                 dataType: 'json',
                 success: function (data)
                 {
-                    $('#stock-table tbody').append(data.row);
+                    $('#stock-table tbody tr:first-child td:last-child').removeClass('td-green');
+                    $('#stock-table tbody').prepend(data.row);
+                    $('#stock-adjustment-form').modal('hide');
                     soca.animation.alert(
                         '.page-header',
                         'success',
