@@ -4,7 +4,7 @@ class Admin::Skus::VariantsController < ApplicationController
     def new
         set_product
         set_variant_types
-        render partial: 'admin/products/skus/variants/new', format: [:js]
+        render json: { modal: render_to_string(partial: 'admin/products/skus/variants/modal'), active_skus: !@product.skus.active.empty? }, status: 200
     end
 
     def create

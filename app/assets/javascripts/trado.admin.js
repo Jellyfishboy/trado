@@ -522,4 +522,30 @@ trado.admin =
             return false;
         });
     },
+
+    newVariants: function()
+    {
+        $('body').on('click', '#sku-variant-options-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#sku-variants-modal').html(data.modal);
+                    soca.modal.standard('#sku-variants-form');
+                    $('.tagsinput').tagsinput();
+                    if(data.active_skus)
+                    {
+                        $('.tagsinput').tagsinput('disable');
+                    }
+                }
+            });
+            return false;
+        });
+    }
 }
