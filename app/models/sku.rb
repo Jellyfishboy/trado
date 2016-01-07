@@ -106,7 +106,7 @@ class Sku < ActiveRecord::Base
   # Updates the product's status to 'Draft'
   #
   def set_product_as_draft
-    product.draft!
+    product.draft! if product.published?
   end
 
   # If the associated parent product has one SKU, return true

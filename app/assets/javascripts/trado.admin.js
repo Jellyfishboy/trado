@@ -547,5 +547,33 @@ trado.admin =
             });
             return false;
         });
+    },
+
+    resetVariants: function()
+    {
+        $('body').on('click', '#reset-sku-variants-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#sku-variants-form').modal('hide');
+                    $('#add-sku-button').addClass('hide');
+                    $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>');
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-variant-reset-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully reset the variants for this product.',
+                        3500
+                    )
+                }
+            });
+            return false;
+        });
     }
 }

@@ -34,6 +34,7 @@ ready = function()
     trado.admin.createStockAdjustments();
 
     trado.admin.newVariants();
+    trado.admin.resetVariants();
 };
 
 $(document).ready(ready);

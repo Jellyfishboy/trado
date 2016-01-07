@@ -65,7 +65,7 @@ class Admin::Skus::VariantsController < ApplicationController
         @product.skus.active.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end
-        render partial: 'admin/products/skus/variants/destroy', format: [:js]
+        render json: { }, status: 200
     end
 
     private
