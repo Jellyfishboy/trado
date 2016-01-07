@@ -1,11 +1,9 @@
 class Admin::DeliveryServicesController < ApplicationController
-
-  before_action :set_delivery_service, only: [:edit, :update, :destroy]
-  before_action :get_associations, except: [:index, :destroy, :copy_countries, :set_countries]
   before_action :authenticate_user!
   layout "admin"
 
   def index
+    set_all_countries
     @delivery_services = DeliveryService.active.includes(:prices).load
   end
 
@@ -14,6 +12,7 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def edit
+    set_delivery_service
     @form_delivery_service = DeliveryService.find(params[:id])
   end
 
@@ -29,6 +28,7 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def update
+    set_delivery_service
     unless @delivery_service.orders.empty?
       Store::inactivate!(@delivery_service)
       @old_delivery_service = @delivery_service
@@ -57,6 +57,8 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def destroy
+    set_delivery_service
+    set_all_countries
     if @delivery_service.orders.empty?
       @result = Store::last_record(@delivery_service, DeliveryService.active.load.count)
     else
@@ -68,11 +70,13 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def copy_countries
+    set_all_countries
     @delivery_services = params[:delivery_service_id].blank? ? DeliveryService.active.load : DeliveryService.where('id != ?', params[:delivery_service_id]).active.load
     render json: { modal: render_to_string(partial: 'admin/delivery_services/countries/modal', locals: { delivery_services: @delivery_services }) }, status: 200
   end
 
   def set_countries
+    set_all_countries
     @delivery_service = DeliveryService.includes(:countries).find(params[:delivery_service_id])
     render json: { countries: @delivery_service.countries.map{ |c| c.id.to_s } }, status: 200
   rescue ActiveRecord::RecordNotFound
@@ -85,7 +89,7 @@ class Admin::DeliveryServicesController < ApplicationController
     @delivery_service = DeliveryService.find(params[:id])
   end
 
-  def get_associations
+  def set_all_countries
     @countries = Country.all
   end
 end

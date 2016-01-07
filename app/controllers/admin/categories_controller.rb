@@ -1,6 +1,4 @@
 class Admin::CategoriesController < ApplicationController
-  
-  before_action :set_category, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   layout 'admin'
 
@@ -13,6 +11,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
+    set_category
   end
 
   def create
@@ -27,6 +26,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
+    set_category
     if @category.update(params[:category])
       flash_message :success, 'Category was successfully updated.'
       redirect_to admin_categories_url
@@ -36,6 +36,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
+    set_category
     @result = Store::last_record(@category, Category.all.count)
 
     flash_message @result[0], @result[1]
@@ -44,8 +45,8 @@ class Admin::CategoriesController < ApplicationController
 
   private
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
 end

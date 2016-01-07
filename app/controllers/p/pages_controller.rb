@@ -1,9 +1,9 @@
 class P::PagesController < ApplicationController
 
     skip_before_action :authenticate_user!
-    before_action :set_page, except: :send_contact_message
 
     def show
+        set_page
         if @page.contact?
             @contact_message = ContactMessage.new 
             render theme_presenter.page_template_path('pages/contact'), format: [:html], layout: theme_presenter.layout_template_path
@@ -28,6 +28,6 @@ class P::PagesController < ApplicationController
     private
 
     def set_page
-        @page = Page.find_by_slug(params[:slug])
+        @page ||= Page.find_by_slug(params[:slug])
     end
 end
