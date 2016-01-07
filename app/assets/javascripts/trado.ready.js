@@ -35,6 +35,7 @@ ready = function()
 
     trado.admin.newVariants();
     trado.admin.resetVariants();
+    trado.admin.amendVariants();
 };
 
 $(document).ready(ready);

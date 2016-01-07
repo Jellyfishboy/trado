@@ -575,5 +575,59 @@ trado.admin =
             });
             return false;
         });
-    }
+    },
+
+    amendVariants: function()
+    {
+        $('body').on('submit', '.amend-variants', function()
+        {
+            var $this = $(this),
+                url = $this.attr('action'),
+                method = $this.attr('data-method'),
+                messageVerb;
+                
+            $.ajax(
+            {
+                url: url,
+                type: method,
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#sku-variants-form').modal('hide');
+                    if (method === 'POST')
+                    {
+                        messageVerb = 'created';
+                        $('#add-sku-button').removeClass('hide');
+                        $('#skus').html(data.table);
+                    }
+                    else
+                    {   
+                        messageVerb = 'deleted';
+                        if (data.product_skus_empty)
+                        {
+                            $('#add-sku-button').addClass('hide');
+                            $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>')
+                        }
+                        else
+                        {
+                            $('#skus').html(data.table);
+                        }
+                    }
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-variant-' + messageVerb + '-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + messageVerb + ' ' + data.sku_count_text + '.',
+                        3500
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 }

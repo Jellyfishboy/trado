@@ -1,4 +1,5 @@
 class Admin::Skus::VariantsController < ApplicationController
+    include ActionView::Helpers::TextHelper
     before_filter :authenticate_user!
 
     def new
@@ -40,8 +41,7 @@ class Admin::Skus::VariantsController < ApplicationController
                     SkuVariant.create(sku_id: sku.id, name: value, variant_type_id: variant[:id])
                 end
             end
-
-            render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_possible_skus }
+            render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@total_possible_skus, "variant")  }
         end
     end
 
@@ -56,8 +56,9 @@ class Admin::Skus::VariantsController < ApplicationController
         @delete_variants = @product.skus.includes(:variants).where.not(sku_variants: { name: @variant_array.reject(&:empty?) } )
         @variant_count = @delete_variants.count
         @delete_variants.destroy_all
+        set_updated_skus
 
-        render partial: 'admin/products/skus/variants/update', format: [:js], locals: { variant_count: @variant_count }
+        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.skus.active.empty? }
     end
 
     def destroy
@@ -76,5 +77,9 @@ class Admin::Skus::VariantsController < ApplicationController
 
     def set_variant_types
         @variant_types = VariantType.all
+    end
+
+    def set_updated_skus
+        @skus = @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc) 
     end
 end
