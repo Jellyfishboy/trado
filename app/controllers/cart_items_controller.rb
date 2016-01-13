@@ -1,18 +1,20 @@
 class CartItemsController < ApplicationController
-
   skip_before_action :authenticate_user!
-  before_action :set_validate_cart_item, except: :destroy
-  before_action :void_delivery_services
-  before_action :void_session
   after_action :set_delivery_services
 
   def create
+    set_validate_cart_item
+    void_delivery_services
+    void_session
     @sku = Sku.find(params[:cart_item][:sku_id])
     @cart_item = CartItem.increment(@sku, params[:cart_item][:quantity], params[:cart_item][:cart_item_accessory], current_cart)
     render partial: theme_presenter.page_template_path('carts/update'), format: [:js] if @cart_item.save
   end
 
   def update
+    set_validate_cart_item
+    void_delivery_services
+    void_session
     @accessory = @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil
     @cart_item.update_quantity(params[:cart_item][:quantity], @accessory)
     if @cart_item.quantity == 0 
@@ -25,6 +27,8 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    void_delivery_services
+    void_session
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     render partial: theme_presenter.page_template_path('carts/update'), format: [:js]

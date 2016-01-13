@@ -1,5 +1,4 @@
 class SkusController < ApplicationController
-
     skip_before_action :authenticate_user!
     
     # Update SKU

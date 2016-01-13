@@ -1,16 +1,15 @@
 class OrdersController < ApplicationController
-
     skip_before_action :authenticate_user!
-    before_action :set_order, only: [:destroy, :retry, :complete]
-    before_action :set_and_validate_order, only: :confirm
 
     def confirm
+      set_and_validate_order
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
       render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
     end
 
     def complete
+      set_order
       @order.transfer(current_cart)
       redirect_to Store::PayProvider.new(order: @order, provider: session[:payment_type], session: session).complete
     end
@@ -34,12 +33,14 @@ class OrdersController < ApplicationController
     end
 
     def retry
+      set_order
       @error_code = @order.transactions.last.error_code
       @order.update_column(:cart_id, current_cart.id) unless Payatron4000::fatal_error_code?(@error_code)
       redirect_to mycart_carts_url
     end
 
     def destroy
+      set_order
       Payatron4000::decommission_order(@order)
       flash_message :success, "Your order has been cancelled."
       redirect_to root_url
