@@ -21,7 +21,7 @@ describe Admin::Skus::VariantsController do
 
         it "should render the new partial" do
             xhr :get, :new, product_id: product.id
-            expect(response).to render_template('admin/products/skus/variants/_new')
+            expect(response).to render_template('admin/products/skus/variants/_modal')
         end
     end
 
@@ -63,7 +63,7 @@ describe Admin::Skus::VariantsController do
 
             it "should render the create partial" do
                 xhr :post, :create, product_id: product.id, colour: 'Blue, Red, Green', size: '100g, 250g'
-                expect(response).to render_template('admin/products/skus/variants/_create')
+                expect(response).to render_template('admin/products/skus/_table')
             end
     end
 
@@ -97,7 +97,7 @@ describe Admin::Skus::VariantsController do
 
         it "should render the update partial" do
             xhr :post, :update, product_id: product.id, colour: 'Blue', size: '500g'
-            expect(response).to render_template('admin/products/skus/variants/_update')
+            expect(response).to render_template('admin/products/skus/_table')
         end
     end
 
@@ -128,8 +128,7 @@ describe Admin::Skus::VariantsController do
         end
 
         it "should render the destroy partial" do
-            xhr :delete, :destroy, product_id: product.id 
-            expect(response).to render_template('admin/products/skus/variants/_destroy')
+            xhr :delete, :destroy, product_id: product.id
         end
     end
 end

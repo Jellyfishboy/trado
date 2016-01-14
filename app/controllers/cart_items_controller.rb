@@ -6,9 +6,12 @@ class CartItemsController < ApplicationController
     set_validate_cart_item
     void_delivery_services
     void_session
-    @sku = Sku.find(params[:cart_item][:sku_id])
     @cart_item = CartItem.increment(@sku, params[:cart_item][:quantity], params[:cart_item][:cart_item_accessory], current_cart)
-    render partial: theme_presenter.page_template_path('carts/update'), format: [:js] if @cart_item.save
+    if @quantity > @sku.stock
+      render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
+    else
+      render partial: theme_presenter.page_template_path('carts/update'), format: [:js] if @cart_item.save
+    end
   end
 
   def update
@@ -23,7 +26,11 @@ class CartItemsController < ApplicationController
       @cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, @accessory)
       @cart_item.save!
     end
-    render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+    if @quantity > @sku.stock
+      render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
+    else
+      render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+    end
   end
 
   def destroy
@@ -60,9 +67,5 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id]) unless params[:id].nil?
     @sku = @cart_item.nil? ? Sku.find(params[:cart_item][:sku_id]) : @cart_item.sku
     @quantity = params[:action] == 'create' ? ((current_cart.cart_items.where(sku_id: @sku.id).sum(:quantity)) + params[:cart_item][:quantity].to_i) :  params[:cart_item][:quantity].to_i
-    if @quantity > @sku.stock
-      render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
-      return false
-    end
   end
 end

@@ -361,7 +361,7 @@ trado.admin =
                     if (data.last_record)
                     {
                         $('#add-sku-button').addClass('hide');
-                        $('#skus').html(data.html)
+                        $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>')
                     }
                     else
                     {

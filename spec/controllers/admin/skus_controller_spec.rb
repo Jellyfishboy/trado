@@ -6,7 +6,7 @@ describe Admin::SkusController do
     login_admin
 
     describe 'GET #new' do
-        let!(:product) { create(:product, active: true) }
+        let!(:product) { create(:product_sku, active: true) }
 
         it "should create a new Sku record" do
             xhr :get, :new, product_id: product.id
@@ -20,12 +20,12 @@ describe Admin::SkusController do
 
         it "should render the new partial" do
             xhr :get, :new, product_id: product.id
-            expect(response).to render_template(partial: 'admin/products/skus/_new_edit')
+            expect(response).to render_template(partial: 'admin/products/skus/_modal')
         end
     end
 
     describe 'POST #create' do
-        let!(:product) { create(:product, active: true) }
+        let!(:product) { create(:product_sku, active: true) }
 
         context "with valid attributes" do
 
@@ -36,7 +36,7 @@ describe Admin::SkusController do
             end
             it "should render the create partial"  do
                 xhr :post, :create, product_id: product.id, sku: attributes_for(:sku)
-                expect(response).to render_template(partial: 'admin/products/skus/_create')
+                expect(response).to render_template(partial: 'admin/products/skus/_single')
             end
         end
         context "with invalid attributes" do
@@ -71,7 +71,7 @@ describe Admin::SkusController do
 
         it "should render the edit partial" do
             xhr :get, :edit, product_id: product.id, id: sku.id
-            expect(response).to render_template(partial: 'admin/products/skus/_new_edit')
+            expect(response).to render_template(partial: 'admin/products/skus/_modal')
         end
     end
 
@@ -190,7 +190,7 @@ describe Admin::SkusController do
             
             it "should render the success partial" do
                 xhr :patch, :update, product_id: product.id, id: sku.id, sku: new_sku
-                expect(response).to render_template(partial: 'admin/products/skus/_update')
+                expect(response).to render_template(partial: 'admin/products/skus/_single')
             end
         end
         context "with invalid attributes" do 
@@ -274,7 +274,6 @@ describe Admin::SkusController do
 
             it "should render the destroy partial" do
                 xhr :delete, :destroy, product_id: product.id, id: sku.id
-                expect(response).to render_template(partial: 'admin/products/skus/_destroy')
             end
         end
     end

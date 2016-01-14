@@ -16,7 +16,7 @@ describe Admin::StockAdjustmentsController do
 
         it "should render a new partial" do
             xhr :get, :new, product_id: product.id, sku_id: sku.id
-            expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_new')
+            expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_modal')
         end
     end
 
@@ -34,7 +34,7 @@ describe Admin::StockAdjustmentsController do
 
             it "should render the success partial" do
                 xhr :post, :create, product_id: product.id, sku_id: sku.id, stock_adjustment: attributes_for(:stock_adjustment)
-                expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_create')
+                expect(response).to render_template(partial: 'admin/products/skus/stock_adjustments/_single')
             end
         end
 
