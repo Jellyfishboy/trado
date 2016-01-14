@@ -12,7 +12,7 @@ describe DeliveryService do
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_presence_of(:courier_name) }
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:courier_name) }
-    it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
+    it { expect(subject).to validate_length_of(:description).is_at_most(180) }
 
     describe "Default scope" do
         let!(:delivery_service_1) { create(:delivery_service, courier_name: 'abc') }

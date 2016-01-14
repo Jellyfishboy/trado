@@ -19,7 +19,7 @@ describe DeliveryServicePrice do
 
     it { expect(subject).to validate_uniqueness_of(:code).scoped_to([:active, :delivery_service_id]) }
 
-    it { expect(subject).to ensure_length_of(:description).is_at_most(180) }
+    it { expect(subject).to validate_length_of(:description).is_at_most(180) }
 
     it { expect(subject).to validate_uniqueness_of(:price).scoped_to(:delivery_service_id) }
 
