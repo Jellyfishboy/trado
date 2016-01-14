@@ -2,10 +2,9 @@ class OrdersController < ApplicationController
     skip_before_action :authenticate_user!
 
     def confirm
-      set_and_validate_order
-      @delivery_address = @order.delivery_address
-      @billing_address = @order.billing_address
-      render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
+      set_eager_loading_order
+      set_address_variables
+      validate_confirm_render
     end
 
     def complete
@@ -49,16 +48,25 @@ class OrdersController < ApplicationController
     private
 
     def set_order
-      @order = Order.find(params[:id])
+      @order ||= Order.find(params[:id])
     end
 
-    def set_and_validate_order
-      @order = Order.includes(:delivery_address, :billing_address).find(params[:id])
+    def set_eager_loading_order
+      @order ||= Order.includes(:delivery_address, :billing_address).find(params[:id])
+    end
+
+    def set_address_variables
+      @delivery_address = @order.delivery_address
+      @billing_address = @order.billing_address
+    end
+
+    def validate_confirm_render
       if session[:payment_type].nil?
         redirect_to checkout_carts_url
       elsif session[:payment_type] == 'express-checkout'
         if params[:token] && params[:PayerID]
           Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
+          render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
         else
           flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
           redirect_to checkout_carts_url
