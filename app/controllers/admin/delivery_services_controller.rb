@@ -8,15 +8,18 @@ class Admin::DeliveryServicesController < ApplicationController
   end
 
   def new
+    set_all_countries
     @delivery_service = DeliveryService.new
   end
 
   def edit
     set_delivery_service
+    set_all_countries
     @form_delivery_service = DeliveryService.find(params[:id])
   end
 
   def create
+    set_all_countries
     @delivery_service = DeliveryService.new(params[:delivery_service])
 
     if @delivery_service.save
@@ -29,6 +32,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
   def update
     set_delivery_service
+    set_all_countries
     unless @delivery_service.orders.empty?
       Store::inactivate!(@delivery_service)
       @old_delivery_service = @delivery_service
