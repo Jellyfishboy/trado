@@ -1,5 +1,4 @@
 class Admin::OrdersController < ApplicationController
-  before_action :set_order, except: :index
   before_action :authenticate_user!
   layout 'admin'
 
@@ -8,13 +7,16 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+    set_order
   end
 
   def edit
+    set_order
     render json: { modal: render_to_string(partial: 'admin/orders/modal') }, status: 200
   end
 
   def update
+    set_order
     if @order.update(params[:order])
       render json: { order_id: @order.id }, status: 200
       OrderMailer.tracking(@order).deliver_later if @order.new_order_tracking_mailer?
@@ -29,6 +31,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def dispatched
+    set_order
     @order.shipping_date = Time.now
     @order.shipping_status = 'dispatched'
     if @order.update(params[:order])
@@ -44,8 +47,7 @@ class Admin::OrdersController < ApplicationController
 
   private
 
-    def set_order
-      @order ||= Order.find(params[:id])
-    end
-
+  def set_order
+    @order ||= Order.find(params[:id])
+  end
 end

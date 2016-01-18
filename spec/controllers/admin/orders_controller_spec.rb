@@ -38,7 +38,7 @@ describe Admin::OrdersController do
     end
 
     describe 'PUT #update' do
-        let!(:order) { create(:order, actual_shipping_cost: '2.55') }
+        let!(:order) { create(:complete_order, actual_shipping_cost: '2.55') }
 
         it "should assign the requested order to @order" do
             xhr :patch, :update , id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
@@ -51,6 +51,14 @@ describe Admin::OrdersController do
                 xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: '1.88')
                 order.reload
                 expect(order.actual_shipping_cost).to eq BigDecimal.new("1.88")
+            end
+
+            it "should send a new tracking email", broken: true do
+                expect{
+                    xhr :patch, :update, id: order.id, order: attributes_for(:order, consignment_number: '1111TT5566')
+                }.to change {
+                    ActionMailer::Base.deliveries.count
+                }.by(1)
             end
         end
 

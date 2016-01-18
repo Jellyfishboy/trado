@@ -73,7 +73,7 @@ class Admin::SkusController < ApplicationController
     archive_sku_and_associated
     sku_id = @sku.id
     if @product.skus.active.empty?
-      render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>' }, status: 200
+      render json: { last_record: true }, status: 200
     else
       render json: { last_record: false, sku_id: sku_id }, status: 200
     end

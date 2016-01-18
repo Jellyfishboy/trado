@@ -27,7 +27,7 @@ group :test do
   gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '2.8.0'
   gem 'faker'
   gem 'email_spec'
 end

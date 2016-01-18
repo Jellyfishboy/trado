@@ -1,5 +1,4 @@
 class DeliveryServicePricesController < ApplicationController
-
     skip_before_action :authenticate_user!
     
     # Update delivery service price results
