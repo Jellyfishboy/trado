@@ -384,7 +384,31 @@ feature 'Product management' do
 
     # ATTACHMENTS
 
+<<<<<<< Updated upstream
     scenario 'should add an image to a product', js: true do
+=======
+    scenario 'should display an image from a product', js: true do
+        multi_attachment_product
+        attachment = multi_attachment_product.attachments.first
+
+        visit admin_products_path
+        find('.table-actions').first(:link).click
+        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
+        within '#breadcrumbs li.current' do
+            expect(page).to have_content 'Edit'
+        end
+        expect(attachment.default_record).to eq false
+
+        find('#attachments div.attachments:first-child a.label-blue').click
+        sleep 1
+
+        within '.modal#attachment-preview-form' do
+            expect(find('.modal-header h3')).to have_content attachment.file.filename
+        end
+    end
+
+    scenario 'should add an image to a product', js: true, broken: true do
+>>>>>>> Stashed changes
         product
 
         visit admin_products_path
@@ -415,13 +439,19 @@ feature 'Product management' do
         expect(attachment.default_record).to eq true
     end
 
+<<<<<<< Updated upstream
     scenario 'should edit an image', js: true do
         product
         attachment = product.attachments.first
+=======
+    scenario 'should edit an image', js: true, broken: true do
+        multi_attachment_product
+        attachment = multi_attachment_product.attachments.first
+>>>>>>> Stashed changes
 
         visit admin_products_path
         find('.table-actions').first(:link).click
-        expect(current_path).to eq edit_admin_product_path(product)
+        expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
         end
