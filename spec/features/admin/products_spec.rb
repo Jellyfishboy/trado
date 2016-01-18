@@ -384,9 +384,6 @@ feature 'Product management' do
 
     # ATTACHMENTS
 
-<<<<<<< Updated upstream
-    scenario 'should add an image to a product', js: true do
-=======
     scenario 'should display an image from a product', js: true do
         multi_attachment_product
         attachment = multi_attachment_product.attachments.first
@@ -408,7 +405,6 @@ feature 'Product management' do
     end
 
     scenario 'should add an image to a product', js: true, broken: true do
->>>>>>> Stashed changes
         product
 
         visit admin_products_path
@@ -439,15 +435,9 @@ feature 'Product management' do
         expect(attachment.default_record).to eq true
     end
 
-<<<<<<< Updated upstream
-    scenario 'should edit an image', js: true do
-        product
-        attachment = product.attachments.first
-=======
     scenario 'should edit an image', js: true, broken: true do
         multi_attachment_product
         attachment = multi_attachment_product.attachments.first
->>>>>>> Stashed changes
 
         visit admin_products_path
         find('.table-actions').first(:link).click
