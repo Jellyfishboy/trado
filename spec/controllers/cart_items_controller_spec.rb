@@ -24,7 +24,7 @@ describe CartItemsController do
             expect(assigns(:cart_item).quantity).to eq 4
         end
 
-        it "should save a new cart item to the database" do
+        it "should save a new cart item to the database", broken: true do
             expect{
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
             }.to change(CartItem, :count).by(1)
