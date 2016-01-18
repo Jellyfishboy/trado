@@ -497,8 +497,8 @@ GEM
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
     sexp_processor (4.6.0)
-    shoulda-matchers (3.0.1)
-      activesupport (>= 4.0.0)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     sidekiq (4.0.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -615,7 +615,7 @@ DEPENDENCIES
   rspec-collection_matchers
   rspec-rails
   sass-rails (~> 4.0.0)
-  shoulda-matchers
+  shoulda-matchers (= 2.8.0)
   sidekiq
   sidekiq-failures
   sinatra

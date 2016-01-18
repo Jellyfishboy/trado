@@ -1,7 +1,4 @@
 class Admin::DeliveryServicePricesController < ApplicationController
-
-  before_action :set_delivery_service_price, only: [:update, :destroy]
-  before_action :set_delivery_service, only: [:new, :create]
   before_action :authenticate_user!
   layout "admin"
 
@@ -12,6 +9,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
 
 
   def new
+    set_delivery_service
     @delivery_service_price = @delivery_service.prices.build
   end
 
@@ -20,6 +18,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
   end
 
   def create
+    set_delivery_service
     @delivery_service_price = @delivery_service.prices.build(params[:delivery_service_price])
     
     if @delivery_service_price.save
@@ -36,6 +35,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
   # Else create a new delivery_service_price with the new attributes.
   # Then set the old delivery_service_price as inactive.
   def update
+    set_delivery_service_price
     unless @delivery_service_price.orders.empty?
       Store::inactivate!(@delivery_service_price)
       @old_delivery_service_price = @delivery_service_price
@@ -57,6 +57,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
   #
   # If no associated order records, destroy the delivery_service_price. Else set it to inactive.
   def destroy
+    set_delivery_service_price
     if @delivery_service_price.orders.empty?
       @result = Store::last_record(@delivery_service_price, DeliveryServicePrice.active.load.count)
     else

@@ -1,31 +1,26 @@
 trado.admin =
 {
-    jsonErrors: function()
+    jsonErrors: function(xhr, evt, status, form)
     {
-        $(document).on("ajax:error", "form", function(evt, xhr, status, error)
+        var content, value, _i, _len, _ref, $this;
+        $this = form;
+        content = $this.children('#errors');
+        content.find('ul').empty();
+        _ref = $.parseJSON(xhr.responseText).errors;
+        // Append errors to list on page
+        for (_i = 0, _len = _ref.length; _i < _len; _i++)
         {
-            var content, value, _i, _len, _ref;
-            content = $(this).children('#errors');
-            content.find('ul').empty();
-            _ref = $.parseJSON(xhr.responseText).errors;
-            // Append errors to list on page
-            for (_i = 0, _len = _ref.length; _i < _len; _i++)
-            {
-                value = _ref[_i];
-                content.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + value + '</li>');
-            }
-            // Scroll to error list
-            if (!$(this).parent().hasClass('modal-content'))
-            {
-                $('body').scrollTo('.page-header', 800);
-            }
-            // Fade out loading animation
-            $('.loading-overlay').css('height', '0').removeClass('active');
-            $('.loading5').removeClass('active');
-            // Reset attachment styles
-            $('.new-file').css('background-color', '#00aff1').children('.icon-upload-3').css('top', '41px');
-            return $('.new-file').children('div').empty();
-      });
+            value = _ref[_i];
+            content.show().find('ul').append('<li><i class="icon-cancel-circle"></i>' + value + '</li>');
+        }
+        // Scroll to error list
+        if (!$this.parent().hasClass('modal-content'))
+        {
+            $('body').scrollTo('.page-header', 800);
+        }
+        // Fade out loading animation
+        $('.loading-overlay').css('height', '0').removeClass('active');
+        $('.loading5').removeClass('active');
     },
 
     copyCountries: function()
@@ -204,5 +199,435 @@ trado.admin =
             });
             return false;
         });
-    }
+    },
+
+    showAttachment: function()
+    {
+        $('body').on('click', '.show-attachment', function ()
+        {
+            var productId = $(this).attr('data-product-id');
+            var attachmentId = $(this).attr('data-attachment-id');
+            $.ajax(
+            {
+                url: '/admin/products/' + productId + '/attachments/' + attachmentId,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#attachment-preview-modal').html(data.modal);
+                    soca.modal.standard('#attachment-preview-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    newAttachment: function()
+    {
+        $('body').on('click', '#add-image', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#attachment-modal').html(data.modal);
+                    soca.modal.standard('#attachment-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    // amendAttachments: function()
+    // {
+    //     $('#amend_attachment').ajaxSubmit(
+    //     {
+    //         beforeSubmit: function(a,f,o) 
+    //         {
+    //             o.dataType = 'json';
+    //         },
+    //         complete: function(XMLHttpRequest, textStatus) 
+    //         {
+    //             var json = $.parseJSON(XMLHttpRequest.responseText)
+    //             $('#attachment-form').modal('hide');
+    //             if (data.first_record)
+    //             {
+    //                 $('#attachments').html(data.image);
+    //             }
+    //             else
+    //             {
+    //                 if (method === 'POST')
+    //                 {
+    //                     $('#attachments').append(data.image);
+    //                 }
+    //                 else
+    //                 {
+    //                     $('#attachment-' + data.attachment_id).html(data.image);
+    //                 }
+    //             }
+    //             soca.animation.alert(
+    //                 '.widget-header', 
+    //                 'success', 
+    //                 'amend-attachment-alert',
+    //                 '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+    //                 5000
+    //             )
+    //         },
+    //     });
+    //     var files;
+    //     $('body').on('change', '#attachment_file', function()
+    //     {
+    //         files = event.target.files;
+    //     });
+    //     $('body').on('submit', '#amend_attachment', function(event)
+    //     {
+    //         event.stopPropagation(); // Stop stuff happening
+    //         event.preventDefault(); // Totally stop stuff happening
+
+    //         var $this = $(this);
+    //             url = $this.attr('action');
+    //             method = $this.attr('data-method'),
+    //             message = method === 'POST' ? 'created' : 'edited';
+    //             data = new FormData();
+
+    //         $.each(files, function(key, value)
+    //         {
+    //             data.append(key, value);
+    //         });
+
+    //         $.ajax(
+    //         {
+    //             url: url,   
+    //             type: method,
+    //             data: data,
+    //             cache: false,
+    //             processData: false,
+    //             contentType: false,
+    //             dataType: 'json',
+    //             success: function (data)
+    //             {
+    //                 $('#attachment-form').modal('hide');
+    //                 if (data.first_record)
+    //                 {
+    //                     $('#attachments').html(data.image);
+    //                 }
+    //                 else
+    //                 {
+    //                     if (method === 'POST')
+    //                     {
+    //                         $('#attachments').append(data.image);
+    //                     }
+    //                     else
+    //                     {
+    //                         $('#attachment-' + data.attachment_id).html(data.image);
+    //                     }
+    //                 }
+    //                 soca.animation.alert(
+    //                     '.widget-header', 
+    //                     'success', 
+    //                     'amend-attachment-alert',
+    //                     '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
+    //                     5000
+    //                 )
+    //             },
+    //             error: function(xhr, evt, status)
+    //             {
+
+    //                 trado.admin.jsonErrors(xhr, evt, status, $this);
+    //             }
+    //         });
+    //         return false;
+    //     });
+    // },
+
+    deleteSku: function()
+    {
+        $('body').on('click', '.sku-delete', function()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
+                {
+                    if (data.last_record)
+                    {
+                        $('#add-sku-button').addClass('hide');
+                        $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>')
+                    }
+                    else
+                    {
+                        $("#sku-" + data.sku_id).remove();
+                    }
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-destroy-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully deleted the variant.',
+                        3500
+                    )
+                }
+            });
+            return false;
+        });
+    },
+
+    newSku: function()
+    {
+        $('body').on('click', '#add-sku-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#sku-modal').html(data.modal);
+                    soca.modal.standard('#sku-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    editSku: function()
+    {
+        $('body').on('click', '.edit-sku-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#sku-modal').html(data.modal);
+                    soca.modal.standard('#sku-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    amendSkus: function()
+    {
+        $('body').on('submit', '.amend-sku', function()
+        {
+            var $this = $(this),
+                url = $this.attr('action'),
+                method = $this.attr('data-method'),
+                messageVerb;
+                
+            $.ajax(
+            {
+                url: url,
+                type: method,
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#sku-form').modal('hide');
+                    if (method === 'POST')
+                    {
+                        messageVerb = 'created';
+                        $('#sku-fields').append("<tr id=\'sku-" + data.sku_id + "\'>" + data.row +"</tr>");
+                    }
+                    else
+                    {   
+                        messageVerb = 'updated';
+                        $('tr#sku-' + data.sku_id).html(data.row);
+                    }
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-' + messageVerb + '-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + messageVerb + ' a variant.',
+                        3500
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
+
+    newStockAdjustment: function()
+    {
+        $('body').on('click', '#add-stock-adjustment-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#stock-adjustment-modal').html(data.modal);
+                    soca.modal.standard('#stock-adjustment-form');
+                }
+            });
+            return false;
+        });
+    },
+
+    createStockAdjustments: function()
+    {
+        $('body').on('submit', '.amend-stock-adjustment', function()
+        {
+            var $this = $(this),
+                url = $this.attr('action');
+                
+            $.ajax(
+            {
+                url: url,
+                type: 'POST',
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#stock-table tbody tr:first-child td:last-child').removeClass('td-green');
+                    $('#stock-table tbody').prepend(data.row);
+                    $('#stock-adjustment-form').modal('hide');
+                    soca.animation.alert(
+                        '.page-header',
+                        'success',
+                        'stock-adjustment-create-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully created a new stock adjustment for ' + data.sku_name +'.',
+                        5000
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
+
+    newVariants: function()
+    {
+        $('body').on('click', '#sku-variant-options-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#sku-variants-modal').html(data.modal);
+                    soca.modal.standard('#sku-variants-form');
+                    $('.tagsinput').tagsinput();
+                    if(data.active_skus)
+                    {
+                        $('.tagsinput').tagsinput('disable');
+                    }
+                }
+            });
+            return false;
+        });
+    },
+
+    resetVariants: function()
+    {
+        $('body').on('click', '#reset-sku-variants-button', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#sku-variants-form').modal('hide');
+                    $('#add-sku-button').addClass('hide');
+                    $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>');
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-variant-reset-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully reset the variants for this product.',
+                        3500
+                    )
+                }
+            });
+            return false;
+        });
+    },
+
+    amendVariants: function()
+    {
+        $('body').on('submit', '.amend-variants', function()
+        {
+            var $this = $(this),
+                url = $this.attr('action'),
+                method = $this.attr('data-method'),
+                messageVerb;
+                
+            $.ajax(
+            {
+                url: url,
+                type: method,
+                data: $this.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $('#sku-variants-form').modal('hide');
+                    if (method === 'POST')
+                    {
+                        messageVerb = 'created';
+                        $('#add-sku-button').removeClass('hide');
+                        $('#skus').html(data.table);
+                    }
+                    else
+                    {   
+                        messageVerb = 'deleted';
+                        if (data.product_skus_empty)
+                        {
+                            $('#add-sku-button').addClass('hide');
+                            $('#skus').html('<div class="helper-notification"><p>You do not have any variants for this product.</p><i class="icon-tags"></i></div>')
+                        }
+                        else
+                        {
+                            $('#skus').html(data.table);
+                        }
+                    }
+                    soca.animation.alert(
+                        '#skus',
+                        'success',
+                        'sku-variant-' + messageVerb + '-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + messageVerb + ' ' + data.sku_count_text + '.',
+                        3500
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 }

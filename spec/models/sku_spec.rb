@@ -40,7 +40,7 @@ describe Sku do
         
         it "should validate whether the stock value is higher than stock_warning_level" do
             expect(sku).to have(1).error_on(:sku)
-            expect(sku.errors.messages[:sku]).to eq ["stock warning level value must not be below your stock count."]
+            expect(sku.errors.messages[:sku]).to eq ["stock warning level value must be below your stock count."]
         end
 
         it "should create a new stock adjustment record" do

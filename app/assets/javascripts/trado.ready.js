@@ -15,7 +15,6 @@ ready = function()
     soca.mobile.disableTooltips();
     soca.mobile.triggerMenu();
 
-    trado.admin.jsonErrors();
     trado.admin.copyCountries();
     trado.admin.setCountries();
     trado.admin.editOrder();
@@ -23,6 +22,20 @@ ready = function()
     trado.admin.dispatchOrderModal();
     trado.admin.dispatchOrder();
     trado.admin.deleteAttachment();
+    trado.admin.showAttachment();
+    trado.admin.newAttachment();
+    // trado.admin.amendAttachments();
+    trado.admin.deleteSku();
+    trado.admin.newSku();
+    trado.admin.editSku();
+    trado.admin.amendSkus();
+
+    trado.admin.newStockAdjustment();
+    trado.admin.createStockAdjustments();
+
+    trado.admin.newVariants();
+    trado.admin.resetVariants();
+    trado.admin.amendVariants();
 };
 
 $(document).ready(ready);

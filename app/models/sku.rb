@@ -62,7 +62,7 @@ class Sku < ActiveRecord::Base
   # @return [Boolean]
   def stock_values
     if self.stock && self.stock_warning_level && self.stock <= self.stock_warning_level
-      errors.add(:sku, "stock warning level value must not be below your stock count.")
+      errors.add(:sku, "stock warning level value must be below your stock count.")
       return false
     end
   end
@@ -106,7 +106,7 @@ class Sku < ActiveRecord::Base
   # Updates the product's status to 'Draft'
   #
   def set_product_as_draft
-    product.draft!
+    product.draft! if product.published?
   end
 
   # If the associated parent product has one SKU, return true

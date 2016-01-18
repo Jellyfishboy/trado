@@ -1,7 +1,0 @@
-$('.main .container').removeClass('fadeIn');
-$('#sku-variants-modal').html('<%=j render partial: "admin/products/skus/variants/modal" %>');
-soca.modal.standard('#sku-variants-form');
-$('.tagsinput').tagsinput();
-<% unless @product.skus.active.empty? %>
-    $('.tagsinput').tagsinput('disable');
-<% end %>

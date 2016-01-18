@@ -1,7 +1,7 @@
 <div aria-hidden="true" aria-labelledby="skuVariantsModalLabel" class="modal fade" id="sku-variants-form" role="dialog" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= form_tag @product.skus.active.empty? ? admin_product_skus_variants_path(@product) : update_admin_product_skus_variants_path(@product), remote: true do |f| %>
+      <%= form_tag @product.skus.active.empty? ? admin_product_skus_variants_path(@product) : update_admin_product_skus_variants_path(@product), remote: true, :class => 'amend-variants', 'data-method' => "#{@product.skus.active.empty? ? 'POST' : 'PATCH'}" do |f| %>
         <div class="json" id="errors">
           <ul></ul>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="modal-footer">
           <% unless @product.skus.active.empty? %>
-            <%= link_to "Reset variants", destroy_admin_product_skus_variants_path(@product), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-red btn-large float-left' %>
+            <%= link_to "Reset variants", destroy_admin_product_skus_variants_path(@product), remote: true, id: 'reset-sku-variants-button', :class => 'btn btn-red btn-large float-left' %>
           <% end %>
           <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
           <%= submit_tag 'Submit', :class => 'btn btn-blue btn-large' %>

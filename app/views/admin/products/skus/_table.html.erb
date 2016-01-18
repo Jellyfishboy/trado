@@ -14,7 +14,7 @@
     </thead>
     <tbody id="sku-fields">
       <% @skus.each do |sku| %>
-        <tr id="sku_<%= sku.id %>">
+        <tr id="sku-<%= sku.id %>">
           <%= render partial: 'admin/products/skus/single', format: [:html], locals: { sku: sku } %>
         </tr>
       <% end %>

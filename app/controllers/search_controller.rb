@@ -1,15 +1,15 @@
 class SearchController < ApplicationController
-
     skip_before_action :authenticate_user!
-    before_action :set_query
     
     def results
+        set_query
         @products = Product.search(@query, params[:page], 30, 300)
 
         render theme_presenter.page_template_path('search/results'), format: [:html], layout: theme_presenter.layout_template_path
     end
 
     def autocomplete
+        set_query
         @json_products = Product.search(@query, params[:page], 4, 4).map do |p|
                         {
                                 :value => p.name,

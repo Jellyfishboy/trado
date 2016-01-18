@@ -78,8 +78,10 @@ Trado::Application.routes.draw do
         end
         namespace :skus do
           resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: [:new, :create] do
-            post 'update', on: :collection, as: 'update'
-            delete 'destroy', on: :collection, as: 'destroy'
+            collection do
+              patch 'update', as: 'update'
+              delete 'destroy', as: 'destroy'
+            end
           end
         end
       end

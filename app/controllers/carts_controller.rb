@@ -1,13 +1,12 @@
 class CartsController < ApplicationController
-
     skip_before_action :authenticate_user!
-    before_action :set_cart_details, only: [:checkout, :confirm]
 
     def mycart
         render theme_presenter.page_template_path('carts/mycart'), layout: theme_presenter.layout_template_path
     end
 
     def checkout
+        set_cart_details
         if current_cart.order.nil?
             @delivery_id = current_cart.estimate_delivery_id
             @delivery_address = @order.build_delivery_address
@@ -19,6 +18,7 @@ class CartsController < ApplicationController
     end
 
     def confirm
+        set_cart_details
         @order.attributes = params[:order]
         session[:payment_type] = params[:payment_type]
         if @order.save

@@ -1,13 +1,16 @@
 class Admin::Skus::VariantsController < ApplicationController
+    include ActionView::Helpers::TextHelper
     before_filter :authenticate_user!
-    before_filter :set_product
-    before_filter :set_variant_types, except: :destroy
 
     def new
-        render partial: 'admin/products/skus/variants/new', format: [:js]
+        set_product
+        set_variant_types
+        render json: { modal: render_to_string(partial: 'admin/products/skus/variants/modal'), active_skus: !@product.skus.active.empty? }, status: 200
     end
 
     def create
+        set_product
+        set_variant_types
         @variants = @variant_types.map do |type|
             next if params[type.name.downcase.to_sym].blank? || params[type.name.downcase.to_sym].nil?
             {
@@ -38,12 +41,13 @@ class Admin::Skus::VariantsController < ApplicationController
                     SkuVariant.create(sku_id: sku.id, name: value, variant_type_id: variant[:id])
                 end
             end
-
-            render partial: 'admin/products/skus/variants/create', format: [:js], locals: { sku_count: @total_possible_skus }
+            render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@total_possible_skus, "variant")  }
         end
     end
 
     def update
+        set_product
+        set_variant_types
         @variant_array = []
         @variant_types.each do |type|
             @variant_array << params[type.name.downcase.to_sym].split(/,\s*/)
@@ -52,15 +56,17 @@ class Admin::Skus::VariantsController < ApplicationController
         @delete_variants = @product.skus.includes(:variants).where.not(sku_variants: { name: @variant_array.reject(&:empty?) } )
         @variant_count = @delete_variants.count
         @delete_variants.destroy_all
+        set_updated_skus
 
-        render partial: 'admin/products/skus/variants/update', format: [:js], locals: { variant_count: @variant_count }
+        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.skus.active.empty? }
     end
 
     def destroy
+        set_product
         @product.skus.active.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end
-        render partial: 'admin/products/skus/variants/destroy', format: [:js]
+        render json: { }, status: 200
     end
 
     private
@@ -71,5 +77,9 @@ class Admin::Skus::VariantsController < ApplicationController
 
     def set_variant_types
         @variant_types = VariantType.all
+    end
+
+    def set_updated_skus
+        @skus = @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc) 
     end
 end
