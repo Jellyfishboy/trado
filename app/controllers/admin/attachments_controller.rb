@@ -17,11 +17,7 @@ class Admin::AttachmentsController < ApplicationController
     set_product
     @attachment = @product.attachments.build(params[:attachment])
     if @attachment.save
-      if @product.attachments.count == 1
-          render json: { last_record: true, image: render_to_string(partial: 'admin/products/attachments/single') }, status: 200
-      else
-          render json: { last_record: false, image: render_to_string(partial: 'admin/products/attachments/single') }, status: 200
-      end
+        render json: { last_record: @product.attachments.count == 1 ? true : false, image: render_to_string(partial: 'admin/products/attachments/single', locals: { attachment: @attachment }) }, status: 200
     else
       render json: { errors: @attachment.errors.full_messages }, status: 422
     end

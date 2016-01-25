@@ -17,14 +17,18 @@ ready = function()
 
     trado.admin.copyCountries();
     trado.admin.setCountries();
+
     trado.admin.editOrder();
     trado.admin.updateOrder();
     trado.admin.dispatchOrderModal();
     trado.admin.dispatchOrder();
+
     trado.admin.deleteAttachment();
     trado.admin.showAttachment();
     trado.admin.newAttachment();
-    // trado.admin.amendAttachments();
+    trado.admin.editAttachment();
+    trado.admin.amendAttachments();
+
     trado.admin.deleteSku();
     trado.admin.newSku();
     trado.admin.editSku();

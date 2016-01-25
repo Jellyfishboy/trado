@@ -244,107 +244,85 @@ trado.admin =
         });
     },
 
-    // amendAttachments: function()
-    // {
-    //     $('#amend_attachment').ajaxSubmit(
-    //     {
-    //         beforeSubmit: function(a,f,o) 
-    //         {
-    //             o.dataType = 'json';
-    //         },
-    //         complete: function(XMLHttpRequest, textStatus) 
-    //         {
-    //             var json = $.parseJSON(XMLHttpRequest.responseText)
-    //             $('#attachment-form').modal('hide');
-    //             if (data.first_record)
-    //             {
-    //                 $('#attachments').html(data.image);
-    //             }
-    //             else
-    //             {
-    //                 if (method === 'POST')
-    //                 {
-    //                     $('#attachments').append(data.image);
-    //                 }
-    //                 else
-    //                 {
-    //                     $('#attachment-' + data.attachment_id).html(data.image);
-    //                 }
-    //             }
-    //             soca.animation.alert(
-    //                 '.widget-header', 
-    //                 'success', 
-    //                 'amend-attachment-alert',
-    //                 '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
-    //                 5000
-    //             )
-    //         },
-    //     });
-    //     var files;
-    //     $('body').on('change', '#attachment_file', function()
-    //     {
-    //         files = event.target.files;
-    //     });
-    //     $('body').on('submit', '#amend_attachment', function(event)
-    //     {
-    //         event.stopPropagation(); // Stop stuff happening
-    //         event.preventDefault(); // Totally stop stuff happening
+    editAttachment: function()
+    {
+        $('body').on('click', '.edit-attachment', function ()
+        {
+            var url = $(this).attr('href');
+            $.ajax(
+            {
+                url: url,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#attachment-modal').html(data.modal);
+                    soca.modal.standard('#attachment-form');
+                }
+            });
+            return false;
+        });
+    },
 
-    //         var $this = $(this);
-    //             url = $this.attr('action');
-    //             method = $this.attr('data-method'),
-    //             message = method === 'POST' ? 'created' : 'edited';
-    //             data = new FormData();
+    amendAttachments: function()
+    {
+        $('body').on('submit', '#amend_attachment', function(event)
+        {
+            event.stopPropagation(); // Stop stuff happening
+            event.preventDefault(); // Totally stop stuff happening
 
-    //         $.each(files, function(key, value)
-    //         {
-    //             data.append(key, value);
-    //         });
+            var $this = $(this);
+                url = $this.attr('action');
+                method = $this.attr('data-method'),
+                message = method === 'POST' ? 'created' : 'edited';
+                formData = new FormData();
 
-    //         $.ajax(
-    //         {
-    //             url: url,   
-    //             type: method,
-    //             data: data,
-    //             cache: false,
-    //             processData: false,
-    //             contentType: false,
-    //             dataType: 'json',
-    //             success: function (data)
-    //             {
-    //                 $('#attachment-form').modal('hide');
-    //                 if (data.first_record)
-    //                 {
-    //                     $('#attachments').html(data.image);
-    //                 }
-    //                 else
-    //                 {
-    //                     if (method === 'POST')
-    //                     {
-    //                         $('#attachments').append(data.image);
-    //                     }
-    //                     else
-    //                     {
-    //                         $('#attachment-' + data.attachment_id).html(data.image);
-    //                     }
-    //                 }
-    //                 soca.animation.alert(
-    //                     '.widget-header', 
-    //                     'success', 
-    //                     'amend-attachment-alert',
-    //                     '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an attachment.',
-    //                     5000
-    //                 )
-    //             },
-    //             error: function(xhr, evt, status)
-    //             {
+            formData.append('attachment[file]', $('#attachment_file')[0].files[0])
 
-    //                 trado.admin.jsonErrors(xhr, evt, status, $this);
-    //             }
-    //         });
-    //         return false;
-    //     });
-    // },
+            $.ajax(
+            {
+                url: url,   
+                type: method,
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data)
+                {
+                    $('#attachment-form').modal('hide');
+                    if (data.last_record)
+                    {
+                        $('#attachments').html(data.image);
+                    }
+                    else
+                    {
+                        if (method === 'POST')
+                        {
+                            $('#attachments').append(data.image);
+                        }
+                        else
+                        {
+                            $('#attachment-' + data.attachment_id).html(data.image);
+                        }
+                    }
+                    soca.animation.alert(
+                        '#attachments', 
+                        'success', 
+                        'amend-attachment-alert',
+                        '<i class="icon-checkmark-circle"></i>Successfully ' + message + ' an image.',
+                        5000
+                    )
+                },
+                error: function(xhr, evt, status)
+                {
+
+                    trado.admin.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
 
     deleteSku: function()
     {
