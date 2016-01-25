@@ -96,28 +96,22 @@ describe Payatron4000::Paypal do
     describe "When creating an array of cart items for PayPal" do
         let!(:cart) { create(:cart) }
         let!(:cart_item_1) { create(:cart_item, cart: cart) }
-        let!(:cart_item_2) { create(:cart_item, cart: cart) }
-        let!(:cart_item_accessory) { create(:cart_item_accessory, cart_item: cart_item_2) }
         let(:express_items) { Payatron4000::Paypal.express_items(cart) }
 
         it "should set the correct product name" do
-            expect(express_items[0][:name]).to eq cart_item_2.sku.product.name
-            expect(express_items[1][:name]).to eq cart_item_1.sku.product.name
+            expect(express_items[0][:name]).to eq cart_item_1.sku.product.name
         end
 
         it "should set the correct description" do
-            expect(express_items[0][:description]).to eq cart_item_2.sku.variants.map{|v| v.name.titleize}.join(' / ')
-            expect(express_items[1][:description]).to eq cart_item_1.sku.variants.map{|v| v.name.titleize}.join(' / ')
+            expect(express_items[0][:description]).to eq cart_item_1.sku.variants.map{|v| v.name.titleize}.join(' / ')
         end
 
         it "should set the correct amount" do
-            expect(express_items[0][:amount]).to eq Store::Price.new(price: cart_item_2.price, tax_type: 'net').singularize
-            expect(express_items[1][:amount]).to eq Store::Price.new(price: cart_item_1.price, tax_type: 'net').singularize
+            expect(express_items[0][:amount]).to eq Store::Price.new(price: cart_item_1.price, tax_type: 'net').singularize
         end
 
         it "should set the correct quantity" do
-            expect(express_items[0][:quantity]).to eq cart_item_2.quantity
-            expect(express_items[1][:quantity]).to eq cart_item_1.quantity
+            expect(express_items[0][:quantity]).to eq cart_item_1.quantity
         end
     end
 
