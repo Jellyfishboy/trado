@@ -69,9 +69,9 @@ Trado::Application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
-  config.action_controller.asset_host = Settings.aws.cloudfront.host.app
+  config.action_controller.asset_host = Rails.application.secrets.aws_cloudfront_host_app
 
-  config.assets.prefix = Settings.aws.cloudfront.prefix
+  config.assets.prefix = Rails.application.secrets.aws_cloudfront_prefix
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -83,9 +83,9 @@ Trado::Application.configure do
   # config.threadsafe!
 
   # Set default URL
-  config.action_mailer.default_url_options = { :host => Settings.mailer.production.host }
+  config.action_mailer.default_url_options = { :host => Rails.application.secrets.mailer_host }
 
-  config.action_mailer.asset_host = Settings.mailer.production.host
+  config.action_mailer.asset_host = Rails.application.secrets.mailer_host
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
@@ -94,22 +94,22 @@ Trado::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address              => Settings.mailer.production.server,
-    :port                 => Settings.mailer.production.port,
-    :domain               => Settings.mailer.production.domain,
+    :address              => Rails.application.secrets.mailer_server,
+    :port                 => Rails.application.secrets.mailer_port,
+    :domain               => Rails.application.secrets.mailer_domain,
     :authentication       => "plain",
-    :user_name            => Settings.mailer.production.user_name,
-    :password             => Settings.mailer.production.password,
+    :user_name            => Rails.application.secrets.mailer_user_name,
+    :password             => Rails.application.secrets.mailer_password,
     :enable_starttls_auto => true
   }
 
   # Paypal
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = Settings.mailer.production.host
+    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.mailer_host
     paypal_options = {
-      login: Settings.paypal.production.login,
-      password: Settings.paypal.production.password,
-      signature: Settings.paypal.production.signature
+      login: Rails.application.secrets.paypal_login,
+      password: Rails.application.secrets.paypal_password,
+      signature: Rails.application.secrets.paypal_signature
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end

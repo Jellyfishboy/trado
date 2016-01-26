@@ -110,3 +110,6 @@ gem 'turbolinks'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Test coverage by Codacy
+gem 'codacy-coverage', :require => false

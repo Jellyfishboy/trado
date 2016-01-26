@@ -1,6 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
+require 'codacy-coverage'
+Codacy::Reporter.start
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
@@ -10,6 +12,7 @@ require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'rspec/collection_matchers'
 require 'sidekiq/testing'
+
 Sidekiq::Testing.fake!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

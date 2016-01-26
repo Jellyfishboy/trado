@@ -20,7 +20,7 @@ Trado::Application.configure do
   config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews"
 
   # Set default URL
-  config.action_mailer.default_url_options = { :host => Settings.mailer.development.host }
+  config.action_mailer.default_url_options = { :host => Rails.application.secrets.mailer_host }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
@@ -29,12 +29,12 @@ Trado::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    :address              => Settings.mailer.development.server,
-    :port                 => Settings.mailer.development.port,
-    :domain               => Settings.mailer.development.domain,
+    :address              => Rails.application.secrets.mailer_server,
+    :port                 => Rails.application.secrets.mailer_port,
+    :domain               => Rails.application.secrets.mailer_domain,
     :authentication       => "plain",
-    :user_name            => Settings.mailer.development.user_name,
-    :password             => Settings.mailer.development.password,
+    :user_name            => Rails.application.secrets.mailer_user_name,
+    :password             => Rails.application.secrets.mailer_password,
     :enable_starttls_auto => true
 
   }
@@ -44,17 +44,17 @@ Trado::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_controller.asset_host = Settings.mailer.development.host
-  config.action_mailer.asset_host = Settings.mailer.development.host
+  config.action_controller.asset_host = Rails.application.secrets.mailer_host
+  config.action_mailer.asset_host = Rails.application.secrets.mailer_host
 
   # PayPal settings
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = Settings.mailer.development.host
+    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.mailer_host
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
-      login: Settings.paypal.development.login,
-      password: Settings.paypal.development.password,
-      signature: Settings.paypal.development.signature
+      login: Rails.application.secrets.paypal_login,
+      password: Rails.application.secrets.paypal_password,
+      signature: Rails.application.secrets.paypal_signature
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end

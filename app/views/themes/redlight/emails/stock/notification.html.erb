@@ -5,27 +5,27 @@
 .price span { display: block; }
 </style>
 <tr>
-    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
+    <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
     <td align="left" width="500">
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Hello,</p> 
         <br/>
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">You requested a reminder to be sent when <strong><%= @sku.product.name %></strong> is back in stock. You can now purchase this item from our online store: </p>
         <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
             <tr>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
             </tr>
             <tr bgcolor="#EEEEEE" style="background-color:#EEEEEE;">
                 <td>
                 <%= link_to image_tag(@sku.product.attachments.first.file.square, :alt => @sku.product.name, :style => 'display:block;border:none;', :height => '100', :width => '100'), [@sku.product.category, @sku.product], :target => '_blank' %> 
  
                 </td>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '15', :height => '100' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '15', :height => '100' %></td>
                 <td align="left" width="385" height="100">
                     <table bgcolor="#EEEEEE" border="0" width="385" height="100" cellpadding="0" cellspacing="0" style="background-color:#EEEEEE;">
                         <tr>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
                         </tr>
                         <tr>
                             <td>
@@ -52,31 +52,31 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
-                            <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
+                            <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '10' %></td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
             </tr>
         </table>
         <table bgcolor="#ffffff" border="0" width="500" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
             <tr>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '100', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '100', :height => '30' %></td>
                 <td align="center">
                     <%= link_to [@sku.product.category, @sku.product], :class => 'btn', :style => "font-weight: 500;letter-spacing: normal;word-spacing: 0px;text-shadow: none;color: #fff;font-size: 15px;line-height: 17px;font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;background-color: #e54b5d;padding: 10px 15px 10px 14px;max-width: 170px;text-decoration:none;", :target => '_blank' do %>
                         <i class="fa fa-shopping-cart" style="line-height:17px;margin-right:5px;"></i> Start shopping
                     <% end %>
                 </td>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '100', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '100', :height => '30' %></td>
             <tr>
             <tr>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
-                <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
+                <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'display:block;', :width => '1', :height => '30' %></td>
             </tr>
         </table>
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">If you did not request this reminder, please ignore and delete this email.</p>
@@ -84,5 +84,5 @@
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;">Regards</p>
         <p style="letter-spacing: normal; word-spacing: 0px; text-shadow: none; color: #333333 !important; font-size: 13px; line-height: 17px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;  margin-top:0; padding-top:0; margin-right:0; padding-right:0; margin-bottom:0; padding-bottom:0; margin-left:0; padding-left:0;"><strong><%= Store::settings.name %> team</strong></p>
     </td>
-    <td><%= image_tag "#{Settings.email.root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
+    <td><%= image_tag "#{Rails.application.secrets.email_root}/clear.gif", :style => 'block', :width => '50', :height => '30' %></td>
 </tr>

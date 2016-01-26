@@ -15,6 +15,7 @@ doc/*
 .yardoc
 *.gitkeep
 config/deploy.rb
+coverage
 
 public/uploads/attachment
 public/assets
