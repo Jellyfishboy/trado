@@ -1,6 +1,8 @@
 #Trado
 
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
+[![Codacy Badge](https://api.codacy.com/project/badge/coverage/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal and Google Analytics.
 
