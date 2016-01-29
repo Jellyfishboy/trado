@@ -16,6 +16,7 @@ script:
     - bundle exec rspec spec/
 before_script:
     - cp config/database.travis.yml config/database.yml
+    - cp config/secrets.example.yml config/secrets.yml
     - mysql -e 'create database trado_test_db'      
     - psql -c 'create database trado_test_db' -U postgres
     - export DISPLAY=:99.0
