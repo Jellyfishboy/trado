@@ -10,7 +10,7 @@ feature 'Administration management' do
         Store::reset_settings
         StoreSetting.destroy_all
         store_setting
-        Store::settings
+        Store.settings
 
         visit admin_root_path
         find('a[data-original-title="Settings"]').click
@@ -25,9 +25,9 @@ feature 'Administration management' do
             expect(page).to have_content 'Store settings were successfully updated.'
         end
         Store::reset_settings
-        expect(Store::settings.name).to eq 'Test store name'
-        expect(Store::settings.tax_name).to eq 'Tax'
-        expect(Store::settings.tax_breakdown).to eq true
+        expect(Store.settings.name).to eq 'Test store name'
+        expect(Store.settings.tax_name).to eq 'Tax'
+        expect(Store.settings.tax_breakdown).to eq true
     end
 
     scenario 'should log out successfully' do

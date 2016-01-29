@@ -1,6 +1,6 @@
 class StockMailerPreview < BasePreview
 
     def notification
-        StockMailer.notification(mock_sku, Store::settings.email)
+        StockMailer.notification(mock_sku, Store.settings.email)
     end
 end

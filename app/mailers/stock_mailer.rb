@@ -10,11 +10,11 @@ class StockMailer < ActionMailer::Base
         @sku = sku
         @email = email
         mail(to: email, 
-            from: "#{Store::settings.name} <#{Store::settings.email}>",
+            from: "#{Store.settings.name} <#{Store.settings.email}>",
             subject: "Stock reminder for #{@sku.product.name}"
         ) do |format|
-            format.html { render "themes/#{Store::settings.theme.name}/emails/stock/notification", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
-            format.text { render "themes/#{Store::settings.theme.name}/emails/stock/notification", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.html { render "themes/#{Store.settings.theme.name}/emails/stock/notification", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store.settings.theme.name}/emails/stock/notification", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
         end
     end
 end

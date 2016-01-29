@@ -1,4 +1,4 @@
-<% content_for :header_1, Store::settings.name %>
+<% content_for :header_1, Store.settings.name %>
 <% content_for :header_2, "Order unsuccessful" %>
 
 Order #<%= @order.id %>
@@ -52,8 +52,8 @@ Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b
 
 Subtotal: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
 Delivery & handling: <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
-Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
-<%= Store::settings.tax_name %>: <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
+Total before <%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
+<%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
 Total: <%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %>
 
 If you would like assistance with your order, please don't hesitate to contact us at support@trado.io, quoting your order number.

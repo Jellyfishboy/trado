@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
     protected
 
     def theme_presenter
-        ThemePresenter.new(theme: Store::settings.theme)
+        ThemePresenter.new(theme: Store.settings.theme)
     end
 
     def set_tracking_code
-        gon.trackingCode = Store::settings.ga_code
+        gon.trackingCode = Store.settings.ga_code
     end
 
   	def current_cart

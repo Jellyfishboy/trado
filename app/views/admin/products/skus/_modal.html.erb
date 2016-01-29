@@ -94,7 +94,7 @@
                 <div class="form-group form-last">
                   <%= f.label :cost_value %>
                   <div class="form-prefix">
-                    <span><%= Store::settings.currency %></span>
+                    <span><%= Store.settings.currency %></span>
                     <%= f.text_field :cost_value, :class => 'form-control calculate-tax' %>
                   </div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="form-group form-last">
                   <%= f.label :price %>
                   <div class="form-prefix">
-                    <span><%= Store::settings.currency %></span>
+                    <span><%= Store.settings.currency %></span>
                     <%= f.text_field :price, :class => 'form-control calculate-tax' %>
                   </div>
                 </div>

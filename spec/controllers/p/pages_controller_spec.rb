@@ -45,7 +45,7 @@ describe P::PagesController do
 
             it "should render the success partial" do
                 xhr :post, :send_contact_message, contact_message: attributes_for(:contact_message)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/pages/contact_message/_success")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/pages/contact_message/_success")
             end
         end
 

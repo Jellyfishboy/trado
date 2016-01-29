@@ -147,7 +147,7 @@ describe CartsController do
 
             it "should render the success partial" do
                 xhr :patch, :estimate, cart: attributes_for(:cart)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/delivery_service_prices/estimate/_success")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/delivery_service_prices/estimate/_success")
             end
         end
 
@@ -191,7 +191,7 @@ describe CartsController do
 
         it "should render the success partial" do
             xhr :delete, :purge_estimate
-            expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/delivery_service_prices/estimate/_success")
+            expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/delivery_service_prices/estimate/_success")
         end
     end
 end

@@ -1,5 +1,5 @@
-<% content_for :title, "Your #{Store::settings.name} order ##{@order.id} has been dispatched" %>
-<% content_for :header_1, Store::settings.name %>
+<% content_for :title, "Your #{Store.settings.name} order ##{@order.id} has been dispatched" %>
+<% content_for :header_1, Store.settings.name %>
 <% content_for :header_2, "Dispatch confirmation" %>
 
 Order #<%= @order.id %>
@@ -48,11 +48,11 @@ Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b
 
 Subtotal: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
 Delivery & handling: <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
-Total before <%= Store::settings.tax_name %>: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
-<%= Store::settings.tax_name %>: <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
+Total before <%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
+<%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
 Total: <%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %>
 
 Questions about your order? Contact support@trado.io, quoting your order number.
 
 Thanks for shopping with us!
-<%= Store::settings.name %>
+<%= Store.settings.name %>

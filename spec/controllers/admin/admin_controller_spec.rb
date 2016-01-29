@@ -9,7 +9,7 @@ describe Admin::AdminController do
 
         it "should assign the current store settings to @settings" do
             get :settings
-            expect(assigns(:settings)).to eq Store::settings
+            expect(assigns(:settings)).to eq Store.settings
         end
 
         it "should render the :settings template" do
@@ -24,20 +24,20 @@ describe Admin::AdminController do
             Store::reset_settings
             StoreSetting.destroy_all
             store_setting
-            Store::settings
+            Store.settings
         end
 
         it "should assign the current store settings to @settings" do
             patch :update, store_setting: attributes_for(:store_setting)
-            expect(assigns(:settings)).to eq Store::settings
+            expect(assigns(:settings)).to eq Store.settings
         end
 
         context "with valid attributes" do
 
             it "should update the current store settings" do
                 patch :update, store_setting: attributes_for(:store_setting, currency: '$', tax_rate: 15.6) 
-                expect(Store::settings.currency).to eq '$'
-                expect(Store::settings.tax_rate).to eq BigDecimal.new("15.6")
+                expect(Store.settings.currency).to eq '$'
+                expect(Store.settings.tax_rate).to eq BigDecimal.new("15.6")
             end
 
             it "should redirect to the admin root" do

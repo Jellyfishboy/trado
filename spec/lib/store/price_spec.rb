@@ -11,7 +11,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true)
-                Store::settings
+                Store.settings
             end
 
             context "if the args array has a 'gross' string value" do
@@ -36,7 +36,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: false)
-                Store::settings
+                Store.settings
             end
 
             context "if the args array has a 'net' string value" do
@@ -64,7 +64,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true)
-                Store::settings
+                Store.settings
             end
 
             context "if the args array has a 'gross' string value" do
@@ -89,7 +89,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: false)
-                Store::settings
+                Store.settings
             end
 
             context "if the args array has a 'net' string value" do
@@ -120,7 +120,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
-                Store::settings
+                Store.settings
             end
 
             it "should have the correct elements" do
@@ -134,7 +134,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: false, tax_name: 'VAT')
-                Store::settings
+                Store.settings
             end
 
             it "should have the correct elements" do
@@ -152,7 +152,7 @@ describe Store::Price do
                 Store::reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
-                Store::settings
+                Store.settings
             end
 
             it "should have the correct elements" do

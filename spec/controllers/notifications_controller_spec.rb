@@ -19,7 +19,7 @@ describe NotificationsController do
 
             it "should render the success partial" do
                 xhr :post, :create, category_id: category.id, product_id: product.id, sku_id: sku.id, notification: attributes_for(:notification)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/products/skus/notify/_success")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/products/skus/notify/_success")
             end
         end
 

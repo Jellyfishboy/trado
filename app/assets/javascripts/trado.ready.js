@@ -1,4 +1,4 @@
-var taxRate = "<%= Store::settings.tax_rate %>";
+var taxRate = "<%= Store.settings.tax_rate %>";
      
 ready = function()
 {

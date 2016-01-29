@@ -1,9 +1,9 @@
 <header>
   <div class="desktop" id="logo">
-    <% if Store::settings.attachment.nil? %>
+    <% if Store.settings.attachment.nil? %>
       <%= image_tag 'fallback/square/default.png', width: 60, height: 60 %>
     <% else %>
-      <%= image_tag Store::settings.attachment.file.square, width: 60, height: 60 %>
+      <%= image_tag Store.settings.attachment.file.square, width: 60, height: 60 %>
     <% end %>
   </div>
   <label class="mobile" id="trigger">

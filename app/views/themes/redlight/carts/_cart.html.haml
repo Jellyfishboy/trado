@@ -21,7 +21,7 @@
         = item.cart_item_accessory.accessory.name
       %td.qty
         = item.cart_item_accessory.quantity
-- if Store::settings.tax_breakdown
+- if Store.settings.tax_breakdown
   %tr
     %td{colspan: "2"}
     \ 
@@ -40,11 +40,11 @@
           %i.fa.fa-times-circle
   %td.stronger
     .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
-- if Store::settings.tax_breakdown
+- if Store.settings.tax_breakdown
   %tr
     %td{colspan: "2", rowspan: "1"}
     \ 
-    %td.stronger{colspan: "2"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+    %td.stronger{colspan: "2"}= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
     %td.stronger
       .align-right= Store::Price.new(price: (@cart_total*Store::tax_rate)).single
 %tr

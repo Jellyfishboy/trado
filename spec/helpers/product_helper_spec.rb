@@ -11,7 +11,7 @@ describe ProductHelper do
             Store::reset_settings
             StoreSetting.destroy_all
             store_setting
-            Store::settings
+            Store.settings
         end
 
         it "should return a html_safe string" do

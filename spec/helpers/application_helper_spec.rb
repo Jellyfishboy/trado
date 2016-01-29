@@ -162,7 +162,7 @@ describe ApplicationHelper do
     describe '#create_admin_breadcrumbs' do
 
         it "should return an array of breadcrumb hash objects" do
-            expect(helper.create_admin_breadcrumbs).to eq [{:title=>Store::settings.name, :url=>"/admin"}]
+            expect(helper.create_admin_breadcrumbs).to eq [{:title=>Store.settings.name, :url=>"/admin"}]
         end
     end
 
@@ -172,7 +172,7 @@ describe ApplicationHelper do
         end
 
         it "should add a new hash object to the create_admin_breadcrumbs array" do
-            expect(helper.create_admin_breadcrumbs).to eq [{:title=>Store::settings.name, :url=>"/admin"},{:title=>"new", :url=>"/new"}]
+            expect(helper.create_admin_breadcrumbs).to eq [{:title=>Store.settings.name, :url=>"/admin"},{:title=>"new", :url=>"/new"}]
         end
     end
 end

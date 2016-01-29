@@ -26,7 +26,7 @@ module Store
         #
         # @return [Decimal] tax rate value ready to be used in calculations
         def tax_rate
-            Store::settings.tax_rate/100
+            Store.settings.tax_rate/100
         end
 
         # Detects whether an integer is positive

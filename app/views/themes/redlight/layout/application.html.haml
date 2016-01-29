@@ -10,7 +10,7 @@
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
     %title 
       = yield :title
-      = " - #{Store::settings.name} | The linear actuator and electric motor specialist"
+      = " - #{Store.settings.name} | The linear actuator and electric motor specialist"
     %meta{:content => "#{yield :meta_description}", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = include_gon(watch: true)
@@ -28,8 +28,8 @@
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(wf, s);
       })();
-    = stylesheet_link_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true
-    = javascript_include_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true 
+    = stylesheet_link_tag "themes/#{Store.settings.theme.name}/application", "data-turbolinks-track" => true
+    = javascript_include_tag "themes/#{Store.settings.theme.name}/application", "data-turbolinks-track" => true 
     %link{href: "/stylesheets/font.css", rel: "stylesheet", media: "screen"}/
   %body
     /[if lt IE 7]
@@ -72,8 +72,8 @@
             / ==========
             .span7
               = link_to root_path, :class => 'brand' do
-                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => Store::settings.name
-                %span.pacifico= Store::settings.name
+                = image_tag 'webmarket/logo.png', :height => 48, :width => 48, :alt => Store.settings.name
+                %span.pacifico= Store.settings.name
                 %span.tagline The linear actuator and electric motor specialist
             / ==========
             / = Social Icons =
@@ -153,8 +153,8 @@
             .row
               .span4
                 %h2.pacifico
-                  = Store::settings.name
-                  = image_tag "webmarket/webmarket.png", :alt => Store::settings.name
+                  = Store.settings.name
+                  = image_tag "webmarket/webmarket.png", :alt => Store.settings.name
                 %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis
               .span4
                 .main-titles.lined
@@ -271,10 +271,10 @@
           .container
             .row
               .span6
-                = "© Copyright 2013. All rights reserved - #{Store::settings.name}"
+                = "© Copyright 2013. All rights reserved - #{Store.settings.name}"
         / /bottom footer
       / /footer
-    - if Store::settings.ga_active
+    - if Store.settings.ga_active
       :javascript
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

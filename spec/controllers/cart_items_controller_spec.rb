@@ -34,7 +34,7 @@ describe CartItemsController do
 
             it "should render the update partial" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/_update")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/_update")
             end
         end
 
@@ -53,7 +53,7 @@ describe CartItemsController do
 
             it "should render the update partial" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/_update")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/_update")
             end
         end
 
@@ -62,7 +62,7 @@ describe CartItemsController do
 
             it "should render the cart items validate failed partial" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/cart_items/validate/_failed")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/cart_items/validate/_failed")
             end
         end 
 
@@ -140,7 +140,7 @@ describe CartItemsController do
 
             it "should render the update partial" do
                 xhr :patch, :update, cart_id: cart.id, id: cart_item.id, cart_item: attributes_for(:cart_item, quantity: 6)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/_update")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/_update")
             end
         end
 
@@ -150,7 +150,7 @@ describe CartItemsController do
 
             it "should render the update partial" do
                 xhr :patch, :update, cart_id: cart.id, id: cart_item.id, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/_update")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/_update")
             end
         end
 
@@ -160,7 +160,7 @@ describe CartItemsController do
 
             it "should render the cart items validate failed partial" do
                 xhr :patch, :update, cart_id: cart.id, id: cart_item.id, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
-                expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/cart_items/validate/_failed")
+                expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/cart_items/validate/_failed")
             end
         end 
     end
@@ -177,7 +177,7 @@ describe CartItemsController do
 
         it "should render the update partial" do
             xhr :delete, :destroy, cart_id: cart.id, id: cart_item.id
-            expect(response).to render_template(partial: "themes/#{Store::settings.theme.name}/carts/_update")
+            expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/_update")
         end
     end
 end

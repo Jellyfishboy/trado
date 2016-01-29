@@ -73,7 +73,7 @@ module ApplicationHelper
     #
     # @return [Object] breadcrumbs for the current page in the administration area
     def create_admin_breadcrumbs
-        @admin_breadcrumbs ||= [ { :title => Store::settings.name, :url => admin_root_path}]
+        @admin_breadcrumbs ||= [ { :title => Store.settings.name, :url => admin_root_path}]
     end
 
     # Add a new breadcrumb to the administration area breadcrumb object using the parameters

@@ -93,7 +93,7 @@
                         = item.cart_item_accessory.accessory.name
                       %td.qty
                         = item.cart_item_accessory.quantity
-                - if Store::settings.tax_breakdown
+                - if Store.settings.tax_breakdown
                   %tr
                     %td{colspan: "2"}
                     \ 
@@ -109,11 +109,11 @@
                       = @order.delivery.full_name 
                   %td.stronger
                     .align-right= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single
-                - if Store::settings.tax_breakdown
+                - if Store.settings.tax_breakdown
                   %tr
                     %td{colspan: "2", rowspan: "1"}
                     \ 
-                    %td.stronger{colspan: "2"}= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+                    %td.stronger{colspan: "2"}= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
                     %td.stronger
                       .align-right= Store::Price.new(price: @order.tax_amount).single
                 %tr

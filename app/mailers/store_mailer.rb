@@ -10,12 +10,12 @@ class StoreMailer < ActionMailer::Base
         @website = params[:website]
         @message = params[:message]
 
-        mail(to: Store::settings.email, 
+        mail(to: Store.settings.email, 
             from: "#{@name} <#{@email}>",
             subject: "New message from #{@name}"
         ) do |format|
-            format.html { render "themes/#{Store::settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
-            format.text { render "themes/#{Store::settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store::settings.theme.name}/layout/email" }
+            format.html { render "themes/#{Store.settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store.settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
         end
     end
 end

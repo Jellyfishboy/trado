@@ -17,7 +17,7 @@
             <div class="form-group">
               <%= f.label :actual_shipping_cost %>
               <div class="form-prefix">
-                <span><%= Store::settings.currency %></span>
+                <span><%= Store.settings.currency %></span>
                 <%= f.text_field :actual_shipping_cost, :class => 'form-control' %>
               </div>
             </div>

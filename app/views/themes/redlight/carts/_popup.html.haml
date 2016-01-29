@@ -35,14 +35,14 @@
         .price
           %strong= Store::Price.new(price: item.total_price).single
     .summary
-      - if Store::settings.tax_breakdown
+      - if Store.settings.tax_breakdown
         .line
           .row-fluid
             .span6 Subtotal
             .span6.align-right= Store::Price.new(price: current_cart.total_price, tax_type: 'net').single
         .line
           .row-fluid
-            .span6= "#{Store::settings.tax_name} (#{Store::settings.tax_rate}%):"
+            .span6= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
             .span6.align-right= Store::Price.new(price:(current_cart.total_price*Store::tax_rate)).single
       .line
         .row-fluid

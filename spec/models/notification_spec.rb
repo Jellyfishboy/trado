@@ -5,7 +5,7 @@ describe Notification do
     # ActiveRecord relations
     it { expect(subject).to belong_to(:notifiable) }
 
-    #Validations
+    # Validations
     it { expect(subject).to validate_presence_of(:email).with_message('is required') }
 
     it { expect(subject).to allow_value("test@test.com").for(:email) }
