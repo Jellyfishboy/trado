@@ -55,7 +55,7 @@ class OrderMailer < ActionMailer::Base
 
         mail(to: order.email,
             from: "#{Store.settings.name} <#{Store.settings.email}>", 
-            subject: "#{Store.settings.name} Order ##{@order.id} shipped"
+            subject: "#{Store.settings.name} Order ##{@order.id} dispatched"
         ) do |format|
             format.html { render "themes/#{Store.settings.theme.name}/emails/orders/dispatched", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
             format.text { render "themes/#{Store.settings.theme.name}/emails/orders/dispatched", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
