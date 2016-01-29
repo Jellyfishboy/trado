@@ -3,9 +3,11 @@ sudo: false
 rvm:
     - 2.2.2
 env:
-    - DB=mysql
-    - DB=postgresql
-    - CODACY_PROJECT_TOKEN=ca837d25b0ac46e9975430b6ac12ac9d
+    global:
+        - CODACY_PROJECT_TOKEN=ca837d25b0ac46e9975430b6ac12ac9d
+    matrix:
+        - DB=mysql
+        - DB=postgresql
 branches:
     only:
         - master
