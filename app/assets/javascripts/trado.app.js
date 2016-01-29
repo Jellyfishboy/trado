@@ -39,10 +39,10 @@ trado.app =
                 var $element, $errorTarget;
                 // assigns a recognisable key for input element identification
                 tempKey = key.split('_');
-                key = tempKey[tempKey.length-1] == "id" ? tempKey[0] : key
+                key = tempKey[tempKey.length-1] === "id" ? tempKey[0] : key
                 // selects the element
                 $element = $("input[name*='" + key + "']");
-                if ($element.length == 0)
+                if ($element.length === 0)
                 {
                     $element =  $("select[name*='" + key + "']");
                 }
