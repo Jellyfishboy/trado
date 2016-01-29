@@ -6,7 +6,7 @@ describe Country do
     it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
     it { expect(subject).to have_many(:delivery_services).through(:destinations) }
 
-    #Validations
+    # Validations
     it { expect(subject).to validate_presence_of(:name) }
     it { expect(subject).to validate_uniqueness_of(:name) }
 

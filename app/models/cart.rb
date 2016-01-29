@@ -70,8 +70,6 @@ class Cart < ActiveRecord::Base
     @final_delivery_service_prices = DeliveryServicePrice.where(id: @initial_delivery_service_prices).joins(:delivery_service).where(':gross_amount > delivery_services.order_price_minimum AND (:gross_amount < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', gross_amount: @cart_total[:gross_amount]).map(&:id)
     return @final_delivery_service_prices
   end
-  
-  private
 
   # Deletes redundant carts which are more than 12 hours old
   #

@@ -15,14 +15,14 @@ FactoryGirl.define do
 
         association :category
 
-        after(:create) do |product, evaluator|
+        after(:create) do |product|
             create(:product_attachment, attachable: product)
         end
 
         factory :product_sku_attachment do
             active { true }
             status { 'published' }
-            after(:build) do |product, evaluator|
+            after(:build) do |product|
                 product.skus << build(:sku, product: nil, active: true)
                 product.attachments << build(:product_attachment, attachable: nil)
             end
@@ -37,12 +37,12 @@ FactoryGirl.define do
         end
 
         factory :product_sku do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 create(:sku, product: product, code: '55', active: true)
             end
 
             factory :multiple_attachment_product do
-                after(:create) do |product, evaluator|
+                after(:create) do |product|
                     create(:product_attachment, attachable: product)
                 end
             end
@@ -53,7 +53,7 @@ FactoryGirl.define do
         end
 
         factory :product_skus do 
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 create_list(:sku, 3, product: product, active: true)
             end
         end
@@ -71,13 +71,13 @@ FactoryGirl.define do
         end
 
         factory :product_sku_stock_count do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 create(:sku_after_stock_adjustment, product: product, stock: 10, active: true)
             end
         end
 
         factory :notified_product do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 create(:sku_in_stock, product: product)
             end
         end
@@ -88,17 +88,17 @@ FactoryGirl.define do
 
         # Factories for stock_spec:automated stock warning level
         factory :stock_warning_product_1 do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 build(:sku, product: product, stock: 5, stock_warning_level: 10).save(validate: false)
             end
         end
         factory :stock_warning_product_2 do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 build(:sku, product: product, stock: 20, stock_warning_level: 5).save(validate: false)
             end
         end
         factory :stock_warning_product_3 do
-            after(:create) do |product, evaluator|
+            after(:create) do |product|
                 build(:sku, product: product, stock: 7, stock_warning_level: 15).save(validate: false)
             end
         end

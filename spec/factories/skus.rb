@@ -24,13 +24,13 @@ FactoryGirl.define do
         end
 
         factory :sku_in_stock do
-            after(:create) do |sku, evaluator|
+            after(:create) do |sku|
                 create(:sku_notification, notifiable: sku)
             end
         end
 
         factory :cart_item_sku do
-            after(:create) do |sku, evaluator|
+            after(:create) do |sku|
                 create(:cart_item, quantity: 5, sku: sku)
             end
         end

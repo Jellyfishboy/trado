@@ -4,20 +4,20 @@
 class Ability
     include CanCan::Ability
 
-    def initialize(user)
+    def initialize user
         if user.blank? or user.roles.empty?
             user ||= User.new
-            guest_permissions(user)
+            guest_permissions
         else 
-            user_permissions(user)
+            user_permissions
         end
 
         if user.role? :admin
-            admin_permissions(user)
+            admin_permissions
         end
     end
 
-    def guest_permissions(user)
+    def guest_permissions
         can :read, Product
         can :read, Category
         can :manage, User
@@ -25,12 +25,12 @@ class Ability
         can [:create, :destroy], [CartItem]
     end
 
-    def user_permissions(user)
-        guest_permissions(user)
+    def user_permissions
+        guest_permissions
     end
 
-    def admin_permissions(user)
-        user_permissions(user)
+    def admin_permissions
+        user_permissions
         can :manage, :all
     end
 

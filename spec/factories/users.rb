@@ -15,7 +15,7 @@ FactoryGirl.define do
             roles { [create(:role, name: 'admin')] }
 
             factory :attached_admin do
-                after(:create) do |user, evaluator|
+                after(:create) do |user|
                     create(:user_attachment, attachable: user)
                 end
             end

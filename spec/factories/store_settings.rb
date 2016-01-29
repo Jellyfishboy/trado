@@ -11,7 +11,7 @@ FactoryGirl.define do
         theme_name { 'redlight' }
 
         factory :attached_store_setting do
-            after(:create) do |store_setting, evaluator|
+            after(:create) do |store_setting|
                 create(:store_setting_attachment, attachable: store_setting)
             end
         end

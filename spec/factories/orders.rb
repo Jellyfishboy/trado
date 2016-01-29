@@ -25,12 +25,12 @@ FactoryGirl.define do
             # has_many through relationship generation
             transactions { [create(:transaction, payment_status: 'pending')] }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
 
             factory :addresses_pending_order do
-                after(:create) do |order, evaluator|
+                after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
                     create(:address, addressable_type: 'OrderShipAddress', order: order)
                 end
@@ -39,7 +39,7 @@ FactoryGirl.define do
 
         factory :ipn_order do
             transactions { [create(:transaction, payment_status: 'pending', gross_amount: '234.71')] }
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:address, addressable_type: 'OrderBillAddress', order: order)
                 create(:address, addressable_type: 'OrderShipAddress', order: order)
             end
@@ -48,7 +48,7 @@ FactoryGirl.define do
         factory :undispatched_complete_order do
             transactions { [create(:transaction)] }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
         end
@@ -58,12 +58,12 @@ FactoryGirl.define do
             transactions { [create(:transaction)] }
             shipping_status { 'dispatched' }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
 
             factory :addresses_complete_order do
-                after(:create) do |order, evaluator|
+                after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
                     create(:address, addressable_type: 'OrderShipAddress', order: order)
                 end
@@ -74,7 +74,7 @@ FactoryGirl.define do
             transactions { [create(:transaction, payment_type: 'paypal')] }
             shipping_status { 'dispatched' }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
         end
@@ -84,12 +84,12 @@ FactoryGirl.define do
             transactions { [create(:transaction, payment_status: 'failed')] }
             shipping_status { 'pending' }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
 
             factory :addresses_failed_order do
-                after(:create) do |order, evaluator|
+                after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
                     create(:address, addressable_type: 'OrderShipAddress', order: order)
                 end
@@ -101,7 +101,7 @@ FactoryGirl.define do
             transactions { [create(:fatal_transaction, payment_status: 'failed')] }
             shipping_status { 'pending' }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:order_item, quantity: 5, order: order)
             end
         end
@@ -111,7 +111,7 @@ FactoryGirl.define do
             transactions { [create(:transaction)] }
             shipping_status { 'dispatched' }
 
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:accessory_order_item, quantity: 5, order: order)
             end
         end
@@ -131,19 +131,19 @@ FactoryGirl.define do
         end
 
         factory :billing_address_order do
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:address, addressable_type: 'OrderBillAddress', order: order)
             end
         end
 
         factory :delivery_address_order do
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:address, addressable_type: 'OrderShipAddress', order: order)
             end
         end
 
         factory :addresses_order do
-            after(:create) do |order, evaluator|
+            after(:create) do |order|
                 create(:address, addressable_type: 'OrderBillAddress', order: order)
                 create(:address, addressable_type: 'OrderShipAddress', order: order)
             end

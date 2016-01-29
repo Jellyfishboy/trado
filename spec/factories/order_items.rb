@@ -8,7 +8,7 @@ FactoryGirl.define do
         association :order
 
         factory :accessory_order_item do
-            after(:create) do |order_item, evaluator|
+            after(:create) do |order_item|
                 create(:order_item_accessory, order_item: order_item)
             end
         end
