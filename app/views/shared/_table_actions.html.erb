@@ -15,7 +15,7 @@
     <% end %>
   <% end %>
   <% if remote_edit %>
-    <a href="#" data-record-id="<%= object.last.id %>" class="edit-record">
+    <a href="#" data-record-id="<%= object.last.id %>" class="edit-<%= Store.class_name_id(object.last) %>-record">
       <i class="icon-pencil"></i>
     </a>
   <% end %>
@@ -25,7 +25,7 @@
     </a>
   <% end %>
   <% if remote_delete %>
-    <a href="#" data-url="<%= polymorphic_path(object) %>" class="<%= Store::class_name_id(object.last) %>-delete">
+    <a href="#" data-url="<%= polymorphic_path(object) %>" class="<%= Store.class_name_id(object.last) %>-delete">
       <i class="icon-remove"></i>
     </a>
   <% end %>
