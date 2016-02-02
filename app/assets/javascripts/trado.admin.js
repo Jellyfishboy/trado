@@ -75,7 +75,7 @@ trado.admin =
 
     editOrder: function()
     {
-        $('body').on('click', '#edit-record', function ()
+        $('body').on('click', '.edit-record', function ()
         {
             var orderId = $(this).attr('data-record-id');
             $.ajax(
