@@ -45,11 +45,11 @@ ready = function()
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
-    $('.redactor').redactor({
-        replaceDivs: false,
-        convertDivs: false,
-        minHeight: 300
-    });
+    // $('.redactor').redactor({
+    //     replaceDivs: false,
+    //     convertDivs: false,
+    //     minHeight: 300
+    // });
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
 });

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery
     include ApplicationHelper
     before_action :authenticate_user!, :set_tracking_code
     helper_method :current_cart
