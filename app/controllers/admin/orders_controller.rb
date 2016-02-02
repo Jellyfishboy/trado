@@ -18,8 +18,8 @@ class Admin::OrdersController < ApplicationController
   def update
     set_order
     if @order.update(params[:order])
-      render json: { order_id: @order.id }, status: 200
       OrderMailer.tracking(@order).deliver_later if @order.new_order_tracking_mailer?
+      render json: { order_id: @order.id }, status: 200
     else 
       render json: { errors: @order.errors.full_messages }, status: 422
     end
