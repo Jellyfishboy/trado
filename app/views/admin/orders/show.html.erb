@@ -202,7 +202,7 @@
                 <% if transaction.paypal_id.nil? %>
                   -
                 <% else %>
-                  <%= link_to transaction.paypal_id, "#{Global.paypal.transaction_link}#{transaction.paypal_id}", :target => '_blank'  %>
+                  <%= link_to transaction.paypal_id, "#{Rails.application.secrets.transaction_link}#{transaction.paypal_id}", :target => '_blank'  %>
                 <% end %>
               </td>
               <td>

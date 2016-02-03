@@ -62,7 +62,6 @@ gem 'sidekiq-failures'
 gem 'sinatra', :require => nil
 
 # Misc
-gem 'global'
 gem 'protected_attributes'
 gem 'tzinfo-data'
 gem 'active_presenter'

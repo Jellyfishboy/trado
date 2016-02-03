@@ -294,8 +294,6 @@ GEM
       activerecord (>= 4.0.0)
     fssm (0.2.10)
     git-version-bump (0.15.1)
-    global (0.1.2)
-      activesupport (>= 2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gon (6.0.1)
@@ -610,7 +608,6 @@ DEPENDENCIES
   fast_blank
   fog
   friendly_id
-  global
   gon
   google-api-client
   haml

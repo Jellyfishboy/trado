@@ -5,7 +5,7 @@
   <% if order.transactions.last.paypal_id.nil? %>
     -
   <% else %>
-    <%= link_to(order.transactions.last.paypal_id, "#{Global.paypal.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
+    <%= link_to(order.transactions.last.paypal_id, "#{Rails.application.secrets.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
   <% end %>
 </td>
 <td>
