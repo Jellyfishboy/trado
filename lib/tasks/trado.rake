@@ -8,11 +8,7 @@ namespace :trado do
         Rails.logger.info 'Loading the new schema'.colorize(:green)
         Rake::Task['db:schema:load'].invoke
         Rails.logger.info 'Seeding the database'.colorize(:green)
-        `bundle exec rake db:seed SEED_TYPE=install --trace`
+        `bundle exec rake db:seed --trace`
         Rails.logger.info 'Trado -> Finished installation - you can now spin up the application server'.colorize(:cyan)
-    end
-
-    task :demo => :environment do
-
     end
 end

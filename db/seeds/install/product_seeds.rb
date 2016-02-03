@@ -72,7 +72,7 @@ Tagging.create([
         product_id: product_1.id
     }
 ])
-VariantType.create({
+variant_type_size = VariantType.create({
     name: 'Size',
 })
 VariantType.create({
@@ -98,3 +98,40 @@ Attachment.create([
         default_record: false
     }
 ])
+sku_100 = Sku.create({
+        price: 5.99,
+        cost_value: 1.99,
+        stock: 50,
+        stock_warning_level: 5,
+        code: '100',
+        product_id: product_1.id,
+        length: 10,
+        weight: 10,
+        thickness: 10,
+        active: true
+})
+sku_500 = Sku.create({
+        price: 28.99,
+        cost_value: 10.99,
+        stock: 75,
+        stock_warning_level: 10,
+        code: '500',
+        product_id: product_1.id,
+        length: 25,
+        weight: 25,
+        thickness: 25,
+        active: true
+})
+SkuVariant.create([
+    {
+        sku_id: sku_100.id,
+        variant_type_id: variant_type_size.id,
+        name: '100g'
+    },
+    {
+        sku_id: sku_500.id,
+        variant_type_id: variant_type_size.id,
+        name: '500g'
+    }
+])
+product_1.published!

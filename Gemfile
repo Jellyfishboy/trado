@@ -15,7 +15,6 @@ group :development do
     gem 'capistrano', '~> 2.15'
     gem 'bullet'
     gem 'thin'
-    gem 'colorize'
     gem 'capistrano-sidekiq'
 end
 
@@ -112,3 +111,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Test coverage by Codacy
 gem 'codacy-coverage', :require => false
+
+# Colour console
+gem 'colorize'
