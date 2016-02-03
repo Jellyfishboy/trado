@@ -1,5 +1,4 @@
 require 'payatron_4000/paypal'
-require 'payatron_4000/generic'
 
 module Payatron4000
 
