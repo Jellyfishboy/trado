@@ -6,16 +6,6 @@ if defined?(Bundler)
   Bundler.require(:default, Rails.env)
 end
 
-require './lib/deep_struct'
-
-begin 
-    Settings = DeepStruct.new(YAML.load_file(Rails.env == 'test' ? "./config/secrets.example.yml" : "./config/secrets.yml"))
-rescue Exception => ex
-    puts "You must setup a configuration file in 'config/secrets.yml' before running the application.".colorize(:red)
-    puts "Use the config/secrets.example.yml file as a starting point.".colorize(:red)
-    puts ex.message.colorize(:cyan)
-end
-
 module Trado
   class Application < Rails::Application
 
