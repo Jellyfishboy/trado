@@ -12,7 +12,7 @@
       = form_for [current_cart, item], remote: true do |f|
         = f.text_field :quantity, value: item.quantity, :class => 'tiny-size'
         = f.submit 'Update', :class => 'btn btn-small'
-    %td.price= Store::Price.new(price: item.total_price).single
+    %td.price= Store.Price.new(price: item.total_price).single
   - unless item.cart_item_accessory.blank?
     %tr.accessory_row
       %td.image
@@ -27,7 +27,7 @@
     \ 
     %td.stronger{colspan: "2"} Subtotal:
     %td.stronger
-      .align-right= Store::Price.new(price: current_cart.total_price).single
+      .align-right= Store.Price.new(price: current_cart.total_price).single
 %tr
   %td{colspan: "2", rowspan: "1"}
   \ 
@@ -39,17 +39,17 @@
         = link_to purge_estimate_carts_path, method: :delete, remote: true, title: 'Remove item' do
           %i.fa.fa-times-circle
   %td.stronger
-    .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
+    .align-right= Store.Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
 - if Store.settings.tax_breakdown
   %tr
     %td{colspan: "2", rowspan: "1"}
     \ 
     %td.stronger{colspan: "2"}= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
     %td.stronger
-      .align-right= Store::Price.new(price: (@cart_total*Store::tax_rate)).single
+      .align-right= Store.Price.new(price: (@cart_total*Store.tax_rate)).single
 %tr
   %td{colspan: "2", rowspan: "1"}
   \
   %td.stronger{colspan: "2"} Total:
   %td.stronger
-    .size-16.align-right.total_price= Store::Price.new(price: @cart_total, tax_type: 'gross').single
+    .size-16.align-right.total_price= Store.Price.new(price: @cart_total, tax_type: 'gross').single

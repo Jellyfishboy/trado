@@ -18,7 +18,7 @@
 #                 :net_amount => order.net_amount,
 #                 :status_reason => nil
 #             ).save(validate: false)
-#             Payatron4000::update_stock(order)
+#             Payatron4000.update_stock(order)
 #         end
 
 #         # Completes the order process by creating a transaction record, sending a confirmation email and redirects the user
@@ -28,8 +28,8 @@
 #         # @param payment_type [String]
 #         # @param session [Object]
 #         def self.complete order, payment_type, session
-#             Payatron4000::Generic.successful(order, payment_type)
-#             Payatron4000::destroy_cart(session)
+#             Payatron4000.Generic.successful(order, payment_type)
+#             Payatron4000.destroy_cart(session)
 #             order.reload
 #             Mailatron4000::Orders.confirmation_email(order)
 #             return Rails.application.routes.url_helpers.failed_order_url(order)

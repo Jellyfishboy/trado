@@ -83,10 +83,10 @@ module Store
         # @return [Array] flash status symbol and message
         def last_record object, count
             if count < 2
-                return [:error, "Failed to delete #{Store::class_name(object).downcase} - you must have at least one."]
+                return [:error, "Failed to delete #{Store.class_name(object).downcase} - you must have at least one."]
             else
                 object.destroy
-                return [:success, "#{Store::class_name(object).capitalize} was successfully deleted."]
+                return [:success, "#{Store.class_name(object).capitalize} was successfully deleted."]
             end
         end
 
@@ -110,7 +110,7 @@ module Store
         #
         def active_archive class_name, symbol, record
             class_name.where(symbol => record.id).destroy_all unless record.carts.empty?
-            record.orders.empty? ? record.destroy : Store::inactivate!(record)
+            record.orders.empty? ? record.destroy : Store.inactivate!(record)
         end
 
         # Build the tracking url from the tracking_url and consignment parameters

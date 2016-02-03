@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe Payatron4000::Paypal do
+describe Payatron4000.Paypal do
 
     store_setting
 
     describe "When building an order ready for PayPal authentication" do
         let(:cart) { create(:cart) }
         let(:order) { create(:order, cart_id: cart.id) }
-        let(:failed_build) { Payatron4000::Paypal.build(cart, order, '127.0.0.123') }
+        let(:failed_build) { Payatron4000.Paypal.build(cart, order, '127.0.0.123') }
         before(:each) do
             EXPRESS_GATEWAY.stub(:setup_purchase) { OpenStruct.new( :message => 'Failed order.', 
                                                                     :params => { 'error_codes' => 14012 },
@@ -45,7 +45,7 @@ describe Payatron4000::Paypal do
         let(:ip_address) { "10.1.5.25" }
         let(:return_url) { "/return_url" }
         let(:cancel_url) { "/cancel_url" }
-        let(:express_options) { Payatron4000::Paypal.express_setup_options(order, cart, ip_address, return_url, cancel_url) }
+        let(:express_options) { Payatron4000.Paypal.express_setup_options(order, cart, ip_address, return_url, cancel_url) }
 
         it "should set the correct subtotal" do
             expect(express_options[:subtotal]).to eq (1250)
@@ -74,7 +74,7 @@ describe Payatron4000::Paypal do
 
     describe "When requesting an order object for confirming an order in PayPal" do
         let(:order) { create(:order, express_token: 'TAD623452', express_payer_id: '3622', tax_amount: '6.43', net_amount: '89.23') }
-        let(:express_purchase) { Payatron4000::Paypal.express_purchase_options(order) }
+        let(:express_purchase) { Payatron4000.Paypal.express_purchase_options(order) }
 
         it "should set the correct subtotal" do
             expect(express_purchase[:subtotal]).to eq (8923)
@@ -96,7 +96,7 @@ describe Payatron4000::Paypal do
     describe "When creating an array of cart items for PayPal" do
         let!(:cart) { create(:cart) }
         let!(:cart_item_1) { create(:cart_item, cart: cart) }
-        let(:express_items) { Payatron4000::Paypal.express_items(cart) }
+        let(:express_items) { Payatron4000.Paypal.express_items(cart) }
 
         it "should set the correct product name" do
             expect(express_items[0][:name]).to eq cart_item_1.sku.product.name
@@ -107,7 +107,7 @@ describe Payatron4000::Paypal do
         end
 
         it "should set the correct amount" do
-            expect(express_items[0][:amount]).to eq Store::Price.new(price: cart_item_1.price, tax_type: 'net').singularize
+            expect(express_items[0][:amount]).to eq Store.Price.new(price: cart_item_1.price, tax_type: 'net').singularize
         end
 
         it "should set the correct quantity" do
@@ -120,7 +120,7 @@ describe Payatron4000::Paypal do
         let(:token) { "TAD3227" }
         let(:payer_id) { "7327" }
         before(:each) do
-            Payatron4000::Paypal.assign_paypal_token(token, payer_id, order)
+            Payatron4000.Paypal.assign_paypal_token(token, payer_id, order)
         end
 
         it "should update the order with a token" do
@@ -137,7 +137,7 @@ describe Payatron4000::Paypal do
         context "if the payment was successful" do
             let!(:order) { create(:addresses_order) }
             let(:session) { Hash({:cart_id => order.cart.id}) }
-            let(:successful_order) { Payatron4000::Paypal.complete(order, session) }
+            let(:successful_order) { Payatron4000.Paypal.complete(order, session) }
             before(:each) do
                 EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {  'FeeAmount' => '2.34', 
                                                                                                     'TransactionID' => '78232', 
@@ -183,7 +183,7 @@ describe Payatron4000::Paypal do
             let!(:cart) { create(:cart) }
             let(:session) { Hash({:cart_id => cart.id}) }
             let(:order) { create(:addresses_order) }
-            let(:failed_order) { Payatron4000::Paypal.complete(order, session) }
+            let(:failed_order) { Payatron4000.Paypal.complete(order, session) }
             before(:each) do
                 EXPRESS_GATEWAY.stub(:purchase) { OpenStruct.new(  :params => { 'PaymentInfo' => {  'FeeAmount' => '', 
                                                                                                     'TransactionID' => '', 
@@ -232,7 +232,7 @@ describe Payatron4000::Paypal do
                                                     }
                                         )  
                         }
-        let(:successful) { Payatron4000::Paypal.successful(response, order) }
+        let(:successful) { Payatron4000.Paypal.successful(response, order) }
         before(:each) do
             unless RSpec.current_example.metadata[:skip_before]
                 successful
@@ -266,7 +266,7 @@ describe Payatron4000::Paypal do
 
         let(:order) { create(:order, tax_amount: '7.44') }
         let(:response) { OpenStruct.new(:message => 'Failed order.', :params => { 'error_codes' => 14012 }) }
-        let(:failed) { Payatron4000::Paypal.failed(response, order) }
+        let(:failed) { Payatron4000.Paypal.failed(response, order) }
         before(:each) do
             unless RSpec.current_example.metadata[:skip_before]
                 failed

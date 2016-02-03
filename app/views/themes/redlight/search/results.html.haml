@@ -88,7 +88,7 @@
                           %h5.isotope--title
                             = link_to product.name, [product.category, product]
                           .meta-data
-                            %span.price= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range
+                            %span.price= Store.Price.new(price: product.skus.first.price, count: product.skus.count).range
                         %p.desc= product.description
                 / /single product
             %hr/

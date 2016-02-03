@@ -90,7 +90,7 @@ module Store
         # @param price [Decimal]
         # @return [Decimal] price
         def taxify price
-            (price * Store::tax_rate) + price
+            (price * Store.tax_rate) + price
         end
     end
 end

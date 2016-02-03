@@ -59,7 +59,7 @@ class CartItemsController < ApplicationController
 
   def set_delivery_services
     unless current_cart.cart_items.empty?
-      session[:delivery_service_prices] = current_cart.calculate_delivery_services(Store::tax_rate)
+      session[:delivery_service_prices] = current_cart.calculate_delivery_services(Store.tax_rate)
     end
   end
 

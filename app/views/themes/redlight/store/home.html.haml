@@ -140,7 +140,7 @@
                     = link_to (image_tag product.attachments.first.file.large, :alt => product.name, :height => 412, :width => 540), [product.category, product]
                 .main-titles.no-margin
                   %h4.title
-                    = Store::Price.new(price: product.skus.first.price, count: product.skus.count).range
+                    = Store.Price.new(price: product.skus.first.price, count: product.skus.count).range
                   %h5.no-margin= truncate product.name, :length => 35
                 %p.desc= truncate product.short_description, :length => 100
 / ==========

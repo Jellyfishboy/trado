@@ -1,7 +1,7 @@
 module ProductHelper
 
     def accessory_details accessory
-        "#{accessory.name} (+#{Store::Price.new(price: accessory.price).single})".html_safe
+        "#{accessory.name} (+#{Store.Price.new(price: accessory.price).single})".html_safe
     end
 
     def product_filter_classes product

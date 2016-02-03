@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     def complete
       set_order
       @order.transfer(current_cart)
-      redirect_to Store::PayProvider.new(order: @order, provider: session[:payment_type], session: session).complete
+      redirect_to Store.PayProvider.new(order: @order, provider: session[:payment_type], session: session).complete
     end
 
     def success
@@ -34,13 +34,13 @@ class OrdersController < ApplicationController
     def retry
       set_order
       @error_code = @order.transactions.last.error_code
-      @order.update_column(:cart_id, current_cart.id) unless Payatron4000::fatal_error_code?(@error_code)
+      @order.update_column(:cart_id, current_cart.id) unless Payatron4000.fatal_error_code?(@error_code)
       redirect_to mycart_carts_url
     end
 
     def destroy
       set_order
-      Payatron4000::decommission_order(@order)
+      Payatron4000.decommission_order(@order)
       flash_message :success, "Your order has been cancelled."
       redirect_to root_url
     end
@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
         redirect_to checkout_carts_url
       elsif session[:payment_type] == 'express-checkout'
         if params[:token] && params[:PayerID]
-          Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
+          Payatron4000.Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
         else
           flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'

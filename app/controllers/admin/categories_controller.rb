@@ -37,7 +37,7 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     set_category
-    @result = Store::last_record(@category, Category.all.count)
+    @result = Store.last_record(@category, Category.all.count)
 
     flash_message @result[0], @result[1]
     redirect_to admin_categories_url

@@ -38,7 +38,7 @@ class Admin::SkusController < ApplicationController
     set_product
     set_sku
     unless @sku.orders.empty?
-      Store::inactivate!(@sku)
+      Store.inactivate!(@sku)
       @old_sku = @sku
       @sku = Sku.new(params[:sku])
       @sku.product_id = @old_sku.product.id
@@ -61,7 +61,7 @@ class Admin::SkusController < ApplicationController
       render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @sku }), sku_id: @sku.id }, status: 200
     else
       @form_sku = @old_sku ||= Sku.find(params[:id])
-      Store::activate!(@form_sku)
+      Store.activate!(@form_sku)
       @form_sku.attributes = params[:sku]
       render json: { errors: @sku.errors.full_messages}, status: 422
     end

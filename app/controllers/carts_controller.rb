@@ -22,8 +22,8 @@ class CartsController < ApplicationController
         @order.attributes = params[:order]
         session[:payment_type] = params[:payment_type]
         if @order.save
-            @order.calculate(current_cart, Store::tax_rate)
-            redirect_to Store::PayProvider.new(cart: current_cart, order: @order, provider: session[:payment_type], ip_address: request.remote_ip).build
+            @order.calculate(current_cart, Store.tax_rate)
+            redirect_to Store.PayProvider.new(cart: current_cart, order: @order, provider: session[:payment_type], ip_address: request.remote_ip).build
         else
             render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end
@@ -56,7 +56,7 @@ class CartsController < ApplicationController
 
     def set_cart_details
         @order = current_cart.order.nil? ? Order.new : current_cart.order
-        @cart_total = current_cart.calculate(Store::tax_rate)
+        @cart_total = current_cart.calculate(Store.tax_rate)
         @country = @order.delivery_address.nil? ? current_cart.estimate_country_name : @order.delivery_address.country
         @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
     end

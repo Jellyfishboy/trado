@@ -54,8 +54,8 @@ class Admin::ProductsController < ApplicationController
     if @product.orders.empty? 
       @product.destroy
     else
-      @product.skus.map { |s| Store::inactivate!(s) }
-      Store::inactivate!(@product)
+      @product.skus.map { |s| Store.inactivate!(s) }
+      Store.inactivate!(@product)
     end
 
     flash_message :success, "Product was successfully deleted."

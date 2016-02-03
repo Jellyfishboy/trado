@@ -91,7 +91,7 @@ describe OrdersController do
         let!(:order) { create(:order, cart_id: cart.id) }
         before(:each) do
             stub_current_cart(cart)
-            Store::PayProvider.any_instance.stub(complete: '/')
+            Store.PayProvider.any_instance.stub(complete: '/')
         end
 
         it "should assign the order record to @order" do

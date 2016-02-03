@@ -5,7 +5,7 @@
       (
       = current_cart.cart_items.sum('quantity')
       )
-  %p.dark-clr.hidden-tablet= Store::Price.new(price: current_cart.total_price).markup
+  %p.dark-clr.hidden-tablet= Store.Price.new(price: current_cart.total_price).markup
   = link_to mycart_carts_path, :class => 'btn btn-danger' do
     %i.fa.fa-shopping-cart
 .open-panel
@@ -33,21 +33,21 @@
             = link_to [current_cart, item], method: :delete, remote: true, title: 'Remove item' do
               %i.fa.fa-times-circle
         .price
-          %strong= Store::Price.new(price: item.total_price).single
+          %strong= Store.Price.new(price: item.total_price).single
     .summary
       - if Store.settings.tax_breakdown
         .line
           .row-fluid
             .span6 Subtotal
-            .span6.align-right= Store::Price.new(price: current_cart.total_price, tax_type: 'net').single
+            .span6.align-right= Store.Price.new(price: current_cart.total_price, tax_type: 'net').single
         .line
           .row-fluid
             .span6= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
-            .span6.align-right= Store::Price.new(price:(current_cart.total_price*Store::tax_rate)).single
+            .span6.align-right= Store.Price.new(price:(current_cart.total_price*Store.tax_rate)).single
       .line
         .row-fluid
           .span6 Total
-          .span6.align-right.size-16= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single
+          .span6.align-right.size-16= Store.Price.new(price: current_cart.total_price, tax_type: 'gross').single
     .proceed
       = link_to mycart_carts_path, :class => 'btn btn-danger pull-right bold higher' do
         CHECKOUT

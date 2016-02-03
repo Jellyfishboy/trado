@@ -111,9 +111,9 @@ module ApplicationHelper
         remote_edit = args.include?('remote-edit')
         delete = args.include?('delete')
         remote_delete = args.include?('remote-delete')
-        order_record = Store::class_name(object.last) == 'Order'
-        sku_record = Store::class_name(object.last) == 'Sku'
-        delivery_service_record = Store::class_name(object.last) == 'Delivery Service'      
+        order_record = Store.class_name(object.last) == 'Order'
+        sku_record = Store.class_name(object.last) == 'Sku'
+        delivery_service_record = Store.class_name(object.last) == 'Delivery Service'      
         render partial: 'shared/table_actions', format: [:html], locals: 
         { 
             object: object, 

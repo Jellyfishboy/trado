@@ -82,7 +82,7 @@ describe Cart do
         let!(:delivery_service_3) { create(:delivery_service, active: true)}
         let!(:delivery_service_price_5) { create(:delivery_service_price, active: true, min_weight: '0', max_weight: '34.75', min_length: '0', max_length: '1003.23', min_thickness: '0', max_thickness: '55.71', delivery_service_id: delivery_service_3.id, code: 'DEL5') }
         it "should return an array of available delivery service prices, taking into consideration cart dimensions and cart total price" do
-            expect(cart.calculate_delivery_services(Store::tax_rate)).to eq [delivery_service_price_1.id, delivery_service_price_5.id]
+            expect(cart.calculate_delivery_services(Store.tax_rate)).to eq [delivery_service_price_1.id, delivery_service_price_5.id]
         end
     end
 

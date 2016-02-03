@@ -37,7 +37,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
   def update
     set_delivery_service_price
     unless @delivery_service_price.orders.empty?
-      Store::inactivate!(@delivery_service_price)
+      Store.inactivate!(@delivery_service_price)
       @old_delivery_service_price = @delivery_service_price
       @delivery_service_price = @old_delivery_service_price.delivery_service.prices.build(params[:delivery_service_price])
     end
@@ -47,7 +47,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
       redirect_to admin_delivery_service_delivery_service_prices_url
     else
       @form_delivery_service_price = @old_delivery_service_price ||= DeliveryServicePrice.find(params[:id])
-      Store::activate!(@form_delivery_service_price)
+      Store.activate!(@form_delivery_service_price)
       @form_delivery_service_price.attributes = params[:delivery_service_price]
       render :edit
     end
@@ -59,9 +59,9 @@ class Admin::DeliveryServicePricesController < ApplicationController
   def destroy
     set_delivery_service_price
     if @delivery_service_price.orders.empty?
-      @result = Store::last_record(@delivery_service_price, DeliveryServicePrice.active.load.count)
+      @result = Store.last_record(@delivery_service_price, DeliveryServicePrice.active.load.count)
     else
-      Store::inactivate!(@delivery_service_price)
+      Store.inactivate!(@delivery_service_price)
     end
     @result = [:success, 'Delivery service price was successfully deleted.'] if @result.nil?
     flash_message @result[0], @result[1]

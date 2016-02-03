@@ -1,12 +1,12 @@
 # require 'rails_helper'
 
-# describe Payatron4000::Generic do
+# describe Payatron4000.Generic do
 
 #     store_setting
 
 #     describe "When creating a successful order" do
 #         let(:order) { create(:order) }
-#         let(:successful_order) { Payatron4000::Generic.successful(order, nil)}
+#         let(:successful_order) { Payatron4000.Generic.successful(order, nil)}
 #         before(:each) do
 #             unless RSpec.current_example.metadata[:skip_before]
 #                 successful_order
@@ -28,7 +28,7 @@
 #             let(:order) { create(:cheque_order) }
 
 #             it "should set the transaction payment type value to 'Cheque'" do
-#                 Payatron4000::Generic.successful(order, 'Cheque')
+#                 Payatron4000.Generic.successful(order, 'Cheque')
 #                 expect(order.transactions.first.payment_type).to eq 'Cheque'
 #             end
 #         end
@@ -37,7 +37,7 @@
 #             let(:order) { create(:bank_transfer_order) }
 
 #             it "should set the transaction payment type value to 'Bank transfer'" do
-#                 Payatron4000::Generic.successful(order, 'Bank transfer')
+#                 Payatron4000.Generic.successful(order, 'Bank transfer')
 #                 expect(order.transactions.first.payment_type).to eq 'Bank transfer'
 #             end
 #         end
@@ -47,7 +47,7 @@
 #         let(:order) { create(:addresses_order) }
 #         let(:cart) { create(:cart) }
 #         let(:session) { Hash({:cart_id => cart.id}) }
-#         let(:successful_order) { Payatron4000::Generic.complete(order, 'Cheque', session) }
+#         let(:successful_order) { Payatron4000.Generic.complete(order, 'Cheque', session) }
 
 #         it "should create a new transaction record" do
 #             expect{

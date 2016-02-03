@@ -48,7 +48,7 @@ class Admin::AccessoriesController < ApplicationController
   def update
     set_accessory
     unless @accessory.orders.empty?
-      Store::inactivate!(@accessory)
+      Store.inactivate!(@accessory)
       @old_accessory = @accessory
       @accessory = Accessory.new(params[:accessory])
     end
@@ -62,7 +62,7 @@ class Admin::AccessoriesController < ApplicationController
       redirect_to admin_accessories_url
     else
       @form_accessory = @old_accessory ||= Accessory.find(params[:id])
-      Store::activate!(@form_accessory)
+      Store.activate!(@form_accessory)
       @form_accessory.attributes = params[:accessory]
       render action: "edit"
     end

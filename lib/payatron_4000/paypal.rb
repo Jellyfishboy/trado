@@ -12,8 +12,8 @@ module Payatron4000
         # @return [String] redirect url
         def self.build cart, order, ip_address
           response = EXPRESS_GATEWAY.setup_purchase(
-                        Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
-                        Payatron4000::Paypal.express_setup_options( 
+                        Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
+                        Payatron4000.Paypal.express_setup_options( 
                           order,
                           cart,
                           ip_address, 
@@ -24,8 +24,8 @@ module Payatron4000
           if response.success?
             return EXPRESS_GATEWAY.redirect_url_for(response.token)
           else
-            Payatron4000::Paypal.failed(response, order)
-            Payatron4000::decommission_order(order)
+            Payatron4000.Paypal.failed(response, order)
+            Payatron4000.decommission_order(order)
             return Rails.application.routes.url_helpers.failed_order_url(order)
           end
         end
@@ -40,12 +40,12 @@ module Payatron4000
         # @return [Object] order data from the store for PayPal
         def self.express_setup_options order, cart, ip_address, return_url, cancel_url
             {
-              :subtotal          => Store::Price.new(price: order.net_amount, tax_type: 'net').singularize,
-              :shipping          => Store::Price.new(price: order.delivery.price, tax_type: 'net').singularize,
-              :tax               => Store::Price.new(price: order.tax_amount, tax_type: 'net').singularize,
+              :subtotal          => Store.Price.new(price: order.net_amount, tax_type: 'net').singularize,
+              :shipping          => Store.Price.new(price: order.delivery.price, tax_type: 'net').singularize,
+              :tax               => Store.Price.new(price: order.tax_amount, tax_type: 'net').singularize,
               :handling          => 0,
               :order_id          => order.id,
-              :items             => Payatron4000::Paypal.express_items(cart),
+              :items             => Payatron4000.Paypal.express_items(cart),
               :ip                => ip_address,
               :return_url        => return_url,
               :cancel_return_url => cancel_url,
@@ -59,9 +59,9 @@ module Payatron4000
         # @return [Object] current customer order
         def self.express_purchase_options order
             {
-              :subtotal          => Store::Price.new(price: order.net_amount, tax_type: 'net').singularize,
-              :shipping          => Store::Price.new(price: order.delivery.price, tax_type: 'net').singularize,
-              :tax               => Store::Price.new(price: order.tax_amount, tax_type: 'net').singularize,
+              :subtotal          => Store.Price.new(price: order.net_amount, tax_type: 'net').singularize,
+              :shipping          => Store.Price.new(price: order.delivery.price, tax_type: 'net').singularize,
+              :tax               => Store.Price.new(price: order.tax_amount, tax_type: 'net').singularize,
               :handling          => 0,
               :token             => order.express_token,
               :payer_id          => order.express_payer_id,
@@ -78,7 +78,7 @@ module Payatron4000
                 {
                   :name               => item.sku.product.name,
                   :description        => item.sku.variants.map{|v| v.name.titleize}.join(' / '),
-                  :amount             => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
+                  :amount             => Store.Price.new(price: item.price, tax_type: 'net').singularize, 
                   :quantity           => item.quantity 
                 }
             end
@@ -101,18 +101,18 @@ module Payatron4000
         # @param order [Object]
         # @param session [Object
         def self.complete order, session
-          response = EXPRESS_GATEWAY.purchase(Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
-                                              Payatron4000::Paypal.express_purchase_options(order)
+          response = EXPRESS_GATEWAY.purchase(Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
+                                              Payatron4000.Paypal.express_purchase_options(order)
           )
-          Payatron4000::decommission_order(order)
+          Payatron4000.decommission_order(order)
           if response.success?
-            Payatron4000::Paypal.successful(response, order)
-            Payatron4000::destroy_cart(session)
+            Payatron4000.Paypal.successful(response, order)
+            Payatron4000.destroy_cart(session)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.success_order_url(order)
           else
-            Payatron4000::Paypal.failed(response, order)
+            Payatron4000.Paypal.failed(response, order)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.failed_order_url(order)
@@ -135,8 +135,8 @@ module Payatron4000
                               :gross_amount             => response.params['PaymentInfo']['GrossAmount'],
                               :status_reason            => response.params['PaymentInfo']['PendingReason']
             ).save(validate: false)
-            Payatron4000::update_stock(order)
-            Payatron4000::increment_product_order_count(order.products)
+            Payatron4000.update_stock(order)
+            Payatron4000.increment_product_order_count(order.products)
         end
 
         
@@ -157,7 +157,7 @@ module Payatron4000
                               :status_reason              => response.message,
                               :error_code                 => response.params["error_codes"].to_i
             ).save(validate: false)
-            Payatron4000::increment_product_order_count(order.products)
+            Payatron4000.increment_product_order_count(order.products)
         end
 
         # A list of available currency codes for the PayPal payment system

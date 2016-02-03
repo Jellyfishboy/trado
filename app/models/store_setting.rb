@@ -42,6 +42,6 @@ class StoreSetting < ActiveRecord::Base
     private
 
     def reset_settings
-        Store::reset_settings
+        Store.reset_settings
     end
 end

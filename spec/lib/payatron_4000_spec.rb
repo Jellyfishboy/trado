@@ -4,7 +4,7 @@ describe Payatron4000 do
 
     describe "After creating a transaction record for the associated order" do
         let!(:order) { create(:complete_order) }
-        let(:update) { Payatron4000::update_stock(order) }
+        let(:update) { Payatron4000.update_stock(order) }
         before(:each) do
             create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20, created_at: 1.day.ago)
         end
@@ -37,7 +37,7 @@ describe Payatron4000 do
             let(:order) { create(:complete_order) }
 
             it "should have only the order id in the description" do
-                Payatron4000::update_stock(order)
+                Payatron4000.update_stock(order)
                 expect(order.order_items.first.sku.stock_adjustments.first.description).to eq "Order ##{order.id}"
             end
         end
@@ -46,7 +46,7 @@ describe Payatron4000 do
             let(:order) { create(:complete_accessory_order) }
 
             it "should have the order id and accessory name in the description" do
-                Payatron4000::update_stock(order)
+                Payatron4000.update_stock(order)
                 expect(order.order_items.first.sku.stock_adjustments.first.description).to eq "Order ##{order.id} (+ #{order.order_items.first.order_item_accessory.accessory.name})"
             end
         end
@@ -56,7 +56,7 @@ describe Payatron4000 do
         let!(:cart) { create(:cart) }
         let!(:complete_order) { create(:pending_order, cart_id: cart.id) }
         let(:session) { Hash({:cart_id => cart.id}) }
-        let(:destroy_cart) { Payatron4000::destroy_cart(session) }
+        let(:destroy_cart) { Payatron4000.destroy_cart(session) }
 
         it "should destroy the originating cart and it's cart items" do
             expect{
@@ -72,7 +72,7 @@ describe Payatron4000 do
 
         it "should update all the associated products order count attribute value" do
             expect{
-                Payatron4000::increment_product_order_count(cart.order.products)
+                Payatron4000.increment_product_order_count(cart.order.products)
             }.to change{
                 cart.order.products.first.order_count
             }.from(0).to(1)
@@ -80,7 +80,7 @@ describe Payatron4000 do
 
         it "should decommission an order by setting the cart_id attribute to nil" do
             expect(complete_order.cart_id).to_not eq nil
-            Payatron4000::decommission_order(complete_order)
+            Payatron4000.decommission_order(complete_order)
             expect(complete_order.cart_id).to eq nil
         end
     end
@@ -88,11 +88,11 @@ describe Payatron4000 do
     describe "When checking if a transaction has a fatal error code" do
 
         it "should return true if the error code is listed as fatal" do
-            expect(Payatron4000::fatal_error_code?(10415)).to eq true
+            expect(Payatron4000.fatal_error_code?(10415)).to eq true
         end
 
         it "should return false if the error code is not listed as fatal" do
-            expect(Payatron4000::fatal_error_code?(10413)).to eq false
+            expect(Payatron4000.fatal_error_code?(10413)).to eq false
         end
     end
 end

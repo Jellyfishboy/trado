@@ -33,7 +33,7 @@ class StockAdjustment < ActiveRecord::Base
   # Modify the sku stock with the associated stock level adjustment value
   #
   def stock_adjustment
-    if Store::positive?(self.adjustment)
+    if Store.positive?(self.adjustment)
       self.stock_total = self.sku.stock_adjustments.first.stock_total + self.adjustment
       self.sku.update_column(:stock, self.sku.stock + self.adjustment)
     else

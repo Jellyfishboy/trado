@@ -37,7 +37,7 @@
         <% end %>
         <div class="form-group form-last">
           <%= f.label 'Theme' %>
-          <%= f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
+          <%= f.select :theme_name, options_for_select(Store.ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
     </div>
@@ -89,7 +89,7 @@
       <fieldset class="widget widget-content">
         <div class="form-group">
           <%= f.label 'Currency code' %>
-          <%= f.select :paypal_currency_code, options_for_select(Payatron4000::Paypal.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' } %>
+          <%= f.select :paypal_currency_code, options_for_select(Payatron4000.Paypal.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
     </div>
