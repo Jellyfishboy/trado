@@ -107,7 +107,7 @@ describe Payatron4000::Paypal do
         end
 
         it "should set the correct amount" do
-            expect(express_items[0][:amount]).to eq Store.Price.new(price: cart_item_1.price, tax_type: 'net').singularize
+            expect(express_items[0][:amount]).to eq Store::Price.new(price: cart_item_1.price, tax_type: 'net').singularize
         end
 
         it "should set the correct quantity" do

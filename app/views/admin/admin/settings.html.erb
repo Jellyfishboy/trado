@@ -37,7 +37,7 @@
         <% end %>
         <div class="form-group form-last">
           <%= f.label 'Theme' %>
-          <%= f.select :theme_name, options_for_select(Store.ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
+          <%= f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
     </div>

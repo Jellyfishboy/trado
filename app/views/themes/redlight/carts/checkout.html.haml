@@ -210,7 +210,7 @@
                             = item.sku.product.name
                             %div= render_variants(item.sku) unless item.sku.product.single?                          
                           %td.qty= item.quantity
-                          %td.price= Store.Price.new(price: item.price).single
+                          %td.price= Store::Price.new(price: item.price).single
                         - unless item.cart_item_accessory.blank?
                           %tr.accessory_row
                             %td.image
@@ -223,22 +223,22 @@
                         %tr
                           %td.stronger{colspan: "3"} Subtotal:
                           %td.stronger
-                            .align-right= Store.Price.new(price: @cart_total[:net_amount]).single
+                            .align-right= Store::Price.new(price: @cart_total[:net_amount]).single
                       %tr{ :class => Store.settings.tax_breakdown ? 'no-border' : nil}
                         %td.stronger{colspan: "3"}
                           Delivery:
                           %div.normal= current_cart.estimate_delivery.full_name unless current_cart.estimate_delivery.nil?
                         %td.stronger
-                          .align-right= Store.Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
+                          .align-right= Store::Price.new(price: cart_delivery_price(current_cart.estimate_delivery)).single
                       - if Store.settings.tax_breakdown
                         %tr.no-border
                           %td.stronger{colspan: "3"}= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%):"
                           %td.stronger
-                            .align-right= Store.Price.new(price: @cart_total[:tax_amount]).single
+                            .align-right= Store::Price.new(price: @cart_total[:tax_amount]).single
                       %tr
                         %td.stronger{colspan: "3"} Order Total:
                         %td.stronger
-                          .size-16.align-right.total_price= Store.Price.new(price: @cart_total[:gross_amount], tax_type: 'net').single
+                          .size-16.align-right.total_price= Store::Price.new(price: @cart_total[:gross_amount], tax_type: 'net').single
                   %p 
                     = f.submit 'Place Order', :class => 'btn btn-primary higher bold confirm_order'
 

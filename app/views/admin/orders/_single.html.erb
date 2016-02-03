@@ -15,7 +15,7 @@
   <%= status_label order.transactions.last, order.transactions.last.payment_status %>
 </td>
 <td>
-  <%= Store.Price.new(price: order.gross_amount, tax_type: 'net').single %>
+  <%= Store::Price.new(price: order.gross_amount, tax_type: 'net').single %>
 </td>
 <td>
   <%= order.updated_at.strftime('%d/%m/%Y at %I:%M%p') %>

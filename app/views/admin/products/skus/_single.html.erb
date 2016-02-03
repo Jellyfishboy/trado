@@ -3,8 +3,8 @@
     <td><%= variant.name %></td>
 <% end %>
 <td><%= sku.stock %></td>
-<td><%= Store.Price.new(price: sku.cost_value, tax_type: 'net').single %></td>
-<td><%= Store.Price.new(price: sku.price, tax_type: 'net').single %></td>
+<td><%= Store::Price.new(price: sku.cost_value, tax_type: 'net').single %></td>
+<td><%= Store::Price.new(price: sku.price, tax_type: 'net').single %></td>
 <td class="table-actions">
     <%= link_to edit_admin_product_sku_path(sku.product, sku), remote: true, :class => 'edit-sku-button' do %>
         <i class="icon-pencil"></i>

@@ -58,19 +58,19 @@
                 <div class="row double-stack-fourcol-stat">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
-                            <div class="green-stat"><%= Store.Price.new(price: @dashboard[:gross_total]).single %></div>
+                            <div class="green-stat"><%= Store::Price.new(price: @dashboard[:gross_total]).single %></div>
                             <div>Gross income</div>
                         </div>
                     </div>
                     <div class="fourcol">
                         <div class="single-stat price-stat">
-                            <div class="purple-stat"><%= Store.Price.new(price: @dashboard[:net_total]).single %></div>
+                            <div class="purple-stat"><%= Store::Price.new(price: @dashboard[:net_total]).single %></div>
                             <div>Net income</div>
                         </div>
                     </div>
                     <div class="fourcol last">
                         <div class="single-stat price-stat">
-                            <div class="red-stat"><%= Store.Price.new(price: @dashboard[:tax_total]).single %></div>
+                            <div class="red-stat"><%= Store::Price.new(price: @dashboard[:tax_total]).single %></div>
                             <div>Tax</div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
-                            <div class="blue-stat"><%= Store.Price.new(price: @dashboard[:paypal_fee_total]).single %></div>
+                            <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:paypal_fee_total]).single %></div>
                             <div>PayPal Fees</div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ module Payatron4000
         # @return [String] redirect url
         def self.build cart, order, ip_address
           response = EXPRESS_GATEWAY.setup_purchase(
-                        Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
+                        Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
                         Payatron4000::Paypal.express_setup_options( 
                           order,
                           cart,
@@ -40,9 +40,9 @@ module Payatron4000
         # @return [Object] order data from the store for PayPal
         def self.express_setup_options order, cart, ip_address, return_url, cancel_url
             {
-              :subtotal          => Store.Price.new(price: order.net_amount, tax_type: 'net').singularize,
-              :shipping          => Store.Price.new(price: order.delivery.price, tax_type: 'net').singularize,
-              :tax               => Store.Price.new(price: order.tax_amount, tax_type: 'net').singularize,
+              :subtotal          => Store::Price.new(price: order.net_amount, tax_type: 'net').singularize,
+              :shipping          => Store::Price.new(price: order.delivery.price, tax_type: 'net').singularize,
+              :tax               => Store::Price.new(price: order.tax_amount, tax_type: 'net').singularize,
               :handling          => 0,
               :order_id          => order.id,
               :items             => Payatron4000::Paypal.express_items(cart),
@@ -59,9 +59,9 @@ module Payatron4000
         # @return [Object] current customer order
         def self.express_purchase_options order
             {
-              :subtotal          => Store.Price.new(price: order.net_amount, tax_type: 'net').singularize,
-              :shipping          => Store.Price.new(price: order.delivery.price, tax_type: 'net').singularize,
-              :tax               => Store.Price.new(price: order.tax_amount, tax_type: 'net').singularize,
+              :subtotal          => Store::Price.new(price: order.net_amount, tax_type: 'net').singularize,
+              :shipping          => Store::Price.new(price: order.delivery.price, tax_type: 'net').singularize,
+              :tax               => Store::Price.new(price: order.tax_amount, tax_type: 'net').singularize,
               :handling          => 0,
               :token             => order.express_token,
               :payer_id          => order.express_payer_id,
@@ -78,7 +78,7 @@ module Payatron4000
                 {
                   :name               => item.sku.product.name,
                   :description        => item.sku.variants.map{|v| v.name.titleize}.join(' / '),
-                  :amount             => Store.Price.new(price: item.price, tax_type: 'net').singularize, 
+                  :amount             => Store::Price.new(price: item.price, tax_type: 'net').singularize, 
                   :quantity           => item.quantity 
                 }
             end
@@ -101,7 +101,7 @@ module Payatron4000
         # @param order [Object]
         # @param session [Object
         def self.complete order, session
-          response = EXPRESS_GATEWAY.purchase(Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
+          response = EXPRESS_GATEWAY.purchase(Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
                                               Payatron4000::Paypal.express_purchase_options(order)
           )
           Payatron4000.decommission_order(order)
