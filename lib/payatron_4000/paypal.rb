@@ -13,7 +13,7 @@ module Payatron4000
         def self.build cart, order, ip_address
           response = EXPRESS_GATEWAY.setup_purchase(
                         Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
-                        Payatron4000.Paypal.express_setup_options( 
+                        Payatron4000::Paypal.express_setup_options( 
                           order,
                           cart,
                           ip_address, 
@@ -24,7 +24,7 @@ module Payatron4000
           if response.success?
             return EXPRESS_GATEWAY.redirect_url_for(response.token)
           else
-            Payatron4000.Paypal.failed(response, order)
+            Payatron4000::Paypal.failed(response, order)
             Payatron4000.decommission_order(order)
             return Rails.application.routes.url_helpers.failed_order_url(order)
           end
@@ -45,7 +45,7 @@ module Payatron4000
               :tax               => Store.Price.new(price: order.tax_amount, tax_type: 'net').singularize,
               :handling          => 0,
               :order_id          => order.id,
-              :items             => Payatron4000.Paypal.express_items(cart),
+              :items             => Payatron4000::Paypal.express_items(cart),
               :ip                => ip_address,
               :return_url        => return_url,
               :cancel_return_url => cancel_url,
@@ -102,17 +102,17 @@ module Payatron4000
         # @param session [Object
         def self.complete order, session
           response = EXPRESS_GATEWAY.purchase(Store.Price.new(price: order.gross_amount, tax_type: 'net').singularize, 
-                                              Payatron4000.Paypal.express_purchase_options(order)
+                                              Payatron4000::Paypal.express_purchase_options(order)
           )
           Payatron4000.decommission_order(order)
           if response.success?
-            Payatron4000.Paypal.successful(response, order)
+            Payatron4000::Paypal.successful(response, order)
             Payatron4000.destroy_cart(session)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.success_order_url(order)
           else
-            Payatron4000.Paypal.failed(response, order)
+            Payatron4000::Paypal.failed(response, order)
             order.reload
             Mailatron4000::Orders.confirmation_email(order)
             return Rails.application.routes.url_helpers.failed_order_url(order)

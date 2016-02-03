@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
         redirect_to checkout_carts_url
       elsif session[:payment_type] == 'express-checkout'
         if params[:token] && params[:PayerID]
-          Payatron4000.Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
+          Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
         else
           flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
