@@ -10,7 +10,7 @@ class CartItemsController < ApplicationController
     if @quantity > @sku.stock
       render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
     else
-      render partial: theme_presenter.page_template_path('carts/create'), format: [:js] if @cart_item.save
+      render partial: theme_presenter.page_template_path('carts/update'), format: [:js] if @cart_item.save
     end
   end
 
