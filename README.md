@@ -1,4 +1,4 @@
-# Trado
+![alt text](http://cdn0.trado.io/trado-promo/assets/img/cropped.png "Trado")
 
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
