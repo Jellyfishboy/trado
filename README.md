@@ -6,6 +6,8 @@
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal and Google Analytics.
 
+[Official site](http://www.trado.io)
+
 [Release notes](http://release.tomdallimore.com)
 
 ## Versioning
