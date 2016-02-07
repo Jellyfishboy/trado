@@ -14,8 +14,8 @@ class StoreMailer < ActionMailer::Base
             from: "#{@name} <#{@email}>",
             subject: "New message from #{@name}"
         ) do |format|
-            format.html { render "themes/#{Store.settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
-            format.text { render "themes/#{Store.settings.theme.name}/emails/store/contact_message", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
+            format.html { render "admin/emails/store/contact_message", layout: "admin/layouts/email" }
+            format.text { render "admin/emails/store/contact_message", layout: "admin/layouts/email" }
         end
     end
 end
