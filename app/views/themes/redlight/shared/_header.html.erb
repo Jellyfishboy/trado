@@ -1,0 +1,37 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-xs-4" id="main-menu">
+        <a href="index.html" class="hidden-sm hidden-xs" id="brand">Redlight</a>
+        <i class="icon-menu-2 visible-sm visible-xs" id="trigger"></i>
+      </div>
+      <div class="col-lg-8 col-xs-4" id="nav-menu">
+        <a href="#" class="visible-sm visible-xs" id="brand">Redlight</a>
+        <ul id="nav" class="hidden-sm hidden-xs">
+          <li class="active">
+            <a href="category.html">Men</a>
+          </li>
+          <li>
+            <a href="category.html">Womens</a>
+          </li>
+          <li>
+            <a href="category.html">Jewelry</a>
+          </li>
+          <li>
+            <a href="category.html">Accessories</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-xs-4" id="basket-menu">
+        <div id="basket-icon" class="active-basket">
+          <span>12</span>
+          <div></div>
+        </div>
+        <div id="search-icon">
+          <i class="icon-search"></i>
+        </div>
+      </div>
+    </div>
+    <%= render partial: theme_presenter.page_template_path('carts/popup'), format: [:html] %>
+  </div>
+</header>
