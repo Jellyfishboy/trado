@@ -1,4 +1,4 @@
-var taxRate = "<%= Store.settings.tax_rate %>";
+var taxRate = gon.taxRate;
      
 ready = function()
 {
