@@ -32,12 +32,10 @@ class Admin::AttachmentsController < ApplicationController
   def update
     set_product
     set_attachment
-    respond_to do |format|
-      if @attachment.update(params[:attachment])
-        format.js { render partial: 'admin/products/attachments/update', format: [:js] }
-      else
-        format.json { render json: { errors: @attachment.errors.full_messages }, status: 422 }
-      end
+    if @attachment.update(params[:attachment])
+      render json: { last_record: @product.attachments.count == 1 ? true : false, image: render_to_string(partial: 'admin/products/attachments/single', locals: { attachment: @attachment }), attachment_id: @attachment.id }, status: 200
+    else
+      render json: { errors: @attachment.errors.full_messages }, status: 422
     end
   end
 

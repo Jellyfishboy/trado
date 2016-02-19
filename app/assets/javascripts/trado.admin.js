@@ -303,7 +303,7 @@ trado.admin =
                         }
                         else
                         {
-                            $('#attachment-' + data.attachment_id).html(data.image);
+                            $('#attachment-' + data.attachment_id).replaceWith(data.image);
                         }
                     }
                     soca.animation.alert(
