@@ -17,7 +17,8 @@ class Admin::AttachmentsController < ApplicationController
     set_product
     @attachment = @product.attachments.build(params[:attachment])
     if @attachment.save
-        render json: { last_record: @product.attachments.count == 1 ? true : false, image: render_to_string(partial: 'admin/products/attachments/single', locals: { attachment: @attachment }) }, status: 200
+      set_attachments
+      render json: { images: render_to_string(partial: 'admin/products/attachments/multiple', locals: { attachments: @attachments }) }, status: 200
     else
       render json: { errors: @attachment.errors.full_messages }, status: 422
     end
@@ -33,7 +34,8 @@ class Admin::AttachmentsController < ApplicationController
     set_product
     set_attachment
     if @attachment.update(params[:attachment])
-      render json: { last_record: @product.attachments.count == 1 ? true : false, image: render_to_string(partial: 'admin/products/attachments/single', locals: { attachment: @attachment }), attachment_id: @attachment.id }, status: 200
+      set_attachments
+      render json: { images: render_to_string(partial: 'admin/products/attachments/multiple', locals: { attachments: @attachments }) }, status: 200
     else
       render json: { errors: @attachment.errors.full_messages }, status: 422
     end
@@ -63,5 +65,9 @@ class Admin::AttachmentsController < ApplicationController
 
   def set_attachment
     @attachment = Attachment.find(params[:id])
+  end
+
+  def set_attachments
+    @attachments = @product.attachments
   end
 end
