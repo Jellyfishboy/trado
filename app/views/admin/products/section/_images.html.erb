@@ -5,13 +5,13 @@
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content" id="attachments">
-    <% if @product.attachments.empty? %>
+    <% if @attachments.empty? %>
       <div class="helper-notification">
         <p>You do not have any images for this product.</p>
         <i class="icon-images"></i>
       </div>
     <% else %>
-      <%= render partial: 'admin/products/attachments/multiple', locals: { attachments: @product.attachments } %>
+      <%= render partial: 'admin/products/attachments/multiple', locals: { attachments: @attachments } %>
     <% end %>
   </fieldset>
 </div>

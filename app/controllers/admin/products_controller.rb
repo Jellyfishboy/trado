@@ -19,12 +19,14 @@ class Admin::ProductsController < ApplicationController
     get_associations
     set_product
     set_skus
+    set_attachments
   end
 
   def update
     get_associations
     set_product
     set_skus
+    set_attachments
     @product.attributes = params[:product]
     @product.save(validate: false)
     if params[:commit] == "Save"
@@ -75,7 +77,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.includes(:skus, :accessories, :attachments, :variant_types).find(params[:id])
+    @product = Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
+  end
+
+  def set_attachments
+    @attachments = @product.attachments.includes(:attachable)
   end
 
   def set_skus
