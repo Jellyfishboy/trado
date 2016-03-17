@@ -6,7 +6,7 @@
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium ecommerce platform, while still benefiting from popular online tools such as PayPal and Google Analytics.
 
-[Official site](http://www.trado.io)
+[Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
 
 [Release notes](http://release.tomdallimore.com)
 
@@ -24,5 +24,5 @@ Trado follows Semantic Versioning 2.0 as defined at
 * Send a pull request against the *development* branch
 
 ## Copyright
-Copyright (c) 2014 [Tom Dallimore](http://www.tomdallimore.com) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Copyright (c) 2014 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=trado-github&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
 Licenced under the MIT licence.
