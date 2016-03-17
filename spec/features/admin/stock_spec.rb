@@ -4,7 +4,7 @@ feature 'Stock management' do
 
     store_setting
     feature_login_admin
-    given(:sku) { create(:sku_after_stock_adjustment, active: true) }
+    given(:sku) { create(:sku, active: true) }
 
     scenario 'should display an index of SKUs' do
         sku
@@ -25,35 +25,6 @@ feature 'Stock management' do
         end
         within 'tbody tr td:first-child' do
             expect(page).to have_content sku.full_sku
-        end
-    end
-
-    scenario 'should display the stock history for a SKU' do
-        sku
-
-        visit admin_products_path
-        within '.page-header' do
-            find('a:nth-child(2)').click
-        end
-        expect(current_path).to eq admin_products_stock_index_path
-        within 'tbody' do
-            first('tr').find('td:last-child').first(:link).click
-        end
-        expect(current_path).to eq admin_products_stock_path(sku)
-        within 'h2' do
-            expect(page).to have_content "#{sku.full_sku} stock history"
-        end
-        within '#breadcrumbs li.current' do
-            expect(page).to have_content sku.full_sku
-        end
-        within 'thead tr th:first-child' do
-            expect(page).to have_content 'Date'
-        end
-        within 'tbody tr:first-child td:first-child' do
-            expect(page).to have_content sku.stock_adjustments.first.created_at.strftime('%d/%m/%Y at %I:%M%p')
-        end
-        within 'tbody tr:first-child td:last-child' do
-            expect(page).to have_content sku.stock
         end
     end
 
