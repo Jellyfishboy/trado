@@ -42,22 +42,6 @@ describe Sku do
             expect(sku).to have(1).error_on(:sku)
             expect(sku.errors.messages[:sku]).to eq ["stock warning level value must be below your stock count."]
         end
-
-        it "should create a new stock adjustment record" do
-            expect{
-                create_sku
-            }.to change(StockAdjustment, :count).by(1)
-        end
-
-        it "should set the stock adjustment record as 'Initial stock'" do
-            create_sku
-            expect(create_sku.stock_adjustments.first.description).to eq 'Initial stock'
-        end
-
-        it "should set the stock adjustment record adjustment as the SKU's stock" do
-            create_sku
-            expect(create_sku.stock_adjustments.first.adjustment).to eq 55
-        end
     end
 
     describe "Listing all SKUs" do

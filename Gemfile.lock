@@ -293,6 +293,9 @@ GEM
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
+    fuubar (2.0.0)
+      rspec (~> 3.0)
+      ruby-progressbar (~> 1.4)
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -480,6 +483,10 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     retriable (1.4.1)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.4.1)
@@ -499,6 +506,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    ruby-progressbar (1.7.5)
     ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
     sass (3.2.19)
@@ -608,6 +616,7 @@ DEPENDENCIES
   fast_blank
   fog
   friendly_id
+  fuubar
   gon
   google-api-client
   haml
@@ -646,4 +655,4 @@ DEPENDENCIES
   whenever (>= 0.8.4)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

@@ -37,6 +37,7 @@ feature 'Product management' do
         visit admin_products_path
         expect{
             find('.page-header a:first-child').click
+            sleep 1
         }.to change(Product, :count).by(1)
         product = Product.where.not(id: product_1.id).first
         expect(current_path).to eq edit_admin_product_path(product)
@@ -144,6 +145,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(not_single_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -198,6 +200,7 @@ feature 'Product management' do
         visit admin_products_path
         expect{
             find('.page-header a:first-child').click
+            sleep 1
         }.to change(Product, :count).by(1)
         product = Product.first
         expect(current_path).to eq edit_admin_product_path(product)
@@ -259,6 +262,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(product_skus)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -291,6 +295,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(product_skus)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -369,6 +374,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(product_skus)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -392,6 +398,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -472,6 +479,7 @@ feature 'Product management' do
 
         visit admin_products_path
         find('.table-actions').first(:link).click
+        sleep 1
         expect(current_path).to eq edit_admin_product_path(multi_attachment_product)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'

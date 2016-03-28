@@ -29,6 +29,7 @@ group :test do
   gem 'shoulda-matchers', '2.8.0'
   gem 'faker'
   gem 'email_spec'
+  gem 'fuubar'
 end
 
 group :development, :test do

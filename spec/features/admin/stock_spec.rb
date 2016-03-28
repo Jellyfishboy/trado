@@ -35,6 +35,7 @@ feature 'Stock management' do
         within '.page-header' do
             find('a:nth-child(2)').click
         end
+        sleep 1
         expect(current_path).to eq admin_products_stock_index_path
         within 'tbody' do
             first('tr').find('td:last-child a:first-child').trigger('click')
