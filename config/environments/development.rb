@@ -20,7 +20,7 @@ Trado::Application.configure do
   config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews"
 
   # Set default URL
-  config.action_mailer.default_url_options = { :host => Rails.application.secrets.mailer_host }
+  config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
@@ -44,12 +44,12 @@ Trado::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_controller.asset_host = Rails.application.secrets.mailer_host
-  config.action_mailer.asset_host = Rails.application.secrets.mailer_host
+  config.action_controller.asset_host = Rails.application.secrets.global_host
+  config.action_mailer.asset_host = Rails.application.secrets.global_host
 
   # PayPal settings
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.mailer_host
+    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.global_host
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
       login: Rails.application.secrets.paypal_login,

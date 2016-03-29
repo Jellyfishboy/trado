@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    before_action :authenticate_user!, :set_tracking_code
+    before_action :authenticate_user!, :set_tracking_code, :set_tax_rate
     helper_method :current_cart
     helper_method :theme_presenter
 
@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
     def set_tracking_code
         gon.trackingCode = Store.settings.ga_code
+    end
+
+    def set_tax_rate
+        gon.taxRate = Store.settings.tax_rate
     end
 
   	def current_cart

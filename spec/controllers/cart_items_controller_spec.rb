@@ -5,7 +5,7 @@ describe CartItemsController do
     store_setting
 
     describe 'POST #create' do
-        let!(:sku) { create(:sku_after_stock_adjustment) }
+        let!(:sku) { create(:sku) }
         let!(:cart) { create(:cart) }
         before(:each) do
             session[:payment_type] = 'express-checkout'
@@ -49,7 +49,7 @@ describe CartItemsController do
         end
 
         context "if the cart item quantity is less than the SKU stock count" do
-            let!(:sku) { create(:sku_after_stock_adjustment, stock: 15) }
+            let!(:sku) { create(:sku, stock: 15) }
 
             it "should render the update partial" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 3, sku_id: sku.id)
@@ -58,7 +58,7 @@ describe CartItemsController do
         end
 
         context "if the cart item quantity is more than the SKU stock count" do
-            let!(:sku) { create(:sku_after_stock_adjustment, stock: 15) }
+            let!(:sku) { create(:sku, stock: 15) }
 
             it "should render the cart items validate failed partial" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
@@ -145,7 +145,7 @@ describe CartItemsController do
         end
 
         context "if the cart item quantity is less than the SKU stock count" do
-            let!(:sku) { create(:sku_after_stock_adjustment, stock: 15) }
+            let!(:sku) { create(:sku, stock: 15) }
             let!(:cart_item) { create(:cart_item, sku_id: sku.id, quantity: 14, cart: cart) }
 
             it "should render the update partial" do
@@ -155,7 +155,7 @@ describe CartItemsController do
         end
 
         context "if the cart item quantity is more than the SKU stock count" do
-            let!(:sku) { create(:sku_after_stock_adjustment, stock: 15) }
+            let!(:sku) { create(:sku, stock: 15) }
             let!(:cart_item) { create(:cart_item, sku_id: sku.id, quantity: 14, cart: cart) }
 
             it "should render the cart items validate failed partial" do

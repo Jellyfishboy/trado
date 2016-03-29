@@ -276,9 +276,11 @@ trado.admin =
                 url = $this.attr('action');
                 method = $this.attr('data-method'),
                 message = method === 'POST' ? 'created' : 'edited';
-                formData = new FormData();
+                formData = new FormData(),
+                serializedData = trado.misc.getUrlVars($(this).serialize());
 
             formData.append('attachment[file]', $('#attachment_file')[0].files[0])
+            formData.append('attachment[default_record', serializedData['attachment[default_record]'])
 
             $.ajax(
             {
@@ -291,21 +293,7 @@ trado.admin =
                 success: function (data)
                 {
                     $('#attachment-form').modal('hide');
-                    if (data.last_record)
-                    {
-                        $('#attachments').html(data.image);
-                    }
-                    else
-                    {
-                        if (method === 'POST')
-                        {
-                            $('#attachments').append(data.image);
-                        }
-                        else
-                        {
-                            $('#attachment-' + data.attachment_id).html(data.image);
-                        }
-                    }
+                    $('#attachments').html(data.images);
                     soca.animation.alert(
                         '#attachments', 
                         'success', 

@@ -49,6 +49,7 @@ feature 'Delivery service management' do
 
         visit admin_delivery_services_path
         find('.page-header a:first-child').click
+        sleep 1
         expect(current_path).to eq new_admin_delivery_service_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'
@@ -85,6 +86,7 @@ feature 'Delivery service management' do
         within 'thead.main-table + tbody' do
             first('tr').find('td:last-child a:nth-child(2)').click
         end
+        sleep 1
         expect(current_path).to eq edit_admin_delivery_service_path(delivery_service_with_countries)
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'Edit'
@@ -110,6 +112,7 @@ feature 'Delivery service management' do
 
         visit admin_delivery_services_path
         find('.page-header a:first-child').click
+        sleep 1
         expect(current_path).to eq new_admin_delivery_service_path
         within '#breadcrumbs li.current' do
             expect(page).to have_content 'New'

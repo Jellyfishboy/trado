@@ -77,8 +77,8 @@ describe Admin::SkusController do
 
     describe 'PATCH #update' do
         let!(:product) { create(:product, active: true) }
-        let!(:sku) { create(:skip_after_stock_adjustment_sku, code: 'sku123', active: true, product_id: product.id) }
-        let(:new_sku) { attributes_for(:skip_after_stock_adjustment_sku, active: true, product_id: product.id) }
+        let!(:sku) { create(:sku, code: 'sku123', active: true, product_id: product.id) }
+        let(:new_sku) { attributes_for(:sku, active: true, product_id: product.id) }
         let(:order) { create(:order) }
         before(:each) do
             create(:sku_variant, sku_id: sku.id)

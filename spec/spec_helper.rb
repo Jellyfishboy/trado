@@ -75,4 +75,5 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+  config.fuubar_progress_bar_options = { :format => ' Trado tests processing... <%B> %p%% %a' }
 end

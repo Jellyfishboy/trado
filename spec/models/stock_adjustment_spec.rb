@@ -2,18 +2,15 @@ require 'rails_helper'
 
 describe StockAdjustment do
 
-    # ActiveRecord relations
-    it { expect(subject).to belong_to(:sku) }
+    # # ActiveRecord relations
+    # it { expect(subject).to belong_to(:sku) }
 
-    # Validation
-    it { expect(subject).to validate_presence_of(:description) }
-    it { expect(subject).to validate_presence_of(:adjustment) }
+    # # Validation
+    # it { expect(subject).to validate_presence_of(:description) }
+    # it { expect(subject).to validate_presence_of(:adjustment) }
 
     describe "Validating the stock value before an adjustment value is applied" do
         let!(:sku) { create(:sku, stock: 10) }
-        before(:each) do
-            create(:stock_adjustment, stock_total: 10, sku_id: sku.id)
-        end
 
         it "should call stock_adjustment_adjustment method before a save" do
             StockAdjustment._save_callbacks.select { |cb| cb.kind.eql?(:before) }.map(&:raw_filter).include?(:stock_adjustment).should == true
@@ -39,30 +36,6 @@ describe StockAdjustment do
         end
     end
 
-    describe "Determining if this is the first stock adjustment record for a SKU" do
-
-        context "if the SKU has prior stock adjustment records" do
-            let!(:sku) { create(:sku, active: true) }
-            let(:stock_adjustment) { build(:stock_adjustment, sku_id: sku.id) }
-            before(:each) do
-                create(:stock_adjustment, stock_total: 10, sku_id: sku.id)
-            end
-
-            it "should return true" do
-                expect(stock_adjustment.not_initial_stock_adjustment?).to eq true
-            end
-        end
-
-        context "if the SKU has no prior stock adjustment records" do
-            let!(:sku) { create(:skip_after_stock_adjustment_sku, active: true) }
-            let(:stock_adjustment) { build(:stock_adjustment, sku_id: sku.id) }
-
-            it "should return false" do
-                expect(stock_adjustment.not_initial_stock_adjustment?).to eq false
-            end
-        end
-    end
-
     describe "Validating the adjustment value is greater than or less than zero" do
 
         context "if the adjustment value is zero" do
@@ -74,7 +47,7 @@ describe StockAdjustment do
         end
 
         context "if the adjustment value is a above zero" do
-            let(:sku) { create(:skip_after_stock_adjustment_sku, active: true)}
+            let(:sku) { create(:sku, active: true)}
             let(:stock_adjustment) { create(:stock_adjustment, adjustment: 3, sku_id: sku.id) }
 
             it "should set the correct adjustment value" do
