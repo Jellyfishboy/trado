@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     def retry
       set_order
       @error_code = @order.transactions.last.error_code
-      @order.update_column(:cart_id, current_cart.id) unless Payatron4000.fatal_error_code?(@error_code)
+      @order.update_column(:cart_id, current_cart.id) unless Payatron4000::Paypal.fatal_error_code?(@error_code)
       redirect_to mycart_carts_url
     end
 

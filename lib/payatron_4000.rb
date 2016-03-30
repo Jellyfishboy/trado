@@ -44,19 +44,5 @@ module Payatron4000
                 product.increment!(:order_count)
             end
         end
-
-        # A list of fatal error codes for an order
-        # If the passed in error code parameter is included in the fatal codes array, return true
-        #
-        # @param error_code [Integer] payment error code
-        # @return [Boolean]
-        def fatal_error_code? error_code
-            @fatal_codes =
-            [
-                10412, # PayPal: Payment has already been made for this InvoiceID.
-                10415 # PayPal: A successful transaction has already been completed for this token.
-            ]
-            return @fatal_codes.include?(error_code) ? true : false
-        end
     end  
 end
