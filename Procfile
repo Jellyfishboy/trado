@@ -1,1 +1,2 @@
-web: bundle exec rails s -p 9000
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+worker: bundle exec sidekiq -e production
