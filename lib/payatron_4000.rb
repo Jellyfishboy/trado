@@ -1,5 +1,3 @@
-require 'payatron_4000/paypal'
-
 module Payatron4000
 
     class << self

@@ -69,8 +69,6 @@ class Order < ActiveRecord::Base
 
   scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
-  scope :paypal,                                                        -> { completed_collection.where(transactions: { payment_type: 'express-checkout' }) }
-
   accepts_nested_attributes_for :delivery_address
   accepts_nested_attributes_for :billing_address
 
@@ -116,13 +114,6 @@ class Order < ActiveRecord::Base
   # @return [String]
   def payment_type
     transactions.order(created_at: :desc).first.payment_type
-  end
-
-  # Returns true if order payment type is paypal
-  #
-  # @return [Boolean]
-  def paypal?
-    payment_type == 'paypal' ? true : false
   end
 
   # Returns true if the order is completed, marked as dispatched, consignment is not nil and has changed
