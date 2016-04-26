@@ -16,7 +16,6 @@ class OrderMailer < ActionMailer::Base
     end
 
     # Deliver an email to the customer when a payment is currently pending for an order
-    # This applys to the Paypal checkout process only
     #
     # @param order [Object]
     def pending order
@@ -31,8 +30,7 @@ class OrderMailer < ActionMailer::Base
         end
     end
 
-    # Deliver an email to the customer if the 
-    # This applys to the Paypal checkout process only
+    # Deliver an email to the customer if the order fails
     #
     # @param order [Object]
     def failed order

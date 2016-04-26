@@ -49,7 +49,7 @@ Trado::Application.configure do
 
   # PayPal settings
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.global_host
+    config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
       login: Rails.application.secrets.paypal_login,

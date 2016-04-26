@@ -30,6 +30,8 @@
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
+  has_order_paypal
+  
   attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
   :net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, 
@@ -133,7 +135,7 @@ class Order < ActiveRecord::Base
       :tax_total => tax_total,
       :completed_per_month => Reportatron4000.parse_count_per_month(Order.completed_collection.count_per_month),
       :failed_per_month => Reportatron4000.parse_count_per_month(Order.failed_collection.count_per_month),
-      :paypal_fee_total => completed_collection.sum('transactions.fee')
+      :provider_fee_total => completed_collection.sum('transactions.fee')
     }
   end
 end

@@ -2,13 +2,6 @@
   <%= order.id %>
 </td>
 <td>
-  <% if order.transactions.last.paypal_id.nil? %>
-    -
-  <% else %>
-    <%= link_to(order.transactions.last.paypal_id, "#{Rails.application.secrets.transaction_link}#{order.transactions.last.paypal_id}", target: '_blank') %>
-  <% end %>
-</td>
-<td>
   <%= status_label order, order.shipping_status %>
 </td>
 <td>

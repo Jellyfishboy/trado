@@ -99,8 +99,8 @@ describe CartsController do
         end
 
         it "should assign the payment_type parameter to the session store" do
-            post :confirm, order: attributes_for(:order), payment_type: 'express-checkout'
-            expect(session[:payment_type]).to eq 'express-checkout'
+            post :confirm, order: attributes_for(:order), payment_type: 'paypal'
+            expect(session[:payment_type]).to eq 'paypal'
         end
 
         context "with valid attributes" do
@@ -110,20 +110,20 @@ describe CartsController do
             end
 
             it "should not have a nil value for net_amount, tax_amount and gross_amount attributes for the new order" do
-                post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'express-checkout'
+                post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'paypal'
                 expect(assigns(:order).net_amount).to_not be_nil
                 expect(assigns(:order).tax_amount).to_not be_nil
                 expect(assigns(:order).gross_amount).to_not be_nil
             end
 
             it "should set the cart_id attribute for the new order" do
-                post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'express-checkout'
+                post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'paypal'
                 expect(assigns(:order).cart_id).to eq cart.id
             end
 
             it "should save a new order to the database" do
                 expect{
-                    post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'express-checkout'
+                    post :confirm, order: attributes_for(:order, delivery_id: delivery_service_price.id), payment_type: 'paypal'
                 }.to change(Order, :count).by(1)
             end
         end
@@ -131,7 +131,7 @@ describe CartsController do
         context "with invalid attributes" do
 
             it "should render the checkout template" do
-                post :confirm, order: attributes_for(:order, email: nil), payment_type: 'express-checkout'
+                post :confirm, order: attributes_for(:order, email: nil), payment_type: 'paypal'
                 expect(response).to render_template :checkout
             end
         end

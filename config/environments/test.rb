@@ -36,7 +36,6 @@ Trado::Application.configure do
 
   # PayPal settings
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = Rails.application.secrets.global_host
     ActiveMerchant::Billing::Base.mode = :test
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
   end

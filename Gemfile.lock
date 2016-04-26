@@ -15,6 +15,14 @@ GIT
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
 
+PATH
+  remote: /Users/tomdallimore/Projects/Modules/trado-paypal-module
+  specs:
+    trado_paypal_module (0.1)
+      activemerchant (= 1.43.3)
+      offsite_payments
+      rails (~> 4.2.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -145,10 +153,10 @@ GEM
     coolline (0.5.0)
       unicode_utils (~> 1.4)
     daemons (1.2.3)
-    database_cleaner (1.5.2)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
-    devise (4.0.0)
+    devise (4.0.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -250,8 +258,8 @@ GEM
       multi_json (~> 1.10)
     fog-local (0.3.0)
       fog-core (~> 1.27)
-    fog-openstack (0.1.3)
-      fog-core (>= 1.37)
+    fog-openstack (0.1.4)
+      fog-core (>= 1.38)
       fog-json (>= 1.0)
       fog-xml (>= 0.1)
       ipaddress (>= 0.8)
@@ -306,7 +314,7 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    foreman (0.78.0)
+    foreman (0.80.2)
       thor (~> 0.19.1)
     formatador (0.2.5)
     friendly_id (5.1.0)
@@ -364,7 +372,7 @@ GEM
     htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    httpclient (2.7.1)
+    httpclient (2.8.0)
     hurley (0.2)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -398,14 +406,13 @@ GEM
       railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (1.25.1)
-    mime-types-data (3.2016.0221)
     mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     money (6.7.0)
       i18n (>= 0.6.4, <= 0.7.0)
       sixarm_ruby_unaccent (>= 1.1.1, < 2)
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multipart-post (2.0.0)
     mysql2 (0.4.4)
     net-scp (1.2.1)
@@ -537,7 +544,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    ruby-progressbar (1.7.5)
+    ruby-progressbar (1.8.0)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     sass (3.2.19)
@@ -681,6 +688,7 @@ DEPENDENCIES
   spring
   sprockets (= 2.11.0)
   thin
+  trado_paypal_module!
   turbolinks
   tzinfo-data
   uglifier (>= 1.0.3)

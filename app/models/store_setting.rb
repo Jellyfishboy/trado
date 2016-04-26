@@ -21,7 +21,8 @@
 #  updated_at                       :datetime               not null
 #
 class StoreSetting < ActiveRecord::Base
-
+    has_store_setting_paypal
+    
     attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, 
     :ga_active, :ga_code, :theme_name, :attachment_attributes
 

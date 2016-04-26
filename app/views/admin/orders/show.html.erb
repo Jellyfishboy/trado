@@ -180,7 +180,6 @@
           <tr>
             <th>Transaction Type</th>
             <th>Payment type</th>
-            <th>PayPal ID</th>
             <th>Payment status</th>
             <th>Error code</th>
             <th>Fee</th>
@@ -197,13 +196,6 @@
               </td>
               <td>
                 <%= transaction.payment_type  %>
-              </td>
-              <td>
-                <% if transaction.paypal_id.nil? %>
-                  -
-                <% else %>
-                  <%= link_to transaction.paypal_id, "#{Rails.application.secrets.transaction_link}#{transaction.paypal_id}", :target => '_blank'  %>
-                <% end %>
               </td>
               <td>
                 <%= status_label transaction, transaction.payment_status %>

@@ -8,7 +8,7 @@ describe CartItemsController do
         let!(:sku) { create(:sku) }
         let!(:cart) { create(:cart) }
         before(:each) do
-            session[:payment_type] = 'express-checkout'
+            session[:payment_type] = 'paypal'
             session[:delivery_service_prices] = [1,2,5]
             stub_current_cart(cart)
         end

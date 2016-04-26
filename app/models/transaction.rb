@@ -22,12 +22,13 @@
 #  updated_at                   :datetime         not null
 #
 class Transaction < ActiveRecord::Base
+    has_transaction_paypal
 
-  attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 
-  :tax_amount, :transaction_type, :net_amount, :status_reason, :error_code
+    attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 
+    :tax_amount, :transaction_type, :net_amount, :status_reason, :error_code
   
-  belongs_to :order
+    belongs_to :order
 
-  enum payment_status: [:pending, :completed, :failed]
+    enum payment_status: [:pending, :completed, :failed]
   
 end

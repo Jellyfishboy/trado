@@ -144,7 +144,7 @@ describe Payatron4000::Paypal do
                                                                                                     'GrossAmount' => '67.23',
                                                                                                     'PaymentStatus' => 'Completed',
                                                                                                     'TaxAmount' => '15.66',
-                                                                                                    'TransactionType' => 'express-checkout',
+                                                                                                    'TransactionType' => 'paypal',
                                                                                                     'PendingReason' => nil 
                                                                                                 }
                                                                                 },
@@ -226,7 +226,7 @@ describe Payatron4000::Paypal do
                                                                         'GrossAmount' => '67.23',
                                                                         'PaymentStatus' => 'Completed',
                                                                         'TaxAmount' => '15.66',
-                                                                        'TransactionType' => 'express-checkout',
+                                                                        'TransactionType' => 'paypal',
                                                                         'PendingReason' => nil 
                                                                     },
                                                     }
@@ -284,8 +284,8 @@ describe Payatron4000::Paypal do
             expect(order.transactions.first.tax_amount).to eq BigDecimal.new("7.44")
         end
 
-        it "should set the payment type as 'express-checkout'" do
-            expect(order.transactions.first.payment_type).to eq 'express-checkout'
+        it "should set the payment type as 'paypal'" do
+            expect(order.transactions.first.payment_type).to eq 'paypal'
         end
 
         it "should set the transaction record payment status attribute as 'Failed'" do
