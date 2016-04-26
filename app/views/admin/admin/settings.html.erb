@@ -90,7 +90,7 @@
         <fieldset class="widget widget-content">
           <div class="form-group">
             <%= f.label 'Currency code' %>
-            <%= f.select :paypal_currency_code, options_for_select(Payatron4000::Paypal.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' } %>
+            <%= f.select :paypal_currency_code, options_for_select(TradoPaypalModule::Paypaler.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' } %>
           </div>
         </fieldset>
       </div>

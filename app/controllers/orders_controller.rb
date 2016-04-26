@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    include ModulesHelper
     skip_before_action :authenticate_user!
 
     def confirm

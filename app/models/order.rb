@@ -30,7 +30,6 @@
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
-  has_order_paypal
   
   attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
   :email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
