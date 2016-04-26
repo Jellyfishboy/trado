@@ -116,7 +116,7 @@
                   %h3 Payment details
                   %hr
                   .control-group
-                  = paypal_form_tag
+                  = paypal_form_tag if paypal_active?
                   %h3 Billing address
                   %hr
                   = f.fields_for :billing_address do |fff|

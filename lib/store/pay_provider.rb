@@ -34,6 +34,8 @@ module Store
         # @return [String] redirect url
         def build
             provider.build(cart, order, ip_address)
+        rescue
+            nil
         end
 
         # Triggers the complete method, under the respective payment provider class
