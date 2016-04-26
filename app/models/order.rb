@@ -17,8 +17,6 @@
 #  shipping_status                        :integer              default(0)   
 #  shipping_date                          :datetime 
 #  actual_shipping_cost                   :decimal              precision(8), scale(2) 
-#  express_token                          :string(255) 
-#  express_payer_id                       :string(255) 
 #  net_amount                             :decimal              precision(8), scale(2)
 #  tax_amount                             :decimal              precision(8), scale(2) 
 #  gross_amount                           :decimal              precision(8), scale(2) 
@@ -32,9 +30,8 @@ require 'reportatron_4000'
 class Order < ActiveRecord::Base
 
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
-	:email, :delivery_id, :ip_address, :user_id, :cart_id, :express_token, :express_payer_id,
-	:net_amount, :tax_amount, :gross_amount, :terms, :delivery_service_prices, 
-	:delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number
+	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number
 
 	has_many :order_items,                                                dependent: :delete_all
 	has_many :transactions,                                               dependent: :delete_all
