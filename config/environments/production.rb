@@ -90,16 +90,6 @@ Trado::Application.configure do
     :password             => Rails.application.secrets.mailer_password,
     :enable_starttls_auto => true
   }
-
-  # Paypal
-  config.after_initialize do
-    paypal_options = {
-      login: Rails.application.secrets.paypal_login,
-      password: Rails.application.secrets.paypal_password,
-      signature: Rails.application.secrets.paypal_signature
-    }
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  end
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true

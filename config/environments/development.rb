@@ -46,16 +46,4 @@ Trado::Application.configure do
 
   config.action_controller.asset_host = Rails.application.secrets.global_host
   config.action_mailer.asset_host = Rails.application.secrets.global_host
-
-  # PayPal settings
-  config.after_initialize do
-    config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
-    ActiveMerchant::Billing::Base.mode = :test
-    paypal_options = {
-      login: Rails.application.secrets.paypal_login,
-      password: Rails.application.secrets.paypal_password,
-      signature: Rails.application.secrets.paypal_signature
-    }
-    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-  end
 end
