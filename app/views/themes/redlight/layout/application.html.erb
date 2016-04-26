@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="stylesheets/font.css" media="screen">
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <%= include_gon(watch: true) %>
-        <script src="components/modernizr/modernizr.js"></script>
+        <%= javascript_include_tag "modernizr/modernizr", "data-turbolinks-track" => true %>
     </head> 
     <body>
         <div class="parent-container">
