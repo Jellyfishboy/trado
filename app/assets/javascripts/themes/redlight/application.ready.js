@@ -14,23 +14,19 @@ ready = function()
 
     // trado
     trado.tracking.init();
+
     trado.modal.loading('.paypal_checkout', '#paypalModal');
     trado.modal.loading('.confirm_order', '#confirmOrderModal');
     trado.modal.open('#estimate-delivery-service-price', '#estimateDeliveryModal');
+    trado.modal.resetEstimateDeliveryModel();
+
     trado.app.updatePrice('/product/skus/?sku_id=', '&accessory_id=', '#cart_item_sku_id', '#cart_item_cart_item_accessory_accessory_id');
     trado.app.updatePrice('/product/accessories/?accessory_id=', '&sku_id=', '#cart_item_cart_item_accessory_accessory_id', '#cart_item_sku_id');
     trado.app.selectDeliveryServicePrice();
     trado.app.updateDeliveryServicePrice();
     trado.app.duplicateAddress();
     trado.app.jsonErrors();
-
-    // Reset estimate shipping modal
-    $('#estimateDeliveryModal').on('hidden', function () 
-    {
-        $('.modal select').val("");
-        $('.delivery-service-prices .control-group .controls').html("<p class='delivery-service-price-notice'> elect a country to view the available delivery services.</p>");
-    });
-
+    
     // Initialise floating sidebar for checkout order summary
     $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(
     {
