@@ -115,3 +115,6 @@ gem 'codacy-coverage', :require => false
 
 # Colour console
 gem 'colorize'
+
+# server management
+gem 'foreman'

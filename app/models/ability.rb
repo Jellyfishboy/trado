@@ -33,5 +33,4 @@ class Ability
         user_permissions
         can :manage, :all
     end
-
 end

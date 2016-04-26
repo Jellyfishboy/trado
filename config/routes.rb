@@ -65,7 +65,7 @@ Trado::Application.routes.draw do
 
   namespace :admin do
       root to: "admin#dashboard"
-      authenticate :user do
+      authenticate :user, lambda { |u| u.role?(:admin) } do
         mount RedactorRails::Engine => '/redactor_rails'
         mount Sidekiq::Web => '/sidekiq'
       end
