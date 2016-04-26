@@ -118,7 +118,3 @@ gem 'colorize'
 
 # server management
 gem 'foreman'
-
-# Trado modules
-gem 'trado_paypal_module', path: '/Users/tomdallimore/Projects/Modules/trado-paypal-module'
-# gem 'trado_paypal_module', git: "git@github.com:Jellyfishboy/trado-paypal-module.git"

@@ -15,14 +15,6 @@ GIT
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
 
-PATH
-  remote: /Users/tomdallimore/Projects/Modules/trado-paypal-module
-  specs:
-    trado_paypal_module (0.1)
-      activemerchant (= 1.43.3)
-      offsite_payments
-      rails (~> 4.2.6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -688,7 +680,6 @@ DEPENDENCIES
   spring
   sprockets (= 2.11.0)
   thin
-  trado_paypal_module!
   turbolinks
   tzinfo-data
   uglifier (>= 1.0.3)
