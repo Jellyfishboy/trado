@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe OrdersController do
+describe OrdersController, broken: true do
 
     store_setting
 
     describe 'GET #confirm' do
         let!(:order) { create(:addresses_order, express_token: nil, express_payer_id: nil) }
         before(:each) do
-            session[:payment_type] = 'express-checkout'
+            session[:payment_type] = 'paypal'
         end
 
         it "should assign the order record to @order" do

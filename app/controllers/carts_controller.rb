@@ -23,7 +23,13 @@ class CartsController < ApplicationController
         session[:payment_type] = params[:payment_type]
         if @order.save
             @order.calculate(current_cart, Store.tax_rate)
-            redirect_to Store::PayProvider.new(cart: current_cart, order: @order, provider: session[:payment_type], ip_address: request.remote_ip).build
+            generate_payment_url
+            if @url.nil?
+                flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
+                redirect_to checkout_carts_url
+            else
+                redirect_to @url
+            end
         else
             render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end
@@ -59,5 +65,9 @@ class CartsController < ApplicationController
         @cart_total = current_cart.calculate(Store.tax_rate)
         @country = @order.delivery_address.nil? ? current_cart.estimate_country_name : @order.delivery_address.country
         @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
+    end
+
+    def generate_payment_url
+        @url = Store::PayProvider.new(cart: current_cart, order: @order, provider: session[:payment_type], ip_address: request.remote_ip).build
     end
 end

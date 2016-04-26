@@ -24,8 +24,8 @@ module Store
         #
         # @return [Object] correct pay provider object
         def provider
-            if @provider == 'express-checkout'
-                return Payatron4000::Paypal
+            if @provider == 'paypal'
+                return TradoPaypalModule::Paypaler
             end
         end
 
@@ -34,6 +34,8 @@ module Store
         # @return [String] redirect url
         def build
             provider.build(cart, order, ip_address)
+        rescue
+            nil
         end
 
         # Triggers the complete method, under the respective payment provider class

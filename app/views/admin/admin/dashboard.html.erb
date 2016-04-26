@@ -78,8 +78,8 @@
                 <div class="row">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
-                            <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:paypal_fee_total]).single %></div>
-                            <div>PayPal Fees</div>
+                            <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:provider_fee_total]).single %></div>
+                            <div>Provider Fees</div>
                         </div>
                     </div>
                 </div>

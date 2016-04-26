@@ -61,7 +61,7 @@ feature 'Order management' do
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content pending.transactions.last.transaction_type
-            expect(find('tr td:nth-child(4) span')).to have_content 'Pending'
+            expect(find('tr td:nth-child(3) span')).to have_content 'Pending'
         end
     end
 
@@ -92,7 +92,7 @@ feature 'Order management' do
         end
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content complete.transactions.last.transaction_type
-            expect(find('tr td:nth-child(4) span')).to have_content 'Completed'
+            expect(find('tr td:nth-child(3) span')).to have_content 'Completed'
             expect(find('tr td:last-child')).to have_selector('a', count: 0)
         end
     end

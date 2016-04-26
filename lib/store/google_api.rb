@@ -1,4 +1,4 @@
-require 'google/api_client'
+# require 'google/api_client'
 module Store
 
     class GoogleApi

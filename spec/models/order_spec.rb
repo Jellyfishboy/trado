@@ -99,24 +99,24 @@ describe Order do
         end
     end
 
-    describe "When calculating if an order used paypal as the payment type" do
+    # describe "When calculating if an order used paypal as the payment type" do
 
-        context "if the payment type is paypal" do
-            let(:paypal_order) { create(:paypal_order) }
+    #     context "if the payment type is paypal" do
+    #         let(:paypal_order) { create(:paypal_order) }
 
-            it "should return true" do
-                expect(paypal_order.paypal?).to eq true
-            end
-        end
+    #         it "should return true" do
+    #             expect(paypal_order.paypal?).to eq true
+    #         end
+    #     end
 
-        context "if the payment type is not paypal" do
-            let(:complete) { create(:complete_order) }
+    #     context "if the payment type is not paypal" do
+    #         let(:complete) { create(:complete_order) }
 
-            it "should return false" do
-                expect(complete.paypal?).to eq false
-            end
-        end
-    end
+    #         it "should return false" do
+    #             expect(complete.paypal?).to eq false
+    #         end
+    #     end
+    # end
 
     describe "When calculating whether an order is completed" do
         let(:complete) { create(:complete_order) }

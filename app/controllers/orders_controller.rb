@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    include ModulesHelper
     skip_before_action :authenticate_user!
 
     def confirm
@@ -34,7 +35,9 @@ class OrdersController < ApplicationController
     def retry
       set_order
       @error_code = @order.transactions.last.error_code
-      @order.update_column(:cart_id, current_cart.id) unless Payatron4000.fatal_error_code?(@error_code)
+      if paypal_active? && !TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
+        @order.update_column(:cart_id, current_cart.id)
+      end
       redirect_to mycart_carts_url
     end
 
@@ -63,9 +66,9 @@ class OrdersController < ApplicationController
     def validate_confirm_render
       if session[:payment_type].nil?
         redirect_to checkout_carts_url
-      elsif session[:payment_type] == 'express-checkout'
-        if params[:token] && params[:PayerID]
-          Payatron4000::Paypal.assign_paypal_token(params[:token], params[:PayerID], @order) 
+      elsif session[:payment_type] == 'paypal'
+        if paypal_active? && params[:token].present? && params[:PayerID].present?
+          TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order)
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
         else
           flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'

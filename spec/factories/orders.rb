@@ -5,8 +5,8 @@ FactoryGirl.define do
         shipping_status { 'pending' }
         shipping_date { "31/12/2014" }
         sequence(:actual_shipping_cost) { |n| n }
-        express_token { Faker::Lorem.characters(8) }
-        express_payer_id { Faker::Lorem.characters(6) }
+        # express_token { Faker::Lorem.characters(8) }
+        # express_payer_id { Faker::Lorem.characters(6) }
         sequence(:net_amount) { |n| n }
         sequence(:tax_amount) { |n| n }
         sequence(:gross_amount) { |n| n }
