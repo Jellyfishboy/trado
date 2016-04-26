@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OrdersController do
+describe OrdersController, broken: true do
 
     store_setting
 
