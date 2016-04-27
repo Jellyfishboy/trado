@@ -7,7 +7,7 @@
         <meta name="description" content="<%= yield :meta_description %>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <%= stylesheet_link_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true %>
-        <link rel="stylesheet" href="stylesheets/font.css" media="screen">
+        <link rel="stylesheet" href="/stylesheets/font.css" media="screen">
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <%= include_gon(watch: true) %>
         <%= javascript_include_tag "modernizr/modernizr", "data-turbolinks-track" => true %>
@@ -36,14 +36,6 @@
                 ga('send', 'pageview');
             </script>
         <% end %>
-        <div id="search-overlay">
-            <form action="search.html">
-                <div id="search-input">
-                    <input type="text"/>
-                    <i class="icon-search"></i>
-                </div>
-            </form>
-            <i class="icon-close"></i>
-        </div>
+        <%= render partial: theme_presenter.page_template_path('shared/search'), format: [:html] %>
     </body>
 </html>
