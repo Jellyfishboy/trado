@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-lg-12 col-sm-12" id="breadcrumbs">
         <p>
-            Home / Computing / <a href="#">MacBook Pro</a>
+            <% breadcrumbs.each do |n| %>
+                <%= link_to n[:title], n[:url] %>
+                /
+            <% end %>
+            <%= yield :breadcrumb %>
         </p>
     </div>
 </div>

@@ -1,12 +1,15 @@
+<% content_for :title, '500 Error' %>
+<% content_for :breadcrumb, '500' %>
+
 <div class="container">
     <div id="fourzerofour">
         <h1>500</h1>
         <h2>Oops, looks like  something went wrong. <br>We track these errors automatically, but if the problem persists feel free to contact us.</h2>
-        <form accept-charset="UTF-8" action="#" class="new_search" id="new_search" method="post">
+        <%= form_tag search_path, method: :get, class: 'new_search', id: 'new_search' do %>
             <div class='form-check-group'>
-                <input id="search" name="search" type="search" value="" placeholder="Search Redlight" />
+                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", id: 'search', placeholder: "Search #{Store.settings.name}", name: 'search' ) %>
             </div>
-            <input class="btn green checkout-button" type="submit" value="SEARCH">
-        </form>
+            <%= submit_tag 'SEARCH', class: 'btn green checkout-button' %>
+        <% end %>
     </div>
 </div>
