@@ -1,43 +1,40 @@
+<% content_for :title, @product.page_title %>
+<% content_for :breadcrumb, @product.name %>
+<% content_for :meta_description, @product.meta_description %>
+
 <div class="container">
   <div class="row product">
     <div class="col-lg-6 col-sm-6">
       <div class="row">
         <div class="col-lg-3 col-sm-3 hidden-sm product-thumb">
-          <img src="http://placehold.it/105x105" data-src="http://placehold.it/440x475"/>
-          <img src="http://placehold.it/105x105" data-src="http://placehold.it/440x475" class="selected"/>
-          <img src="http://placehold.it/105x105" data-src="http://placehold.it/440x475"/>
-          <img src="http://placehold.it/105x105" data-src="http://placehold.it/440x475"/>
+          <% @product.attachments.each_with_index do |attachment, index| %>
+            <%= image_tag attachment.file.large, 'data-src' => attachment.file.large.url, class: "selected" if index == 0 %>
+          <% end %>
         </div>
         <div class="col-lg-9 col-sm-12 col-md-9 product-main">
-          <img src="http://placehold.it/440x475"/>
+          <%= image_tag @product.attachments.first.file.large, alt: @product.name %>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12 visible-sm hidden-xs hidden-lg hidden-md product-thumb">
-          <img src="http://placehold.it/75x75"/>
-          <img src="http://placehold.it/75x75" class="selected"/>
-          <img src="http://placehold.it/75x75"/>
-          <img src="http://placehold.it/75x75"/>
+          <% @product.attachments.each_with_index do |attachment, index| %>
+            <%= image_tag attachment.file.large, 'data-src' => attachment.file.large.url, class: "selected" if index == 0 %>
+          <% end %>
         </div>
       </div>
     </div>
 
     <div class="col-lg-6 col-sm-6 content">
-      <h1>Heartside out Tee</h1>
+      <h1><%= @product.name %></h1>
       <p class="details">
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-        Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-        Hampden-Sydney.
+        <%= @product.short_description %>
       </p>
 
-      <h2>£39.00</h2>
+      <h2><%= Store::Price.new(price: @skus.first.price).markup %></h2>
 
       <div class="row hidden-xs">
         <div class="col-lg-4 col-sm-4 property">
-          <h3>Color</h3>
-        </div>
-        <div class="col-lg-4 col-sm-4 property">
-          <h3>Size (size chart)</h3>
+          <h3><%= @variant_types.map(&:name).join(' / ') %></h3>
         </div>
         <div class="col-lg-4 col-sm-4 property">
           <h3>Quantity</h3>
@@ -47,7 +44,7 @@
       <div class="row options">
         <div class="col-lg-4 col-sm-4">
           <p class="visible-xs">
-            Color
+            <%= @variant_types.map(&:name).join(' / ') %>
           </p>
           <select class="form-control">
             <option>White</option>
@@ -55,19 +52,6 @@
             <option>Blue</option>
             <option>Green</option>
             <option>Yellow</option>
-          </select>
-        </div>
-
-        <div class="col-lg-4 col-sm-4">
-          <p class="visible-xs">
-            Size
-          </p>
-          <select class="form-control">
-            <option>Choose a Size</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
           </select>
         </div>
 
@@ -120,17 +104,11 @@
             <li class="active">
               <a data-toggle="tab" href="#product-description">Description</a>
             </li>
-            <li class="">
-              <a data-toggle="tab" href="#product-delivery">Shipping</a>
-            </li>
           </ul>
 
           <ul class="nav nav-tabs hidden-xs" id="myTab">
             <li class="active">
               <a data-toggle="tab" href="#product-description">Description</a>
-            </li>
-            <li class="">
-              <a data-toggle="tab" href="#product-delivery">Shipping / Return Policy</a>
             </li>
           </ul>
         </div>
@@ -149,48 +127,8 @@
             <h4>description</h4>
 
             <p>
-              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-              classical Latin
-              literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney
-              College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and
-              going through the cites of the word in classical literature.
+              <%= @product.description %>
             </p>
-
-            <h4>instructions</h4>
-
-            <p>
-              - 30 Degrees Normal progress
-              <br>
-              - Do not bleech
-              <br>
-              - Medium Temperature Iron
-              <br>
-              - Do not tumble dry
-              <br>
-            </p>
-          </div>
-          <div id="product-delivery" class="tab-pane fade">
-            <div class="row">
-              <div class="col-lg-12 col-sm-12 box">
-                <h4>Shipping</h4>
-
-                <p>
-                  <span class="lb">Shipping in:</span><strong>2 Days</strong>
-                </p>
-
-                <p>
-                  <span class="lb">Methods</span><strong>USPS, UPS</strong>
-                </p>
-                <h4>Return policy</h4>
-                <p>
-                  To qualify for a hassle-free return, you must pay with PayPal and have the item shipped to a US
-                  address. The
-                  item must be returned in the same condition it was received. <a href="#">See terms and conditions</a>.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -1,30 +1,30 @@
 <header>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-2 col-xs-4" id="main-menu">
-        <%= link_to Store.settings.name, root_path, class: 'hidden-sm hidden-xs', id: 'brand' %>
-        <i class="icon-menu-2 visible-sm visible-xs" id="trigger"></i>
-      </div>
-      <div class="col-lg-8 col-xs-4" id="nav-menu">
-        <%= link_to Store.settings.name, root_path, class: 'visible-sm visible-xs', id: 'brand' %>
-        <ul id="nav" class="hidden-sm hidden-xs">
-          <% category_list.each do |category| %>
-            <li class="<%= active_category?(category.slug) %>">
-              <%= link_to category.name, category %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-xs-4" id="basket-menu">
-        <div id="basket-icon" class="active-basket">
-          <span>12</span>
-          <div></div>
-        </div>
-        <div id="search-icon">
-          <i class="icon-search"></i>
-        </div>
-      </div>
-    </div>
-    <%= render partial: theme_presenter.page_template_path('carts/popup'), format: [:html] %>
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-xs-4" id="main-menu">
+				<%= link_to Store.settings.name, root_path, class: 'hidden-sm hidden-xs', id: 'brand' %>
+				<i class="icon-menu-2 visible-sm visible-xs" id="trigger"></i>
+			</div>
+			<div class="col-lg-8 col-xs-4" id="nav-menu">
+				<%= link_to Store.settings.name, root_path, class: 'visible-sm visible-xs', id: 'brand' %>
+				<ul id="nav" class="hidden-sm hidden-xs">
+					<% category_list.each do |category| %>
+					<li class="<%= active_category?(category.slug) %>">
+						<%= link_to category.name, category %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+			<div class="col-lg-2 col-xs-4" id="basket-menu">
+				<div id="basket-icon" class="active-basket">
+					<span>12</span>
+					<div></div>
+				</div>
+				<div id="search-icon">
+					<i class="icon-search"></i>
+				</div>
+			</div>
+		</div>
+		<%= render partial: theme_presenter.page_template_path('carts/popup'), format: [:html] %>
+	</div>
 </header>

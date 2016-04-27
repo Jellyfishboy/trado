@@ -25,6 +25,7 @@ class Category < ActiveRecord::Base
 
   has_many :products
   has_many :skus,                                        through: :products
+  has_many :attachments,                                 through: :products
 
   validates :name,:description, :sorting,
   :page_title, :meta_description,                        presence: true

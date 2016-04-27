@@ -1,98 +1,96 @@
 <footer>
   <div id="social">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4 col-lg-4 newsletter-form">
-          <h1>Subscribe to our Newsletter</h1>
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Your E-mail" /> 
-              <span class="input-group-btn">
-                <button class="btn btn-default go" type="button">OK</button>
-              </span>
-          </div>
-        </div>
-        <div class="col-lg-offset-4 col-sm-offset-3 col-lg-4 col-sm-5">
-          <a href="#" class="instagram">
-            <i class="icon-instagram"></i>
-          </a> 
-          <a href="#" class="facebook">
-            <i class="icon-facebook"></i>
-          </a> 
-          <a href="#" class="linkedin">
-            <i class="icon-linkedin"></i>
-          </a> 
-          <a href="#" class="twitter">
-            <i class="icon-twitter"></i>
-          </a> 
-          <a href="#" class="vimeo">
-            <i class="icon-vimeo"></i>
-          </a>
-        </div>
-      </div>
-    </div>
+	<div class="container">
+	  <div class="row">
+		<div class="col-sm-4 col-lg-4 newsletter-form">
+		  <h1>Subscribe to our Newsletter</h1>
+		  <div class="input-group">
+			<input type="text" class="form-control" placeholder="Your E-mail" /> 
+			  <span class="input-group-btn">
+				<button class="btn btn-default go" type="button">OK</button>
+			  </span>
+		  </div>
+		</div>
+		<div class="col-lg-offset-4 col-sm-offset-3 col-lg-4 col-sm-5">
+		  <a href="#" class="instagram">
+			<i class="icon-instagram"></i>
+		  </a> 
+		  <a href="#" class="facebook">
+			<i class="icon-facebook"></i>
+		  </a> 
+		  <a href="#" class="linkedin">
+			<i class="icon-linkedin"></i>
+		  </a> 
+		  <a href="#" class="twitter">
+			<i class="icon-twitter"></i>
+		  </a> 
+		  <a href="#" class="vimeo">
+			<i class="icon-vimeo"></i>
+		  </a>
+		</div>
+	  </div>
+	</div>
   </div>
 
   <!-- Menu -->
   <div id="footer-large">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-sm-3">
-          <h1>Redlight</h1>
-            <ul>
-              <li><a href="/webs/designer-landing">Get Designed</a>
-              <li><a href="/webs/manufacturer-index">Manufacture</a>
-              <li><a href="/webs/shop-index">Store</a>
-              <li><a href="/webs/contest-upload">Post Contest</a>
-                <li><a href="/webs/job-form">Post Manufacturing Job</a>
-              <li><a href="/webs/product-form">List Product</a>
-            </ul>
-        </div>
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-3 col-sm-3">
+		  <h1><%= Store.settings.name %></h1>
+			<ul>
+			  <% page_list.each do |page| %>
+				<li>
+				  <%= link_to page.render_menu_title, p_path(slug: page.slug), title: page.title %>
+				</li>
+			  <% end %>
+			</ul>
+		</div>
 
-        <div class="col-lg-3 col-sm-3">
-          <h1>Resources</h1>
-            <ul>
-              <li><a href="/webs/help-center">Help Center</a>
-                <li><a href="/webs/contact">Contact Us</a>
-                <li><a href="#">Live Help</a>
-                <li><a href="/webs/designer-profile-list">Designers</a>
-                <li><a href="/webs/manufacturer-profile-list">Manufacturers</a>
-                <li><a href="/webs/seller-shop-list">Sellers</a>
-            </ul>
-        </div>
+		<div class="col-lg-3 col-sm-3">
+		  <h1>Resources</h1>
+			<ul>
+			  <li><a href="/webs/help-center">Help Center</a>
+				<li><a href="/webs/contact">Contact Us</a>
+				<li><a href="#">Live Help</a>
+				<li><a href="/webs/designer-profile-list">Designers</a>
+				<li><a href="/webs/manufacturer-profile-list">Manufacturers</a>
+				<li><a href="/webs/seller-shop-list">Sellers</a>
+			</ul>
+		</div>
 
-        <div class="col-lg-3 col-sm-3">
-          <h1>Get to Know Us</h1>
-            <ul>
-              <li><a href="/webs/core-values">Our Core Values</a>
-                <li><a href="/webs/team">The Team</a>
-                <li><a href="/webs/press">Press</a>
-                <li><a href="/webs/careers">Careers</a>
-                <li><a href="/webs/article-list">Blog</a>
-                <li><a href="/webs/future-plans">Future Plans</a>
-            </ul>
-        </div>
+		<div class="col-lg-3 col-sm-3">
+		  <h1>Get to Know Us</h1>
+			<ul>
+			  <li><a href="/webs/core-values">Our Core Values</a>
+				<li><a href="/webs/team">The Team</a>
+				<li><a href="/webs/press">Press</a>
+				<li><a href="/webs/careers">Careers</a>
+				<li><a href="/webs/article-list">Blog</a>
+				<li><a href="/webs/future-plans">Future Plans</a>
+			</ul>
+		</div>
 
-        <div class="col-lg-3 col-sm-3">
-          <h1>Legal</h1>
-            <ul>
-              <li><a href="/webs/terms">Terms and Condition</a>
-                <li><a href="/webs/privacy">Privacy Policy</a>
-                <li><a href="/webs/copyright">Copyright Concern</a>
-                <li><a href="/webs/trademark">Trademark</a>
-                <li><a href="/webs/code-of-conduct">Code of Conduct</a>
-                <li><a href="/webs/trust">Trust Promise</a>
-            </ul>
-        </div>
-      </div>
-    </div>
+		<div class="col-lg-3 col-sm-3">
+		  <h1>Legal</h1>
+			<ul>
+			  <li><a href="/webs/terms">Terms and Condition</a>
+				<li><a href="/webs/privacy">Privacy Policy</a>
+				<li><a href="/webs/copyright">Copyright Concern</a>
+				<li><a href="/webs/trademark">Trademark</a>
+				<li><a href="/webs/code-of-conduct">Code of Conduct</a>
+				<li><a href="/webs/trust">Trust Promise</a>
+			</ul>
+		</div>
+	  </div>
+	</div>
   </div>
 
-  <!-- Copyright -->
   <div id="copyright">
-      <div class="container">
-        <div class="row centered">
-          &copy; <a href="http://www.tomdallimore.com">Tom Dallimore</a> | Redlight e-commerce theme | All rights reserved.
-            </div>
-        </div>
-    </div>
+	  <div class="container">
+		<div class="row centered">
+		  &copy; <a href="http://www.tomdallimore.com">Tom Dallimore</a> | Redlight e-commerce theme | All rights reserved.
+			</div>
+		</div>
+	</div>
 </footer>
