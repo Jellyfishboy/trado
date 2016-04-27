@@ -107,4 +107,11 @@ class Sku < ActiveRecord::Base
   def last_active_sku?
     product.skus.active.count == 1 ? true : false
   end
+
+  # Checks if the product has any stock
+  #
+  # @return [Boolean]
+  def in_stock?
+    stock == 0 ? false : true
+  end
 end

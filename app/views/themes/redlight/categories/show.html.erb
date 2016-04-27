@@ -1,92 +1,36 @@
+<% content_for :title, @category.page_title %>
+<% content_for :breadcrumb, @category.name %>
+<% content_for :meta_description, @category.meta_description %>
+
 <div class="listing-products">
     <div class="container">
         <div class="row list-header">
-            <div class="col-lg-10 col-sm-10">
+            <div class="col-lg-12 col-sm-12">
                 <h1>
-                    T-Shirt's
-                    <span>(54)</span>
+                    <%= @category.name %>
+                    <span>(<%= @category.products.count %>)</span>
                 </h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12 col-sm-12" id="list-wrapper">
-
-                <div class="col-lg-3 col-sm-3 list">
-                    <a href="product.html">
-                        <img src="img/pl-1.png" />
-                    </a>
-                    <h3>$79</h3>
-                    <h2>
-                        <a href="product.html">Ipsum Ante Ipsum Primis In</a>
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-5 col-sm-5">
-                            <p>IN STOCK</p>
+                <% @category.products.each do |product| %>
+                    <div class="col-lg-3 col-sm-3 list">
+                        <%= link_to [product.category, product] do %>
+                            <%= image_tag product.attachments.first.file.large, alt: product.name %>
+                        <% end %>
+                        <h3><%= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range %></h3>
+                        <h2>
+                            <%= link_to product.name, [product.category, product] %>
+                        </h2>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <p><%= check_stock(product) %></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-3 list">
-                    <a href="product.html">
-                        <img src="img/pl-1.png" />
-                    </a>
-                    <h3>$79</h3>
-                    <h2>
-                        <a href="product.html">Ipsum Ante Ipsum Primis In</a>
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-5 col-sm-5">
-                            <p>IN STOCK</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-3 list">
-                    <a href="product.html">
-                        <img src="img/pl-1.png" />
-                    </a>
-                    <h3>$79</h3>
-                    <h2>
-                        <a href="product.html">Ipsum Ante Ipsum Primis In</a>
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-6">
-                            <p>IN STOCK</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-3 list">
-                    <a href="product.html">
-                        <img src="img/pl-1.png" />
-                    </a>
-                    <h3>$79</h3>
-                    <h2>
-                        <a href="product.html">Ipsum Ante Ipsum Primis In</a>
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-6">
-                            <p>IN STOCK</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-3 list">
-                    <a href="product.html">
-                        <img src="img/pl-1.png" />
-                    </a>
-                    <h3>$79</h3>
-                    <h2>
-                        <a href="product.html">Ipsum Ante Ipsum Primis In</a>
-                    </h2>
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-6">
-                            <p>IN STOCK</p>
-                        </div>
-                    </div>
-                </div>
-
+                <% end %>
             </div>
         </div>
     </div>

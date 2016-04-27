@@ -4,10 +4,11 @@
             <li>
                 <%= link_to 'Home', root_path %>
             </li>
-            <li><a href="category.html">Mens</a></li>
-            <li><a href="category.html">Womens</a></li>
-            <li><a href="category.html">Jewelry</a></li>
-            <li><a href="category.html">Accessories</a></li>
+            <% category_list.each do |category| %>
+                <li>
+                    <%= link_to category.name, category %>
+                </li>
+            <% end %>
         </ul>
     </div>
 </nav>

@@ -7,7 +7,7 @@
         <h2>Oops, looks like  something went wrong. <br>We track these errors automatically, but if the problem persists feel free to contact us.</h2>
         <%= form_tag search_path, method: :get, class: 'new_search', id: 'new_search' do %>
             <div class='form-check-group'>
-                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", id: 'search', placeholder: "Search #{Store.settings.name}", name: 'search' ) %>
+                <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", id: 'search', placeholder: "Search #{Store.settings.name}" ) %>
             </div>
             <%= submit_tag 'SEARCH', class: 'btn green checkout-button' %>
         <% end %>

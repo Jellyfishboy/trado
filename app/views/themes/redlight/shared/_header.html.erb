@@ -8,18 +8,11 @@
       <div class="col-lg-8 col-xs-4" id="nav-menu">
         <%= link_to Store.settings.name, root_path, class: 'visible-sm visible-xs', id: 'brand' %>
         <ul id="nav" class="hidden-sm hidden-xs">
-          <li class="active">
-            <a href="category.html">Men</a>
-          </li>
-          <li>
-            <a href="category.html">Womens</a>
-          </li>
-          <li>
-            <a href="category.html">Jewelry</a>
-          </li>
-          <li>
-            <a href="category.html">Accessories</a>
-          </li>
+          <% category_list.each do |category| %>
+            <li class="<%= active_category?(category.slug) %>">
+              <%= link_to category.name, category %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="col-lg-2 col-xs-4" id="basket-menu">

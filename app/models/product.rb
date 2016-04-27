@@ -95,4 +95,11 @@ class Product < ActiveRecord::Base
   def should_generate_new_friendly_id?
     true
   end
+
+  # Checks if the product has any stock
+  #
+  # @return [Boolean]
+  def in_stock?
+    skus.map(&:in_stock?).include?(true) ? true : false
+  end
 end

@@ -13,4 +13,8 @@ module ProductHelper
     def render_variants sku
         sku.variants.map{|v| v.name.titleize}.join(' / ')
     end
+
+    def check_stock product
+        product.in_stock? ? "IN STOCK" : "OUT OF STOCK"
+    end
 end

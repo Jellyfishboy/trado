@@ -1,9 +1,9 @@
 <div id="search-overlay">
-    <form action="search.html">
+    <%= form_tag search_path, method: :get, class: 'new_search', id: 'new_search' do %>
         <div id="search-input">
-            <input type="text"/>
+            <%= text_field_tag(:query, params[:query], autocomplete: 'off', tabindex: "1", id: 'search', value: params[:query] ) %>
             <i class="icon-search"></i>
         </div>
-    </form>
+    <% end %>
     <i class="icon-close"></i>
 </div>
