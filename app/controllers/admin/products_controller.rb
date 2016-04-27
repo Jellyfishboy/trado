@@ -20,6 +20,7 @@ class Admin::ProductsController < ApplicationController
     set_product
     set_skus
     set_attachments
+    binding.pry
   end
 
   def update
@@ -44,6 +45,7 @@ class Admin::ProductsController < ApplicationController
       flash_message :success, @message
       redirect_to admin_products_url
     else
+      @product.update_column(:status, 0) if @product.published?
       render action: "edit"
     end
   end

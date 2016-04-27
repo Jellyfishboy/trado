@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-lg-3 col-sm-3 hidden-sm product-thumb">
           <% @product.attachments.each_with_index do |attachment, index| %>
-            <%= image_tag attachment.file.large, 'data-src' => attachment.file.large.url, class: "selected" if index == 0 %>
+            <%= image_tag attachment.file.square, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
           <% end %>
         </div>
         <div class="col-lg-9 col-sm-12 col-md-9 product-main">
@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-sm-12 visible-sm hidden-xs hidden-lg hidden-md product-thumb">
           <% @product.attachments.each_with_index do |attachment, index| %>
-            <%= image_tag attachment.file.large, 'data-src' => attachment.file.large.url, class: "selected" if index == 0 %>
+            <%= image_tag attachment.file.square, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
           <% end %>
         </div>
       </div>
@@ -37,35 +37,48 @@
           <h3><%= @variant_types.map(&:name).join(' / ') %></h3>
         </div>
         <div class="col-lg-4 col-sm-4 property">
+          <h3>Accessory</h3>
+        </div>
+        <div class="col-lg-4 col-sm-4 property">
           <h3>Quantity</h3>
         </div>
       </div>
 
-      <div class="row options">
-        <div class="col-lg-4 col-sm-4">
-          <p class="visible-xs">
-            <%= @variant_types.map(&:name).join(' / ') %>
-          </p>
-          <select class="form-control">
-            <option>White</option>
-            <option>Red</option>
-            <option>Blue</option>
-            <option>Green</option>
-            <option>Yellow</option>
-          </select>
-        </div>
+      <%= form_for [current_cart, @cart_item], html: { method: :post, remote: true } do |f| %>
+        <div class="row options">
+          <div class="col-lg-4 col-sm-4">
+            <p class="visible-xs">
+              <%= @variant_types.map(&:name).join(' / ') %>
+            </p>
+            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] } ) %>
+          </div>
 
-        <div class="col-lg-4 col-sm-4">
-          <p class="visible-xs">
-            Quantity
-          </p>
-          <strong class="decrease-quantity">-</strong>&nbsp;&nbsp;
-          <input type="text" class="form-control" id="item-quantity" value="1"/>
-          &nbsp;&nbsp;<strong class="increase-quantity">+</strong>
-        </div>
-      </div>
+          <% unless @product.accessories.active.empty? %>
+            <div class="col-lg-4 col-sm-4">
+              <p class="visible-xs">
+                Accessory
+              </p>
+              <%= f.fields_for @cart_item_accessory do |accessory| %>
+                <%= accessory.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), prompt: "No accessory (+£0.00)" %>
+              <% end %>
+            </div>
+          <% end %>
 
-      <a href="#" class="btn green">Add to cart</a>
+          <div class="col-lg-4 col-sm-4">
+            <p class="visible-xs">
+              Quantity
+            </p>
+            <strong class="decrease-quantity">-</strong>&nbsp;&nbsp;
+            <%= f.text_field :quantity, value: 1, class: 'form-control', id: 'item-quantity' %>
+            &nbsp;&nbsp;<strong class="increase-quantity">+</strong>
+          </div>
+        </div>
+        <% if @skus.first.stock > 0 %>
+          <%= f.submit 'Add To Cart', class: 'btn green add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}" %>
+        <% else %>
+          <%= link_to 'Notify Me', notify_category_product_sku_path(@product.category, @product, @skus.first), :class => 'btn notify-me', remote: true %>
+        <% end %>
+      <% end %>
       <ul id="social">
         <li>
           <a href="#">

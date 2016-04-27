@@ -13,11 +13,11 @@ class ProductsController < ApplicationController
     private
 
     def set_product
-        @product ||= Product.includes(:accessories, :skus, :category, :variant_types, :variants, :attachments).active.published.find(params[:id])
+        @product = Product.includes(:accessories, :skus, :category, :variant_types, :variants, :attachments).active.published.find(params[:id])
     end
 
     def set_skus
-        @skus ||= @product.skus.active
+        @skus = @product.skus.active
     end
 
     def set_variant_types

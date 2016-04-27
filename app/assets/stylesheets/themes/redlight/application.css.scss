@@ -1042,7 +1042,11 @@ section {
     border: 1px solid #eae6e2; }
   .product .btn {
     margin-top: 10px;
-    min-width: 180px; }
+    min-width: 180px !important;
+    border: 0;
+    padding: 15px 20px;
+    height: auto;
+    font-size: 0.90em; }
   .product p a {
     text-decoration: underline !important;
     font-size: 0.82em; }

@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-lg-2 col-xs-4" id="basket-menu">
 				<div id="basket-icon" class="active-basket">
-					<span>12</span>
+					<span><%= current_cart.cart_items.sum('quantity') %></span>
 					<div></div>
 				</div>
 				<div id="search-icon">
