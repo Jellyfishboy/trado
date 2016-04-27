@@ -176,5 +176,10 @@ trado.app =
             });
             return false;
         });
+    },
+
+    addToCart: function()
+    {
+        
     }
 }

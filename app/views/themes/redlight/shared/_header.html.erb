@@ -1,11 +1,11 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-2 col-xs-4" id="main-menu">
+			<div class="col-lg-1 col-md-2 col-xs-4" id="main-menu">
 				<%= link_to Store.settings.name, root_path, class: 'hidden-sm hidden-xs', id: 'brand' %>
 				<i class="icon-menu-2 visible-sm visible-xs" id="trigger"></i>
 			</div>
-			<div class="col-lg-8 col-xs-4" id="nav-menu">
+			<div class="col-lg-9 col-md-7 col-xs-4" id="nav-menu">
 				<%= link_to Store.settings.name, root_path, class: 'visible-sm visible-xs', id: 'brand' %>
 				<ul id="nav" class="hidden-sm hidden-xs">
 					<% category_list.each do |category| %>
@@ -15,7 +15,7 @@
 					<% end %>
 				</ul>
 			</div>
-			<div class="col-lg-2 col-xs-4" id="basket-menu">
+			<div class="col-lg-2 col-md-3 col-xs-4" id="basket-menu">
 				<div id="basket-icon" class="active-basket">
 					<span><%= current_cart.cart_items.sum('quantity') %></span>
 					<div></div>

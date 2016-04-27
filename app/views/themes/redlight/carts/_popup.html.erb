@@ -4,59 +4,34 @@
     <% else %>
         <table id="cart-items">
             <tbody>
-                <tr>
-                    <td>
-                        <img src="img/pfolio-3.png">
-                    </td>
-                    <td>
-                        <table class="cart-item-details">
-                            <tbody>
-                                <tr>
-                                    <td>Gitman Casual Shirt</td>
-                                </tr>
-                                <tr>
-                                    <td>Small / Brown</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td>
-                        <div>£139</div>
-                        <a href="#" class="delete-cart-item">
-                            <i class="icon-close"></i>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="img/pfolio-3.png">
-                    </td>
-                    <td>
-                        <table class="cart-item-details">
-                            <tbody>
-                                <tr>
-                                    <td>Gitman Casual Shirt</td>
-                                </tr>
-                                <tr>
-                                    <td>Large / Green</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td>
-                        <div>£556</div>
-                        <a href="#" class="delete-cart-item">
-                            <i class="icon-close"></i>
-                        </a>
-                    </td>
-
-                </tr>
+                <% current_cart.cart_items.each do |item| %>
+                    <tr>
+                        <td>
+                            <%= link_to (image_tag item.sku.product.attachments.first.file.square, alt: item.sku.product.name), [item.sku.product.category, item.sku.product] %>
+                        </td>
+                        <td>
+                            <table class="cart-item-details">
+                                <tbody>
+                                    <tr>
+                                        <td><%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= render_variants(item.sku) %></td>
+                                    </tr>
+                                    <tr>
+                                        <td><%= item.quantity %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td>
+                            <div><%= Store::Price.new(price: item.total_price).single %></div>
+                            <a href="#" class="delete-cart-item">
+                                <i class="icon-close"></i>
+                            </a>
+                        </td>
+                    </tr>   
+                <% end %>
             </tbody>
         </table>
     <% end %>

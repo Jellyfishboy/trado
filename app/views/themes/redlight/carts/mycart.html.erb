@@ -1,3 +1,5 @@
+<% content_for :title, "My cart" %>
+
 <div class='checkout'>
   <div class='container'>
     <div class='row checkout-header hidden-xs'>
@@ -121,35 +123,39 @@
         </table>
         <table id="cart">
           <tbody>
-            <tr>
-              <td><%= image_tag 'redlight/pfolio-3.png' %></td>
-              <td>
-                <table id="product-information">
-                  <tbody>
-                    <tr>
-                      <td>
-                        <h3>Gitman Casual Shirt</h3>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Size: S</td>
-                    </tr>
-                    <tr>
-                      <td>Color : Brown</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                <input type="text" value="1">
-              </td>
-              <td>£139</td>
-              <td>
-                <a href="#">
-                  <i class="icon-close"></i>
-                </a>
-              </td>
-            </tr>
+            <% current_cart.cart_items.each do |item| %>
+              <tr>
+                <td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+                <td>
+                  <table id="product-information">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <h3><%= item.sku.product.name %></h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><%= render_variants(item.sku) %></td>
+                      </tr>
+                      <% if item.cart_item_accessory.present? %>
+                        <tr>
+                          <td><%= item.cart_item_accessory.accessory.name %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </td>
+                <td>
+                  <input type="text" value="1">
+                </td>
+                <td><%= Store::Price.new(price: item.total_price).single %></td>
+                <td>
+                  <a href="#">
+                    <i class="icon-close"></i>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
             <tr>
               <td></td>
               <td></td>
