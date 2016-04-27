@@ -9,7 +9,7 @@ describe Accessory do
     it { expect(subject).to have_many(:order_item_accessories).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:order_items).through(:order_item_accessories).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:orders).through(:order_items) }
-    it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:accessorisations).dependent(:destroy) }
     it { expect(subject).to have_many(:products).through(:accessorisations) }
 
     # Validations

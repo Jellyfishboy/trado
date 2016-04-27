@@ -15,7 +15,7 @@ class Tag < ActiveRecord::Base
 
   attr_accessible :name
 
-  has_many :taggings,                       dependent: :delete_all
+  has_many :taggings,                       dependent: :destroy
   has_many :products,                       through: :taggings
 
   # Creates or updates the list of tags for an object

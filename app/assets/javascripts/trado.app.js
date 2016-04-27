@@ -1,15 +1,5 @@
 trado.app =
 {
-    updatePrice: function(url, queryString, elem, elemTwo)
-    {
-        $(elem).change(function() 
-        {
-            var id, idTwo;
-            id = $(this).val();
-            idTwo = $(elemTwo).val();
-            return $.get(url.concat(id, queryString, idTwo));
-        });
-    },
 
     jsonErrors: function() 
     {
@@ -142,6 +132,49 @@ trado.app =
             {
                 return $('.delivery-service-prices .control-group .controls').html('<p class="delivery_service_prices_notice">Select a delivery country to view the available delivery prices.</p>');
             }
+        });
+    },
+
+    updateSelectedSku: function()
+    {
+        $('.updated-selected-sku').change(function()
+        {
+            var skuId = $(this).val(),
+                productId = $(this).attr('data-product-id'),
+                accessoryId = $('.updated-selected-accessory').val();
+            $.ajax(
+            {
+                url: '/products/' + productId + '/skus/' + skuId + '?accessory_id=' + accessoryId,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#price').html(data.price);
+                    $('#product-actions').html(data.action);
+                }
+            });
+            return false;
+        });
+    },
+
+    updateSelectedAccessory: function()
+    {
+        $('.updated-selected-accessory').change(function()
+        {
+            var accessoryId = $(this).val(),
+                productId = $(this).attr('data-product-id'),
+                skuId = $('.updated-selected-sku').val();
+            $.ajax(
+            {
+                url: '/products/' + productId + '/accessories?accessory_id=' + accessoryId + '&sku_id=' + skuId,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#price').html(data.price);
+                }
+            });
+            return false;
         });
     }
 }

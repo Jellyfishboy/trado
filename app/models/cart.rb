@@ -16,7 +16,7 @@
 class Cart < ActiveRecord::Base
   attr_accessible :estimate_delivery_id, :estimate_country_name
 
-  has_many :cart_items,                             dependent: :delete_all
+  has_many :cart_items,                             dependent: :destroy
   has_many :cart_item_accessories,                  through: :cart_items
   
   has_many :skus,                                   through: :cart_items

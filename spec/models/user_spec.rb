@@ -4,8 +4,8 @@ describe User do
 
     # ActiveRecord relations
     it { expect(subject).to have_one(:attachment).dependent(:destroy) }
-    it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:permissions).dependent(:delete_all) }
+    it { expect(subject).to have_many(:notifications).dependent(:destroy) }
+    it { expect(subject).to have_many(:permissions).dependent(:destroy) }
     it { expect(subject).to have_many(:roles).through(:permissions) }
 
     # Validations

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Tag do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:taggings).dependent(:delete_all) }
+    it { expect(subject).to have_many(:taggings).dependent(:destroy) }
     it { expect(subject).to have_many(:products).through(:taggings) }
 
     describe "When adding tag records from the comma separated string" do

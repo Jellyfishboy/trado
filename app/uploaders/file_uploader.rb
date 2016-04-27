@@ -16,22 +16,20 @@ class FileUploader < CarrierWave::Uploader::Base
     end
   end
 
-  process resize_to_fit: [640,480]
+  version :square do
+    process resize_to_fill: [150,150]
+  end
 
-  version :large do
-    process resize_to_fill: [540,380]
+  version :small, :from_version => :square do
+    process resize_to_fill: [105,105]
   end
 
   version :medium, :from_version => :large do 
-    process resize_to_fill: [440,280]
+    process resize_to_fill: [440,475]
   end
 
-  version :small, :from_version => :medium do
-    process resize_to_fill: [240,80]
-  end
-
-  version :square do
-    process resize_to_fill: [150,150]
+  version :large do
+    process resize_to_fill: [600,647]
   end
 
   #Provide a default URL as a default if there hasn't been a file uploaded:

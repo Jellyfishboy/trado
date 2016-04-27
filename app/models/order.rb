@@ -33,8 +33,8 @@ class Order < ActiveRecord::Base
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number
 
-	has_many :order_items,                                                dependent: :delete_all
-	has_many :transactions,                                               dependent: :delete_all
+	has_many :order_items,                                                dependent: :destroy
+	has_many :transactions,                                               dependent: :destroy
 	has_many :products,                                                   through: :order_items
 	has_many :skus,                                                       through: :order_items
 

@@ -15,7 +15,7 @@
 class Role < ActiveRecord::Base
     attr_accessible :name
 
-    has_many :permissions,                      :dependent => :delete_all   
-    has_many :users,                            :through => :permissions
+    has_many :permissions,                      dependent: :destroy   
+    has_many :users,                            through: :permissions
 
 end

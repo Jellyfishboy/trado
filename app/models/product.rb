@@ -36,13 +36,13 @@ class Product < ActiveRecord::Base
   :accessory_ids, :attachments_attributes, :tags_attributes, :skus_attributes, :category_id, :featured,
   :short_description, :related_ids, :active, :status, :order_count, :variant_ids
 
-  has_many :skus,                                             dependent: :delete_all, inverse_of: :product
+  has_many :skus,                                             dependent: :destroy, inverse_of: :product
   has_many :orders,                                           through: :skus
   has_many :carts,                                            through: :skus
-  has_many :taggings,                                         dependent: :delete_all
-  has_many :tags,                                             through: :taggings, dependent: :delete_all
-  has_many :attachments,                                      as: :attachable, dependent: :delete_all
-  has_many :accessorisations,                                 dependent: :delete_all
+  has_many :taggings,                                         dependent: :destroy
+  has_many :tags,                                             through: :taggings, dependent: :destroy
+  has_many :attachments,                                      as: :attachable, dependent: :destroy
+  has_many :accessorisations,                                 dependent: :destroy
   has_many :accessories,                                      through: :accessorisations
   has_and_belongs_to_many :related,                           class_name: "Product", 
                                                               join_table: :related_products, 

@@ -1,61 +1,65 @@
 <div id="cart-container">
-    <table id="cart-items">
-        <tbody>
-            <tr>
-                <td>
-                    <img src="img/pfolio-3.png">
-                </td>
-                <td>
-                    <table class="cart-item-details">
-                        <tbody>
-                            <tr>
-                                <td>Gitman Casual Shirt</td>
-                            </tr>
-                            <tr>
-                                <td>Small / Brown</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td>
-                    <div>£139</div>
-                    <a href="#" class="delete-cart-item">
-                        <i class="icon-close"></i>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="img/pfolio-3.png">
-                </td>
-                <td>
-                    <table class="cart-item-details">
-                        <tbody>
-                            <tr>
-                                <td>Gitman Casual Shirt</td>
-                            </tr>
-                            <tr>
-                                <td>Large / Green</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td>
-                    <div>£556</div>
-                    <a href="#" class="delete-cart-item">
-                        <i class="icon-close"></i>
-                    </a>
-                </td>
+    <% if current_cart.cart_items.empty? %>
+        <p>You have no items in your cart</p>
+    <% else %>
+        <table id="cart-items">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="img/pfolio-3.png">
+                    </td>
+                    <td>
+                        <table class="cart-item-details">
+                            <tbody>
+                                <tr>
+                                    <td>Gitman Casual Shirt</td>
+                                </tr>
+                                <tr>
+                                    <td>Small / Brown</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <div>£139</div>
+                        <a href="#" class="delete-cart-item">
+                            <i class="icon-close"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/pfolio-3.png">
+                    </td>
+                    <td>
+                        <table class="cart-item-details">
+                            <tbody>
+                                <tr>
+                                    <td>Gitman Casual Shirt</td>
+                                </tr>
+                                <tr>
+                                    <td>Large / Green</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <div>£556</div>
+                        <a href="#" class="delete-cart-item">
+                            <i class="icon-close"></i>
+                        </a>
+                    </td>
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    <% end %>
     <hr>
     <table id="cart-total">
         <tbody>
@@ -64,7 +68,7 @@
                     Total
                 </td>
                 <td>
-                £695
+                <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
                 </td>
             </tr>
         </tbody>

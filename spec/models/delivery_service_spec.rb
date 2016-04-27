@@ -3,9 +3,9 @@ require 'rails_helper'
 describe DeliveryService do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:destinations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:destinations).dependent(:destroy) }
     it { expect(subject).to have_many(:countries).through(:destinations) }
-    it { expect(subject).to have_many(:prices).class_name('DeliveryServicePrice').dependent(:delete_all) }
+    it { expect(subject).to have_many(:prices).class_name('DeliveryServicePrice').dependent(:destroy) }
     it { expect(subject).to have_many(:orders).through(:prices) }
 
     # Validations

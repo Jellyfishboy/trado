@@ -5,7 +5,7 @@ describe Cart do
     store_setting
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:cart_items).dependent(:delete_all) }
+    it { expect(subject).to have_many(:cart_items).dependent(:destroy) }
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
     it { expect(subject).to have_one(:order) }

@@ -6,7 +6,6 @@ Trado::Application.routes.draw do
 
   	# Custom routes
   	get '/carts/delivery_service_prices/update' => 'delivery_service_prices#update'
-  	get '/product/skus' => 'skus#update'
   	get '/product/accessories' => 'accessories#update'
   	get '/search' => 'search#results'
   	get '/search/autocomplete' => 'search#autocomplete'
@@ -31,13 +30,19 @@ Trado::Application.routes.draw do
   
 
   	resources :categories, only: :show do
-  		resources :products, only: :show do
-	  		resources :skus, only: [] do
-  				get 'notify', on: :member
-  				resources :notifications, only: :create
-  			end
-  		end
+  		resources :products, only: :show
   	end
+
+    resources :products, only: [] do
+      resources :skus, only: [] do
+        member do
+          get :update        
+        end
+      end
+      resources :accessories, only: [] do
+          get :update, on: :collection
+      end
+    end
   
   	resources :carts, only: [] do
   		collection do

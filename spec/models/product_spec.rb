@@ -3,13 +3,13 @@ require 'rails_helper'
 describe Product do
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:skus).dependent(:delete_all) }
+    it { expect(subject).to have_many(:skus).dependent(:destroy) }
     it { expect(subject).to have_many(:orders).through(:skus) }
     it { expect(subject).to have_many(:carts).through(:skus) }
-    it { expect(subject).to have_many(:taggings).dependent(:delete_all) }
+    it { expect(subject).to have_many(:taggings).dependent(:destroy) }
     it { expect(subject).to have_many(:tags).through(:taggings) }
-    it { expect(subject).to have_many(:attachments).dependent(:delete_all) }
-    it { expect(subject).to have_many(:accessorisations).dependent(:delete_all) }
+    it { expect(subject).to have_many(:attachments).dependent(:destroy) }
+    it { expect(subject).to have_many(:accessorisations).dependent(:destroy) }
     it { expect(subject).to have_many(:accessories).through(:accessorisations) }
     it { expect(subject).to belong_to(:category) }
 

@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-lg-3 col-sm-3 hidden-sm product-thumb">
           <% @product.attachments.each_with_index do |attachment, index| %>
-            <%= image_tag attachment.file.square, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
+            <%= image_tag attachment.file.small, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
           <% end %>
         </div>
         <div class="col-lg-9 col-sm-12 col-md-9 product-main">
@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-sm-12 visible-sm hidden-xs hidden-lg hidden-md product-thumb">
           <% @product.attachments.each_with_index do |attachment, index| %>
-            <%= image_tag attachment.file.square, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
+            <%= image_tag attachment.file.small, 'data-src' => attachment.file.large.url, class: ("selected" if index == 0) %>
           <% end %>
         </div>
       </div>
@@ -30,7 +30,7 @@
         <%= @product.short_description %>
       </p>
 
-      <h2><%= Store::Price.new(price: @skus.first.price).markup %></h2>
+      <h2 id="price"><%= Store::Price.new(price: @skus.first.price).markup %></h2>
 
       <div class="row hidden-xs">
         <div class="col-lg-4 col-sm-4 property">
@@ -50,7 +50,7 @@
             <p class="visible-xs">
               <%= @variant_types.map(&:name).join(' / ') %>
             </p>
-            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] } ) %>
+            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] } ), {}, class: 'updated-selected-sku', 'data-product-id' => @product.id %>
           </div>
 
           <% unless @product.accessories.active.empty? %>
@@ -59,7 +59,7 @@
                 Accessory
               </p>
               <%= f.fields_for @cart_item_accessory do |accessory| %>
-                <%= accessory.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), prompt: "No accessory (+£0.00)" %>
+                <%= accessory.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), { prompt: "No accessory (+£0.00)" }, class: 'updated-selected-accessory', 'data-product-id' => @product.id %>
               <% end %>
             </div>
           <% end %>
@@ -73,11 +73,13 @@
             &nbsp;&nbsp;<strong class="increase-quantity">+</strong>
           </div>
         </div>
-        <% if @skus.first.stock > 0 %>
-          <%= f.submit 'Add To Cart', class: 'btn green add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{@product.id}-#{@product.slug}" %>
-        <% else %>
-          <%= link_to 'Notify Me', notify_category_product_sku_path(@product.category, @product, @skus.first), :class => 'btn notify-me', remote: true %>
-        <% end %>
+        <div id="product-actions">
+          <% if @skus.first.in_stock? %>
+            <%= render partial: theme_presenter.page_template_path('products/addtocart'), locals: { product: @product } %>
+          <% else %>
+            <%= render partial: theme_presenter.page_template_path('products/notifyme'), locals: { product: @product, sku: @skus.first } %>
+          <% end %>
+        </div>
       <% end %>
       <ul id="social">
         <li>

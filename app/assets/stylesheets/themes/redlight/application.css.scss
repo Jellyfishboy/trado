@@ -980,7 +980,8 @@ section {
     .product .product-thumb img {
       border: 2px solid #f9f9f9;
       margin-bottom: 10px;
-      width: 103px; }
+      width: 103px;
+      cursor:pointer; }
       .product .product-thumb img:hover, .product .product-thumb img.selected {
         border: 2px solid #f37e49; }
     .product .product-thumb.visible-sm {

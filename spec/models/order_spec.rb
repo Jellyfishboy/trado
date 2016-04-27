@@ -5,8 +5,8 @@ describe Order do
     store_setting
 
     # ActiveRecord relations
-    it { expect(subject).to have_many(:order_items).dependent(:delete_all) }
-    it { expect(subject).to have_many(:transactions).dependent(:delete_all) }
+    it { expect(subject).to have_many(:order_items).dependent(:destroy) }
+    it { expect(subject).to have_many(:transactions).dependent(:destroy) }
     it { expect(subject).to have_many(:products).through(:order_items) }
     it { expect(subject).to have_many(:skus).through(:order_items) }
     it { expect(subject).to belong_to(:delivery).class_name('DeliveryServicePrice') }

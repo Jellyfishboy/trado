@@ -27,7 +27,7 @@ class Accessory < ActiveRecord::Base
   has_many :order_item_accessories,                       dependent: :restrict_with_exception
   has_many :order_items,                                  through: :order_item_accessories, dependent: :restrict_with_exception
   has_many :orders,                                       through: :order_items
-  has_many :accessorisations,                             dependent: :delete_all
+  has_many :accessorisations,                             dependent: :destroy
   has_many :products,                                     through: :accessorisations
 
   validates :name, :part_number, :weight,

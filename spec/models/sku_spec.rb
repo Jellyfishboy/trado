@@ -7,11 +7,11 @@ describe Sku do
     it { expect(subject).to have_many(:carts).through(:cart_items) }
     it { expect(subject).to have_many(:order_items).dependent(:restrict_with_exception) }
     it { expect(subject).to have_many(:orders).through(:order_items).dependent(:restrict_with_exception) }
-    it { expect(subject).to have_many(:notifications).dependent(:delete_all) }
-    it { expect(subject).to have_many(:stock_adjustments).dependent(:delete_all) }
+    it { expect(subject).to have_many(:notifications).dependent(:destroy) }
+    it { expect(subject).to have_many(:stock_adjustments).dependent(:destroy) }
     it { expect(subject).to have_one(:category).through(:product) }
     it { expect(subject).to belong_to(:product) }
-    it { expect(subject).to have_many(:variants).dependent(:delete_all).class_name('SkuVariant') }
+    it { expect(subject).to have_many(:variants).dependent(:destroy).class_name('SkuVariant') }
     it { expect(subject).to have_many(:variant_types).through(:variants) }
 
     # Validation
