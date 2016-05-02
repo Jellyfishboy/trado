@@ -15,7 +15,7 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    set_validate_cart_item
+    set_cart_item
     reset_session
     @accessory = @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil
     @cart_item.update_quantity(params[:cart_item][:quantity], @accessory)
@@ -33,14 +33,16 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    void_session
-    @cart_item = CartItem.find(params[:id])
+  	set_cart_item
+    reset_session
     @cart_item.destroy
     render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
   end  
 
   private
 
+  # TODO: Move this to an attribute on the cart model and trigger a sidekiq job after every item added
+  #
   def reset_session
     session[:delivery_service_prices] = session[:payment_type] = nil
   end
@@ -50,9 +52,15 @@ class CartItemsController < ApplicationController
       session[:delivery_service_prices] = current_cart.calculate_delivery_services(Store.tax_rate)
     end
   end
+  # 
+  # END
 
   def set_sku
   	@sku ||= Sku.find(params[:cart_item][:sku_id])
+  end
+
+  def set_cart_item
+  	@cart_item ||= CartItem.find(params[:id])
   end
 
   def set_quantity
