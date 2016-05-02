@@ -9,10 +9,10 @@
       .control-group
         = f.label 'Country', :class => 'control-label'
         .controls.update-delivery-service-price
-          = f.select(:estimate_country_name, options_for_select(Country.all.map { |country| [country.name, country.name] }), { include_blank: 'Please select...'})
+          = f.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }), { include_blank: 'Please select...'})
       .delivery-service-prices
         .control-group
-          = f.label :estimate_delivery_id, :class => 'control-label' do
+          = f.label :delivery_id, :class => 'control-label' do
             Shipping options
           .controls
             %p.delivery-service-price-notice Select a country to view the available delivery services.

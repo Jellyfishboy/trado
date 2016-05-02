@@ -14,7 +14,7 @@ describe CartsController do
 
     describe 'GET #checkout' do
         let!(:delivery_service_price) { create(:delivery_service_price) }
-        let!(:cart) { create(:cart, estimate_delivery_id: delivery_service_price.id, estimate_country_name: 'United Kingdom') }
+        let!(:cart) { create(:cart, delivery_id: delivery_service_price.id, country: 'United Kingdom') }
         before(:each) do
             stub_current_cart(cart)
         end
@@ -26,7 +26,7 @@ describe CartsController do
 
         context "if the order doesn't have an associated delivery address record" do
 
-            it "should assign the cart estimate_country_name attribute value to @country" do
+            it "should assign the cart country attribute value to @country" do
                 get :checkout
                 expect(assigns(:country)).to eq 'United Kingdom'
             end
@@ -41,7 +41,7 @@ describe CartsController do
             end
         end
 
-        context "if the cart estimate_delivery_id attribute and order delivery address record are both nil" do
+        context "if the cart delivery_id attribute and order delivery address record are both nil" do
             let!(:cart) { create(:cart) }
             let!(:order) { create(:order, cart_id: cart.id) }
 
@@ -51,11 +51,11 @@ describe CartsController do
             end
         end
 
-        context "if the cart estimate_delivery_id attribute or order delivery address record are not nil" do
+        context "if the cart delivery_id attribute or order delivery address record are not nil" do
 
             it "should assign the available delivery service prices to @delivery_service_prices" do
                 get :checkout
-                expect(assigns(:delivery_service_prices)).to match_array(DeliveryServicePrice.find_collection([1,2], cart.estimate_country_name))
+                expect(assigns(:delivery_service_prices)).to match_array(DeliveryServicePrice.find_collection([1,2], cart.country))
             end
         end
 
@@ -66,7 +66,7 @@ describe CartsController do
                 expect(assigns(:order)).to be_a_new(Order)
             end
 
-            it "should assign the carts estimate_delivery_id attribute value to @delivery_id" do
+            it "should assign the carts delivery_id attribute value to @delivery_id" do
                 get :checkout
                 expect(assigns(:delivery_id)).to eq delivery_service_price.id
             end
@@ -138,7 +138,7 @@ describe CartsController do
     end
 
     describe 'PATCH #estimate' do
-        let!(:cart) { create(:cart, estimate_country_name: 'United Kingdom') }
+        let!(:cart) { create(:cart, country: 'United Kingdom') }
         before(:each) do
             stub_current_cart(cart)
         end
@@ -152,15 +152,15 @@ describe CartsController do
         end
 
         context "with invalid attributes" do
-            let(:errors) { "{\"estimate_country_name\":[\"can't be blank\"]}" }
+            let(:errors) { "{\"country\":[\"can't be blank\"]}" }
 
             it "should return a JSON object of errors" do
-                xhr :patch, :estimate, cart: attributes_for(:cart, estimate_country_name: nil)
+                xhr :patch, :estimate, cart: attributes_for(:cart, country: nil)
                 expect(cart.errors.to_json(root: true)).to eq errors
             end
 
             it "should return a 422 status code" do
-                xhr :patch, :estimate, cart: attributes_for(:cart, estimate_country_name: nil)
+                xhr :patch, :estimate, cart: attributes_for(:cart, country: nil)
                 expect(response.status).to eq 422
             end
         end
@@ -168,24 +168,24 @@ describe CartsController do
 
     describe 'DELETE #purge_estimate' do
         let!(:delivery_service_price) { create(:delivery_service_price) }
-        let!(:cart) { create(:cart, estimate_country_name: 'China', estimate_delivery_id: delivery_service_price.id) }
+        let!(:cart) { create(:cart, country: 'China', delivery_id: delivery_service_price.id) }
         before(:each) do
             stub_current_cart(cart)
         end
 
-        it "should update the cart estimate_delivery_id attribute value to nil" do
+        it "should update the cart delivery_id attribute value to nil" do
             expect{
                 xhr :delete, :purge_estimate
             }.to change{
-                cart.estimate_delivery_id
+                cart.delivery_id
             }.from(delivery_service_price.id).to(nil)
         end
 
-        it "should update the cart estimate_country_name attribute value to nil" do
+        it "should update the cart country attribute value to nil" do
             expect{
                 xhr :delete, :purge_estimate
             }.to change{
-                cart.estimate_country_name
+                cart.country
             }.from('China').to(nil)
         end
 

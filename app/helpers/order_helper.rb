@@ -10,6 +10,6 @@ module OrderHelper
     end
 
     def selected_country cart, order_address
-        order_address.nil? ? cart.estimate_country_name : order_address
+        order_address.nil? ? cart.country : order_address
     end
 end

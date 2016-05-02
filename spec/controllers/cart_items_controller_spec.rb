@@ -66,20 +66,20 @@ describe CartItemsController do
             end
         end 
 
-        context "if the current cart has an estimate_delivery_id" do
-            let!(:cart) { create(:cart, estimate_delivery_id: 1, estimate_country_name: 'China') }
+        context "if the current cart has an delivery_id" do
+            let!(:cart) { create(:cart, delivery_id: 1, country: 'China') }
             before(:each) do
                 stub_current_cart(cart)
             end
 
-            it "should set estimate_delivery_id attribute to nil value" do
+            it "should set delivery_id attribute to nil value" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-                expect(cart.estimate_delivery_id).to eq nil
+                expect(cart.delivery_id).to eq nil
             end
 
-            it "should set estimate_country_name attribute to nil value" do
+            it "should set country attribute to nil value" do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-                expect(cart.estimate_country_name).to eq nil
+                expect(cart.country).to eq nil
             end
         end
 

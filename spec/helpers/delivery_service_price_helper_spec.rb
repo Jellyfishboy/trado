@@ -13,7 +13,7 @@ describe DeliveryServicePriceHelper do
 
     describe '#cart_delivery_price' do
         let!(:delivery_service_price) { create(:delivery_service_price) }
-        let!(:cart) { create(:cart, estimate_delivery_id: delivery_service_price.id) }
+        let!(:cart) { create(:cart, delivery_id: delivery_service_price.id) }
 
         context "if the parameter is nil" do
 

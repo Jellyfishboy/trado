@@ -1,7 +1,7 @@
 FactoryGirl.define do
     factory :cart do
-    estimate_delivery_id { nil }
-    estimate_country_name { Faker::Address.country }
+    delivery_id { nil }
+    country { Faker::Address.country }
         
         transient do
             cart_item_count 3

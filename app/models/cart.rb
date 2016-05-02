@@ -8,13 +8,13 @@
 # Table name: carts
 #
 #  id                             :integer              not null, primary key
-#  estimate_delivery_id           :integer
-#  estimate_country_name          :integer
+#  delivery_id                    :integer
+#  country                        :integer
 #  created_at                     :datetime             not null
 #  updated_at                     :datetime             not null
 #
 class Cart < ActiveRecord::Base
-  attr_accessible :estimate_delivery_id, :estimate_country_name
+  attr_accessible :delivery_id, :country
 
   has_many :cart_items,                             dependent: :destroy
   has_many :cart_item_accessories,                  through: :cart_items
@@ -23,7 +23,7 @@ class Cart < ActiveRecord::Base
   has_one :order
   belongs_to :estimate_delivery,                    class_name: 'DeliveryServicePrice'
 
-  validates :estimate_country_name,                 presence: true
+  validates :country,                               presence: true
 
   # Calculates the total price of a cart
   #

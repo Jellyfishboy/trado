@@ -12,7 +12,7 @@ describe Cart do
     it { expect(subject).to belong_to(:estimate_delivery).class_name('DeliveryServicePrice') }
 
     # Validations
-    it { expect(subject).to validate_presence_of(:estimate_country_name) }
+    it { expect(subject).to validate_presence_of(:country) }
 
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
@@ -48,7 +48,7 @@ describe Cart do
 
         context "if the cart has an associated delivery estimate" do
             let!(:delivery) { create(:delivery_service_price) }
-            let(:cart) { create(:full_cart, estimate_delivery_id: delivery.id)}
+            let(:cart) { create(:full_cart, delivery_id: delivery.id)}
             let(:calculated_cart) { cart.calculate(20.0) }
 
             it "should return a hash containing the correct tax amount total, with the delivery esimate price" do

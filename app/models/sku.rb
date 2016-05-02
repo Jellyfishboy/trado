@@ -114,4 +114,8 @@ class Sku < ActiveRecord::Base
   def in_stock?
     stock == 0 ? false : true
   end
+
+  def valid_stock? quantity
+    stock > quantity ? true : false
+  end
 end

@@ -42,8 +42,8 @@ describe OrderHelper do
 
         context "if the order_address parameter is nil" do
 
-            it "should return the estimate_country_name attribute from the cart parameter" do
-                expect(selected_country(cart, nil)).to eq cart.estimate_country_name
+            it "should return the country attribute from the cart parameter" do
+                expect(selected_country(cart, nil)).to eq cart.country
             end
         end
 

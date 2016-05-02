@@ -8,7 +8,7 @@ class CartsController < ApplicationController
     def checkout
         set_cart_details
         if current_cart.order.nil?
-            @delivery_id = current_cart.estimate_delivery_id
+            @delivery_id = current_cart.delivery_id
             @delivery_address = @order.build_delivery_address
             @billing_address = @order.build_billing_address
         else
@@ -52,8 +52,8 @@ class CartsController < ApplicationController
 
     def purge_estimate
         @cart = current_cart
-        @cart.estimate_delivery_id = nil
-        @cart.estimate_country_name = nil
+        @cart.delivery_id = nil
+        @cart.country = nil
         @cart.save(validate: false)
         render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
     end
@@ -63,8 +63,8 @@ class CartsController < ApplicationController
     def set_cart_details
         @order = current_cart.order.nil? ? Order.new : current_cart.order
         @cart_total = current_cart.calculate(Store.tax_rate)
-        @country = @order.delivery_address.nil? ? current_cart.estimate_country_name : @order.delivery_address.country
-        @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.estimate_delivery_id.nil? && @order.delivery_address.nil?
+        @country = @order.delivery_address.nil? ? current_cart.country : @order.delivery_address.country
+        @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.delivery_id.nil? && @order.delivery_address.nil?
     end
 
     def generate_payment_url
