@@ -50,6 +50,9 @@ Trado::Application.routes.draw do
 	  		get :checkout
 	  		patch :estimate
 	  		delete :purge_estimate
+        %w( paypal stripe ).each do |payment|
+          post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
+        end
   		end
   		post :confirm, on: :collection
   		resources :cart_items, only: [:create, :update, :destroy] do
@@ -65,12 +68,6 @@ Trado::Application.routes.draw do
 	  		get :confirm
 	  		post :complete
   		end
-      # collection do
-      #   resources :paypal do
-      #     post :confirm
-      #     post :complete
-      #   end
-      # end
   		resources :addresses, only: [:new, :create, :update]
   	end
 
@@ -113,9 +110,9 @@ Trado::Application.routes.draw do
   			resources :stock, only: [:index, :show]
   		end
 	  	resources :pages, except: [:show, :destroy, :new, :create]
-	  	get :settings => 'admin#settings'
+	  	get '/settings' => 'admin#settings'
 	  	patch '/settings/update' => 'admin#update'
-	  	get :profile => 'users#edit'
+	  	get '/profile' => 'users#edit'
 	  	patch '/profile/update' => 'users#update'
   	end
 
