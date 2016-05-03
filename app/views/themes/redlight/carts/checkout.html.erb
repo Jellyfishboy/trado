@@ -794,9 +794,9 @@
                 <span>TAX:</span>
               </div>
               <div>
-                <span>£139.00</span>
-                <span>£24.00</span>
-                <span>£15.00</span>
+                <span><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
+                <span><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
+                <span><%= Store::Price.new(price: @cart_session[:total][:tax]).single %></span>
               </div>
             </div>
             <hr>
@@ -805,7 +805,7 @@
                 <strong>ORDER TOTAL:</strong>
               </div>
               <div>
-                <strong>£178.00</strong>
+                <strong><%= Store::Price.new(price: @cart_session[:total][:gross]).single %></strong>
               </div>
             </div>
             <hr>
@@ -816,7 +816,7 @@
           </div>
           <input class='btn green checkout-button' type='submit' value='PLACE ORDER'>
           <div id='checkout-secure'>
-            <img alt="Secure checkout" src="img/secure-checkout.png" />
+            <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
             <span class='text-shipping'>SECURE CHECKOUT</span>
           </div>
         </form>

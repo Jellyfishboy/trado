@@ -43,7 +43,7 @@
                     Total
                 </td>
                 <td>
-                <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
+                    <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
                 </td>
             </tr>
         </tbody>

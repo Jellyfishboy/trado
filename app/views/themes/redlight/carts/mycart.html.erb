@@ -125,10 +125,12 @@
             <div>
               <span>SUB-TOTAL:</span>
               <span>DELIVERY:</span>
+              <span>TAX: </span>
             </div>
             <div>
               <span><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
               <span><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
+              <span><%= Store::Price.new(price: @cart_session[:total][:tax]).single %></span>
             </div>            
           </div>
           <hr>
