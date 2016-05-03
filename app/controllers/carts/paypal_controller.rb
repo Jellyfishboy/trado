@@ -1,5 +1,5 @@
 class Carts::PayPalController < ApplicationController
-    includes CartBuilder
+    include CartBuilder
 
     def confirm
         set_order

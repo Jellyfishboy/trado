@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    includes CartBuilder
+    include CartBuilder
     skip_before_action :authenticate_user!
 
     def mycart
