@@ -54,6 +54,6 @@ class CartItemsController < ApplicationController
 	end
 
   	def set_and_adjust_cart_item quantity
-  		@cart_item = CartItem.adjust(@sku ||= @cart_item.sku, quantity, params[:cart_item][:cart_item_accessory], current_cart)
+  		@cart_item = CartItem.adjust(@sku || @cart_item.sku, quantity, params[:cart_item][:cart_item_accessory], current_cart)
   	end
 end

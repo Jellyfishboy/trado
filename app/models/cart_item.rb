@@ -59,8 +59,7 @@ class CartItem < ActiveRecord::Base
 			current_item.update_quantity((current_item.quantity+quantity.to_i), accessory)
 			current_item.update_weight(current_item.quantity, sku.weight, accessory)
 		else
-			accessory_price = accessory.try(:price)
-			accessory_price ||= 0
+			accessory_price = accessory.try(:price) || 0
 			current_item = cart.cart_items.build(price: (sku.price + accessory_price), sku_id: sku.id)
 			current_item.build_cart_item_accessory(price: accessory.price, accessory_id: accessory.id) unless accessory.nil?
 			current_item.update_quantity(quantity.to_i, accessory)
