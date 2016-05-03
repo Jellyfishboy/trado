@@ -46,12 +46,12 @@ Trado::Application.routes.draw do
   
   	resources :carts, only: [] do
   		collection do
-	  		get 'mycart'
-	  		get 'checkout'
-	  		patch 'estimate'
-	  		delete 'purge_estimate'
+	  		get :mycart
+	  		get :checkout
+	  		patch :estimate
+	  		delete :purge_estimate
   		end
-  		post 'confirm', on: :collection
+  		post :confirm, on: :collection
   		resources :cart_items, only: [:create, :update, :destroy] do
   			resources :cart_item_accessories, only: [:update, :destroy]
   		end
@@ -59,15 +59,18 @@ Trado::Application.routes.draw do
 
   	resources :orders, only: [:destroy] do
   		member do
-  			get 'success'
-	  		get 'failed'
-	  		get 'retry'
-	  		get 'confirm'
-	  		post 'complete'
+  			get :success
+	  		get :failed
+	  		get :retry
+	  		get :confirm
+	  		post :complete
   		end
-      collection do
-        resources :paypal, only: [:new, :create]
-      end
+      # collection do
+      #   resources :paypal do
+      #     post :confirm
+      #     post :complete
+      #   end
+      # end
   		resources :addresses, only: [:new, :create, :update]
   	end
 
@@ -86,22 +89,22 @@ Trado::Application.routes.draw do
 	  		namespace :skus do
 	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: [:new, :create] do
 	  				collection do
-	  					patch 'update', as: 'update'
-	  					delete 'destroy', as: 'destroy'
+	  					patch :update, as: 'update'
+	  					delete :destroy, as: 'destroy'
 	  				end
 	  			end
 	  		end
 	  	end
   		resources :orders, only: [:index, :show, :update, :edit] do
 	  		member do
-	  			get 'dispatcher'
-	  			post 'dispatched'
+	  			get :dispatcher
+	  			post :dispatched
 	  		end
   		end
   		resources :delivery_services, except: :show do
 	  		collection do
-	  			get 'copy_countries'
-	  			post 'set_countries'
+	  			get :copy_countries
+	  			post :set_countries
 	  		end
   			resources :delivery_service_prices, path: 'prices', except: :show
   		end
@@ -110,9 +113,9 @@ Trado::Application.routes.draw do
   			resources :stock, only: [:index, :show]
   		end
 	  	resources :pages, except: [:show, :destroy, :new, :create]
-	  	get '/settings' => 'admin#settings'
+	  	get :settings => 'admin#settings'
 	  	patch '/settings/update' => 'admin#update'
-	  	get '/profile' => 'users#edit'
+	  	get :profile => 'users#edit'
 	  	patch '/profile/update' => 'users#update'
   	end
 
