@@ -1,14 +1,12 @@
 class CartItemsController < ApplicationController
 	skip_before_action :authenticate_user!
-	after_action :set_delivery_session
 
 	def create
 		set_sku
-		set_quantity
-		reset_session
-		set_and_increment_cart_item
+		set_create_quantity
 		if @sku.valid_stock?(@quantity)
-			render partial: theme_presenter.page_template_path('carts/update'), format: [:js] if @cart_item.save
+			set_and_adjust_cart_item(params[:cart_item][:quantity])
+			render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
 		else
 			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
 		end
@@ -16,19 +14,13 @@ class CartItemsController < ApplicationController
 
 	def update
 		set_cart_item
-		reset_session
-		@accessory = @cart_item.cart_item_accessory ? @cart_item.cart_item_accessory.accessory : nil
-		@cart_item.update_quantity(params[:cart_item][:quantity], @accessory)
-		if @cart_item.quantity == 0 
-			@cart_item.destroy 
-		else
-			@cart_item.update_weight(params[:cart_item][:quantity], @cart_item.sku.weight, @accessory)
-			@cart_item.save!
-		end
-		if @quantity > @sku.stock
-			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
-		else
+		set_update_quantity
+		set_accessory
+		if @cart_item.sku.valid_stock?(@quantity)
+			set_and_adjust_cart_item(params[:cart_item][:quantity].to_i - @cart_item.quantity)
 			render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+		else
+			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
 		end
 	end
 
@@ -41,39 +33,27 @@ class CartItemsController < ApplicationController
 
 	private
 
-  	# TODO: Move this to an attribute on the cart model and trigger a sidekiq job after every item added
-  	#
-  	def reset_session
-  		session[:delivery_service_prices] = session[:payment_type] = nil
-  	end
-
-  	def set_delivery_session
-  		unless current_cart.cart_items.empty?
-  			session[:delivery_service_prices] = current_cart.calculate_delivery_services(Store.tax_rate)
-  		end
-  	end
-  	# 
-  	# END
-
   	def set_sku
-  		@sku ||= Sku.find(params[:cart_item][:sku_id])
+  		@sku = Sku.find(params[:cart_item][:sku_id]) 
   	end
 
   	def set_cart_item
   		@cart_item ||= CartItem.find(params[:id])
   	end
 
-  	def set_quantity
+  	def set_create_quantity
   		@quantity = current_cart.cart_items.where(sku_id: @sku.id).sum(:quantity) + params[:cart_item][:quantity].to_i
   	end
 
-  	def set_and_increment_cart_item
-  		@cart_item = CartItem.increment(@sku, params[:cart_item][:quantity], params[:cart_item][:cart_item_accessory], current_cart)
+  	def set_update_quantity
+  		@quantity = current_cart.cart_items.where(sku_id: @cart_item.sku.id).sum(:quantity) + (params[:cart_item][:quantity].to_i - @cart_item.quantity)
   	end
 
-  	def set_validate_cart_item
-		# @cart_item = CartItem.find(params[:id]) unless params[:id].nil?
-		# @sku = @cart_item.nil? ? Sku.find(params[:cart_item][:sku_id]) : @cart_item.sku
-		# @quantity = params[:action] == 'create' ? () :  params[:cart_item][:quantity].to_i
+  	def set_accessory
+		@accessory = @cart_item.cart_item_accessory.accessory unless @cart_item.cart_item_accessory.nil?
 	end
+
+  	def set_and_adjust_cart_item quantity
+  		@cart_item = CartItem.adjust(@sku ||= @cart_item.sku, quantity, params[:cart_item][:cart_item_accessory], current_cart)
+  	end
 end

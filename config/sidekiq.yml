@@ -13,4 +13,4 @@ production:
 :queues:
   - default
   - mailers
-  - [high_priority, 2]
+  - [carts, 2]

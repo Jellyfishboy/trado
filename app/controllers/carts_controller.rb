@@ -6,19 +6,15 @@ class CartsController < ApplicationController
     end
 
     def checkout
-        set_cart_details
-        if current_cart.order.nil?
-            @delivery_id = current_cart.delivery_id
-            @delivery_address = @order.build_delivery_address
-            @billing_address = @order.build_billing_address
-        else
-            @delivery_id = @order.delivery_id
-        end
+        set_order
+        set_cart_session
+        set_delivery_services
         render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
     end
 
     def confirm
-        set_cart_details
+        set_order
+        set_cart_session
         @order.attributes = params[:order]
         session[:payment_type] = params[:payment_type]
         if @order.save
@@ -60,11 +56,20 @@ class CartsController < ApplicationController
 
     private
 
-    def set_cart_details
-        @order = current_cart.order.nil? ? Order.new : current_cart.order
-        @cart_total = current_cart.calculate(Store.tax_rate)
-        @country = @order.delivery_address.nil? ? current_cart.country : @order.delivery_address.country
-        @delivery_service_prices = DeliveryServicePrice.find_collection(session[:delivery_service_prices], @country) unless current_cart.delivery_id.nil? && @order.delivery_address.nil?
+    def set_order
+        @order ||= current_cart.order.nil? ? Order.new : current_cart.order
+    end
+
+    def set_delivery_services
+        @delivery_services = @cart_session[:country].nil? ? nil : DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, @cart_session[:country])
+    end
+
+    def set_cart_session
+        @cart_session = {
+            total: current_cart.calculate(Store.tax_rate),
+            country: @order.delivery_address.nil? ? current_cart.country : @order.delivery_address.country,
+            delivery_id: @order.new_record? ? current_cart.delivery_id : @order.delivery_id
+        }
     end
 
     def generate_payment_url

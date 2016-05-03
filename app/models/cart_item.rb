@@ -18,75 +18,77 @@
 #
 class CartItem < ActiveRecord::Base
 
-  attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :cart_item_accessory_attributes
+	attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :cart_item_accessory_attributes
 
-  has_one :cart_item_accessory,             dependent: :delete
-  belongs_to :cart
-  belongs_to :sku 
+	has_one :cart_item_accessory,             	dependent: :delete
+	belongs_to :cart
+	belongs_to :sku 
 
-  after_commit :reset_delivery_services
+	validates :cart_id, :price, :quantity, 
+	:sku_id, :weight,							presence: true
 
-  accepts_nested_attributes_for :cart_item_accessory
+	after_commit :reset_delivery_services
 
-  default_scope { order(created_at: :desc) }
+	accepts_nested_attributes_for :cart_item_accessory
 
-  scope :find_sku,                           ->(sku) { where(sku_id: sku.id).includes(:cart_item_accessory) }
-  scope :no_item_accessory,                  -> { where(cart_item_accessories: { accessory_id: nil }) }
-  scope :item_accessory,                     -> (accessory) { where(cart_item_accessories: { accessory_id: accessory.id }) }
+	default_scope { order(created_at: :desc) }
 
-  # Calculates the total price of a cart item by multipling the item price by it's quantity
-  #
-  # @return [Decimal] total price of cart item
-  def total_price 
-  	price * quantity
-  end
+	scope :find_sku,                           	->(sku) { where(sku_id: sku.id).includes(:cart_item_accessory) }
+	scope :no_item_accessory,                  	-> { where(cart_item_accessories: { accessory_id: nil }) }
+	scope :item_accessory,                     	-> (accessory) { where(cart_item_accessories: { accessory_id: accessory.id }) }
 
-  # Adds a new cart item or increases the quantity and weight of a cart item - including any assocated accessories
-  #
-  # @param sku [Object]
-  # @param quantity [String]
-  # @param accessory [String]
-  # @paam cart [Object]
-  # @return [Decimal] cart item
-  def self.increment sku, quantity, accessory, cart
-    accessory = Accessory.find_by_id(accessory[:accessory_id]) unless accessory.nil?
-    current_item = accessory.nil? ? cart.cart_items.find_sku(sku).no_item_accessory.first : cart.cart_items.find_sku(sku).item_accessory(accessory).first
+	# Calculates the total price of a cart item by multipling the item price by it's quantity
+	#
+	# @return [Decimal] total price of cart item
+	def total_price 
+		price * quantity
+	end
 
-    if current_item
-      current_item.update_quantity((current_item.quantity+quantity.to_i), accessory)
-      current_item.update_weight(current_item.quantity, sku.weight, accessory)
-    else
-      accessory_price = accessory.try(:price)
-      accessory_price ||= 0
-      current_item = cart.cart_items.build(price: (sku.price + accessory_price), sku_id: sku.id)
-      current_item.build_cart_item_accessory(price: accessory.price, accessory_id: accessory.id) unless accessory.nil?
-      current_item.update_quantity(quantity.to_i, accessory)
-      current_item.update_weight(quantity, sku.weight, accessory)
-    end
-    current_item
-  end
+	# Either creates or updates a cart item, including any assocated accessories
+	#
+	# @param sku [Object]
+	# @param quantity [String]
+	# @param accessory [String]
+	# @paam cart [Object]
+	# @return [Decimal] cart item
+	def self.adjust sku, quantity, accessory, cart
+		accessory = Accessory.find_by_id(accessory[:accessory_id]) unless accessory.nil?
+		current_item = accessory.nil? ? cart.cart_items.find_sku(sku).no_item_accessory.first : cart.cart_items.find_sku(sku).item_accessory(accessory).first
 
-  # Updates the quantity of a cart item, taking into account associated accessories
-  #
-  # @return [Object] current cart item
-  def update_quantity quantity, accessory
-    self.quantity = quantity
-    self.cart_item_accessory.quantity = quantity unless accessory.nil?
-  end
+		if current_item
+			current_item.update_quantity((current_item.quantity+quantity.to_i), accessory)
+			current_item.update_weight(current_item.quantity, sku.weight, accessory)
+		else
+			accessory_price = accessory.try(:price)
+			accessory_price ||= 0
+			current_item = cart.cart_items.build(price: (sku.price + accessory_price), sku_id: sku.id)
+			current_item.build_cart_item_accessory(price: accessory.price, accessory_id: accessory.id) unless accessory.nil?
+			current_item.update_quantity(quantity.to_i, accessory)
+			current_item.update_weight(quantity, sku.weight, accessory)
+		end
+		current_item.quantity.zero? ? current_item.destroy : current_item.save
+		current_item unless current_item.nil?
+	end
 
-  # Updates the weight of a cart item, taking into account associated accessories
-  #
-  # @return [Object] current cart item
-  def update_weight quantity, weight, accessory
-    weight = accessory.nil? ? weight : (weight + accessory.weight)
-    self.weight = (weight*quantity.to_i)
-  end
+	# Updates the quantity of a cart item, taking into account associated accessories
+	#
+	# @return [Object] current cart item
+	def update_quantity quantity, accessory
+		self.quantity = quantity
+		self.cart_item_accessory.quantity = quantity unless accessory.nil?
+	end
 
-  def reset_delivery_services
-    unless cart.delivery_id.nil?
-      cart.delivery_id = nil
-      cart.country = nil
-      cart.save(validate: false)
-    end
-  end
+	# Updates the weight of a cart item, taking into account associated accessories
+	#
+	# @return [Object] current cart item
+	def update_weight quantity, weight, accessory
+		weight = accessory.nil? ? weight : (weight + accessory.weight)
+		self.weight = (weight*quantity.to_i)
+	end
+
+	def reset_delivery_services
+		cart.delivery_id = cart.country = nil
+		cart.delivery_service_ids = cart.calculate_delivery_services(Store.tax_rate)
+		cart.save!
+	end
 end

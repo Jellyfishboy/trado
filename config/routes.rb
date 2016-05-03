@@ -65,6 +65,9 @@ Trado::Application.routes.draw do
 	  		get 'confirm'
 	  		post 'complete'
   		end
+      collection do
+        resources :paypal, only: [:new, :create]
+      end
   		resources :addresses, only: [:new, :create, :update]
   	end
 

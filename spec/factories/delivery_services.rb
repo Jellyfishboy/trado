@@ -11,7 +11,7 @@ FactoryGirl.define do
         factory :delivery_service_with_countries do
             courier_name { 'Royal Mail' }
             active { true }
-            countries { [create(:country, name: 'United Kingdom'),create(:country, name: 'China')]}
+            countries { [create(:country, name: 'United Kingdom'),create(:country, name: 'China')] }
         end
 
         factory :delivery_service_with_country do
