@@ -37,13 +37,13 @@ class Cart < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   # @return [Hash] net, tax and gross amounts for an order
   def calculate current_tax_rate
-    net_amount = total_price
-    tax_amount = delivery.nil? ? (net_amount * current_tax_rate) : (net_amount + delivery.price)*current_tax_rate
-    gross_amount = delivery.nil? ? (net_amount + tax_amount) : (net_amount + delivery.price + tax_amount)
+    net = total_price + (delivery.try(:price) || 0)
+    tax = net * current_tax_rate
     return {
-      net_amount: net_amount,
-      tax_amount: tax_amount,
-      gross_amount: gross_amount
+      net: net,
+      tax: tax,
+      delivery: delivery.try(:price) || 0,
+      gross: net + tax
     }
   end
 

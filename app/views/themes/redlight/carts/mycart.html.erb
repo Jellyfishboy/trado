@@ -112,7 +112,7 @@
               <td></td>
               <td></td>
               <td><strong>TOTAL:</strong></td>
-              <td><strong>£139.00</strong></td>
+              <td><strong><%= Store::Price.new(price: @cart_session[:total][:net]).single %></strong></td>
               <td></td>
             </tr>
           </tbody>
@@ -127,8 +127,8 @@
               <span>DELIVERY:</span>
             </div>
             <div>
-              <span>£139.00</span>
-              <span>£24.00</span>
+              <span><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
+              <span><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
             </div>            
           </div>
           <hr>
@@ -137,7 +137,7 @@
               <strong>ORDER TOTAL:</strong>
             </div>
             <div>
-              <strong>£163.00</strong>
+              <strong><%= Store::Price.new(price: @cart_session[:total][:gross]).single %></strong>
             </div>
           </div>
           <hr>

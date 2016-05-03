@@ -90,14 +90,14 @@ class Order < ActiveRecord::Base
   	# @param cart [Object]
   	# @param current_tax_rate [Decimal]
   	def calculate cart, current_tax_rate
-	  	tax_amount = (cart.total_price + delivery.price)*current_tax_rate
+        net_amount = cart.total_price + (delivery.try(:price) || 0)
+        tax_amount = net_amount * current_tax_rate
 	  	self.update(
-	  		:cart_id => cart.id,
-	  		:net_amount => cart.total_price,
-	  		:tax_amount => tax_amount,
-	  		:gross_amount => cart.total_price + delivery.price + tax_amount
+	  		cart_id:           cart.id,
+	  		net_amount:        net_amount,
+	  		tax_amount:        tax_amount,
+	  		gross_amount:      net_amount + tax_amount
 	  		)
-	  	self.save(validate: false)
   	end
 
   	# Returns true if the last associated transaction to the order is marked as complete

@@ -10,8 +10,8 @@ module CartBuilder
         def set_cart_session
             @cart_session = {
                 total: current_cart.calculate(Store.tax_rate),
-                country: @order.delivery_address.nil? ? current_cart.country : @order.delivery_address.country,
-                delivery_id: @order.new_record? ? current_cart.delivery_id : @order.delivery_id
+                country: (@order.nil? || @order.delivery_address.nil?) ? current_cart.country : @order.delivery_address.country,
+                delivery_id: (@order.nil? || @order.new_record?) ? current_cart.delivery_id : @order.delivery_id
             }
         end
 
