@@ -21,7 +21,6 @@ class Cart < ActiveRecord::Base
 
   has_many :cart_items,                             dependent: :destroy
   has_many :cart_item_accessories,                  through: :cart_items
-  
   has_many :skus,                                   through: :cart_items
   has_one :order
   belongs_to :delivery,                             class_name: 'DeliveryServicePrice'

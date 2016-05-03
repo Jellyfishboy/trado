@@ -44,12 +44,11 @@ Trado::Application.routes.draw do
       end
     end
   
-  	resources :carts, only: [] do
+  	resources :carts, only: [:update] do
   		collection do
 	  		get :mycart
 	  		get :checkout
-	  		patch :estimate
-	  		delete :purge_estimate
+	  		delete :reset
         %w( paypal stripe ).each do |payment|
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
         end

@@ -19,12 +19,11 @@ class ApplicationController < ActionController::Base
     end
 
   	def current_cart
-        Cart.find(session[:cart_id])
+        Cart.includes(:cart_items).find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
-  		  cart = Cart.new 
-        cart.save(validate: false)
-  		  session[:cart_id] = cart.id
-  		  return cart
+		cart = Cart.create
+		session[:cart_id] = cart.id
+		return cart
   	end
 
     def after_sign_out_path_for resource_or_scope

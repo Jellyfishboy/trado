@@ -13,22 +13,15 @@ class CartsController < ApplicationController
         render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
     end
 
-    def estimate
-        @cart = current_cart
-        respond_to do |format|
-          if @cart.update(params[:cart])
-            format.js { render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js] }
-          else
-            format.json { render json: { errors: @cart.errors.to_json(root: true) }, status: 422 }
-          end
-        end
+    def update
+        current_cart.update(params[:cart])
+        render json: { delivery: current_cart.delivery }, status: 200
+        # format.js { render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js] }
     end
 
-    def purge_estimate
-        @cart = current_cart
-        @cart.delivery_id = nil
-        @cart.country = nil
-        @cart.save(validate: false)
-        render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
+    def reset
+        current_cart.update(delivery_id: nil, country: nil)
+        render json: { }, status: 200
+        # render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
     end
 end
