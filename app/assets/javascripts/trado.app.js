@@ -180,6 +180,25 @@ trado.app =
 
     addToCart: function()
     {
-        
+        $('body').on('submit', '#new_cart_item', function ()
+        {
+            var url = $(this).attr('action')
+            $.ajax(
+            {
+                url: url,
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(data)
+                {
+                    
+                },
+                error: function(xhr, status, error)
+                {
+
+                }
+            });
+            return false;
+        });   
     }
 }
