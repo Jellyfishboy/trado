@@ -9,10 +9,8 @@ describe Cart do
     it { expect(subject).to have_many(:cart_item_accessories).through(:cart_items) }
     it { expect(subject).to have_many(:skus).through(:cart_items) }
     it { expect(subject).to have_one(:order) }
-    it { expect(subject).to belong_to(:estimate_delivery).class_name('DeliveryServicePrice') }
+    it { expect(subject).to belong_to(:delivery).class_name('DeliveryServicePrice') }
 
-    # Validations
-    it { expect(subject).to validate_presence_of(:estimate_country_name) }
 
     describe "When retrieving the cart total value" do
         let!(:cart) { create(:cart) }
@@ -31,6 +29,7 @@ describe Cart do
         let(:cart) { create(:full_cart) }
         let(:calculated_cart) { cart.calculate(20.0)}
 
+
         it "should return a hash containing the correct net amount total" do
             expect(calculated_cart[:net_amount]).to eq cart.total_price
         end
@@ -48,15 +47,15 @@ describe Cart do
 
         context "if the cart has an associated delivery estimate" do
             let!(:delivery) { create(:delivery_service_price) }
-            let(:cart) { create(:full_cart, estimate_delivery_id: delivery.id)}
+            let(:cart) { create(:full_cart, delivery_id: delivery.id)}
             let(:calculated_cart) { cart.calculate(20.0) }
 
             it "should return a hash containing the correct tax amount total, with the delivery esimate price" do
-                expect(calculated_cart[:tax_amount]).to eq (cart.total_price + cart.estimate_delivery.price) * 20.0
+                expect(calculated_cart[:tax_amount]).to eq (cart.total_price + cart.delivery.price) * 20.0
             end
 
             it "should return a hash containing the correct gross amount total, wih the delivery estimate price" do
-                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + cart.estimate_delivery.price + ((cart.total_price + cart.estimate_delivery.price) * 20.0))
+                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + cart.delivery.price + ((cart.total_price + cart.delivery.price) * 20.0))
             end
         end
     end

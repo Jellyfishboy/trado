@@ -44,14 +44,15 @@ Trado::Application.routes.draw do
       end
     end
   
-  	resources :carts, only: [] do
+  	resources :carts, only: [:update] do
   		collection do
-	  		get 'mycart'
-	  		get 'checkout'
-	  		patch 'estimate'
-	  		delete 'purge_estimate'
+	  		get :mycart
+	  		get :checkout
+	  		delete :reset
+        %w( paypal stripe ).each do |payment|
+          post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
+        end
   		end
-  		post 'confirm', on: :collection
   		resources :cart_items, only: [:create, :update, :destroy] do
   			resources :cart_item_accessories, only: [:update, :destroy]
   		end
@@ -59,11 +60,11 @@ Trado::Application.routes.draw do
 
   	resources :orders, only: [:destroy] do
   		member do
-  			get 'success'
-	  		get 'failed'
-	  		get 'retry'
-	  		get 'confirm'
-	  		post 'complete'
+  			get :success
+	  		get :failed
+	  		get :retry
+	  		get :confirm
+	  		post :complete
   		end
   		resources :addresses, only: [:new, :create, :update]
   	end
@@ -83,22 +84,22 @@ Trado::Application.routes.draw do
 	  		namespace :skus do
 	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: [:new, :create] do
 	  				collection do
-	  					patch 'update', as: 'update'
-	  					delete 'destroy', as: 'destroy'
+	  					patch :update, as: 'update'
+	  					delete :destroy, as: 'destroy'
 	  				end
 	  			end
 	  		end
 	  	end
   		resources :orders, only: [:index, :show, :update, :edit] do
 	  		member do
-	  			get 'dispatcher'
-	  			post 'dispatched'
+	  			get :dispatcher
+	  			post :dispatched
 	  		end
   		end
   		resources :delivery_services, except: :show do
 	  		collection do
-	  			get 'copy_countries'
-	  			post 'set_countries'
+	  			get :copy_countries
+	  			post :set_countries
 	  		end
   			resources :delivery_service_prices, path: 'prices', except: :show
   		end

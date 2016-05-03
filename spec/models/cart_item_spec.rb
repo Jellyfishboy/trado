@@ -34,17 +34,17 @@ describe CartItem do
             context "and the cart item does not have an accessory" do
                 let(:sku) { create(:sku) }
                 let!(:current_cart) { create(:cart) }
-                let(:cart_item) { CartItem.increment(sku, 5, nil, current_cart) }
+                let(:cart_item) { CartItem.adjust(sku, 5, nil, current_cart) }
 
                 it "should build a new cart item" do
                     expect{
-                        CartItem.increment(sku, 5, nil, current_cart).save(validate: false)
+                        CartItem.adjust(sku, 5, nil, current_cart).save(validate: false)
                     }.to change(CartItem, :count).by(1)
                 end
 
                 it "should not build a new cart item accessory" do
                     expect{
-                        CartItem.increment(sku, 5, nil, current_cart).save(validate: false)
+                        CartItem.adjust(sku, 5, nil, current_cart).save(validate: false)
                     }.to change(CartItemAccessory, :count).by(0)
                 end
 
@@ -66,17 +66,17 @@ describe CartItem do
                 let(:sku) { create(:sku) }
                 let!(:current_cart) { create(:cart) }
                 let(:param) { Hash({:accessory_id => accessory.id}) }
-                let(:cart_item) { CartItem.increment(sku, 5, param, current_cart) }
+                let(:cart_item) { CartItem.adjust(sku, 5, param, current_cart) }
 
                 it "should build a new cart item" do
                     expect{
-                        CartItem.increment(sku, 5, param, current_cart).save(validate: false)
+                        CartItem.adjust(sku, 5, param, current_cart).save(validate: false)
                     }.to change(CartItem, :count).by(1)
                 end
 
                 it "should build a new cart item accessory" do
                     expect{
-                        CartItem.increment(sku, 5, param, current_cart).save(validate: false)
+                        CartItem.adjust(sku, 5, param, current_cart).save(validate: false)
                     }.to change(CartItemAccessory, :count).by(1)
                 end
 
@@ -103,7 +103,7 @@ describe CartItem do
                 let!(:cart_item_2) { create(:cart_item, cart: current_cart, sku: sku, quantity: 14, weight: '189') }
                 let!(:accessory) { create(:accessory, weight: '8.72') }
                 let!(:cart_item_accessory) { create(:cart_item_accessory, cart_item: cart_item_2, accessory: accessory, quantity: 14) }
-                let(:build_cart_item) { CartItem.increment(sku, 3, nil, current_cart).save(validate: false) }
+                let(:build_cart_item) { CartItem.adjust(sku, 3, nil, current_cart).save(validate: false) }
 
                 it "should update the correct cart item's quantity" do
                     expect{
@@ -140,7 +140,7 @@ describe CartItem do
                 let!(:accessory) { create(:accessory, weight: '8.72') }
                 let!(:cart_item_accessory) { create(:cart_item_accessory, cart_item: cart_item_2, accessory: accessory, quantity: 14) }
                 let(:param) { Hash({:accessory_id => accessory.id }) }
-                let(:build_cart_item) { CartItem.increment(sku, 3, param, current_cart).save(validate: false) }
+                let(:build_cart_item) { CartItem.adjust(sku, 3, param, current_cart).save(validate: false) }
 
                 it "should update the cart item's quantity" do
                     expect{

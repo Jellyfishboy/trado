@@ -8,8 +8,7 @@ describe CartItemsController do
         let!(:sku) { create(:sku) }
         let!(:cart) { create(:cart) }
         before(:each) do
-            session[:payment_type] = 'paypal'
-            session[:delivery_service_prices] = [1,2,5]
+            # session[:payment_type] = 'paypal'
             stub_current_cart(cart)
         end
 
@@ -24,7 +23,7 @@ describe CartItemsController do
             expect(assigns(:cart_item).quantity).to eq 4
         end
 
-        it "should save a new cart item to the database", broken: true do
+        it "should save a new cart item to the database" do
             expect{
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
             }.to change(CartItem, :count).by(1)
@@ -64,39 +63,20 @@ describe CartItemsController do
                 xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, quantity: 17, sku_id: sku.id)
                 expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/carts/cart_items/validate/_failed")
             end
-        end 
-
-        context "if the current cart has an estimate_delivery_id" do
-            let!(:cart) { create(:cart, estimate_delivery_id: 1, estimate_country_name: 'China') }
-            before(:each) do
-                stub_current_cart(cart)
-            end
-
-            it "should set estimate_delivery_id attribute to nil value" do
-                xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-                expect(cart.estimate_delivery_id).to eq nil
-            end
-
-            it "should set estimate_country_name attribute to nil value" do
-                xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-                expect(cart.estimate_country_name).to eq nil
-            end
         end
 
-        it "should set the payment_type session store value to nil" do
-            xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-            expect(session[:payment_type]).to eq nil
-        end
-
-        it "should set the delivery_service_prices session store value to be an empty array" do
-            xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
-            expect(session[:delivery_service_prices]).to eq []
-        end
+        # it "should set the payment_type session store value to nil" do
+        #     xhr :post, :create, cart_id: cart.id, cart_item: attributes_for(:cart_item, sku_id: sku.id)
+        #     expect(session[:payment_type]).to eq nil
+        # end
     end
 
     describe 'PATCH #update' do
         let!(:cart) { create(:cart) }
         let!(:cart_item) { create(:cart_item, cart: cart) }
+        before(:each) do
+            stub_current_cart(cart)
+        end
 
         context "if the cart item has an associated cart item accessory" do
             let!(:cart_item) { create(:accessory_cart_item, cart: cart) }
