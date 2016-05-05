@@ -1,0 +1,113 @@
+<% if current_cart.cart_items.empty? %>
+	<div id="empty-cart-container">
+        <h3>Empty Cart</h3>
+        <p>You need to add some items to your cart before continuing to checkout.</p>
+    </div>
+<% else %>
+	<table id="cart-mobile">
+		<tbody>
+			<% current_cart.cart_items.each do |item| %>
+				<tr>
+					<td>
+						<table class="single-product">
+							<tbody>
+								<tr>
+									<td>
+										<table class="product-details">
+											<tbody>
+												<tr>
+													<td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+													<td>
+														<table class="product-information">
+															<tbody>
+																<tr>
+																	<td>
+																		<h3><%= item.sku.product.name %></h3>
+																	</td>
+																</tr>
+																<tr>
+																	<td><%= render_variants(item.sku) %></td>
+																</tr>
+																<% if item.cart_item_accessory.present? %>
+																<tr>
+																	<td><%= item.cart_item_accessory.accessory.name %></td>
+																</tr>
+																<% end %>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table class="product-specifics">
+											<tbody>
+												<tr>
+													<td>Quantity</td>
+													<td>
+														<input type="text" value="<%= item.quantity %>">
+													</td>
+												</tr>
+												<tr>
+													<td>Unit Price</td>
+													<td id="price"><%= Store::Price.new(price: item.total_price).single %></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<table id="cart">
+		<tbody>
+			<% current_cart.cart_items.each do |item| %>
+			<tr>
+				<td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+				<td>
+					<table id="product-information">
+						<tbody>
+							<tr>
+								<td>
+									<h3><%= item.sku.product.name %></h3>
+								</td>
+							</tr>
+							<tr>
+								<td><%= render_variants(item.sku) %></td>
+							</tr>
+							<% if item.cart_item_accessory.present? %>
+							<tr>
+								<td><%= item.cart_item_accessory.accessory.name %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</td>
+				<td>
+					<input type="text" value="<%= item.quantity %>">
+				</td>
+				<td><%= Store::Price.new(price: item.total_price).single %></td>
+				<td>
+					<a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
+						<i class="icon-close"></i>
+					</a>
+				</td>
+			</tr>
+			<% end %>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><strong>TOTAL:</strong></td>
+				<td><strong><%= Store::Price.new(price: @cart_session[:total][:net]).single %></strong></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+<% end %>

@@ -12,111 +12,8 @@
     </div>
     <div class='row checkout-panel'>
       <h2 class="checkout-header visible-xs">My cart</h2>
-      <div class="col-lg-8 col-sm-8">
-        <table id="cart-mobile">
-          <tbody>
-            <% current_cart.cart_items.each do |item| %>
-              <tr>
-                <td>
-                  <table class="single-product">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <table class="product-details">
-                            <tbody>
-                              <tr>
-                                <td><%= image_tag item.sku.product.attachments.first.file.square %></td>
-                                <td>
-                                  <table class="product-information">
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          <h3><%= item.sku.product.name %></h3>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td><%= render_variants(item.sku) %></td>
-                                      </tr>
-                                      <% if item.cart_item_accessory.present? %>
-                                        <tr>
-                                          <td><%= item.cart_item_accessory.accessory.name %></td>
-                                        </tr>
-                                      <% end %>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      <tr>
-                        <td>
-                          <table class="product-specifics">
-                            <tbody>
-                              <tr>
-                                <td>Quantity</td>
-                                <td>
-                                  <input type="text" value="<%= item.quantity %>">
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Unit Price</td>
-                                <td id="price"><%= Store::Price.new(price: item.total_price).single %></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                  </table>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <table id="cart">
-          <tbody>
-            <% current_cart.cart_items.each do |item| %>
-              <tr>
-                <td><%= image_tag item.sku.product.attachments.first.file.square %></td>
-                <td>
-                  <table id="product-information">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <h3><%= item.sku.product.name %></h3>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><%= render_variants(item.sku) %></td>
-                      </tr>
-                      <% if item.cart_item_accessory.present? %>
-                        <tr>
-                          <td><%= item.cart_item_accessory.accessory.name %></td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
-                </td>
-                <td>
-                  <input type="text" value="<%= item.quantity %>">
-                </td>
-                <td><%= Store::Price.new(price: item.total_price).single %></td>
-                <td>
-                  <a href="#">
-                    <i class="icon-close"></i>
-                  </a>
-                </td>
-              </tr>
-            <% end %>
-            <tr>
-              <td></td>
-              <td></td>
-              <td><strong>TOTAL:</strong></td>
-              <td><strong><%= Store::Price.new(price: @cart_session[:total][:net]).single %></strong></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-lg-8 col-sm-8" id="cart-wrapper">
+        <%= render partial: theme_presenter.page_template_path('carts/cart'), format: [:html] %>
       </div>
       <h2 class='checkout-header visible-xs'>Order Summary</h2>
       <div class='col-lg-4 col-sm-4 order-summary'>
@@ -128,9 +25,9 @@
               <span>TAX: </span>
             </div>
             <div>
-              <span><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
-              <span><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
-              <span><%= Store::Price.new(price: @cart_session[:total][:tax]).single %></span>
+              <span id="net-price"><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
+              <span id="delivery-price"><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
+              <span id="tax-price"><%= Store::Price.new(price: @cart_session[:total][:tax]).single %></span>
             </div>            
           </div>
           <hr>
@@ -139,7 +36,7 @@
               <strong>ORDER TOTAL:</strong>
             </div>
             <div>
-              <strong><%= Store::Price.new(price: @cart_session[:total][:gross]).single %></strong>
+              <strong id="gross-price"><%= Store::Price.new(price: @cart_session[:total][:gross]).single %></strong>
             </div>
           </div>
           <hr>

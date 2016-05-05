@@ -217,7 +217,12 @@ trado.app =
                 success: function(data)
                 {
                     $('#cart-container').html(data.popup);
+                    $('#cart-wrapper').html(data.cart);
                     $('#basket-icon span').html(data.cart_quantity);
+                    $('#net-price').html(data.net);
+                    $('#delivery-price').html(data.delivery);
+                    $('#tax-price').html(data.tax);
+                    $('#gross-price').html(data.gross);
                 }
             });
             return false;
