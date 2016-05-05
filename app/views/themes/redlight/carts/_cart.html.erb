@@ -29,9 +29,9 @@
 																	<td><%= render_variants(item.sku) %></td>
 																</tr>
 																<% if item.cart_item_accessory.present? %>
-																<tr>
-																	<td><%= item.cart_item_accessory.accessory.name %></td>
-																</tr>
+																	<tr>
+																		<td><%= item.cart_item_accessory.accessory.name %></td>
+																	</tr>
 																<% end %>
 															</tbody>
 														</table>
@@ -105,7 +105,7 @@
 				<td></td>
 				<td></td>
 				<td><strong>TOTAL:</strong></td>
-				<td><strong><%= Store::Price.new(price: @cart_session[:total][:net]).single %></strong></td>
+				<td><strong><%= Store::Price.new(price: @cart_totals[:net]).single %></strong></td>
 				<td></td>
 			</tr>
 		</tbody>

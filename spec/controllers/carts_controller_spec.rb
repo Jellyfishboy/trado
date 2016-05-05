@@ -5,10 +5,19 @@ describe CartsController do
     store_setting
 
     describe 'GET #mycart' do
+        let!(:cart) { create(:cart) }
+        before(:each) do
+            stub_current_cart(cart)
+        end
 
         it "should render the mycart template" do
             get :mycart
             expect(response).to render_template :mycart
+        end
+
+        it "should assign the calculated cart values to @cart_totals" do
+            get :checkout
+            expect(assigns(:cart_totals)).to eq cart.calculate(0.2)
         end
     end
 
@@ -20,9 +29,9 @@ describe CartsController do
             stub_current_cart(cart)
         end
 
-        it "should assign the calculated cart values to @cart_session[:total]" do
+        it "should assign the calculated cart values to @cart_totals" do
             get :checkout
-            expect(assigns(:cart_session)[:total]).to eq cart.calculate(0.2)
+            expect(assigns(:cart_totals)).to eq cart.calculate(0.2)
         end
 
         context "if the order doesn't have an associated delivery address record" do

@@ -25,9 +25,9 @@
               <span>TAX: </span>
             </div>
             <div>
-              <span id="net-price"><%= Store::Price.new(price: @cart_session[:total][:net]).single %></span>
-              <span id="delivery-price"><%= Store::Price.new(price: @cart_session[:total][:delivery]).single %></span>
-              <span id="tax-price"><%= Store::Price.new(price: @cart_session[:total][:tax]).single %></span>
+              <span id="net-price"><%= Store::Price.new(price: @cart_totals[:net]).single %></span>
+              <span id="delivery-price"><%= Store::Price.new(price: @cart_totals[:delivery]).single %></span>
+              <span id="tax-price"><%= Store::Price.new(price: @cart_totals[:tax]).single %></span>
             </div>            
           </div>
           <hr>
@@ -36,7 +36,7 @@
               <strong>ORDER TOTAL:</strong>
             </div>
             <div>
-              <strong id="gross-price"><%= Store::Price.new(price: @cart_session[:total][:gross]).single %></strong>
+              <strong id="gross-price"><%= Store::Price.new(price: @cart_totals[:gross]).single %></strong>
             </div>
           </div>
           <hr>

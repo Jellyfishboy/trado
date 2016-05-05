@@ -8,8 +8,4 @@ module OrderHelper
         end
       "<span class='label label-#{class_name} label-small'>#{status.capitalize}</span>".html_safe
     end
-
-    def selected_country cart, order_address
-        order_address.nil? ? cart.country : order_address
-    end
 end

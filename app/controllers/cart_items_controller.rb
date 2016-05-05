@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  include CartBuilder
 	skip_before_action :authenticate_user!
 
 	def create
@@ -18,6 +19,7 @@ class CartItemsController < ApplicationController
 		set_accessory
 		if @cart_item.sku.valid_stock?(@quantity)
 			set_and_adjust_cart_item(params[:cart_item][:quantity].to_i - @cart_item.quantity)
+      set_cart_totals
 			render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
 		else
 			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
@@ -27,16 +29,16 @@ class CartItemsController < ApplicationController
 	def destroy
 		set_cart_item
 		@cart_item.destroy
-        reset_cart_session
-        render json: { 
-            popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
-            cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
-            cart_quantity: current_cart.cart_items.sum('quantity'),
-            net: Store::Price.new(price: @cart_session[:net]).single,
-            delivery: Store::Price.new(price: @cart_session[:delivery]).single,
-            tax: Store::Price.new(price: @cart_session[:tax]).single,
-            gross: Store::Price.new(price: @cart_session[:gross]).single
-        }, status: 200
+    set_cart_totals
+    render json: { 
+        popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
+        cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
+        cart_quantity: current_cart.cart_items.sum('quantity'),
+        net: Store::Price.new(price: @cart_totals[:net]).single,
+        delivery: Store::Price.new(price: @cart_totals[:delivery]).single,
+        tax: Store::Price.new(price: @cart_totals[:tax]).single,
+        gross: Store::Price.new(price: @cart_totals[:gross]).single
+    }, status: 200
 	end  
 
 	private
@@ -48,10 +50,6 @@ class CartItemsController < ApplicationController
   	def set_cart_item
   		@cart_item ||= CartItem.find(params[:id])
   	end
-
-    def reset_cart_session
-        @cart_session = current_cart.calculate(Store.tax_rate)
-    end
 
   	def set_create_quantity
   		@quantity = current_cart.cart_items.where(sku_id: @sku.id).sum(:quantity) + params[:cart_item][:quantity].to_i

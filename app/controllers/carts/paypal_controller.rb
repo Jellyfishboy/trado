@@ -1,8 +1,9 @@
-class Carts::PayPalController < ApplicationController
+class Carts::PaypalController < ApplicationController
     include CartBuilder
 
     def confirm
         set_order
+        set_cart_totals
         set_cart_session
         set_delivery_services
         @order.attributes = params[:order]
