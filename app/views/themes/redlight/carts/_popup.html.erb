@@ -1,52 +1,50 @@
-<div id="cart-container">
-    <% if current_cart.cart_items.empty? %>
-        <p>You have no items in your cart</p>
-    <% else %>
-        <table id="cart-items">
-            <tbody>
-                <% current_cart.cart_items.each do |item| %>
-                    <tr>
-                        <td>
-                            <%= link_to (image_tag item.sku.product.attachments.first.file.square, alt: item.sku.product.name), [item.sku.product.category, item.sku.product] %>
-                        </td>
-                        <td>
-                            <table class="cart-item-details">
-                                <tbody>
-                                    <tr>
-                                        <td><%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %></td>
-                                    </tr>
-                                    <tr>
-                                        <td><%= render_variants(item.sku) %></td>
-                                    </tr>
-                                    <tr>
-                                        <td><%= item.quantity %></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                        <td>
-                            <div><%= Store::Price.new(price: item.total_price).single %></div>
-                            <a href="#" class="delete-cart-item">
-                                <i class="icon-close"></i>
-                            </a>
-                        </td>
-                    </tr>   
-                <% end %>
-            </tbody>
-        </table>
-    <% end %>
-    <hr>
-    <table id="cart-total">
+<% if current_cart.cart_items.empty? %>
+    <p>You have no items in your cart</p>
+<% else %>
+    <table id="cart-items">
         <tbody>
-            <tr>
-                <td>
-                    Total
-                </td>
-                <td>
-                    <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
-                </td>
-            </tr>
+            <% current_cart.cart_items.each do |item| %>
+                <tr>
+                    <td>
+                        <%= link_to (image_tag item.sku.product.attachments.first.file.square, alt: item.sku.product.name), [item.sku.product.category, item.sku.product] %>
+                    </td>
+                    <td>
+                        <table class="cart-item-details">
+                            <tbody>
+                                <tr>
+                                    <td><%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %></td>
+                                </tr>
+                                <tr>
+                                    <td><%= render_variants(item.sku) %></td>
+                                </tr>
+                                <tr>
+                                    <td><%= item.quantity %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <div><%= Store::Price.new(price: item.total_price).single %></div>
+                        <a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
+                            <i class="icon-close"></i>
+                        </a>
+                    </td>
+                </tr>   
+            <% end %>
         </tbody>
     </table>
-    <%= link_to 'View Cart', mycart_carts_path, class: 'btn green' %>
-</div>
+<% end %>
+<hr>
+<table id="cart-total">
+    <tbody>
+        <tr>
+            <td>
+                Total
+            </td>
+            <td>
+                <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<%= link_to 'View Cart', mycart_carts_path, class: 'btn green' %>

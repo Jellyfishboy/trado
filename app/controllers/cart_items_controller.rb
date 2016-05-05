@@ -6,9 +6,9 @@ class CartItemsController < ApplicationController
 		set_create_quantity
 		if @sku.valid_stock?(@quantity)
 			set_and_adjust_cart_item(params[:cart_item][:quantity])
-			render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+            render json: { html: render_to_string(partial: theme_presenter.page_template_path('carts/popup')), cart_quantity: current_cart.cart_items.sum('quantity') }, status: 200
 		else
-			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
+            render json: { html: render_to_string(partial: theme_presenter.page_template_path("carts/cart_items/validate/modal"), locals: { sku: @sku }) }, status: 422
 		end
 	end
 
@@ -28,7 +28,7 @@ class CartItemsController < ApplicationController
 		set_cart_item
 		reset_session
 		@cart_item.destroy
-		render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+        render json: { popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')), cart_quantity: current_cart.cart_items.sum('quantity'), cart_quantity: current_cart.cart_items.sum('quantity') }, status: 200
 	end  
 
 	private

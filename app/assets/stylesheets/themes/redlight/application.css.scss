@@ -1425,6 +1425,11 @@ section {
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
   z-index: -1; }
+  #cart-container p {
+        text-align: center;
+        font-weight: bold;
+        margin: 25px 0;
+    }
   #cart-container.active {
     top: 55px !important; }
   #cart-container table {

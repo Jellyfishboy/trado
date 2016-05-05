@@ -53,10 +53,8 @@ Trado::Application.routes.draw do
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
         end
   		end
-  		resources :cart_items, only: [:create, :update, :destroy] do
-  			resources :cart_item_accessories, only: [:update, :destroy]
-  		end
   	end
+    resources :cart_items, only: [:create, :update, :destroy]
 
   	resources :orders, only: [:destroy] do
   		member do

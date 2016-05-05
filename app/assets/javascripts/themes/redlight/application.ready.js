@@ -26,6 +26,8 @@ ready = function()
     trado.app.updateDeliveryServicePrice();
     trado.app.duplicateAddress();
     trado.app.jsonErrors();
+    trado.app.addToCart();
+    trado.app.deleteCartItem();
     
     // Initialise floating sidebar for checkout order summary
     $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(

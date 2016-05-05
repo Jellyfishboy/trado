@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <%= form_for [current_cart, @cart_item], html: { method: :post, remote: true } do |f| %>
+      <%= form_for @cart_item, html: { method: :post, remote: true } do |f| %>
         <div class="row options">
           <div class="col-lg-4 col-sm-4">
             <p class="visible-xs">

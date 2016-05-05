@@ -191,14 +191,36 @@ trado.app =
                 dataType: "json",
                 success: function(data)
                 {
-                    
+                    $('#cart-container').html(data.html);
+                    $('#basket-icon span').html(data.cart_quantity);
                 },
                 error: function(xhr, status, error)
                 {
-
+                    $('#validate-cart-item').html(xhr.responseJSON.html);
+                    $('#validateCartItemModal').modal('show');
                 }
             });
             return false;
         });   
+    },
+
+    deleteCartItem: function()
+    {
+        $('body').on('click', '.delete-cart-item', function ()
+        {
+            var cartItemId = $(this).attr('data-cart-item-id');
+            $.ajax(
+            {
+                url: '/cart_items/' + cartItemId,
+                type: "DELETE",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#cart-container').html(data.popup);
+                    $('#basket-icon span').html(data.cart_quantity);
+                }
+            });
+            return false;
+        });
     }
 }
