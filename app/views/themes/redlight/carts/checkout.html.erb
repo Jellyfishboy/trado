@@ -14,14 +14,17 @@
       <%= form_for @order, url: paypal_confirm_carts_path, html: { method: :post } do |f| %>
         <h2 class="checkout-header visible-xs">Checkout</h2>
         <div class='col-lg-8 col-sm-8'>
+            <% unless @order.errors.empty? %>
+              <p>Please complete all of the required fields</p>
+            <% end %>
             <h3>DELIVERY ADDRESS</h3>
             <%= f.fields_for :delivery_address do |delivery| %>
               <div class='form-check-group'>
-                <%= delivery.label :first_name %>
+                <%= delivery.label 'First name *' %>
                 <%= delivery.text_field :first_name %>
               </div>
               <div class='form-check-group'>
-                <%= delivery.label :last_name %>
+                <%= delivery.label 'Last name *' %>
                 <%= delivery.text_field :last_name %>
               </div>
               <div class='form-check-group'>
@@ -29,30 +32,30 @@
                 <%= delivery.text_field :telephone %>
               </div>
               <div class='form-check-group'>
-                <%= delivery.label :address %>
+                <%= delivery.label 'Address *' %>
                 <%= delivery.text_field :address %>
               </div>
               <div class='form-check-group'>
-                <%= delivery.label :city %>
+                <%= delivery.label 'City *' %>
                 <%= delivery.text_field :city %>
               </div>
               <div class='form-check-group-half'>
-                <%= delivery.label :postcode %>
+                <%= delivery.label 'Postcode/Zip *' %>
                 <%= delivery.text_field :postcode %>
               </div>
               <div class='form-check-group-half'>
-                <%= delivery.label :postcode %>
+                <%= delivery.label :country %>
                 <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}) %>
               </div>
             <% end %>
             <h3>PAYMENT DETAILS</h3>
             <%= f.fields_for :billing_address do |billing| %>
               <div class='form-check-group'>
-                <%= billing.label :first_name %>
+                <%= billing.label 'First name *' %>
                 <%= billing.text_field :first_name %>
               </div>
               <div class='form-check-group'>
-                <%= billing.label :first_name %>
+                <%= billing.label 'Last name *' %>
                 <%= billing.text_field :first_name %>
               </div>
               <div class="payment-choices">
@@ -70,19 +73,19 @@
                 <%= billing.text_field :telephone %>
               </div>
               <div class='form-check-group'>
-                <%= billing.label :address %>
+                <%= billing.label 'Address *' %>
                 <%= billing.text_field :address %>
               </div>
               <div class='form-check-group'>
-                <%= billing.label :city %>
+                <%= billing.label 'City *' %>
                 <%= billing.text_field :city %>
               </div>
               <div class='form-check-group-half'>
-                <%= billing.label :postcode %>
+                <%= billing.label 'Postcode/Zip *' %>
                 <%= billing.text_field :postcode %>
               </div>
               <div class='form-check-group-half'>
-                <%= billing.label :postcode %>
+                <%= billing.label :country %>
                 <%= billing.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}) %>
               </div>
             <% end %>
