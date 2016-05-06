@@ -68,27 +68,27 @@ trado.app =
         });
     },
 
-    duplicateAddress: function() 
-    {
-        $('.use-billing-address').change(function() 
-        {
-            if (this.checked) 
-            {
-                $('.use-billing').each(function() 
-                {
-                    return $(this).val($(this).next('div').text());
-                });
-                $('.field_with_errors').each(function() 
-                {
-                    return $(this).children('input').val($(this).next('div').text());
-                });
-            } 
-            else 
-            {
-                return $('.use-billing').val('');
-            }
-        });
-    },
+    // duplicateAddress: function() 
+    // {
+    //     $('.use-billing-address').change(function() 
+    //     {
+    //         if (this.checked) 
+    //         {
+    //             $('.use-billing').each(function() 
+    //             {
+    //                 return $(this).val($(this).next('div').text());
+    //             });
+    //             $('.field_with_errors').each(function() 
+    //             {
+    //                 return $(this).children('input').val($(this).next('div').text());
+    //             });
+    //         } 
+    //         else 
+    //         {
+    //             return $('.use-billing').val('');
+    //         }
+    //     });
+    // },
 
     selectDeliveryServicePrice: function() 
     {

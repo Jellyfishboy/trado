@@ -15,7 +15,9 @@
         <h2 class="checkout-header visible-xs">Checkout</h2>
         <div class='col-lg-8 col-sm-8'>
             <% unless @order.errors.empty? %>
-              <p>Please complete all of the required fields</p>
+              <div class="errors">
+                <p>Please complete all of the required fields</p>
+              </div>
             <% end %>
             <h3>DELIVERY ADDRESS</h3>
             <%= f.fields_for :delivery_address do |delivery| %>
@@ -29,23 +31,23 @@
               </div>
               <div class='form-check-group'>
                 <%= delivery.label :telephone %>
-                <%= delivery.text_field :telephone %>
+                <%= delivery.text_field :telephone, 'data-field-name' => 'telephone', class: 'copy-delivery' %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label 'Address *' %>
-                <%= delivery.text_field :address %>
+                <%= delivery.text_field :address, 'data-field-name' => 'address', class: 'copy-delivery' %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label 'City *' %>
-                <%= delivery.text_field :city %>
+                <%= delivery.text_field :city, 'data-field-name' => 'city', class: 'copy-delivery' %>
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label 'Postcode/Zip *' %>
-                <%= delivery.text_field :postcode %>
+                <%= delivery.text_field :postcode, 'data-field-name' => 'postcode', class: 'copy-delivery' %>
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label :country %>
-                <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}) %>
+                <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery') %>
               </div>
             <% end %>
             <h3>PAYMENT DETAILS</h3>
@@ -66,27 +68,27 @@
               <h3>BILLING ADDRESS</h3>
               <div class='form-check-group-full'>
                 <input id='use-delivery-address' name='use-delivery' type='checkbox' value='1'>
-                <span>Use my Shipping Address</span>
+                <span>Use my Delivery Address</span>
               </div>
               <div class='form-check-group'>
                 <%= billing.label :telephone %>
-                <%= billing.text_field :telephone %>
+                <%= billing.text_field :telephone, 'data-field-name' => 'billing-telephone' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'Address *' %>
-                <%= billing.text_field :address %>
+                <%= billing.text_field :address, 'data-field-name' => 'billing-address' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'City *' %>
-                <%= billing.text_field :city %>
+                <%= billing.text_field :city, 'data-field-name' => 'billing-city' %>
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label 'Postcode/Zip *' %>
-                <%= billing.text_field :postcode %>
+                <%= billing.text_field :postcode, 'data-field-name' => 'billing-postcode' %>
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label :country %>
-                <%= billing.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}) %>
+                <%= billing.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
               </div>
             <% end %>
         </div>
@@ -183,6 +185,7 @@
             <hr>
           </div>
           <div class='form-check-group-full'>
+            <%= errors_for @order, :terms %>
             <%= f.check_box :terms, checked: false %>
             <span>Tick this box to acknowledge that you have read and agree with our terms and conditions.</span>
           </div>

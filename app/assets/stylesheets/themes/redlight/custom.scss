@@ -1,7 +1,32 @@
-div.field_with_errors
+
+
+form
 {
-    input
+    .errors
     {
-        border: 1px solid #cd2626 !important;
+        color: #cd2626;
+        margin:15px 0;
+        font-size: 1.1em;
+    }
+
+    div.field_with_errors
+    {
+        input
+        {
+            border: 1px solid #cd2626 !important;
+        }
+    }
+
+    .form-check-group-full
+    {
+        .field_with_errors
+        {
+            display: inline-block;
+        }
+        .error-explanation
+        {
+            display: block;
+            color: #cd2626;
+        }
     }
 }

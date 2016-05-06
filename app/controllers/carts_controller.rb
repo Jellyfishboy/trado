@@ -17,6 +17,7 @@ class CartsController < ApplicationController
         render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
     end
 
+
     def update
         current_cart.update(params[:cart])
         render json: { delivery: current_cart.delivery }, status: 200

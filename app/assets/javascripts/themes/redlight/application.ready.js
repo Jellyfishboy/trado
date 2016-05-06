@@ -24,7 +24,6 @@ ready = function()
 
     trado.app.selectDeliveryServicePrice();
     trado.app.updateDeliveryServicePrice();
-    trado.app.duplicateAddress();
     trado.app.jsonErrors();
     trado.app.addToCart();
     trado.app.deleteCartItem();
