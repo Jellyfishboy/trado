@@ -46,7 +46,6 @@ Trado::Application.routes.draw do
 	  		get :mycart
 	  		get :checkout
         get :delivery_service_prices
-	  		delete :reset
         %w( paypal stripe ).each do |payment|
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
         end
