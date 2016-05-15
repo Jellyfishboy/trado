@@ -1,10 +1,9 @@
 class CategoriesController < ApplicationController
     skip_before_action :authenticate_user!
-    
 
     def show
-      
-      render theme_presenter.page_template_path('categories/show'), format: [:html], layout: theme_presenter.layout_template_path
+        set_category
+        render theme_presenter.page_template_path('categories/show'), format: [:html], layout: theme_presenter.layout_template_path
     end
 
     private
