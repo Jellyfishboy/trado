@@ -63,7 +63,11 @@
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'Last name *' %>
-                <%= billing.text_field :first_name %>
+                <%= billing.text_field :last_name %>
+              </div>
+              <div class='form-check-group'>
+                <%= billing.label 'Email *' %>
+                <%= f.text_field :email %>
               </div>
               <div class="payment-choices">
                 <div>
