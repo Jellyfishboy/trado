@@ -15,7 +15,7 @@ class Admin::SkusController < ApplicationController
     unless @product.skus.active.empty?
       @form_sku = @product.skus.build(params[:sku])
       if @form_sku.save
-          render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @form_sku }), sku_id: @form_sku.id }, status: 200
+        render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @form_sku }), sku_id: @form_sku.id }, status: 201
       else
         render json: { errors: @form_sku.errors.full_messages }, status: 422
       end
@@ -63,7 +63,7 @@ class Admin::SkusController < ApplicationController
       @form_sku = @old_sku ||= Sku.find(params[:id])
       Store.activate!(@form_sku)
       @form_sku.attributes = params[:sku]
-      render json: { errors: @sku.errors.full_messages}, status: 422
+      render json: { errors: @sku.errors.full_messages }, status: 422
     end
   end
 

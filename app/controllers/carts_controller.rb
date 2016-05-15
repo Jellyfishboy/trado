@@ -26,8 +26,13 @@ class CartsController < ApplicationController
 
     def reset
         current_cart.update(delivery_id: nil, country: nil)
-        render json: { }, status: 200
+        render json: { }, status: 204
         # render partial: theme_presenter.page_template_path('carts/delivery_service_prices/estimate/success'), format: [:js]
+    end
+
+    def delivery_service_prices
+        set_delivery_service_prices
+        render json: { table: render_to_string(partial: theme_presenter.page_template_path("carts/delivery_service_prices/table"), format: [:html], locals: { delivery_service_prices: @delivery_service_prices }) }, status: 200
     end
 
     private
@@ -35,5 +40,9 @@ class CartsController < ApplicationController
     def build_addresses
         @order.build_delivery_address
         @order.build_billing_address
+    end
+
+    def set_delivery_service_prices
+        @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, params[:country_id])
     end
 end

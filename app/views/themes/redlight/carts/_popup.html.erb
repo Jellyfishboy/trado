@@ -6,13 +6,13 @@
             <% current_cart.cart_items.each do |item| %>
                 <tr>
                     <td>
-                        <%= link_to (image_tag item.sku.product.attachments.first.file.square, alt: item.sku.product.name), [item.sku.product.category, item.sku.product] %>
+                        <%= link_to (image_tag item.product.attachments.first.file.square, alt: item.product.name), [item.category, item.product] %>
                     </td>
                     <td>
                         <table class="cart-item-details">
                             <tbody>
                                 <tr>
-                                    <td><%= link_to item.sku.product.name, [item.sku.product.category, item.sku.product] %></td>
+                                    <td><%= link_to item.product.name, [item.category, item.product] %></td>
                                 </tr>
                                 <tr>
                                     <td><%= render_variants(item.sku) %></td>

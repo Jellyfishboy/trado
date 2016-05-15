@@ -18,7 +18,7 @@ class Admin::AttachmentsController < ApplicationController
     @attachment = @product.attachments.build(params[:attachment])
     if @attachment.save
       set_attachments
-      render json: { images: render_to_string(partial: 'admin/products/attachments/multiple', locals: { attachments: @attachments }) }, status: 200
+      render json: { images: render_to_string(partial: 'admin/products/attachments/multiple', locals: { attachments: @attachments }) }, status: 201
     else
       render json: { errors: @attachment.errors.full_messages }, status: 422
     end

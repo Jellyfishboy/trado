@@ -14,13 +14,11 @@ class Admin::AdminController < ApplicationController
 
     def update
         set_setting
-        respond_to do |format|
-          if @settings.update(params[:store_setting])
+        if @settings.update(params[:store_setting])
             flash_message :success, 'Store settings were successfully updated.'
-            format.html { redirect_to admin_root_path }
-          else
-            format.html { render action: "settings" } 
-          end
+            redirect_to admin_root_url
+        else
+            render action: "settings"
         end
     end
 

@@ -1298,6 +1298,25 @@ section {
   .checkout .checkout-panel .col-lg-4 .form-check-group-full {
     text-align: left;
     margin: 0 15px 10px 0; }
+    .checkout .checkout-panel #delivery-services table {
+  font-size: 0.83em; }
+  .checkout .checkout-panel #delivery-services table thead th {
+    padding: 5px; }
+  .checkout .checkout-panel #delivery-services table tbody tr {
+    cursor: pointer;
+    -webkit-transition: all 0s ease;
+    -moz-transition: all 0s ease;
+    -ms-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease; }
+    .checkout .checkout-panel #delivery-services table tbody tr.active {
+      color: #fff;
+      background: #4baec8; }
+    .checkout .checkout-panel #delivery-services table tbody tr td {
+      padding: 5px; }
+    .checkout .checkout-panel #delivery-services table tbody tr td input {
+        position: relative;
+        top: -2px; }
 .checkout .checkout-panel #cart-checkout-container {
   height: 288px;
   overflow-y: scroll;

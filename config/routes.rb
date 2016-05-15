@@ -5,8 +5,6 @@ Trado::Application.routes.draw do
 	root to: 'store#home'
 
   	# Custom routes
-  	get '/carts/delivery_service_prices/update' => 'delivery_service_prices#update'
-  	get '/product/accessories' => 'accessories#update'
   	get '/search' => 'search#results'
   	get '/search/autocomplete' => 'search#autocomplete'
 
@@ -26,7 +24,6 @@ Trado::Application.routes.draw do
   	devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   	resources :users
   	resources :contacts, only: :create
-  	resources :delivery_service_prices, only: :update
   
 
   	resources :categories, only: :show do
@@ -48,6 +45,7 @@ Trado::Application.routes.draw do
   		collection do
 	  		get :mycart
 	  		get :checkout
+        get :delivery_service_prices
 	  		delete :reset
         %w( paypal stripe ).each do |payment|
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"

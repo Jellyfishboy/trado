@@ -5,10 +5,9 @@ class ErrorsController < ApplicationController
         render theme_presenter.page_template_path("errors/#{status_code.to_s}"), format: [:html], layout: theme_presenter.layout_template_path, status: status_code
     end
 
-    protected
+    private
 
-        def status_code
-            params[:code] || 500
-        end
-
+    def status_code
+        params[:code] || 500
+    end
 end

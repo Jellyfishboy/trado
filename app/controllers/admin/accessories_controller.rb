@@ -3,20 +3,11 @@ class Admin::AccessoriesController < ApplicationController
   layout 'admin'
 
   def index
-    @accessories = Accessory.where('active = ?', true)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @accessories }
-    end
+    set_accessories
   end
 
   def new
-    @accessory = Accessory.new
-    respond_to do |format|
-      format.html
-      format.json { render json: @accessory }
-    end
+    new_accessory
   end
 
   def edit
@@ -26,15 +17,11 @@ class Admin::AccessoriesController < ApplicationController
   def create
     @accessory = Accessory.new(params[:accessory])
 
-    respond_to do |format|
-      if @accessory.save
-        flash_message :success, 'Accessory was successfully created.'
-        format.html { redirect_to admin_accessories_url }
-        format.json { render json: @accessory, status: :created, location: @accessory }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @accessory.errors, status: :unprocessable_entity }
-      end
+    if @accessory.save
+      flash_message :success, 'Accessory was successfully created.'
+      redirect_to admin_accessories_url
+    else
+      render :new
     end
   end
 
@@ -64,12 +51,10 @@ class Admin::AccessoriesController < ApplicationController
       @form_accessory = @old_accessory ||= Accessory.find(params[:id])
       Store.activate!(@form_accessory)
       @form_accessory.attributes = params[:accessory]
-      render action: "edit"
+      render :edit
     end
   end
 
-  # Destroying an accessory
-  #
   def destroy
     set_accessory
     Store.active_archive(CartItemAccessory, :accessory_id, @accessory)
@@ -80,6 +65,14 @@ class Admin::AccessoriesController < ApplicationController
   private
 
   def set_accessory
-    @accessory = Accessory.find(params[:id])
+    @accessory ||= Accessory.find(params[:id])
+  end
+
+  def set_accessories
+    @accessories ||= Accessory.where('active = ?', true)
+  end
+
+  def new_accessory
+    @accessory = Accessory.new
   end
 end

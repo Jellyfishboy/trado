@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
       flash_message :success, 'Category was successfully created.'
       redirect_to admin_categories_url
     else
-      render action: "new"
+      render :new
     end
   end
 
@@ -31,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
       flash_message :success, 'Category was successfully updated.'
       redirect_to admin_categories_url
     else
-      render action: "edit"
+      render :edit
     end
   end
 

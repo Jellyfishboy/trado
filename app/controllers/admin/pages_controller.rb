@@ -2,7 +2,7 @@ class Admin::PagesController < ApplicationController
   layout 'admin'
 
   def index
-    @pages = Page.all
+    set_pages
   end
 
   def edit
@@ -26,6 +26,10 @@ class Admin::PagesController < ApplicationController
   
   def set_page
     @page ||= Page.find(params[:id])
+  end
+
+  def set_pages
+    @pages ||= Page.all
   end
 
   def list_template_types

@@ -7,6 +7,6 @@ class Admin::Products::TagsController < ApplicationController
   # @return [JSON object]
   def index 
     @tags = Tag.all.map(&:name)
-    render json: @tags
+    render json: @tags, status: 200
   end
 end

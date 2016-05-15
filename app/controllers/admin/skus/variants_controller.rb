@@ -41,7 +41,7 @@ class Admin::Skus::VariantsController < ApplicationController
                     SkuVariant.create(sku_id: sku.id, name: value, variant_type_id: variant[:id])
                 end
             end
-            render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@total_possible_skus, "variant")  }
+            render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@total_possible_skus, "variant")  }, status: 200
         end
     end
 
@@ -58,7 +58,7 @@ class Admin::Skus::VariantsController < ApplicationController
         @delete_variants.destroy_all
         set_updated_skus
 
-        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.skus.active.empty? }
+        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.skus.active.empty? }, status: 200
     end
 
     def destroy
@@ -66,7 +66,7 @@ class Admin::Skus::VariantsController < ApplicationController
         @product.skus.active.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end
-        render json: { }, status: 200
+        render json: { }, status: 204
     end
 
     private

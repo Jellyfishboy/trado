@@ -4,8 +4,8 @@ class Admin::ProductsController < ApplicationController
 
   def index
     clean_drafts
-    @products = Product.active.load
-    @categories = Category.joins(:products).group('categories.id').all
+    set_products
+    set_categories
   end
 
   def new
@@ -20,7 +20,6 @@ class Admin::ProductsController < ApplicationController
     set_product
     set_skus
     set_attachments
-    binding.pry
   end
 
   def update
@@ -79,14 +78,22 @@ class Admin::ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
+    @product ||= Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
+  end
+
+  def set_products
+    @products = Product.active.load
+  end
+
+  def set_categories
+    @categories = Category.joins(:products).group('categories.id').all
   end
 
   def set_attachments
-    @attachments = @product.attachments.includes(:attachable)
+    @attachments ||= @product.attachments.includes(:attachable)
   end
 
   def set_skus
-    @skus = @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc)
+    @skus ||= @product.skus.includes(:variants, :stock_adjustments).active.order(code: :asc)
   end
 end

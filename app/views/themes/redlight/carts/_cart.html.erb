@@ -16,13 +16,13 @@
 										<table class="product-details">
 											<tbody>
 												<tr>
-													<td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+													<td><%= link_to (image_tag item.product.attachments.first.file.square), [item.category, item.product] %></td>
 													<td>
 														<table class="product-information">
 															<tbody>
 																<tr>
 																	<td>
-																		<h3><%= item.sku.product.name %></h3>
+																		<h3><%= item.product.name %></h3>
 																	</td>
 																</tr>
 																<tr>
@@ -70,13 +70,13 @@
 		<tbody>
 			<% current_cart.cart_items.each do |item| %>
 			<tr>
-				<td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+				<td><%= link_to (image_tag item.product.attachments.first.file.square), [item.category, item.product] %></td>
 				<td>
 					<table id="product-information">
 						<tbody>
 							<tr>
 								<td>
-									<h3><%= item.sku.product.name %></h3>
+									<h3><%= item.product.name %></h3>
 								</td>
 							</tr>
 							<tr>

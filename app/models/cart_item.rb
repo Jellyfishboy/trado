@@ -24,6 +24,9 @@ class CartItem < ActiveRecord::Base
 	belongs_to :cart
 	belongs_to :sku 
 
+	has_one :product,							through: :sku
+	has_one :category,							through: :sku
+
 	validates :cart_id, :price, :quantity, 
 	:sku_id, :weight,							presence: true
 

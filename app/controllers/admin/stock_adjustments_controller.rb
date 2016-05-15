@@ -16,7 +16,7 @@ class Admin::StockAdjustmentsController < ApplicationController
     set_sku
     @stock_adjustment = @sku.stock_adjustments.build(params[:stock_adjustment])
     if @stock_adjustment.save
-      render json: { row: render_to_string(partial: 'admin/products/skus/stock_adjustments/single', locals: { stock_adjustment: @stock_adjustment }), sku_name: @sku.full_sku }, status: 200 
+      render json: { row: render_to_string(partial: 'admin/products/skus/stock_adjustments/single', locals: { stock_adjustment: @stock_adjustment }), sku_name: @sku.full_sku }, status: 201 
     else
       render json: { errors: @stock_adjustment.errors.full_messages }, status: 422
     end

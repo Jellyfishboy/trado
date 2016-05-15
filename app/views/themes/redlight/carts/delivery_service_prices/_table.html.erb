@@ -1,0 +1,22 @@
+<% if delivery_service_prices.nil? || delivery_service_prices.empty? %>
+    <p>Sorry, we cannot find any suitable delivery services for your order.</p>
+<% else %>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% delivery_service_prices.order(price: :asc).each_with_index do |delivery_price, index| %>
+				<tr class="<%= current_cart.delivery_id.nil? ? ('active' if index == 0) : ('active' if delivery_price.id == current_cart.delivery_id) %>">
+					<td><%= delivery_price.full_name %></td>
+					<td><%= Store::Price.new(price: delivery_price.price).single %></td>
+					<td><%= radio_button_tag 'order[delivery_id]', delivery_price.id, current_cart.delivery_id.nil? ? (index == 0 ? true : false) : (delivery_price.id == current_cart.delivery_id ? true : false) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

@@ -47,8 +47,13 @@
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label :country %>
-                <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery') %>
+                <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
               </div>
+            <h3>DELIVERY SERVICE</h3>
+            <div id="delivery-services">
+              <%= errors_for @order, :delivery_id %>
+              <p>Please select a delivery country in order to view a list of available delivery services...</p>
+            </div>
             <% end %>
             <h3>PAYMENT DETAILS</h3>
             <%= f.fields_for :billing_address do |billing| %>

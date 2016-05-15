@@ -109,28 +109,25 @@ trado.app =
 
     updateDeliveryServicePrice: function()
     {
-        $('.update-delivery-service-price select').change(function() 
+        $('.update-delivery-service-price').change(function() 
         {
             if (this.value !== "") 
             {
-                $.ajax('/carts/delivery_service_prices/update', 
+                $.ajax( 
                 {
+                    url: '/carts/delivery_service_prices',
                     type: 'GET',
-                    data: 
-                    {
-                        'country_id': this.value,
-                        'object_type': this.name.split('[')[0]
-                    },
-                    dataType: 'html',
+                    data: { 'country_id': this.value },
+                    dataType: 'json',
                     success: function(data) 
                     {
-                        return $('.delivery-service-prices .control-group .controls').html(data);
+                        $('#delivery-services').html(data.table);
                     }
                 });
             } 
             else 
             {
-                return $('.delivery-service-prices .control-group .controls').html('<p class="delivery_service_prices_notice">Select a delivery country to view the available delivery prices.</p>');
+                $('#delivery-services').html('<p>Please select a delivery country in order to view a list of available delivery services...</p>');
             }
         });
     },

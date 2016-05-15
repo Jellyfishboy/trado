@@ -21,21 +21,28 @@
 
         <div class="row">
             <div class="col-lg-12 col-sm-12" id="list-wrapper">
-                <% @products.each do |product| %>
-                    <div class="col-lg-3 col-sm-3 list">
-                        <%= link_to [product.category, product] do %>
-                            <%= image_tag product.attachments.first.file.large, alt: product.name %>
-                        <% end %>
-                        <h3><%= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range %></h3>
-                        <h2>
-                            <%= link_to product.name, [product.category, product] %>
-                        </h2>
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <p><%= check_stock(product) %></p>
+                <% if @products.empty? %>
+                    <div id="empty-cart-container">
+                        <h3>No Search Results</h3>
+                        <p>We could not find any products matching your search criteria.</p>
+                    </div>
+                <% else %>
+                    <% @products.each do |product| %>
+                        <div class="col-lg-3 col-sm-3 list">
+                            <%= link_to [product.category, product] do %>
+                                <%= image_tag product.attachments.first.file.large, alt: product.name %>
+                            <% end %>
+                            <h3><%= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range %></h3>
+                            <h2>
+                                <%= link_to product.name, [product.category, product] %>
+                            </h2>
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6">
+                                    <p><%= check_stock(product) %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
             </div>
         </div>
