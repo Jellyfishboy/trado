@@ -92,18 +92,13 @@ trado.app =
 
     selectDeliveryServicePrice: function() 
     {
-        $('.delivery-service-prices .option').click(function() 
+        $('body').on('click', '#delivery-services table tbody tr', function()
         {
-            $(this).find('input:radio').prop('checked', true);
-            $('.option').removeClass('active');
-            return $(this).addClass('active');
-        });
-        $('.delivery-service-prices .option input:radio').each(function() 
-        {
-            if ($(this).is(':checked')) 
-            {
-                return $(this).parent().addClass('active');
-            }
+            $('#delivery-services table tbody tr').removeClass('active');
+            $(this).addClass('active');
+            $(this).find('td:last-child input').prop("checked", true);
+
+            trado.app.deliveryPriceCheckoutInfo($(this));
         });
     },
 
@@ -122,6 +117,15 @@ trado.app =
                     success: function(data) 
                     {
                         $('#delivery-services').html(data.table);
+                        $('#delivery-services input:radio').each(function() 
+                        {
+                            if ($(this).is(':checked')) 
+                            {
+                                trado.app.deliveryPriceCheckoutInfo($(this).parent().parent());
+                                
+                                $(this).parent().addClass('active');
+                            }
+                        });
                     }
                 });
             } 
@@ -224,5 +228,17 @@ trado.app =
             });
             return false;
         });
+    },
+
+    deliveryPriceCheckoutInfo: function($parentElem)
+    {
+        var price = $parentElem.attr('data-price'),
+            total = $parentElem.attr('data-total'),
+            tax = $parentElem.attr('data-tax'),
+            $checkoutElem = $('#checkout-breakdown');
+
+        $checkoutElem.find('div:last-child span:nth-child(2)').text(price);
+        $checkoutElem.find('div:last-child span:last-child').text(tax);
+        $('#checkout-total div:last-child strong').text(total);
     }
 }

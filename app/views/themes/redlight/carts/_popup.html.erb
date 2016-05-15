@@ -24,7 +24,7 @@
                         </table>
                     </td>
                     <td>
-                        <div><%= Store::Price.new(price: item.total_price).single %></div>
+                        <div><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></div>
                         <a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
                             <i class="icon-close"></i>
                         </a>
@@ -42,7 +42,7 @@
                 Total
             </td>
             <td>
-                <%= Store::Price.new(price: current_cart.total_price, tax_type: 'gross').single %>
+                <%= Store::Price.new(price: current_cart.total_price, tax_type: 'net').single %>
             </td>
         </tr>
     </tbody>

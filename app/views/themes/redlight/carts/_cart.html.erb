@@ -53,7 +53,7 @@
 												</tr>
 												<tr>
 													<td>Unit Price</td>
-													<td id="price"><%= Store::Price.new(price: item.total_price).single %></td>
+													<td id="price"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></td>
 												</tr>
 											</tbody>
 										</table>
@@ -93,7 +93,7 @@
 				<td>
 					<input type="text" value="<%= item.quantity %>">
 				</td>
-				<td><%= Store::Price.new(price: item.total_price).single %></td>
+				<td><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></td>
 				<td>
 					<a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
 						<i class="icon-close"></i>
@@ -105,7 +105,7 @@
 				<td></td>
 				<td></td>
 				<td><strong>TOTAL:</strong></td>
-				<td><strong><%= Store::Price.new(price: @cart_totals[:net]).single %></strong></td>
+				<td><strong><%= Store::Price.new(price: @cart_totals[:net], tax_type: 'net').single %></strong></td>
 				<td></td>
 			</tr>
 		</tbody>
