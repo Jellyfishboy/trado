@@ -69,6 +69,9 @@ GEM
     activesupport-json_encoder (1.1.0)
       activesupport (>= 4.1.0, < 5.0)
     addressable (2.4.0)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
     arel (6.0.3)
     asset_sync (1.1.0)
       activemodel
@@ -594,6 +597,7 @@ DEPENDENCIES
   active_presenter
   activemerchant (= 1.43.3)
   activesupport-json_encoder
+  annotate
   asset_sync
   auto_strip_attributes (~> 2.0)
   bcrypt-ruby (~> 3.0.0)

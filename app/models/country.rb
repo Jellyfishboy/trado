@@ -14,12 +14,12 @@
 #
 class Country < ActiveRecord::Base
 
-  attr_accessible :name
+	attr_accessible :name
 
-  has_many :destinations,                               dependent: :delete_all
-  has_many :delivery_services,                          through: :destinations
+	has_many :destinations,                               dependent: :delete_all
+	has_many :delivery_services,                          through: :destinations
 
-  validates :name,                                      uniqueness: true, presence: true
+	validates :name,                                      uniqueness: true, presence: true
 
-  default_scope { order('name ASC') }
+	default_scope { order('name ASC') }
 end

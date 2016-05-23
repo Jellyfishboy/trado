@@ -118,3 +118,6 @@ gem 'colorize'
 
 # server management
 gem 'foreman'
+
+# documentation
+gem 'annotate'
