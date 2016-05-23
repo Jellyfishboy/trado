@@ -1,11 +1,12 @@
 ---
 :concurrency: 5
 :pidfile: ./tmp/pids/sidekiq.pid
-:logfile: ./log/sidekiq.log
 :verbose: true
 staging:
+  :logfile: ./log/sidekiq.log
   :concurrency: 10
 production:
+  :logfile: ./log/sidekiq.log
   :concurrency: 20
   :verbose: false
 # Create two queues, defaut and high priority
