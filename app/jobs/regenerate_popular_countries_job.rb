@@ -4,7 +4,7 @@ class RegeneratePopularCountriesJob < ActiveJob::Base
     def perform *args
         reset_popular_countries
         set_countries
-        @countries.map{|c| c.update_column(:popular, true) }
+        @countries.update_all(popular: true)
     end
 
     private
@@ -14,6 +14,6 @@ class RegeneratePopularCountriesJob < ActiveJob::Base
     end
 
     def set_countries
-        @countries = Country.joins(:orders).group("countries.id").order("count(countries.id) DESC").first(5)
+        @countries = Country.joins(:orders).group("countries.id").order("count(countries.id) DESC").limit(5)
     end
 end
