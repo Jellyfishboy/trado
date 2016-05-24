@@ -47,7 +47,7 @@
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label :country %>
-                <%= delivery.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
+                <%= delivery.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
               </div>
             <h3>DELIVERY SERVICE</h3>
             <div id="delivery-services">
@@ -97,7 +97,7 @@
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label :country %>
-                <%= billing.select(:country, options_for_select(Country.all.map { |country| [country.name, country.name] }, @cart_session[:country]), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
+                <%= billing.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
               </div>
             <% end %>
         </div>

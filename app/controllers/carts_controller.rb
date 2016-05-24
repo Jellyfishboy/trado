@@ -10,6 +10,7 @@ class CartsController < ApplicationController
 
     def checkout
         set_order
+        set_grouped_countries
         build_addresses
         set_cart_totals
         set_cart_session
@@ -38,5 +39,9 @@ class CartsController < ApplicationController
 
     def set_delivery_service_prices
         @delivery_service_prices = DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, params[:country_id])
+    end
+
+    def set_grouped_countries
+        @grouped_countries = [Country.popular.map{ |country| [country.name, country.name] }, Country.unpopular.map{ |country| [country.name, country.name] }] 
     end
 end
