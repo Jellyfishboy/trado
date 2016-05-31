@@ -33,8 +33,8 @@ class CartsController < ApplicationController
     private
 
     def build_addresses
-        @order.build_delivery_address
-        @order.build_billing_address
+        @order.build_delivery_address if @order.delivery_address.nil?
+        @order.build_billing_address if @order.billing_address.nil?
     end
 
     def set_delivery_service_prices

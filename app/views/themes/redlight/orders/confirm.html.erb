@@ -52,6 +52,7 @@
           <div class="row">
               <div class="col-lg-12 col-sm-12">
                 <h3>PAYMENT METHOD</h3>
+                <%= image_tag "paypal-icon.png" if paypal_active? && @order.paypal? %>
               </div>
           </div>
       </div>
@@ -60,56 +61,60 @@
         <div id="cart-checkout-container" class="scroller">
           <table id="cart-checkout">
             <tbody>
-              <tr>
-                <td>
-                  <table class="single-product">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <table class="product-details">
-                            <tbody>
-                              <tr>
-                                <td><img src="img/pfolio-3.png"></td>
-                                <td>
-                                  <table class="product-information">
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          <h3>Gitman Casual Shirt</h3>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>Size: S</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Color : Brown</td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      <tr>
-                        <td>
-                          <table class="product-specifics">
-                            <tbody>
-                              <tr>
-                                <td>Quantity</td>
-                                <td>1</td>
-                              </tr>
-                              <tr>
-                                <td>Unit Price</td>
-                                <td id="price">£139</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                  </table>
-                </td>
-              </tr>
+              <% @order.order_items.each do |item| %>
+                <tr>
+                  <td>
+                    <table class="single-product">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table class="product-details">
+                              <tbody>
+                                <tr>
+                                  <td><%= image_tag item.sku.product.attachments.first.file.square %></td>
+                                  <td>
+                                    <table class="product-information">
+                                      <tbody>
+                                        <tr>
+                                          <td>
+                                            <h3><%= item.sku.product.name %></h3>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><%= render_variants(item.sku) %></td>
+                                        </tr>
+                                        <% if item.order_item_accessory.present? %>
+                                          <tr>
+                                            <td><%= item.order_item_accessory.accessory.name %></td>
+                                          </tr>
+                                        <% end %>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        <tr>
+                          <td>
+                            <table class="product-specifics">
+                              <tbody>
+                                <tr>
+                                  <td>Quantity</td>
+                                  <td><%= item.quantity %></td>
+                                </tr>
+                                <tr>
+                                  <td>Unit Price</td>
+                                  <td id="price"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                    </table>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

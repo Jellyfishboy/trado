@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
 
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
-    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type
 
 	has_many :order_items,                                                dependent: :destroy
 	has_many :transactions,                                               dependent: :destroy

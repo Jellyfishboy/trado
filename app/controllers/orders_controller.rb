@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      redirect_to Store::PayProvider.new(order: @order, provider: session[:payment_type], session: session).complete
+      redirect_to Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session).complete
     end
 
     def success
@@ -58,14 +58,15 @@ class OrdersController < ApplicationController
     end
 
     def set_address_variables
+      binding.pry
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
     end
 
     def validate_confirm_render
-      if session[:payment_type].nil?
+      if @order.payment_type.nil?
         redirect_to checkout_carts_url
-      elsif session[:payment_type] == 'paypal'
+      elsif @order.paypal?
         if paypal_active? && params[:token].present? && params[:PayerID].present?
           TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order)
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
