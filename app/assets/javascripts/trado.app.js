@@ -220,10 +220,10 @@ trado.app =
                     $('#cart-container').html(data.popup);
                     $('#cart-wrapper').html(data.cart);
                     $('#basket-icon span').html(data.cart_quantity);
-                    $('#net-price').html(data.net);
+                    $('#net-price').html(data.subtotal);
                     $('#delivery-price').html(data.delivery);
                     $('#tax-price').html(data.tax);
-                    $('#gross-price').html(data.gross);
+                    $('#gross-price').html(data.total);
                 }
             });
             return false;

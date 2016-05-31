@@ -177,7 +177,7 @@
                 <span><%= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%)" %>:</span>
               </div>
               <div>
-                <span><%= Store::Price.new(price: @cart_totals[:net], tax_type: 'net').single %></span>
+                <span><%= Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single %></span>
                 <span><%= Store::Price.new(price: @cart_totals[:delivery], tax_type: 'net').single %></span>
                 <span><%= Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single %></span>
               </div>
@@ -188,7 +188,7 @@
                 <strong>ORDER TOTAL:</strong>
               </div>
               <div>
-                <strong><%= Store::Price.new(price: @cart_totals[:gross], tax_type: 'net').single %></strong>
+                <strong><%= Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single %></strong>
               </div>
             </div>
             <hr>

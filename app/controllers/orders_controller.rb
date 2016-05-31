@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      @order.transfer(current_cart)
       redirect_to Store::PayProvider.new(order: @order, provider: session[:payment_type], session: session).complete
     end
 

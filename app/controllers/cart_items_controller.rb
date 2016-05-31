@@ -34,10 +34,10 @@ class CartItemsController < ApplicationController
         popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
         cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
         cart_quantity: current_cart.cart_items.sum('quantity'),
-        net: Store::Price.new(price: @cart_totals[:net]).single,
+        subtotal: Store::Price.new(price: @cart_totals[:subtotal]).single,
         delivery: Store::Price.new(price: @cart_totals[:delivery]).single,
         tax: Store::Price.new(price: @cart_totals[:tax]).single,
-        gross: Store::Price.new(price: @cart_totals[:gross]).single
+        total: Store::Price.new(price: @cart_totals[:total]).single
     }, status: 200
 	end  
 

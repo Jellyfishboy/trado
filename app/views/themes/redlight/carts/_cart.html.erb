@@ -105,7 +105,7 @@
 				<td></td>
 				<td></td>
 				<td><strong>TOTAL:</strong></td>
-				<td><strong><%= Store::Price.new(price: @cart_totals[:net], tax_type: 'net').single %></strong></td>
+				<td><strong><%= Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single %></strong></td>
 				<td></td>
 			</tr>
 		</tbody>

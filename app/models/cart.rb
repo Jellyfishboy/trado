@@ -37,14 +37,14 @@ class Cart < ActiveRecord::Base
   # @param current_tax_rate [Decimal]
   # @return [Hash] net, tax and gross amounts for an order
   def calculate current_tax_rate, delivery_price=nil
-    delivery = delivery_price.nil? ? delivery.try(:price) : delivery_price
-    net = total_price + (delivery || 0)
-    tax = net * current_tax_rate
+    delivery = delivery_price.nil? ? (delivery.try(:price) || 0) : delivery_price
+    subtotal = total_price
+    tax = (subtotal + delivery) * current_tax_rate
     return {
-      net: net,
+      subtotal: subtotal,
       tax: tax,
-      delivery: delivery || 0,
-      gross: net + tax
+      delivery: delivery,
+      total: subtotal + delivery + tax
     }
   end
 
@@ -68,7 +68,7 @@ class Cart < ActiveRecord::Base
          AND    d2.delivery_service_id = d1.delivery_service_id
          AND    d2.price < d1.price
          )', total_weight, length, thickness, total_weight, length, thickness]).map(&:id)
-    final_delivery_service_prices = DeliveryServicePrice.where(id: initial_delivery_service_prices).joins(:delivery_service).where(':gross_amount > delivery_services.order_price_minimum AND (:gross_amount < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', gross_amount: cart_total[:gross]).map(&:id)
+    final_delivery_service_prices = DeliveryServicePrice.where(id: initial_delivery_service_prices).joins(:delivery_service).where(':total > delivery_services.order_price_minimum AND (:total < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', total: cart_total[:total]).map(&:id)
     return final_delivery_service_prices
   end
 

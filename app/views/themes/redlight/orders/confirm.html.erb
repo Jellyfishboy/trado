@@ -12,47 +12,46 @@
       <h2 class="checkout-header visible-xs">Confirm your order</h2>
       <div class='col-lg-4 col-sm-4'>
           <h3>DELIVERY ADDRESS</h3>
-          Tom Dallimore
+          <%= @delivery_address.full_name %>
           <br/><br/>
-          671 Wells Road
+          <%= @delivery_address.address %>
           <br/>
-          Bristol
+          <%= @delivery_address.city %>
           <br/>
-          BS14 9HU
+          <%= @delivery_address.postcode %>
           <br/>
-          United Kingdom
+          <%= @delivery_address.country %>
           <br/>
-          07955460955
+          <%= @delivery_address.telephone %>
           <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <h3>DELIVERY OPTION</h3>
-                Royal Mail 1st Class
+                <%= @order.delivery.full_name %>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12 col-sm-12">
               <h3>CONTACT EMAIL</h3>
-              me@tomdallimore.com
+              <%= @order.email %>
             </div>
           </div>
       </div>
       <div class='col-lg-4 col-sm-4' id="confirm-order-billing">
           <h3>BILLING ADDRESS</h3>
-          Tom Dallimore
+          <%= @billing_address.full_name %>
           <br/><br/>
-          671 Wells Road
+          <%= @billing_address.address %>
           <br/>
-          Bristol
+          <%= @billing_address.city %>
           <br/>
-          BS14 9HU
+          <%= @billing_address.postcode %>
           <br/>
-          United Kingdom
+          <%= @billing_address.country %>
           <br/>
-          07955460955
+          <%= @billing_address.telephone %>
           <div class="row">
               <div class="col-lg-12 col-sm-12">
                 <h3>PAYMENT METHOD</h3>
-                <img src="img/paypal-icon.png" />
               </div>
           </div>
       </div>
@@ -229,9 +228,9 @@
                 <span>TAX:</span>
               </div>
               <div>
-                <span>£139.00</span>
-                <span>£24.00</span>
-                <span>£15.00</span>
+                <span><%= Store::Price.new(price: (@order.net_amount - @order.delivery.price), tax_type: 'net').single %></span>
+                <span><%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %></span>
+                <span><%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></span>
               </div>
             </div>
             <hr>
@@ -240,14 +239,14 @@
                 <strong>ORDER TOTAL:</strong>
               </div>
               <div>
-                <strong>£178.00</strong>
+                <strong><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></strong>
               </div>
             </div>
             <hr>
           </div>
           <input class='btn green checkout-button' type='submit' value='CONFIRM ORDER'>
           <div id='checkout-secure'>
-            <img alt="Secure checkout" src="img/secure-checkout.png" />
+            <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
             <span class='text-shipping'>SECURE CHECKOUT</span>
           </div>
         </form>
