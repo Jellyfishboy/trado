@@ -48,6 +48,7 @@ class Order < ActiveRecord::Base
 	validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
+  validates :payment_type,                                              presence: true
 
 	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
@@ -71,6 +72,7 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :billing_address
 
 	enum shipping_status: [:pending, :dispatched]
+  enum payment_type: [:paypal]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 
   	#
@@ -105,13 +107,6 @@ class Order < ActiveRecord::Base
   	# @return [Boolean]
   	def completed?
   		transactions.last.completed? unless transactions.empty?
-  	end
-
-  	# Returns the payment type for a specific order
-  	#
-  	# @return [String]
-  	def payment_type
-  		transactions.order(created_at: :desc).first.payment_type
   	end
 
   	# Returns true if the order is completed, marked as dispatched, consignment is not nil and has changed
