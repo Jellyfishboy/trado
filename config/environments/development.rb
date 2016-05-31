@@ -40,6 +40,7 @@ Trado::Application.configure do
 	}
 	# Print deprecation notices to the Rails logger
 	config.active_support.deprecation = :log
+	$stdout.sync = true
 
 	# Expands the lines which load the assets
 	config.assets.debug = true
