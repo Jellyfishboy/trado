@@ -58,7 +58,6 @@ class OrdersController < ApplicationController
     end
 
     def set_address_variables
-      binding.pry
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
     end
