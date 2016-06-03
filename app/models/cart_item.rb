@@ -30,7 +30,7 @@ class CartItem < ActiveRecord::Base
 	validates :cart_id, :price, :quantity, 
 	:sku_id, :weight,							presence: true
 
-	after_commit :reset_delivery_services
+	after_save :reset_delivery_services
 
 	accepts_nested_attributes_for :cart_item_accessory
 
