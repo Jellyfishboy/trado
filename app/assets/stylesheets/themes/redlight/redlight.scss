@@ -1238,11 +1238,17 @@ section {
     margin-bottom: 20px; }
   .checkout .checkout-panel #cart-mobile td {
       position: relative; }
-      .checkout .checkout-panel #cart-mobile td a.delete-cart-item {
+      .checkout .checkout-panel #cart-mobile td a.update-cart-item, .checkout .checkout-panel #cart-mobile td a.delete-cart-item {
         position: absolute;
         right: 10px;
-        top: 25px;
-        z-index:12; }
+        z-index: 12;
+        cursor: pointer; }
+      .checkout .checkout-panel #cart-mobile td a.update-cart-item {
+        top: 25px; }
+      .checkout .checkout-panel #cart-mobile td a.update-cart-item i {
+        font-size: 1.2em; }
+      .checkout .checkout-panel #cart-mobile td a.delete-cart-item {
+        top: 47px; }
   .checkout .checkout-panel #cart-mobile table.single-product table.product-details tr:first-child, .checkout .checkout-panel #cart-checkout table.single-product table.product-details tr:first-child {
     border-top: 0 !important; }
     .checkout .checkout-panel #cart-mobile table.single-product table.product-details tr:first-child td:last-child, .checkout .checkout-panel #cart-checkout table.single-product table.product-details tr:first-child td:last-child {

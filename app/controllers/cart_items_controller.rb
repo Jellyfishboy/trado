@@ -20,7 +20,15 @@ class CartItemsController < ApplicationController
 		if @cart_item.sku.valid_stock?(@quantity)
 			set_and_adjust_cart_item(params[:cart_item][:quantity].to_i - @cart_item.quantity)
       set_cart_totals
-			render partial: theme_presenter.page_template_path('carts/update'), format: [:js]
+      render json: { 
+        popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
+        cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
+        cart_quantity: current_cart.cart_items.sum('quantity'),
+        subtotal: Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single,
+        tax: Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single,
+        total: Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single,
+        empty_cart: current_cart.cart_items.empty? ? true : false
+      }, status: 200
 		else
 			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
 		end

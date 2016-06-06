@@ -27,6 +27,7 @@ ready = function()
     trado.app.jsonErrors();
     trado.app.addToCart();
     trado.app.deleteCartItem();
+    trado.app.updateCartItem();
     
     // Initialise floating sidebar for checkout order summary
     $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(

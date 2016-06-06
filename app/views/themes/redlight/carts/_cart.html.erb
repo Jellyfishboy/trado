@@ -12,6 +12,9 @@
 						<a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
 							<i class="icon-close"></i>
 						</a>
+						<a href="#" class="update-cart-item" data-cart-item-id="<%= item.id %>" data-platform="mobile">
+							<i class="fa fa-refresh"></i>
+						</a>
 						<table class="single-product">
 							<tbody>
 								<tr>
@@ -51,7 +54,7 @@
 												<tr>
 													<td>Quantity</td>
 													<td>
-														<input type="text" value="<%= item.quantity %>">
+														<input type="text" value="<%= item.quantity %>" class="item-quantity-<%= item.id %>-mobile">
 													</td>
 												</tr>
 												<tr>
@@ -94,10 +97,13 @@
 					</table>
 				</td>
 				<td>
-					<input type="text" value="<%= item.quantity %>">
+					<input type="text" value="<%= item.quantity %>" class="item-quantity-<%= item.id %>-desktop">
 				</td>
 				<td><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></td>
 				<td>
+					<a href="#" class="update-cart-item" data-cart-item-id="<%= item.id %>" data-platform="desktop">
+						<i class="fa fa-refresh"></i>
+					</a>
 					<a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
 						<i class="icon-close"></i>
 					</a>

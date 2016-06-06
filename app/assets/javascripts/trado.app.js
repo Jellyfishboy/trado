@@ -211,6 +211,39 @@ trado.app =
         });
     },
 
+    updateCartItem: function()
+    {
+        $('body').on('click', '.update-cart-item', function ()
+        {
+            var cartItemId = $(this).attr('data-cart-item-id'),
+                platform = $(this).attr('data-platform'),
+                quantity = $('.item-quantity-' + cartItemId + '-' + platform).val();
+
+
+            $.ajax(
+            {
+                url: '/cart_items/' + cartItemId,
+                type: "PATCH",
+                data: { cart_item: { quantity: quantity } },
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#cart-container').html(data.popup);
+                    $('#cart-wrapper').html(data.cart);
+                    $('#basket-icon span').html(data.cart_quantity);
+                    $('#net-price').html(data.subtotal);
+                    $('#tax-price').html(data.tax);
+                    $('#gross-price').html(data.total);
+                    if (data.empty_cart)
+                    {
+                        $('.checkout-button').remove();
+                    }
+                }
+            });
+            return false;
+        });
+    },
+
     deliveryPriceCheckoutInfo: function($parentElem)
     {
         var price = $parentElem.attr('data-price'),
