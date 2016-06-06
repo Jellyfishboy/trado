@@ -1,28 +1,28 @@
 <% content_for :title, "Order ##{@order.id} Unsuccessful" %>
 <div class="container">
-  <div class="row" id="failure-order">
-    <div class="col-lg-8 col-lg-offset-2 col-sm-12">
-      <h1>Order #<%= @order.id %> Unsuccessful</h1>
-      <p>
-        Unfortunately your order was unsuccessful.
-      </p>
-      <% unless @order.transactions.last.status_reason.nil? %>
-        <p>
-          Your order was unsuccessful for the following reason(s): <strong><%= @order.transactions.last.status_reason %></strong>
-        </p>
-      <% end %>
-      <% unless @order.transactions.last.error_code.nil? %>
-        <p>
-          Error code: <strong><%= @order.transactions.last.error_code %></strong>
-        </p>
-      <% end %>
-      <p>
-        If you would like further assistance, please do not hesitate to 
-        <a href="mailto:<%= Store.settings.email %>">contact</a>
-        us.
-      </p>
-      <%= link_to "Try again", retry_order_url, class: 'btn green' %>
-      <%= link_to "Cancel order", order_url, method: :delete, class: 'btn orange' %>
-    </div>
-  </div>
+	<div class="row" id="failure-order">
+		<div class="col-lg-8 col-lg-offset-2 col-sm-12">
+			<h1>Order #<%= @order.id %> Unsuccessful</h1>
+			<p>
+				Unfortunately your order was unsuccessful.
+			</p>
+			<% unless @order.transactions.last.status_reason.nil? %>
+			<p>
+				Your order was unsuccessful for the following reason(s): <strong><%= @order.transactions.last.status_reason %></strong>
+			</p>
+			<% end %>
+			<% unless @order.transactions.last.error_code.nil? %>
+			<p>
+				Error code: <strong><%= @order.transactions.last.error_code %></strong>
+			</p>
+			<% end %>
+			<p>
+				If you would like further assistance, please do not hesitate to 
+				<a href="mailto:<%= Store.settings.email %>">contact</a>
+				us.
+			</p>
+			<%= link_to "Try again", retry_order_url, class: 'btn green' %>
+			<%= link_to "Cancel order", order_url, method: :delete, class: 'btn orange' %>
+		</div>
+	</div>
 </div>
