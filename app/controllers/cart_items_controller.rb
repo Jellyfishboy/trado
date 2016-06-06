@@ -36,7 +36,8 @@ class CartItemsController < ApplicationController
         cart_quantity: current_cart.cart_items.sum('quantity'),
         subtotal: Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single,
         tax: Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single,
-        total: Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single
+        total: Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single,
+        empty_cart: current_cart.cart_items.empty? ? true : false
     }, status: 200
 	end  
 

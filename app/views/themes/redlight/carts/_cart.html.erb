@@ -9,6 +9,9 @@
 			<% current_cart.cart_items.each do |item| %>
 				<tr>
 					<td>
+						<a href="#" class="delete-cart-item" data-cart-item-id="<%= item.id %>">
+							<i class="icon-close"></i>
+						</a>
 						<table class="single-product">
 							<tbody>
 								<tr>

@@ -201,6 +201,10 @@ trado.app =
                     $('#net-price').html(data.subtotal);
                     $('#tax-price').html(data.tax);
                     $('#gross-price').html(data.total);
+                    if (data.empty_cart)
+                    {
+                        $('.checkout-button').remove();
+                    }
                 }
             });
             return false;

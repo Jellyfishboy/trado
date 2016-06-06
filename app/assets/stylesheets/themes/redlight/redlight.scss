@@ -1236,6 +1236,13 @@ section {
   .checkout .checkout-panel #cart-mobile {
     display: none;
     margin-bottom: 20px; }
+  .checkout .checkout-panel #cart-mobile td {
+      position: relative; }
+      .checkout .checkout-panel #cart-mobile td a.delete-cart-item {
+        position: absolute;
+        right: 10px;
+        top: 25px;
+        z-index:12; }
   .checkout .checkout-panel #cart-mobile table.single-product table.product-details tr:first-child, .checkout .checkout-panel #cart-checkout table.single-product table.product-details tr:first-child {
     border-top: 0 !important; }
     .checkout .checkout-panel #cart-mobile table.single-product table.product-details tr:first-child td:last-child, .checkout .checkout-panel #cart-checkout table.single-product table.product-details tr:first-child td:last-child {
