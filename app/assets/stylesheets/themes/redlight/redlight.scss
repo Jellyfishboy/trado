@@ -861,6 +861,15 @@ form .payment-choices {
     padding: 8px 30px;
     min-width: inherit; }
 
+#success-order h1, #failure-order h1 {
+  text-transform: uppercase;
+  font-size: 1.35em;
+  font-weight: 700;
+  color: #f37e49;
+  margin-bottom: 40px; }
+#success-order p, #failure-order p {
+  font-size: 0.9em; }
+
 #header-content {
   height: 480px;
   background: gray;
