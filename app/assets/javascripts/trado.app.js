@@ -67,29 +67,7 @@ trado.app =
             return window.location = "/categories/" + data.category_slug + "/products/" + data.product_slug;
         });
     },
-
-    // duplicateAddress: function() 
-    // {
-    //     $('.use-billing-address').change(function() 
-    //     {
-    //         if (this.checked) 
-    //         {
-    //             $('.use-billing').each(function() 
-    //             {
-    //                 return $(this).val($(this).next('div').text());
-    //             });
-    //             $('.field_with_errors').each(function() 
-    //             {
-    //                 return $(this).children('input').val($(this).next('div').text());
-    //             });
-    //         } 
-    //         else 
-    //         {
-    //             return $('.use-billing').val('');
-    //         }
-    //     });
-    // },
-
+    
     selectDeliveryServicePrice: function() 
     {
         $('body').on('click', '#delivery-services table tbody tr', function()

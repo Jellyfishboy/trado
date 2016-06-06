@@ -46,7 +46,7 @@
                 <%= delivery.text_field :postcode, 'data-field-name' => 'postcode', class: 'copy-delivery' %>
               </div>
               <div class='form-check-group-half'>
-                <%= delivery.label :country %>
+                <%= delivery.label 'Country *' %>
                 <%= delivery.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
               </div>
             <h3>DELIVERY SERVICE</h3>
@@ -96,7 +96,7 @@
                 <%= billing.text_field :postcode, 'data-field-name' => 'billing-postcode' %>
               </div>
               <div class='form-check-group-half'>
-                <%= billing.label :country %>
+                <%= billing.label 'Country *' %>
                 <%= billing.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
               </div>
             <% end %>
@@ -198,7 +198,7 @@
             <%= f.check_box :terms, checked: false %>
             <span>Tick this box to acknowledge that you have read and agree with our terms and conditions.</span>
           </div>
-          <%= f.submit 'PLACE ORDER', class: 'btn green checkout-button' %>
+          <%= f.submit 'PROCEED TO PAYMENT', class: 'btn green checkout-button' %>
           <div id='checkout-secure'>
             <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
             <span class='text-shipping'>SECURE CHECKOUT</span>
