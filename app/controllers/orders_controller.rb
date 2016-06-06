@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
 
     def destroy
       set_order
-      Payatron4000.decommission_order(@order)
+      Ordatron4000.decommission_order(@order)
       flash_message :success, "Your order has been cancelled."
       redirect_to root_url
     end

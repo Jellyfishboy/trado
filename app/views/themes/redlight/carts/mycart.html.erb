@@ -20,13 +20,13 @@
         <div id='checkout-calculation'>
           <div id='checkout-breakdown'>
             <div>
-              <span>SUB-TOTAL:</span>
               <span>DELIVERY:</span>
+              <span>SUB-TOTAL:</span>
               <span><%= "#{Store.settings.tax_name} (#{Store.settings.tax_rate}%)" %>: </span>
             </div>
             <div>
-              <span id="net-price"><%= Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single %></span>
               <span id="delivery-price"><%= Store::Price.new(price: @cart_totals[:delivery], tax_type: 'net').single %></span>
+              <span id="net-price"><%= Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single %></span>
               <span id="tax-price"><%= Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single %></span>
             </div>            
           </div>
@@ -41,7 +41,9 @@
           </div>
           <hr>
         </div>
-        <a class="btn green checkout-button" href="checkout.html">Checkout</a>
+        <% unless current_cart.cart_items.empty? %>
+          <%= link_to 'Checkout', checkout_carts_path, :class => 'btn green checkout-button' %>
+        <% end %>
         <div id='checkout-secure'>
           <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
           <span class='text-shipping'>SECURE CHECKOUT</span>

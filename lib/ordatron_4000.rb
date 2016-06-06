@@ -1,4 +1,4 @@
-module Payatron4000
+module Ordatron4000
 
     class << self
 

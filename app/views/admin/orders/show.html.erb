@@ -137,19 +137,19 @@
             </tr>
           <% end %>
           <tr>
-            <td class="align-right border-top" colspan="4">
-              <b>Subtotal:</b>
-            </td>
-            <td class="border-top">
-              <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
-            </td>
-          </tr>
-          <tr>
             <td class="align-right" colspan="4">
               <b>Delivery:</b>
             </td>
             <td>
               <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-right border-top" colspan="4">
+              <b>Subtotal:</b>
+            </td>
+            <td class="border-top">
+              <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
             </td>
           </tr>
           <tr>
