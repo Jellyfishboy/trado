@@ -44,7 +44,7 @@ class Cart < ActiveRecord::Base
       subtotal: subtotal,
       tax: tax,
       delivery: delivery,
-      total: subtotal + delivery + tax
+      total: subtotal + tax
     }
   end
 

@@ -221,7 +221,6 @@ trado.app =
                     $('#cart-wrapper').html(data.cart);
                     $('#basket-icon span').html(data.cart_quantity);
                     $('#net-price').html(data.subtotal);
-                    $('#delivery-price').html(data.delivery);
                     $('#tax-price').html(data.tax);
                     $('#gross-price').html(data.total);
                 }
@@ -234,10 +233,13 @@ trado.app =
     {
         var price = $parentElem.attr('data-price'),
             total = $parentElem.attr('data-total'),
+            subtotal = $parentElem.attr('data-sub-total'),
             tax = $parentElem.attr('data-tax'),
             $checkoutElem = $('#checkout-breakdown');
 
-        $checkoutElem.find('div:last-child span:nth-child(2)').text(price);
+
+        $checkoutElem.find('div:last-child span:first-child').text(price);
+        $checkoutElem.find('div:last-child span:nth-child(2)').text(subtotal);
         $checkoutElem.find('div:last-child span:last-child').text(tax);
         $('#checkout-total div:last-child strong').text(total);
     }
