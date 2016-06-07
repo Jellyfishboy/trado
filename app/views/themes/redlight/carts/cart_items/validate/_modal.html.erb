@@ -1,0 +1,16 @@
+<div class="modal fade" id="validateCartItemModal" tabindex="-1" role="dialog" aria-labelledby="validateCartItemModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="validateCartItemModalLabel">Insufficient Stock</h3>
+      </div>
+      <div class="modal-body">
+          <p>There is not enough stock for the following item:</p>
+          <p><b><%= "#{sku.product.name} (#{render_variants(sku)})" %></b></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn orange" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

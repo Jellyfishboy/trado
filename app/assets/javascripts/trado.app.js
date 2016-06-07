@@ -238,6 +238,11 @@ trado.app =
                     {
                         $('.checkout-button').remove();
                     }
+                },
+                error: function(xhr, status, error)
+                {
+                    $('#validate-cart-item').html(xhr.responseJSON.html);
+                    $('#validateCartItemModal').modal('show');
                 }
             });
             return false;

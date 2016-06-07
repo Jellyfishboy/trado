@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
 			set_and_adjust_cart_item(params[:cart_item][:quantity])
             render json: { html: render_to_string(partial: theme_presenter.page_template_path('carts/popup')), cart_quantity: current_cart.cart_items.sum('quantity') }, status: 200
 		else
-            render json: { html: render_to_string(partial: theme_presenter.page_template_path("carts/cart_items/validate/modal"), locals: { sku: @sku }) }, status: 422
+      render json: { html: render_to_string(partial: theme_presenter.page_template_path("carts/cart_items/validate/modal"), locals: { sku: @sku }) }, status: 422
 		end
 	end
 
@@ -30,7 +30,7 @@ class CartItemsController < ApplicationController
         empty_cart: current_cart.cart_items.empty? ? true : false
       }, status: 200
 		else
-			render partial: theme_presenter.page_template_path('carts/cart_items/validate/failed'), format: [:js], object: @sku
+      render json: { html: render_to_string(partial: theme_presenter.page_template_path("carts/cart_items/validate/modal"), locals: { sku: @cart_item.sku }) }, status: 422
 		end
 	end
 
