@@ -1,0 +1,23 @@
+<div class="modal fade" id="notifyMeModal" tabindex="-1" role="dialog" aria-labelledby="notifyMeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for notification, url: sku_notify_me_path(sku), html: { id: 'new_notify_me_notification', method: :post, remote: true, class: 'remote-form' } do |f| %>
+        <div class="modal-header">
+          <h3 id="notifyMeModalLabel">Notify Me</h3>
+        </div>
+        <div class="modal-body">
+            <p>Please enter your email address and we'll let you know when <b><%= "#{sku.product.name} (#{render_variants(sku)})" %></b> is back in stock:</p>
+            <div class="form-check-group">
+              <%= f.text_field :email %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn orange" data-dismiss="modal">Close</button>
+          <%= button_tag(type: 'submit', class: 'btn green') do %>
+            Submit
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

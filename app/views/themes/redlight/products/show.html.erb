@@ -74,11 +74,8 @@
           </div>
         </div>
         <div id="product-actions">
-          <% if @skus.first.in_stock? %>
             <%= render partial: theme_presenter.page_template_path('products/addtocart'), locals: { product: @product } %>
-          <% else %>
             <%= render partial: theme_presenter.page_template_path('products/notifyme'), locals: { product: @product, sku: @skus.first } %>
-          <% end %>
         </div>
       <% end %>
       <ul id="social">
@@ -150,3 +147,4 @@
     </div>
   </div>
 </div>
+<div id="notify-me-form"></div>

@@ -257,5 +257,51 @@ trado.app =
         $checkoutElem.find('div:last-child span:nth-child(2)').text(subtotal);
         $checkoutElem.find('div:last-child span:last-child').text(tax);
         $('#checkout-total div:last-child strong').text(total);
+    },
+
+    notifyMe: function()
+    {
+        $('body').on('click', '.notify-me', function()
+        {
+            var skuId = $('.updated-selected-sku').val();
+
+            $.ajax(
+            {
+                url: '/skus/' + skuId + '/notify_me/new',
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#notify-me-form').html(data.modal);
+                    $('#notifyMeModal').modal('show');
+                }
+            });
+            return false;
+        });
+    },
+
+    createNotifyMe: function()
+    {
+        $('body').on('submit', '#new_notify_me_notification', function ()
+        {
+            var url = $(this).attr('action');
+            $.ajax(
+            {
+                url: url,
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(data)
+                {
+                    $('#notifyMeModal .btn.green').remove();
+                    $('#notifyMeModal .modal-body').html('<p>Thank you, we have created a notification request for <b>' + data.notification.email + '</b>.</p>');
+                },
+                error: function(xhr, status, error)
+                {
+
+                }
+            });
+            return false;
+        });
     }
 }

@@ -28,6 +28,8 @@ ready = function()
     trado.app.addToCart();
     trado.app.deleteCartItem();
     trado.app.updateCartItem();
+    trado.app.notifyMe();
+    trado.app.createNotifyMe();
     
     // Initialise floating sidebar for checkout order summary
     $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(
