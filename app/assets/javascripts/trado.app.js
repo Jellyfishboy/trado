@@ -129,7 +129,7 @@ trado.app =
                 success: function(data)
                 {
                     $('#price').html(data.price);
-                    $('#product-actions').html(data.action);
+                    $('#product-actions').html(data.html);
                 }
             });
             return false;

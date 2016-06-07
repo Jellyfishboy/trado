@@ -1,0 +1,5 @@
+<% if sku.in_stock? %>
+    <%= submit_tag 'Add To Cart', class: 'btn green add-to-cart', 'data-tracking' => 'true', 'data-tracking-category' => 'add-to-cart', 'data-tracking-name' => "#{product.id}-#{product.slug}" %>
+<% else %>
+    <a href="#" class="btn orange notify-me">Notify Me</a>
+<% end %>

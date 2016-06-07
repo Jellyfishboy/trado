@@ -6,17 +6,10 @@ class SkusController < ApplicationController
         set_sku
         set_accessory
         set_accessory_price
-        set_html_action
         render json: { 
             price: Store::Price.new(price: (@sku.price + @accessory_price)).markup, 
-            action: @action 
+            html: render_to_string(partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @sku }, format: [:html]) 
         }, status: 200
-    end
-
-    def notify
-        @sku = Sku.find(params[:id])
-        @notification = Notification.new
-        render partial: theme_presenter.page_template_path('products/skus/notify/new'), format: [:js]
     end
 
     private
@@ -35,9 +28,5 @@ class SkusController < ApplicationController
 
     def set_accessory_price
         @accessory_price = @accessory.nil? ? 0 : @accessory.price
-    end
-    
-    def set_html_action
-        @action = @sku.in_stock? ? render_to_string(partial: theme_presenter.page_template_path('products/addtocart'), locals: { product: @product }) : render_to_string(partial: theme_presenter.page_template_path('products/notifyme'), locals: { product: @product, sku: @sku })
     end
 end

@@ -74,8 +74,7 @@
           </div>
         </div>
         <div id="product-actions">
-            <%= render partial: theme_presenter.page_template_path('products/addtocart'), locals: { product: @product } %>
-            <%= render partial: theme_presenter.page_template_path('products/notifyme'), locals: { product: @product, sku: @skus.first } %>
+            <%= render partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @skus.first }, format: [:html] %>
         </div>
       <% end %>
       <ul id="social">
