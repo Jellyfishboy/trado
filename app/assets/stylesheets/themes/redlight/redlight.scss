@@ -1951,6 +1951,22 @@ footer #footer-large {
   background-color: #f9f9f9;
   background-clip: padding-box;
   outline: none; }
+  .modal-content ul.errors {
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0;
+    background: #cd2626;
+    color: #fff;
+    font-size: 0.75em;
+    font-weight: 500;
+    display: none; }
+    .modal-content ul.errors li {
+      margin-bottom: 7px;
+      vertical-align: middle; }
+      .modal-content ul.errors li i {
+        margin-right: 7px; }
+      .modal-content ul.errors li:last-child {
+        margin: 0; }
 
 .modal-backdrop {
   position: fixed;

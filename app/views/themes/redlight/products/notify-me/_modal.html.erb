@@ -2,6 +2,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <%= form_for notification, url: sku_notify_me_path(sku), html: { id: 'new_notify_me_notification', method: :post, remote: true, class: 'remote-form' } do |f| %>
+        <ul class="errors">
+        </ul>
         <div class="modal-header">
           <h3 id="notifyMeModalLabel">Notify Me</h3>
         </div>

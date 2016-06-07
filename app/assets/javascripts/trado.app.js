@@ -1,57 +1,25 @@
 trado.app =
 {
 
-    jsonErrors: function() 
+    jsonErrors: function(xhr, evt, status, form)
     {
-        $(document).on("ajax:error", "form.remote-form", function(evt, xhr, status, error) 
+        var content, value, _i, _len, _ref, $this;
+        $this = form;
+        content = $this.children('ul.errors');
+        content.find('ul').empty();
+        _ref = $.parseJSON(xhr.responseText).errors;
+        content.empty();
+        // Append errors to list on page
+        for (_i = 0, _len = _ref.length; _i < _len; _i++)
         {
-
-            var errors;
-            errors = $.parseJSON(xhr.responseJSON.errors);
-            if ($(this).hasClass('loading-form'))
-            {
-                // grant access to form fields and stop the loading animation
-                $(this).css('pointer-events', 'auto');
-                $(this).spin(false);
-            }
-            // removes the old error elements
-            $('input').each(function()
-            {
-                if ($(this).parent().hasClass('field-with-errors'))
-                {
-                    $(this).unwrap();
-                    $(this).next().remove();
-                }
-            });
-            // iterates through the list of errors
-            $.each(errors, function(key, value) 
-            {
-                var $element, $errorTarget;
-                // assigns a recognisable key for input element identification
-                tempKey = key.split('_');
-                key = tempKey[tempKey.length-1] === "id" ? tempKey[0] : key
-                // selects the element
-                $element = $("input[name*='" + key + "']");
-                if ($element.length === 0)
-                {
-                    $element =  $("select[name*='" + key + "']");
-                }
-                $errorTarget = '.error-explanation';
-                //cleans the value
-                key = key.split('_').join(' ');
-                // updates the error messages
-                if ($element.parent().next().is($errorTarget)) 
-                {
-                    return $($errorTarget).html('<span>' + key + '</span> ' + value);
-                } 
-                // adds the error elements, if requried
-                else 
-                {
-                    $element.wrap('<div class="field-with-errors"></div>');
-                    return $element.parent().after('<span class="' + $errorTarget.split('.').join('') + '"><span>' + key + '</span> ' + value + '</span>');
-                }
-            });
-        });
+            value = _ref[_i];
+            content.show().append('<li><i class="icon-cancel-circle"></i>' + value + '</li>');
+        }
+        // Scroll to error list
+        if (!$this.parent().hasClass('modal-content'))
+        {
+            $('body').scrollTo('.page-header', 800);
+        }
     },
 
     typeahead: function() 
@@ -289,21 +257,22 @@ trado.app =
     {
         $('body').on('submit', '#new_notify_me_notification', function ()
         {
-            var url = $(this).attr('action');
+            var $this = $(this),
+                url = $this.attr('action');
             $.ajax(
             {
                 url: url,
                 type: "POST",
-                data: $(this).serialize(),
+                data: $this.serialize(),
                 dataType: "json",
                 success: function(data)
                 {
                     $('#notifyMeModal .btn.green').remove();
                     $('#notifyMeModal .modal-body').html('<p>Thank you, we have created a notification request for <b>' + data.notification.email + '</b>.</p>');
                 },
-                error: function(xhr, status, error)
+                error: function(xhr, evt, status)
                 {
-
+                    trado.app.jsonErrors(xhr, evt, status, $this);
                 }
             });
             return false;

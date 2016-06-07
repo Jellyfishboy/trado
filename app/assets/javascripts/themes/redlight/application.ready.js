@@ -24,7 +24,6 @@ ready = function()
 
     trado.app.selectDeliveryServicePrice();
     trado.app.updateDeliveryServicePrice();
-    trado.app.jsonErrors();
     trado.app.addToCart();
     trado.app.deleteCartItem();
     trado.app.updateCartItem();
@@ -43,5 +42,4 @@ $(document).ajaxComplete(function()
 {
     trado.modal.open('.notify_me', '#notifyMeModal');
     trado.app.selectDeliveryServicePrice();
-    trado.app.jsonErrors();
 });
