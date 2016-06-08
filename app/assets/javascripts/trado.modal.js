@@ -4,8 +4,11 @@ trado.modal =
     {
         $(trigger).click(function() 
         {
-            $(target).modal('show');
-            return $(target + ' .modal-body .loading-block').spin('standard');
+            $(target).modal(
+            {
+                backdrop: 'static',
+                keyboard: false
+            });
         });
     },
     

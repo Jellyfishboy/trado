@@ -40,6 +40,10 @@ Trado::Application.routes.draw do
           get :update, on: :collection
       end
     end
+
+    resources :skus, only: [] do
+      resource :notify_me, only: [:new, :create], controller: 'products/notify_me'
+    end
   
   	resources :carts, only: [:update] do
   		collection do

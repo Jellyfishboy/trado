@@ -17,8 +17,7 @@ ready = function()
     trado.app.updateSelectedSku();
     trado.app.updateSelectedAccessory();
 
-    trado.modal.loading('.paypal_checkout', '#paypalModal');
-    trado.modal.loading('.confirm_order', '#confirmOrderModal');
+    trado.modal.loading('.checkout-button', '#checkoutLoadingModal');
     trado.modal.open('#estimate-delivery-service-price', '#estimateDeliveryModal');
     trado.modal.resetEstimateDeliveryModel();
 
