@@ -1,13 +1,11 @@
-<% content_for :header_1, "Stock reminder" %>
-<% content_for :header_2, @sku.product.name %>
+<% content_for :title, "#{@sku.product.name} Stock Reminder" %>
 
-Hello,
+Stock Reminder
 
-You requested a reminder to be sent when 12v Premium Linear Actuator is back in stock. You can now purchase this item from our online store:
+You requested a reminder to be sent when 12v Premium Linear Actuator is back in stock. You can now purchase this item from our online store.
 
 <%= category_product_url(@sku.product.category, @sku.product) %>
 
-If you did not request this reminder, please ignore and delete this email.
-
-Regards
-<%= Store.settings.name %> team
+<%= @sku.product.name %>
+<%= @sku.variants.map{|v| v.name.titleize}.join(' / ') %>
+<%= Store::Price.new(price: @sku.price).single %>
