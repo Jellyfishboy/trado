@@ -1,9 +1,6 @@
-<%= yield :header_1 %>
-<%= yield :header_2 %>
+<%= yield :title %>
 
 <%= yield %>
 
-<%= yield :additional_info %>
-Please do not reply to this message; it was sent from an unmonitored email address. This message is a service email related to your use of <%= Store.settings.name %>.
-
-Copyright 2014 <%= Store.settings.name %>. All rights reserved.
+<%= Store.settings.name %>, 2080 Spadafore Drive, Pleasantville, PA 16341
+Copyright <%= Date.today.year %> <%= Store.settings.name %>. All rights reserved.

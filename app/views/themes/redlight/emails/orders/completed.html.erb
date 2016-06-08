@@ -1,10 +1,9 @@
 <% content_for :title, "Order ##{@order.id} Complete" %>
-<% content_for :header, "Order Complete" %>
 
 <table class="jumbotron" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
         <tbody>
           <tr>
-            <td class="jumbotron_cell jumbotron_image" align="center" valign="top" style="padding: 0;text-align: center;background-repeat: no-repeat;background-position: 50% 0;background-size: 100% auto;background-color: #262840;background-image: url(images/jumbotron_image.jpg);color: #ffffff;font-size: 0 !important;">
+            <td class="jumbotron_cell jumbotron_image" align="center" valign="top" style="padding: 0;text-align: center;background-repeat: no-repeat;background-position: 50% 0;background-size: 100% auto;background-color: #262840;color: #ffffff;font-size: 0 !important;">
                 <!--[if (gte mso 9)|(IE)]>
                 <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
                   <tbody>
@@ -29,7 +28,7 @@
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                  <td class="icon_cell" style="padding: 8px;font-size: 0;line-height: 1;-webkit-border-radius: 80px;border-radius: 80px;height: 48px;border: 2px solid;background-color: #56bfa3;border-color: #56bfa3;"><%= image_tag "#{Rails.application.secrets.email_root}/redlight/ic_shopping_basket_white_48dp_2x.png", width: 48, height: 48, style: 'line-height: 1;outline: none;border: 0;text-decoration: none;-ms-interpolation-mode: bicubic;mso-line-height-rule: exactly;' %></td>
+                                  <td class="icon_cell" style="padding: 8px 12px;font-size: 0;line-height: 1;-webkit-border-radius: 80px;border-radius: 80px;height: 48px;border: 2px solid;background-color: #4baec8;border-color: #4baec8;"><%= image_tag "#{Rails.application.secrets.email_root}/redlight/basket-icon-white.png", width: 40, height: 40, style: 'line-height: 1;outline: none;border: 0;text-decoration: none;-ms-interpolation-mode: bicubic;mso-line-height-rule: exactly;' %></td>
                                 </tr>
                                 <tr>
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
@@ -44,7 +43,7 @@
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                  <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #56bfa3;">&nbsp;</td>
+                                  <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #4baec8;">&nbsp;</td>
                                 </tr>
                                 <tr>
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
@@ -52,6 +51,7 @@
                               </tbody>
                             </table><!-- /.hruler:hruler_primary -->
                             <h3 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 22px;line-height: 30px;font-weight: normal;color: #ffffff;">Thank you for placing your order.</h3>
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;">Your payment has successfully been processed. We'll let you know once your item(s) have dispatched.</p>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>
@@ -201,7 +201,7 @@
                             <tr>
                               <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: left;vertical-align: top;color: #888888;">
                                 <h4 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 19px;line-height: 28px;font-weight: normal;color: #333333;"><span style="color: #b3b3b5;"><%= item.quantity %>×</span> <strong><%= item.product.name %></strong></h4>
-                                <h6 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 8px;padding: 0;font-size: 30px;line-height: 34px;font-weight: bold;color: #56bfa3;"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></h6>
+                                <h6 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 8px;padding: 0;font-size: 30px;line-height: 34px;font-weight: bold;color: #4baec8;"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></h6>
                                 <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 8px;margin-bottom: 8px;"><%= item.sku.variants.map{|v| v.name.titleize}.join(' / ') %></p>
                               </td><!-- /.column_cell -->
                             </tr>
@@ -249,8 +249,8 @@
                         <tr>
                           <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: right;vertical-align: top;color: #888888;">
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;margin: 8px 0;">Delivery&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %><br>
-                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %><br>Tax&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></p>
-                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;margin: 8px 0;color: #333333;">Total&nbsp;&nbsp;<span class="amount" style="text-decoration: none;color: #56bfa3;"><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></span></h2>
+                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %><br><%= Store.settings.tax_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></p>
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;margin: 8px 0;color: #333333;">Total&nbsp;&nbsp;<span class="amount" style="text-decoration: none;color: #4baec8;"><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></span></h2>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>

@@ -1,16 +1,10 @@
-<% content_for :header_1, Store.settings.name %>
-<% content_for :header_2, "Order unsuccessful" %>
+<% content_for :title, "Order ##{@order.id} Failed" %>
 
 Order #<%= @order.id %>
+<%= @order.created_at.strftime(" #{@order.created_at.day.ordinalize} %B %Y") %>
 
-Hello,
-
-Unfortunately your order was unsuccessful. 
-
-<% unless @order.transactions.last.status_reason.nil? %>
-Your order was unsuccessful for the following reason(s): 
-<%= @order.transactions.last.status_reason %>
-<% end %>
+Your order was unsuccessful.
+The payment method you provided was unsuccessful in processing the order. Please try again.
 
 Your delivery option
 ---------------------
@@ -29,6 +23,7 @@ Your delivery address
 
 Payment method
 ---------------------
+<%= @order.payment_type %>
 
 Your billing address
 ---------------------
@@ -50,10 +45,7 @@ Placed on <%= @order.updated_at.strftime("#{@order.updated_at.day.ordinalize} %b
     <%= item.sku.product.name %> | <%= Store::Price.new(price: item.price, tax_type: 'net').single %> | <%= item.quantity %> | <%= Store::Price.new(price: item.total_price, tax_type: 'net').single %>
 <% end %>
 
+Delivery : <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
 Subtotal: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
-Delivery & handling: <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
-Total before <%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
 <%= Store.settings.tax_name %>: <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
 Total: <%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %>
-
-If you would like assistance with your order, please don't hesitate to contact us at support@trado.io, quoting your order number.
