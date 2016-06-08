@@ -11,7 +11,12 @@ ready = function()
     redlight.animation.displaySearch(),
     redlight.animation.cartPopup(),
     redlight.animation.autoHideCartPoup();
-    redlight.animation.displayCart()
+    redlight.animation.displayCart();
+
+    // checkoutOrderSummaryHeight: function()
+    // {
+        
+    // },
 
     // trado
     trado.tracking.init();
@@ -38,7 +43,10 @@ ready = function()
     });
 };
 $(document).ready(ready);
-
+$(window).load(function()
+{
+    redlight.animation.checkoutOrderSummaryHeight();
+});
 $(document).ajaxComplete(function()
 {
     trado.modal.open('.notify_me', '#notifyMeModal');

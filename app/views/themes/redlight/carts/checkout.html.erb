@@ -13,7 +13,7 @@
     <div class='row checkout-panel'>
       <%= form_for @order, url: paypal_confirm_carts_path, html: { method: :post } do |f| %>
         <h2 class="checkout-header visible-xs">Checkout</h2>
-        <div class='col-lg-8 col-sm-8'>
+        <div class='col-lg-8 col-sm-8 checkout-body'>
             <% unless @order.errors.empty? %>
               <div class="errors">
                 <p>Please complete all of the required fields</p>
