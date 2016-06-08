@@ -130,13 +130,13 @@
             <hr>
             <div id="checkout-breakdown">
               <div>
-                <span>SUB-TOTAL:</span>
                 <span>DELIVERY:</span>
+                <span>SUB-TOTAL:</span>
                 <span>TAX:</span>
               </div>
               <div>
-                <span><%= Store::Price.new(price: (@order.net_amount - @order.delivery.price), tax_type: 'net').single %></span>
                 <span><%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %></span>
+                <span><%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %></span>
                 <span><%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></span>
               </div>
             </div>
