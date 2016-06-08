@@ -6,6 +6,8 @@ Order #<%= @order.id %>
 Your order was unsuccessful.
 The payment method you provided was unsuccessful in processing the order. Please try again.
 
+<%= retry_order_url(@order) %>
+
 Your delivery option
 ---------------------
 <%= @order.delivery.full_name %>

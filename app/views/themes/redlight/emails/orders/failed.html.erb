@@ -3,7 +3,7 @@
 <table class="jumbotron" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
         <tbody>
           <tr>
-            <td class="jumbotron_cell jumbotron_image" align="center" valign="top" style="padding: 0;text-align: center;background-repeat: no-repeat;background-position: 50% 0;background-size: 100% auto;background-color: #262840;color: #ffffff;font-size: 0 !important;">
+            <td class="jumbotron_cell jumbotron_image" align="center" valign="top" style="padding: 0;text-align: center;background-repeat: no-repeat;background-position: 50% 0;background-size: 100% auto;background-color: #2f363d;color: #ffffff;font-size: 0 !important;">
                 <!--[if (gte mso 9)|(IE)]>
                 <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
                   <tbody>
@@ -55,7 +55,11 @@
                             <table class="secondary_btn" align="center" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;clear: both;margin: 0 auto;">
                               <tbody>
                                 <tr>
-                                  <td class="font_default" style="padding: 10px 32px;font-family: Helvetica, Arial, sans-serif;font-size: 19px;line-height: 28px;mso-line-height-rule: exactly;text-align: center;vertical-align: middle;background-color: #74b71b;"><a href="#" style="display: block;text-decoration: none;font-family: Helvetica, Arial, sans-serif;font-weight: normal;text-align: center;color: #ffffff;"><span style="text-decoration: none;text-align: center;display: block;color: #fff;">Try Again</span></a></td>
+                                  <td class="font_default" style="padding: 10px 32px;font-family: Helvetica, Arial, sans-serif;font-size: 19px;line-height: 28px;mso-line-height-rule: exactly;text-align: center;vertical-align: middle;background-color: #74b71b;">
+                                    <%= link_to retry_order_url(@order), style: 'display: block;text-decoration: none;font-family: Helvetica, Arial, sans-serif;font-weight: normal;text-align: center;color: #ffffff;', target: '_blank' do %>
+                                      <span style="text-decoration: none;text-align: center;display: block;color: #fff;">Try Again</span>
+                                    <% end %>
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -256,7 +260,7 @@
                         <tr>
                           <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: right;vertical-align: top;color: #888888;">
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;margin: 8px 0;">Delivery&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %><br>
-                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %><br>Tax&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></p>
+                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %><br><%= Store.settings.tax_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></p>
                             <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;margin: 8px 0;color: #333333;">Total&nbsp;&nbsp;<span class="amount" style="text-decoration: none;color: #4baec8;"><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></span></h2>
                           </td><!-- /.column_cell -->
                         </tr>
