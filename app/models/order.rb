@@ -113,7 +113,7 @@ class Order < ActiveRecord::Base
   	#
   	# @return [Boolean]
   	def new_order_tracking_mailer?
-  		completed? && dispatched? && !consignment_number.nil? && consignment_number_changed? ? true : false
+  		completed? && dispatched? && tracking? ? true : false
   	end
 
   	def self.dashboard_data
@@ -129,4 +129,8 @@ class Order < ActiveRecord::Base
 	  		:provider_fee_total => completed_collection.sum('transactions.fee')
   		}
   	end
+
+    def tracking?
+        consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
+    end
 end
