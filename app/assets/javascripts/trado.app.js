@@ -187,6 +187,8 @@ trado.app =
                 success: function(data)
                 {
                     $('#cart-container').html(data.html);
+                    redlight.animation.temporaryCartPopup(5000);
+                    redlight.animation.cartPopup();
                     $('#basket-icon span').html(data.cart_quantity);
                 },
                 error: function(xhr, status, error)

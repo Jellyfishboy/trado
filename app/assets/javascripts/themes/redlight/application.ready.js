@@ -10,6 +10,7 @@ ready = function()
     redlight.animation.imageGallery(),
     redlight.animation.displaySearch(),
     redlight.animation.cartPopup(),
+    redlight.animation.autoHideCartPoup();
     redlight.animation.displayCart()
 
     // trado
