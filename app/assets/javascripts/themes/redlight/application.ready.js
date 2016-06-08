@@ -21,6 +21,7 @@ ready = function()
     trado.modal.open('#estimate-delivery-service-price', '#estimateDeliveryModal');
     trado.modal.resetEstimateDeliveryModel();
 
+    trado.app.setDeliveryServicePrices();
     trado.app.selectDeliveryServicePrice();
     trado.app.updateDeliveryServicePrice();
     trado.app.addToCart();

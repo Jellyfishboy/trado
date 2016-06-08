@@ -1,17 +1,17 @@
-<% content_for :title, "Confirm Order ##{@order.id}" %>
+<% content_for :title, "Review Order ##{@order.id}" %>
 
 <div class='checkout'>
   <div class='container'>
     <div class='row checkout-header hidden-xs'>
       <div class='col-lg-8 col-sm-8'>
-        <h2>Confirm your order</h2>
+        <h2>Review your order</h2>
       </div>
       <div class='col-lg-4 col-sm-4'>
         <h2>Order Summary</h2>
       </div>
     </div>
     <div class='row checkout-panel'>
-      <h2 class="checkout-header visible-xs">Confirm your order</h2>
+      <h2 class="checkout-header visible-xs">Review your order</h2>
       <div class='col-lg-4 col-sm-4'>
           <h3>DELIVERY ADDRESS</h3>
           <%= @delivery_address.full_name %>

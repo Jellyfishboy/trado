@@ -35,6 +35,39 @@ trado.app =
             return window.location = "/categories/" + data.category_slug + "/products/" + data.product_slug;
         });
     },
+
+    setDeliveryServicePrices: function()
+    {
+        var counrtySelectElem = $('.update-delivery-service-price');
+
+        if (counrtySelectElem.val() !== "") 
+            {
+                $.ajax( 
+                {
+                    url: '/carts/delivery_service_prices',
+                    type: 'GET',
+                    data: { 'country_id': counrtySelectElem.val() },
+                    dataType: 'json',
+                    success: function(data) 
+                    {
+                        $('#delivery-services').html(data.table);
+                        $('#delivery-services input:radio').each(function() 
+                        {
+                            if ($(this).is(':checked')) 
+                            {
+                                trado.app.deliveryPriceCheckoutInfo($(this).parent().parent());
+                                
+                                $(this).parent().addClass('active');
+                            }
+                        });
+                    }
+                });
+            } 
+            else 
+            {
+                $('#delivery-services').html('<p>Please select a delivery country in order to view a list of available delivery services...</p>');
+            }
+    },
     
     selectDeliveryServicePrice: function() 
     {
@@ -80,6 +113,21 @@ trado.app =
                 $('#delivery-services').html('<p>Please select a delivery country in order to view a list of available delivery services...</p>');
             }
         });
+    },
+
+    deliveryPriceCheckoutInfo: function($parentElem)
+    {
+        var price = $parentElem.attr('data-price'),
+            total = $parentElem.attr('data-total'),
+            subtotal = $parentElem.attr('data-sub-total'),
+            tax = $parentElem.attr('data-tax'),
+            $checkoutElem = $('#checkout-breakdown');
+
+
+        $checkoutElem.find('div:last-child span:first-child').text(price);
+        $checkoutElem.find('div:last-child span:nth-child(2)').text(subtotal);
+        $checkoutElem.find('div:last-child span:last-child').text(tax);
+        $('#checkout-total div:last-child strong').text(total);
     },
 
     updateSelectedSku: function()
@@ -215,21 +263,6 @@ trado.app =
             });
             return false;
         });
-    },
-
-    deliveryPriceCheckoutInfo: function($parentElem)
-    {
-        var price = $parentElem.attr('data-price'),
-            total = $parentElem.attr('data-total'),
-            subtotal = $parentElem.attr('data-sub-total'),
-            tax = $parentElem.attr('data-tax'),
-            $checkoutElem = $('#checkout-breakdown');
-
-
-        $checkoutElem.find('div:last-child span:first-child').text(price);
-        $checkoutElem.find('div:last-child span:nth-child(2)').text(subtotal);
-        $checkoutElem.find('div:last-child span:last-child').text(tax);
-        $('#checkout-total div:last-child strong').text(total);
     },
 
     notifyMe: function()
