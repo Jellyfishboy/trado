@@ -44,11 +44,10 @@ class Order < ActiveRecord::Base
 	has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :delivery_service,                                            through: :delivery
 
-	validates :actual_shipping_cost,                                      presence: true, :if => :completed?
 	validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
-  validates :payment_type,                                              presence: true
+    validates :payment_type,                                              presence: true
 
 	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
@@ -72,7 +71,7 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :billing_address
 
 	enum shipping_status: [:pending, :dispatched]
-  enum payment_type: [:paypal]
+    enum payment_type: [:paypal]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 
   	#
@@ -109,11 +108,8 @@ class Order < ActiveRecord::Base
   		transactions.last.completed? unless transactions.empty?
   	end
 
-  	# Returns true if the order is completed, marked as dispatched, consignment is not nil and has changed
-  	#
-  	# @return [Boolean]
-  	def new_order_tracking_mailer?
-  		completed? && dispatched? && tracking? ? true : false
+  	def changed_shipping_date?
+  		completed? && dispatched? && shipping_date_changed? ? true : false
   	end
 
   	def self.dashboard_data

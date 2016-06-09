@@ -18,33 +18,18 @@ class Admin::OrdersController < ApplicationController
   def update
     set_order
     if @order.update(params[:order])
-      OrderMailer.tracking(@order).deliver_later if @order.new_order_tracking_mailer?
-      render json: { order_id: @order.id }, status: 200
+      OrderMailer.update_dispatched(@order).deliver_later if @order.changed_shipping_date?
+      render json: 
+      { 
+        order_id: @order.id,
+        date: @order.updated_at.strftime("%d/%m/%Y"),
+        row: render_to_string(partial: 'admin/orders/single', locals: { order: @order })
+      }, status: 200
     else 
       render json: { errors: @order.errors.full_messages }, status: 422
     end
   end
-
-  def dispatcher
-    set_order
-    render json: { modal: render_to_string(partial: 'admin/orders/dispatch/modal', locals: { order: @order }) }, status: 200
-  end
-
-  def dispatched
-    set_order
-    @order.shipping_date = Time.now
-    @order.shipping_status = 'dispatched'
-    if @order.update(params[:order])
-      OrderMailer.dispatched(@order).deliver_later
-      render json: 
-      { 
-        order_id: @order.id, 
-        date: @order.updated_at.strftime("%d/%m/%Y"), 
-        row: render_to_string(partial: 'admin/orders/single', locals: { order: @order }) 
-      }, status: 200
-    end
-  end
-
+  
   private
 
   def set_order

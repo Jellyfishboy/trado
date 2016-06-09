@@ -21,8 +21,6 @@ ready = function()
 
     trado.admin.editOrder();
     trado.admin.updateOrder();
-    trado.admin.dispatchOrderModal();
-    trado.admin.dispatchOrder();
 
     trado.admin.deleteAttachment();
     trado.admin.showAttachment();

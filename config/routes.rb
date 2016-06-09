@@ -89,12 +89,7 @@ Trado::Application.routes.draw do
 	  			end
 	  		end
 	  	end
-  		resources :orders, only: [:index, :show, :update, :edit] do
-	  		member do
-	  			get :dispatcher
-	  			post :dispatched
-	  		end
-  		end
+  		resources :orders, only: [:index, :show, :update, :edit]
   		resources :delivery_services, except: :show do
 	  		collection do
 	  			get :copy_countries

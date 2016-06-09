@@ -19,11 +19,6 @@
       <i class="icon-pencil"></i>
     </a>
   <% end %>
-  <% if order_record && object.last.transactions.last.completed? && object.last.pending? %>
-    <a href="#" data-order-id="<%= object.last.id %>" id="dispatcher">
-      <i class="icon-airplane"></i>
-    </a>
-  <% end %>
   <% if remote_delete %>
     <a href="#" data-url="<%= polymorphic_path(object) %>" class="<%= Store.class_name_id(object.last) %>-delete">
       <i class="icon-remove"></i>
