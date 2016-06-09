@@ -8,6 +8,7 @@ ready = function()
     
     soca.filter.tableRowTarget();
     soca.filter.products();
+    soca.filter.orders();
 
     soca.misc.taxField();
     soca.misc.multiSelect();
