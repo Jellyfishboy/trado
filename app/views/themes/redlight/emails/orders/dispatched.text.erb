@@ -10,6 +10,15 @@ Delivery Method
 ---------------------
 <%= @order.delivery.full_name %>
 
+Delivery Tracking
+---------------------
+<% if @order.tracking? %>
+<%= @order.consignment_number %>
+<%= Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number) %>
+<% else %>
+Not Available
+<% end %>
+
 Delivery Address
 ---------------------
 <%= @order.delivery_address.full_name %>

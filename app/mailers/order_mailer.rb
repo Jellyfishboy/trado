@@ -60,15 +60,15 @@ class OrderMailer < ActionMailer::Base
         end
     end
 
-    def tracking order
+    def updated_dispatched order
         @order = order
 
         mail(to: order.email,
             from: "#{Store.settings.name} <#{Store.settings.email}>", 
             subject: "#{Store.settings.name} Order ##{@order.id} Delivery Tracking"
         ) do |format|
-            format.html { render "themes/#{Store.settings.theme.name}/emails/orders/tracking", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
-            format.text { render "themes/#{Store.settings.theme.name}/emails/orders/tracking", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
+            format.html { render "themes/#{Store.settings.theme.name}/emails/orders/updated_dispatched", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
+            format.text { render "themes/#{Store.settings.theme.name}/emails/orders/updated_dispatched", layout: "../themes/#{Store.settings.theme.name}/layout/email" }
         end
     end
 end

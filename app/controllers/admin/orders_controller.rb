@@ -18,7 +18,7 @@ class Admin::OrdersController < ApplicationController
   def update
     set_order
     if @order.update(params[:order])
-      OrderMailer.update_dispatched(@order).deliver_later if @order.changed_shipping_date?
+      OrderMailer.updated_dispatched(@order).deliver_later if @order.changed_shipping_date?
       render json: 
       { 
         order_id: @order.id,

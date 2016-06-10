@@ -324,6 +324,34 @@
                         </tr>
                       </tbody>
                     </table><!-- /.column -->
+                    <table class="hruler hruler_secondary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 62px;margin-left: auto;margin-right: auto;clear: both;">
+                      <tbody>
+                        <tr>
+                          <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #dbdbdb;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table><!-- end .hruler:hruler_secondary -->
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #888888;">
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;color: #4baec8;"><small style="font-size: 12px;line-height: 1;font-weight: normal;">Tracking</small><br>
+                              <% if @order.tracking? %>
+                                <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank', style: 'display: inline-block;text-decoration: none;font-family: Helvetica, Arial, sans-serif;color: #4baec8;' %>
+                              <% else %>
+                                Not Available
+                              <% end %>
+                            </h2>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
                   </div><!-- /.col-3 -->
                   <!--[if (gte mso 9)|(IE)]>
                         </td>
