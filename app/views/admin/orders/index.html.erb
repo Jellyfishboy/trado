@@ -7,7 +7,7 @@
     <h2 class="widget widget-header">Orders</h2>
   </div>
   <div class="widget-controls">
-    <select class="form-select" id="filter-orders">
+    <select class="form-select" id="filter-order">
       <option class="filter" data-filter="all">Show all</option>
       <option class="filter" data-filter=".order-dispatched">Dispatched</option>
       <option class="filter" data-filter=".order-pending">Pending</option>
@@ -36,7 +36,7 @@
         </thead>
         <tbody class="mixitup">
           <% @orders.each do |order| %>
-            <tr id="order_<%= order.id %>" class="<%= order_filter_classes(order) %>">
+            <tr id="order_<%= order.id %>" class="<%= order_filter_classes(order) %> mix">
               <%= render partial: 'admin/orders/single', format: [:js], locals: { order: order } %>
             </tr>
           <% end %>
