@@ -45,7 +45,7 @@ Trado::Application.routes.draw do
       resource :notify_me, only: [:new, :create], controller: 'products/notify_me'
     end
   
-  	resources :carts, only: [:update] do
+  	resources :carts, only: [] do
   		collection do
 	  		get :mycart
 	  		get :checkout
@@ -89,12 +89,7 @@ Trado::Application.routes.draw do
 	  			end
 	  		end
 	  	end
-  		resources :orders, only: [:index, :show, :update, :edit] do
-	  		member do
-	  			get :dispatcher
-	  			post :dispatched
-	  		end
-  		end
+  		resources :orders, only: [:index, :show, :update, :edit]
   		resources :delivery_services, except: :show do
 	  		collection do
 	  			get :copy_countries

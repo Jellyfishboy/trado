@@ -15,12 +15,9 @@
         <div class="modal-body">
           <fieldset class="widget widget-content widget-last">
             <div class="form-group">
-              <%= f.label :actual_shipping_cost %>
-              <div class="form-prefix">
-                <span><%= Store.settings.currency %></span>
-                <%= f.text_field :actual_shipping_cost, :class => 'form-control' %>
-              </div>
-            </div>
+              <%= f.label 'Dispatch Date' %>
+              <%= f.text_field :shipping_date, class: 'form-control datetimepicker', value: (@order.shipping_date.strftime('%d/%m/%Y %I:%M%p') unless @order.shipping_date.nil?) %>
+             </div>
             <div class="form-group form-last">
               <%= f.label :consignment_number %>
               <%= f.text_field :consignment_number, :class => 'form-control' %>

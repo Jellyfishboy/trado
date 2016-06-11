@@ -68,7 +68,7 @@ class Cart < ActiveRecord::Base
          AND    d2.delivery_service_id = d1.delivery_service_id
          AND    d2.price < d1.price
          )', total_weight, length, thickness, total_weight, length, thickness]).map(&:id)
-    final_delivery_service_prices = DeliveryServicePrice.where(id: initial_delivery_service_prices).joins(:delivery_service).where(':total > delivery_services.order_price_minimum AND (:total < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', total: cart_total[:total]).map(&:id)
+    final_delivery_service_prices = DeliveryServicePrice.active.where(id: initial_delivery_service_prices).joins(:delivery_service).where(':total > delivery_services.order_price_minimum AND (:total < delivery_services.order_price_maximum OR delivery_services.order_price_maximum IS NULL)', total: cart_total[:total]).map(&:id)
     return final_delivery_service_prices
   end
 

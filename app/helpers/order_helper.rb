@@ -8,4 +8,8 @@ module OrderHelper
         end
       "<span class='label label-#{class_name} label-small'>#{status.capitalize}</span>".html_safe
     end
+
+    def order_filter_classes order
+        return order.dispatched? ? "order-dispatched" : "order-pending"
+    end
 end

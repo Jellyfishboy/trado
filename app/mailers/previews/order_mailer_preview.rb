@@ -16,7 +16,7 @@ class OrderMailerPreview < BasePreview
         OrderMailer.dispatched(mock_order)
     end
 
-    def tracking
-        OrderMailer.tracking(mock_order)
+    def updated_dispatched
+        OrderMailer.updated_dispatched(mock_order)
     end
 end

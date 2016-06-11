@@ -8,6 +8,7 @@ ready = function()
     
     soca.filter.tableRowTarget();
     soca.filter.products();
+    soca.filter.orders();
 
     soca.misc.taxField();
     soca.misc.multiSelect();
@@ -21,8 +22,6 @@ ready = function()
 
     trado.admin.editOrder();
     trado.admin.updateOrder();
-    trado.admin.dispatchOrderModal();
-    trado.admin.dispatchOrder();
 
     trado.admin.deleteAttachment();
     trado.admin.showAttachment();
