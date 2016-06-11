@@ -43,12 +43,13 @@ class Order < ActiveRecord::Base
 	has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :delivery_service,                                            through: :delivery
+  validates :shipping_date,                                             presence: true, on: :update, if: :pending?
 
 	validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
     validates :payment_type,                                              presence: true
-    validate :tracking_assignment,                                        if: :consignment_number_changed?
+    validate :tracking_assignment                                        
 
 	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
@@ -94,14 +95,10 @@ class Order < ActiveRecord::Base
   	# @param cart [Object]
   	# @param current_tax_rate [Decimal]
   	def calculate cart, current_tax_rate
-        net_amount = cart.total_price + (delivery.try(:price) || 0)
-        tax_amount = net_amount * current_tax_rate
-	  	self.update(
-	  		cart_id:           cart.id,
-	  		net_amount:        net_amount,
-	  		tax_amount:        tax_amount,
-	  		gross_amount:      net_amount + tax_amount
-	  		)
+      net_amount = cart.total_price + (delivery.try(:price) || 0)
+      tax_amount = net_amount * current_tax_rate
+      self.attributes = { cart_id: cart.id, net_amount: net_amount, tax_amount: tax_amount, gross_amount: net_amount + tax_amount }
+      self.save(validate: false)
   	end
 
   	# Returns true if the last associated transaction to the order is marked as complete
@@ -130,13 +127,13 @@ class Order < ActiveRecord::Base
   	end
 
     def tracking?
-        consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
+      consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
     end
 
     def tracking_assignment
-        if delivery_service.tracking_url.nil?
-            errors.add(:consignment_number, "can't be set when there is no tracking URL present on the associated delivery service.")
-            return false
-        end
+      if consignment_number.present? && !delivery_service.tracking_url.present?
+          errors.add(:consignment_number, "can't be set when there is no tracking URL.")
+          return false
+      end
     end
 end
