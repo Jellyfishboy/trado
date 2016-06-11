@@ -48,6 +48,7 @@ class Order < ActiveRecord::Base
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
     validates :payment_type,                                              presence: true
+    validate :tracking_assignment,                                        if: :consignment_number_changed?
 
 	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
 
@@ -130,5 +131,12 @@ class Order < ActiveRecord::Base
 
     def tracking?
         consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
+    end
+
+    def tracking_assignment
+        if delivery_service.tracking_url.nil?
+            errors.add(:consignment_number, "can't be set when there is no tracking URL present on the associated delivery service.")
+            return false
+        end
     end
 end

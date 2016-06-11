@@ -32,11 +32,6 @@
           <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
         </li>
         <li>
-          <i class="icon-coin"></i>
-          <b>Actual shipping cost</b>:
-          <%= Store::Price.new(price: @order.actual_shipping_cost, tax_type: 'net').single unless @order.actual_shipping_cost.nil? %>
-        </li>
-        <li>
           <i class="icon-airplane"></i>
           <b>Delivery option:</b>
           <%= @order.delivery.full_name %>

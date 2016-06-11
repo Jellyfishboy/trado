@@ -45,7 +45,7 @@ Trado::Application.routes.draw do
       resource :notify_me, only: [:new, :create], controller: 'products/notify_me'
     end
   
-  	resources :carts, only: [:update] do
+  	resources :carts, only: [] do
   		collection do
 	  		get :mycart
 	  		get :checkout
