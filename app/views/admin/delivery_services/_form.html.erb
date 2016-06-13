@@ -56,7 +56,7 @@
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="form-group form-last">
-      <%= f.collection_select :country_ids, @countries, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}} %>
+      <%= f.collection_select :country_ids, @countries.order(name: :asc), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}} %>
     </div>
   </fieldset>
   <div class="form-action">

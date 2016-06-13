@@ -37,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @delivery_services.each do |delivery_service| %>
+          <% @delivery_services.order(name: :asc).each do |delivery_service| %>
             <tr>
               <td>
                 <%= delivery_service.courier_name %>
