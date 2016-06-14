@@ -1,5 +1,4 @@
 require 'mailatron_4000/orders'
-require 'mailatron_4000/stock'
 
 module Mailatron4000
 

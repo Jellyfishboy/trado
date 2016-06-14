@@ -25,6 +25,7 @@ class StockAdjustment < ActiveRecord::Base
   validate :adjustment_value
 
   before_save :stock_adjustment
+  after_create :send_stock_notifications
 
   default_scope { order(created_at: :desc) }
 
@@ -52,4 +53,7 @@ class StockAdjustment < ActiveRecord::Base
     end
   end
 
+  def send_stock_notifications
+    SendStockNotificationsJob.perform_later(sku)
+  end
 end
