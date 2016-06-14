@@ -30,6 +30,7 @@ class Sku < ActiveRecord::Base
   has_many :order_items,                                              dependent: :restrict_with_exception
   has_many :orders,                                                   through: :order_items, dependent: :restrict_with_exception
   has_many :notifications,                                            as: :notifiable, dependent: :destroy
+  has_many :active_notifications,                                     -> { where(sent: false) }, class_name: 'Notification', as: :notifiable
   has_many :stock_adjustments,                                        dependent: :destroy
   has_one :category,                                                  through: :product
   belongs_to :product,                                                inverse_of: :skus
