@@ -41,4 +41,19 @@ class Address < ActiveRecord::Base
   def full_name
     [first_name, last_name].join(' ')
   end
+
+  def full_address
+    # NOTE: Clean this up
+    cnty = Country.find_by_name(country)
+    alpha_two_code = cnty.nil? ? 'GB' : cnty.alpha_two_code
+    {
+      name: full_name,
+      address1: address,
+      city: city,
+      zip: postcode,
+      state: county,
+      country: alpha_two_code,
+      telephone: telephone
+    }
+  end
 end

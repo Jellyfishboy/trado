@@ -15,13 +15,13 @@
 #
 class Country < ActiveRecord::Base
 
-	attr_accessible :name
+	attr_accessible :name, :alpha_two_code
 
 	has_many :destinations,                               dependent: :destroy
 	has_many :delivery_services,                          through: :destinations
 	has_many :orders,									  through: :delivery_services
 
-	validates :name,                                      uniqueness: true, presence: true
+	validates :name, :alpha_two_code,                     uniqueness: true, presence: true
 	scope :popular,										  -> { where(popular: true) }
 	scope :unpopular,									  -> { where(popular: false) }
 end
