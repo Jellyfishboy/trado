@@ -17,10 +17,6 @@ every 1.day, at: '5:00 am' do
     rbenv_rake "-s sitemap:refresh"
 end
 
-every 1.day, at: '9:00 am' do
-    rbenv_runner "Mailatron4000::Stock.notify"
-end
-
 every 1.week, at: '8:00 am' do
     rbenv_runner "RegeneratePopularCountriesJob.perform_later"
 end
