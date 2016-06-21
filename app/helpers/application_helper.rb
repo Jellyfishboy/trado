@@ -163,14 +163,14 @@ module ApplicationHelper
     # Iterates through each flash message in the array and renders it to the DOM with a partial
     #
     # @return [String] HTML elements
-    def render_flash
+    def render_flash partial
         flash_array = []
         flash.each do |type, messages|
             if messages.is_a?(String)
-                flash_array << render(partial: 'shared/flash', format: [:html], locals: { type: type, message: messages })
+                flash_array << render(partial: partial, format: [:html], locals: { type: type, message: messages })
             else
                 messages.each do |m|
-                    flash_array << render(partial: 'shared/flash', format: [:html], locals: { type: type, message: m }) unless m.blank?
+                    flash_array << render(partial: partial, format: [:html], locals: { type: type, message: m }) unless m.blank?
                 end
             end
         end

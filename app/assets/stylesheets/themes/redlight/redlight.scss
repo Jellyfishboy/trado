@@ -838,6 +838,32 @@ form .payment-choices {
   -o-border-radius: 0;
   border-radius: 0; }
 
+.alert {
+  padding: 15px 25px;
+  max-width: 1170px;
+  margin: 0px auto 20px;
+  color: #fff;
+  font-weight: 400;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 50px;
+  line-height: 20px;
+  font-size: 0.9em;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px; }
+  .alert i {
+    margin-right: 10px; }
+  .alert.alert-green {
+    background-color: #74b71b;
+    border: 1px solid #5fa205; }
+  .alert.alert-orange {
+    background-color: #ea5f23;
+    border: 1px solid #d15018; }
+
 #fourzerofour, #fivezerozero {
   background-color: #fff;
   border: 1px solid #ddd;
