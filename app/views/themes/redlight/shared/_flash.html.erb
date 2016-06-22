@@ -1,0 +1,4 @@
+<div class="alert <%= (if type == 'success' then 'alert-green' elsif type == 'error' then 'alert-orange' end) %>">
+  <%= type == 'success' ? "<i class='icon-checkmark-circle'></i>".html_safe : type == 'error' ? "<i class='icon-blocked'></i>".html_safe : nil %>
+  <%= message %>
+</div>

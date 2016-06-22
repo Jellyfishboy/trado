@@ -223,6 +223,14 @@ trado.app =
                     {
                         $('.checkout-button').remove();
                     }
+                    trado.animation.alert(
+                        '#mycart',
+                        'green',
+                        'delete-cart-alert',
+                        'You successfully deleted an item from your cart.',
+                        5000,
+                        'checkmark'
+                    )
                 }
             });
             return false;
@@ -256,6 +264,14 @@ trado.app =
                     {
                         $('.checkout-button').remove();
                     }
+                    trado.animation.alert(
+                        '#mycart',
+                        'green',
+                        'update-cart-alert',
+                        'Your cart has been successfully updated.',
+                        5000,
+                        'checkmark'
+                    )
                 },
                 error: function(xhr, status, error)
                 {

@@ -13,11 +13,6 @@ ready = function()
     redlight.animation.autoHideCartPoup();
     redlight.animation.displayCart();
 
-    // checkoutOrderSummaryHeight: function()
-    // {
-        
-    // },
-
     // trado
     trado.tracking.init();
     trado.app.updateSelectedSku();

@@ -69,7 +69,7 @@ class Product < ActiveRecord::Base
   
   default_scope { order(weighting: :desc) }
 
-  scope :search,                                              ->(query, page, per_page_count, limit_count) { joins(:tags).where("lower(products.name) LIKE :search OR lower(products.sku) LIKE :search OR lower(tags.name) LIKE :search", search: "%#{query}%").limit(limit_count).page(page).per(per_page_count) }
+  scope :search,                                              ->(query, page, per_page_count, limit_count) { joins(:tags).where("lower(products.name) LIKE :search OR lower(products.sku) LIKE :search OR lower(tags.name) LIKE :search", search: "%#{query}%").uniq.limit(limit_count).page(page).per(per_page_count) }
 
   enum status: [:draft, :published]
 

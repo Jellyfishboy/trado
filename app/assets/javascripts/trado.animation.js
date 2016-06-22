@@ -23,11 +23,11 @@ trado.animation =
         };
     },
 
-    alert: function(beforeElement, alertType, uniqueClass, message, delayCount)
+    alert: function(beforeElement, alertType, uniqueClass, message, delayCount, iconClass)
     {
-        $(beforeElement).before('<div class="alert alert-' + alertType + ' animated fadeInDown ' + uniqueClass + '">' + message + '</div>').delay(delayCount).queue(function(next)
+        $(beforeElement).before('<div class="alert alert-' + alertType + ' animated fadeInDown ' + uniqueClass + '"><i class="icon-' + iconClass + '"></i>' + message + '</div>').delay(delayCount).queue(function(next)
         {
-            $('.' + uniqueClass).addClass('fadeOutUp').delay(800).hide(1);
+            $('.' + uniqueClass).addClass('fadeOut').delay(800).hide(1);
             next();
         });
     },
