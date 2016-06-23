@@ -72,7 +72,6 @@ Trado::Application.configure do
 	# Set default URL
 	config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
 
-	config.action_controller.asset_host = Rails.application.secrets.global_host
 	config.action_mailer.asset_host = Rails.application.secrets.global_host
 
 	# Don't care if the mailer can't send
