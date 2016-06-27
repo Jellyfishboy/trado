@@ -30,6 +30,7 @@ ready = function()
     trado.app.updateCartItem();
     trado.app.notifyMe();
     trado.app.createNotifyMe();
+    trado.app.sendContactMessage();
     
     // Initialise floating sidebar for checkout order summary
     $('.checkout-container .content, .checkout-container .sidebar').theiaStickySidebar(

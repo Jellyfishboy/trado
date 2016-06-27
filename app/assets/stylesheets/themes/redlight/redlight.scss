@@ -767,7 +767,7 @@ header {
       font-weight: 100;
       padding: 10px 0; }
 
-form .form-check-group label, form .form-check-group-half label {
+form .form-check-group label, form .form-check-group-half label, form .form-check-group-full label {
   display: block;
   color: #8b8b8b;
   font-size: 0.83em;
@@ -777,7 +777,7 @@ form .form-check-group label, form .form-check-group-half label {
 form .form-check-group, form .form-check-group-half, form .form-check-group-75, form .form-check-group-full {
   display: inline-block;
   margin: 0 15px 15px 0; }
-form .form-check-group select, form .form-check-group input[type=text], form .form-check-group input[type=search], form .form-check-group-half select, form .form-check-group-half input[type=text], form .form-check-group-half input[type=search], form .form-check-group-full select, form .form-check-group-full input[type=text], form .form-check-group-full input[type=search] {
+form .form-check-group select, form .form-check-group input[type=text], form .form-check-group input[type=search], form .form-check-group textarea, form .form-check-group-half select, form .form-check-group-half input[type=text], form .form-check-group-half input[type=search], form .form-check-group-half textarea, form .form-check-group-full select, form .form-check-group-full input[type=text], form .form-check-group-full input[type=search], form .form-check-group-full textarea {
   display: inline-block;
   height: 34px;
   font-size: 14px;
@@ -795,12 +795,14 @@ form .form-check-group select, form .form-check-group input[type=text], form .fo
   -ms-border-radius: 0px;
   -o-border-radius: 0px;
   border-radius: 0px; }
-  form .form-check-group select:focus, form .form-check-group input[type=text]:focus, form .form-check-group input[type=search]:focus, form .form-check-group-half select:focus, form .form-check-group-half input[type=text]:focus, form .form-check-group-half input[type=search]:focus, form .form-check-group-full select:focus, form .form-check-group-full input[type=text]:focus, form .form-check-group-full input[type=search]:focus {
+  form .form-check-group select:focus, form .form-check-group input[type=text]:focus, form .form-check-group input[type=search]:focus, form .form-check-group textarea:focus, form .form-check-group-half select:focus, form .form-check-group-half input[type=text]:focus, form .form-check-group-half input[type=search]:focus, form .form-check-group-half textarea:focus, form .form-check-group-full select:focus, form .form-check-group-full input[type=text]:focus, form .form-check-group-full input[type=search]:focus, form .form-check-group-full textarea:focus {
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
     border: 1px solid #d9d9d9;
     box-shadow: none;
     border-color: #66afe9; }
+form .form-check-group textarea, form .form-check-group-half textarea, form .form-check-group-full textarea {
+  height: auto; }
 form .form-check-group {
   display: inline-block;
   width: 47%; }
@@ -1545,6 +1547,18 @@ section {
   #cart-container a {
     width: 100%;
     margin-top: 1em; }
+
+#static-page h1, #contact-page h1 {
+  text-transform: uppercase;
+  font-size: 1.35em;
+  font-weight: 700;
+  color: #f37e49;
+  margin-bottom: 40px; }
+#static-page p, #contact-page p {
+  font-size: 0.9em; }
+
+#contact-page form {
+  margin-top: 30px; }
 
 footer #social {
   background: #4baec8;

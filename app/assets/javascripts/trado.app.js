@@ -18,7 +18,7 @@ trado.app =
         // Scroll to error list
         if (!$this.parent().hasClass('modal-content'))
         {
-            $('body').scrollTo('.page-header', 800);
+            // $('body').scrollTo('.page-header', 800);
         }
     },
 
@@ -324,6 +324,46 @@ trado.app =
                 error: function(xhr, evt, status)
                 {
                     trado.app.jsonErrors(xhr, evt, status, $this);
+                }
+            });
+            return false;
+        });
+    },
+
+    sendContactMessage: function()
+    {
+        $('body').on('submit', '#new_contact_message', function ()
+        {
+            var $this = $(this),
+                url = $this.attr('action');
+            $.ajax(
+            {
+                url: url,
+                type: "POST",
+                data: $this.serialize(),
+                dataType: "json",
+                success: function(data)
+                {
+                    trado.animation.alert(
+                        '#contact-page',
+                        'green',
+                        'contact-alert',
+                        'Thank your for your message; we will be in contact shortly.',
+                        5000,
+                        'checkmark'
+                    )
+                    $this[0].reset();
+                },
+                error: function(xhr, evt, status)
+                {
+                    trado.animation.alert(
+                        '#contact-page',
+                        'orange',
+                        'contact-error-alert',
+                        'Please ensure you submit a name, message and valid email address.',
+                        5000,
+                        'blocked'
+                    )
                 }
             });
             return false;

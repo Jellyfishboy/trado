@@ -17,7 +17,7 @@ Trado::Application.routes.draw do
   	namespace :p do
   		get ':slug', to: 'pages#show'
   		resources :pages, only: [] do
-  			post 'send_contact_message', on: :collection
+  			post :send_contact_message, on: :collection
   		end
   	end
 
