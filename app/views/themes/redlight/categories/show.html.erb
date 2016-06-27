@@ -20,7 +20,7 @@
                         <%= link_to [product.category, product] do %>
                             <%= image_tag product.attachments.first.file.large, alt: product.name %>
                         <% end %>
-                        <h3><%= Store::Price.new(price: product.skus.first.price, count: product.skus.count).range %></h3>
+                        <h3><%= Store::Price.new(price: product.first_available_sku.price, count: product.skus.count).range %></h3>
                         <h2>
                             <%= link_to product.name, [product.category, product] %>
                         </h2>

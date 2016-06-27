@@ -30,7 +30,7 @@
         <%= @product.short_description %>
       </p>
 
-      <h2 id="price"><%= Store::Price.new(price: @skus.first.price).markup %></h2>
+      <h2 id="price"><%= Store::Price.new(price: @product.first_available_sku.price).markup %></h2>
 
       <div class="row hidden-xs">
         <div class="col-lg-4 col-sm-4 property">
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div id="product-actions">
-            <%= render partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @skus.first }, format: [:html] %>
+            <%= render partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @product.first_available_sku }, format: [:html] %>
         </div>
       <% end %>
       <ul id="social">
