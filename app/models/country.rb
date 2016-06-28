@@ -2,17 +2,18 @@
 #
 # The country table is a list of available countries available to a user when they select their billing and shipping country. 
 # It has and belongs to delivery services.
-
 # == Schema Information
 #
 # Table name: countries
 #
-#  id                   :integer          not null, primary key
-#  name                 :string(255)
-#  popular				:boolean		  default(false)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
+#  id             :integer          not null, primary key
+#  name           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  popular        :boolean          default(FALSE)
+#  alpha_two_code :string
 #
+
 class Country < ActiveRecord::Base
 
 	attr_accessible :name, :alpha_two_code

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: carts
+#
+#  id                   :integer          not null, primary key
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  delivery_id          :integer
+#  country              :string
+#  delivery_service_ids :text
+#
+
 require 'rails_helper'
 
 describe Cart do

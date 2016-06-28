@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: related_products
+#
+#  product_id :integer
+#  related_id :integer
+#
+
 require 'rails_helper'
 
 describe RelatedProduct do

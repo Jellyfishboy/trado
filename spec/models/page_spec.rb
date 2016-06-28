@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id               :integer          not null, primary key
+#  title            :string
+#  content          :text
+#  page_title       :string
+#  meta_description :string
+#  active           :boolean          default(FALSE)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  slug             :string
+#  template_type    :integer
+#  menu_title       :string
+#  sorting          :integer          default(0)
+#
+
 require 'rails_helper'
 
 describe Page do

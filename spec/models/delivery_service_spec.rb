@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: delivery_services
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  description         :string
+#  courier_name        :string
+#  created_at          :datetime
+#  updated_at          :datetime
+#  active              :boolean          default(TRUE)
+#  order_price_minimum :decimal(8, 2)    default(0.0)
+#  order_price_maximum :decimal(8, 2)
+#  tracking_url        :string
+#
+
 require 'rails_helper'
 
 describe DeliveryService do

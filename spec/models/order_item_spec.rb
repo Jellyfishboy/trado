@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: order_items
+#
+#  id         :integer          not null, primary key
+#  price      :decimal(8, 2)
+#  quantity   :integer
+#  sku_id     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  order_id   :integer
+#  weight     :decimal(8, 2)
+#
+
 require 'rails_helper'
 
 describe OrderItem do

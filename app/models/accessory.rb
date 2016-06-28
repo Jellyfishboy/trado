@@ -2,21 +2,21 @@
 #
 # The accessory table allows administrators to add additional items to a product and it's overall price.
 # A product can have many accessories. The weight of accessories effects the end delivery price calculation.
-
 # == Schema Information
 #
 # Table name: accessories
 #
-#  id               :integer          not null, primary key
-#  name             :string(255)      
-#  part_number      :integer  
-#  price            :decimal          precision(8), scale(2)      
-#  weight           :decimal          precision(8), scale(2) 
-#  cost_value       :decimal          precision(8), scale(2)     
-#  active           :boolean          default(true)
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  part_number :integer
+#  price       :decimal(8, 2)
+#  weight      :decimal(8, 2)
+#  cost_value  :decimal(8, 2)
+#  active      :boolean          default(TRUE)
 #
+
 class Accessory < ActiveRecord::Base
 
   attr_accessible :name, :part_number, :price, :weight, :cost_value, :active

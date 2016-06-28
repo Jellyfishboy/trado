@@ -2,18 +2,18 @@
 #
 # The cart table is designed as a session stored container (current_cart) for all the current user's cart item. 
 # This is destroyed if abandoned for more than a day or the associated order has been completed.
-
 # == Schema Information
 #
 # Table name: carts
 #
-#  id                             :integer              not null, primary key
-#  delivery_id                    :integer
-#  country                        :integer
-#  delivery_service_ids           :integer            
-#  created_at                     :datetime             not null
-#  updated_at                     :datetime             not null
+#  id                   :integer          not null, primary key
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  delivery_id          :integer
+#  country              :string
+#  delivery_service_ids :text
 #
+
 class Cart < ActiveRecord::Base
   attr_accessible :delivery_id, :country
 

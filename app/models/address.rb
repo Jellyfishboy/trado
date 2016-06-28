@@ -2,28 +2,29 @@
 #
 # The address table provides support for handling order and user addresses. 
 # It has a polymorphic relation so can be utilised by various models.
-
 # == Schema Information
 #
 # Table name: addresses
 #
-#  id                       :integer          not null, primary key
-#  addressable_id           :integer          
-#  addressable_type         :string(255)      
-#  first_name               :string(255)      
-#  last_name                :string(255) 
-#  address                  :string(255)      
-#  company                  :string(255)  
-#  telephone                :string(255)        
-#  city                     :string(255) 
-#  county                   :string(255)      
-#  country                  :string(255)      
-#  postcode                 :string(255)
-#  active                   :boolean          default(true)      
-#  default                  :boolean          default(false)      
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  id               :integer          not null, primary key
+#  first_name       :string
+#  last_name        :string
+#  company          :string
+#  address          :string
+#  city             :string
+#  county           :string
+#  postcode         :string
+#  country          :string
+#  telephone        :string
+#  active           :boolean          default(TRUE)
+#  default          :boolean          default(FALSE)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  addressable_id   :integer
+#  addressable_type :string
+#  order_id         :integer
 #
+
 class Address < ActiveRecord::Base
 
   attr_accessible :active, :address, :city, :company, :country, :county, :addressable_id,

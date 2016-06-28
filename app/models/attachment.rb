@@ -2,19 +2,19 @@
 #
 # The attachment table provides support for handling file uploads throughout the application. 
 # It has a polymorphic relation so can be utilised by various models.
-
 # == Schema Information
 #
 # Table name: attachments
 #
-#  id                     :integer          not null, primary key
-#  attachable_id          :integer          
-#  attachable_type        :string(255)    
-#  file                   :string(255)      
-#  default_record         :boolean          default(false)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  id              :integer          not null, primary key
+#  file            :string
+#  attachable_id   :integer
+#  attachable_type :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  default_record  :boolean          default(FALSE)
 #
+
 class Attachment < ActiveRecord::Base
   attr_accessible :attachable_id, :attachable_type, :file, :default_record
 

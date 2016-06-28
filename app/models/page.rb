@@ -2,24 +2,24 @@
 #
 # The page table is designed to allow users to modify content on key static pages for their storefront. 
 # All pages are created when installing Trado; there is currently no option to create additional pages.
-
 # == Schema Information
 #
 # Table name: pages
 #
-#  id                       :integer            not null, primary key
-#  title                    :string(255)
-#  menu_title               :string(255)
-#  content                  :text
-#  page_title               :string(255)
-#  meta_description         :string(255)
-#  slug                     :string(255)
-#  active                   :boolean
-#  template_type            :integer            default(0)
-#  sorting                  :integer            default(0)
-#  created_at               :datetime           not null
-#  updated_at               :datetime           not null
+#  id               :integer          not null, primary key
+#  title            :string
+#  content          :text
+#  page_title       :string
+#  meta_description :string
+#  active           :boolean          default(FALSE)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  slug             :string
+#  template_type    :integer
+#  menu_title       :string
+#  sorting          :integer          default(0)
 #
+
 class Page < ActiveRecord::Base
     attr_accessible :title, :menu_title, :content, :page_title, :meta_description, 
     :slug, :active, :template_type, :sorting

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id              :integer          not null, primary key
+#  email           :string
+#  notifiable_id   :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  sent            :boolean          default(FALSE)
+#  sent_at         :datetime
+#  notifiable_type :string
+#
+
 require 'rails_helper'
 
 describe Notification do

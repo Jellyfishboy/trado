@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  description      :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  active           :boolean          default(FALSE)
+#  slug             :string
+#  sorting          :integer          default(0)
+#  page_title       :string
+#  meta_description :string
+#
+
 require 'rails_helper'
 
 describe Category do

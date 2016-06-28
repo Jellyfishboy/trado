@@ -1,22 +1,22 @@
 # Category Documentation
 #
 # The categories table defines different types of products throughout the store.
-
 # == Schema Information
 #
 # Table name: categories
 #
-#  id                           :integer            not null, primary key
-#  name                         :string(255)      
-#  description                  :text             
-#  active                       :boolean            default(false)
-#  slug                         :string(255)
-#  sorting                      :integer            default(0)
-#  page_title                   :string(255)
-#  meta_description             :string(255)
-#  created_at                   :datetime           not null
-#  updated_at                   :datetime           not null
+#  id               :integer          not null, primary key
+#  name             :string
+#  description      :text
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  active           :boolean          default(FALSE)
+#  slug             :string
+#  sorting          :integer          default(0)
+#  page_title       :string
+#  meta_description :string
 #
+
 class Category < ActiveRecord::Base
   include ActiveScope
   include HasSlug

@@ -1,25 +1,25 @@
 # Sku Documentation
 #
 # The Sku table manages all the product variations. 
-
 # == Schema Information
 #
 # Table name: skus
 #
-#  id                         :integer          not null, primary key
-#  code                       :string(255)      
-#  length                     :decimal          precision(8), scale(2) 
-#  weight                     :decimal          precision(8), scale(2) 
-#  thickness                  :decimal          precision(8), scale(2) 
-#  stock                      :integer 
-#  stock_warning_level        :integer 
-#  cost_value                 :decimal          precision(8), scale(2) 
-#  price                      :decimal          precision(8), scale(2) 
-#  product_id                 :integer 
-#  active                     :boolean          default(true)
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
+#  id                  :integer          not null, primary key
+#  price               :decimal(8, 2)
+#  cost_value          :decimal(8, 2)
+#  stock               :integer
+#  stock_warning_level :integer
+#  code                :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  product_id          :integer
+#  length              :decimal(8, 2)
+#  weight              :decimal(8, 2)
+#  thickness           :decimal(8, 2)
+#  active              :boolean          default(TRUE)
 #
+
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 

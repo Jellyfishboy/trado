@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: delivery_service_prices
+#
+#  id                  :integer          not null, primary key
+#  code                :string
+#  price               :decimal(8, 2)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  description         :text
+#  active              :boolean          default(TRUE)
+#  min_weight          :decimal(8, 2)
+#  max_weight          :decimal(8, 2)
+#  min_length          :decimal(8, 2)
+#  max_length          :decimal(8, 2)
+#  min_thickness       :decimal(8, 2)
+#  max_thickness       :decimal(8, 2)
+#  delivery_service_id :integer
+#
+
 FactoryGirl.define do
     factory :delivery_service_price do
         sequence(:code) { |n| "#{Faker::Lorem.word}#{n}" }

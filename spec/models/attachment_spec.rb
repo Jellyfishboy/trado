@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: attachments
+#
+#  id              :integer          not null, primary key
+#  file            :string
+#  attachable_id   :integer
+#  attachable_type :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  default_record  :boolean          default(FALSE)
+#
+
 require 'rails_helper'
 
 describe Attachment do

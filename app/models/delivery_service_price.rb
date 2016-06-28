@@ -2,26 +2,26 @@
 #
 # The delivery_service_price table contains a list of available delivery prices for a type of delivery service. 
 # Each with a description and price and dimension parameters.
-
 # == Schema Information
 #
 # Table name: delivery_service_prices
 #
-#  id                       :integer          not null, primary key
-#  code                     :string(255)          
-#  price                    :decimal          precision(8), scale(2)
-#  description              :text          
-#  min_weight               :decimal          precision(8), scale(2)
-#  max_weight               :decimal          precision(8), scale(2)
-#  min_length               :decimal          precision(8), scale(2)
-#  max_length               :decimal          precision(8), scale(2)
-#  min_thickness            :decimal          precision(8), scale(2)
-#  max_thickness            :decimal          precision(8), scale(2)
-#  delivery_service_id      :integer          not null
-#  active                   :boolean          default(true)
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  id                  :integer          not null, primary key
+#  code                :string
+#  price               :decimal(8, 2)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  description         :text
+#  active              :boolean          default(TRUE)
+#  min_weight          :decimal(8, 2)
+#  max_weight          :decimal(8, 2)
+#  min_length          :decimal(8, 2)
+#  max_length          :decimal(8, 2)
+#  min_thickness       :decimal(8, 2)
+#  max_thickness       :decimal(8, 2)
+#  delivery_service_id :integer
 #
+
 class DeliveryServicePrice < ActiveRecord::Base
 
   attr_accessible :code, :price, :description, :min_weight, :max_weight, :min_length, :max_length, 

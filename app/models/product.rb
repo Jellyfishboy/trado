@@ -3,29 +3,29 @@
 # The product table contains the global data for any given product. 
 # It has associations to attachments, tags and skus.
 # More detailed information and different product variations are maintained within the Sku table.
-
 # == Schema Information
 #
 # Table name: products
 #
-#  id                       :integer            not null, primary key
-#  part_number              :string      
-#  name                     :string(255)
-#  description              :text
-#  short_description        :text
-#  page_title               :string(255)
-#  meta_description         :string(255)
-#  weighting                :integer 
-#  sku                      :string(255)
-#  featured                 :boolean 
-#  active                   :boolean            default(true)
-#  category_id              :integer    
-#  status                   :integer            default(0)
-#  order_count              :integer            default(0)
-#  slug                     :string(255)
-#  created_at               :datetime           not null
-#  updated_at               :datetime           not null
+#  id                :integer          not null, primary key
+#  name              :string
+#  description       :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  weighting         :integer
+#  part_number       :integer
+#  sku               :string
+#  category_id       :integer
+#  slug              :string
+#  meta_description  :string
+#  featured          :boolean
+#  active            :boolean          default(TRUE)
+#  short_description :text
+#  status            :integer          default(0)
+#  order_count       :integer          default(0)
+#  page_title        :string
 #
+
 class Product < ActiveRecord::Base
   include ActiveScope
   include HasSlug

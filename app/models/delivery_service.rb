@@ -2,22 +2,22 @@
 #
 # The delivery_service table contains a list of available delivery services, with detailed service data. 
 # A delivery service can have many delivery service prices.
-
 # == Schema Information
 #
 # Table name: delivery_services
 #
-#  id                             :integer            not null, primary key
-#  name                           :string(255)          
-#  description                    :text          
-#  courier_name                   :string(255)          
-#  order_price_minimum            :decimal            precision(8), scale(2), default(0)
-#  order_price_maximum            :decimal            precision(8), scale(2)
-#  active                         :boolean            default(true)
-#  tracking_url                   :string(255)
-#  created_at                     :datetime           not null
-#  updated_at                     :datetime           not null
+#  id                  :integer          not null, primary key
+#  name                :string
+#  description         :string
+#  courier_name        :string
+#  created_at          :datetime
+#  updated_at          :datetime
+#  active              :boolean          default(TRUE)
+#  order_price_minimum :decimal(8, 2)    default(0.0)
+#  order_price_maximum :decimal(8, 2)
+#  tracking_url        :string
 #
+
 class DeliveryService < ActiveRecord::Base
     attr_accessible :name, :description, :courier_name, :order_price_minimum, :order_price_maximum, :active, :country_ids, :tracking_url
 

@@ -3,28 +3,29 @@
 # The order table handles all the data associated to a current, completed or failed order. 
 # It is updated throughout the order process and discarded if the order is not completed within 2 days. 
 # Each order has an associated transaction which contains more information on the payment process. 
-
 # == Schema Information
 #
 # Table name: orders
 #
-#  id                                     :integer              not null, primary key
-#  ip_address                             :string(255)      
-#  email                                  :string(255)     
-#  user_id                                :integer     
-#  cart_id                                :integer
-#  delivery_id                            :integer        
-#  shipping_status                        :integer              default(0)   
-#  shipping_date                          :datetime 
-#  actual_shipping_cost                   :decimal              precision(8), scale(2) 
-#  net_amount                             :decimal              precision(8), scale(2)
-#  tax_amount                             :decimal              precision(8), scale(2) 
-#  gross_amount                           :decimal              precision(8), scale(2) 
-#  terms                                  :boolean
-#  consignment_number                     :string(255)
-#  created_at                             :datetime             not null
-#  updated_at                             :datetime             not null
+#  id                   :integer          not null, primary key
+#  email                :string
+#  shipping_date        :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  actual_shipping_cost :decimal(8, 2)
+#  delivery_id          :integer
+#  ip_address           :string
+#  user_id              :integer
+#  net_amount           :decimal(8, 2)
+#  gross_amount         :decimal(8, 2)
+#  tax_amount           :decimal(8, 2)
+#  terms                :boolean
+#  cart_id              :integer
+#  shipping_status      :integer          default(0)
+#  consignment_number   :string
+#  payment_type         :integer
 #
+
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base

@@ -2,25 +2,25 @@
 #
 # The transaction table contains all the required information for either a successful or failed payment transaction for an order. 
 # This allows the scalability of adding more payment methods to the application.
-
 # == Schema Information
 #
 # Table name: transactions
 #
-#  id                           :integer          not null, primary key
-#  order_id                     :integer      
-#  net_amount                   :decimal          precision(8), scale(2)  
-#  gross_amount                 :decimal          precision(8), scale(2)  
-#  tax_amount                   :decimal          precision(8), scale(2)  
-#  fee                          :decimal          precision(8), scale(2)  
-#  payment_type                 :string(255)
-#  payment_status               :integer 
-#  transaction_type             :string(255)  
-#  status_reason                :string(255)     
-#  error_code                   :string(255) 
-#  created_at                   :datetime         not null
-#  updated_at                   :datetime         not null
+#  id               :integer          not null, primary key
+#  transaction_type :string
+#  payment_type     :string
+#  fee              :decimal(8, 2)
+#  order_id         :integer
+#  gross_amount     :decimal(8, 2)
+#  tax_amount       :decimal(8, 2)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  net_amount       :decimal(8, 2)
+#  status_reason    :string
+#  payment_status   :integer          default(0)
+#  error_code       :integer
 #
+
 class Transaction < ActiveRecord::Base
 
     attr_accessible :fee, :gross_amount, :order_id, :payment_status, :payment_type, 

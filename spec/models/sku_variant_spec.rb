@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: sku_variants
+#
+#  id              :integer          not null, primary key
+#  sku_id          :integer
+#  variant_type_id :integer
+#  name            :string
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 require 'rails_helper'
 
 describe SkuVariant do

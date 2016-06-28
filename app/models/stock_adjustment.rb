@@ -2,19 +2,19 @@
 #
 # The stock_adjustment table records any stock adjustments made to a SKU.
 # Whether by a successful order or an adjustment in the administration control panel.
-
 # == Schema Information
 #
 # Table name: stock_adjustments
 #
-#  id                   :integer            not null, primary key
-#  description          :string(255)        
-#  adjustment           :integer            default(1)
-#  sku_id               :integer            
-#  stock_total          :integer
-#  created_at           :datetime           not null
-#  updated_at           :datetime           not null
+#  id          :integer          not null, primary key
+#  description :string
+#  adjustment  :integer          default(1)
+#  sku_id      :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  stock_total :integer
 #
+
 class StockAdjustment < ActiveRecord::Base
 
   attr_accessible :adjustment, :description, :sku_id, :stock_total
