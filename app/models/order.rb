@@ -104,7 +104,7 @@ class Order < ActiveRecord::Base
   	#
   	# @return [Boolean]
   	def completed?
-  		transactions.last.completed? unless transactions.empty?
+  		latest_transaction.completed? unless transactions.empty?
   	end
 
   	def changed_shipping_date?
@@ -134,5 +134,9 @@ class Order < ActiveRecord::Base
           errors.add(:consignment_number, "can't be set when there is no tracking URL.")
           return false
       end
+    end
+
+    def latest_transaction
+      transactions.order(created_at: :asc).last
     end
 end

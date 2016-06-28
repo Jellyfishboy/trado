@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
     def success
       @order = Order.includes(:delivery_address).find(params[:id])
-      if @order.transactions.last.pending? || @order.transactions.last.completed?
+      if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url 
@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
     def failed
       @order = Order.includes(:transactions).find(params[:id])
-      if @order.transactions.last.failed?
+      if @order.latest_transaction.failed?
         render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
 
     def retry
       set_order
-      @error_code = @order.transactions.last.error_code
+      @error_code = @order.latest_transaction.error_code
       if paypal_active? && !TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
         @order.update_column(:cart_id, current_cart.id)
       end

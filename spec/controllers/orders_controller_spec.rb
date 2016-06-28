@@ -191,7 +191,7 @@ describe OrdersController, broken: true do
 
         it "should assign the last transaction record's error_code attribute value to @error_code" do
             get :retry, id: order.id
-            expect(assigns(:error_code)).to eq order.transactions.last.error_code
+            expect(assigns(:error_code)).to eq order.latest_transaction.error_code
         end
 
         context "if the last transaction has a fatal error code" do
