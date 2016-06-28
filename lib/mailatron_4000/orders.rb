@@ -5,11 +5,11 @@ module Mailatron4000
         #
         # @param order [Object]
         def self.confirmation_email order
-            if order.transactions.last.completed?
+            if order.latest_transaction.completed?
                 OrderMailer.completed(order).deliver_later
-            elsif order.transactions.last.pending?
+            elsif order.latest_transaction.pending?
                 OrderMailer.pending(order).deliver_later
-            elsif order.transactions.last.failed?
+            elsif order.latest_transaction.failed?
                 OrderMailer.failed(order).deliver_later
             end
         end

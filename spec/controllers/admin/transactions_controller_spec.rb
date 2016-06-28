@@ -36,11 +36,11 @@
 #             end
 
 #             it "should set the transaction fee provided by PayPal" do
-#                 expect(order.transactions.last.fee).to eq BigDecimal.new("7.23")
+#                 expect(order.latest_transaction.fee).to eq BigDecimal.new("7.23")
 #             end
 
 #             it "should set the payment status provided by PayPal" do
-#                 expect(order.transactions.last.payment_status).to eq 'completed'
+#                 expect(order.latest_transaction.payment_status).to eq 'completed'
 #             end
 
 #             it "should send an order completed email", broken: true do
@@ -62,7 +62,7 @@
 #             end
 
 #             it "should set the transaction payment status to failed" do
-#                 expect(order.transactions.last.payment_status).to eq 'failed'
+#                 expect(order.latest_transaction.payment_status).to eq 'failed'
 #             end
  
 #             it "should send an order failed email", broken: true do

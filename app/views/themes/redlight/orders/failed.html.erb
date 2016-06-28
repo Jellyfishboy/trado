@@ -6,14 +6,14 @@
 			<p>
 				Unfortunately your order was unsuccessful.
 			</p>
-			<% unless @order.transactions.last.status_reason.nil? %>
+			<% unless @order.latest_transaction.status_reason.nil? %>
 			<p>
-				Your order was unsuccessful for the following reason(s): <strong><%= @order.transactions.last.status_reason %></strong>
+				Your order was unsuccessful for the following reason(s): <strong><%= @order.latest_transaction.status_reason %></strong>
 			</p>
 			<% end %>
-			<% unless @order.transactions.last.error_code.nil? %>
+			<% unless @order.latest_transaction.error_code.nil? %>
 			<p>
-				Error code: <strong><%= @order.transactions.last.error_code %></strong>
+				Error code: <strong><%= @order.latest_transaction.error_code %></strong>
 			</p>
 			<% end %>
 			<p>
