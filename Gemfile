@@ -27,7 +27,6 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '2.8.0'
-  gem 'faker'
   gem 'email_spec'
   gem 'fuubar'
 end
@@ -117,3 +116,6 @@ gem 'foreman'
 
 # documentation
 gem 'annotate'
+
+# fake data
+gem 'faker'

@@ -1,14 +1,27 @@
 namespace :trado do
-    task :install => :environment do
-        Rails.logger.info 'Trado -> Installing Trado for the first time...'.colorize(:cyan)
-        Rails.logger.info 'Dropping the database'.colorize(:green)
+    task install: :environment do
+        puts 'Trado -> Installing Trado for the first time...'.colorize(:cyan)
+        puts 'Dropping the database'.colorize(:green)
         Rake::Task['db:drop'].invoke     
-        Rails.logger.info 'Creating the database'.colorize(:green)
+        puts 'Creating the database'.colorize(:green)
         Rake::Task['db:create'].invoke
-        Rails.logger.info 'Loading the new schema'.colorize(:green)
+        puts 'Loading the new schema'.colorize(:green)
         Rake::Task['db:schema:load'].invoke
-        Rails.logger.info 'Seeding the database'.colorize(:green)
+        puts 'Seeding the database'.colorize(:green)
         `bundle exec rake db:seed --trace`
-        Rails.logger.info 'Trado -> Finished installation - you can now spin up the application server'.colorize(:cyan)
+        puts 'Trado -> Finished installation - you can now spin up the application server'.colorize(:cyan)
+    end
+
+    task demo: :environment do
+        puts 'Trado -> Demo application setup...'.colorize(:cyan)
+        puts 'Dropping the database'.colorize(:green)
+        Rake::Task['db:drop'].invoke     
+        puts 'Creating the database'.colorize(:green)
+        Rake::Task['db:create'].invoke
+        puts 'Loading the new schema'.colorize(:green)
+        Rake::Task['db:schema:load'].invoke
+        puts 'Seeding the database'.colorize(:green)
+        `bundle exec rake db:seed SEED_TYPE=demo --trace`
+        puts 'Trado -> Finished demo setup'.colorize(:cyan)
     end
 end

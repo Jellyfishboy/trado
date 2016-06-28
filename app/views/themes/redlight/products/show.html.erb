@@ -36,9 +36,11 @@
         <div class="col-lg-4 col-sm-4 property">
           <h3><%= @variant_types.map(&:name).join(' / ') %></h3>
         </div>
-        <div class="col-lg-4 col-sm-4 property">
-          <h3>Accessory</h3>
-        </div>
+        <% unless @product.accessories.active.empty? %>
+          <div class="col-lg-4 col-sm-4 property">
+            <h3>Accessory</h3>
+          </div>
+        <% end %>
         <div class="col-lg-4 col-sm-4 property">
           <h3>Quantity</h3>
         </div>
