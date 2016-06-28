@@ -3,10 +3,10 @@
         "id": 1,
         "category": "computing",
         "name": "Acer DVI HDMI Monitor",
-        "part_number": "KA220HQ",
-        "short_description": "With a native screen resolution of 1920 x 1080 pixels the Acer KA0 Series LED-backlit monitors deliver stunningly detailed images in a Full HD 1080p resolution.",
+        "part_number": "22003",
+        "short_description": "Acer KA0 Series LED-backlit monitors deliver stunningly detailed images in a Full HD 1080p resolution.",
         "description": "With a native screen resolution of 1920 x 1080 pixels the Acer KA0 Series LED-backlit monitors deliver stunningly detailed images in a Full HD 1080p resolution. The great sights are made even better by exceptional colours via Adaptive Contrast Management (ACM), ensuring crystal clear viewing und an ultra-high contrast ratio of 100 million:1. Designed with eco-friendliness in mind, these monitors are recyclable and packaged in a manner that reduces excess plastics and waste. The KA0 Series also makes use of no restricted substances and is designed for minimal power consumption. Thanks to these features, the KA0 Series monitors were recognized as ENERGY STAR® 6.0 qualified, TCO certified.",
-        "meta_description": "With a native screen resolution of 1920 x 1080 pixels the Acer KA0 Series LED-backlit monitors deliver stunningly detailed images in a Full HD 1080p resolution.",
+        "meta_description": "Acer KA0 Series LED-backlit monitors deliver stunningly detailed images in a Full HD 1080p resolution.",
         "page_title": "Acer HD DVI HDMI Monitor",
         "weighting": "1000",
         "sku": "KA",
@@ -17,7 +17,7 @@
             [
                 {
                     "variant_type": "Size",
-                    "code": "22",
+                    "code": "22\"",
                     "price": 76.98,
                     "cost_value": 34.88,
                     "length": 220,
@@ -27,7 +27,7 @@
                 },
                 {
                     "variant_type": "Size",
-                    "code": "24",
+                    "code": "24\"",
                     "price": 87.22,
                     "cost_value": 44.12,
                     "length": 240,

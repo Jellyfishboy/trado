@@ -19,9 +19,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '500',
             min_length: '0',
-            max_length: '100',
+            max_length: '150',
             min_thickness: '0',
-            max_thickness: '50',
+            max_thickness: '100',
             delivery_service_id: delivery_service_1.id
         },
         {
@@ -31,9 +31,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '1000',
             min_length: '0',
-            max_length: '150',
+            max_length: '350',
             min_thickness: '0',
-            max_thickness: '100',
+            max_thickness: '175',
             delivery_service_id: delivery_service_1.id
         }
     ]
@@ -54,9 +54,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '500',
             min_length: '0',
-            max_length: '100',
+            max_length: '150',
             min_thickness: '0',
-            max_thickness: '50',
+            max_thickness: '100',
             delivery_service_id: delivery_service_2.id
         },
         {
@@ -66,9 +66,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '1000',
             min_length: '0',
-            max_length: '150',
+            max_length: '350',
             min_thickness: '0',
-            max_thickness: '100',
+            max_thickness: '175',
             delivery_service_id: delivery_service_2.id
         }
     ]
@@ -92,9 +92,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '500',
             min_length: '0',
-            max_length: '100',
+            max_length: '150',
             min_thickness: '0',
-            max_thickness: '50',
+            max_thickness: '100',
             delivery_service_id: delivery_service_3.id
         },
         {
@@ -104,9 +104,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '1000',
             min_length: '0',
-            max_length: '150',
+            max_length: '350',
             min_thickness: '0',
-            max_thickness: '100',
+            max_thickness: '175',
             delivery_service_id: delivery_service_3.id
         }
     ]
@@ -127,9 +127,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '500',
             min_length: '0',
-            max_length: '100',
+            max_length: '150',
             min_thickness: '0',
-            max_thickness: '50',
+            max_thickness: '100',
             delivery_service_id: delivery_service_4.id
         },
         {
@@ -139,9 +139,9 @@ DeliveryServicePrice.create(
             min_weight: '0',
             max_weight: '1000',
             min_length: '0',
-            max_length: '150',
+            max_length: '350',
             min_thickness: '0',
-            max_thickness: '100',
+            max_thickness: '175',
             delivery_service_id: delivery_service_4.id
         }
     ]

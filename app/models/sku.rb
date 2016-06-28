@@ -119,8 +119,4 @@ class Sku < ActiveRecord::Base
   def valid_stock? quantity
     stock > quantity ? true : false
   end
-
-  def first_available_sku
-    skus.order(price: :asc).first
-  end
 end

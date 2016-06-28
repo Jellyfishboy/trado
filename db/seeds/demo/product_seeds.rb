@@ -3,7 +3,7 @@ puts 'Executing product seeds'.colorize(:green)
 
 # Computing
 
-file = File.read('public/demo_assets/data.json')
+file = File.read('public/demo_assets/products.json')
 json = JSON.parse(file)
 
 json.each do |product|
@@ -53,4 +53,5 @@ json.each do |product|
         new_product.attachments.create(file: File.open(File.join(Rails.root, "public/demo_assets/#{product['category']}/#{product['id']}/", file_name)))
     end
     new_product.attachments.first.update_column(:default_record, true)
+    new_product.published!
 end

@@ -102,4 +102,8 @@ class Product < ActiveRecord::Base
   def in_stock?
     skus.map(&:in_stock?).include?(true) ? true : false
   end
+
+  def first_available_sku
+    skus.order(price: :asc).first
+  end
 end
