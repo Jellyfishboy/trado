@@ -60,7 +60,7 @@ class Product < ActiveRecord::Base
   validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
-  validates :short_description,                               length: { maximum: 150, message: :too_long }, :if => :published?
+  validates :short_description,                               length: { maximum: 300, message: :too_long }, :if => :published?
   validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?
 
   accepts_nested_attributes_for :skus

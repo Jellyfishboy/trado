@@ -1,17 +1,16 @@
 puts '-----------------------------'
 puts 'Executing product seeds'.colorize(:green)
 
-# Computing
+# file = File.read('public/demo_assets/products.json')
+# json = JSON.parse(file)
+yaml = YAML.load_file('lib/demo_assets/products.yml')
 
-file = File.read('public/demo_assets/products.json')
-json = JSON.parse(file)
-
-json.each do |product|
+yaml.each do |product|
     category = Category.find_by_slug(product['category'])
 
     # create product
     new_product = category.products.build(
-        part_number: product['part_number'],
+        part_number: Faker::Number.number(6),
         name: product['name'],
         description: product['description'],
         short_description: product['short_description'],
@@ -48,9 +47,9 @@ json.each do |product|
         )
     end
 
-    img_files = Dir.chdir(Rails.root.join("public/demo_assets/#{product['category']}/#{product['id']}/")){ Dir.glob("**/*") }
+    img_files = Dir.chdir(Rails.root.join("lib/demo_assets/#{product['category']}/#{product['id']}/")){ Dir.glob("**/*") }
     img_files.each do |file_name|
-        new_product.attachments.create(file: File.open(File.join(Rails.root, "public/demo_assets/#{product['category']}/#{product['id']}/", file_name)))
+        new_product.attachments.create(file: File.open(File.join(Rails.root, "lib/demo_assets/#{product['category']}/#{product['id']}/", file_name)))
     end
     new_product.attachments.first.update_column(:default_record, true)
     new_product.published!
