@@ -24,7 +24,7 @@ module Store
         # @return [Decimal] price
         def price
             @price = @price.nil? ? 0 : @price
-            Store.settings.tax_breakdown ? (tax_type == 'gross' ? taxify(@price) : @price) : (tax_type == 'net' ? @price : taxify(@price))
+            tax_type == 'gross' ? taxify(@price) : @price
         end
 
         # If the store setting is set to show tax breakdown
@@ -32,7 +32,7 @@ module Store
         #
         # @return [Decimal] price
         def gross_price
-            Store.settings.tax_breakdown ? taxify(price) : nil
+            Store.settings.tax_breakdown ? taxify(@price || 0) : nil
         end
 
         # If the record count for a product is more than one

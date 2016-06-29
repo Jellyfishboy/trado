@@ -24,9 +24,9 @@ class CartItemsController < ApplicationController
         popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
         cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
         cart_quantity: current_cart.cart_items.sum('quantity'),
-        subtotal: Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single,
-        tax: Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single,
-        total: Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single,
+        subtotal: Store::Price.new(price: @cart_totals[:subtotal]).single,
+        tax: Store::Price.new(price: @cart_totals[:tax]).single,
+        total: Store::Price.new(price: @cart_totals[:total]).single,
         empty_cart: current_cart.cart_items.empty? ? true : false
       }, status: 200
 		else
@@ -42,9 +42,9 @@ class CartItemsController < ApplicationController
         popup: render_to_string(partial: theme_presenter.page_template_path('carts/popup')),
         cart: render_to_string(partial: theme_presenter.page_template_path('carts/cart')),
         cart_quantity: current_cart.cart_items.sum('quantity'),
-        subtotal: Store::Price.new(price: @cart_totals[:subtotal], tax_type: 'net').single,
-        tax: Store::Price.new(price: @cart_totals[:tax], tax_type: 'net').single,
-        total: Store::Price.new(price: @cart_totals[:total], tax_type: 'net').single,
+        subtotal: Store::Price.new(price: @cart_totals[:subtotal]).single,
+        tax: Store::Price.new(price: @cart_totals[:tax]).single,
+        total: Store::Price.new(price: @cart_totals[:total]).single,
         empty_cart: current_cart.cart_items.empty? ? true : false
     }, status: 200
 	end  

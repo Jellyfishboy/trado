@@ -1,4 +1,4 @@
 <div class="price">
   <%= price %>
-  <span class="tax-suffix"><%= "#{gross} inc #{Store.settings.tax_name}" unless gross.nil? %></span>
+  <% unless gross.nil? %><span class="tax-suffix"><%= "#{gross} inc #{Store.settings.tax_name}" %></span><% end %>
 </div>

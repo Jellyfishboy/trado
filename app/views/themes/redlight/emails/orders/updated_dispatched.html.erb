@@ -201,7 +201,7 @@
                             <tr>
                               <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: left;vertical-align: top;color: #888888;">
                                 <h4 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 19px;line-height: 28px;font-weight: normal;color: #333333;"><span style="color: #b3b3b5;"><%= item.quantity %>×</span> <strong><%= item.product.name %></strong></h4>
-                                <h6 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 8px;padding: 0;font-size: 30px;line-height: 34px;font-weight: bold;color: #4baec8;"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></h6>
+                                <h6 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 8px;padding: 0;font-size: 30px;line-height: 34px;font-weight: bold;color: #4baec8;"><%= Store::Price.new(price: item.total_price).single %></h6>
                                 <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 8px;margin-bottom: 8px;"><%= item.sku.variants.map{|v| v.name.titleize}.join(' / ') %></p>
                               </td><!-- /.column_cell -->
                             </tr>
@@ -248,9 +248,9 @@
                       <tbody>
                         <tr>
                           <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: right;vertical-align: top;color: #888888;">
-                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;margin: 8px 0;">Delivery&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %><br>
-                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %><br><%= Store.settings.tax_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></p>
-                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;margin: 8px 0;color: #333333;">Total&nbsp;&nbsp;<span class="amount" style="text-decoration: none;color: #4baec8;"><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></span></h2>
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;margin: 8px 0;">Delivery&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.delivery.price).single %><br>
+                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount).single %><br><%= Store.settings.tax_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount).single %></p>
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;margin: 8px 0;color: #333333;">Total&nbsp;&nbsp;<span class="amount" style="text-decoration: none;color: #4baec8;"><%= Store::Price.new(price: @order.gross_amount).single %></span></h2>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>

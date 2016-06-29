@@ -42,10 +42,10 @@
                 <%= accessory.weight %>
               </td>
               <td>
-                <%= Store::Price.new(price: accessory.cost_value, tax_type: 'net').single %>
+                <%= Store::Price.new(price: accessory.cost_value).single %>
               </td>
               <td>
-                <%= Store::Price.new(price: accessory.price, tax_type: 'net').single %>
+                <%= Store::Price.new(price: accessory.price).single %>
               </td>
               <td>
                 <%= Store::Price.new(price: accessory.price, tax_type: 'gross').single %>

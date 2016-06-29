@@ -43,7 +43,7 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '22.67') }
 
                 it "should return a decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price, tax_type: 'net').singularize).to eq 2267
+                    expect(Store::Price.new(price: sku.price).singularize).to eq 2267
                 end
             end
 
@@ -96,7 +96,7 @@ describe Store::Price do
                 let(:sku) { create(:sku, price: '22.67') }
 
                 it "should return a formatted decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price, tax_type: 'net').single).to eq '£22.67'
+                    expect(Store::Price.new(price: sku.price).single).to eq '£22.67'
                 end
             end
 
@@ -124,7 +124,7 @@ describe Store::Price do
             end
 
             it "should have the correct elements" do
-                expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(price: sku.price, tax_type: 'net').single}")
+                expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(price: sku.price).single}")
                 expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class=\"tax-suffix\">#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
             end
         end
