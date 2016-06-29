@@ -22,9 +22,6 @@ Trado::Application.configure do
 
 	config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' 
 
-	# Logs more concise errors
-	config.lograge.enabled = true
-
 	# Eager load code on boot. This eager loads most of Rails and
 	# your application in memory, allowing both thread web servers
 	# and those relying on copy on write to perform better.
