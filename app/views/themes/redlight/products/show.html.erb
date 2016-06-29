@@ -52,7 +52,7 @@
             <p class="visible-xs">
               <%= @variant_types.map(&:name).join(' / ') %>
             </p>
-            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] } ), {}, class: 'updated-selected-sku', 'data-product-id' => @product.id %>
+            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] }, selected: @product.first_available_sku.id), {}, class: 'updated-selected-sku', 'data-product-id' => @product.id %>
           </div>
 
           <% unless @product.accessories.active.empty? %>
