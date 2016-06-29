@@ -21,8 +21,9 @@ class Country < ActiveRecord::Base
 	has_many :destinations,                               dependent: :destroy
 	has_many :delivery_services,                          through: :destinations
 	has_many :orders,									  through: :delivery_services
+    has_many :products,                                   through: :orders
 
 	validates :name, :alpha_two_code,                     uniqueness: true, presence: true
-	scope :popular,										  -> { where(popular: true) }
+	scope :popular,										  -> { where(popular: true).includes(:products).order('products.order_count DESC') }
 	scope :unpopular,									  -> { where(popular: false) }
 end
