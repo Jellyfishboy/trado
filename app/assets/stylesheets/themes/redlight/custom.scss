@@ -28,3 +28,16 @@ form
         }
     }
 }
+.range-prefix + .tax-suffix
+{
+    display: none;
+}
+.price
+{
+    .tax-suffix
+    {
+        display: block;
+        padding-top:10px;
+        font-weight:400 !important;
+    }
+}

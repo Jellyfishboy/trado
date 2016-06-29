@@ -121,13 +121,13 @@
                 <%= item.sku.full_sku %>
               </td>
               <td>
-                <%= Store::Price.new(price: item.price, tax_type: 'net').single %>
+                <%= Store::Price.new(price: item.price).single %>
               </td>
               <td>
                 <%= item.quantity %>
               </td>
               <td>
-                <%= Store::Price.new(price: item.total_price, tax_type: 'net').single %>
+                <%= Store::Price.new(price: item.total_price).single %>
               </td>
             </tr>
           <% end %>
@@ -136,7 +136,7 @@
               <b>Delivery:</b>
             </td>
             <td>
-              <%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %>
+              <%= Store::Price.new(price: @order.delivery.price).single %>
             </td>
           </tr>
           <tr>
@@ -144,7 +144,7 @@
               <b>Subtotal:</b>
             </td>
             <td class="border-top">
-              <%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %>
+              <%= Store::Price.new(price: @order.net_amount).single %>
             </td>
           </tr>
           <tr>
@@ -152,7 +152,7 @@
               <b>Tax:</b>
             </td>
             <td>
-              <%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %>
+              <%= Store::Price.new(price: @order.tax_amount).single %>
             </td>
           </tr>
           <tr class="focused">
@@ -160,7 +160,7 @@
               <b>Total:</b>
             </td>
             <td>
-              <%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %>
+              <%= Store::Price.new(price: @order.gross_amount).single %>
             </td>
           </tr>
         </tbody>
@@ -199,13 +199,13 @@
                 <%= transaction.error_code.nil? ? "-" : transaction.error_code %>
               </td>
               <td>
-                <%= Store::Price.new(price: transaction.fee, tax_type: 'net').single %>
+                <%= Store::Price.new(price: transaction.fee).single %>
               </td>
               <td>
-                <%= Store::Price.new(price: transaction.net_amount, tax_type: 'net').single %>
+                <%= Store::Price.new(price: transaction.net_amount).single %>
               </td>
               <td>
-                <%= Store::Price.new(price: transaction.gross_amount, tax_type: 'net').single %>
+                <%= Store::Price.new(price: transaction.gross_amount).single %>
               </td>
               <td class="align-left">
                 <%= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P') %>

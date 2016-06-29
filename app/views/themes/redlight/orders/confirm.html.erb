@@ -107,7 +107,7 @@
                                 </tr>
                                 <tr>
                                   <td>Unit Price</td>
-                                  <td id="price"><%= Store::Price.new(price: item.total_price, tax_type: 'net').single %></td>
+                                  <td id="price"><%= Store::Price.new(price: item.total_price).single %></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -135,9 +135,9 @@
                 <span>TAX:</span>
               </div>
               <div>
-                <span><%= Store::Price.new(price: @order.delivery.price, tax_type: 'net').single %></span>
-                <span><%= Store::Price.new(price: @order.net_amount, tax_type: 'net').single %></span>
-                <span><%= Store::Price.new(price: @order.tax_amount, tax_type: 'net').single %></span>
+                <span><%= Store::Price.new(price: @order.delivery.price).single %></span>
+                <span><%= Store::Price.new(price: @order.net_amount).single %></span>
+                <span><%= Store::Price.new(price: @order.tax_amount).single %></span>
               </div>
             </div>
             <hr>
@@ -146,7 +146,7 @@
                 <strong>ORDER TOTAL:</strong>
               </div>
               <div>
-                <strong><%= Store::Price.new(price: @order.gross_amount, tax_type: 'net').single %></strong>
+                <strong><%= Store::Price.new(price: @order.gross_amount).single %></strong>
               </div>
             </div>
             <hr>

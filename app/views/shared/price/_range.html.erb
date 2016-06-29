@@ -1,4 +1,4 @@
 <div class="price">
   <%= range ? "<span class='range-prefix'>from</span> #{price}".html_safe : price %>
-  <span class="tax-suffix"><%= "#{gross} inc #{Store.settings.tax_name}" if Store.settings.tax_breakdown? %></span>
+  <% unless gross.nil? %><span class="tax-suffix"><%= "#{gross} inc #{Store.settings.tax_name}" %></span><% end %>
 </div>

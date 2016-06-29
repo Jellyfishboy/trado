@@ -85,7 +85,7 @@
                           <%= render_variants(sku) %>
                         </td>
                         <td>
-                          <%= Store::Price.new(price: sku.price, tax_type: 'net').single %>
+                          <%= Store::Price.new(price: sku.price).single %>
                         </td>
                         <td class="align-left">
                           <%= Store::Price.new(price: sku.price, tax_type: 'gross').single %>

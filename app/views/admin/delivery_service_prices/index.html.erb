@@ -52,7 +52,7 @@
                 <%= dimension_range(delivery_price.min_thickness, delivery_price.max_thickness) %>
               </td>
               <td>
-                <%= Store::Price.new(price: delivery_price.price, tax_type: 'net').single %>
+                <%= Store::Price.new(price: delivery_price.price).single %>
               </td>
               <td>
                 <%= Store::Price.new(price: delivery_price.price, tax_type: 'gross').single %>
