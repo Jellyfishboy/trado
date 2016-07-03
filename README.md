@@ -10,6 +10,15 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 [Release notes](http://release.tomdallimore.com)
 
+## Upcoming Features
+
+* Upgrade to Rails 5
+* Stripe payment gateway
+* Admin activity log
+* Omise payment gateway
+* Cancel orders
+* Payoneer payment gateway
+
 ## Versioning
 
 Trado follows Semantic Versioning 2.0 as defined at
