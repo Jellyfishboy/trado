@@ -13,11 +13,11 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 ## Upcoming Features
 
 * Upgrade to Rails 5
-* Stripe payment gateway
+* Stripe payment gateway [stripe.com](https://www.stripe.com)
 * Admin activity log
-* Omise payment gateway
+* Omise payment gateway [omise.co](https://www.omise.co)
 * Cancel orders
-* Payoneer payment gateway
+* Payoneer payment gateway [payoneer.com](https://www.payoneer.com)
 
 ## Versioning
 
