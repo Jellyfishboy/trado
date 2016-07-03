@@ -137,6 +137,7 @@ GEM
     coolline (0.5.0)
       unicode_utils (~> 1.4)
     daemons (1.2.3)
+    dalli (2.7.6)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -619,6 +620,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   colorize
   compass-rails
+  dalli
   database_cleaner
   devise
   email_spec

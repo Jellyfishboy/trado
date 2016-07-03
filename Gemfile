@@ -119,3 +119,6 @@ gem 'annotate'
 
 # fake data
 gem 'faker'
+
+# Caching
+gem 'dalli'
