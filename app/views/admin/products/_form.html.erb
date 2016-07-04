@@ -8,6 +8,9 @@
   <%= render 'admin/products/section/skus', format: [:html], f: f %>
   <%= render 'admin/products/section/associations', format: [:html], f: f %>
   <%= render 'admin/products/section/additional_options', format: [:html], f: f %>
+  <% if googlemerchant_active? %>
+    <%= render 'googlemerchant/admin_product_fields', format: [:html], f: f %>
+  <% end %>
   <div class="threecol"></div>
   <div class="ninecol last">
     <div class="form-action">
