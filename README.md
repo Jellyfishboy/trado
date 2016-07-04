@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/coverage/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
 
-Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store, which boasts an impressive array of module support for Google Merchants, PayPal, Stripe and many more.
+Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store. The platform comes bundled with an abundance of modular based support for popular services such as Google Merchants, PayPal, Stripe and many more.
 
 [Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
 
