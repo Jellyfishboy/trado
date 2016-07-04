@@ -10,6 +10,8 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 [Release notes](http://release.tomdallimore.com)
 
+Feel free to use the dedicated [Google Group](https://groups.google.com/forum/#!forum/trado-ecommerce-platform) to ask questions and receive support using the platform
+
 ## Upcoming Features
 
 * Upgrade to Rails 5
