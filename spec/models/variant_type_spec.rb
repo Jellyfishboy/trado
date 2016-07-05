@@ -19,4 +19,12 @@ describe VariantType do
     # Validations
     it { expect(subject).to validate_presence_of(:name) }
 
+    describe "Default scope" do
+        let!(:variant_type_1) { create(:variant_type, name: 'Color') }
+        let!(:variant_type_2) { create(:variant_type, name: 'Size') }
+
+        it "should return an array of cart items ordered by descending created_at" do
+            expect(VariantType.all).to match_array([variant_type_1, variant_type_2])
+        end
+    end
 end

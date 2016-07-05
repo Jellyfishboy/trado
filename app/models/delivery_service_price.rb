@@ -53,7 +53,6 @@ class DeliveryServicePrice < ActiveRecord::Base
   #
   # @return [String] delivery description
   def full_description
-    description.nil? ? delivery_service.description : description
+    description.present? ? description : delivery_service.description
   end
-
 end

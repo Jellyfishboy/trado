@@ -18,6 +18,7 @@ class Tag < ActiveRecord::Base
   has_many :taggings,                       dependent: :destroy
   has_many :products,                       through: :taggings
 
+  # TODO: Clean and refactor
   # Creates or updates the list of tags for an object
   #
   def self.add value, product_id
@@ -30,6 +31,7 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  # TODO: Clean and refactor
   # Deletes all tags associated to the product if the string is blank.
   # Or deletes tags not contained within the comma separated string, including tagging records.
   #

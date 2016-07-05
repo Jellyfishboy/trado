@@ -44,7 +44,7 @@ class Address < ActiveRecord::Base
   end
 
   def full_address
-    # NOTE: Clean this up
+    # TODO: Clean this up and move to paypal module
     cnty = Country.find_by_name(country)
     alpha_two_code = cnty.nil? ? 'GB' : cnty.alpha_two_code
     {

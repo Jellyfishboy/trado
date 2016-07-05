@@ -563,6 +563,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    test_after_commit (1.1.0)
+      activerecord (>= 3.2)
     thin (1.6.4)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -660,6 +662,7 @@ DEPENDENCIES
   sitemap_generator
   spring
   sprockets (= 2.11.0)
+  test_after_commit
   thin
   turbolinks
   tzinfo-data

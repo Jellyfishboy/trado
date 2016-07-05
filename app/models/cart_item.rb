@@ -20,17 +20,16 @@ class CartItem < ActiveRecord::Base
 
 	attr_accessible :cart_id, :price, :quantity, :sku_id, :weight, :cart_item_accessory_attributes
 
-	has_one :cart_item_accessory,             	dependent: :delete
 	belongs_to :cart
 	belongs_to :sku 
-
+	has_one :cart_item_accessory,             	dependent: :delete
 	has_one :product,							through: :sku
 	has_one :category,							through: :sku
 
 	validates :cart_id, :price, :quantity, 
 	:sku_id, :weight,							presence: true
 
-	after_save :reset_delivery_services
+	after_commit :reset_delivery_services
 
 	accepts_nested_attributes_for :cart_item_accessory
 
@@ -88,6 +87,9 @@ class CartItem < ActiveRecord::Base
 		self.weight = (weight*quantity.to_i)
 	end
 
+	# Resets the delivery service data for the previous set of cart items in the cart
+	#
+	# @return [Object] current cart
 	def reset_delivery_services
 		cart.delivery_id = cart.country = nil
 		cart.delivery_service_ids = cart.calculate_delivery_services(Store.tax_rate)
