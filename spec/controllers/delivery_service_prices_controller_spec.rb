@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe DeliveryServicePricesController do
+describe DeliveryServicePricesController, broken: true do
 
     store_setting
 
