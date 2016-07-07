@@ -9,11 +9,9 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 [Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
 
-[Release notes](http://release.tomdallimore.com)
+Need help setting up Trado? Check our our [Getting Started](http://trado.io/getting-started.html) guide!
 
-[Slack](http://www.slack.com) user? Send your email to me@tomdallimore.com so you can receive direct support for the platform from our team
-
-Feel free to use the dedicated [Google Group](https://groups.google.com/forum/#!forum/trado-ecommerce-platform) to ask questions and receive support using the platform
+Or maybe you just want to browser around the application? Then head on over to our [Demo Application](http://demo.trado.io)
 
 ## Modules
 
@@ -21,6 +19,16 @@ This is a list of modules which are supported by the Trado platform. These modul
 
 * [PayPal payment gateway](http://github.com/Jellyfishboy/trado-paypal-module)
 * [Google Merchant product feed](http://github.com/Jellyfishboy/trado-googlemerchant-module)
+
+## Community
+
+Stay up to date on the development of Trado and reach out to the community with these helpful resources:
+
+* Join our [Slack Team](http://slack.trado.io) to contribute and receive support
+* Ask questions and receive support on our [Google Group](https://groups.google.com/forum/#!forum/trado-ecommerce-platform)
+* Follow and tweet us on [Twitter](https://twitter.com/trado_ecommerce)
+* Like and comment on Facebook
+* Full list of changes and previous versions in our [Release notes](http://release.tomdallimore.com)
 
 ## Upcoming Features
 
