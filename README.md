@@ -11,7 +11,7 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 Need help setting up Trado? Check our our [Getting Started](http://trado.io/getting-started.html) guide!
 
-Or maybe you just want to browser around the application? Then head on over to our [Demo Application](http://demo.trado.io)
+Or maybe you just want to browse around the application? Then head on over to our [Demo Application](http://demo.trado.io)
 
 ## Modules
 
@@ -28,7 +28,7 @@ Stay up to date on the development of Trado and reach out to the community with 
 * Ask questions and receive support on our [Google Group](https://groups.google.com/forum/#!forum/trado-ecommerce-platform)
 * Follow and tweet us on [Twitter](https://twitter.com/trado_ecommerce)
 * Like and comment on Facebook
-* Full list of changes and previous versions in our [Release notes](http://release.tomdallimore.com)
+* Full list of changes and previous versions in our [Release Notes](http://release.tomdallimore.com)
 
 ## Upcoming Features
 
