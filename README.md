@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/coverage/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
-[![Slack Status](https://slack.trado.com/badge.svg)](https://slack.trado.com)
+[![Slack Status](https://slack.trado.io/badge.svg)](https://slack.trado.io)
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store. The platform comes bundled with an abundance of modular based support for popular services such as Google Merchants, PayPal, Stripe and many more.
 
