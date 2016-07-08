@@ -81,10 +81,11 @@ Trado::Application.routes.draw do
 	  			resources :stock_adjustments, only: [:create, :new]
 	  		end
 	  		namespace :skus do
-	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: [:new, :create] do
+	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: :new do
 	  				collection do
-	  					patch :update, as: 'update'
-	  					delete :destroy, as: 'destroy'
+              post 'create', as: 'create'
+	  					patch 'update', as: 'update'
+	  					delete 'destroy', as: 'destroy'
 	  				end
 	  			end
 	  		end
