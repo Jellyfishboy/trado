@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type
 
 	has_many :order_items,                                                dependent: :destroy
-	has_many :transactions,                                               dependent: :destroy
+	has_many :transactions,                                               -> { order(created_at: :desc) }, dependent: :destroy
 	has_many :products,                                                   through: :order_items
 	has_many :skus,                                                       through: :order_items
 
@@ -138,6 +138,6 @@ class Order < ActiveRecord::Base
     end
 
     def latest_transaction
-      transactions.order(created_at: :asc).last
+      transactions.last
     end
 end

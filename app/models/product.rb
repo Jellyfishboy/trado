@@ -37,6 +37,10 @@ class Product < ActiveRecord::Base
   :short_description, :related_ids, :active, :status, :order_count, :variant_ids
 
   has_many :skus,                                             dependent: :destroy, inverse_of: :product
+  has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
+  has_many :variant_types,                                    -> { uniq }, through: :variants
+  has_many :active_skus,                                      -> { where(active: true) }, class_name: 'Sku'
+  has_many :active_sku_variants,                              through: :active_skus, class_name: 'SkuVariant', source: :variants
   has_many :orders,                                           through: :skus
   has_many :carts,                                            through: :skus
   has_many :taggings,                                         dependent: :destroy
@@ -49,8 +53,6 @@ class Product < ActiveRecord::Base
                                                               foreign_key: :product_id, 
                                                               association_foreign_key: :related_id
   belongs_to :category
-  has_many :variants,                                         through: :skus, class_name: 'SkuVariant'
-  has_many :variant_types,                                    -> { uniq }, through: :variants
 
   validates :name, :sku, :part_number,                        presence: true
   validates :meta_description, :description, 

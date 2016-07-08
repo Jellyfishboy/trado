@@ -82,7 +82,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def set_products
-    @products = Product.active.load
+    @products = Product.includes(:category, :active_skus, :active_sku_variants).active.load
   end
 
   def set_categories

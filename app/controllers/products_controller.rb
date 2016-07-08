@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     end
 
     def set_skus
-        @skus = @product.skus.active
+        @skus = @product.active_skus
     end
 
     def set_variant_types

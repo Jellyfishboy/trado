@@ -14,10 +14,9 @@ module Store
             setting_cache = Rails.cache.read("store_setting")
             if setting_cache.nil?
                 Rails.cache.write("store_setting", StoreSetting.first) 
-                Rails.cache.read("store_setting")
-            else
-                setting_cache
+                setting_cache = Rails.cache.read("store_setting")
             end
+            setting_cache
         end
 
         # Returns a divided value of the tax rate in the Store settings, ready for use in calculations

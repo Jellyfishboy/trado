@@ -5,7 +5,7 @@ class Admin::Skus::VariantsController < ApplicationController
     def new
         set_product
         set_variant_types
-        render json: { modal: render_to_string(partial: 'admin/products/skus/variants/modal'), active_skus: !@product.skus.active.empty? }, status: 200
+        render json: { modal: render_to_string(partial: 'admin/products/skus/variants/modal'), active_skus: !@product.active_skus.empty? }, status: 200
     end
 
     def create
@@ -58,12 +58,12 @@ class Admin::Skus::VariantsController < ApplicationController
         @delete_variants.destroy_all
         set_updated_skus
 
-        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.skus.active.empty? }, status: 200
+        render json: { table: render_to_string(partial: 'admin/products/skus/table'), sku_count_text: pluralize(@variant_count, "variant"), product_skus_empty: @product.active_skus.empty? }, status: 200
     end
 
     def destroy
         set_product
-        @product.skus.active.each do |sku|
+        @product.active_skus.each do |sku|
             Store.active_archive(CartItem, :sku_id, sku)
         end
         render json: { }, status: 204

@@ -16,7 +16,7 @@ class AccessoriesController < ApplicationController
     end
 
     def set_sku
-        @sku ||=  @product.skus.active.find(params[:sku_id])
+        @sku ||=  @product.active_skus.find(params[:sku_id])
     end
 
     def set_accessory

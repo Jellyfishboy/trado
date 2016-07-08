@@ -3,7 +3,7 @@ class Admin::SkusController < ApplicationController
 
   def new
     set_product
-    unless @product.skus.active.empty?
+    unless @product.active_skus.empty?
       @form_sku = @product.skus.build
       @variant = @form_sku.variants.build
       render json: { modal: render_to_string(partial: 'admin/products/skus/modal', locals: { url: admin_product_skus_path, method: 'POST' }) }, status: 200
@@ -12,7 +12,7 @@ class Admin::SkusController < ApplicationController
 
   def create
     set_product
-    unless @product.skus.active.empty?
+    unless @product.active_skus.empty?
       @form_sku = @product.skus.build(params[:sku])
       if @form_sku.save
         render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @form_sku }), sku_id: @form_sku.id }, status: 201
@@ -72,7 +72,7 @@ class Admin::SkusController < ApplicationController
     set_sku
     archive_sku_and_associated
     sku_id = @sku.id
-    if @product.skus.active.empty?
+    if @product.active_skus.empty?
       render json: { last_record: true }, status: 200
     else
       render json: { last_record: false, sku_id: sku_id }, status: 200

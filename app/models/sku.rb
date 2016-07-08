@@ -88,7 +88,7 @@ class Sku < ActiveRecord::Base
   def variant_duplication
     return false if self.variants.map{|v| v.name.nil?}.include?(true) || self.variants.empty?
     @new_variant = self.variants.map{|v| v.name}.join('/')
-    @all_associated_variants = self.product.skus.active.where.not(id: self.id).map{|s| s.variants.map{|v| v.name}.join('/') }
+    @all_associated_variants = self.product.active_skus.where.not(id: self.id).map{|s| s.variants.map{|v| v.name}.join('/') }
     if @all_associated_variants.include?(@new_variant)
         errors.add(:base, "Variants combination already exists.")
         return false
@@ -106,7 +106,7 @@ class Sku < ActiveRecord::Base
   #
   # @return [Boolean]
   def last_active_sku?
-    product.skus.active.count == 1 ? true : false
+    product.active_skus.count == 1 ? true : false
   end
 
   # Checks if the product has any stock
