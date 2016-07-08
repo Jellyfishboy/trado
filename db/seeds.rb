@@ -3,6 +3,7 @@ ActiveRecord::Base.connection.tables.each { |t| ActiveRecord::Base.connection.re
 
 TYPE = ENV['SEED_TYPE']
 puts "-----------------------------"
+Rails.cache.clear
 
 if TYPE == nil || TYPE == 'install'
     seed_file = File.dirname(__FILE__) + '/seeds/install_seeds'

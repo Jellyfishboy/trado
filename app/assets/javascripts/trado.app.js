@@ -40,7 +40,7 @@ trado.app =
     {
         var counrtySelectElem = $('.update-delivery-service-price');
 
-        if (counrtySelectElem.val() !== "") 
+        if (counrtySelectElem.length > 0 && counrtySelectElem.val() !== "") 
             {
                 $.ajax( 
                 {

@@ -34,7 +34,8 @@ module Store
         # @return [String] redirect url
         def build
             provider.build(cart, order, ip_address)
-        rescue
+        rescue => e
+            Rails.logger.error "#{order.payment_type.titleize}: #{e.message}"
             nil
         end
 
