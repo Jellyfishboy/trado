@@ -57,7 +57,7 @@
               <td>
                 <%= Store::Price.new(price: delivery_price.price, tax_type: 'gross').single %>
               </td>
-              <%= table_actions [:admin, delivery_price.delivery_service, delivery_price], 'edit', 'delete' %>
+              <%= table_actions [:admin, @delivery_service, delivery_price], 'edit', 'delete' %>
             </tr>
           <% end %>
         </tbody>

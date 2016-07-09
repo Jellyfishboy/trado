@@ -51,7 +51,7 @@
               <td class="inner-table">
                 <table>
                   <tbody>
-                    <% delivery_service.prices.active.order(price: :asc).each do |delivery_price| %>
+                    <% delivery_service.active_prices.each do |delivery_price| %>
                       <tr>
                         <td>
                           <%= delivery_price.code %>
