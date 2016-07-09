@@ -52,6 +52,7 @@ class Order < ActiveRecord::Base
     validate :tracking_assignment                                        
 
 	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
+  scope :incomplete,                                                    ->{ includes(:transactions).where(transactions: { order_id: nil } ) }
 
 	scope :count_per_month,                                               -> { order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
 
@@ -122,7 +123,9 @@ class Order < ActiveRecord::Base
 	  		:tax_total => tax_total,
 	  		:completed_per_month => Reportatron4000.parse_count_per_month(Order.completed_collection.count_per_month),
 	  		:failed_per_month => Reportatron4000.parse_count_per_month(Order.failed_collection.count_per_month),
-	  		:provider_fee_total => completed_collection.sum('transactions.fee')
+	  		:provider_fee_total => completed_collection.sum('transactions.fee'),
+        :active_carts => Cart.all.count,
+        :incomplete_orders => Order.incomplete.count
   		}
   	end
 

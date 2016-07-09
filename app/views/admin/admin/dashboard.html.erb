@@ -86,4 +86,23 @@
             </div>
         </div>
     </div>
+    <div class="widget-sub-heading">
+        <h3>Activity</h3>
+    </div>
+    <div class="widget widget-content widget-chart">
+        <div class="row">
+            <div class="sixcol">
+                <div class="single-stat">
+                    <div class="green-stat"><%= @dashboard[:active_carts] %></div>
+                    <div>Active Carts</div>
+                </div>
+            </div>
+            <div class="sixcol last">
+                <div class="single-stat">
+                    <div class="orange-stat"><%= @dashboard[:incomplete_orders] %></div>
+                    <div>Incomplete Orders</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
