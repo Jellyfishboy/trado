@@ -119,3 +119,6 @@ gem 'faker'
 
 # Caching
 gem 'dalli'
+
+# Browser detection
+gem 'browser'
