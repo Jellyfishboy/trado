@@ -8,7 +8,7 @@ module CartBuilder
         end
 
         def set_browser_data
-            @order.browser = "#{browser.device.name} / #{browser.platform.name} / #{browser.name} / #{browser.version}" if browser.known?
+            @order.browser = [browser.device.name,browser.platform.name,browser.name,browser.version].join(' / ') if browser.known?
         end
 
         def set_cart_totals
