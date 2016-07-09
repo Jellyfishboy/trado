@@ -7,6 +7,10 @@ module CartBuilder
             @order = current_cart.order.nil? ? Order.new : current_cart.order
         end
 
+        def set_browser_data
+            @order.browser = "#{browser.device.name} / #{browser.platform.name} / #{browser.name} / #{browser.version}" if browser.known?
+        end
+
         def set_cart_totals
             @cart_totals = current_cart.calculate(Store.tax_rate)
         end
