@@ -4,7 +4,6 @@ class SearchController < ApplicationController
     def results
         set_query
         @products = Product.includes(:attachments, :category, :skus).published.search(@query, params[:page], 30, 300)
-        
         render theme_presenter.page_template_path('search/results'), format: [:html], layout: theme_presenter.layout_template_path
     end
 
@@ -26,6 +25,6 @@ class SearchController < ApplicationController
     private 
 
     def set_query
-        @query = "%#{params[:query]}%"
+        @query = params[:query].nil? ? "" : params[:query]
     end
 end
