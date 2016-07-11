@@ -37,20 +37,21 @@ describe OrderHelper do
         end
     end
 
-    describe '#selected_country' do
-        let!(:cart) { create(:cart) }
+    describe "#order_filter_classes" do
 
-        context "if the order_address parameter is nil" do
+        context "if order is dispatched" do
+            let!(:order) { create(:complete_order) }
 
-            it "should return the country attribute from the cart parameter" do
-                expect(selected_country(cart, nil)).to eq cart.country
+            it "should render order-dispatched class" do
+                expect(order_filter_classes(order)).to eq "order-dispatched"
             end
         end
 
-        context "if the order_address parameter is not nil" do
+        context "if order is not dispatched" do
+            let!(:order) { create(:undispatched_complete_order) }
 
-            it "should return the order_address parameter" do
-                expect(selected_country(cart, 'United Kingdom')).to eq 'United Kingdom'
+            it "should render order-pending class" do
+                expect(order_filter_classes(order)).to eq "order-pending"
             end
         end
     end
