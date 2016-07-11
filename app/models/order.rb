@@ -142,6 +142,6 @@ class Order < ActiveRecord::Base
     end
 
     def latest_transaction
-      transactions.last
+      transactions.first
     end
 end
