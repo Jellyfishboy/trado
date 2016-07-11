@@ -9,7 +9,7 @@ describe OrderMailer do
         let(:mail) { OrderMailer.completed(order) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} confirmation"
+            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} Complete"
         end
 
         it 'should render the receiver email' do
@@ -26,7 +26,7 @@ describe OrderMailer do
         let(:mail) { OrderMailer.pending(order) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} pending payment"
+            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} Pending"
         end
 
         it 'should render the receiver email' do
@@ -43,7 +43,7 @@ describe OrderMailer do
         let(:mail) { OrderMailer.failed(order) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} failed"
+            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} Failed"
         end
 
         it 'should render the receiver email' do
@@ -60,7 +60,7 @@ describe OrderMailer do
         let(:mail) { OrderMailer.dispatched(order) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} dispatched"
+            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} Dispatched"
         end
 
         it 'should render the receiver email' do
@@ -72,12 +72,12 @@ describe OrderMailer do
         end
     end
 
-    describe 'tracking' do
+    describe 'updated_dispatched' do
         let!(:order) { create(:addresses_complete_order) }
-        let(:mail) { OrderMailer.tracking(order) }
+        let(:mail) { OrderMailer.updated_dispatched(order) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} delivery tracking updated"
+            expect(mail.subject).to eq "#{Store.settings.name} Order ##{order.id} Delivery Tracking"
         end
 
         it 'should render the receiver email' do

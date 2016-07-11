@@ -31,4 +31,16 @@ describe StoreSetting do
     it { expect(subject).to validate_presence_of(:currency) }
     it { expect(subject).to validate_presence_of(:tax_rate) }
     
+    describe "Reset settings cache" do
+        before(:each) do
+            create(:store_setting, name: 'Toms Store!')
+            Store.settings
+        end
+
+        it "should update the settings method value in Store class after update" do
+            expect(Store.settings).to eq StoreSetting.first
+            Store.settings.update(name: 'My own store!')
+            expect(Store.settings.name).to eq 'My own store!'
+        end
+    end
 end

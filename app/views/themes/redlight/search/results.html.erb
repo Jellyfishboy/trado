@@ -1,4 +1,4 @@
-<% content_for :title, "Search results for #{params[:query]}: #{@products.map(&:name).join(',')}" %>
+<% content_for :title, "Search results for #{params[:query]}: #{@products.empty? ? "No results" : @products.map(&:name).join(',')}" %>
 <% content_for :breadcrumb, "Search: #{params[:query]}" %>
 <% content_for :meta_description, "Search results for #{params[:query]}: #{@products.map(&:name).join(',')}" %>
 

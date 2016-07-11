@@ -10,7 +10,7 @@ describe StockMailer do
         let(:mail) { StockMailer.notification(sku, user.email) }
 
         it 'should render the subject' do
-            expect(mail.subject).to eq "Stock reminder for #{sku.product.name}"
+            expect(mail.subject).to eq "#{sku.product.name} Stock Reminder"
         end
 
         it 'should render the receiver email' do

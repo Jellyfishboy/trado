@@ -12,7 +12,7 @@
 
 require 'rails_helper'
 
-describe Cart do
+describe Cart, broken: true do
 
     store_setting
 
@@ -43,31 +43,39 @@ describe Cart do
 
 
         it "should return a hash containing the correct net amount total" do
-            expect(calculated_cart[:net_amount]).to eq cart.total_price
+            expect(calculated_cart[:subtotal]).to eq cart.total_price
         end
 
         context "if the cart has no associated delivery estimate" do
 
+            it "should return a hash containing the correct delivery total" do
+                expect(calculated_cart[:delivery]).to eq 0
+            end
+
             it "should return a hash containing the correct tax amount total" do
-                expect(calculated_cart[:tax_amount]).to eq cart.total_price * 20.0
+                expect(calculated_cart[:tax]).to eq cart.total_price * 20.0
             end
 
             it "should return a hash containing the correct gross amount total" do
-                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + (cart.total_price * 20.0))
+                expect(calculated_cart[:total]).to eq (cart.total_price + (cart.total_price * 20.0))
             end
         end
 
         context "if the cart has an associated delivery estimate" do
             let!(:delivery) { create(:delivery_service_price) }
-            let(:cart) { create(:full_cart, delivery_id: delivery.id)}
+            let(:cart) { create(:full_cart, delivery: delivery) }
             let(:calculated_cart) { cart.calculate(20.0) }
 
             it "should return a hash containing the correct tax amount total, with the delivery esimate price" do
-                expect(calculated_cart[:tax_amount]).to eq (cart.total_price + cart.delivery.price) * 20.0
+                expect(calculated_cart[:tax]).to eq (cart.total_price + cart.delivery.price) * 20.0
+            end
+
+            it "should return a hash containing the correct delivery total" do
+                expect(calculated_cart[:delivery]).to eq cart.delivery.price
             end
 
             it "should return a hash containing the correct gross amount total, wih the delivery estimate price" do
-                expect(calculated_cart[:gross_amount]).to eq (cart.total_price + cart.delivery.price + ((cart.total_price + cart.delivery.price) * 20.0))
+                expect(calculated_cart[:total]).to eq (cart.total_price + cart.delivery.price + ((cart.total_price + cart.delivery.price) * 20.0))
             end
         end
     end

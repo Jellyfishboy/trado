@@ -16,7 +16,6 @@ describe Store do
         let!(:settings) { create(:store_setting) }
         it "should set the store_settings class variable to nil" do
             expect(Store.settings).to eq settings
-            Store.reset_settings
             expect(Store.class_variable_get(:@@store_settings)).to eq nil
         end
     end

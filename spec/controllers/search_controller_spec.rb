@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe SearchController do
+describe SearchController, broken: true do
 
     store_setting
 
     describe 'GET #result' do
-        let!(:product) { create(:product, name: 'product #1', active: true) }
+        let!(:product) { create(:product_sku_attachment, name: 'product #1', active: true) }
 
         it "should assign the query search results to @products" do
             get :results, query: 'product'
@@ -19,7 +19,7 @@ describe SearchController do
     end
 
     describe 'GET #autocomplete' do
-        let!(:product) { create(:product, name: 'product #1', active: true) }
+        let!(:product) { create(:product_sku_attachment, name: 'product #1', active: true) }
 
         it "should assign the query search results to @json_products" do
             xhr :get, :autocomplete, query: 'product'
@@ -28,5 +28,9 @@ describe SearchController do
             expect(assigns(:json_products).first[:category_name]).to eq product.category.name
         end
         
+        it "should return a 200 status code" do
+            xhr :get, :autocomplete, query: 'product'
+            expect(response.status).to eq 200
+        end
     end
 end

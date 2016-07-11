@@ -25,7 +25,7 @@ describe DeliveryServicePriceHelper do
         context "if the parameter is not nil" do
 
             it "should return it's value" do
-                expect(cart_delivery_price(cart.estimate_delivery)).to eq delivery_service_price.price
+                expect(cart_delivery_price(cart.delivery)).to eq delivery_service_price.price
             end
         end
     end

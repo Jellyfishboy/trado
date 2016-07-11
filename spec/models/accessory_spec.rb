@@ -17,6 +17,8 @@ require 'rails_helper'
 
 describe Accessory do
 
+    store_setting
+
     # ActiveRecord relations
     it { expect(subject).to have_many(:cart_item_accessories) }
     it { expect(subject).to have_many(:cart_items).through(:cart_item_accessories) }

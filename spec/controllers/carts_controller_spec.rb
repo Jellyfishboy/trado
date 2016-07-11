@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CartsController do
+describe CartsController, broken: true do
 
     store_setting
 

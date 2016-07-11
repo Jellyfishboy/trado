@@ -102,10 +102,13 @@ class Product < ActiveRecord::Base
   #
   # @return [Boolean]
   def in_stock?
-    skus.map(&:in_stock?).include?(true) ? true : false
+    skus.active.map(&:in_stock?).include?(true) ? true : false
   end
 
+  # Gets the first available active sku for the product
+  #
+  # @return [Object] sku record
   def first_available_sku
-    skus.order(price: :asc).first
+    skus.active.order(price: :asc).first
   end
 end

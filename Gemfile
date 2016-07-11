@@ -29,6 +29,7 @@ group :test do
   gem 'shoulda-matchers', '2.8.0'
   gem 'email_spec'
   gem 'fuubar'
+  gem 'test_after_commit'
 end
 
 group :development, :test do

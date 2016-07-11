@@ -35,6 +35,7 @@ FactoryGirl.define do
         sequence(:gross_amount) { |n| n }
         terms { true }
         consignment_number { '123456' }
+        payment_type { 'paypal' }
         
 
         association :cart

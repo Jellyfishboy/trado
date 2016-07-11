@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CartItemsController do
+describe CartItemsController, broken: true do
 
     store_setting
 

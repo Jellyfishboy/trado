@@ -43,5 +43,4 @@ class Attachment < ActiveRecord::Base
   def not_setting_attachment?
     return attachable_type == 'StoreSetting' || attachable_type == 'User' ? false : true 
   end
-
 end

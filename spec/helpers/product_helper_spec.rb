@@ -8,14 +8,13 @@ describe ProductHelper do
         let(:accessory) { create(:accessory, name: 'Accessory #1', price: '8.67') }
         let(:store_setting) { create(:store_setting, tax_breakdown: false) }
         before(:each) do
-            Store.reset_settings
             StoreSetting.destroy_all
             store_setting
             Store.settings
         end
 
         it "should return a html_safe string" do
-            expect(helper.accessory_details(accessory)).to eq 'Accessory #1 (+£10.40)'
+            expect(helper.accessory_details(accessory)).to eq 'Accessory #1 (+£8.67)'
         end
     end
 
@@ -52,6 +51,29 @@ describe ProductHelper do
 
         it "should return a string containing all the associated variants to a sku" do
             expect(render_variants(sku)).to eq sku.variants.map{|v| v.name.titleize}.join(' / ')
+        end
+    end
+
+    describe "#check_stock" do
+
+        context "if product is in stock" do
+            let!(:product) { create(:product_sku) }
+
+            it "should render in stock text" do
+                expect(check_stock(product)).to eq "IN STOCK"
+            end
+        end
+
+        context "if product is out of stock" do
+            let!(:product) { create(:product) }
+            let!(:sku) { create(:sku, stock: 5, stock_warning_level: 1, product: product, active: true) }
+            before(:each) do
+                sku.update(stock: 0)
+            end
+
+            it "should render out of stock text" do
+                expect(check_stock(product)).to eq "OUT OF STOCK"
+            end
         end
     end
 end

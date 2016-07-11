@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709120741) do
+ActiveRecord::Schema.define(version: 20160709123000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,21 +182,23 @@ ActiveRecord::Schema.define(version: 20160709120741) do
   create_table "orders", force: :cascade do |t|
     t.string   "email"
     t.datetime "shipping_date"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.decimal  "actual_shipping_cost", precision: 8, scale: 2
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.decimal  "actual_shipping_cost",    precision: 8, scale: 2
     t.integer  "delivery_id"
     t.string   "ip_address"
     t.integer  "user_id"
-    t.decimal  "net_amount",           precision: 8, scale: 2
-    t.decimal  "gross_amount",         precision: 8, scale: 2
-    t.decimal  "tax_amount",           precision: 8, scale: 2
+    t.decimal  "net_amount",              precision: 8, scale: 2
+    t.decimal  "gross_amount",            precision: 8, scale: 2
+    t.decimal  "tax_amount",              precision: 8, scale: 2
     t.boolean  "terms"
     t.integer  "cart_id"
-    t.integer  "shipping_status",                              default: 0
+    t.integer  "shipping_status",                                 default: 0
     t.string   "consignment_number"
     t.integer  "payment_type"
     t.string   "browser"
+    t.string   "paypal_express_token"
+    t.string   "paypal_express_payer_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -303,18 +305,19 @@ ActiveRecord::Schema.define(version: 20160709120741) do
   end
 
   create_table "store_settings", force: :cascade do |t|
-    t.string   "name",                                  default: "Trado"
-    t.string   "email",                                 default: "admin@example.com"
-    t.string   "currency",                              default: "£"
-    t.string   "tax_name",                              default: "VAT"
+    t.string   "name",                                         default: "Trado"
+    t.string   "email",                                        default: "admin@example.com"
+    t.string   "currency",                                     default: "£"
+    t.string   "tax_name",                                     default: "VAT"
     t.integer  "user_id"
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
-    t.string   "ga_code",                               default: "UA-XXXXX-X"
-    t.boolean  "ga_active",                             default: false
-    t.decimal  "tax_rate",      precision: 8, scale: 2, default: 20.0
-    t.boolean  "tax_breakdown",                         default: false
-    t.string   "theme_name",                            default: "redlight"
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
+    t.string   "ga_code",                                      default: "UA-XXXXX-X"
+    t.boolean  "ga_active",                                    default: false
+    t.decimal  "tax_rate",             precision: 8, scale: 2, default: 20.0
+    t.boolean  "tax_breakdown",                                default: false
+    t.string   "theme_name",                                   default: "redlight"
+    t.string   "paypal_currency_code",                         default: "GBP"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -343,6 +346,7 @@ ActiveRecord::Schema.define(version: 20160709120741) do
     t.string   "status_reason"
     t.integer  "payment_status",                           default: 0
     t.integer  "error_code"
+    t.string   "paypal_id"
   end
 
   create_table "users", force: :cascade do |t|
