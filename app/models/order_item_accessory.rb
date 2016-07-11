@@ -16,10 +16,8 @@
 #
 
 class OrderItemAccessory < ActiveRecord::Base
+    attr_accessible :accessory_id, :order_item_id, :price, :quantity
 
-  attr_accessible :accessory_id, :order_item_id, :price, :quantity
-
-  belongs_to :order_item
-  belongs_to :accessory
-
+    belongs_to :order_item
+    belongs_to :accessory
 end

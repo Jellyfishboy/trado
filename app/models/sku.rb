@@ -116,6 +116,9 @@ class Sku < ActiveRecord::Base
     stock == 0 ? false : true
   end
 
+  # Checks if the current sku stock is more than the quantity parameter
+  #
+  # @return [Boolean]
   def valid_stock? quantity
     stock > quantity ? true : false
   end

@@ -34,8 +34,4 @@ class Page < ActiveRecord::Base
     default_scope { order(sorting: :asc) }
     
     include ActiveScope
-
-    def render_menu_title
-        menu_title.blank? ? title : menu_title
-    end
 end

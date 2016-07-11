@@ -36,7 +36,7 @@ describe Category do
     it { expect(subject).to validate_length_of(:page_title).is_at_most(70) }
     it { expect(subject).to validate_length_of(:meta_description).is_at_most(150) }
 
-    describe "Listing all categories" do
+    describe "When listing all categories" do
         let!(:category_1) { create(:category) }
         let!(:category_2) { create(:category, active: false) }
         let!(:category_3) { create(:category) }

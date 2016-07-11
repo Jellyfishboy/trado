@@ -59,7 +59,7 @@ describe Product do
         it { expect(subject).to validate_length_of(:page_title).is_at_most(70) }
         it { expect(subject).to validate_length_of(:meta_description).is_at_most(150) }
         it { expect(subject).to validate_length_of(:description).is_at_least(20) }
-        it { expect(subject).to validate_length_of(:short_description).is_at_most(150) }
+        it { expect(subject).to validate_length_of(:short_description).is_at_most(300) }
     end
 
     # Nested attributes
@@ -160,6 +160,37 @@ describe Product do
                 product.valid?
                 expect(product).to have(1).errors_on(:base)
                 expect(product.errors.messages[:base]).to eq ["You must complete all variants before publishing the product."]
+            end
+        end
+    end
+
+    describe 'Checking if the product has any stock available in its active skus' do
+
+        context "if the product has no stock" do
+            let!(:product) { create(:product) }
+            let!(:sku_1) { create(:sku, stock: 5, stock_warning_level: 1, product: product, active: true) }
+            let!(:sku_2) { create(:sku, stock: 5, stock_warning_level: 1, product: product, active: true) }
+            let!(:sku_3) { create(:sku, stock: 20, stock_warning_level: 1, product: product, active: false) }
+            before(:each) do
+                sku_1.update(stock: 0)
+                sku_2.update(stock: 0)
+            end
+
+            it "should return false" do
+                expect(product.in_stock?).to eq false
+            end
+        end
+
+        context "if the product has stock" do
+            let!(:product) { create(:product) }
+            let!(:sku_1) { create(:sku, stock: 5, stock_warning_level: 1, product: product, active: true) }
+            let!(:sku_2) { create(:sku, stock: 10, stock_warning_level: 1, product: product, active: true) }
+            before(:each) do
+                sku_2.update(stock: 0)
+            end
+
+            it "should return true" do
+                expect(product.in_stock?).to eq true
             end
         end
     end

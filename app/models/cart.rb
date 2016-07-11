@@ -15,7 +15,7 @@
 #
 
 class Cart < ActiveRecord::Base
-  attr_accessible :delivery_id, :country
+  attr_accessible :delivery_id, :country, :delivery_service_ids
 
   serialize :delivery_service_ids, Array
 
@@ -77,5 +77,4 @@ class Cart < ActiveRecord::Base
   def self.clear_carts
     where("updated_at < ?", 12.hours.ago).destroy_all
   end
-  
 end

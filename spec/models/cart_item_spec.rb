@@ -16,6 +16,8 @@ require 'rails_helper'
 
 describe CartItem do
 
+    store_setting
+
     # ActiveRecord relations
     it { expect(subject).to belong_to(:sku) }
     it { expect(subject).to belong_to(:cart) }
@@ -235,6 +237,19 @@ describe CartItem do
                 cart_item.update_weight(12, cart_item.sku.weight, cart_item.cart_item_accessory.accessory)
                 expect(cart_item.weight).to eq ((cart_item.sku.weight + cart_item.cart_item_accessory.accessory.weight)*12)
             end
+        end
+    end
+
+    describe "After creating or updating a CartItem record" do
+        let!(:cart) { create(:cart, country: 'United Kingdom', delivery_id: 1) }
+        let!(:cart_item) { create(:cart_item, cart: cart) }
+
+        it "should reset the delivery service data in the parent cart" do
+            expect(cart.country).to eq 'United Kingdom'
+            cart_item.update(quantity: 4)
+            cart.reload
+            expect(cart.country).to eq nil
+            expect(cart.delivery_id).to eq nil
         end
     end
 end

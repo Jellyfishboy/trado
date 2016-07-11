@@ -155,4 +155,45 @@ describe Sku do
             end
         end
     end
+
+    describe 'Checking if the sku has stock' do
+
+        context "if the sku has zero stock" do
+            let!(:sku) { create(:sku, stock: 5, stock_warning_level: 1) }
+            before(:each) do
+                sku.update(stock: 0)
+            end
+
+            it "should return false" do
+                expect(sku.in_stock?).to eq false
+            end
+        end
+
+        context "if the sku has more than one in stock" do
+            let!(:sku) { create(:sku, stock: 5, stock_warning_level: 1) }
+
+            it "should return true" do
+                expect(sku.in_stock?).to eq true
+            end
+        end
+    end
+
+    describe 'Checking if the sku stock is more than the quantity parameter' do
+
+        context "if the sku has less than the quantity parameter" do
+            let!(:sku) { create(:sku, stock: 5, stock_warning_level: 1) }
+
+            it "should return false" do
+                expect(sku.valid_stock?(10)).to eq false
+            end
+        end
+
+        context "if the sku has more than the quantity parameter" do
+            let!(:sku) { create(:sku, stock: 5, stock_warning_level: 1) }
+
+            it "should return true" do
+                expect(sku.valid_stock?(3)).to eq true
+            end
+        end
+    end
 end
