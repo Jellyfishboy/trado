@@ -24,7 +24,8 @@ module Store
         # @return [Decimal] price
         def price
             @price = @price.nil? ? 0 : @price
-            tax_type == 'gross' ? taxify(@price) : @price
+            price_ting =  tax_type == 'gross' ? taxify(@price) : @price
+            return price_ting
         end
 
         # If the store setting is set to show tax breakdown
@@ -62,7 +63,7 @@ module Store
         #
         # @return [String] HTML elements
         def range
-            Renderer.render partial: 'shared/price/range', locals: { price: single, range: range_price, gross: format(gross_price) }, format: [:html]
+            Renderer.render partial: 'shared/price/range', locals: { single_price: single, range: range_price, gross: format(gross_price) }, format: [:html]
         end
 
         # Render the markup when displaying the net and gross price if tax breakdown set to true
@@ -71,7 +72,7 @@ module Store
         #
         # @return [String] HTML for both net and gross prices
         def markup
-            Renderer.render partial: 'shared/price/single', locals: { price: single, gross: format(gross_price) }, format: [:html]
+            Renderer.render partial: 'shared/price/single', locals: { single_price: single, gross: format(gross_price) }, format: [:html]
         end
 
         private

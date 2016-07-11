@@ -6,106 +6,38 @@ describe Store::Price do
 
     describe "When converting a price for third party services" do
 
-        context "if the tax breakdown Store setting is true" do
-            before(:each) do
-                Store.reset_settings
-                StoreSetting.destroy_all
-                create(:store_setting, tax_breakdown: true)
-                Store.settings
-            end
-
-            context "if the args array has a 'gross' string value" do
-                let(:sku) { create(:sku, price: '11.50') }
-                
-                it "should return a decimal price with tax" do
-                    expect(Store::Price.new(price: sku.price, tax_type: 'gross').singularize).to eq 1380
-                end
-            end
-
-            context "if the args array does not have a 'gross' string value" do
-                let(:sku) { create(:sku, price: '22.67') }
-                
-                it "should return a decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price).singularize).to eq 2267
-                end
+        context "if the args array has a 'gross' string value" do
+            let(:sku) { create(:sku, price: '11.50') }
+            
+            it "should return a decimal price with tax" do
+                expect(Store::Price.new(price: sku.price, tax_type: 'gross').singularize).to eq 1380
             end
         end
 
-        context "if the tax breakdown Store setting is false" do
-            before(:each) do
-                Store.reset_settings
-                StoreSetting.destroy_all
-                create(:store_setting, tax_breakdown: false)
-                Store.settings
-            end
-
-            context "if the args array has a 'net' string value" do
-                let(:sku) { create(:sku, price: '22.67') }
-
-                it "should return a decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price).singularize).to eq 2267
-                end
-            end
-
-            context "if the args array does not have a 'net' string value" do
-                let(:sku) { create(:sku, price: '283.67') }
-
-                it "should return a decimal price with tax" do
-                    expect(Store::Price.new(price: sku.price).singularize).to eq 34040
-                end
+        context "if the args array does not have a 'gross' string value" do
+            let(:sku) { create(:sku, price: '22.67') }
+            
+            it "should return a decimal price without tax" do
+                expect(Store::Price.new(price: sku.price).singularize).to eq 2267
             end
         end
     end
 
     describe "When rendering a single price for a view" do
 
-        context "if the tax breakdown Store setting is true" do
-            before(:each) do
-                Store.reset_settings
-                StoreSetting.destroy_all
-                create(:store_setting, tax_breakdown: true)
-                Store.settings
-            end
-
-            context "if the args array has a 'gross' string value" do
-                let(:sku) { create(:sku, price: '11.50') }
-                
-                it "should return a formatted decimal price with tax" do
-                    expect(Store::Price.new(price: sku.price, tax_type: 'gross').single).to eq '£13.80'
-                end
-            end
-
-            context "if the args array does not have a 'gross' string value" do
-                let(:sku) { create(:sku, price: '22.67') }
-                
-                it "should return a formatted decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price).single).to eq '£22.67'
-                end
+        context "if the args array has a 'gross' string value" do
+            let(:sku) { create(:sku, price: '11.50') }
+            
+            it "should return a formatted decimal price with tax" do
+                expect(Store::Price.new(price: sku.price, tax_type: 'gross').single).to eq '£13.80'
             end
         end
 
-        context "if the tax breakdown Store setting is false" do
-            before(:each) do
-                Store.reset_settings
-                StoreSetting.destroy_all
-                create(:store_setting, tax_breakdown: false)
-                Store.settings
-            end
-
-            context "if the args array has a 'net' string value" do
-                let(:sku) { create(:sku, price: '22.67') }
-
-                it "should return a formatted decimal price without tax" do
-                    expect(Store::Price.new(price: sku.price).single).to eq '£22.67'
-                end
-            end
-
-            context "if the args array does not have a 'net' string value" do
-                let(:sku) { create(:sku, price: '283.67') }
-
-                it "should return a formatted decimal price with tax" do
-                    expect(Store::Price.new(price: sku.price).single).to eq '£340.40'
-                end
+        context "if the args array does not have a 'gross' string value" do
+            let(:sku) { create(:sku, price: '22.67') }
+            
+            it "should return a formatted decimal price without tax" do
+                expect(Store::Price.new(price: sku.price).single).to eq '£22.67'
             end
         end
     end
@@ -117,7 +49,6 @@ describe Store::Price do
 
         context "if the tax breakdown Store setting is true" do            
             before(:each) do
-                Store.reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
                 Store.settings
@@ -131,14 +62,13 @@ describe Store::Price do
 
         context "if the tax breakdown Store setting is false" do
             before(:each) do
-                Store.reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: false, tax_name: 'VAT')
                 Store.settings
             end
 
             it "should have the correct elements" do
-                expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(price: sku.price, tax_type: 'gross').single}")
+                expect(Store::Price.new(price: sku.price, count: product.skus.count, tax_type: 'gross').range).to include("<span class='range-prefix'>from</span> #{Store::Price.new(price: sku.price, tax_type: 'gross').single}")
                 expect(Store::Price.new(price: sku.price, count: product.skus.count).range).to_not include("<span class='tax-suffix'>#{Store::Price.new(price: sku.price, tax_type: 'gross').single} inc VAT</span>")
             end
         end
@@ -149,7 +79,6 @@ describe Store::Price do
 
         context "if the tax breakdown Store setting is true" do
             before(:each) do
-                Store.reset_settings
                 StoreSetting.destroy_all
                 create(:store_setting, tax_breakdown: true, tax_name: 'VAT')
                 Store.settings
