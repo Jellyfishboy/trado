@@ -13,6 +13,7 @@ branches:
         - master
 services:
     - redis-server
+    - memcached
 script:
     - RAILS_ENV=test bundle exec rake db:schema:load --trace
     - bundle exec rake db:test:prepare

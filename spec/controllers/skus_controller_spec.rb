@@ -5,11 +5,11 @@ describe SkusController do
     store_setting
 
     describe 'GET #update' do
-        let(:sku) { create(:sku) }
+        let(:product) { create(:product_sku) }
 
-        it "should render the SKU update partial" do
-            xhr :get, :update, id: sku.id
-            expect(response).to render_template(partial: "themes/#{Store.settings.theme.name}/products/skus/_update")
+        it "should return a 200 status code" do
+            xhr :get, :update, id: product.skus.first.id, product_id: product.id
+            expect(response.status).to eq 200
         end
     end  
 end

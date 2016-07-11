@@ -21,7 +21,6 @@ describe Admin::AdminController do
     describe 'PATCH #update' do
         let(:store_setting) { create(:store_setting, tax_rate: '1.22') }
         before(:each) do
-            Store.reset_settings
             StoreSetting.destroy_all
             store_setting
             Store.settings
