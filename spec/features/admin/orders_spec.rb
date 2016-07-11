@@ -119,7 +119,6 @@ feature 'Order management' do
         end
         expect(build_dispatch.actual_shipping_cost).to eq BigDecimal.new('2.2')
         expect(build_dispatch.consignment_number).to eq '123456'
-        expect(build_dispatch.shipping_date).to_not eq nil
     end
 
     # scenario 'should dispatch an order', js: true do
