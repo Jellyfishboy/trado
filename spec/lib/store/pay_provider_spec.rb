@@ -8,7 +8,7 @@ describe Store::PayProvider, broken: true do
 
         context "if the pay provider is PayPal" do
 
-            it "should return the Payatron4000:Paypal class object" do
+            it "should return the TradoPaypalModule:Paypaler class object" do
                 expect(Store::PayProvider.new(provider: 'paypal').provider).to eq TradoPaypalModule::Paypaler
             end
         end

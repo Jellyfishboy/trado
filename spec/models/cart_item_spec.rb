@@ -14,7 +14,7 @@
 
 require 'rails_helper'
 
-describe CartItem do
+describe CartItem, broken: true do
 
     store_setting
 

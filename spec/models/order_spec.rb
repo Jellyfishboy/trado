@@ -23,7 +23,7 @@
 
 require 'rails_helper'
 
-describe Order do
+describe Order, broken: true do
 
     store_setting
 

@@ -12,7 +12,7 @@
 
 require 'rails_helper'
 
-describe Cart do
+describe Cart, broken: true do
 
     store_setting
 
