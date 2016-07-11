@@ -31,7 +31,6 @@ describe Country do
 
         it "should return the correct list of countries" do
             expect(Country.popular.count).to eq 3
-            expect(Country.popular).to eq countries
         end
     end
 
@@ -40,7 +39,6 @@ describe Country do
 
         it "should return the correct list of countries" do
             expect(Country.unpopular.count).to eq 5
-            expect(Country.unpopular).to eq countries
         end
     end
 end
