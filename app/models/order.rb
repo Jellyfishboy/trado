@@ -7,24 +7,26 @@
 #
 # Table name: orders
 #
-#  id                   :integer          not null, primary key
-#  email                :string
-#  shipping_date        :datetime
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  actual_shipping_cost :decimal(8, 2)
-#  delivery_id          :integer
-#  ip_address           :string
-#  user_id              :integer
-#  net_amount           :decimal(8, 2)
-#  gross_amount         :decimal(8, 2)
-#  tax_amount           :decimal(8, 2)
-#  terms                :boolean
-#  cart_id              :integer
-#  shipping_status      :integer          default(0)
-#  consignment_number   :string
-#  payment_type         :integer
-#  browser              :string
+#  id                      :integer          not null, primary key
+#  email                   :string
+#  shipping_date           :datetime
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  actual_shipping_cost    :decimal(8, 2)
+#  delivery_id             :integer
+#  ip_address              :string
+#  user_id                 :integer
+#  net_amount              :decimal(8, 2)
+#  gross_amount            :decimal(8, 2)
+#  tax_amount              :decimal(8, 2)
+#  terms                   :boolean
+#  cart_id                 :integer
+#  shipping_status         :integer          default(0)
+#  consignment_number      :string
+#  payment_type            :integer
+#  browser                 :string
+#  paypal_express_token    :string
+#  paypal_express_payer_id :string
 #
 
 require 'reportatron_4000'

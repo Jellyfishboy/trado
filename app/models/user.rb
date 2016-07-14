@@ -22,6 +22,11 @@
 #  first_name             :string           default("Joe")
 #  last_name              :string           default("Bloggs")
 #
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 class User < ActiveRecord::Base
 

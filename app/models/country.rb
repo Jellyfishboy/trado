@@ -6,17 +6,20 @@
 #
 # Table name: countries
 #
-#  id             :integer          not null, primary key
-#  name           :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  popular        :boolean          default(FALSE)
-#  alpha_two_code :string
+#  id               :integer          not null, primary key
+#  name             :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  popular          :boolean          default(FALSE)
+#  alpha_two_code   :string
+#  alpha_three_code :string
+#  currency         :string
+#  transactional    :boolean          default(FALSE)
 #
 
 class Country < ActiveRecord::Base
 
-	attr_accessible :name, :alpha_two_code
+	attr_accessible :name, :alpha_two_code, :alpha_three_code, :currency
 
 	has_many :destinations,                               dependent: :destroy
 	has_many :delivery_services,                          through: :destinations
@@ -26,4 +29,5 @@ class Country < ActiveRecord::Base
 	validates :name, :alpha_two_code,                     uniqueness: true, presence: true
 	scope :popular,										  -> { where(popular: true).includes(:products).order('products.order_count DESC') }
 	scope :unpopular,									  -> { where(popular: false) }
+    scope :transactional,                                 -> { where(transactional: true) }
 end
