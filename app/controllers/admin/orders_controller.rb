@@ -29,6 +29,13 @@ class Admin::OrdersController < ApplicationController
       render json: { errors: @order.errors.full_messages }, status: 422
     end
   end
+
+  def cancel
+    set_order
+    @order.cancelled!
+    @order.restore_stock!
+    redirect_to admin_orders_url
+  end
   
   private
 
