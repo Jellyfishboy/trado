@@ -20,7 +20,7 @@ describe Admin::OrdersController do
     end
 
     describe 'GET #show' do
-        let(:order) { create(:order) }
+        let(:order) { create(:complete_order) }
 
         it "should assign the requested order to @order" do
             get :show, id: order.id
@@ -29,7 +29,7 @@ describe Admin::OrdersController do
     end
 
     describe 'GET #edit' do
-        let!(:order) { create(:order) }
+        let!(:order) { create(:complete_order) }
 
         it "should assign the requested order to @order" do
             xhr :get, :edit , id: order.id
@@ -84,7 +84,7 @@ describe Admin::OrdersController do
     end
 
     describe "DELETE #cancel" do
-        let(:order) { create(:order) }
+        let(:order) { create(:complete_order) }
         let(:sku) { create(:sku, stock: 100) }
         before(:each) do
             create(:order_item, sku: sku, order: order, quantity: 5)
