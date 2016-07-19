@@ -36,7 +36,7 @@ FactoryGirl.define do
         terms { true }
         consignment_number { '123456' }
         payment_type { 'paypal' }
-        
+        status { 'active' }
 
         association :cart
         association :delivery, factory: :delivery_service_price
