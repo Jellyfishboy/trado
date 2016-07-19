@@ -52,12 +52,12 @@ class Order < ActiveRecord::Base
     validates :payment_type,                                              presence: true
     validate :tracking_assignment                                        
 
-	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
+	scope :complete,                                                      -> { active.includes(:transactions).where.not(transactions: { order_id: nil } ) }
   scope :incomplete,                                                    ->{ includes(:transactions).where(transactions: { order_id: nil } ) }
 
-	scope :count_per_month,                                               -> { order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
+	scope :count_per_month,                                               -> { active.order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
 
-	scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
+	scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).active.where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
 
 	scope :pending_collection,                                            -> { last_transaction_collection.where(transactions: { payment_status: 0 } ) }
 
@@ -71,7 +71,7 @@ class Order < ActiveRecord::Base
 
 	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
-    scope :dispatch_today,                                                -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year', day: Date.today.day, month: Date.today.month, year: Date.today.year) }
+    scope :dispatch_today,                                                -> { active.where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year', day: Date.today.day, month: Date.today.month, year: Date.today.year) }
 
 	accepts_nested_attributes_for :delivery_address
 	accepts_nested_attributes_for :billing_address

@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   layout 'admin'
 
   def index
-    @orders = Order.includes(:billing_address).active.order(created_at: :desc)
+    @orders = Order.includes(:billing_address).complete.order(created_at: :desc)
   end
 
   def show
@@ -40,6 +40,6 @@ class Admin::OrdersController < ApplicationController
   private
 
   def set_order
-    @order ||= Order.find(params[:id])
+    @order ||= Order.complete.find(params[:id])
   end
 end
