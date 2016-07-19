@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
     end
 
     def success
-      @order = Order.includes(:delivery_address).find(params[:id])
+      @order = Order.active.includes(:delivery_address).find(params[:id])
       if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     end
 
     def failed
-      @order = Order.includes(:transactions).find(params[:id])
+      @order = Order.active.includes(:transactions).find(params[:id])
       if @order.latest_transaction.failed?
         render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
       else
@@ -50,11 +50,11 @@ class OrdersController < ApplicationController
     private
 
     def set_order
-      @order ||= Order.find(params[:id])
+      @order ||= Order.active.find(params[:id])
     end
 
     def set_eager_loading_order
-      @order ||= Order.includes(:delivery_address, :billing_address).find(params[:id])
+      @order ||= Order.active.includes(:delivery_address, :billing_address).find(params[:id])
     end
 
     def set_address_variables

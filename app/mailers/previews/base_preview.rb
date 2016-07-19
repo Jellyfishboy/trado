@@ -6,7 +6,7 @@ class BasePreview < ActionMailer::Preview
     #
     # @return [object]
     def mock_order
-        Order.active.last
+        Order.complete.last
     end
 
     # Last SKU record in the database which has it's active attribute set to true
