@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709123000) do
+ActiveRecord::Schema.define(version: 20160719092108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,10 +103,13 @@ ActiveRecord::Schema.define(version: 20160709123000) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "popular",        default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "popular",          default: false
     t.string   "alpha_two_code"
+    t.string   "alpha_three_code"
+    t.string   "currency"
+    t.boolean  "transactional",    default: false
   end
 
   create_table "delivery_service_prices", force: :cascade do |t|
@@ -199,6 +202,7 @@ ActiveRecord::Schema.define(version: 20160709123000) do
     t.string   "browser"
     t.string   "paypal_express_token"
     t.string   "paypal_express_payer_id"
+    t.integer  "status",                                          default: 0
   end
 
   create_table "pages", force: :cascade do |t|

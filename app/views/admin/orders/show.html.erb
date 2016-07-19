@@ -4,6 +4,9 @@
 
 <div class="twelvecol">
   <div class="page-header">
+    <%= link_to cancel_admin_order_path(@order), :class => "btn btn-red btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Cancel Order", method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="icon-close"></i>
+    <% end %>
     <h2 class="widget widget-header">
       <%= "Order ##{@order.id}" %>
     </h2>

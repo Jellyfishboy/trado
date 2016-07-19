@@ -33,7 +33,7 @@ class Order < ActiveRecord::Base
   
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
-    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
 
 	has_many :order_items,                                                dependent: :destroy
 	has_many :transactions,                                               -> { order(created_at: :desc) }, dependent: :destroy
@@ -76,8 +76,9 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :delivery_address
 	accepts_nested_attributes_for :billing_address
 
-	enum shipping_status: [:pending, :dispatched]
+	  enum shipping_status: [:pending, :dispatched]
     enum payment_type: [:paypal]
+    enum status: [:active, :cancelled]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 
   	#
@@ -143,5 +144,16 @@ class Order < ActiveRecord::Base
 
     def latest_transaction
       transactions.first
+    end
+
+    def restore_stock!
+      if self.cancelled?
+        self.order_items.each do |item|
+          sku = Sku.find(item.sku_id)
+          description = "Cancelled Order ##{self.id}"
+          stock_adjustment = StockAdjustment.new(description: description, adjustment: item.quantity, sku_id: item.sku_id)
+          stock_adjustment.save!
+        end
+      end
     end
 end
