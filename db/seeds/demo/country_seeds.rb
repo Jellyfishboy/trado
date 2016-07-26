@@ -34,7 +34,6 @@ countries = [
     ["Suriname", "SR"],
     ["Svalbard and Jan Mayen", "SJ"],
     ["Swaziland", "SZ"],
-    ["Taiwan", "TW"],
     ["Barbados", "BB"],
     ["Italy", "IT", "EUR", "€"],
     ["Norfolk Island", "NF"],
@@ -143,7 +142,7 @@ countries = [
     ["New Caledonia", "NC"],
     ["Cook Islands", "CK"],
     ["Tajikistan", "TJ"],
-    ["Taiwan", "TW", "TWN", "NT$"],
+    ["Taiwan", "TW", "TWD", "NT$"],
     ["Thailand", "TH", "THB", "฿"],
     ["Timor-Leste", "TL"],
     ["Togo", "TG"],
@@ -245,30 +244,30 @@ Country.find_by_name('United Kingdom').update_column(:popular, true)
 Country.find_by_name('United States').update_column(:popular, true)
 
 # set transaction countries
-# [
-#     "AUD",
-#     "CAD",
-#     "CZK",
-#     "DKK",
-#     "EUR",
-#     "HKD",
-#     "HUF",
-#     "ILS",
-#     "JPY",
-#     "MXN",
-#     "NOK",
-#     "NZD",
-#     "PHP",
-#     "PLN",
-#     "GBP",
-#     "RUB",
-#     "SGD",
-#     "SEK",
-#     "CHF",
-#     "TWD",
-#     "THB",
-#     "USD"
-# ].each do |code|
-#     country = Country.find_by_alpha_three_code(code)
-#     country.update_column(:transactional, true)
-# end
+[
+    "AUD",
+    "CAD",
+    "CZK",
+    "DKK",
+    "EUR",
+    "HKD",
+    "HUF",
+    "ILS",
+    "JPY",
+    "MXN",
+    "NOK",
+    "NZD",
+    "PHP",
+    "PLN",
+    "GBP",
+    "RUB",
+    "SGD",
+    "SEK",
+    "CHF",
+    "TWD",
+    "THB",
+    "USD"
+].each do |code|
+    country = Country.find_by_alpha_three_code(code)
+    country.update_column(:transactional, true)
+end
