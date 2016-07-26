@@ -20,7 +20,7 @@ describe Admin::OrdersController do
     end
 
     describe 'GET #show' do
-        let(:order) { create(:order) }
+        let(:order) { create(:complete_order) }
 
         it "should assign the requested order to @order" do
             get :show, id: order.id
@@ -29,7 +29,7 @@ describe Admin::OrdersController do
     end
 
     describe 'GET #edit' do
-        let!(:order) { create(:order) }
+        let!(:order) { create(:complete_order) }
 
         it "should assign the requested order to @order" do
             xhr :get, :edit , id: order.id
@@ -81,5 +81,34 @@ describe Admin::OrdersController do
         #         expect(response.status).to eq 422
         #     end
         # end
+    end
+
+    describe "DELETE #cancel" do
+        let(:order) { create(:complete_order) }
+        let(:sku) { create(:sku, stock: 100) }
+        before(:each) do
+            create(:order_item, sku: sku, order: order, quantity: 5)
+        end
+
+        it "should assign the requested order to @order" do
+            delete :cancel, id: order.id
+            expect(assigns(:order)).to eq order
+        end
+
+        it "should set the order status as 'cancelled'" do
+            expect{
+                delete :cancel, id: order.id
+                order.reload
+            }.to change{
+                order.status
+            }.from('active').to('cancelled')
+        end
+
+        it "should restore stock to associated skus" do
+            expect(sku.stock).to eq 100
+            delete :cancel, id: order.id
+            sku.reload
+            expect(sku.stock).to eq 105
+        end
     end
 end

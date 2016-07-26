@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   layout 'admin'
 
   def index
-    @orders = Order.includes(:billing_address).active.order(created_at: :desc)
+    @orders = Order.includes(:billing_address).complete.order(created_at: :desc)
   end
 
   def show
@@ -29,10 +29,17 @@ class Admin::OrdersController < ApplicationController
       render json: { errors: @order.errors.full_messages }, status: 422
     end
   end
+
+  def cancel
+    set_order
+    @order.cancelled!
+    @order.restore_stock!
+    redirect_to admin_orders_url
+  end
   
   private
 
   def set_order
-    @order ||= Order.find(params[:id])
+    @order ||= Order.complete.find(params[:id])
   end
 end

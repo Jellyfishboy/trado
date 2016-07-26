@@ -35,10 +35,10 @@ class Order < ActiveRecord::Base
   
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
-    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
 
 	has_many :order_items,                                                dependent: :destroy
-	has_many :transactions,                                               -> { order(created_at: :desc) }, dependent: :destroy
+	has_many :transactions,                                               -> { order('created_at DESC, id DESC') }, dependent: :destroy
 	has_many :products,                                                   through: :order_items
 	has_many :skus,                                                       through: :order_items
 
@@ -54,12 +54,12 @@ class Order < ActiveRecord::Base
     validates :payment_type,                                              presence: true
     validate :tracking_assignment                                        
 
-	scope :active,                                                        -> { includes(:transactions).where.not(transactions: { order_id: nil } ) }
+	scope :complete,                                                      -> { active.includes(:transactions).where.not(transactions: { order_id: nil } ).order('transactions.created_at DESC, transactions.id DESC') }
   scope :incomplete,                                                    ->{ includes(:transactions).where(transactions: { order_id: nil } ) }
 
-	scope :count_per_month,                                               -> { order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
+	scope :count_per_month,                                               -> { active.order("EXTRACT(month FROM transactions.updated_at)").group("EXTRACT(month FROM transactions.updated_at)").count }
 
-	scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
+	scope :last_transaction_collection,                                   -> { select('DISTINCT orders.id').joins(:transactions).active.where("transactions.created_at = (SELECT MAX(transactions.created_at) FROM transactions WHERE transactions.order_id = orders.id)") }
 
 	scope :pending_collection,                                            -> { last_transaction_collection.where(transactions: { payment_status: 0 } ) }
 
@@ -73,13 +73,14 @@ class Order < ActiveRecord::Base
 
 	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
-    scope :dispatch_today,                                                -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year', day: Date.today.day, month: Date.today.month, year: Date.today.year) }
+    scope :dispatch_today,                                                -> { active.where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year', day: Date.today.day, month: Date.today.month, year: Date.today.year) }
 
 	accepts_nested_attributes_for :delivery_address
 	accepts_nested_attributes_for :billing_address
 
-	enum shipping_status: [:pending, :dispatched]
+	  enum shipping_status: [:pending, :dispatched]
     enum payment_type: [:paypal]
+    enum status: [:active, :cancelled]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 
   	#
@@ -145,5 +146,16 @@ class Order < ActiveRecord::Base
 
     def latest_transaction
       transactions.first
+    end
+
+    def restore_stock!
+      if self.cancelled?
+        self.order_items.each do |item|
+          sku = Sku.find(item.sku_id)
+          description = "Cancelled Order ##{self.id}"
+          stock_adjustment = StockAdjustment.new(description: description, adjustment: item.quantity, sku_id: item.sku_id)
+          stock_adjustment.save!
+        end
+      end
     end
 end

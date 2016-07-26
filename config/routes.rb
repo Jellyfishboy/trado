@@ -90,7 +90,9 @@ Trado::Application.routes.draw do
 	  			end
 	  		end
 	  	end
-  		resources :orders, only: [:index, :show, :update, :edit]
+  		resources :orders, only: [:index, :show, :update, :edit] do
+        delete :cancel, to: 'orders#cancel', on: :member
+      end
   		resources :delivery_services, except: :show do
 	  		collection do
 	  			get :copy_countries
