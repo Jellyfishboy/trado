@@ -6,9 +6,11 @@ ready = function()
     soca.animation.colourCaveat();
     soca.animation.sidebarExtension();
     
-    soca.filter.tableRowTarget();
-    soca.filter.products();
-    soca.filter.orders();
+    soca.index.tableRowTarget();
+    soca.index.sort('#sort-product');
+    soca.index.filter('#filter-product-category');
+    soca.index.filter('#filter-stock');
+    soca.index.filter('#filter-order-delivery');
 
     soca.misc.taxField();
     soca.misc.multiSelect();
