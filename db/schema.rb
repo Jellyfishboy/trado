@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726084455) do
+ActiveRecord::Schema.define(version: 20160726090201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -309,7 +309,7 @@ ActiveRecord::Schema.define(version: 20160726084455) do
   create_table "store_settings", force: :cascade do |t|
     t.string   "name",                                  default: "Trado"
     t.string   "email",                                 default: "admin@example.com"
-    t.string   "currency",                              default: "£"
+    t.string   "currency",                              default: "GBP|£"
     t.string   "tax_name",                              default: "VAT"
     t.integer  "user_id"
     t.datetime "created_at",                                                          null: false

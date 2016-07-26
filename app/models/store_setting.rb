@@ -9,7 +9,7 @@
 #  id            :integer          not null, primary key
 #  name          :string           default("Trado")
 #  email         :string           default("admin@example.com")
-#  currency      :string           default("£")
+#  currency      :string           default("GBP|£")
 #  tax_name      :string           default("VAT")
 #  user_id       :integer
 #  created_at    :datetime         not null
@@ -37,6 +37,14 @@ class StoreSetting < ActiveRecord::Base
   
     def theme
         Theme.new(self.theme_name)
+    end
+
+    def currency_code
+        currency.split('|').first
+    end
+
+    def currency_symbol
+        currency.split('|').last
     end
 
     private

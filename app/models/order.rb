@@ -25,6 +25,7 @@
 #  consignment_number   :string
 #  payment_type         :integer
 #  browser              :string
+#  status               :integer          default(0)
 #
 
 require 'reportatron_4000'

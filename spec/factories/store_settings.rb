@@ -21,7 +21,7 @@ FactoryGirl.define do
     factory :store_setting do
         name { Faker::Lorem.word }
         email { Faker::Internet.email }
-        currency { '£' }
+        currency { 'GBP|£' }
         tax_name { Faker::Lorem.word }
         tax_rate { '20.0' }
         tax_breakdown { false }

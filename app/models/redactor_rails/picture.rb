@@ -15,6 +15,11 @@
 #  created_at        :datetime
 #  updated_at        :datetime
 #
+# Indexes
+#
+#  idx_redactor_assetable       (assetable_type,assetable_id)
+#  idx_redactor_assetable_type  (assetable_type,type,assetable_id)
+#
 
 class RedactorRails::Picture < RedactorRails::Asset
   mount_uploader :data, RedactorRailsPictureUploader, :mount_on => :data_file_name

@@ -83,7 +83,7 @@ module Store
         # @param [Decimal] price
         # @return [String] price with currency
         def format price
-            price.nil? ? nil : number_to_currency(price, unit: Store.settings.currency, precision: 2)
+            price.nil? ? nil : number_to_currency(price, unit: Store.settings.currency_symbol, precision: 2)
         end
 
         # Calculate and add tax to a price

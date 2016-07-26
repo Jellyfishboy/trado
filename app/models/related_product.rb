@@ -9,6 +9,11 @@
 #  product_id :integer
 #  related_id :integer
 #
+# Indexes
+#
+#  index_related_products_on_product_id_and_related_id  (product_id,related_id) UNIQUE
+#  index_related_products_on_related_id_and_product_id  (related_id,product_id) UNIQUE
+#
 
 class RelatedProduct < ActiveRecord::Base
     attr_accessible :product_id, :related_id

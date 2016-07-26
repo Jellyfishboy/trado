@@ -43,4 +43,19 @@ describe StoreSetting do
             expect(Store.settings.name).to eq 'My own store!'
         end
     end
+
+    describe "Currency" do
+        before(:each) do
+            create(:store_setting, name: 'GBP|£')
+            Store.settings
+        end
+
+        it "should return the correct symbol for the currency" do
+            expect(Store.settings.currency_symbol).to eq "£"
+        end
+
+        it "should return the correct code for the currency" do
+            expect(Store.settings.currency_code).to eq 'GBP'
+        end
+    end
 end

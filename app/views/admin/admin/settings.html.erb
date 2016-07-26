@@ -64,8 +64,8 @@
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group">
-          <%= f.label 'Currency unit' %>
-          <%= f.text_field :currency, :class => 'form-control' %>
+          <%= f.label :currency %>
+          <%= f.select :currency, options_for_select(Country.transactional.map { |country| ["#{country.alpha_three_code} / #{country.currency}", "#{country.alpha_three_code}|#{country.currency}"] }, @settings.currency ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
         <div class="radio">
           <label>
@@ -81,20 +81,6 @@
         </div>
       </fieldset>
     </div>
-    <% if paypal_active? %>
-      <div class="threecol">
-        <h3>PayPal</h3>
-        <p>Select the currency you will be accepting with your PayPal account.</p>
-      </div>
-      <div class="ninecol last">
-        <fieldset class="widget widget-content">
-          <div class="form-group">
-            <%= f.label 'Currency code' %>
-            <%= f.select :paypal_currency_code, options_for_select(TradoPaypalModule::Paypaler.currency_codes.map { |code| [code, code] }, @settings.paypal_currency_code ), { include_blank: false }, { :class => 'form-control' } %>
-          </div>
-        </fieldset>
-      </div>
-    <% end %>
     <div class="threecol">
       <h3>Google Analytics</h3>
       <p>Enable and set the web tracking code for your store. </p>
