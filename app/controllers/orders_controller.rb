@@ -34,15 +34,15 @@ class OrdersController < ApplicationController
     def retry
       set_order
       @error_code = @order.latest_transaction.error_code
-      if paypal_active? && !TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
-        @order.update_column(:cart_id, current_cart.id)
+      if paypal_active? && TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
+        Payatron4000.decommission_order(@order)
       end
       redirect_to mycart_carts_url
     end
 
     def destroy
       set_order
-      Ordatron4000.decommission_order(@order)
+      Payatron4000.decommission_order(@order)
       flash_message :success, "Your order has been cancelled."
       redirect_to root_url
     end
@@ -63,9 +63,7 @@ class OrdersController < ApplicationController
     end
 
     def validate_confirm_render
-      if @order.payment_type.nil?
-        redirect_to checkout_carts_url
-      elsif @order.paypal?
+      if @order.paypal?
         if paypal_active? && params[:token].present? && params[:PayerID].present?
           TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order)
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
