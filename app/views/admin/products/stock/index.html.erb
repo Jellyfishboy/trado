@@ -6,6 +6,13 @@
   <div class="page-header">
     <h2 class="widget widget-header">Stock management</h2>
   </div>
+  <div class="widget-controls">
+    <select class="form-select" id="filter-order">
+      <option class="filter" data-filter="all">Show all</option>
+      <option class="filter" data-filter=".stock-low">Low</option>
+    </select>
+    <span>Stock:</span>
+  </div>
   <% if @skus.empty? %>
     <p>You don't have any Product SKUs yet.</p>
   <% else %>
@@ -21,9 +28,9 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="mixitup">
           <% @skus.each do |sku| %>
-            <tr>
+            <tr class="<%= 'stock-low' if sku.low_stock? %> mix">
               <td>
                 <%= sku.full_sku %>
               </td>

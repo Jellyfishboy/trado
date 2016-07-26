@@ -122,4 +122,11 @@ class Sku < ActiveRecord::Base
   def valid_stock? quantity
     stock > quantity ? true : false
   end
+
+  # Checks if the stock attribute is below the stock_warning_level attribute
+  #
+  # @return [Boolean]
+  def low_stock?
+    stock < stock_warning_level ? true : false
+  end
 end
