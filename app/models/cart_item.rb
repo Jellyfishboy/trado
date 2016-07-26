@@ -22,7 +22,7 @@ class CartItem < ActiveRecord::Base
 
 	belongs_to :cart
 	belongs_to :sku 
-	has_one :cart_item_accessory,             	dependent: :delete
+	has_one :cart_item_accessory,             	dependent: :destroy
 	has_one :product,							through: :sku
 	has_one :category,							through: :sku
 
@@ -91,8 +91,10 @@ class CartItem < ActiveRecord::Base
 	#
 	# @return [Object] current cart
 	def reset_delivery_services
-		cart.delivery_id = cart.country = nil
-		cart.delivery_service_ids = cart.calculate_delivery_services(Store.tax_rate)
-		cart.save!
+		if cart.persisted?
+			cart.delivery_id = cart.country = nil
+			cart.delivery_service_ids = cart.calculate_delivery_services(Store.tax_rate)
+			cart.save!
+		end
 	end
 end

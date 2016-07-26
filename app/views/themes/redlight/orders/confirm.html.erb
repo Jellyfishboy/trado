@@ -63,7 +63,7 @@
         <div id="cart-checkout-container" class="scroller">
           <table id="cart-checkout">
             <tbody>
-              <% @order.order_items.each do |item| %>
+              <% @order.cart.cart_items.each do |item| %>
                 <tr>
                   <td>
                     <table class="single-product">
@@ -85,9 +85,9 @@
                                         <tr>
                                           <td><%= render_variants(item.sku) %></td>
                                         </tr>
-                                        <% if item.order_item_accessory.present? %>
+                                        <% if item.cart_item_accessory.present? %>
                                           <tr>
-                                            <td><%= item.order_item_accessory.accessory.name %></td>
+                                            <td><%= item.cart_item_accessory.accessory.name %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>
