@@ -75,6 +75,6 @@ class Cart < ActiveRecord::Base
   # Deletes redundant carts which are more than 12 hours old
   #
   def self.clear_carts
-    where("updated_at < ?", 12.hours.ago).destroy_all
+    includes(:order).where("carts.updated_at < ?", 12.hours.ago).where(orders: { id: nil }).destroy_all
   end
 end
