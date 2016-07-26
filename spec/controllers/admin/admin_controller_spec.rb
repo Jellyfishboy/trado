@@ -34,8 +34,8 @@ describe Admin::AdminController do
         context "with valid attributes" do
 
             it "should update the current store settings" do
-                patch :update, store_setting: attributes_for(:store_setting, currency: '$', tax_rate: 15.6) 
-                expect(Store.settings.currency).to eq '$'
+                patch :update, store_setting: attributes_for(:store_setting, currency: 'USD|$', tax_rate: 15.6) 
+                expect(Store.settings.currency).to eq 'USD|$'
                 expect(Store.settings.tax_rate).to eq BigDecimal.new("15.6")
             end
 
