@@ -115,35 +115,9 @@ feature 'Order management' do
         expect(current_path).to eq admin_orders_path
         build_dispatch.reload
         within '.alert.alert-success' do
-            expect(page).to have_content "Successfully updated Order ##{build_dispatch.id} as being dispatched on #{build_dispatch.updated_at.strftime("%d/%m/%Y")}."
+            expect(page).to have_content "Successfully updated Order ##{build_dispatch.id} as being dispatched on #{build_dispatch.shipping_date.strftime("%d/%m/%Y %R")}."
         end
         expect(build_dispatch.actual_shipping_cost).to eq BigDecimal.new('2.2')
         expect(build_dispatch.consignment_number).to eq '123456'
     end
-
-    # scenario 'should dispatch an order', js: true do
-    #     build_dispatch.save(validate: false)
-
-    #     visit admin_orders_path
-    #     find('tbody tr:first-child td:last-child a:last-child').trigger('click')
-
-    #     within '#dispatch-order-form .modal-header' do
-    #         expect(page).to have_content("Dispatch Order ##{build_dispatch_incomplete.id}")
-    #     end
-
-    #     within '#dispatch-order-form .modal-body fieldset p' do
-    #         expect(page).to have_content("Would you like to update Order ##{build_dispatch.id} as being dispatched today?")
-    #     end
-    #     find('#dispatch-order-form .modal-footer a:last-child').trigger('click')
-    #     sleep 1
-
-    #     expect(current_path).to eq admin_orders_path
-    #     build_dispatch.reload
-    #     within '.alert.alert-success' do
-    #         expect(page).to have_content("Successfully updated Order ##{build_dispatch.id} as being dispatched on #{build_dispatch.updated_at.strftime('%d/%m/%Y')}.")
-    #     end
-
-    #     expect(build_dispatch.dispatched?).to eq true
-    #     expect(build_dispatch.shipping_date).to_not eq nil
-    # end
 end
