@@ -16,7 +16,7 @@
           <fieldset class="widget widget-content widget-last">
             <div class="form-group">
               <%= f.label 'Dispatch Date' %>
-              <%= f.text_field :shipping_date, class: 'form-control datetimepicker', value: (@order.shipping_date.strftime('%d/%m/%Y %I:%M%p') unless @order.shipping_date.nil?) %>
+              <%= f.text_field :shipping_date, class: 'form-control datetimepicker', value: (@order.shipping_date.strftime('%d/%m/%Y %R') unless @order.shipping_date.nil?) %>
              </div>
             <div class="form-group form-last">
               <%= f.label :consignment_number %>
