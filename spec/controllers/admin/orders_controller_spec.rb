@@ -62,25 +62,25 @@ describe Admin::OrdersController do
             end
         end
 
-        # context "with invalid attributes" do
-        #     let!(:order) { create(:complete_order, actual_shipping_cost: '2.55') }
-        #     let(:errors) { ["Actual shipping cost can't be blank"] }
+        context "with invalid attributes" do
+            let!(:order) { create(:complete_order, shipping_date: Time.now) }
+            let(:errors) { ["Shipping date can't be blank"] }
 
-        #     it "should not update the order" do
-        #         xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
-        #         expect(order.actual_shipping_cost).to eq BigDecimal.new("2.55")
-        #     end
+            it "should not update the order" do
+                xhr :patch, :update, id: order.id, order: attributes_for(:order, shipping_date: nil)
+                expect(order.shipping_date).to be_within(3.second).of Time.now
+            end
 
-        #     it "should return a JSON object of errors" do
-        #         xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
-        #         expect(assigns(:order).errors.full_messages).to eq errors
-        #     end
+            it "should return a JSON object of errors" do
+                xhr :patch, :update, id: order.id, order: attributes_for(:order, shipping_date: nil)
+                expect(assigns(:order).errors.full_messages).to eq errors
+            end
 
-        #     it "should return a 422 status code" do
-        #         xhr :patch, :update, id: order.id, order: attributes_for(:order, actual_shipping_cost: nil)
-        #         expect(response.status).to eq 422
-        #     end
-        # end
+            it "should return a 422 status code" do
+                xhr :patch, :update, id: order.id, order: attributes_for(:order, shipping_date: nil)
+                expect(response.status).to eq 422
+            end
+        end
     end
 
     describe "DELETE #cancel" do
