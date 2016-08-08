@@ -199,7 +199,7 @@
             <%= f.check_box :terms, checked: false %>
             <span>Tick this box to acknowledge that you have read and agree with our terms and conditions.</span>
           </div>
-          <%= f.submit 'PROCEED TO PAYMENT', class: 'btn green checkout-button' %>
+          <%= f.submit 'PROCEED TO PAYMENT', class: 'btn green checkout-button', data: { disable_with: 'Please wait...' } %>
           <div id='checkout-secure'>
             <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
             <span class='text-shipping'>SECURE CHECKOUT</span>

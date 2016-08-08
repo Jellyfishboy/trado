@@ -40,7 +40,7 @@
           <hr>
         </div>
         <% unless current_cart.cart_items.empty? %>
-          <%= link_to 'Checkout', checkout_carts_path, :class => 'btn green checkout-button' %>
+          <%= link_to 'Checkout', checkout_carts_path, :class => 'btn green checkout-button', data: { disable_with: 'Please wait...' } %>
         <% end %>
         <div id='checkout-secure'>
           <%= image_tag 'redlight/secure-checkout.png', alt: 'Secure Checkout' %>
