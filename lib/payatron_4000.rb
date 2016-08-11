@@ -1,6 +1,7 @@
 module Payatron4000
 
     class << self
+        include ActionView::Helpers::ModulesHelper
 
         # Creates a new stock level record for each order_item SKU, adding the order id to the description
         # Also updates the related SKU's stock value
@@ -38,6 +39,12 @@ module Payatron4000
         def increment_product_order_count products
             products.each do |product|
                 product.increment!(:order_count)
+            end
+        end
+
+        def order_pay_provider_valid? order, params
+            if order.paypal?
+                paypal_active? && TradoPaypalModule::Paypaler.valid_tokens?(params)
             end
         end
     end  

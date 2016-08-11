@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      redirect_to Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session).complete
+      redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session).complete
+      redirect_to redirect_url
     end
 
     def success
@@ -63,14 +64,12 @@ class OrdersController < ApplicationController
     end
 
     def validate_confirm_render
-      if @order.paypal?
-        if paypal_active? && params[:token].present? && params[:PayerID].present?
-          TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order)
+      if Payatron4000.order_pay_provider_valid?(order)
+          TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order) if @order.paypal?
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
-        else
-          flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
-          redirect_to checkout_carts_url
-        end
+      else
+        flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
+        redirect_to checkout_carts_url
       end
     end
 end
