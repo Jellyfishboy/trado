@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-    include ModulesHelper
     skip_before_action :authenticate_user!
 
     def confirm
@@ -10,7 +9,8 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      redirect_to Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session).complete
+      redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
+      redirect_to redirect_url
     end
 
     def success
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     def retry
       set_order
       @error_code = @order.latest_transaction.error_code
-      if paypal_active? && TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
+      if Modulatron4000.paypal? && TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
         Payatron4000.decommission_order(@order)
       end
       redirect_to mycart_carts_url
@@ -63,14 +63,12 @@ class OrdersController < ApplicationController
     end
 
     def validate_confirm_render
-      if @order.paypal?
-        if paypal_active? && params[:token].present? && params[:PayerID].present?
-          TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order)
+      if Payatron4000.order_pay_provider_valid?(@order, params)
+          TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order) if @order.paypal?
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
-        else
-          flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
-          redirect_to checkout_carts_url
-        end
+      else
+        flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
+        redirect_to checkout_carts_url
       end
     end
 end

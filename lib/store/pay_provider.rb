@@ -43,7 +43,7 @@ module Store
         #
         # @return [String] redirect url
         def complete
-            provider.complete(order, session)
+            provider.complete(order, session, ip_address)
         end
     end
 end

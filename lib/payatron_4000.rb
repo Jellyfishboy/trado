@@ -40,5 +40,11 @@ module Payatron4000
                 product.increment!(:order_count)
             end
         end
+
+        def order_pay_provider_valid? order, params
+            if order.paypal?
+                Modulatron4000.paypal? && TradoPaypalModule::Paypaler.valid_tokens?(params)
+            end
+        end
     end  
 end
