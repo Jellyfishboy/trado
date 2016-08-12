@@ -123,3 +123,6 @@ gem 'dalli'
 
 # Browser detection
 gem 'browser'
+
+gem 'stripe'
+gem 'stripe-rails'

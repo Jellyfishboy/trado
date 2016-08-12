@@ -7,25 +7,28 @@
 #
 # Table name: orders
 #
-#  id                   :integer          not null, primary key
-#  email                :string
-#  shipping_date        :datetime
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  actual_shipping_cost :decimal(8, 2)
-#  delivery_id          :integer
-#  ip_address           :string
-#  user_id              :integer
-#  net_amount           :decimal(8, 2)
-#  gross_amount         :decimal(8, 2)
-#  tax_amount           :decimal(8, 2)
-#  terms                :boolean
-#  cart_id              :integer
-#  shipping_status      :integer          default(0)
-#  consignment_number   :string
-#  payment_type         :integer
-#  browser              :string
-#  status               :integer          default(0)
+#  id                      :integer          not null, primary key
+#  email                   :string
+#  shipping_date           :datetime
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  actual_shipping_cost    :decimal(8, 2)
+#  delivery_id             :integer
+#  ip_address              :string
+#  user_id                 :integer
+#  net_amount              :decimal(8, 2)
+#  gross_amount            :decimal(8, 2)
+#  tax_amount              :decimal(8, 2)
+#  terms                   :boolean
+#  cart_id                 :integer
+#  shipping_status         :integer          default(0)
+#  consignment_number      :string
+#  payment_type            :integer
+#  browser                 :string
+#  status                  :integer          default(0)
+#  paypal_express_token    :string
+#  paypal_express_payer_id :string
+#  stripe_card_token       :string
 #
 
 require 'reportatron_4000'
@@ -80,7 +83,7 @@ class Order < ActiveRecord::Base
 	accepts_nested_attributes_for :billing_address
 
 	  enum shipping_status: [:pending, :dispatched]
-    enum payment_type: [:paypal]
+    enum payment_type: [:paypal, :stripe]
     enum status: [:active, :cancelled]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 

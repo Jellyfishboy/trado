@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726090201) do
+ActiveRecord::Schema.define(version: 20160812165314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,22 +185,25 @@ ActiveRecord::Schema.define(version: 20160726090201) do
   create_table "orders", force: :cascade do |t|
     t.string   "email"
     t.datetime "shipping_date"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.decimal  "actual_shipping_cost", precision: 8, scale: 2
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.decimal  "actual_shipping_cost",    precision: 8, scale: 2
     t.integer  "delivery_id"
     t.string   "ip_address"
     t.integer  "user_id"
-    t.decimal  "net_amount",           precision: 8, scale: 2
-    t.decimal  "gross_amount",         precision: 8, scale: 2
-    t.decimal  "tax_amount",           precision: 8, scale: 2
+    t.decimal  "net_amount",              precision: 8, scale: 2
+    t.decimal  "gross_amount",            precision: 8, scale: 2
+    t.decimal  "tax_amount",              precision: 8, scale: 2
     t.boolean  "terms"
     t.integer  "cart_id"
-    t.integer  "shipping_status",                              default: 0
+    t.integer  "shipping_status",                                 default: 0
     t.string   "consignment_number"
     t.integer  "payment_type"
     t.string   "browser"
-    t.integer  "status",                                       default: 0
+    t.integer  "status",                                          default: 0
+    t.string   "paypal_express_token"
+    t.string   "paypal_express_payer_id"
+    t.string   "stripe_card_token"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -227,8 +230,8 @@ ActiveRecord::Schema.define(version: 20160726090201) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "weighting"
     t.integer  "part_number"
     t.string   "sku"
@@ -236,11 +239,13 @@ ActiveRecord::Schema.define(version: 20160726090201) do
     t.string   "slug"
     t.string   "meta_description"
     t.boolean  "featured"
-    t.boolean  "active",            default: true
+    t.boolean  "active",                  default: true
     t.text     "short_description"
-    t.integer  "status",            default: 0
-    t.integer  "order_count",       default: 0
+    t.integer  "status",                  default: 0
+    t.integer  "order_count",             default: 0
     t.string   "page_title"
+    t.string   "googlemerchant_brand"
+    t.string   "googlemerchant_category"
   end
 
   create_table "redactor_assets", force: :cascade do |t|
@@ -347,6 +352,7 @@ ActiveRecord::Schema.define(version: 20160726090201) do
     t.string   "status_reason"
     t.integer  "payment_status",                           default: 0
     t.integer  "error_code"
+    t.string   "paypal_id"
   end
 
   create_table "users", force: :cascade do |t|

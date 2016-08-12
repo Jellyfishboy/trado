@@ -9,7 +9,14 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
+      # redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
+      charge = Stripe::Charge.create(
+        amount: Store::Price.new(price: order.gross_amount, tax_type: 'net').singularize,
+        currency: Store.settings.currency_code,
+        source: card_token,
+        description: "#{order.id} | #{order.billing_address.full_name}",
+        email: order.email
+      )
       redirect_to redirect_url
     end
 

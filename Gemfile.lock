@@ -562,6 +562,11 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    stripe (1.49.0)
+      rest-client (>= 1.4, < 3.0)
+    stripe-rails (0.3.1)
+      rails (>= 3)
+      stripe
     test_after_commit (1.1.0)
       activerecord (>= 3.2)
     thin (1.6.4)
@@ -661,6 +666,8 @@ DEPENDENCIES
   sitemap_generator
   spring
   sprockets (= 2.11.0)
+  stripe
+  stripe-rails
   test_after_commit
   thin
   turbolinks

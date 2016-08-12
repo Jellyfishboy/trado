@@ -74,6 +74,17 @@
                 <div>
                   <%= paypal_form_tag(f) if Modulatron4000.paypal? %>
                 </div>
+                <div>
+                  <div class='paypal-form-wrapper'><%= f.radio_button(:payment_type, 'stripe', checked: true) %><%= image_tag('stripe.png', height: 50) %></div><br>
+                  <%= f.hidden_field :stripe_card_token %>
+                  <%= label_tag :stripe_card_number, "Credit Card Number" %>
+                  <%= text_field_tag :stripe_card_number, nil, name: nil %>
+                  <%= label_tag :stripe_card_month, "Card Expiration" %>
+                  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "stripe_card_month" } %>
+                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe_card_year" } %>
+                  <%= label_tag :stripe_card_code, "CV Code" %>
+                  <%= text_field_tag :stripe_card_code, nil, name: nil %>
+                </div>
               </div>
               <h3>BILLING ADDRESS</h3>
               <div class='form-check-group-full'>
