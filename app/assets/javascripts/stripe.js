@@ -7,9 +7,9 @@ jQuery(function() {
 
 order = {
   setupForm: function() {
-    return $('#new_order').submit(function() {
+    return $('.new_order').submit(function() {
       $('input[type=submit]').attr('disabled', true);
-      if ($('#card_number').length) {
+      if ($('#stripe_card_number').length) {
         order.processCard();
         return false;
       } else {
@@ -20,19 +20,20 @@ order = {
   processCard: function() {
     var card;
     card = {
-      number: $('#card_number').val(),
-      cvc: $('#card_code').val(),
-      expMonth: $('#card_month').val(),
-      expYear: $('#card_year').val()
+      number: $('#stripe_card_number').val(),
+      cvc: $('#stripe_card_code').val(),
+      expMonth: $('#stripe_card_month').val(),
+      expYear: $('#stripe_card_year').val()
     };
     return Stripe.createToken(card, order.handleStripeResponse);
   },
   handleStripeResponse: function(status, response) {
     if (status === 200) {
       $('#order_stripe_card_token').val(response.id);
-      return $('#new_order')[0].submit();
+      return $('.new_order')[0].submit();
     } else {
       $('#stripe_error').text(response.error.message);
+      $('#checkoutLoadingModal').modal('hide');
       return $('input[type=submit]').attr('disabled', false);
     }
   }

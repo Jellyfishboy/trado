@@ -18,5 +18,14 @@ module Modulatron4000
         def googlemerchant?
             Object.const_defined?('TradoGooglemerchantModule') ? true : false
         end
+
+        # Validates if the trado-stripe-module gem is active
+        #
+        # @return [Boolean]
+        #
+        def stripe?
+            # Object.const_defined?('TradoGooglemerchantModule') ? true : false
+            true
+        end
     end
 end

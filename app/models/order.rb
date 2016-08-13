@@ -28,19 +28,21 @@
 #  status                  :integer          default(0)
 #  paypal_express_token    :string
 #  paypal_express_payer_id :string
-#  stripe_card_token       :string
+#  stripe_customer_token   :string
 #
 
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
   
-  
+  include HasStripeCustomer
+  attr_accessor :stripe_card_token
+
   include HasShippingDateValidation
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
-    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
-
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status, :stripe_card_token
+    
 	has_many :order_items,                                                dependent: :destroy
 	has_many :transactions,                                               -> { order('created_at DESC, id DESC') }, dependent: :destroy
 	has_many :products,                                                   through: :order_items

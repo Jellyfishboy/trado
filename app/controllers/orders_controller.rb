@@ -1,3 +1,5 @@
+require 'payatron_4000'
+
 class OrdersController < ApplicationController
     skip_before_action :authenticate_user!
 

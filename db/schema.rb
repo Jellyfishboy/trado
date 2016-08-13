@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(version: 20160812165314) do
     t.integer  "status",                                          default: 0
     t.string   "paypal_express_token"
     t.string   "paypal_express_payer_id"
-    t.string   "stripe_card_token"
+    t.string   "stripe_customer_token"
   end
 
   create_table "pages", force: :cascade do |t|

@@ -1,3 +1,5 @@
+require 'modulatron_4000'
+
 module OrderHelper
 
     def status_label record, status
@@ -11,5 +13,10 @@ module OrderHelper
 
     def order_filter_classes order
         return order.dispatched? ? "order-dispatched" : "order-pending"
+    end
+
+    def checkout_pay_provider_path
+        # Modulatron4000.paypal? ? paypal_confirm_carts_path : Modulatron4000.stripe? ? stripe_confirm_carts_path : ""
+        stripe_confirm_carts_path
     end
 end
