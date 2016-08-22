@@ -1,4 +1,4 @@
-class Admin::StockAdjustmentsController < ApplicationController
+class Admin::Skus::StockAdjustmentsController < ApplicationController
   before_action :authenticate_user!
   
   # New stock level

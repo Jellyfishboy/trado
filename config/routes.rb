@@ -78,7 +78,7 @@ Trado::Application.routes.draw do
 	  	resources :products, except: [:show, :create] do
 	  		resources :attachments, except: :index
 	  		resources :skus, except: [:index, :show] do
-	  			resources :stock_adjustments, only: [:create, :new]
+	  			resources :stock_adjustments, only: [:create, :new], controller: 'skus/stock_adjustments'
 	  		end
 	  		namespace :skus do
 	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: :new do
