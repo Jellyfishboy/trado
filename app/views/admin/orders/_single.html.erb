@@ -3,6 +3,7 @@
 </td>
 <td>
   <%= status_label order, order.shipping_status %>
+  <%= pending_delivery_time(order) %>
 </td>
 <td>
   <%= status_label order.latest_transaction, order.latest_transaction.payment_status %>

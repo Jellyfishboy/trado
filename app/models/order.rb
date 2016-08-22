@@ -159,4 +159,8 @@ class Order < ActiveRecord::Base
         end
       end
     end
+
+    def has_pending_delivery_datetime?
+      pending? && shipping_date.present? ? true : false
+    end
 end
