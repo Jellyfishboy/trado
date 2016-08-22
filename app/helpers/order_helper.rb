@@ -12,4 +12,8 @@ module OrderHelper
     def order_filter_classes order
         return order.dispatched? ? "order-dispatched" : "order-pending"
     end
+
+    def pending_delivery_time order
+        "<i class='icon-clock label label-blue label-small' data-placement='bottom' data-toggle='tooltip' data-original-title='Delivery Date Set'></i>".html_safe if order.has_pending_delivery_datetime?
+    end
 end
