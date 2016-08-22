@@ -17,3 +17,17 @@
 {
     margin-top:15px !important;
 }
+.chosen-container-single .chosen-single 
+{
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    height: auto;
+    vertical-align: middle;
+    background-color: rgba(208, 208, 208, .5);
+    cursor: text;
+    padding: 8px 10px;
+    -webkit-box-sizing: initial;
+    -moz-box-sizing: initial;
+    box-sizing: initial
+}
