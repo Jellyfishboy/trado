@@ -4,31 +4,38 @@
 
 <div class="twelvecol">
   <div class="page-header">
+    <%= link_to new_admin_product_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Stock" do %>
+      <i class="icon-plus"></i>
+    <% end %>
     <h2 class="widget widget-header">New Stock</h2>
   </div>
   <%= form_for [:admin, :products, @stock_adjustment], html: { role: 'form' } do |f| %>
-    <div class="threecol"></div>
-    <div class="ninecol last">
+    <div class="twelvecol">
       <%= render partial: 'shared/errors', locals: { object: @accessory } %>
     </div>
-    <div class="threecol">
-      <h3>Stock information</h3>
-      <p>Set the SKU, description and value of your stock adjustment.</p>
-    </div>
-    <div class="ninecol last">
+    <div class="twelvecol">
       <fieldset class="widget widget-content widget-last">
-        <div class="form-group">
-          <%= f.label :sku_id %>
-          <%= f.select :sku_id, options_for_select(@skus.map{|s| ["#{s.product.name} | #{s.full_sku}", s.id]}, @stock_adjustment.sku_id), { include_blank: false }, { class: 'chosen', data: { placeholder: "Select product SKU..."} } %>
+        <div id="stock_adjustment_fields">
+          <div class="fourcol">
+            <div class="form-group">
+              <%= f.label :sku_id %>
+              <%= f.select :sku_id, options_for_select(@skus.map{|s| ["#{s.product.name} | #{s.full_sku}", s.id]}, @stock_adjustment.sku_id), { include_blank: false }, { class: 'chosen', data: { placeholder: "Select product SKU..."} } %>
+            </div>
+          </div>
+          <div class="fourcol">
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_field :description, :class => 'form-control' %>
+            </div>  
+          </div>
+          <div class="fourcol last">
+            <div class="form-group">
+              <%= f.label :adjustment %>
+              <%= f.text_field :adjustment, :class => 'form-control' %>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :description %>
-          <%= f.text_field :description, :class => 'form-control' %>
-        </div>  
-        <div class="form-group form-last">
-          <%= f.label :adjustment %>
-          <%= f.text_field :adjustment, :class => 'form-control' %>
-        </div>
+        <a href="#" class="icon"
       </fieldset>
       <div class="form-action">
         <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
