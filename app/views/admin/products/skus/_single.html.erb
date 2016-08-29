@@ -6,10 +6,10 @@
 <td><%= Store::Price.new(price: sku.cost_value).single %></td>
 <td><%= Store::Price.new(price: sku.price).single %></td>
 <td class="table-actions">
-    <%= link_to edit_admin_product_sku_path(sku.product, sku), remote: true, :class => 'edit-sku-button' do %>
+    <%= link_to edit_admin_product_sku_path(product_id: sku.product.id, id: sku.id), remote: true, :class => 'edit-sku-button' do %>
         <i class="icon-pencil"></i>
     <% end %>
-    <%= link_to admin_product_sku_path(sku.product, sku), remote: true, :class => "#{Store.class_name_id(sku)}-delete" do %>
+    <%= link_to admin_product_sku_path(product_id: sku.product.id, id: sku.id), remote: true, :class => "#{Store.class_name_id(sku)}-delete" do %>
         <i class="icon-remove"></i>
     <% end %>
 </td>
