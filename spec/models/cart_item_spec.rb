@@ -29,7 +29,7 @@ describe CartItem, broken: true do
     describe "Default scope" do
         let!(:cart_item_1) { create(:cart_item, created_at: 1.hour.ago) }
         let!(:cart_item_2) { create(:cart_item, created_at: 6.hours.ago) }
-        let!(:cart_item_3) { create(:cart_item, created_at: Time.now) }
+        let!(:cart_item_3) { create(:cart_item, created_at: Time.current) }
 
         it "should return an array of cart items ordered by descending created_at" do
             expect(CartItem.last(3)).to match_array([cart_item_3, cart_item_1, cart_item_2])
