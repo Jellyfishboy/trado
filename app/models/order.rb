@@ -74,7 +74,7 @@ class Order < ActiveRecord::Base
 
 	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
-    scope :dispatch_today,                                                -> { active.where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year', day: Date.today.day, month: Date.today.month, year: Date.today.year) }
+  scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
 
 	accepts_nested_attributes_for :delivery_address
 	accepts_nested_attributes_for :billing_address

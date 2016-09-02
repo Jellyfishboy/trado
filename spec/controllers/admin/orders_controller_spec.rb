@@ -7,7 +7,7 @@ describe Admin::OrdersController do
 
     describe 'GET #index' do
         let!(:order_1) { create(:complete_order, created_at: 2.hours.ago) }
-        let!(:order_2) { create(:complete_order, created_at: Time.now) }
+        let!(:order_2) { create(:complete_order, created_at: Time.current) }
 
         it "should populate an array of all orders" do
             get :index
@@ -63,12 +63,12 @@ describe Admin::OrdersController do
         end
 
         context "with invalid attributes" do
-            let!(:order) { create(:complete_order, shipping_date: Time.now) }
+            let!(:order) { create(:complete_order, shipping_date: Time.current) }
             let(:errors) { ["Shipping date can't be blank"] }
 
             it "should not update the order" do
                 xhr :patch, :update, id: order.id, order: attributes_for(:order, shipping_date: nil)
-                expect(order.shipping_date).to be_within(3.second).of Time.now
+                expect(order.shipping_date).to be_within(3.second).of Time.current
             end
 
             it "should return a JSON object of errors" do
