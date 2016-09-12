@@ -32,7 +32,6 @@ FactoryGirl.define do
         city { Faker::Address.city }
         county { Faker::Address.state }
         postcode { Faker::Address.zip_code }
-        country { Faker::Address.country }
         telephone { Faker::PhoneNumber.phone_number }
 
         association :order
