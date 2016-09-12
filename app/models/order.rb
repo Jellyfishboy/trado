@@ -32,9 +32,9 @@
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
-  
-  
   include HasShippingDateValidation
+  include HasOrderAddresses
+
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
@@ -76,9 +76,6 @@ class Order < ActiveRecord::Base
 	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
   scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
-
-	accepts_nested_attributes_for :delivery_address
-	accepts_nested_attributes_for :billing_address
 
 	  enum shipping_status: [:pending, :dispatched]
     enum payment_type: [:paypal]

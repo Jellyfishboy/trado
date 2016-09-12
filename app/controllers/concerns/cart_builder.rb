@@ -15,15 +15,8 @@ module CartBuilder
             @cart_totals = current_cart.calculate(Store.tax_rate)
         end
 
-        def set_cart_session
-            @cart_session = {
-                country_id: (@order.nil? || @order.delivery_address.nil?) ? current_cart.country.id : @order.delivery_address.country.id,
-                delivery_id: (@order.nil? || @order.new_record?) ? current_cart.delivery_id : @order.delivery_id
-            }
-        end
-
-        def set_delivery_services
-            @delivery_services = @cart_session[:country_id].nil? ? nil : DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, @cart_session[:country_id])
+        def set_grouped_countries
+            @grouped_countries = [Country.popular.map{ |country| [country.name, country.id] }, Country.all.order('name ASC').map{ |country| [country.name, country.id] }] 
         end
     end
 end

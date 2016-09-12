@@ -34,23 +34,6 @@ describe CartsController, broken: true do
             expect(assigns(:cart_totals)).to eq cart.calculate(0.2)
         end
 
-        context "if the order doesn't have an associated delivery address record" do
-
-            it "should assign the cart country attribute value to @cart_session[:country_id]" do
-                get :checkout
-                expect(assigns(:cart_session)[:country_id]).to eq 'United Kingdom'
-            end
-        end
-
-        context "if the order has an associated delivery address record" do
-            let!(:order) { create(:delivery_address_order, cart_id: cart.id) }
-
-            it "should assign the order's delivery address country attribute value to @cart_session[:country_id]" do
-                get :checkout
-                expect(assigns(:cart_session)[:country_id]).to eq order.delivery_address.country
-            end
-        end
-
         context "if the cart delivery_id attribute and order delivery address record are both nil" do
             let!(:cart) { create(:cart) }
             let!(:order) { create(:order, cart_id: cart.id) }
