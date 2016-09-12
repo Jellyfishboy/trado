@@ -19,7 +19,7 @@ Delivery Address
 <%= @order.delivery_address.address %>
 <%= @order.delivery_address.city %>
 <%= @order.delivery_address.postcode %>
-<%= @order.delivery_address.country %>
+<%= @order.delivery_address.country.name %>
 
 <%= @order.delivery_address.telephone %>
 
@@ -34,7 +34,7 @@ Billing Address
 <%= @order.billing_address.address %>
 <%= @order.billing_address.city %>
 <%= @order.billing_address.postcode %>
-<%= @order.billing_address.country %>
+<%= @order.billing_address.country.name %>
 
 <%= @order.billing_address.telephone %>
 

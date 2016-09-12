@@ -27,7 +27,7 @@
 
 class Address < ActiveRecord::Base
 
-  attr_accessible :active, :address, :city, :company, :country, :county, :addressable_id,
+  attr_accessible :active, :address, :city, :company, :county, :addressable_id,
   :addressable_type, :default, :first_name, :last_name, :postcode, :telephone, :order_id, :address_country_attributes
 
   belongs_to :order
@@ -37,7 +37,7 @@ class Address < ActiveRecord::Base
   has_one :country,                                                 through: :address_country
 
   validates :first_name, :last_name, 
-  :address, :city, :postcode, :country,                             presence: true
+  :address, :city, :postcode,                                       presence: true
 
   accepts_nested_attributes_for :address_country
 
@@ -60,15 +60,13 @@ class Address < ActiveRecord::Base
 
   def full_address
     # TODO: Clean this up and move to paypal module
-    cnty = Country.find_by_name(country)
-    alpha_two_code = cnty.nil? ? 'GB' : cnty.alpha_two_code
     {
       name: full_name,
       address1: address,
       city: city,
       zip: postcode,
       state: county,
-      country: alpha_two_code,
+      country: country.alpha_two_code,
       telephone: telephone
     }
   end
