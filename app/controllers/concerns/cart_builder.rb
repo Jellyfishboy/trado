@@ -17,13 +17,13 @@ module CartBuilder
 
         def set_cart_session
             @cart_session = {
-                country: (@order.nil? || @order.delivery_address.nil?) ? current_cart.country : @order.delivery_address.country,
+                country_id: (@order.nil? || @order.delivery_address.nil?) ? current_cart.country.id : @order.delivery_address.country.id,
                 delivery_id: (@order.nil? || @order.new_record?) ? current_cart.delivery_id : @order.delivery_id
             }
         end
 
         def set_delivery_services
-            @delivery_services = @cart_session[:country].nil? ? nil : DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, @cart_session[:country])
+            @delivery_services = @cart_session[:country_id].nil? ? nil : DeliveryServicePrice.find_collection(current_cart.delivery_service_ids, @cart_session[:country_id])
         end
     end
 end
