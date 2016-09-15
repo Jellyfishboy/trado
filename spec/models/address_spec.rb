@@ -53,7 +53,7 @@ describe Address do
                 city: address.city,
                 zip: address.postcode,
                 state: address.county,
-                country: 'GB',
+                country: address.country.alpha_two_code,
                 telephone: '0123712963872'
             }
         }
