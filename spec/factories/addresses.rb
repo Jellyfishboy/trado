@@ -34,10 +34,11 @@ FactoryGirl.define do
         postcode { Faker::Address.zip_code }
         telephone { Faker::PhoneNumber.phone_number }
 
-        after(:build) do |address|
-            create(:address_country, address: address)
-        end
+        # after(:build) do |address|
+        #     country = create(:country)
+        #     address.address_country.attributes = attributes_for(:address_country, address: address, country: country)
+        # end
 
-        association :order
+        association :addressable, factory: :order
     end
 end

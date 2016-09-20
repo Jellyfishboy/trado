@@ -40,7 +40,12 @@ FactoryGirl.define do
 
         association :cart
         association :delivery, factory: :delivery_service_price
-        
+
+        after(:build) do |order|
+            order.billing_address.attributes = attributes_for(:address, addressable_type: 'OrderBillAddress', order: order)
+            order.delivery_address.attributes = attributes_for(:address, addressable_type: 'OrderDeliveryAddress', order: order)
+        end
+
         transient do
             count 1
         end
@@ -56,7 +61,7 @@ FactoryGirl.define do
             factory :addresses_pending_order do
                 after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
-                    create(:address, addressable_type: 'OrderShipAddress', order: order)
+                    create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
                 end
             end
         end
@@ -65,7 +70,7 @@ FactoryGirl.define do
             transactions { [create(:transaction, payment_status: 'pending', gross_amount: '234.71')] }
             after(:create) do |order|
                 create(:address, addressable_type: 'OrderBillAddress', order: order)
-                create(:address, addressable_type: 'OrderShipAddress', order: order)
+                create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
             end
         end
 
@@ -89,7 +94,7 @@ FactoryGirl.define do
             factory :addresses_complete_order do
                 after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
-                    create(:address, addressable_type: 'OrderShipAddress', order: order)
+                    create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
                 end
             end
         end
@@ -115,7 +120,7 @@ FactoryGirl.define do
             factory :addresses_failed_order do
                 after(:create) do |order|
                     create(:address, addressable_type: 'OrderBillAddress', order: order)
-                    create(:address, addressable_type: 'OrderShipAddress', order: order)
+                    create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
                 end
             end
         end
@@ -162,14 +167,14 @@ FactoryGirl.define do
 
         factory :delivery_address_order do
             after(:create) do |order|
-                create(:address, addressable_type: 'OrderShipAddress', order: order)
+                create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
             end
         end
 
         factory :addresses_order do
             after(:create) do |order|
                 create(:address, addressable_type: 'OrderBillAddress', order: order)
-                create(:address, addressable_type: 'OrderShipAddress', order: order)
+                create(:address, addressable_type: 'OrderDeliveryAddress', order: order)
             end
         end
     end

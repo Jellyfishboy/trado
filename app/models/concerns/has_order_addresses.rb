@@ -2,9 +2,9 @@ module HasOrderAddresses
     extend ActiveSupport::Concern
 
     included do
-        has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
+        has_one :delivery_address,                                            -> { where addressable_type: 'OrderDeliveryAddress'}, class_name: 'Address', foreign_key: 'addressable_id', dependent: :destroy
         has_one :delivery_address_country,                                    through: :delivery_address, source: :country
-        has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
+        has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', foreign_key: 'addressable_id', dependent: :destroy
         has_one :billing_address_country,                                     through: :billing_address, source: :country
 
         accepts_nested_attributes_for :delivery_address

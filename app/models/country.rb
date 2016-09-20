@@ -26,7 +26,7 @@ class Country < ActiveRecord::Base
 
     has_many :address_countries,                          dependent: :destroy
     has_many :addresses,                                  through: :address_countries
-    has_many :delivery_addresses,                         -> { where addressable_type: 'OrderShipAddress' }, through: :address_countries, source: :address 
+    has_many :delivery_addresses,                         -> { where addressable_type: 'OrderDeliveryAddress' }, through: :address_countries, source: :address 
     has_many :orders,                                     through: :delivery_addresses
     has_many :products,                                   through: :orders
 
