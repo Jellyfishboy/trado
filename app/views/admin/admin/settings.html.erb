@@ -81,6 +81,7 @@
         </div>
       </fieldset>
     </div>
+    <%= mailchimp_store_setting_fields(f) if Modulatron4000.mailchimp? %>
     <div class="threecol">
       <h3>Google Analytics</h3>
       <p>Enable and set the web tracking code for your store. </p>
@@ -108,6 +109,5 @@
         <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
       </div>
     </div>
-    <%= mailchimp_store_setting_fields(f) if Modulatron4000.mailchimp? %>
   <% end %>
 </div>
