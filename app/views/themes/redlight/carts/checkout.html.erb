@@ -194,6 +194,7 @@
             </div>
             <hr>
           </div>
+          <%= mailchimp_checkout_fields(f) if Modulatron4000.mailchimp? %>
           <div class='form-check-group-full'>
             <%= errors_for @order, :terms %>
             <%= f.check_box :terms, checked: false %>
