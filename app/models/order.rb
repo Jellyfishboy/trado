@@ -49,7 +49,7 @@ class Order < ActiveRecord::Base
 	has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :delivery_service,                                            through: :delivery
 
-	validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+	validates :email,                                                     presence: { message: 'is required' }, format: { with: Devise::email_regexp }
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
     validates :payment_type,                                              presence: true
@@ -78,6 +78,8 @@ class Order < ActiveRecord::Base
 
 	accepts_nested_attributes_for :delivery_address
 	accepts_nested_attributes_for :billing_address
+
+    auto_strip_attributes :email
 
 	  enum shipping_status: [:pending, :dispatched]
     enum payment_type: [:paypal]
