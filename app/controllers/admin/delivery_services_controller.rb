@@ -4,7 +4,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
   def index
     set_all_countries
-    @delivery_services = DeliveryService.active.includes(:prices).load
+    @delivery_services = DeliveryService.active.includes(:active_prices).load
   end
 
   def new
@@ -41,7 +41,7 @@ class Admin::DeliveryServicesController < ApplicationController
 
     if @delivery_service.update(params[:delivery_service])
       if @old_delivery_service
-        @old_delivery_service.prices.active.each do |price|
+        @old_delivery_service.active_prices.each do |price|
           new_price = price.dup
           new_price.delivery_service_id = @delivery_service.id
           new_price.save(validate: false)

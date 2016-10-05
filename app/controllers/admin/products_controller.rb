@@ -65,6 +65,15 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_url
   end
 
+  def autosave
+    set_autosave_product
+    if @product.update(params[:product])
+      render json: { }, status: 200
+    else
+      render json: { }, status: 422
+    end
+  end
+
   private
 
   def get_associations
@@ -79,6 +88,10 @@ class Admin::ProductsController < ApplicationController
 
   def set_product
     @product ||= Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
+  end
+
+  def set_autosave_product
+    @product = Product.find(params[:id])
   end
 
   def set_products

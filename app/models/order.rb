@@ -48,7 +48,7 @@ class Order < ActiveRecord::Base
 	belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'
 	has_one :delivery_service,                                            through: :delivery
 
-	validates :email,                                                     presence: { message: 'is required' }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+	validates :email,                                                     presence: { message: 'is required' }, format: { with: Devise::email_regexp }
 	validates :delivery_id,                                               presence: { message: 'Delivery option must be selected.'}                                                                                                                  
 	validates :terms,                                                     inclusion: { :in => [true], message: 'You must tick the box in order to place your order.' }
     validates :payment_type,                                              presence: true
@@ -74,6 +74,11 @@ class Order < ActiveRecord::Base
 	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
 
   scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
+
+	 accepts_nested_attributes_for :delivery_address
+	 accepts_nested_attributes_for :billing_address
+
+    auto_strip_attributes :email
 
 	  enum shipping_status: [:pending, :dispatched]
     enum payment_type: [:paypal]
