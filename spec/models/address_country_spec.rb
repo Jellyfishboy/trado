@@ -3,8 +3,8 @@ require 'rails_helper'
 describe AddressCountry do
 
     # ActiveRecord relations
-    it { expect(subject).to belong_to(:order) }
-    it { expect(subject).to belong_to(:addressable) }
+    it { expect(subject).to belong_to(:address) }
+    it { expect(subject).to belong_to(:country) }
 
     # Validations
     it { expect(create(:address_country)).to validate_presence_of(:country_id) }
