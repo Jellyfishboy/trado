@@ -42,8 +42,8 @@ FactoryGirl.define do
         association :delivery, factory: :delivery_service_price
 
         after(:build) do |order|
-            order.billing_address.attributes = attributes_for(:address, addressable_type: 'OrderBillAddress', order: order)
-            order.delivery_address.attributes = attributes_for(:address, addressable_type: 'OrderDeliveryAddress', order: order)
+            order.billing_address = build(:address, addressable_type: 'OrderBillAddress', order: order)
+            order.delivery_address = build(:address, addressable_type: 'OrderDeliveryAddress', order: order)
         end
 
         transient do

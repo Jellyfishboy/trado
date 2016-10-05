@@ -39,7 +39,7 @@ class Address < ActiveRecord::Base
   validates :first_name, :last_name, 
   :address, :city, :postcode,                                       presence: true
 
-  accepts_nested_attributes_for :address_country
+  # accepts_nested_attributes_for :address_country
 
   after_initialize :build_country_association
 

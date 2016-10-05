@@ -136,7 +136,6 @@ describe Store do
 
         context "if the record has assocaited orders" do
             before(:each) do
-                binding.pry
                 create(:order_item, sku_id: sku.id)
             end
 
