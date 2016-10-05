@@ -2,6 +2,8 @@ var taxRate = gon.taxRate;
      
 ready = function()
 {
+    trado.misc.clearAllIntervals();
+    
     soca.animation.loading();
     soca.animation.colourCaveat();
     soca.animation.sidebarExtension();
@@ -52,6 +54,7 @@ $(document).on('page:change page:load', function()
     //     convertDivs: false,
     //     minHeight: 300
     // });
+    trado.misc.clearAllIntervals();
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');
 });

@@ -17,3 +17,20 @@
 {
     margin-top:15px !important;
 }
+.edit_product
+{
+    .form-action
+    {
+        margin-bottom: 40px;
+    }
+}
+#autosave-message
+{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 9000;
+    background: #fff;
+    padding: 7px 15px;
+    display: none;
+}

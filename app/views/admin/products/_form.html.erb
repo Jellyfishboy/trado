@@ -1,4 +1,4 @@
-<%= form_for [:admin, @product], url: admin_product_path(id: @product.id), html: {role: 'form', method: :patch} do |f| %>
+<%= form_for [:admin, @product], url: admin_product_path(id: @product.id), html: {role: 'form', method: :patch, 'data-product-id' => @product.id} do |f| %>
   <div class="threecol"></div>
   <div class="ninecol last">
     <%= render partial: 'shared/errors', format: [:html], locals: { object: @product }  %>
