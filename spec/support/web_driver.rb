@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.before :suite, js: :true do
+  config.before :each, js: :true do
       require 'capybara/poltergeist'
       Capybara.register_driver :poltergeist do |app|
         Capybara::Poltergeist::Driver.new(app, {
