@@ -17,11 +17,11 @@ require 'sidekiq/testing'
 Sidekiq::Testing.fake!
 Capybara::Screenshot.s3_configuration = {
   s3_client_credentials: {
-    access_key_id: Rails.application.secrets.aws_s3_id,
-    secret_access_key: Rails.application.secrets.aws_s3_key,
-    region: Rails.application.secrets.aws_s3_region
+    access_key_id: ENV['AWS_S3_ID'],
+    secret_access_key: ENV['AWS_S3_KEY'],
+    region: ENV['AWS_REGION']
   },
-  bucket_name: "trado-test-screenshots"
+  bucket_name: ENV['AWS_BUCKET']
 }
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
