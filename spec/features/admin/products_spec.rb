@@ -143,6 +143,7 @@ feature 'Product management' do
         not_single_product
         accessory
 
+        sleep 3
         visit admin_products_path
         find('.table-actions').first(:link).click
         sleep 1
