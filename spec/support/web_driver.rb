@@ -7,7 +7,6 @@ RSpec.configure do |config|
         js_errors: true,
         inspector: true,
         phantomjs_options: ['--load-images=no', '--ignore-ssl-errors=yes'],
-        debug: true,
         timeout: 120
       })
     end
