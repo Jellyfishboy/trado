@@ -48,7 +48,9 @@
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label 'Country *' %>
-                <%= delivery.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
+                <%= delivery.fields_for :address_country do |address_country| %>
+                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.delivery_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
+                <% end %>
               </div>
             <h3>DELIVERY SERVICE</h3>
             <div id="delivery-services">
@@ -98,7 +100,9 @@
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label 'Country *' %>
-                <%= billing.select(:country, grouped_options_for_select(@grouped_countries, @cart_session[:country], divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
+                <%= billing.fields_for :address_country do |address_country| %>
+                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.billing_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
+                <% end %>
               </div>
             <% end %>
         </div>

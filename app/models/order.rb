@@ -7,33 +7,34 @@
 #
 # Table name: orders
 #
-#  id                   :integer          not null, primary key
-#  email                :string
-#  shipping_date        :datetime
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  actual_shipping_cost :decimal(8, 2)
-#  delivery_id          :integer
-#  ip_address           :string
-#  user_id              :integer
-#  net_amount           :decimal(8, 2)
-#  gross_amount         :decimal(8, 2)
-#  tax_amount           :decimal(8, 2)
-#  terms                :boolean
-#  cart_id              :integer
-#  shipping_status      :integer          default(0)
-#  consignment_number   :string
-#  payment_type         :integer
-#  browser              :string
-#  status               :integer          default(0)
+#  id                    :integer          not null, primary key
+#  email                 :string
+#  shipping_date         :datetime
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  actual_shipping_cost  :decimal(8, 2)
+#  delivery_id           :integer
+#  ip_address            :string
+#  user_id               :integer
+#  net_amount            :decimal(8, 2)
+#  gross_amount          :decimal(8, 2)
+#  tax_amount            :decimal(8, 2)
+#  terms                 :boolean
+#  cart_id               :integer
+#  shipping_status       :integer          default(0)
+#  consignment_number    :string
+#  payment_type          :integer
+#  browser               :string
+#  status                :integer          default(0)
+#  stripe_customer_token :string
 #
 
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
-  
-  
   include HasShippingDateValidation
+  include HasOrderAddresses
+
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
@@ -45,8 +46,6 @@ class Order < ActiveRecord::Base
 
 	belongs_to :cart
 	belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'
-	has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
-	has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :delivery_service,                                            through: :delivery
 
 	validates :email,                                                     presence: { message: 'is required' }, format: { with: Devise::email_regexp }
@@ -76,8 +75,8 @@ class Order < ActiveRecord::Base
 
   scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
 
-	accepts_nested_attributes_for :delivery_address
-	accepts_nested_attributes_for :billing_address
+	 accepts_nested_attributes_for :delivery_address
+	 accepts_nested_attributes_for :billing_address
 
     auto_strip_attributes :email
 

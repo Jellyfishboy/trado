@@ -110,7 +110,7 @@
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.delivery_address.full_name %><br>
                               <%= @order.delivery_address.address %><br>
                               <%= @order.delivery_address.city %>, <%= @order.delivery_address.county %> <%= @order.delivery_address.postcode %><br>
-                              <%= @order.delivery_address.country %></p>
+                              <%= @order.delivery_address.country.name %></p>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>
@@ -139,7 +139,7 @@
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.billing_address.full_name %><br>
                               <%= @order.billing_address.address %><br>
                               <%= @order.billing_address.city %>, <%= @order.delivery_address.county %> <%= @order.billing_address.postcode %><br>
-                              <%= @order.billing_address.country %></p>
+                              <%= @order.billing_address.country.name %></p>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>

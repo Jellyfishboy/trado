@@ -35,7 +35,6 @@ describe Address do
     it { expect(create(:address)).to validate_presence_of(:address) }
     it { expect(create(:address)).to validate_presence_of(:city) }
     it { expect(create(:address)).to validate_presence_of(:postcode) }
-    it { expect(create(:address)).to validate_presence_of(:country) }
 
     describe "When displaying an address" do
         let!(:address) { create(:address, first_name: 'John', last_name: 'Doe') }
@@ -54,7 +53,7 @@ describe Address do
                 city: address.city,
                 zip: address.postcode,
                 state: address.county,
-                country: 'GB',
+                country: address.country.alpha_two_code,
                 telephone: '0123712963872'
             }
         }

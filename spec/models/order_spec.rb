@@ -34,7 +34,7 @@ describe Order, broken: true do
     it { expect(subject).to have_many(:skus).through(:order_items) }
     it { expect(subject).to belong_to(:delivery).class_name('DeliveryServicePrice') }
     it { expect(subject).to belong_to(:cart) }
-    it { expect(subject).to have_one(:delivery_address).class_name('Address').conditions(addressable_type: 'OrderShipAddress').dependent(:destroy) }
+    it { expect(subject).to have_one(:delivery_address).class_name('Address').conditions(addressable_type: 'OrderDeliveryAddress').dependent(:destroy) }
     it { expect(subject).to have_one(:billing_address).class_name('Address').conditions(addressable_type: 'OrderBillAddress').dependent(:destroy) }
     it { expect(subject).to have_one(:delivery_service).through(:delivery) }
 
