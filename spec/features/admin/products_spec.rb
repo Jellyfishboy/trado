@@ -143,8 +143,8 @@ feature 'Product management' do
         not_single_product
         accessory
 
-        sleep 3
         visit admin_products_path
+        sleep 5
         find('.table-actions').first(:link).click
         sleep 1
         expect(current_path).to eq edit_admin_product_path(not_single_product)
