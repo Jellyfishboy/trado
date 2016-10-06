@@ -8,12 +8,22 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot'
 require 'capybara-screenshot/rspec'
+require 'capybara-screenshot/s3_saver'
 require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'rspec/collection_matchers'
 require 'sidekiq/testing'
 
 Sidekiq::Testing.fake!
+Capybara::Screenshot.s3_configuration = {
+  s3_client_credentials: {
+    access_key_id: Rails.application.secrets.aws_s3_id,
+    secret_access_key: Rails.application.secrets.aws_s3_key,
+    region: Rails.application.secrets.aws_s3_region
+  },
+  bucket_name: "trado-test-screenshots"
+}
+Capybara::Screenshot.prune_strategy = :keep_last_run
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
