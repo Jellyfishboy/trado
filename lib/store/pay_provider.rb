@@ -26,6 +26,8 @@ module Store
         def provider
             if @provider == 'paypal'
                 return TradoPaypalModule::Paypaler
+            elsif @provider == 'stripe'
+                return TradoStripeModule::Striper
             end
         end
 
