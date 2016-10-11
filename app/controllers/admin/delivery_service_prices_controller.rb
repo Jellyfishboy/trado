@@ -3,8 +3,8 @@ class Admin::DeliveryServicePricesController < ApplicationController
   layout "admin"
 
   def index
-    @delivery_service = DeliveryService.includes(:prices).find(params[:delivery_service_id])
-    @delivery_service_prices = @delivery_service.prices.active.order(price: :asc)
+    @delivery_service = DeliveryService.includes(:active_prices).find(params[:delivery_service_id])
+    @delivery_service_prices = @delivery_service.active_prices
   end
 
 

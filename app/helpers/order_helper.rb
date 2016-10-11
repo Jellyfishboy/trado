@@ -19,4 +19,7 @@ module OrderHelper
         # Modulatron4000.paypal? ? paypal_confirm_carts_path : Modulatron4000.stripe? ? stripe_confirm_carts_path : ""
         stripe_confirm_carts_path
     end
+    def pending_delivery_time order
+        "<i class='icon-clock label label-blue label-small' data-placement='bottom' data-toggle='tooltip' data-original-title='Delivery Date Set'></i>".html_safe if order.has_pending_delivery_datetime?
+    end
 end

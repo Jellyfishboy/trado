@@ -34,7 +34,6 @@ Stay up to date on the development of Trado and reach out to the community with 
 * Upgrade to Rails 5
 * Stripe payment gateway ([stripe.com](https://www.stripe.com))
 * Admin activity log
-* Omise payment gateway ([omise.co](https://www.omise.co))
 * Payoneer payment gateway ([payoneer.com](https://www.payoneer.com))
 
 ## Versioning

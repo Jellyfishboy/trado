@@ -54,7 +54,7 @@ describe Order, broken: true do
     describe "Default scope" do
         let!(:order_1) { create(:order, created_at: 1.hour.ago) }
         let!(:order_2) { create(:order, created_at: 6.hours.ago) }
-        let!(:order_3) { create(:order, created_at: Time.now) }
+        let!(:order_3) { create(:order, created_at: Time.current) }
 
         it "should return an array of orders ordered by descending created at value" do
             expect(Order.last(3)).to match_array([order_3, order_1, order_2])

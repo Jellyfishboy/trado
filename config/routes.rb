@@ -76,6 +76,7 @@ Trado::Application.routes.draw do
   		end
 	  	resources :accessories, :categories, except: :show
 	  	resources :products, except: [:show, :create] do
+        patch :autosave, on: :member
 	  		resources :attachments, except: :index
 	  		resources :skus, except: [:index, :show] do
 	  			resources :stock_adjustments, only: [:create, :new]

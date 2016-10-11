@@ -9,7 +9,7 @@ module Mailatron4000
         # @param notification [Object]
         def notification_sent notification
             notification.sent = true
-            notification.sent_at = Time.now
+            notification.sent_at = Time.current
             notification.save!
         end
     end

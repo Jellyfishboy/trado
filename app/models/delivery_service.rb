@@ -22,6 +22,7 @@ class DeliveryService < ActiveRecord::Base
     attr_accessible :name, :description, :courier_name, :order_price_minimum, :order_price_maximum, :active, :country_ids, :tracking_url
 
     has_many :prices,                                       class_name: 'DeliveryServicePrice', dependent: :destroy
+    has_many :active_prices,                                -> { where(active: true).order(price: :asc) }, class_name: 'DeliveryServicePrice'
     has_many :destinations,                                 dependent: :destroy
     has_many :countries,                                    through: :destinations                                                     
     has_many :orders,                                       through: :prices

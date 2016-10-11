@@ -16,7 +16,7 @@ describe Mailatron4000 do
             expect { 
                 Mailatron4000.notification_sent(notification)
             }.to change {
-                notification.sent_at.to_s }.to(Time.now.in_time_zone.to_s)
+                notification.sent_at.to_s }.to(Time.current.in_time_zone.to_s)
         end
     end 
 
