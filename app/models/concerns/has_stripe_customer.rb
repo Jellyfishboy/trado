@@ -2,12 +2,11 @@ module HasStripeCustomer
     extend ActiveSupport::Concern
 
     included do
-        after_create :assign_stripe_customer, if: :no_stripe_customer_token?
 
         def stripe_customer
             Stripe::Customer.retrieve(stripe_customer_token)
         rescue Stripe::InvalidRequestError
-            assign_stripe_customer
+            create_stripe_customer
         end
 
         def stripe_cards
@@ -29,7 +28,7 @@ module HasStripeCustomer
         end
     end
 
-    def assign_stripe_customer
+    def create_stripe_customer
         customer = Stripe::Customer.create(
             email: email,
             description: billing_address.full_name,

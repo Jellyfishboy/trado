@@ -5,12 +5,11 @@ class Carts::StripeController < ApplicationController
     def confirm
         set_order
         set_cart_totals
-        set_cart_session
-        set_delivery_services
         set_grouped_countries
         set_browser_data
         @order.attributes = params[:order]
         if @order.save
+            @order.create_stripe_customer if @order.no_stripe_customer_token?
             @order.remove_redundant_stripe_cards
             @order.create_stripe_card
             @order.calculate(current_cart, Store.tax_rate)
@@ -23,11 +22,5 @@ class Carts::StripeController < ApplicationController
         flash_message :error, 'An error ocurred with your order. Please try again.'  
         Rails.logger.error "Stripe: Unable to create card for customer #{@order.email} | #{@order.id}"
         redirect_to checkout_carts_url
-    end
-
-    private
-
-    def set_grouped_countries
-        @grouped_countries = [Country.popular.map{ |country| [country.name, country.name] }, Country.all.order('name ASC').map{ |country| [country.name, country.name] }] 
     end
 end

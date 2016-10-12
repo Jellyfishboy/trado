@@ -42,6 +42,7 @@ class Address < ActiveRecord::Base
   # accepts_nested_attributes_for :address_country
 
   after_initialize :build_country_association
+  after_commit :create_or_update_stripe_customer
 
   # Combines the first and last name of an address
   #
@@ -69,5 +70,9 @@ class Address < ActiveRecord::Base
       country: country.alpha_two_code,
       telephone: telephone
     }
+  end
+
+  def create_or_update_stripe_customer
+    
   end
 end
