@@ -11,18 +11,14 @@ class Carts::StripeController < ApplicationController
         set_browser_data
         @order.attributes = params[:order]
         if @order.save
-            remove_redundant_stripe_cards
-            create_stripe_card
+            @order.remove_redundant_stripe_cards
+            @order.create_stripe_card
             @order.calculate(current_cart, Store.tax_rate)
             redirect_to confirm_order_url(@order)
         else
             flash_message :error, 'An error ocurred with your order. Please try again.'
             render theme_presenter.page_template_path('carts/checkout'), layout: theme_presenter.layout_template_path
         end
-    # rescue Stripe::ApiConnectionError
-        # flash_message :error, 'An error ocurred with your order. Please try again.'  
-        # Rails.logger.error "Stripe: API is temporarily unavailable."
-        # redirect_to checkout_carts_url
     rescue Stripe::InvalidRequestError
         flash_message :error, 'An error ocurred with your order. Please try again.'  
         Rails.logger.error "Stripe: Unable to create card for customer #{@order.email} | #{@order.id}"
@@ -33,15 +29,5 @@ class Carts::StripeController < ApplicationController
 
     def set_grouped_countries
         @grouped_countries = [Country.popular.map{ |country| [country.name, country.name] }, Country.all.order('name ASC').map{ |country| [country.name, country.name] }] 
-    end
-
-    def create_stripe_card
-        @order.stripe_customer.sources.create(source: @order.stripe_card_token)
-    end
-
-    def remove_redundant_stripe_cards
-        @order.stripe_cards.each do |card|
-            @order.stripe_customer.sources.retrieve(card.id).delete()
-        end
     end
 end

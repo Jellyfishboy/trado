@@ -17,7 +17,11 @@ class OrdersController < ApplicationController
         amount: Store::Price.new(price: @order.gross_amount, tax_type: 'net').singularize,
         currency: Store.settings.currency_code,
         customer: @order.stripe_customer_token,
-        description: "#{@order.id} | #{@order.billing_address.full_name}"
+        description: "#{@order.id} | #{@order.billing_address.full_name}",
+        metadata:
+        {
+          line_items: @order.order_items.map{|item| [item.sku.product.name, sku.full_sku]}
+        }
       )
       redirect_to redirect_url
     end
