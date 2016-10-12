@@ -7,7 +7,7 @@ jQuery(function() {
 
 order = {
   setupForm: function() {
-    return $('.new_order').submit(function() {
+    return $('.process_order').submit(function() {
       $('input[type=submit]').attr('disabled', true);
       if ($('#stripe_card_number').length) {
         order.processCard();
@@ -30,7 +30,7 @@ order = {
   handleStripeResponse: function(status, response) {
     if (status === 200) {
       $('#order_stripe_card_token').val(response.id);
-      return $('.new_order')[0].submit();
+      return $('.process_order')[0].submit();
     } else {
       $('#stripe_error').text(response.error.message);
       $('#checkoutLoadingModal').modal('hide');

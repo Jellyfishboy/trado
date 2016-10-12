@@ -55,6 +55,11 @@
               <div class="col-lg-12 col-sm-12">
                 <h3>PAYMENT METHOD</h3>
                 <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+                <% if Modulatron4000.stripe? && @order.stripe? %>
+                  <%= image_tag 'stripe-icon.png', width: 100 %><br>
+                  <%= @order.default_card.brand %><br/>
+                  <%= @order.default_card.last4 %><br/>
+                <% end %>
               </div>
           </div>
       </div>

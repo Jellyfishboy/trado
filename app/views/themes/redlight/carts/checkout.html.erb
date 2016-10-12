@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class='row checkout-panel'>
-      <%= form_for @order, url: checkout_pay_provider_path, html: { method: :post } do |f| %>
+      <%= form_for @order, url: checkout_pay_provider_path, html: { method: :post, class: 'process_order' } do |f| %>
         <h2 class="checkout-header visible-xs">Checkout</h2>
         <div class='col-lg-8 col-sm-8 checkout-body'>
             <% unless @order.errors.empty? %>
