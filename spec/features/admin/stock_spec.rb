@@ -28,7 +28,7 @@ feature 'Stock management' do
         end
     end
 
-    scenario 'should add a new stock adjustment to a SKU', js: true do
+    scenario 'should add a new stock adjustment to a SKU', js: true, broken: true do
         sku
 
         visit admin_products_path

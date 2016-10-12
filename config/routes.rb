@@ -49,13 +49,13 @@ Trado::Application.routes.draw do
   		collection do
 	  		get :mycart
 	  		get :checkout
-        get :delivery_service_prices
         %w( paypal stripe ).each do |payment|
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
         end
   		end
   	end
     resources :cart_items, only: [:create, :update, :destroy]
+    resources :delivery_service_prices, only: [:show]
 
   	resources :orders, only: [:destroy] do
   		member do

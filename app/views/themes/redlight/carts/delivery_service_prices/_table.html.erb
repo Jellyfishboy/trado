@@ -11,10 +11,10 @@
 		</thead>
 		<tbody>
 			<% delivery_service_prices.order(price: :asc).each_with_index do |delivery_price, index| %>
-				<tr class="<%= current_cart.delivery_id.nil? ? ('active' if index == 0) : ('active' if delivery_price.id == current_cart.delivery_id) %>" data-price="<%= Store::Price.new(price: delivery_price.price).single %>" data-total="<%= Store::Price.new(price: current_cart.calculate(Store.tax_rate, delivery_price.price)[:total]).single %>" data-sub-total="<%= Store::Price.new(price: current_cart.calculate(Store.tax_rate, delivery_price.price)[:subtotal]).single %>" data-tax="<%= Store::Price.new(price: current_cart.calculate(Store.tax_rate, delivery_price.price)[:tax]).single %>">
+				<tr class="<%= @cart.delivery_id.nil? ? ('active' if index == 0) : ('active' if delivery_price.id == @cart.delivery_id) %>" data-price="<%= Store::Price.new(price: delivery_price.price).single %>" data-total="<%= Store::Price.new(price: @cart.calculate(Store.tax_rate, delivery_price.price)[:total]).single %>" data-sub-total="<%= Store::Price.new(price: @cart.calculate(Store.tax_rate, delivery_price.price)[:subtotal]).single %>" data-tax="<%= Store::Price.new(price: @cart.calculate(Store.tax_rate, delivery_price.price)[:tax]).single %>">
 					<td><%= delivery_price.full_name %></td>
 					<td><%= Store::Price.new(price: delivery_price.price).single %></td>
-					<td><%= radio_button_tag 'order[delivery_id]', delivery_price.id, current_cart.delivery_id.nil? ? (index == 0 ? true : false) : (delivery_price.id == current_cart.delivery_id ? true : false) %></td>
+					<td><%= radio_button_tag 'order[delivery_id]', delivery_price.id, @cart.delivery_id.nil? ? (index == 0 ? true : false) : (delivery_price.id == @cart.delivery_id ? true : false) %></td>
 				</tr>
 			<% end %>
 		</tbody>

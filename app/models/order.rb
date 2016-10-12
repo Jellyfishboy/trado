@@ -33,10 +33,11 @@ require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
   
+  include HasShippingDateValidation
+  include HasOrderAddresses
   include HasStripeCustomer
   attr_accessor :stripe_card_token
 
-  include HasShippingDateValidation
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status, :stripe_card_token
@@ -48,8 +49,6 @@ class Order < ActiveRecord::Base
 
 	belongs_to :cart
 	belongs_to :delivery,                                                 class_name: 'DeliveryServicePrice'
-	has_one :delivery_address,                                            -> { where addressable_type: 'OrderShipAddress'}, class_name: 'Address', dependent: :destroy
-	has_one :billing_address,                                             -> { where addressable_type: 'OrderBillAddress'}, class_name: 'Address', dependent: :destroy
 	has_one :delivery_service,                                            through: :delivery
 
 	validates :email,                                                     presence: { message: 'is required' }, format: { with: Devise::email_regexp }
@@ -79,8 +78,8 @@ class Order < ActiveRecord::Base
 
   scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
 
-	accepts_nested_attributes_for :delivery_address
-	accepts_nested_attributes_for :billing_address
+	 accepts_nested_attributes_for :delivery_address
+	 accepts_nested_attributes_for :billing_address
 
     auto_strip_attributes :email
 

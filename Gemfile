@@ -24,6 +24,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-screenshot'
+  gem 'aws-sdk' # upload capybara screenshot fails
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '2.8.0'

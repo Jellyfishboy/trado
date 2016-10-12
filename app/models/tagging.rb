@@ -14,11 +14,10 @@
 
 class Tagging < ActiveRecord::Base
 
-  attr_accessible :product_id, :tag_id
+    attr_accessible :product_id, :tag_id
 
-  belongs_to :product
-  belongs_to :tag
+    belongs_to :product
+    belongs_to :tag
 
-  validates :tag_id,                    uniqueness: { scope: :product_id }
-  
+    validates :tag_id,                    uniqueness: { scope: :product_id }
 end

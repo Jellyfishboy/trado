@@ -17,7 +17,10 @@ describe Country do
     # ActiveRecord
     it { expect(subject).to have_many(:destinations).dependent(:destroy) }
     it { expect(subject).to have_many(:delivery_services).through(:destinations) }
-    it { expect(subject).to have_many(:orders).through(:delivery_services) }
+    it { expect(subject).to have_many(:address_countries).dependent(:destroy) }
+    it { expect(subject).to have_many(:addresses).through(:address_countries) }
+    it { expect(subject).to have_many(:delivery_addresses).conditions(addressable_type: 'OrderDeliveryAddress').through(:address_countries).source(:address) }
+    it { expect(subject).to have_many(:orders).through(:delivery_addresses) }
     it { expect(subject).to have_many(:products).through(:orders) }
 
     # Validations

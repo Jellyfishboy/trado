@@ -8,12 +8,22 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot'
 require 'capybara-screenshot/rspec'
+require 'capybara-screenshot/s3_saver'
 require 'capybara/poltergeist'
 require 'bigdecimal'
 require 'rspec/collection_matchers'
 require 'sidekiq/testing'
 
 Sidekiq::Testing.fake!
+Capybara::Screenshot.s3_configuration = {
+  s3_client_credentials: {
+    access_key_id: ENV['AWS_S3_ID'],
+    secret_access_key: ENV['AWS_S3_KEY'],
+    region: ENV['AWS_REGION']
+  },
+  bucket_name: ENV['AWS_BUCKET']
+}
+Capybara::Screenshot.prune_strategy = :keep_last_run
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -54,6 +64,12 @@ RSpec.configure do |config|
 
   # Clean up ActionMailer deliveries
   config.before(:each) { ActionMailer::Base.deliveries.clear }
+
+  # Skip after initialize callbacks due to screwing with factorygirl data
+  config.before(:each) do
+    Address.skip_callback(:initialize, :after, :build_country_association)
+    Order.skip_callback(:initialize, :after, :build_addresses)
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

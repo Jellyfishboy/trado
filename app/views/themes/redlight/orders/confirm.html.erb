@@ -22,7 +22,7 @@
           <br/>
           <%= @delivery_address.postcode %>
           <br/>
-          <%= @delivery_address.country %>
+          <%= @delivery_address.country.name %>
           <br/>
           <%= @delivery_address.telephone %>
           <div class="row">
@@ -48,7 +48,7 @@
           <br/>
           <%= @billing_address.postcode %>
           <br/>
-          <%= @billing_address.country %>
+          <%= @billing_address.country.name %>
           <br/>
           <%= @billing_address.telephone %>
           <div class="row">

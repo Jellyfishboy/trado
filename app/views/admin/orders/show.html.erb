@@ -62,7 +62,7 @@
       <br/>
       <%= @order.billing_address.postcode %>
       <br/>
-      <%= @order.billing_address.country %>
+      <%= @order.billing_address.country.name %>
       <br/>
       <br/>
       <%= @order.billing_address.telephone %>
@@ -82,7 +82,7 @@
       <br/>
       <%= @order.delivery_address.postcode %>
       <br/>
-      <%= @order.delivery_address.country %>
+      <%= @order.delivery_address.country.name %>
       <br/>
       <br/>
       <%= @order.delivery_address.telephone %>
