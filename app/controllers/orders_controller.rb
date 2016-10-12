@@ -1,5 +1,3 @@
-require 'payatron_4000'
-
 class OrdersController < ApplicationController
     skip_before_action :authenticate_user!
     include CartBuilder
@@ -12,15 +10,8 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
-      # redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
-      charge = Stripe::Charge.create(
-        amount: Store::Price.new(price: @order.gross_amount, tax_type: 'net').singularize,
-        currency: Store.settings.currency_code,
-        customer: @order.stripe_customer_token,
-        description: "Order ID ##{@order.id} | #{@order.billing_address.full_name} | #{@order.email}",
-        metadata: Hash[ *@order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ]
-      )
-      redirect_to success_order_url(@order) #redirect_url
+      redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
+      redirect_to redirect_url
     end
 
     def success

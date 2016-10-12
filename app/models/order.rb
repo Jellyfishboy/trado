@@ -7,26 +7,25 @@
 #
 # Table name: orders
 #
-#  id                    :integer          not null, primary key
-#  email                 :string
-#  shipping_date         :datetime
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  actual_shipping_cost  :decimal(8, 2)
-#  delivery_id           :integer
-#  ip_address            :string
-#  user_id               :integer
-#  net_amount            :decimal(8, 2)
-#  gross_amount          :decimal(8, 2)
-#  tax_amount            :decimal(8, 2)
-#  terms                 :boolean
-#  cart_id               :integer
-#  shipping_status       :integer          default(0)
-#  consignment_number    :string
-#  payment_type          :integer
-#  browser               :string
-#  status                :integer          default(0)
-#  stripe_customer_token :string
+#  id                   :integer          not null, primary key
+#  email                :string
+#  shipping_date        :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  actual_shipping_cost :decimal(8, 2)
+#  delivery_id          :integer
+#  ip_address           :string
+#  user_id              :integer
+#  net_amount           :decimal(8, 2)
+#  gross_amount         :decimal(8, 2)
+#  tax_amount           :decimal(8, 2)
+#  terms                :boolean
+#  cart_id              :integer
+#  shipping_status      :integer          default(0)
+#  consignment_number   :string
+#  payment_type         :integer
+#  browser              :string
+#  status               :integer          default(0)
 #
 
 require 'reportatron_4000'
@@ -35,12 +34,10 @@ class Order < ActiveRecord::Base
   
   include HasShippingDateValidation
   include HasOrderAddresses
-  include HasStripePaymentProcessor
-  attr_accessor :stripe_card_token
 
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
-    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status, :stripe_card_token
+    :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
     
 	has_many :order_items,                                                dependent: :destroy
 	has_many :transactions,                                               -> { order('created_at DESC, id DESC') }, dependent: :destroy

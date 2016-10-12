@@ -45,7 +45,7 @@ module Payatron4000
             if order.paypal?
                 Modulatron4000.paypal? && TradoPaypalModule::Paypaler.valid_tokens?(params)
             elsif order.stripe?
-                order.stripe_customer_token.present?
+                Modulatron4000.stripe? && order.stripe_customer_token.present?
             end
         end
     end  
