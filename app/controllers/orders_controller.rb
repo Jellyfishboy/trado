@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     include CartBuilder
 
     def confirm
-      set_eager_loading_order
+      set_order
       set_address_variables
       validate_confirm_render
     end
@@ -17,13 +17,10 @@ class OrdersController < ApplicationController
         amount: Store::Price.new(price: @order.gross_amount, tax_type: 'net').singularize,
         currency: Store.settings.currency_code,
         customer: @order.stripe_customer_token,
-        description: "#{@order.id} | #{@order.billing_address.full_name}",
-        metadata:
-        {
-          line_items: @order.order_items.map{|item| [item.sku.product.name, sku.full_sku]}
-        }
+        description: "Order ID ##{@order.id} | #{@order.billing_address.full_name} | #{@order.email}",
+        metadata: Hash[ *@order.order_items.collect { |item| [ "order_item_#{item.id}", "#{item.product.name} - #{item.sku.full_sku}" ] }.flatten ]
       )
-      redirect_to redirect_url
+      redirect_to success_order_url(@order) #redirect_url
     end
 
     def success
@@ -60,14 +57,6 @@ class OrdersController < ApplicationController
     end
 
     private
-
-    # def set_order
-    #   @order ||= Order.active.find(params[:id])
-    # end
-
-    def set_eager_loading_order
-      @order ||= current_cart.order.includes(:delivery_address, :billing_address)
-    end
 
     def set_address_variables
       @delivery_address = @order.delivery_address

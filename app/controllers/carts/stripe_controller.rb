@@ -9,7 +9,6 @@ class Carts::StripeController < ApplicationController
         set_browser_data
         @order.attributes = params[:order]
         if @order.save
-            @order.create_stripe_customer if @order.no_stripe_customer_token?
             @order.remove_redundant_stripe_cards
             @order.create_stripe_card
             @order.calculate(current_cart, Store.tax_rate)

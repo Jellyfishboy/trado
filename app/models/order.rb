@@ -35,7 +35,7 @@ class Order < ActiveRecord::Base
   
   include HasShippingDateValidation
   include HasOrderAddresses
-  include HasStripeCustomer
+  include HasStripePaymentProcessor
   attr_accessor :stripe_card_token
 
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 

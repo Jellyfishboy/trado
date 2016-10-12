@@ -39,10 +39,9 @@ class Address < ActiveRecord::Base
   validates :first_name, :last_name, 
   :address, :city, :postcode,                                       presence: true
 
-  # accepts_nested_attributes_for :address_country
+  accepts_nested_attributes_for :address_country
 
   after_initialize :build_country_association
-  after_commit :create_or_update_stripe_customer
 
   # Combines the first and last name of an address
   #
@@ -72,7 +71,11 @@ class Address < ActiveRecord::Base
     }
   end
 
-  def create_or_update_stripe_customer
-    
+  def delivery_address?
+    addressable_type == 'OrderDeliveryAddress' ? true : false
+  end
+
+  def billing_address?
+    addressable_type == 'OrderBillingAddress' ? true : false
   end
 end
