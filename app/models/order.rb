@@ -168,4 +168,8 @@ class Order < ActiveRecord::Base
     def has_pending_delivery_datetime?
       pending? && shipping_date.present? ? true : false
     end
+
+    def last_error_code
+      latest_transaction.error_code
+    end
 end
