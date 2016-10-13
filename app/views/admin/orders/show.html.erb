@@ -13,9 +13,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="fourcol">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Shipping details</h3>
+      <h3>Delivery Details</h3>
     </div>
     <div class="widget widget-content">
       <ul>
@@ -49,9 +49,9 @@
       </ul>
     </div>
   </div>
-  <div class="fourcol">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Billing address</h3>
+      <h3>Billing Address</h3>
     </div>
     <div class="widget widget-content">
       <%= @order.billing_address.full_name %>
@@ -69,9 +69,9 @@
       <br/>
     </div>
   </div>
-  <div class="fourcol last">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Shipping address</h3>
+      <h3>Delivery Address</h3>
     </div>
     <div class="widget widget-content">
       <%= @order.delivery_address.full_name %>
@@ -87,6 +87,15 @@
       <br/>
       <%= @order.delivery_address.telephone %>
       <br/>
+    </div>
+  </div>
+  <div class="threecol last">
+    <div class="widget-sub-heading">
+      <h3>Payment Details</h3>
+    </div>
+    <div class="widget widget-content">
+      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+      <%= stripe_order_confirm_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>
