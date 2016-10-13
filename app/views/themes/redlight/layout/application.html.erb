@@ -9,7 +9,7 @@
         <%= stylesheet_link_tag "themes/#{Store::settings.theme.name}/application", "data-turbolinks-track" => true %>
         <link rel="stylesheet" href="/stylesheets/font.css" media="screen">
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <%= stripe_application_layout %>
+        <%= stripe_application_layout if Modulatron4000.stripe? %>
         <%= include_gon(watch: true) %>
         <%= javascript_include_tag "modernizr/modernizr", "data-turbolinks-track" => true %>
     </head> 
