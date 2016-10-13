@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     end
 
     def success
-      set_order
+      @order = Order.find(params[:id])
       if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
