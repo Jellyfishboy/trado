@@ -202,7 +202,7 @@
                 <%= transaction.transaction_type %>
               </td>
               <td>
-                <%= transaction.payment_type  %>
+                <%= transaction.payment_type.titleize %>
               </td>
               <td>
                 <%= status_label transaction, transaction.payment_status %>
