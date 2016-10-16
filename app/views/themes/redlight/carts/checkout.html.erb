@@ -76,9 +76,7 @@
                 <div>
                   <%= paypal_form_tag(f) if Modulatron4000.paypal? %>
                 </div>
-                <div>
-                  <%= stripe_checkout_fields(f) if Modulatron4000.stripe? %>
-                </div>
+                <%= stripe_checkout_fields(f) if Modulatron4000.stripe? %>
               </div>
               <h3>BILLING ADDRESS</h3>
               <div class='form-check-group-full'>

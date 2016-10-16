@@ -825,13 +825,17 @@ form select {
   padding: 6px 12px; }
 form .payment-choices {
   margin: 5px 0 30px; }
-  form .payment-choices div {
+  form .payment-choices div#paypal-form-wrapper, form .payment-choices div#stripe-form-wrapper {
     display: inline-block;
-    margin-right: 10px; }
-    form .payment-choices div:first-child input[type=radio] {
+    margin-right: 25px; }
+    form .payment-choices div#paypal-form-wrapper:first-child input[type=radio], form .payment-choices div#stripe-form-wrapper:first-child input[type=radio] {
       margin: 0 15px 0 10px; }
-    form .payment-choices div input[type=radio] {
-      margin: 0 15px 0 0; }
+    form .payment-choices div#paypal-form-wrapper img, form .payment-choices div#stripe-form-wrapper img {
+      height: 60px;
+      cursor: pointer; }
+  form .payment-choices div#stripe-form-fields {
+    margin-top: 30px;
+    display: none; }
 
 .form-control {
   -webkit-border-radius: 0;
@@ -1671,6 +1675,12 @@ footer #footer-large {
     font-size: 1.8em; }
     body #main-menu i {
       line-height: 60px; }
+  body .payment-choices div#paypal-form-wrapper, body .payment-choices div#credit-card-form-wrapper {
+    display: block;
+    text-align: center; }
+    body .payment-choices div#paypal-form-wrapper input[type=radio], body .payment-choices div#credit-card-form-wrapper input[type=radio] {
+      display: block;
+      margin: 25px auto 15px !important; }
   body .list-header form {
     width: 70% !important; }
     body .list-header form .form-check-group {
@@ -1720,7 +1730,9 @@ footer #footer-large {
     width: 65% !important; } }
 @media only screen and (max-width: 455px) {
   body .list-header form .form-check-group {
-    width: 55% !important; } }
+    width: 55% !important; }
+  body .payment-choices div#paypal-form-wrapper img, body .payment-choices div#credit-card-form-wrapper img {
+    height: 47px; } }
 .parent-container {
   position: relative;
   overflow: hidden;

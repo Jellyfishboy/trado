@@ -7,6 +7,7 @@ ready = function()
     redlight.misc.changeQuantity(),
     redlight.misc.scrollHelper(),
     redlight.misc.escapeSearch(),
+    redlight.misc.selectPayment(),
     redlight.animation.imageGallery(),
     redlight.animation.displaySearch(),
     redlight.animation.cartPopup(),
