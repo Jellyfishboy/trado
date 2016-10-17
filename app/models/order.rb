@@ -129,6 +129,7 @@ class Order < ActiveRecord::Base
 	  		:completed_per_month => Reportatron4000.parse_count_per_month(Order.completed_collection.count_per_month),
 	  		:failed_per_month => Reportatron4000.parse_count_per_month(Order.failed_collection.count_per_month),
 	  		:provider_fee_total => completed_collection.sum('transactions.fee'),
+        :delivery_fees => completed_collection.joins(:delivery).sum('delivery_service_prices.price'),
         :active_carts => Cart.all.count,
         :incomplete_orders => Order.incomplete.count
   		}
@@ -137,7 +138,7 @@ class Order < ActiveRecord::Base
     def self.pie_datasets
       dataset = {}
       dataset = dataset.merge(paypal: { value: Order.complete.paypal.count, color: "#00aff1" }) if Modulatron4000.paypal?
-      dataset = dataset.merge(stripe: { value: Order.complete.stripe.count, color: "#6772e5" }) if Modulatron4000.paypal?
+      dataset = dataset.merge(stripe: { value: Order.complete.stripe.count, color: "#6772e5" }) if Modulatron4000.stripe?
       return dataset
     end
 
