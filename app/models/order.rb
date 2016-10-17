@@ -134,6 +134,13 @@ class Order < ActiveRecord::Base
   		}
   	end
 
+    def self.pie_datasets
+      dataset = {}
+      dataset = dataset.merge(paypal: { value: Order.complete.paypal.count, color: "#00aff1" }) if Modulatron4000.paypal?
+      dataset = dataset.merge(stripe: { value: Order.complete.stripe.count, color: "#6772e5" }) if Modulatron4000.paypal?
+      return dataset
+    end
+
     def tracking?
       consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
     end

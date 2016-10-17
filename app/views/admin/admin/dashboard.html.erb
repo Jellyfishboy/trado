@@ -50,7 +50,7 @@
             <div class="threecol">
                 <canvas id="piePaymentTypeChart" width="300" height="300" class="pie-chart"></canvas>
                 <%= render partial: 'shared/chart/pie', format: [:html], locals: {
-                        datasets:  Hash(paypal: { value: 100, color: "#00aff1" }),
+                        datasets:  Order.pie_datasets,
                         id: 'piePaymentTypeChart'
                     } %>
             </div>
