@@ -20,28 +20,23 @@
     <div class="widget widget-content">
       <ul>
         <li>
-          <i class="icon-envelop"></i>
           <b>Email</b>:
           <%= @order.email %>
         </li>
         <li>
-          <i class="icon-location"></i>
           <b>Status</b>:
           <%= status_label @order, @order.shipping_status %>
         </li>
         <li>
-          <i class="icon-calendar"></i>
           <b>Dispatch date</b>:
           <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
         </li>
         <li>
-          <i class="icon-airplane"></i>
           <b>Delivery option:</b>
           <%= @order.delivery.full_name %>
         </li>
         <% unless @order.consignment_number.nil? || @order.delivery_service.tracking_url.nil? %>
           <li>
-            <i class="icon-target"></i>
             <b>Tracking:</b>
             <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
           </li>
