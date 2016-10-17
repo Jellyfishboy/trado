@@ -31,7 +31,6 @@
 require 'reportatron_4000'
 
 class Order < ActiveRecord::Base
-  
   include HasShippingDateValidation
   include HasOrderAddresses
 
@@ -167,5 +166,9 @@ class Order < ActiveRecord::Base
 
     def last_error_code
       latest_transaction.error_code
+    end
+
+    def customer_payment_type
+      stripe? ? stripe_card_brand : payment_type
     end
 end
