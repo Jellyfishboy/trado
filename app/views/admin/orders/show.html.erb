@@ -95,7 +95,7 @@
     </div>
     <div class="widget widget-content">
       <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
-      <%= stripe_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
+      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>
