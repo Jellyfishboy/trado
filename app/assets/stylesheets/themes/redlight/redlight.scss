@@ -1392,6 +1392,11 @@ section {
     line-height: 14px; }
   .checkout .checkout-panel #cart-navigation i.icon-arrow-up-2 {
     display: none; }
+.checkout .checkout-panel #confirm-payment-info img {
+  height: 75px;
+  margin-bottom: 5px; }
+.checkout .checkout-panel #confirm-payment-info p {
+  margin-bottom: 0px; }
 
 @media only screen and (max-width: 767px) {
   body .checkout .checkout-panel #cart-checkout-container {
