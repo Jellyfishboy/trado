@@ -36,10 +36,11 @@ class Admin::DeliveryServicesController < ApplicationController
     unless @delivery_service.orders.empty?
       Store.inactivate!(@delivery_service)
       @old_delivery_service = @delivery_service
-      @delivery_service = DeliveryService.new(params[:delivery_service])
+      @delivery_service = DeliveryService.new
     end
+    @delivery_service.attributes = params[:delivery_service]
 
-    if @delivery_service.update(params[:delivery_service])
+    if @delivery_service.save
       if @old_delivery_service
         @old_delivery_service.active_prices.each do |price|
           new_price = price.dup
