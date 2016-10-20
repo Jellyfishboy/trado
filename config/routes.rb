@@ -59,12 +59,14 @@ Trado::Application.routes.draw do
 
   	resources :orders, only: [:destroy] do
   		member do
-  			get :success
-	  		get :failed
 	  		get :retry
 	  		get :confirm
 	  		post :complete
   		end
+      collection do
+        get :success
+        get :failed
+      end
   		resources :addresses, only: [:new, :create, :update]
   	end
 

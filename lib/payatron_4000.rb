@@ -48,5 +48,9 @@ module Payatron4000
                 Modulatron4000.stripe? && order.stripe_customer_id.present?
             end
         end
+
+        def set_order_id_session order_id, status
+            Rails.cache.write("#{Store.setttings.name}_#{status}_order_id", expires_in: 1.hour)
+        end
     end  
 end

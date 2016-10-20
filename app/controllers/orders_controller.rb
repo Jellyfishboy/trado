@@ -15,21 +15,33 @@ class OrdersController < ApplicationController
     end
 
     def success
+<<<<<<< Updated upstream
       @order = Order.find(params[:id])
+=======
+      set_success_order
+>>>>>>> Stashed changes
       if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url 
       end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url
     end
 
     def failed
+<<<<<<< Updated upstream
       set_order
+=======
+      set_failed_order
+>>>>>>> Stashed changes
       if @order.latest_transaction.failed?
         render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url
       end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url
     end
 
     def retry
@@ -49,6 +61,25 @@ class OrdersController < ApplicationController
 
     private
 
+<<<<<<< Updated upstream
+=======
+    def set_success_order
+      @order = Order.active.includes(:delivery_address).find(Rails.cache.read("#{Store.settings.name.downcase}_success_order_id"))
+    end
+
+    def set_failed_order
+      @order = Order.active.includes(:transactions).find(Rails.cache.read("#{Store.settings.name.downcase}_failed_order_id"))
+    end
+
+    def set_order
+      @order ||= Order.active.find(params[:id])
+    end
+
+    def set_eager_loading_order
+      @order ||= Order.active.includes(:delivery_address, :billing_address).find(params[:id])
+    end
+
+>>>>>>> Stashed changes
     def set_address_variables
       @delivery_address = @order.delivery_address
       @billing_address = @order.billing_address
