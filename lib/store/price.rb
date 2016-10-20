@@ -24,24 +24,8 @@ module Store
         # @return [Decimal] price
         def price
             @price = @price.nil? ? 0 : @price
-            price_ting =  tax_type == 'gross' ? taxify(@price) : @price
-            return price_ting
-        end
-
-        # If the store setting is set to show tax breakdown
-        # Return a decimal value of the gross price
-        #
-        # @return [Decimal] price
-        def gross_price
-            Store.settings.tax_breakdown ? taxify(@price || 0) : nil
-        end
-
-        # If the record count for a product is more than one
-        # Return true to display different HTML markup
-        #
-        # @return [boolean]
-        def range_price
-            count.nil? || count < 2 ? false : true
+            taxed_price =  tax_type == 'gross' ? taxify(@price) : @price
+            return taxed_price
         end
 
         # Convert a price into an integer
@@ -56,14 +40,14 @@ module Store
         # @return [String] formatted price
         def single
             format(price)
-        end
+        end        
 
         # Renders the DOM elements for a product with more than one SKU and thereby more than one price
         # If product has only one SKU, just show price as standard, however ignoring the Inc VAT value when store tax breakdown is turned on
         #
         # @return [String] HTML elements
         def range
-            Renderer.render partial: 'shared/price/range', locals: { single_price: single, range: range_price, gross: format(gross_price) }, format: [:html]
+            Renderer.render partial: 'shared/price/range', locals: { net_price: net_price, range: range_price, gross_price: gross_price }, format: [:html]
         end
 
         # Render the markup when displaying the net and gross price if tax breakdown set to true
@@ -72,7 +56,7 @@ module Store
         #
         # @return [String] HTML for both net and gross prices
         def markup
-            Renderer.render partial: 'shared/price/single', locals: { single_price: single, gross: format(gross_price) }, format: [:html]
+            Renderer.render partial: 'shared/price/single', locals: { net_price: net_price, gross_price: gross_price }, format: [:html]
         end
 
         private
@@ -92,6 +76,28 @@ module Store
         # @return [Decimal] price
         def taxify price
             (price * Store.tax_rate) + price
+        end
+
+        # If the record count for a product is more than one
+        # Return true to display different HTML markup
+        #
+        # @return [boolean]
+        def range_price
+            count.nil? || count < 2 ? false : true
+        end
+
+        # Returns net price value
+        #
+        # @return [Decimal] price
+        def net_price
+            format(@price)
+        end
+
+        # Returns gross price value
+        #
+        # @return [Decimal] price
+        def gross_price
+            format(taxify(@price))
         end
     end
 end
