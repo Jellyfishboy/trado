@@ -1,0 +1,3 @@
+<%= image_tag "#{order.stripe_card_brand.parameterize}.png" %>
+<p><b>Card Number</b>: **** **** **** <%= order.stripe_card_last4 %></p>
+<p><b>Expiry Date</b>: <%= order.stripe_card_expiry_date %></p>
