@@ -54,11 +54,11 @@ class OrdersController < ApplicationController
     private
 
     def set_success_order
-      @order = Order.active.includes(:delivery_address).find(Rails.cache.read("#{Store.settings.name.downcase}_success_order_id"))
+      @order = Order.active.includes(:delivery_address).find(Rails.cache.read("#{Store.settings.name}_success_order_id"))
     end
 
     def set_failed_order
-      @order = Order.active.includes(:transactions).find(Rails.cache.read("#{Store.settings.name.downcase}_failed_order_id"))
+      @order = Order.active.includes(:transactions).find(Rails.cache.read("#{Store.settings.name}_failed_order_id"))
     end
 
     def set_order

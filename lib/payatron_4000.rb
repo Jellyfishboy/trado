@@ -50,7 +50,7 @@ module Payatron4000
         end
 
         def set_order_id_session order_id, status
-            Rails.cache.write("#{Store.setttings.name}_#{status}_order_id", expires_in: 1.hour)
+            Rails.cache.write("#{Store.settings.name}_#{status}_order_id", order_id, expires_in: 1.hour)
         end
     end  
 end
