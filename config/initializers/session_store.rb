@@ -1,7 +1,11 @@
 # Be sure to restart your server when you modify this file.
 
 # Trado::Application.config.session_store :cookie_store, key: '_trado_session'
-Trado::Application.config.session_store ActionDispatch::Session::CacheStore
+Trado::Application.config.session_store(
+    ActionDispatch::Session::CacheStore,
+    key: '_trado_session',
+    expire_after: 24.hours
+)
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

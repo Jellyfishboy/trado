@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     end
 
     def success
-      set_success_order
+      set_session_order
       if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     end
 
     def failed
-      set_failed_order
+      set_session_order
       if @order.latest_transaction.failed?
         render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
       else
@@ -53,12 +53,8 @@ class OrdersController < ApplicationController
 
     private
 
-    def set_success_order
-      @order = Order.active.includes(:delivery_address).find(Rails.cache.read("#{Store.settings.name}_success_order_id"))
-    end
-
-    def set_failed_order
-      @order = Order.active.includes(:transactions).find(Rails.cache.read("#{Store.settings.name}_failed_order_id"))
+    def set_session_order
+      @order = Order.active.includes(:delivery_address).find(session[:order_id])
     end
 
     def set_order
