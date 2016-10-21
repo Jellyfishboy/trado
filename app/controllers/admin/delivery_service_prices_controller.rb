@@ -39,10 +39,11 @@ class Admin::DeliveryServicePricesController < ApplicationController
     unless @delivery_service_price.orders.empty?
       Store.inactivate!(@delivery_service_price)
       @old_delivery_service_price = @delivery_service_price
-      @delivery_service_price = @old_delivery_service_price.delivery_service.prices.build(params[:delivery_service_price])
+      @delivery_service_price = @old_delivery_service_price.delivery_service.prices.new
     end
+    @delivery_service_price.attributes = params[:delivery_service_price]
 
-    if @delivery_service_price.update(params[:delivery_service_price])
+    if @delivery_service_price.save
       flash_message :success, 'Delivery service price was successfully updated.'
       redirect_to admin_delivery_service_delivery_service_prices_url
     else
