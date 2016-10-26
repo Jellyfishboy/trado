@@ -1,0 +1,4 @@
+files:
+  - 
+    source: /config/locales/source/*.json
+    translation: /config/locales/%two_letters_code%.json
