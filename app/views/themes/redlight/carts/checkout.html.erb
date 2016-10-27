@@ -24,32 +24,32 @@
             <%= f.fields_for :delivery_address do |delivery| %>
               <div class='form-check-group'>
                 <%= delivery.label 'First name *' %>
-                <%= delivery.text_field :first_name %>
+                <%= delivery.text_field :first_name, id: 'delivery_address_first_name' %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label 'Last name *' %>
-                <%= delivery.text_field :last_name %>
+                <%= delivery.text_field :last_name, id: 'delivery_address_last_name' %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label :telephone %>
-                <%= delivery.text_field :telephone, 'data-field-name' => 'telephone', class: 'copy-delivery' %>
+                <%= delivery.text_field :telephone, 'data-field-name' => 'telephone', class: 'copy-delivery', id: "delivery_address_telephone" %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label 'Address *' %>
-                <%= delivery.text_field :address, 'data-field-name' => 'address', class: 'copy-delivery' %>
+                <%= delivery.text_field :address, 'data-field-name' => 'address', class: 'copy-delivery', id: 'delivery_address_address' %>
               </div>
               <div class='form-check-group'>
                 <%= delivery.label 'City *' %>
-                <%= delivery.text_field :city, 'data-field-name' => 'city', class: 'copy-delivery' %>
+                <%= delivery.text_field :city, 'data-field-name' => 'city', class: 'copy-delivery', id: 'delivery_address_city' %>
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label 'Postcode/Zip *' %>
-                <%= delivery.text_field :postcode, 'data-field-name' => 'postcode', class: 'copy-delivery' %>
+                <%= delivery.text_field :postcode, 'data-field-name' => 'postcode', class: 'copy-delivery', id: 'delivery_address_postcode' %>
               </div>
               <div class='form-check-group-half'>
                 <%= delivery.label 'Country *' %>
                 <%= delivery.fields_for :address_country do |address_country| %>
-                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.delivery_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price') %>
+                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.delivery_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'country', class: 'copy-delivery update-delivery-service-price', id: 'delivery_address_address_country_country_id') %>
                 <% end %>
               </div>
             <h3>DELIVERY SERVICE</h3>
@@ -62,15 +62,15 @@
             <%= f.fields_for :billing_address do |billing| %>
               <div class='form-check-group'>
                 <%= billing.label 'First name *' %>
-                <%= billing.text_field :first_name %>
+                <%= billing.text_field :first_name, id: 'billing_address_first_name' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'Last name *' %>
-                <%= billing.text_field :last_name %>
+                <%= billing.text_field :last_name, id: 'billing_address_last_name' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'Email *' %>
-                <%= f.text_field :email %>
+                <%= f.text_field :email, id: 'email' %>
               </div>
               <div class="payment-choices">
                 <div>
@@ -85,24 +85,24 @@
               </div>
               <div class='form-check-group'>
                 <%= billing.label :telephone %>
-                <%= billing.text_field :telephone, 'data-field-name' => 'billing-telephone' %>
+                <%= billing.text_field :telephone, 'data-field-name' => 'billing-telephone', id: 'billing_address_telephone' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'Address *' %>
-                <%= billing.text_field :address, 'data-field-name' => 'billing-address' %>
+                <%= billing.text_field :address, 'data-field-name' => 'billing-address', id: 'billing_address_address' %>
               </div>
               <div class='form-check-group'>
                 <%= billing.label 'City *' %>
-                <%= billing.text_field :city, 'data-field-name' => 'billing-city' %>
+                <%= billing.text_field :city, 'data-field-name' => 'billing-city', id: 'billing_address_city' %>
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label 'Postcode/Zip *' %>
-                <%= billing.text_field :postcode, 'data-field-name' => 'billing-postcode' %>
+                <%= billing.text_field :postcode, 'data-field-name' => 'billing-postcode', id: 'billing_address_postcode' %>
               </div>
               <div class='form-check-group-half'>
                 <%= billing.label 'Country *' %>
                 <%= billing.fields_for :address_country do |address_country| %>
-                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.billing_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country') %>
+                  <%= address_country.select(:country_id, grouped_options_for_select(@grouped_countries, @order.billing_address.country.try(:id), divider: '-----------------'), { include_blank: 'Please select...'}, 'data-field-name' => 'billing-country', id: 'billing_address_address_country_country_id') %>
                 <% end %>
               </div>
             <% end %>
