@@ -18,5 +18,9 @@ module CartBuilder
         def set_grouped_countries
             @grouped_countries = [Country.popular.map{ |country| [country.name, country.id] }, Country.all.order('name ASC').map{ |country| [country.name, country.id] }] 
         end
+
+        def set_order_id_session
+            session[:order_id] = @order.id
+        end
     end
 end

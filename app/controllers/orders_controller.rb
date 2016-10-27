@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
     skip_before_action :authenticate_user!
+    include CartBuilder
 
     def confirm
-      set_eager_loading_order
+      set_order
       set_address_variables
       validate_confirm_render
     end
@@ -14,27 +15,30 @@ class OrdersController < ApplicationController
     end
 
     def success
-      @order = Order.active.includes(:delivery_address).find(params[:id])
+      set_session_order
       if @order.latest_transaction.pending? || @order.latest_transaction.completed?
         render theme_presenter.page_template_path('orders/success'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url 
       end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url
     end
 
     def failed
-      @order = Order.active.includes(:transactions).find(params[:id])
+      set_session_order
       if @order.latest_transaction.failed?
         render theme_presenter.page_template_path('orders/failed'), layout: theme_presenter.layout_template_path
       else
         redirect_to root_url
       end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_url
     end
 
     def retry
       set_order
-      @error_code = @order.latest_transaction.error_code
-      if Modulatron4000.paypal? && TradoPaypalModule::Paypaler.fatal_error_code?(@error_code)
+      if Modulatron4000.paypal? && TradoPaypalModule::Paypaler.fatal_error_code?(@order.last_error_code)
         Payatron4000.decommission_order(@order)
       end
       redirect_to mycart_carts_url
@@ -48,6 +52,10 @@ class OrdersController < ApplicationController
     end
 
     private
+
+    def set_session_order
+      @order = Order.active.includes(:delivery_address).find(session[:order_id])
+    end
 
     def set_order
       @order ||= Order.active.find(params[:id])

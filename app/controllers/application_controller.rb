@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    before_action :authenticate_user!, :set_tracking_code, :set_tax_rate
+    before_action :authenticate_user!, :set_tracking_code, :set_tax_rate, :set_store_theme
     helper_method :current_cart
     helper_method :theme_presenter
 
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
     def set_tax_rate
         gon.taxRate = Store.settings.tax_rate
+    end
+
+    def set_store_theme
+        gon.themeName  = Store.settings.theme_name
     end
 
   	def current_cart

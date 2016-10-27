@@ -7,26 +7,25 @@
 #
 # Table name: orders
 #
-#  id                    :integer          not null, primary key
-#  email                 :string
-#  shipping_date         :datetime
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  actual_shipping_cost  :decimal(8, 2)
-#  delivery_id           :integer
-#  ip_address            :string
-#  user_id               :integer
-#  net_amount            :decimal(8, 2)
-#  gross_amount          :decimal(8, 2)
-#  tax_amount            :decimal(8, 2)
-#  terms                 :boolean
-#  cart_id               :integer
-#  shipping_status       :integer          default(0)
-#  consignment_number    :string
-#  payment_type          :integer
-#  browser               :string
-#  status                :integer          default(0)
-#  stripe_customer_token :string
+#  id                   :integer          not null, primary key
+#  email                :string
+#  shipping_date        :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  actual_shipping_cost :decimal(8, 2)
+#  delivery_id          :integer
+#  ip_address           :string
+#  user_id              :integer
+#  net_amount           :decimal(8, 2)
+#  gross_amount         :decimal(8, 2)
+#  tax_amount           :decimal(8, 2)
+#  terms                :boolean
+#  cart_id              :integer
+#  shipping_status      :integer          default(0)
+#  consignment_number   :string
+#  payment_type         :integer
+#  browser              :string
+#  status               :integer          default(0)
 #
 
 require 'reportatron_4000'
@@ -38,7 +37,7 @@ class Order < ActiveRecord::Base
 	attr_accessible :shipping_status, :shipping_date, :actual_shipping_cost, 
 	:email, :delivery_id, :ip_address, :user_id, :cart_id, :net_amount, :tax_amount, 
     :gross_amount, :terms, :delivery_service_prices, :delivery_address_attributes, :billing_address_attributes, :created_at, :consignment_number, :payment_type, :browser, :status
-
+    
 	has_many :order_items,                                                dependent: :destroy
 	has_many :transactions,                                               -> { order('created_at DESC, id DESC') }, dependent: :destroy
 	has_many :products,                                                   through: :order_items
@@ -81,7 +80,7 @@ class Order < ActiveRecord::Base
     auto_strip_attributes :email
 
 	  enum shipping_status: [:pending, :dispatched]
-    enum payment_type: [:paypal]
+    enum payment_type: [:paypal, :stripe]
     enum status: [:active, :cancelled]
 
   	# Upon completing the checkout process, transfer the cart item data to new order item records 
@@ -130,10 +129,18 @@ class Order < ActiveRecord::Base
 	  		:completed_per_month => Reportatron4000.parse_count_per_month(Order.completed_collection.count_per_month),
 	  		:failed_per_month => Reportatron4000.parse_count_per_month(Order.failed_collection.count_per_month),
 	  		:provider_fee_total => completed_collection.sum('transactions.fee'),
+        :delivery_fees => completed_collection.joins(:delivery).sum('delivery_service_prices.price'),
         :active_carts => Cart.all.count,
         :incomplete_orders => Order.incomplete.count
   		}
   	end
+
+    def self.pie_datasets
+      dataset = {}
+      dataset = dataset.merge(paypal: { value: Order.complete.paypal.count, color: "#00aff1" }) if Modulatron4000.paypal?
+      dataset = dataset.merge(stripe: { value: Order.complete.stripe.count, color: "#6772e5" }) if Modulatron4000.stripe?
+      return dataset
+    end
 
     def tracking?
       consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
@@ -163,5 +170,13 @@ class Order < ActiveRecord::Base
 
     def has_pending_delivery_datetime?
       pending? && shipping_date.present? ? true : false
+    end
+
+    def last_error_code
+      latest_transaction.error_code
+    end
+
+    def customer_payment_type
+      stripe? ? stripe_card_brand : payment_type
     end
 end

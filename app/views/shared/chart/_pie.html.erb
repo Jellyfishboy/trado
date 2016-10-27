@@ -1,15 +1,17 @@
 <script>
 //<![CDATA[
-    var data<%= id %> = [
-        <% datasets.each do |set| %>
-            {
-                value: <%= set.last[:value] %>,
-                color: "<%= set.last[:color] %>",
-                label: "<%= set.first.to_s.titleize %>"
-            }
-        <% end %>
-    ];
-    var <%= id %>ctx = $("#<%= id %>").get(0).getContext("2d");
-    var <%= id %> = new Chart(<%= id %>ctx).Doughnut(data<%= id %>);
+    <% unless datasets.empty? %>
+        var data<%= id %> = [
+            <% datasets.each do |set| %>
+                {
+                    value: <%= set.last[:value] %>,
+                    color: "<%= set.last[:color] %>",
+                    label: "<%= set.first.to_s.titleize %>"
+                },
+            <% end %>
+        ];
+        var <%= id %>ctx = $("#<%= id %>").get(0).getContext("2d");
+        var <%= id %> = new Chart(<%= id %>ctx).Doughnut(data<%= id %>);
+    <% end %>
 //]]>
 </script>
