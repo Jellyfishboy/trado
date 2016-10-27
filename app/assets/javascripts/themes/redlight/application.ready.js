@@ -49,3 +49,12 @@ $(document).ajaxComplete(function()
     trado.modal.open('.notify_me', '#notifyMeModal');
     trado.app.selectDeliveryServicePrice();
 });
+function stripeCheckoutErrors()
+{
+    $('.checkout-body').prepend('<div class="errors stripe-error"><p>Please complete all of the required fields</p></div>');
+    $('.checkout').prepend('<div class="alert alert-orange alert-stripe-checkout"><i class="icon-blocked"></i>An error ocurred with your order. Please try again.</div>');
+}
+function stripeTermsValidationMessage()
+{
+    $('<span class="error-explanation stripe-error-terms">You must tick the box in order to place your order.</span>').insertBefore('input[type="hidden"][name="order[terms]"]');
+}
