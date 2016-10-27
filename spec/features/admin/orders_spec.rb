@@ -46,14 +46,14 @@ feature 'Order management' do
         within '#breadcrumbs li.current' do
             expect(page).to have_content "##{pending.id}"
         end
-        within '.row .fourcol:first-child .widget-content ul' do
+        within '.row .threecol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content pending.email
             expect(find('li:nth-child(2) span')).to have_content 'Pending'
         end
-        within '.row .fourcol:nth-child(2) .widget-content' do
+        within '.row .threecol:nth-child(2) .widget-content' do
             expect(page).to have_content pending.billing_address.full_name
         end
-        within '.row .fourcol.last .widget-content' do
+        within '.row .threecol:nth-child(3) .widget-content' do
             expect(page).to have_content pending.delivery_address.address
         end
         within '.table-margin tbody' do
@@ -77,14 +77,14 @@ feature 'Order management' do
         within '#breadcrumbs li.current' do
             expect(page).to have_content "##{complete.id}"
         end
-        within '.row .fourcol:first-child .widget-content ul' do
+        within '.row .threecol:first-child .widget-content ul' do
             expect(find('li:first-child')).to have_content complete.email
             expect(find('li:nth-child(2) span')).to have_content 'Dispatched'
         end
-        within '.row .fourcol:nth-child(2) .widget-content' do
+        within '.row .threecol:nth-child(2) .widget-content' do
             expect(page).to have_content complete.billing_address.full_name
         end
-        within '.row .fourcol.last .widget-content' do
+        within '.row .threecol:nth-child(3) .widget-content' do
             expect(page).to have_content complete.delivery_address.address
         end
         within '.table-margin tbody' do
