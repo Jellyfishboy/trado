@@ -248,8 +248,6 @@ ActiveRecord::Schema.define(version: 20161012070956) do
     t.integer  "status",                  default: 0
     t.integer  "order_count",             default: 0
     t.string   "page_title"
-    t.string   "googlemerchant_brand"
-    t.string   "googlemerchant_category"
   end
 
   create_table "redactor_assets", force: :cascade do |t|
