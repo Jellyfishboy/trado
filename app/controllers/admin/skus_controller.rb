@@ -1,4 +1,4 @@
-class Admin::SkusController < ApplicationController
+class Admin::SkusController < Admin::AdminBaseController
   before_action :authenticate_user!
 
   def new

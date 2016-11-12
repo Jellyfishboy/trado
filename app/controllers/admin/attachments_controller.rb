@@ -1,4 +1,4 @@
-class Admin::AttachmentsController < ApplicationController
+class Admin::AttachmentsController < Admin::AdminBaseController
   before_action :authenticate_user!
 
   def show
