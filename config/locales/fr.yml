@@ -1,8 +1,8 @@
 fr:
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
+    header: Tableau de Bord
+    orders: Ordres
+    completed_orders: Complété
     pending_orders: Pending
     failed_orders: Failed
     transactions: Transactions
