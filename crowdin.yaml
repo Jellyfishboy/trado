@@ -1,4 +1,4 @@
 files:
   - 
-    source: /config/locales/source/*.yml
+    source: /config/locales/en.yml
     translation: /config/locales/%two_letters_code%.yml
