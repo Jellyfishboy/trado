@@ -9,24 +9,24 @@ fr:
     gross_income_transactions: Revenu brut
     net_income_transactions: Revenu net
     tax_transactions: Taxe
-    provider_fees_transactions: Provider Fees
-    delviery_fees_transactions: Delivery Fees
+    provider_fees_transactions: Frais de fournisseur
+    delviery_fees_transactions: Frais de livraison
     activity: Activité
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    activity_active_carts: Panier actif
+    activity_incomplete_orders: Commandes incomplètes
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Votre compte a bien été confirmé. Vous êtes maintenant connecté."
+      send_instructions: "Dans quelques minutes, vous allez recevoir un e-mail contenant les instructions permettant de confirmer votre compte."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      invalid: "E-mail ou mot de passe invalide."
+      invalid_token: "Code d'authentification non valide."
+      locked: "Votre compte est verrouillé."
+      not_found_in_database: "E-mail ou mot de passe invalide."
+      timeout: "Votre session a expiré, veuillez vous reconnecter pour continuer."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
