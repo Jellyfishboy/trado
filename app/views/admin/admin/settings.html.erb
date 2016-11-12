@@ -42,6 +42,18 @@
       </fieldset>
     </div>
     <div class="threecol">
+      <h3>Language</h3>
+      <p>Set the language for the administration dashboard.</p>
+    </div>
+    <div class="ninecol last">
+      <fieldset class="widget widget-content">
+        <div class="form-group form-last">
+          <%= f.label 'Language' %>
+          <%= f.select :locale, options_for_select(Store.available_locales, @settings.locale ), { include_blank: false }, { :class => 'form-control' } %>
+        </div>
+      </fieldset>
+    </div>
+    <div class="threecol">
       <h3>Tax</h3>
       <p>Set the name and percentage rate of your tax.</p>
     </div>
