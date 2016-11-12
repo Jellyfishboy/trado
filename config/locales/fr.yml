@@ -3,15 +3,15 @@ fr:
     header: Tableau de Bord
     orders: Ordres
     completed_orders: Complété
-    pending_orders: Pending
-    failed_orders: Failed
+    pending_orders: En attente
+    failed_orders: A échoué
     transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
+    gross_income_transactions: Revenu brut
+    net_income_transactions: Revenu net
+    tax_transactions: Taxe
     provider_fees_transactions: Provider Fees
     delviery_fees_transactions: Delivery Fees
-    activity: Activity
+    activity: Activité
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   devise:
