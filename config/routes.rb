@@ -72,7 +72,6 @@ Trado::Application.routes.draw do
 
   	namespace :admin do
   		root to: "admin#dashboard"
-      get '/locale/:locale', to: 'locales#change'
   		authenticate :user, lambda { |u| u.role?(:admin) } do
 	  		mount RedactorRails::Engine => '/redactor_rails'
 	  		mount Sidekiq::Web => '/sidekiq'

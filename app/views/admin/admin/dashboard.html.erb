@@ -1,10 +1,10 @@
-<% content_for :title, 'Dashboard' %>
-<% content_for :breadcrumb, 'Dashboard' %>
+<% content_for :title, t('dashboard_header') %>
+<% content_for :breadcrumb, t('dashboard_header') %>
 <% javascript :header, 'admin/chart' %>
 
 <div class="twelvecol">
     <div class="page-header">
-        <h2 class="widget widget-header">Dashboard</h2>
+        <h2 class="widget widget-header"><%= t('dashboard_header') %></h2>
     </div>
     <div class="widget-sub-heading">
         <h3>Orders</h3>
