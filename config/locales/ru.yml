@@ -1,4 +1,37 @@
 ru:
+  accessories:
+    index:
+      title: Accessories
+      breadcrumb: Accessories
+      header: Accessories
+      add_tooltip: Add Accessory
+      no_records: You don't have any accessories yet.
+      part_number: Part no.
+      name: Name
+      weight: Weight
+      cost_value: Cost Value
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      detail_header: Accessory Details
+      detail_description: Set the name and part number for your accessory.
+      name_label: Name
+      part_number_label: Part Number
+      weight_price_header: Weight & Price
+      weight_price_description: Set the weight, net price and original cost value for your accessory.
+      weight_label: Weight
+      cost_value_label: Cost Value
+      net_price_label: Net Price
+    edit:
+      title: Edit Accessory
+      breadcrumb: Edit
+      accessory_index: Accessories
+      header: Edit Accessory
+    new:
+      title: New Accessory
+      breadcrumb: New
+      accessory_index: Accessories
+      header: New Accessory
   dashboard:
     header: Dashboard
     orders: Orders
