@@ -22,6 +22,7 @@ en:
       weight_label: Weight
       cost_value_label: Cost Value
       net_price_label: Net Price
+      submit_button: Submit
     edit:
       title: Edit Accessory
       breadcrumb: Edit
@@ -47,6 +48,51 @@ en:
     activity: Activity
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
+  settings:
+    title: Settings
+    breadcrumb: Settings
+    header: Settings
+    store_detail:
+      header: Store Details
+      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      name_label: Name
+      email_label: Email
+      logo_label: Logo
+      theme_label: Theme
+    language:
+      header: Language
+      description: Set the language for the administration dashboard.
+      language_label: Language
+    tax:
+      header: Tax
+      description: Set the name and percentage rate of your tax.
+      name_label: Name
+      rate_label: Rate
+    currency:
+      header: Currency & price display
+      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      currency_label: Currency
+      price_exc_label: Price inc. & exc. tax
+      price_inc_label: Price inc. tax
+    mailchimp:
+      header: MailChimp Newsletter
+      description: Set the MailChimp list Id for your newsletter.
+      list_id_label: List Id
+    stripe:
+      header: Stripe
+      description: Set the text you would like to display on your customer credit card statements.
+      statement_descriptor_label: Statement Descriptor
+    google_analytics:
+      header: Google Analytics
+      description: Enable and set the web tracking code for your store.
+      tracking_code_label: Web Tracking Code
+      enabled_label: Enabled
+      disabled_label: Disabled
+    submit_button: Submit
+    
+
+
+
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."

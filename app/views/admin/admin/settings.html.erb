@@ -1,9 +1,9 @@
-<% content_for :title, 'Settings' %>
-<% content_for :breadcrumb, 'Settings' %>
+<% content_for :title, t('settings.title') %>
+<% content_for :breadcrumb, t('settings.breadcrumb') %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Settings</h2>
+    <h2 class="widget widget-header"><%= t('settings.header') %></h2>
   </div>
   <%= form_for @settings, url: admin_settings_update_path, html: { role: 'form' } do |f| %>
     <div class="threecol"></div>
@@ -11,22 +11,22 @@
       <%= render partial: 'shared/errors', locals: { object: @settings } %>
     </div>
     <div class="threecol">
-      <h3>Store details</h3>
-      <p>Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.</p>
+      <h3><%= t('settings.store_detail.header') %></h3>
+      <p><%= t('settings.store_detail.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group">
-          <%= f.label :name %>
+          <%= f.label t('settings.store_detail.name_label') %>
           <%= f.text_field :name, :class => 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label t('settings.store_detail.email_label') %>
           <%= f.text_field :email, :class => 'form-control' %>
         </div>
         <%= f.fields_for :attachment do |ff| %>
           <div class="form-group">
-            <%= ff.label "Logo" %>
+            <%= ff.label t('settings.store_detail.logo_label') %>
             <div>
               <%= image_tag @settings.attachment.file.square, width: 75, height: 75 %>
             </div>
@@ -36,26 +36,26 @@
           </div>
         <% end %>
         <div class="form-group form-last">
-          <%= f.label 'Theme' %>
+          <%= f.label t('settings.store_detail.theme_label') %>
           <%= f.select :theme_name, options_for_select(Store::ThemeTools.list.map { |theme| [theme.split('-').join(' ').titleize, theme] }, @settings.theme_name ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
     </div>
     <div class="threecol">
-      <h3>Language</h3>
-      <p>Set the language for the administration dashboard.</p>
+      <h3><%= t('settings.language.header') %></h3>
+      <p><%= t('settings.language.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group form-last">
-          <%= f.label 'Language' %>
+          <%= f.label t('settings.language.language_label') %>
           <%= f.select :locale, options_for_select(Store.available_locales, @settings.locale ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
       </fieldset>
     </div>
     <div class="threecol">
-      <h3>Tax</h3>
-      <p>Set the name and percentage rate of your tax.</p>
+      <h3><%= t('settings.language.description') %></h3>
+      <p><%= t('settings.language.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content">
@@ -70,25 +70,25 @@
       </fieldset>
     </div>
     <div class="threecol">
-      <h3>Currency & price display</h3>
-      <p>Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.</p>
+      <h3><%= t('settings.currency.header') %></h3>
+      <p><%= t('settings.currency.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group">
-          <%= f.label :currency %>
+          <%= f.label t('settings.currency.currency_label') %>
           <%= f.select :currency, options_for_select(Country.transactional.map { |country| ["#{country.alpha_three_code} / #{country.currency}", "#{country.alpha_three_code}|#{country.currency}"] }, @settings.currency ), { include_blank: false }, { :class => 'form-control' } %>
         </div>
         <div class="radio">
           <label>
             <%= f.radio_button :tax_breakdown, true %>
-            Price inc. & exc. tax
+            <%= t('settings.currency.price_exc_label') %>
           </label>
         </div>
         <div class="radio">
           <label>
             <%= f.radio_button :tax_breakdown, false %>
-            Price inc. tax
+            <%= t('settings.currency.price_inc_label') %>
           </label>
         </div>
       </fieldset>
@@ -96,30 +96,30 @@
     <%= mailchimp_store_setting_fields(f) if Modulatron4000.mailchimp? %>
     <%= stripe_store_setting_fields(f) if Modulatron4000.stripe? %>
     <div class="threecol">
-      <h3>Google Analytics</h3>
-      <p>Enable and set the web tracking code for your store. </p>
+      <h3><%= t('settings.google_analytics.header') %></h3>
+      <p><%= t('settings.google_analytics.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content widget-last">
         <div class="form-group">
-          <%= f.label 'Web tracking code' %>
+          <%= f.label t('settings.google_analytics.tracking_code_label') %>
           <%= f.text_field :ga_code, :class => 'form-control' %>
         </div>
         <div class="radio">
           <label>
             <%= f.radio_button :ga_active, true %>
-            Enabled
+            <%= t('settings.google_analytics.enabled_label') %>
           </label>
         </div>
         <div class="radio">
           <label>
             <%= f.radio_button :ga_active, false %>
-            Disabled
+            <%= t('settings.google_analytics.disabled_label') %>
           </label>
         </div>
       </fieldset>
       <div class="form-action">
-        <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        <%= f.submit t('settings.submit_button'), :class => 'btn btn-blue btn-large' %>
       </div>
     </div>
   <% end %>
