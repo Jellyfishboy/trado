@@ -13,15 +13,17 @@ fr:
       net_price: Net Price
       gross_price: Gross Price
     form:
-      detail_header: Accessory Details
-      detail_description: Set the name and part number for your accessory.
-      name_label: Name
-      part_number_label: Part Number
-      weight_price_header: Weight & Price
-      weight_price_description: Set the weight, net price and original cost value for your accessory.
-      weight_label: Weight
-      cost_value_label: Cost Value
-      net_price_label: Net Price
+      accessory_detail:
+        header: Accessory Details
+        description: Set the name and part number for your accessory.
+        name_label: Name
+        part_number_label: Part Number
+      weight_price:
+        header: Weight & Price
+        description: Set the weight, net price and original cost value for your accessory.
+        weight_label: Weight
+        cost_value_label: Cost Value
+        net_price_label: Net Price
       submit_button: Submit
     edit:
       title: Edit Accessory
@@ -89,6 +91,46 @@ fr:
       enabled_label: Enabled
       disabled_label: Disabled
     submit_button: Submit
+  categories:
+    index:
+      title: Categories
+      breadcrumb: Categories
+      header: Categories
+      add_tooltip: Add Category
+      no_records: You don't have any categories yet.
+      name: Name
+      description: Description
+      sorting: Sorting
+      active: Active
+      no_of_products: No. of Products
+    form:
+      category_details:
+        header: Category Details
+        description: Set the name, description and sorting order for your category.
+        name_label: Name
+        description_label: Description
+        sorting_label: Sorting
+      search_engine:
+        header: Search Engines
+        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        page_title_label: Page Title
+        meta_description_label: Meta Description
+      visibility:
+        header: Visibility
+        description: Set if the category is visible on your storefront.
+        visible_label: Visible
+        hidden_label: Hidden
+      submit_button: Submit
+    edit:
+      title: Edit Category
+      breadcrumb: Edit
+      category_index: Categories
+      header: Edit Category
+    new:
+      title: New Category
+      breadcrumb: New
+      category_index: Categories
+      header: New Category
   devise:
     confirmations:
       confirmed: "Votre compte a bien été confirmé. Vous êtes maintenant connecté."
