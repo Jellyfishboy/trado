@@ -1,59 +1,59 @@
 <div class="threecol">
-  <h3>Category details</h3>
-  <p>Set the name, description and sorting order for your category.</p>
+  <h3><%= t('categories.form.category_details.header') %></h3>
+  <p><%= t('categories.form.category_details.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :name %>
+      <%= f.label t('categories.form.category_details.name_label') %>
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label t('categories.form.category_details.description_label') %>
       <%= f.text_area :description, :class => 'form-control', rows: 8 %>
     </div>
     <div class="form-group">
-      <%= f.label :sorting %>
+      <%= f.label t('categories.form.category_details.sorting_label') %>
       <%= f.text_field :sorting, :class => 'form-control' %>
     </div>
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Search engines</h3>
-  <p>Set up the page title and meta description to help define how a page is shown in search engines.</p>
+  <h3><%= t('categories.form.search_engine.header') %></h3>
+  <p><%= t('categories.form.search_engine.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :page_title %>
+      <%= f.label t('categories.form.search_engine.page_title_label') %>
       <%= f.text_field :page_title, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :meta_description %>
+      <%= f.label t('categories.form.search_engine.meta_description_label') %>
       <%= f.text_field :meta_description, :class => 'form-control' %>
     </div>
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Visiblity</h3>
-  <p>Set if the category is visible on your storefront.</p>
+  <h3><%= t('categories.form.visibility.header') %></h3>
+  <p><%= t('categories.form.visibility.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="radio">
       <label>
         <%= f.radio_button :active, true %>
-        Visible
+        <%= t('categories.form.visibility.visible_label') %>
       </label>
     </div>
     <div class="radio">
       <label>
         <%= f.radio_button :active, false %>
-        Hidden
+        <%= t('categories.form.visibility.hidden_label') %>
       </label>
     </div>
   </fieldset>
   <div class="form-action">
-    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+    <%= f.submit t('categories.form.submit_button'), :class => 'btn btn-blue btn-large' %>
   </div>
 </div>

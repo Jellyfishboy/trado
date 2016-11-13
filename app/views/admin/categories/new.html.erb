@@ -1,10 +1,10 @@
-<% content_for :title, 'New category' %>
-<% content_for :breadcrumb, 'New' %>
-<% breadcrumb_add 'Categories', admin_categories_path %>
+<% content_for :title, t('categories.new.title') %>
+<% content_for :breadcrumb, t('categories.new.breadcrumb') %>
+<% breadcrumb_add t('categories.new.category_index'), admin_categories_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">New category</h2>
+    <h2 class="widget widget-header"><%= t('categories.new.header') %></h2>
   </div>
   <%= form_for [:admin, @category], html: { role: 'form' } do |f| %>
     <div class="threecol"></div>
