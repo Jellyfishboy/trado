@@ -1,38 +1,38 @@
 <div class="threecol">
-  <h3>Accessory details</h3>
-  <p>Set the name and part number for your accessory.</p>
+  <h3><%= t('accessories.form.detail_header') %></h3>
+  <p><%= t('accessories.form.detail_description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :name %>
+      <%= f.label t('accessories.form.name_label') %>
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :part_number %>
+      <%= f.label t('accessories.form.part_number_label') %>
       <%= f.text_field :part_number, :class => 'form-control' %>
     </div>
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Weight &amp; price</h3>
-  <p>Set the weight, net price and original cost value for your accessory.</p>
+  <h3><%= t('accessories.form.weight_price_header') %></h3>
+  <p><%= t('accessories.form.weight_price_description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="form-group">
-      <%= f.label 'Weight' %>
+      <%= f.label t('accessories.form.weight_label') %>
       <%= f.text_field :weight, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :cost_value %>
+      <%= f.label t('accessories.form.cost_value_label')%>
       <div class="form-prefix">
         <span><%= Store.settings.currency_symbol %></span>
         <%= f.text_field :cost_value, :class => 'form-control calculate-tax', autocomplete: 'off' %>
       </div>
     </div>
     <div class="form-group form-last">
-      <%= f.label 'Net price' %>
+      <%= f.label t('accessories.form.net_price_label') %>
       <div class="form-prefix">
         <span><%= Store.settings.currency_symbol %></span>
         <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
