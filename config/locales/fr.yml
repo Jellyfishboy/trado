@@ -1,17 +1,17 @@
 fr:
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
+      title: Accessoires
+      breadcrumb: Accessoires
+      header: Accessoires
       add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
+      no_records: Vous n'avez aucun accessoire pour le moment.
       part_number: Part no.
-      name: Name
-      weight: Weight
+      name: Nom
+      weight: Poids
       cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Prix Net
+      gross_price: Prix Brut
     form:
       accessory_detail:
         header: Accessory Details
@@ -33,8 +33,8 @@ fr:
     new:
       title: New Accessory
       breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      accessory_index: Accessoires
+      header: Nouvel Accessoire
   dashboard:
     header: Tableau de Bord
     orders: Ordres
@@ -51,29 +51,29 @@ fr:
     activity_active_carts: Panier actif
     activity_incomplete_orders: Commandes incomplètes
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Paramètres
+    breadcrumb: Paramètres
+    header: Paramètres
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
+      name_label: Nom
+      email_label: E-mail
       logo_label: Logo
       theme_label: Theme
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Langue
+      description: Définir la langue pour le tableau de bord de gestion.
+      language_label: Langue
     tax:
-      header: Tax
+      header: Taxe
       description: Set the name and percentage rate of your tax.
-      name_label: Name
+      name_label: Nom
       rate_label: Rate
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
+      currency_label: Devise
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
