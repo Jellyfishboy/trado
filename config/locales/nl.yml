@@ -131,6 +131,47 @@ nl:
       breadcrumb: New
       category_index: Categories
       header: New Category
+  delivery_service_prices:
+    index:
+      title: Delivery pricing for %{service_name}
+      header: Delivery pricing for %{service_name}
+      delivery_service_index: Delivery Services
+      add_tooltip: Add Delivery Price
+      no_records: You don't have any prices for %{service_name} yet.
+      code: Code
+      description: Description
+      weight: Weight Parameters
+      length: Length Parameters
+      thickness: Thickness Parameters
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      delivery_price_details:
+        header: Delivery Price Details
+        description: Set the code, price and description for this delivery price.
+        code_label: Code
+        price_label: Price
+        description_label: Description
+      dimension_allowance:
+        header: Dimension Allowance
+        description: Specify the dimension and weight allowance for this delivery price.
+        min_weight_label: Minimum Weight
+        max_weight_label: Maximum Weight
+        min_length_label: Minimum Length
+        max_length_label: Maximum Length
+        min_thickness_label: Minimum Thickness
+        max_thickness_label: Maximum Thickness
+      submit_button: Submit
+    edit:
+      title: Edit Delivery Pricing
+      breadcrumb: Edit
+      delivery_service_index: Delivery Services
+      header: Edit Delivery Pricing
+    new:
+      title: New Delivery Pricing
+      breadcrumb: New
+      delivery_service_index: Delivery Services
+      header: New Delivery Pricing
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
