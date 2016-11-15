@@ -1,32 +1,190 @@
 fr:
+  accessories:
+    index:
+      title: Accessoires
+      breadcrumb: Accessoires
+      header: Accessoires
+      add_tooltip: Add Accessory
+      no_records: Vous n'avez aucun accessoire pour le moment.
+      part_number: Part no.
+      name: Nom
+      weight: Poids
+      cost_value: Cost Value
+      net_price: Prix Net
+      gross_price: Prix Brut
+    form:
+      accessory_detail:
+        header: Accessory Details
+        description: Set the name and part number for your accessory.
+        name_label: Nom
+        part_number_label: Part Number
+      weight_price:
+        header: Poids & Prix
+        description: Set the weight, net price and original cost value for your accessory.
+        weight_label: Poids
+        cost_value_label: Cost Value
+        net_price_label: Prix Net
+      submit_button: Submit
+    edit:
+      title: Modifier Accessoire
+      breadcrumb: Modifier
+      accessory_index: Accessoires
+      header: Modifier Accessoire
+    new:
+      title: Nouvel Accessoire
+      breadcrumb: New
+      accessory_index: Accessoires
+      header: Nouvel Accessoire
   dashboard:
     header: Tableau de Bord
     orders: Ordres
     completed_orders: Complété
-    pending_orders: Pending
-    failed_orders: Failed
+    pending_orders: En attente
+    failed_orders: A échoué
     transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delviery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    gross_income_transactions: Revenu brut
+    net_income_transactions: Revenu net
+    tax_transactions: Taxe
+    provider_fees_transactions: Frais de fournisseur
+    delviery_fees_transactions: Frais de livraison
+    activity: Activité
+    activity_active_carts: Panier actif
+    activity_incomplete_orders: Commandes incomplètes
+  settings:
+    title: Paramètres
+    breadcrumb: Paramètres
+    header: Paramètres
+    store_detail:
+      header: Store Details
+      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      name_label: Nom
+      email_label: E-mail
+      logo_label: Logo
+      theme_label: Theme
+    language:
+      header: Langue
+      description: Définir la langue pour le tableau de bord de gestion.
+      language_label: Langue
+    tax:
+      header: Taxe
+      description: Set the name and percentage rate of your tax.
+      name_label: Nom
+      rate_label: Rate
+    currency:
+      header: Currency & price display
+      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      currency_label: Devise
+      price_exc_label: Prix TTC & HT
+      price_inc_label: Prix TTC
+    mailchimp:
+      header: MailChimp Newsletter
+      description: Set the MailChimp list Id for your newsletter.
+      list_id_label: List Id
+    stripe:
+      header: Stripe
+      description: Set the text you would like to display on your customer credit card statements.
+      statement_descriptor_label: Statement Descriptor
+    google_analytics:
+      header: Google Analytics
+      description: Enable and set the web tracking code for your store.
+      tracking_code_label: Web Tracking Code
+      enabled_label: Activé
+      disabled_label: Désactivé
+    submit_button: Submit
+  categories:
+    index:
+      title: Catégories
+      breadcrumb: Catégories
+      header: Catégories
+      add_tooltip: Ajouter Catégorie
+      no_records: Vous n'avez aucune catégorie pour le moment.
+      name: Nom
+      description: Description
+      sorting: Tri
+      active: Actif
+      no_of_products: No. of Products
+    form:
+      category_details:
+        header: Category Details
+        description: Set the name, description and sorting order for your category.
+        name_label: Name
+        description_label: Description
+        sorting_label: Sorting
+      search_engine:
+        header: Search Engines
+        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        page_title_label: Page Title
+        meta_description_label: Meta Description
+      visibility:
+        header: Visibility
+        description: Set if the category is visible on your storefront.
+        visible_label: Visible
+        hidden_label: Hidden
+      submit_button: Submit
+    edit:
+      title: Edit Category
+      breadcrumb: Edit
+      category_index: Categories
+      header: Edit Category
+    new:
+      title: New Category
+      breadcrumb: New
+      category_index: Categories
+      header: New Category
+  delivery_service_prices:
+    index:
+      title: Delivery pricing for %{service_name}
+      header: Delivery pricing for %{service_name}
+      delivery_service_index: Delivery Services
+      add_tooltip: Add Delivery Price
+      no_records: You don't have any prices for %{service_name} yet.
+      code: Code
+      description: Description
+      weight: Weight Parameters
+      length: Length Parameters
+      thickness: Thickness Parameters
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      delivery_price_details:
+        header: Delivery Price Details
+        description: Set the code, price and description for this delivery price.
+        code_label: Code
+        price_label: Price
+        description_label: Description
+      dimension_allowance:
+        header: Dimension Allowance
+        description: Specify the dimension and weight allowance for this delivery price.
+        min_weight_label: Minimum Weight
+        max_weight_label: Maximum Weight
+        min_length_label: Minimum Length
+        max_length_label: Maximum Length
+        min_thickness_label: Minimum Thickness
+        max_thickness_label: Maximum Thickness
+      submit_button: Submit
+    edit:
+      title: Edit Delivery Pricing
+      breadcrumb: Edit
+      delivery_service_index: Delivery Services
+      header: Edit Delivery Pricing
+    new:
+      title: New Delivery Pricing
+      breadcrumb: New
+      delivery_service_index: Delivery Services
+      header: New Delivery Pricing
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Votre compte a bien été confirmé. Vous êtes maintenant connecté."
+      send_instructions: "Dans quelques minutes, vous allez recevoir un e-mail contenant les instructions permettant de confirmer votre compte."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      invalid: "E-mail ou mot de passe invalide."
+      invalid_token: "Code d'authentification non valide."
+      locked: "Votre compte est verrouillé."
+      not_found_in_database: "E-mail ou mot de passe invalide."
+      timeout: "Votre session a expiré, veuillez vous reconnecter pour continuer."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:

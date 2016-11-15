@@ -1,4 +1,40 @@
 ko:
+  accessories:
+    index:
+      title: Accessories
+      breadcrumb: Accessories
+      header: Accessories
+      add_tooltip: Add Accessory
+      no_records: You don't have any accessories yet.
+      part_number: Part no.
+      name: Name
+      weight: Weight
+      cost_value: Cost Value
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      accessory_detail:
+        header: Accessory Details
+        description: Set the name and part number for your accessory.
+        name_label: Name
+        part_number_label: Part Number
+      weight_price:
+        header: Weight & Price
+        description: Set the weight, net price and original cost value for your accessory.
+        weight_label: Weight
+        cost_value_label: Cost Value
+        net_price_label: Net Price
+      submit_button: Submit
+    edit:
+      title: Edit Accessory
+      breadcrumb: Edit
+      accessory_index: Accessories
+      header: Edit Accessory
+    new:
+      title: New Accessory
+      breadcrumb: New
+      accessory_index: Accessories
+      header: New Accessory
   dashboard:
     header: Dashboard
     orders: Orders
@@ -14,6 +50,128 @@ ko:
     activity: Activity
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
+  settings:
+    title: Settings
+    breadcrumb: Settings
+    header: Settings
+    store_detail:
+      header: Store Details
+      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      name_label: Name
+      email_label: Email
+      logo_label: Logo
+      theme_label: Theme
+    language:
+      header: Language
+      description: Set the language for the administration dashboard.
+      language_label: Language
+    tax:
+      header: Tax
+      description: Set the name and percentage rate of your tax.
+      name_label: Name
+      rate_label: Rate
+    currency:
+      header: Currency & price display
+      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      currency_label: Currency
+      price_exc_label: Price inc. & exc. tax
+      price_inc_label: Price inc. tax
+    mailchimp:
+      header: MailChimp Newsletter
+      description: Set the MailChimp list Id for your newsletter.
+      list_id_label: List Id
+    stripe:
+      header: Stripe
+      description: Set the text you would like to display on your customer credit card statements.
+      statement_descriptor_label: Statement Descriptor
+    google_analytics:
+      header: Google Analytics
+      description: Enable and set the web tracking code for your store.
+      tracking_code_label: Web Tracking Code
+      enabled_label: Enabled
+      disabled_label: Disabled
+    submit_button: Submit
+  categories:
+    index:
+      title: Categories
+      breadcrumb: Categories
+      header: Categories
+      add_tooltip: Add Category
+      no_records: You don't have any categories yet.
+      name: Name
+      description: Description
+      sorting: Sorting
+      active: Active
+      no_of_products: No. of Products
+    form:
+      category_details:
+        header: Category Details
+        description: Set the name, description and sorting order for your category.
+        name_label: Name
+        description_label: Description
+        sorting_label: Sorting
+      search_engine:
+        header: Search Engines
+        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        page_title_label: Page Title
+        meta_description_label: Meta Description
+      visibility:
+        header: Visibility
+        description: Set if the category is visible on your storefront.
+        visible_label: Visible
+        hidden_label: Hidden
+      submit_button: Submit
+    edit:
+      title: Edit Category
+      breadcrumb: Edit
+      category_index: Categories
+      header: Edit Category
+    new:
+      title: New Category
+      breadcrumb: New
+      category_index: Categories
+      header: New Category
+  delivery_service_prices:
+    index:
+      title: Delivery pricing for %{service_name}
+      header: Delivery pricing for %{service_name}
+      delivery_service_index: Delivery Services
+      add_tooltip: Add Delivery Price
+      no_records: You don't have any prices for %{service_name} yet.
+      code: Code
+      description: Description
+      weight: Weight Parameters
+      length: Length Parameters
+      thickness: Thickness Parameters
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      delivery_price_details:
+        header: Delivery Price Details
+        description: Set the code, price and description for this delivery price.
+        code_label: Code
+        price_label: Price
+        description_label: Description
+      dimension_allowance:
+        header: Dimension Allowance
+        description: Specify the dimension and weight allowance for this delivery price.
+        min_weight_label: Minimum Weight
+        max_weight_label: Maximum Weight
+        min_length_label: Minimum Length
+        max_length_label: Maximum Length
+        min_thickness_label: Minimum Thickness
+        max_thickness_label: Maximum Thickness
+      submit_button: Submit
+    edit:
+      title: Edit Delivery Pricing
+      breadcrumb: Edit
+      delivery_service_index: Delivery Services
+      header: Edit Delivery Pricing
+    new:
+      title: New Delivery Pricing
+      breadcrumb: New
+      delivery_service_index: Delivery Services
+      header: New Delivery Pricing
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
