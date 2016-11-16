@@ -1,5 +1,5 @@
 {
-  "name": "Trado",
+  "name": "Online Ecommerce Store",
   "description": "Set up the Trado ecommerce platform.",
   "keywords": [
     "ecommerce",
@@ -72,6 +72,11 @@
     },
     {
       "plan": "sendgrid:starter"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower"
     }
   ]
 }
