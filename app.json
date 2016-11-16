@@ -3,8 +3,8 @@
   "description": "Set up the Trado ecommerce platform.",
   "keywords": [
     "ecommerce",
-    "Rails",
-    "Ruby"
+    "rails",
+    "ruby"
   ],
   "website": "http://www.trado.io",
   "repository": "https://github.com/Jellyfishboy/trado",
@@ -38,11 +38,6 @@
     },
     {
       "plan": "sendgrid:starter"
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
     }
   ]
 }
