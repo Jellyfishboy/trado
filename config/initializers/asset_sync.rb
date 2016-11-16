@@ -1,18 +1,18 @@
 if defined?(AssetSync)
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
-    config.aws_access_key_id = Rails.application.secrets.aws_s3_id
-    config.aws_secret_access_key = Rails.application.secrets.aws_s3_key
+    config.aws_access_key_id = ENV['AWS_S3_ID']
+    config.aws_secret_access_key = ENV['AWS_S3_KEY']
     # To use AWS reduced redundancy storage.
     # config.aws_reduced_redundancy = true
-    config.fog_directory = Rails.application.secrets.aws_s3_bucket
+    config.fog_directory = ENV['AWS_S3_BUCKET']
 
     # Invalidate a file on a cdn after uploading files
     # config.cdn_distribution_id = "12345"
     # config.invalidate = ['file1.js']
 
     # Increase upload performance by configuring your region
-    config.fog_region = Rails.application.secrets.aws_s3_region
+    config.fog_region = ENV['AWS_S3_REGION']
     #
     # Don't delete files from the store
     config.existing_remote_files = "delete"
