@@ -39,6 +39,10 @@ group :development, :test do
   gem 'mysql2'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 # Assets
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
