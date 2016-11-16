@@ -13,6 +13,40 @@
   "scripts": {
     "postdeploy": "bundle exec rake trado:install"
   },
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "MAILER_DOMAIN": {
+      "description": "The domain for links and assets in your emails.",
+      "value": "http://example.com"
+    },
+    "SITEMAP_DOMAIN": {
+      "description": "The domain for your sitemap.",
+      "value": "http://example.com"
+    },
+    "AWS_S3_ID": {
+      "description": "The API ID for your AWS S3 resource."
+    },
+    "AWS_S3_KEY": {
+      "description": "The API KEY for your AWS S3 resource."
+    },
+    "AWS_S3_BUCKET": {
+      "description": "The BUCKET for your AWS S3 resource."
+    },
+    "AWS_S3_REGION": {
+      "description": "The REGION for your AWS S3 resource."
+    },
+    "CARRIERWAVE_HOST": {
+      "description": "The Cloudfront or S3 host Url for attachment uploads.",
+      "value": "http://example.com"
+    },
+    "ASSET_HOST": {
+      "description": "The Cloudfront or S3 host Url for application assets.",
+      "value": "http://example.com"
+    },
+  },
   "formation": {
     "web": {
       "quantity": 1,

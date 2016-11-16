@@ -4,12 +4,12 @@ CarrierWave.configure do |config|
         config.storage :fog
         config.fog_credentials = {
             :provider => 'AWS',
-            :aws_access_key_id => Rails.application.secrets.aws_s3_id,
-            :aws_secret_access_key => Rails.application.secrets.aws_s3_key,
-            :region => Rails.application.secrets.aws_s3_region,
+            :aws_access_key_id => ENV['AWS_S3_ID'],
+            :aws_secret_access_key => ENV['AWS_S3_KEY'],
+            :region => ENV['AWS_S3_REGION'],
         }
-        config.fog_directory = Rails.application.secrets.aws_s3_bucket
-        config.asset_host = Rails.application.secrets.aws_cloudfront_host_carrierwave
+        config.fog_directory = ENV['AWS_S3_BUCKET']
+        config.asset_host = ENV['CARRIERWAVE_HOST']
         config.fog_public = true
         config.fog_attributes = {
           'Cache-Control' => 'max-age=315576000',
