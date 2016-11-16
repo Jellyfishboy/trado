@@ -45,7 +45,7 @@
     "ASSET_HOST": {
       "description": "The Cloudfront or S3 host Url for application assets.",
       "value": "http://example.com"
-    },
+    }
   },
   "formation": {
     "web": {
