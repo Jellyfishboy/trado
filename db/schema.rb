@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012070956) do
+ActiveRecord::Schema.define(version: 20161112175414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(version: 20161012070956) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "weighting"
     t.integer  "part_number"
     t.string   "sku"
@@ -243,10 +243,10 @@ ActiveRecord::Schema.define(version: 20161012070956) do
     t.string   "slug"
     t.string   "meta_description"
     t.boolean  "featured"
-    t.boolean  "active",                  default: true
+    t.boolean  "active",            default: true
     t.text     "short_description"
-    t.integer  "status",                  default: 0
-    t.integer  "order_count",             default: 0
+    t.integer  "status",            default: 0
+    t.integer  "order_count",       default: 0
     t.string   "page_title"
   end
 
@@ -326,6 +326,7 @@ ActiveRecord::Schema.define(version: 20161012070956) do
     t.decimal  "tax_rate",      precision: 8, scale: 2, default: 20.0
     t.boolean  "tax_breakdown",                         default: false
     t.string   "theme_name",                            default: "redlight"
+    t.string   "locale",                                default: "en"
   end
 
   create_table "taggings", force: :cascade do |t|

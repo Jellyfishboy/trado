@@ -1,7 +1,7 @@
-class Admin::UsersController < ApplicationController
-  before_action :authenticate_user!, :except => :new
-  load_and_authorize_resource
-  layout 'admin'
+class Admin::UsersController < Admin::AdminBaseController
+    before_action :authenticate_user!, except: :new
+    load_and_authorize_resource
+    layout 'admin'
 
     def edit
         set_user

@@ -1,4 +1,4 @@
-class Admin::DeliveryServicesController < ApplicationController
+class Admin::DeliveryServicesController < Admin::AdminBaseController
   before_action :authenticate_user!
   layout "admin"
 

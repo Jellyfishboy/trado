@@ -1,17 +1,17 @@
-<% content_for :title, 'Accessories' %>
-<% content_for :breadcrumb, 'Accessories' %>
+<% content_for :title, t('accessories.index.title') %>
+<% content_for :breadcrumb, t('accessories.index.breadcrumb')  %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_accessory_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add accessory" do %>
+    <%= link_to new_admin_accessory_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('accessories.index.add_tooltip') do %>
       <i class="icon-plus"></i>
     <% end %>
-    <h2 class="widget widget-header">Accessories</h2>
+    <h2 class="widget widget-header"><%= t('accessories.index.header') %></h2>
   </div>
   <% if @accessories.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p>You don't have any accessories yet.</p>
+        <p><%= t('accessories.index.no_records') %></p>
         <i class="icon-power-cord"></i>
       </div>
     </div>
@@ -20,12 +20,12 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Part no.</th>
-            <th>Name</th>
-            <th>Weight</th>
-            <th>Cost value</th>
-            <th>Net price</th>
-            <th>Gross price</th>
+            <th><%= t('accessories.index.part_number') %></th>
+            <th><%= t('accessories.index.name') %></th>
+            <th><%= t('accessories.index.weight') %></th>
+            <th><%= t('accessories.index.cost_value') %></th>
+            <th><%= t('accessories.index.net_price') %></th>
+            <th><%= t('accessories.index.gross_price') %></th>
             <th></th>
           </tr>
         </thead>

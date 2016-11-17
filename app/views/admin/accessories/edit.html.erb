@@ -1,10 +1,10 @@
-<% content_for :title, 'Edit accessory' %>
-<% content_for :breadcrumb, 'Edit' %>
-<% breadcrumb_add 'Accessories', admin_accessories_path %>
+<% content_for :title, t('accessories.edit.title') %>
+<% content_for :breadcrumb, t('accessories.edit.breadcrumb') %>
+<% breadcrumb_add t('accessories.edit.accessory_index'), admin_accessories_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Edit accessory</h2>
+    <h2 class="widget widget-header"><%= t('accessories.edit.header') %></h2>
   </div>
   <%= form_for [:admin, @form_accessory], html: { role: 'form' } do |f| %>
     <div class="threecol"></div>

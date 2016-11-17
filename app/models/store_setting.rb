@@ -19,17 +19,18 @@
 #  tax_rate      :decimal(8, 2)    default(20.0)
 #  tax_breakdown :boolean          default(FALSE)
 #  theme_name    :string           default("redlight")
+#  locale        :string           default("en")
 #
 
 class StoreSetting < ActiveRecord::Base
     
     attr_accessible :currency, :email, :name, :tax_name, :tax_rate, :tax_breakdown, :user_id, 
-    :ga_active, :ga_code, :theme_name, :attachment_attributes
+    :ga_active, :ga_code, :theme_name, :attachment_attributes, :locale
 
     has_one :attachment,                                                  as: :attachable, dependent: :destroy
 
     validates :name, :email, :tax_name, :currency, 
-    :tax_rate, :theme_name,                                               presence: true
+    :tax_rate, :theme_name, :locale,                                      presence: true
 
     accepts_nested_attributes_for :attachment
 

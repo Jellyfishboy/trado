@@ -1,17 +1,17 @@
-<% content_for :title, 'Categories' %>
-<% content_for :breadcrumb, 'Categories' %>
+<% content_for :title, t('categories.index.title') %>
+<% content_for :breadcrumb, t('categories.index.breadcrumb') %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_category_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add category" do %>
+    <%= link_to new_admin_category_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('categories.index.add_tooltip') do %>
       <i class="icon-plus"></i>
     <% end %>
-    <h2 class="widget widget-header">Categories</h2>
+    <h2 class="widget widget-header"><%= t('categories.index.header') %></h2>
   </div>
   <% if @categories.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p>You don't have any categories yet.</p>
+        <p><%= t('categories.index.no_records') %></p>
         <i class="icon-lab"></i>
       </div>
     </div>
@@ -20,11 +20,11 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Sorting</th>
-            <th>Active</th>
-            <th>No. of products</th>
+            <th><%= t('categories.index.name') %></th>
+            <th><%= t('categories.index.description') %></th>
+            <th><%= t('categories.index.sorting') %></th>
+            <th><%= t('categories.index.active') %></th>
+            <th><%= t('categories.index.no_of_products') %></th>
             <th></th>
           </tr>
         </thead>

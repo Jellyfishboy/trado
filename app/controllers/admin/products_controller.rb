@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < Admin::AdminBaseController
   before_action :authenticate_user!
   layout 'admin'
 
