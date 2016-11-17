@@ -10,7 +10,7 @@
   "repository": "https://github.com/Jellyfishboy/trado",
   "logo": "http://cdn0.trado.io/trado-promo/assets/img/thumbnail.png",
   "scripts": {
-    "postdeploy": "bundle exec rake trado:install"
+    "postdeploy": "bundle exec rake trado:install SEED_TYPE=demo"
   },
   "env": {
     "SECRET_KEY_BASE": {
