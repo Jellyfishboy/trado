@@ -93,7 +93,7 @@ feature 'Order management' do
         within 'table:not(.table-margin) tbody' do
             expect(find('tr td:first-child')).to have_content complete.latest_transaction.transaction_type
             expect(find('tr td:nth-child(3) span')).to have_content 'Completed'
-            expect(find('tr td:last-child')).to have_selector('a', count: 0)
+            expect(find('tr td:last-child')).to have_selector('a', count: 1)
         end
     end
 
