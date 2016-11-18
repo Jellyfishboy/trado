@@ -61,7 +61,8 @@ Trado::Application.configure do
 	# Enable serving of images, stylesheets, and JavaScripts from an asset server
 	# config.action_controller.asset_host = "http://assets.example.com"
 
-	config.action_controller.asset_host = ENV['ASSET_HOST']
+	config.action_mailer.asset_host = ENV['MAILER_ASSET_URL']
+	config.action_controller.asset_host = ENV['ASSET_URL']
 
 	config.assets.prefix = '/assets'
 
@@ -77,9 +78,7 @@ Trado::Application.configure do
 	# config.threadsafe!
 
 	# Set default URL
-	config.action_mailer.default_url_options = { :host => ENV['MAILER_DOMAIN'] }
-
-	config.action_mailer.asset_host = ENV['MAILER_DOMAIN']
+	config.action_mailer.default_url_options = { :host => ENV['GLOBAL_URL'] }
 
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true

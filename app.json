@@ -17,12 +17,20 @@
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
     },
-    "MAILER_DOMAIN": {
-      "description": "The domain for links and assets in your emails.",
+    "GLOBAL_URL": {
+      "description": "The main url for your application.",
       "value": "http://example.com"
     },
-    "SITEMAP_DOMAIN": {
-      "description": "The domain for your sitemap.",
+    "ASSET_URL": {
+      "description": "The url for application assets.",
+      "value": "http://example.com"
+    },
+    "CARRIERWAVE_URL": {
+      "description": "The Cloudfront or S3 host url for attachment uploads.",
+      "value": "http://example.com"
+    },
+    "MAILER_ASSET_URL": {
+      "description": "The url for application mailer assets.",
       "value": "http://example.com"
     },
     "AWS_S3_ID": {
@@ -36,14 +44,6 @@
     },
     "AWS_S3_REGION": {
       "description": "The REGION for your AWS S3 resource."
-    },
-    "CARRIERWAVE_HOST": {
-      "description": "The Cloudfront or S3 host Url for attachment uploads.",
-      "value": "http://example.com"
-    },
-    "ASSET_HOST": {
-      "description": "The Cloudfront or S3 host Url for application assets.",
-      "value": "http://example.com"
     }
   },
   "formation": {

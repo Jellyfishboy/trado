@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sitemap_generator'
 
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = Rails.env.production? ? ENV['SITEMAP_DOMAIN'] : Rails.application.secrets.sitemap_host
+SitemapGenerator::Sitemap.default_host = Rails.env.production? ? ENV['GLOBAL_URL'] : Rails.application.secrets.global_url
 SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
 
 SitemapGenerator::Sitemap.create do
