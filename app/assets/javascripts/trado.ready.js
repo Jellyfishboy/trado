@@ -44,6 +44,8 @@ ready = function()
     trado.admin.newVariants();
     trado.admin.resetVariants();
     trado.admin.amendVariants();
+
+    trado.admin.displayTransaction();
 };
 
 $(document).ready(ready);

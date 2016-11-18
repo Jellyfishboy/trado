@@ -1,0 +1,23 @@
+<div aria-hidden="true" aria-labelledby="transactionModalLabel" class="modal fade" id="transaction-info" role="dialog" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="orderModalLabel">
+          More Info for Transaction
+          <%= "##{@transaction.id}" %>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <p><b>Error code</b>: <%= transaction.error_code.present? ? transaction.error_code : "None Available" %></p>
+        <% if @transaction.order.stripe? && Modulatron4000.stripe? %>
+          <p><b>Stripe Charge Id</b>: <%= @transaction.stripe_charge_id %></p>
+        <% elsif @transaction.order.paypal? && Modulatron4000.paypal? %>
+          <p><b>PayPal Transaction Id</b>: <%= @transaction.paypal_id %></p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

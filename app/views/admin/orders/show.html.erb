@@ -183,11 +183,11 @@
             <th>Transaction Type</th>
             <th>Payment type</th>
             <th>Payment status</th>
-            <th>Error code</th>
             <th>Fee</th>
             <th>Net amount</th>
             <th>Gross amount</th>
             <th>Last updated</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -203,9 +203,6 @@
                 <%= status_label transaction, transaction.payment_status %>
               </td>
               <td>
-                <%= transaction.error_code.nil? ? "-" : transaction.error_code %>
-              </td>
-              <td>
                 <%= Store::Price.new(price: transaction.fee).single %>
               </td>
               <td>
@@ -214,8 +211,13 @@
               <td>
                 <%= Store::Price.new(price: transaction.gross_amount).single %>
               </td>
-              <td class="align-left">
+              <td>
                 <%= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P') %>
+              </td>
+              <td>
+                <a href="#" class="transaction-info-modal" data-record-id="<%= transaction.id %>">
+                  <i class="icon-search"></i>
+                </a>
               </td>
             </tr>
           <% end %>
