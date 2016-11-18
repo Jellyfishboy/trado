@@ -1,4 +1,4 @@
-class Admin::Skus::VariantsController < ApplicationController
+class Admin::Skus::VariantsController < Admin::AdminBaseController
     include ActionView::Helpers::TextHelper
     before_filter :authenticate_user!
 

@@ -1,11 +1,11 @@
-<% content_for :title, 'Edit delivery pricing' %>
-<% content_for :breadcrumb, 'Edit' %>
-<% breadcrumb_add 'Delivery services', admin_delivery_services_path %>
+<% content_for :title, t('delivery_service_prices.edit.title') %>
+<% content_for :breadcrumb, t('delivery_service_prices.edit.breadcrumb') %>
+<% breadcrumb_add t('delivery_service_prices.edit.delivery_service_index'), admin_delivery_services_path %>
 <% breadcrumb_add @form_delivery_service_price.delivery_service.full_name, admin_delivery_service_delivery_service_prices_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Edit delivery pricing</h2>
+    <h2 class="widget widget-header"><%= t('delivery_service_prices.edit.header') %></h2>
   </div>
   <%= form_for @form_delivery_service_price, url: admin_delivery_service_delivery_service_price_path(@form_delivery_service_price.delivery_service, @form_delivery_service_price), html: { role: 'form' } do |f| %>
     <div class="threecol"></div>

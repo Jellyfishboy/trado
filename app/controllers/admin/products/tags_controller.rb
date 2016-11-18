@@ -1,4 +1,4 @@
-class Admin::Products::TagsController < ApplicationController
+class Admin::Products::TagsController < Admin::AdminBaseController
   
   before_action :authenticate_user!
 
