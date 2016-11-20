@@ -555,4 +555,25 @@ trado.admin =
             return false;
         });
     },
+
+    displayTransaction: function()
+    {
+        $('body').on('click', '.transaction-info-modal', function ()
+        {
+            var transactionId = $(this).attr('data-record-id');
+            $.ajax(
+            {
+                url: '/admin/transactions/' + transactionId,
+                type: "GET",
+                dataType: "json",
+                success: function(data)
+                {
+                    $('.main .container').removeClass('fadeIn');
+                    $('#transaction-modal').html(data.modal);
+                    soca.modal.standard('#transaction-info');
+                }
+            });
+            return false;
+        });
+    },
 }

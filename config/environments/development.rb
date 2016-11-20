@@ -23,7 +23,7 @@ Trado::Application.configure do
 	config.action_mailer.preview_path = "#{Rails.root}/app/mailers/previews"
 
 	# Set default URL
-	config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
+	config.action_mailer.default_url_options = { host: Rails.application.secrets.global_url }
 
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
@@ -47,7 +47,8 @@ Trado::Application.configure do
 
 	# Expands the lines which load the assets
 	config.assets.debug = true
+	config.serve_static_assets = true
 
-	config.action_controller.asset_host = Rails.application.secrets.global_host
-	config.action_mailer.asset_host = Rails.application.secrets.global_host
+	config.action_mailer.asset_host = Rails.application.secrets.mailer_asset_url
+	config.action_controller.asset_host = Rails.application.secrets.asset_url
 end
