@@ -3,20 +3,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 id="orderModalLabel">
-          More Info for Transaction
+          <%= t('orders.transactions.modal.header') %>
           <%= "##{@transaction.id}" %>
         </h3>
       </div>
       <div class="modal-body">
-        <p><b>Error code</b>: <%= transaction.error_code.present? ? transaction.error_code : "None Available" %></p>
+        <p><b><%= t('orders.transactions.modal.error_code') %></b>: <%= transaction.error_code.present? ? transaction.error_code : t('global.none_available') %></p>
         <% if @transaction.order.stripe? && Modulatron4000.stripe? %>
-          <p><b>Stripe Charge Id</b>: <%= @transaction.stripe_charge_id %></p>
+          <p><b><%= t('orders.transactions.modal.stripe_charge_id') %></b>: <%= @transaction.stripe_charge_id %></p>
         <% elsif @transaction.order.paypal? && Modulatron4000.paypal? %>
-          <p><b>PayPal Transaction Id</b>: <%= @transaction.paypal_id %></p>
+          <p><b><%= t('orders.transactions.modal.paypal_transaction_id') %></b>: <%= @transaction.paypal_id %></p>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
+        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('modal.close_button') %></button>
       </div>
     </div>
   </div>

@@ -1,4 +1,8 @@
 en:
+  global:
+    none_available: None Available
+  modal:
+    close_button: Close
   accessories:
     index:
       title: Accessories
@@ -221,6 +225,19 @@ en:
       breadcrumb: New
       delivery_service_index: Delivery Services
       header: New Delivery Service
+  orders:
+    transactions:
+      modal:
+        header: More Info for Transaction
+        error_code: Error Code
+        stripe_charge_id: Stripe Charge Id
+        paypal_transaction_id: PayPal Transaction Id
+    edit:
+      modal:
+        header: Edit Order
+        dispatch_date_label: Dispatch Date
+        consignment_number_label: Consignment Number
+        submit_button: Submit
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."

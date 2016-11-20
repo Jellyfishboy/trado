@@ -8,25 +8,25 @@
         <%= render partial: 'shared/loading', format: [:html] %>
         <div class="modal-header">
           <h3 id="orderModalLabel">
-            Edit Order
+            <%= t('orders.edit.modal.header') %>
             <%= "##{@order.id}" %>
           </h3>
         </div>
         <div class="modal-body">
           <fieldset class="widget widget-content widget-last">
             <div class="form-group">
-              <%= f.label 'Dispatch Date' %>
+              <%= f.label t('orders.edit.modal.dispatch_date_label') %>
               <%= f.text_field :shipping_date, class: 'form-control datetimepicker', value: (@order.shipping_date.strftime('%d/%m/%Y %R') unless @order.shipping_date.nil?) %>
              </div>
             <div class="form-group form-last">
-              <%= f.label :consignment_number %>
+              <%= f.label t('orders.edit.modal.consignment_number_label') %>
               <%= f.text_field :consignment_number, :class => 'form-control' %>
             </div>
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
-          <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('modal.close_button') %></button>
+          <%= f.submit t('orders.edit.modal.submit_button'), :class => 'btn btn-blue btn-large' %>
         </div>
       <% end %>
     </div>
