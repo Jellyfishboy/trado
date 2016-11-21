@@ -1,14 +1,13 @@
 ---
-:concurrency: 5
-:pidfile: ./tmp/pids/sidekiq.pid
-:verbose: true
+concurrency: 5
+verbose: true
+pidfile: ./tmp/pids/sidekiq.pid
+logfile: ./log/sidekiq.log
 staging:
-  :logfile: ./log/sidekiq.log
-  :concurrency: 10
+  concurrency: 10
 production:
-  :logfile: ./log/sidekiq.log
-  :concurrency: 20
-  :verbose: false
+  concurrency: 20
+  verbose: false
 # Create two queues, defaut and high priority
 # The 2 tells Sidekiq to check the associated queue twice as often
 :queues:

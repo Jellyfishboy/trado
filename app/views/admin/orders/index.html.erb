@@ -1,23 +1,23 @@
-<% content_for :title, 'Orders' %>
-<% content_for :breadcrumb, 'Orders' %>
+<% content_for :title, t('orders.index.title') %>
+<% content_for :breadcrumb, t('orders.index.breadcrumb') %>
 <% javascript :footer, 'admin/soca.datepicker' %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Orders</h2>
+    <h2 class="widget widget-header"><%= t('orders.index.header') %></h2>
   </div>
   <div class="widget-controls">
     <select class="form-select" id="filter-order-delivery">
-      <option class="filter" data-filter="all">Show all</option>
-      <option class="filter" data-filter=".order-dispatched">Dispatched</option>
-      <option class="filter" data-filter=".order-pending">Pending</option>
+      <option class="filter" data-filter="all"><%= t('orders.index.delivery_show_all') %></option>
+      <option class="filter" data-filter=".order-dispatched"><%= t('orders.index.delivery_dispatched') %></option>
+      <option class="filter" data-filter=".order-pending"><%= t('orders.index.delivery_pending') %></option>
     </select>
-    <span>Delivery:</span>
+    <span><%= t('orders.index.delivery_show_all') %>:</span>
   </div>
   <% if @orders.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p>You don't have any orders yet.</p>
+        <p><%= t('orders.index.delivery_select') %></p>
         <i class="icon-box-add"></i>
       </div>
     </div>
@@ -26,11 +26,13 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Order No.</th>
-            <th>Delivery Status</th>
-            <th>Payment Status</th>
-            <th>Gross Amount</th>
-            <th>Last Updated</th>
+            <th><%= t('orders.index.order_number') %></th>
+            <th><%= t('orders.index.full_name') %></th>
+            <th><%= t('orders.index.payment_type') %></th>
+            <th><%= t('orders.index.payment_status') %></th>
+            <th><%= t('orders.index.delivery_status') %></th>
+            <th><%= t('orders.index.gross_amount') %></th>
+            <th><%= t('orders.index.last_updated') %></th>
             <th></th>
           </tr>
         </thead>

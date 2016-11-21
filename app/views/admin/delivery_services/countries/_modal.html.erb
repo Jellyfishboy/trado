@@ -16,7 +16,7 @@
         <%= select_tag :delivery_service_id, options_for_select(delivery_services.map { |delivery_service| [delivery_service.full_name, delivery_service.id ] }), prompt: t('delivery_services.countries_modal.select_prompt') , :class => 'form-control' %>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('delivery_services.countries_modal.close_modal') %></button>
+        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('modal.close_button') %></button>
         <a href="#" id="set-countries" class="btn btn-blue btn-large"><%= t('delivery_services.countries_modal.submit_button') %></a>
       </div>
     </div>

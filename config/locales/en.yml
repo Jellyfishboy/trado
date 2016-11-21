@@ -181,7 +181,6 @@ en:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
       select_prompt: Select a delivery service...
-      close_modal: Close
       submit_button: Submit
     index:
       title: Delivery Services
@@ -238,6 +237,62 @@ en:
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
         submit_button: Submit
+    index:
+      title: Orders
+      breadcrumb: Orders
+      header: Orders
+      delivery_show_all: Show All
+      delivery_dispatched: Dispatched
+      delivery_pending: Pending
+      delivery_select: Delivery
+      no_records: You don't have any orders yet.
+      order_number: Order No.
+      full_name: Full Name
+      payment_type: Payment Type
+      payment_status: Payment Status
+      delivery_status: Delivery Status
+      gross_amount: Gross Amount
+      last_updated: Last Updated
+    show:
+      title: 'Order #%{order_id}'
+      orders_index: Orders
+      cancel_order_tooltip: Cancel Order
+      header: 'Order #%{order_id}'
+      delivery_details:
+        header: Delivery Details
+        email: Email
+        status: Status
+        dispatch_date: Dispatch Date
+        delivery_service: Delivery Service
+        tracking: Tracking
+      billing_address:
+        header: Billing Address
+      delivery_address:
+        header: Delivery Address
+      payment_details:
+        header: Payment Details
+        card_number: Card Number
+        expiry_date: Expiry Date
+      order_items:
+        header: Order Items
+        item: Item
+        sku: SKU
+        price: Price
+        quantity: Qty
+        total: Total
+        delivery: Delivery
+        subtotal: Subtotal
+        tax: Tax
+        total: Total
+      transactions:
+        header: Transactions
+        transaction_type: Transaction Type
+        payment_type: Payment Type
+        payment_status: Payment Status
+        fee: Fee
+        net_amount: Net Amount
+        gross_amount: Gross Amount
+        last_updated: Last Updated
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
