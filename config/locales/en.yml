@@ -293,6 +293,43 @@ en:
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
+  pages:
+    index:
+      title: Pages
+      breadcrumb: Pages
+      header: Pages
+      title: Title
+      sorting: Sorting
+      visible: Visible
+      last_updated: Last Updated
+    form:
+      header: Edit Page
+      write_your_page:
+        header: Write Your Page
+        description: Set the title for your page, menu item, sorting order and add your page content.
+        title_label: Title
+        menu_title_label: Menu Title
+        sorting_label: Sorting
+        content_label: Content
+      search_engines:
+        header: Search Engines
+        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
+        page_title_label: Page Title
+        meta_description_label: Meta Description
+        slug_label: Slug
+      visibility:
+        header: Visibility
+        description: Set if the page is visible on your storefront.
+        visible_label: Visible
+        hidden_label: Hidden
+      template:
+        header: Template
+        description: Select the template this page will use on your storefront.
+      submit_button: Submit
+    edit:
+      title: Edit Page
+      breadcrumb: Edit
+      pages_index: Pages
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."

@@ -1,5 +1,16 @@
-<% content_for :title, 'Edit page' %>
-<% content_for :breadcrumb, 'Edit' %>
-<% breadcrumb_add 'Pages', admin_pages_path %>
+<% content_for :title, t('pages.edit.title') %>
+<% content_for :breadcrumb, t('pages.edit.breadcrumb') %>
+<% breadcrumb_add t('pages.edit.pages_index'), admin_pages_path %>
 
-<%= render "form" %>
+<div class="twelvecol">
+    <div class="page-header">
+        <h2 class="widget widget-header"><%= t('pages.edit.header') %></h2>
+    </div>
+    <%= form_for [:admin, @page], html: { role: 'form' } do |f| %>
+        <div class="threecol"></div>
+        <div class="ninecol last">
+            <%= render partial: 'shared/errors', locals: { object: @page } %>
+        </div>
+        <%= render partial: "form", locals: { f: f } %>
+    <% end %>
+</div>

@@ -1,17 +1,17 @@
-<% content_for :title, 'Pages' %>
-<% content_for :breadcrumb, 'Pages' %>
+<% content_for :title, t('pages.index.title') %>
+<% content_for :breadcrumb, t('pages.index.breadcrumb') %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Pages</h2>
+    <h2 class="widget widget-header"><%= t('pages.index.header') %></h2>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Sorting</th>
-            <th>Visible</th>
-            <th>Last updated</th>
+            <th><%= t('pages.index.title') %></th>
+            <th><%= t('pages.index.sorting') %></th>
+            <th><%= t('pages.index.visible') %></th>
+            <th><%= t('pages.index.last_updated') %></th>
             <th></th>
           </tr>
         </thead>
