@@ -5,6 +5,9 @@
     <%= order.billing_address.full_name %>
 </td>
 <td>
+    <%= @order.customer_payment_type %>
+</td>
+<td>
   <%= status_label order.latest_transaction, order.latest_transaction.payment_status %>
 </td>
 <td>
