@@ -4,27 +4,27 @@ fr:
       title: Accessoires
       breadcrumb: Accessoires
       header: Accessoires
-      add_tooltip: Add Accessory
+      add_tooltip: Ajouter des accessoires
       no_records: Vous n'avez aucun accessoire pour le moment.
-      part_number: Part no.
+      part_number: Pièce n°
       name: Nom
       weight: Poids
-      cost_value: Cost Value
+      cost_value: Valeur économique
       net_price: Prix Net
       gross_price: Prix Brut
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
+        header: Détails de l'accessoire
+        description: Définissez le nom et le nombre de pièce pour votre accessoire.
         name_label: Nom
-        part_number_label: Part Number
+        part_number_label: Numéro de pièce
       weight_price:
         header: Poids & Prix
-        description: Set the weight, net price and original cost value for your accessory.
+        description: Régler le poids, le prix net et la valeur de coût initial de votre accessoire.
         weight_label: Poids
-        cost_value_label: Cost Value
+        cost_value_label: Valeur économique
         net_price_label: Prix Net
-      submit_button: Submit
+      submit_button: Envoyer
     edit:
       title: Modifier Accessoire
       breadcrumb: Modifier
@@ -32,7 +32,7 @@ fr:
       header: Modifier Accessoire
     new:
       title: Nouvel Accessoire
-      breadcrumb: New
+      breadcrumb: Nouveau
       accessory_index: Accessoires
       header: Nouvel Accessoire
   dashboard:
@@ -55,7 +55,7 @@ fr:
     breadcrumb: Paramètres
     header: Paramètres
     store_detail:
-      header: Store Details
+      header: Détails de la boutique
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Nom
       email_label: E-mail
@@ -69,7 +69,7 @@ fr:
       header: Taxe
       description: Set the name and percentage rate of your tax.
       name_label: Nom
-      rate_label: Rate
+      rate_label: Taux
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
@@ -107,7 +107,7 @@ fr:
       category_details:
         header: Category Details
         description: Set the name, description and sorting order for your category.
-        name_label: Name
+        name_label: Nom
         description_label: Description
         sorting_label: Sorting
       search_engine:
@@ -116,13 +116,13 @@ fr:
         page_title_label: Page Title
         meta_description_label: Meta Description
       visibility:
-        header: Visibility
+        header: Visibilité
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Caché
+      submit_button: Envoyer
     edit:
-      title: Edit Category
+      title: Modifier la Catégorie
       breadcrumb: Modifier
       category_index: Catégories
       header: Modifier la Catégorie
@@ -135,15 +135,15 @@ fr:
     index:
       title: Remise des prix pour %{service_name}
       header: Remise des prix pour %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
+      delivery_service_index: Services de livraison
+      add_tooltip: Ajouter le prix de livraison
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
       description: Description
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
-      net_price: Net Price
+      net_price: Prix net
       gross_price: Gross Price
     form:
       delivery_price_details:
@@ -184,36 +184,36 @@ fr:
       breadcrumb: Services de livraison
       header: Services de livraison
       add_tooltip: Ajoutez un service de livraison
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
+      no_records: Vous n’avez pas encore de service de livraison.
+      courier: Courrier
+      name: Nom
       description: Description
       code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Prix net
+      gross_price: Prix brut
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
+        header: Détails du Service livraison
+        description: Définissez le courrier du nom de la compagnie, nom et description de votre service de livraison.
+        courier_name_label: Nom de messagerie
+        name_label: Nom
         description_label: Description
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Contraintes d’ordre
+        description: Limiter un service de livraison par le prix total d’une commande.
+        price_range_label: Fourchette de prix
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Numéro de suivi
+        description_html: 'Mise en place du suivi de votre service de livraison. Utilisez <b>{{consignment_number}}</b> pour insérer le numéro d’envoi.'
+        tracking_url_label: Url de suivi
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Pays
+        description_html: 'Sélectionnez les pays qui sont disponibles pour ce service de livraison, ou <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}"> copier</a> une liste de pays de service existante.'
+        country_placeholder: Sélectionnez les pays associés...
+      submit_button: Envoyer
     edit:
       title: Edit Delivery Service
-      breadcrumb: Edit
+      breadcrumb: Modifier
       delivery_service_index: Delivery Services
       header: Edit Delivery Service
     new:
