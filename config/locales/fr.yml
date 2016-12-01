@@ -137,18 +137,18 @@ fr:
       header: Remise des prix pour %{service_name}
       delivery_service_index: Services de livraison
       add_tooltip: Ajouter le prix de livraison
-      no_records: You don't have any prices for %{service_name} yet.
+      no_records: Vous n’avez pas encore de prix pour %{service_name}.
       code: Code
       description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
+      weight: Paramètres de poids
+      length: Paramètres de longueur
+      thickness: Paramètres d’épaisseur
       net_price: Prix net
-      gross_price: Gross Price
+      gross_price: Prix brut
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        header: Détails du prix de livraison
+        description: Définir le code, le prix et la description pour ce prix de livraison.
         code_label: Code
         price_label: Prix
         description_label: Description
@@ -163,7 +163,7 @@ fr:
         max_thickness_label: Épaisseur maximale
       submit_button: Envoyer
     edit:
-      title: Edit Delivery Pricing
+      title: Modifier le prix de livraison
       breadcrumb: Modifier
       delivery_service_index: Services de livraison
       header: Modifier les prix de livraison
@@ -174,7 +174,7 @@ fr:
       header: Nouvelle tarification de livraison
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
+      header: Copier les services de livraison du pays
       description: 'Select which delivery service you would like to copy the country list from:'
       select_prompt: Sélectionnez un service de livraison...
       close_modal: Fermer
@@ -212,14 +212,14 @@ fr:
         country_placeholder: Sélectionnez les pays associés...
       submit_button: Envoyer
     edit:
-      title: Edit Delivery Service
+      title: Modifier le Service de livraison
       breadcrumb: Modifier
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      delivery_service_index: Services de livraison
+      header: Modifier le Service de livraison
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
+      title: Ajoutez un service de livraison
+      breadcrumb: Nouveau
+      delivery_service_index: Services de livraison
       header: New Delivery Service
   devise:
     confirmations:
