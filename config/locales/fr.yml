@@ -60,7 +60,7 @@ fr:
       name_label: Nom
       email_label: E-mail
       logo_label: Logo
-      theme_label: Theme
+      theme_label: ' Thème'
     language:
       header: Langue
       description: Définir la langue pour le tableau de bord de gestion.
@@ -90,7 +90,7 @@ fr:
       tracking_code_label: Web Tracking Code
       enabled_label: Activé
       disabled_label: Désactivé
-    submit_button: Submit
+    submit_button: Envoyer
   categories:
     index:
       title: Catégories
@@ -102,7 +102,7 @@ fr:
       description: Description
       sorting: Tri
       active: Actif
-      no_of_products: No. of Products
+      no_of_products: N ° des produits
     form:
       category_details:
         header: Category Details
