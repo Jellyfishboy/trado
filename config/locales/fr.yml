@@ -123,18 +123,18 @@ fr:
       submit_button: Submit
     edit:
       title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      breadcrumb: Modifier
+      category_index: Catégories
+      header: Modifier la Catégorie
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nouvelle Catégorie
+      breadcrumb: Nouveau
+      category_index: Catégories
+      header: Nouvelle Catégorie
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
+      title: Remise des prix pour %{service_name}
+      header: Remise des prix pour %{service_name}
       delivery_service_index: Delivery Services
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
@@ -150,40 +150,40 @@ fr:
         header: Delivery Price Details
         description: Set the code, price and description for this delivery price.
         code_label: Code
-        price_label: Price
+        price_label: Prix
         description_label: Description
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        min_weight_label: Poids minimum
+        max_weight_label: Poids maximal
+        min_length_label: Longueur minimale
+        max_length_label: Longueur maximale
+        min_thickness_label: Épaisseur minimale
+        max_thickness_label: Épaisseur maximale
+      submit_button: Envoyer
     edit:
       title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      breadcrumb: Modifier
+      delivery_service_index: Services de livraison
+      header: Modifier les prix de livraison
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Nouvelle tarification de livraison
+      breadcrumb: Nouveau
+      delivery_service_index: Services de livraison
+      header: Nouvelle tarification de livraison
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      close_modal: Close
-      submit_button: Submit
+      select_prompt: Sélectionnez un service de livraison...
+      close_modal: Fermer
+      submit_button: Envoyer
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
+      title: Services de livraison
+      breadcrumb: Services de livraison
+      header: Services de livraison
+      add_tooltip: Ajoutez un service de livraison
       no_records: You don't have any delivery services yet.
       courier: Courier
       name: Name
