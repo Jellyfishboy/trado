@@ -83,11 +83,11 @@ fr:
     stripe:
       header: Stripe
       description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      statement_descriptor_label: Descripteur d’instruction
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
+      description: Activer et configurer le code de suivi web pour votre magasin.
+      tracking_code_label: Code de suivi Web
       enabled_label: Activé
       disabled_label: Désactivé
     submit_button: Envoyer
@@ -105,14 +105,14 @@ fr:
       no_of_products: N ° des produits
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
+        header: Détails de la catégorie
+        description: Définir le nom, la description et l’ordre de tri pour votre catégorie.
         name_label: Nom
         description_label: Description
         sorting_label: Trier par
       search_engine:
         header: Moteurs de recherche
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        description: Mettre en place le titre de la page et sa meta description pour aider à définir comment une page s’affiche dans les moteurs de recherche.
         page_title_label: Titre de la page
         meta_description_label: Meta Description
       visibility:
