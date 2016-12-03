@@ -109,15 +109,15 @@ fr:
         description: Set the name, description and sorting order for your category.
         name_label: Nom
         description_label: Description
-        sorting_label: Sorting
+        sorting_label: Trier par
       search_engine:
-        header: Search Engines
+        header: Moteurs de recherche
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Titre de la page
         meta_description_label: Meta Description
       visibility:
         header: Visibilité
-        description: Set if the category is visible on your storefront.
+        description: Définissez si la catégorie est visible sur votre vitrine.
         visible_label: Visible
         hidden_label: Caché
       submit_button: Envoyer
