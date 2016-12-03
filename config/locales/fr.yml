@@ -67,19 +67,19 @@ fr:
       language_label: Langue
     tax:
       header: Taxe
-      description: Set the name and percentage rate of your tax.
+      description: Définissez le nom et le pourcentage du taux de votre taxe.
       name_label: Nom
       rate_label: Taux
     currency:
       header: Affichage de monnaie & prix
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      description: Régler l’unité de monnaie que vous utilisez dans votre magasin et si vous aimeriez que vos clients puissent voir les prix des produits y compris et hors taxes.
       currency_label: Devise
       price_exc_label: Prix TTC & HT
       price_inc_label: Prix TTC
     mailchimp:
       header: Newsletter de MailChimp
       description: Définir la liste de MailChimp à votre newsletter.
-      list_id_label: List Id
+      list_id_label: Liste d'Id
     stripe:
       header: Stripe
       description: Définir le texte que vous souhaitez afficher sur les relevés de carte de crédit du client.
@@ -153,8 +153,8 @@ fr:
         price_label: Prix
         description_label: Description
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
+        header: Allocation de dimension
+        description: Spécifier l’allocation de dimension et de poids pour ce prix de livraison.
         min_weight_label: Poids minimum
         max_weight_label: Poids maximal
         min_length_label: Longueur minimale
@@ -175,7 +175,7 @@ fr:
   delivery_services:
     countries_modal:
       header: Copier les services de livraison du pays
-      description: 'Select which delivery service you would like to copy the country list from:'
+      description: 'Sélectionnez quel service de livraison vous souhaitez copier la liste des pays :'
       select_prompt: Sélectionnez un service de livraison...
       close_modal: Fermer
       submit_button: Envoyer
@@ -220,7 +220,7 @@ fr:
       title: Ajoutez un service de livraison
       breadcrumb: Nouveau
       delivery_service_index: Services de livraison
-      header: New Delivery Service
+      header: Ajoutez un service de livraison
   devise:
     confirmations:
       confirmed: "Votre compte a bien été confirmé. Vous êtes maintenant connecté."
