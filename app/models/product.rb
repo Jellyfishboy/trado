@@ -89,7 +89,7 @@ class Product < ActiveRecord::Base
   #
   # @return [Boolean]
   def single?
-    skus.map(&:active).count == 1 ? true : false
+    skus.active.map(&:active).count == 1 ? true : false
   end
 
   # Due to the way the 'status' functionality has been set up
