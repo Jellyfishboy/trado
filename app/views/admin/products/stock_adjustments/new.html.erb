@@ -12,7 +12,7 @@
   </div>
   <%= form_for [:admin, :products, @stock_adjustment], html: { role: 'form' } do |f| %>
     <div class="twelvecol">
-      <%= render partial: 'shared/errors', locals: { object: @accessory } %>
+      <%= render partial: 'shared/errors', locals: { object: @stock_adjustment } %>
     </div>
     <div class="twelvecol">
       <fieldset class="widget widget-content widget-last">
