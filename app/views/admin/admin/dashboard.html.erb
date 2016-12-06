@@ -1,10 +1,10 @@
-<% content_for :title, 'Dashboard' %>
-<% content_for :breadcrumb, 'Dashboard' %>
+<% content_for :title, t('dasboard_header') %>
+<% content_for :breadcrumb, t('dasboard_header') %>
 <% javascript :header, 'admin/chart' %>
 
 <div class="twelvecol">
     <div class="page-header">
-        <h2 class="widget widget-header">Dashboard</h2>
+        <h2 class="widget widget-header"><%= t('dasboard_header') %></h2>
     </div>
     <div class="widget-sub-heading">
         <h3>Orders</h3>
@@ -50,7 +50,7 @@
             <div class="threecol">
                 <canvas id="piePaymentTypeChart" width="300" height="300" class="pie-chart"></canvas>
                 <%= render partial: 'shared/chart/pie', format: [:html], locals: {
-                        datasets:  Hash(paypal: { value: 100, color: "#00aff1" }),
+                        datasets:  Order.pie_datasets,
                         id: 'piePaymentTypeChart'
                     } %>
             </div>
@@ -75,11 +75,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row double-stack-fourcol-stat">
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:provider_fee_total]).single %></div>
                             <div>Provider Fees</div>
+                        </div>
+                    </div>
+                    <div class="fourcol">
+                        <div class="single-stat price-stat">
+                            <div class="orange-stat"><%= Store::Price.new(price: @dashboard[:delivery_fees]).single %></div>
+                            <div>Delivery Fees</div>
                         </div>
                     </div>
                 </div>

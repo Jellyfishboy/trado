@@ -22,7 +22,7 @@
           <br/>
           <%= @delivery_address.postcode %>
           <br/>
-          <%= @delivery_address.country %>
+          <%= @delivery_address.country.name %>
           <br/>
           <%= @delivery_address.telephone %>
           <div class="row">
@@ -48,13 +48,14 @@
           <br/>
           <%= @billing_address.postcode %>
           <br/>
-          <%= @billing_address.country %>
+          <%= @billing_address.country.name %>
           <br/>
           <%= @billing_address.telephone %>
           <div class="row">
-              <div class="col-lg-12 col-sm-12">
+              <div class="col-lg-12 col-sm-12" id="confirm-payment-info">
                 <h3>PAYMENT METHOD</h3>
-                <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+                <%= image_tag "paypal.png" if Modulatron4000.paypal? && @order.paypal? %>
+                <%= stripe_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
               </div>
           </div>
       </div>

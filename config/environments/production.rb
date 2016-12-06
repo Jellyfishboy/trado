@@ -53,9 +53,10 @@ Trado::Application.configure do
 	# Enable serving of images, stylesheets, and JavaScripts from an asset server
 	# config.action_controller.asset_host = "http://assets.example.com"
 
-	config.action_controller.asset_host = Rails.application.secrets.aws_cloudfront_host_app
+	config.action_mailer.asset_host = Rails.application.secrets.mailer_asset_url
+	config.action_controller.asset_host = Rails.application.secrets.asset_url
 
-	config.assets.prefix = Rails.application.secrets.aws_cloudfront_prefix
+	config.assets.prefix = '/assets'
 
 	# Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
 	# config.assets.precompile += %w( search.js )
@@ -67,9 +68,7 @@ Trado::Application.configure do
 	# config.threadsafe!
 
 	# Set default URL
-	config.action_mailer.default_url_options = { :host => Rails.application.secrets.global_host }
-
-	config.action_mailer.asset_host = Rails.application.secrets.global_host
+	config.action_mailer.default_url_options = { host: Rails.application.secrets.global_url }
 
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true

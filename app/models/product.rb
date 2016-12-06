@@ -7,23 +7,25 @@
 #
 # Table name: products
 #
-#  id                :integer          not null, primary key
-#  name              :string
-#  description       :text
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  weighting         :integer
-#  part_number       :integer
-#  sku               :string
-#  category_id       :integer
-#  slug              :string
-#  meta_description  :string
-#  featured          :boolean
-#  active            :boolean          default(TRUE)
-#  short_description :text
-#  status            :integer          default(0)
-#  order_count       :integer          default(0)
-#  page_title        :string
+#  id                      :integer          not null, primary key
+#  name                    :string
+#  description             :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  weighting               :integer
+#  part_number             :integer
+#  sku                     :string
+#  category_id             :integer
+#  slug                    :string
+#  meta_description        :string
+#  featured                :boolean
+#  active                  :boolean          default(TRUE)
+#  short_description       :text
+#  status                  :integer          default(0)
+#  order_count             :integer          default(0)
+#  page_title              :string
+#  googlemerchant_brand    :string
+#  googlemerchant_category :string
 #
 
 class Product < ActiveRecord::Base
@@ -63,7 +65,7 @@ class Product < ActiveRecord::Base
   validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
   validates :short_description,                               length: { maximum: 300, message: :too_long }, :if => :published?
-  validates :part_number,                                     numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :published?
+  validates :part_number,                                     numericality: { only_integer: true }, :if => :published?
 
   accepts_nested_attributes_for :skus
   accepts_nested_attributes_for :tags
@@ -87,7 +89,7 @@ class Product < ActiveRecord::Base
   #
   # @return [Boolean]
   def single?
-    skus.map(&:active).count == 1 ? true : false
+    skus.active.map(&:active).count == 1 ? true : false
   end
 
   # Due to the way the 'status' functionality has been set up

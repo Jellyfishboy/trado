@@ -81,6 +81,8 @@
         </div>
       </fieldset>
     </div>
+    <%= mailchimp_store_setting_fields(f) if Modulatron4000.mailchimp? %>
+    <%= stripe_store_setting_fields(f) if Modulatron4000.stripe? %>
     <div class="threecol">
       <h3>Google Analytics</h3>
       <p>Enable and set the web tracking code for your store. </p>

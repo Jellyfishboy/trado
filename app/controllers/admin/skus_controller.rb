@@ -40,11 +40,17 @@ class Admin::SkusController < ApplicationController
     unless @sku.orders.empty?
       Store.inactivate!(@sku)
       @old_sku = @sku
-      @sku = Sku.new(params[:sku])
-      @sku.product_id = @old_sku.product.id
+      @sku = Sku.new
+      params[:sku].delete(:variants_attributes)
+      # change sku form to still pass the code and stock but cant edit if already have orders
+      @sku.stock = @old_sku.stock
+      @sku.code = @old_sku.code
+      ###
     end
+    @sku.attributes = params[:sku]
+    @sku.product_id = @old_sku.product.id if @old_sku
 
-    if @sku.update(params[:sku])
+    if @sku.save
       if @old_sku
         @old_sku.stock_adjustments.each do |sa|
           new_stock_adjustment = sa.dup
@@ -56,7 +62,7 @@ class Admin::SkusController < ApplicationController
           new_variant.sku_id = @sku.id
           new_variant.save!
         end
-        CartItem.where('sku_id = ?', @old_sku.id).destroy_all 
+        CartItem.where(sku_id: @old_sku.id).destroy_all 
       end
       render json: { row: render_to_string(partial: 'admin/products/skus/single', locals: { sku: @sku }), sku_id: @sku.id }, status: 200
     else

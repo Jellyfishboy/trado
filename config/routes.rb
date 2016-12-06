@@ -49,22 +49,24 @@ Trado::Application.routes.draw do
   		collection do
 	  		get :mycart
 	  		get :checkout
-        get :delivery_service_prices
         %w( paypal stripe ).each do |payment|
           post "#{payment}/confirm", to: "carts/#{payment}#confirm", as: "#{payment}_confirm"
         end
   		end
   	end
     resources :cart_items, only: [:create, :update, :destroy]
+    resources :delivery_service_prices, only: [:show]
 
   	resources :orders, only: [:destroy] do
   		member do
-  			get :success
-	  		get :failed
 	  		get :retry
 	  		get :confirm
 	  		post :complete
   		end
+      collection do
+        get :success
+        get :failed
+      end
   		resources :addresses, only: [:new, :create, :update]
   	end
 
@@ -76,6 +78,7 @@ Trado::Application.routes.draw do
   		end
 	  	resources :accessories, :categories, except: :show
 	  	resources :products, except: [:show, :create] do
+        patch :autosave, on: :member
 	  		resources :attachments, except: :index
 	  		resources :skus, except: [:index, :show] do
 	  			resources :stock_adjustments, only: [:create, :new], controller: 'skus/stock_adjustments'
@@ -93,6 +96,7 @@ Trado::Application.routes.draw do
   		resources :orders, only: [:index, :show, :update, :edit] do
         delete :cancel, to: 'orders#cancel', on: :member
       end
+      resources :transactions, only: :show
   		resources :delivery_services, except: :show do
 	  		collection do
 	  			get :copy_countries

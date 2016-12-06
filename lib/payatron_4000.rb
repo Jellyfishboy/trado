@@ -44,6 +44,8 @@ module Payatron4000
         def order_pay_provider_valid? order, params
             if order.paypal?
                 Modulatron4000.paypal? && TradoPaypalModule::Paypaler.valid_tokens?(params)
+            elsif order.stripe?
+                Modulatron4000.stripe? && order.stripe_customer_id.present?
             end
         end
     end  

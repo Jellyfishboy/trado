@@ -24,5 +24,12 @@ trado.misc =
             vars[hash[0]] = hash[1];
         }
         return vars;
+    },
+
+    clearAllIntervals: function() {
+        for (var i = 1; i < 99999; i++)
+        {
+            window.clearInterval(i);
+        }
     }
 }

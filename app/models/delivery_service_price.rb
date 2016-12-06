@@ -37,7 +37,7 @@ class DeliveryServicePrice < ActiveRecord::Base
   validates :description,                                               length: { maximum: 180, message: :too_long }
   validates :price,                                                     format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }, uniqueness: { scope: :delivery_service_id }
 
-  scope :find_collection,                                               ->(delivery_service_prices, country) { joins(:countries).where(delivery_service_prices: { id: delivery_service_prices }, countries: { name: country }).uniq.load }
+  scope :find_collection,                                               ->(delivery_service_prices, country_id) { joins(:countries).where(delivery_service_prices: { id: delivery_service_prices }, countries: { id: country_id }).uniq.load }
 
   include ActiveScope
 

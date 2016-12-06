@@ -23,7 +23,11 @@ class Country < ActiveRecord::Base
 
 	has_many :destinations,                               dependent: :destroy
 	has_many :delivery_services,                          through: :destinations
-	has_many :orders,									  through: :delivery_services
+
+    has_many :address_countries,                          dependent: :destroy
+    has_many :addresses,                                  through: :address_countries
+    has_many :delivery_addresses,                         -> { where addressable_type: 'OrderDeliveryAddress' }, through: :address_countries, source: :address 
+    has_many :orders,                                     through: :delivery_addresses
     has_many :products,                                   through: :orders
 
 	validates :name, :alpha_two_code,                     uniqueness: true, presence: true

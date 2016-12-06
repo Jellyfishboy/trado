@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/coverage/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/trado/localized.svg)](https://crowdin.com/project/trado)
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store. The platform comes bundled with an abundance of modular based support for popular services such as Google Merchants, PayPal, Stripe and many more.
 
@@ -32,9 +33,7 @@ Stay up to date on the development of Trado and reach out to the community with 
 ## Upcoming Features
 
 * Upgrade to Rails 5
-* Stripe payment gateway ([stripe.com](https://www.stripe.com))
 * Admin activity log
-* Omise payment gateway ([omise.co](https://www.omise.co))
 * Payoneer payment gateway ([payoneer.com](https://www.payoneer.com))
 
 ## Versioning

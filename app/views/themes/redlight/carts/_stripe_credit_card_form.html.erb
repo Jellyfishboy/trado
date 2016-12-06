@@ -1,0 +1,24 @@
+<div id='stripe-form-wrapper'>
+    <%= f.radio_button(:payment_type, 'stripe', checked: true) %>
+    <%= image_tag('grouped-cards.png', height: 50) %>
+</div>
+<div id="stripe-form-fields">
+    <%= f.hidden_field :stripe_card_token %>
+    <div class="form-check-group">
+        <%= label_tag :stripe_card_number, "Credit Card Number" %>
+        <%= text_field_tag :stripe_card_number, nil, name: nil %>
+    </div>
+    <div class="form-check-group-half">
+        <%= label_tag :stripe_card_month, "Expiry Month" %>
+        <%= select_month nil, {add_month_numbers: false}, {name: nil, id: "stripe_card_month" } %>
+    </div>
+    <div class="form-check-group-half">
+        <%= label_tag :stripe_card_year, "Expiry Year" %>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "stripe_card_year" } %>
+    </div>
+    <div class="form-check-group">
+        <%= label_tag :stripe_card_code, "CV Code" %>
+        <%= text_field_tag :stripe_card_code, nil, name: nil %>
+    </div>
+</div>
+<div id="stripe_card_error"></div>

@@ -28,7 +28,7 @@
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                  <td class="icon_cell" style="padding: 8px 12px;font-size: 0;line-height: 1;-webkit-border-radius: 80px;border-radius: 80px;height: 48px;border: 2px solid;background-color: #4baec8;border-color: #4baec8;"><%= image_tag "#{Rails.application.secrets.email_root}/redlight/basket-icon-white.png", width: 40, height: 40, style: 'line-height: 1;outline: none;border: 0;text-decoration: none;-ms-interpolation-mode: bicubic;mso-line-height-rule: exactly;' %></td>
+                                  <td class="icon_cell" style="padding: 8px 12px;font-size: 0;line-height: 1;-webkit-border-radius: 80px;border-radius: 80px;height: 48px;border: 2px solid;background-color: #4baec8;border-color: #4baec8;"><%= image_tag "redlight/basket-icon-white.png", width: 40, height: 40, style: 'line-height: 1;outline: none;border: 0;text-decoration: none;-ms-interpolation-mode: bicubic;mso-line-height-rule: exactly;' %></td>
                                 </tr>
                                 <tr>
                                   <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
@@ -121,7 +121,7 @@
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.delivery_address.full_name %><br>
                               <%= @order.delivery_address.address %><br>
                               <%= @order.delivery_address.city %>, <%= @order.delivery_address.county %> <%= @order.delivery_address.postcode %><br>
-                              <%= @order.delivery_address.country %></p>
+                              <%= @order.delivery_address.country.name %></p>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>
@@ -150,7 +150,7 @@
                             <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.billing_address.full_name %><br>
                               <%= @order.billing_address.address %><br>
                               <%= @order.billing_address.city %>, <%= @order.delivery_address.county %> <%= @order.billing_address.postcode %><br>
-                              <%= @order.billing_address.country %></p>
+                              <%= @order.billing_address.country.name %></p>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>
@@ -307,7 +307,7 @@
                         <tr>
                           <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #888888;">
                             <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 2px;color: #333333;"><small style="font-size: 12px;line-height: 1;font-weight: normal;">Payment Method</small><br>
-                              <%= @order.payment_type %></h2>
+                              <%= @order.customer_payment_type %></h2>
                           </td><!-- /.column_cell -->
                         </tr>
                       </tbody>

@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
             :region => Rails.application.secrets.aws_s3_region,
         }
         config.fog_directory = Rails.application.secrets.aws_s3_bucket
-        config.asset_host = Rails.application.secrets.aws_cloudfront_host_carrierwave
+        config.asset_host = Rails.application.secrets.carrierwave_url
         config.fog_public = true
         config.fog_attributes = {
           'Cache-Control' => 'max-age=315576000',

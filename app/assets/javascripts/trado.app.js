@@ -38,15 +38,14 @@ trado.app =
 
     setDeliveryServicePrices: function()
     {
-        var counrtySelectElem = $('.update-delivery-service-price');
+        var countrySelectElem = $('.update-delivery-service-price');
 
-        if (counrtySelectElem.length > 0 && counrtySelectElem.val() !== "") 
+        if (countrySelectElem.length > 0 && countrySelectElem.val() !== "") 
             {
                 $.ajax( 
                 {
-                    url: '/carts/delivery_service_prices',
+                    url: '/delivery_service_prices/' + countrySelectElem.val(),
                     type: 'GET',
-                    data: { 'country_id': counrtySelectElem.val() },
                     dataType: 'json',
                     success: function(data) 
                     {
@@ -56,7 +55,6 @@ trado.app =
                             if ($(this).is(':checked')) 
                             {
                                 trado.app.deliveryPriceCheckoutInfo($(this).parent().parent());
-                                
                                 $(this).parent().addClass('active');
                             }
                         });
@@ -89,9 +87,8 @@ trado.app =
             {
                 $.ajax( 
                 {
-                    url: '/carts/delivery_service_prices',
+                    url: '/delivery_service_prices/' + this.value,
                     type: 'GET',
-                    data: { 'country_id': this.value },
                     dataType: 'json',
                     success: function(data) 
                     {

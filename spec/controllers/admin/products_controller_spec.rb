@@ -129,6 +129,46 @@ describe Admin::ProductsController do
         end
     end
 
+    describe 'PATCH #autosave' do
+        let!(:category) { create(:category) }
+        let!(:product) { create(:product_sku_attachment, name: 'Product #1', featured: false) }
+        let!(:product_attributes) { attributes_for(:product_sku_attachment, category_id: category.id) }
+
+        it "should assign the requested product to @product" do
+            xhr :patch, :autosave, id: product.id, product: product_attributes
+            expect(assigns(:product)).to eq product
+        end
+
+        context "with valid attributes" do
+
+            it "should save the product" do
+                xhr :patch, :autosave, id: product.id, product: attributes_for(:product_sku, category_id: category.id, name: 'Product #2', featured: true)
+                product.reload
+                expect(product.name).to eq('Product #2')
+                expect(product.featured).to eq(true)
+            end
+
+            it "should return 200 status code" do
+                xhr :patch, :autosave, id: product.id, product: attributes_for(:product_sku, category_id: category.id, name: 'Product #2', featured: true)
+                expect(response.status).to eq 200
+            end
+        end
+
+        context "with invalid attributes" do
+
+            it "should not update the product" do
+                xhr :patch, :autosave, id: product.id, product: attributes_for(:invalid_product, category_id: category.id)
+                expect(product.name).to eq 'Product #1'
+                expect(product.featured).to eq false
+            end
+
+            it "should return 422 status code" do
+                xhr :patch, :autosave, id: product.id, product: attributes_for(:invalid_product, category_id: category.id)
+                expect(response.status).to eq 422
+            end
+        end
+    end
+
     # describe 'DELETE #destroy' do
     #     let!(:product) { create(:product_skus, active: true) }
     #     let(:order) { create(:order) }

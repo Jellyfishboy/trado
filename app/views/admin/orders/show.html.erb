@@ -13,35 +13,30 @@
   </div>
 </div>
 <div class="row">
-  <div class="fourcol">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Shipping details</h3>
+      <h3>Delivery Details</h3>
     </div>
     <div class="widget widget-content">
       <ul>
         <li>
-          <i class="icon-envelop"></i>
           <b>Email</b>:
           <%= @order.email %>
         </li>
         <li>
-          <i class="icon-location"></i>
           <b>Status</b>:
           <%= status_label @order, @order.shipping_status %>
         </li>
         <li>
-          <i class="icon-calendar"></i>
           <b>Dispatch date</b>:
           <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
         </li>
         <li>
-          <i class="icon-airplane"></i>
           <b>Delivery option:</b>
           <%= @order.delivery.full_name %>
         </li>
         <% unless @order.consignment_number.nil? || @order.delivery_service.tracking_url.nil? %>
           <li>
-            <i class="icon-target"></i>
             <b>Tracking:</b>
             <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
           </li>
@@ -49,9 +44,9 @@
       </ul>
     </div>
   </div>
-  <div class="fourcol">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Billing address</h3>
+      <h3>Billing Address</h3>
     </div>
     <div class="widget widget-content">
       <%= @order.billing_address.full_name %>
@@ -62,16 +57,16 @@
       <br/>
       <%= @order.billing_address.postcode %>
       <br/>
-      <%= @order.billing_address.country %>
+      <%= @order.billing_address.country.name %>
       <br/>
       <br/>
       <%= @order.billing_address.telephone %>
       <br/>
     </div>
   </div>
-  <div class="fourcol last">
+  <div class="threecol">
     <div class="widget-sub-heading">
-      <h3>Shipping address</h3>
+      <h3>Delivery Address</h3>
     </div>
     <div class="widget widget-content">
       <%= @order.delivery_address.full_name %>
@@ -82,11 +77,20 @@
       <br/>
       <%= @order.delivery_address.postcode %>
       <br/>
-      <%= @order.delivery_address.country %>
+      <%= @order.delivery_address.country.name %>
       <br/>
       <br/>
       <%= @order.delivery_address.telephone %>
       <br/>
+    </div>
+  </div>
+  <div class="threecol last">
+    <div class="widget-sub-heading">
+      <h3>Payment Details</h3>
+    </div>
+    <div class="widget widget-content">
+      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>
@@ -179,11 +183,11 @@
             <th>Transaction Type</th>
             <th>Payment type</th>
             <th>Payment status</th>
-            <th>Error code</th>
             <th>Fee</th>
             <th>Net amount</th>
             <th>Gross amount</th>
             <th>Last updated</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -193,13 +197,10 @@
                 <%= transaction.transaction_type %>
               </td>
               <td>
-                <%= transaction.payment_type  %>
+                <%= transaction.payment_type.titleize %>
               </td>
               <td>
                 <%= status_label transaction, transaction.payment_status %>
-              </td>
-              <td>
-                <%= transaction.error_code.nil? ? "-" : transaction.error_code %>
               </td>
               <td>
                 <%= Store::Price.new(price: transaction.fee).single %>
@@ -210,8 +211,13 @@
               <td>
                 <%= Store::Price.new(price: transaction.gross_amount).single %>
               </td>
-              <td class="align-left">
+              <td>
                 <%= transaction.updated_at.strftime('%B %-d, %Y, %I:%M %P') %>
+              </td>
+              <td>
+                <a href="#" class="transaction-info-modal" data-record-id="<%= transaction.id %>">
+                  <i class="icon-search"></i>
+                </a>
               </td>
             </tr>
           <% end %>

@@ -17,19 +17,28 @@
 {
     margin-top:15px !important;
 }
-
-// Move to soca.css
-.chosen-container-single .chosen-single 
+.edit_product
 {
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    height: auto;
-    vertical-align: middle;
-    background-color: rgba(208, 208, 208, .5);
-    cursor: text;
-    padding: 8px 10px;
-    -webkit-box-sizing: initial;
-    -moz-box-sizing: initial;
-    box-sizing: initial
+    .form-action
+    {
+        margin-bottom: 40px;
+    }
+}
+#autosave-message
+{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 9000;
+    background: #fff;
+    padding: 7px 15px;
+    display: none;
+}
+#stripe-card-data
+{
+    img
+    {
+        height: 75px;
+        margin-bottom:15px
+    }
 }

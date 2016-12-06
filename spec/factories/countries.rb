@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
     factory :country do
-        name { Faker::Address.country }
+        sequence(:name)  { |n| "#{Faker::Address.country}#{n}" }
         sequence(:alpha_two_code) { |n| "#{n}#{Faker::Address.country_code}" }
         popular { false }
 
