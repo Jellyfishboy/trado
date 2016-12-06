@@ -12,8 +12,8 @@
     </h2>
   </div>
 </div>
-<div class="row">
-  <div class="threecol">
+<div class="row order-summary-row">
+  <div class="sixcol">
     <div class="widget-sub-heading">
       <h3>Delivery Details</h3>
     </div>
@@ -29,22 +29,37 @@
         </li>
         <li>
           <b>Dispatch date</b>:
-          <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
+          <%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %>
         </li>
         <li>
           <b>Delivery option:</b>
           <%= @order.delivery.full_name %>
         </li>
-        <% unless @order.consignment_number.nil? || @order.delivery_service.tracking_url.nil? %>
+        <% if @order.tracking? %>
           <li>
-            <b>Tracking:</b>
-            <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
+            <b>Tracking website:</b>
+            <%= link_to Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
+          </li>
+          <li>
+            <b>Tracking Number:</b>
+            <%= @order.consignment_number %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
-  <div class="threecol">
+  <div class="sixcol last">
+    <div class="widget-sub-heading">
+      <h3>Payment Details</h3>
+    </div>
+    <div class="widget widget-content">
+      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+      <%= stripe_admin_credit_card_data(@order) if @order.stripe? %>
+    </div>
+  </div>
+</div>
+<div class="row order-summary-row">
+  <div class="sixcol">
     <div class="widget-sub-heading">
       <h3>Billing Address</h3>
     </div>
@@ -64,7 +79,7 @@
       <br/>
     </div>
   </div>
-  <div class="threecol">
+  <div class="sixcol last">
     <div class="widget-sub-heading">
       <h3>Delivery Address</h3>
     </div>
@@ -82,15 +97,6 @@
       <br/>
       <%= @order.delivery_address.telephone %>
       <br/>
-    </div>
-  </div>
-  <div class="threecol last">
-    <div class="widget-sub-heading">
-      <h3>Payment Details</h3>
-    </div>
-    <div class="widget widget-content">
-      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
-      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>

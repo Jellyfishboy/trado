@@ -10,7 +10,7 @@
       <div class="modal-body">
         <p><b>Error code</b>: <%= transaction.error_code.present? ? transaction.error_code : "None Available" %></p>
         <% if @transaction.order.stripe? && Modulatron4000.stripe? %>
-          <p><b>Stripe Charge Id</b>: <%= @transaction.stripe_charge_id %></p>
+          <p><b>Stripe Charge Id</b>: <%= @transaction.stripe_charge_id.present? ? link_to(@transaction.stripe_charge_id, "#{Rails.application.secrets.stripe_charge_url}#{@transaction.stripe_charge_id}", target: '_blank') : "None Available" %></p>
         <% elsif @transaction.order.paypal? && Modulatron4000.paypal? %>
           <p><b>PayPal Transaction Id</b>: <%= @transaction.paypal_id %></p>
         <% end %>
