@@ -48,7 +48,6 @@
     <div class="widget widget-content widget-chart">
         <div class="row">
             <div class="threecol">
-                <canvas id="piePaymentTypeChart" width="300" height="300" class="pie-chart"></canvas>
                 <%= render partial: 'shared/chart/pie', format: [:html], locals: {
                         datasets:  Order.pie_datasets,
                         id: 'piePaymentTypeChart'
