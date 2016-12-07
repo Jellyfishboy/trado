@@ -19,12 +19,14 @@ class Admin::OrdersController < ApplicationController
     set_order
     @order.validate_shipping_date!
     if @order.update(params[:order])
-      OrderMailer.updated_dispatched(@order).deliver_later if @order.changed_shipping_date?
+      OrderMailer.updated_dispatched(@order).deliver_later if @order.updated_delivery_details?
       render json: 
       { 
         order_id: @order.id,
         date: @order.shipping_date.strftime("%d/%m/%Y %R"),
-        row: render_to_string(partial: 'admin/orders/single', locals: { order: @order })
+        row: render_to_string(partial: 'admin/orders/single', locals: { order: @order }),
+        dispatch_date: @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y"),
+        tracking: render_to_string(partial: 'admin/orders/tracking', locals: { order: @order })
       }, status: 200
     else 
       render json: { errors: @order.errors.full_messages }, status: 422

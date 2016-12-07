@@ -1,0 +1,8 @@
+<% if @order.tracking? %>
+    <div>
+        <p><b>Tracking website:</b> <%= link_to Store.tracking_url(order.delivery_service.tracking_url, order.consignment_number), Store.tracking_url(order.delivery_service.tracking_url, order.consignment_number), target: '_blank' %></p>
+    </div>
+    <div>
+        <p><b>Tracking Number:</b> <%= order.consignment_number %></p>
+    </div>
+<% end %>
