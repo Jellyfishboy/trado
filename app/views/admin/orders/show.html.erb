@@ -1,12 +1,16 @@
 <% content_for :title, "Order ##{@order.id}" %>
 <% content_for :breadcrumb, "##{@order.id}" %>
 <% breadcrumb_add 'Orders', admin_orders_path %>
+<% javascript :footer, 'admin/soca.datepicker' %>
 
 <div class="twelvecol">
   <div class="page-header">
     <%= link_to cancel_admin_order_path(@order), :class => "btn btn-red btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Cancel Order", method: :delete, data: { confirm: 'Are you sure?' } do %>
       <i class="icon-close"></i>
     <% end %>
+    <a href="#" data-record-id="<%= @order.id %>" class="edit-order-record btn btn-blue btn-large" data-placement="bottom" data-toggle="tooltip" title="Edit Order">
+      <i class="icon-pencil"></i>
+    </a>
     <h2 class="widget widget-header">
       <%= "Order ##{@order.id}" %>
     </h2>
@@ -17,34 +21,22 @@
     <div class="widget-sub-heading">
       <h3>Delivery Details</h3>
     </div>
-    <div class="widget widget-content">
-      <ul>
-        <li>
-          <b>Email</b>:
-          <%= @order.email %>
-        </li>
-        <li>
-          <b>Status</b>:
-          <%= status_label @order, @order.shipping_status %>
-        </li>
-        <li>
-          <b>Dispatch date</b>:
-          <%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %>
-        </li>
-        <li>
-          <b>Delivery option:</b>
-          <%= @order.delivery.full_name %>
-        </li>
-        <% if @order.tracking? %>
-          <li>
-            <b>Tracking website:</b>
-            <%= link_to Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
-          </li>
-          <li>
-            <b>Tracking Number:</b>
-            <%= @order.consignment_number %>
-          </li>
-        <% end %>
+    <div class="widget widget-content" id="delivery-details">
+      <div>
+        <p><b>Email</b>: <%= @order.email %></p>
+      </div>
+      <div>
+        <p><b>Status</b>: <%= status_label @order, @order.shipping_status %></p>
+      </div>
+      <div id="dispatch-date">
+        <p><b>Dispatch date</b>: <span><%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %></span></p>
+      </div>
+      <div>
+        <p><b>Delivery option:</b> <%= @order.delivery.full_name %></p>
+      </div>
+      <div id="tracking">
+        <%= render partial: 'admin/orders/tracking', format: :html, locals: { order: @order } %>
+      </div>
       </ul>
     </div>
   </div>
@@ -54,7 +46,7 @@
     </div>
     <div class="widget widget-content">
       <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
-      <%= stripe_admin_credit_card_data(@order) if @order.stripe? %>
+      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>
@@ -233,3 +225,4 @@
   </div>
 </div>
 <div id="transaction-modal"></div>
+<div id="order-modal"></div>

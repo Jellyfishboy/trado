@@ -109,14 +109,24 @@ trado.admin =
                 success: function (data)
                 {
                     $('#order-form').modal('hide');
-                    $('tr#order_' + data.order_id).html(data.row);
-                    soca.animation.alert(
-                        '.widget-header', 
-                        'success', 
-                        'dispatch-order-alert',
-                        '<i class="icon-checkmark-circle"></i>Successfully updated Order #' + data.order_id + ' as being dispatched on ' + data.date + '.',
-                        5000
-                    )    
+                    if($('.order-summary-row').length > 0)
+                    {
+                        var $container = $('#delivery-details');
+
+                        $container.find('#dispatch-date p span').html(data.dispatch_date);
+                        $container.find('#tracking').html(data.tracking);
+                    }
+                    else
+                    {
+                        $('tr#order_' + data.order_id).html(data.row);
+                        soca.animation.alert(
+                            '.widget-header', 
+                            'success', 
+                            'dispatch-order-alert',
+                            '<i class="icon-checkmark-circle"></i>Successfully updated Order #' + data.order_id + ' as being dispatched on ' + data.date + '.',
+                            5000
+                        )  
+                    }
                 },
                 error: function(xhr, evt, status)
                 {
