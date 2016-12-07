@@ -46,7 +46,7 @@ fr:
     net_income_transactions: Revenu net
     tax_transactions: Taxe
     provider_fees_transactions: Frais de fournisseur
-    delviery_fees_transactions: Frais de livraison
+    delivery_fees_transactions: Delivery Fees
     activity: Activité
     activity_active_carts: Panier actif
     activity_incomplete_orders: Commandes incomplètes
