@@ -22,17 +22,17 @@
       <h3>Delivery Details</h3>
     </div>
     <div class="widget widget-content" id="delivery-details">
-      <div>
+      <div id="email"> 
         <p><b>Email</b>: <%= @order.email %></p>
       </div>
-      <div>
+      <div id="delivery-status">
         <p><b>Status</b>: <%= status_label @order, @order.shipping_status %></p>
       </div>
       <div id="dispatch-date">
-        <p><b>Dispatch date</b>: <span><%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %></span></p>
+        <p><b>Dispatch Date</b>: <span><%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %></span></p>
       </div>
       <div>
-        <p><b>Delivery option:</b> <%= @order.delivery.full_name %></p>
+        <p><b>Delivery Option:</b> <%= @order.delivery.full_name %></p>
       </div>
       <div id="tracking">
         <%= render partial: 'admin/orders/tracking', format: :html, locals: { order: @order } %>
@@ -55,7 +55,7 @@
     <div class="widget-sub-heading">
       <h3>Billing Address</h3>
     </div>
-    <div class="widget widget-content">
+    <div class="widget widget-content" id="billing-address">
       <%= @order.billing_address.full_name %>
       <br/>
       <%= @order.billing_address.address %>
@@ -75,7 +75,7 @@
     <div class="widget-sub-heading">
       <h3>Delivery Address</h3>
     </div>
-    <div class="widget widget-content">
+    <div class="widget widget-content" id="delivery-address">
       <%= @order.delivery_address.full_name %>
       <br/>
       <%= @order.delivery_address.address %>
@@ -179,12 +179,12 @@
         <thead>
           <tr>
             <th>Transaction Type</th>
-            <th>Payment type</th>
-            <th>Payment status</th>
+            <th>Payment Type</th>
+            <th>Payment Status</th>
             <th>Fee</th>
-            <th>Net amount</th>
-            <th>Gross amount</th>
-            <th>Last updated</th>
+            <th>Net Amount</th>
+            <th>Gross Amount</th>
+            <th>Last Updated</th>
             <th></th>
           </tr>
         </thead>
