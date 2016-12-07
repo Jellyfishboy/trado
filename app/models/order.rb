@@ -114,10 +114,6 @@ class Order < ActiveRecord::Base
   		latest_transaction.completed? unless transactions.empty?
   	end
 
-  	def changed_shipping_date?
-  		completed? && dispatched? && shipping_date_changed? ? true : false
-  	end
-
   	def self.dashboard_data
   		return {
 	  		:completed => completed_collection.count,
@@ -143,7 +139,11 @@ class Order < ActiveRecord::Base
     end
 
     def tracking?
-      consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
+      consignment_number.present? && delivery_service.tracking_url.present? ? true : false
+    end
+
+    def updated_delivery_details?
+      completed? && dispatched?
     end
 
     def tracking_assignment

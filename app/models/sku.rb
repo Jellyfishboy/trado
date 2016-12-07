@@ -48,7 +48,7 @@ class Sku < ActiveRecord::Base
 
   after_update :update_cart_items_weight                             
   
-  before_destroy :set_product_as_draft,                               :if => :last_active_sku?
+  before_destroy :set_product_as_draft,                               if: :last_active_sku?
 
   accepts_nested_attributes_for :variants
 
