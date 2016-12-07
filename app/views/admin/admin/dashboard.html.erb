@@ -1,13 +1,13 @@
-<% content_for :title, t('dasboard.header') %>
-<% content_for :breadcrumb, t('dasboard.header') %>
+<% content_for :title, t('dashboard.header') %>
+<% content_for :breadcrumb, t('dashboard.header') %>
 <% javascript :header, 'admin/chart' %>
 
 <div class="twelvecol">
     <div class="page-header">
-        <h2 class="widget widget-header"><%= t('dasboard.header') %></h2>
+        <h2 class="widget widget-header"><%= t('dashboard.header') %></h2>
     </div>
     <div class="widget-sub-heading">
-        <h3><%= t('dasboard.orders') %></h3>
+        <h3><%= t('dashboard.orders') %></h3>
     </div>
     <div class="widget widget-content widget-chart">
         <div class="row">
@@ -25,25 +25,25 @@
             <div class="fourcol">
                 <div class="single-stat">
                     <div class="green-stat"><%= @dashboard[:completed] %></div>
-                    <div><%= t('dasboard.completed_orders') %></div>
+                    <div><%= t('dashboard.completed_orders') %></div>
                 </div>
             </div>
             <div class="fourcol">
                 <div class="single-stat">
                     <div class="orange-stat"><%= @dashboard[:pending] %></div>
-                    <div><%= t('dasboard.pending_orders') %></div>
+                    <div><%= t('dashboard.pending_orders') %></div>
                 </div>
             </div>
             <div class="fourcol last">
                 <div class="single-stat">
                     <div class="red-stat"><%= @dashboard[:failed] %></div>
-                    <div><%= t('dasboard.failed_orders') %></div>
+                    <div><%= t('dashboard.failed_orders') %></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="widget-sub-heading">
-        <h3><%= t('dasboard.transactions') %></h3>
+        <h3><%= t('dashboard.transactions') %></h3>
     </div>
     <div class="widget widget-content widget-chart">
         <div class="row">
@@ -59,19 +59,19 @@
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="green-stat"><%= Store::Price.new(price: @dashboard[:gross_total]).single %></div>
-                            <div><%= t('dasboard.gross_income_transactions') %></div>
+                            <div><%= t('dashboard.gross_income_transactions') %></div>
                         </div>
                     </div>
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="purple-stat"><%= Store::Price.new(price: @dashboard[:net_total]).single %></div>
-                            <div><%= t('dasboard.net_income_transactions') %></div>
+                            <div><%= t('dashboard.net_income_transactions') %></div>
                         </div>
                     </div>
                     <div class="fourcol last">
                         <div class="single-stat price-stat">
                             <div class="red-stat"><%= Store::Price.new(price: @dashboard[:tax_total]).single %></div>
-                            <div><%= t('dasboard.tax_transactions') %></div>
+                            <div><%= t('dashboard.tax_transactions') %></div>
                         </div>
                     </div>
                 </div>
@@ -79,13 +79,13 @@
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="blue-stat"><%= Store::Price.new(price: @dashboard[:provider_fee_total]).single %></div>
-                            <div><%= t('dasboard.provider_fee_transactions') %></div>
+                            <div><%= t('dashboard.provider_fees_transactions') %></div>
                         </div>
                     </div>
                     <div class="fourcol">
                         <div class="single-stat price-stat">
                             <div class="orange-stat"><%= Store::Price.new(price: @dashboard[:delivery_fees]).single %></div>
-                            <div><%= t('dasboard.delivery_fees_transactions') %></div>
+                            <div><%= t('dashboard.delivery_fees_transactions') %></div>
                         </div>
                     </div>
                 </div>
@@ -93,20 +93,20 @@
         </div>
     </div>
     <div class="widget-sub-heading">
-        <h3><%= t('dasboard.activity') %></h3>
+        <h3><%= t('dashboard.activity') %></h3>
     </div>
     <div class="widget widget-content widget-chart">
         <div class="row">
             <div class="sixcol">
                 <div class="single-stat">
                     <div class="green-stat"><%= @dashboard[:active_carts] %></div>
-                    <div><%= t('dasboard.activity_active_carts') %></div>
+                    <div><%= t('dashboard.activity_active_carts') %></div>
                 </div>
             </div>
             <div class="sixcol last">
                 <div class="single-stat">
                     <div class="orange-stat"><%= @dashboard[:incomplete_orders] %></div>
-                    <div><%= t('dasboard.activity_incomplete_orders') %></div>
+                    <div><%= t('dashboard.activity_incomplete_orders') %></div>
                 </div>
             </div>
         </div>
