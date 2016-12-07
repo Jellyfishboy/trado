@@ -24,6 +24,8 @@ class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
   :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes
+
+  attr_accessor :duplicator
   
   has_many :cart_items
   has_many :carts,                                                    through: :cart_items
