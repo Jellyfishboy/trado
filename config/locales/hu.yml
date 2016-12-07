@@ -1,13 +1,13 @@
 hu:
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
+      title: Kiegészítők
+      breadcrumb: Kiegészítők
+      header: Kiegészítők
       add_tooltip: Add Accessory
       no_records: You don't have any accessories yet.
       part_number: Part no.
-      name: Name
+      name: Név
       weight: Weight
       cost_value: Cost Value
       net_price: Net Price
@@ -16,7 +16,7 @@ hu:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
-        name_label: Name
+        name_label: Név
         part_number_label: Part Number
       weight_price:
         header: Weight & Price
@@ -24,23 +24,23 @@ hu:
         weight_label: Weight
         cost_value_label: Cost Value
         net_price_label: Net Price
-      submit_button: Submit
+      submit_button: Küldés
     edit:
       title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
+      breadcrumb: Szerkesztés
+      accessory_index: Kiegészítők
       header: Edit Accessory
     new:
       title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
+      breadcrumb: Új
+      accessory_index: Kiegészítők
       header: New Accessory
   dashboard:
     header: Dashboard
     orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
+    completed_orders: Befejezve
+    pending_orders: Függőben lévő
+    failed_orders: Sikertelen
     transactions: Transactions
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
@@ -51,24 +51,24 @@ hu:
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Beállítások
+    breadcrumb: Beállítások
+    header: Beállítások
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
+      name_label: Név
+      email_label: E-mail
       logo_label: Logo
       theme_label: Theme
     language:
-      header: Language
+      header: Nyelv
       description: Set the language for the administration dashboard.
-      language_label: Language
+      language_label: Nyelv
     tax:
       header: Tax
       description: Set the name and percentage rate of your tax.
-      name_label: Name
+      name_label: Név
       rate_label: Rate
     currency:
       header: Currency & price display
@@ -88,49 +88,49 @@ hu:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      enabled_label: Engedélyezve
+      disabled_label: Letiltva
+    submit_button: Küldés
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
+      title: Kategóriák
+      breadcrumb: Kategóriák
+      header: Kategóriák
       add_tooltip: Add Category
       no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
+      name: Név
+      description: Leírás
+      sorting: Rendezés
+      active: Aktív
       no_of_products: No. of Products
     form:
       category_details:
         header: Category Details
         description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        name_label: Név
+        description_label: Leírás
+        sorting_label: Rendezés
       search_engine:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Page Title
         meta_description_label: Meta Description
       visibility:
-        header: Visibility
+        header: Láthatóság
         description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        visible_label: Látható
+        hidden_label: Rejtve
+      submit_button: Küldés
     edit:
       title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
+      breadcrumb: Szerkesztés
+      category_index: Kategóriák
       header: Edit Category
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Új Kategória
+      breadcrumb: Új
+      category_index: Kategóriák
+      header: Új Kategória
   delivery_service_prices:
     index:
       title: Delivery pricing for %{service_name}
@@ -139,7 +139,7 @@ hu:
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
-      description: Description
+      description: Leírás
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
@@ -151,39 +151,88 @@ hu:
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price
-        description_label: Description
+        description_label: Leírás
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
         min_weight_label: Minimum Weight
         max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
+        min_length_label: Minimum Hossz
+        max_length_label: Maximum Hossz
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
-      submit_button: Submit
+      submit_button: Küldés
     edit:
       title: Edit Delivery Pricing
-      breadcrumb: Edit
+      breadcrumb: Szerkesztés
       delivery_service_index: Delivery Services
       header: Edit Delivery Pricing
     new:
       title: New Delivery Pricing
-      breadcrumb: New
+      breadcrumb: Új
       delivery_service_index: Delivery Services
       header: New Delivery Pricing
+  delivery_services:
+    countries_modal:
+      header: Copy Delivery Service Countries
+      description: 'Select which delivery service you would like to copy the country list from:'
+      select_prompt: Select a delivery service...
+      close_modal: Bezárás
+      submit_button: Küldés
+    index:
+      title: Delivery Services
+      breadcrumb: Delivery Services
+      header: Delivery Services
+      add_tooltip: Add Delivery Service
+      no_records: You don't have any delivery services yet.
+      courier: Courier
+      name: Név
+      description: Leírás
+      code: Code
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      delivery_service_details:
+        header: Delivery Service Details
+        description: Set the courier company name, name and description of your delivery service.
+        courier_name_label: Courier Name
+        name_label: Név
+        description_label: Leírás
+      order_constraints:
+        header: Order Constraints
+        description: Limit a delivery service by the total price of an order.
+        price_range_label: Price Range
+      tracking:
+        header: Tracking
+        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
+        tracking_url_label: Tracking Url
+      countries:
+        header: Országok
+        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
+        country_placeholder: Select associated countries...
+      submit_button: Küldés
+    edit:
+      title: Edit Delivery Service
+      breadcrumb: Szerkesztés
+      delivery_service_index: Delivery Services
+      header: Edit Delivery Service
+    new:
+      title: New Delivery Service
+      breadcrumb: Új
+      delivery_service_index: Delivery Services
+      header: New Delivery Service
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
+      already_authenticated: "Már be vagy jelentkezve."
+      inactive: "A fiókod még nincs megerősítve."
       invalid: "Invalid email or password."
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
+      not_found_in_database: "Rossz e-mail cím vagy jelszó."
       timeout: "Your session expired, please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
@@ -202,28 +251,28 @@ hu:
       send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      updated_not_active: "Sikeresen megváltoztattad jelszavadat."
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
+      signed_up: "Üdvözöllek! Sikeres bejelentkezés."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+      signed_up_but_unconfirmed: "A megerősítési link el lett küldve a megadott email címre, amelyre kattintva megerősítheti fiókját."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Sikeres bejelentkezés."
+      signed_out: "Sikeres kijelentkezés."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "A fiókod sikeresen feloldva. Kérjük jelentkezzen be a folytatáshoz."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
+      already_confirmed: "már meg van erősítve, kérjük jelentkezzen be"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
+      expired: "már lejárt, kérjük igényeljen egy újat"
+      not_found: "nem található"
       not_locked: "was not locked"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
