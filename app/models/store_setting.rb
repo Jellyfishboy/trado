@@ -6,19 +6,21 @@
 #
 # Table name: store_settings
 #
-#  id            :integer          not null, primary key
-#  name          :string           default("Trado")
-#  email         :string           default("admin@example.com")
-#  currency      :string           default("GBP|£")
-#  tax_name      :string           default("VAT")
-#  user_id       :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  ga_code       :string           default("UA-XXXXX-X")
-#  ga_active     :boolean          default(FALSE)
-#  tax_rate      :decimal(8, 2)    default(20.0)
-#  tax_breakdown :boolean          default(FALSE)
-#  theme_name    :string           default("redlight")
+#  id                          :integer          not null, primary key
+#  name                        :string           default("Trado")
+#  email                       :string           default("admin@example.com")
+#  currency                    :string           default("GBP|£")
+#  tax_name                    :string           default("VAT")
+#  user_id                     :integer
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  ga_code                     :string           default("UA-XXXXX-X")
+#  ga_active                   :boolean          default(FALSE)
+#  tax_rate                    :decimal(8, 2)    default(20.0)
+#  tax_breakdown               :boolean          default(FALSE)
+#  theme_name                  :string           default("redlight")
+#  stripe_statement_descriptor :string
+#  locale                      :string           default("en")
 #
 
 class StoreSetting < ActiveRecord::Base
