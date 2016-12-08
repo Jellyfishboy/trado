@@ -578,6 +578,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    timecop (0.8.1)
     trollop (2.1.2)
     turbolinks (2.5.3)
       coffee-rails
@@ -671,6 +672,7 @@ DEPENDENCIES
   sprockets (= 2.11.0)
   test_after_commit
   thin
+  timecop
   turbolinks
   tzinfo-data
   uglifier (>= 1.0.3)
@@ -678,4 +680,4 @@ DEPENDENCIES
   whenever (>= 0.8.4)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6

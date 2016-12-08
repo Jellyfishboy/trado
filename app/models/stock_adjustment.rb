@@ -27,7 +27,7 @@ class StockAdjustment < ActiveRecord::Base
   validates :description, :adjustment, :adjusted_at,             presence: true
   validate :adjustment_value
 
-  before_save :stock_adjustment,                                 unless: :duplicate
+  before_save :adjust_sku_stock,                                 unless: :duplicate
   after_create :send_stock_notifications,                        unless: :duplicate
   before_validation :set_current_time_as_adjusted,               unless: :duplicate
 
@@ -37,7 +37,7 @@ class StockAdjustment < ActiveRecord::Base
 
   # Modify the sku stock with the associated stock level adjustment value
   #
-  def stock_adjustment
+  def adjust_sku_stock
     if Store.positive?(self.adjustment)
       self.stock_total = self.sku.stock + self.adjustment
       self.sku.update_column(:stock, self.sku.stock + self.adjustment)
@@ -66,6 +66,6 @@ class StockAdjustment < ActiveRecord::Base
   # Sets the current records adjusted_at attribute to the current time and date
   #
   def set_current_time_as_adjusted
-    self.adjusted_at = Time.now
+    self.adjusted_at = Time.current
   end
 end
