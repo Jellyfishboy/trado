@@ -47,7 +47,8 @@ class Admin::SkusController < ApplicationController
       @sku.code = @old_sku.code
       ###
     end
-    @sku.attributes = params[:sku]
+    # duplicate true to allow sku duplicates to bypass new record callbacks and validation
+    @sku.attributes = params[:sku].merge(duplicate: true)
     @sku.product_id = @old_sku.product.id if @old_sku
 
     if @sku.save

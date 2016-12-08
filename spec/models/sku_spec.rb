@@ -196,4 +196,31 @@ describe Sku do
             end
         end
     end
+
+    describe 'Checking if a sku record is new and non duplicate' do
+
+        context "if the sku is new and not a duplicate" do
+            let(:sku) { build(:sku) }
+
+            it "should return true" do
+                expect(sku.new_non_duplicate?).to eq true
+            end
+        end
+
+        context "if the sku is a new and a duplicate" do
+            let(:sku) { build(:sku, duplicate: true)}
+
+            it "should return false" do
+                expect(sku.new_non_duplicate?).to eq false
+            end
+        end
+
+        context "if the sku is not new" do
+            let!(:sku) { create(:sku) }
+
+            it "should return false" do
+                expect(sku.new_non_duplicate?).to eq false
+            end
+        end
+    end
 end
