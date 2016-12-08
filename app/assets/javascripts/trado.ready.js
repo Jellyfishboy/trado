@@ -46,19 +46,17 @@ ready = function()
     trado.admin.amendVariants();
 
     trado.admin.showTransaction();
-
-    function remove_fields(link) {
-        $(link).prev("input[type=hidden]").val("1");
-        $(link).closest(".fields").hide();
-    }
-
-    function add_fields(link, association, content) {
-        var new_id = new Date().getTime();
-        var regexp = new RegExp("new_" + association, "g")
-        $(link).parent().before(content.replace(regexp, new_id));
-    }
 };
-
+function addStockAdjustmentfields(association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("sku_stock_adjustment", "g")
+    $('#stock_adjustment_fields').append(content.replace(regexp, new_id));
+    $('select.chosen').chosen();
+}
+function removeStockAdjustmentFields(link) {
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).closest(".fields").hide();
+}
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {

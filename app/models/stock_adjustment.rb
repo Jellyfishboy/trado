@@ -56,4 +56,8 @@ class StockAdjustment < ActiveRecord::Base
   def send_stock_notifications
     SendStockNotificationsJob.perform_later(sku)
   end
+
+  def self.valid_collection? collection
+    collection.map{|i| self.new(i).valid? }.include?(false) ? false : true
+  end
 end

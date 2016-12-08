@@ -8,10 +8,13 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
 
     def create
         set_skus
-        if create_stock_adjustments
+        binding.pry
+        if StockAdjustment.valid_collection?(params[:sku])
+            StockAdjustment.create(params[:stock_adjustment])
             flash_message :success, 'Stock adjustments was successfully created.'
             redirect_to admin_products_stock_index_url
         else
+            errors.add(:base, "Your stock adjustments are not valid.")
             render :new
         end
     end
