@@ -25,8 +25,8 @@ describe StockAdjustment do
     describe "Validating the stock value before an adjustment value is applied" do
         let!(:sku) { create(:sku, stock: 10) }
 
-        it "should call stock_adjustment_adjustment method before a save" do
-            StockAdjustment._save_callbacks.select { |cb| cb.kind.eql?(:before) }.map(&:raw_filter).include?(:stock_adjustment).should == true
+        it "should call adjust_sku_stock method before a save" do
+            StockAdjustment._save_callbacks.select { |cb| cb.kind.eql?(:before) }.map(&:raw_filter).include?(:adjust_sku_stock).should == true
         end
 
         context "if the adjustment value results in a negative stock value" do
@@ -67,7 +67,37 @@ describe StockAdjustment do
                 expect(stock_adjustment.adjustment).to eq 3
             end
         end
+    end
 
+    describe 'When setting the adjusted_at datetime value' do
+
+        context "if the record is not a duplicate" do
+            let(:sku) { create(:sku, active: true) }
+            let(:stock_adjustment) { build(:stock_adjustment, sku: sku) }
+
+            it "should not set the adjusted_at attribute to current time" do
+                Timecop.freeze(Time.current) do
+                    expect{
+                        stock_adjustment.save
+                    }.to change{
+                        stock_adjustment.adjusted_at
+                    }.from(nil).to(Time.current)
+                end
+            end
+        end
+
+        context "if the record is a duplicate" do
+            let(:sku) { create(:sku, active: true) }
+            let(:stock_adjustment) { build(:stock_adjustment, sku: sku, duplicate: true, adjusted_at: 1.day.ago) }
+
+            it "should not change the adjusted_at attribute" do
+                expect{
+                    stock_adjustment.save
+                }.to_not change{
+                    stock_adjustment.adjusted_at
+                }
+            end
+        end
     end
 
 end

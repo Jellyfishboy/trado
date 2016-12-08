@@ -7,25 +7,29 @@
 #
 # Table name: orders
 #
-#  id                   :integer          not null, primary key
-#  email                :string
-#  shipping_date        :datetime
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  actual_shipping_cost :decimal(8, 2)
-#  delivery_id          :integer
-#  ip_address           :string
-#  user_id              :integer
-#  net_amount           :decimal(8, 2)
-#  gross_amount         :decimal(8, 2)
-#  tax_amount           :decimal(8, 2)
-#  terms                :boolean
-#  cart_id              :integer
-#  shipping_status      :integer          default(0)
-#  consignment_number   :string
-#  payment_type         :integer
-#  browser              :string
-#  status               :integer          default(0)
+#  id                      :integer          not null, primary key
+#  email                   :string
+#  shipping_date           :datetime
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  actual_shipping_cost    :decimal(8, 2)
+#  delivery_id             :integer
+#  ip_address              :string
+#  user_id                 :integer
+#  net_amount              :decimal(8, 2)
+#  gross_amount            :decimal(8, 2)
+#  tax_amount              :decimal(8, 2)
+#  terms                   :boolean
+#  cart_id                 :integer
+#  shipping_status         :integer          default(0)
+#  consignment_number      :string
+#  payment_type            :integer
+#  browser                 :string
+#  status                  :integer          default(0)
+#  stripe_customer_id      :string
+#  stripe_card_last4       :string
+#  stripe_card_brand       :string
+#  stripe_card_expiry_date :string
 #
 
 require 'reportatron_4000'
