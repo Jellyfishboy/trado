@@ -56,6 +56,7 @@ class Admin::SkusController < ApplicationController
         @old_sku.stock_adjustments.each do |sa|
           new_stock_adjustment = sa.dup
           new_stock_adjustment.sku_id = @sku.id
+          new_stock_adjustment.duplicate = true
           new_stock_adjustment.save!
         end
         @old_sku.variants.each do |variant|
