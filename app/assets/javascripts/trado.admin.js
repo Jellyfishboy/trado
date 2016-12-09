@@ -611,5 +611,22 @@ trado.admin =
             });
             return false;
         });
+    },
+
+    addStockAdjustmentfields: function(content) 
+    {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("sku_stock_adjustments", "g")
+        $('#stock-adjustment-fields').append(content.replace(regexp, new_id));
+        $('select.chosen').chosen();
+    },
+    
+    removeStockAdjustmentFields: function(link) 
+    {
+        if ($('#stock-adjustment-fields .fields:not(.deleted)').length > 1)
+        {
+            $(link).prev("input[type=hidden]").val("1");
+            $(link).closest(".fields").addClass('deleted').hide();
+        }
     }
 }

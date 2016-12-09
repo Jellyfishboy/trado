@@ -48,19 +48,6 @@ ready = function()
 
     trado.admin.showTransaction();
 };
-function addStockAdjustmentfields(content) {
-    var new_id = new Date().getTime();
-    var regexp = new RegExp("sku_stock_adjustments", "g")
-    $('#stock-adjustment-fields').append(content.replace(regexp, new_id));
-    $('select.chosen').chosen();
-}
-function removeStockAdjustmentFields(link) {
-    if ($('#stock-adjustment-fields .fields:not(.deleted)').length > 1)
-    {
-        $(link).prev("input[type=hidden]").val("1");
-        $(link).closest(".fields").addClass('deleted').hide();
-    }
-}
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
