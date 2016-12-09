@@ -4,7 +4,7 @@ trado.admin =
     {
         var content, value, _i, _len, _ref, $this;
         $this = form;
-        content = $this.children('#errors');
+        content = $this.find('#errors');
         content.find('ul').empty();
         _ref = $.parseJSON(xhr.responseText).errors;
         // Append errors to list on page
@@ -586,4 +586,30 @@ trado.admin =
             return false;
         });
     },
+
+    collectionCreateStockAdjustment: function()
+    {
+        $('#new_stock_adjustments').submit(function() {
+            var $form = $(this);
+            $('input[type=submit]').attr('disabled', true);
+
+            $.ajax(
+            {
+                url: '/admin/products/stock_adjustments',
+                type: 'POST',
+                data: $form.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $form[0].submit();
+                },
+                error: function(xhr, evt, status)
+                {
+                    $('input[type=submit]').attr('disabled', false);
+                    trado.admin.jsonErrors(xhr, evt, status, $form);
+                }
+            });
+            return false;
+        });
+    }
 }

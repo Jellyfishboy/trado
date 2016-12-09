@@ -1,22 +1,20 @@
-<%= f.fields_for :stock_adjustment do |stock| %>
 <div class="row">
   <div class="fourcol">
     <div class="form-group">
-      <%= stock.label :sku_id %>
-      <%= stock.select :sku_id, options_for_select(@skus.map{|s| ["#{s.product.name} | #{s.full_sku}", s.id]}, @stock_adjustment.sku_id), { include_blank: false }, { class: 'chosen', data: { placeholder: "Select product SKU..."} } %>
+      <%= f.label :sku_id %>
+      <%= f.select :sku_id, options_for_select(@skus.map{|s| ["#{s.product.name} | #{s.full_sku}", s.id]}, @stock_adjustment.sku_id), { include_blank: false }, { class: 'chosen', data: { placeholder: "Select product SKU..."} } %>
     </div>
   </div>
   <div class="fourcol">
     <div class="form-group">
-      <%= stock.label :description %>
-      <%= stock.text_field :description, :class => 'form-control' %>
+      <%= f.label :description %>
+      <%= f.text_field :description, :class => 'form-control' %>
     </div>  
   </div>
   <div class="fourcol last">
     <div class="form-group">
-      <%= stock.label :adjustment %>
-      <%= stock.text_field :adjustment, :class => 'form-control' %>
+      <%= f.label :adjustment %>
+      <%= f.text_field :adjustment, :class => 'form-control' %>
     </div>
   </div>
 </div>
-<% end %>

@@ -8,14 +8,21 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
 
     def create
         set_skus
-        binding.pry
-        if StockAdjustment.valid_collection?(params[:sku])
-            StockAdjustment.create(params[:stock_adjustment])
-            flash_message :success, 'Stock adjustments was successfully created.'
-            redirect_to admin_products_stock_index_url
-        else
-            errors.add(:base, "Your stock adjustments are not valid.")
-            render :new
+        set_collection
+        respond_to do |format|
+            format.html do
+                StockAdjustment.create(@collection)
+                flash_message :success, 'Stock adjustments was successfully created.'
+                redirect_to admin_products_stock_index_url
+            end
+
+            format.json do
+                if StockAdjustment.valid_collection?(@collection)
+                    render json: {  }, status: 200
+                else
+                    render json: { errors: ['Your stock adjustments are not valid'] }, status: 422
+                end
+            end
         end
     end
 
@@ -31,5 +38,9 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
 
     def create_stock_adjustments
         StockAdjustment.create(params[:stock_adjustment])
+    end
+
+    def set_collection
+        @collection = params[:sku][:stock_adjustments_attributes].map(&:last)
     end
 end

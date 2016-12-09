@@ -40,6 +40,7 @@ ready = function()
 
     trado.admin.newStockAdjustment();
     trado.admin.createStockAdjustments();
+    trado.admin.collectionCreateStockAdjustment();
 
     trado.admin.newVariants();
     trado.admin.resetVariants();
@@ -47,9 +48,9 @@ ready = function()
 
     trado.admin.showTransaction();
 };
-function addStockAdjustmentfields(association, content) {
+function addStockAdjustmentfields(content) {
     var new_id = new Date().getTime();
-    var regexp = new RegExp("sku_stock_adjustment", "g")
+    var regexp = new RegExp("sku_stock_adjustments", "g")
     $('#stock_adjustment_fields').append(content.replace(regexp, new_id));
     $('select.chosen').chosen();
 }
