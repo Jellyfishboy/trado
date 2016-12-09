@@ -17,7 +17,9 @@
 
 class StockAdjustment < ActiveRecord::Base
 
-  attr_accessible :adjustment, :description, :sku_id, :stock_total
+  attr_accessible :adjustment, :description, :sku_id, :stock_total, :_destroy
+
+  attr_accessor :_destroy
 
   belongs_to :sku
 

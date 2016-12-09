@@ -1,14 +1,14 @@
 module StockAdjustmentHelper
     
-    def remove_stock_adjustment_fields name, f
-        f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+    def remove_stock_adjustment_fields f
+        f.hidden_field(:_destroy) + link_to_function("<i class=\"icon-close\"></i>", 'btn btn-red btn-normal', "removeStockAdjustmentFields(this)")
     end
   
-    def add_stock_adjustment_fields name, f
+    def add_stock_adjustment_fields f
         new_object = f.object.stock_adjustments.new
         fields = f.fields_for(:stock_adjustments, new_object, child_index: "sku_stock_adjustments") do |builder|
             render("fields", f: builder)
         end
-        link_to_function(name, "addStockAdjustmentfields(\"#{escape_javascript(fields)}\")")
+        link_to_function("<i class=\"icon-plus\"></i>", "btn btn-blue btn-large", "addStockAdjustmentfields(\"#{escape_javascript(fields)}\")")
     end
 end

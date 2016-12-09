@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row fields">
   <div class="fourcol">
     <div class="form-group">
       <%= f.label :sku_id %>
@@ -11,10 +11,13 @@
       <%= f.text_field :description, :class => 'form-control' %>
     </div>  
   </div>
-  <div class="fourcol last">
+  <div class="threecol">
     <div class="form-group">
       <%= f.label :adjustment %>
       <%= f.text_field :adjustment, :class => 'form-control' %>
     </div>
+  </div>
+  <div class="onecol last">
+    <%= remove_stock_adjustment_fields f %>
   </div>
 </div>

@@ -51,7 +51,7 @@ ready = function()
 function addStockAdjustmentfields(content) {
     var new_id = new Date().getTime();
     var regexp = new RegExp("sku_stock_adjustments", "g")
-    $('#stock_adjustment_fields').append(content.replace(regexp, new_id));
+    $('#stock-adjustment-fields').append(content.replace(regexp, new_id));
     $('select.chosen').chosen();
 }
 function removeStockAdjustmentFields(link) {
@@ -61,11 +61,6 @@ function removeStockAdjustmentFields(link) {
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
-    // $('.redactor').redactor({
-    //     replaceDivs: false,
-    //     convertDivs: false,
-    //     minHeight: 300
-    // });
     trado.misc.clearAllIntervals();
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');

@@ -41,6 +41,6 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
     end
 
     def set_collection
-        @collection = params[:sku][:stock_adjustments_attributes].map(&:last)
+        @collection = params[:sku][:stock_adjustments_attributes].map(&:last).reject{|s| s[:_destroy] == "1"}
     end
 end

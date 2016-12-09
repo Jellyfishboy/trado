@@ -42,8 +42,9 @@
         margin-bottom:15px
     }
 }
-#stock_adjustment_fields
+#stock-adjustment-fields
 {
+
     .chosen-single
     {
         height:38px;
@@ -51,6 +52,13 @@
         span
         {
             line-height: 38px;
+        }
+    }
+    .onecol
+    {
+        a
+        {
+            margin-top:27px;
         }
     }
 }
@@ -68,5 +76,44 @@
     .sixcol .widget-content
     {
         height:220px;
+    }
+}
+// migrate to Soca theme
+@media handheld, only screen and (max-width: 770px) 
+{
+    body
+    {
+        form
+        {
+            .onecol, .threecol
+            {
+                padding-left:0 !important;
+                padding-right:0 !important;
+            }
+            .threecol
+            {
+                display: block;
+            }
+        }
+    }
+    #stock-adjustment-fields
+    {
+        .onecol
+        {
+            a
+            {
+                display: block;
+                margin-top: 0;
+            }
+        }
+        .fields
+        {
+            margin-top: 30px;
+
+            &:first-child
+            {
+                margin-top: 0;
+            }
+        }
     }
 }
