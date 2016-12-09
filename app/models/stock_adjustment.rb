@@ -31,9 +31,9 @@ class StockAdjustment < ActiveRecord::Base
   after_create :send_stock_notifications,                        unless: :duplicate
   before_validation :set_current_time_as_adjusted,               unless: :duplicate
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(adjusted_at: :desc) }
 
-  scope :active,                                                 -> { where('description IS NOT NULL') }
+  scope :active,                                                 -> { where.not(description: nil) }
 
   # Modify the sku stock with the associated stock level adjustment value
   #

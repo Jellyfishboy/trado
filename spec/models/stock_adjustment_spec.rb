@@ -22,6 +22,16 @@ describe StockAdjustment do
     it { expect(subject).to validate_presence_of(:description) }
     it { expect(subject).to validate_presence_of(:adjustment) }
 
+    describe "When listing all categories" do
+        let!(:stock_1) { create(:stock_adjustment, adjusted_at: 1.day.ago, duplicate: true) }
+        let!(:stock_2) { create(:stock_adjustment, adjusted_at: Time.current, duplicate: true) }
+        let!(:stock_3) { create(:stock_adjustment, adjusted_at: 3.days.ago, duplicate: true) }
+
+        it "should return an array of 'active' categories" do
+            expect(StockAdjustment.all).to match_array([stock_2, stock_1, stock_3])
+        end
+    end
+
     describe "Validating the stock value before an adjustment value is applied" do
         let!(:sku) { create(:sku, stock: 10) }
 
