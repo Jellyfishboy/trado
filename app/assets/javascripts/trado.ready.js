@@ -55,8 +55,11 @@ function addStockAdjustmentfields(content) {
     $('select.chosen').chosen();
 }
 function removeStockAdjustmentFields(link) {
-    $(link).prev("input[type=hidden]").val("1");
-    $(link).closest(".fields").hide();
+    if ($('#stock-adjustment-fields .fields:not(.deleted)').length > 1)
+    {
+        $(link).prev("input[type=hidden]").val("1");
+        $(link).closest(".fields").addClass('deleted').hide();
+    }
 }
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
