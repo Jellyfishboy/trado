@@ -1,6 +1,11 @@
-<script>
-//<![CDATA[
-    <% unless datasets.empty? %>
+<% if datasets.empty? %>
+<div class="empty-pie-chart">
+    <p>No data available</p>
+</div>
+<% else %>
+    <canvas id="piePaymentTypeChart" width="300" height="300" class="pie-chart"></canvas>
+    <script>
+    //<![CDATA[
         var data<%= id %> = [
             <% datasets.each do |set| %>
                 {
@@ -12,6 +17,6 @@
         ];
         var <%= id %>ctx = $("#<%= id %>").get(0).getContext("2d");
         var <%= id %> = new Chart(<%= id %>ctx).Doughnut(data<%= id %>);
-    <% end %>
-//]]>
-</script>
+    //]]>
+    </script>
+<% end %>

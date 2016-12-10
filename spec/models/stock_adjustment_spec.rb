@@ -16,11 +16,21 @@ require 'rails_helper'
 describe StockAdjustment do
 
     # # ActiveRecord relations
-    # it { expect(subject).to belong_to(:sku) }
+    it { expect(subject).to belong_to(:sku) }
 
     # # Validation
-    # it { expect(subject).to validate_presence_of(:description) }
-    # it { expect(subject).to validate_presence_of(:adjustment) }
+    it { expect(subject).to validate_presence_of(:description) }
+    it { expect(subject).to validate_presence_of(:adjustment) }
+
+    describe "When listing all categories" do
+        let!(:stock_1) { create(:stock_adjustment, adjusted_at: 1.day.ago, duplicate: true) }
+        let!(:stock_2) { create(:stock_adjustment, adjusted_at: Time.current, duplicate: true) }
+        let!(:stock_3) { create(:stock_adjustment, adjusted_at: 3.days.ago, duplicate: true) }
+
+        it "should return an array of 'active' categories" do
+            expect(StockAdjustment.all).to match_array([stock_2, stock_1, stock_3])
+        end
+    end
 
     describe "Validating the stock value before an adjustment value is applied" do
         let!(:sku) { create(:sku, stock: 10) }
@@ -100,4 +110,22 @@ describe StockAdjustment do
         end
     end
 
+    describe "Validating collection of StockAdjustment records" do
+
+        context "if the collection has an invalid record" do
+            let(:collection) { attributes_for_list(:stock_adjustment, 3, adjustment: nil) }            
+
+            it "should return false" do
+                expect(StockAdjustment.valid_collection?(collection)).to eq false
+            end
+        end
+
+        context "if the collection has all valid records" do
+            let(:collection) { attributes_for_list(:stock_adjustment, 5) }            
+
+            it "should return true" do
+                expect(StockAdjustment.valid_collection?(collection)).to eq true
+            end
+        end
+    end
 end

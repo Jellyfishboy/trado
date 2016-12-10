@@ -1,0 +1,30 @@
+<% content_for :title, 'New Stock' %>
+<% content_for :breadcrumb, 'New' %>
+<% breadcrumb_add 'Products', admin_products_path %>
+<% breadcrumb_add 'Stock Management', admin_products_stock_index_path %>
+
+<%= form_for [:admin, Sku.new], url: admin_products_stock_adjustments_path, method: :post, html: { id: 'new_stock_adjustments', role: 'form' } do |f| %>
+  <div class="twelvecol">
+    <div class="page-header">
+      <%= add_stock_adjustment_fields f %>
+      <h2 class="widget widget-header">New Stock</h2>
+    </div>
+    <div class="twelvecol">
+      <div class="json" id="errors">
+        <ul></ul>
+      </div>
+    </div>
+    <div class="twelvecol">
+      <fieldset class="widget widget-content widget-last">
+        <div id="stock-adjustment-fields">
+          <%= f.fields_for :stock_adjustments do |builder| %>
+            <%= render partial: 'admin/products/stock_adjustments/fields', locals: { f: builder } %>
+          <% end %>
+        </div>
+      </fieldset>
+      <div class="form-action">
+        <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+      </div>
+    </div>
+</div>
+<% end %>

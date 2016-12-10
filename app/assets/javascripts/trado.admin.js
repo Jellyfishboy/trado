@@ -4,7 +4,7 @@ trado.admin =
     {
         var content, value, _i, _len, _ref, $this;
         $this = form;
-        content = $this.children('#errors');
+        content = $this.find('#errors');
         content.find('ul').empty();
         _ref = $.parseJSON(xhr.responseText).errors;
         // Append errors to list on page
@@ -566,7 +566,7 @@ trado.admin =
         });
     },
 
-    displayTransaction: function()
+    showTransaction: function()
     {
         $('body').on('click', '.transaction-info-modal', function ()
         {
@@ -586,4 +586,47 @@ trado.admin =
             return false;
         });
     },
+
+    collectionCreateStockAdjustment: function()
+    {
+        $('#new_stock_adjustments').submit(function() {
+            var $form = $(this);
+            $('input[type=submit]').attr('disabled', true);
+
+            $.ajax(
+            {
+                url: '/admin/products/stock_adjustments',
+                type: 'POST',
+                data: $form.serialize(),
+                dataType: 'json',
+                success: function (data)
+                {
+                    $form[0].submit();
+                },
+                error: function(xhr, evt, status)
+                {
+                    $('input[type=submit]').attr('disabled', false);
+                    trado.admin.jsonErrors(xhr, evt, status, $form);
+                }
+            });
+            return false;
+        });
+    },
+
+    addStockAdjustmentfields: function(content) 
+    {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("sku_stock_adjustments", "g")
+        $('#stock-adjustment-fields').append(content.replace(regexp, new_id));
+        $('select.chosen').chosen();
+    },
+    
+    removeStockAdjustmentFields: function(link) 
+    {
+        if ($('#stock-adjustment-fields .fields:not(.deleted)').length > 1)
+        {
+            $(link).prev("input[type=hidden]").val("1");
+            $(link).closest(".fields").addClass('deleted').hide();
+        }
+    }
 }

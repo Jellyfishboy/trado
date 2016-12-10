@@ -23,7 +23,7 @@
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
-  :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes, :duplicate
+  :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes, :duplicate, :stock_adjustment_attributes
 
   attr_accessor :duplicate
   
@@ -52,7 +52,7 @@ class Sku < ActiveRecord::Base
   
   before_destroy :set_product_as_draft,                               if: :last_active_sku?
 
-  accepts_nested_attributes_for :variants
+  accepts_nested_attributes_for :variants, :stock_adjustments
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
 

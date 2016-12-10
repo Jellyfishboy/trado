@@ -33,6 +33,7 @@
 #
 
 require 'reportatron_4000'
+require 'modulatron_4000'
 
 class Order < ActiveRecord::Base
   include HasShippingDateValidation

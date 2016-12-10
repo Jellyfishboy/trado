@@ -18,9 +18,9 @@
 
 class StockAdjustment < ActiveRecord::Base
 
-  attr_accessible :adjustment, :description, :sku_id, :stock_total, :duplicate
+  attr_accessible :adjustment, :description, :sku_id, :stock_total, :_destroy, :duplicate
 
-  attr_accessor :duplicate
+  attr_accessor :_destroy, :duplicate
 
   belongs_to :sku
 
@@ -31,9 +31,9 @@ class StockAdjustment < ActiveRecord::Base
   after_create :send_stock_notifications,                        unless: :duplicate
   before_validation :set_current_time_as_adjusted,               unless: :duplicate
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(adjusted_at: :desc) }
 
-  scope :active,                                                 -> { where('description IS NOT NULL') }
+  scope :active,                                                 -> { where.not(description: nil) }
 
   # Modify the sku stock with the associated stock level adjustment value
   #
@@ -61,6 +61,10 @@ class StockAdjustment < ActiveRecord::Base
   #
   def send_stock_notifications
     SendStockNotificationsJob.perform_later(sku)
+  end
+
+  def self.valid_collection? collection
+    collection.map{|i| self.new(i).valid? }.include?(false) ? false : true
   end
 
   # Sets the current records adjusted_at attribute to the current time and date

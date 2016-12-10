@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::StockAdjustmentsController do
+describe Admin::Skus::StockAdjustmentsController do
 
     store_setting
     login_admin
