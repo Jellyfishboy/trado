@@ -4,7 +4,7 @@ describe StockHelper do
 
     describe '#latest_stock_adjustment' do
         let!(:sku) { create(:sku, active: true) }
-        let!(:stock_adjustment) { create(:stock_adjustment, sku_id: sku.id, created_at: Date.yesterday) }
+        let!(:stock_adjustment) { create(:stock_adjustment, sku_id: sku.id, adjusted_at: Date.yesterday, duplicate: true) }
         
         context "if the stock adjustment is equal to the latest SKU stock adjustment record" do
 
