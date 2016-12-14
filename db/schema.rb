@@ -322,16 +322,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.string   "currency",                                            default: "GBP|£"
     t.string   "tax_name",                                            default: "VAT"
     t.integer  "user_id"
-<<<<<<< HEAD
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
-    t.string   "ga_code",                               default: "UA-XXXXX-X"
-    t.boolean  "ga_active",                             default: false
-    t.decimal  "tax_rate",      precision: 8, scale: 2, default: 20.0
-    t.boolean  "tax_breakdown",                         default: false
-    t.string   "theme_name",                            default: "redlight"
-    t.string   "locale",                                default: "en"
-=======
     t.datetime "created_at",                                                                        null: false
     t.datetime "updated_at",                                                                        null: false
     t.string   "ga_code",                                             default: "UA-XXXXX-X"
@@ -340,7 +330,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.boolean  "tax_breakdown",                                       default: false
     t.string   "theme_name",                                          default: "redlight"
     t.string   "locale",                                              default: "en"
->>>>>>> master
   end
 
   create_table "taggings", force: :cascade do |t|
