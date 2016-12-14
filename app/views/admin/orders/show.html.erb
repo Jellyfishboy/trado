@@ -1,54 +1,60 @@
 <% content_for :title, t('orders.show.title', order_id: @order.id) %>
 <% content_for :breadcrumb, "##{@order.id}" %>
 <% breadcrumb_add t('orders.show.orders_index'), admin_orders_path %>
+<% javascript :footer, 'admin/soca.datepicker' %>
 
 <div class="twelvecol">
   <div class="page-header">
     <%= link_to cancel_admin_order_path(@order), :class => "btn btn-red btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('orders.show.cancel_order_tooltip'), method: :delete, data: { confirm: 'Are you sure?' } do %>
       <i class="icon-close"></i>
     <% end %>
+    <a href="#" data-record-id="<%= @order.id %>" class="edit-order-record btn btn-blue btn-large" data-placement="bottom" data-toggle="tooltip" title="Edit Order">
+      <i class="icon-pencil"></i>
+    </a>
     <h2 class="widget widget-header">
       <%= t('orders.show.header', order_id: @order.id) %>
     </h2>
   </div>
 </div>
-<div class="row">
-  <div class="threecol">
+<div class="row order-summary-row">
+  <div class="sixcol">
     <div class="widget-sub-heading">
       <h3><%= t('orders.show.delivery_details.header') %></h3>
     </div>
-    <div class="widget widget-content">
-      <ul>
-        <li>
-          <b><%= t('orders.show.delivery_details.email') %></b>:
-          <%= @order.email %>
-        </li>
-        <li>
-          <b><%= t('orders.show.delivery_details.status') %></b>:
-          <%= status_label @order, @order.shipping_status %>
-        </li>
-        <li>
-          <b><%= t('orders.show.delivery_details.dispatch_date') %></b>:
-          <%= @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") unless @order.shipping_date.nil?  %>
-        </li>
-        <li>
-          <b><%= t('orders.show.delivery_details.delivery_service') %>:</b>
-          <%= @order.delivery.full_name %>
-        </li>
-        <% unless @order.consignment_number.nil? || @order.delivery_service.tracking_url.nil? %>
-          <li>
-            <b><%= t('orders.show.delivery_details.tracking') %>:</b>
-            <%= link_to @order.consignment_number, Store.tracking_url(@order.delivery_service.tracking_url, @order.consignment_number), target: '_blank' %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="widget widget-content" id="delivery-details">
+      <div id="email"> 
+        <p><b><%= t('orders.show.delivery_details.email') %></b>: <%= @order.email %></p>
+      </div>
+      <div id="delivery-status">
+        <p><b><%= t('orders.show.delivery_details.status') %></b>: <%= status_label @order, @order.shipping_status %></p>
+      </div>
+      <div id="dispatch-date">
+        <p><b><%= t('orders.show.delivery_details.dispatch_date') %></b>: <span><%= @order.shipping_date.present? ? @order.shipping_date.strftime(" #{@order.shipping_date.day.ordinalize} %b %Y") : "None Available"   %></span></p>
+      </div>
+      <div>
+        <p><b><%= t('orders.show.delivery_details.delivery_service') %>:</b> <%= @order.delivery.full_name %></p>
+      </div>
+      <div id="tracking">
+        <%= render partial: 'admin/orders/tracking', format: :html, locals: { order: @order } %>
+      </div>
     </div>
   </div>
-  <div class="threecol">
+  <div class="sixcol last">
+    <div class="widget-sub-heading">
+      <h3><%= t('orders.show.payment_details.header') %></h3>
+    </div>
+    <div class="widget widget-content">
+      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
+      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
+    </div>
+  </div>
+</div>
+<div class="row order-summary-row">
+  <div class="sixcol">
     <div class="widget-sub-heading">
       <h3><%= t('orders.show.billing_address.header') %></h3>
     </div>
-    <div class="widget widget-content">
+    <div class="widget widget-content" id="billing-address">
       <%= @order.billing_address.full_name %>
       <br/>
       <%= @order.billing_address.address %>
@@ -64,11 +70,11 @@
       <br/>
     </div>
   </div>
-  <div class="threecol">
+  <div class="sixcol last">
     <div class="widget-sub-heading">
       <h3><%= t('orders.show.delivery_address.header') %></h3>
     </div>
-    <div class="widget widget-content">
+    <div class="widget widget-content" id="delivery-address">
       <%= @order.delivery_address.full_name %>
       <br/>
       <%= @order.delivery_address.address %>
@@ -82,15 +88,6 @@
       <br/>
       <%= @order.delivery_address.telephone %>
       <br/>
-    </div>
-  </div>
-  <div class="threecol last">
-    <div class="widget-sub-heading">
-      <h3><%= t('orders.show.payment_details.header') %></h3>
-    </div>
-    <div class="widget widget-content">
-      <%= image_tag "paypal-icon.png" if Modulatron4000.paypal? && @order.paypal? %>
-      <%= stripe_admin_credit_card_data(@order) if Modulatron4000.stripe? && @order.stripe? %>
     </div>
   </div>
 </div>
@@ -227,3 +224,4 @@
   </div>
 </div>
 <div id="transaction-modal"></div>
+<div id="order-modal"></div>

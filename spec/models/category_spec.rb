@@ -55,5 +55,4 @@ describe Category do
             expect(Category.last(3)).to match_array([category_2, category_3, category_1])
         end
     end
-    
 end

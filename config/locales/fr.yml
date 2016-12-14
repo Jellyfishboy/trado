@@ -4,27 +4,27 @@ fr:
       title: Accessoires
       breadcrumb: Accessoires
       header: Accessoires
-      add_tooltip: Add Accessory
+      add_tooltip: Ajouter des accessoires
       no_records: Vous n'avez aucun accessoire pour le moment.
-      part_number: Part no.
+      part_number: Pièce n°
       name: Nom
       weight: Poids
-      cost_value: Cost Value
+      cost_value: Valeur économique
       net_price: Prix Net
       gross_price: Prix Brut
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
+        header: Détails de l'accessoire
+        description: Définissez le nom et le nombre de pièce pour votre accessoire.
         name_label: Nom
-        part_number_label: Part Number
+        part_number_label: Numéro de pièce
       weight_price:
         header: Poids & Prix
-        description: Set the weight, net price and original cost value for your accessory.
+        description: Régler le poids, le prix net et la valeur de coût initial de votre accessoire.
         weight_label: Poids
-        cost_value_label: Cost Value
+        cost_value_label: Valeur économique
         net_price_label: Prix Net
-      submit_button: Submit
+      submit_button: Envoyer
     edit:
       title: Modifier Accessoire
       breadcrumb: Modifier
@@ -32,7 +32,7 @@ fr:
       header: Modifier Accessoire
     new:
       title: Nouvel Accessoire
-      breadcrumb: New
+      breadcrumb: Nouveau
       accessory_index: Accessoires
       header: Nouvel Accessoire
   dashboard:
@@ -55,42 +55,42 @@ fr:
     breadcrumb: Paramètres
     header: Paramètres
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Détails de la boutique
+      description: Enregistrer le nom, le courriel, le logo et le thème de votre boutique. L’email sera utilisé pour le formulaire de contact et l’administration de mises à jour importante.
       name_label: Nom
       email_label: E-mail
       logo_label: Logo
-      theme_label: Theme
+      theme_label: ' Thème'
     language:
       header: Langue
       description: Définir la langue pour le tableau de bord de gestion.
       language_label: Langue
     tax:
       header: Taxe
-      description: Set the name and percentage rate of your tax.
+      description: Définissez le nom et le pourcentage du taux de votre taxe.
       name_label: Nom
-      rate_label: Rate
+      rate_label: Taux
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      header: Affichage de monnaie & prix
+      description: Régler l’unité de monnaie que vous utilisez dans votre magasin et si vous aimeriez que vos clients puissent voir les prix des produits y compris et hors taxes.
       currency_label: Devise
       price_exc_label: Prix TTC & HT
       price_inc_label: Prix TTC
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: Newsletter de MailChimp
+      description: Définir la liste de MailChimp à votre newsletter.
+      list_id_label: Liste d'Id
     stripe:
       header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      description: Définir le texte que vous souhaitez afficher sur les relevés de carte de crédit du client.
+      statement_descriptor_label: Descripteur d’instruction
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
+      description: Activer et configurer le code de suivi web pour votre magasin.
+      tracking_code_label: Code de suivi Web
       enabled_label: Activé
       disabled_label: Désactivé
-    submit_button: Submit
+    submit_button: Envoyer
   categories:
     index:
       title: Catégories
@@ -102,76 +102,125 @@ fr:
       description: Description
       sorting: Tri
       active: Actif
-      no_of_products: No. of Products
+      no_of_products: N ° des produits
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
+        header: Détails de la catégorie
+        description: Définir le nom, la description et l’ordre de tri pour votre catégorie.
+        name_label: Nom
         description_label: Description
-        sorting_label: Sorting
+        sorting_label: Trier par
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        header: Moteurs de recherche
+        description: Mettre en place le titre de la page et sa meta description pour aider à définir comment une page s’affiche dans les moteurs de recherche.
+        page_title_label: Titre de la page
         meta_description_label: Meta Description
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
+        header: Visibilité
+        description: Définissez si la catégorie est visible sur votre vitrine.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Caché
+      submit_button: Envoyer
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Modifier la Catégorie
+      breadcrumb: Modifier
+      category_index: Catégories
+      header: Modifier la Catégorie
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nouvelle Catégorie
+      breadcrumb: Nouveau
+      category_index: Catégories
+      header: Nouvelle Catégorie
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
+      title: Remise des prix pour %{service_name}
+      header: Remise des prix pour %{service_name}
+      delivery_service_index: Services de livraison
+      add_tooltip: Ajouter le prix de livraison
+      no_records: Vous n’avez pas encore de prix pour %{service_name}.
       code: Code
       description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      weight: Paramètres de poids
+      length: Paramètres de longueur
+      thickness: Paramètres d’épaisseur
+      net_price: Prix net
+      gross_price: Prix brut
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        header: Détails du prix de livraison
+        description: Définir le code, le prix et la description pour ce prix de livraison.
         code_label: Code
-        price_label: Price
+        price_label: Prix
         description_label: Description
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Allocation de dimension
+        description: Spécifier l’allocation de dimension et de poids pour ce prix de livraison.
+        min_weight_label: Poids minimum
+        max_weight_label: Poids maximal
+        min_length_label: Longueur minimale
+        max_length_label: Longueur maximale
+        min_thickness_label: Épaisseur minimale
+        max_thickness_label: Épaisseur maximale
+      submit_button: Envoyer
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Modifier le prix de livraison
+      breadcrumb: Modifier
+      delivery_service_index: Services de livraison
+      header: Modifier les prix de livraison
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Nouvelle tarification de livraison
+      breadcrumb: Nouveau
+      delivery_service_index: Services de livraison
+      header: Nouvelle tarification de livraison
+  delivery_services:
+    countries_modal:
+      header: Copier les services de livraison du pays
+      description: 'Sélectionnez quel service de livraison vous souhaitez copier la liste des pays :'
+      select_prompt: Sélectionnez un service de livraison...
+      close_modal: Fermer
+      submit_button: Envoyer
+    index:
+      title: Services de livraison
+      breadcrumb: Services de livraison
+      header: Services de livraison
+      add_tooltip: Ajoutez un service de livraison
+      no_records: Vous n’avez pas encore de service de livraison.
+      courier: Courrier
+      name: Nom
+      description: Description
+      code: Code
+      net_price: Prix net
+      gross_price: Prix brut
+    form:
+      delivery_service_details:
+        header: Détails du Service livraison
+        description: Définissez le courrier du nom de la compagnie, nom et description de votre service de livraison.
+        courier_name_label: Nom de messagerie
+        name_label: Nom
+        description_label: Description
+      order_constraints:
+        header: Contraintes d’ordre
+        description: Limiter un service de livraison par le prix total d’une commande.
+        price_range_label: Fourchette de prix
+      tracking:
+        header: Numéro de suivi
+        description_html: 'Mise en place du suivi de votre service de livraison. Utilisez <b>{{consignment_number}}</b> pour insérer le numéro d’envoi.'
+        tracking_url_label: Url de suivi
+      countries:
+        header: Pays
+        description_html: 'Sélectionnez les pays qui sont disponibles pour ce service de livraison, ou <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}"> copier</a> une liste de pays de service existante.'
+        country_placeholder: Sélectionnez les pays associés...
+      submit_button: Envoyer
+    edit:
+      title: Modifier le Service de livraison
+      breadcrumb: Modifier
+      delivery_service_index: Services de livraison
+      header: Modifier le Service de livraison
+    new:
+      title: Ajoutez un service de livraison
+      breadcrumb: Nouveau
+      delivery_service_index: Services de livraison
+      header: Ajoutez un service de livraison
   devise:
     confirmations:
       confirmed: "Votre compte a bien été confirmé. Vous êtes maintenant connecté."
@@ -222,9 +271,9 @@ fr:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "a expirée, veuillez en demander une nouvelle"
+      not_found: "pas trouvé"
+      not_locked: "n’était pas verrouillée"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 erreur a empêché l'enregistrement de %{resource} :"
+        other: "%{count} erreurs ont empêché %{resource} d'être enregistré :"

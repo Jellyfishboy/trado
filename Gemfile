@@ -31,6 +31,7 @@ group :test do
   gem 'email_spec'
   gem 'fuubar'
   gem 'test_after_commit'
+  gem 'timecop'
 end
 
 group :development, :test do

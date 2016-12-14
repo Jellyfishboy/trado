@@ -7,28 +7,33 @@
 #
 # Table name: orders
 #
-#  id                   :integer          not null, primary key
-#  email                :string
-#  shipping_date        :datetime
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  actual_shipping_cost :decimal(8, 2)
-#  delivery_id          :integer
-#  ip_address           :string
-#  user_id              :integer
-#  net_amount           :decimal(8, 2)
-#  gross_amount         :decimal(8, 2)
-#  tax_amount           :decimal(8, 2)
-#  terms                :boolean
-#  cart_id              :integer
-#  shipping_status      :integer          default(0)
-#  consignment_number   :string
-#  payment_type         :integer
-#  browser              :string
-#  status               :integer          default(0)
+#  id                      :integer          not null, primary key
+#  email                   :string
+#  shipping_date           :datetime
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  actual_shipping_cost    :decimal(8, 2)
+#  delivery_id             :integer
+#  ip_address              :string
+#  user_id                 :integer
+#  net_amount              :decimal(8, 2)
+#  gross_amount            :decimal(8, 2)
+#  tax_amount              :decimal(8, 2)
+#  terms                   :boolean
+#  cart_id                 :integer
+#  shipping_status         :integer          default(0)
+#  consignment_number      :string
+#  payment_type            :integer
+#  browser                 :string
+#  status                  :integer          default(0)
+#  stripe_customer_id      :string
+#  stripe_card_last4       :string
+#  stripe_card_brand       :string
+#  stripe_card_expiry_date :string
 #
 
 require 'reportatron_4000'
+require 'modulatron_4000'
 
 class Order < ActiveRecord::Base
   include HasShippingDateValidation
@@ -114,10 +119,6 @@ class Order < ActiveRecord::Base
   		latest_transaction.completed? unless transactions.empty?
   	end
 
-  	def changed_shipping_date?
-  		completed? && dispatched? && shipping_date_changed? ? true : false
-  	end
-
   	def self.dashboard_data
   		return {
 	  		:completed => completed_collection.count,
@@ -143,7 +144,11 @@ class Order < ActiveRecord::Base
     end
 
     def tracking?
-      consignment_number.nil? || delivery_service.tracking_url.nil? ? false : true
+      consignment_number.present? && delivery_service.tracking_url.present? ? true : false
+    end
+
+    def updated_delivery_details?
+      completed? && dispatched?
     end
 
     def tracking_assignment

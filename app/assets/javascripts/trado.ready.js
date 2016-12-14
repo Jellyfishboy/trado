@@ -40,22 +40,17 @@ ready = function()
 
     trado.admin.newStockAdjustment();
     trado.admin.createStockAdjustments();
+    trado.admin.collectionCreateStockAdjustment();
 
     trado.admin.newVariants();
     trado.admin.resetVariants();
     trado.admin.amendVariants();
 
-    trado.admin.displayTransaction();
+    trado.admin.showTransaction();
 };
-
 $(document).ready(ready);
 $(document).on('page:change page:load', function()
 {
-    // $('.redactor').redactor({
-    //     replaceDivs: false,
-    //     convertDivs: false,
-    //     minHeight: 300
-    // });
     trado.misc.clearAllIntervals();
     $('[data-toggle=tooltip]').tooltip('hide');
     $('.main .container').removeClass('fadeOut').addClass('animated fadeIn');

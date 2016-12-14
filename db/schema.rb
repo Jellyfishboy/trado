@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112175414) do
+ActiveRecord::Schema.define(version: 20161208072239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,22 +192,26 @@ ActiveRecord::Schema.define(version: 20161112175414) do
   create_table "orders", force: :cascade do |t|
     t.string   "email"
     t.datetime "shipping_date"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.decimal  "actual_shipping_cost", precision: 8, scale: 2
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.decimal  "actual_shipping_cost",    precision: 8, scale: 2
     t.integer  "delivery_id"
     t.string   "ip_address"
     t.integer  "user_id"
-    t.decimal  "net_amount",           precision: 8, scale: 2
-    t.decimal  "gross_amount",         precision: 8, scale: 2
-    t.decimal  "tax_amount",           precision: 8, scale: 2
+    t.decimal  "net_amount",              precision: 8, scale: 2
+    t.decimal  "gross_amount",            precision: 8, scale: 2
+    t.decimal  "tax_amount",              precision: 8, scale: 2
     t.boolean  "terms"
     t.integer  "cart_id"
-    t.integer  "shipping_status",                              default: 0
+    t.integer  "shipping_status",                                 default: 0
     t.string   "consignment_number"
     t.integer  "payment_type"
     t.string   "browser"
-    t.integer  "status",                                       default: 0
+    t.integer  "status",                                          default: 0
+    t.string   "stripe_customer_id"
+    t.string   "stripe_card_last4"
+    t.string   "stripe_card_brand"
+    t.string   "stripe_card_expiry_date"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -248,6 +252,8 @@ ActiveRecord::Schema.define(version: 20161112175414) do
     t.integer  "status",            default: 0
     t.integer  "order_count",       default: 0
     t.string   "page_title"
+    t.string   "googlemerchant_brand"
+    t.string   "googlemerchant_category"
   end
 
   create_table "redactor_assets", force: :cascade do |t|
@@ -311,14 +317,16 @@ ActiveRecord::Schema.define(version: 20161112175414) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "stock_total"
+    t.datetime "adjusted_at"
   end
 
   create_table "store_settings", force: :cascade do |t|
-    t.string   "name",                                  default: "Trado"
-    t.string   "email",                                 default: "admin@example.com"
-    t.string   "currency",                              default: "GBP|£"
-    t.string   "tax_name",                              default: "VAT"
+    t.string   "name",                                                default: "Trado"
+    t.string   "email",                                               default: "admin@example.com"
+    t.string   "currency",                                            default: "GBP|£"
+    t.string   "tax_name",                                            default: "VAT"
     t.integer  "user_id"
+<<<<<<< HEAD
     t.datetime "created_at",                                                          null: false
     t.datetime "updated_at",                                                          null: false
     t.string   "ga_code",                               default: "UA-XXXXX-X"
@@ -327,6 +335,17 @@ ActiveRecord::Schema.define(version: 20161112175414) do
     t.boolean  "tax_breakdown",                         default: false
     t.string   "theme_name",                            default: "redlight"
     t.string   "locale",                                default: "en"
+=======
+    t.datetime "created_at",                                                                        null: false
+    t.datetime "updated_at",                                                                        null: false
+    t.string   "ga_code",                                             default: "UA-XXXXX-X"
+    t.boolean  "ga_active",                                           default: false
+    t.decimal  "tax_rate",                    precision: 8, scale: 2, default: 20.0
+    t.boolean  "tax_breakdown",                                       default: false
+    t.string   "theme_name",                                          default: "redlight"
+    t.string   "stripe_statement_descriptor"
+    t.string   "locale",                                              default: "en"
+>>>>>>> master
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -355,6 +374,7 @@ ActiveRecord::Schema.define(version: 20161112175414) do
     t.string   "status_reason"
     t.integer  "payment_status",                           default: 0
     t.integer  "error_code"
+    t.string   "stripe_charge_id"
   end
 
   create_table "users", force: :cascade do |t|

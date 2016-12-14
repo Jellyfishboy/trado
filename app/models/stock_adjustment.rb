@@ -13,27 +13,31 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  stock_total :integer
+#  adjusted_at :datetime
 #
 
 class StockAdjustment < ActiveRecord::Base
 
-  attr_accessible :adjustment, :description, :sku_id, :stock_total
+  attr_accessible :adjustment, :description, :sku_id, :stock_total, :_destroy, :duplicate
+
+  attr_accessor :_destroy, :duplicate
 
   belongs_to :sku
 
-  validates :description, :adjustment,                      presence: true
+  validates :description, :adjustment, :adjusted_at,             presence: true
   validate :adjustment_value
 
-  before_save :stock_adjustment
-  after_create :send_stock_notifications
+  before_save :adjust_sku_stock,                                 unless: :duplicate
+  after_create :send_stock_notifications,                        unless: :duplicate
+  before_validation :set_current_time_as_adjusted,               unless: :duplicate
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(adjusted_at: :desc) }
 
-  scope :active,                                            -> { where('description IS NOT NULL') }
+  scope :active,                                                 -> { where.not(description: nil) }
 
   # Modify the sku stock with the associated stock level adjustment value
   #
-  def stock_adjustment
+  def adjust_sku_stock
     if Store.positive?(self.adjustment)
       self.stock_total = self.sku.stock + self.adjustment
       self.sku.update_column(:stock, self.sku.stock + self.adjustment)
@@ -53,7 +57,19 @@ class StockAdjustment < ActiveRecord::Base
     end
   end
 
+  # Send Stock Notifications to users
+  #
   def send_stock_notifications
     SendStockNotificationsJob.perform_later(sku)
+  end
+
+  def self.valid_collection? collection
+    collection.map{|i| self.new(i).valid? }.include?(false) ? false : true
+  end
+
+  # Sets the current records adjusted_at attribute to the current time and date
+  #
+  def set_current_time_as_adjusted
+    self.adjusted_at = Time.current
   end
 end
