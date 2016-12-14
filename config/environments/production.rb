@@ -66,7 +66,7 @@ Trado::Application.configure do
 
 	config.assets.prefix = '/assets'
 
-	config.serve_static_assets = true
+	config.serve_static_files = true
 
 	# Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
 	# config.assets.precompile += %w( search.js )
