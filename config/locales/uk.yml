@@ -172,6 +172,55 @@ uk:
       breadcrumb: New
       delivery_service_index: Delivery Services
       header: New Delivery Pricing
+  delivery_services:
+    countries_modal:
+      header: Copy Delivery Service Countries
+      description: 'Select which delivery service you would like to copy the country list from:'
+      select_prompt: Select a delivery service...
+      close_modal: Close
+      submit_button: Submit
+    index:
+      title: Delivery Services
+      breadcrumb: Delivery Services
+      header: Delivery Services
+      add_tooltip: Add Delivery Service
+      no_records: You don't have any delivery services yet.
+      courier: Courier
+      name: Name
+      description: Description
+      code: Code
+      net_price: Net Price
+      gross_price: Gross Price
+    form:
+      delivery_service_details:
+        header: Delivery Service Details
+        description: Set the courier company name, name and description of your delivery service.
+        courier_name_label: Courier Name
+        name_label: Name
+        description_label: Description
+      order_constraints:
+        header: Order Constraints
+        description: Limit a delivery service by the total price of an order.
+        price_range_label: Price Range
+      tracking:
+        header: Tracking
+        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
+        tracking_url_label: Tracking Url
+      countries:
+        header: Countries
+        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
+        country_placeholder: Select associated countries...
+      submit_button: Submit
+    edit:
+      title: Edit Delivery Service
+      breadcrumb: Edit
+      delivery_service_index: Delivery Services
+      header: Edit Delivery Service
+    new:
+      title: New Delivery Service
+      breadcrumb: New
+      delivery_service_index: Delivery Services
+      header: New Delivery Service
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."

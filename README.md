@@ -17,8 +17,10 @@ Or maybe you just want to browse around the application? Then head on over to ou
 
 This is a list of modules which are supported by the Trado platform. These modules allow users to set up additional functionality within the application:
 
-* [PayPal payment gateway](http://github.com/Jellyfishboy/trado-paypal-module)
-* [Google Merchant product feed](http://github.com/Jellyfishboy/trado-googlemerchant-module)
+* [PayPal payment gateway](https://github.com/Jellyfishboy/trado-paypal-module)
+* [Google Merchant product feed](https://github.com/Jellyfishboy/trado-googlemerchant-module)
+* [Stripe](https://github.com/Jellyfishboy/trado-stripe-module)
+* [Mailchimp](https://github.com/Jellyfishboy/trado-mailchimp-module)
 
 ## Community
 

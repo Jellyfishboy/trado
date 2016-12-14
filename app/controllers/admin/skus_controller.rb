@@ -47,7 +47,8 @@ class Admin::SkusController < Admin::AdminBaseController
       @sku.code = @old_sku.code
       ###
     end
-    @sku.attributes = params[:sku]
+    # duplicate true to allow sku duplicates to bypass new record callbacks and validation
+    @sku.attributes = params[:sku].merge(duplicate: true)
     @sku.product_id = @old_sku.product.id if @old_sku
 
     if @sku.save
@@ -55,6 +56,7 @@ class Admin::SkusController < Admin::AdminBaseController
         @old_sku.stock_adjustments.each do |sa|
           new_stock_adjustment = sa.dup
           new_stock_adjustment.sku_id = @sku.id
+          new_stock_adjustment.duplicate = true
           new_stock_adjustment.save!
         end
         @old_sku.variants.each do |variant|

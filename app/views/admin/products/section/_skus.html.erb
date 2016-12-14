@@ -1,8 +1,8 @@
 <div class="threecol">
   <h3>Variants</h3>
   <p>Configure the variant options for selling this product.</p>
-  <%= link_to 'Variant options', new_admin_product_skus_variant_path(product_id: @product.id), remote: true, :class => 'btn btn-blue btn-normal', id: 'sku-variant-options-button' %>
-  <%= link_to 'Add variant', new_admin_product_sku_path(product_id: @product.id), remote: true, :class => @product.skus.empty? ? "btn btn-green btn-normal hide" : "btn btn-green btn-normal", id: 'add-sku-button' %>
+  <%= link_to 'Variant options', new_admin_product_skus_variant_path(product_id: @product.id), remote: true, class: 'btn btn-blue btn-normal', id: 'sku-variant-options-button' %>
+  <%= link_to 'Add variant', new_admin_product_sku_path(product_id: @product.id), remote: true, class: @product.skus.empty? ? "btn btn-green btn-normal hide" : "btn btn-green btn-normal", id: 'add-sku-button' %>
 </div>
 <div class="ninecol last">
     <fieldset class="widget widget-content" id="skus">

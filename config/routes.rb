@@ -81,7 +81,7 @@ Trado::Application.routes.draw do
         patch :autosave, on: :member
 	  		resources :attachments, except: :index
 	  		resources :skus, except: [:index, :show] do
-	  			resources :stock_adjustments, only: [:create, :new]
+	  			resources :stock_adjustments, only: [:create, :new], controller: 'skus/stock_adjustments'
 	  		end
 	  		namespace :skus do
 	  			resources :sku_variants, as: 'variants', path: 'variants', controller: :variants, only: :new do
@@ -107,6 +107,7 @@ Trado::Application.routes.draw do
   		namespace :products do
   			resources :tags, only: :index
   			resources :stock, only: [:index, :show]
+        resources :stock_adjustments, only: [:new, :create]
   		end
 	  	resources :pages, except: [:show, :destroy, :new, :create]
 	  	get '/settings' => 'admin#settings'

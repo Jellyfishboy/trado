@@ -6,7 +6,7 @@ describe Payatron4000 do
         let!(:order) { create(:complete_order) }
         let(:update) { Payatron4000.update_stock(order) }
         before(:each) do
-            create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20, created_at: 1.day.ago)
+            create(:stock_adjustment, sku_id: order.skus.first.id, stock_total: 20, adjusted_at: 1.day.ago, duplicate: true)
         end
 
         it "should set the correct stock_total for the new stock_adjustment record" do
@@ -19,7 +19,7 @@ describe Payatron4000 do
             expect {
                 update
             }.to change {
-                order.order_items.first.sku.stock }.by(-5)
+                order.skus.first.stock }.by(-5)
         end
 
         it "should create a new StockAdjustment record" do

@@ -23,7 +23,9 @@
 class Sku < ActiveRecord::Base
   
   attr_accessible :cost_value, :price, :code, :stock, :stock_warning_level, :length, 
-  :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes
+  :weight, :thickness, :product_id, :accessory_id, :active, :variants_attributes, :duplicate, :stock_adjustment_attributes
+
+  attr_accessor :duplicate
   
   has_many :cart_items
   has_many :carts,                                                    through: :cart_items
@@ -41,16 +43,16 @@ class Sku < ActiveRecord::Base
   :weight, :thickness, :code,                                         presence: true
   validates :price, :cost_value,                                      format: { with: /\A(\$)?(\d+)(\.|,)?\d{0,2}?\z/ }
   validates :length, :weight, :thickness,                             numericality: { greater_than_or_equal_to: 0 }
-  validates :stock, :stock_warning_level,                             presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, :if => :new_record?
-  validate :stock_values,                                             on: :create
+  validates :stock, :stock_warning_level,                             presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }, if: :new_non_duplicate?
+  validate :stock_values,                                             on: :create, if: :new_non_duplicate?
   validates :code,                                                    uniqueness: { scope: [:product_id, :active] }
   validate :variant_duplication
 
   after_update :update_cart_items_weight                             
   
-  before_destroy :set_product_as_draft,                               :if => :last_active_sku?
+  before_destroy :set_product_as_draft,                               if: :last_active_sku?
 
-  accepts_nested_attributes_for :variants
+  accepts_nested_attributes_for :variants, :stock_adjustments
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
 
@@ -128,5 +130,12 @@ class Sku < ActiveRecord::Base
   # @return [Boolean]
   def low_stock?
     stock < stock_warning_level ? true : false
+  end
+
+  # Checks if the record is new and not a duplicate of another record
+  #
+  # @return [Boolean]
+  def new_non_duplicate?
+    new_record? && !duplicate
   end
 end

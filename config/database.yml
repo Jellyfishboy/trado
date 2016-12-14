@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: trado_dev
+  database: trado_live
   pool: 5
   username: tomdallimore
   password: 
@@ -16,19 +16,19 @@ development:
   # password:
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: trado_test
-  pool: 5
-  username: tomdallimore
-  password: 
-  # adapter: mysql2
-  # encoding: utf8
+  # adapter: postgresql
+  # encoding: unicode
   # database: trado_test
-  # host: localhost
-  # pool: 30
-  # username: root
-  # password:
+  # pool: 5
+  # username: tomdallimore
+  # password: 
+  adapter: mysql2
+  encoding: utf8
+  database: trado_test
+  host: localhost
+  pool: 30
+  username: root
+  password:
 
 
 production:
