@@ -19,7 +19,6 @@
 #  status_reason    :string
 #  payment_status   :integer          default(0)
 #  error_code       :integer
-#  stripe_charge_id :string
 #
 
 class Transaction < ActiveRecord::Base
