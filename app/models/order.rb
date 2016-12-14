@@ -26,10 +26,6 @@
 #  payment_type            :integer
 #  browser                 :string
 #  status                  :integer          default(0)
-#  stripe_customer_id      :string
-#  stripe_card_last4       :string
-#  stripe_card_brand       :string
-#  stripe_card_expiry_date :string
 #
 
 require 'reportatron_4000'
