@@ -55,6 +55,7 @@ class Sku < ActiveRecord::Base
   accepts_nested_attributes_for :variants, :stock_adjustments
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
+  scope :in_stock,                                                    -> { where('stock > ?', 0) }
 
   include ActiveScope
 
