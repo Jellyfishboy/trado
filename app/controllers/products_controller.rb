@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     end
 
     def set_skus
-        @skus = @product.active_skus
+        @skus = @product.active_skus.sort_by{|s| s.in_stock? ? 0 : 1}
     end
 
     def set_variant_types

@@ -58,14 +58,14 @@ class Product < ActiveRecord::Base
 
   validates :name, :sku, :part_number,                        presence: true
   validates :meta_description, :description, 
-  :weighting, :category_id, :page_title,                      presence: true, :if => :published?
+  :weighting, :category_id, :page_title,                      presence: true, if: :published?
   validates :part_number, :sku, :name,                        uniqueness: { scope: :active }
   validates :page_title,                                      length: { maximum: 70, message: :too_long }
-  validates :meta_description,                                length: { maximum: 150, message: :too_long }, :if => :published?
-  validates :name,                                            length: { minimum: 10, message: :too_short }, :if => :published?
-  validates :description,                                     length: { minimum: 20, message: :too_short }, :if => :published?
-  validates :short_description,                               length: { maximum: 300, message: :too_long }, :if => :published?
-  validates :part_number,                                     numericality: { only_integer: true }, :if => :published?
+  validates :meta_description,                                length: { maximum: 150, message: :too_long }, if: :published?
+  validates :name,                                            length: { minimum: 10, message: :too_short }, if: :published?
+  validates :description,                                     length: { minimum: 20, message: :too_short }, if: :published?
+  validates :short_description,                               length: { maximum: 300, message: :too_long }, if: :published?
+  validates :part_number,                                     numericality: { only_integer: true }, if: :published?
 
   accepts_nested_attributes_for :skus
   accepts_nested_attributes_for :tags
@@ -111,6 +111,6 @@ class Product < ActiveRecord::Base
   #
   # @return [Object] sku record
   def first_available_sku
-    skus.active.order(price: :asc).first
+    skus.active.in_stock.order(price: :asc).first
   end
 end

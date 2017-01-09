@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: trado_live
+  database: trado_dev
   pool: 5
   username: tomdallimore
   password: 
