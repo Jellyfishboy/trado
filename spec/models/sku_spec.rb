@@ -223,4 +223,24 @@ describe Sku do
             end
         end
     end
+
+    describe "Scoping only in stock Skus" do
+        let!(:sku_1) { create(:sku, stock: 0, duplicate: true) }
+        let!(:sku_2) { create(:sku) }
+        let!(:sku_3) { create(:sku) }
+
+        it "should only list Skus which are in stock" do
+            expect(Sku.in_stock).to match_array([sku_2, sku_3])
+        end
+    end
+
+    describe "Scoping only complete Skus" do
+        let!(:sku_1) { create(:sku) }
+        let!(:sku_2) { create(:sku) }
+        let!(:sku_3) { create(:sku, stock: nil, duplicate: true) }
+
+        it "should only list Skus which are in stock" do
+            expect(Sku.complete).to match_array([sku_1, sku_2])
+        end
+    end
 end
