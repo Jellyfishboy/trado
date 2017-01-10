@@ -127,7 +127,8 @@ module Store
             translations = Dir.glob('config/locales/*').map { |locale| locale.split('/').last.split('.').first }
             locales = []
             translations.each do |t|
-                locales << [LanguageList::LanguageInfo.find(t).name, t]
+                value = (t == 'zh' ? 'zh-CN' : t)
+                locales << [LanguageList::LanguageInfo.find(t).name, value]
             end
             locales
         end
