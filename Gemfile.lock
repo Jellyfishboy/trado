@@ -21,7 +21,6 @@ PATH
     trado_pdf_invoice_module (0.1.0)
       rails (~> 4.2)
       wicked_pdf (~> 1)
-      wkhtmltopdf-binary (~> 0.12)
 
 GEM
   remote: https://rubygems.org/
@@ -610,7 +609,6 @@ GEM
     whenever (0.9.4)
       chronic (>= 0.6.3)
     wicked_pdf (1.1.0)
-    wkhtmltopdf-binary (0.12.3.1)
     xml-simple (1.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
