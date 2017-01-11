@@ -37,5 +37,9 @@ module Modulatron4000
         def mailchimp?
             Object.const_defined?('TradoMailchimpModule') ? true : false
         end
+
+        def pdf_invoice?
+            Object.const_defined?('TradoPdfInvoiceModule') ? true : false
+        end
     end
 end

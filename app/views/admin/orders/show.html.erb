@@ -11,6 +11,7 @@
     <a href="#" data-record-id="<%= @order.id %>" class="edit-order-record btn btn-blue btn-large" data-placement="bottom" data-toggle="tooltip" title="Edit Order">
       <i class="icon-pencil"></i>
     </a>
+    <%= page_header_button(@order) if Modulatron4000.pdf_invoice? %>
     <h2 class="widget widget-header">
       <%= "Order ##{@order.id}" %>
     </h2>

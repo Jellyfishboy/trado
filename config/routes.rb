@@ -1,10 +1,7 @@
 require 'sidekiq/web'
 
 Trado::Application.routes.draw do
-    mount TradoPdfInvoiceModule::Engine => '/'
-
-
-	root to: 'store#home'
+	  root to: 'store#home'
 
   	# Custom routes
   	get '/search' => 'search#results'
