@@ -208,10 +208,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.integer  "payment_type"
     t.string   "browser"
     t.integer  "status",                                          default: 0
-    t.string   "stripe_customer_id"
-    t.string   "stripe_card_last4"
-    t.string   "stripe_card_brand"
-    t.string   "stripe_card_expiry_date"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -333,7 +329,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.decimal  "tax_rate",                    precision: 8, scale: 2, default: 20.0
     t.boolean  "tax_breakdown",                                       default: false
     t.string   "theme_name",                                          default: "redlight"
-    t.string   "stripe_statement_descriptor"
     t.string   "locale",                                              default: "en"
   end
 
@@ -363,7 +358,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.string   "status_reason"
     t.integer  "payment_status",                           default: 0
     t.integer  "error_code"
-    t.string   "stripe_charge_id"
   end
 
   create_table "users", force: :cascade do |t|

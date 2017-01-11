@@ -19,7 +19,6 @@
 #  tax_rate                    :decimal(8, 2)    default(20.0)
 #  tax_breakdown               :boolean          default(FALSE)
 #  theme_name                  :string           default("redlight")
-#  stripe_statement_descriptor :string
 #  locale                      :string           default("en")
 #
 

@@ -47,7 +47,7 @@ Trado::Application.configure do
 
 	# Expands the lines which load the assets
 	config.assets.debug = true
-	config.serve_static_files = false
+	config.serve_static_files = true
 
 	config.action_mailer.asset_host = Rails.application.secrets.mailer_asset_url
 	config.action_controller.asset_host = Rails.application.secrets.asset_url
