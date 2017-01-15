@@ -21,6 +21,7 @@ This is a list of modules which are supported by the Trado platform. These modul
 * [Google Merchant product feed](https://github.com/Jellyfishboy/trado-googlemerchant-module)
 * [Stripe](https://github.com/Jellyfishboy/trado-stripe-module)
 * [Mailchimp](https://github.com/Jellyfishboy/trado-mailchimp-module)
+* [PDF Invoice](https://github.com/Jellyfishboy/trado-pdf-invoice-module)
 
 ## Community
 
