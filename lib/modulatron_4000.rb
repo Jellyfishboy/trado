@@ -38,6 +38,11 @@ module Modulatron4000
             Object.const_defined?('TradoMailchimpModule') ? true : false
         end
 
+        # Validates if the trado-pdf-invoice-module gem is active
+        # https://github.com/Jellyfishboy/trado-pdf-invoice-module
+        #
+        # @return [Boolean]
+        #
         def pdf_invoice?
             Object.const_defined?('TradoPdfInvoiceModule') ? true : false
         end
