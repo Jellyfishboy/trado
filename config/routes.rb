@@ -1,8 +1,7 @@
 require 'sidekiq/web'
 
 Trado::Application.routes.draw do
-
-	root to: 'store#home'
+	  root to: 'store#home'
 
   	# Custom routes
   	get '/search' => 'search#results'

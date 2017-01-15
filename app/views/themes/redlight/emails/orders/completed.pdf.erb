@@ -1,0 +1,345 @@
+<% content_for :title, "Order ##{@order.id} Complete" %>
+<% content_for :summary, "You have successfully completed an order with #{Store.settings.name}" %>
+
+<table class="jumbotron" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+          <tr>
+            <td class="jumbotron_cell jumbotron_image" align="center" valign="top" style="padding: 0;text-align: center;background-repeat: no-repeat;background-position: 50% 0;background-size: 100% auto;background-color: #2f363d;color: #ffffff;font-size: 0 !important;">
+                <!--[if (gte mso 9)|(IE)]>
+                <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                  <tbody>
+                    <tr>
+                      <td width="600" align="center" valign="top">
+                <![endif]-->
+                <div class="row" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;margin: 0 auto;">
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                    <tbody>
+                      <tr>
+                        <td width="600" align="center" valign="top">
+                  <![endif]-->
+                  <div class="col-3" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;">
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #ffffff;">
+                            <table class="icon_holder icon_primary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 48px;margin-left: auto;margin-right: auto;clear: both;">
+                              <tbody>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td class="icon_cell" style="padding: 8px 12px;font-size: 0;line-height: 1;-webkit-border-radius: 80px;border-radius: 80px;height: 48px;border: 2px solid;background-color: #4baec8;border-color: #4baec8;"><%= wicked_pdf_image_tag "redlight/basket-icon-white.png", width: 40, height: 40, style: 'line-height: 1;outline: none;border: 0;text-decoration: none;-ms-interpolation-mode: bicubic;mso-line-height-rule: exactly;' %></td>
+                                </tr>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table><!-- /.icon_holder:icon_primary -->
+                            <h1 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 32px;line-height: 40px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;color: #ffffff;">Order #<%= @order.id %></h1>
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><em><%= @order.created_at.strftime(" #{@order.created_at.day.ordinalize} %B %Y")  %></em></p>
+                            <table class="hruler hruler_primary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 62px;margin-left: auto;margin-right: auto;clear: both;">
+                              <tbody>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #4baec8;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table><!-- /.hruler:hruler_primary -->
+                            <h3 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 22px;line-height: 30px;font-weight: normal;color: #ffffff;">Thank you for placing your order.</h3>
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;">Your payment has successfully been processed. We'll let you know once your item(s) have dispatched.</p>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                  </div><!-- /.col-3 -->
+                  <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <![endif]-->
+                </div><!-- /.row -->
+                <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <![endif]-->
+            </td><!-- /.jumbotron_cell -->
+          </tr>
+        </tbody>
+      </table><!-- /.jumbotron -->
+      <table class="content" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+          <tr>
+            <td class="content_cell billing_information" align="center" valign="top" style="padding: 0;text-align: center;padding-top: 16px;padding-bottom: 8px;background-color: #fafafa;font-size: 0 !important;">
+                <!--[if (gte mso 9)|(IE)]>
+                <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                  <tbody>
+                    <tr>
+                      <td width="600" align="center" valign="top">
+                <![endif]-->
+                <div class="row" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;margin: 0 auto;">
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                    <tbody>
+                      <tr>
+                        <td width="300" align="center" valign="top">
+                  <![endif]-->
+                  <div class="col-2" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 300px;">
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;padding-top: 0;padding-bottom: 0;color: #888888;">
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;color: #333333;">Delivery Address</h2>
+                            <table class="hruler hruler_secondary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 62px;margin-left: auto;margin-right: auto;clear: both;">
+                              <tbody>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #dbdbdb;">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table><!-- /.hruler:hruler_secondary -->
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.delivery_address.full_name %><br>
+                              <%= @order.delivery_address.address %><br>
+                              <%= @order.delivery_address.city %>, <%= @order.delivery_address.county %> <%= @order.delivery_address.postcode %><br>
+                              <%= @order.delivery_address.country.name %></p>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                  </div><!-- /.col-2 -->
+                  <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                      <td width="300" align="center" valign="top">
+                  <![endif]-->
+                  <div class="col-2" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 300px;">
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;padding-top: 0;padding-bottom: 0;color: #888888;">
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;color: #333333;">Billing Address</h2>
+                            <table class="hruler hruler_secondary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 62px;margin-left: auto;margin-right: auto;clear: both;">
+                              <tbody>
+                                <tr>
+                                  <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #dbdbdb;">&nbsp;</td>
+                                </tr>
+                              </tbody>
+                            </table><!-- /.hruler:hruler_secondary -->
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;"><%= @order.billing_address.full_name %><br>
+                              <%= @order.billing_address.address %><br>
+                              <%= @order.billing_address.city %>, <%= @order.delivery_address.county %> <%= @order.billing_address.postcode %><br>
+                              <%= @order.billing_address.country.name %></p>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                  </div><!-- /.col-2 -->
+                  <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <![endif]-->
+                </div><!-- /.row -->
+                <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <![endif]-->
+            </td><!-- /.content_cell:billing_information -->
+          </tr>
+        </tbody>
+      </table><!-- /.content -->
+      <% @order.order_items.each do |item| %>
+          <table class="content" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+            <tbody>
+              <tr>
+                <td class="content_cell product_row" align="center" valign="top" style="padding: 24px 0;text-align: center;background-color: #ffffff;border-top: 1px solid;border-color: #ebebeb;font-size: 0 !important;">
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td width="600" align="center" valign="top">
+                    <![endif]-->
+                    <div class="row" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;margin: 0 auto;">
+                      <!--[if (gte mso 9)|(IE)]>
+                      <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                        <tbody>
+                          <tr>
+                            <td width="200" align="center" valign="top">
+                      <![endif]-->
+                      <div class="col-1" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 200px;">
+                        <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                          <tbody>
+                            <tr>
+                              <td class="column_cell font_default image_thumb" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #888888;">
+                                <img src="http://placehold.it/168x168"/>
+                                </td><!-- /.column_cell:image_thumb -->
+                            </tr>
+                          </tbody>
+                        </table><!-- /.column -->
+                      </div><!-- /.col-1 -->
+                      <!--[if (gte mso 9)|(IE)]>
+                          </td>
+                          <td width="400" align="center" valign="top">
+                      <![endif]-->
+                      <div class="col-13" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 400px;">
+                        <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                          <tbody>
+                            <tr>
+                              <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: left;vertical-align: top;color: #888888;">
+                                <h4 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 19px;line-height: 28px;font-weight: normal;color: #333333;"><span style="color: #b3b3b5;"><%= item.quantity %>×</span> <strong><%= item.product.name %></strong></h4>
+                                <h6 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 8px;padding: 0;font-size: 30px;line-height: 34px;font-weight: bold;color: #4baec8;"><%= Store::Price.new(price: item.total_price).single %></h6>
+                                <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 8px;margin-bottom: 8px;"><%= item.sku.variants.map{|v| v.name.titleize}.join(' / ') %></p>
+                              </td><!-- /.column_cell -->
+                            </tr>
+                          </tbody>
+                        </table><!-- /.column -->
+                      </div><!-- /.col-13 -->
+                      <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <![endif]-->
+                    </div><!-- /.row -->
+                    <!--[if (gte mso 9)|(IE)]>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <![endif]-->
+                </td><!-- /.content_cell:product_row -->
+              </tr>
+            </tbody>
+          </table><!-- /.content -->
+      <% end %>
+      <table class="content" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+          <tr>
+            <td class="content_cell order_total order_total_right" align="center" valign="top" style="padding: 0;text-align: center;background-color: #fafafa;border-top: 1px solid;border-color: #ebebeb;font-size: 0 !important;">
+                <!--[if (gte mso 9)|(IE)]>
+                <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                  <tbody>
+                    <tr>
+                      <td width="600" align="center" valign="top">
+                <![endif]-->
+                <div class="row" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;margin: 0 auto;">
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                    <tbody>
+                      <tr>
+                        <td width="600" align="center" valign="top">
+                  <![endif]-->
+                  <div class="col-3" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;">
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 32px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: right;vertical-align: top;color: #888888;">
+                            <p style="font-family: Helvetica, Arial, sans-serif;font-size: 16px;line-height: 23px;margin-top: 16px;margin-bottom: 24px;margin: 8px 0;">Delivery&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.delivery.price).single %><br>
+                              Subtotal&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.net_amount).single %><br><%= Store.settings.tax_name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= Store::Price.new(price: @order.tax_amount).single %></p>
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;margin: 8px 0;color: #333333;">Total<span class="amount" style="margin-left:10px;text-decoration: none;color: #4baec8;"><%= Store::Price.new(price: @order.gross_amount).single %></span></h2>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                  </div><!-- /.col-3 -->
+                  <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <![endif]-->
+                </div><!-- /.row -->
+                <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <![endif]-->
+            </td><!-- /.content_cell:order_total_right -->
+          </tr>
+        </tbody>
+      </table><!-- /.content -->
+      <table class="content" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+        <tbody>
+          <tr>
+            <td class="content_cell product_row" align="center" valign="top" style="padding: 24px 0;text-align: center;background-color: #ffffff;border-top: 1px solid;border-color: #ebebeb;font-size: 0 !important;">
+                <!--[if (gte mso 9)|(IE)]>
+                <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                  <tbody>
+                    <tr>
+                      <td width="600" align="center" valign="top">
+                <![endif]-->
+                <div class="row" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;margin: 0 auto;">
+                  <!--[if (gte mso 9)|(IE)]>
+                  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="vertical-align: top;">
+                    <tbody>
+                      <tr>
+                        <td width="600" align="center" valign="top">
+                  <![endif]-->
+                  <div class="col-3" style="display: inline-block;width: 100%;vertical-align: top;text-align: center;max-width: 600px;">
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #888888;">
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;color: #333333;"><small style="font-size: 12px;line-height: 1;font-weight: normal;">Payment Method</small><br>
+                              <%= @order.customer_payment_type %></h2>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                    <table class="hruler hruler_secondary" width="80" border="0" align="center" cellpadding="0" cellspacing="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 62px;margin-left: auto;margin-right: auto;clear: both;">
+                      <tbody>
+                        <tr>
+                          <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="hruler_cell" style="padding: 0;font-size: 0;height: 4px;overflow: hidden;line-height: 4px;background-color: #dbdbdb;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="hspace" style="padding: 0;font-size: 0;height: 8px;overflow: hidden;">&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table><!-- end .hruler:hruler_secondary -->
+                    <table class="column" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;width: 100%;vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="column_cell font_default" align="center" valign="top" style="padding: 8px 16px;font-family: Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;vertical-align: top;color: #888888;">
+                            <h2 style="font-family: Helvetica, Arial, sans-serif;margin-left: 0;margin-right: 0;margin-top: 16px;margin-bottom: 8px;padding: 0;font-size: 16px;line-height: 24px;font-weight: bold;text-transform: uppercase;letter-spacing: 0px;color: #333333;"><small style="font-size: 12px;line-height: 1;font-weight: normal;">Delivery Service</small><br>
+                              <%= @order.delivery.full_name %></h2>
+                          </td><!-- /.column_cell -->
+                        </tr>
+                      </tbody>
+                    </table><!-- /.column -->
+                  </div><!-- /.col-3 -->
+                  <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <![endif]-->
+                </div><!-- /.row -->
+                <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <![endif]-->
+            </td><!-- /.content_cell:product_row -->
+          </tr>
+        </tbody>
+      </table><!-- /.content -->
