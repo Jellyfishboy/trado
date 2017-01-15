@@ -1,13 +1,13 @@
 <div class="threecol">
-  <h3>Images</h3>
-  <p>Upload and edit images of this product. You can also set the default image to display on the product page.</p>
-  <%= link_to 'Add Image', new_admin_product_attachment_path(product_id: @product.id), id: 'add-image', :class => 'btn btn-green btn-normal' %>
+  <h3><%= t('products.form.images.header') %></h3>
+  <p><%= t('products.form.images.description') %></p>
+  <%= link_to t('products.form.images.add_image'), new_admin_product_attachment_path(product_id: @product.id), id: 'add-image', :class => 'btn btn-green btn-normal' %>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content" id="attachments">
     <% if @attachments.empty? %>
       <div class="helper-notification">
-        <p>You do not have any images for this product.</p>
+        <p><%= t('products.form.images.no_records') %></p>
         <i class="icon-images"></i>
       </div>
     <% else %>

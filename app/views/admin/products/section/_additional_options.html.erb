@@ -1,17 +1,17 @@
 <div class="threecol">
-  <h3>Additional options</h3>
-  <p>Feature your product and/or remove SKU options from the product page.</p>
+  <h3><%= t('products.form.additional_options.header') %></h3>
+  <p><%= t('products.form.additional_options.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="checkbox blocked margin">
       <label>
         <%= f.check_box :featured %>
-        Featured
+        <%= t('products.form.additional_options.featured_label') %>
       </label>
     </div>
     <div class="form-group form-last">
-        <label>Tags</label>
+        <label><%= t('products.form.additional_options.tags_label') %></label>
         <%= text_field_tag :taggings, params[:taggings], 'data-role' => 'tagsinput', value: @product.tags.map(&:name).join(",") %>
     </div>
   </fieldset>

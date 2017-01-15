@@ -330,6 +330,148 @@ en:
       title: Edit Page
       breadcrumb: Edit
       pages_index: Pages
+  products:
+    index:
+      title: Products
+      breadcrumb: Products
+      header: Products
+      add_product_tooltip: Add Product
+      stock_management_tooltip: Stock Management
+      no_records: You don't have any products yet.
+      show_all_filter: Show All
+      published_filter: Published
+      draft_filter: Draft
+      featured_filter: Featured
+      filter_by: Filter By
+      weighting_sorting: Weighting
+      name_sorting: Name
+      popularity_sorting: Popularity
+      sort_by: Sort By
+      sku: SKU
+      part_number: Part no.
+      name: Name
+      variant: Variant
+      net_price: Net Price
+      gross_price: Gross Price 
+    edit:
+      title: Edit Product
+      breadcrumb: Edit
+      product_index: Products
+      header: Edit Product
+    form:
+      publish_button: Publish
+      save_button: Save
+      additional_options:
+        header: Additional Options
+        description: Feature your product and/or remove SKU options from the product page.
+        featured_label: Featured
+        tags_label: Tag
+      associations:
+        header: Associations
+        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
+        accessories_label: Accessories
+        related_products_label: Related Products
+        select_accessory_placeholder: Select associated accessories
+        select_related_products_placeholder: Select related products
+      product_details:
+        header: Product Details
+        description: Set the name, description and sorting order for your category.
+        select_category_placeholder: Select category
+        part_number_label: Part Number
+        sku_label: SKU
+        name_label: Name
+        weighting_label: Weighting
+        short_description_label: Short Description
+        description_label: Description
+      search_engines:
+        header: Search Engines
+        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        page_title_label: Page Title
+        meta_description_label: Meta Description
+      images:
+        header: Images
+        description: Upload and edit images of this product. You can also set the default image to display on the product page.
+        add_image: Add Image
+        no_records: You do not have any images for this product.
+      skus:
+        header: Variants
+        description: Configure the variant options for selling this product.
+        variant_options: Variant Options
+        add_variant: Add Variant
+        no_records: You do not have any variants for this product.
+        code: Code
+        stock: Stock
+        cost_value: Cost Value
+        price: Price
+        modal:
+          add_variant: Add Variant
+          edit_variant: Edit Variant
+          code_label: Code
+          length_label: Length
+          weight_label: Weight
+          thickness_label: Thickness
+          stock_label: Stock
+          stock_warning_level_label: Stock Warning Level
+          cost_value_label: Cost Value
+          price_label: Price
+          submit_button: Submit
+    skus:
+      stock_adjustments:
+        modal:
+          header: Add Stock Adjustment for
+          current_stock: Current stock is
+          description_label: Description
+          adjustment_label: Adjustment
+          submit_button: Submit
+      variants:
+        modal:
+          header: Configure Variant Options
+          reset_button: Reset Variants
+          submit_button: Submit
+    stock:
+      index:
+        title: Stock Management
+        breadcrumb: Stock Management
+        product_index: Products
+        add_stock_tooltip: Add Stock
+        header: Stock Management
+        show_all_filter: Show All
+        low_filter: Low
+        stock_filer: Stock
+        no_records: You don't have any Product SKUs yet.
+        sku: SKU
+        name: Name
+        variant: Variant
+        stock: Stock
+        stock_warning_level: Stock Warning Level
+      show:
+        title: Stock Management
+        product_index: Products
+        stock_management_index: Stock Management
+        add_stock_adjustment_tooltip: Add Stock Adjustment
+        header: Stock History
+        date: Date
+        description: Description
+        adjustment: Adjustment
+        stock: Stock
+    stock_adjustments:
+      new:
+        title: New Stock
+        breadcrumb: New
+        product_index: Products
+        stock_management_index: Stock Management
+        header: New Stock
+        sku_label: SKU
+        description_label: Description
+        adjustment_label: Adjustment
+        submit_button: Submit
+    attachments:
+      modal:
+        add_image: Add Image
+        edit_image: Edit Image
+        file_label: File
+        default_label: Default
+        submit_button: Submit
   users:
     edit:
       title: Profile
