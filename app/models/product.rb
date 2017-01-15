@@ -7,23 +7,23 @@
 #
 # Table name: products
 #
-#  id                :integer          not null, primary key
-#  name              :string
-#  description       :text
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  weighting         :integer
-#  part_number       :integer
-#  sku               :string
-#  category_id       :integer
-#  slug              :string
-#  meta_description  :string
-#  featured          :boolean
-#  active            :boolean          default(TRUE)
-#  short_description :text
-#  status            :integer          default(0)
-#  order_count       :integer          default(0)
-#  page_title        :string
+#  id                      :integer          not null, primary key
+#  name                    :string
+#  description             :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  weighting               :integer
+#  part_number             :integer
+#  sku                     :string
+#  category_id             :integer
+#  slug                    :string
+#  meta_description        :string
+#  featured                :boolean
+#  active                  :boolean          default(TRUE)
+#  short_description       :text
+#  status                  :integer          default(0)
+#  order_count             :integer          default(0)
+#  page_title              :string
 #
 
 class Product < ActiveRecord::Base

@@ -234,8 +234,8 @@ ActiveRecord::Schema.define(version: 20161208072239) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "weighting"
     t.integer  "part_number"
     t.string   "sku"
@@ -243,10 +243,10 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.string   "slug"
     t.string   "meta_description"
     t.boolean  "featured"
-    t.boolean  "active",            default: true
+    t.boolean  "active",                  default: true
     t.text     "short_description"
-    t.integer  "status",            default: 0
-    t.integer  "order_count",       default: 0
+    t.integer  "status",                  default: 0
+    t.integer  "order_count",             default: 0
     t.string   "page_title"
     t.string   "googlemerchant_brand"
     t.string   "googlemerchant_category"

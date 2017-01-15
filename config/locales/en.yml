@@ -330,6 +330,18 @@ en:
       title: Edit Page
       breadcrumb: Edit
       pages_index: Pages
+  users:
+    edit:
+      title: Profile
+      breadcrumb: Profile
+      header: Profile
+      profile_settings:
+        header: Profile Settings
+        description: Set the name and profile picture for your administration account.
+        first_name_label: First Name
+        last_name_label: Last Name
+        profile_picture_label: Profile Picture
+      submit_button: Submit
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
