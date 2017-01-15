@@ -293,6 +293,9 @@ en:
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
+      tracking:
+        website: Tracking Website
+        number: Tracking Number
   pages:
     index:
       title: Pages
