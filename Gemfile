@@ -125,5 +125,3 @@ gem 'dalli'
 
 # Browser detection
 gem 'browser'
-
-gem 'trado_pdf_invoice_module', path: '/Users/tomdallimore/Projects/Modules/trado-pdf-invoice-module'

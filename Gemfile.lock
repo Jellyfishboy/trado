@@ -15,13 +15,6 @@ GIT
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
 
-PATH
-  remote: /Users/tomdallimore/Projects/Modules/trado-pdf-invoice-module
-  specs:
-    trado_pdf_invoice_module (0.1.0)
-      rails (~> 4.2)
-      wicked_pdf (~> 1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -608,7 +601,6 @@ GEM
     websocket-extensions (0.1.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
-    wicked_pdf (1.1.0)
     xml-simple (1.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -681,7 +673,6 @@ DEPENDENCIES
   test_after_commit
   thin
   timecop
-  trado_pdf_invoice_module!
   turbolinks
   tzinfo-data
   uglifier (>= 1.0.3)
