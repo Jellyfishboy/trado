@@ -212,7 +212,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-variants-form' do
-            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            expect(find('.modal-header h3')).to have_content "Configure Variant Options"
             page.execute_script("$('#colour').val('Red,Blue')")
             click_button 'Submit'
         end
@@ -271,7 +271,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-variants-form' do
-            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            expect(find('.modal-header h3')).to have_content "Configure Variant Options"
         end
 
         within '.modal#sku-variants-form' do
@@ -303,7 +303,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "Add variant"
+            expect(find('.modal-header h3')).to have_content "Add Variant"
             fill_in('sku_variants_attributes_0_name', with: '1kg')
             fill_in('sku_code', with: '50')
             fill_in('sku_length', with: '10.3')
