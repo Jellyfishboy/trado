@@ -7,11 +7,23 @@
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store. The platform comes bundled with an abundance of modular based support for popular services such as Google Merchants, PayPal, Stripe and many more.
 
-[Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
+[Trado homepage](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
+
+## Usage
 
 Need help setting up Trado? Check out our [Getting Started](http://trado.io/getting-started.html) guide!
 
-Or maybe you just want to browse around the application? Then head on over to our [Demo Application](http://demo.trado.io).
+## Demo
+
+Want to see Trado in action?
+
+[Trado live demo](http://demo.trado.io)
+
+Or launch the demo on a free Heroku instance.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Jellyfishboy/trado/tree/deploy/heroku)
+
+Login details: `admin@example.com` | `admin123#`
 
 ## Modules
 
