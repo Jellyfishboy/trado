@@ -1,63 +1,63 @@
 es:
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
+      title: Acessorios
+      breadcrumb: Acessorios
+      header: Acessorios
       add_tooltip: Add Accessory
       no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
+      part_number: Parte no.
+      name: Nombre
+      weight: Peso
+      cost_value: Valor de Costo
+      net_price: Precio neto
       gross_price: Gross Price
     form:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        name_label: Nombre
+        part_number_label: Número de parte
       weight_price:
-        header: Weight & Price
+        header: Peso y Precio
         description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        weight_label: Peso
+        cost_value_label: Valor de Costo
+        net_price_label: Precio neto
+      submit_button: Guardar
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Editar Accesorio
+      breadcrumb: Editar
+      accessory_index: Acessorios
+      header: Editar Accesorio
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Nuevo accesorio
+      breadcrumb: Nuevo
+      accessory_index: Acessorios
+      header: Nuevo accesorio
   dashboard:
     header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    orders: Ordenes
+    completed_orders: Completado
+    pending_orders: Pendiente
+    failed_orders: Falló
+    transactions: Transacciones
+    gross_income_transactions: Total de ingresos
+    net_income_transactions: Ingresos Netos
+    tax_transactions: Tasa de impuestos
+    provider_fees_transactions: Honorarios del proveedor
+    delivery_fees_transactions: Gastos de entrega
+    activity: Actividad
+    activity_active_carts: Carros Activos
+    activity_incomplete_orders: Pedidos incompletos
   settings:
     title: Settings
     breadcrumb: Settings
     header: Settings
     store_detail:
-      header: Store Details
+      header: Detalles
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
+      name_label: Nombre
       email_label: Email
       logo_label: Logo
       theme_label: Theme
