@@ -20,7 +20,7 @@ es:
         part_number_label: Número de parte
       weight_price:
         header: Peso y Precio
-        description: Set the weight, net price and original cost value for your accessory.
+        description: Establezca el peso, precio neto y el valor de costo para su accessorio.
         weight_label: Peso
         cost_value_label: Valor de Costo
         net_price_label: Precio neto
@@ -69,46 +69,46 @@ es:
       header: Tasa de impuestos
       description: Establezca el nombre y el porciento de su impuesto.
       name_label: Nombre
-      rate_label: Rate
+      rate_label: Porcentaje
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      header: Moneda y precio a mostrar
+      description: Establezca la moneda con la que operará su tienda y cómo usted desea que sus usuarios vean el precios de los productos, incluyendo o no los impuestos.
       currency_label: Moneda
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: Boletín de MailChimp
+      description: Establezca el Id para MailChimp.
+      list_id_label: Id
     stripe:
       header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      description: Establezca el text que quiere mostrar en el estado de cuentas de la tarjeta de crédito al cliente.
+      statement_descriptor_label: Descriptor de la declaración
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Habilitar y configurar el código para su tienda.
+      tracking_code_label: Código de seguimiento Web
+      enabled_label: Activar
+      disabled_label: Deshabilitar
+    submit_button: Guardar
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Categorías
+      breadcrumb: Categorías
+      header: Categorías
+      add_tooltip: Añadir Categoría
+      no_records: Aún no tiene la categorías.
+      name: Nombre
+      description: Descripción
+      sorting: Ordenar por
+      active: Activo
+      no_of_products: No. de los productos
     form:
       category_details:
-        header: Category Details
+        header: Detalles de Categoría
         description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
+        name_label: Nombre
+        description_label: Descripción
         sorting_label: Sorting
       search_engine:
         header: Search Engines
