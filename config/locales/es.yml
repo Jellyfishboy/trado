@@ -106,18 +106,18 @@ es:
     form:
       category_details:
         header: Detalles de Categoría
-        description: Set the name, description and sorting order for your category.
+        description: Establezca el nombre, la descripción y el orden de sus categorías.
         name_label: Nombre
         description_label: Descripción
-        sorting_label: Sorting
+        sorting_label: Ordenar por
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        header: Buscadores
+        description: Establezca el título y la meta descripción para ayudar en cómo se verá su página en los buscadores.
         page_title_label: Título de la Página
         meta_description_label: Meta descipción
       visibility:
         header: Visibilidad
-        description: Set if the category is visible on your storefront.
+        description: Establezca si la categoría es visible en su tienda.
         visible_label: Visible
         hidden_label: Ocultas
       submit_button: Guardar
@@ -125,29 +125,29 @@ es:
       title: Editar Categoría
       breadcrumb: Editar
       category_index: Categorías
-      header: Edit Category
+      header: Editar Categoría
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nueva Categoría
+      breadcrumb: Nuevo
+      category_index: Categorías
+      header: Nueva Categoría
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
+      title: Precio de entrega para %{service_name}
+      header: Precio de entrega para %{service_name}
+      delivery_service_index: Servicio de entrega
+      add_tooltip: Añadir el precio de la entrega
       no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      code: Código
+      description: Descripción
+      weight: Parámetros de peso
+      length: Parámetros de longitud
+      thickness: Parámetros de espesor
+      net_price: Precio neto
+      gross_price: Precio Bruto
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Detalles de precio la entrega
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price
