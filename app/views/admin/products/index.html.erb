@@ -16,6 +16,7 @@
       <option class="filter" data-filter="all">Show all</option>
       <option class="filter" data-filter=".product-published">Published</option>
       <option class="filter" data-filter=".product-draft">Draft</option>
+      <option class="filter" data-filter=".product-archived">Archived</option>
       <option class="filter" data-filter=".product-featured">Featured</option>
       <optgroup label="Categories">
         <% @categories.each do |category| %>
@@ -95,7 +96,17 @@
                   </tbody>
                 </table>
               </td>
-              <%= table_actions [:admin, product], 'edit', 'delete' %>
+              <td class="table-actions triple-menu">
+                <%= link_to archive_admin_product_path(id: product.id), method: :patch, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-storage"></i>
+                <% end %>
+                <%= link_to edit_admin_product_path(id: product.id) do %>
+                  <i class="icon-pencil"></i>
+                <% end %>
+                <%= link_to [:admin, product], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="icon-remove"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

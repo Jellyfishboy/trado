@@ -66,12 +66,19 @@ class Admin::ProductsController < ApplicationController
   end
 
   def autosave
-    set_autosave_product
+    set_simple_product
     if @product.update(params[:product])
       render json: { }, status: 200
     else
       render json: { }, status: 422
     end
+  end
+
+  def archive
+    set_simple_product
+    @product.archived!
+    flash_message :success, "Product was successfully archived."
+    redirect_to admin_products_url
   end
 
   private
@@ -90,7 +97,7 @@ class Admin::ProductsController < ApplicationController
     @product ||= Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
   end
 
-  def set_autosave_product
+  def set_simple_product
     @product = Product.find(params[:id])
   end
 
