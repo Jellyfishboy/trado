@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     private
 
     def set_product
-        @product = Product.includes(:accessories, :skus, :category, :variant_types, :variants, :attachments).active.published_or_archived.find(params[:id])
+        @product = Product.includes(:accessories, :skus, :category, :variant_types, :variants, :attachments).active.active_non_archived.find(params[:id])
     end
 
     def set_skus
