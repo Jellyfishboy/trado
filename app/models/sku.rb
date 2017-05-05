@@ -56,6 +56,7 @@ class Sku < ActiveRecord::Base
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
   scope :in_stock,                                                    -> { where('stock > ?', 0) }
+  scope :active_non_archived,                                         -> { includes(:product).active.where.not(products: { status: 2 }) }
 
   include ActiveScope
 
