@@ -74,7 +74,7 @@ class Sku < ActiveRecord::Base
   def update_cart_items_weight
     cart_items = CartItem.where(sku_id: id)
     cart_items.each do |item|
-      item.update_column(:weight, (weight*item.quantity))
+      item.update_column(:weight, (weight*(item.quantity||1)))
     end
   end
 
