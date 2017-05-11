@@ -96,53 +96,53 @@ zh-CN:
       title: 分类
       breadcrumb: 分类
       header: 分类
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      add_tooltip: 添加分类
+      no_records: 你还没有任何分类。
+      name: 名称
+      description: 描述
+      sorting: 排序
+      active: 启用
+      no_of_products: 产品数量
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: 分类详情
+        description: 设置分类名称、描述以及排序。
+        name_label: 名称
+        description_label: 描述
+        sorting_label: 排序
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: 搜索引擎
+        description: 设置页面的标题和元描述来定义网页在搜索引擎中的显示方式。
+        page_title_label: 页面标题
+        meta_description_label: 元描述
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: 可见性
+        description: 设置分类是否在网店显示。
+        visible_label: 显示
+        hidden_label: 隐藏
+      submit_button: 提交
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: 编辑分类
+      breadcrumb: 编辑
+      category_index: 分类
+      header: 编辑分类
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: 新建分类
+      breadcrumb: 新建
+      category_index: 分类
+      header: 新建分类
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
+      title: '"%{service_name}配送价格"'
+      header: '"%{service_name}配送价格"'
+      delivery_service_index: 配送服务
+      add_tooltip: 添加配送价格
+      no_records: '"你还没有任何%{service_name}的配送价格"'
+      code: 编码
+      description: 描述
+      weight: 重量参数
+      length: 长度参数
+      thickness: 厚度参数
       net_price: Net Price
       gross_price: Gross Price
     form:
@@ -178,7 +178,7 @@ zh-CN:
       description: 'Select which delivery service you would like to copy the country list from:'
       select_prompt: Select a delivery service...
       close_modal: Close
-      submit_button: Submit
+      submit_button: 提交
     index:
       title: Delivery Services
       breadcrumb: Delivery Services
