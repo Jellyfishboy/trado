@@ -1,55 +1,55 @@
 zh-CN:
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: 配件
+      breadcrumb: 配件
+      header: 配件
+      add_tooltip: 添加配件
+      no_records: 你还没有任何配件。
+      part_number: 零件号
+      name: 名称
+      weight: 重量
+      cost_value: 成本
+      net_price: 净价
+      gross_price: 毛价
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: 配件详情
+        description: 设置配件名称和零件号。
+        name_label: 名称
+        part_number_label: 零件号
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: 重量及价格
+        description: 为你的配件设置重量、净价、和成本价。
+        weight_label: 重量
+        cost_value_label: 成本
+        net_price_label: 净价
+      submit_button: 提交
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: 编辑配件
+      breadcrumb: 编辑
+      accessory_index: 配件
+      header: 编辑配件
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: 新建配件
+      breadcrumb: 新建
+      accessory_index: 配件
+      header: 新建配件
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
+    header: 控制面板
+    orders: 订单
+    completed_orders: 已完成
+    pending_orders: 等待处理
+    failed_orders: 失败
+    transactions: 交易记录
+    gross_income_transactions: 总收入
+    net_income_transactions: 净收入
+    tax_transactions: 税
     provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
+    delivery_fees_transactions: 配送费
+    activity: 动态
     activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    activity_incomplete_orders: 未完成订单
   settings:
     title: Settings
     breadcrumb: Settings
