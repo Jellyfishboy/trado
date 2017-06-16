@@ -7,17 +7,17 @@
       </div>
       <div class="modal-header">
         <h3 id="orderModalLabel">
-          Copy delivery service countries
+          <%= t('delivery_services.countries_modal.header') %>
         </h3>
       </div>
       <div class="modal-body">
-        <p>Select which delivery service you would like to copy the country list from:</p>
+        <p><%= t('delivery_services.countries_modal.description') %></p>
         <div class="form-group form-last"></div>
-        <%= select_tag :delivery_service_id, options_for_select(delivery_services.map { |delivery_service| [delivery_service.full_name, delivery_service.id ] }), prompt: "Select a delivery service...", :class => 'form-control' %>
+        <%= select_tag :delivery_service_id, options_for_select(delivery_services.map { |delivery_service| [delivery_service.full_name, delivery_service.id ] }), prompt: t('delivery_services.countries_modal.select_prompt') , :class => 'form-control' %>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
-        <a href="#" id="set-countries" class="btn btn-blue btn-large">Submit</a>
+        <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('modal.close_button') %></button>
+        <a href="#" id="set-countries" class="btn btn-blue btn-large"><%= t('delivery_services.countries_modal.submit_button') %></a>
       </div>
     </div>
   </div>

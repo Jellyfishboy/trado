@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminBaseController
   before_action :authenticate_user!
   layout 'admin'
 
@@ -18,7 +18,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new(params[:category])
 
     if @category.save
-      flash_message :success, 'Category was successfully created.'
+      flash_message :success, t('controllers.admin.categories.create.valid')
       redirect_to admin_categories_url
     else
       render :new
@@ -28,7 +28,7 @@ class Admin::CategoriesController < ApplicationController
   def update
     set_category
     if @category.update(params[:category])
-      flash_message :success, 'Category was successfully updated.'
+      flash_message :success, t('controllers.admin.categories.update.valid')
       redirect_to admin_categories_url
     else
       render :edit

@@ -1,4 +1,4 @@
-class Admin::AdminController < ApplicationController
+class Admin::AdminController < Admin::AdminBaseController
     before_action :authenticate_user!
     layout 'admin'
 
@@ -15,7 +15,7 @@ class Admin::AdminController < ApplicationController
     def update
         set_setting
         if @settings.update(params[:store_setting])
-            flash_message :success, 'Store settings were successfully updated.'
+            flash_message :success, t('controllers.admin.admin.update.valid')
             redirect_to admin_root_url
         else
             render action: "settings"

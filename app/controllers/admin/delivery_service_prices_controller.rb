@@ -1,4 +1,4 @@
-class Admin::DeliveryServicePricesController < ApplicationController
+class Admin::DeliveryServicePricesController < Admin::AdminBaseController
   before_action :authenticate_user!
   layout "admin"
 
@@ -22,7 +22,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
     @delivery_service_price = @delivery_service.prices.build(params[:delivery_service_price])
     
     if @delivery_service_price.save
-      flash_message :success, 'Delivery service price was successfully created.'
+      flash_message :success, t('controllers.admin.delivery_service_prices.create.valid')
       redirect_to admin_delivery_service_delivery_service_prices_url
     else
       render :new
@@ -44,7 +44,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
     @delivery_service_price.attributes = params[:delivery_service_price]
 
     if @delivery_service_price.save
-      flash_message :success, 'Delivery service price was successfully updated.'
+      flash_message :success, t('controllers.admin.delivery_service_prices.update.valid')
       redirect_to admin_delivery_service_delivery_service_prices_url
     else
       @form_delivery_service_price = @old_delivery_service_price ||= DeliveryServicePrice.find(params[:id])
@@ -64,7 +64,7 @@ class Admin::DeliveryServicePricesController < ApplicationController
     else
       Store.inactivate!(@delivery_service_price)
     end
-    @result = [:success, 'Delivery service price was successfully deleted.'] if @result.nil?
+    @result = [:success, t('controllers.admin.delivery_service_prices.destroy.valid')] if @result.nil?
     flash_message @result[0], @result[1]
     redirect_to admin_delivery_service_delivery_service_prices_url
   end

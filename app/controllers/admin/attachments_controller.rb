@@ -1,4 +1,4 @@
-class Admin::AttachmentsController < ApplicationController
+class Admin::AttachmentsController < Admin::AdminBaseController
   before_action :authenticate_user!
 
   def show
@@ -47,7 +47,7 @@ class Admin::AttachmentsController < ApplicationController
     attachment_id = @attachment.id
     @attachment.destroy
     if @product.attachments.empty?
-      render json: { last_record: true, html: '<div class="helper-notification"><p>You do not have any images for this product.</p><i class="icon-images"></i></div>' }, status: 200
+      render json: { last_record: true, html: "<div class='helper-notification'><p>#{t('controllers.admin.attachments.destroy.limit_reached')}</p><i class='icon-images'></i></div>" }, status: 200
     else
       render json: { last_record: false, attachment_id: attachment_id }, status: 200
     end

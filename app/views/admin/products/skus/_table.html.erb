@@ -2,13 +2,13 @@
   <table class="table table-striped table-bordered table-hover table-form">
     <thead>
       <tr>
-        <th>Code</th>
+        <th><%= t('products.form.skus.code') %></th>
         <% @product.variant_types.each do |type| %>
           <th><%= type.name %></th>
         <% end %>
-        <th>Stock</th>
-        <th>Cost value</th>
-        <th>Price</th>
+        <th><%= t('products.form.skus.stock') %></th>
+        <th><%= t('products.form.skus.cost_value') %></th>
+        <th><%= t('products.form.skus.price') %></th>
         <th></th>
       </tr>
     </thead>

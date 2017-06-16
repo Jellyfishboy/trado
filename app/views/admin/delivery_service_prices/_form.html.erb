@@ -1,58 +1,58 @@
 <div class="threecol">
-  <h3>Delivery price details</h3>
-  <p>Set the code, price and description for this delivery price. </p>
+  <h3><%= t('delivery_service_prices.form.delivery_price_details.header') %></h3>
+  <p><%= t('delivery_service_prices.form.delivery_price_details.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :code %>
+      <%= f.label t('delivery_service_prices.form.delivery_price_details.code_label') %>
       <%= f.text_field :code, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :price %>
+      <%= f.label t('delivery_service_prices.form.delivery_price_details.price_label') %>
       <div class="form-prefix">
         <span><%= Store.settings.currency_symbol %></span>
         <%= f.text_field :price, :class => 'form-control calculate-tax', autocomplete: 'off' %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label t('delivery_service_prices.form.delivery_price_details.description_label') %>
       <%= f.text_area :description, :class => 'form-control', rows: 7 %>
     </div>
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Dimension allowance</h3>
-  <p>Specify the dimension and weight allowance for this delivery price.  </p>
+  <h3><%= t('delivery_service_prices.form.dimension_allowance.header') %></h3>
+  <p><%= t('delivery_service_prices.form.dimension_allowance.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="form-group">
-      <%= f.label :min_weight %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.min_weight_label') %>
       <%= f.text_field :min_weight, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :max_weight %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.max_weight_label') %>
       <%= f.text_field :max_weight, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :min_length %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.min_length_label') %>
       <%= f.text_field :min_length, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :max_length %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.max_length_label') %>
       <%= f.text_field :max_length, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :min_thickness %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.min_thickness_label') %>
       <%= f.text_field :min_thickness, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :max_thickness %>
+      <%= f.label t('delivery_service_prices.form.dimension_allowance.max_thickness_label') %>
       <%= f.text_field :max_thickness, :class => 'form-control' %>
     </div>
   </fieldset>
   <div class="form-action">
-    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+    <%= f.submit t('delivery_service_prices.form.submit_button'), :class => 'btn btn-blue btn-large' %>
   </div>
 </div>

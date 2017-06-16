@@ -1,23 +1,23 @@
-<% content_for :title, 'Products' %>
-<% content_for :breadcrumb, 'Products' %>
+<% content_for :title, t('products.index.title') %>
+<% content_for :breadcrumb, t('products.index.breadcrumb') %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_product_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add product" do %>
+    <%= link_to new_admin_product_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('products.index.add_product_tooltip') do %>
       <i class="icon-plus"></i>
     <% end %>
-    <%= link_to admin_products_stock_index_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Stock management" do %>
+    <%= link_to admin_products_stock_index_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('products.index.stock_management_tooltip') do %>
       <i class="icon-bars"></i>
     <% end %>
-    <h2 class="widget widget-header">Products</h2>
+    <h2 class="widget widget-header"><%= t('products.index.header') %></h2>
   </div>
   <div class="widget-controls">
     <select class="form-select" id="filter-product-category">
-      <option class="filter" data-filter="all">Show all</option>
-      <option class="filter" data-filter=".product-published">Published</option>
-      <option class="filter" data-filter=".product-draft">Draft</option>
-      <option class="filter" data-filter=".product-archived">Archived</option>
-      <option class="filter" data-filter=".product-featured">Featured</option>
+      <option class="filter" data-filter="all"><%= t('products.index.show_all_filter') %></option>
+      <option class="filter" data-filter=".product-published"><%= t('products.index.published_filter') %></option>
+      <option class="filter" data-filter=".product-draft"><%= t('products.index.draft_filter') %></option>
+      <option class="filter" data-filter=".product-archived"><%= t('products.index.archived_filter') %></option>
+      <option class="filter" data-filter=".product-featured"><%= t('products.index.featured_filter') %></option>
       <optgroup label="Categories">
         <% @categories.each do |category| %>
           <option class="filter" data-filter=".category-<%= category.slug %>">
@@ -26,20 +26,20 @@
         <% end %>
       </optgroup>
     </select>
-    <span>Filter by:</span>
+    <span><%= t('products.index.filter_by') %>:</span>
     <select class="form-select widget-control-margin" id="sort-product">
-      <option class="sort" data-sort="default">Weighting ↑</option>
-      <option class="sort" data-sort="weighting:asc">Weighting ↓</option>
-      <option class="sort" data-sort="name:desc">Name ↑</option>
-      <option class="sort" data-sort="name:asc">Name ↓</option>
-      <option class="sort" data-sort="popularity:desc">Popularity</option>
+      <option class="sort" data-sort="default"><%= t('products.index.weighting_sorting') %> ↑</option>
+      <option class="sort" data-sort="weighting:asc"><%= t('products.index.weighting_sorting') %> ↓</option>
+      <option class="sort" data-sort="name:desc"><%= t('products.index.name_sorting') %> ↑</option>
+      <option class="sort" data-sort="name:asc"><%= t('products.index.name_sorting') %> ↓</option>
+      <option class="sort" data-sort="popularity:desc"><%= t('products.index.popularity_sorting') %></option>
     </select>
-    <span>Sort by:</span>
+    <span><%= t('products.index.sort_by') %>:</span>
   </div>
   <% if @products.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p>You don't have any products yet.</p>
+        <p><%= t('products.index.no_records') %></p>
         <i class="fa fa-th-large"></i>
       </div>
     </div>
@@ -48,16 +48,16 @@
       <table class="table table-striped table-bordered table-hover table-margin">
         <thead class="main-table">
           <tr>
-            <th>SKU</th>
-            <th>Part no.</th>
-            <th>Name</th>
+            <th><%= t('products.index.sku') %></th>
+            <th><%= t('products.index.part_number') %></th>
+            <th><%= t('products.index.name') %></th>
             <th class="inner-table">
               <table>
                 <thead>
                   <tr>
-                    <th>Variant</th>
-                    <th>Net price</th>
-                    <th>Gross price</th>
+                    <th><%= t('products.index.variant') %></th>
+                    <th><%= t('products.index.net_price') %></th>
+                    <th><%= t('products.index.gross_price') %></th>
                   </tr>
                 </thead>
               </table>

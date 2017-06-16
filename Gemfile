@@ -125,3 +125,5 @@ gem 'dalli'
 
 # Browser detection
 gem 'browser'
+
+gem 'language_list'

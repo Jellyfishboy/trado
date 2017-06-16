@@ -119,5 +119,18 @@ module Store
         def tracking_url url, consignment_number
             url.sub('{{consignment_number}}', consignment_number)
         end
+
+        # List all language options for administration
+        #
+        # @return [Array] locale list
+        def available_locales
+            translations = Dir.glob('config/locales/*').map { |locale| locale.split('/').last.split('.').first }
+            locales = []
+            translations.each do |t|
+                value = (t == 'zh' ? 'zh-CN' : t)
+                locales << [LanguageList::LanguageInfo.find(t).name, value]
+            end
+            locales
+        end
     end
 end

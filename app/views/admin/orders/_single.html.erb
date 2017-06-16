@@ -2,11 +2,17 @@
   <%= order.id %>
 </td>
 <td>
-  <%= status_label order, order.shipping_status %>
-  <%= pending_delivery_time(order) %>
+    <%= order.billing_address.full_name %>
+</td>
+<td>
+    <%= order.customer_payment_type %>
 </td>
 <td>
   <%= status_label order.latest_transaction, order.latest_transaction.payment_status %>
+</td>
+<td>
+  <%= status_label order, order.shipping_status %>
+  <%= pending_delivery_time(order) %>
 </td>
 <td>
   <%= Store::Price.new(price: order.gross_amount).single %>

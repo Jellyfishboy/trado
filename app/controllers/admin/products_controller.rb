@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < Admin::AdminBaseController
   before_action :authenticate_user!
   layout 'admin'
 
@@ -32,11 +32,11 @@ class Admin::ProductsController < ApplicationController
     if params[:commit] == "Save"
       @product.status = :draft
       params[:product][:status] = 'draft'
-      @message = "Your product has been saved successfully as a draft."
+      @message = t('controllers.admin.products.update.draft')
     elsif params[:commit] == "Publish"
       @product.status = :published
       params[:product][:status] = 'published'
-      @message = "Your product has been published successfully. It is now live in your store."
+      @message = t('controllers.admin.products.update.publish')
     end
     if @product.update(params[:product])
       Tag.add(params[:taggings], @product.id)
@@ -61,7 +61,7 @@ class Admin::ProductsController < ApplicationController
       Store.inactivate!(@product)
     end
 
-    flash_message :success, "Product was successfully deleted."
+    flash_message :success, t('controllers.admin.products.destroy.valid')
     redirect_to admin_products_url
   end
 
@@ -77,7 +77,7 @@ class Admin::ProductsController < ApplicationController
   def archive
     set_simple_product
     @product.archived!
-    flash_message :success, "Product was successfully archived."
+    flash_message :success, t('controllers.admin.products.archive.valid')
     redirect_to admin_products_url
   end
 

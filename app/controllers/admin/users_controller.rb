@@ -1,7 +1,7 @@
-class Admin::UsersController < ApplicationController
-  before_action :authenticate_user!, :except => :new
-  load_and_authorize_resource
-  layout 'admin'
+class Admin::UsersController < Admin::AdminBaseController
+    before_action :authenticate_user!, except: :new
+    load_and_authorize_resource
+    layout 'admin'
 
     def edit
         set_user
@@ -11,10 +11,10 @@ class Admin::UsersController < ApplicationController
     def update
         set_user
         if @user.update(params[:user])
-            flash_message :success, 'Profile was successfully updated.'
+            flash_message :success, t('controllers.admin.users.update.valid')
             redirect_to admin_root_url
         else
-            flash_message :error, 'There was an error when attempting to update your profile details.'
+            flash_message :error, t('controllers.admin.users.update.invalid')
             render :edit
         end
     end

@@ -17,10 +17,10 @@ feature 'Delivery service management' do
         find('a[data-original-title="Delivery"]').click
         expect(current_path).to eq admin_delivery_services_path
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
         within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
     end
 
@@ -75,7 +75,7 @@ feature 'Delivery service management' do
             expect(page).to have_content 'Delivery service was successfully created.'
         end
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
     end
 
@@ -99,7 +99,7 @@ feature 'Delivery service management' do
             expect(page).to have_content 'Delivery service was successfully updated.'
         end
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end 
         delivery_service_with_countries.reload
         expect(delivery_service_with_countries.name).to eq '1st Class'
@@ -125,7 +125,7 @@ feature 'Delivery service management' do
             sleep 1
 
             within '.modal#delivery-service-form' do
-                expect(find('.modal-header h3')).to have_content "Copy delivery service countries"
+                expect(find('.modal-header h3')).to have_content "Copy Delivery Service Countries"
                 select(delivery_service_with_countries.name, from: 'delivery_service_id')
                 find('#set-countries').click
             end
@@ -145,7 +145,7 @@ feature 'Delivery service management' do
             expect(page).to have_content 'Delivery service was successfully created.'
         end
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
     end
 
@@ -162,7 +162,7 @@ feature 'Delivery service management' do
             expect(page).to have_content('Delivery service was successfully deleted.')
         end
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
     end
 
@@ -179,7 +179,7 @@ feature 'Delivery service management' do
             expect(page).to have_content('Failed to delete delivery service - you must have at least one.')
         end
         within 'h2' do
-            expect(page).to have_content 'Delivery services'
+            expect(page).to have_content 'Delivery Services'
         end
     end
 end

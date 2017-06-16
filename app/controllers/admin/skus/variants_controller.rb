@@ -1,4 +1,4 @@
-class Admin::Skus::VariantsController < ApplicationController
+class Admin::Skus::VariantsController < Admin::AdminBaseController
     include ActionView::Helpers::TextHelper
     before_filter :authenticate_user!
 
@@ -20,7 +20,7 @@ class Admin::Skus::VariantsController < ApplicationController
             }
         end.reject(&:nil?)
         if @variants.empty?
-            render json: { errors: ['Variant options can\'t be blank'] }, status: 422
+            render json: { errors: [t('controllers.admin.skus.variants.create.invalid')] }, status: 422
         else
             @total_possible_skus = @variants.map do |v| 
                 v[:values].count == 0 ? 1 : v[:values].count

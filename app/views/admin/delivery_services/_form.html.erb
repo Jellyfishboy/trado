@@ -1,31 +1,31 @@
 <div class="threecol">
-  <h3>Delivery service details</h3>
-  <p>Set the courier company name, name and description of your delivery service. </p>
+  <h3><%= t('delivery_services.form.delivery_service_details.header') %></h3>
+  <p><%= t('delivery_services.form.delivery_service_details.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :courier_name %>
+      <%= f.label t('delivery_services.form.delivery_service_details.courier_name_label') %>
       <%= f.text_field :courier_name, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name %>
+      <%= f.label t('delivery_services.form.delivery_service_details.name_label') %>
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
     <div class="form-group form-last">
-      <%= f.label :description %>
+      <%= f.label t('delivery_services.form.delivery_service_details.description_label') %>
       <%= f.text_area :description, :class => 'form-control', rows: 7 %>
     </div>
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Order constraints</h3>
-  <p>Limit a delivery service by the total price of an order.</p>
+  <h3><%= t('delivery_services.form.order_constraints.header') %></h3>
+  <p><%= t('delivery_services.form.order_constraints.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group form-field-range form-last">
-      <%= f.label 'Price range' %>
+      <%= f.label t('delivery_services.form.order_constraints.price_range_label') %>
       <%= f.text_field :order_price_minimum, :class => 'form-control' %>
       <div class="divider"></div>
       <%= f.text_field :order_price_maximum, :class => 'form-control' %>
@@ -33,33 +33,31 @@
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Tracking</h3>
-  <p>Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.</p>
+  <h3><%= t('delivery_services.form.tracking.header') %></h3>
+  <p><%= t('delivery_services.form.tracking.description_html') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group form-last">
-      <%= f.label :tracking_url %>
+      <%= f.label t('delivery_services.form.tracking.tracking_url_label') %>
       <%= f.text_field :tracking_url, :class => 'form-control' %>
     </div>
   </fieldset>
   
 </div>
 <div class="threecol">
-  <h3>Countries</h3>
+  <h3><%= t('delivery_services.form.countries.header') %></h3>
   <p>
-    Select the countries which are available for this delivery service, or
-    <a href="#" id="copy-countries" data-delivery-service-id="<%= @delivery_service.id %>">copy</a>
-    an existing service country list.
+    <%= t('delivery_services.form.countries.description_html', delivery_service_id: @delivery_service.id) %>
   </p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content widget-last">
     <div class="form-group form-last">
-      <%= f.collection_select :country_ids, @countries.order(name: :asc), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated countries..."}} %>
+      <%= f.collection_select :country_ids, @countries.order(name: :asc), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: t('delivery_services.form.countries.country_placeholder')}} %>
     </div>
   </fieldset>
   <div class="form-action">
-    <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+    <%= f.submit t('delivery_services.form.submit_button'), :class => 'btn btn-blue btn-large' %>
   </div>
 </div>

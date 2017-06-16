@@ -24,8 +24,6 @@
 #  status                  :integer          default(0)
 #  order_count             :integer          default(0)
 #  page_title              :string
-#  googlemerchant_brand    :string
-#  googlemerchant_category :string
 #
 
 class Product < ActiveRecord::Base

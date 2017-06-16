@@ -1,26 +1,26 @@
 <div class="threecol">
-  <h3>Product details</h3>
-  <p>Set the name, description and sorting order for your category.</p>
+  <h3><%= t('products.form.product_details.header') %></h3>
+  <p><%= t('products.form.product_details.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="row">
       <div class="twelvecol">
         <div class="form-group">
-          <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id ] }, @product.category_id ), { include_blank: "Select category..."}, { :class => 'form-control' } %>
+          <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id ] }, @product.category_id ), { include_blank: "#{t('products.form.product_details.select_category_placeholder')}..."}, { :class => 'form-control' } %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="sixcol">
         <div class="form-group">
-          <%= f.label :part_number %>
+          <%= f.label t('products.form.product_details.part_number_label') %>
           <%= f.text_field :part_number, :class => 'form-control' %>
         </div>
       </div>
       <div class="sixcol last">
         <div class="form-group">
-          <%= f.label :sku %>
+          <%= f.label t('products.form.product_details.sku_label') %>
           <%= f.text_field :sku, :class => 'form-control' %>
         </div>
       </div>
@@ -28,13 +28,13 @@
     <div class="row">
       <div class="sixcol">
         <div class="form-group">
-          <%= f.label :name %>
+          <%= f.label t('products.form.product_details.name_label') %>
           <%= f.text_field :name, :class => 'form-control' %>
         </div>
       </div>
       <div class="sixcol last">
         <div class="form-group">
-          <%= f.label :weighting %>
+          <%= f.label t('products.form.product_details.weighting_label') %>
           <%= f.text_field :weighting, :class => 'form-control' %>
         </div>
       </div>
@@ -42,7 +42,7 @@
     <div class="row">
       <div class="twelvecol">
         <div class="form-group">
-          <%= f.label :short_description %>
+          <%= f.label t('products.form.product_details.short_description_label') %>
           <%= f.text_field :short_description, :class => 'form-control' %>
         </div>
       </div>
@@ -50,7 +50,7 @@
     <div class="row">
       <div class="twelvecol">
         <div class="form-group form-last">
-          <%= f.label :description %>
+          <%= f.label t('products.form.product_details.description_label') %>
           <%= f.text_area :description, :rows => 8, :class => 'form-control' %>
         </div>
       </div>
@@ -58,17 +58,17 @@
   </fieldset>
 </div>
 <div class="threecol">
-  <h3>Search engines</h3>
-  <p>Set up the page title and meta description to help define how a page is shown in search engines.</p>
+  <h3><%= t('products.form.search_engines.header') %></h3>
+  <p><%= t('products.form.search_engines.description') %></p>
 </div>
 <div class="ninecol last">
   <fieldset class="widget widget-content">
     <div class="form-group">
-      <%= f.label :page_title %>
+      <%= f.label t('products.form.search_engines.page_title_label') %>
       <%= f.text_field :page_title, :class => 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :meta_description %>
+      <%= f.label t('products.form.search_engines.meta_description_label') %>
       <%= f.text_field :meta_description, :class => 'form-control' %>
     </div>
   </fieldset>

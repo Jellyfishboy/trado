@@ -1,16 +1,16 @@
 <div class="threecol">
-  <h3>Associations</h3>
-  <p>Select associated accessories and related products for your product (related products will be displayed on the product page).</p>
+  <h3><%= t('products.form.associations.header') %></h3>
+  <p><%= t('products.form.associations.description') %></p>
 </div>
 <div class="ninecol last">
   <div class="widget widget-content">
     <div class="form-group">
-      <label>Accessories</label>
-      <%= f.collection_select :accessory_ids, @accessories, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select associated accessories..."}} %>
+      <label><%= t('products.form.associations.accessories_label') %></label>
+      <%= f.collection_select :accessory_ids, @accessories, :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "#{t('products.form.associations.select_accessory_placeholder')}..."}} %>
     </div>
     <div class="form-group form-last">
-      <label>Related products</label>
-      <%= f.collection_select :related_ids, @products.where.not(name: @product.name), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "Select related products..."}} %>
+      <label><%= t('products.form.associations.related_products_label') %></label>
+      <%= f.collection_select :related_ids, @products.where.not(name: @product.name), :id, :name, {}, {:class => 'chosen', multiple: true, data: {placeholder: "#{t('products.form.associations.select_related_products_placeholder')}..."}} %>
     </div>
   </div>
 </div>

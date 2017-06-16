@@ -1,33 +1,33 @@
-<% content_for :title, 'Stock management' %>
-<% content_for :breadcrumb, 'Stock management' %>
-<% breadcrumb_add 'Products', admin_products_path %>
+<% content_for :title, t('products.stock.index.title') %>
+<% content_for :breadcrumb, t('products.stock.index.breadcrumb') %>
+<% breadcrumb_add t('products.stock.index.product_index'), admin_products_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_products_stock_adjustment_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add Stock" do %>
+    <%= link_to new_admin_products_stock_adjustment_path, :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('products.stock.index.add_stock_tooltip') do %>
       <i class="icon-plus"></i>
     <% end %>
-    <h2 class="widget widget-header">Stock management</h2>
+    <h2 class="widget widget-header"><%= t('products.stock.index.header') %></h2>
   </div>
   <div class="widget-controls">
     <select class="form-select" id="filter-stock">
-      <option class="filter" data-filter="all">Show all</option>
-      <option class="filter" data-filter=".stock-low">Low</option>
+      <option class="filter" data-filter="all"><%= t('products.stock.index.show_all_filter') %></option>
+      <option class="filter" data-filter=".stock-low"><%= t('products.stock.index.low_filter') %></option>
     </select>
-    <span>Stock:</span>
+    <span><%= t('products.stock.index.stock_filter') %>:</span>
   </div>
   <% if @skus.empty? %>
-    <p>You don't have any Product SKUs yet.</p>
+    <p><%= t('products.stock.index.no_records') %></p>
   <% else %>
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover">
         <thead class="main-table">
           <tr>
-            <th>SKU</th>
-            <th>Name</th>
-            <th>Variant</th>
-            <th>Stock</th>
-            <th>Stock warning level</th>
+            <th><%= t('products.stock.index.sku') %></th>
+            <th><%= t('products.stock.index.name') %></th>
+            <th><%= t('products.stock.index.variant') %></th>
+            <th><%= t('products.stock.index.stock') %></th>
+            <th><%= t('products.stock.index.stock_warning_level') %></th>
             <th></th>
           </tr>
         </thead>

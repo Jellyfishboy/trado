@@ -15,10 +15,10 @@ feature 'Stock management' do
         end
         expect(current_path).to eq admin_products_stock_index_path
         within 'h2' do
-            expect(page).to have_content 'Stock management'
+            expect(page).to have_content 'Stock Management'
         end
         within '#breadcrumbs li.current' do
-            expect(page).to have_content 'Stock management'
+            expect(page).to have_content 'Stock Management'
         end
         within 'thead tr th:first-child' do
             expect(page).to have_content 'SKU'
@@ -41,7 +41,7 @@ feature 'Stock management' do
             first('tr').find('td:last-child a:first-child').trigger('click')
         end
         within 'h2' do
-            expect(page).to have_content "#{sku.full_sku} stock history"
+            expect(page).to have_content "#{sku.full_sku} Stock History"
         end
         within '#breadcrumbs li.current' do
             expect(page).to have_content sku.full_sku
@@ -67,7 +67,7 @@ feature 'Stock management' do
         # End modal 
 
         within 'tbody tr:first-child td:nth-child(2)' do
-            expect(page).to have_content 'New stock'
+            expect(page).to have_content 'New Stock'
         end 
         within 'tbody tr:first-child td:nth-child(3)' do
             expect(page).to have_content 5

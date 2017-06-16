@@ -12,7 +12,7 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
         respond_to do |format|
             format.html do
                 StockAdjustment.create(@collection)
-                flash_message :success, 'Stock adjustments was successfully created.'
+                flash_message :success, t('controllers.admin.products.stock_adjustments.create.valid')
                 redirect_to admin_products_stock_index_url
             end
 
@@ -20,7 +20,7 @@ class Admin::Products::StockAdjustmentsController < ApplicationController
                 if StockAdjustment.valid_collection?(@collection)
                     render json: {  }, status: 200
                 else
-                    render json: { errors: ['Your stock adjustments are not valid'] }, status: 422
+                    render json: { errors: [t('controllers.admin.products.stock_adjustments.create.invalid')] }, status: 422
                 end
             end
         end

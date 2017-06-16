@@ -1,10 +1,10 @@
-<% content_for :title, 'New delivery service' %>
-<% content_for :breadcrumb, 'New' %>
-<% breadcrumb_add 'Delivery services', admin_delivery_services_path %>
+<% content_for :title, t('delivery_services.new.title') %>
+<% content_for :breadcrumb, t('delivery_services.new.breadcrumb') %>
+<% breadcrumb_add t('delivery_services.new.delivery_service_index'), admin_delivery_services_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">New delivery service</h2>
+    <h2 class="widget widget-header"><%= t('delivery_services.new.header') %></h2>
   </div>
   <%= form_for [:admin, @delivery_service], html: { role: 'form' } do |f| %>
     <div class="threecol"></div>

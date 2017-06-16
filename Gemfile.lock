@@ -380,6 +380,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    language_list (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     little-plugger (1.1.4)
@@ -649,6 +650,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari
+  language_list
   meta_request
   mini_magick
   mysql2
