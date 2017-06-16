@@ -1,153 +1,153 @@
 es:
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Acessorios
+      breadcrumb: Acessorios
+      header: Acessorios
+      add_tooltip: Añadir accesorio
+      no_records: Aún no tiene accesorios.
+      part_number: Parte no.
+      name: Nombre
+      weight: Peso
+      cost_value: Valor de Costo
+      net_price: Precio neto
+      gross_price: Precio Bruto
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Detalles de Accesorios
+        description: Establezca el nombre y el número de parte de su accesorio. 
+        name_label: Nombre
+        part_number_label: Número de parte
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Peso y Precio
+        description: Establezca el peso, precio neto y el valor de costo para su accessorio.
+        weight_label: Peso
+        cost_value_label: Valor de Costo
+        net_price_label: Precio neto
+      submit_button: Guardar
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Editar Accesorio
+      breadcrumb: Editar
+      accessory_index: Acessorios
+      header: Editar Accesorio
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Nuevo accesorio
+      breadcrumb: Nuevo
+      accessory_index: Acessorios
+      header: Nuevo accesorio
   dashboard:
     header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delviery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    orders: Ordenes
+    completed_orders: Completado
+    pending_orders: Pendiente
+    failed_orders: Falló
+    transactions: Transacciones
+    gross_income_transactions: Total de ingresos
+    net_income_transactions: Ingresos Netos
+    tax_transactions: Tasa de impuestos
+    provider_fees_transactions: Honorarios del proveedor
+    delivery_fees_transactions: Gastos de entrega
+    activity: Actividad
+    activity_active_carts: Carros Activos
+    activity_incomplete_orders: Pedidos incompletos
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Configuración
+    breadcrumb: Configuración
+    header: Configuración
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
+      header: Detalles
+      description: Introduzca el nombre, email, logo y estilo para su tienda. El email será usado para el formulario de contacto e importantes notificaciones de actuaalización.
+      name_label: Nombre
       email_label: Email
       logo_label: Logo
-      theme_label: Theme
+      theme_label: Estilo
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: idioma
+      description: Seleccione el idioma para la vista de administración.
+      language_label: idioma
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Tasa de impuestos
+      description: Establezca el nombre y el porciento de su impuesto.
+      name_label: Nombre
+      rate_label: Porcentaje
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
+      header: Moneda y precio a mostrar
+      description: Establezca la moneda con la que operará su tienda y cómo usted desea que sus usuarios vean el precios de los productos, incluyendo o no los impuestos.
+      currency_label: Moneda
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: Boletín de MailChimp
+      description: Establezca el Id para MailChimp.
+      list_id_label: Id
     stripe:
       header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      description: Establezca el text que quiere mostrar en el estado de cuentas de la tarjeta de crédito al cliente.
+      statement_descriptor_label: Descriptor de la declaración
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Habilitar y configurar el código para su tienda.
+      tracking_code_label: Código de seguimiento Web
+      enabled_label: Activar
+      disabled_label: Deshabilitar
+    submit_button: Guardar
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Categorías
+      breadcrumb: Categorías
+      header: Categorías
+      add_tooltip: Añadir Categoría
+      no_records: Aún no tiene la categorías.
+      name: Nombre
+      description: Descripción
+      sorting: Ordenar por
+      active: Activo
+      no_of_products: No. de los productos
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Detalles de Categoría
+        description: Establezca el nombre, la descripción y el orden de sus categorías.
+        name_label: Nombre
+        description_label: Descripción
+        sorting_label: Ordenar por
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Buscadores
+        description: Establezca el título y la meta descripción para ayudar en cómo se verá su página en los buscadores.
+        page_title_label: Título de la Página
+        meta_description_label: Meta descipción
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
+        header: Visibilidad
+        description: Establezca si la categoría es visible en su tienda.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Ocultas
+      submit_button: Guardar
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Editar Categoría
+      breadcrumb: Editar
+      category_index: Categorías
+      header: Editar Categoría
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nueva Categoría
+      breadcrumb: Nuevo
+      category_index: Categorías
+      header: Nueva Categoría
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
+      title: Precio de entrega para %{service_name}
+      header: Precio de entrega para %{service_name}
+      delivery_service_index: Servicio de entrega
+      add_tooltip: Añadir el precio de la entrega
       no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      code: Código
+      description: Descripción
+      weight: Parámetros de peso
+      length: Parámetros de longitud
+      thickness: Parámetros de espesor
+      net_price: Precio neto
+      gross_price: Precio Bruto
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Detalles de precio la entrega
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price

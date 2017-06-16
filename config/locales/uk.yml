@@ -46,7 +46,7 @@ uk:
     net_income_transactions: Net Income
     tax_transactions: Tax
     provider_fees_transactions: Provider Fees
-    delviery_fees_transactions: Delivery Fees
+    delivery_fees_transactions: Delivery Fees
     activity: Activity
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
