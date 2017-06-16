@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     def destroy
       set_order
       Payatron4000.decommission_order(@order)
-      flash_message :success, "Your order has been cancelled."
+      flash_message :success, t('controllers.orders.destroy.valid')
       redirect_to root_url
     end
 
@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
           TradoPaypalModule::Paypaler.assign_paypal_token(params[:token], params[:PayerID], @order) if @order.paypal?
           render theme_presenter.page_template_path('orders/confirm'), layout: theme_presenter.layout_template_path
       else
-        flash_message :error, 'An error ocurred when trying to complete your order. Please try again.'
+        flash_message :error, t('controllers.orders.validate_confirm_render.invalid')
         redirect_to checkout_carts_url
       end
     end

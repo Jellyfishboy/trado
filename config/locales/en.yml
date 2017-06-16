@@ -614,4 +614,9 @@ controllers:
       update:
         valid: Profile was successfully updated
         invalid: There was an error when attempting to update your profile details
+  orders:
+    destroy:
+      valid: Your order has been cancelled
+    validate_confirm_render:
+      invalid: An error ocurred when trying to complete your order. Please try again
 
