@@ -554,5 +554,64 @@ en:
       email_title: Email
       website_title: Website
       thanks: Thanks
-
+controllers:
+  admin:
+    products:
+      stock_adjustments:
+        create:
+          valid: Stock adjustments was successfully created
+          invalid: Your stock adjustments are not valid
+    skus:
+      variants:
+        create:
+          invalid: Variant options can't be blank
+    accessories:
+      create:
+        valid: Accessory was successfully created
+      update:
+        valid: Accessory was successfully updated
+      destroy:
+        valid: Accessory was successfully deleted
+    admin:
+      update:
+        valid: Store settings were successfully updated
+    attachments:
+      destroy:
+        limit_reached: You do not have any images for this product
+    categories:
+      create:
+        valid: Category was successfully created
+      update:
+        valid: Category was successfully updated
+    delivery_service_prices:
+      create:
+        valid: Delivery service price was successfully created
+      update:
+        valid: Delivery service price was successfully updated
+      destroy:
+        valid: Delivery service price was successfully deleted
+    delivery_services:
+      create:
+        valid: Delivery service was successfully created
+      update:
+        valid: Delivery service was successfully updated
+      destroy:
+        valid: Delivery service was successfully deleted
+      set_countries:
+        select_tag: You need to select a delivery service
+    pages:
+      update:
+        valid: Delivery service was successfully updated
+    products:
+      update:
+        draft: Your product has been saved successfully as a draft
+        publish: Your product has been published successfully. It is now live in your store
+      destroy:
+        valid: Product was successfully deleted
+      archive:
+        valid: Product was successfully archived
+    users:
+      update:
+        valid: Profile was successfully updated
+        invalid: There was an error when attempting to update your profile details
 

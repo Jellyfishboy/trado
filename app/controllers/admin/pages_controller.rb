@@ -15,7 +15,7 @@ class Admin::PagesController < Admin::AdminBaseController
     list_template_types
     params[:page][:slug] = Store.parameterize_slug(params[:page][:slug])
     if @page.update(params[:page])
-      flash_message :success, 'Page was successfully updated.'
+      flash_message :success, t('controllers.admin.pages.update.valid')
       redirect_to admin_pages_url
     else
       render :edit
