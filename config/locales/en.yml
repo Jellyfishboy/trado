@@ -344,6 +344,7 @@ en:
       show_all_filter: Show All
       published_filter: Published
       draft_filter: Draft
+      archived_filter: Archived
       featured_filter: Featured
       filter_by: Filter By
       weighting_sorting: Weighting
