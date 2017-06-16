@@ -544,5 +544,15 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  mailers:
+    contact_message:
+      title: Received a new message from
+      header: New Message
+      hello: Hello
+      name_prefix: You have received the following information from
+      message_title: Message
+      email_title: Email
+      website_title: Website
+      thanks: Thanks
 
 
