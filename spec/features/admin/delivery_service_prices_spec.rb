@@ -32,7 +32,7 @@ feature 'Delivery service price management' do
         }.to change(DeliveryServicePrice, :count).by(1)
         expect(current_path).to eq admin_delivery_service_delivery_service_prices_path(delivery_service)
         within '.alert.alert-success' do
-            expect(page).to have_content 'Delivery service price was successfully created.'
+            expect(page).to have_content 'Delivery service price was successfully created'
         end
         within 'h2' do
             expect(page).to have_content "Delivery pricing for #{delivery_service.full_name}"
@@ -55,7 +55,7 @@ feature 'Delivery service price management' do
         click_button 'Submit'
         expect(current_path).to eq admin_delivery_service_delivery_service_prices_path(delivery_service)
         within '.alert.alert-success' do
-            expect(page).to have_content 'Delivery service price was successfully updated.'
+            expect(page).to have_content 'Delivery service price was successfully updated'
         end
         within 'h2' do
             expect(page).to have_content "Delivery pricing for #{delivery_service.full_name}"
@@ -76,7 +76,7 @@ feature 'Delivery service price management' do
             end
         }.to change(DeliveryServicePrice, :count).by(-1)
         within '.alert.alert-success' do
-            expect(page).to have_content('Delivery service price was successfully deleted.')
+            expect(page).to have_content('Delivery service price was successfully deleted')
         end
         within 'h2' do
             expect(page).to have_content "Delivery pricing for #{delivery_service.full_name}"

@@ -1,9 +1,9 @@
-<% content_for :title, 'Profile' %>
-<% content_for :breadcrumb, 'Profile' %>
+<% content_for :title, t('users.edit.title') %>
+<% content_for :breadcrumb, t('users.edit.breadcrumb') %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Profile</h2>
+    <h2 class="widget widget-header"><%= t('users.edit.header') %></h2>
   </div>
   <%= form_for @user, url: admin_profile_update_path, html: { role: 'form' } do |f| %>
     <div class="threecol"></div>
@@ -22,22 +22,22 @@
       <% end %>
     </div>
     <div class="threecol">
-      <h3>Profile settings</h3>
-      <p>Set the name and profile picture for your administration account.</p>
+      <h3><%= t('users.edit.profile_settings.header') %></h3>
+      <p><%= t('users.edit.profile_settings.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content widget-last">
         <div class="form-group">
-          <%= f.label :first_name %>
+          <%= f.label t('users.edit.profile_settings.first_name_label') %>
           <%= f.text_field :first_name, :class => 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :last_name %>
+          <%= f.label t('users.edit.profile_settings.last_name_label') %>
           <%= f.text_field :last_name, :class => 'form-control' %>
         </div>
         <%= f.fields_for :attachment do |ff| %>
           <div class="form-group">
-            <%= ff.label "Profile picture" %>
+            <%= ff.label t('users.edit.profile_settings.profile_picture_label') %>
             <div>
               <%= image_tag @user.attachment.file.square, width: 75, height: 75 %>
             </div>
@@ -48,7 +48,7 @@
         <% end %>
       </fieldset>
       <div class="form-action">
-        <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+        <%= f.submit t('users.edit.submit_button'), :class => 'btn btn-blue btn-large' %>
       </div>
     </div>
   <% end %>

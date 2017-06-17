@@ -15,7 +15,7 @@ class Admin::AdminController < Admin::AdminBaseController
     def update
         set_setting
         if @settings.update(params[:store_setting])
-            flash_message :success, 'Store settings were successfully updated.'
+            flash_message :success, t('controllers.admin.admin.update.valid')
             redirect_to admin_root_url
         else
             render action: "settings"

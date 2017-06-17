@@ -1,9 +1,11 @@
 class Admin::OrdersController < Admin::AdminBaseController
+  include PaginationHelper
   before_action :authenticate_user!
   layout 'admin'
 
   def index
-    @orders = Order.includes(:billing_address).complete.order(created_at: :desc)
+    set_delivery_status
+    set_orders
   end
 
   def show
@@ -44,5 +46,13 @@ class Admin::OrdersController < Admin::AdminBaseController
 
   def set_order
     @order ||= Order.complete.find(params[:id])
+  end
+
+  def set_orders
+    @orders ||= Order.includes(:billing_address).complete.where(shipping_status: @delivery_status).order(created_at: :desc).page(page).per(limit)
+  end
+
+  def set_delivery_status
+    @delivery_status = params[:delivery_status].present? ? params[:delivery_status] == "all" ? Order.shipping_statuses.values : params[:delivery_status] : Order.shipping_statuses.values
   end
 end

@@ -1,4 +1,4 @@
-![alt text](http://cdn0.trado.io/trado-promo/assets/img/cropped.png "Trado")
+![alt text](http://cdn0.trado.io/trado-promo/assets/img/home.png "Trado")
 
 [![Build Status](https://travis-ci.org/Jellyfishboy/trado.svg?branch=master)](https://travis-ci.org/Jellyfishboy/trado)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/1be726fe15224e0db13b49ba4240500f)](https://www.codacy.com/app/tomdallimore/trado)
@@ -7,11 +7,23 @@
 
 Trado is a lightweight, easy to use ecommerce platform; designed to allow developers to quickly deploy a premium online store. The platform comes bundled with an abundance of modular based support for popular services such as Google Merchants, PayPal, Stripe and many more.
 
-[Official site](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
+[Trado homepage](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
+
+## Usage
 
 Need help setting up Trado? Check out our [Getting Started](http://trado.io/getting-started.html) guide!
 
-Or maybe you just want to browse around the application? Then head on over to our [Demo Application](http://demo.trado.io)
+## Demo
+
+Want to see Trado in action?
+
+[Trado live demo](http://demo.trado.io)
+
+Or launch the demo on a free Heroku instance.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/Jellyfishboy/trado/tree/deploy/heroku)
+
+Login details: `admin@example.com` | `admin123#`
 
 ## Modules
 
@@ -21,6 +33,7 @@ This is a list of modules which are supported by the Trado platform. These modul
 * [Google Merchant product feed](https://github.com/Jellyfishboy/trado-googlemerchant-module)
 * [Stripe](https://github.com/Jellyfishboy/trado-stripe-module)
 * [Mailchimp](https://github.com/Jellyfishboy/trado-mailchimp-module)
+* [PDF Invoice](https://github.com/Jellyfishboy/trado-pdf-invoice-module)
 
 ## Community
 
@@ -52,5 +65,5 @@ Trado follows Semantic Versioning 2.0 as defined at
 * Send a pull request against the *development* branch
 
 ## Copyright
-Copyright (c) 2014 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=trado-github&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
+Copyright (c) 2017 [Tom Dallimore](http://www.tomdallimore.com/?utm_source=trado-github&utm_medium=website&utm_campaign=tomdallimore) ([@tom_dallimore](http://twitter.com/tom_dallimore))  
 Licenced under the MIT licence.

@@ -1,19 +1,19 @@
 <div class="row fields">
   <div class="fourcol">
     <div class="form-group">
-      <%= f.label :sku_id %>
+      <%= f.label t('products.stock_adjustments.new.sku_label') %>
       <%= f.select :sku_id, options_for_select(@skus.map{|s| ["#{s.product.name} | #{s.full_sku}", s.id]}, @stock_adjustment.sku_id), { include_blank: false }, { class: 'chosen', data: { placeholder: "Select product SKU..."} } %>
     </div>
   </div>
   <div class="fourcol">
     <div class="form-group">
-      <%= f.label :description %>
+      <%= f.label t('products.stock_adjustments.new.description_label') %>
       <%= f.text_field :description, :class => 'form-control' %>
     </div>  
   </div>
   <div class="threecol">
     <div class="form-group">
-      <%= f.label :adjustment %>
+      <%= f.label t('products.stock_adjustments.new.adjustment_label') %>
       <%= f.text_field :adjustment, :class => 'form-control' %>
     </div>
   </div>

@@ -32,11 +32,11 @@ class Admin::ProductsController < Admin::AdminBaseController
     if params[:commit] == "Save"
       @product.status = :draft
       params[:product][:status] = 'draft'
-      @message = "Your product has been saved successfully as a draft."
+      @message = t('controllers.admin.products.update.draft')
     elsif params[:commit] == "Publish"
       @product.status = :published
       params[:product][:status] = 'published'
-      @message = "Your product has been published successfully. It is now live in your store."
+      @message = t('controllers.admin.products.update.publish')
     end
     if @product.update(params[:product])
       Tag.add(params[:taggings], @product.id)
@@ -61,17 +61,24 @@ class Admin::ProductsController < Admin::AdminBaseController
       Store.inactivate!(@product)
     end
 
-    flash_message :success, "Product was successfully deleted."
+    flash_message :success, t('controllers.admin.products.destroy.valid')
     redirect_to admin_products_url
   end
 
   def autosave
-    set_autosave_product
+    set_simple_product
     if @product.update(params[:product])
       render json: { }, status: 200
     else
       render json: { }, status: 422
     end
+  end
+
+  def archive
+    set_simple_product
+    @product.archived!
+    flash_message :success, t('controllers.admin.products.archive.valid')
+    redirect_to admin_products_url
   end
 
   private
@@ -90,7 +97,7 @@ class Admin::ProductsController < Admin::AdminBaseController
     @product ||= Product.includes(:skus, :accessories, :attachments, :variant_types, :attachments).find(params[:id])
   end
 
-  def set_autosave_product
+  def set_simple_product
     @product = Product.find(params[:id])
   end
 

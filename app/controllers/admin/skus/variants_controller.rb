@@ -20,7 +20,7 @@ class Admin::Skus::VariantsController < Admin::AdminBaseController
             }
         end.reject(&:nil?)
         if @variants.empty?
-            render json: { errors: ['Variant options can\'t be blank'] }, status: 422
+            render json: { errors: [t('controllers.admin.skus.variants.create.invalid')] }, status: 422
         else
             @total_possible_skus = @variants.map do |v| 
                 v[:values].count == 0 ? 1 : v[:values].count

@@ -7,23 +7,23 @@
 #
 # Table name: products
 #
-#  id                :integer          not null, primary key
-#  name              :string
-#  description       :text
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  weighting         :integer
-#  part_number       :integer
-#  sku               :string
-#  category_id       :integer
-#  slug              :string
-#  meta_description  :string
-#  featured          :boolean
-#  active            :boolean          default(TRUE)
-#  short_description :text
-#  status            :integer          default(0)
-#  order_count       :integer          default(0)
-#  page_title        :string
+#  id                      :integer          not null, primary key
+#  name                    :string
+#  description             :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  weighting               :integer
+#  part_number             :integer
+#  sku                     :string
+#  category_id             :integer
+#  slug                    :string
+#  meta_description        :string
+#  featured                :boolean
+#  active                  :boolean          default(TRUE)
+#  short_description       :text
+#  status                  :integer          default(0)
+#  order_count             :integer          default(0)
+#  page_title              :string
 #
 
 class Product < ActiveRecord::Base
@@ -71,9 +71,11 @@ class Product < ActiveRecord::Base
   
   default_scope { order(weighting: :desc) }
 
+  scope :published_or_archived,                               -> { where(status: [1,2]) } 
+  scope :active_non_archived,                                 -> { active.where.not(status: 2) }
   scope :search,                                              ->(query, page, per_page_count, limit_count) { joins(:tags).where("lower(products.name) LIKE :search OR lower(products.sku) LIKE :search OR lower(tags.name) LIKE :search", search: "%#{query}%").uniq.limit(limit_count).page(page).per(per_page_count) }
 
-  enum status: [:draft, :published]
+  enum status: [:draft, :published, :archived]
 
   # Find all associated variants by their variant type
   # @param variant_type [String]

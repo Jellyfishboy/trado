@@ -8,7 +8,7 @@
         <%= render partial: 'shared/loading', format: [:html] %>
         <div class="modal-header">
           <h3 id="skuModalLabel">
-            <%= @form_sku.id.nil? ? "Add variant" : @form_sku.code.nil? ? "Edit variant" : "Edit variant: #{@form_sku.code}" %>
+            <%= @form_sku.id.nil? ? t('products.form.skus.modal.add_variant') : @form_sku.code.nil? ? t('products.form.skus.modal.edit_variant') : "#{t('products.form.skus.modal.edit_variant')}: #{@form_sku.code}" %>
           </h3>
         </div>
         <div class="modal-body">
@@ -42,7 +42,7 @@
             <div class="row">
               <div class="twelvecol">
                   <div class="form-group">
-                    <%= f.label :code %>
+                    <%= f.label t('products.form.skus.modal.code_label') %>
                     <% if @form_sku.code.nil? %>
                       <%= f.text_field :code, :class => 'form-control' %>
                     <% else %>
@@ -54,19 +54,19 @@
             <div class="row">
               <div class="fourcol">
                 <div class="form-group">
-                  <%= f.label :length %>
+                  <%= f.label t('products.form.skus.modal.length_label') %>
                   <%= f.text_field :length, :class => 'form-control' %>
                 </div>
               </div>
               <div class="fourcol">
                 <div class="form-group">
-                  <%= f.label :weight %>
+                  <%= f.label t('products.form.skus.modal.weight_label') %>
                   <%= f.text_field :weight, :class => 'form-control' %>
                 </div>
               </div>
               <div class="fourcol last">
                 <div class="form-group">
-                  <%= f.label :thickness %>
+                  <%= f.label t('products.form.skus.modal.thickness_label') %>
                   <%= f.text_field :thickness, :class => 'form-control' %>
                 </div>
               </div>
@@ -74,7 +74,7 @@
             <div class="row">
               <div class="sixcol">
                   <div class="form-group">
-                    <%= f.label :stock %>
+                    <%= f.label t('products.form.skus.modal.stock_label') %>
                     <% if @form_sku.stock.nil? %>
                       <%= f.text_field :stock, :class => 'form-control' %>
                     <% else %>
@@ -84,7 +84,7 @@
               </div>
               <div class="sixcol last">
                 <div class="form-group">
-                  <%= f.label :stock_warning_level %>
+                  <%= f.label t('products.form.skus.modal.stock_warning_level_label') %>
                   <%= f.text_field :stock_warning_level, :class => 'form-control' %>
                 </div>
               </div>
@@ -92,7 +92,7 @@
             <div class="row">
               <div class="sixcol">
                 <div class="form-group form-last">
-                  <%= f.label :cost_value %>
+                  <%= f.label t('products.form.skus.modal.cost_value_label') %>
                   <div class="form-prefix">
                     <span><%= Store.settings.currency_symbol %></span>
                     <%= f.text_field :cost_value, :class => 'form-control calculate-tax' %>
@@ -101,7 +101,7 @@
               </div>
               <div class="sixcol last">
                 <div class="form-group form-last">
-                  <%= f.label :price %>
+                  <%= f.label t('products.form.skus.modal.price_label') %>
                   <div class="form-prefix">
                     <span><%= Store.settings.currency_symbol %></span>
                     <%= f.text_field :price, :class => 'form-control calculate-tax' %>
@@ -112,8 +112,8 @@
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button">Close</button>
-          <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
+          <button class="btn btn-orange btn-large" data-dismiss="modal" type="button"><%= t('modal.close_button') %></button>
+          <%= f.submit t('products.form.skus.modal.submit_button'), :class => 'btn btn-blue btn-large' %>
         </div>
       <% end %>
     </div>

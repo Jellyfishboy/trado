@@ -18,7 +18,7 @@ class Admin::AccessoriesController < Admin::AdminBaseController
     @accessory = Accessory.new(params[:accessory])
 
     if @accessory.save
-      flash_message :success, 'Accessory was successfully created.'
+      flash_message :success, t('controllers.admin.accessories.create.valid')
       redirect_to admin_accessories_url
     else
       render :new
@@ -45,7 +45,7 @@ class Admin::AccessoriesController < Admin::AdminBaseController
         @old_accessory.accessorisations.pluck(:product_id).map { |t| Accessorisation.create(:product_id => t, :accessory_id => @accessory.id) }
         CartItemAccessory.where('accessory_id = ?', @old_accessory.id).destroy_all
       end
-      flash_message :success, 'Accessory was successfully updated.'
+      flash_message :success, t('controllers.admin.accessories.update.valid')
       redirect_to admin_accessories_url
     else
       @form_accessory = @old_accessory ||= Accessory.find(params[:id])
@@ -58,7 +58,7 @@ class Admin::AccessoriesController < Admin::AdminBaseController
   def destroy
     set_accessory
     Store.active_archive(CartItemAccessory, :accessory_id, @accessory)
-    flash_message :success, 'Accessory was successfully deleted.'
+    flash_message :success, t('controllers.admin.accessories.destroy.valid')
     redirect_to admin_accessories_url
   end
 

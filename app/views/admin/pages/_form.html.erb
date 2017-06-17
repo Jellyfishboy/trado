@@ -1,87 +1,76 @@
-<div class="twelvecol">
-  <div class="page-header">
-    <h2 class="widget widget-header">Edit page</h2>
+<div class="threecol">
+  <h3><%= t('pages.form.write_your_page.header') %></h3>
+  <p><%= t('pages.form.write_your_page.description') %></p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label t('pages.form.write_your_page.title_label') %>
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label t('pages.form.write_your_page.menu_title_label') %>
+      <%= f.text_field :menu_title, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label t('pages.form.write_your_page.sorting_label') %>
+      <%= f.text_field :sorting, :class => 'form-control' %>
+    </div>
+    <div class="form-group form-last">
+      <%= f.label t('pages.form.write_your_page.content_label') %>
+      <%= f.text_area :content, :class => 'form-control redactor', rows: 8 %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3><%= t('pages.form.search_engines.header') %></h3>
+  <p><%= t('pages.form.search_engines.description') %></p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="form-group">
+      <%= f.label t('pages.form.search_engines.page_title_label') %>
+      <%= f.text_field :page_title, :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label t('pages.form.search_engines.meta_description_label') %>
+      <%= f.text_area :meta_description, :class => 'form-control', rows: 4 %>
+    </div>
+    <div class="form-group form-last">
+      <%= f.label t('pages.form.search_engines.slug_label') %>
+      <%= f.text_field :slug, :class => 'form-control' %>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3><%= t('pages.form.visibility.header') %></h3>
+  <p><%= t('pages.form.visibility.description') %></p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content">
+    <div class="radio">
+      <label>
+        <%= f.radio_button :active, true %>
+        <%= t('pages.form.visibility.visible_label') %>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :active, false %>
+        <%= t('pages.form.visibility.hidden_label') %>
+      </label>
+    </div>
+  </fieldset>
+</div>
+<div class="threecol">
+  <h3><%= t('pages.form.template.header') %></h3>
+  <p><%= t('pages.form.template.description') %></p>
+</div>
+<div class="ninecol last">
+  <fieldset class="widget widget-content widget-last">
+    <%= f.select :template_type, options_for_select(@template_types.keys.map { |type| [type.titleize, type] }, @page.template_type), { include_blank: false }, { :class => "form-control" } %>
+  </fieldset>
+  <div class="form-action">
+    <%= f.submit t('pages.form.submit_button'), :class => 'btn btn-blue btn-large' %>
   </div>
-  <%= form_for [:admin, @page], html: { role: 'form' } do |f| %>
-    <div class="threecol"></div>
-    <div class="ninecol last">
-      <%= render partial: 'shared/errors', locals: { object: @page } %>
-    </div>
-    <div class="threecol">
-      <h3>Write your page</h3>
-      <p>Set the title for your page, menu item, sorting order and add your page content.</p>
-    </div>
-    <div class="ninecol last">
-      <fieldset class="widget widget-content">
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, :class => 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :menu_title %>
-          <%= f.text_field :menu_title, :class => 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :sorting %>
-          <%= f.text_field :sorting, :class => 'form-control' %>
-        </div>
-        <div class="form-group form-last">
-          <%= f.label :content %>
-          <%= f.text_area :content, :class => 'form-control redactor', rows: 8 %>
-        </div>
-      </fieldset>
-    </div>
-    <div class="threecol">
-      <h3>Search engines</h3>
-      <p>Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.</p>
-    </div>
-    <div class="ninecol last">
-      <fieldset class="widget widget-content">
-        <div class="form-group">
-          <%= f.label :page_title %>
-          <%= f.text_field :page_title, :class => 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :meta_description %>
-          <%= f.text_area :meta_description, :class => 'form-control', rows: 4 %>
-        </div>
-        <div class="form-group form-last">
-          <%= f.label :slug %>
-          <%= f.text_field :slug, :class => 'form-control' %>
-        </div>
-      </fieldset>
-    </div>
-    <div class="threecol">
-      <h3>Visiblity</h3>
-      <p>Set if the page is visible on your storefront.</p>
-    </div>
-    <div class="ninecol last">
-      <fieldset class="widget widget-content">
-        <div class="radio">
-          <label>
-            <%= f.radio_button :active, true %>
-            Visible
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :active, false %>
-            Hidden
-          </label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="threecol">
-      <h3>Template</h3>
-      <p>Select the template this page will use on your storefront.</p>
-    </div>
-    <div class="ninecol last">
-      <fieldset class="widget widget-content widget-last">
-        <%= f.select :template_type, options_for_select(@template_types.keys.map { |type| [type.titleize, type] }, @page.template_type), { include_blank: false }, { :class => "form-control" } %>
-      </fieldset>
-      <div class="form-action">
-        <%= f.submit 'Submit', :class => 'btn btn-blue btn-large' %>
-      </div>
-    </div>
-  <% end %>
 </div>

@@ -56,6 +56,7 @@ class Sku < ActiveRecord::Base
 
   scope :complete,                                                    -> { where('stock IS NOT NULL') }
   scope :in_stock,                                                    -> { where('stock > ?', 0) }
+  scope :active_non_archived,                                         -> { includes(:product).active.where.not(products: { status: 2 }) }
 
   include ActiveScope
 
@@ -74,7 +75,7 @@ class Sku < ActiveRecord::Base
   def update_cart_items_weight
     cart_items = CartItem.where(sku_id: id)
     cart_items.each do |item|
-      item.update_column(:weight, (weight*item.quantity))
+      item.update_column(:weight, (weight*(item.quantity||1)))
     end
   end
 

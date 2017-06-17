@@ -15,7 +15,7 @@ class Admin::Products::StockController < Admin::AdminBaseController
     private
 
     def set_skus
-        @skus ||= Sku.includes(:product, :variants).complete.active.all
+        @skus ||= Sku.includes(:product, :variants).complete.active_non_archived.all
     end
 
     def set_sku

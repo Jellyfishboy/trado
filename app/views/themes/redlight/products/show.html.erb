@@ -32,52 +32,55 @@
 
       <h2 id="price"><%= Store::Price.new(price: @product.first_available_sku.price).markup %></h2>
 
-      <div class="row hidden-xs">
-        <div class="col-lg-4 col-sm-4 property">
-          <h3><%= @variant_types.map(&:name).join(' / ') %></h3>
-        </div>
-        <% unless @product.accessories.active.empty? %>
+      <% if @product.archived? %>
+        <div class="btn orange">Discontinued</div>
+      <% else %>
+        <div class="row hidden-xs">
           <div class="col-lg-4 col-sm-4 property">
-            <h3>Accessory</h3>
+            <h3><%= @variant_types.map(&:name).join(' / ') %></h3>
           </div>
-        <% end %>
-        <div class="col-lg-4 col-sm-4 property">
-          <h3>Quantity</h3>
-        </div>
-      </div>
-
-      <%= form_for @cart_item, html: { method: :post, remote: true } do |f| %>
-        <div class="row options">
-          <div class="col-lg-4 col-sm-4">
-            <p class="visible-xs">
-              <%= @variant_types.map(&:name).join(' / ') %>
-            </p>
-            <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] }, selected: @product.first_available_sku.id), {}, class: 'updated-selected-sku', 'data-product-id' => @product.id %>
-          </div>
-
           <% unless @product.accessories.active.empty? %>
-            <div class="col-lg-4 col-sm-4">
-              <p class="visible-xs">
-                Accessory
-              </p>
-              <%= f.fields_for @cart_item_accessory do |accessory| %>
-                <%= accessory.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), { prompt: "No accessory (+£0.00)" }, class: 'updated-selected-accessory', 'data-product-id' => @product.id %>
-              <% end %>
+            <div class="col-lg-4 col-sm-4 property">
+              <h3>Accessory</h3>
             </div>
           <% end %>
-
-          <div class="col-lg-4 col-sm-4">
-            <p class="visible-xs">
-              Quantity
-            </p>
-            <strong class="decrease-quantity">-</strong>&nbsp;&nbsp;
-            <%= f.text_field :quantity, value: 1, class: 'form-control', id: 'item-quantity' %>
-            &nbsp;&nbsp;<strong class="increase-quantity">+</strong>
+          <div class="col-lg-4 col-sm-4 property">
+            <h3>Quantity</h3>
           </div>
         </div>
-        <div id="product-actions">
-            <%= render partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @product.first_available_sku }, format: [:html] %>
-        </div>
+        <%= form_for @cart_item, html: { method: :post, remote: true } do |f| %>
+          <div class="row options">
+            <div class="col-lg-4 col-sm-4">
+              <p class="visible-xs">
+                <%= @variant_types.map(&:name).join(' / ') %>
+              </p>
+              <%= f.select :sku_id, options_for_select(@skus.map { |sku| [render_variants(sku), sku.id ] }, selected: @product.first_available_sku.id), {}, class: 'updated-selected-sku', 'data-product-id' => @product.id %>
+            </div>
+
+            <% unless @product.accessories.active.empty? %>
+              <div class="col-lg-4 col-sm-4">
+                <p class="visible-xs">
+                  Accessory
+                </p>
+                <%= f.fields_for @cart_item_accessory do |accessory| %>
+                  <%= accessory.select :accessory_id, options_for_select(@product.accessories.active.map { |a| [accessory_details(a), a.id]}), { prompt: "No accessory (+£0.00)" }, class: 'updated-selected-accessory', 'data-product-id' => @product.id %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <div class="col-lg-4 col-sm-4">
+              <p class="visible-xs">
+                Quantity
+              </p>
+              <strong class="decrease-quantity">-</strong>&nbsp;&nbsp;
+              <%= f.text_field :quantity, value: 1, class: 'form-control', id: 'item-quantity' %>
+              &nbsp;&nbsp;<strong class="increase-quantity">+</strong>
+            </div>
+          </div>
+          <div id="product-actions">
+              <%= render partial: theme_presenter.page_template_path('products/actions'), locals: { product: @product, sku: @product.first_available_sku }, format: [:html] %>
+          </div>
+        <% end %>
       <% end %>
       <ul id="social">
         <li>

@@ -1,11 +1,11 @@
-<% content_for :title, 'Edit product' %>
-<% content_for :breadcrumb, 'Edit' %>
-<% breadcrumb_add 'Products', admin_products_path %>
+<% content_for :title, t('products.edit.title') %>
+<% content_for :breadcrumb, t('products.edit.breadcrumb') %>
+<% breadcrumb_add t('products.edit.product_index'), admin_products_path %>
 <% javascript :footer, 'products' %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <h2 class="widget widget-header">Edit product</h2>
+    <h2 class="widget widget-header"><%= t('products.edit.header') %></h2>
   </div>
   <div id="autosave-message"></div>
   <%= render "form" %>

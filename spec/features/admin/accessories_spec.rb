@@ -45,7 +45,7 @@ feature 'Accessory management' do
         }.to change(Accessory, :count).by(1)
         expect(current_path).to eq admin_accessories_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Accessory was successfully created.'
+            expect(page).to have_content 'Accessory was successfully created'
         end
         within 'h2' do
             expect(page).to have_content 'Accessories'
@@ -68,7 +68,7 @@ feature 'Accessory management' do
         click_button 'Submit'
         expect(current_path).to eq admin_accessories_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Accessory was successfully updated.'
+            expect(page).to have_content 'Accessory was successfully updated'
         end
         within 'h2' do
             expect(page).to have_content 'Accessories'
@@ -89,7 +89,7 @@ feature 'Accessory management' do
             end
         }.to change(Accessory, :count).by(-1)
         within '.alert.alert-success' do
-            expect(page).to have_content('Accessory was successfully deleted.')
+            expect(page).to have_content('Accessory was successfully deleted')
         end
         within 'h2' do
             expect(page).to have_content 'Accessories'

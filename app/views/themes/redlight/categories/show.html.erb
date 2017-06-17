@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-lg-12 col-sm-12" id="list-wrapper">
-                <% @category.products.each do |product| %>
+                <% @category.products.published.each do |product| %>
                     <div class="col-lg-3 col-sm-3 list">
                         <%= link_to [product.category, product] do %>
                             <%= image_tag product.attachments.first.file.large, alt: product.name %>

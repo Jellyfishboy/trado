@@ -135,7 +135,7 @@ feature 'Product management' do
             expect(page).to have_content 'Products'
         end 
         within '.alert.alert-success' do
-            expect(page).to have_content 'Your product has been published successfully. It is now live in your store.'
+            expect(page).to have_content 'Your product has been published successfully. It is now live in your store'
         end
     end
 
@@ -164,7 +164,7 @@ feature 'Product management' do
             expect(page).to have_content 'Products'
         end 
         within '.alert.alert-success' do
-            expect(page).to have_content 'Your product has been saved successfully as a draft.'
+            expect(page).to have_content 'Your product has been saved successfully as a draft'
         end
         not_single_product.reload
         expect(not_single_product.name).to eq 'product #1 woooppeeee'
@@ -185,7 +185,7 @@ feature 'Product management' do
             end
         }.to change(Product, :count).by(-1)
         within '.alert.alert-success' do
-            expect(page).to have_content('Product was successfully deleted.')
+            expect(page).to have_content('Product was successfully deleted')
         end
         within 'h2' do
             expect(page).to have_content 'Products'
@@ -212,7 +212,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-variants-form' do
-            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            expect(find('.modal-header h3')).to have_content "Configure Variant Options"
             page.execute_script("$('#colour').val('Red,Blue')")
             click_button 'Submit'
         end
@@ -271,7 +271,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-variants-form' do
-            expect(find('.modal-header h3')).to have_content "Configure variant options"
+            expect(find('.modal-header h3')).to have_content "Configure Variant Options"
         end
 
         within '.modal#sku-variants-form' do
@@ -303,7 +303,7 @@ feature 'Product management' do
         sleep 1
 
         within '.modal#sku-form' do
-            expect(find('.modal-header h3')).to have_content "Add variant"
+            expect(find('.modal-header h3')).to have_content "Add Variant"
             fill_in('sku_variants_attributes_0_name', with: '1kg')
             fill_in('sku_code', with: '50')
             fill_in('sku_length', with: '10.3')

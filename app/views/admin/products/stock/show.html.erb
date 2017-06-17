@@ -1,23 +1,23 @@
-<% content_for :title, 'Stock management' %>
+<% content_for :title, t('products.stock.show.title') %>
 <% content_for :breadcrumb, @sku.full_sku %>
-<% breadcrumb_add 'Products', admin_products_path %>
-<% breadcrumb_add 'Stock management', admin_products_stock_index_path %>
+<% breadcrumb_add t('products.stock.show.product_index'), admin_products_path %>
+<% breadcrumb_add t('products.stock.show.stock_management_index'), admin_products_stock_index_path %>
 
 <div class="twelvecol">
   <div class="page-header">
-    <%= link_to new_admin_product_sku_stock_adjustment_path(@sku.product, @sku), remote: true, id: 'add-stock-adjustment-button', :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: "Add stock adjustment" do %>
+    <%= link_to new_admin_product_sku_stock_adjustment_path(@sku.product, @sku), remote: true, id: 'add-stock-adjustment-button', :class => "btn btn-blue btn-large", "data-placement" => "bottom", "data-toggle" => "tooltip", title: t('products.stock.show.add_stock_adjustment_tooltip') do %>
       <i class="icon-plus"></i>
     <% end %>
-    <h2 class="widget widget-header"><%= @sku.full_sku %> stock history</h2>
+    <h2 class="widget widget-header"><%= @sku.full_sku %> <%= t('products.stock.show.header') %></h2>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered" id='stock-table'>
       <thead>
         <tr>
-          <th>Date</th>
-          <th class="fifty">Description</th>
-          <th>Adjustment</th>
-          <th>Stock</th>
+          <th><%= t('products.stock.show.date') %></th>
+          <th class="fifty"><%= t('products.stock.show.description') %></th>
+          <th><%= t('products.stock.show.adjustment') %></th>
+          <th><%= t('products.stock.show.stock') %></th>
         </tr>
       </thead>
       <tbody>

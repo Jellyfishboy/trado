@@ -78,6 +78,15 @@
         height:220px;
     }
 }
+.widget-controls
+{
+    input[type=submit]
+    {
+        float:right;
+        margin-left:20px;
+        margin-top: 1px;
+    }
+}
 // migrate to Soca theme
 @media handheld, only screen and (max-width: 770px) 
 {

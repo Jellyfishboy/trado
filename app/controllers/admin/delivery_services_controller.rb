@@ -23,7 +23,7 @@ class Admin::DeliveryServicesController < Admin::AdminBaseController
     @delivery_service = DeliveryService.new(params[:delivery_service])
 
     if @delivery_service.save
-      flash_message :success, 'Delivery service was successfully created.'
+      flash_message :success, t('controllers.admin.delivery_services.create.valid')
       redirect_to admin_delivery_services_url
     else
       render :new
@@ -50,7 +50,7 @@ class Admin::DeliveryServicesController < Admin::AdminBaseController
         Store.inactivate_all!(@old_delivery_service.prices)
         @old_delivery_service.prices.map { |p| p.destroy if p.orders.empty? }
       end
-      flash_message :success, 'Delivery service was successfully updated.'
+      flash_message :success, t('controllers.admin.delivery_services.update.valid')
       redirect_to admin_delivery_services_url
     else
       @form_delivery_service = @old_delivery_service ||= DeliveryService.find(params[:id])
@@ -68,7 +68,7 @@ class Admin::DeliveryServicesController < Admin::AdminBaseController
     else
       Store.inactivate!(@delivery_service)
     end
-    @result = [:success, 'Delivery service was successfully deleted.'] if @result.nil?
+    @result = [:success, t('controllers.admin.delivery_services.destroy.valid')] if @result.nil?
     flash_message @result[0], @result[1]
     redirect_to admin_delivery_services_url
   end
@@ -84,7 +84,7 @@ class Admin::DeliveryServicesController < Admin::AdminBaseController
     @delivery_service = DeliveryService.includes(:countries).find(params[:delivery_service_id])
     render json: { countries: @delivery_service.countries.map{ |c| c.id.to_s } }, status: 200
   rescue ActiveRecord::RecordNotFound
-    render json: { errors: 'You need to select a delivery service.' }, status: 422
+    render json: { errors: t('controllers.admin.delivery_services.set_countries.select_tag') }, status: 422
   end
 
   private
