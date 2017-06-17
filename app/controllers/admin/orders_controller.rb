@@ -49,7 +49,7 @@ class Admin::OrdersController < Admin::AdminBaseController
   end
 
   def set_orders
-    @orders ||= Order.includes(:billing_address).complete.where(shipping_status: @delivery_status).order(created_at: :desc).page(page).per(2)
+    @orders ||= Order.includes(:billing_address).complete.where(shipping_status: @delivery_status).order(created_at: :desc).page(page).per(limit)
   end
 
   def set_delivery_status
