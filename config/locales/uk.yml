@@ -603,7 +603,7 @@ uk:
           select_tag: You need to select a delivery service
       pages:
         update:
-          valid: Delivery service was successfully updated
+          valid: Page was successfully updated
       users:
         update:
           valid: Profile was successfully updated
