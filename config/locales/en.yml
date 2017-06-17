@@ -601,7 +601,7 @@ en:
           select_tag: You need to select a delivery service
       pages:
         update:
-          valid: Delivery service was successfully updated
+          valid: Page was successfully updated
       products:
         update:
           draft: Your product has been saved successfully as a draft
