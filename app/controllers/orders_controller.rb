@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
 
     def complete
       set_order
+      if @order.completed?
+        return render_order_already_completed 
+      end
+
       redirect_url = Store::PayProvider.new(order: @order, provider: @order.payment_type, session: session, ip_address: request.remote_ip).complete
       redirect_to redirect_url
     end
@@ -78,5 +82,9 @@ class OrdersController < ApplicationController
         flash_message :error, t('controllers.orders.validate_confirm_render.invalid')
         redirect_to checkout_carts_url
       end
+    end
+
+    def render_order_already_completed
+        redirect_to success_orders_url, notice: 'Your order has already been completed'
     end
 end

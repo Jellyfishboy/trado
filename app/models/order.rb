@@ -115,6 +115,13 @@ class Order < ActiveRecord::Base
   		latest_transaction.completed? unless transactions.empty?
   	end
 
+    # Returns true if the last associated transaction to the order is marked as failed
+    #
+    # @return [Boolean]
+    def failed?
+      latest_transaction.failed? unless transactions.empty?
+    end
+
   	def self.dashboard_data
   		return {
 	  		:completed => completed_collection.count,
