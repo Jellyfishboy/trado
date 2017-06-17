@@ -245,7 +245,7 @@ en:
       delivery_dispatched: Dispatched
       delivery_pending: Pending
       delivery_select: Delivery
-      no_records: You don't have any orders yet.
+      no_records: You don't have any orders meeting those criterias
       order_number: Order No.
       full_name: Full Name
       payment_type: Payment Type

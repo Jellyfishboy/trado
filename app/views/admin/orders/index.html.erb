@@ -7,17 +7,16 @@
     <h2 class="widget widget-header"><%= t('orders.index.header') %></h2>
   </div>
   <div class="widget-controls">
-    <select class="form-select" id="filter-order-delivery">
-      <option class="filter" data-filter="all"><%= t('orders.index.delivery_show_all') %></option>
-      <option class="filter" data-filter=".order-dispatched"><%= t('orders.index.delivery_dispatched') %></option>
-      <option class="filter" data-filter=".order-pending"><%= t('orders.index.delivery_pending') %></option>
-    </select>
-    <span><%= t('orders.index.delivery_show_all') %>:</span>
+    <%= form_tag admin_orders_path, method: :get do %>
+      <%= submit_tag "Search", :class => 'btn btn-blue btn-normal' %>
+      <%= select_tag :delivery_status, options_for_select(delivery_filter_select, params[:delivery_status]), { include_blank: false, :class => 'form-select' } %>
+      <span><%= t('orders.index.delivery_select') %>:</span>
+    <% end %>
   </div>
   <% if @orders.empty? %>
     <div class="widget widget-content">
       <div class="helper-notification">
-        <p><%= t('orders.index.delivery_select') %></p>
+        <p><%= t('orders.index.no_records') %></p>
         <i class="icon-box-add"></i>
       </div>
     </div>
@@ -36,14 +35,15 @@
             <th></th>
           </tr>
         </thead>
-        <tbody class="mixitup">
+        <tbody>
           <% @orders.each do |order| %>
-            <tr id="order_<%= order.id %>" class="<%= order_filter_classes(order) %> mix">
+            <tr id="order_<%= order.id %>">
               <%= render partial: 'admin/orders/single', format: [:js], locals: { order: order } %>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate @orders %>
     </div>
   <% end %>
 </div>
