@@ -53,8 +53,6 @@ describe Product do
         it { expect(subject).to validate_presence_of(:category_id) }
         it { expect(subject).to validate_presence_of(:weighting) }
 
-        it { expect(subject).to validate_numericality_of(:part_number).only_integer } 
-
         it { expect(subject).to validate_length_of(:name).is_at_least(10) }
         it { expect(subject).to validate_length_of(:page_title).is_at_most(70) }
         it { expect(subject).to validate_length_of(:meta_description).is_at_most(150) }

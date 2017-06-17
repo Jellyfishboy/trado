@@ -10,7 +10,7 @@
 #  name        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  part_number :integer
+#  part_number :string
 #  price       :decimal(8, 2)
 #  weight      :decimal(8, 2)
 #  cost_value  :decimal(8, 2)
@@ -32,7 +32,6 @@ class Accessory < ActiveRecord::Base
 
   validates :name, :part_number, :weight,
   :price,                                                 presence: true, uniqueness: { scope: :active }
-  validates :part_number,                                 numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   after_update :update_cart_item_accessories_weight
 
