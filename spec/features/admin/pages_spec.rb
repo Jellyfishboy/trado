@@ -42,7 +42,7 @@ feature 'Page management' do
         click_button 'Submit'
         expect(current_path).to eq admin_pages_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Page was successfully updated.'
+            expect(page).to have_content 'Page was successfully updated'
         end
         within 'h2' do
             expect(page).to have_content 'Pages'

@@ -47,7 +47,7 @@ feature 'Category management' do
         }.to change(Category, :count).by(1)
         expect(current_path).to eq admin_categories_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Category was successfully created.'
+            expect(page).to have_content 'Category was successfully created'
         end
         within 'h2' do
             expect(page).to have_content 'Categories'
@@ -70,7 +70,7 @@ feature 'Category management' do
         click_button 'Submit'
         expect(current_path).to eq admin_categories_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Category was successfully updated.'
+            expect(page).to have_content 'Category was successfully updated'
         end
         within 'h2' do
             expect(page).to have_content 'Categories'
@@ -91,7 +91,7 @@ feature 'Category management' do
             end
         }.to change(Category, :count).by(-1)
         within '.alert.alert-success' do
-            expect(page).to have_content('Category was successfully deleted.')
+            expect(page).to have_content('Category was successfully deleted')
         end
         within 'h2' do
             expect(page).to have_content 'Categories'

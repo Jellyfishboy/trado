@@ -75,7 +75,7 @@ describe Admin::ProductsController do
 
             it "should set the correct string for the @message variable" do
                 patch :update, id: product.id, product: product_attributes, commit: 'Save' 
-                expect(assigns(:message)).to eq "Your product has been saved successfully as a draft."
+                expect(assigns(:message)).to eq "Your product has been saved successfully as a draft"
             end
         end
 
@@ -88,7 +88,7 @@ describe Admin::ProductsController do
 
             it "should set the correct string for the message variable" do
                 patch :update, id: product.id, product: product_attributes, commit: 'Publish'
-                expect(assigns(:message)).to eq "Your product has been published successfully. It is now live in your store."
+                expect(assigns(:message)).to eq "Your product has been published successfully. It is now live in your store"
             end
         end
 

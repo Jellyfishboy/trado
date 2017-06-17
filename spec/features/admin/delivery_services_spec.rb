@@ -72,7 +72,7 @@ feature 'Delivery service management' do
 
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Delivery service was successfully created.'
+            expect(page).to have_content 'Delivery service was successfully created'
         end
         within 'h2' do
             expect(page).to have_content 'Delivery Services'
@@ -96,7 +96,7 @@ feature 'Delivery service management' do
         click_button 'Submit'
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Delivery service was successfully updated.'
+            expect(page).to have_content 'Delivery service was successfully updated'
         end
         within 'h2' do
             expect(page).to have_content 'Delivery Services'
@@ -142,7 +142,7 @@ feature 'Delivery service management' do
 
         expect(current_path).to eq admin_delivery_services_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Delivery service was successfully created.'
+            expect(page).to have_content 'Delivery service was successfully created'
         end
         within 'h2' do
             expect(page).to have_content 'Delivery Services'
@@ -159,7 +159,7 @@ feature 'Delivery service management' do
             end
         }.to change(DeliveryService, :count).by(-1)
         within '.alert.alert-success' do
-            expect(page).to have_content('Delivery service was successfully deleted.')
+            expect(page).to have_content('Delivery service was successfully deleted')
         end
         within 'h2' do
             expect(page).to have_content 'Delivery Services'

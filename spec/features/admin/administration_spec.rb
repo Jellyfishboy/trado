@@ -21,7 +21,7 @@ feature 'Administration management' do
         click_button 'Submit'
         expect(current_path).to eq admin_root_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Store settings were successfully updated.'
+            expect(page).to have_content 'Store settings were successfully updated'
         end
         expect(Store.settings.name).to eq 'Test store name'
         expect(Store.settings.tax_name).to eq 'Tax'
@@ -48,7 +48,7 @@ feature 'Administration management' do
         click_button 'Submit'
         expect(current_path).to eq admin_root_path
         within '.alert.alert-success' do
-            expect(page).to have_content 'Profile was successfully updated.'
+            expect(page).to have_content 'Profile was successfully updated'
         end
         admin = User.joins(:roles).where(:roles => { :name => 'admin' }).first
         expect(admin.first_name).to eq 'Tom'
