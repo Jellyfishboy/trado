@@ -21,4 +21,12 @@ module OrderHelper
     def pending_delivery_time order
         "<i class='icon-clock label label-blue label-small' data-placement='bottom' data-toggle='tooltip' data-original-title='Delivery Date Set'></i>".html_safe if order.has_pending_delivery_datetime?
     end
+
+    def delivery_filter_select
+        [
+            ["Show All", "all"],
+            ["Dispatched", 1],
+            ["Pending", 0]
+        ]
+    end
 end
