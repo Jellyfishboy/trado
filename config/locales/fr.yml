@@ -60,7 +60,7 @@ fr:
       name_label: Nom
       email_label: E-mail
       logo_label: Logo
-      theme_label: ' Thème'
+      theme_label: ' Thème'
     language:
       header: Langue
       description: Définir la langue pour le tableau de bord de gestion.
@@ -175,7 +175,7 @@ fr:
   delivery_services:
     countries_modal:
       header: Copier les services de livraison du pays
-      description: 'Sélectionnez quel service de livraison vous souhaitez copier la liste des pays :'
+      description: 'Sélectionnez quel service de livraison vous souhaitez copier la liste des pays :'
       select_prompt: Sélectionnez un service de livraison...
       close_modal: Fermer
       submit_button: Envoyer
@@ -254,7 +254,7 @@ fr:
       updated_not_active: "Votre mot de passe a été modifié avec succès."
     registrations:
       destroyed: "Au revoir ! Votre compte a été correctement annulé. Nous espérons vous voir à nouveau prochainement."
-      signed_up: "Bienvenue ! Vous vous êtes bien inscrit(e)."
+      signed_up: "Bienvenue ! Vous vous êtes bien inscrit(e)."
       signed_up_but_inactive: "Vous êtes maintenant enregistré. Cependant, vous ne pouvez vous connecter car votre compte n'est pas encore activé."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
@@ -275,5 +275,75 @@ fr:
       not_found: "pas trouvé"
       not_locked: "n’était pas verrouillée"
       not_saved:
-        one: "1 erreur a empêché l'enregistrement de %{resource} :"
-        other: "%{count} erreurs ont empêché %{resource} d'être enregistré :"
+        one: "1 erreur a empêché l'enregistrement de %{resource} :"
+        other: "%{count} erreurs ont empêché %{resource} d'être enregistré :"
+  mailers:
+    contact_message:
+      title: Received a new message from
+      header: New Message
+      hello: Hello
+      name_prefix: You have received the following information from
+      message_title: Message
+      email_title: Email
+      website_title: Website
+      thanks: Thanks
+  controllers:
+    admin:
+      products:
+        update:
+          draft: Your product has been saved successfully as a draft
+          publish: Your product has been published successfully. It is now live in your store
+        destroy:
+          valid: Product was successfully deleted
+        archive:
+          valid: Product was successfully archived
+      skus:
+        variants:
+          create:
+            invalid: Variant options can't be blank
+      accessories:
+        create:
+          valid: Accessory was successfully created
+        update:
+          valid: Accessory was successfully updated
+        destroy:
+          valid: Accessory was successfully deleted
+      admin:
+        update:
+          valid: Store settings were successfully updated
+      attachments:
+        destroy:
+          limit_reached: You do not have any images for this product
+      categories:
+        create:
+          valid: Category was successfully created
+        update:
+          valid: Category was successfully updated
+      delivery_service_prices:
+        create:
+          valid: Delivery service price was successfully created
+        update:
+          valid: Delivery service price was successfully updated
+        destroy:
+          valid: Delivery service price was successfully deleted
+      delivery_services:
+        create:
+          valid: Delivery service was successfully created
+        update:
+          valid: Delivery service was successfully updated
+        destroy:
+          valid: Delivery service was successfully deleted
+        set_countries:
+          select_tag: You need to select a delivery service
+      pages:
+        update:
+          valid: Page was successfully updated
+      users:
+        update:
+          valid: Profile was successfully updated
+          invalid: There was an error when attempting to update your profile details
+    orders:
+      destroy:
+        valid: Your order has been cancelled
+      validate_confirm_render:
+        invalid: An error ocurred when trying to complete your order. Please try again

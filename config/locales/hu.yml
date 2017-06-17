@@ -277,3 +277,73 @@ hu:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  mailers:
+    contact_message:
+      title: Received a new message from
+      header: New Message
+      hello: Hello
+      name_prefix: You have received the following information from
+      message_title: Message
+      email_title: Email
+      website_title: Website
+      thanks: Thanks
+  controllers:
+    admin:
+      products:
+        update:
+          draft: Your product has been saved successfully as a draft
+          publish: Your product has been published successfully. It is now live in your store
+        destroy:
+          valid: Product was successfully deleted
+        archive:
+          valid: Product was successfully archived
+      skus:
+        variants:
+          create:
+            invalid: Variant options can't be blank
+      accessories:
+        create:
+          valid: Accessory was successfully created
+        update:
+          valid: Accessory was successfully updated
+        destroy:
+          valid: Accessory was successfully deleted
+      admin:
+        update:
+          valid: Store settings were successfully updated
+      attachments:
+        destroy:
+          limit_reached: You do not have any images for this product
+      categories:
+        create:
+          valid: Category was successfully created
+        update:
+          valid: Category was successfully updated
+      delivery_service_prices:
+        create:
+          valid: Delivery service price was successfully created
+        update:
+          valid: Delivery service price was successfully updated
+        destroy:
+          valid: Delivery service price was successfully deleted
+      delivery_services:
+        create:
+          valid: Delivery service was successfully created
+        update:
+          valid: Delivery service was successfully updated
+        destroy:
+          valid: Delivery service was successfully deleted
+        set_countries:
+          select_tag: You need to select a delivery service
+      pages:
+        update:
+          valid: Page was successfully updated
+      users:
+        update:
+          valid: Profile was successfully updated
+          invalid: There was an error when attempting to update your profile details
+    orders:
+      destroy:
+        valid: Your order has been cancelled
+      validate_confirm_render:
+        invalid: An error ocurred when trying to complete your order. Please try again
