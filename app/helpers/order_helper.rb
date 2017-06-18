@@ -28,5 +28,13 @@ module OrderHelper
             ["Dispatched", 1],
             ["Pending", 0]
         ]
+    end 
+
+    def payment_filter_select
+        [
+            ["Show All", "all"],
+            ["Paypal", 0],
+            ["Stripe", 1]
+        ]
     end
 end
