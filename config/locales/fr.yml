@@ -228,27 +228,27 @@ fr:
     transactions:
       modal:
         header: More Info for Transaction
-        error_code: Error Code
+        error_code: Code d’erreur
         stripe_charge_id: Stripe Charge Id
         paypal_transaction_id: PayPal Transaction Id
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Modifier une commande
+        dispatch_date_label: Date d’expédition
+        consignment_number_label: Numéro d’envoi
+        submit_button: Envoyer
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
-      no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
+      title: Commandes
+      breadcrumb: Commandes
+      header: Commandes
+      delivery_show_all: Afficher tout
+      delivery_dispatched: Expédié
+      delivery_pending: En attente
+      delivery_select: Livraison
+      payment_select: Paiement
+      no_records: Vous n’avez aucun ordre répondant à ces critères
+      order_number: Commande n°
+      full_name: Nom et prénom
       payment_type: Payment Type
       payment_status: Payment Status
       delivery_status: Delivery Status
