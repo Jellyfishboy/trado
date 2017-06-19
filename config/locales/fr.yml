@@ -1,8 +1,8 @@
 fr:
   global:
-    none_available: None Available
+    none_available: Non disponible
   modal:
-    close_button: Close
+    close_button: Fermer
   accessories:
     index:
       title: Accessoires
