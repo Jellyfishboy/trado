@@ -249,8 +249,8 @@ fr:
       no_records: Vous n’avez aucun ordre répondant à ces critères
       order_number: Commande n°
       full_name: Nom et prénom
-      payment_type: Payment Type
-      payment_status: Payment Status
+      payment_type: Type de paiement
+      payment_status: Statut du paiement
       delivery_status: Delivery Status
       gross_amount: Gross Amount
       last_updated: Last Updated
