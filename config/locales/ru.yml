@@ -46,21 +46,21 @@ ru:
     pending_orders: Ожидающие
     failed_orders: Отмененные
     transactions: Транзакции
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    gross_income_transactions: Выручка
+    net_income_transactions: Чистая прибыль
+    tax_transactions: Налог
+    provider_fees_transactions: Сборы Поставщика
+    delivery_fees_transactions: Плата за Доставку
+    activity: Активность
+    activity_active_carts: Активные Корзины
+    activity_incomplete_orders: Незавершенные Заказы
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Настройки
+    breadcrumb: Настройки
+    header: Настройки
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Описание Магазина
+      description: Укажите название, электронную почту, логотип и тему Вашего магазина. Электронная почта будет использована для обратной связи и важных административных сообщений.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -122,29 +122,29 @@ ru:
       visibility:
         header: Visibility
         description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        visible_label: Видимый
+        hidden_label: Скрытый
+      submit_button: Отправить
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Изменить категорию
+      breadcrumb: Изменить
+      category_index: Категории
+      header: Изменить категорию
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Новая категория
+      breadcrumb: Новый
+      category_index: Категории
+      header: Новая категория
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
+      title: Стоимость доставки для %{service_name}
+      header: Стоимость доставки для %{service_name}
+      delivery_service_index: Способы доставки
+      add_tooltip: Добавить стоимость доставки
+      no_records: У вас еще нет каких-либо цен для %{service_name}.
+      code: Код
+      description: Описание
+      weight: Параметры веса
       length: Length Parameters
       thickness: Thickness Parameters
       net_price: Net Price
