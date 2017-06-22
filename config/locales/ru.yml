@@ -18,34 +18,34 @@ ru:
       gross_price: Цена (брутто)
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Описание аксессуара
+        description: Укажите имя и № изделия для аксессуара.
+        name_label: Имя
+        part_number_label: Номер Изделия
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Вес и Цена
+        description: Установите вес, цену (нетто) и базовую стоимость вашего аксессуара.
+        weight_label: Вес
+        cost_value_label: Стоимость
+        net_price_label: Цена (нетто)
+      submit_button: Отправить
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Изменить аксессуар
+      breadcrumb: Изменить
+      accessory_index: Аксессуары
+      header: Изменить аксессуар
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Новый аксессуар
+      breadcrumb: Новый
+      accessory_index: Аксессуары
+      header: Новый аксессуар
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
+    header: Инфопанель
+    orders: Заказы
+    completed_orders: Завершенные
+    pending_orders: Ожидающие
+    failed_orders: Отмененные
+    transactions: Транзакции
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
     tax_transactions: Tax
