@@ -2,20 +2,20 @@ ru:
   global:
     none_available: None Available
   modal:
-    close_button: Close
+    close_button: Закрыть
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Аксессуары
+      breadcrumb: Аксессуары
+      header: Аксессуары
+      add_tooltip: Добавить аксессуар
+      no_records: У вас еще нет каких-либо аксессуаров.
+      part_number: '№ изделия.'
+      name: Имя
+      weight: Вес
+      cost_value: Стоимость
+      net_price: Цена (нетто)
+      gross_price: Цена (брутто)
     form:
       accessory_detail:
         header: Accessory Details
