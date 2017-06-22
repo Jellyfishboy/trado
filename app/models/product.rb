@@ -110,6 +110,6 @@ class Product < ActiveRecord::Base
   #
   # @return [Object] sku record
   def first_available_sku
-    skus.active.in_stock.order(price: :asc).first
+    in_stock? ? skus.active.in_stock.order(price: :asc).first : skus.active.order(price: :asc).first
   end
 end
