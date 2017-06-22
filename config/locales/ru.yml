@@ -145,45 +145,45 @@ ru:
       code: Код
       description: Описание
       weight: Параметры веса
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      length: Параметры длины
+      thickness: Параметры толщины
+      net_price: Цена (нетто)
+      gross_price: Цена (брутто)
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Детали стоимости доставки
         description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        code_label: Код
+        price_label: Стоимость
+        description_label: Описание
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        min_weight_label: Минимальный вес
+        max_weight_label: Максимальный вес
+        min_length_label: Минимальная длина
+        max_length_label: Максимальная длина
+        min_thickness_label: Минимальная толщина
+        max_thickness_label: Максимальная толщина
+      submit_button: Отправить
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Изменить стоимость доставки
+      breadcrumb: Изменить
+      delivery_service_index: Способы доставки
+      header: Изменить стоимость доставки
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Новая стоимость доставки
+      breadcrumb: Новый
+      delivery_service_index: Способы доставки
+      header: Новая стоимость доставки
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Копировать страны службы доставки
+      description: 'Выберите из какой службы доставки Вы хотели бы скопировать страны:'
+      select_prompt: Выберите службу доставки...
+      submit_button: Отправить
     index:
-      title: Delivery Services
+      title: Службы доставки
       breadcrumb: Delivery Services
       header: Delivery Services
       add_tooltip: Add Delivery Service
@@ -244,66 +244,66 @@ ru:
       delivery_show_all: Show All
       delivery_dispatched: Dispatched
       delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
+      delivery_select: Доставка
+      payment_select: Оплата
       no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
+      order_number: Номер заказа
+      full_name: Полное имя
+      payment_type: Способ оплаты
+      payment_status: Статус оплаты
+      delivery_status: Статус доставки
       gross_amount: Gross Amount
-      last_updated: Last Updated
+      last_updated: Изменено
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Заказ №%{order_id}'
+      orders_index: Заказы
+      cancel_order_tooltip: Отменить заказ
+      header: 'Заказ №%{order_id}'
       delivery_details:
-        header: Delivery Details
+        header: Детали доставки
         email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        status: Статус
+        dispatch_date: Дата отправки
+        delivery_service: Служба доставки
+        tracking: Отслеживание
       billing_address:
-        header: Billing Address
+        header: Адрес для выставления счета
       delivery_address:
-        header: Delivery Address
+        header: Адрес доставки
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Детали оплаты
+        card_number: Номер карты
+        expiry_date: Дата истечения срока действия
       order_items:
-        header: Order Items
-        item: Item
-        sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        header: Товары заказа
+        item: Товар
+        sku: Артикул
+        price: Стоимость
+        quantity: Кол-во
+        total: Итого
+        delivery: Доставка
+        subtotal: Предварительный итог
+        tax: Налог
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
+        header: Транзакции
+        transaction_type: Тип транзакции
+        payment_type: Тип платежа
+        payment_status: Статус оплаты
+        fee: Комиссия
         net_amount: Net Amount
         gross_amount: Gross Amount
-        last_updated: Last Updated
+        last_updated: Изменено
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Сайт отслеживания
+        number: Номер отслеживания
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Заголовок
+      breadcrumb: Страницы
+      header: Страницы
+      sorting: Сортировка
+      visible: Видимый
+      last_updated: Изменено
     form:
       header: Edit Page
       write_your_page:
