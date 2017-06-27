@@ -11,6 +11,8 @@
       <%= submit_tag "Search", :class => 'btn btn-blue btn-normal' %>
       <%= select_tag :delivery_status, options_for_select(delivery_filter_select, params[:delivery_status]), { include_blank: false, :class => 'form-select' } %>
       <span><%= t('orders.index.delivery_select') %>:</span>
+      <%= select_tag :payment_type, options_for_select(payment_filter_select, params[:payment_type]), { include_blank: false, :class => 'form-select' } %>
+      <span><%= t('orders.index.payment_select') %>:</span>
     <% end %>
   </div>
   <% if @orders.empty? %>

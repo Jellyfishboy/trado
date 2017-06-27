@@ -5,6 +5,7 @@ class Admin::OrdersController < Admin::AdminBaseController
 
   def index
     set_delivery_status
+    set_payment_type
     set_orders
   end
 
@@ -49,10 +50,14 @@ class Admin::OrdersController < Admin::AdminBaseController
   end
 
   def set_orders
-    @orders ||= Order.includes(:billing_address).complete.where(shipping_status: @delivery_status).order(created_at: :desc).page(page).per(limit)
+    @orders ||= Order.includes(:billing_address).complete.where(shipping_status: @delivery_status).where(payment_type: @payment_type).order(created_at: :desc).page(page).per(limit)
   end
 
   def set_delivery_status
-    @delivery_status = params[:delivery_status].present? ? params[:delivery_status] == "all" ? Order.shipping_statuses.values : params[:delivery_status] : Order.shipping_statuses.values
+    @delivery_status = params[:delivery_status].present? ? (params[:delivery_status] == "all" ? Order.shipping_statuses.values : (Order.shipping_statuses.values.include?(params[:delivery_status].to_i) ? params[:delivery_status] : Order.shipping_statuses.values)) : Order.shipping_statuses.values
+  end
+
+  def set_payment_type
+    @payment_type = params[:payment_type].present? ? (params[:payment_type] == "all" ? Order.payment_types.values : (Order.payment_types.values.include?(params[:payment_type].to_i) ? params[:payment_type] : Order.payment_types.values)) : Order.payment_types.values
   end
 end
