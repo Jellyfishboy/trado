@@ -54,17 +54,17 @@
       </fieldset>
     </div>
     <div class="threecol">
-      <h3><%= t('settings.language.description') %></h3>
-      <p><%= t('settings.language.description') %></p>
+      <h3><%= t('settings.tax.header') %></h3>
+      <p><%= t('settings.tax.description') %></p>
     </div>
     <div class="ninecol last">
       <fieldset class="widget widget-content">
         <div class="form-group">
-          <%= f.label 'Name' %>
+          <%= f.label t('settings.tax.name_label') %>
           <%= f.text_field :tax_name, :class => 'form-control' %>
         </div>
         <div class="form-group form-last">
-          <%= f.label 'Rate' %>
+          <%= f.label t('settings.tax.rate_label') %>
           <%= f.text_field :tax_rate, :class => 'form-control' %>
         </div>
       </fieldset>
