@@ -375,7 +375,7 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (1.8.3)
+    json (1.8.6)
     jwt (1.5.4)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -682,4 +682,4 @@ DEPENDENCIES
   whenever (>= 0.8.4)
 
 BUNDLED WITH
-   1.13.6
+   1.15.4
