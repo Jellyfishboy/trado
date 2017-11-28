@@ -522,7 +522,7 @@ GEM
       builder
     slop (3.6.0)
     spring (1.7.1)
-    sprockets (2.12.0)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -632,7 +632,7 @@ DEPENDENCIES
   sinatra
   sitemap_generator
   spring
-  sprockets (= 2.12.0)
+  sprockets (= 2.12.4)
   test_after_commit
   thin
   timecop
