@@ -30,7 +30,7 @@ vi:
         net_price_label: Net Price
       submit_button: Submit
     edit:
-      title: Edit Accessory
+      title: Chỉnh sửa Accessory
       breadcrumb: Chỉnh sửa
       accessory_index: Accessories
       header: Chỉnh sửa Accessory
@@ -38,7 +38,7 @@ vi:
       title: Tạo mới Accessory
       breadcrumb: Mới
       accessory_index: Accessories
-      header: New Accessory
+      header: Tạo mới Accessory
   dashboard:
     header: Dashboard
     orders: Các đơn hàng
@@ -61,23 +61,23 @@ vi:
     store_detail:
       header: Chi tiết cửa hàng
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
+      name_label: Tên
       email_label: Email
       logo_label: Logo
       theme_label: Theme
     language:
-      header: Language
+      header: Ngôn ngữ
       description: Set the language for the administration dashboard.
-      language_label: Language
+      language_label: Ngôn ngữ
     tax:
       header: Tax
       description: Set the name and percentage rate of your tax.
-      name_label: Name
+      name_label: Tên
       rate_label: Rate
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
+      currency_label: Tiền tệ
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
@@ -102,8 +102,8 @@ vi:
       header: Categories
       add_tooltip: Add Category
       no_records: You don't have any categories yet.
-      name: Name
-      description: Description
+      name: Tên
+      description: Mô tả
       sorting: Sorting
       active: Active
       no_of_products: No. of Products
@@ -111,8 +111,8 @@ vi:
       category_details:
         header: Category Details
         description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
+        name_label: Tên
+        description_label: Mô tả
         sorting_label: Sorting
       search_engine:
         header: Search Engines
@@ -127,7 +127,7 @@ vi:
       submit_button: Submit
     edit:
       title: Edit Category
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       category_index: Categories
       header: Edit Category
     new:
@@ -143,7 +143,7 @@ vi:
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
-      description: Description
+      description: Mô tả
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
@@ -155,7 +155,7 @@ vi:
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price
-        description_label: Description
+        description_label: Mô tả
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
@@ -168,7 +168,7 @@ vi:
       submit_button: Submit
     edit:
       title: Edit Delivery Pricing
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       delivery_service_index: Delivery Services
       header: Edit Delivery Pricing
     new:
@@ -200,7 +200,7 @@ vi:
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
         name_label: Name
-        description_label: Description
+        description_label: Mô tả
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
@@ -216,7 +216,7 @@ vi:
       submit_button: Submit
     edit:
       title: Edit Delivery Service
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       delivery_service_index: Delivery Services
       header: Edit Delivery Service
     new:
@@ -241,7 +241,7 @@ vi:
       title: Orders
       breadcrumb: Orders
       header: Orders
-      delivery_show_all: Show All
+      delivery_show_all: Hiển thị tất cả
       delivery_dispatched: Dispatched
       delivery_pending: Pending
       delivery_select: Delivery
@@ -262,7 +262,7 @@ vi:
       delivery_details:
         header: Delivery Details
         email: Email
-        status: Status
+        status: Trạng thái
         dispatch_date: Dispatch Date
         delivery_service: Delivery Service
         tracking: Tracking
@@ -339,25 +339,25 @@ vi:
       header: Products
       add_product_tooltip: Add Product
       stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
+      no_records: Bạn chưa có bất kỳ products nào.
+      show_all_filter: Hiển thị tất cả
       published_filter: Published
       draft_filter: Draft
       archived_filter: Archived
       featured_filter: Featured
       filter_by: Filter By
       weighting_sorting: Weighting
-      name_sorting: Name
+      name_sorting: Tên
       popularity_sorting: Popularity
       sort_by: Sort By
       sku: SKU
       part_number: Part no.
-      name: Name
+      name: Tên
       variant: Variant
       net_price: Net Price
       gross_price: Gross Price
     edit:
-      title: Edit Product
+      title: Chỉnh sửa sản phẩm
       breadcrumb: Edit
       product_index: Products
       header: Edit Product
@@ -382,10 +382,10 @@ vi:
         select_category_placeholder: Select category
         part_number_label: Part Number
         sku_label: SKU
-        name_label: Name
+        name_label: Tên
         weighting_label: Weighting
         short_description_label: Short Description
-        description_label: Description
+        description_label: Mô tả
       search_engines:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
@@ -405,7 +405,7 @@ vi:
         code: Code
         stock: Stock
         cost_value: Cost Value
-        price: Price
+        price: Giá
         modal:
           add_variant: Add Variant
           edit_variant: Edit Variant
@@ -423,7 +423,7 @@ vi:
         modal:
           header: Add Stock Adjustment for
           current_stock: Current stock is
-          description_label: Description
+          description_label: Mô tả
           adjustment_label: Adjustment
           submit_button: Submit
       variants:
@@ -438,7 +438,7 @@ vi:
         product_index: Products
         add_stock_tooltip: Add Stock
         header: Stock Management
-        show_all_filter: Show All
+        show_all_filter: Hiển thị tất cả
         low_filter: Low
         stock_filer: Stock
         no_records: You don't have any Product SKUs yet.
@@ -477,9 +477,9 @@ vi:
         submit_button: Submit
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Hồ sơ cá nhân
+      breadcrumb: Hồ sơ cá nhân
+      header: Hồ sơ cá nhân
       profile_settings:
         header: Profile Settings
         description: Set the name and profile picture for your administration account.
@@ -497,11 +497,11 @@ vi:
       inactive: "Your account was not activated yet."
       invalid: "Invalid email or password."
       invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      locked: "Tài khoản của bạn bị khóa."
+      not_found_in_database: "Email hoặc mật khẩu không hợp lệ."
+      timeout: "Session của bạn hết hạn, xin vui lòng đăng nhập lại để tiếp tục."
+      unauthenticated: "Bạn cần phải đăng nhập hoặc đăng ký trước khi tiếp tục."
+      unconfirmed: "Bạn phải xác nhận tài khoản của bạn trước khi tiếp tục."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -525,10 +525,10 @@ vi:
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      updated: "Bạn cập nhật tài khoản của mình thành công."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
@@ -538,20 +538,20 @@ vi:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
-      not_found: "not found"
+      not_found: "không tìm thấy"
       not_locked: "was not locked"
       not_saved:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
       title: Received a new message from
-      header: New Message
-      hello: Hello
+      header: Tin nhắn mới
+      hello: Xin chào
       name_prefix: You have received the following information from
       message_title: Message
       email_title: Email
       website_title: Website
-      thanks: Thanks
+      thanks: Cảm ơn
   controllers:
     admin:
       products:
