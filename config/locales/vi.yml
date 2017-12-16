@@ -1,17 +1,17 @@
 vi:
   global:
-    none_available: None Available
+    none_available: Không khả dụng
   modal:
-    close_button: Close
+    close_button: Đóng lại
   accessories:
     index:
       title: Accessories
       breadcrumb: Accessories
       header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
+      add_tooltip: Thêm Accessory
+      no_records: Bạn chưa có bất kỳ accessories nào.
       part_number: Part no.
-      name: Name
+      name: Tên
       weight: Weight
       cost_value: Cost Value
       net_price: Net Price
@@ -20,7 +20,7 @@ vi:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
-        name_label: Name
+        name_label: Tên
         part_number_label: Part Number
       weight_price:
         header: Weight & Price
@@ -31,35 +31,35 @@ vi:
       submit_button: Submit
     edit:
       title: Edit Accessory
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       accessory_index: Accessories
-      header: Edit Accessory
+      header: Chỉnh sửa Accessory
     new:
-      title: New Accessory
-      breadcrumb: New
+      title: Tạo mới Accessory
+      breadcrumb: Mới
       accessory_index: Accessories
       header: New Accessory
   dashboard:
     header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
+    orders: Các đơn hàng
+    completed_orders: Đã hoàn thành
+    pending_orders: Đang chờ kiểm duyệt
+    failed_orders: Đã thất bại
+    transactions: Các giao dịch
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
+    tax_transactions: Thuế
+    provider_fees_transactions: Phí từ nhà cung cấp
+    delivery_fees_transactions: Phí giao hàng
     activity: Activity
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Thiết lập
+    breadcrumb: Thiết lập
+    header: Thiết lập
     store_detail:
-      header: Store Details
+      header: Chi tiết cửa hàng
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Name
       email_label: Email
