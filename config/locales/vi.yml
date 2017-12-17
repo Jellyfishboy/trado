@@ -124,15 +124,15 @@ vi:
         description: Set if the category is visible on your storefront.
         visible_label: Có thể nhìn thấy
         hidden_label: Ẩn
-      submit_button: Submit
+      submit_button: Gửi
     edit:
       title: Chỉnh sửa Category
       breadcrumb: Chỉnh sửa
-      category_index: Categories
+      category_index: Nhóm danh mục
       header: Chỉnh sửa Category
     new:
       title: Tạo mới Category
-      breadcrumb: New
+      breadcrumb: Tạo mới
       category_index: Categories
       header: Tạo mới Category
   delivery_service_prices:
@@ -147,8 +147,8 @@ vi:
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       delivery_price_details:
         header: Delivery Price Details
@@ -165,38 +165,38 @@ vi:
         max_length_label: Maximum Length
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
-      submit_button: Submit
+      submit_button: Gửi
     edit:
-      title: Edit Delivery Pricing
+      title: Chỉnh sửa giá dịch vụ giao hàng
       breadcrumb: Chỉnh sửa
       delivery_service_index: Những dịch vụ giao hàng
-      header: Edit Delivery Pricing
+      header: Chỉnh sửa giá dịch vụ giao hàng
     new:
-      title: New Delivery Pricing
+      title: Tạo mới giá dịch vụ giao hàng
       breadcrumb: Tạo mới
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Tạo mới giá dịch vụ giao hàng
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
       select_prompt: Select a delivery service...
-      submit_button: Submit
+      submit_button: Gửi
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
+      title: Những dịch vụ giao hàng
+      breadcrumb: Những dịch vụ giao hàng
+      header: Những dịch vụ giao hàng
+      add_tooltip: Thêm dịch vụ giao hàng
       no_records: You don't have any delivery services yet.
       courier: Courier
       name: Tên
       description: Mô tả
       code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       delivery_service_details:
-        header: Delivery Service Details
+        header: Chi tiết dịch vụ giao hàng
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
         name_label: Tên
@@ -267,29 +267,29 @@ vi:
         delivery_service: Delivery Service
         tracking: Tracking
       billing_address:
-        header: Billing Address
+        header: Địa chỉ thanh toán
       delivery_address:
-        header: Delivery Address
+        header: Địa chỉ nhận hàng
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Chi tiết thanh toán
+        card_number: Số thẻ
+        expiry_date: Ngày hết hạn
       order_items:
         header: Order Items
-        item: Item
+        item: Sản Phẩm
         sku: SKU
         price: Giá
         quantity: Số lượng
         total: Tổng cộng
-        delivery: Delivery
+        delivery: Giao hàng
         subtotal: Subtotal
-        tax: Tax
+        tax: Thuế
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
+        header: Các giao dịch
+        transaction_type: Loại giao dịch
         payment_type: Hình thức thanh toán
-        payment_status: Payment Status
-        fee: Fee
+        payment_status: Trạng thái thanh toán
+        fee: Phí
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
@@ -316,18 +316,18 @@ vi:
       search_engines:
         header: Search Engines
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
         slug_label: Slug
       visibility:
         header: Visibility
         description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Hiển thị
+        hidden_label: Ẩn
       template:
         header: Template
         description: Select the template this page will use on your storefront.
-      submit_button: Submit
+      submit_button: Gửi
     edit:
       title: Edit Page
       breadcrumb: Chỉnh sửa
@@ -342,8 +342,8 @@ vi:
       no_records: Bạn chưa có bất kỳ products nào.
       show_all_filter: Hiển thị tất cả
       published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
+      draft_filter: Bản nháp
+      archived_filter: Đã lưu trữ
       featured_filter: Featured
       filter_by: Filter By
       weighting_sorting: Weighting
@@ -379,7 +379,7 @@ vi:
       product_details:
         header: Chi tiết sản phẩm
         description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
+        select_category_placeholder: Chọn danh mục
         part_number_label: Part Number
         sku_label: SKU
         name_label: Tên
@@ -387,12 +387,12 @@ vi:
         short_description_label: Miêu tả ngắn gọn
         description_label: Mô tả
       search_engines:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
       images:
-        header: Images
+        header: Hình ảnh
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Thêm hình ảnh
         no_records: You do not have any images for this product.
@@ -416,8 +416,8 @@ vi:
           stock_label: Stock
           stock_warning_level_label: Stock Warning Level
           cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          price_label: Giá
+          submit_button: Gửi
     skus:
       stock_adjustments:
         modal:
@@ -430,11 +430,11 @@ vi:
         modal:
           header: Configure Variant Options
           reset_button: Reset Variants
-          submit_button: Submit
+          submit_button: Gửi
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
+        title: Quản lý kho
+        breadcrumb: Quản lý kho
         product_index: Các sản phẩm
         add_stock_tooltip: Add Stock
         header: Quản lý kho
@@ -466,15 +466,15 @@ vi:
         header: New Stock
         sku_label: SKU
         description_label: Mô tả
-        adjustment_label: Adjustment
-        submit_button: Submit
+        adjustment_label: Điều chỉnh
+        submit_button: Gửi
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
+        add_image: Thêm hình ảnh
+        edit_image: Chỉnh sửa hình ảnh
         file_label: Tập tin
         default_label: Mặc định
-        submit_button: Submit
+        submit_button: Gửi
   users:
     edit:
       title: Hồ sơ cá nhân
@@ -486,12 +486,12 @@ vi:
         first_name_label: Tên
         last_name_label: Họ
         profile_picture_label: Ảnh đại diện
-      submit_button: Submit
+      submit_button: Gửi
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      send_instructions: "Bạn sẽ nhận được một email hướng dẫn để xác nhận tài khoản của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu thư điện tử của bạn tồn tại trong dữ liệu của chúng tôi thì bạn sẽ nhận được một email hướng dẫn để xác nhận tài khoản của bạn trong vài phút."
     failure:
       already_authenticated: "Bạn đã đăng nhập."
       inactive: "Tài khoản của bạn chưa kích hoạt."
@@ -609,6 +609,6 @@ vi:
           invalid: There was an error when attempting to update your profile details
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Đơn hàng đã bị huỷ
       validate_confirm_render:
         invalid: An error ocurred when trying to complete your order. Please try again
