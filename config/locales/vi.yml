@@ -92,16 +92,16 @@ vi:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
+      enabled_label: Đã kích hoạt
+      disabled_label: Đã vô hiệu hóa
     submit_button: Submit
   categories:
     index:
       title: Categories
       breadcrumb: Categories
       header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
+      add_tooltip: Thêm Category
+      no_records: Bạn chưa có danh mục nào.
       name: Tên
       description: Mô tả
       sorting: Sorting
@@ -117,7 +117,7 @@ vi:
       search_engine:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
       visibility:
         header: Visibility
@@ -126,21 +126,21 @@ vi:
         hidden_label: Ẩn
       submit_button: Submit
     edit:
-      title: Edit Category
+      title: Chỉnh sửa Category
       breadcrumb: Chỉnh sửa
       category_index: Categories
-      header: Edit Category
+      header: Chỉnh sửa Category
     new:
-      title: New Category
+      title: Tạo mới Category
       breadcrumb: New
       category_index: Categories
-      header: New Category
+      header: Tạo mới Category
   delivery_service_prices:
     index:
       title: Delivery pricing for %{service_name}
       header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
+      delivery_service_index: Những dịch vụ giao hàng
+      add_tooltip: Thêm giá giao hàng
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
       description: Mô tả
@@ -169,11 +169,11 @@ vi:
     edit:
       title: Edit Delivery Pricing
       breadcrumb: Chỉnh sửa
-      delivery_service_index: Delivery Services
+      delivery_service_index: Những dịch vụ giao hàng
       header: Edit Delivery Pricing
     new:
       title: New Delivery Pricing
-      breadcrumb: New
+      breadcrumb: Tạo mới
       delivery_service_index: Delivery Services
       header: New Delivery Pricing
   delivery_services:
@@ -218,10 +218,10 @@ vi:
       title: Edit Delivery Service
       breadcrumb: Chỉnh sửa
       delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      header: Chỉnh sửa dịch vụ giao hàng
     new:
-      title: New Delivery Service
-      breadcrumb: New
+      title: Tạo mới dịch vụ giao hàng
+      breadcrumb: Tạo mới
       delivery_service_index: Delivery Services
       header: New Delivery Service
   orders:
@@ -233,19 +233,19 @@ vi:
         paypal_transaction_id: PayPal Transaction Id
     edit:
       modal:
-        header: Edit Order
+        header: Chỉnh sửa đơn đặt hàng
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
         submit_button: Submit
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
+      title: Các đơn hàng
+      breadcrumb: Các đơn hàng
+      header: Các đơn hàng
       delivery_show_all: Hiển thị tất cả
       delivery_dispatched: Dispatched
       delivery_pending: Đang chờ giải quyết
-      delivery_select: Delivery
-      payment_select: Payment
+      delivery_select: Giao hàng
+      payment_select: Thanh toán
       no_records: You don't have any orders meeting those criterias
       order_number: Đơn hàng số.
       full_name: Họ và tên
@@ -256,9 +256,9 @@ vi:
       last_updated: Last Updated
     show:
       title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      orders_index: Các đơn hàng
+      cancel_order_tooltip: Hủy bỏ đơn đặt hàng
+      header: 'Đơn đặt hàng #%{order_id}'
       delivery_details:
         header: Delivery Details
         email: Email
@@ -287,7 +287,7 @@ vi:
       transactions:
         header: Transactions
         transaction_type: Transaction Type
-        payment_type: Payment Type
+        payment_type: Hình thức thanh toán
         payment_status: Payment Status
         fee: Fee
         net_amount: Net Amount
