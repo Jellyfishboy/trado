@@ -122,8 +122,8 @@ vi:
       visibility:
         header: Visibility
         description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Có thể nhìn thấy
+        hidden_label: Ẩn
       submit_button: Submit
     edit:
       title: Edit Category
@@ -154,7 +154,7 @@ vi:
         header: Delivery Price Details
         description: Set the code, price and description for this delivery price.
         code_label: Code
-        price_label: Price
+        price_label: Giá
         description_label: Mô tả
       dimension_allowance:
         header: Dimension Allowance
@@ -189,7 +189,7 @@ vi:
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
       courier: Courier
-      name: Name
+      name: Tên
       description: Description
       code: Code
       net_price: Net Price
@@ -199,7 +199,7 @@ vi:
         header: Delivery Service Details
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
-        name_label: Name
+        name_label: Tên
         description_label: Mô tả
       order_constraints:
         header: Order Constraints
@@ -243,14 +243,14 @@ vi:
       header: Orders
       delivery_show_all: Hiển thị tất cả
       delivery_dispatched: Dispatched
-      delivery_pending: Pending
+      delivery_pending: Đang chờ giải quyết
       delivery_select: Delivery
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
+      order_number: Đơn hàng số.
+      full_name: Họ và tên
+      payment_type: Hình thức thanh toán
+      payment_status: Trạng thái thanh toán
       delivery_status: Delivery Status
       gross_amount: Gross Amount
       last_updated: Last Updated
@@ -278,9 +278,9 @@ vi:
         header: Order Items
         item: Item
         sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
+        price: Giá
+        quantity: Số lượng
+        total: Tổng cộng
         delivery: Delivery
         subtotal: Subtotal
         tax: Tax
