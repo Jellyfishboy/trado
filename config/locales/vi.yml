@@ -62,18 +62,18 @@ vi:
       header: Chi tiết cửa hàng
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Tên
-      email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      email_label: Thư điện tử
+      logo_label: Biểu tượng
+      theme_label: Giao diện
     language:
       header: Ngôn ngữ
       description: Set the language for the administration dashboard.
       language_label: Ngôn ngữ
     tax:
-      header: Tax
+      header: Thuế
       description: Set the name and percentage rate of your tax.
       name_label: Tên
-      rate_label: Rate
+      rate_label: Tỷ giá
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
@@ -190,7 +190,7 @@ vi:
       no_records: You don't have any delivery services yet.
       courier: Courier
       name: Tên
-      description: Description
+      description: Mô tả
       code: Code
       net_price: Net Price
       gross_price: Gross Price
@@ -215,19 +215,19 @@ vi:
         country_placeholder: Select associated countries...
       submit_button: Submit
     edit:
-      title: Edit Delivery Service
+      title: Chỉnh sửa dịch vụ giao hàng
       breadcrumb: Chỉnh sửa
-      delivery_service_index: Delivery Services
+      delivery_service_index: Những dịch vụ giao hàng
       header: Chỉnh sửa dịch vụ giao hàng
     new:
       title: Tạo mới dịch vụ giao hàng
       breadcrumb: Tạo mới
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Tạo mới dịch vụ giao hàng
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
+        header: Chi tiết thông tin giao dịch
         error_code: Error Code
         stripe_charge_id: Stripe Charge Id
         paypal_transaction_id: PayPal Transaction Id
@@ -251,9 +251,9 @@ vi:
       full_name: Họ và tên
       payment_type: Hình thức thanh toán
       payment_status: Trạng thái thanh toán
-      delivery_status: Delivery Status
+      delivery_status: Trạng thái giao hàng
       gross_amount: Gross Amount
-      last_updated: Last Updated
+      last_updated: Cập nhật Mới nhất
     show:
       title: 'Order #%{order_id}'
       orders_index: Các đơn hàng
@@ -298,7 +298,7 @@ vi:
         number: Tracking Number
   pages:
     index:
-      title: Title
+      title: Tiêu đề
       breadcrumb: Pages
       header: Pages
       sorting: Sorting
@@ -309,10 +309,10 @@ vi:
       write_your_page:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        title_label: Tiêu đề
         menu_title_label: Menu Title
         sorting_label: Sorting
-        content_label: Content
+        content_label: Nội dung
       search_engines:
         header: Search Engines
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
@@ -330,14 +330,14 @@ vi:
       submit_button: Submit
     edit:
       title: Edit Page
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       pages_index: Pages
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
+      title: Các sản phẩm
+      breadcrumb: Các sản phẩm
+      header: Các sản phẩm
+      add_product_tooltip: Thêm sản phẩm
       stock_management_tooltip: Stock Management
       no_records: Bạn chưa có bất kỳ products nào.
       show_all_filter: Hiển thị tất cả
@@ -359,7 +359,7 @@ vi:
     edit:
       title: Chỉnh sửa sản phẩm
       breadcrumb: Edit
-      product_index: Products
+      product_index: Các sản phẩm
       header: Edit Product
     form:
       publish_button: Publish
@@ -373,28 +373,28 @@ vi:
         header: Associations
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
         accessories_label: Accessories
-        related_products_label: Related Products
+        related_products_label: Những sản phẩm liên quan
         select_accessory_placeholder: Select associated accessories
         select_related_products_placeholder: Select related products
       product_details:
-        header: Product Details
+        header: Chi tiết sản phẩm
         description: Set the name, description and sorting order for your category.
         select_category_placeholder: Select category
         part_number_label: Part Number
         sku_label: SKU
         name_label: Tên
         weighting_label: Weighting
-        short_description_label: Short Description
+        short_description_label: Miêu tả ngắn gọn
         description_label: Mô tả
       search_engines:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
       images:
         header: Images
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
+        add_image: Thêm hình ảnh
         no_records: You do not have any images for this product.
       skus:
         header: Variants
@@ -424,7 +424,7 @@ vi:
           header: Add Stock Adjustment for
           current_stock: Current stock is
           description_label: Mô tả
-          adjustment_label: Adjustment
+          adjustment_label: Điều chỉnh
           submit_button: Submit
       variants:
         modal:
@@ -435,9 +435,9 @@ vi:
       index:
         title: Stock Management
         breadcrumb: Stock Management
-        product_index: Products
+        product_index: Các sản phẩm
         add_stock_tooltip: Add Stock
-        header: Stock Management
+        header: Quản lý kho
         show_all_filter: Hiển thị tất cả
         low_filter: Low
         stock_filer: Stock
@@ -449,31 +449,31 @@ vi:
         stock_warning_level: Stock Warning Level
       show:
         title: Stock Management
-        product_index: Products
+        product_index: Các sản phẩm
         stock_management_index: Stock Management
         add_stock_adjustment_tooltip: Add Stock Adjustment
         header: Stock History
         date: Date
-        description: Description
+        description: Mô tả
         adjustment: Adjustment
         stock: Stock
     stock_adjustments:
       new:
         title: New Stock
-        breadcrumb: New
-        product_index: Products
+        breadcrumb: Tạo mới
+        product_index: Các sản phẩm
         stock_management_index: Stock Management
         header: New Stock
         sku_label: SKU
-        description_label: Description
+        description_label: Mô tả
         adjustment_label: Adjustment
         submit_button: Submit
     attachments:
       modal:
         add_image: Add Image
         edit_image: Edit Image
-        file_label: File
-        default_label: Default
+        file_label: Tập tin
+        default_label: Mặc định
         submit_button: Submit
   users:
     edit:
@@ -481,11 +481,11 @@ vi:
       breadcrumb: Hồ sơ cá nhân
       header: Hồ sơ cá nhân
       profile_settings:
-        header: Profile Settings
+        header: Thiết lập Hồ sơ
         description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
+        first_name_label: Tên
+        last_name_label: Họ
+        profile_picture_label: Ảnh đại diện
       submit_button: Submit
   devise:
     confirmations:
@@ -508,15 +508,15 @@ vi:
       reset_password_instructions:
         subject: "Hướng dẫn đặt lại mật khẩu"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Hướng dẫn mở khóa"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "Có thể không xác thực được từ %{kind} vì \"%{reason}\"."
+      success: "Xác thực thành công từ tài khoản %{kind}."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      send_instructions: "Bạn sẽ nhận được một email với các hướng dẫn về làm thế nào để đặt lại mật khẩu của bạn trong vài phút."
       send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong cơ sở dữ liệu của chúng tôi, bạn sẽ nhận được một liên kết phục hồi mật khẩu theo địa chỉ email của bạn trong vài phút."
-      updated: "Your password was changed successfully. You are now signed in."
+      updated: "Mật khẩu đã đổi thành công. Bây giờ bạn đang đăng nhập."
       updated_not_active: "Mật khẩu của bạn đã được thay đổi thành công."
     registrations:
       destroyed: "Tạm biệt! Tài khoản của bạn đã bị hủy bỏ. Chúng tôi hy vọng sớm gặp lại bạn."
@@ -548,9 +548,9 @@ vi:
       header: Tin nhắn mới
       hello: Xin chào
       name_prefix: Bạn đã nhận được các thông tin sau từ
-      message_title: Message
-      email_title: Email
-      website_title: Website
+      message_title: Tin nhắn
+      email_title: Thư điện tử
+      website_title: Trang web
       thanks: Cảm ơn
   controllers:
     admin:
