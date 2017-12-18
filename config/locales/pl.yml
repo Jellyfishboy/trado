@@ -187,67 +187,67 @@ pl:
       breadcrumb: Usługi dostawcze
       header: Usługi dostawcze
       add_tooltip: Dodaj usługę dostawczą
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      no_records: Nie masz jeszcze żadnych usług dostawy.
+      courier: Kurier
+      name: Nazwa
+      description: Opis
+      code: Kod
+      net_price: Cena netto
+      gross_price: Cena brutto
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Szczegóły usługi dostawy
+        description: Ustaw nazwę firmy kurierskiej, nazwę i opis usług dostawy.
+        courier_name_label: Nazwa kuriera
+        name_label: Nazwa
+        description_label: Opis
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Kolejności ograniczenia
+        description: Ogranicz usługę dostawy do całkowitej ceny zamówienia.
+        price_range_label: Przedział cenowy
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Śledzenie
+        description_html: 'Ustaw śledzenie dla swojej usługi dostawy. Użyj <b>{{consignment_number}}</b>, aby wstawić numer przesyłki.'
+        tracking_url_label: Adres Url śledzenia
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Kraje
+        description_html: 'Wybierz kraje, które są dostępne dla tego typu usługi dostawy, lub <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">kopiuj</a> istniejącą listę usług kraju.'
+        country_placeholder: Wybierz kraje stowarzyszone...
+      submit_button: Prześlij
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Edytuj usługę dostawczą
+      breadcrumb: Edytuj
+      delivery_service_index: Usługi dostawcze
+      header: Edytuj usługi dostawcze
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Nowa usługa dostawcza
+      breadcrumb: Nowy
+      delivery_service_index: Usługa dostawcza
+      header: Nowa usługa dostawcza
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Więcej informacji o transakcji
+        error_code: Kod błędu
+        stripe_charge_id: Pasek ładowania Id
+        paypal_transaction_id: Identyfikator transakcji PayPal
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Edytuj zamówienie
+        dispatch_date_label: Data wysyłki
+        consignment_number_label: Numer partii
+        submit_button: Prześlij
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
-      no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
+      title: Zamówienia
+      breadcrumb: Zamówienia
+      header: Zamówienia
+      delivery_show_all: Pokaż wszystko
+      delivery_dispatched: Wysłane
+      delivery_pending: Oczekujące
+      delivery_select: Dostawy
+      payment_select: Płatność
+      no_records: Nie masz żadnych zleceń spełniających te kryteria
+      order_number: Zamówienie nr.
       full_name: Imię i nazwisko
       payment_type: Typ płatności
       payment_status: Status płatności
@@ -430,55 +430,55 @@ pl:
         modal:
           header: Konfiguruj opcje wariantów
           reset_button: Resetuj warianty
-          submit_button: Submit
+          submit_button: Prześlij
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        title: Zarządzanie magazynem
+        breadcrumb: Zarządzanie magazynem
+        product_index: Produkty
+        add_stock_tooltip: Dodaj magazyn
+        header: Zarządzanie magazynem
+        show_all_filter: Pokaż wszystko
+        low_filter: Niski
+        stock_filer: Magazyn
+        no_records: Nie masz jeszcze żadnych produktów SKU.
         sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        name: Nazwa
+        variant: Wariant
+        stock: Magazyn
+        stock_warning_level: Poziom ostrzeżenia zapasów
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Zarządzanie magazynem
+        product_index: Produkty
+        stock_management_index: Zarządzanie magazynem
+        add_stock_adjustment_tooltip: Dodaj regulację magazynu
+        header: Historia magazynu
+        date: Data
+        description: Opis
+        adjustment: Regulacja
+        stock: Magazyn
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Nowy magazyn
+        breadcrumb: Nowy
+        product_index: Produkty
+        stock_management_index: Zarządzanie magazynem
+        header: Nowy magazyn
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Opis
+        adjustment_label: Regulacja
+        submit_button: Prześlij
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Dodaj obraz
+        edit_image: Edytuj obraz
+        file_label: Plik
+        default_label: Domyślnie
+        submit_button: Prześlij
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
+      title: Profil
+      breadcrumb: Profil
       header: Profile
       profile_settings:
         header: Profile Settings
