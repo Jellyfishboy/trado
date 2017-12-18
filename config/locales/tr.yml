@@ -353,8 +353,8 @@ tr:
       sku: Stokta tutma birimi numarası
       part_number: Parça numarası.
       name: İsim
-      variant: Variant
-      net_price: Net Price
+      variant: Çeşit
+      net_price: Net fiyat
       gross_price: Gross Price
     edit:
       title: Edit Product
@@ -413,68 +413,68 @@ tr:
           length_label: Length
           weight_label: Weight
           thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          stock_label: Stok
+          stock_warning_level_label: Stok Uyarı Seviyesi
+          cost_value_label: Maliyet değeri
+          price_label: Fiyat
+          submit_button: Gönder
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: İçin stok ayarlaması ekle
+          current_stock: Mevcut stok
+          description_label: Açıklama
+          adjustment_label: Ayarlama
+          submit_button: Gönder
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Başka türlü olan ayarları yapılandırma
+          reset_button: Çeşitleri sıfırla
+          submit_button: Gönder
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
-        sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        title: Stok yönetimi
+        breadcrumb: Stok yönetimi
+        product_index: Ürünler
+        add_stock_tooltip: Stok ekle
+        header: Stok yönetimi
+        show_all_filter: Tümünü göster
+        low_filter: Düşük
+        stock_filer: Stok
+        no_records: Henüz her hangi bir ürün stok tutma birimi numaran yok.
+        sku: Stok tutma birimi numarası
+        name: İsim
+        variant: Çeşit
+        stock: Stok
+        stock_warning_level: Stok uyarı seviyesi
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Stok yönetimi
+        product_index: Ürünler
+        stock_management_index: Stok yönetimi
+        add_stock_adjustment_tooltip: Stok ayarlaması ekleyin
+        header: Stok tarihi
+        date: Tarih
+        description: Açıklama
+        adjustment: Ayarlama
+        stock: Stok
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
-        sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        title: Yeni stok
+        breadcrumb: Yeni
+        product_index: Ürünler
+        stock_management_index: Stok yönetimi
+        header: Yeni stok
+        sku_label: Stok tutma birimi numarası
+        description_label: Açıklama
+        adjustment_label: Ayarlama
+        submit_button: Gönder
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Görüntü ekle
+        edit_image: Görüntüyü düzenle
+        file_label: Dosya
+        default_label: Varsayılan
+        submit_button: Gönder
   users:
     edit:
       title: Profile
@@ -546,13 +546,13 @@ tr:
   mailers:
     contact_message:
       title: Received a new message from
-      header: New Message
-      hello: Hello
+      header: Yeni mesaj
+      hello: Merhaba
       name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      message_title: Mesaj
+      email_title: E-posta
+      website_title: Web sitesi
+      thanks: Teşekkürler
   controllers:
     admin:
       products:
