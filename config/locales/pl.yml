@@ -422,9 +422,9 @@ pl:
       stock_adjustments:
         modal:
           header: Dodaj czas regulacji dla
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
+          current_stock: Obecnie dostępne są
+          description_label: Opis
+          adjustment_label: Regulacja
           submit_button: Submit
       variants:
         modal:
