@@ -185,8 +185,8 @@ pl:
     index:
       title: Usługi dostawcze
       breadcrumb: Usługi dostawcze
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
+      header: Usługi dostawcze
+      add_tooltip: Dodaj usługę dostawczą
       no_records: You don't have any delivery services yet.
       courier: Courier
       name: Name
@@ -342,32 +342,32 @@ pl:
       no_records: Nie masz jeszcze żadnych produktów.
       show_all_filter: Pokaż wszystko
       published_filter: Opublikowany
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
+      draft_filter: Projekt
+      archived_filter: Zarchiwizowano
+      featured_filter: Polecane
+      filter_by: Filtruj wedug
+      weighting_sorting: Ważenie
+      name_sorting: Nazwa
+      popularity_sorting: Popularność
+      sort_by: Sortuj według
       sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      part_number: Nr części.
+      name: Nazwa
+      variant: Wariant
+      net_price: Cena netto
+      gross_price: Cena brutto
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Edytuj produkt
+      breadcrumb: Edytuj
+      product_index: Produkty
+      header: Edytuj produkt
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Opublikuj
+      save_button: Zapisz
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
+        header: Dodatkowe opcje
+        description: Poleć swój produkt i/lub usuń opcje SKU ze strony produktu.
+        featured_label: Polecane
         tags_label: Tag
       associations:
         header: Powiązania
@@ -570,47 +570,47 @@ pl:
             invalid: Wariant opcje nie może być pusty
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Dodatek został stworzone pomyślnie
         update:
-          valid: Accessory was successfully updated
+          valid: Dodatek został skutecznie zaktualizowany
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Dodatek został skutecznie usunięty
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Ustawienia sklepu zostały skutecznie zaktualizowane
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Nie masz żadnych obrazów tego produktu
       categories:
         create:
-          valid: Category was successfully created
+          valid: Kategoria została pomyślnie stworzona
         update:
-          valid: Category was successfully updated
+          valid: Kategoria została pomyślnie zaktualizowana
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Cena usług dostawy została skutecznie stworzona
         update:
-          valid: Delivery service price was successfully updated
+          valid: Cena usług dostawy została skutecznie zaktualizowana
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Cena usług dostawy została skutecznie usunięta
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Usługa dostawy została pomyślnie utworzona
         update:
-          valid: Delivery service was successfully updated
+          valid: Usługa dostawy została skutecznie zaktualizowana
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Usługa dostawy została pomyślnie usunięta
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Musisz wybrać usługę dostawy
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Strona została pomyślnie zaktualizowana
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Profil został skutecznie zaktualizowany
+          invalid: Podczas próby zaktualizowania informacji profilowych wystąpił błąd
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Twoje zamówienie zostało anulowane
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Wystąpił błąd podczas próby dokonania zamówienia. Proszę spróbuj ponownie
