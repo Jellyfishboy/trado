@@ -479,19 +479,19 @@ pl:
     edit:
       title: Profil
       breadcrumb: Profil
-      header: Profile
+      header: Profil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Ustawienia profilu
+        description: Ustaw nazwę i zdjęcie profilu dla konta administracyjnego.
+        first_name_label: Imię
+        last_name_label: Nazwisko
+        profile_picture_label: Zdjęcie profilowe
+      submit_button: Prześlij
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Twoje konto zostało potwierdzone pomyślnie. Jesteś teraz zalogowany."
+      send_instructions: "W ciągu kilku minut otrzymasz e-mail z instrukcjami jak potwierdzić swoje hasło."
+      send_paranoid_instructions: "Jeśli Twój adres e-mail istnieje w naszej bazie danych, w ciągu kilku minut otrzymasz e-mail z instrukcjami jak potwierdzić swoje konto."
     failure:
       already_authenticated: "Jesteś już zalogowany."
       inactive: "Twoje konto nie zostało jeszcze aktywowane."
