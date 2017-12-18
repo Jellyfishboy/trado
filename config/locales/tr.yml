@@ -245,9 +245,9 @@ tr:
       delivery_dispatched: Gönderildi
       delivery_pending: Bekleniyor
       delivery_select: Teslimat
-      payment_select: Payment
-      no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
+      payment_select: Ödeme
+      no_records: Bu kriterleri karşılayan herhangi bir siparişiniz yok
+      order_number: Sipariş No.
       full_name: Tam isim
       payment_type: Ödeme yöntemi
       payment_status: Ödeme durumu
@@ -310,49 +310,49 @@ tr:
         header: Sayfanızı yazın
         description: Sayfanızın, menü öğesinin, sıralama sırasının başlığını belirleyin ve sayfa içeriğinizi ekleyin.
         title_label: Başlık
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        menu_title_label: Menü başlığı
+        sorting_label: Sınıflandırma
+        content_label: İçerik
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Arama motorları
+        description: Sayfa başlığını, meta açıklamasını ve URL ayarını yapın; bu, bir sayfanın arama motorlarında nasıl göründüğünü tanımlamanıza yardımcı olur.
+        page_title_label: Sayfa başlığı
+        meta_description_label: Meta açıklaması
         slug_label: Slug
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Görünürlük
+        description: Sayfa mağazanızın üzerinde görünürse ayarlayın.
+        visible_label: Görünür
+        hidden_label: Gizli
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Şablon
+        description: Bu sayfanın, mağazanızın üzerinde kullanacağı şablonu seçin.
+      submit_button: Gönder
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Sayfayı düzenle
+      breadcrumb: Düzenle
+      pages_index: Sayfalar
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
-      sku: SKU
-      part_number: Part no.
-      name: Name
+      title: Ürünler
+      breadcrumb: Ürünler
+      header: Ürünler
+      add_product_tooltip: Ürün ekle
+      stock_management_tooltip: Stok durumu
+      no_records: Henüz her hangi bir ürününüz yok.
+      show_all_filter: Tümünü göster
+      published_filter: Yayımlandı
+      draft_filter: Taslak
+      archived_filter: Arşivlenmiş
+      featured_filter: Öne çıkan
+      filter_by: Filtreleme kriterleri
+      weighting_sorting: Ağırlık
+      name_sorting: İsim
+      popularity_sorting: Popülarite
+      sort_by: Şuna göre diz
+      sku: Stokta tutma birimi numarası
+      part_number: Parça numarası.
+      name: İsim
       variant: Variant
       net_price: Net Price
       gross_price: Gross Price
