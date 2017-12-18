@@ -403,25 +403,25 @@ pl:
         add_variant: Dodaj wariant
         no_records: Nie masz żadnych wariantów dla tego produktu.
         code: Kod
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        stock: Magazyn
+        cost_value: Wartość ceny
+        price: Cena
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Dodaj wariant
+          edit_variant: Edytuj wariant
+          code_label: Kod
+          length_label: Długość
+          weight_label: Waga
+          thickness_label: Grubość
+          stock_label: Magazyn
+          stock_warning_level_label: Poziom ostrzeżenia zapasów
+          cost_value_label: Wartość kosztu
+          price_label: Cena
+          submit_button: Prześlij
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
+          header: Dodaj czas regulacji dla
           current_stock: Current stock is
           description_label: Description
           adjustment_label: Adjustment
