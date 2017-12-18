@@ -82,47 +82,47 @@ pl:
       price_inc_label: Cena inc. podatku
     mailchimp:
       header: Biuletyn MailChimp
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      description: Ustaw MailChimp listę jako identyfikator twojego biuletynu.
+      list_id_label: Id listy
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      header: Pasek
+      description: Ustaw tekst, który chciałbyś wyświetlać na wyciągach z karty kredytowej klienta.
+      statement_descriptor_label: Instrukcja deskryptora
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Włączyć i ustawić kod śledzenia sieci dla Twojego sklepu.
+      tracking_code_label: Kod śledzenia sieci Web
+      enabled_label: Włączony
+      disabled_label: Wyłączony
+    submit_button: Prześlij
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Kategorie
+      breadcrumb: Kategorie
+      header: Kategorie
+      add_tooltip: Dodaj kategorię
+      no_records: Nie masz jeszcze żadnych kategorii.
+      name: Nazwa
+      description: Opis
+      sorting: Sortowanie
+      active: Aktywne
+      no_of_products: Liczba produktów
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Szczegóły kategorii
+        description: Ustaw nazwę, opis i kolejność sortowania dla swojej kategorii.
+        name_label: Nazwa
+        description_label: Opis
+        sorting_label: Sortowanie
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Wyszukiwarki
+        description: Ustaw tytuł strony i opis mety, aby pomóc w określeniu sposobu wyświetlania strony w wyszukiwarkach.
+        page_title_label: Tytuł strony
+        meta_description_label: Opis mety
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
+        header: Widoczność
+        description: Ustaw, czy kategoria jest widoczna w Twojej witrynie.
+        visible_label: Widoczne
         hidden_label: Ukryte
       submit_button: Prześlij
     edit:
@@ -310,38 +310,38 @@ pl:
         header: Napisz swoją stronę
         description: Ustaw tytuł swojej strony, element menu, porządek sortowania i dodaj treść strony.
         title_label: Tytuł
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        menu_title_label: Tytuł menu
+        sorting_label: Sortowanie
+        content_label: Zawartosć
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        header: Wyszukiwarki
+        description: Ustaw tytuł strony, opis mety i URL slug; pomagają one określić jak strona jest pokazywana w wyszukiwarkach.
+        page_title_label: Tytuł strony
+        meta_description_label: Opis mety
+        slug_label: Ślimak
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Widoczność
+        description: Ustaw, czy strona jest widoczna w Twojej witrynie.
+        visible_label: Widoczne
+        hidden_label: Ukryte
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Szablon
+        description: Wybierz szablon, który ta strona wykorzysta w Twojej witrynie.
+      submit_button: Prześlij
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Edytuj stronę
+      breadcrumb: Edytuj
+      pages_index: Strony
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
+      title: Produkty
+      breadcrumb: Produkty
+      header: Produkty
+      add_product_tooltip: Dodaj produkt
+      stock_management_tooltip: Zarządzanie magazynem
+      no_records: Nie masz jeszcze żadnych produktów.
+      show_all_filter: Pokaż wszystko
+      published_filter: Opublikowany
       draft_filter: Draft
       archived_filter: Archived
       featured_filter: Featured
