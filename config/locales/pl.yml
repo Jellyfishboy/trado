@@ -292,24 +292,24 @@ pl:
         fee: Opłata
         net_amount: Kwota netto
         gross_amount: Kwota brutto
-        last_updated: Last Updated
+        last_updated: Ostatnia aktualizacja
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Witryna śledzenia
+        number: Numer śledzenia
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Tytuł
+      breadcrumb: Stron
+      header: Stron
+      sorting: Sortowanie
+      visible: Widoczne
+      last_updated: Ostatnia aktualizacja
     form:
-      header: Edit Page
+      header: Edytuj stronę
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        header: Napisz swoją stronę
+        description: Ustaw tytuł swojej strony, element menu, porządek sortowania i dodaj treść strony.
+        title_label: Tytuł
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
@@ -370,29 +370,29 @@ pl:
         featured_label: Featured
         tags_label: Tag
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Powiązania
+        description: Wybierz powiązane akcesoria i pokrewne produkty dla twojego produktu (powiązane produkty będą wyświetlane na stronie produktu).
+        accessories_label: Akcesoria
+        related_products_label: Powiązane produkty
+        select_accessory_placeholder: Wybierz akcesoria związane
+        select_related_products_placeholder: Wzbierz powiązane produkty
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Szczegóły produktu
+        description: Ustaw nazwę, opis i kolejność sortowania dla swojej kategorii.
+        select_category_placeholder: Wybierz kategorię
+        part_number_label: Numer części
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Nazwa
+        weighting_label: Ważenie
+        short_description_label: Krótki opis
+        description_label: Opis
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Wyszukiwarki
+        description: Ustaw tytuł strony i opis mety, aby pomóc w określeniu sposobu wyświetlania strony w wyszukiwarkach.
+        page_title_label: Tytuł strony
+        meta_description_label: Meta opis
       images:
-        header: Images
+        header: Obrazy
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Add Image
         no_records: You do not have any images for this product.
