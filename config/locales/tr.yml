@@ -25,42 +25,42 @@ tr:
       weight_price:
         header: Ağırlık & Fiyar
         description: Aksesuarınız için, ağırlığını, net fiyatını ve orijinal değerini ayarlayın.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        weight_label: Ağırlık
+        cost_value_label: Değer Maliyeti
+        net_price_label: Net fiyat
+      submit_button: Gönder
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Aksesuarı düzenle
+      breadcrumb: Düzenle
+      accessory_index: Aksesuarlar
+      header: Aksesuarı Düzenle
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Yeni Aksesuar
+      breadcrumb: Yeni
+      accessory_index: Aksesuarlar
+      header: Yeni Aksesuar
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Kontrol paneli
+    orders: Siparişler
+    completed_orders: Tamamlanan
+    pending_orders: Bekleyen
+    failed_orders: Yalan olan
+    transactions: İşlemler
+    gross_income_transactions: Brüt gelir
+    net_income_transactions: Net gelir
+    tax_transactions: Vergi / Fatura / Kdv
+    provider_fees_transactions: Sağlayıcı kesintileri
+    delivery_fees_transactions: Teslimat kesintileri
+    activity: Faaliyet
+    activity_active_carts: Aktif Siparişler
+    activity_incomplete_orders: Tamamlanmış Siparişler
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Ayarlar
+    breadcrumb: Ayarlar
+    header: Ayarlar
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Mağaza detayları
+      description: Mağazanızın adını, e-postasını, logosunu ve temasını belirleyin. E-posta, iletişim formu ve önemli yönetim güncellemeleri için kullanılacaktır.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -123,68 +123,68 @@ tr:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Gizli
+      submit_button: Gönder
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Kategoriyi düzenle
+      breadcrumb: Düzenle
+      category_index: Kategoriler
+      header: Kategoriyi düzenle
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Yeni kategori
+      breadcrumb: Yeni
+      category_index: Kategoriler
+      header: Yeni Kategoriler
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Teslimat ücreti %{service_name}
+      header: Teslimat ücreti %{service_name}
+      delivery_service_index: Teslimat hizmetleri
+      add_tooltip: Teslimat fiyatını ekleyin
+      no_records: '%{service_name} için henüz bir fiyatın yok.'
+      code: Kod
+      description: Açıklama
+      weight: Ağırlık parametreleri
+      length: Uzunluk parametreleri
+      thickness: Kalınlık parametreleri
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Teslimat ayrıntıları
+        description: Teslimat fiyatı için, kodu, fiyatı ve açıklamayı ayarlayın.
+        code_label: Kod
+        price_label: Fiyat
+        description_label: Açıklama
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Boyut Karşılığı
+        description: Bu teslimat fiyatı için boyut ve ağırlık payını belirtin.
+        min_weight_label: En az ağırlık
+        max_weight_label: En çok ağırlık
+        min_length_label: En az boy
+        max_length_label: En çok boy
+        min_thickness_label: En az kalınlık
+        max_thickness_label: En çok kalınlık
+      submit_button: Gönder
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Teslimat fiyatını düzenleyin
+      breadcrumb: Düzenle
+      delivery_service_index: Teslimat hizmetleri
+      header: Teslimat fiyatını düzenleyin
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Yeni teslimat fiyatı
+      breadcrumb: Yeni
+      delivery_service_index: Teslimat hizmetleri
+      header: Yeni teslimat fiyatı
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Ülkeler arası teslimat servisini kopyalayın
+      description: 'Ülke listesini kopyalamak istediğiniz dağıtım hizmetini seçin:'
+      select_prompt: Bir teslimat hizmeti seçin...
+      submit_button: Gönder
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Teslimat hiztmerleri
+      breadcrumb: Teslimat hiztmerleri
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
@@ -248,22 +248,22 @@ tr:
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Tam isim
+      payment_type: Ödeme yöntemi
+      payment_status: Ödeme durumu
+      delivery_status: Teslimat durumu
+      gross_amount: Brüt tutuar
+      last_updated: Son güncelleme zamanı
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Sipariş #%{order_id}'
+      orders_index: Siparişler
+      cancel_order_tooltip: Siparişi iptal et
+      header: 'Sipariş #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
+        header: Teslimat ayrıntıları
+        email: E-posta
+        status: Durum
+        dispatch_date: Gönderme tarihi
         delivery_service: Delivery Service
         tracking: Tracking
       billing_address:
