@@ -1,30 +1,30 @@
 tr:
   global:
-    none_available: None Available
+    none_available: Hiçbiri mevcut değil
   modal:
-    close_button: Close
+    close_button: Kapat
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Aksesuarlar
+      breadcrumb: Aksesuarlar
+      header: Aksesuarlar
+      add_tooltip: Aksesuar ekle
+      no_records: Henüz hiç bir aksesuarın yok.
+      part_number: Parça numarası.
+      name: İsim
+      weight: Ağırlık
+      cost_value: Değer maliyeti
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Aksesuar detayları
+        description: Aksesuarınız için ad ve parça numarasını ayarlayın.
+        name_label: Ad
+        part_number_label: Parça numarası
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
+        header: Ağırlık & Fiyar
+        description: Aksesuarınız için, ağırlığını, net fiyatını ve orijinal değerini ayarlayın.
         weight_label: Weight
         cost_value_label: Cost Value
         net_price_label: Net Price
