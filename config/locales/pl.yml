@@ -60,7 +60,7 @@ pl:
     header: Ustawienia
     store_detail:
       header: Szczegóły sklepu
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      description: Ustaw nazwę, e-mail, logo i motyw swojego sklepu. E-mail będzie używany do kontaktu i ważnych administracyjnych aktualizacji.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -123,15 +123,15 @@ pl:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Ukryte
+      submit_button: Prześlij
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Edytuj kategorię
+      breadcrumb: Edytuj
+      category_index: Kategorie
+      header: Edytuj kategorię
     new:
-      title: New Category
+      title: Nowa kategoria
       breadcrumb: New
       category_index: Categories
       header: New Category
