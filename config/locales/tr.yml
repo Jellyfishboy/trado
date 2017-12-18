@@ -92,37 +92,37 @@ tr:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      enabled_label: Etkin
+      disabled_label: Devre dışı
+    submit_button: Gönder
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Kategoriler
+      breadcrumb: Kategoriler
+      header: Kategoriler
+      add_tooltip: Kategori ekle
+      no_records: Henüz hiç bir kategorin yok.
+      name: İsim
+      description: Açıklama
+      sorting: Sınıflandırma
+      active: Aktif et
+      no_of_products: Ürünlerin sayısı
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Kategori detayları
+        description: Kategoriniz için ad, açıklama ve sıralama düzenini ayarlayın.
+        name_label: Ad
+        description_label: Açıklama
+        sorting_label: Sınıflandırma
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Arama motorları
+        description: Bir sayfanın arama motorlarında nasıl gösterildiğini tanımlamanıza yardımcı olması için sayfa başlığını ve meta açıklaması ayarlayın.
+        page_title_label: Sayfa başlığı
+        meta_description_label: Meta açıklaması
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
+        header: Görünürlük
+        description: Kategori, mağazanızın üzerinde görünüyorsa ayarlayın.
+        visible_label: Görünür
         hidden_label: Gizli
       submit_button: Gönder
     edit:
@@ -236,15 +236,15 @@ tr:
         header: Edit Order
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
-        submit_button: Submit
+        submit_button: Gönder
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
+      title: Siparişler
+      breadcrumb: Siparişler
+      header: Siparişler
+      delivery_show_all: Tümünü göster
+      delivery_dispatched: Gönderildi
+      delivery_pending: Bekleniyor
+      delivery_select: Teslimat
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
