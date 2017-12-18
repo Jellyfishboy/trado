@@ -393,16 +393,16 @@ pl:
         meta_description_label: Meta opis
       images:
         header: Obrazy
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        description: Prześlij i edytuj zdjęcia tego produktu. Możesz również ustawić domyślny obraz do wyświetlania na stronie produktu.
+        add_image: Dodaj obraz
+        no_records: Nie masz żadnych obrazów tego produktu.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
+        header: Warianty
+        description: Konfiguruj opcje wariantów sprzedaży tego produktu.
+        variant_options: Opcje wariantów
+        add_variant: Dodaj wariant
+        no_records: Nie masz żadnych wariantów dla tego produktu.
+        code: Kod
         stock: Stock
         cost_value: Cost Value
         price: Price
