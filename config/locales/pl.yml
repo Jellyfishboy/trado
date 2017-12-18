@@ -61,27 +61,27 @@ pl:
     store_detail:
       header: Szczegóły sklepu
       description: Ustaw nazwę, e-mail, logo i motyw swojego sklepu. E-mail będzie używany do kontaktu i ważnych administracyjnych aktualizacji.
-      name_label: Name
-      email_label: Email
+      name_label: Nazwa
+      email_label: E-mail
       logo_label: Logo
-      theme_label: Theme
+      theme_label: Motyw
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Język
+      description: Ustaw język dla panelu administracyjnego.
+      language_label: Język
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Podatek
+      description: Ustaw nazwę i wartość procentową stawki podatku.
+      name_label: Nazwa
+      rate_label: Stawki
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Wyświetlenie ceny i waluty
+      description: Ustaw walutę jaką operujesz w sklepie i czy chciałbyś, aby klienci oglądali cenę produktu zawierającą podatek.
+      currency_label: Waluta
+      price_exc_label: Cena inc. i podatek exc
+      price_inc_label: Cena inc. podatku
     mailchimp:
-      header: MailChimp Newsletter
+      header: Biuletyn MailChimp
       description: Set the MailChimp list Id for your newsletter.
       list_id_label: List Id
     stripe:
@@ -542,32 +542,32 @@ pl:
       not_locked: "nie było zablokowane"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
-        few: "%{count} errors prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        few: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
+        other: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Odebrano nową wiadomość od
+      header: Nowa wiadomość
+      hello: Cześć
+      name_prefix: Otrzymałeś następujące informacje z
+      message_title: Wiadomość
+      email_title: E-mail
+      website_title: Strona internetowa
+      thanks: Dziękuję
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Twój produkt został pomyślnie zapisany jako wersja robocza
+          publish: Twój produkt został pomyślnie opublikowany. Jest teraz w twoim sklepie
         destroy:
-          valid: Product was successfully deleted
+          valid: Produkt został usunięty pomyślnie
         archive:
-          valid: Product was successfully archived
+          valid: Produkt został zarchiwizowany pomyślnie
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Wariant opcje nie może być pusty
       accessories:
         create:
           valid: Accessory was successfully created
