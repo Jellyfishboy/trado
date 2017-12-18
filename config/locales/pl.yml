@@ -152,39 +152,39 @@ pl:
     form:
       delivery_price_details:
         header: Szczegóły cen dostawy
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        description: Ustaw kod, cenę i opis dla tej ceny dostawy.
+        code_label: Kod
+        price_label: Cena
+        description_label: Opis
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Wymiar zasiłku
+        description: Określ wymiar i wagę zasiłku za cenę tej dostawy.
+        min_weight_label: Waga minimalna
+        max_weight_label: Waga maksymalna
+        min_length_label: Minimalna długość
+        max_length_label: Maksymalna długość
+        min_thickness_label: Minimalna grubość
+        max_thickness_label: Maksymalna grubość
+      submit_button: Prześlij
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Edycja cen dostawy
+      breadcrumb: Edycja
+      delivery_service_index: Usługi dostawcze
+      header: Edycja cen dostawy
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Nowa cena dostawy
+      breadcrumb: Nowy
+      delivery_service_index: Usługi dostawcze
+      header: Nowe usługi dostawcze
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Kopiuj kraje usług dostawczych
+      description: 'Wybierz, którą usługę chcesz skopiować z listy krajów:'
+      select_prompt: Wybierz usługę dostawy...
+      submit_button: Prześlij
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Usługi dostawcze
+      breadcrumb: Usługi dostawcze
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
@@ -248,50 +248,50 @@ pl:
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Imię i nazwisko
+      payment_type: Typ płatności
+      payment_status: Status płatności
+      delivery_status: Status dostawy
+      gross_amount: Kwota brutto
+      last_updated: Ostatnia aktualizacja
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Zamówienie #%{order_id}'
+      orders_index: Zamówienia
+      cancel_order_tooltip: Anuluj zamówienie
+      header: 'Zamówienie #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
+        header: Szczegóły dostawy
+        email: E-mail
         status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        dispatch_date: Data wysyłki
+        delivery_service: Dostawa
+        tracking: Śledzenie
       billing_address:
-        header: Billing Address
+        header: Adres do faktury
       delivery_address:
-        header: Delivery Address
+        header: Adres dostawy
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Szczegóły płatności
+        card_number: Numer Karty
+        expiry_date: Termin ważności
       order_items:
-        header: Order Items
-        item: Item
+        header: Kolejność elementów
+        item: Przedmiot
         sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        price: Cena
+        quantity: Ilość
+        total: Łącznie
+        delivery: Dostawy
+        subtotal: Suma cząstkowa
+        tax: Podatek
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
+        header: Transakcje
+        transaction_type: Typ transakcji
+        payment_type: Typ płatności
+        payment_status: Status płatności
+        fee: Opłata
+        net_amount: Kwota netto
+        gross_amount: Kwota brutto
         last_updated: Last Updated
       tracking:
         website: Tracking Website
