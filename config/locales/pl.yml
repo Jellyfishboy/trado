@@ -132,26 +132,26 @@ pl:
       header: Edytuj kategorię
     new:
       title: Nowa kategoria
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      breadcrumb: Nowy
+      category_index: Kategorie
+      header: Nowa Kategoria
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Cena dostaw %{service_name}
+      header: Cena dostaw %{service_name}
+      delivery_service_index: Usługi dostawcze
+      add_tooltip: Dodaj cenę dostawy
+      no_records: Nie masz jeszcze żadnych cen dla %{service_name}.
+      code: Kod
+      description: Opis
+      weight: Parametry wagi
+      length: Parametry Długości
+      thickness: Parametry Grubości
+      net_price: Cena Netto
+      gross_price: Cena Brutto
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Szczegóły cen dostawy
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price
