@@ -1,65 +1,65 @@
 pl:
   global:
-    none_available: None Available
+    none_available: Brak Dostępnych
   modal:
-    close_button: Close
+    close_button: Zamknij
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Akcesoria
+      breadcrumb: Akcesoria
+      header: Akcesoria
+      add_tooltip: Dodaj Akcesoria
+      no_records: Nie masz jeszcze żadnych akcesoriów.
+      part_number: Nr części.
+      name: Nazwa
+      weight: Waga
+      cost_value: Wartość Ceny
+      net_price: Cena netto
+      gross_price: Cena Brutto
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Szczegóły akcesoriów
+        description: Ustaw nazwę i numer części dla akcesorii.
+        name_label: Nazwa
+        part_number_label: Numer części
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Waga i Cena
+        description: Ustaw wagę, cenę netto i oryginalną wartość dla twojego akcesorium.
+        weight_label: Waga
+        cost_value_label: Wartość Ceny
+        net_price_label: Cena netto
+      submit_button: Prześlij
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Edycja Akcesoriów
+      breadcrumb: Edytuj
+      accessory_index: Akcesoria
+      header: Edycja Akcesoriów
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Nowe akcesoria
+      breadcrumb: Nowe
+      accessory_index: Akcesoria
+      header: Nowe akcesoria
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Pulpit nawigacyjny
+    orders: Zamówienia
+    completed_orders: Zakończone
+    pending_orders: Oczekujące
+    failed_orders: Nie powiodło się
+    transactions: Transakcje
+    gross_income_transactions: Dochód brutto
+    net_income_transactions: Dochód netto
+    tax_transactions: Podatek
+    provider_fees_transactions: Opłaty usługodawcy
+    delivery_fees_transactions: Opłaty za dostawę
+    activity: Aktywność
+    activity_active_carts: Aktywne koszyki
+    activity_incomplete_orders: Niekompletne zamówienia
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Ustawienia
+    breadcrumb: Ustawienia
+    header: Ustawienia
     store_detail:
-      header: Store Details
+      header: Szczegóły sklepu
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Name
       email_label: Email
