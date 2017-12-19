@@ -78,8 +78,8 @@ tr:
       header: Para birimi & fiyat görüntüleme
       description: Mağazanızla birlikte çalıştığınız para birimini ve müşterilerinizin vergiler dahil olmak üzere ürün fiyatlarını görüntülemesini isteyip istemediğinizi ayarlayın.
       currency_label: Para birimi
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      price_exc_label: Vergi dahil & hariç fiyat
+      price_inc_label: Vergi Dahil Fiyat
     mailchimp:
       header: MailChimp Bülteni
       description: Bülteniniz için MailChimp liste kimliğini ayarlayın.
@@ -589,27 +589,27 @@ tr:
         create:
           valid: Teslimat fiyatı başarıyla oluşturuldu
         update:
-          valid: Delivery service price was successfully updated
+          valid: Teslimat fiyatı başarıyla güncelleştirildi
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Teslimat fiyatı başarıyla silindi
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Teslimat servisi başarıyla oluşturuldu
         update:
-          valid: Delivery service was successfully updated
+          valid: Teslimat servisi başarıyla güncellendi
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Teslimat servisi başarıyla silindi
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Teslimat servisi seçmelisiniz
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Sayfa başarıyla güncellendi
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Profil başarıyla güncelleştirildi
+          invalid: Profil detaylarını güncellerken bir hata oluştu
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Siparişiniz iptal edildi
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Siparişiniz tamamlanırken bir hata oluştu. Lütfen yeniden deneyin
