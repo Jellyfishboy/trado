@@ -63,19 +63,19 @@ pt:
       description: Defina o nome, e-mail, logotipo e tema da sua loja. O e-mail será usado para o formulário de contato e atualizações importantes da administração.
       name_label: Nome
       email_label: E-mail
-      logo_label: Logo
-      theme_label: Theme
+      logo_label: Logotipo
+      theme_label: Tema
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Idioma
+      description: Defina o idioma do painel de administração.
+      language_label: Idioma
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Taxa
+      description: Defina o nome e a taxa de porcentagem do seu imposto.
+      name_label: Nome
+      rate_label: Taxa
     currency:
-      header: Currency & price display
+      header: Exibição de moeda e preço
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
       currency_label: Currency
       price_exc_label: Price inc. & exc. tax
@@ -139,7 +139,7 @@ pt:
     index:
       title: Delivery pricing for %{service_name}
       header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
+      delivery_service_index: Serviço de entrega
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
