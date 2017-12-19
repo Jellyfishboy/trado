@@ -87,10 +87,10 @@ pt:
     stripe:
       header: Listra
       description: Defina o texto que deseja exibir nas declarações do cartão de crédito do cliente.
-      statement_descriptor_label: Statement Descriptor
+      statement_descriptor_label: Descriptor de declaração
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
+      description: Ative e configure o código de rastreamento da web para sua loja.
       tracking_code_label: Web Tracking Code
       enabled_label: Enabled
       disabled_label: Disabled
