@@ -81,8 +81,8 @@ tr:
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
+      header: MailChimp Bülteni
+      description: Bülteniniz için MailChimp liste kimliğini ayarlayın.
       list_id_label: Liste kimliği
     stripe:
       header: Şerit
@@ -207,7 +207,7 @@ tr:
         price_range_label: Fiyat aralığı
       tracking:
         header: Sipariş takibi
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
+        description_html: 'Teslimat servisiniz için izleme servisini ayarlayın. Sevkıyat numarası eklemek için {{consignment_number}} kullanın.'
         tracking_url_label: Sipariş takip URL'si
       countries:
         header: Ülkeler
@@ -532,12 +532,12 @@ tr:
     unlocks:
       send_instructions: "Bir kaç dakika içerisinde, hesabınızın kilidini nasıl açacağınıza dair talimatları içeren bir e-posta alacaksınız."
       send_paranoid_instructions: "Eğer hesabınız varsa, birkaç dakika içinde kilidini açmakla alaklı talimatları içeren bir e-posta alacaksınız."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "Hesabın başarıyla açıldı. Lütfen devam etmek için giriş yap."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
+      already_confirmed: "zaten doğrulandı, lütfen tekrar oturum açmayı deneyin"
+      confirmation_period_expired: "%{period} zaman içinde onaylanması gerek, lütfen yeni bir tane isteyin"
+      expired: "süresi dolmuş, lütfen yeni bir tane isteyin"
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
