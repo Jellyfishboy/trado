@@ -227,15 +227,15 @@ tr:
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
+        header: İşlem için daha fazla bilgi
+        error_code: Hata kodu
         stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        paypal_transaction_id: PayPal İşlem Kimliği
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
+        header: Siparişi Düzenle
+        dispatch_date_label: Gönderim Tarihi
+        consignment_number_label: Sevkıyat Numarası
         submit_button: Gönder
     index:
       title: Siparişler
@@ -404,15 +404,15 @@ tr:
         no_records: You do not have any variants for this product.
         code: Code
         stock: Stock
-        cost_value: Cost Value
-        price: Price
+        cost_value: Maliyet Değeri
+        price: Fiyat
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
+          add_variant: Değişkenlik Ekle
+          edit_variant: Değişkenliği Düzenle
+          code_label: Kod
+          length_label: Uzunluk
+          weight_label: Ağırlık
+          thickness_label: Kalınlık
           stock_label: Stok
           stock_warning_level_label: Stok Uyarı Seviyesi
           cost_value_label: Maliyet değeri
@@ -477,31 +477,31 @@ tr:
         submit_button: Gönder
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profil
+      breadcrumb: Profil
+      header: Profil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
+        header: Profil Ayarları
+        description: Yönetim hesabınızın adını ve profil resmini ayarlayın.
         first_name_label: First Name
         last_name_label: Last Name
         profile_picture_label: Profile Picture
       submit_button: Submit
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Hesabınız başarıyla doğrulandı. Şuan oturumun açık."
+      send_instructions: "Birkaç dakika içinde, hesabınızı onaylama ile ilgili talimatları içeren bir e-posta alacaksınız."
+      send_paranoid_instructions: "Eğer e-posta adresiniz veritabanımızda zaten mevcutsa, birkaç dakika içinde hesabınızı nasıl onaylayacağınıza dair talimatları içeren bir e-posta alacaksınız."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Zaten giriş yaptınız."
+      inactive: "Hesabınız henüz aktif edilmemiş."
+      invalid: "Geçersiz e-posta veya şifre."
+      invalid_token: "Geçersiz kimlik doğrulama simgesi."
+      locked: "Hesabınız kitlendi."
+      not_found_in_database: "Geçersiz e-posta veya şifre."
+      timeout: "Oturumunuzun süresi doldu, devam etmek için lütfen tekrar oturum açın."
+      unauthenticated: "Devam etmeden önce oturum açmanız veya kayıt olmanız gerek."
+      unconfirmed: "Devam etmeden önce hesabınızı onaylamanız gerekir."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -513,8 +513,8 @@ tr:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      no_token: "Bu sayfaya şifre sıfırlama e-postasından gelmeden erişemezsiniz. Şifre sıfırlama e-postasından geliyorsanız lütfen sağlanan tam URL'yi kullandığınızdan emin olun."
+      send_instructions: "Birkaç dakika içinde şifrenizi nasıl sıfırlayacağınıza dair talimatları içeren bir e-posta alacaksınız."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
