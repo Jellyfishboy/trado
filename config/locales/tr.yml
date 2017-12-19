@@ -90,8 +90,8 @@ tr:
       statement_descriptor_label: Ekstre Tanımlayıcısı
     google_analytics:
       header: Google İstatistikleri
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
+      description: Mağazanız için web izleme kodunu etkinleştirip ayarlayın.
+      tracking_code_label: Web İzleme Kodu
       enabled_label: Etkin
       disabled_label: Devre dışı
     submit_button: Gönder
@@ -185,45 +185,45 @@ tr:
     index:
       title: Teslimat hiztmerleri
       breadcrumb: Teslimat hiztmerleri
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      header: Teslimet hizmetleri
+      add_tooltip: Teslimat hizmeti ekle
+      no_records: Henüz bir teslimat hizmetiniz yok.
+      courier: Kurye
+      name: İsim
+      description: Açıklama
+      code: Kod
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Teslimat servisi detayları
+        description: Kurye şirketinin adını, teslimat hizmetinizin adını ve tanımını belirleyin.
+        courier_name_label: Kurye ismi
+        name_label: İsim
+        description_label: Açıklama
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Sipariş Kısıtlamaları
+        description: Bir teslimat hizmetini her hangi bir siparişin toplam fiyatıyla sınırlayın.
+        price_range_label: Fiyat aralığı
       tracking:
-        header: Tracking
+        header: Sipariş takibi
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        tracking_url_label: Sipariş takip URL'si
       countries:
-        header: Countries
+        header: Ülkeler
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
         country_placeholder: Select associated countries...
-      submit_button: Submit
+      submit_button: Gönder
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Teslimat hizmetini düzenleyin
+      breadcrumb: Düzenle
+      delivery_service_index: Teslimat hizmetleri
+      header: Teslimat hizmetini düzenleyin
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Yeni teslimat hizmeti
+      breadcrumb: Yeni
+      delivery_service_index: Teslimat hizmetleri
+      header: Yeni teslimat hizmeti
   orders:
     transactions:
       modal:
