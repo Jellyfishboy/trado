@@ -211,8 +211,8 @@ tr:
         tracking_url_label: Sipariş takip URL'si
       countries:
         header: Ülkeler
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
+        description_html: 'Bu teslimat hizmeti için mevcut olan ülkeleri seçin ya da <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}"><a href="#" id="copy-countries" data-delivery-service-id=> mevcut bir hizmet ülke listesi.'
+        country_placeholder: İlişkili ülkeleri seçin...
       submit_button: Gönder
     edit:
       title: Teslimat hizmetini düzenleyin
@@ -229,7 +229,7 @@ tr:
       modal:
         header: İşlem için daha fazla bilgi
         error_code: Hata kodu
-        stripe_charge_id: Stripe Charge Id
+        stripe_charge_id: Şerit Ücret Kimliği
         paypal_transaction_id: PayPal İşlem Kimliği
     edit:
       modal:
@@ -366,7 +366,7 @@ tr:
       save_button: Kaydet
       additional_options:
         header: Ek Ayarlar
-        description: Feature your product and/or remove SKU options from the product page.
+        description: Ürününüzü belirtin ve/veya SKU seçeneklerini ürün sayfasından silin.
         featured_label: Öne çıkan
         tags_label: Etiket
       associations:
@@ -538,17 +538,17 @@ tr:
       already_confirmed: "zaten doğrulandı, lütfen tekrar oturum açmayı deneyin"
       confirmation_period_expired: "%{period} zaman içinde onaylanması gerek, lütfen yeni bir tane isteyin"
       expired: "süresi dolmuş, lütfen yeni bir tane isteyin"
-      not_found: "not found"
-      not_locked: "was not locked"
+      not_found: "bulunamadı"
+      not_locked: "kilitli değil"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "hata %{resource} kaynağın kaydedilmesini yasakladı:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
-      title: Received a new message from
+      title: Yeni bir mesaj alındı
       header: Yeni mesaj
       hello: Merhaba
-      name_prefix: You have received the following information from
+      name_prefix: Bilgileri edindiniz
       message_title: Mesaj
       email_title: E-posta
       website_title: Web sitesi
@@ -557,37 +557,37 @@ tr:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Ürününüz taslak olarak başarıyla kaydedildi
+          publish: Ürününüz başarıyla yayınlandı. Artık mağazanızda
         destroy:
-          valid: Product was successfully deleted
+          valid: Ürün başarıyla silindi
         archive:
-          valid: Product was successfully archived
+          valid: Ürün başarıyla arşivlendi
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Varyant ayarları boş bırakılamaz
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Aksesuar başarıyla yaratıldı
         update:
-          valid: Accessory was successfully updated
+          valid: Şifreniz başarıyla güncellendi
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Aksesuar başarı ile silindi
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Mağaza ayarları başarıyla güncelleştirildi
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Bu ürün için herhangi bir resminiz yok
       categories:
         create:
-          valid: Category was successfully created
+          valid: Kategori başarıyla oluşturuldu
         update:
-          valid: Category was successfully updated
+          valid: Kategori başarıyla güncellendi
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Teslimat fiyatı başarıyla oluşturuldu
         update:
           valid: Delivery service price was successfully updated
         destroy:
