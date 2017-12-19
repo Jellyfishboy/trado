@@ -318,7 +318,7 @@ tr:
         description: Sayfa başlığını, meta açıklamasını ve URL ayarını yapın; bu, bir sayfanın arama motorlarında nasıl göründüğünü tanımlamanıza yardımcı olur.
         page_title_label: Sayfa başlığı
         meta_description_label: Meta açıklaması
-        slug_label: Slug
+        slug_label: Lakap
       visibility:
         header: Görünürlük
         description: Sayfa mağazanızın üzerinde görünürse ayarlayın.
@@ -367,13 +367,13 @@ tr:
       additional_options:
         header: Ek Ayarlar
         description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        featured_label: Öne çıkan
+        tags_label: Etiket
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
+        header: Ortaklar
+        description: Ürününüz ile alakalı aksesuarları ve ilgili ürünleri seçin (ilgili ürünler, ürün sayfasında gösterilecektir).
+        accessories_label: Aksesuarlar
+        related_products_label: İlgili Ürünler
         select_accessory_placeholder: Select associated accessories
         select_related_products_placeholder: Select related products
       product_details:
