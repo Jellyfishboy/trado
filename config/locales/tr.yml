@@ -374,36 +374,36 @@ tr:
         description: Ürününüz ile alakalı aksesuarları ve ilgili ürünleri seçin (ilgili ürünler, ürün sayfasında gösterilecektir).
         accessories_label: Aksesuarlar
         related_products_label: İlgili Ürünler
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        select_accessory_placeholder: Alakalı aksesuarları seçin
+        select_related_products_placeholder: İlgili ürünleri seçiniz
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Ürün Detayları
+        description: Kategoriniz için ad, açıklama ve sıralama düzenini ayarlayın.
+        select_category_placeholder: Katagori seçin
+        part_number_label: Parça Numarası
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: İsim
+        weighting_label: Ağırlık
+        short_description_label: Kısa Açıklama
+        description_label: Açıklama
       search_engines:
-        header: Search Engines
+        header: Arama Motorları
         description: Bir sayfanın, arama motorlarında nasıl göründüğünü tanımlamamıza yardımcı olmanız için sayfa başlığını ve meta açıklamasını ayarlayın.
         page_title_label: Sayfa Başlığı
         meta_description_label: Meta Açıklaması
       images:
         header: Görüntüler
         description: Bu ürünün görüntülerini düzenleyip yükleyin. Ayrıca varsayılan görüntüyü ürün sayfasında görüntülenecek şekilde de ayarlayabilirsiniz.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        add_image: Resim Ekleyin
+        no_records: Bu ürün için herhangi bir resminiz yok.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
+        header: Varyantlar
+        description: Bu ürünü satmak için varyant seçeneklerini ayarlayın.
+        variant_options: Varyant Seçenekleri
+        add_variant: Varyant Ekle
+        no_records: Bu ürün için herhangi bir varyantınız yok.
+        code: Kod
+        stock: Stok
         cost_value: Maliyet Değeri
         price: Fiyat
         modal:
@@ -483,10 +483,10 @@ tr:
       profile_settings:
         header: Profil Ayarları
         description: Yönetim hesabınızın adını ve profil resmini ayarlayın.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        first_name_label: İsim
+        last_name_label: Soy isim
+        profile_picture_label: Profil Resmi
+      submit_button: Gönder
   devise:
     confirmations:
       confirmed: "Hesabınız başarıyla doğrulandı. Şuan oturumun açık."
@@ -504,14 +504,14 @@ tr:
       unconfirmed: "Devam etmeden önce hesabınızı onaylamanız gerekir."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Onay talimatları"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Parola talimatlarını sıfırla"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Talimatların kilidini aç"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "\"%{reason}\" nedeninden dolayı %{kind} tarafından kimliğiniz doğrulanamadı."
+      success: "%{kind} tarafından kimliğiniz başarılı bir şekilde doğrulandı."
     passwords:
       no_token: "Bu sayfaya şifre sıfırlama e-postasından gelmeden erişemezsiniz. Şifre sıfırlama e-postasından geliyorsanız lütfen sağlanan tam URL'yi kullandığınızdan emin olun."
       send_instructions: "Birkaç dakika içinde şifrenizi nasıl sıfırlayacağınıza dair talimatları içeren bir e-posta alacaksınız."
