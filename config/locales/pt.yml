@@ -52,17 +52,17 @@ pt:
     provider_fees_transactions: Taxas de provedor
     delivery_fees_transactions: Taxas de entrega
     activity: Actividade
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    activity_active_carts: Carrinhos ativos
+    activity_incomplete_orders: Pedidos incompletos
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Definições
+    breadcrumb: Definições
+    header: Definições
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
+      header: Detalhes da loja
+      description: Defina o nome, e-mail, logotipo e tema da sua loja. O e-mail será usado para o formulário de contato e atualizações importantes da administração.
+      name_label: Nome
+      email_label: E-mail
       logo_label: Logo
       theme_label: Theme
     language:
@@ -126,15 +126,15 @@ pt:
         hidden_label: Hidden
       submit_button: Submit
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Editar categoria
+      breadcrumb: Editar
+      category_index: Categorias
+      header: Editar categoria
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nova categoria
+      breadcrumb: Novo
+      category_index: Categorias
+      header: Nova categoria
   delivery_service_prices:
     index:
       title: Delivery pricing for %{service_name}
