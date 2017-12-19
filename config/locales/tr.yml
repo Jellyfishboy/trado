@@ -83,13 +83,13 @@ tr:
     mailchimp:
       header: MailChimp Newsletter
       description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      list_id_label: Liste kimliği
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      header: Şerit
+      description: Müşteri kredi kartı ekstrelerinde görüntülemek istediğiniz metni ayarlayın.
+      statement_descriptor_label: Ekstre Tanımlayıcısı
     google_analytics:
-      header: Google Analytics
+      header: Google İstatistikleri
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
       enabled_label: Etkin
