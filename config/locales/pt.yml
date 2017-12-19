@@ -35,23 +35,23 @@ pt:
       accessory_index: Acessórios
       header: Editar acessório
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Novo acessório
+      breadcrumb: Novo
+      accessory_index: Acessórios
+      header: Novo acessório
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
+    header: Painel de controlo
+    orders: Encomendas
+    completed_orders: Completo
+    pending_orders: Pendente
+    failed_orders: Falhou
+    transactions: Transações
+    gross_income_transactions: Rendimento bruto
+    net_income_transactions: Lucro líquido
+    tax_transactions: Taxa
+    provider_fees_transactions: Taxas de provedor
+    delivery_fees_transactions: Taxas de entrega
+    activity: Actividade
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   settings:
