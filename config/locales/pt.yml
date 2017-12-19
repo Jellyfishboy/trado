@@ -19,21 +19,21 @@ pt:
     form:
       accessory_detail:
         header: Detalhes do acessório
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        description: Defina o nome e o número da peça para o seu acessório.
+        name_label: Nome
+        part_number_label: Número da peça
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Peso e preço
+        description: Defina o peso, o preço líquido e o valor de custo original para o seu acessório.
+        weight_label: Peso
+        cost_value_label: Valor de custo
+        net_price_label: Preço líquido
+      submit_button: Enviar
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Editar acessório
+      breadcrumb: "Editar\n"
+      accessory_index: Acessórios
+      header: Editar acessório
     new:
       title: New Accessory
       breadcrumb: New
