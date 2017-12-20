@@ -438,60 +438,60 @@ de:
         product_index: Produkte
         add_stock_tooltip: Stock hinzufügen
         header: Lagerverwaltung
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        show_all_filter: Alles zeigen
+        low_filter: Niedrig
+        stock_filer: Lager
+        no_records: Sie haben noch keine SKU Produkt.
         sku: SKU
         name: Name
         variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        stock: Lager
+        stock_warning_level: Bestans Warnstufe
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Lagerverwaltung
+        product_index: Produkte
+        stock_management_index: Lagerverwaltung
+        add_stock_adjustment_tooltip: Bestandsanpassung hinzufügen
+        header: Lager Geschichte
+        date: Datum
+        description: Beschreibung
+        adjustment: Anpassugen
+        stock: Lager
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Neues Lager
+        breadcrumb: Neu
+        product_index: Produkte
+        stock_management_index: Lagerverwaltung
+        header: Neues Lager
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Beschreibung
+        adjustment_label: Anpassugen
+        submit_button: Absenden
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Bild hinzufügen
+        edit_image: Bild bearbeiten
+        file_label: Datei
+        default_label: Standart
+        submit_button: Absenden
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profil
+      breadcrumb: Profil
+      header: Profil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Profil Einstellungen
+        description: Legen Sie den Namen und das Profilbild für Ihr Administratorkonto fest.
+        first_name_label: Vorname
+        last_name_label: Nachname
+        profile_picture_label: Profilbild
+      submit_button: Absenden
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Ihre Account wurde erfolgreich bestätigt. Sie sind jetzt angemeldet."
+      send_instructions: "In wenigen Minuten wirst Du eine Email mit den Anweisungen um deinen Account zu bestätigen, erhalten."
+      send_paranoid_instructions: "Wenn Ihre E-Mail-Adresse in unserer Datenbank vorhanden ist, erhalten Sie in einigen Minuten eine E-Mail mit Anweisungen zur Bestätigung Ihres Kontos."
     failure:
       already_authenticated: "Sie sind bereits angemeldet."
       inactive: "Ihr Account wurde noch nicht aktiviert."
