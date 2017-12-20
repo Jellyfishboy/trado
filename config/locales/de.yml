@@ -60,7 +60,7 @@ de:
     header: Einstellungen
     store_detail:
       header: Shopinformationen
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      description: Legen Sie den Namen, die Email, das Logo und das Thema con Ihnen Geschäft. Die Email wird verwendet für das Kontakt Formular und wichtige Administrationsaktualisierungen.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -123,46 +123,46 @@ de:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Verborgen
+      submit_button: Absenden
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Kategorie bearbeiten
+      breadcrumb: Bearbeiten
+      category_index: Kategorien
+      header: Kategorie bearbeiten
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Neue Kategorie
+      breadcrumb: Neu
+      category_index: Kategorien
+      header: Neue Kategorie
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
+      title: Lieferpreise für %{service_name}
+      header: Lieferpreise für %{service_name}
+      delivery_service_index: Lieferservice
+      add_tooltip: Lieferpreis hinzufügen
+      no_records: Sie haben noch keine Preise für %{service_name}.
       code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      description: Beschreibung
+      weight: Gewichtsparameter
+      length: Längenparameter
+      thickness: Dicke Parameter
+      net_price: Netopreis
+      gross_price: Brutto Preis
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        header: Lieferpreis Details
+        description: Stellen Sie den Code, der Price und die Beschreibung für diesen Lieferpreis ein.
         code_label: Code
-        price_label: Price
-        description_label: Description
+        price_label: Preis
+        description_label: Beschreibung
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
+        header: Dimensionszulage
+        description: Geben Sie die Dimension und Gewicht zulage für diesen Lieferpreis.
+        min_weight_label: Minimales Gewicht
+        max_weight_label: Maximales Gewicht
+        min_length_label: Mindestlänge
+        max_length_label: Maximale Länge
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
       submit_button: Submit
