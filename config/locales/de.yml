@@ -24,42 +24,42 @@ de:
         part_number_label: Artikelnummer
       weight_price:
         header: Gewicht & Preis
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        description: Stellen Sie das Gewicht, der Nettopreis und die ursprünglichen Kostenwert für Ihr Zubehör.
+        weight_label: Gewicht
+        cost_value_label: Kostenwert
+        net_price_label: Nettopreis
+      submit_button: Absenden
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Zubehör bearbeiten
+      breadcrumb: Bearbeiten
+      accessory_index: Objects
+      header: Zubehör bearbeiten
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Neues Zubehör
+      breadcrumb: Neu
+      accessory_index: Objects
+      header: Neues Zubehör
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Daschboard
+    orders: Aufträge
+    completed_orders: Komplett
+    pending_orders: Ausstehend
+    failed_orders: Gescheitert
+    transactions: Transaktionen
+    gross_income_transactions: Bruttoinnahmen
+    net_income_transactions: Nettoeinkommen
+    tax_transactions: Steuer
+    provider_fees_transactions: Anbietergebühren
+    delivery_fees_transactions: Lieferkosten
+    activity: Aktivität
+    activity_active_carts: Aktive Wagen
+    activity_incomplete_orders: Unvollständige Aufträge
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Einstellungen
+    breadcrumb: Einstellungen
+    header: Einstellungen
     store_detail:
-      header: Store Details
+      header: Shopinformationen
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Name
       email_label: Email
