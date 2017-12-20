@@ -10,11 +10,11 @@ nl:
       header: Accessories
       add_tooltip: Add Accessory
       no_records: You don't have any accessories yet.
-      part_number: Part no.
+      part_number: Onderdeel nr.
       name: Naam
       weight: Gewicht
       cost_value: Cost Value
-      net_price: Net Price
+      net_price: Netto prijs
       gross_price: Gross Price
     form:
       accessory_detail:
@@ -27,7 +27,7 @@ nl:
         description: Set the weight, net price and original cost value for your accessory.
         weight_label: Gewicht
         cost_value_label: Cost Value
-        net_price_label: Net Price
+        net_price_label: Netto prijs
       submit_button: Inzenden
     edit:
       title: Edit Accessory
@@ -85,7 +85,7 @@ nl:
       description: Set the MailChimp list Id for your newsletter.
       list_id_label: Lijst-ID
     stripe:
-      header: Stripe
+      header: Streep
       description: Set the text you would like to display on your customer credit card statements.
       statement_descriptor_label: Statement Descriptor
     google_analytics:
@@ -97,9 +97,9 @@ nl:
     submit_button: Inzenden
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
+      title: Categorieën
+      breadcrumb: Categorieën
+      header: Categorieën
       add_tooltip: Categorie Toevoegen
       no_records: You don't have any categories yet.
       name: Naam
@@ -117,10 +117,10 @@ nl:
       search_engine:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Pagina Titel
         meta_description_label: Meta Description
       visibility:
-        header: Visibility
+        header: Zichtbaarheid
         description: Set if the category is visible on your storefront.
         visible_label: Zichtbaar
         hidden_label: Verborgen
@@ -128,12 +128,12 @@ nl:
     edit:
       title: Edit Category
       breadcrumb: Bewerken
-      category_index: Categories
+      category_index: Categorieën
       header: Edit Category
     new:
       title: Nieuwe Categorie
       breadcrumb: Nieuw
-      category_index: Categories
+      category_index: Categorieën
       header: Nieuwe Categorie
   delivery_service_prices:
     index:
@@ -147,7 +147,7 @@ nl:
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
-      net_price: Net Price
+      net_price: Netto prijs
       gross_price: Gross Price
     form:
       delivery_price_details:
@@ -192,7 +192,7 @@ nl:
       name: Naam
       description: Omschrijving
       code: Code
-      net_price: Net Price
+      net_price: Netto prijs
       gross_price: Gross Price
     form:
       delivery_service_details:
@@ -206,11 +206,11 @@ nl:
         description: Limit a delivery service by the total price of an order.
         price_range_label: Price Range
       tracking:
-        header: Tracking
+        header: Volgen
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
         tracking_url_label: Tracking Url
       countries:
-        header: Countries
+        header: Landen
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
         country_placeholder: Select associated countries...
       submit_button: Inzenden
@@ -305,22 +305,22 @@ nl:
       visible: Zichtbaar
       last_updated: Last Updated
     form:
-      header: Edit Page
+      header: Pagina Bewerken
       write_your_page:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
         title_label: Titel
-        menu_title_label: Menu Title
+        menu_title_label: Menutitel
         sorting_label: Sorteren
         content_label: Inhoud
       search_engines:
         header: Search Engines
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Pagina Titel
         meta_description_label: Meta Description
         slug_label: Slak
       visibility:
-        header: Visibility
+        header: Zichtbaarheid
         description: Set if the page is visible on your storefront.
         visible_label: Zichtbaar
         hidden_label: Verborgen
@@ -329,7 +329,7 @@ nl:
         description: Select the template this page will use on your storefront.
       submit_button: Inzenden
     edit:
-      title: Edit Page
+      title: Pagina Bewerken
       breadcrumb: Bewerken
       pages_index: Pagina's
   products:
@@ -341,20 +341,20 @@ nl:
       stock_management_tooltip: Voorraadbeheer
       no_records: You don't have any products yet.
       show_all_filter: Alles tonen
-      published_filter: Published
-      draft_filter: Draft
+      published_filter: Gepubliceerd
+      draft_filter: Concept
       archived_filter: Gearchiveerd
       featured_filter: Featured
-      filter_by: Filter By
+      filter_by: Filteren op
       weighting_sorting: Weighting
       name_sorting: Naam
       popularity_sorting: Popularity
       sort_by: Sorteer op
       sku: SKU
-      part_number: Part no.
+      part_number: Onderdeel nr.
       name: Naam
       variant: Variant
-      net_price: Net Price
+      net_price: Netto prijs
       gross_price: Gross Price
     edit:
       title: Edit Product
@@ -394,10 +394,10 @@ nl:
       images:
         header: Afbeeldingen
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
+        add_image: Afbeelding toevoegen
         no_records: You do not have any images for this product.
       skus:
-        header: Variants
+        header: Varianten
         description: Configure the variant options for selling this product.
         variant_options: Variant Options
         add_variant: Add Variant
@@ -435,10 +435,10 @@ nl:
       index:
         title: Voorraadbeheer
         breadcrumb: Voorraadbeheer
-        product_index: Products
+        product_index: Producten
         add_stock_tooltip: Voorraad toevoegen
         header: Voorraad
-        show_all_filter: Show All
+        show_all_filter: Alles Tonen
         low_filter: Laag
         stock_filer: Voorraad
         no_records: You don't have any Product SKUs yet.
@@ -449,7 +449,7 @@ nl:
         stock_warning_level: Voorraad waarschuwingsniveau
       show:
         title: Voorraad
-        product_index: Products
+        product_index: Producten
         stock_management_index: Voorraadbeheer
         add_stock_adjustment_tooltip: Add Stock Adjustment
         header: Voorraad geschiedenis
@@ -461,7 +461,7 @@ nl:
       new:
         title: Nieuwe Voorraad
         breadcrumb: Nieuw
-        product_index: Products
+        product_index: Producten
         stock_management_index: Voorraadbeheer
         header: Nieuwe Voorraad
         sku_label: SKU
@@ -470,7 +470,7 @@ nl:
         submit_button: Inzenden
     attachments:
       modal:
-        add_image: Add Image
+        add_image: Afbeelding toevoegen
         edit_image: Afbeeldingen bewerken
         file_label: Bestand
         default_label: Standaard
@@ -484,7 +484,7 @@ nl:
         header: Profile Settings
         description: Set the name and profile picture for your administration account.
         first_name_label: Voornaam
-        last_name_label: Last Name
+        last_name_label: Achternaam
         profile_picture_label: Profile Picture
       submit_button: Inzenden
   devise:
@@ -538,7 +538,7 @@ nl:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
-      not_found: "not found"
+      not_found: "niet gevonden"
       not_locked: "was not locked"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
