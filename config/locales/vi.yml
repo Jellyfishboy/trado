@@ -97,25 +97,25 @@ vi:
     submit_button: Submit
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
+      title: Nhóm danh mục
+      breadcrumb: Nhóm danh mục
+      header: Nhóm danh mục
       add_tooltip: Thêm Category
       no_records: Bạn chưa có danh mục nào.
       name: Tên
       description: Mô tả
-      sorting: Sorting
+      sorting: Sắp xếp
       active: Active
       no_of_products: No. of Products
     form:
       category_details:
-        header: Category Details
+        header: Chi tiết danh mục
         description: Set the name, description and sorting order for your category.
         name_label: Tên
         description_label: Mô tả
-        sorting_label: Sorting
+        sorting_label: Sắp xếp
       search_engine:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
@@ -145,8 +145,8 @@ vi:
       code: Code
       description: Mô tả
       weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
+      length: Thông số chiều dài
+      thickness: Thông số độ dày
       net_price: Giá net
       gross_price: Giá grosss
     form:
@@ -159,12 +159,12 @@ vi:
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
+        min_weight_label: Trọng lượng tối thiểu
+        max_weight_label: Trọng lượng tối đa
+        min_length_label: Chiều dài tối thiểu
+        max_length_label: Chiều dài tối đa
+        min_thickness_label: Độ dày tối thiểu
+        max_thickness_label: Độ dày tối đa
       submit_button: Gửi
     edit:
       title: Chỉnh sửa giá dịch vụ giao hàng
@@ -180,14 +180,14 @@ vi:
     countries_modal:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
+      select_prompt: Chọn một dịch vụ giao hàng...
       submit_button: Gửi
     index:
       title: Những dịch vụ giao hàng
       breadcrumb: Những dịch vụ giao hàng
       header: Những dịch vụ giao hàng
       add_tooltip: Thêm dịch vụ giao hàng
-      no_records: You don't have any delivery services yet.
+      no_records: Bạn chưa có bất kỳ dịch vụ giao hàng nào.
       courier: Courier
       name: Tên
       description: Mô tả
@@ -204,16 +204,16 @@ vi:
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        price_range_label: Khoảng giá
       tracking:
-        header: Tracking
+        header: Theo dõi
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
         tracking_url_label: Tracking Url
       countries:
         header: Countries
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
         country_placeholder: Select associated countries...
-      submit_button: Submit
+      submit_button: Gửi
     edit:
       title: Chỉnh sửa dịch vụ giao hàng
       breadcrumb: Chỉnh sửa
@@ -228,15 +228,15 @@ vi:
     transactions:
       modal:
         header: Chi tiết thông tin giao dịch
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        error_code: Mã lỗi
+        stripe_charge_id: Stripe Change Id
+        paypal_transaction_id: Paypal Transaction Id
     edit:
       modal:
         header: Chỉnh sửa đơn đặt hàng
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
-        submit_button: Submit
+        submit_button: Gửi
     index:
       title: Các đơn hàng
       breadcrumb: Các đơn hàng
@@ -255,7 +255,7 @@ vi:
       gross_amount: Gross Amount
       last_updated: Cập nhật Mới nhất
     show:
-      title: 'Order #%{order_id}'
+      title: 'Đơn đặt hàng #%{order_id}'
       orders_index: Các đơn hàng
       cancel_order_tooltip: Hủy bỏ đơn đặt hàng
       header: 'Đơn đặt hàng #%{order_id}'
