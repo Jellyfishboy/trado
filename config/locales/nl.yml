@@ -45,7 +45,7 @@ nl:
     completed_orders: Voltooid
     pending_orders: In Behandeling
     failed_orders: Mislukt
-    transactions: Transactions
+    transactions: Verrichtingen
     gross_income_transactions: Gross Income
     net_income_transactions: Netto inkomen
     tax_transactions: Belasting
@@ -193,7 +193,7 @@ nl:
       description: Omschrijving
       code: Code
       net_price: Netto prijs
-      gross_price: Gross Price
+      gross_price: Bruto prijs
     form:
       delivery_service_details:
         header: Delivery Service Details
@@ -204,7 +204,7 @@ nl:
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        price_range_label: Prijsklasse
       tracking:
         header: Volgen
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
@@ -275,7 +275,7 @@ nl:
         card_number: Kaartnummer
         expiry_date: Vervaldatum
       order_items:
-        header: Order Items
+        header: Bestellings Artikel
         item: Item
         sku: SKU
         price: Prijs
@@ -355,7 +355,7 @@ nl:
       name: Naam
       variant: Variant
       net_price: Netto prijs
-      gross_price: Gross Price
+      gross_price: Bruto prijs
     edit:
       title: Edit Product
       breadcrumb: Bewerken
@@ -372,7 +372,7 @@ nl:
       associations:
         header: Associations
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
+        accessories_label: Onderdelen
         related_products_label: Related Products
         select_accessory_placeholder: Select associated accessories
         select_related_products_placeholder: Select related products
@@ -380,7 +380,7 @@ nl:
         header: Productdetails
         description: Set the name, description and sorting order for your category.
         select_category_placeholder: Categorie Selecteren
-        part_number_label: Part Number
+        part_number_label: Onderdeel Nummer
         sku_label: SKU
         name_label: Naam
         weighting_label: Weging
@@ -400,14 +400,14 @@ nl:
         header: Varianten
         description: Configure the variant options for selling this product.
         variant_options: Variant Options
-        add_variant: Add Variant
+        add_variant: Toevoegen Variant
         no_records: You do not have any variants for this product.
         code: Code
         stock: Voorraad
         cost_value: Cost Value
         price: Prijs
         modal:
-          add_variant: Add Variant
+          add_variant: Toevoegen Variant
           edit_variant: Edit Variant
           code_label: Code
           length_label: Lengte
@@ -546,7 +546,7 @@ nl:
   mailers:
     contact_message:
       title: Received a new message from
-      header: New Message
+      header: Nieuw Bericht
       hello: Hallo
       name_prefix: You have received the following information from
       message_title: Bericht
