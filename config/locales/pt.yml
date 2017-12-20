@@ -140,22 +140,22 @@ pt:
       title: Preços de entrega para "%{service_name}"
       header: Delivery pricing for %{service_name}
       delivery_service_index: Serviço de entrega
-      add_tooltip: Add Delivery Price
+      add_tooltip: Adicionar preço de entrega
       no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      code: Código
+      description: Descrição
+      weight: Parâmetros de peso
+      length: Parâmetros de comprimento
+      thickness: Parâmetros de espessura
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Dados do preço de entrega
+        description: Defina o código, preço e descrição para este preço de entrega.
+        code_label: Código
+        price_label: Preço
+        description_label: Descrição
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
