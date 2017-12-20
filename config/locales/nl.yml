@@ -5,39 +5,39 @@ nl:
     close_button: Sluiten
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
+      title: Onderdelen
+      breadcrumb: Onderdelen
+      header: Onderdelen
       add_tooltip: Add Accessory
       no_records: You don't have any accessories yet.
       part_number: Onderdeel nr.
       name: Naam
       weight: Gewicht
-      cost_value: Cost Value
+      cost_value: Waarde van de kosten
       net_price: Netto prijs
-      gross_price: Gross Price
+      gross_price: Bruto prijs
     form:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
         name_label: Naam
-        part_number_label: Part Number
+        part_number_label: Onderdeel Nummer
       weight_price:
         header: Weight & Price
         description: Set the weight, net price and original cost value for your accessory.
         weight_label: Gewicht
-        cost_value_label: Cost Value
+        cost_value_label: Waarden van de kosten
         net_price_label: Netto prijs
       submit_button: Inzenden
     edit:
       title: Edit Accessory
       breadcrumb: Bewerken
-      accessory_index: Accessories
+      accessory_index: Onderdelen
       header: Edit Accessory
     new:
       title: New Accessory
       breadcrumb: Nieuw
-      accessory_index: Accessories
+      accessory_index: Onderdelen
       header: New Accessory
   dashboard:
     header: Dashboard
@@ -47,7 +47,7 @@ nl:
     failed_orders: Mislukt
     transactions: Transactions
     gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
+    net_income_transactions: Netto inkomen
     tax_transactions: Belasting
     provider_fees_transactions: Provider Fees
     delivery_fees_transactions: Delivery Fees
@@ -103,7 +103,7 @@ nl:
       add_tooltip: Categorie Toevoegen
       no_records: You don't have any categories yet.
       name: Naam
-      description: Description
+      description: Beschrijving
       sorting: Sorteren
       active: Actieve
       no_of_products: No. of Products
@@ -112,7 +112,7 @@ nl:
         header: Category Details
         description: Set the name, description and sorting order for your category.
         name_label: Naam
-        description_label: Description
+        description_label: Beschrijving
         sorting_label: Sorteren
       search_engine:
         header: Zoekmachines
@@ -148,7 +148,7 @@ nl:
       length: Length Parameters
       thickness: Thickness Parameters
       net_price: Netto prijs
-      gross_price: Gross Price
+      gross_price: Bruto Prijs
     form:
       delivery_price_details:
         header: Delivery Price Details
@@ -242,7 +242,7 @@ nl:
       breadcrumb: Orders
       header: Orders
       delivery_show_all: Alles tonen
-      delivery_dispatched: Dispatched
+      delivery_dispatched: Verzonden
       delivery_pending: In Behandeling
       delivery_select: Bezorging
       payment_select: Betaling
@@ -290,7 +290,7 @@ nl:
         payment_type: Payment Type
         payment_status: Betalingsstatus
         fee: Kost
-        net_amount: Net Amount
+        net_amount: Netto hoeveelheid
         gross_amount: Gross Amount
         last_updated: Last Updated
       tracking:
