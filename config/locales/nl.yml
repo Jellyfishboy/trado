@@ -346,7 +346,7 @@ nl:
       archived_filter: Gearchiveerd
       featured_filter: Featured
       filter_by: Filteren op
-      weighting_sorting: Weighting
+      weighting_sorting: Weging
       name_sorting: Naam
       popularity_sorting: Populariteit
       sort_by: Sorteer op
@@ -383,7 +383,7 @@ nl:
         part_number_label: Part Number
         sku_label: SKU
         name_label: Naam
-        weighting_label: Weighting
+        weighting_label: Weging
         short_description_label: Short Description
         description_label: Omschrijving
       search_engines:
@@ -412,7 +412,7 @@ nl:
           code_label: Code
           length_label: Lengte
           weight_label: Gewicht
-          thickness_label: Thickness
+          thickness_label: Dikte
           stock_label: Voorraad
           stock_warning_level_label: Voorraad waarschuwingsniveau
           cost_value_label: Cost Value
