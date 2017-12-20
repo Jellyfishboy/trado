@@ -263,53 +263,53 @@ de:
         header: Lieferdetails
         email: E-Mail
         status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        dispatch_date: Versanddatum
+        delivery_service: Lieferservice
+        tracking: Velfolgen
       billing_address:
-        header: Billing Address
+        header: Rechnungadresse
       delivery_address:
-        header: Delivery Address
+        header: Lieferadresse
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Zahlungsdetails
+        card_number: Kartennummer
+        expiry_date: Gültig bis
       order_items:
-        header: Order Items
-        item: Item
+        header: Bestellartikel
+        item: Eintrag
         sku: SKU
-        price: Price
+        price: Preis
         quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        total: Gesamt
+        delivery: Lieferung
+        subtotal: Zwischensumme
+        tax: Steuer
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Transaktionen
+        transaction_type: Transaktionstyp
+        payment_type: Zahlungstyp
+        payment_status: Zahlungstatus
+        fee: Gebühr
+        net_amount: Nettobetrag
+        gross_amount: Bruttobetrag
+        last_updated: Zuletzt Aktualisiert
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Verfolgende Webseite
+        number: Auftragsnummer
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Titel
+      breadcrumb: Seiten
+      header: Seiten
+      sorting: Sortierung
+      visible: Sichtbar
+      last_updated: Zuletzt Aktualisiert
     form:
-      header: Edit Page
+      header: Seite bearbeiten
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        header: Schreiben Sie Ihre Nachricht
+        description: Den Titel für Ihre Seite, Menüpunkt, Sortiereihenfolge festlegen und Fügen Sie Ihren Seiteninhalt hinzu.
+        title_label: Titel
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
