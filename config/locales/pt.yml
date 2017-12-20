@@ -101,9 +101,9 @@ pt:
       breadcrumb: Categorias
       header: Categorias
       add_tooltip: Adicionar categoria
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
+      no_records: Tu ainda não tens nenhuma categoria.
+      name: Nome
+      description: Descrição
       sorting: Sorting
       active: Active
       no_of_products: No. of Products
