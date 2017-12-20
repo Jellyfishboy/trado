@@ -157,12 +157,12 @@ pt:
         price_label: Preço
         description_label: Descrição
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
+        header: Provisão de Dimensão
+        description: Especifique a dimensão e o peso para este preço de entrega.
+        min_weight_label: Peso mínimo
+        max_weight_label: Peso máximo
+        min_length_label: Comprimento Mínimo
+        max_length_label: Comprimento Máximo
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
       submit_button: Submit
