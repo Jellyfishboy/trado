@@ -163,27 +163,27 @@ pt:
         max_weight_label: Peso máximo
         min_length_label: Comprimento Mínimo
         max_length_label: Comprimento Máximo
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        min_thickness_label: Espessura mínima
+        max_thickness_label: Espessura Máxima
+      submit_button: Enviar
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Adicionar o preço de entrega
+      breadcrumb: Editar
+      delivery_service_index: Serviço de entrega
+      header: Adicionar o preço de entrega
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Novo preço de entrega
+      breadcrumb: Novo
+      delivery_service_index: Serviço de entrega
+      header: Novo preço de entrega
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Copiar os países do serviço de entrega
+      description: 'Seleccione qual serviço de entrega você gostaria de copiar da lista de países de:'
+      select_prompt: Seleccione um serviço de entrega...
+      submit_button: Enviar
     index:
-      title: Delivery Services
+      title: Serviço de entrega
       breadcrumb: Delivery Services
       header: Delivery Services
       add_tooltip: Add Delivery Service
