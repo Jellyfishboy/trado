@@ -91,16 +91,16 @@ pt:
     google_analytics:
       header: Google Analytics
       description: Ative e configure o código de rastreamento da web para sua loja.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      tracking_code_label: Código de acompanhamento da Web
+      enabled_label: Activado
+      disabled_label: Dsativado
+    submit_button: Enviar
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
+      title: Categorias
+      breadcrumb: Categorias
+      header: Categorias
+      add_tooltip: Adicionar categoria
       no_records: You don't have any categories yet.
       name: Name
       description: Description
