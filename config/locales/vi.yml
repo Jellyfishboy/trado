@@ -27,7 +27,7 @@ vi:
         description: Set the weight, net price and original cost value for your accessory.
         weight_label: Weight
         cost_value_label: Cost Value
-        net_price_label: Net Price
+        net_price_label: Giá net
       submit_button: Gửi
     edit:
       title: Chỉnh sửa Accessory
@@ -40,7 +40,7 @@ vi:
       accessory_index: Accessories
       header: Tạo mới Accessory
   dashboard:
-    header: Dashboard
+    header: Bảng điều khiển
     orders: Các đơn hàng
     completed_orders: Đã hoàn thành
     pending_orders: Đang chờ kiểm duyệt
