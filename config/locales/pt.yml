@@ -184,20 +184,20 @@ pt:
       submit_button: Enviar
     index:
       title: Serviço de entrega
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      breadcrumb: Serviço de entrega
+      header: Serviço de entrega
+      add_tooltip: Adicionar serviço de entrega
+      no_records: Tu ainda não tens nenhum serviço de entrega.
+      courier: Serviço de entrega
+      name: Nome
+      description: Descrição
+      code: Código
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
+        header: Dados do serviço de entrega
+        description: Defina o nome da empresa de correio, o nome e a descrição do seu serviço de entrega.
         courier_name_label: Courier Name
         name_label: Name
         description_label: Description
