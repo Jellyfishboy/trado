@@ -2,7 +2,7 @@ nl:
   global:
     none_available: None Available
   modal:
-    close_button: Close
+    close_button: Sluiten
   accessories:
     index:
       title: Accessories
@@ -62,9 +62,9 @@ nl:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Naam
-      email_label: Email
+      email_label: E-maail
       logo_label: Logo
-      theme_label: Theme
+      theme_label: Thema
     language:
       header: Language
       description: Set the language for the administration dashboard.
@@ -154,7 +154,7 @@ nl:
         header: Delivery Price Details
         description: Set the code, price and description for this delivery price.
         code_label: Code
-        price_label: Price
+        price_label: Prijs
         description_label: Description
       dimension_allowance:
         header: Dimension Allowance
@@ -261,7 +261,7 @@ nl:
       header: 'Order #%{order_id}'
       delivery_details:
         header: Delivery Details
-        email: Email
+        email: E-mail
         status: Status
         dispatch_date: Dispatch Date
         delivery_service: Delivery Service
@@ -278,9 +278,9 @@ nl:
         header: Order Items
         item: Item
         sku: SKU
-        price: Price
+        price: Prijs
         quantity: Aantal
-        total: Total
+        total: Totaal
         delivery: Delivery
         subtotal: Subtotal
         tax: Belasting
@@ -298,7 +298,7 @@ nl:
         number: Tracking Number
   pages:
     index:
-      title: Title
+      title: Titel
       breadcrumb: Pages
       header: Pages
       sorting: Sorting
@@ -318,7 +318,7 @@ nl:
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
         page_title_label: Page Title
         meta_description_label: Meta Description
-        slug_label: Slug
+        slug_label: Slak
       visibility:
         header: Visibility
         description: Set if the page is visible on your storefront.
@@ -363,7 +363,7 @@ nl:
       header: Edit Product
     form:
       publish_button: Publish
-      save_button: Save
+      save_button: Opslaan
       additional_options:
         header: Additional Options
         description: Feature your product and/or remove SKU options from the product page.
@@ -453,7 +453,7 @@ nl:
         stock_management_index: Stock Management
         add_stock_adjustment_tooltip: Add Stock Adjustment
         header: Stock History
-        date: Date
+        date: Datum
         description: Description
         adjustment: Adjustment
         stock: Stock
@@ -472,7 +472,7 @@ nl:
       modal:
         add_image: Add Image
         edit_image: Edit Image
-        file_label: File
+        file_label: Bestand
         default_label: Default
         submit_button: Submit
   users:
