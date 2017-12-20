@@ -1,6 +1,6 @@
 nl:
   global:
-    none_available: None Available
+    none_available: Geen Beschikbaar
   modal:
     close_button: Sluiten
   accessories:
@@ -115,7 +115,7 @@ nl:
         description_label: Description
         sorting_label: Sorteren
       search_engine:
-        header: Search Engines
+        header: Zoekmachines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Pagina Titel
         meta_description_label: Meta Description
@@ -126,10 +126,10 @@ nl:
         hidden_label: Verborgen
       submit_button: Inzenden
     edit:
-      title: Edit Category
+      title: Categorie Bewerken
       breadcrumb: Bewerken
       category_index: Categorieën
-      header: Edit Category
+      header: Categorie Bewerken
     new:
       title: Nieuwe Categorie
       breadcrumb: Nieuw
@@ -159,10 +159,10 @@ nl:
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
+        min_weight_label: Minimum Gewicht
+        max_weight_label: Maximaal Gewicht
+        min_length_label: Minimale Lengte
+        max_length_label: Maximale Lengte
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
       submit_button: Inzenden
@@ -250,8 +250,8 @@ nl:
       order_number: Order nr.
       full_name: Volledige Naam
       payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
+      payment_status: Betalingsstatus
+      delivery_status: Leveringsstatus
       gross_amount: Gross Amount
       last_updated: Last Updated
     show:
@@ -267,11 +267,11 @@ nl:
         delivery_service: Delivery Service
         tracking: Volgen
       billing_address:
-        header: Billing Address
+        header: Factuuradres
       delivery_address:
         header: Delivery Address
       payment_details:
-        header: Payment Details
+        header: Betalingsgegevens
         card_number: Kaartnummer
         expiry_date: Vervaldatum
       order_items:
@@ -288,14 +288,14 @@ nl:
         header: Transactions
         transaction_type: Transaction Type
         payment_type: Payment Type
-        payment_status: Payment Status
+        payment_status: Betalingsstatus
         fee: Kost
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
       tracking:
         website: Tracking Website
-        number: Tracking Number
+        number: Volg nummer
   pages:
     index:
       title: Titel
@@ -307,14 +307,14 @@ nl:
     form:
       header: Pagina Bewerken
       write_your_page:
-        header: Write Your Page
+        header: Schrijf uw Pagina
         description: Set the title for your page, menu item, sorting order and add your page content.
         title_label: Titel
         menu_title_label: Menutitel
         sorting_label: Sorteren
         content_label: Inhoud
       search_engines:
-        header: Search Engines
+        header: Zoekmachines
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
         page_title_label: Pagina Titel
         meta_description_label: Meta Description
@@ -348,7 +348,7 @@ nl:
       filter_by: Filteren op
       weighting_sorting: Weighting
       name_sorting: Naam
-      popularity_sorting: Popularity
+      popularity_sorting: Populariteit
       sort_by: Sorteer op
       sku: SKU
       part_number: Onderdeel nr.
@@ -387,9 +387,9 @@ nl:
         short_description_label: Short Description
         description_label: Omschrijving
       search_engines:
-        header: Search Engines
+        header: Zoekmachines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Pagina Titel
         meta_description_label: Meta Description
       images:
         header: Afbeeldingen
@@ -539,7 +539,7 @@ nl:
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
       not_found: "niet gevonden"
-      not_locked: "was not locked"
+      not_locked: "was niet op slot"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
