@@ -370,60 +370,60 @@ de:
         featured_label: Featured
         tags_label: Tag
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Verbände
+        description: Wählen Sie das zugehörige Zubehör und die zugehörigen Produkte für Ihr Produkt aus (verwandte Produkte werden auf der Produktseite angezeigt).
+        accessories_label: Objects
+        related_products_label: Ähnliche Produkte
+        select_accessory_placeholder: Wählen Sie entsprechende Zubehör
+        select_related_products_placeholder: Wählen Sie verwandte Produkte aus
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Artikeldetails
+        description: Legen Sie den Namen, die Beschreibung und die Sortierreihenfolge für Ihre Kategorie fest.
+        select_category_placeholder: Kategorie auswählen
+        part_number_label: Artikelnummer
         sku_label: SKU
         name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        weighting_label: Gewichtung
+        short_description_label: Kurzbeschreibung
+        description_label: Beschreibung
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Suchsysteme
+        description: Richten Sie den Seitentitel und die Meta-Beschreibung ein, um zu definieren, wie eine Seite in Suchmaschinen angezeigt wird.
+        page_title_label: Sitentitel
+        meta_description_label: Metabeschreibung
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Impressions
+        description: Hochladen und Bearbeiten von Bildern dieses Produkts. Sie können auch das Standardbild festlegen, das auf der Produktseite angezeigt werden soll.
+        add_image: Bild hinzufügen
+        no_records: Sie haben keinen Zugriff auf dieses Produkt.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
+        header: Varianten
+        description: Konfigurieren Sie die Variante Optionen für den Verkauf diese Produktes.
+        variant_options: Variant Optionen
+        add_variant: Variant hinzufügen
+        no_records: Sie haben keinen Varianten für dieses Produkt.
         code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        stock: Lager
+        cost_value: Kostenwert
+        price: Preis
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
+          add_variant: Variant hinzufügen
+          edit_variant: Variant bearbeiten
           code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          length_label: Länge
+          weight_label: Gewicht
+          thickness_label: Dicke
+          stock_label: Lager
+          stock_warning_level_label: Bestand Warnstufe
+          cost_value_label: Kostenwert
+          price_label: Preis
+          submit_button: Absenden
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
+          header: Bestandsanpassung hinzufügen für
+          current_stock: Der aktuelle Vorrat ist
+          description_label: Beschreibung
           adjustment_label: Adjustment
           submit_button: Submit
       variants:
