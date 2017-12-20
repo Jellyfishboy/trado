@@ -12,7 +12,7 @@ nl:
       no_records: You don't have any accessories yet.
       part_number: Part no.
       name: Naam
-      weight: Weight
+      weight: Gewicht
       cost_value: Cost Value
       net_price: Net Price
       gross_price: Gross Price
@@ -25,7 +25,7 @@ nl:
       weight_price:
         header: Weight & Price
         description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
+        weight_label: Gewicht
         cost_value_label: Cost Value
         net_price_label: Net Price
       submit_button: Submit
@@ -299,8 +299,8 @@ nl:
   pages:
     index:
       title: Titel
-      breadcrumb: Pages
-      header: Pages
+      breadcrumb: Pagina's
+      header: Pagina's
       sorting: Sorting
       visible: Visible
       last_updated: Last Updated
@@ -309,7 +309,7 @@ nl:
       write_your_page:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        title_label: Titel
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
@@ -331,14 +331,14 @@ nl:
     edit:
       title: Edit Page
       breadcrumb: Bewerken
-      pages_index: Pages
+      pages_index: Pagina's
   products:
     index:
       title: Products
       breadcrumb: Products
       header: Products
       add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
+      stock_management_tooltip: Voorraadbeheer
       no_records: You don't have any products yet.
       show_all_filter: Show All
       published_filter: Published
@@ -403,9 +403,9 @@ nl:
         add_variant: Add Variant
         no_records: You do not have any variants for this product.
         code: Code
-        stock: Stock
+        stock: Voorraad
         cost_value: Cost Value
-        price: Price
+        price: Prijs
         modal:
           add_variant: Add Variant
           edit_variant: Edit Variant
@@ -413,16 +413,16 @@ nl:
           length_label: Length
           weight_label: Weight
           thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
+          stock_label: Voorraad
+          stock_warning_level_label: Voorraad waarschuwingsniveau
           cost_value_label: Cost Value
-          price_label: Price
+          price_label: Prijs
           submit_button: Submit
     skus:
       stock_adjustments:
         modal:
           header: Add Stock Adjustment for
-          current_stock: Current stock is
+          current_stock: Huidige Voorraad is
           description_label: Description
           adjustment_label: Adjustment
           submit_button: Submit
@@ -433,37 +433,37 @@ nl:
           submit_button: Submit
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
+        title: Voorraadbeheer
+        breadcrumb: Voorraadbeheer
         product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
+        add_stock_tooltip: Voorraad toevoegen
+        header: Voorraad
         show_all_filter: Show All
         low_filter: Laag
-        stock_filer: Stock
+        stock_filer: Voorraad
         no_records: You don't have any Product SKUs yet.
         sku: SKU
         name: Naam
         variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        stock: Voorraad
+        stock_warning_level: Voorraad waarschuwingsniveau
       show:
-        title: Stock Management
+        title: Voorraad
         product_index: Products
-        stock_management_index: Stock Management
+        stock_management_index: Voorraadbeheer
         add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
+        header: Voorraad geschiedenis
         date: Datum
         description: Description
         adjustment: Adjustment
-        stock: Stock
+        stock: Voorraad
     stock_adjustments:
       new:
-        title: New Stock
+        title: Nieuwe Voorraad
         breadcrumb: Nieuw
         product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        stock_management_index: Voorraadbeheer
+        header: Nieuwe Voorraad
         sku_label: SKU
         description_label: Description
         adjustment_label: Adjustment
@@ -547,10 +547,10 @@ nl:
     contact_message:
       title: Received a new message from
       header: New Message
-      hello: Hello
+      hello: Hallo
       name_prefix: You have received the following information from
       message_title: Message
-      email_title: Email
+      email_title: E-mail
       website_title: Website
       thanks: Thanks
   controllers:
