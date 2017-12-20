@@ -11,7 +11,7 @@ nl:
       add_tooltip: Add Accessory
       no_records: You don't have any accessories yet.
       part_number: Part no.
-      name: Name
+      name: Naam
       weight: Weight
       cost_value: Cost Value
       net_price: Net Price
@@ -20,7 +20,7 @@ nl:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
-        name_label: Name
+        name_label: Naam
         part_number_label: Part Number
       weight_price:
         header: Weight & Price
@@ -31,12 +31,12 @@ nl:
       submit_button: Submit
     edit:
       title: Edit Accessory
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       accessory_index: Accessories
       header: Edit Accessory
     new:
       title: New Accessory
-      breadcrumb: New
+      breadcrumb: Nieuw
       accessory_index: Accessories
       header: New Accessory
   dashboard:
@@ -48,7 +48,7 @@ nl:
     transactions: Transactions
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
-    tax_transactions: Tax
+    tax_transactions: Belasting
     provider_fees_transactions: Provider Fees
     delivery_fees_transactions: Delivery Fees
     activity: Activity
@@ -61,7 +61,7 @@ nl:
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
+      name_label: Naam
       email_label: Email
       logo_label: Logo
       theme_label: Theme
@@ -70,10 +70,10 @@ nl:
       description: Set the language for the administration dashboard.
       language_label: Language
     tax:
-      header: Tax
+      header: Belasting
       description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      name_label: Naam
+      rate_label: Beoordelen
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
@@ -102,7 +102,7 @@ nl:
       header: Categories
       add_tooltip: Add Category
       no_records: You don't have any categories yet.
-      name: Name
+      name: Naam
       description: Description
       sorting: Sorting
       active: Active
@@ -111,7 +111,7 @@ nl:
       category_details:
         header: Category Details
         description: Set the name, description and sorting order for your category.
-        name_label: Name
+        name_label: Naam
         description_label: Description
         sorting_label: Sorting
       search_engine:
@@ -127,12 +127,12 @@ nl:
       submit_button: Submit
     edit:
       title: Edit Category
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       category_index: Categories
       header: Edit Category
     new:
       title: New Category
-      breadcrumb: New
+      breadcrumb: Nieuw
       category_index: Categories
       header: New Category
   delivery_service_prices:
@@ -168,12 +168,12 @@ nl:
       submit_button: Submit
     edit:
       title: Edit Delivery Pricing
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       delivery_service_index: Delivery Services
       header: Edit Delivery Pricing
     new:
       title: New Delivery Pricing
-      breadcrumb: New
+      breadcrumb: Nieuw
       delivery_service_index: Delivery Services
       header: New Delivery Pricing
   delivery_services:
@@ -189,7 +189,7 @@ nl:
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
       courier: Courier
-      name: Name
+      name: Naam
       description: Description
       code: Code
       net_price: Net Price
@@ -199,7 +199,7 @@ nl:
         header: Delivery Service Details
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
-        name_label: Name
+        name_label: Naam
         description_label: Description
       order_constraints:
         header: Order Constraints
@@ -216,12 +216,12 @@ nl:
       submit_button: Submit
     edit:
       title: Edit Delivery Service
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       delivery_service_index: Delivery Services
       header: Edit Delivery Service
     new:
       title: New Delivery Service
-      breadcrumb: New
+      breadcrumb: Nieu
       delivery_service_index: Delivery Services
       header: New Delivery Service
   orders:
@@ -279,17 +279,17 @@ nl:
         item: Item
         sku: SKU
         price: Price
-        quantity: Qty
+        quantity: Aantal
         total: Total
         delivery: Delivery
         subtotal: Subtotal
-        tax: Tax
+        tax: Belasting
       transactions:
         header: Transactions
         transaction_type: Transaction Type
         payment_type: Payment Type
         payment_status: Payment Status
-        fee: Fee
+        fee: Kost
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
@@ -330,7 +330,7 @@ nl:
       submit_button: Submit
     edit:
       title: Edit Page
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       pages_index: Pages
   products:
     index:
@@ -347,18 +347,18 @@ nl:
       featured_filter: Featured
       filter_by: Filter By
       weighting_sorting: Weighting
-      name_sorting: Name
+      name_sorting: Naam
       popularity_sorting: Popularity
       sort_by: Sort By
       sku: SKU
       part_number: Part no.
-      name: Name
+      name: Naam
       variant: Variant
       net_price: Net Price
       gross_price: Gross Price
     edit:
       title: Edit Product
-      breadcrumb: Edit
+      breadcrumb: Bewerken
       product_index: Products
       header: Edit Product
     form:
@@ -368,7 +368,7 @@ nl:
         header: Additional Options
         description: Feature your product and/or remove SKU options from the product page.
         featured_label: Featured
-        tags_label: Tag
+        tags_label: Label
       associations:
         header: Associations
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
@@ -382,7 +382,7 @@ nl:
         select_category_placeholder: Select category
         part_number_label: Part Number
         sku_label: SKU
-        name_label: Name
+        name_label: Naam
         weighting_label: Weighting
         short_description_label: Short Description
         description_label: Description
@@ -439,11 +439,11 @@ nl:
         add_stock_tooltip: Add Stock
         header: Stock Management
         show_all_filter: Show All
-        low_filter: Low
+        low_filter: Laag
         stock_filer: Stock
         no_records: You don't have any Product SKUs yet.
         sku: SKU
-        name: Name
+        name: Naam
         variant: Variant
         stock: Stock
         stock_warning_level: Stock Warning Level
@@ -460,7 +460,7 @@ nl:
     stock_adjustments:
       new:
         title: New Stock
-        breadcrumb: New
+        breadcrumb: Nieuw
         product_index: Products
         stock_management_index: Stock Management
         header: New Stock
