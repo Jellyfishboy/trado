@@ -312,63 +312,63 @@ de:
         title_label: Titel
         menu_title_label: Menü Titel
         sorting_label: Sortierung
-        content_label: Content
+        content_label: Inhalt
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Suschsysteme
+        description: Richten Sie den Seitentitel, die Meta-Beschreibung und den URL-Slug ein. Diese helfen zu definieren, wie eine Seite in Suchmaschinen angezeigt wird.
+        page_title_label: Seitentitel
+        meta_description_label: Metabeschreibung
         slug_label: Slug
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Fernsicht
+        description: Legen Sie fest, ob die Seite in Ihrer Storefront sichtbar ist.
+        visible_label: Sichtbar
+        hidden_label: Verbogen
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Vorlage
+        description: Wählen Sie die Vorlage aus, die diese Seite für Ihre Storefront verwendet.
+      submit_button: Absenden
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Seite bearbeiten
+      breadcrumb: Bearbeiten
+      pages_index: Seiten
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
+      title: Produkte
+      breadcrumb: Produkte
+      header: Produkte
+      add_product_tooltip: Produkt hinzufügen
+      stock_management_tooltip: Lagerverwaltung
+      no_records: Sie haben noch keine Produkte.
+      show_all_filter: Alles zeigen
+      published_filter: Veröffentlicht
+      draft_filter: Entwurf
+      archived_filter: Archiviert
       featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
+      filter_by: Filter Nach
+      weighting_sorting: Gewichtung
       name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
-      sku: SKU
-      part_number: Part no.
+      popularity_sorting: Beliebtheit
+      sort_by: Sortieren nach
+      sku: SKI
+      part_number: Teile nein.
       name: Name
       variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Nettopreis
+      gross_price: Brutto Preis
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Produkt bearbeiten
+      breadcrumb: Bearbeiten
+      product_index: Produkte
+      header: Produkte bearbeiten
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Veröffentlichen
+      save_button: Speichern
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
+        header: Weitere Optionen
+        description: Zeigen Sie Ihr Produkt an und / oder entfernen Sie die SKU-Optionen von der Produktseite.
         featured_label: Featured
-        tags_label: Tag
+        tags_label: Schlagwort
       associations:
         header: Verbände
         description: Wählen Sie das zugehörige Zubehör und die zugehörigen Produkte für Ihr Produkt aus (verwandte Produkte werden auf der Produktseite angezeigt).
@@ -569,47 +569,47 @@ de:
             invalid: Variantenoptionen dürfen nicht leer sein
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Zubehör wurde erfolgreich erstellt
         update:
-          valid: Accessory was successfully updated
+          valid: Das Zubehör wurde erfolgreich aktualisiert
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Das Zubehör wurde erfolgreich gelöscht
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Store-Einstellungen wurden erfolgreich aktualisiert
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Sie haben keinen Zugriff auf dieses Produkt
       categories:
         create:
-          valid: Category was successfully created
+          valid: Die Kategorie wurde erfolgreich erstellt
         update:
-          valid: Category was successfully updated
+          valid: Die Kategorie wurde erfolgreich aktualisiert
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Der Lieferservicepreis wurde erfolgreich erstellt
         update:
-          valid: Delivery service price was successfully updated
+          valid: Lieferservice-Preis wurde erfolgreich aktualisiert
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Der Lieferservicepreis wurde erfolgreich gelöscht
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Der Zustellungsdienst wurde erfolgreich erstellt
         update:
-          valid: Delivery service was successfully updated
+          valid: Der Zustellungsdienst wurde erfolgreich aktualisiert
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Zustellungsdienst wurde erfolgreich gelöscht
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Sie müssen einen Zustelldienst auswählen
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Seite wurde erfolgreich aktualisiert
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Profit wurde erfolgreich aktualisiert
+          invalid: Beim Versuch, Ihre Profildetails zu aktualisieren, ist ein Fehler aufgetreten
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Deine Bestellung wurde abgelehnt
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Beim Versuch, Ihre Bestellung abzuschließen, ist ein Fehler aufgetreten. Bitte versuche es erneut
