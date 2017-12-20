@@ -163,28 +163,28 @@ de:
         max_weight_label: Maximales Gewicht
         min_length_label: Mindestlänge
         max_length_label: Maximale Länge
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        min_thickness_label: Minimale Dicke
+        max_thickness_label: Maximum Dicke
+      submit_button: Absenden
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Lieferkosten bearbeiten
+      breadcrumb: Bearbeiten
+      delivery_service_index: Lieferservice
+      header: Lieferkosten bearbeiten
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Neue Lieferkosten
+      breadcrumb: Neu
+      delivery_service_index: Lieferservice
+      header: Neue Lieferkosten
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Zustellungsdienstländer kopieren
+      description: 'Wählen Sie aus, von welchem Lieferservice Sie die Länderliste kopieren möchten:'
+      select_prompt: Wählen Sie einen Lieferservice...
+      submit_button: Absenden
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Lieferservice
+      breadcrumb: Lieferservice
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
@@ -248,20 +248,20 @@ de:
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Vollständiger Name
+      payment_type: Zahlungstyp
+      payment_status: Zahlungsstatus
+      delivery_status: Lieferstatus
+      gross_amount: Bruttobetrag
+      last_updated: Zuletzt Aktualisiert
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Auftrag #%{order_id}'
+      orders_index: Aufträge
+      cancel_order_tooltip: Bestellung stornieren
+      header: 'Auftrag #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
+        header: Lieferdetails
+        email: E-Mail
         status: Status
         dispatch_date: Dispatch Date
         delivery_service: Delivery Service
