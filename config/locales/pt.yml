@@ -208,10 +208,10 @@ pt:
       tracking:
         header: Acompanhamento
         description_html: 'Configure o rastreamento para o seu serviço de entrega. Use <b> {{consignment_number}} </b> para inserir o número da remessa.'
-        tracking_url_label: Tracking Url
+        tracking_url_label: Url de acompanhamento
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
+        header: Países
+        description_html: 'Seleccione os países que estão disponíveis para este serviço de entrega, ou <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copie </a> uma lista dos países de serviço existente.'
         country_placeholder: Select associated countries...
       submit_button: Submit
     edit:
