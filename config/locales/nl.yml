@@ -257,7 +257,7 @@ nl:
     show:
       title: 'Order #%{order_id}'
       orders_index: Orders
-      cancel_order_tooltip: Cancel Order
+      cancel_order_tooltip: Annuleer bestelling
       header: 'Order #%{order_id}'
       delivery_details:
         header: Delivery Details
