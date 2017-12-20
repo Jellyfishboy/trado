@@ -138,10 +138,10 @@ pt:
   delivery_service_prices:
     index:
       title: Preços de entrega para "%{service_name}"
-      header: Delivery pricing for %{service_name}
+      header: '"% de preços de entrega para %{service_name}'
       delivery_service_index: Serviço de entrega
       add_tooltip: Adicionar preço de entrega
-      no_records: You don't have any prices for %{service_name} yet.
+      no_records: Você ainda não possui preços para %{service_name}.
       code: Código
       description: Descrição
       weight: Parâmetros de peso
