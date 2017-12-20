@@ -104,16 +104,16 @@ pt:
       no_records: Tu ainda não tens nenhuma categoria.
       name: Nome
       description: Descrição
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      sorting: Classificação
+      active: Ativo
+      no_of_products: Nº. de produtos
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Detalhes da categoria
+        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
+        name_label: Nome
+        description_label: Descrição
+        sorting_label: Classificação
       search_engine:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
