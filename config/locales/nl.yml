@@ -28,7 +28,7 @@ nl:
         weight_label: Gewicht
         cost_value_label: Cost Value
         net_price_label: Net Price
-      submit_button: Submit
+      submit_button: Inzenden
     edit:
       title: Edit Accessory
       breadcrumb: Bewerken
@@ -42,9 +42,9 @@ nl:
   dashboard:
     header: Dashboard
     orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
+    completed_orders: Voltooid
+    pending_orders: In Behandeling
+    failed_orders: Mislukt
     transactions: Transactions
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
@@ -94,7 +94,7 @@ nl:
       tracking_code_label: Web Tracking Code
       enabled_label: Enabled
       disabled_label: Disabled
-    submit_button: Submit
+    submit_button: Inzenden
   categories:
     index:
       title: Categories
@@ -124,7 +124,7 @@ nl:
         description: Set if the category is visible on your storefront.
         visible_label: Visible
         hidden_label: Hidden
-      submit_button: Submit
+      submit_button: Inzenden
     edit:
       title: Edit Category
       breadcrumb: Bewerken
@@ -165,7 +165,7 @@ nl:
         max_length_label: Maximum Length
         min_thickness_label: Minimum Thickness
         max_thickness_label: Maximum Thickness
-      submit_button: Submit
+      submit_button: Inzenden
     edit:
       title: Edit Delivery Pricing
       breadcrumb: Bewerken
@@ -181,7 +181,7 @@ nl:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
       select_prompt: Select a delivery service...
-      submit_button: Submit
+      submit_button: Inzenden
     index:
       title: Delivery Services
       breadcrumb: Delivery Services
@@ -213,7 +213,7 @@ nl:
         header: Countries
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
         country_placeholder: Select associated countries...
-      submit_button: Submit
+      submit_button: Inzenden
     edit:
       title: Edit Delivery Service
       breadcrumb: Bewerken
@@ -236,19 +236,19 @@ nl:
         header: Edit Order
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
-        submit_button: Submit
+        submit_button: Inzenden
     index:
       title: Orders
       breadcrumb: Orders
       header: Orders
-      delivery_show_all: Show All
+      delivery_show_all: Alles tonen
       delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
+      delivery_pending: In Behandeling
+      delivery_select: Bezorging
+      payment_select: Betaling
       no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
+      order_number: Order nr.
+      full_name: Volledige Naam
       payment_type: Payment Type
       payment_status: Payment Status
       delivery_status: Delivery Status
@@ -265,7 +265,7 @@ nl:
         status: Status
         dispatch_date: Dispatch Date
         delivery_service: Delivery Service
-        tracking: Tracking
+        tracking: Volgen
       billing_address:
         header: Billing Address
       delivery_address:
@@ -281,7 +281,7 @@ nl:
         price: Prijs
         quantity: Aantal
         total: Totaal
-        delivery: Delivery
+        delivery: Bezorging
         subtotal: Subtotal
         tax: Belasting
       transactions:
@@ -327,7 +327,7 @@ nl:
       template:
         header: Template
         description: Select the template this page will use on your storefront.
-      submit_button: Submit
+      submit_button: Inzenden
     edit:
       title: Edit Page
       breadcrumb: Bewerken
@@ -417,7 +417,7 @@ nl:
           stock_warning_level_label: Voorraad waarschuwingsniveau
           cost_value_label: Cost Value
           price_label: Prijs
-          submit_button: Submit
+          submit_button: Inzenden
     skus:
       stock_adjustments:
         modal:
@@ -425,12 +425,12 @@ nl:
           current_stock: Huidige Voorraad is
           description_label: Description
           adjustment_label: Adjustment
-          submit_button: Submit
+          submit_button: Inzenden
       variants:
         modal:
           header: Configure Variant Options
           reset_button: Reset Variants
-          submit_button: Submit
+          submit_button: Inzenden
     stock:
       index:
         title: Voorraadbeheer
@@ -467,14 +467,14 @@ nl:
         sku_label: SKU
         description_label: Description
         adjustment_label: Adjustment
-        submit_button: Submit
+        submit_button: Inzenden
     attachments:
       modal:
         add_image: Add Image
         edit_image: Edit Image
         file_label: Bestand
         default_label: Default
-        submit_button: Submit
+        submit_button: Inzenden
   users:
     edit:
       title: Profile
@@ -486,7 +486,7 @@ nl:
         first_name_label: First Name
         last_name_label: Last Name
         profile_picture_label: Profile Picture
-      submit_button: Submit
+      submit_button: Inzenden
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
