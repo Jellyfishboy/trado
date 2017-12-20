@@ -46,7 +46,7 @@ nl:
     pending_orders: In Behandeling
     failed_orders: Mislukt
     transactions: Verrichtingen
-    gross_income_transactions: Gross Income
+    gross_income_transactions: Bruto Inkomen
     net_income_transactions: Netto inkomen
     tax_transactions: Belasting
     provider_fees_transactions: Provider Fees
@@ -198,7 +198,7 @@ nl:
       delivery_service_details:
         header: Delivery Service Details
         description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
+        courier_name_label: Koeriersnaam
         name_label: Naam
         description_label: Omschrijving
       order_constraints:
@@ -208,7 +208,7 @@ nl:
       tracking:
         header: Volgen
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        tracking_url_label: Volgen Url
       countries:
         header: Landen
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
@@ -249,10 +249,10 @@ nl:
       no_records: You don't have any orders meeting those criterias
       order_number: Order nr.
       full_name: Volledige Naam
-      payment_type: Payment Type
+      payment_type: Betalingswijze
       payment_status: Betalingsstatus
       delivery_status: Leveringsstatus
-      gross_amount: Gross Amount
+      gross_amount: Bruto Hoeveelheid
       last_updated: Last Updated
     show:
       title: 'Order #%{order_id}'
