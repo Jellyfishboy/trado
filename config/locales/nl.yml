@@ -100,7 +100,7 @@ nl:
       title: Categories
       breadcrumb: Categories
       header: Categories
-      add_tooltip: Add Category
+      add_tooltip: Categorie Toevoegen
       no_records: You don't have any categories yet.
       name: Naam
       description: Description
@@ -131,10 +131,10 @@ nl:
       category_index: Categories
       header: Edit Category
     new:
-      title: New Category
+      title: Nieuwe Categorie
       breadcrumb: Nieuw
       category_index: Categories
-      header: New Category
+      header: Nieuwe Categorie
   delivery_service_prices:
     index:
       title: Delivery pricing for %{service_name}
@@ -200,7 +200,7 @@ nl:
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
         name_label: Naam
-        description_label: Description
+        description_label: Omschrijving
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
@@ -272,8 +272,8 @@ nl:
         header: Delivery Address
       payment_details:
         header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        card_number: Kaartnummer
+        expiry_date: Vervaldatum
       order_items:
         header: Order Items
         item: Item
@@ -337,7 +337,7 @@ nl:
       title: Producten
       breadcrumb: Producten
       header: Producten
-      add_product_tooltip: Add Product
+      add_product_tooltip: Product toevoegen
       stock_management_tooltip: Voorraadbeheer
       no_records: You don't have any products yet.
       show_all_filter: Alles tonen
@@ -385,7 +385,7 @@ nl:
         name_label: Naam
         weighting_label: Weighting
         short_description_label: Short Description
-        description_label: Description
+        description_label: Omschrijving
       search_engines:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
@@ -423,7 +423,7 @@ nl:
         modal:
           header: Add Stock Adjustment for
           current_stock: Huidige Voorraad is
-          description_label: Description
+          description_label: Omschrijving
           adjustment_label: Adjustment
           submit_button: Inzenden
       variants:
@@ -454,7 +454,7 @@ nl:
         add_stock_adjustment_tooltip: Add Stock Adjustment
         header: Voorraad geschiedenis
         date: Datum
-        description: Description
+        description: Omschrijving
         adjustment: Adjustment
         stock: Voorraad
     stock_adjustments:
@@ -465,7 +465,7 @@ nl:
         stock_management_index: Voorraadbeheer
         header: Nieuwe Voorraad
         sku_label: SKU
-        description_label: Description
+        description_label: Omschrijving
         adjustment_label: Adjustment
         submit_button: Inzenden
     attachments:
