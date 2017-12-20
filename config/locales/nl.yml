@@ -51,13 +51,13 @@ nl:
     tax_transactions: Belasting
     provider_fees_transactions: Provider Fees
     delivery_fees_transactions: Delivery Fees
-    activity: Activity
+    activity: Activiteit
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Instellingen
+    breadcrumb: Instellingen
+    header: Instellingen
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
@@ -66,9 +66,9 @@ nl:
       logo_label: Logo
       theme_label: Thema
     language:
-      header: Language
+      header: Taal
       description: Set the language for the administration dashboard.
-      language_label: Language
+      language_label: Taal
     tax:
       header: Belasting
       description: Set the name and percentage rate of your tax.
@@ -77,13 +77,13 @@ nl:
     currency:
       header: Currency & price display
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
+      currency_label: Valuta
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
     mailchimp:
       header: MailChimp Newsletter
       description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      list_id_label: Lijst-ID
     stripe:
       header: Stripe
       description: Set the text you would like to display on your customer credit card statements.
@@ -92,8 +92,8 @@ nl:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
+      enabled_label: Ingeschakeld
+      disabled_label: Uitgeschakeld
     submit_button: Inzenden
   categories:
     index:
@@ -104,8 +104,8 @@ nl:
       no_records: You don't have any categories yet.
       name: Naam
       description: Description
-      sorting: Sorting
-      active: Active
+      sorting: Sorteren
+      active: Actieve
       no_of_products: No. of Products
     form:
       category_details:
@@ -113,7 +113,7 @@ nl:
         description: Set the name, description and sorting order for your category.
         name_label: Naam
         description_label: Description
-        sorting_label: Sorting
+        sorting_label: Sorteren
       search_engine:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
@@ -122,8 +122,8 @@ nl:
       visibility:
         header: Visibility
         description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Zichtbaar
+        hidden_label: Verborgen
       submit_button: Inzenden
     edit:
       title: Edit Category
@@ -143,7 +143,7 @@ nl:
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
-      description: Description
+      description: Omschrijving
       weight: Weight Parameters
       length: Length Parameters
       thickness: Thickness Parameters
@@ -155,7 +155,7 @@ nl:
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Prijs
-        description_label: Description
+        description_label: Omschrijving
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
@@ -188,9 +188,9 @@ nl:
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
-      courier: Courier
+      courier: Koerier
       name: Naam
-      description: Description
+      description: Omschrijving
       code: Code
       net_price: Net Price
       gross_price: Gross Price
@@ -228,12 +228,12 @@ nl:
     transactions:
       modal:
         header: More Info for Transaction
-        error_code: Error Code
+        error_code: Foutcode
         stripe_charge_id: Stripe Charge Id
         paypal_transaction_id: PayPal Transaction Id
     edit:
       modal:
-        header: Edit Order
+        header: Bestelling Bewerken
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
         submit_button: Inzenden
@@ -301,8 +301,8 @@ nl:
       title: Titel
       breadcrumb: Pagina's
       header: Pagina's
-      sorting: Sorting
-      visible: Visible
+      sorting: Sorteren
+      visible: Zichtbaar
       last_updated: Last Updated
     form:
       header: Edit Page
@@ -311,8 +311,8 @@ nl:
         description: Set the title for your page, menu item, sorting order and add your page content.
         title_label: Titel
         menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        sorting_label: Sorteren
+        content_label: Inhoud
       search_engines:
         header: Search Engines
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
@@ -322,8 +322,8 @@ nl:
       visibility:
         header: Visibility
         description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Zichtbaar
+        hidden_label: Verborgen
       template:
         header: Template
         description: Select the template this page will use on your storefront.
@@ -334,22 +334,22 @@ nl:
       pages_index: Pagina's
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
+      title: Producten
+      breadcrumb: Producten
+      header: Producten
       add_product_tooltip: Add Product
       stock_management_tooltip: Voorraadbeheer
       no_records: You don't have any products yet.
-      show_all_filter: Show All
+      show_all_filter: Alles tonen
       published_filter: Published
       draft_filter: Draft
-      archived_filter: Archived
+      archived_filter: Gearchiveerd
       featured_filter: Featured
       filter_by: Filter By
       weighting_sorting: Weighting
       name_sorting: Naam
       popularity_sorting: Popularity
-      sort_by: Sort By
+      sort_by: Sorteer op
       sku: SKU
       part_number: Part no.
       name: Naam
@@ -359,10 +359,10 @@ nl:
     edit:
       title: Edit Product
       breadcrumb: Bewerken
-      product_index: Products
+      product_index: Producten
       header: Edit Product
     form:
-      publish_button: Publish
+      publish_button: Publiceren
       save_button: Opslaan
       additional_options:
         header: Additional Options
@@ -392,7 +392,7 @@ nl:
         page_title_label: Page Title
         meta_description_label: Meta Description
       images:
-        header: Images
+        header: Afbeeldingen
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Add Image
         no_records: You do not have any images for this product.
@@ -410,8 +410,8 @@ nl:
           add_variant: Add Variant
           edit_variant: Edit Variant
           code_label: Code
-          length_label: Length
-          weight_label: Weight
+          length_label: Lengte
+          weight_label: Gewicht
           thickness_label: Thickness
           stock_label: Voorraad
           stock_warning_level_label: Voorraad waarschuwingsniveau
@@ -471,19 +471,19 @@ nl:
     attachments:
       modal:
         add_image: Add Image
-        edit_image: Edit Image
+        edit_image: Afbeeldingen bewerken
         file_label: Bestand
-        default_label: Default
+        default_label: Standaard
         submit_button: Inzenden
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profiel
+      breadcrumb: Profiel
+      header: Profiel
       profile_settings:
         header: Profile Settings
         description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
+        first_name_label: Voornaam
         last_name_label: Last Name
         profile_picture_label: Profile Picture
       submit_button: Inzenden
@@ -549,10 +549,10 @@ nl:
       header: New Message
       hello: Hallo
       name_prefix: You have received the following information from
-      message_title: Message
+      message_title: Bericht
       email_title: E-mail
       website_title: Website
-      thanks: Thanks
+      thanks: Dank u
   controllers:
     admin:
       products:
