@@ -115,16 +115,16 @@ pt:
         description_label: Descrição
         sorting_label: Classificação
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Ferramentas de pesquisa
+        description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
+        page_title_label: Título da página
+        meta_description_label: Descrição da meta
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Visibilidade
+        description: Defina se a categoria é visível na sua loja.
+        visible_label: Visível
+        hidden_label: Escondido
+      submit_button: Enviar
     edit:
       title: Editar categoria
       breadcrumb: Editar
@@ -137,7 +137,7 @@ pt:
       header: Nova categoria
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
+      title: Preços de entrega para "%{service_name}"
       header: Delivery pricing for %{service_name}
       delivery_service_index: Serviço de entrega
       add_tooltip: Add Delivery Price
