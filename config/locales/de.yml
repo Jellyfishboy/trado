@@ -76,53 +76,53 @@ de:
       rate_label: Bewerten
     currency:
       header: Währung & Preis anzeigen
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      description: Legen Sie die Währungseinheit fest, mit der Sie in Ihrem Geschäft arbeiten, und ob Ihre Kunden die Produktpreise einschließlich Steuern anzeigen sollen.
+      currency_label: Währung
+      price_exc_label: Preis inc. & ausser Steuer
+      price_inc_label: Preis ink. Steuer
     mailchimp:
       header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      description: Legen Sie die MailChimp-Listen-Id für Ihren Newsletter fest.
+      list_id_label: Listen Id
     stripe:
       header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      description: Legen Sie den Text fest, den Sie auf Ihren Kundenkreditkartenauszügen anzeigen möchten.
+      statement_descriptor_label: Anweisungsdeskriptor
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Aktivieren und legen Sie den Web-Tracking-Code für Ihr Geschäft fest.
+      tracking_code_label: Web-Tracking-Code
+      enabled_label: Aktivieren
+      disabled_label: Deaktivieren
+    submit_button: Absenden
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
+      title: Kategorien
+      breadcrumb: Kategorien
+      header: Kategorien
+      add_tooltip: Kategorie hinzufügen
+      no_records: Sie haben noch irgendwelche Kategorien.
       name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      description: Beschreibung
+      sorting: Sortierung
+      active: Aktiviert
+      no_of_products: Produkte nummer
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
+        header: Kategoriedetails
+        description: Legen Sie den Namen, die Beschreibung und die Sortierreihenfolge für Ihre Kategorie fest.
         name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        description_label: Beschreibung
+        sorting_label: Sortierung
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Suchsysteme
+        description: Richten Sie den Seitentiitel und die Meta-Beschreibung ein, um zu definieren wie eine eite in Suchmaschinen angezeigt wird.
+        page_title_label: Seitentitel
+        meta_description_label: Metabeschreibung
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
+        header: Fernsicht
+        description: Legen Sie fest, ob die Kategorie in Ihrer Storefront sichtbar ist.
+        visible_label: Sichtbar
         hidden_label: Verborgen
       submit_button: Absenden
     edit:
@@ -310,8 +310,8 @@ de:
         header: Schreiben Sie Ihre Nachricht
         description: Den Titel für Ihre Seite, Menüpunkt, Sortiereihenfolge festlegen und Fügen Sie Ihren Seiteninhalt hinzu.
         title_label: Titel
-        menu_title_label: Menu Title
-        sorting_label: Sorting
+        menu_title_label: Menü Titel
+        sorting_label: Sortierung
         content_label: Content
       search_engines:
         header: Search Engines
