@@ -12,10 +12,10 @@ vi:
       no_records: Bạn chưa có bất kỳ accessories nào.
       part_number: Part no.
       name: Tên
-      weight: Weight
+      weight: Khối lượng
       cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       accessory_detail:
         header: Accessory Details
@@ -28,7 +28,7 @@ vi:
         weight_label: Weight
         cost_value_label: Cost Value
         net_price_label: Net Price
-      submit_button: Submit
+      submit_button: Gửi
     edit:
       title: Chỉnh sửa Accessory
       breadcrumb: Chỉnh sửa
@@ -79,7 +79,7 @@ vi:
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
       currency_label: Tiền tệ
       price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      price_inc_label: Giá bao gồm thuế
     mailchimp:
       header: MailChimp Newsletter
       description: Set the MailChimp list Id for your newsletter.
@@ -292,7 +292,7 @@ vi:
         fee: Phí
         net_amount: Net Amount
         gross_amount: Gross Amount
-        last_updated: Last Updated
+        last_updated: Cập nhật Mới nhất
       tracking:
         website: Tracking Website
         number: Tracking Number
@@ -344,38 +344,38 @@ vi:
       published_filter: Published
       draft_filter: Bản nháp
       archived_filter: Đã lưu trữ
-      featured_filter: Featured
-      filter_by: Filter By
+      featured_filter: Nổi bật
+      filter_by: Lọc theo
       weighting_sorting: Weighting
       name_sorting: Tên
       popularity_sorting: Popularity
-      sort_by: Sort By
+      sort_by: Sắp xếp theo
       sku: SKU
       part_number: Part no.
       name: Tên
       variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     edit:
       title: Chỉnh sửa sản phẩm
-      breadcrumb: Edit
+      breadcrumb: Chỉnh sửa
       product_index: Các sản phẩm
-      header: Edit Product
+      header: Chỉnh sửa sản phẩm
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Đăng
+      save_button: Lưu
       additional_options:
-        header: Additional Options
+        header: Tùy chọn bổ sung
         description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        featured_label: Nổi bật
+        tags_label: Gán nhãn
       associations:
         header: Associations
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
         accessories_label: Accessories
         related_products_label: Những sản phẩm liên quan
         select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        select_related_products_placeholder: Chọn sản phẩm liên quan
       product_details:
         header: Chi tiết sản phẩm
         description: Set the name, description and sorting order for your category.
@@ -403,17 +403,17 @@ vi:
         add_variant: Add Variant
         no_records: You do not have any variants for this product.
         code: Code
-        stock: Stock
+        stock: Kho
         cost_value: Cost Value
         price: Giá
         modal:
           add_variant: Add Variant
           edit_variant: Edit Variant
           code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
+          length_label: Chiều dài
+          weight_label: Khối lượng
+          thickness_label: Độ dày
+          stock_label: Kho
           stock_warning_level_label: Stock Warning Level
           cost_value_label: Cost Value
           price_label: Giá
@@ -425,7 +425,7 @@ vi:
           current_stock: Current stock is
           description_label: Mô tả
           adjustment_label: Điều chỉnh
-          submit_button: Submit
+          submit_button: Gửi
       variants:
         modal:
           header: Configure Variant Options
@@ -521,10 +521,10 @@ vi:
     registrations:
       destroyed: "Tạm biệt! Tài khoản của bạn đã bị hủy bỏ. Chúng tôi hy vọng sớm gặp lại bạn."
       signed_up: "Chào mừng! Bạn đã đăng ký thành công."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_inactive: "Bạn đã đăng ký thành công. Tuy nhiên, bạn chưa thể đăng nhập được bởi vì tài khoản của bạn không được kích hoạt."
+      signed_up_but_locked: "Bạn đã đăng ký thành công. Tuy nhiên, bạn chưa thể đăng nhập được bởi vì tài khoản của bạn đã bị khoá."
       signed_up_but_unconfirmed: "Một tin nhắn với một liên kết xác nhận đã được gửi đến địa chỉ email của bạn. Xin vui lòng mở liên kết để kích hoạt tài khoản của bạn."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      update_needs_confirmation: "Bạn đã cập nhật tài khoản của mình thành công, nhưng chúng tôi cần phải xác minh địa chỉ email mới của bạn. Xin vui lòng kiểm tra email của bạn và nhấp vào đường dẫn để hoàn tất xác nhận địa chỉ email mới của bạn."
       updated: "Bạn cập nhật tài khoản của mình thành công."
     sessions:
       signed_in: "Đăng nhập thành công."
@@ -559,9 +559,9 @@ vi:
           draft: Your product has been saved successfully as a draft
           publish: Your product has been published successfully. It is now live in your store
         destroy:
-          valid: Product was successfully deleted
+          valid: Đã xóa sản phẩm thành công
         archive:
-          valid: Product was successfully archived
+          valid: Sản phẩm được lưu trữ thành công
       skus:
         variants:
           create:
@@ -578,12 +578,12 @@ vi:
           valid: Store settings were successfully updated
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Bạn không có bất kỳ hình ảnh nào cho sản phẩm này
       categories:
         create:
-          valid: Category was successfully created
+          valid: Danh mục đã được tạo thành công
         update:
-          valid: Category was successfully updated
+          valid: Danh mục đã được cập nhật thành công
       delivery_service_prices:
         create:
           valid: Delivery service price was successfully created
