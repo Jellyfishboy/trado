@@ -482,24 +482,24 @@ pt:
       header: Perfil
       profile_settings:
         header: Definições do Perfil
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        description: Defina o nome e a imagem de perfil para a sua conta de administração.
+        first_name_label: Primeiro nome
+        last_name_label: Sobrenome
+        profile_picture_label: Foto de Perfil
+      submit_button: Enviar
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "A sua conta foi confirmada com sucesso. Agora você está inscrito."
+      send_instructions: "Você receberá um e-mail com instruções sobre como confirmar a sua conta, dentro de alguns minutos."
+      send_paranoid_instructions: "Se o seu endereço de e-mail existir no nosso banco de dados, você receberá um e-mail com instruções sobre como confirmar a sua conta, dentro de alguns minutos."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      already_authenticated: "Já estás inscrito."
+      inactive: "A tua conta ainda não está activada."
+      invalid: "E-mail ou palavra-passe inválidos."
+      invalid_token: "Símbolo de autenticação inválido."
+      locked: "A tua conta está bloqueada."
+      not_found_in_database: "E-mail ou palavra-passe inválido."
+      timeout: "A sua sessão expirou, por favor, entre novamente para continuar."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
