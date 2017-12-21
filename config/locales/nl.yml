@@ -253,7 +253,7 @@ nl:
       payment_status: Betalingsstatus
       delivery_status: Leveringsstatus
       gross_amount: Bruto Hoeveelheid
-      last_updated: Last Updated
+      last_updated: Laatste update
     show:
       title: 'Order #%{order_id}'
       orders_index: Orders
@@ -285,14 +285,14 @@ nl:
         subtotal: Subtotal
         tax: Belasting
       transactions:
-        header: Transactions
+        header: Verrichtinge
         transaction_type: Transaction Type
         payment_type: Payment Type
         payment_status: Betalingsstatus
         fee: Kost
         net_amount: Netto hoeveelheid
         gross_amount: Gross Amount
-        last_updated: Last Updated
+        last_updated: Laatste update
       tracking:
         website: Tracking Website
         number: Volg nummer
@@ -303,7 +303,7 @@ nl:
       header: Pagina's
       sorting: Sorteren
       visible: Zichtbaar
-      last_updated: Last Updated
+      last_updated: Laatste update
     form:
       header: Pagina Bewerken
       write_your_page:
@@ -357,10 +357,10 @@ nl:
       net_price: Netto prijs
       gross_price: Bruto prijs
     edit:
-      title: Edit Product
+      title: Product bewerken
       breadcrumb: Bewerken
       product_index: Producten
-      header: Edit Product
+      header: Product bewerken
     form:
       publish_button: Publiceren
       save_button: Opslaan
@@ -404,7 +404,7 @@ nl:
         no_records: You do not have any variants for this product.
         code: Code
         stock: Voorraad
-        cost_value: Cost Value
+        cost_value: Kostenwaarde
         price: Prijs
         modal:
           add_variant: Toevoegen Variant
@@ -415,7 +415,7 @@ nl:
           thickness_label: Dikte
           stock_label: Voorraad
           stock_warning_level_label: Voorraad waarschuwingsniveau
-          cost_value_label: Cost Value
+          cost_value_label: Kostenwaarde
           price_label: Prijs
           submit_button: Inzenden
     skus:
@@ -424,7 +424,7 @@ nl:
           header: Add Stock Adjustment for
           current_stock: Huidige Voorraad is
           description_label: Omschrijving
-          adjustment_label: Adjustment
+          adjustment_label: Aanpassing
           submit_button: Inzenden
       variants:
         modal:
@@ -455,7 +455,7 @@ nl:
         header: Voorraad geschiedenis
         date: Datum
         description: Omschrijving
-        adjustment: Adjustment
+        adjustment: Aanpassing
         stock: Voorraad
     stock_adjustments:
       new:
@@ -466,7 +466,7 @@ nl:
         header: Nieuwe Voorraad
         sku_label: SKU
         description_label: Omschrijving
-        adjustment_label: Adjustment
+        adjustment_label: Aanpassing
         submit_button: Inzenden
     attachments:
       modal:
