@@ -378,14 +378,14 @@ pt:
         select_related_products_placeholder: Seleccione produtos relacionados
       product_details:
         header: Detalhes do produto
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
+        select_category_placeholder: Seleccione a categoria
+        part_number_label: Número da peça
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Nome
+        weighting_label: Pesando
+        short_description_label: Breve descrição
+        description_label: Descrição
       search_engines:
         header: Search Engines
         description: Set up the page title and meta description to help define how a page is shown in search engines.
