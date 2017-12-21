@@ -248,24 +248,24 @@ pt:
       payment_select: Pagamento
       no_records: Você não possui ordens que atendam a esses critérios
       order_number: Nº. de Pedido.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Nome Completo
+      payment_type: Tipo de Pagamento
+      payment_status: Condições de Pagamento
+      delivery_status: Condições de entrega
+      gross_amount: Valor Bruto
+      last_updated: Última atualização
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Ordem #%{order_id}'
+      orders_index: Encomendas
+      cancel_order_tooltip: Cancelar o pedido
+      header: 'Encomenda #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Dados de Entrega
+        email: E-mail
+        status: Condições
+        dispatch_date: Data de Expedição
+        delivery_service: Serviço de entrega
+        tracking: Acompanhamento
       billing_address:
         header: Billing Address
       delivery_address:
