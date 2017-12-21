@@ -76,7 +76,7 @@ pt:
       rate_label: Taxa
     currency:
       header: Exibição de moeda e preço
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      description: Defina a unidade monetária com a qual você está operando e se deseja que seus clientes vejam os preços dos produtos, incluindo e excluindo impostos.
       currency_label: Moeda
       price_exc_label: Preço inc. & exc. imposto
       price_inc_label: Preço incluindo imposto
@@ -86,7 +86,7 @@ pt:
       list_id_label: Id da lista
     stripe:
       header: Listra
-      description: Set the text you would like to display on your customer credit card statements.
+      description: Defina o texto que deseja exibir nas declarações do cartão de crédito do cliente.
       statement_descriptor_label: Descriptor de declaração
     google_analytics:
       header: Google Analytics
@@ -110,13 +110,13 @@ pt:
     form:
       category_details:
         header: Detalhes da categoria
-        description: Set the name, description and sorting order for your category.
+        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
         name_label: Nome
         description_label: Descrição
         sorting_label: Classificação
       search_engine:
         header: Ferramentas de pesquisa
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
         page_title_label: Título da página
         meta_description_label: Descrição da meta
       visibility:
@@ -276,20 +276,20 @@ pt:
         expiry_date: Data de Validade
       order_items:
         header: Artigos do pedido
-        item: Item
+        item: Artigo
         sku: SKU
-        price: Price
+        price: Preço
         quantity: Qty
         total: Total
-        delivery: Delivery
+        delivery: Entrega
         subtotal: Subtotal
-        tax: Tax
+        tax: Taxa
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
+        header: Transações
+        transaction_type: Tipo de Transação
+        payment_type: Tipo de Pagamento
+        payment_status: Condições de Pagamento
+        fee: Taxa
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
