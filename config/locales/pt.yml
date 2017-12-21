@@ -311,11 +311,11 @@ pt:
         description: Defina o título para a sua página, artigos do menu, ordem de classificação e adicione o conteúdo da sua página.
         title_label: Título
         menu_title_label: Título do Menu
-        sorting_label: Sorting
-        content_label: Content
+        sorting_label: Classificação
+        content_label: Conteúdo
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
+        header: Motores de Busca
+        description: Configure o título da página, a descrição da meta e a slug de URL; Estes ajudam a definir como uma página é mostrada nos motores de busca.
         page_title_label: Page Title
         meta_description_label: Meta Description
         slug_label: Slug
