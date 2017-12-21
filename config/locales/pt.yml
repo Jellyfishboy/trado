@@ -76,7 +76,7 @@ pt:
       rate_label: Taxa
     currency:
       header: Exibição de moeda e preço
-      description: Defina a unidade monetária com a qual você está operando e se deseja que seus clientes vejam os preços dos produtos, incluindo e excluindo impostos.
+      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
       currency_label: Moeda
       price_exc_label: Preço inc. & exc. imposto
       price_inc_label: Preço incluindo imposto
@@ -86,7 +86,7 @@ pt:
       list_id_label: Id da lista
     stripe:
       header: Listra
-      description: Defina o texto que deseja exibir nas declarações do cartão de crédito do cliente.
+      description: Set the text you would like to display on your customer credit card statements.
       statement_descriptor_label: Descriptor de declaração
     google_analytics:
       header: Google Analytics
@@ -110,13 +110,13 @@ pt:
     form:
       category_details:
         header: Detalhes da categoria
-        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
+        description: Set the name, description and sorting order for your category.
         name_label: Nome
         description_label: Descrição
         sorting_label: Classificação
       search_engine:
         header: Ferramentas de pesquisa
-        description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
+        description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Título da página
         meta_description_label: Descrição da meta
       visibility:
