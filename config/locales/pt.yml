@@ -290,27 +290,27 @@ pt:
         payment_type: Tipo de Pagamento
         payment_status: Condições de Pagamento
         fee: Taxa
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        net_amount: Valor Líquido
+        gross_amount: Valor Bruto
+        last_updated: Última atualização
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Website de seguimento
+        number: Número de rastreio
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Título
+      breadcrumb: Páginas
+      header: Páginas
+      sorting: Classificação
+      visible: Visível
+      last_updated: Última atualização
     form:
-      header: Edit Page
+      header: Editar página
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
+        header: Escreva a sua página
+        description: Defina o título para a sua página, artigos do menu, ordem de classificação e adicione o conteúdo da sua página.
+        title_label: Título
+        menu_title_label: Título do Menu
         sorting_label: Sorting
         content_label: Content
       search_engines:
