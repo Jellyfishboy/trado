@@ -531,7 +531,7 @@ nl:
       signed_out: "Signed out successfully."
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      send_paranoid_instructions: "Als uw account al bestaat, ontvangt u een e-mail met instructies over hoe u deze kunt ontgrendelen binnen enkele minuten."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
