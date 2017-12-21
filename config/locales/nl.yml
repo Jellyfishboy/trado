@@ -60,7 +60,7 @@ nl:
     header: Instellingen
     store_detail:
       header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      description: Zet de naam, e-mail, het logo en het thema van uw bedrijf. De e-mail wordt gebruikt voor het contactformulier en belangrijke updates van de administratie.
       name_label: Naam
       email_label: E-maail
       logo_label: Logo
@@ -76,7 +76,7 @@ nl:
       rate_label: Beoordelen
     currency:
       header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
+      description: Bepaal de valutaeenheid waarmee u in uw winkel werkt en of uw klanten de productprijzen moeten zien, inclusief belastingen.
       currency_label: Valuta
       price_exc_label: Price inc. & exc. tax
       price_inc_label: Price inc. tax
@@ -211,7 +211,7 @@ nl:
         tracking_url_label: Volgen Url
       countries:
         header: Landen
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
+        description_html: 'Selecteer de landen die beschikbaar zijn voor deze bezorgservice of <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">kopieer</a> een bestaande dienst lijst met landen.'
         country_placeholder: Select associated countries...
       submit_button: Inzenden
     edit:
@@ -491,7 +491,7 @@ nl:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
@@ -515,7 +515,7 @@ nl:
     passwords:
       no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
       send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnenkort een link voor wachtwoordherstel."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
