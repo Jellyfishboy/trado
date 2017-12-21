@@ -267,15 +267,15 @@ pt:
         delivery_service: Serviço de entrega
         tracking: Acompanhamento
       billing_address:
-        header: Billing Address
+        header: Endereço de Cobrança
       delivery_address:
-        header: Delivery Address
+        header: Endereço de Entrega
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Detalhes do Pagamento
+        card_number: Número do Cartão
+        expiry_date: Data de Validade
       order_items:
-        header: Order Items
+        header: Artigos do pedido
         item: Item
         sku: SKU
         price: Price
@@ -338,9 +338,9 @@ pt:
       breadcrumb: Products
       header: Products
       add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
+      stock_management_tooltip: Gestão de armazenamento
+      no_records: Ainda não tens nenhum produto.
+      show_all_filter: Mostrar tudo
       published_filter: Published
       draft_filter: Draft
       archived_filter: Archived
