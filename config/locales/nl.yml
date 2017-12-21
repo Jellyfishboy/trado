@@ -371,7 +371,7 @@ nl:
         tags_label: Label
       associations:
         header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
+        description: Selecteer verwanten onderdelen en gerelateerde producten voor uw product (gerelateerde producten worden getoond op de productpagina).
         accessories_label: Onderdelen
         related_products_label: Related Products
         select_accessory_placeholder: Select associated accessories
