@@ -500,11 +500,11 @@ pt:
       locked: "A tua conta está bloqueada."
       not_found_in_database: "E-mail ou palavra-passe inválido."
       timeout: "A sua sessão expirou, por favor, entre novamente para continuar."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      unauthenticated: "Tens de entrar ou inscrever-te, antes de continuar."
+      unconfirmed: "Tens de confirmar a tua conta antes de continuar."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Instruções de confirmação"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
