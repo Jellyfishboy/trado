@@ -341,21 +341,21 @@ pt:
       stock_management_tooltip: Gestão de armazenamento
       no_records: Ainda não tens nenhum produto.
       show_all_filter: Mostrar tudo
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
+      published_filter: Publicado
+      draft_filter: Projeto
+      archived_filter: Arquivado
+      featured_filter: Em destaque
+      filter_by: Filtrar por
+      weighting_sorting: Pesando
+      name_sorting: Nome
+      popularity_sorting: Popularidade
+      sort_by: Ordenar por
       sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      part_number: Parte nº.
+      name: Nome
+      variant: Variante
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     edit:
       title: Edit Product
       breadcrumb: Edit
