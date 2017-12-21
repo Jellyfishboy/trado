@@ -315,7 +315,7 @@ nl:
         content_label: Inhoud
       search_engines:
         header: Zoekmachines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
+        description: Stel paginatitel, meta omschrijving en URL slug in; deze helpen om te bepalen hoe een pagina wordt weergegeven in zoekmachines.
         page_title_label: Pagina Titel
         meta_description_label: Meta Description
         slug_label: Slak
@@ -523,7 +523,7 @@ nl:
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+      signed_up_but_unconfirmed: "Een bevestigingslink met een bericht is verzonden naar uw e-mailadres. Open alstublieft de link om uw account te activeren."
       update_needs_confirmation: "Je hebt je account succesvol bijgewerkt. We moeten echter uw nieuwe e-mailadres verifiëren. Controleer uw Email en klik op de bevestigingslink om de bevestiging van uw e-mailadres te voltooien."
       updated: "You updated your account successfully."
     sessions:
