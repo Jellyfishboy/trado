@@ -393,7 +393,7 @@ nl:
         meta_description_label: Meta Description
       images:
         header: Afbeeldingen
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
+        description: Upload en bewerk afbeeldingen van dit product. U kunt ook de standaard afbeelding instellen die op de productpagina wordt weergegeven.
         add_image: Afbeelding toevoegen
         no_records: You do not have any images for this product.
       skus:
