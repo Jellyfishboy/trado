@@ -212,22 +212,22 @@ pt:
       countries:
         header: Países
         description_html: 'Seleccione os países que estão disponíveis para este serviço de entrega, ou <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copie </a> uma lista dos países de serviço existente.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        country_placeholder: Seleccione países associados...
+      submit_button: Enviar
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Adicionar serviço de entrega
+      breadcrumb: Editar
+      delivery_service_index: Serviço de entrega
+      header: Adicionar serviço de entrega
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Novo serviço de entrega
+      breadcrumb: Novo
+      delivery_service_index: Serviço de entrega
+      header: Novo Serviço de Entrega
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
+        header: Mais informação para a transação
         error_code: Error Code
         stripe_charge_id: Stripe Charge Id
         paypal_transaction_id: PayPal Transaction Id
