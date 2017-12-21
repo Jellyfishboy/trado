@@ -357,27 +357,27 @@ pt:
       net_price: Preço Líquido
       gross_price: Preço bruto
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Editar produto
+      breadcrumb: Editar
+      product_index: Produtos
+      header: Editar Produto
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Publicar
+      save_button: Guardar
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Opções adicionais
+        description: Caracterize o produto e/ou remova as opções SKU da página do produto.
+        featured_label: Em destaque
+        tags_label: Etiqueta
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Associações
+        description: Seleccione acessórios associados e produtos relacionados para o seu produto (os produtos relacionados serão exibidos na página do produto).
+        accessories_label: Acessórios
+        related_products_label: Produtos Relacionados
+        select_accessory_placeholder: Seleccione os acessórios associados
+        select_related_products_placeholder: Seleccione produtos relacionados
       product_details:
-        header: Product Details
+        header: Detalhes do produto
         description: Set the name, description and sorting order for your category.
         select_category_placeholder: Select category
         part_number_label: Part Number
