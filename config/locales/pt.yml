@@ -390,11 +390,11 @@ pt:
         header: Motores de busca
         description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
         page_title_label: Título da Página
-        meta_description_label: Meta Description
+        meta_description_label: Descrição do objetivo
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
+        header: Imagens
+        description: Carregar e editar imagens deste produto. Você também pode definir a imagem padrão para exibição na página do produto.
+        add_image: Adicionar Imagem
         no_records: You do not have any images for this product.
       skus:
         header: Variants
@@ -455,33 +455,33 @@ pt:
         header: Stock History
         date: Date
         description: Description
-        adjustment: Adjustment
-        stock: Stock
+        adjustment: Correção
+        stock: Inventário
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Novo Inventário
+        breadcrumb: Novo
+        product_index: Produtos
+        stock_management_index: Gestão de armazenamento
+        header: Novo Inventário
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Descrição
+        adjustment_label: Correção
+        submit_button: Enviar
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Adicionar Imagem
+        edit_image: Editar Imagem
+        file_label: Arquivo
+        default_label: Padrão
+        submit_button: Enviar
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Perfil
+      breadcrumb: Perfil
+      header: Perfil
       profile_settings:
-        header: Profile Settings
+        header: Definições do Perfil
         description: Set the name and profile picture for your administration account.
         first_name_label: First Name
         last_name_label: Last Name
