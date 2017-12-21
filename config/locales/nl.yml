@@ -521,7 +521,7 @@ nl:
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_inactive: "Je hebt je succesvol aangemeld. Echter, we konden u niet aanmelden omdat uw account nog niet is geactiveerd."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "Een bevestigingslink met een bericht is verzonden naar uw e-mailadres. Open alstublieft de link om uw account te activeren."
       update_needs_confirmation: "Je hebt je account succesvol bijgewerkt. We moeten echter uw nieuwe e-mailadres verifiëren. Controleer uw Email en klik op de bevestigingslink om de bevestiging van uw e-mailadres te voltooien."
