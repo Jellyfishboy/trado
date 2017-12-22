@@ -24,7 +24,7 @@ nl:
         part_number_label: Onderdeel Nummer
       weight_price:
         header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
+        description: Stel het gewicht, de nettoprijs en de originele kosten van uw accessoires in.
         weight_label: Gewicht
         cost_value_label: Waarden van de kosten
         net_price_label: Netto prijs
@@ -366,7 +366,7 @@ nl:
       save_button: Opslaan
       additional_options:
         header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
+        description: Bekijk uw product en / of verwijder de SKU-opties van de productpagina.
         featured_label: Featured
         tags_label: Label
       associations:
