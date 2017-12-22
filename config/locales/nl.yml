@@ -110,7 +110,7 @@ nl:
     form:
       category_details:
         header: Category Details
-        description: Set the name, description and sorting order for your category.
+        description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
         name_label: Naam
         description_label: Beschrijving
         sorting_label: Sorteren
@@ -158,7 +158,7 @@ nl:
         description_label: Omschrijving
       dimension_allowance:
         header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
+        description: Voer de maat en het gewicht in voor deze leverprijs.
         min_weight_label: Minimum Gewicht
         max_weight_label: Maximaal Gewicht
         min_length_label: Minimale Lengte
@@ -378,7 +378,7 @@ nl:
         select_related_products_placeholder: Select related products
       product_details:
         header: Productdetails
-        description: Set the name, description and sorting order for your category.
+        description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
         select_category_placeholder: Categorie Selecteren
         part_number_label: Onderdeel Nummer
         sku_label: SKU
@@ -482,14 +482,14 @@ nl:
       header: Profiel
       profile_settings:
         header: Profile Settings
-        description: Set the name and profile picture for your administration account.
+        description: Stel de naam en profielfoto in voor uw beheerdersaccount.
         first_name_label: Voornaam
         last_name_label: Achternaam
         profile_picture_label: Profiel Foto
       submit_button: Inzenden
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
+      confirmed: "Uw account is succesvol bevestigd. U bent nu ingelogd."
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te bevestigen."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
@@ -516,7 +516,7 @@ nl:
       no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw wachtwoord te resetten."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnenkort een link voor wachtwoordherstel."
-      updated: "Your password was changed successfully. You are now signed in."
+      updated: "Uw wachtwoord is succesvol gewijzigd U bent nu ingelogd."
       updated_not_active: "Your password was changed successfully."
     registrations:
       destroyed: "Bye! Uw account is succesvol verwijderd. We hopen je snel weer te zien."
@@ -536,7 +536,7 @@ nl:
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      confirmation_period_expired: "moet binnen de %{period} worden bevestigd, vraag een nieuwe aan"
       expired: "has expired, please request a new one"
       not_found: "niet gevonden"
       not_locked: "was niet op slot"
@@ -607,7 +607,7 @@ nl:
       users:
         update:
           valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          invalid: Er is een fout opgetreden bij het bijwerken van uw profielgegevens
     orders:
       destroy:
         valid: Your order has been cancelled
