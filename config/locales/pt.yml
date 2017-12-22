@@ -541,7 +541,7 @@ pt:
       not_found: "não foi encontrado"
       not_locked: "não foi bloqueado"
       not_saved:
-        one: "1 erro não permitiu que isto %{resource} fosse guardado:"
+        one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
@@ -591,12 +591,12 @@ pt:
         update:
           valid: O preço do serviço de entrega foi actualizado com sucesso
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: O preço do serviço de entrega foi excluído com êxito
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: O serviço de entrega foi criado com sucesso
         update:
-          valid: Delivery service was successfully updated
+          valid: O serviço de entrega foi actualizado com sucesso
         destroy:
           valid: O serviço de entrega foi excluído com êxito
         set_countries:
