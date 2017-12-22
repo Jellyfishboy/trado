@@ -118,7 +118,7 @@ nl:
         header: Zoekmachines
         description: Stel de paginatitel en metabeschrijving in om te definiëren hoe een pagina wordt weergegeven in zoekmachines.
         page_title_label: Pagina Titel
-        meta_description_label: Meta Description
+        meta_description_label: Meta omschrijving
       visibility:
         header: Zichtbaarheid
         description: Set if the category is visible on your storefront.
@@ -139,7 +139,7 @@ nl:
     index:
       title: Delivery pricing for %{service_name}
       header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
+      delivery_service_index: Leveringsdiensten
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
@@ -163,18 +163,18 @@ nl:
         max_weight_label: Maximaal Gewicht
         min_length_label: Minimale Lengte
         max_length_label: Maximale Lengte
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
+        min_thickness_label: Minimale Dikte
+        max_thickness_label: Maximale Dikte
       submit_button: Inzenden
     edit:
       title: Edit Delivery Pricing
       breadcrumb: Bewerken
-      delivery_service_index: Delivery Services
+      delivery_service_index: Leveringsdiensten
       header: Edit Delivery Pricing
     new:
       title: New Delivery Pricing
       breadcrumb: Nieuw
-      delivery_service_index: Delivery Services
+      delivery_service_index: Leveringsdiensten
       header: New Delivery Pricing
   delivery_services:
     countries_modal:
@@ -183,9 +183,9 @@ nl:
       select_prompt: Select a delivery service...
       submit_button: Inzenden
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
+      title: Leveringsdiensten
+      breadcrumb: Leveringsdiensten
+      header: Leveringsdiensten
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
       courier: Koerier
@@ -203,7 +203,7 @@ nl:
         description_label: Omschrijving
       order_constraints:
         header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
+        description: Beperk een bezorgservice tot de totale prijs van een bestelling.
         price_range_label: Prijsklasse
       tracking:
         header: Volgen
@@ -217,12 +217,12 @@ nl:
     edit:
       title: Edit Delivery Service
       breadcrumb: Bewerken
-      delivery_service_index: Delivery Services
+      delivery_service_index: Leveringsdiensten
       header: Edit Delivery Service
     new:
       title: New Delivery Service
       breadcrumb: Nieu
-      delivery_service_index: Delivery Services
+      delivery_service_index: Leveringsdiensten
       header: New Delivery Service
   orders:
     transactions:
@@ -260,7 +260,7 @@ nl:
       cancel_order_tooltip: Annuleer bestelling
       header: 'Order #%{order_id}'
       delivery_details:
-        header: Delivery Details
+        header: Leverdetails
         email: E-mail
         status: Status
         dispatch_date: Dispatch Date
@@ -269,7 +269,7 @@ nl:
       billing_address:
         header: Factuuradres
       delivery_address:
-        header: Delivery Address
+        header: Leveringsadres
       payment_details:
         header: Betalingsgegevens
         card_number: Kaartnummer
@@ -317,7 +317,7 @@ nl:
         header: Zoekmachines
         description: Stel paginatitel, meta omschrijving en URL slug in; deze helpen om te bepalen hoe een pagina wordt weergegeven in zoekmachines.
         page_title_label: Pagina Titel
-        meta_description_label: Meta Description
+        meta_description_label: Meta omschrijving
         slug_label: Slak
       visibility:
         header: Zichtbaarheid
@@ -373,7 +373,7 @@ nl:
         header: Associations
         description: Selecteer verwanten onderdelen en gerelateerde producten voor uw product (gerelateerde producten worden getoond op de productpagina).
         accessories_label: Onderdelen
-        related_products_label: Related Products
+        related_products_label: Gerelateerde producten
         select_accessory_placeholder: Select associated accessories
         select_related_products_placeholder: Select related products
       product_details:
@@ -390,7 +390,7 @@ nl:
         header: Zoekmachines
         description: Stel de paginatitel en metabeschrijving in om te definiëren hoe een pagina wordt weergegeven in zoekmachines.
         page_title_label: Pagina Titel
-        meta_description_label: Meta Description
+        meta_description_label: Meta omschrijving
       images:
         header: Afbeeldingen
         description: Upload en bewerk afbeeldingen van dit product. U kunt ook de standaard afbeelding instellen die op de productpagina wordt weergegeven.
@@ -398,7 +398,7 @@ nl:
         no_records: You do not have any images for this product.
       skus:
         header: Varianten
-        description: Configure the variant options for selling this product.
+        description: Configureer de variantopties voor het verkopen van dit product.
         variant_options: Variant Options
         add_variant: Toevoegen Variant
         no_records: You do not have any variants for this product.
@@ -481,7 +481,7 @@ nl:
       breadcrumb: Profiel
       header: Profiel
       profile_settings:
-        header: Profile Settings
+        header: Profiel instellingen
         description: Stel de naam en profielfoto in voor uw beheerdersaccount.
         first_name_label: Voornaam
         last_name_label: Achternaam
@@ -499,7 +499,7 @@ nl:
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
       not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
