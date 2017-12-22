@@ -301,20 +301,20 @@ vi:
       title: Tiêu đề
       breadcrumb: Pages
       header: Pages
-      sorting: Sorting
+      sorting: Phân loại
       visible: Visible
-      last_updated: Last Updated
+      last_updated: Cập nhật Mới nhất
     form:
-      header: Edit Page
+      header: Chỉnh sửa Trang
       write_your_page:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
         title_label: Tiêu đề
         menu_title_label: Menu Title
-        sorting_label: Sorting
+        sorting_label: Phân loại
         content_label: Nội dung
       search_engines:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
         page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
@@ -329,7 +329,7 @@ vi:
         description: Select the template this page will use on your storefront.
       submit_button: Gửi
     edit:
-      title: Edit Page
+      title: Chỉnh sửa Trang
       breadcrumb: Chỉnh sửa
       pages_index: Pages
   products:
