@@ -316,11 +316,11 @@ pt:
       search_engines:
         header: Motores de Busca
         description: Configure o título da página, a descrição da meta e a slug de URL; Estes ajudam a definir como uma página é mostrada nos motores de busca.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        page_title_label: Título da Página
+        meta_description_label: Descrição do objetivo
+        slug_label: Lento
       visibility:
-        header: Visibility
+        header: Visibilidade
         description: Set if the page is visible on your storefront.
         visible_label: Visible
         hidden_label: Hidden
