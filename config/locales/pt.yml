@@ -566,30 +566,30 @@ pt:
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: As opções de variantes não podem estar em branco
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: O acessório foi criado com sucesso
         update:
-          valid: Accessory was successfully updated
+          valid: O acessório foi criado com sucesso
         destroy:
-          valid: Accessory was successfully deleted
+          valid: O acessório foi excluído com sucesso
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: As configurações da loja foram actualizadas com sucesso
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Tu não possuis nenhuma imagem para este produto
       categories:
         create:
-          valid: Category was successfully created
+          valid: A categoria foi criada com sucesso
         update:
-          valid: Category was successfully updated
+          valid: A categoria foi actualizada com sucesso
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: O preço do serviço de entrega foi criado com sucesso
         update:
-          valid: Delivery service price was successfully updated
+          valid: O preço do serviço de entrega foi actualizado com sucesso
         destroy:
           valid: Delivery service price was successfully deleted
       delivery_services:
