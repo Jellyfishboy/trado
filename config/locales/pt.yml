@@ -428,15 +428,15 @@ pt:
           submit_button: Enviar
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Configurar Opções de Variante
+          reset_button: Redefinir Variantes
+          submit_button: Enviar
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
+        title: Gestão de armazenamento
+        breadcrumb: Gestão de armazenamento
+        product_index: Produtos
+        add_stock_tooltip: Adicionar armazenamento
         header: Stock Management
         show_all_filter: Show All
         low_filter: Low
@@ -598,18 +598,18 @@ pt:
         update:
           valid: Delivery service was successfully updated
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: O serviço de entrega foi excluído com êxito
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Necessitas seleccionar um serviço de entrega
       pages:
         update:
-          valid: Page was successfully updated
+          valid: A página foi actualizada com sucesso
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: O perfil foi actualizado com sucesso
+          invalid: Ocorreu um erro ao tentar actualizar os detalhes do seu perfil
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: O seu pedido foi cancelado
       validate_confirm_render:
         invalid: An error ocurred when trying to complete your order. Please try again
