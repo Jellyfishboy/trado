@@ -437,24 +437,24 @@ pt:
         breadcrumb: Gestão de armazenamento
         product_index: Produtos
         add_stock_tooltip: Adicionar armazenamento
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        header: Gestão de armazenamento
+        show_all_filter: Mostrar tudo
+        low_filter: Baixo
+        stock_filer: Armazenamento
+        no_records: Ainda não possui nenhum produto SKUs.
         sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        name: Nome
+        variant: Variante
+        stock: Armazenamento
+        stock_warning_level: Nível de advertência de armazenamento
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
+        title: Gestão de armazenamento
+        product_index: Produtos
+        stock_management_index: Gestão de armazenamento
+        add_stock_adjustment_tooltip: Adicionar o ajuste de armazenamento
+        header: Histórico de inventários
+        date: Data
+        description: Descrição
         adjustment: Correção
         stock: Inventário
     stock_adjustments:
@@ -531,7 +531,7 @@ pt:
       signed_out: "Anulação de inscrição bem sucedida."
     unlocks:
       send_instructions: "Dentro de alguns minutos receberá um e-mail com instruções sobre como desbloquear a sua conta."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      send_paranoid_instructions: "Se a sua conta existir, dentro de alguns minutos, irá receber um e-mail com instruções sobre como desbloqueá-la."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
@@ -612,4 +612,4 @@ pt:
       destroy:
         valid: O seu pedido foi cancelado
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Ocorreu um erro ao tentar completar o seu pedido. Por favor, tente novamente
