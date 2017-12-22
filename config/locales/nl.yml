@@ -116,7 +116,7 @@ nl:
         sorting_label: Sorteren
       search_engine:
         header: Zoekmachines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        description: Stel de paginatitel en metabeschrijving in om te definiëren hoe een pagina wordt weergegeven in zoekmachines.
         page_title_label: Pagina Titel
         meta_description_label: Meta Description
       visibility:
@@ -490,7 +490,7 @@ nl:
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te bevestigen."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
       already_authenticated: "You are already signed in."
@@ -514,7 +514,7 @@ nl:
       success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw wachtwoord te resetten."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnenkort een link voor wachtwoordherstel."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
@@ -530,7 +530,7 @@ nl:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te ontgrendelen."
       send_paranoid_instructions: "Als uw account al bestaat, ontvangt u een e-mail met instructies over hoe u deze kunt ontgrendelen binnen enkele minuten."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
