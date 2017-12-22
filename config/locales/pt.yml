@@ -541,13 +541,13 @@ pt:
       not_found: "não foi encontrado"
       not_locked: "não foi bloqueado"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "1 erro não permitiu que isto %{resource} fosse guardado:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
+      title: Recebeu uma nova mensagem de
+      header: Nova mensagem
+      hello: Olá
       name_prefix: You have received the following information from
       message_title: Message
       email_title: Email
