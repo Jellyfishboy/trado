@@ -532,14 +532,14 @@ pt:
     unlocks:
       send_instructions: "Dentro de alguns minutos receberá um e-mail com instruções sobre como desbloquear a sua conta."
       send_paranoid_instructions: "Se a sua conta existir, dentro de alguns minutos, irá receber um e-mail com instruções sobre como desbloqueá-la."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "A sua conta foi desbloqueada com sucesso. Por favor, entre para continuar."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      already_confirmed: "já foi confirmado, por favor tente entrar"
+      confirmation_period_expired: "necessita ser confirmado em %{period}, por favor solicite um novo"
+      expired: "expirou, por favor, solicite um novo"
+      not_found: "não foi encontrado"
+      not_locked: "não foi bloqueado"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
