@@ -400,32 +400,32 @@ pt:
         header: Variantes
         description: Configure as opções variantes para vender este produto.
         variant_options: Opções de variantes
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        add_variant: Adicionar a variante
+        no_records: Tu não possuis nenhuma variante para este produto.
+        code: Código
+        stock: Inventário
+        cost_value: Preço de custo
+        price: Preço
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Adicionar a variante
+          edit_variant: Editar a variante
+          code_label: Código
+          length_label: Comprimento
+          weight_label: Peso
+          thickness_label: Espessura
+          stock_label: Inventário
+          stock_warning_level_label: Nível de advertência de armazenamento
+          cost_value_label: Preço de custo
+          price_label: Preço
+          submit_button: Enviar
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Adicionar o ajuste de armazenamento para
+          current_stock: O armazenamento actual é
+          description_label: Descrição
+          adjustment_label: Correção
+          submit_button: Enviar
       variants:
         modal:
           header: Configure Variant Options
