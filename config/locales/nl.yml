@@ -86,7 +86,7 @@ nl:
       list_id_label: Lijst-ID
     stripe:
       header: Streep
-      description: Set the text you would like to display on your customer credit card statements.
+      description: Definieer de tekst in die u wilt weergeven op de creditcardafschriften van uw klant.
       statement_descriptor_label: Statement Descriptor
     google_analytics:
       header: Google Analytics
@@ -308,7 +308,7 @@ nl:
       header: Pagina Bewerken
       write_your_page:
         header: Schrijf uw Pagina
-        description: Set the title for your page, menu item, sorting order and add your page content.
+        description: Stel de titel in voor uw pagina, menu-item, sorteervolgorde en voeg uw pagina-inhoud toe.
         title_label: Titel
         menu_title_label: Menutitel
         sorting_label: Sorteren
@@ -519,7 +519,7 @@ nl:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      destroyed: "Bye! Uw account is succesvol verwijderd. We hopen je snel weer te zien."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "Je hebt je succesvol aangemeld. Echter, we konden u niet aanmelden omdat uw account nog niet is geactiveerd."
       signed_up_but_locked: "U bent succesvol ingeschreven. U kunt zich echter niet aanmelden omdat uw account is vergrendeld."
