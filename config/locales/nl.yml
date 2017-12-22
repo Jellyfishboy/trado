@@ -179,7 +179,7 @@ nl:
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
+      description: 'Selecteer welke bezorgservice u de lijst met landen wilt kopiëren:'
       select_prompt: Select a delivery service...
       submit_button: Inzenden
     index:
@@ -197,7 +197,7 @@ nl:
     form:
       delivery_service_details:
         header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
+        description: Definieer de koeriersnaam, naam en beschrijving van uw bezorgservice.
         courier_name_label: Koeriersnaam
         name_label: Naam
         description_label: Omschrijving
@@ -532,7 +532,7 @@ nl:
     unlocks:
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te ontgrendelen."
       send_paranoid_instructions: "Als uw account al bestaat, ontvangt u een e-mail met instructies over hoe u deze kunt ontgrendelen binnen enkele minuten."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "Uw account is succesvol gedeblokkeerd. Meld u aan om verder te gaan."
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
@@ -558,7 +558,7 @@ nl:
       products:
         update:
           draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          publish: Uw product is succesvol gepubliceerd. Het is nu live in uw winkel
         destroy:
           valid: Product was successfully deleted
         archive:
@@ -612,4 +612,4 @@ nl:
       destroy:
         valid: Your order has been cancelled
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Er is een fout opgetreden bij het voltooien van je bestelling. Probeer het opnieuw
