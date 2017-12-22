@@ -152,7 +152,7 @@ nl:
     form:
       delivery_price_details:
         header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        description: Stel de code, de prijs en de beschrijving voor deze bezorgprijs in.
         code_label: Code
         price_label: Prijs
         description_label: Omschrijving
@@ -326,7 +326,7 @@ nl:
         hidden_label: Verborgen
       template:
         header: Template
-        description: Select the template this page will use on your storefront.
+        description: Selecteer de sjabloon die deze pagina op uw storefront zal gebruiken.
       submit_button: Inzenden
     edit:
       title: Pagina Bewerken
@@ -510,7 +510,7 @@ nl:
       unlock_instructions:
         subject: "Unlock Instructions"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      failure: "Kon het niet authenticeren van %{kind} omdat \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
