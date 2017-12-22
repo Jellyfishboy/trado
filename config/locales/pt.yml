@@ -548,21 +548,21 @@ pt:
       title: Recebeu uma nova mensagem de
       header: Nova mensagem
       hello: Olá
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      name_prefix: Você recebeu a seguinte informação de
+      message_title: Mensagem
+      email_title: E-mail
+      website_title: Página web
+      thanks: Obrigado
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: O seu produto foi salvo com sucesso como um rascunho
+          publish: O seu produto foi publicado com sucesso. Agora está, materialmente, na sua loja
         destroy:
-          valid: Product was successfully deleted
+          valid: O produto foi excluído com sucesso
         archive:
-          valid: Product was successfully archived
+          valid: O produto foi arquivado com sucesso
       skus:
         variants:
           create:
