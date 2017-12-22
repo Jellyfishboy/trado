@@ -321,23 +321,23 @@ pt:
         slug_label: Lento
       visibility:
         header: Visibilidade
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        description: Defina se a página está visível na sua loja.
+        visible_label: Visível
+        hidden_label: Escondido
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Modelo
+        description: Seleccione o modelo que esta página usará na sua loja.
+      submit_button: Enviar
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Editar Página
+      breadcrumb: Editar
+      pages_index: Páginas
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
+      title: Produtos
+      breadcrumb: Produtos
+      header: Produtos
+      add_product_tooltip: Adicionar Produto
       stock_management_tooltip: Gestão de armazenamento
       no_records: Ainda não tens nenhum produto.
       show_all_filter: Mostrar tudo
@@ -395,11 +395,11 @@ pt:
         header: Imagens
         description: Carregar e editar imagens deste produto. Você também pode definir a imagem padrão para exibição na página do produto.
         add_image: Adicionar Imagem
-        no_records: You do not have any images for this product.
+        no_records: Não tens nenhuma imagem para este produto.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
+        header: Variantes
+        description: Configure as opções variantes para vender este produto.
+        variant_options: Opções de variantes
         add_variant: Add Variant
         no_records: You do not have any variants for this product.
         code: Code
