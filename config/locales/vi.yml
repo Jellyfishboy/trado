@@ -71,7 +71,7 @@ vi:
       language_label: Ngôn ngữ
     tax:
       header: Thuế
-      description: Set the name and percentage rate of your tax.
+      description: Thiết lập tên và tỷ lệ phần trăm thuế.
       name_label: Tên
       rate_label: Tỷ giá
     currency:
@@ -106,7 +106,7 @@ vi:
       description: Mô tả
       sorting: Sắp xếp
       active: Active
-      no_of_products: No. of Products
+      no_of_products: Số sản phẩm
     form:
       category_details:
         header: Chi tiết danh mục
@@ -210,9 +210,9 @@ vi:
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
         tracking_url_label: Tracking Url
       countries:
-        header: Countries
+        header: Các quốc gia
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
+        country_placeholder: Lựa chọn các quốc gia liên quan...
       submit_button: Gửi
     edit:
       title: Chỉnh sửa dịch vụ giao hàng
