@@ -60,7 +60,7 @@ vi:
     header: Thiết lập
     store_detail:
       header: Chi tiết cửa hàng
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      description: Thiết lập tên, email, logo và theme lưu trữ của bạn. Email sẽ được sử dụng cho contact form và những cập nhật quản trị quan trọng.
       name_label: Tên
       email_label: Thư điện tử
       logo_label: Biểu tượng
