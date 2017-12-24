@@ -82,7 +82,7 @@ vi:
       price_inc_label: Giá bao gồm thuế
     mailchimp:
       header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
+      description: Thiết lập MailChimp list Id cho newsletter của bạn.
       list_id_label: List Id
     stripe:
       header: Stripe
