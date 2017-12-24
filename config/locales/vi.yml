@@ -260,12 +260,12 @@ vi:
       cancel_order_tooltip: Hủy bỏ đơn đặt hàng
       header: 'Đơn đặt hàng #%{order_id}'
       delivery_details:
-        header: Delivery Details
+        header: Chi tiêt vận chuyển
         email: Email
         status: Trạng thái
         dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        delivery_service: Dịch vụ vận chuyển
+        tracking: Theo dõi
       billing_address:
         header: Địa chỉ thanh toán
       delivery_address:
@@ -275,7 +275,7 @@ vi:
         card_number: Số thẻ
         expiry_date: Ngày hết hạn
       order_items:
-        header: Order Items
+        header: Các sản phẩm trong đơn hàng
         item: Sản Phẩm
         sku: SKU
         price: Giá
@@ -299,10 +299,10 @@ vi:
   pages:
     index:
       title: Tiêu đề
-      breadcrumb: Pages
-      header: Pages
+      breadcrumb: Các trang
+      header: Các trang
       sorting: Phân loại
-      visible: Visible
+      visible: Có thể nhìn thấy
       last_updated: Cập nhật Mới nhất
     form:
       header: Chỉnh sửa Trang
@@ -310,7 +310,7 @@ vi:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
         title_label: Tiêu đề
-        menu_title_label: Menu Title
+        menu_title_label: Tiêu đề menu
         sorting_label: Phân loại
         content_label: Nội dung
       search_engines:
@@ -320,12 +320,12 @@ vi:
         meta_description_label: Meta Description
         slug_label: Slug
       visibility:
-        header: Visibility
+        header: Khả năng hiển thị
         description: Set if the page is visible on your storefront.
         visible_label: Hiển thị
         hidden_label: Ẩn
       template:
-        header: Template
+        header: Mẫu thiết kế
         description: Select the template this page will use on your storefront.
       submit_button: Gửi
     edit:
@@ -338,7 +338,7 @@ vi:
       breadcrumb: Các sản phẩm
       header: Các sản phẩm
       add_product_tooltip: Thêm sản phẩm
-      stock_management_tooltip: Stock Management
+      stock_management_tooltip: Quản lý kho
       no_records: Bạn chưa có bất kỳ products nào.
       show_all_filter: Hiển thị tất cả
       published_filter: Published
@@ -407,8 +407,8 @@ vi:
         cost_value: Cost Value
         price: Giá
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
+          add_variant: Thêm Variant
+          edit_variant: Chỉnh sửa Variant
           code_label: Code
           length_label: Chiều dài
           weight_label: Khối lượng
@@ -436,7 +436,7 @@ vi:
         title: Quản lý kho
         breadcrumb: Quản lý kho
         product_index: Các sản phẩm
-        add_stock_tooltip: Add Stock
+        add_stock_tooltip: Thêm Stock
         header: Quản lý kho
         show_all_filter: Hiển thị tất cả
         low_filter: Low
@@ -448,21 +448,21 @@ vi:
         stock: Stock
         stock_warning_level: Stock Warning Level
       show:
-        title: Stock Management
+        title: Quản lý kho
         product_index: Các sản phẩm
-        stock_management_index: Stock Management
+        stock_management_index: Quản lý kho
         add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
+        header: Lịch sử Stock
+        date: Ngày tháng
         description: Mô tả
-        adjustment: Adjustment
-        stock: Stock
+        adjustment: Điều chỉnh
+        stock: Kho
     stock_adjustments:
       new:
         title: New Stock
         breadcrumb: Tạo mới
         product_index: Các sản phẩm
-        stock_management_index: Stock Management
+        stock_management_index: Quản lý kho
         header: New Stock
         sku_label: SKU
         description_label: Mô tả
@@ -482,7 +482,7 @@ vi:
       header: Hồ sơ cá nhân
       profile_settings:
         header: Thiết lập Hồ sơ
-        description: Set the name and profile picture for your administration account.
+        description: Thiết lập tên và hình ảnh hồ sơ cho tài khoản quản trị của bạn.
         first_name_label: Tên
         last_name_label: Họ
         profile_picture_label: Ảnh đại diện
@@ -597,18 +597,18 @@ vi:
         update:
           valid: Delivery service was successfully updated
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Dịch vụ vận chuyển đã xoá thành công
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Bạn cần chọn một dịch vụ vận chuyển
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Cập nhật trang thành công
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Cập nhật hồ sơ thành công
+          invalid: Có một lỗi xảy ra khi cố gắng cập nhật chi tiết hồ sơ của bạn
     orders:
       destroy:
         valid: Đơn hàng đã bị huỷ
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Xảy ra lỗi khi đang cố gắng hoàn thành đơn hàng của bạn. Xin vui lòng thử lại
