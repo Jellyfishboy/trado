@@ -23,7 +23,7 @@ vi:
         name_label: Tên
         part_number_label: Part Number
       weight_price:
-        header: Weight & Price
+        header: Trọng lượng & giá
         description: Set the weight, net price and original cost value for your accessory.
         weight_label: Weight
         cost_value_label: Cost Value
@@ -152,7 +152,7 @@ vi:
     form:
       delivery_price_details:
         header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        description: Thiết lập code, giá and mô tả cho giá giao hàng.
         code_label: Code
         price_label: Giá
         description_label: Mô tả
