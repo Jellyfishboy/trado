@@ -25,7 +25,7 @@ vi:
       weight_price:
         header: Trọng lượng & giá
         description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
+        weight_label: Khối lượng
         cost_value_label: Cost Value
         net_price_label: Giá net
       submit_button: Gửi
@@ -94,7 +94,7 @@ vi:
       tracking_code_label: Web Tracking Code
       enabled_label: Đã kích hoạt
       disabled_label: Đã vô hiệu hóa
-    submit_button: Submit
+    submit_button: Xác nhận
   categories:
     index:
       title: Nhóm danh mục
@@ -137,21 +137,21 @@ vi:
       header: Tạo mới Category
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
+      title: Giá vận chuyển cho %{service_name}
+      header: Giá vận chuyển cho %{service_name}
       delivery_service_index: Những dịch vụ giao hàng
       add_tooltip: Thêm giá giao hàng
-      no_records: You don't have any prices for %{service_name} yet.
+      no_records: Bạn chưa có bất kỳ giá nào cho %{service_name}.
       code: Code
       description: Mô tả
-      weight: Weight Parameters
+      weight: Thông số khối lượng
       length: Thông số chiều dài
       thickness: Thông số độ dày
       net_price: Giá net
       gross_price: Giá grosss
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Chi tiêt giá vận chuyển
         description: Thiết lập code, giá and mô tả cho giá giao hàng.
         code_label: Code
         price_label: Giá
