@@ -18,22 +18,22 @@ nl:
       gross_price: Bruto prijs
     form:
       accessory_detail:
-        header: Accessory Details
+        header: Accessoire Details
         description: Set the name and part number for your accessory.
         name_label: Naam
         part_number_label: Onderdeel Nummer
       weight_price:
-        header: Weight & Price
+        header: Gewicht & prijs
         description: Stel het gewicht, de nettoprijs en de originele kosten van uw accessoires in.
         weight_label: Gewicht
         cost_value_label: Waarden van de kosten
         net_price_label: Netto prijs
       submit_button: Inzenden
     edit:
-      title: Edit Accessory
+      title: Accessoire bewerken
       breadcrumb: Bewerken
       accessory_index: Onderdelen
-      header: Edit Accessory
+      header: Accessoire bewerken
     new:
       title: Nieuwe Accessoire
       breadcrumb: Nieuw
@@ -53,7 +53,7 @@ nl:
     delivery_fees_transactions: Leveringskosten
     activity: Activiteit
     activity_active_carts: Actieve Winkelwagen
-    activity_incomplete_orders: Incomplete Orders
+    activity_incomplete_orders: Onvolledige Bestellingen
   settings:
     title: Instellingen
     breadcrumb: Instellingen
@@ -79,9 +79,9 @@ nl:
       description: Bepaal de valutaeenheid waarmee u in uw winkel werkt en of uw klanten de productprijzen moeten zien, inclusief belastingen.
       currency_label: Valuta
       price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      price_inc_label: Prijs incl. Btw
     mailchimp:
-      header: MailChimp Newsletter
+      header: MailChimp nieuwsbrief
       description: Set the MailChimp list Id for your newsletter.
       list_id_label: Lijst-ID
     stripe:
@@ -91,7 +91,7 @@ nl:
     google_analytics:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
+      tracking_code_label: Web-trackingscode
       enabled_label: Ingeschakeld
       disabled_label: Uitgeschakeld
     submit_button: Inzenden
@@ -106,10 +106,10 @@ nl:
       description: Beschrijving
       sorting: Sorteren
       active: Actieve
-      no_of_products: No. of Products
+      no_of_products: Productnummer
     form:
       category_details:
-        header: Category Details
+        header: Details van de categorie
         description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
         name_label: Naam
         description_label: Beschrijving
@@ -140,13 +140,13 @@ nl:
       title: Delivery pricing for %{service_name}
       header: Delivery pricing for %{service_name}
       delivery_service_index: Leveringsdiensten
-      add_tooltip: Add Delivery Price
+      add_tooltip: Leveringskosten toevoegen
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
       description: Omschrijving
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
+      weight: Gewicht Parameters
+      length: Lengte Parameters
+      thickness: Dikte Parameters
       net_price: Netto prijs
       gross_price: Bruto Prijs
     form:
@@ -172,10 +172,10 @@ nl:
       delivery_service_index: Leveringsdiensten
       header: Edit Delivery Pricing
     new:
-      title: New Delivery Pricing
+      title: Nieuwe levering prijzen
       breadcrumb: Nieuw
       delivery_service_index: Leveringsdiensten
-      header: New Delivery Pricing
+      header: Nieuwe levering prijzen
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
@@ -186,7 +186,7 @@ nl:
       title: Leveringsdiensten
       breadcrumb: Leveringsdiensten
       header: Leveringsdiensten
-      add_tooltip: Add Delivery Service
+      add_tooltip: Leveringsdienst toevoegen
       no_records: You don't have any delivery services yet.
       courier: Koerier
       name: Naam
@@ -235,7 +235,7 @@ nl:
       modal:
         header: Bestelling Bewerken
         dispatch_date_label: Datum van verzending
-        consignment_number_label: Consignment Number
+        consignment_number_label: Nummer van de zending
         submit_button: Inzenden
     index:
       title: Orders
@@ -255,16 +255,16 @@ nl:
       gross_amount: Bruto Hoeveelheid
       last_updated: Laatste update
     show:
-      title: 'Order #%{order_id}'
+      title: 'Bestelling #%{order_id}'
       orders_index: Orders
       cancel_order_tooltip: Annuleer bestelling
-      header: 'Order #%{order_id}'
+      header: 'Bestelling #%{order_id}'
       delivery_details:
         header: Leverdetails
         email: E-mail
         status: Status
         dispatch_date: Datum van verzending
-        delivery_service: Delivery Service
+        delivery_service: Leveringsdienst
         tracking: Volgen
       billing_address:
         header: Factuuradres
@@ -286,7 +286,7 @@ nl:
         tax: Belasting
       transactions:
         header: Verrichtinge
-        transaction_type: Transaction Type
+        transaction_type: Transactietype
         payment_type: Betalingswijze
         payment_status: Betalingsstatus
         fee: Kost
@@ -294,7 +294,7 @@ nl:
         gross_amount: Bruto Hoeveelheid
         last_updated: Laatste update
       tracking:
-        website: Tracking Website
+        website: Tracking-website
         number: Volg nummer
   pages:
     index:
@@ -365,7 +365,7 @@ nl:
       publish_button: Publiceren
       save_button: Opslaan
       additional_options:
-        header: Additional Options
+        header: Extra Opties
         description: Bekijk uw product en / of verwijder de SKU-opties van de productpagina.
         featured_label: Featured
         tags_label: Label
@@ -384,7 +384,7 @@ nl:
         sku_label: SKU
         name_label: Naam
         weighting_label: Weging
-        short_description_label: Short Description
+        short_description_label: Korte Omschrijving
         description_label: Omschrijving
       search_engines:
         header: Zoekmachines
@@ -399,7 +399,7 @@ nl:
       skus:
         header: Varianten
         description: Configureer de variantopties voor het verkopen van dit product.
-        variant_options: Variant Options
+        variant_options: Variant opties
         add_variant: Toevoegen Variant
         no_records: You do not have any variants for this product.
         code: Code
@@ -429,7 +429,7 @@ nl:
       variants:
         modal:
           header: Configure Variant Options
-          reset_button: Reset Variants
+          reset_button: Reset varianten
           submit_button: Inzenden
     stock:
       index:
@@ -508,7 +508,7 @@ nl:
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Instructies voor deblokkeren"
     omniauth_callbacks:
       failure: "Kon het niet authenticeren van %{kind} omdat \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
