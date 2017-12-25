@@ -78,7 +78,7 @@ nl:
       header: Currency & price display
       description: Bepaal de valutaeenheid waarmee u in uw winkel werkt en of uw klanten de productprijzen moeten zien, inclusief belastingen.
       currency_label: Valuta
-      price_exc_label: Price inc. & exc. tax
+      price_exc_label: Prijs inc. & excl. btw
       price_inc_label: Prijs incl. Btw
     mailchimp:
       header: MailChimp nieuwsbrief
@@ -151,7 +151,7 @@ nl:
       gross_price: Bruto Prijs
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Details van Leveringskosten
         description: Stel de code, de prijs en de beschrijving voor deze bezorgprijs in.
         code_label: Code
         price_label: Prijs
@@ -167,10 +167,10 @@ nl:
         max_thickness_label: Maximale Dikte
       submit_button: Inzenden
     edit:
-      title: Edit Delivery Pricing
+      title: Leveringskosten bewerken
       breadcrumb: Bewerken
       delivery_service_index: Leveringsdiensten
-      header: Edit Delivery Pricing
+      header: Leveringskosten bewerken
     new:
       title: Nieuwe levering prijzen
       breadcrumb: Nieuw
@@ -215,22 +215,22 @@ nl:
         country_placeholder: Select associated countries...
       submit_button: Inzenden
     edit:
-      title: Edit Delivery Service
+      title: Leveringsdienst bewerken
       breadcrumb: Bewerken
       delivery_service_index: Leveringsdiensten
-      header: Edit Delivery Service
+      header: Leveringsdienst bewerken
     new:
-      title: New Delivery Service
+      title: Nieuwe Leveringsdienst
       breadcrumb: Nieu
       delivery_service_index: Leveringsdiensten
-      header: New Delivery Service
+      header: Nieuwe Leveringsdienst
   orders:
     transactions:
       modal:
         header: More Info for Transaction
         error_code: Foutcode
         stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        paypal_transaction_id: PayPal Transactie Id
     edit:
       modal:
         header: Bestelling Bewerken
@@ -395,7 +395,7 @@ nl:
         header: Afbeeldingen
         description: Upload en bewerk afbeeldingen van dit product. U kunt ook de standaard afbeelding instellen die op de productpagina wordt weergegeven.
         add_image: Afbeelding toevoegen
-        no_records: You do not have any images for this product.
+        no_records: U heeft geen afbeelding voor dit product.
       skus:
         header: Varianten
         description: Configureer de variantopties voor het verkopen van dit product.
@@ -451,7 +451,7 @@ nl:
         title: Voorraad
         product_index: Producten
         stock_management_index: Voorraadbeheer
-        add_stock_adjustment_tooltip: Add Stock Adjustment
+        add_stock_adjustment_tooltip: Voorraad Aanpassing Toevoegen
         header: Voorraad geschiedenis
         date: Datum
         description: Omschrijving
@@ -495,10 +495,10 @@ nl:
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
+      invalid: "Ongeldig e-mailadres of wachtwoord."
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
+      not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
       timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
@@ -579,7 +579,7 @@ nl:
           valid: Store settings were successfully updated
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: U heeft geen afbeelding voor dit product
       categories:
         create:
           valid: Category was successfully created
@@ -587,11 +587,11 @@ nl:
           valid: Category was successfully updated
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Levering serviceprijs is succesvol aangemaakt
         update:
-          valid: Delivery service price was successfully updated
+          valid: Levering serviceprijs is succesvol bijgewerkt
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Levering serviceprijs is succesvol verwijderd
       delivery_services:
         create:
           valid: Delivery service was successfully created
