@@ -8,7 +8,7 @@ nl:
       title: Onderdelen
       breadcrumb: Onderdelen
       header: Onderdelen
-      add_tooltip: Add Accessory
+      add_tooltip: Voeg accessoire toe
       no_records: You don't have any accessories yet.
       part_number: Onderdeel nr.
       name: Naam
@@ -35,10 +35,10 @@ nl:
       accessory_index: Onderdelen
       header: Edit Accessory
     new:
-      title: New Accessory
+      title: Nieuwe Accessoire
       breadcrumb: Nieuw
       accessory_index: Onderdelen
-      header: New Accessory
+      header: Nieuwe Accessoire
   dashboard:
     header: Dashboard
     orders: Orders
@@ -49,17 +49,17 @@ nl:
     gross_income_transactions: Bruto Inkomen
     net_income_transactions: Netto inkomen
     tax_transactions: Belasting
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
+    provider_fees_transactions: Dienstverlenerkosten
+    delivery_fees_transactions: Leveringskosten
     activity: Activiteit
-    activity_active_carts: Active Carts
+    activity_active_carts: Actieve Winkelwagen
     activity_incomplete_orders: Incomplete Orders
   settings:
     title: Instellingen
     breadcrumb: Instellingen
     header: Instellingen
     store_detail:
-      header: Store Details
+      header: Winkelgegevens
       description: Zet de naam, e-mail, het logo en het thema van uw bedrijf. De e-mail wordt gebruikt voor het contactformulier en belangrijke updates van de administratie.
       name_label: Naam
       email_label: E-maail
@@ -234,7 +234,7 @@ nl:
     edit:
       modal:
         header: Bestelling Bewerken
-        dispatch_date_label: Dispatch Date
+        dispatch_date_label: Datum van verzending
         consignment_number_label: Consignment Number
         submit_button: Inzenden
     index:
@@ -263,7 +263,7 @@ nl:
         header: Leverdetails
         email: E-mail
         status: Status
-        dispatch_date: Dispatch Date
+        dispatch_date: Datum van verzending
         delivery_service: Delivery Service
         tracking: Volgen
       billing_address:
@@ -287,11 +287,11 @@ nl:
       transactions:
         header: Verrichtinge
         transaction_type: Transaction Type
-        payment_type: Payment Type
+        payment_type: Betalingswijze
         payment_status: Betalingsstatus
         fee: Kost
         net_amount: Netto hoeveelheid
-        gross_amount: Gross Amount
+        gross_amount: Bruto Hoeveelheid
         last_updated: Laatste update
       tracking:
         website: Tracking Website
@@ -370,7 +370,7 @@ nl:
         featured_label: Featured
         tags_label: Label
       associations:
-        header: Associations
+        header: Associaties
         description: Selecteer verwanten onderdelen en gerelateerde producten voor uw product (gerelateerde producten worden getoond op de productpagina).
         accessories_label: Onderdelen
         related_products_label: Gerelateerde producten
@@ -408,7 +408,7 @@ nl:
         price: Prijs
         modal:
           add_variant: Toevoegen Variant
-          edit_variant: Edit Variant
+          edit_variant: Variant Bewerken
           code_label: Code
           length_label: Lengte
           weight_label: Gewicht
