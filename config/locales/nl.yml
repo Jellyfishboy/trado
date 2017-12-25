@@ -121,7 +121,7 @@ nl:
         meta_description_label: Meta omschrijving
       visibility:
         header: Zichtbaarheid
-        description: Set if the category is visible on your storefront.
+        description: Bepaal of de categorie zichtbaar is in uw etalage.
         visible_label: Zichtbaar
         hidden_label: Verborgen
       submit_button: Inzenden
@@ -520,7 +520,7 @@ nl:
       updated_not_active: "Your password was changed successfully."
     registrations:
       destroyed: "Bye! Uw account is succesvol verwijderd. We hopen je snel weer te zien."
-      signed_up: "Welcome! You have signed up successfully."
+      signed_up: "Welkom! U heeft uw succesvol aangemeld."
       signed_up_but_inactive: "Je hebt je succesvol aangemeld. Echter, we konden u niet aanmelden omdat uw account nog niet is geactiveerd."
       signed_up_but_locked: "U bent succesvol ingeschreven. U kunt zich echter niet aanmelden omdat uw account is vergrendeld."
       signed_up_but_unconfirmed: "Een bevestigingslink met een bericht is verzonden naar uw e-mailadres. Open alstublieft de link om uw account te activeren."
@@ -535,7 +535,7 @@ nl:
       unlocked: "Uw account is succesvol gedeblokkeerd. Meld u aan om verder te gaan."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
+      already_confirmed: "was al bevestigd, probeert u aan te melden"
       confirmation_period_expired: "moet binnen de %{period} worden bevestigd, vraag een nieuwe aan"
       expired: "has expired, please request a new one"
       not_found: "niet gevonden"
@@ -576,7 +576,7 @@ nl:
           valid: Accessoire met succes verwijderd
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Winkelinstellingen zijn succesvol bijgewerkt
       attachments:
         destroy:
           limit_reached: U heeft geen afbeelding voor dit product
