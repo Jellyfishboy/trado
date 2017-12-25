@@ -9,7 +9,7 @@ nl:
       breadcrumb: Onderdelen
       header: Onderdelen
       add_tooltip: Voeg accessoire toe
-      no_records: You don't have any accessories yet.
+      no_records: U hebt nog geen accessoires.
       part_number: Onderdeel nr.
       name: Naam
       weight: Gewicht
@@ -101,7 +101,7 @@ nl:
       breadcrumb: Categorieën
       header: Categorieën
       add_tooltip: Categorie Toevoegen
-      no_records: You don't have any categories yet.
+      no_records: U hebt nog geen producten categorieën.
       name: Naam
       description: Beschrijving
       sorting: Sorteren
@@ -180,7 +180,7 @@ nl:
     countries_modal:
       header: Copy Delivery Service Countries
       description: 'Selecteer welke bezorgservice u de lijst met landen wilt kopiëren:'
-      select_prompt: Select a delivery service...
+      select_prompt: Levering service kiezen...
       submit_button: Inzenden
     index:
       title: Leveringsdiensten
@@ -212,7 +212,7 @@ nl:
       countries:
         header: Landen
         description_html: 'Selecteer de landen die beschikbaar zijn voor deze bezorgservice of <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">kopieer</a> een bestaande dienst lijst met landen.'
-        country_placeholder: Select associated countries...
+        country_placeholder: Selecteer gerelateerde landen...
       submit_button: Inzenden
     edit:
       title: Leveringsdienst bewerken
@@ -339,7 +339,7 @@ nl:
       header: Producten
       add_product_tooltip: Product toevoegen
       stock_management_tooltip: Voorraadbeheer
-      no_records: You don't have any products yet.
+      no_records: U hebt nog geen producten.
       show_all_filter: Alles tonen
       published_filter: Gepubliceerd
       draft_filter: Concept
@@ -374,7 +374,7 @@ nl:
         description: Selecteer verwanten onderdelen en gerelateerde producten voor uw product (gerelateerde producten worden getoond op de productpagina).
         accessories_label: Onderdelen
         related_products_label: Gerelateerde producten
-        select_accessory_placeholder: Select associated accessories
+        select_accessory_placeholder: Selecteer bijbehorende accessoires
         select_related_products_placeholder: Selecteer gerelateerde producten
       product_details:
         header: Productdetails
@@ -494,9 +494,9 @@ nl:
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
       already_authenticated: "U bent al aangemeld."
-      inactive: "Your account was not activated yet."
+      inactive: "Uw account is nog niet geactiveerd."
       invalid: "Ongeldig e-mailadres of wachtwoord."
-      invalid_token: "Invalid authentication token."
+      invalid_token: "Ongeldige verificatietoken."
       locked: "Uw account is vergrendeld."
       not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
       timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
@@ -566,7 +566,7 @@ nl:
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Variant opties mag niet leeg zijn
       accessories:
         create:
           valid: Accessoire met succes aangemaakt
@@ -603,13 +603,13 @@ nl:
           select_tag: You need to select a delivery service
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Pagina was succesvol bijgewerkt
       users:
         update:
           valid: Product met succes bijgewerkt
           invalid: Er is een fout opgetreden bij het bijwerken van uw profielgegevens
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Jouw bestelling is geannuleerd
       validate_confirm_render:
         invalid: Er is een fout opgetreden bij het voltooien van je bestelling. Probeer het opnieuw
