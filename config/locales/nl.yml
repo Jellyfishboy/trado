@@ -90,7 +90,7 @@ nl:
       statement_descriptor_label: Statement Descriptor
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
+      description: Schakel de webtrackingcode voor uw winkel in en configureer deze.
       tracking_code_label: Web-trackingscode
       enabled_label: Ingeschakeld
       disabled_label: Uitgeschakeld
@@ -541,8 +541,8 @@ nl:
       not_found: "niet gevonden"
       not_locked: "was niet op slot"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 fout verhindert het opslaan van %{resource}:"
+        other: "%{count} fouten hebben voorkomen dat %{resource} wordt opgeslagen:"
   mailers:
     contact_message:
       title: Received a new message from
