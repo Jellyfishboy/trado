@@ -178,7 +178,7 @@ nl:
       header: Nieuwe levering prijzen
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
+      header: Kopieer de bezorgservices van het land
       description: 'Selecteer welke bezorgservice u de lijst met landen wilt kopiëren:'
       select_prompt: Levering service kiezen...
       submit_button: Inzenden
@@ -441,7 +441,7 @@ nl:
         show_all_filter: Alles Tonen
         low_filter: Laag
         stock_filer: Voorraad
-        no_records: You don't have any Product SKUs yet.
+        no_records: U hebt nog geen SKU-product.
         sku: SKU
         name: Naam
         variant: Variant
@@ -537,7 +537,7 @@ nl:
     messages:
       already_confirmed: "was al bevestigd, probeert u aan te melden"
       confirmation_period_expired: "moet binnen de %{period} worden bevestigd, vraag een nieuwe aan"
-      expired: "has expired, please request a new one"
+      expired: "is verlopen, vraag een nieuwe aan"
       not_found: "niet gevonden"
       not_locked: "was niet op slot"
       not_saved:
