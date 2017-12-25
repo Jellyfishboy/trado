@@ -19,7 +19,7 @@ nl:
     form:
       accessory_detail:
         header: Accessoire Details
-        description: Set the name and part number for your accessory.
+        description: Stel de naam en het artikelnummer in voor uw accessoire.
         name_label: Naam
         part_number_label: Onderdeel Nummer
       weight_price:
@@ -67,11 +67,11 @@ nl:
       theme_label: Thema
     language:
       header: Taal
-      description: Set the language for the administration dashboard.
+      description: Stel de taal in voor het administratie paneel.
       language_label: Taal
     tax:
       header: Belasting
-      description: Set the name and percentage rate of your tax.
+      description: Stel de naam en het percentage van uw belasting in.
       name_label: Naam
       rate_label: Beoordelen
     currency:
@@ -82,7 +82,7 @@ nl:
       price_inc_label: Prijs incl. Btw
     mailchimp:
       header: MailChimp nieuwsbrief
-      description: Set the MailChimp list Id for your newsletter.
+      description: Stel de ID van de MailChimp-lijst in voor uw nieuwsbrief.
       list_id_label: Lijst-ID
     stripe:
       header: Streep
@@ -141,7 +141,7 @@ nl:
       header: Levering prijzen voor %{service_name}
       delivery_service_index: Leveringsdiensten
       add_tooltip: Leveringskosten toevoegen
-      no_records: You don't have any prices for %{service_name} yet.
+      no_records: U heeft nog geen prijzen voor %{service_name}.
       code: Code
       description: Omschrijving
       weight: Gewicht Parameters
@@ -187,7 +187,7 @@ nl:
       breadcrumb: Leveringsdiensten
       header: Leveringsdiensten
       add_tooltip: Leveringsdienst toevoegen
-      no_records: You don't have any delivery services yet.
+      no_records: U heeft nog geen bezorgservice.
       courier: Koerier
       name: Naam
       description: Omschrijving
@@ -246,7 +246,7 @@ nl:
       delivery_pending: In Behandeling
       delivery_select: Bezorging
       payment_select: Betaling
-      no_records: You don't have any orders meeting those criterias
+      no_records: U hebt geen bestellingen die aan deze criteria voldoen
       order_number: Order nr.
       full_name: Volledige Naam
       payment_type: Betalingswijze
@@ -321,7 +321,7 @@ nl:
         slug_label: Slak
       visibility:
         header: Zichtbaarheid
-        description: Set if the page is visible on your storefront.
+        description: Stel in of de pagina zichtbaar is in uw etalage.
         visible_label: Zichtbaar
         hidden_label: Verborgen
       template:
@@ -401,7 +401,7 @@ nl:
         description: Configureer de variantopties voor het verkopen van dit product.
         variant_options: Variant opties
         add_variant: Toevoegen Variant
-        no_records: You do not have any variants for this product.
+        no_records: U heeft geen varianten voor dit product.
         code: Code
         stock: Voorraad
         cost_value: Kostenwaarde
@@ -500,7 +500,7 @@ nl:
       locked: "Uw account is vergrendeld."
       not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
       timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      unauthenticated: "U moet inloggen of aanmelden voordat u verdergaat."
       unconfirmed: "U moet uw account bevestigen voordat u verder kunt gaan."
     mailer:
       confirmation_instructions:
@@ -511,13 +511,13 @@ nl:
         subject: "Instructies voor deblokkeren"
     omniauth_callbacks:
       failure: "Kon het niet authenticeren van %{kind} omdat \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      success: "Met succes geverifieerd door account %{kind}."
     passwords:
       no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw wachtwoord te resetten."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnenkort een link voor wachtwoordherstel."
       updated: "Uw wachtwoord is succesvol gewijzigd U bent nu ingelogd."
-      updated_not_active: "Your password was changed successfully."
+      updated_not_active: "Uw wachtwoord is met succes gewijzigd."
     registrations:
       destroyed: "Bye! Uw account is succesvol verwijderd. We hopen je snel weer te zien."
       signed_up: "Welkom! U heeft uw succesvol aangemeld."
@@ -525,7 +525,7 @@ nl:
       signed_up_but_locked: "U bent succesvol ingeschreven. U kunt zich echter niet aanmelden omdat uw account is vergrendeld."
       signed_up_but_unconfirmed: "Een bevestigingslink met een bericht is verzonden naar uw e-mailadres. Open alstublieft de link om uw account te activeren."
       update_needs_confirmation: "Je hebt je account succesvol bijgewerkt. We moeten echter uw nieuwe e-mailadres verifiëren. Controleer uw Email en klik op de bevestigingslink om de bevestiging van uw e-mailadres te voltooien."
-      updated: "You updated your account successfully."
+      updated: "U heeft uw account succesvol bijgewerkt."
     sessions:
       signed_in: "Inloggen succesvol."
       signed_out: "U bent succesvol uitgelogd."
@@ -548,7 +548,7 @@ nl:
       title: Een nieuw bericht ontvangen van
       header: Nieuw Bericht
       hello: Hallo
-      name_prefix: You have received the following information from
+      name_prefix: U hebt de volgende informatie ontvangen
       message_title: Bericht
       email_title: E-mail
       website_title: Website
@@ -600,7 +600,7 @@ nl:
         destroy:
           valid: Levering service met succes verwijderd
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: U moet een bezorgservice selecteren
       pages:
         update:
           valid: Pagina was succesvol bijgewerkt
