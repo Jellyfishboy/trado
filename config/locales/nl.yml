@@ -501,7 +501,7 @@ nl:
       not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
       timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
       unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      unconfirmed: "U moet uw account bevestigen voordat u verder kunt gaan."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -557,7 +557,7 @@ nl:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
+          draft: Uw product is succesvol opgeslagen als concept
           publish: Uw product is succesvol gepubliceerd. Het is nu live in uw winkel
         destroy:
           valid: Product met succes verwijderd
