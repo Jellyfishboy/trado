@@ -560,20 +560,20 @@ nl:
           draft: Your product has been saved successfully as a draft
           publish: Uw product is succesvol gepubliceerd. Het is nu live in uw winkel
         destroy:
-          valid: Product was successfully deleted
+          valid: Product met succes verwijderd
         archive:
-          valid: Product was successfully archived
+          valid: Product met succes gearchiveerd
       skus:
         variants:
           create:
             invalid: Variant options can't be blank
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Accessoire met succes aangemaakt
         update:
-          valid: Accessory was successfully updated
+          valid: Accessoire met succes bijgewerkt
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Accessoire met succes verwijderd
       admin:
         update:
           valid: Store settings were successfully updated
@@ -582,9 +582,9 @@ nl:
           limit_reached: U heeft geen afbeelding voor dit product
       categories:
         create:
-          valid: Category was successfully created
+          valid: Categorie met succes aangemaakt
         update:
-          valid: Category was successfully updated
+          valid: Categorie met succes bijgewerkt
       delivery_service_prices:
         create:
           valid: Levering serviceprijs is succesvol aangemaakt
@@ -606,7 +606,7 @@ nl:
           valid: Page was successfully updated
       users:
         update:
-          valid: Profile was successfully updated
+          valid: Product met succes bijgewerkt
           invalid: Er is een fout opgetreden bij het bijwerken van uw profielgegevens
     orders:
       destroy:
