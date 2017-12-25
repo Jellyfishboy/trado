@@ -137,8 +137,8 @@ nl:
       header: Nieuwe Categorie
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
+      title: Levering prijzen voor %{service_name}
+      header: Levering prijzen voor %{service_name}
       delivery_service_index: Leveringsdiensten
       add_tooltip: Leveringskosten toevoegen
       no_records: You don't have any prices for %{service_name} yet.
@@ -594,11 +594,11 @@ nl:
           valid: Levering serviceprijs is succesvol verwijderd
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Levering service met succes aangemaakt
         update:
-          valid: Delivery service was successfully updated
+          valid: Levering service met succes bijgewerkt
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Levering service met succes verwijderd
         set_countries:
           select_tag: You need to select a delivery service
       pages:
