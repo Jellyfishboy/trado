@@ -75,7 +75,7 @@ nl:
       name_label: Naam
       rate_label: Beoordelen
     currency:
-      header: Currency & price display
+      header: Toon valuta en prijs
       description: Bepaal de valutaeenheid waarmee u in uw winkel werkt en of uw klanten de productprijzen moeten zien, inclusief belastingen.
       currency_label: Valuta
       price_exc_label: Prijs inc. & excl. btw
@@ -157,7 +157,7 @@ nl:
         price_label: Prijs
         description_label: Omschrijving
       dimension_allowance:
-        header: Dimension Allowance
+        header: Toegestane afmetingen
         description: Voer de maat en het gewicht in voor deze leverprijs.
         min_weight_label: Minimum Gewicht
         max_weight_label: Maximaal Gewicht
@@ -196,13 +196,13 @@ nl:
       gross_price: Bruto prijs
     form:
       delivery_service_details:
-        header: Delivery Service Details
+        header: Levering service details
         description: Definieer de koeriersnaam, naam en beschrijving van uw bezorgservice.
         courier_name_label: Koeriersnaam
         name_label: Naam
         description_label: Omschrijving
       order_constraints:
-        header: Order Constraints
+        header: Bestellingsbeperkingen
         description: Beperk een bezorgservice tot de totale prijs van een bestelling.
         price_range_label: Prijsklasse
       tracking:
@@ -227,9 +227,9 @@ nl:
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
+        header: Meer Info voor de transactie
         error_code: Foutcode
-        stripe_charge_id: Stripe Charge Id
+        stripe_charge_id: Strip-lading Id
         paypal_transaction_id: PayPal Transactie Id
     edit:
       modal:
@@ -375,7 +375,7 @@ nl:
         accessories_label: Onderdelen
         related_products_label: Gerelateerde producten
         select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        select_related_products_placeholder: Selecteer gerelateerde producten
       product_details:
         header: Productdetails
         description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
@@ -421,14 +421,14 @@ nl:
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
+          header: Voeg voorraad aanpassing voor
           current_stock: Huidige Voorraad is
           description_label: Omschrijving
           adjustment_label: Aanpassing
           submit_button: Inzenden
       variants:
         modal:
-          header: Configure Variant Options
+          header: Variant-opties configureren
           reset_button: Reset varianten
           submit_button: Inzenden
     stock:
@@ -493,20 +493,20 @@ nl:
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te bevestigen."
       send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "U bent al aangemeld."
       inactive: "Your account was not activated yet."
       invalid: "Ongeldig e-mailadres of wachtwoord."
       invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
+      locked: "Uw account is vergrendeld."
       not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
       timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "U moet uw account bevestigen voordat u verder kunt gaan."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Instructies voor bevestiging"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instructies voor wachtwoord resetten"
       unlock_instructions:
         subject: "Instructies voor deblokkeren"
     omniauth_callbacks:
@@ -527,8 +527,8 @@ nl:
       update_needs_confirmation: "Je hebt je account succesvol bijgewerkt. We moeten echter uw nieuwe e-mailadres verifiëren. Controleer uw Email en klik op de bevestigingslink om de bevestiging van uw e-mailadres te voltooien."
       updated: "You updated your account successfully."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Inloggen succesvol."
+      signed_out: "U bent succesvol uitgelogd."
     unlocks:
       send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te ontgrendelen."
       send_paranoid_instructions: "Als uw account al bestaat, ontvangt u een e-mail met instructies over hoe u deze kunt ontgrendelen binnen enkele minuten."
@@ -545,7 +545,7 @@ nl:
         other: "%{count} fouten hebben voorkomen dat %{resource} wordt opgeslagen:"
   mailers:
     contact_message:
-      title: Received a new message from
+      title: Een nieuw bericht ontvangen van
       header: Nieuw Bericht
       hello: Hallo
       name_prefix: You have received the following information from
