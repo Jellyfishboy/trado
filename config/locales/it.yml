@@ -123,35 +123,35 @@ it:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Nascosto
+      submit_button: Inviare
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Editare Categoria
+      breadcrumb: Editare
+      category_index: Categorie
+      header: Editare Categoria
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nuova Categoria
+      breadcrumb: Nuovo
+      category_index: Categorie
+      header: Nuova Categoria
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Prezzi di consegna per %{service_name}
+      header: Prezzi di consegna per %{service_name}
+      delivery_service_index: Servizi di Consegna
+      add_tooltip: Aggiungere Prezzi di Consegna
+      no_records: Ancora non hai nessun prezzo per %{service_name}.
+      code: Codice
+      description: Descrizione
+      weight: Parametri di Peso
+      length: Parametri di Lunghezza
+      thickness: Parametri di Spessore
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     form:
       delivery_price_details:
-        header: Delivery Price Details
+        header: Dettagli del Prezzo di Consegna
         description: Set the code, price and description for this delivery price.
         code_label: Code
         price_label: Price
