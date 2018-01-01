@@ -1,18 +1,18 @@
 it:
   global:
-    none_available: None Available
+    none_available: Non Disponibile
   modal:
-    close_button: Close
+    close_button: Chiudere
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
+      title: Accessori
+      breadcrumb: Accessori
+      header: Accessori
+      add_tooltip: Aggiungere Accessorio
+      no_records: Non hai nessun accesorio ancora.
+      part_number: Parte numero
+      name: Nome
+      weight: Peso
       cost_value: Cost Value
       net_price: Net Price
       gross_price: Gross Price
@@ -20,8 +20,8 @@ it:
       accessory_detail:
         header: Accessory Details
         description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        name_label: Nome
+        part_number_label: Parte Numero
       weight_price:
         header: Weight & Price
         description: Set the weight, net price and original cost value for your accessory.
