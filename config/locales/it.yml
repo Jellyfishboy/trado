@@ -257,14 +257,14 @@ it:
     show:
       title: 'Ordine #%{order_id}'
       orders_index: Ordini
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      cancel_order_tooltip: Cancellare Ordine
+      header: 'Ordine #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
+        header: Dettagli della Consegna
+        email: E-mail
+        status: Stato
+        dispatch_date: Data di Spedizione
+        delivery_service: Servizio di Consegna
         tracking: Tracking
       billing_address:
         header: Billing Address
