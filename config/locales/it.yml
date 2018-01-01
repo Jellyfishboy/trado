@@ -13,9 +13,9 @@ it:
       part_number: Parte numero
       name: Nome
       weight: Peso
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      cost_value: Valore di Costo
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     form:
       accessory_detail:
         header: Accessory Details
