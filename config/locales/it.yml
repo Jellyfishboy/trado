@@ -49,17 +49,17 @@ it:
     gross_income_transactions: Reddito Lordo
     net_income_transactions: Reddito Netto
     tax_transactions: Imposta
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
+    provider_fees_transactions: Quota del Fornitore
+    delivery_fees_transactions: Quota di Spedizione
     activity: Attività
-    activity_active_carts: Active Carts
+    activity_active_carts: Carrelli Attivi
     activity_incomplete_orders: Ordini Incompleti
   settings:
     title: Impostazioni
     breadcrumb: Impostazioni
     header: Impostazioni
     store_detail:
-      header: Store Details
+      header: Dettagli della Ditta
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
       name_label: Name
       email_label: Email
