@@ -60,7 +60,7 @@ it:
     header: Impostazioni
     store_detail:
       header: Dettagli della Ditta
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      description: Stabilire il nome, e-mail, logo e tema della tua ditta. L'e-mail sarà utilizzate per il modulo di contatto e importanti aggiornamenti di amministrazione.
       name_label: Name
       email_label: Email
       logo_label: Logo
