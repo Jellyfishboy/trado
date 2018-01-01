@@ -10,7 +10,7 @@ it:
       header: Accessori
       add_tooltip: Aggiungere Accessorio
       no_records: Non hai nessun accesorio ancora.
-      part_number: Parte numero
+      part_number: Numero di pezzo
       name: Nome
       weight: Peso
       cost_value: Valore di Costo
@@ -18,15 +18,15 @@ it:
       gross_price: Prezzo Lordo
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
+        header: Dettagli dell'Accessorio
+        description: Stabilire il nome e numero di pezzo dal tuo accessorio.
         name_label: Nome
-        part_number_label: Parte Numero
+        part_number_label: Numero di Pezzo
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
+        header: Peso & Prezzo
+        description: Stabilire il peso, prezzo netto e costo di valore originale dal tuo accessorio.
         weight_label: Peso
-        cost_value_label: Cost Value
+        cost_value_label: Valore di Costo
         net_price_label: Net Price
       submit_button: Submit
     edit:
