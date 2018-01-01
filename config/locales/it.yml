@@ -271,24 +271,24 @@ it:
       delivery_address:
         header: Delivery Address
       payment_details:
-        header: Payment Details
+        header: Dettagli de Pagamento
         card_number: Card Number
         expiry_date: Expiry Date
       order_items:
         header: Order Items
-        item: Item
+        item: Elemento
         sku: SKU
-        price: Price
+        price: Prezzo
         quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        total: Totale
+        delivery: Consegna
+        subtotal: Sottotale
+        tax: Imposta
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
+        header: Transazioni
+        transaction_type: Modo di Transazione
+        payment_type: Modo di Pagamento
+        payment_status: Stato di Pagamento
         fee: Fee
         net_amount: Net Amount
         gross_amount: Gross Amount
