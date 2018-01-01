@@ -152,29 +152,29 @@ it:
     form:
       delivery_price_details:
         header: Dettagli del Prezzo di Consegna
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        description: Stabilire il codice, prezzo e descrizione per questo prezzo di consegna.
+        code_label: Codice
+        price_label: Prezzo
+        description_label: Descrizione
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Tolleranza della Dimensione
+        description: Specificare la tolleranza della dimensione e il peso per questo prezzo di consegna.
+        min_weight_label: Peso Minimo
+        max_weight_label: Peso Massimo
+        min_length_label: Lunghezza Minima
+        max_length_label: Lunghezza Massima
+        min_thickness_label: Spessore Minimo
+        max_thickness_label: Spessore Massimo
+      submit_button: Inviare
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Editare Prezzo di Consegna
+      breadcrumb: Editare
+      delivery_service_index: Servizi di Consegna
+      header: Editare il Prezzo di Consegna
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
+      title: Nuovo Prezzo di Consegna
+      breadcrumb: Nuovo
+      delivery_service_index: Servizi di Consegna
       header: New Delivery Pricing
   delivery_services:
     countries_modal:
