@@ -175,16 +175,16 @@ it:
       title: Nuovo Prezzo di Consegna
       breadcrumb: Nuovo
       delivery_service_index: Servizi di Consegna
-      header: New Delivery Pricing
+      header: Nuovo Prezzo di Consegna
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Copiare i Paesi con Servizio di Consegna
+      description: 'Selezionare quale servizio di consegna vuoi copiare della lista di paesi:'
+      select_prompt: Selezionare servizio di consegna...
+      submit_button: Inviare
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Servizi di Consegna
+      breadcrumb: Servizi di Consegna
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
@@ -248,15 +248,15 @@ it:
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Nome e Cognome
+      payment_type: Modo di Pagamento
+      payment_status: Stato di Pagamento
+      delivery_status: Stato di Consegna
+      gross_amount: Importo Lordo
+      last_updated: Ultimo Aggiornamento
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
+      title: 'Ordine #%{order_id}'
+      orders_index: Ordini
       cancel_order_tooltip: Cancel Order
       header: 'Order #%{order_id}'
       delivery_details:
