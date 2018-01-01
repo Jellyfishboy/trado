@@ -43,12 +43,12 @@ it:
     header: Cruscotto
     orders: Ordini
     completed_orders: Completato
-    pending_orders: Pending
+    pending_orders: In Attesa
     failed_orders: Fallito
-    transactions: Transactions
+    transactions: Transazioni
     gross_income_transactions: Reddito Lordo
-    net_income_transactions: Net Income
-    tax_transactions: Tax
+    net_income_transactions: Reddito Netto
+    tax_transactions: Imposta
     provider_fees_transactions: Provider Fees
     delivery_fees_transactions: Delivery Fees
     activity: Attività
