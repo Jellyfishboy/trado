@@ -27,8 +27,8 @@ it:
         description: Stabilire il peso, prezzo netto e costo di valore originale dal tuo accessorio.
         weight_label: Peso
         cost_value_label: Valore di Costo
-        net_price_label: Net Price
-      submit_button: Submit
+        net_price_label: Prezzo Netto
+      submit_button: Inviare
     edit:
       title: Editare Accessorio
       breadcrumb: Editare
@@ -41,19 +41,19 @@ it:
       header: New Accessorio
   dashboard:
     header: Cruscotto
-    orders: Orders
+    orders: Ordini
     completed_orders: Completato
     pending_orders: Pending
     failed_orders: Fallito
     transactions: Transactions
-    gross_income_transactions: Gross Income
+    gross_income_transactions: Reddito Lordo
     net_income_transactions: Net Income
     tax_transactions: Tax
     provider_fees_transactions: Provider Fees
     delivery_fees_transactions: Delivery Fees
     activity: Attività
     activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    activity_incomplete_orders: Ordini Incompleti
   settings:
     title: Impostazioni
     breadcrumb: Impostazioni
