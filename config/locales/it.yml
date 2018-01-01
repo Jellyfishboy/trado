@@ -273,9 +273,9 @@ it:
       payment_details:
         header: Dettagli de Pagamento
         card_number: Card Number
-        expiry_date: Expiry Date
+        expiry_date: Data di Scadenza
       order_items:
-        header: Order Items
+        header: Ordinare Gli Elementi
         item: Elemento
         sku: SKU
         price: Prezzo
@@ -289,7 +289,7 @@ it:
         transaction_type: Modo di Transazione
         payment_type: Modo di Pagamento
         payment_status: Stato di Pagamento
-        fee: Fee
+        fee: Tassa
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
@@ -298,18 +298,18 @@ it:
         number: Tracking Number
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
+      title: Titolo
+      breadcrumb: Pagine
+      header: Pagine
       sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      visible: Visibile
+      last_updated: Ultimo Aggiornamento
     form:
-      header: Edit Page
+      header: Editare Pagina
       write_your_page:
-        header: Write Your Page
+        header: Scrive La Tua Pagina
         description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        title_label: Titolo
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
@@ -353,14 +353,14 @@ it:
       sku: SKU
       part_number: Part no.
       name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      variant: Variante
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Editare Prodotto
+      breadcrumb: Editare
+      product_index: Prodotti
+      header: Editare Prodotto
     form:
       publish_button: Publish
       save_button: Save
