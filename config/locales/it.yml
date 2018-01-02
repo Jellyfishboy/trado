@@ -373,13 +373,13 @@ it:
         header: Associazioni
         description: Seleziona gli accessori associati e i prodotti correlati per il tuo prodotto (i prodotti correlati verranno visualizzati nella pagina del prodotto).
         accessories_label: Accessori
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        related_products_label: Prodotti Correlati
+        select_accessory_placeholder: Seleziona accessori associati
+        select_related_products_placeholder: Seleziona prodotti correlati
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
+        header: Dettagli di Prodotto
+        description: Stabilisce il nome, descrizione e ordinamento per la tua categoria.
+        select_category_placeholder: Seleziona una categoria
         part_number_label: Part Number
         sku_label: SKU
         name_label: Name
