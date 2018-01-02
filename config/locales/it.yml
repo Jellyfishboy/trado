@@ -380,9 +380,9 @@ it:
         header: Dettagli di Prodotto
         description: Stabilisce il nome, descrizione e ordinamento per la tua categoria.
         select_category_placeholder: Seleziona una categoria
-        part_number_label: Part Number
+        part_number_label: Numero di Pezzo
         sku_label: SKU
-        name_label: Name
+        name_label: Nome
         weighting_label: Weighting
         short_description_label: Short Description
         description_label: Description
