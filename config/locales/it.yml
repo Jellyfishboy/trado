@@ -393,11 +393,11 @@ it:
         meta_description_label: Meta Descrizione
       images:
         header: Immagini
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        description: Carica e modifica gli immagini di questo prodotto. Anche puoi impostare l'immagine predefinita per visualizzare sulla pagina del prodotto.
+        add_image: Aggiungere Immagine
+        no_records: No hai nessuna immagine per questo prodotto.
       skus:
-        header: Variants
+        header: Varianti
         description: Configure the variant options for selling this product.
         variant_options: Variant Options
         add_variant: Add Variant
