@@ -383,12 +383,12 @@ it:
         part_number_label: Numero di Pezzo
         sku_label: SKU
         name_label: Nome
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        weighting_label: Ponderazione
+        short_description_label: Descrizione Breve
+        description_label: Descrizione
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
+        header: Motori di Ricerca
+        description: Imposta il titolo della pagina e la meta descrizione per aiutare a definire come viene mostrata una pagina nei motori di ricerca.
         page_title_label: Page Title
         meta_description_label: Meta Description
       images:
