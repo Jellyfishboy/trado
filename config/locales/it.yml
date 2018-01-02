@@ -482,33 +482,33 @@ it:
       header: Profilo
       profile_settings:
         header: Impostazioni di Profilo
-        description: Stabilisci il nome e l'immagine di profilo per la tua account amministrativa.
+        description: Stabilisci il nome e l'immagine di profilo per il tuo account amministrativo.
         first_name_label: Nome
         last_name_label: Cognome
         profile_picture_label: Immagine di Profilo
       submit_button: Inviare
   devise:
     confirmations:
-      confirmed: "La tua account è stata confermata con successo. Adesso sei stato registrato."
-      send_instructions: "In pochi minuti, riceverai un'e-mail con istruzioni riguardo come confermare la tua account."
-      send_paranoid_instructions: "Se il tuo indirizzo di e-mail esiste in la nostra banca dati, in pochi minuti riceverai un'e-mail con istruzioni reguardo come confermare la tua account."
+      confirmed: "Il tuo account è stato confermato con successo. Adesso sei stato registrato."
+      send_instructions: "In pochi minuti, riceverai un'e-mail con istruzioni riguardo come confermare il tuo account."
+      send_paranoid_instructions: "Se il tuo indirizzo di e-mail esiste in la nostra banca dati, in pochi minuti riceverai un'e-mail con istruzioni reguardo come confermare il tuo account."
     failure:
       already_authenticated: "Sei stato registrato."
-      inactive: "La tua account non è ancora attivata."
-      invalid: "E-mail o password invalido."
+      inactive: "Il tuo account non è ancora attivata."
+      invalid: "E-mail o password non valido."
       invalid_token: "Token di autenticazione non valido."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      locked: "Il tuo account è bloccato."
+      not_found_in_database: "E-mail o password non valido."
+      timeout: "La tua sessione è scaduta, accedi nuovamente per continuare."
+      unauthenticated: "Devi registrarti o accedere prima di continuare."
+      unconfirmed: "Devi confermare il tuo account prima di continuare."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Istruzioni di confermazione"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Istruzioni Sbloccati"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
