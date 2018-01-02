@@ -389,10 +389,10 @@ it:
       search_engines:
         header: Motori di Ricerca
         description: Imposta il titolo della pagina e la meta descrizione per aiutare a definire come viene mostrata una pagina nei motori di ricerca.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        page_title_label: Titolo della Pagina
+        meta_description_label: Meta Descrizione
       images:
-        header: Images
+        header: Immagini
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Add Image
         no_records: You do not have any images for this product.
