@@ -398,20 +398,20 @@ it:
         no_records: No hai nessuna immagine per questo prodotto.
       skus:
         header: Varianti
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
+        description: Imposta le diverse opzioni varianti per vendere questo prodotto.
+        variant_options: Varianti Opzioni
+        add_variant: Aggiungere Variante
+        no_records: Non hai nessuna variante per questo prodotto.
+        code: Codice
         stock: Stock
-        cost_value: Cost Value
-        price: Price
+        cost_value: Valore di Costo
+        price: Prezzo
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
+          add_variant: Aggiungere Variante
+          edit_variant: Editare Variante
+          code_label: Codice
+          length_label: Lunghezza
+          weight_label: Peso
           thickness_label: Thickness
           stock_label: Stock
           stock_warning_level_label: Stock Warning Level
@@ -471,18 +471,18 @@ it:
     attachments:
       modal:
         add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        edit_image: Editare Immagine
+        file_label: Archivio
+        default_label: Predefinito
+        submit_button: Inviare
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profilo
+      breadcrumb: Profilo
+      header: Profilo
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
+        header: Impostazioni di Profilo
+        description: Stabilisci il nome e l'immagine di profilo per la tua account amministrativa.
         first_name_label: First Name
         last_name_label: Last Name
         profile_picture_label: Profile Picture
