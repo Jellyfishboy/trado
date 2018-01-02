@@ -483,20 +483,20 @@ it:
       profile_settings:
         header: Impostazioni di Profilo
         description: Stabilisci il nome e l'immagine di profilo per la tua account amministrativa.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        first_name_label: Nome
+        last_name_label: Cognome
+        profile_picture_label: Immagine di Profilo
+      submit_button: Inviare
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "La tua account è stata confermata con successo. Adesso sei stato registrato."
+      send_instructions: "In pochi minuti, riceverai un'e-mail con istruzioni riguardo come confermare la tua account."
+      send_paranoid_instructions: "Se il tuo indirizzo di e-mail esiste in la nostra banca dati, in pochi minuti riceverai un'e-mail con istruzioni reguardo come confermare la tua account."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
+      already_authenticated: "Sei stato registrato."
+      inactive: "La tua account non è ancora attivata."
+      invalid: "E-mail o password invalido."
+      invalid_token: "Token di autenticazione non valido."
       locked: "Your account is locked."
       not_found_in_database: "Invalid email or password."
       timeout: "Your session expired, please sign in again to continue."
