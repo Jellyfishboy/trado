@@ -371,8 +371,8 @@ it:
         tags_label: Etichetta
       associations:
         header: Associazioni
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
+        description: Seleziona gli accessori associati e i prodotti correlati per il tuo prodotto (i prodotti correlati verranno visualizzati nella pagina del prodotto).
+        accessories_label: Accessori
         related_products_label: Related Products
         select_accessory_placeholder: Select associated accessories
         select_related_products_placeholder: Select related products
