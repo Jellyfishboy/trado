@@ -362,15 +362,15 @@ it:
       product_index: Prodotti
       header: Editare Prodotto
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Pubblicare
+      save_button: Salvare
       additional_options:
-        header: Additional Options
+        header: Opzioni Aggiuntive
         description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        featured_label: Caratteristico
+        tags_label: Etichetta
       associations:
-        header: Associations
+        header: Associazioni
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
         accessories_label: Accessories
         related_products_label: Related Products
