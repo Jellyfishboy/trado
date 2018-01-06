@@ -1,8 +1,8 @@
 es:
   global:
-    none_available: None Available
+    none_available: Ninguno disponible
   modal:
-    close_button: Close
+    close_button: Cerrar
   accessories:
     index:
       title: 配件
@@ -49,10 +49,10 @@ es:
     gross_income_transactions: 总收入
     net_income_transactions: 净收入
     tax_transactions: 税
-    provider_fees_transactions: Provider Fees
+    provider_fees_transactions: Honorarios del proveedor
     delivery_fees_transactions: 配送费
     activity: 动态
-    activity_active_carts: Active Carts
+    activity_active_carts: Carros activos
     activity_incomplete_orders: 未完成订单
   settings:
     title: 设置
@@ -152,13 +152,13 @@ es:
     form:
       delivery_price_details:
         header: 配送价格详情
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
+        description: Establece el código, precio y descripción para este precio de entrega.
+        code_label: Código
         price_label: 价格
         description_label: 描述
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
+        header: Dimensión permitida
+        description: Especifica la dimensión y el peso permitidos para este precio de entrega.
         min_weight_label: 最小重量
         max_weight_label: 最大重量
         min_length_label: 最小长度
