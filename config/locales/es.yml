@@ -227,14 +227,14 @@ es:
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Más información de la transacción
+        error_code: Código de Error
+        stripe_charge_id: Id de carga Stripe
+        paypal_transaction_id: Id de transacción PayPal
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
+        header: Editar Pedido
+        dispatch_date_label: Fecha de envío
         consignment_number_label: Consignment Number
         submit_button: Submit
     index:
@@ -294,29 +294,29 @@ es:
         gross_amount: Gross Amount
         last_updated: Last Updated
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Sitio web de seguimiento
+        number: Número de seguimiento
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
+      title: Título
+      breadcrumb: Páginas
+      header: Páginas
+      sorting: Ordenando
       visible: Visible
-      last_updated: Last Updated
+      last_updated: Última actualización
     form:
-      header: Edit Page
+      header: Editar página
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        header: Escribe tu página
+        description: Establece el título de tu página, el menú, el orden de clasificación y agregue el contenido de su página.
+        title_label: Título
+        menu_title_label: Título del menú
+        sorting_label: Ordenado
+        content_label: Contenido
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
+        header: Motores de búsqueda
+        description: Configurar el título de la página, la meta descripción y el URL slug; esto ayuda a definir cómo la página se muestra en los motores de búsqueda.
+        page_title_label: Título de Página
         meta_description_label: Meta Description
         slug_label: Slug
       visibility:
