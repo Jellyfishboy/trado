@@ -179,51 +179,51 @@ es:
   delivery_services:
     countries_modal:
       header: 复制配送服务国家
-      description: 'Select which delivery service you would like to copy the country list from:'
+      description: 'Seleccione de cuál servicio de entrega le gustaría copiar la lista de países:'
       select_prompt: 选择一个配送服务...
       submit_button: 提交
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Servicio de Entrega
+      breadcrumb: Servicio de Entrega
+      header: Servicio de Entrega
+      add_tooltip: Agregar Servicio de Entrega
+      no_records: No tiene servicios de entrega todavía.
+      courier: Mensajero
+      name: Nombre
+      description: Descripción
+      code: Código
+      net_price: Precio neto
+      gross_price: Precio bruto
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Detalles del Servicio de Entregas
+        description: Establecer el nombre de la empresa de mensajería, el nombre y la descripción de su servicio de entrega.
+        courier_name_label: Nombre del mensajero
+        name_label: Nombre
+        description_label: Descripción
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Restricciones de la Orden
+        description: Limitar el servicio de entrega por el precio total de una orden.
+        price_range_label: Rango de precios
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Rastreo
+        description_html: 'Configurar el seguimiento para su servicio de entrega. Utilice <b>{{consignment_number}}</b> para insertar el número de lote.'
+        tracking_url_label: Url de seguimiento
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Países
+        description_html: 'Seleccione los países en los que está disponible este servicio de entrega, o <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copia</a> una lista de países de servicio existente.'
+        country_placeholder: Seleccione los países asociados...
+      submit_button: Enviar
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Editar Servicio de Entrega
+      breadcrumb: Editar
+      delivery_service_index: Servicio de Entrega
+      header: Editar Servicio de Entrega
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Nuevo Servicio de Entrega
+      breadcrumb: Nuevo
+      delivery_service_index: Servicio de Entrega
+      header: Nuevo Servicio de Entrega
   orders:
     transactions:
       modal:
