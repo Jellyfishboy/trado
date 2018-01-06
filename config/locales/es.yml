@@ -315,45 +315,45 @@ es:
         content_label: Contenido
       search_engines:
         header: Motores de búsqueda
-        description: Configurar el título de la página, la meta descripción y el URL slug; esto ayuda a definir cómo la página se muestra en los motores de búsqueda.
+        description: Configurar el título de la página, la meta descripción y el slug de URL; esto ayuda a definir cómo la página se muestra en los motores de búsqueda.
         page_title_label: Título de Página
-        meta_description_label: Meta Description
+        meta_description_label: Meta Descripción
         slug_label: Slug
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
+        header: Visibilidad
+        description: Establecer si la página es visible en tu tienda.
         visible_label: Visible
-        hidden_label: Hidden
+        hidden_label: Oculto
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Plantilla
+        description: Selecciona la plantilla que usará esta página en tu tienda.
+      submit_button: Enviar
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Editar Página
+      breadcrumb: Editar
+      pages_index: Páginas
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
+      title: Productos
+      breadcrumb: Productos
+      header: Productos
+      add_product_tooltip: Agregar producto
+      stock_management_tooltip: Gestión de existencias
+      no_records: Aún no tiene productos.
+      show_all_filter: Mostrar todo
+      published_filter: Publicado
+      draft_filter: Borrador
+      archived_filter: Archivado
+      featured_filter: Destacados
+      filter_by: Filtrar por
+      weighting_sorting: Puntuación
+      name_sorting: Nombre
+      popularity_sorting: Popularidad
+      sort_by: Ordenar por
       sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
+      part_number: Parte no.
+      name: Nombre
+      variant: Variante
       net_price: Net Price
       gross_price: Gross Price
     edit:
@@ -413,19 +413,19 @@ es:
           length_label: Length
           weight_label: Weight
           thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          stock_label: Existencias
+          stock_warning_level_label: Nivel de alerta de existencias
+          cost_value_label: Valor de costo
+          price_label: Precio
+          submit_button: Enviar
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Agregar ajuste de existencias para
+          current_stock: Las existencias actuales son
+          description_label: Descripción
+          adjustment_label: Ajustes
+          submit_button: Enviar
       variants:
         modal:
           header: Configure Variant Options
