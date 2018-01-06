@@ -235,59 +235,59 @@ es:
       modal:
         header: Editar Pedido
         dispatch_date_label: Fecha de envío
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        consignment_number_label: Número de envío
+        submit_button: Enviar
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
-      no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      title: Órdenes
+      breadcrumb: Órdenes
+      header: Órdenes
+      delivery_show_all: Mostrar todo
+      delivery_dispatched: Despachado
+      delivery_pending: Pendiente
+      delivery_select: Envío
+      payment_select: Pago
+      no_records: No tiene pedidos que cumplan con esos criterios
+      order_number: N. º de pedido
+      full_name: Nombre completo
+      payment_type: Forma de pago
+      payment_status: Estado de pago
+      delivery_status: Estado de entrega
+      gross_amount: Total bruto
+      last_updated: Última actualización
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Orden #%{order_id}'
+      orders_index: Pedidos
+      cancel_order_tooltip: Cancelar pedido
+      header: 'Orden #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Detalles de la entrega
+        email: Correo Electrónico
+        status: Estado
+        dispatch_date: Fecha de envío
+        delivery_service: Servicio de Entrega
+        tracking: Rastreo
       billing_address:
-        header: Billing Address
+        header: Dirección de facturación
       delivery_address:
-        header: Delivery Address
+        header: Dirección de entrega
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Detalles de pago
+        card_number: Número de Tarjeta
+        expiry_date: Fecha de vencimiento
       order_items:
-        header: Order Items
-        item: Item
+        header: Artículos del pedido
+        item: Artículo
         sku: SKU
-        price: Price
-        quantity: Qty
+        price: Precio
+        quantity: Cantidad
         total: Total
-        delivery: Delivery
+        delivery: Entrega
         subtotal: Subtotal
-        tax: Tax
+        tax: Impuesto
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
+        header: Transacciones
+        transaction_type: Tipo de transacción
+        payment_type: Tipo de pago
         payment_status: Payment Status
         fee: Fee
         net_amount: Net Amount
