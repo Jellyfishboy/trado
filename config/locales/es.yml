@@ -428,53 +428,53 @@ es:
           submit_button: Enviar
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Configurar opciones de variante
+          reset_button: Restablecer variantes
+          submit_button: Enviar
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        title: Gestión de existencias
+        breadcrumb: Gestión de existencias
+        product_index: Productos
+        add_stock_tooltip: Agregar existencias
+        header: Gestión de existencias
+        show_all_filter: Mostrar todo
+        low_filter: Bajo
+        stock_filer: Existencias
+        no_records: Aún no posee ningún producto SKU.
         sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        name: Nombre
+        variant: Variante
+        stock: Existencia
+        stock_warning_level: Nivel de alerta de existencias
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Gestión de existencias
+        product_index: Productos
+        stock_management_index: Gestión de existencias
+        add_stock_adjustment_tooltip: Agregar ajuste de existencias
+        header: Histórico de existencias
+        date: Fecha
+        description: Descripción
+        adjustment: Ajuste
+        stock: Existencias
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Nueva existencia
+        breadcrumb: Nuevo
+        product_index: Productos
+        stock_management_index: Gestión de existencias
+        header: Nueva existencia
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Descripción
+        adjustment_label: Ajuste
+        submit_button: Enviar
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Agregar imagen
+        edit_image: Editar imagen
+        file_label: Archivo
+        default_label: Por defecto
+        submit_button: Enviar
   users:
     edit:
       title: Profile
@@ -591,25 +591,25 @@ es:
         update:
           valid: Delivery service price was successfully updated
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: El precio del servicio de entrega fue eliminado correctamente
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: El servicio de entrega fue creado correctamente
         update:
-          valid: Delivery service was successfully updated
+          valid: El servicio de entrega fue actualizado correctamente
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: El servicio de entrega fue eliminado correctamente
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Debe seleccionar un servicio de entrega
       pages:
         update:
-          valid: Page was successfully updated
+          valid: La página se actualizó correctamente
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: El perfil se actualizó correctamente
+          invalid: Hubo un error al intentar actualizar los detalles de tu perfil
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Su pedido ha sido cancelado
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Ha ocurrido un error al intentar completar su orden. Por favor, inténtelo de nuevo
