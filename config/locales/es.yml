@@ -532,51 +532,51 @@ es:
     unlocks:
       send_instructions: "Recibirá, en pocos minutos, un correo electrónico con instrucciones sobre cómo desbloquear su cuenta."
       send_paranoid_instructions: "Si su cuenta existe, en pocos minutos recibirá un correo electrónico con instrucciones sobre cómo desbloquearla."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "Su cuenta ha sido desbloqueada con éxito. Por favor, inicie sesión para continuar."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      already_confirmed: "ya ha sido confirmad, por favor intente iniciar sesión"
+      confirmation_period_expired: "debe confirmarse dentro de %{period}, por favor, solicita una nueva"
       expired: "已过期，请申请一个新的"
       not_found: "未找到"
       not_locked: "未锁定"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 error prohibió que se guardara %{resource}:"
+        other: "%{count} errores evitaron que se guardara %{resource}:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Recibió un nuevo mensaje de
+      header: Nuevo mensaje
+      hello: Hola
+      name_prefix: Ha recibido la siguiente información de
+      message_title: Mensaje
+      email_title: Correo Electrónico
+      website_title: Sitio Web
+      thanks: Gracias
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Su producto se ha guardado, como borrador, con éxito
+          publish: Su producto ha sido publicado con éxito. Ahora está en su tienda
         destroy:
-          valid: Product was successfully deleted
+          valid: Producto eliminado con éxito
         archive:
-          valid: Product was successfully archived
+          valid: Producto archivado con éxito
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Las opciones de variante no pueden estar en blanco
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Accesorio creado con éxito
         update:
-          valid: Accessory was successfully updated
+          valid: Accesorio actualizado con éxito
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Accesorio eliminado con éxito
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Ajustes de tienda actualizados con éxito
       attachments:
         destroy:
           limit_reached: No tiene imágenes para este producto
