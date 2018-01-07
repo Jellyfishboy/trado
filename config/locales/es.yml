@@ -290,9 +290,9 @@ es:
         payment_type: Tipo de pago
         payment_status: Estado del pago
         fee: Cargo
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        net_amount: Cantidad neta
+        gross_amount: Cantidad bruta
+        last_updated: Última actualización
       tracking:
         website: Sitio web de seguimiento
         number: Número de seguimiento
@@ -354,45 +354,45 @@ es:
       part_number: Parte no.
       name: Nombre
       variant: Variante
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Precio neto
+      gross_price: Precio bruto
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Editar producto
+      breadcrumb: Editar
+      product_index: Productos
+      header: Editar producto
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Publicar
+      save_button: Guardar
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Opciones adicionales
+        description: Presenta tu producto y/o quita las opciones SKU de la página del producto.
+        featured_label: Destacados
+        tags_label: Etiqueta
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Asiciaciones
+        description: Selecciona los accesorios asociados y los productos relacionados para tu producto (Los productos relacionados serán mostrados en la página del producto).
+        accessories_label: Accesorios
+        related_products_label: Productos relacionados
+        select_accessory_placeholder: Seleccionar accesorios asociados
+        select_related_products_placeholder: Seleccionar productos relacionados
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Detalles del producto
+        description: Establezca el nombre, descripción y el orden de su categoría.
+        select_category_placeholder: Seleccionar categoría
+        part_number_label: Número de parte
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Nombre
+        weighting_label: Puntuación
+        short_description_label: Descripción corta
+        description_label: Descripción
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Motores de búsqueda
+        description: Establecer el título de la página y la meta descripción para ayudar a definir cómo será mostrada la página en los motores de búsqueda.
+        page_title_label: Título de página
+        meta_description_label: Meta descripción
       images:
-        header: Images
+        header: Imágenes
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Add Image
         no_records: You do not have any images for this product.
