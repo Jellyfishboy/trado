@@ -489,16 +489,16 @@ es:
       submit_button: Enviar
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Su cuenta ha sido exitosamente confirmada. Ahora está registrado."
+      send_instructions: "Recibirá un correo electrónico con instrucciones sobre cómo confirmar su cuenta en pocos minutos."
+      send_paranoid_instructions: "Si su dirección de correo electrónico existe en nuestra base de datos, recibirá un correo electrónico sobre cómo confirmar su cuenta en pocos minutos."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
+      already_authenticated: "Usted ya está registrado."
+      inactive: "Su cuenta no ha sido activada aún."
+      invalid: "Correo electrónico o contraseña inválidos."
+      invalid_token: "Código de autenticación inválido."
+      locked: "Su cuenta está bloqueada."
+      not_found_in_database: "Correo electrónico o contraseña inválidos."
       timeout: "您的会话已过期，请重新登录以继续操作。"
       unauthenticated: "您需要登录或注册才能继续。"
       unconfirmed: "您必须确认您的帐户才能继续操作。"
@@ -510,10 +510,10 @@ es:
       unlock_instructions:
         subject: "解锁说明"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "No ha sido posible autenticarte desde %{kind} porque \"%{reason}\"."
+      success: "Exitosamente autenticado desde la cuenta %{kind}."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      no_token: "No puede acceder a esta página a menos que ingrese desde un correo electrónico para restablecer tu contraseña. Si ingreso de un correo electrónico para restablecer la contraseña, por favor asegúrese de que está utilizando el URL proveído completo."
       send_instructions: "您将很快收到一封如何重置密码的电子邮件。"
       send_paranoid_instructions: "如果您的电子邮件地址存在于我们的数据库中，您将在几分钟内收到一封包含密码恢复链接的电子邮件地址。"
       updated: "您已成功修改密码，现在您已成功登录。"
@@ -524,14 +524,14 @@ es:
       signed_up_but_inactive: "您已成功注册，但是在您激活账户之前您仍然无法登录。"
       signed_up_but_locked: "您已成功注册，但是由于您的账户已被锁定，所以您尚无法登录。"
       signed_up_but_unconfirmed: "一封包含确认链接的邮件已发送到您的电子邮件，请打开链接以激活您的帐户。"
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      update_needs_confirmation: "Ha actualizado su cuenta con éxito, pero tenemos que verificar su nueva dirección de correo electrónico. Por favor verifique su correo electrónico y haga clic en el enlace de confirmación para finalizar la confirmación d su nueva dirección de correo electrónico."
       updated: "您已成功更新您的帐户。"
     sessions:
       signed_in: "您已成功登陆。"
       signed_out: "您已成功退出。"
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      send_instructions: "Recibirá, en pocos minutos, un correo electrónico con instrucciones sobre cómo desbloquear su cuenta."
+      send_paranoid_instructions: "Si su cuenta existe, en pocos minutos recibirá un correo electrónico con instrucciones sobre cómo desbloquearla."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
