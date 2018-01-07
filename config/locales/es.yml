@@ -393,26 +393,26 @@ es:
         meta_description_label: Meta descripción
       images:
         header: Imágenes
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        description: Subir y editar imágenes de este producto. También puede definir la imagen por defecto para mostrar en la página del producto.
+        add_image: Agregar imagen
+        no_records: No tiene imágenes de este producto.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        header: Variantes
+        description: Configurar las opciones de variante para vender este producto.
+        variant_options: Opciones de variante
+        add_variant: Agregar variante
+        no_records: No tiene variantes para este producto.
+        code: Código
+        stock: Existencias
+        cost_value: Valor de costo
+        price: Precio
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
+          add_variant: Agregar variante
+          edit_variant: Editar variante
+          code_label: Código
+          length_label: Longitud
+          weight_label: Ancho
+          thickness_label: Grosor
           stock_label: Existencias
           stock_warning_level_label: Nivel de alerta de existencias
           cost_value_label: Valor de costo
@@ -477,16 +477,16 @@ es:
         submit_button: Enviar
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Perfil
+      breadcrumb: Perfil
+      header: Perfil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Ajustes de perfil
+        description: Establezca el nombre y la foto de perfil para su cuenta de administración.
+        first_name_label: Primer nombre
+        last_name_label: Apellido
+        profile_picture_label: Foto de perfil
+      submit_button: Enviar
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
@@ -579,17 +579,17 @@ es:
           valid: Store settings were successfully updated
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: No tiene imágenes para este producto
       categories:
         create:
-          valid: Category was successfully created
+          valid: La categoría fue creada exitosamente
         update:
-          valid: Category was successfully updated
+          valid: La categoría fue actualizada exitosamente
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: El precio del servicio de entrega fue creado exitosamente
         update:
-          valid: Delivery service price was successfully updated
+          valid: El precio del servicio de entrega fue actualizado exitosamente
         destroy:
           valid: El precio del servicio de entrega fue eliminado correctamente
       delivery_services:
