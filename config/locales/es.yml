@@ -288,8 +288,8 @@ es:
         header: Transacciones
         transaction_type: Tipo de transacción
         payment_type: Tipo de pago
-        payment_status: Payment Status
-        fee: Fee
+        payment_status: Estado del pago
+        fee: Cargo
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
