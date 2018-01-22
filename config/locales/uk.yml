@@ -46,18 +46,18 @@ uk:
     pending_orders: В очікуванні
     failed_orders: Відхилено
     transactions: Транзакції
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    gross_income_transactions: Валовий прибуток
+    net_income_transactions: Чистий прибуток
+    tax_transactions: Податок
+    provider_fees_transactions: Комісія провайдера
+    delivery_fees_transactions: Вартість доставки
+    activity: Діяльність
+    activity_active_carts: Активні кошики
+    activity_incomplete_orders: Незавершені замовлення
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Налаштування
+    breadcrumb: Налаштування
+    header: Налаштування
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
