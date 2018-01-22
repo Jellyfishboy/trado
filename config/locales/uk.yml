@@ -5,20 +5,20 @@ uk:
     close_button: Закрити
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Аксесуари
+      breadcrumb: Аксесуари
+      header: Аксесуари
+      add_tooltip: Додати аксесуар
+      no_records: У вас ще немає жодного аксесуару.
+      part_number: Артикул №.
+      name: Назва
+      weight: Вага
+      cost_value: Вартість
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     form:
       accessory_detail:
-        header: Accessory Details
+        header: Характеристики аксесуару
         description: Set the name and part number for your accessory.
         name_label: Name
         part_number_label: Part Number
