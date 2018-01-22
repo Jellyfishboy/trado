@@ -19,33 +19,33 @@ uk:
     form:
       accessory_detail:
         header: Характеристики аксесуару
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        description: Додайте назву та номер артикулу до вашого аксесуару.
+        name_label: Назва
+        part_number_label: '№ артикулу'
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Вага та ціна
+        description: Задайте вагу, ціну нетто та початкову вартість для вашого аксесуару.
+        weight_label: Вага
+        cost_value_label: Вартість
+        net_price_label: Ціна нетто
+      submit_button: Надіслати
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Редагувати аксесуар
+      breadcrumb: Редагувати
+      accessory_index: Аксесуари
+      header: Редагувати аксесуар
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Новий аксесуар
+      breadcrumb: Новий
+      accessory_index: Аксесуари
+      header: Новий аксесуар
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
+    header: Панель
+    orders: Замовлення
+    completed_orders: Завершено
+    pending_orders: В очікуванні
+    failed_orders: Відхилено
+    transactions: Транзакції
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
     tax_transactions: Tax
