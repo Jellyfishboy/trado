@@ -1,8 +1,8 @@
 uk:
   global:
-    none_available: None Available
+    none_available: Недоступно
   modal:
-    close_button: Close
+    close_button: Закрити
   accessories:
     index:
       title: Accessories
