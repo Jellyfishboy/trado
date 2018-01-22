@@ -82,7 +82,7 @@ uk:
       price_inc_label: Ціна з податком
     mailchimp:
       header: Бюлетень MailChimp
-      description: Set the MailChimp list Id for your newsletter.
+      description: Встановіть ідентифікатор списку MailChimp для бюлетеню.
       list_id_label: List Id
     stripe:
       header: Stripe
