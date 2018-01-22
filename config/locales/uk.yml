@@ -59,8 +59,8 @@ uk:
     breadcrumb: Налаштування
     header: Налаштування
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Детальний опис магазину
+      description: Задайте назву, електронну пошту, логотип та тематику вашого магазину. Адрес електронної пошти використовуватиметься для форми зворотнього зв'язку та важливих оновлень адміністрації.
       name_label: Name
       email_label: Email
       logo_label: Logo
