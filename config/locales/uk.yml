@@ -79,9 +79,9 @@ uk:
       description: Введіть одиницю валюти, з якою ви працюєте в вашому магазині, та чи бажаєте ви, щоб покупці могли переглядати ціни на продукцію з урахуванням та без врахування податку.
       currency_label: Валюта
       price_exc_label: Ціна з податком та без нього
-      price_inc_label: Price inc. tax
+      price_inc_label: Ціна з податком
     mailchimp:
-      header: MailChimp Newsletter
+      header: Бюлетень MailChimp
       description: Set the MailChimp list Id for your newsletter.
       list_id_label: List Id
     stripe:
