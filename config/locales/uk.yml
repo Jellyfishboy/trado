@@ -86,7 +86,7 @@ uk:
       list_id_label: Ідентифікатор списку
     stripe:
       header: Смуга
-      description: Set the text you would like to display on your customer credit card statements.
+      description: Введіть текст, який би ви бажали щоб відображався в карткових виписках ваших клієнтів.
       statement_descriptor_label: Statement Descriptor
     google_analytics:
       header: Google Analytics
