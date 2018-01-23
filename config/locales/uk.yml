@@ -230,52 +230,52 @@ uk:
         header: Більш детальна інформація щодо транзакції
         error_code: Код помилки
         stripe_charge_id: Позначення сплати за смугу
-        paypal_transaction_id: PayPal Transaction Id
+        paypal_transaction_id: Код транзакції PayPal
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Редагувати замовлення
+        dispatch_date_label: Дата відправлення
+        consignment_number_label: Номер партії товару
+        submit_button: Надіслати
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      payment_select: Payment
-      no_records: You don't have any orders meeting those criterias
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      title: Замовлення
+      breadcrumb: Замовлення
+      header: Замовлення
+      delivery_show_all: Показати все
+      delivery_dispatched: Відправлено
+      delivery_pending: В очікуванні
+      delivery_select: Доставка
+      payment_select: Платіж
+      no_records: У вас немає жодного замовлення, що відповідає цим критеріям
+      order_number: '№ замовлення'
+      full_name: Повна назва
+      payment_type: Тип платежу
+      payment_status: Статус платежу
+      delivery_status: Статус доставки
+      gross_amount: Сума брутто
+      last_updated: Останнє оновлення
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Замовлення #%{order_id}'
+      orders_index: Замовлення
+      cancel_order_tooltip: Скасувати замовлення
+      header: 'Замовлення #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Інформація щодо доставки
+        email: Електронна пошта
+        status: Статус
+        dispatch_date: Дата відправлення
+        delivery_service: Служба доставки
+        tracking: Відстеження
       billing_address:
-        header: Billing Address
+        header: Адреса для виставлення рахунку
       delivery_address:
-        header: Delivery Address
+        header: Адреса доставки
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Деталі платежу
+        card_number: Номер картки
+        expiry_date: Дійсна до
       order_items:
-        header: Order Items
+        header: Замовлені позиції
         item: Позиція
         sku: Одиниця зберігання (SKU)
         price: Ціна
@@ -385,14 +385,14 @@ uk:
         name_label: Name
         weighting_label: Weighting
         short_description_label: Short Description
-        description_label: Description
+        description_label: Опис
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Пошукові системи
+        description: Введіть заголовок сторінки та метаопис для того щоб визначити, як сторінка відображується в пошукових системах.
+        page_title_label: Заголовок сторінки
+        meta_description_label: Метаопис
       images:
-        header: Images
+        header: Зображення
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
         add_image: Add Image
         no_records: You do not have any images for this product.
