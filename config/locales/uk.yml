@@ -446,20 +446,20 @@ uk:
         name: Назва
         variant: Варіація
         stock: Запаси
-        stock_warning_level: Stock Warning Level
+        stock_warning_level: Рівень видачі попередження про закінчення запасів
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Керування запасами
+        product_index: Продукція
+        stock_management_index: Керування запасами
+        add_stock_adjustment_tooltip: Додати регулювання запасів
+        header: Архів запасів
+        date: Дата
+        description: Опис
+        adjustment: Регулювання
+        stock: Запаси
     stock_adjustments:
       new:
-        title: New Stock
+        title: Новий запас
         breadcrumb: New
         product_index: Products
         stock_management_index: Stock Management
