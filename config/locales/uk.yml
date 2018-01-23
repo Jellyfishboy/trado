@@ -83,9 +83,9 @@ uk:
     mailchimp:
       header: Бюлетень MailChimp
       description: Встановіть ідентифікатор списку MailChimp для бюлетеню.
-      list_id_label: List Id
+      list_id_label: Ідентифікатор списку
     stripe:
-      header: Stripe
+      header: Смуга
       description: Set the text you would like to display on your customer credit card statements.
       statement_descriptor_label: Statement Descriptor
     google_analytics:
