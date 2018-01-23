@@ -94,23 +94,23 @@ uk:
       tracking_code_label: Код веб-відстеження
       enabled_label: Активовано
       disabled_label: Деактивовано
-    submit_button: Submit
+    submit_button: Подати
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Категорії
+      breadcrumb: Категорії
+      header: Категорії
+      add_tooltip: Додати категорію
+      no_records: У вас ще немає жодної категорії.
+      name: Назва
+      description: Опис
+      sorting: Сортування
+      active: Активний
+      no_of_products: Номер продукції
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
+        header: Характеристики категорії
+        description: Введіть назву, опис та порядок сортування для вашої категорії.
         name_label: Name
         description_label: Description
         sorting_label: Sorting
