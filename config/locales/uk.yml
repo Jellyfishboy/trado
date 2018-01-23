@@ -87,13 +87,13 @@ uk:
     stripe:
       header: Смуга
       description: Введіть текст, який би ви бажали щоб відображався в карткових виписках ваших клієнтів.
-      statement_descriptor_label: Statement Descriptor
+      statement_descriptor_label: Дескриптор виписки
     google_analytics:
-      header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
+      header: Гугл аналітика
+      description: Активуйте та встановіть код веб-відстеження для вашого магазину.
+      tracking_code_label: Код веб-відстеження
+      enabled_label: Активовано
+      disabled_label: Деактивовано
     submit_button: Submit
   categories:
     index:
