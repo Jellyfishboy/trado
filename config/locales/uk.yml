@@ -148,34 +148,34 @@ uk:
       length: Параметри довжини
       thickness: Параметри товщини
       net_price: Ціна нетто
-      gross_price: Gross Price
+      gross_price: Ціна брутто
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Опис ціни за доставку
+        description: Встановіть код, ціну та опис для цієї ціни за доставку.
+        code_label: Код
+        price_label: Ціна
+        description_label: Опис
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Дозволені розміри
+        description: Вкажіть дозволені розміри та вагу для цієї ціни за доставку.
+        min_weight_label: Мінімальна вага
+        max_weight_label: Максимальна вага
+        min_length_label: Мінімальна довжина
+        max_length_label: Максимальна довжина
+        min_thickness_label: Мінімальна товщина
+        max_thickness_label: Максимальна товщина
+      submit_button: Подати
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Редагувати ціну за доставку
+      breadcrumb: Редагувати
+      delivery_service_index: Служби доставки
+      header: Редагувати ціну за доставку
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Нова ціна за доставку
+      breadcrumb: Новий
+      delivery_service_index: Служби доставки
+      header: Нова ціна за доставку
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
