@@ -344,38 +344,38 @@ uk:
       published_filter: Опубліковано
       draft_filter: Малюнок
       archived_filter: Заархівовано
-      featured_filter: Рекомендовано
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
-      sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      featured_filter: Обраний
+      filter_by: Фільтрувати за
+      weighting_sorting: Зважування
+      name_sorting: Назва
+      popularity_sorting: Популярність
+      sort_by: Сортувати за
+      sku: Одиниця зберігання (SKU)
+      part_number: Артикул №.
+      name: Назва
+      variant: Варіація
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Редагувати товар
+      breadcrumb: Редагувати
+      product_index: Продукція
+      header: Редагувати товар
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Опублікувати
+      save_button: Зберегти
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Додаткові опції
+        description: Опишіть ваш товар та/або видаліть опції SKU зі сторінки товару.
+        featured_label: Обраний
+        tags_label: Тег
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Зв'язки
+        description: Оберіть пов'язані аксесуари та супутні товари для вашого продукту (супутні товари відображатимуться на сторінці продукту).
+        accessories_label: Аксесуари
+        related_products_label: Супутні товари
+        select_accessory_placeholder: Оберіть пов'язані аксесуари
+        select_related_products_placeholder: Оберіть супутні товари
       product_details:
         header: Product Details
         description: Set the name, description and sorting order for your category.
