@@ -212,24 +212,24 @@ uk:
       countries:
         header: Країни
         description_html: 'Виберіть країни, доступні для цієї служби доставки, або <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">скопіюйте</a> вже існуючий список країн.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        country_placeholder: Виберіть відповідні країни...
+      submit_button: Надіслати
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Відредагувати службу доставки
+      breadcrumb: Редагувати
+      delivery_service_index: Служби доставки
+      header: Відредагувати службу доставки
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Нова служба доставки
+      breadcrumb: Новий
+      delivery_service_index: Служби доставки
+      header: Нова служба доставки
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
+        header: Більш детальна інформація щодо транзакції
+        error_code: Код помилки
+        stripe_charge_id: Позначення сплати за смугу
         paypal_transaction_id: PayPal Transaction Id
     edit:
       modal:
@@ -322,11 +322,11 @@ uk:
       visibility:
         header: Видимість
         description: Встановіть видимість сторінки на електронній вітрині.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Видимий
+        hidden_label: Прихований
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
+        header: Шаблон
+        description: Виберіть шаблон, який ця сторінка використовуватиме на електронній вітрині.
       submit_button: Submit
     edit:
       title: Edit Page
