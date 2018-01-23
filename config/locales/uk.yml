@@ -140,12 +140,12 @@ uk:
       title: Ціна за доставку для %{service_name}
       header: Ціна за доставку для %{service_name}
       delivery_service_index: Служби доставки
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
+      add_tooltip: Додати ціну за доставку
+      no_records: У вас ще немає цін на %{service_name}.
+      code: Код
+      description: Опис
+      weight: Параметри ваги
+      length: Параметри довжини
       thickness: Thickness Parameters
       net_price: Net Price
       gross_price: Gross Price
