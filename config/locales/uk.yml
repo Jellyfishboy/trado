@@ -178,29 +178,29 @@ uk:
       header: Нова ціна за доставку
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Скопіювати країни, в яких є служби доставки
+      description: 'Виберіть, з якої служби доставки ви бажаєте скопіювати список країн:'
+      select_prompt: Виберіть службу доставки...
+      submit_button: Подати
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Служби доставки
+      breadcrumb: Служби доставки
+      header: Служби доставки
+      add_tooltip: Додати службу доставки
+      no_records: У вас ще немає жодної служби доставки.
+      courier: Кур'єр
+      name: Назва
+      description: Опис
+      code: Код
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Детальний опис служби доставки
+        description: Встановіть назву компанії-перевізника, назву та опис вашої служби доставки.
+        courier_name_label: Назва компанії-перевізника
+        name_label: Назва
+        description_label: Опис
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
