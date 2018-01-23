@@ -116,30 +116,30 @@ uk:
         sorting_label: Сортування
       search_engine:
         header: Пошукові системи
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        description: Введіть заголовок сторінки та метаопис для того щоб визначити, як сторінка відображується в пошукових системах.
+        page_title_label: Заголовок сторінки
+        meta_description_label: Метаопис
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Видимість
+        description: Встановіть видимість категорії на фасаді вашого магазину.
+        visible_label: Видимість
+        hidden_label: Приховано
+      submit_button: Подати
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Редагувати категорію
+      breadcrumb: Редагувати
+      category_index: Категорії
+      header: Редагувати категорію
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Нова категорія
+      breadcrumb: Новий
+      category_index: Категорії
+      header: Нова категорія
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
+      title: Ціна за доставку для %{service_name}
+      header: Ціна за доставку для %{service_name}
+      delivery_service_index: Служби доставки
       add_tooltip: Add Delivery Price
       no_records: You don't have any prices for %{service_name} yet.
       code: Code
