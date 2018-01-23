@@ -111,11 +111,11 @@ uk:
       category_details:
         header: Характеристики категорії
         description: Введіть назву, опис та порядок сортування для вашої категорії.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        name_label: Назва
+        description_label: Опис
+        sorting_label: Сортування
       search_engine:
-        header: Search Engines
+        header: Пошукові системи
         description: Set up the page title and meta description to help define how a page is shown in search engines.
         page_title_label: Page Title
         meta_description_label: Meta Description
