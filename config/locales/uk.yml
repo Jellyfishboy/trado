@@ -146,8 +146,8 @@ uk:
       description: Опис
       weight: Параметри ваги
       length: Параметри довжини
-      thickness: Thickness Parameters
-      net_price: Net Price
+      thickness: Параметри товщини
+      net_price: Ціна нетто
       gross_price: Gross Price
     form:
       delivery_price_details:
@@ -211,7 +211,7 @@ uk:
         tracking_url_label: Tracking Url
       countries:
         header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
+        description_html: 'Виберіть країни, доступні для цієї служби доставки, або <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">скопіюйте</a> вже існуючий список країн.'
         country_placeholder: Select associated countries...
       submit_button: Submit
     edit:
