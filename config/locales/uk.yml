@@ -327,24 +327,24 @@ uk:
       template:
         header: Шаблон
         description: Виберіть шаблон, який ця сторінка використовуватиме на електронній вітрині.
-      submit_button: Submit
+      submit_button: Надіслати
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Редагувати сторінку
+      breadcrumb: Редагувати
+      pages_index: Сторінки
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
+      title: Продукція
+      breadcrumb: Продукція
+      header: Продукція
+      add_product_tooltip: Додати товар
+      stock_management_tooltip: Керування складом
+      no_records: У вас ще немає жодного товару.
+      show_all_filter: Показати все
+      published_filter: Опубліковано
+      draft_filter: Малюнок
+      archived_filter: Заархівовано
+      featured_filter: Рекомендовано
       filter_by: Filter By
       weighting_sorting: Weighting
       name_sorting: Name
@@ -393,15 +393,15 @@ uk:
         meta_description_label: Метаопис
       images:
         header: Зображення
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        description: Завантажте та відредагуйте зображення цього продукту. Ви також можете встановити стандартне зображення для відображення на сторінці продукту.
+        add_image: Додати зображення
+        no_records: У вас немає жодного зображення для цього продукту.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
+        header: Варіації
+        description: Налаштуйте опції варіації для продажу цього продукту.
+        variant_options: Опції варіації
+        add_variant: Додати варіацію
+        no_records: У вас немає жодної варіації для цього продукту.
         code: Code
         stock: Stock
         cost_value: Cost Value
