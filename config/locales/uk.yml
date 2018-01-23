@@ -377,14 +377,14 @@ uk:
         select_accessory_placeholder: Оберіть пов'язані аксесуари
         select_related_products_placeholder: Оберіть супутні товари
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
-        sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
+        header: Детальний опис продукту
+        description: Введіть назву, опис та порядок сортування для вашої категорії.
+        select_category_placeholder: Виберіть категорію
+        part_number_label: '№ артикулу'
+        sku_label: Одиниця зберігання (SKU)
+        name_label: Назва
+        weighting_label: Зважування
+        short_description_label: Стислий опис
         description_label: Опис
       search_engines:
         header: Пошукові системи
@@ -402,50 +402,50 @@ uk:
         variant_options: Опції варіації
         add_variant: Додати варіацію
         no_records: У вас немає жодної варіації для цього продукту.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        code: Код
+        stock: Запаси
+        cost_value: Вартість
+        price: Ціна
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Додати варіацію
+          edit_variant: Редагувати варіацію
+          code_label: Код
+          length_label: Довжина
+          weight_label: Вага
+          thickness_label: Товщина
+          stock_label: Запаси
+          stock_warning_level_label: Рівень видачі попередження про закінчення запасів
+          cost_value_label: Вартість
+          price_label: Ціна
+          submit_button: Надіслати
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Додати регулювання запасів для
+          current_stock: Поточні запаси наступні
+          description_label: Опис
+          adjustment_label: Регулювання
+          submit_button: Надіслати
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Налаштувати опції варіації
+          reset_button: Переналаштувати варіації
+          submit_button: Надіслати
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
-        sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
+        title: Керування запасами
+        breadcrumb: Керування запасами
+        product_index: Продукція
+        add_stock_tooltip: Додати запаси
+        header: Керування запасами
+        show_all_filter: Показати все
+        low_filter: Низькій рівень
+        stock_filer: Запаси
+        no_records: У вас ще немає SKU товару.
+        sku: Одиниця зберігання (SKU)
+        name: Назва
+        variant: Варіація
+        stock: Запаси
         stock_warning_level: Stock Warning Level
       show:
         title: Stock Management
