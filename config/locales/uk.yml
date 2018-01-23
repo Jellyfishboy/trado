@@ -202,15 +202,15 @@ uk:
         name_label: Назва
         description_label: Опис
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Обмеження замовлення
+        description: Обмежити службу доставки на загальну вартість замовлення.
+        price_range_label: Ціновий діапазон
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Відстеження
+        description_html: 'Встановіть відстеження для вашої служби доставки. Використовуйте <b>{{consignment_number}}</b> для того щоб вставити номер партії товару.'
+        tracking_url_label: Адреса (Url) відстеження
       countries:
-        header: Countries
+        header: Країни
         description_html: 'Виберіть країни, доступні для цієї служби доставки, або <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">скопіюйте</a> вже існуючий список країн.'
         country_placeholder: Select associated countries...
       submit_button: Submit
@@ -276,23 +276,23 @@ uk:
         expiry_date: Expiry Date
       order_items:
         header: Order Items
-        item: Item
-        sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        item: Позиція
+        sku: Одиниця зберігання (SKU)
+        price: Ціна
+        quantity: Кількість
+        total: Всього
+        delivery: Доставка
+        subtotal: Підсумок
+        tax: Податок
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Транзакції
+        transaction_type: Тип транзакції
+        payment_type: Тип платежу
+        payment_status: Статус платежу
+        fee: Комісія
+        net_amount: Сума нетто
+        gross_amount: Сума брутто
+        last_updated: Останнє оновлення
       tracking:
         website: Tracking Website
         number: Tracking Number
