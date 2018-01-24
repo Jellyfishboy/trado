@@ -460,33 +460,33 @@ uk:
     stock_adjustments:
       new:
         title: Новий запас
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
-        sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        breadcrumb: Новий
+        product_index: Продукція
+        stock_management_index: Керування запасами
+        header: Новий запас
+        sku_label: Одиниця зберігання (SKU)
+        description_label: Опис
+        adjustment_label: Регулювання
+        submit_button: Надіслати
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Додати зображення
+        edit_image: Редагувати зображення
+        file_label: Файл
+        default_label: За промовчанням
+        submit_button: Надіслати
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Профіль
+      breadcrumb: Профіль
+      header: Профіль
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Налаштування профілю
+        description: Введіть назву та виберіть зображення профілю для вашого аккаунту адміністрування.
+        first_name_label: Ім'я
+        last_name_label: Прізвище
+        profile_picture_label: Зображення профілю
+      submit_button: Надіслати
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
