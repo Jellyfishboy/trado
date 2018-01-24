@@ -489,8 +489,8 @@ uk:
       submit_button: Надіслати
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Ваш аккаунт підтверджено. Ви увійшли в систему."
+      send_instructions: "Через декілька хвилин ви отримаєте лист с інструкціями щодо того як підтвердити ваш аккаунт."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
       already_authenticated: "You are already signed in."
