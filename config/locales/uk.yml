@@ -500,15 +500,15 @@ uk:
       locked: "Ваш аккаунт заблокований."
       not_found_in_database: "Невірна адреса електронної пошти або пароль."
       timeout: "Ваш сеанс роботи завершений, увійдіть знову щоб продовжити."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      unauthenticated: "Ви повинні увійти, або зареєструватися, перш ніж продовжити."
+      unconfirmed: "Ви повинні підтвердити свій аккаунт перш ніж продовжити."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Інструкції щодо підтвердження"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Переналаштувати інструкції щодо створення паролю"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Розблокувати інструкції"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
