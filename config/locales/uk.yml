@@ -537,31 +537,31 @@ uk:
     messages:
       already_confirmed: "вже було підтверджено, будь ласка спробуйте увійти в систему"
       confirmation_period_expired: "потребує підтвердження протягом %{period}, будь ласка надішліть запит на новий"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "закінчився, будь ласка надішліть запит на новий"
+      not_found: "не знайдено"
+      not_locked: "не було заблоковано"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "1 помилка не дозволяє зберегти цей %{resource}:"
         few: "%{count} errors prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count} помилок не дозволяє зберегти цей %{resource}:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Отримано нове повідомлення від
+      header: Нове повідомлення
+      hello: Привіт
+      name_prefix: Ви отримали наступне повідомлення від
+      message_title: Повідомлення
+      email_title: Електронна пошта
+      website_title: Веб-сайт
+      thanks: Дякуємо
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Ваш товар було успішно збережено як чернетку
+          publish: Ваш товар було успішно опубліковано. Зараз він присутній в онлайн-магазині
         destroy:
-          valid: Product was successfully deleted
+          valid: Товар успішно видалено
         archive:
           valid: Product was successfully archived
       skus:
