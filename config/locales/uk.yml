@@ -524,19 +524,19 @@ uk:
       signed_up_but_inactive: "Ви успішно зареєструвались. Але ми не можемо надати вам доступ до системи через те, що ваш аккаунт ще не активований."
       signed_up_but_locked: "Ви успішно зареєструвались. Але ми не можемо надати вам доступ до системи через те, що ваш аккаунт заблокований."
       signed_up_but_unconfirmed: "На вашу електронну адресу було надіслано посилання для підтвердження. Будь ласка, перейдіть за цим посиланням для того щоб активувати ваш аккаунт."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      update_needs_confirmation: "Ви успішно внесли зміни до вашого аккаунту, але нам потрібно перевірити вашу нову електронну адресу. Будь ласка, перевірте свою пошту та натисніть на посилання підтвердження для того щоб завершити процедуру підтвердження вашої нової електронної адреси."
+      updated: "Ви успішно внесли зміни до вашого аккаунту."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Ви успішно увійшли в систему."
+      signed_out: "Ви успішно вийшли з системи."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "За декілька хвилин ви отримаєте електронний лист з інструкціями щодо того, як розблокувати ваш аккаунт."
+      send_paranoid_instructions: "Якщо ваш аккаунт існує, за декілька хвилин ви отримаєте електронний лист з інструкціями щодо його розблокування."
+      unlocked: "Ваш аккаунт було успішно розблоковано. Будь ласка, увійдіть в систему для того щоб продовжити."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      already_confirmed: "вже було підтверджено, будь ласка спробуйте увійти в систему"
+      confirmation_period_expired: "потребує підтвердження протягом %{period}, будь ласка надішліть запит на новий"
       expired: "has expired, please request a new one"
       not_found: "not found"
       not_locked: "was not locked"
