@@ -513,8 +513,8 @@ uk:
       failure: "Не вдалось вас ідентифікувати %{kind} через \"%{reason}\"."
       success: "Успішна аутентифікація з %{kind} аккаунту."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      no_token: "Ви не можете отримати доступ до цієї сторінки, не переходячи з електронного листа щодо зміни паролю. Якщо ви переходите з електронного листа щодо зміни паролю, перевірте, що ви використовували повну URL-адресу."
+      send_instructions: "За декілька хвилин ви отримаєте лист с інструкціями щодо того як змінити ваш пароль."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
