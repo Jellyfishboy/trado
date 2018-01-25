@@ -491,15 +491,15 @@ uk:
     confirmations:
       confirmed: "Ваш аккаунт підтверджено. Ви увійшли в систему."
       send_instructions: "Через декілька хвилин ви отримаєте лист с інструкціями щодо того як підтвердити ваш аккаунт."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "Якщо ваша електронна адреса є в нашій базі данних, за декілька хвилин ви отримаєте лист з інструкціями щодо того, як підтвердити ваш аккаунт."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      already_authenticated: "Ви вже увійшли."
+      inactive: "Ваш аккаунт ще не активований."
+      invalid: "Невірна адреса електронної пошти або пароль."
+      invalid_token: "Недійсний код аутентифікації."
+      locked: "Ваш аккаунт заблокований."
+      not_found_in_database: "Невірна адреса електронної пошти або пароль."
+      timeout: "Ваш сеанс роботи завершений, увійдіть знову щоб продовжити."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
