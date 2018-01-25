@@ -563,54 +563,54 @@ uk:
         destroy:
           valid: Товар успішно видалено
         archive:
-          valid: Product was successfully archived
+          valid: Товар успішно заархівовано
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Опції варіацій не можуть бути порожніми
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Аксесуар вдало створено
         update:
-          valid: Accessory was successfully updated
+          valid: Аксесуар вдало оновлено
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Аксесуар вдало видалено
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Налаштування магазину вдало оновлено
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: У вас немає жодного зображення для цього товару
       categories:
         create:
-          valid: Category was successfully created
+          valid: Категорію вдало створено
         update:
-          valid: Category was successfully updated
+          valid: Категорію вдало оновлено
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Ціну доставки вдало створено
         update:
-          valid: Delivery service price was successfully updated
+          valid: Ціну доставки вдало оновлено
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Ціну доставки вдало видалено
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Службу доставки вдало створено
         update:
-          valid: Delivery service was successfully updated
+          valid: Службу доставки вдало оновлено
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Службу доставки вдало видалено
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Вам потрібно вибрати службу доставки
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Сторінку було вдало видалено
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Профіль було вдало оновлено
+          invalid: Під час спроби оновити деталі вашого профілю трапилась помилка
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Ваше замовлення було скасовано
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Під час спроби завершити ваше замовлення трапилась помилка. Будь ласка, спробуйте ще раз
