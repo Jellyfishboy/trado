@@ -1,6 +1,6 @@
 ru:
   global:
-    none_available: None Available
+    none_available: Недоступно
   modal:
     close_button: Закрыть
   accessories:
@@ -61,14 +61,14 @@ ru:
     store_detail:
       header: Описание Магазина
       description: Укажите название, электронную почту, логотип и тему Вашего магазина. Электронная почта будет использована для обратной связи и важных административных сообщений.
-      name_label: Name
+      name_label: Название
       email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      logo_label: Логотип
+      theme_label: Тема оформления
     language:
-      header: Language
+      header: Язык
       description: Set the language for the administration dashboard.
-      language_label: Language
+      language_label: Язык
     tax:
       header: Tax
       description: Set the name and percentage rate of your tax.
