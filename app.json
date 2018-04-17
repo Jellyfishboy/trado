@@ -32,18 +32,6 @@
     "MAILER_ASSET_URL": {
       "description": "The url for application mailer assets.",
       "value": "http://example.com"
-    },
-    "AWS_S3_ID": {
-      "description": "The API ID for your AWS S3 resource."
-    },
-    "AWS_S3_KEY": {
-      "description": "The API KEY for your AWS S3 resource."
-    },
-    "AWS_S3_BUCKET": {
-      "description": "The BUCKET for your AWS S3 resource."
-    },
-    "AWS_S3_REGION": {
-      "description": "The REGION for your AWS S3 resource."
     }
   },
   "formation": {
