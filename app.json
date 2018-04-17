@@ -16,22 +16,6 @@
     "SECRET_KEY_BASE": {
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
-    },
-    "GLOBAL_URL": {
-      "description": "The main url for your application.",
-      "value": "http://example.com"
-    },
-    "ASSET_URL": {
-      "description": "The url for application assets.",
-      "value": "http://example.com"
-    },
-    "CARRIERWAVE_URL": {
-      "description": "The Cloudfront or S3 host url for attachment uploads.",
-      "value": "http://example.com"
-    },
-    "MAILER_ASSET_URL": {
-      "description": "The url for application mailer assets.",
-      "value": "http://example.com"
     }
   },
   "formation": {
