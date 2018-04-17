@@ -13,6 +13,9 @@
     "postdeploy": "bundle exec rake trado:install SEED_TYPE=demo"
   },
   "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
     "SECRET_KEY_BASE": {
       "description": "A secret key for verifying the integrity of signed cookies.",
       "generator": "secret"
