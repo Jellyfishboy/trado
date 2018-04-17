@@ -54,7 +54,6 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
-gem 'asset_sync'
 gem 'sprockets', '2.12.4'
 
 # AJAX file upload
