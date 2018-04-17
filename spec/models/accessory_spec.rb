@@ -35,8 +35,6 @@ describe Accessory do
     it { expect(subject).to validate_presence_of(:weight) }
     it { expect(subject).to validate_presence_of(:price) }
 
-    it { expect(subject).to validate_numericality_of(:part_number).is_greater_than_or_equal_to(1).only_integer } 
-
 
     it { expect(subject).to validate_uniqueness_of(:name).scoped_to(:active) }
     it { expect(subject).to validate_uniqueness_of(:part_number).scoped_to(:active) }

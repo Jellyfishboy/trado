@@ -67,11 +67,11 @@ class Order < ActiveRecord::Base
 
 	scope :failed_collection,                                             -> { last_transaction_collection.where(transactions: { payment_status: 2 } ) }
 
-	scope :gross_total,                                                   -> { completed_collection.sum('transactions.gross_amount') }
+	scope :gross_total,                                                   -> { completed_collection.sum(:gross_amount) }
 
-	scope :net_total,                                                     -> { completed_collection.sum('transactions.net_amount') }
+	scope :net_total,                                                     -> { completed_collection.sum(:net_amount) }
 
-	scope :tax_total,                                                     -> { completed_collection.sum('transactions.tax_amount') }
+	scope :tax_total,                                                     -> { completed_collection.sum(:tax_amount) }
 
   scope :dispatch_today_or_past,                                        -> { where('EXTRACT(day from shipping_date) = :day AND EXTRACT(month from shipping_date) = :month AND EXTRACT(year from shipping_date) = :year OR shipping_date < :current_datetime', day: Date.current.day, month: Date.current.month, year: Date.current.year, current_datetime: Time.current) }
 
@@ -114,6 +114,13 @@ class Order < ActiveRecord::Base
   	def completed?
   		latest_transaction.completed? unless transactions.empty?
   	end
+
+    # Returns true if the last associated transaction to the order is marked as failed
+    #
+    # @return [Boolean]
+    def failed?
+      latest_transaction.failed? unless transactions.empty?
+    end
 
   	def self.dashboard_data
   		return {

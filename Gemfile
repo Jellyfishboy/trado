@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.8'
 
 gem 'pg'
 
@@ -35,8 +35,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'pry-byebug'
+  gem 'byebug', platform: :mri
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rails'
   gem 'mysql2'
 end
 
@@ -53,7 +55,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'asset_sync'
-gem 'sprockets', '2.11.0'
+gem 'sprockets', '2.12.4'
 
 # AJAX file upload
 gem 'remotipart', '~> 1.2'

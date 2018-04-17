@@ -67,6 +67,7 @@ class Admin::DeliveryServicesController < Admin::AdminBaseController
       @result = Store.last_record(@delivery_service, DeliveryService.active.load.count)
     else
       Store.inactivate!(@delivery_service)
+      Store.inactivate_all!(@delivery_service.prices)
     end
     @result = [:success, t('controllers.admin.delivery_services.destroy.valid')] if @result.nil?
     flash_message @result[0], @result[1]

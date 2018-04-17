@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208072239) do
+ActiveRecord::Schema.define(version: 20170617134208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.string   "name"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
-    t.integer  "part_number"
+    t.string   "part_number"
     t.decimal  "price",       precision: 8, scale: 2
     t.decimal  "weight",      precision: 8, scale: 2
     t.decimal  "cost_value",  precision: 8, scale: 2
@@ -237,7 +237,7 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "weighting"
-    t.integer  "part_number"
+    t.string   "part_number"
     t.string   "sku"
     t.integer  "category_id"
     t.string   "slug"
@@ -248,8 +248,6 @@ ActiveRecord::Schema.define(version: 20161208072239) do
     t.integer  "status",                  default: 0
     t.integer  "order_count",             default: 0
     t.string   "page_title"
-    t.string   "googlemerchant_brand"
-    t.string   "googlemerchant_category"
   end
 
   create_table "redactor_assets", force: :cascade do |t|

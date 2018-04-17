@@ -1,57 +1,39 @@
-GIT
-  remote: git://github.com/nixme/jazz_hands.git
-  revision: 5e4b48f145883ecb14b55bf04eacc28ac9662676
-  branch: bring-your-own-debugger
-  specs:
-    jazz_hands (0.5.2)
-      awesome_print (~> 1.2)
-      coolline (>= 0.4.2)
-      hirb (~> 0.7.1)
-      pry (~> 0.9.12)
-      pry-doc (~> 0.4.6)
-      pry-git (~> 0.2.3)
-      pry-rails (~> 0.3.2)
-      pry-remote (>= 0.1.7)
-      pry-stack_explorer (~> 0.4.9)
-      railties (>= 3.0, < 5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.2)
-    actionmailer (4.2.6)
-      actionpack (= 4.2.6)
-      actionview (= 4.2.6)
-      activejob (= 4.2.6)
+    actionmailer (4.2.8)
+      actionpack (= 4.2.8)
+      actionview (= 4.2.8)
+      activejob (= 4.2.8)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (4.2.6)
-      actionview (= 4.2.6)
-      activesupport (= 4.2.6)
+    actionpack (4.2.8)
+      actionview (= 4.2.8)
+      activesupport (= 4.2.8)
       rack (~> 1.6)
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (4.2.6)
-      activesupport (= 4.2.6)
+    actionview (4.2.8)
+      activesupport (= 4.2.8)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_presenter (3.2.2)
-    activejob (4.2.6)
-      activesupport (= 4.2.6)
+    activejob (4.2.8)
+      activesupport (= 4.2.8)
       globalid (>= 0.3.0)
-    activemodel (4.2.6)
-      activesupport (= 4.2.6)
+    activemodel (4.2.8)
+      activesupport (= 4.2.8)
       builder (~> 3.1)
-    activerecord (4.2.6)
-      activemodel (= 4.2.6)
-      activesupport (= 4.2.6)
+    activerecord (4.2.8)
+      activemodel (= 4.2.8)
+      activesupport (= 4.2.8)
       arel (~> 6.0)
-    activesupport (4.2.6)
+    activesupport (4.2.8)
       i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
@@ -61,14 +43,13 @@ GEM
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
-    arel (6.0.3)
+    arel (6.0.4)
     asset_sync (1.1.0)
       activemodel
       fog (>= 1.8.0)
       unf
     auto_strip_attributes (2.0.6)
       activerecord (>= 3.0)
-    awesome_print (1.6.1)
     aws-sdk (2.4.0)
       aws-sdk-resources (= 2.4.0)
     aws-sdk-core (2.4.0)
@@ -84,7 +65,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     browser (2.2.0)
-    builder (3.2.2)
+    builder (3.2.3)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
@@ -141,8 +122,7 @@ GEM
       compass (>= 0.12.2)
     concurrent-ruby (1.0.1)
     connection_pool (2.2.0)
-    coolline (0.5.0)
-      unicode_utils (~> 1.4)
+    crass (1.0.3)
     daemons (1.2.3)
     dalli (2.7.6)
     database_cleaner (1.5.3)
@@ -155,7 +135,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    diffy (3.1.0)
     docile (1.1.5)
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
@@ -314,8 +293,8 @@ GEM
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
     git-version-bump (0.15.1)
-    globalid (0.3.6)
-      activesupport (>= 4.1.0)
+    globalid (0.4.1)
+      activesupport (>= 4.2.0)
     gon (6.0.1)
       actionpack (>= 3.0)
       json
@@ -339,10 +318,6 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    grit (2.5.0)
-      diff-lcs (~> 1.1)
-      mime-types (~> 1.15)
-      posix-spawn (~> 0.3.6)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -353,7 +328,6 @@ GEM
       railties (>= 4.0.1)
     highline (1.7.8)
     hike (1.2.3)
-    hirb (0.7.3)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -364,7 +338,8 @@ GEM
       domain_name (~> 0.5)
     httpclient (2.8.0)
     hurley (0.2)
-    i18n (0.7.0)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jmespath (1.3.1)
@@ -375,7 +350,7 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (1.8.3)
+    json (1.8.6)
     jwt (1.5.4)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -388,9 +363,10 @@ GEM
     logging (2.1.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.0.3)
+    loofah (2.1.1)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     memoist (0.14.0)
     meta_request (0.4.0)
@@ -398,11 +374,11 @@ GEM
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
-    mime-types (1.25.1)
+    mime-types (2.99.3)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
-    minitest (5.8.4)
-    multi_json (1.11.3)
+    minitest (5.10.3)
+    multi_json (1.12.2)
     multipart-post (2.0.0)
     mysql2 (0.4.4)
     net-scp (1.2.1)
@@ -423,34 +399,19 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    posix-spawn (0.3.11)
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-byebug (1.3.2)
-      byebug (~> 2.7)
-      pry (~> 0.9.12)
-    pry-doc (0.4.6)
-      pry (>= 0.9)
-      yard (>= 0.8)
-    pry-git (0.2.3)
-      diffy
-      grit
-      pry (>= 0.9.8)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    pry-remote (0.1.8)
-      pry (~> 0.9)
-      slop (~> 3.0)
-    pry-stack_explorer (0.4.9.2)
-      binding_of_caller (>= 0.7)
-      pry (>= 0.9.11)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.4)
+    rack (1.6.8)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
@@ -458,28 +419,28 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.2.6)
-      actionmailer (= 4.2.6)
-      actionpack (= 4.2.6)
-      actionview (= 4.2.6)
-      activejob (= 4.2.6)
-      activemodel (= 4.2.6)
-      activerecord (= 4.2.6)
-      activesupport (= 4.2.6)
+    rails (4.2.8)
+      actionmailer (= 4.2.8)
+      actionpack (= 4.2.8)
+      actionview (= 4.2.8)
+      activejob (= 4.2.8)
+      activemodel (= 4.2.8)
+      activerecord (= 4.2.8)
+      activesupport (= 4.2.8)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.6)
+      railties (= 4.2.8)
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.7)
+    rails-dom-testing (1.0.8)
       activesupport (>= 4.2.0.beta, < 5.0)
-      nokogiri (~> 1.6.0)
+      nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    railties (4.2.6)
-      actionpack (= 4.2.6)
-      activesupport (= 4.2.6)
+    railties (4.2.8)
+      actionpack (= 4.2.8)
+      activesupport (= 4.2.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.17.0)
@@ -563,7 +524,7 @@ GEM
       builder
     slop (3.6.0)
     spring (1.7.1)
-    sprockets (2.11.0)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -578,14 +539,14 @@ GEM
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
       rack (~> 1.0)
-    thor (0.19.1)
-    thread_safe (0.3.5)
+    thor (0.20.0)
+    thread_safe (0.3.6)
     tilt (1.4.1)
     timecop (0.8.1)
     trollop (2.1.2)
     turbolinks (2.5.3)
       coffee-rails
-    tzinfo (1.2.2)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     tzinfo-data (1.2016.4)
       tzinfo (>= 1.0.0)
@@ -595,7 +556,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unicode_utils (1.4.0)
     unicorn (5.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -610,7 +570,6 @@ GEM
     xml-simple (1.1.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yard (0.8.7.6)
 
 PLATFORMS
   ruby
@@ -627,6 +586,7 @@ DEPENDENCIES
   binding_of_caller
   browser
   bullet
+  byebug
   cancan
   capistrano (~> 2.15)
   capistrano-sidekiq
@@ -651,7 +611,6 @@ DEPENDENCIES
   google-api-client
   haml
   haml-rails
-  jazz_hands!
   jquery-rails
   jquery-turbolinks
   kaminari
@@ -662,9 +621,11 @@ DEPENDENCIES
   pg
   poltergeist
   protected_attributes
-  pry-byebug
+  pry
+  pry-nav
+  pry-rails
   quiet_assets
-  rails (= 4.2.6)
+  rails (= 4.2.8)
   redactor-rails
   remotipart (~> 1.2)
   rspec-collection_matchers
@@ -676,7 +637,7 @@ DEPENDENCIES
   sinatra
   sitemap_generator
   spring
-  sprockets (= 2.11.0)
+  sprockets (= 2.12.4)
   test_after_commit
   thin
   timecop
@@ -688,4 +649,4 @@ DEPENDENCIES
   whenever (>= 0.8.4)
 
 BUNDLED WITH
-   1.13.6
+   1.16.1

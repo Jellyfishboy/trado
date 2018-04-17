@@ -13,7 +13,7 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  weighting               :integer
-#  part_number             :integer
+#  part_number             :string
 #  sku                     :string
 #  category_id             :integer
 #  slug                    :string
@@ -63,7 +63,6 @@ class Product < ActiveRecord::Base
   validates :name,                                            length: { minimum: 10, message: :too_short }, if: :published?
   validates :description,                                     length: { minimum: 20, message: :too_short }, if: :published?
   validates :short_description,                               length: { maximum: 300, message: :too_long }, if: :published?
-  validates :part_number,                                     numericality: { only_integer: true }, if: :published?
 
   accepts_nested_attributes_for :skus
   accepts_nested_attributes_for :tags
@@ -111,6 +110,6 @@ class Product < ActiveRecord::Base
   #
   # @return [Object] sku record
   def first_available_sku
-    skus.active.in_stock.order(price: :asc).first
+    in_stock? ? skus.active.in_stock.order(price: :asc).first : skus.active.order(price: :asc).first
   end
 end
