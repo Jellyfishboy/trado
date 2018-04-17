@@ -543,6 +543,7 @@ uk:
       not_saved:
         one: "1 помилка не дозволяє зберегти цей %{resource}:"
         few: "%{count} errors prohibited this %{resource} from being saved:"
+        many: "%{count} errors prohibited this %{resource} from being saved:"
         other: "%{count} помилок не дозволяє зберегти цей %{resource}:"
   mailers:
     contact_message:
