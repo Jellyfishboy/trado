@@ -46,8 +46,6 @@ end
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails'
-gem 'haml'
-gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'asset_sync'
