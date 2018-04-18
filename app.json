@@ -14,6 +14,7 @@
   },
   "env": {
     "HEROKU_APP_NAME": {
+      "description": "Please use the same name as the app name specified above for Heroku.",
       "required": true
     },
     "SECRET_KEY_BASE": {
