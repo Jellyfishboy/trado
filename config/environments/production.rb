@@ -48,15 +48,25 @@ Trado::Application.configure do
 	# config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
 	# Use a different cache store in production
-	config.cache_store = :dalli_store
+	config.cache_store = :dalli_store,
+						(ENV["MEMCACHIER_SERVERS"] || "").split(","),
+	                    {:username => ENV["MEMCACHIER_USERNAME"],
+	                     :password => ENV["MEMCACHIER_PASSWORD"],
+	                     :failover => true,
+	                     :socket_timeout => 1.5,
+	                     :socket_failure_delay => 0.2,
+	                     :down_retry_delay => 60
+	                    }
 
 	# Enable serving of images, stylesheets, and JavaScripts from an asset server
 	# config.action_controller.asset_host = "http://assets.example.com"
 
-	config.action_mailer.asset_host = Rails.application.secrets.mailer_asset_url
-	config.action_controller.asset_host = Rails.application.secrets.asset_url
+	config.action_mailer.asset_host = "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
+	config.action_controller.asset_host = "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
 
 	config.assets.prefix = '/assets'
+
+	config.serve_static_files = true
 
 	# Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
 	# config.assets.precompile += %w( search.js )
@@ -68,7 +78,7 @@ Trado::Application.configure do
 	# config.threadsafe!
 
 	# Set default URL
-	config.action_mailer.default_url_options = { host: Rails.application.secrets.global_url }
+	config.action_mailer.default_url_options = { :host => "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" }
 
 	# Don't care if the mailer can't send
 	config.action_mailer.raise_delivery_errors = true
@@ -77,13 +87,13 @@ Trado::Application.configure do
 	config.action_mailer.delivery_method = :smtp
 
 	config.action_mailer.smtp_settings = {
-		:address              => Rails.application.secrets.mailer_server,
-		:port                 => Rails.application.secrets.mailer_port,
-		:domain               => Rails.application.secrets.mailer_domain,
+		:address              => 'smtp.sendgrid.net',
+		:port                 => 587,
 		:authentication       => "plain",
-		:user_name            => Rails.application.secrets.mailer_user_name,
-		:password             => Rails.application.secrets.mailer_password,
-		:enable_starttls_auto => true
+		:user_name            => ENV['SENDGRID_USERNAME'],
+		:password             => ENV['SENDGRID_PASSWORD'],
+		:enable_starttls_auto => true,
+		:domain               => ENV['MAILER_DOMAIN']
 	}
 
 	# Send deprecation notices to registered listeners

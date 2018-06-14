@@ -1,8 +1,6 @@
 ---
-concurrency: 5
-verbose: true
-pidfile: ./tmp/pids/sidekiq.pid
-logfile: ./log/sidekiq.log
+:concurrency: 5
+:verbose: true
 staging:
   concurrency: 10
 production:

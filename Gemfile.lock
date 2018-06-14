@@ -44,10 +44,6 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
     arel (6.0.4)
-    asset_sync (1.1.0)
-      activemodel
-      fog (>= 1.8.0)
-      unf
     auto_strip_attributes (2.0.6)
       activerecord (>= 3.0)
     aws-sdk (2.4.0)
@@ -342,6 +338,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.10.0)
     language_list (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -429,7 +426,8 @@ GEM
       activesupport (= 4.2.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (11.3.0)
+    raindrops (0.17.0)
+    rake (11.1.2)
     rbvmomi (1.8.2)
       builder
       nokogiri (>= 1.4.1)
@@ -538,6 +536,9 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    unicorn (5.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     uniform_notifier (1.9.0)
     warden (1.2.6)
       rack (>= 1.0)
@@ -557,7 +558,6 @@ DEPENDENCIES
   active_presenter
   activesupport-json_encoder
   annotate
-  asset_sync
   auto_strip_attributes (~> 2.0)
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
@@ -622,6 +622,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.0.3)
   unf
+  unicorn
   whenever (>= 0.8.4)
 
 BUNDLED WITH

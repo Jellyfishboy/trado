@@ -42,13 +42,16 @@ group :development, :test do
   gem 'mysql2'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 # Assets
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails'
 gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
-gem 'asset_sync'
 gem 'sprockets', '2.12.4'
 
 # AJAX file upload

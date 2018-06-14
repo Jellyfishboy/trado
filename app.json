@@ -1,0 +1,61 @@
+{
+  "name": "Online Ecommerce Store",
+  "description": "Set up the Trado ecommerce platform.",
+  "keywords": [
+    "ecommerce",
+    "rails",
+    "ruby"
+  ],
+  "website": "https://www.trado.io",
+  "repository": "https://github.com/Jellyfishboy/trado",
+  "logo": "http://cdn0.trado.io/trado-promo/assets/img/thumbnail.png",
+  "scripts": {
+    "postdeploy": "bundle exec rake trado:install SEED_TYPE=demo"
+  },
+  "env": {
+    "HEROKU_APP_NAME": {
+      "description": "Please use the same name as the app name specified above for Heroku.",
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    {
+      "plan": "heroku-redis:hobby-dev"
+    },
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "9.5"
+      }
+    },
+    {
+      "plan": "memcachier:dev"
+    },
+    {
+      "plan": "rollbar:free"
+    },
+    {
+      "plan": "sendgrid:starter"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower"
+    }
+  ]
+}
