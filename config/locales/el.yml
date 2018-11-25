@@ -1,63 +1,63 @@
 el:
   global:
-    none_available: None Available
+    none_available: Κανένα Διαθέσιμο
   modal:
-    close_button: Close
+    close_button: Κλείσιμο
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Αξεσουάρ
+      breadcrumb: Αξεσουάρ
+      header: Αξεσουάρ
+      add_tooltip: Προσθέστε αξεσουάρ
+      no_records: Ακόμα δεν έχετε οποιαδήποτε εξαρτήματα.
+      part_number: Τεμάχιο Υπ'αριθμ.
+      name: Όνομα
+      weight: Βάρος
+      cost_value: Κόστος τιμή
+      net_price: Καθαρή τιμή
+      gross_price: Ακαθάριστη τιμή
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Λεπτομέρειες αξεσουάρ
+        description: Ορίστε τον αριθμό ονόματος και μέρος για το αξεσουάρ σας.
+        name_label: Όνομα
+        part_number_label: Αριθμός τεμαχίων
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Βάρος & τιμή
+        description: Ορίστε το βάρος, την καθαρή τιμή και την αρχική τιμή κόστους για το αξεσουάρ σας.
+        weight_label: Βάρος
+        cost_value_label: Κόστος τιμή
+        net_price_label: Καθαρή τιμή
+      submit_button: Υποβολή
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Επεξεργασία αξεσουάρ
+      breadcrumb: Επεξεργασία
+      accessory_index: Αξεσουάρ
+      header: Επεξεργασία αξεσουάρ
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Προσθέστε αξεσουάρ
+      breadcrumb: Νέο
+      accessory_index: Αξεσουάρ
+      header: Νέα αξεσουάρ
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Πίνακας Ελέγχου
+    orders: Παραγγελίες
+    completed_orders: Ολοκληρώθηκε
+    pending_orders: Εκκρεμεί
+    failed_orders: Απέτυχε
+    transactions: Συναλλαγές
+    gross_income_transactions: Ακαθάριστο εισόδημα
+    net_income_transactions: Καθαρό Εισόδημα
+    tax_transactions: Φόρος
+    provider_fees_transactions: Χρεώσεις πάροχου
+    delivery_fees_transactions: Έξοδα αποστολής
+    activity: Δραστηριότητα
+    activity_active_carts: Ενεργό καλάθι
+    activity_incomplete_orders: Ανολοκλήρωτες Παραγγελίες
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Ρυθμίσεις
+    breadcrumb: Ρυθμίσεις
+    header: Ρυθμίσεις
     store_detail:
       header: Store Details
       description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
