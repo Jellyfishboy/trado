@@ -61,28 +61,28 @@ el:
     store_detail:
       header: Λεπτομέρειες Καταστήματος
       description: Ορίστε το όνομα, το email, τo logo και το θέμα του καταστήματος σας. Το email θα χρησιμοποιηθεί στην φόρμα επικοινωνίας και σε σημαντικές αναβαθμίσεις διαχείρισης.
-      name_label: Name
-      email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      name_label: Όνομα
+      email_label: E-mail
+      logo_label: Λογότυπο
+      theme_label: Θέμα
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Γλώσσα
+      description: Ρύθμίστε την γλώσσα για την σελίδα διαχείρισης.
+      language_label: Γλώσσα
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Φόρος
+      description: Ορίστε το όνομα και το ποσοστό του φορολογικού συντελεστή.
+      name_label: Όνομα
+      rate_label: Αξιολογήστε
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Προβολή νομίσματος & τιμής
+      description: Ορίστε το νόμισμα που λειτουργεί το κατάστημά σας και αν θα θέλατε οι πελάτες σας να βλέπουν τις τιμές των προϊόντων συμπεριλαμβανομένων και εξαιρουμένων των φόρων.
+      currency_label: Νόμισμα
+      price_exc_label: Τιμή με & χωρίς φόρο
+      price_inc_label: Τιμή συμπεριλαμβανομένου του φόρου
     mailchimp:
       header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
+      description: Ρυθμίστε τη λίστα MailChimp Id στο newsletter σας.
       list_id_label: List Id
     stripe:
       header: Stripe
@@ -248,68 +248,68 @@ el:
       payment_select: Payment
       no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Ονοματεπώνυμο
+      payment_type: Τρόπος πληρωμής
+      payment_status: Κατάσταση πληρωμής
+      delivery_status: Κατάσταση παράδοσης
+      gross_amount: Ακαθάριστο ποσό
+      last_updated: Τελευταία Ενημέρωση
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Παραγγελία #%{order_id}'
+      orders_index: Παραγγελίες
+      cancel_order_tooltip: Ακύρωση παραγγελίας
+      header: 'Παραγγελία #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Τρόποι παράδοσης
+        email: E-mail
+        status: Κατάσταση
+        dispatch_date: Ημερομηνία αποστολής
+        delivery_service: Υπηρεσία παράδοσης
+        tracking: Παρακολούθηση
       billing_address:
-        header: Billing Address
+        header: Διεύθυνση χρέωσης
       delivery_address:
-        header: Delivery Address
+        header: Διεύθυνση Παράδοσης
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Λεπτομέρειες πληρωμής
+        card_number: Αριθμός Κάρτας
+        expiry_date: Ημερομηνία λήξης
       order_items:
-        header: Order Items
-        item: Item
+        header: Στοιχεία παραγγελίας
+        item: Αντικείμενο
         sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        price: Τιμή
+        quantity: Ποσότητα
+        total: Σύνολο
+        delivery: Παράδοση
+        subtotal: Μερικό σύνολο
+        tax: Φόρος
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Συναλλαγές
+        transaction_type: Είδος συναλλαγής
+        payment_type: Τρόπος πληρωμής
+        payment_status: Κατάσταση πληρωμής
+        fee: Χρέωση
+        net_amount: Καθαρό ποσό
+        gross_amount: Ακαθάριστο ποσό
+        last_updated: Τελευταία Ενημέρωση
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Ιστοσελίδα παρακολούθησης
+        number: Κωδικός Εντοπισμού
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Τίτλος
+      breadcrumb: Σελίδες
+      header: Σελίδες
+      sorting: Ταξινόμηση
+      visible: Ορατό
+      last_updated: Τελευταία Ενημέρωση
     form:
-      header: Edit Page
+      header: Επεξεργασία σελίδας
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        header: Γράψτε τη σελίδα σας
+        description: Θέσετε τον τίτλο για τη σελίδα σας, το μενού, την σειρά ταξινόμησης και προσθέστε το περιεχόμενο της σελίδας σας.
+        title_label: Τίτλος
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
