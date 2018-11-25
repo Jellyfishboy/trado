@@ -59,8 +59,8 @@ el:
     breadcrumb: Ρυθμίσεις
     header: Ρυθμίσεις
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Λεπτομέρειες Καταστήματος
+      description: Ορίστε το όνομα, το email, τo logo και το θέμα του καταστήματος σας. Το email θα χρησιμοποιηθεί στην φόρμα επικοινωνίας και σε σημαντικές αναβαθμίσεις διαχείρισης.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -123,68 +123,68 @@ el:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Κρυφό
+      submit_button: Υποβολή
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Επεξεργασία Κατηγορίας
+      breadcrumb: Επεξεργασία
+      category_index: Κατηγορίες
+      header: Επεξεργασία Κατηγορίας
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Νέα κατηγορία
+      breadcrumb: Νέο
+      category_index: Κατηγορίες
+      header: Νέα κατηγορία
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Αξία Μεταφορικών για %{service_name}
+      header: Αξία Μεταφορικών για %{service_name}
+      delivery_service_index: Υπηρεσία παράδοσης
+      add_tooltip: Προσθέστε τιμή παράδοσης
+      no_records: Δεν έχετε ακόμα τιμές για %{service_name}.
+      code: Κωδικός
+      description: Περιγραφή
+      weight: Παράμετροι Βάρους
+      length: Παράμετροι Μήκους
+      thickness: Παράμετροι Πάχους
+      net_price: Καθαρή τιμή
+      gross_price: Ακαθάριστη τιμή
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Λεπτομέρεις εξόδων αποστολής
+        description: Μπορείτε να ορίσετε τον κωδικό, την τιμή και την περιγραφή για αυτή την τιμή παράδοσης.
+        code_label: Κωδικός
+        price_label: Τιμή
+        description_label: Περιγραφή
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Μέγιστες Διαστάσεις
+        description: Καθορίστε την επιτρεπόμενη διάσταση και βάρος για αυτή την τιμή παράδοσης.
+        min_weight_label: Ελάχιστο βάρος
+        max_weight_label: Μέγιστο βάρος
+        min_length_label: Ελάχιστο μήκος
+        max_length_label: Μέγιστο μήκος
+        min_thickness_label: Ελάχιστο πάχος
+        max_thickness_label: Μέγιστο πάχος
+      submit_button: Υποβολή
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Επεξεργαστείτε έξοδα αποστολής
+      breadcrumb: Επεξεργασία
+      delivery_service_index: Υπηρεσίες παράδοσης
+      header: Επεξεργαστείτε έξοδα αποστολής
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Νέα τιμή για έξοδα αποστολής
+      breadcrumb: Νέο
+      delivery_service_index: Υπηρεσία παράδοσης
+      header: Νέα τιμή για έξοδα αποστολής
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Αντιγραφή χώρων υπηρεσίας παράδοσης
+      description: 'Επιλέξτε από ποια υπηρεσία παράδοσης θα θέλατε να αντιγράψετε τη λίστα χώρων:'
+      select_prompt: Επιλέξτε μια υπηρεσία παράδοσης...
+      submit_button: Υποβολή
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Υπηρεσία παράδοσης
+      breadcrumb: Υπηρεσία παράδοσης
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
