@@ -543,6 +543,7 @@ pl:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         few: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
+        many: "%{count} errors prohibited this %{resource} from being saved:"
         other: "%{count} błędów uniemożliwiło zapisanie %{resource}:"
   mailers:
     contact_message:
