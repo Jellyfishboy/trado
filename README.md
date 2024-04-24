@@ -2,7 +2,7 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 [Trado homepage](http://www.trado.io/?utm_source=github&utm_medium=website&utm_campaign=trado)
 
-[Need to build a form? Checkout out JotJab][[https://](https://jotjab.com/?utm_source=github&utm_medium=organic_social&utm_campaign=organic_reach)
+[Need to build a form? Checkout out JotJab](https://jotjab.com/?utm_source=github&utm_medium=organic_social&utm_campaign=organic_reach)
 
 ## Usage
 
