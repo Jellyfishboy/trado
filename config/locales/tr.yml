@@ -1,614 +1,615 @@
 tr:
   global:
-    none_available: None Available
+    none_available: Hiçbiri mevcut değil
   modal:
-    close_button: Close
+    close_button: Kapat
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Aksesuarlar
+      breadcrumb: Aksesuarlar
+      header: Aksesuarlar
+      add_tooltip: Aksesuar ekle
+      no_records: Henüz hiç bir aksesuarın yok.
+      part_number: Parça numarası.
+      name: İsim
+      weight: Ağırlık
+      cost_value: Değer maliyeti
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Aksesuar detayları
+        description: Aksesuarınız için ad ve parça numarasını ayarlayın.
+        name_label: Ad
+        part_number_label: Parça numarası
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Ağırlık & Fiyar
+        description: Aksesuarınız için, ağırlığını, net fiyatını ve orijinal değerini ayarlayın.
+        weight_label: Ağırlık
+        cost_value_label: Değer Maliyeti
+        net_price_label: Net fiyat
+      submit_button: Gönder
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Aksesuarı düzenle
+      breadcrumb: Düzenle
+      accessory_index: Aksesuarlar
+      header: Aksesuarı Düzenle
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Yeni Aksesuar
+      breadcrumb: Yeni
+      accessory_index: Aksesuarlar
+      header: Yeni Aksesuar
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Kontrol paneli
+    orders: Siparişler
+    completed_orders: Tamamlanan
+    pending_orders: Bekleyen
+    failed_orders: Yalan olan
+    transactions: İşlemler
+    gross_income_transactions: Brüt gelir
+    net_income_transactions: Net gelir
+    tax_transactions: Vergi / Fatura / Kdv
+    provider_fees_transactions: Sağlayıcı kesintileri
+    delivery_fees_transactions: Teslimat kesintileri
+    activity: Faaliyet
+    activity_active_carts: Aktif Siparişler
+    activity_incomplete_orders: Tamamlanmış Siparişler
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Ayarlar
+    breadcrumb: Ayarlar
+    header: Ayarlar
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
+      header: Mağaza detayları
+      description: Mağazanızın adını, e-postasını, logosunu ve temasını belirleyin. E-posta, iletişim formu ve önemli yönetim güncellemeleri için kullanılacaktır.
+      name_label: İsim
+      email_label: E-posta
       logo_label: Logo
-      theme_label: Theme
+      theme_label: Tema
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Dil
+      description: Yönetim kontrol paneli için dili ayarlayın.
+      language_label: Dil
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Vergi / Fatura / Kdv
+      description: Vergilerinizin ismini ve oranını ayarlayın.
+      name_label: İsim
+      rate_label: Oran
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Para birimi & fiyat görüntüleme
+      description: Mağazanızla birlikte çalıştığınız para birimini ve müşterilerinizin vergiler dahil olmak üzere ürün fiyatlarını görüntülemesini isteyip istemediğinizi ayarlayın.
+      currency_label: Para birimi
+      price_exc_label: Vergi dahil & hariç fiyat
+      price_inc_label: Vergi Dahil Fiyat
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: MailChimp Bülteni
+      description: Bülteniniz için MailChimp liste kimliğini ayarlayın.
+      list_id_label: Liste kimliği
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      header: Şerit
+      description: Müşteri kredi kartı ekstrelerinde görüntülemek istediğiniz metni ayarlayın.
+      statement_descriptor_label: Ekstre Tanımlayıcısı
     google_analytics:
-      header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      header: Google İstatistikleri
+      description: Mağazanız için web izleme kodunu etkinleştirip ayarlayın.
+      tracking_code_label: Web İzleme Kodu
+      enabled_label: Etkin
+      disabled_label: Devre dışı
+    submit_button: Gönder
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Kategoriler
+      breadcrumb: Kategoriler
+      header: Kategoriler
+      add_tooltip: Kategori ekle
+      no_records: Henüz hiç bir kategorin yok.
+      name: İsim
+      description: Açıklama
+      sorting: Sınıflandırma
+      active: Aktif et
+      no_of_products: Ürünlerin sayısı
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Kategori detayları
+        description: Kategoriniz için ad, açıklama ve sıralama düzenini ayarlayın.
+        name_label: Ad
+        description_label: Açıklama
+        sorting_label: Sınıflandırma
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Arama motorları
+        description: Bir sayfanın arama motorlarında nasıl gösterildiğini tanımlamanıza yardımcı olması için sayfa başlığını ve meta açıklaması ayarlayın.
+        page_title_label: Sayfa başlığı
+        meta_description_label: Meta açıklaması
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Görünürlük
+        description: Kategori, mağazanızın üzerinde görünüyorsa ayarlayın.
+        visible_label: Görünür
+        hidden_label: Gizli
+      submit_button: Gönder
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Kategoriyi düzenle
+      breadcrumb: Düzenle
+      category_index: Kategoriler
+      header: Kategoriyi düzenle
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Yeni kategori
+      breadcrumb: Yeni
+      category_index: Kategoriler
+      header: Yeni Kategoriler
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Teslimat ücreti %{service_name}
+      header: Teslimat ücreti %{service_name}
+      delivery_service_index: Teslimat hizmetleri
+      add_tooltip: Teslimat fiyatını ekleyin
+      no_records: '%{service_name} için henüz bir fiyatın yok.'
+      code: Kod
+      description: Açıklama
+      weight: Ağırlık parametreleri
+      length: Uzunluk parametreleri
+      thickness: Kalınlık parametreleri
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Teslimat ayrıntıları
+        description: Teslimat fiyatı için, kodu, fiyatı ve açıklamayı ayarlayın.
+        code_label: Kod
+        price_label: Fiyat
+        description_label: Açıklama
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Boyut Karşılığı
+        description: Bu teslimat fiyatı için boyut ve ağırlık payını belirtin.
+        min_weight_label: En az ağırlık
+        max_weight_label: En çok ağırlık
+        min_length_label: En az boy
+        max_length_label: En çok boy
+        min_thickness_label: En az kalınlık
+        max_thickness_label: En çok kalınlık
+      submit_button: Gönder
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Teslimat fiyatını düzenleyin
+      breadcrumb: Düzenle
+      delivery_service_index: Teslimat hizmetleri
+      header: Teslimat fiyatını düzenleyin
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Yeni teslimat fiyatı
+      breadcrumb: Yeni
+      delivery_service_index: Teslimat hizmetleri
+      header: Yeni teslimat fiyatı
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Ülkeler arası teslimat servisini kopyalayın
+      description: 'Ülke listesini kopyalamak istediğiniz dağıtım hizmetini seçin:'
+      select_prompt: Bir teslimat hizmeti seçin...
+      submit_button: Gönder
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Teslimat hiztmerleri
+      breadcrumb: Teslimat hiztmerleri
+      header: Teslimet hizmetleri
+      add_tooltip: Teslimat hizmeti ekle
+      no_records: Henüz bir teslimat hizmetiniz yok.
+      courier: Kurye
+      name: İsim
+      description: Açıklama
+      code: Kod
+      net_price: Net fiyat
+      gross_price: Brüt fiyat
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Teslimat servisi detayları
+        description: Kurye şirketinin adını, teslimat hizmetinizin adını ve tanımını belirleyin.
+        courier_name_label: Kurye ismi
+        name_label: İsim
+        description_label: Açıklama
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Sipariş Kısıtlamaları
+        description: Bir teslimat hizmetini her hangi bir siparişin toplam fiyatıyla sınırlayın.
+        price_range_label: Fiyat aralığı
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Sipariş takibi
+        description_html: 'Teslimat servisiniz için izleme servisini ayarlayın. Sevkıyat numarası eklemek için {{consignment_number}} kullanın.'
+        tracking_url_label: Sipariş takip URL'si
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Ülkeler
+        description_html: 'Bu teslimat hizmeti için mevcut olan ülkeleri seçin ya da <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}"><a href="#" id="copy-countries" data-delivery-service-id=> mevcut bir hizmet ülke listesi.'
+        country_placeholder: İlişkili ülkeleri seçin...
+      submit_button: Gönder
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Teslimat hizmetini düzenleyin
+      breadcrumb: Düzenle
+      delivery_service_index: Teslimat hizmetleri
+      header: Teslimat hizmetini düzenleyin
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Yeni teslimat hizmeti
+      breadcrumb: Yeni
+      delivery_service_index: Teslimat hizmetleri
+      header: Yeni teslimat hizmeti
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: İşlem için daha fazla bilgi
+        error_code: Hata kodu
+        stripe_charge_id: Şerit Ücret Kimliği
+        paypal_transaction_id: PayPal İşlem Kimliği
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Siparişi Düzenle
+        dispatch_date_label: Gönderim Tarihi
+        consignment_number_label: Sevkıyat Numarası
+        submit_button: Gönder
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      no_records: You don't have any orders yet.
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      title: Siparişler
+      breadcrumb: Siparişler
+      header: Siparişler
+      delivery_show_all: Tümünü göster
+      delivery_dispatched: Gönderildi
+      delivery_pending: Bekleniyor
+      delivery_select: Teslimat
+      payment_select: Ödeme
+      no_records: Bu kriterleri karşılayan herhangi bir siparişiniz yok
+      order_number: Sipariş No.
+      full_name: Tam isim
+      payment_type: Ödeme yöntemi
+      payment_status: Ödeme durumu
+      delivery_status: Teslimat durumu
+      gross_amount: Brüt tutuar
+      last_updated: Son güncelleme zamanı
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Sipariş #%{order_id}'
+      orders_index: Siparişler
+      cancel_order_tooltip: Siparişi iptal et
+      header: 'Sipariş #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Teslimat ayrıntıları
+        email: E-posta
+        status: Durum
+        dispatch_date: Gönderme tarihi
+        delivery_service: Teslimat hizmeti
+        tracking: Siparişi takip etme
       billing_address:
-        header: Billing Address
+        header: Fatura adresi
       delivery_address:
-        header: Delivery Address
+        header: Teslimat adresi
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Ödeme detayları
+        card_number: Kart numarası
+        expiry_date: Son kullanma tarihi
       order_items:
-        header: Order Items
-        item: Item
-        sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        header: Sipariş edilenler
+        item: Eşya
+        sku: Stok tutma birimi numarası
+        price: Fiyat
+        quantity: Miktar
+        total: Toplam
+        delivery: Teslimat
+        subtotal: Ara toplam
+        tax: Vergi / Fatura / Kdv
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: İşlemler
+        transaction_type: İşlem türü
+        payment_type: Ödeme yöntemi
+        payment_status: Ödeme durumu
+        fee: Kesinti
+        net_amount: Net tutar
+        gross_amount: Brüt tutar
+        last_updated: Son güncelleme zamanı
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Web sitesinden takip etme
+        number: Takip etme numarası
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Başlık
+      breadcrumb: Sayfalar
+      header: Sayfalar
+      sorting: Sınıflandırma
+      visible: Görünür
+      last_updated: Son güncelleme zamanı
     form:
-      header: Edit Page
+      header: Sayfayı düzenle
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        header: Sayfanızı yazın
+        description: Sayfanızın, menü öğesinin, sıralama sırasının başlığını belirleyin ve sayfa içeriğinizi ekleyin.
+        title_label: Başlık
+        menu_title_label: Menü başlığı
+        sorting_label: Sınıflandırma
+        content_label: İçerik
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        header: Arama motorları
+        description: Sayfa başlığını, meta açıklamasını ve URL ayarını yapın; bu, bir sayfanın arama motorlarında nasıl göründüğünü tanımlamanıza yardımcı olur.
+        page_title_label: Sayfa başlığı
+        meta_description_label: Meta açıklaması
+        slug_label: Lakap
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Görünürlük
+        description: Sayfa mağazanızın üzerinde görünürse ayarlayın.
+        visible_label: Görünür
+        hidden_label: Gizli
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Şablon
+        description: Bu sayfanın, mağazanızın üzerinde kullanacağı şablonu seçin.
+      submit_button: Gönder
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Sayfayı düzenle
+      breadcrumb: Düzenle
+      pages_index: Sayfalar
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
-      sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Ürünler
+      breadcrumb: Ürünler
+      header: Ürünler
+      add_product_tooltip: Ürün ekle
+      stock_management_tooltip: Stok durumu
+      no_records: Henüz her hangi bir ürününüz yok.
+      show_all_filter: Tümünü göster
+      published_filter: Yayımlandı
+      draft_filter: Taslak
+      archived_filter: Arşivlenmiş
+      featured_filter: Öne çıkan
+      filter_by: Filtreleme kriterleri
+      weighting_sorting: Ağırlık
+      name_sorting: İsim
+      popularity_sorting: Popülarite
+      sort_by: Şuna göre diz
+      sku: Stokta tutma birimi numarası
+      part_number: Parça numarası.
+      name: İsim
+      variant: Çeşit
+      net_price: Net fiyat
+      gross_price: Brüt Fiyat
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Ürünü Düzenle
+      breadcrumb: Düzenle
+      product_index: Ürünler
+      header: Ürünü Düzenle
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Yayımla
+      save_button: Kaydet
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Ek Ayarlar
+        description: Ürününüzü belirtin ve/veya SKU seçeneklerini ürün sayfasından silin.
+        featured_label: Öne çıkan
+        tags_label: Etiket
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Ortaklar
+        description: Ürününüz ile alakalı aksesuarları ve ilgili ürünleri seçin (ilgili ürünler, ürün sayfasında gösterilecektir).
+        accessories_label: Aksesuarlar
+        related_products_label: İlgili Ürünler
+        select_accessory_placeholder: Alakalı aksesuarları seçin
+        select_related_products_placeholder: İlgili ürünleri seçiniz
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Ürün Detayları
+        description: Kategoriniz için ad, açıklama ve sıralama düzenini ayarlayın.
+        select_category_placeholder: Katagori seçin
+        part_number_label: Parça Numarası
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: İsim
+        weighting_label: Ağırlık
+        short_description_label: Kısa Açıklama
+        description_label: Açıklama
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Arama Motorları
+        description: Bir sayfanın, arama motorlarında nasıl göründüğünü tanımlamamıza yardımcı olmanız için sayfa başlığını ve meta açıklamasını ayarlayın.
+        page_title_label: Sayfa Başlığı
+        meta_description_label: Meta Açıklaması
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Görüntüler
+        description: Bu ürünün görüntülerini düzenleyip yükleyin. Ayrıca varsayılan görüntüyü ürün sayfasında görüntülenecek şekilde de ayarlayabilirsiniz.
+        add_image: Resim Ekleyin
+        no_records: Bu ürün için herhangi bir resminiz yok.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        header: Varyantlar
+        description: Bu ürünü satmak için varyant seçeneklerini ayarlayın.
+        variant_options: Varyant Seçenekleri
+        add_variant: Varyant Ekle
+        no_records: Bu ürün için herhangi bir varyantınız yok.
+        code: Kod
+        stock: Stok
+        cost_value: Maliyet Değeri
+        price: Fiyat
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Değişkenlik Ekle
+          edit_variant: Değişkenliği Düzenle
+          code_label: Kod
+          length_label: Uzunluk
+          weight_label: Ağırlık
+          thickness_label: Kalınlık
+          stock_label: Stok
+          stock_warning_level_label: Stok Uyarı Seviyesi
+          cost_value_label: Maliyet değeri
+          price_label: Fiyat
+          submit_button: Gönder
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: İçin stok ayarlaması ekle
+          current_stock: Mevcut stok
+          description_label: Açıklama
+          adjustment_label: Ayarlama
+          submit_button: Gönder
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Başka türlü olan ayarları yapılandırma
+          reset_button: Çeşitleri sıfırla
+          submit_button: Gönder
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
-        sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        title: Stok yönetimi
+        breadcrumb: Stok yönetimi
+        product_index: Ürünler
+        add_stock_tooltip: Stok ekle
+        header: Stok yönetimi
+        show_all_filter: Tümünü göster
+        low_filter: Düşük
+        stock_filer: Stok
+        no_records: Henüz her hangi bir ürün stok tutma birimi numaran yok.
+        sku: Stok tutma birimi numarası
+        name: İsim
+        variant: Çeşit
+        stock: Stok
+        stock_warning_level: Stok uyarı seviyesi
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Stok yönetimi
+        product_index: Ürünler
+        stock_management_index: Stok yönetimi
+        add_stock_adjustment_tooltip: Stok ayarlaması ekleyin
+        header: Stok tarihi
+        date: Tarih
+        description: Açıklama
+        adjustment: Ayarlama
+        stock: Stok
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
-        sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        title: Yeni stok
+        breadcrumb: Yeni
+        product_index: Ürünler
+        stock_management_index: Stok yönetimi
+        header: Yeni stok
+        sku_label: Stok tutma birimi numarası
+        description_label: Açıklama
+        adjustment_label: Ayarlama
+        submit_button: Gönder
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Görüntü ekle
+        edit_image: Görüntüyü düzenle
+        file_label: Dosya
+        default_label: Varsayılan
+        submit_button: Gönder
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profil
+      breadcrumb: Profil
+      header: Profil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Profil Ayarları
+        description: Yönetim hesabınızın adını ve profil resmini ayarlayın.
+        first_name_label: İsim
+        last_name_label: Soy isim
+        profile_picture_label: Profil Resmi
+      submit_button: Gönder
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Hesabınız başarıyla doğrulandı. Şuan oturumun açık."
+      send_instructions: "Birkaç dakika içinde, hesabınızı onaylama ile ilgili talimatları içeren bir e-posta alacaksınız."
+      send_paranoid_instructions: "Eğer e-posta adresiniz veritabanımızda zaten mevcutsa, birkaç dakika içinde hesabınızı nasıl onaylayacağınıza dair talimatları içeren bir e-posta alacaksınız."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Zaten giriş yaptınız."
+      inactive: "Hesabınız henüz aktif edilmemiş."
+      invalid: "Geçersiz e-posta veya şifre."
+      invalid_token: "Geçersiz kimlik doğrulama simgesi."
+      locked: "Hesabınız kitlendi."
+      not_found_in_database: "Geçersiz e-posta veya şifre."
+      timeout: "Oturumunuzun süresi doldu, devam etmek için lütfen tekrar oturum açın."
+      unauthenticated: "Devam etmeden önce oturum açmanız veya kayıt olmanız gerek."
+      unconfirmed: "Devam etmeden önce hesabınızı onaylamanız gerekir."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Onay talimatları"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Parola talimatlarını sıfırla"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Talimatların kilidini aç"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "\"%{reason}\" nedeninden dolayı %{kind} tarafından kimliğiniz doğrulanamadı."
+      success: "%{kind} tarafından kimliğiniz başarılı bir şekilde doğrulandı."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      no_token: "Bu sayfaya şifre sıfırlama e-postasından gelmeden erişemezsiniz. Şifre sıfırlama e-postasından geliyorsanız lütfen sağlanan tam URL'yi kullandığınızdan emin olun."
+      send_instructions: "Birkaç dakika içinde şifrenizi nasıl sıfırlayacağınıza dair talimatları içeren bir e-posta alacaksınız."
+      send_paranoid_instructions: "Eğer e-posta adresiniz veritabanımızda mevcutsa, birkaç dakika içinde e-posta adresinize bir şifre kurtarma bağlantısı gönderilecektir."
+      updated: "Şfireniz başarılı bir şekilde değiştirildi. Şuan oturumun açık."
+      updated_not_active: "Şifreniz başarılı bir şekilde değiştirildi."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: "Güle Güle! Hesabınız başarılı bir şekilde iptal edildi. Umarız sizinle yakında yine görüşürüz."
+      signed_up: "Hoş geldiniz! Başarılı bir şekilde oturum açtınız."
+      signed_up_but_inactive: "Başarılı bir şekilde kayıt oldunuz. Ama, hesabınız henüz aktif edilmediği için oturumunuzu açamadık."
+      signed_up_but_locked: "Başarılı bir şekilde kayıt oldunuz. Ama, hesabınız kitli olduğu için oturumunuzu açamadık."
+      signed_up_but_unconfirmed: "E-posta adresinize bir onay bağlantısı olan mesaj gönderildi. Lütfen hesabınızı etkinleştirmek için bağlantıyı açın."
+      update_needs_confirmation: "Hesabınızı başarılı bir şekilde güncellediniz, ama yeni e-posta adresinizi doğrulamamız gerekiyor. Lütfen e-postanızı kontrol edin ve yeni e-posta adresinizi teyit etmek için onay linkini tıklayın."
+      updated: "Hesabınız başarılı bir şekilde güncellendi."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Başarılı bir şekilde oturum açıldı."
+      signed_out: "Başarılı bir şekilde çıkış yapıldı."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Bir kaç dakika içerisinde, hesabınızın kilidini nasıl açacağınıza dair talimatları içeren bir e-posta alacaksınız."
+      send_paranoid_instructions: "Eğer hesabınız varsa, birkaç dakika içinde kilidini açmakla alaklı talimatları içeren bir e-posta alacaksınız."
+      unlocked: "Hesabın başarıyla açıldı. Lütfen devam etmek için giriş yap."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      already_confirmed: "zaten doğrulandı, lütfen tekrar oturum açmayı deneyin"
+      confirmation_period_expired: "%{period} zaman içinde onaylanması gerek, lütfen yeni bir tane isteyin"
+      expired: "süresi dolmuş, lütfen yeni bir tane isteyin"
+      not_found: "bulunamadı"
+      not_locked: "kilitli değil"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "hata %{resource} kaynağın kaydedilmesini yasakladı:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Yeni bir mesaj alındı
+      header: Yeni mesaj
+      hello: Merhaba
+      name_prefix: Bilgileri edindiniz
+      message_title: Mesaj
+      email_title: E-posta
+      website_title: Web sitesi
+      thanks: Teşekkürler
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Ürününüz taslak olarak başarıyla kaydedildi
+          publish: Ürününüz başarıyla yayınlandı. Artık mağazanızda
         destroy:
-          valid: Product was successfully deleted
+          valid: Ürün başarıyla silindi
         archive:
-          valid: Product was successfully archived
+          valid: Ürün başarıyla arşivlendi
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Varyant ayarları boş bırakılamaz
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Aksesuar başarıyla yaratıldı
         update:
-          valid: Accessory was successfully updated
+          valid: Şifreniz başarıyla güncellendi
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Aksesuar başarı ile silindi
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Mağaza ayarları başarıyla güncelleştirildi
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Bu ürün için herhangi bir resminiz yok
       categories:
         create:
-          valid: Category was successfully created
+          valid: Kategori başarıyla oluşturuldu
         update:
-          valid: Category was successfully updated
+          valid: Kategori başarıyla güncellendi
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Teslimat fiyatı başarıyla oluşturuldu
         update:
-          valid: Delivery service price was successfully updated
+          valid: Teslimat fiyatı başarıyla güncelleştirildi
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Teslimat fiyatı başarıyla silindi
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Teslimat servisi başarıyla oluşturuldu
         update:
-          valid: Delivery service was successfully updated
+          valid: Teslimat servisi başarıyla güncellendi
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Teslimat servisi başarıyla silindi
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Teslimat servisi seçmelisiniz
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Sayfa başarıyla güncellendi
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Profil başarıyla güncelleştirildi
+          invalid: Profil detaylarını güncellerken bir hata oluştu
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Siparişiniz iptal edildi
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Siparişiniz tamamlanırken bir hata oluştu. Lütfen yeniden deneyin

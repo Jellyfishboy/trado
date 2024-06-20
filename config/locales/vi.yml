@@ -1,88 +1,88 @@
 vi:
   global:
-    none_available: None Available
+    none_available: Không khả dụng
   modal:
-    close_button: Close
+    close_button: Đóng lại
   accessories:
     index:
       title: Accessories
       breadcrumb: Accessories
       header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
+      add_tooltip: Thêm Accessory
+      no_records: Bạn chưa có bất kỳ accessories nào.
       part_number: Part no.
-      name: Name
-      weight: Weight
+      name: Tên
+      weight: Khối lượng
       cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       accessory_detail:
-        header: Accessory Details
+        header: Chi tiết Accessory
         description: Set the name and part number for your accessory.
-        name_label: Name
+        name_label: Tên
         part_number_label: Part Number
       weight_price:
-        header: Weight & Price
+        header: Trọng lượng & giá
         description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
+        weight_label: Khối lượng
         cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        net_price_label: Giá net
+      submit_button: Gửi
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
+      title: Chỉnh sửa Accessory
+      breadcrumb: Chỉnh sửa
       accessory_index: Accessories
-      header: Edit Accessory
+      header: Chỉnh sửa Accessory
     new:
-      title: New Accessory
-      breadcrumb: New
+      title: Tạo mới Accessory
+      breadcrumb: Mới
       accessory_index: Accessories
-      header: New Accessory
+      header: Tạo mới Accessory
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
+    header: Bảng điều khiển
+    orders: Các đơn hàng
+    completed_orders: Đã hoàn thành
+    pending_orders: Đang chờ kiểm duyệt
+    failed_orders: Đã thất bại
+    transactions: Các giao dịch
     gross_income_transactions: Gross Income
     net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
+    tax_transactions: Thuế
+    provider_fees_transactions: Phí từ nhà cung cấp
+    delivery_fees_transactions: Phí giao hàng
+    activity: Hoạt động
     activity_active_carts: Active Carts
     activity_incomplete_orders: Incomplete Orders
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Thiết lập
+    breadcrumb: Thiết lập
+    header: Thiết lập
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      header: Chi tiết cửa hàng
+      description: Thiết lập tên, email, logo và theme lưu trữ của bạn. Email sẽ được sử dụng cho contact form và những cập nhật quản trị quan trọng.
+      name_label: Tên
+      email_label: Thư điện tử
+      logo_label: Biểu tượng
+      theme_label: Giao diện
     language:
-      header: Language
+      header: Ngôn ngữ
       description: Set the language for the administration dashboard.
-      language_label: Language
+      language_label: Ngôn ngữ
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Thuế
+      description: Thiết lập tên và tỷ lệ phần trăm thuế.
+      name_label: Tên
+      rate_label: Tỷ giá
     currency:
-      header: Currency & price display
+      header: Tiền tệ và giá hiển thị
       description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      currency_label: Tiền tệ
+      price_exc_label: Giá bao gồm & không bao gồm thuế
+      price_inc_label: Giá bao gồm thuế
     mailchimp:
       header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
+      description: Thiết lập MailChimp list Id cho newsletter của bạn.
       list_id_label: List Id
     stripe:
       header: Stripe
@@ -92,308 +92,309 @@ vi:
       header: Google Analytics
       description: Enable and set the web tracking code for your store.
       tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      enabled_label: Đã kích hoạt
+      disabled_label: Đã vô hiệu hóa
+    submit_button: Xác nhận
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
+      title: Nhóm danh mục
+      breadcrumb: Nhóm danh mục
+      header: Nhóm danh mục
+      add_tooltip: Thêm Category
+      no_records: Bạn chưa có danh mục nào.
+      name: Tên
+      description: Mô tả
+      sorting: Sắp xếp
       active: Active
-      no_of_products: No. of Products
+      no_of_products: Số sản phẩm
     form:
       category_details:
-        header: Category Details
+        header: Chi tiết danh mục
         description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        name_label: Tên
+        description_label: Mô tả
+        sorting_label: Sắp xếp
       search_engine:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
       visibility:
-        header: Visibility
+        header: Khả năng hiển thị
         description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        visible_label: Có thể nhìn thấy
+        hidden_label: Ẩn
+      submit_button: Gửi
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Chỉnh sửa Category
+      breadcrumb: Chỉnh sửa
+      category_index: Nhóm danh mục
+      header: Chỉnh sửa Category
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Tạo mới Category
+      breadcrumb: Tạo mới
+      category_index: Nhóm danh mục
+      header: Tạo mới Category
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
+      title: Giá vận chuyển cho %{service_name}
+      header: Giá vận chuyển cho %{service_name}
+      delivery_service_index: Những dịch vụ giao hàng
+      add_tooltip: Thêm giá giao hàng
+      no_records: Bạn chưa có bất kỳ giá nào cho %{service_name}.
       code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      description: Mô tả
+      weight: Thông số khối lượng
+      length: Thông số chiều dài
+      thickness: Thông số độ dày
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        header: Chi tiêt giá vận chuyển
+        description: Thiết lập code, giá and mô tả cho giá giao hàng.
         code_label: Code
-        price_label: Price
-        description_label: Description
+        price_label: Giá
+        description_label: Mô tả
       dimension_allowance:
         header: Dimension Allowance
         description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        min_weight_label: Trọng lượng tối thiểu
+        max_weight_label: Trọng lượng tối đa
+        min_length_label: Chiều dài tối thiểu
+        max_length_label: Chiều dài tối đa
+        min_thickness_label: Độ dày tối thiểu
+        max_thickness_label: Độ dày tối đa
+      submit_button: Gửi
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Chỉnh sửa giá dịch vụ giao hàng
+      breadcrumb: Chỉnh sửa
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Chỉnh sửa giá dịch vụ giao hàng
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Tạo mới giá dịch vụ giao hàng
+      breadcrumb: Tạo mới
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Tạo mới giá dịch vụ giao hàng
   delivery_services:
     countries_modal:
       header: Copy Delivery Service Countries
       description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      select_prompt: Chọn một dịch vụ giao hàng...
+      submit_button: Gửi
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
+      title: Những dịch vụ giao hàng
+      breadcrumb: Những dịch vụ giao hàng
+      header: Những dịch vụ giao hàng
+      add_tooltip: Thêm dịch vụ giao hàng
+      no_records: Bạn chưa có bất kỳ dịch vụ giao hàng nào.
       courier: Courier
-      name: Name
-      description: Description
+      name: Tên
+      description: Mô tả
       code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     form:
       delivery_service_details:
-        header: Delivery Service Details
+        header: Chi tiết dịch vụ giao hàng
         description: Set the courier company name, name and description of your delivery service.
         courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        name_label: Tên
+        description_label: Mô tả
       order_constraints:
         header: Order Constraints
         description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        price_range_label: Khoảng giá
       tracking:
-        header: Tracking
+        header: Theo dõi
         description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
         tracking_url_label: Tracking Url
       countries:
-        header: Countries
+        header: Các quốc gia
         description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        country_placeholder: Lựa chọn các quốc gia liên quan...
+      submit_button: Gửi
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Chỉnh sửa dịch vụ giao hàng
+      breadcrumb: Chỉnh sửa
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Chỉnh sửa dịch vụ giao hàng
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Tạo mới dịch vụ giao hàng
+      breadcrumb: Tạo mới
+      delivery_service_index: Những dịch vụ giao hàng
+      header: Tạo mới dịch vụ giao hàng
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Chi tiết thông tin giao dịch
+        error_code: Mã lỗi
+        stripe_charge_id: Stripe Change Id
+        paypal_transaction_id: Paypal Transaction Id
     edit:
       modal:
-        header: Edit Order
+        header: Chỉnh sửa đơn đặt hàng
         dispatch_date_label: Dispatch Date
         consignment_number_label: Consignment Number
-        submit_button: Submit
+        submit_button: Gửi
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
+      title: Các đơn hàng
+      breadcrumb: Các đơn hàng
+      header: Các đơn hàng
+      delivery_show_all: Hiển thị tất cả
       delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      no_records: You don't have any orders yet.
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
+      delivery_pending: Đang chờ giải quyết
+      delivery_select: Giao hàng
+      payment_select: Thanh toán
+      no_records: You don't have any orders meeting those criterias
+      order_number: Đơn hàng số.
+      full_name: Họ và tên
+      payment_type: Hình thức thanh toán
+      payment_status: Trạng thái thanh toán
+      delivery_status: Trạng thái giao hàng
       gross_amount: Gross Amount
-      last_updated: Last Updated
+      last_updated: Cập nhật Mới nhất
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Đơn đặt hàng #%{order_id}'
+      orders_index: Các đơn hàng
+      cancel_order_tooltip: Hủy bỏ đơn đặt hàng
+      header: 'Đơn đặt hàng #%{order_id}'
       delivery_details:
-        header: Delivery Details
+        header: Chi tiêt vận chuyển
         email: Email
-        status: Status
+        status: Trạng thái
         dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        delivery_service: Dịch vụ vận chuyển
+        tracking: Theo dõi
       billing_address:
-        header: Billing Address
+        header: Địa chỉ thanh toán
       delivery_address:
-        header: Delivery Address
+        header: Địa chỉ nhận hàng
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Chi tiết thanh toán
+        card_number: Số thẻ
+        expiry_date: Ngày hết hạn
       order_items:
-        header: Order Items
-        item: Item
+        header: Các sản phẩm trong đơn hàng
+        item: Sản Phẩm
         sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
+        price: Giá
+        quantity: Số lượng
+        total: Tổng cộng
+        delivery: Giao hàng
         subtotal: Subtotal
-        tax: Tax
+        tax: Thuế
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
+        header: Các giao dịch
+        transaction_type: Loại giao dịch
+        payment_type: Hình thức thanh toán
+        payment_status: Trạng thái thanh toán
+        fee: Phí
         net_amount: Net Amount
         gross_amount: Gross Amount
-        last_updated: Last Updated
+        last_updated: Cập nhật Mới nhất
       tracking:
         website: Tracking Website
         number: Tracking Number
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Tiêu đề
+      breadcrumb: Các trang
+      header: Các trang
+      sorting: Phân loại
+      visible: Có thể nhìn thấy
+      last_updated: Cập nhật Mới nhất
     form:
-      header: Edit Page
+      header: Chỉnh sửa Trang
       write_your_page:
         header: Write Your Page
         description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        title_label: Tiêu đề
+        menu_title_label: Tiêu đề menu
+        sorting_label: Phân loại
+        content_label: Nội dung
       search_engines:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
         slug_label: Slug
       visibility:
-        header: Visibility
+        header: Khả năng hiển thị
         description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        visible_label: Hiển thị
+        hidden_label: Ẩn
       template:
-        header: Template
+        header: Mẫu thiết kế
         description: Select the template this page will use on your storefront.
-      submit_button: Submit
+      submit_button: Gửi
     edit:
-      title: Edit Page
-      breadcrumb: Edit
+      title: Chỉnh sửa Trang
+      breadcrumb: Chỉnh sửa
       pages_index: Pages
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
+      title: Các sản phẩm
+      breadcrumb: Các sản phẩm
+      header: Các sản phẩm
+      add_product_tooltip: Thêm sản phẩm
+      stock_management_tooltip: Quản lý kho
+      no_records: Bạn chưa có bất kỳ products nào.
+      show_all_filter: Hiển thị tất cả
       published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
+      draft_filter: Bản nháp
+      archived_filter: Đã lưu trữ
+      featured_filter: Nổi bật
+      filter_by: Lọc theo
       weighting_sorting: Weighting
-      name_sorting: Name
+      name_sorting: Tên
       popularity_sorting: Popularity
-      sort_by: Sort By
+      sort_by: Sắp xếp theo
       sku: SKU
       part_number: Part no.
-      name: Name
+      name: Tên
       variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Giá net
+      gross_price: Giá grosss
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Chỉnh sửa sản phẩm
+      breadcrumb: Chỉnh sửa
+      product_index: Các sản phẩm
+      header: Chỉnh sửa sản phẩm
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Đăng
+      save_button: Lưu
       additional_options:
-        header: Additional Options
+        header: Tùy chọn bổ sung
         description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        featured_label: Nổi bật
+        tags_label: Gán nhãn
       associations:
         header: Associations
         description: Select associated accessories and related products for your product (related products will be displayed on the product page).
         accessories_label: Accessories
-        related_products_label: Related Products
+        related_products_label: Những sản phẩm liên quan
         select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        select_related_products_placeholder: Chọn sản phẩm liên quan
       product_details:
-        header: Product Details
+        header: Chi tiết sản phẩm
         description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
+        select_category_placeholder: Chọn danh mục
         part_number_label: Part Number
         sku_label: SKU
-        name_label: Name
+        name_label: Tên
         weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        short_description_label: Miêu tả ngắn gọn
+        description_label: Mô tả
       search_engines:
-        header: Search Engines
+        header: Bộ máy tìm kiếm
         description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
+        page_title_label: Tiêu đề Trang
         meta_description_label: Meta Description
       images:
-        header: Images
+        header: Hình ảnh
         description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
+        add_image: Thêm hình ảnh
         no_records: You do not have any images for this product.
       skus:
         header: Variants
@@ -402,155 +403,155 @@ vi:
         add_variant: Add Variant
         no_records: You do not have any variants for this product.
         code: Code
-        stock: Stock
+        stock: Kho
         cost_value: Cost Value
-        price: Price
+        price: Giá
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
+          add_variant: Thêm Variant
+          edit_variant: Chỉnh sửa Variant
           code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
+          length_label: Chiều dài
+          weight_label: Khối lượng
+          thickness_label: Độ dày
+          stock_label: Kho
           stock_warning_level_label: Stock Warning Level
           cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          price_label: Giá
+          submit_button: Gửi
     skus:
       stock_adjustments:
         modal:
           header: Add Stock Adjustment for
           current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          description_label: Mô tả
+          adjustment_label: Điều chỉnh
+          submit_button: Gửi
       variants:
         modal:
           header: Configure Variant Options
           reset_button: Reset Variants
-          submit_button: Submit
+          submit_button: Gửi
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
+        title: Quản lý kho
+        breadcrumb: Quản lý kho
+        product_index: Các sản phẩm
+        add_stock_tooltip: Thêm Stock
+        header: Quản lý kho
+        show_all_filter: Hiển thị tất cả
         low_filter: Low
         stock_filer: Stock
         no_records: You don't have any Product SKUs yet.
         sku: SKU
-        name: Name
+        name: Tên
         variant: Variant
         stock: Stock
         stock_warning_level: Stock Warning Level
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
+        title: Quản lý kho
+        product_index: Các sản phẩm
+        stock_management_index: Quản lý kho
         add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        header: Lịch sử Stock
+        date: Ngày tháng
+        description: Mô tả
+        adjustment: Điều chỉnh
+        stock: Kho
     stock_adjustments:
       new:
         title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
+        breadcrumb: Tạo mới
+        product_index: Các sản phẩm
+        stock_management_index: Quản lý kho
         header: New Stock
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Mô tả
+        adjustment_label: Điều chỉnh
+        submit_button: Gửi
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Thêm hình ảnh
+        edit_image: Chỉnh sửa hình ảnh
+        file_label: Tập tin
+        default_label: Mặc định
+        submit_button: Gửi
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Hồ sơ cá nhân
+      breadcrumb: Hồ sơ cá nhân
+      header: Hồ sơ cá nhân
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Thiết lập Hồ sơ
+        description: Thiết lập tên và hình ảnh hồ sơ cho tài khoản quản trị của bạn.
+        first_name_label: Tên
+        last_name_label: Họ
+        profile_picture_label: Ảnh đại diện
+      submit_button: Gửi
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      send_instructions: "Bạn sẽ nhận được một email hướng dẫn để xác nhận tài khoản của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu thư điện tử của bạn tồn tại trong dữ liệu của chúng tôi thì bạn sẽ nhận được một email hướng dẫn để xác nhận tài khoản của bạn trong vài phút."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Bạn đã đăng nhập."
+      inactive: "Tài khoản của bạn chưa kích hoạt."
+      invalid: "Email hoặc mật khẩu không hợp lệ."
+      invalid_token: "Token xác thực không hợp lệ."
+      locked: "Tài khoản của bạn bị khóa."
+      not_found_in_database: "Email hoặc mật khẩu không hợp lệ."
+      timeout: "Session của bạn hết hạn, xin vui lòng đăng nhập lại để tiếp tục."
+      unauthenticated: "Bạn cần phải đăng nhập hoặc đăng ký trước khi tiếp tục."
+      unconfirmed: "Bạn phải xác nhận tài khoản của bạn trước khi tiếp tục."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Hướng dẫn xác nhận"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Hướng dẫn đặt lại mật khẩu"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Hướng dẫn mở khóa"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "Có thể không xác thực được từ %{kind} vì \"%{reason}\"."
+      success: "Xác thực thành công từ tài khoản %{kind}."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      send_instructions: "Bạn sẽ nhận được một email với các hướng dẫn về làm thế nào để đặt lại mật khẩu của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu địa chỉ email của bạn tồn tại trong cơ sở dữ liệu của chúng tôi, bạn sẽ nhận được một liên kết phục hồi mật khẩu theo địa chỉ email của bạn trong vài phút."
+      updated: "Mật khẩu đã đổi thành công. Bây giờ bạn đang đăng nhập."
+      updated_not_active: "Mật khẩu của bạn đã được thay đổi thành công."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: "Tạm biệt! Tài khoản của bạn đã bị hủy bỏ. Chúng tôi hy vọng sớm gặp lại bạn."
+      signed_up: "Chào mừng! Bạn đã đăng ký thành công."
+      signed_up_but_inactive: "Bạn đã đăng ký thành công. Tuy nhiên, bạn chưa thể đăng nhập được bởi vì tài khoản của bạn không được kích hoạt."
+      signed_up_but_locked: "Bạn đã đăng ký thành công. Tuy nhiên, bạn chưa thể đăng nhập được bởi vì tài khoản của bạn đã bị khoá."
+      signed_up_but_unconfirmed: "Một tin nhắn với một liên kết xác nhận đã được gửi đến địa chỉ email của bạn. Xin vui lòng mở liên kết để kích hoạt tài khoản của bạn."
+      update_needs_confirmation: "Bạn đã cập nhật tài khoản của mình thành công, nhưng chúng tôi cần phải xác minh địa chỉ email mới của bạn. Xin vui lòng kiểm tra email của bạn và nhấp vào đường dẫn để hoàn tất xác nhận địa chỉ email mới của bạn."
+      updated: "Bạn cập nhật tài khoản của mình thành công."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Đăng nhập thành công."
+      signed_out: "Đăng xuất thành công."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Bạn sẽ nhận được một email hướng dẫn để mở khóa tài khoản của bạn trong vài phút."
+      send_paranoid_instructions: "Nếu tài khoản tồn tại, bạn sẽ nhận được một email hướng dẫn để mở khoá nó trong vài phút."
+      unlocked: "Tài khoản của bạn đã được mở khóa thành công. Xin vui lòng đăng nhập để tiếp tục."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
+      already_confirmed: "đã đã được xác nhận, xin vui lòng thử đăng nhập"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      not_found: "không tìm thấy"
+      not_locked: "không bị khóa"
       not_saved:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Đã nhận được một tin nhắn mới từ
+      header: Tin nhắn mới
+      hello: Xin chào
+      name_prefix: Bạn đã nhận được các thông tin sau từ
+      message_title: Tin nhắn
+      email_title: Thư điện tử
+      website_title: Trang web
+      thanks: Cảm ơn
   controllers:
     admin:
       products:
@@ -558,9 +559,9 @@ vi:
           draft: Your product has been saved successfully as a draft
           publish: Your product has been published successfully. It is now live in your store
         destroy:
-          valid: Product was successfully deleted
+          valid: Đã xóa sản phẩm thành công
         archive:
-          valid: Product was successfully archived
+          valid: Sản phẩm được lưu trữ thành công
       skus:
         variants:
           create:
@@ -577,12 +578,12 @@ vi:
           valid: Store settings were successfully updated
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Bạn không có bất kỳ hình ảnh nào cho sản phẩm này
       categories:
         create:
-          valid: Category was successfully created
+          valid: Danh mục đã được tạo thành công
         update:
-          valid: Category was successfully updated
+          valid: Danh mục đã được cập nhật thành công
       delivery_service_prices:
         create:
           valid: Delivery service price was successfully created
@@ -596,18 +597,18 @@ vi:
         update:
           valid: Delivery service was successfully updated
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Dịch vụ vận chuyển đã xoá thành công
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Bạn cần chọn một dịch vụ vận chuyển
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Cập nhật trang thành công
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Cập nhật hồ sơ thành công
+          invalid: Có một lỗi xảy ra khi cố gắng cập nhật chi tiết hồ sơ của bạn
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Đơn hàng đã bị huỷ
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Xảy ra lỗi khi đang cố gắng hoàn thành đơn hàng của bạn. Xin vui lòng thử lại

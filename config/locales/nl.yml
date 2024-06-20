@@ -1,614 +1,615 @@
 nl:
   global:
-    none_available: None Available
+    none_available: Geen Beschikbaar
   modal:
-    close_button: Close
+    close_button: Sluiten
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Onderdelen
+      breadcrumb: Onderdelen
+      header: Onderdelen
+      add_tooltip: Voeg accessoire toe
+      no_records: U hebt nog geen accessoires.
+      part_number: Onderdeel nr.
+      name: Naam
+      weight: Gewicht
+      cost_value: Waarde van de kosten
+      net_price: Netto prijs
+      gross_price: Bruto prijs
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Accessoire Details
+        description: Stel de naam en het artikelnummer in voor uw accessoire.
+        name_label: Naam
+        part_number_label: Onderdeel Nummer
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Gewicht & prijs
+        description: Stel het gewicht, de nettoprijs en de originele kosten van uw accessoires in.
+        weight_label: Gewicht
+        cost_value_label: Waarden van de kosten
+        net_price_label: Netto prijs
+      submit_button: Inzenden
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Accessoire bewerken
+      breadcrumb: Bewerken
+      accessory_index: Onderdelen
+      header: Accessoire bewerken
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Nieuwe Accessoire
+      breadcrumb: Nieuw
+      accessory_index: Onderdelen
+      header: Nieuwe Accessoire
   dashboard:
     header: Dashboard
     orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    completed_orders: Voltooid
+    pending_orders: In Behandeling
+    failed_orders: Mislukt
+    transactions: Verrichtingen
+    gross_income_transactions: Bruto Inkomen
+    net_income_transactions: Netto inkomen
+    tax_transactions: Belasting
+    provider_fees_transactions: Dienstverlenerkosten
+    delivery_fees_transactions: Leveringskosten
+    activity: Activiteit
+    activity_active_carts: Actieve Winkelwagen
+    activity_incomplete_orders: Onvolledige Bestellingen
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Instellingen
+    breadcrumb: Instellingen
+    header: Instellingen
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
+      header: Winkelgegevens
+      description: Zet de naam, e-mail, het logo en het thema van uw bedrijf. De e-mail wordt gebruikt voor het contactformulier en belangrijke updates van de administratie.
+      name_label: Naam
+      email_label: E-maail
       logo_label: Logo
-      theme_label: Theme
+      theme_label: Thema
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Taal
+      description: Stel de taal in voor het administratie paneel.
+      language_label: Taal
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Belasting
+      description: Stel de naam en het percentage van uw belasting in.
+      name_label: Naam
+      rate_label: Beoordelen
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Toon valuta en prijs
+      description: Bepaal de valutaeenheid waarmee u in uw winkel werkt en of uw klanten de productprijzen moeten zien, inclusief belastingen.
+      currency_label: Valuta
+      price_exc_label: Prijs inc. & excl. btw
+      price_inc_label: Prijs incl. Btw
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: MailChimp nieuwsbrief
+      description: Stel de ID van de MailChimp-lijst in voor uw nieuwsbrief.
+      list_id_label: Lijst-ID
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
+      header: Streep
+      description: Definieer de tekst in die u wilt weergeven op de creditcardafschriften van uw klant.
       statement_descriptor_label: Statement Descriptor
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Schakel de webtrackingcode voor uw winkel in en configureer deze.
+      tracking_code_label: Web-trackingscode
+      enabled_label: Ingeschakeld
+      disabled_label: Uitgeschakeld
+    submit_button: Inzenden
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Categorieën
+      breadcrumb: Categorieën
+      header: Categorieën
+      add_tooltip: Categorie Toevoegen
+      no_records: U hebt nog geen producten categorieën.
+      name: Naam
+      description: Beschrijving
+      sorting: Sorteren
+      active: Actieve
+      no_of_products: Productnummer
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Details van de categorie
+        description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
+        name_label: Naam
+        description_label: Beschrijving
+        sorting_label: Sorteren
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Zoekmachines
+        description: Stel de paginatitel en metabeschrijving in om te definiëren hoe een pagina wordt weergegeven in zoekmachines.
+        page_title_label: Pagina Titel
+        meta_description_label: Meta omschrijving
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Zichtbaarheid
+        description: Bepaal of de categorie zichtbaar is in uw etalage.
+        visible_label: Zichtbaar
+        hidden_label: Verborgen
+      submit_button: Inzenden
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Categorie Bewerken
+      breadcrumb: Bewerken
+      category_index: Categorieën
+      header: Categorie Bewerken
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nieuwe Categorie
+      breadcrumb: Nieuw
+      category_index: Categorieën
+      header: Nieuwe Categorie
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
+      title: Levering prijzen voor %{service_name}
+      header: Levering prijzen voor %{service_name}
+      delivery_service_index: Leveringsdiensten
+      add_tooltip: Leveringskosten toevoegen
+      no_records: U heeft nog geen prijzen voor %{service_name}.
       code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      description: Omschrijving
+      weight: Gewicht Parameters
+      length: Lengte Parameters
+      thickness: Dikte Parameters
+      net_price: Netto prijs
+      gross_price: Bruto Prijs
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
+        header: Details van Leveringskosten
+        description: Stel de code, de prijs en de beschrijving voor deze bezorgprijs in.
         code_label: Code
-        price_label: Price
-        description_label: Description
+        price_label: Prijs
+        description_label: Omschrijving
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Toegestane afmetingen
+        description: Voer de maat en het gewicht in voor deze leverprijs.
+        min_weight_label: Minimum Gewicht
+        max_weight_label: Maximaal Gewicht
+        min_length_label: Minimale Lengte
+        max_length_label: Maximale Lengte
+        min_thickness_label: Minimale Dikte
+        max_thickness_label: Maximale Dikte
+      submit_button: Inzenden
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Leveringskosten bewerken
+      breadcrumb: Bewerken
+      delivery_service_index: Leveringsdiensten
+      header: Leveringskosten bewerken
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Nieuwe levering prijzen
+      breadcrumb: Nieuw
+      delivery_service_index: Leveringsdiensten
+      header: Nieuwe levering prijzen
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Kopieer de bezorgservices van het land
+      description: 'Selecteer welke bezorgservice u de lijst met landen wilt kopiëren:'
+      select_prompt: Levering service kiezen...
+      submit_button: Inzenden
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
+      title: Leveringsdiensten
+      breadcrumb: Leveringsdiensten
+      header: Leveringsdiensten
+      add_tooltip: Leveringsdienst toevoegen
+      no_records: U heeft nog geen bezorgservice.
+      courier: Koerier
+      name: Naam
+      description: Omschrijving
       code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Netto prijs
+      gross_price: Bruto prijs
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Levering service details
+        description: Definieer de koeriersnaam, naam en beschrijving van uw bezorgservice.
+        courier_name_label: Koeriersnaam
+        name_label: Naam
+        description_label: Omschrijving
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Bestellingsbeperkingen
+        description: Beperk een bezorgservice tot de totale prijs van een bestelling.
+        price_range_label: Prijsklasse
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Volgen
+        description_html: 'Stel de tracking in voor uw bezorgservice. Gebruik <b>{{consignment_number}}</b> om het zendings nummer in te voegen.'
+        tracking_url_label: Volgen Url
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Landen
+        description_html: 'Selecteer de landen die beschikbaar zijn voor deze bezorgservice of <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">kopieer</a> een bestaande dienst lijst met landen.'
+        country_placeholder: Selecteer gerelateerde landen...
+      submit_button: Inzenden
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Leveringsdienst bewerken
+      breadcrumb: Bewerken
+      delivery_service_index: Leveringsdiensten
+      header: Leveringsdienst bewerken
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Nieuwe Leveringsdienst
+      breadcrumb: Nieu
+      delivery_service_index: Leveringsdiensten
+      header: Nieuwe Leveringsdienst
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Meer Info voor de transactie
+        error_code: Foutcode
+        stripe_charge_id: Strip-lading Id
+        paypal_transaction_id: PayPal Transactie Id
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Bestelling Bewerken
+        dispatch_date_label: Datum van verzending
+        consignment_number_label: Nummer van de zending
+        submit_button: Inzenden
     index:
       title: Orders
       breadcrumb: Orders
       header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      no_records: You don't have any orders yet.
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      delivery_show_all: Alles tonen
+      delivery_dispatched: Verzonden
+      delivery_pending: In Behandeling
+      delivery_select: Bezorging
+      payment_select: Betaling
+      no_records: U hebt geen bestellingen die aan deze criteria voldoen
+      order_number: Order nr.
+      full_name: Volledige Naam
+      payment_type: Betalingswijze
+      payment_status: Betalingsstatus
+      delivery_status: Leveringsstatus
+      gross_amount: Bruto Hoeveelheid
+      last_updated: Laatste update
     show:
-      title: 'Order #%{order_id}'
+      title: 'Bestelling #%{order_id}'
       orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      cancel_order_tooltip: Annuleer bestelling
+      header: 'Bestelling #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
+        header: Leverdetails
+        email: E-mail
         status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        dispatch_date: Datum van verzending
+        delivery_service: Leveringsdienst
+        tracking: Volgen
       billing_address:
-        header: Billing Address
+        header: Factuuradres
       delivery_address:
-        header: Delivery Address
+        header: Leveringsadres
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Betalingsgegevens
+        card_number: Kaartnummer
+        expiry_date: Vervaldatum
       order_items:
-        header: Order Items
+        header: Bestellings Artikel
         item: Item
         sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
+        price: Prijs
+        quantity: Aantal
+        total: Totaal
+        delivery: Bezorging
         subtotal: Subtotal
-        tax: Tax
+        tax: Belasting
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Verrichtinge
+        transaction_type: Transactietype
+        payment_type: Betalingswijze
+        payment_status: Betalingsstatus
+        fee: Kost
+        net_amount: Netto hoeveelheid
+        gross_amount: Bruto Hoeveelheid
+        last_updated: Laatste update
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Tracking-website
+        number: Volg nummer
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Titel
+      breadcrumb: Pagina's
+      header: Pagina's
+      sorting: Sorteren
+      visible: Zichtbaar
+      last_updated: Laatste update
     form:
-      header: Edit Page
+      header: Pagina Bewerken
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        header: Schrijf uw Pagina
+        description: Stel de titel in voor uw pagina, menu-item, sorteervolgorde en voeg uw pagina-inhoud toe.
+        title_label: Titel
+        menu_title_label: Menutitel
+        sorting_label: Sorteren
+        content_label: Inhoud
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        header: Zoekmachines
+        description: Stel paginatitel, meta omschrijving en URL slug in; deze helpen om te bepalen hoe een pagina wordt weergegeven in zoekmachines.
+        page_title_label: Pagina Titel
+        meta_description_label: Meta omschrijving
+        slug_label: Slak
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Zichtbaarheid
+        description: Stel in of de pagina zichtbaar is in uw etalage.
+        visible_label: Zichtbaar
+        hidden_label: Verborgen
       template:
         header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        description: Selecteer de sjabloon die deze pagina op uw storefront zal gebruiken.
+      submit_button: Inzenden
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Pagina Bewerken
+      breadcrumb: Bewerken
+      pages_index: Pagina's
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
+      title: Producten
+      breadcrumb: Producten
+      header: Producten
+      add_product_tooltip: Product toevoegen
+      stock_management_tooltip: Voorraadbeheer
+      no_records: U hebt nog geen producten.
+      show_all_filter: Alles tonen
+      published_filter: Gepubliceerd
+      draft_filter: Concept
+      archived_filter: Gearchiveerd
       featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
+      filter_by: Filteren op
+      weighting_sorting: Weging
+      name_sorting: Naam
+      popularity_sorting: Populariteit
+      sort_by: Sorteer op
       sku: SKU
-      part_number: Part no.
-      name: Name
+      part_number: Onderdeel nr.
+      name: Naam
       variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      net_price: Netto prijs
+      gross_price: Bruto prijs
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Product bewerken
+      breadcrumb: Bewerken
+      product_index: Producten
+      header: Product bewerken
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Publiceren
+      save_button: Opslaan
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
+        header: Extra Opties
+        description: Bekijk uw product en / of verwijder de SKU-opties van de productpagina.
         featured_label: Featured
-        tags_label: Tag
+        tags_label: Label
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Associaties
+        description: Selecteer verwanten onderdelen en gerelateerde producten voor uw product (gerelateerde producten worden getoond op de productpagina).
+        accessories_label: Onderdelen
+        related_products_label: Gerelateerde producten
+        select_accessory_placeholder: Selecteer bijbehorende accessoires
+        select_related_products_placeholder: Selecteer gerelateerde producten
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Productdetails
+        description: Stel de naam, beschrijving en sorteervolgorde in voor uw categorie.
+        select_category_placeholder: Categorie Selecteren
+        part_number_label: Onderdeel Nummer
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Naam
+        weighting_label: Weging
+        short_description_label: Korte Omschrijving
+        description_label: Omschrijving
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Zoekmachines
+        description: Stel de paginatitel en metabeschrijving in om te definiëren hoe een pagina wordt weergegeven in zoekmachines.
+        page_title_label: Pagina Titel
+        meta_description_label: Meta omschrijving
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Afbeeldingen
+        description: Upload en bewerk afbeeldingen van dit product. U kunt ook de standaard afbeelding instellen die op de productpagina wordt weergegeven.
+        add_image: Afbeelding toevoegen
+        no_records: U heeft geen afbeelding voor dit product.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
+        header: Varianten
+        description: Configureer de variantopties voor het verkopen van dit product.
+        variant_options: Variant opties
+        add_variant: Toevoegen Variant
+        no_records: U heeft geen varianten voor dit product.
         code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        stock: Voorraad
+        cost_value: Kostenwaarde
+        price: Prijs
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
+          add_variant: Toevoegen Variant
+          edit_variant: Variant Bewerken
           code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          length_label: Lengte
+          weight_label: Gewicht
+          thickness_label: Dikte
+          stock_label: Voorraad
+          stock_warning_level_label: Voorraad waarschuwingsniveau
+          cost_value_label: Kostenwaarde
+          price_label: Prijs
+          submit_button: Inzenden
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Voeg voorraad aanpassing voor
+          current_stock: Huidige Voorraad is
+          description_label: Omschrijving
+          adjustment_label: Aanpassing
+          submit_button: Inzenden
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Variant-opties configureren
+          reset_button: Reset varianten
+          submit_button: Inzenden
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        title: Voorraadbeheer
+        breadcrumb: Voorraadbeheer
+        product_index: Producten
+        add_stock_tooltip: Voorraad toevoegen
+        header: Voorraad
+        show_all_filter: Alles Tonen
+        low_filter: Laag
+        stock_filer: Voorraad
+        no_records: U hebt nog geen SKU-product.
         sku: SKU
-        name: Name
+        name: Naam
         variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        stock: Voorraad
+        stock_warning_level: Voorraad waarschuwingsniveau
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Voorraad
+        product_index: Producten
+        stock_management_index: Voorraadbeheer
+        add_stock_adjustment_tooltip: Voorraad Aanpassing Toevoegen
+        header: Voorraad geschiedenis
+        date: Datum
+        description: Omschrijving
+        adjustment: Aanpassing
+        stock: Voorraad
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Nieuwe Voorraad
+        breadcrumb: Nieuw
+        product_index: Producten
+        stock_management_index: Voorraadbeheer
+        header: Nieuwe Voorraad
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Omschrijving
+        adjustment_label: Aanpassing
+        submit_button: Inzenden
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Afbeelding toevoegen
+        edit_image: Afbeeldingen bewerken
+        file_label: Bestand
+        default_label: Standaard
+        submit_button: Inzenden
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profiel
+      breadcrumb: Profiel
+      header: Profiel
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Profiel instellingen
+        description: Stel de naam en profielfoto in voor uw beheerdersaccount.
+        first_name_label: Voornaam
+        last_name_label: Achternaam
+        profile_picture_label: Profiel Foto
+      submit_button: Inzenden
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Uw account is succesvol bevestigd. U bent nu ingelogd."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te bevestigen."
+      send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnen enkele minuten een e-mail met instructies voor het bevestigen van uw account."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "U bent al aangemeld."
+      inactive: "Uw account is nog niet geactiveerd."
+      invalid: "Ongeldig e-mailadres of wachtwoord."
+      invalid_token: "Ongeldige verificatietoken."
+      locked: "Uw account is vergrendeld."
+      not_found_in_database: "Ongeldig e-mailadres of wachtwoord."
+      timeout: "Uw sessie is verlopen. Meld u aan om verder te gaan."
+      unauthenticated: "U moet inloggen of aanmelden voordat u verdergaat."
+      unconfirmed: "U moet uw account bevestigen voordat u verder kunt gaan."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Instructies voor bevestiging"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instructies voor wachtwoord resetten"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Instructies voor deblokkeren"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "Kon het niet authenticeren van %{kind} omdat \"%{reason}\"."
+      success: "Met succes geverifieerd door account %{kind}."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      no_token: "Deze pagina is alleen toegankelijk via een e-mail voor het resetten van uw wachtwoord. Als u deze pagina opent via een e-mail voor wachtwoordherstel, controleert u of u de volledige URL gebruikt."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw wachtwoord te resetten."
+      send_paranoid_instructions: "Als uw e-mailadres in onze database staat, ontvangt u binnenkort een link voor wachtwoordherstel."
+      updated: "Uw wachtwoord is succesvol gewijzigd U bent nu ingelogd."
+      updated_not_active: "Uw wachtwoord is met succes gewijzigd."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: "Bye! Uw account is succesvol verwijderd. We hopen je snel weer te zien."
+      signed_up: "Welkom! U heeft uw succesvol aangemeld."
+      signed_up_but_inactive: "Je hebt je succesvol aangemeld. Echter, we konden u niet aanmelden omdat uw account nog niet is geactiveerd."
+      signed_up_but_locked: "U bent succesvol ingeschreven. U kunt zich echter niet aanmelden omdat uw account is vergrendeld."
+      signed_up_but_unconfirmed: "Een bevestigingslink met een bericht is verzonden naar uw e-mailadres. Open alstublieft de link om uw account te activeren."
+      update_needs_confirmation: "Je hebt je account succesvol bijgewerkt. We moeten echter uw nieuwe e-mailadres verifiëren. Controleer uw Email en klik op de bevestigingslink om de bevestiging van uw e-mailadres te voltooien."
+      updated: "U heeft uw account succesvol bijgewerkt."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Inloggen succesvol."
+      signed_out: "U bent succesvol uitgelogd."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Binnen enkele minuten ontvangt u een e-mail met de instructies om uw account te ontgrendelen."
+      send_paranoid_instructions: "Als uw account al bestaat, ontvangt u een e-mail met instructies over hoe u deze kunt ontgrendelen binnen enkele minuten."
+      unlocked: "Uw account is succesvol gedeblokkeerd. Meld u aan om verder te gaan."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      already_confirmed: "was al bevestigd, probeert u aan te melden"
+      confirmation_period_expired: "moet binnen de %{period} worden bevestigd, vraag een nieuwe aan"
+      expired: "is verlopen, vraag een nieuwe aan"
+      not_found: "niet gevonden"
+      not_locked: "was niet op slot"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "1 fout verhindert het opslaan van %{resource}:"
+        other: "%{count} fouten hebben voorkomen dat %{resource} wordt opgeslagen:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
+      title: Een nieuw bericht ontvangen van
+      header: Nieuw Bericht
+      hello: Hallo
+      name_prefix: U hebt de volgende informatie ontvangen
+      message_title: Bericht
+      email_title: E-mail
       website_title: Website
-      thanks: Thanks
+      thanks: Dank u
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Uw product is succesvol opgeslagen als concept
+          publish: Uw product is succesvol gepubliceerd. Het is nu live in uw winkel
         destroy:
-          valid: Product was successfully deleted
+          valid: Product met succes verwijderd
         archive:
-          valid: Product was successfully archived
+          valid: Product met succes gearchiveerd
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Variant opties mag niet leeg zijn
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Accessoire met succes aangemaakt
         update:
-          valid: Accessory was successfully updated
+          valid: Accessoire met succes bijgewerkt
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Accessoire met succes verwijderd
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Winkelinstellingen zijn succesvol bijgewerkt
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: U heeft geen afbeelding voor dit product
       categories:
         create:
-          valid: Category was successfully created
+          valid: Categorie met succes aangemaakt
         update:
-          valid: Category was successfully updated
+          valid: Categorie met succes bijgewerkt
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Levering serviceprijs is succesvol aangemaakt
         update:
-          valid: Delivery service price was successfully updated
+          valid: Levering serviceprijs is succesvol bijgewerkt
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Levering serviceprijs is succesvol verwijderd
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Levering service met succes aangemaakt
         update:
-          valid: Delivery service was successfully updated
+          valid: Levering service met succes bijgewerkt
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Levering service met succes verwijderd
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: U moet een bezorgservice selecteren
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Pagina was succesvol bijgewerkt
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Product met succes bijgewerkt
+          invalid: Er is een fout opgetreden bij het bijwerken van uw profielgegevens
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Jouw bestelling is geannuleerd
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Er is een fout opgetreden bij het voltooien van je bestelling. Probeer het opnieuw

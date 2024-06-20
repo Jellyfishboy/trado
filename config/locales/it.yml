@@ -1,66 +1,66 @@
 it:
   global:
-    none_available: None Available
+    none_available: Non Disponibile
   modal:
-    close_button: Close
+    close_button: Chiudere
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Accessori
+      breadcrumb: Accessori
+      header: Accessori
+      add_tooltip: Aggiungere Accessorio
+      no_records: Non hai nessun accesorio ancora.
+      part_number: Numero di pezzo
+      name: Nome
+      weight: Peso
+      cost_value: Valore di Costo
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Dettagli dell'Accessorio
+        description: Stabilire il nome e numero di pezzo dal tuo accessorio.
+        name_label: Nome
+        part_number_label: Numero di Pezzo
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Peso & Prezzo
+        description: Stabilire il peso, prezzo netto e costo di valore originale dal tuo accessorio.
+        weight_label: Peso
+        cost_value_label: Valore di Costo
+        net_price_label: Prezzo Netto
+      submit_button: Inviare
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Editare Accessorio
+      breadcrumb: Editare
+      accessory_index: Accessori
+      header: Editare Accessorio
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Nuovo Accessorio
+      breadcrumb: Nuovo
+      accessory_index: Accesori
+      header: New Accessorio
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Cruscotto
+    orders: Ordini
+    completed_orders: Completato
+    pending_orders: In Attesa
+    failed_orders: Fallito
+    transactions: Transazioni
+    gross_income_transactions: Reddito Lordo
+    net_income_transactions: Reddito Netto
+    tax_transactions: Imposta
+    provider_fees_transactions: Quota del Fornitore
+    delivery_fees_transactions: Quota di Spedizione
+    activity: Attività
+    activity_active_carts: Carrelli Attivi
+    activity_incomplete_orders: Ordini Incompleti
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Impostazioni
+    breadcrumb: Impostazioni
+    header: Impostazioni
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
+      header: Dettagli della Ditta
+      description: Stabilire il nome, e-mail, logo e tema della tua ditta. L'e-mail sarà utilizzate per il modulo di contatto e importanti aggiornamenti di amministrazione.
       name_label: Name
       email_label: Email
       logo_label: Logo
@@ -123,68 +123,68 @@ it:
         header: Visibility
         description: Set if the category is visible on your storefront.
         visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        hidden_label: Nascosto
+      submit_button: Inviare
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Editare Categoria
+      breadcrumb: Editare
+      category_index: Categorie
+      header: Editare Categoria
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nuova Categoria
+      breadcrumb: Nuovo
+      category_index: Categorie
+      header: Nuova Categoria
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Prezzi di consegna per %{service_name}
+      header: Prezzi di consegna per %{service_name}
+      delivery_service_index: Servizi di Consegna
+      add_tooltip: Aggiungere Prezzi di Consegna
+      no_records: Ancora non hai nessun prezzo per %{service_name}.
+      code: Codice
+      description: Descrizione
+      weight: Parametri di Peso
+      length: Parametri di Lunghezza
+      thickness: Parametri di Spessore
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Dettagli del Prezzo di Consegna
+        description: Stabilire il codice, prezzo e descrizione per questo prezzo di consegna.
+        code_label: Codice
+        price_label: Prezzo
+        description_label: Descrizione
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Tolleranza della Dimensione
+        description: Specificare la tolleranza della dimensione e il peso per questo prezzo di consegna.
+        min_weight_label: Peso Minimo
+        max_weight_label: Peso Massimo
+        min_length_label: Lunghezza Minima
+        max_length_label: Lunghezza Massima
+        min_thickness_label: Spessore Minimo
+        max_thickness_label: Spessore Massimo
+      submit_button: Inviare
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Editare Prezzo di Consegna
+      breadcrumb: Editare
+      delivery_service_index: Servizi di Consegna
+      header: Editare il Prezzo di Consegna
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Nuovo Prezzo di Consegna
+      breadcrumb: Nuovo
+      delivery_service_index: Servizi di Consegna
+      header: Nuovo Prezzo di Consegna
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Copiare i Paesi con Servizio di Consegna
+      description: 'Selezionare quale servizio di consegna vuoi copiare della lista di paesi:'
+      select_prompt: Selezionare servizio di consegna...
+      submit_button: Inviare
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
+      title: Servizi di Consegna
+      breadcrumb: Servizi di Consegna
       header: Delivery Services
       add_tooltip: Add Delivery Service
       no_records: You don't have any delivery services yet.
@@ -245,50 +245,51 @@ it:
       delivery_dispatched: Dispatched
       delivery_pending: Pending
       delivery_select: Delivery
-      no_records: You don't have any orders yet.
+      payment_select: Payment
+      no_records: You don't have any orders meeting those criterias
       order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      full_name: Nome e Cognome
+      payment_type: Modo di Pagamento
+      payment_status: Stato di Pagamento
+      delivery_status: Stato di Consegna
+      gross_amount: Importo Lordo
+      last_updated: Ultimo Aggiornamento
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Ordine #%{order_id}'
+      orders_index: Ordini
+      cancel_order_tooltip: Cancellare Ordine
+      header: 'Ordine #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
+        header: Dettagli della Consegna
+        email: E-mail
+        status: Stato
+        dispatch_date: Data di Spedizione
+        delivery_service: Servizio di Consegna
         tracking: Tracking
       billing_address:
         header: Billing Address
       delivery_address:
         header: Delivery Address
       payment_details:
-        header: Payment Details
+        header: Dettagli de Pagamento
         card_number: Card Number
-        expiry_date: Expiry Date
+        expiry_date: Data di Scadenza
       order_items:
-        header: Order Items
-        item: Item
+        header: Ordinare Gli Elementi
+        item: Elemento
         sku: SKU
-        price: Price
+        price: Prezzo
         quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        total: Totale
+        delivery: Consegna
+        subtotal: Sottotale
+        tax: Imposta
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
+        header: Transazioni
+        transaction_type: Modo di Transazione
+        payment_type: Modo di Pagamento
+        payment_status: Stato di Pagamento
+        fee: Tassa
         net_amount: Net Amount
         gross_amount: Gross Amount
         last_updated: Last Updated
@@ -297,18 +298,18 @@ it:
         number: Tracking Number
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
+      title: Titolo
+      breadcrumb: Pagine
+      header: Pagine
       sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      visible: Visibile
+      last_updated: Ultimo Aggiornamento
     form:
-      header: Edit Page
+      header: Editare Pagina
       write_your_page:
-        header: Write Your Page
+        header: Scrive La Tua Pagina
         description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
+        title_label: Titolo
         menu_title_label: Menu Title
         sorting_label: Sorting
         content_label: Content
@@ -352,65 +353,65 @@ it:
       sku: SKU
       part_number: Part no.
       name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      variant: Variante
+      net_price: Prezzo Netto
+      gross_price: Prezzo Lordo
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Editare Prodotto
+      breadcrumb: Editare
+      product_index: Prodotti
+      header: Editare Prodotto
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Pubblicare
+      save_button: Salvare
       additional_options:
-        header: Additional Options
+        header: Opzioni Aggiuntive
         description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        featured_label: Caratteristico
+        tags_label: Etichetta
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Associazioni
+        description: Seleziona gli accessori associati e i prodotti correlati per il tuo prodotto (i prodotti correlati verranno visualizzati nella pagina del prodotto).
+        accessories_label: Accessori
+        related_products_label: Prodotti Correlati
+        select_accessory_placeholder: Seleziona accessori associati
+        select_related_products_placeholder: Seleziona prodotti correlati
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Dettagli di Prodotto
+        description: Stabilisce il nome, descrizione e ordinamento per la tua categoria.
+        select_category_placeholder: Seleziona una categoria
+        part_number_label: Numero di Pezzo
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Nome
+        weighting_label: Ponderazione
+        short_description_label: Descrizione Breve
+        description_label: Descrizione
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Motori di Ricerca
+        description: Imposta il titolo della pagina e la meta descrizione per aiutare a definire come viene mostrata una pagina nei motori di ricerca.
+        page_title_label: Titolo della Pagina
+        meta_description_label: Meta Descrizione
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Immagini
+        description: Carica e modifica gli immagini di questo prodotto. Anche puoi impostare l'immagine predefinita per visualizzare sulla pagina del prodotto.
+        add_image: Aggiungere Immagine
+        no_records: No hai nessuna immagine per questo prodotto.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
+        header: Varianti
+        description: Imposta le diverse opzioni varianti per vendere questo prodotto.
+        variant_options: Varianti Opzioni
+        add_variant: Aggiungere Variante
+        no_records: Non hai nessuna variante per questo prodotto.
+        code: Codice
         stock: Stock
-        cost_value: Cost Value
-        price: Price
+        cost_value: Valore di Costo
+        price: Prezzo
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
+          add_variant: Aggiungere Variante
+          edit_variant: Editare Variante
+          code_label: Codice
+          length_label: Lunghezza
+          weight_label: Peso
           thickness_label: Thickness
           stock_label: Stock
           stock_warning_level_label: Stock Warning Level
@@ -470,44 +471,44 @@ it:
     attachments:
       modal:
         add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        edit_image: Editare Immagine
+        file_label: Archivio
+        default_label: Predefinito
+        submit_button: Inviare
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Profilo
+      breadcrumb: Profilo
+      header: Profilo
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Impostazioni di Profilo
+        description: Stabilisci il nome e l'immagine di profilo per il tuo account amministrativo.
+        first_name_label: Nome
+        last_name_label: Cognome
+        profile_picture_label: Immagine di Profilo
+      submit_button: Inviare
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Il tuo account è stato confermato con successo. Adesso sei stato registrato."
+      send_instructions: "In pochi minuti, riceverai un'e-mail con istruzioni riguardo come confermare il tuo account."
+      send_paranoid_instructions: "Se il tuo indirizzo di e-mail esiste in la nostra banca dati, in pochi minuti riceverai un'e-mail con istruzioni reguardo come confermare il tuo account."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Sei stato registrato."
+      inactive: "Il tuo account non è ancora attivata."
+      invalid: "E-mail o password non valido."
+      invalid_token: "Token di autenticazione non valido."
+      locked: "Il tuo account è bloccato."
+      not_found_in_database: "E-mail o password non valido."
+      timeout: "La tua sessione è scaduta, accedi nuovamente per continuare."
+      unauthenticated: "Devi registrarti o accedere prima di continuare."
+      unconfirmed: "Devi confermare il tuo account prima di continuare."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Istruzioni di confermazione"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Istruzioni Sbloccati"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
