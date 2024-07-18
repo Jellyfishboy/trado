@@ -4,6 +4,8 @@ Trado is a lightweight, easy to use ecommerce platform; designed to allow develo
 
 [Need to build a form? Checkout out JotJab](https://jotjab.com/?utm_source=github&utm_medium=organic_social&utm_campaign=organic_reach)
 
+[Integrate AI easily into your application with Fetch Hive](https://fetchhive.com/?utm_source=github&utm_medium=organic_social&utm_campaign=organic_reach)
+
 ## Usage
 
 Need help setting up Trado? Check out our [Getting Started](http://trado.io/getting-started.html) guide!
