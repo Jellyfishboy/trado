@@ -1,614 +1,615 @@
 pt:
   global:
-    none_available: None Available
+    none_available: Nenhum disponivel
   modal:
-    close_button: Close
+    close_button: Fechar
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Acessórios
+      breadcrumb: Acessórios
+      header: Acessórios
+      add_tooltip: Adicione acessórios
+      no_records: Tu ainda não tens nenhum acessório.
+      part_number: Parte nº.
+      name: Nome
+      weight: Peso
+      cost_value: Valor de custo
+      net_price: Preço líquido
+      gross_price: Peso bruto
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Detalhes do acessório
+        description: Defina o nome e o número da peça para o seu acessório.
+        name_label: Nome
+        part_number_label: Número da peça
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Peso e preço
+        description: Defina o peso, o preço líquido e o valor de custo original para o seu acessório.
+        weight_label: Peso
+        cost_value_label: Valor de custo
+        net_price_label: Preço líquido
+      submit_button: Enviar
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Editar acessório
+      breadcrumb: "Editar\n"
+      accessory_index: Acessórios
+      header: Editar acessório
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Novo acessório
+      breadcrumb: Novo
+      accessory_index: Acessórios
+      header: Novo acessório
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Painel de controlo
+    orders: Encomendas
+    completed_orders: Completo
+    pending_orders: Pendente
+    failed_orders: Falhou
+    transactions: Transações
+    gross_income_transactions: Rendimento bruto
+    net_income_transactions: Lucro líquido
+    tax_transactions: Taxa
+    provider_fees_transactions: Taxas de provedor
+    delivery_fees_transactions: Taxas de entrega
+    activity: Actividade
+    activity_active_carts: Carrinhos ativos
+    activity_incomplete_orders: Pedidos incompletos
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Definições
+    breadcrumb: Definições
+    header: Definições
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      header: Detalhes da loja
+      description: Defina o nome, e-mail, logotipo e tema da sua loja. O e-mail será usado para o formulário de contato e atualizações importantes da administração.
+      name_label: Nome
+      email_label: E-mail
+      logo_label: Logotipo
+      theme_label: Tema
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Idioma
+      description: Defina o idioma do painel de administração.
+      language_label: Idioma
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Taxa
+      description: Defina o nome e a taxa de porcentagem do seu imposto.
+      name_label: Nome
+      rate_label: Taxa
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Exibição de moeda e preço
+      description: Defina a unidade monetária com a qual você está operando e se deseja que seus clientes vejam os preços dos produtos, incluindo e excluindo impostos.
+      currency_label: Moeda
+      price_exc_label: Preço inc. & exc. imposto
+      price_inc_label: Preço incluindo imposto
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: Boletim informativo MailChimp
+      description: Defina o Id da lista MailChimp para o seu boletim informativo.
+      list_id_label: Id da lista
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      header: Listra
+      description: Defina o texto que deseja exibir nas declarações do cartão de crédito do cliente.
+      statement_descriptor_label: Descriptor de declaração
     google_analytics:
       header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      description: Ative e configure o código de rastreamento da web para sua loja.
+      tracking_code_label: Código de acompanhamento da Web
+      enabled_label: Activado
+      disabled_label: Dsativado
+    submit_button: Enviar
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Categorias
+      breadcrumb: Categorias
+      header: Categorias
+      add_tooltip: Adicionar categoria
+      no_records: Tu ainda não tens nenhuma categoria.
+      name: Nome
+      description: Descrição
+      sorting: Classificação
+      active: Ativo
+      no_of_products: Nº. de produtos
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Detalhes da categoria
+        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
+        name_label: Nome
+        description_label: Descrição
+        sorting_label: Classificação
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Ferramentas de pesquisa
+        description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
+        page_title_label: Título da página
+        meta_description_label: Descrição da meta
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Visibilidade
+        description: Defina se a categoria é visível na sua loja.
+        visible_label: Visível
+        hidden_label: Escondido
+      submit_button: Enviar
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Editar categoria
+      breadcrumb: Editar
+      category_index: Categorias
+      header: Editar categoria
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Nova categoria
+      breadcrumb: Novo
+      category_index: Categorias
+      header: Nova categoria
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Preços de entrega para "%{service_name}"
+      header: '"% de preços de entrega para %{service_name}'
+      delivery_service_index: Serviço de entrega
+      add_tooltip: Adicionar preço de entrega
+      no_records: Você ainda não possui preços para %{service_name}.
+      code: Código
+      description: Descrição
+      weight: Parâmetros de peso
+      length: Parâmetros de comprimento
+      thickness: Parâmetros de espessura
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Dados do preço de entrega
+        description: Defina o código, preço e descrição para este preço de entrega.
+        code_label: Código
+        price_label: Preço
+        description_label: Descrição
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Provisão de Dimensão
+        description: Especifique a dimensão e o peso para este preço de entrega.
+        min_weight_label: Peso mínimo
+        max_weight_label: Peso máximo
+        min_length_label: Comprimento Mínimo
+        max_length_label: Comprimento Máximo
+        min_thickness_label: Espessura mínima
+        max_thickness_label: Espessura Máxima
+      submit_button: Enviar
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Adicionar o preço de entrega
+      breadcrumb: Editar
+      delivery_service_index: Serviço de entrega
+      header: Adicionar o preço de entrega
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Novo preço de entrega
+      breadcrumb: Novo
+      delivery_service_index: Serviço de entrega
+      header: Novo preço de entrega
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Copiar os países do serviço de entrega
+      description: 'Seleccione qual serviço de entrega você gostaria de copiar da lista de países de:'
+      select_prompt: Seleccione um serviço de entrega...
+      submit_button: Enviar
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Serviço de entrega
+      breadcrumb: Serviço de entrega
+      header: Serviço de entrega
+      add_tooltip: Adicionar serviço de entrega
+      no_records: Tu ainda não tens nenhum serviço de entrega.
+      courier: Serviço de entrega
+      name: Nome
+      description: Descrição
+      code: Código
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Dados do serviço de entrega
+        description: Defina o nome da empresa de correio, o nome e a descrição do seu serviço de entrega.
+        courier_name_label: Nome do serviço de entrega
+        name_label: Nome
+        description_label: Descrição
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Restrições de Pedido
+        description: Limite um preço máximo para um de serviço de entrega de um pedido.
+        price_range_label: Gama de preços
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Acompanhamento
+        description_html: 'Configure o rastreamento para o seu serviço de entrega. Use <b> {{consignment_number}} </b> para inserir o número da remessa.'
+        tracking_url_label: Url de acompanhamento
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Países
+        description_html: 'Seleccione os países que estão disponíveis para este serviço de entrega, ou <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copie </a> uma lista dos países de serviço existente.'
+        country_placeholder: Seleccione países associados...
+      submit_button: Enviar
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Adicionar serviço de entrega
+      breadcrumb: Editar
+      delivery_service_index: Serviço de entrega
+      header: Adicionar serviço de entrega
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Novo serviço de entrega
+      breadcrumb: Novo
+      delivery_service_index: Serviço de entrega
+      header: Novo Serviço de Entrega
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Mais informação para a transação
+        error_code: Erros de código
+        stripe_charge_id: Id da Taxa de Cobrança
+        paypal_transaction_id: Id de transação do Paypal
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Editar Encomenda
+        dispatch_date_label: Data de expedição
+        consignment_number_label: Número de remessa
+        submit_button: Enviar
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      no_records: You don't have any orders yet.
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      title: Encomendas
+      breadcrumb: Encomendas
+      header: Encomendas
+      delivery_show_all: Mostrar tudo
+      delivery_dispatched: Enviado
+      delivery_pending: Pendente
+      delivery_select: Entrega
+      payment_select: Pagamento
+      no_records: Você não possui ordens que atendam a esses critérios
+      order_number: Nº. de Pedido.
+      full_name: Nome Completo
+      payment_type: Tipo de Pagamento
+      payment_status: Condições de Pagamento
+      delivery_status: Condições de entrega
+      gross_amount: Valor Bruto
+      last_updated: Última atualização
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Ordem #%{order_id}'
+      orders_index: Encomendas
+      cancel_order_tooltip: Cancelar o pedido
+      header: 'Encomenda #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Dados de Entrega
+        email: E-mail
+        status: Condições
+        dispatch_date: Data de Expedição
+        delivery_service: Serviço de entrega
+        tracking: Acompanhamento
       billing_address:
-        header: Billing Address
+        header: Endereço de Cobrança
       delivery_address:
-        header: Delivery Address
+        header: Endereço de Entrega
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Detalhes do Pagamento
+        card_number: Número do Cartão
+        expiry_date: Data de Validade
       order_items:
-        header: Order Items
-        item: Item
+        header: Artigos do pedido
+        item: Artigo
         sku: SKU
-        price: Price
+        price: Preço
         quantity: Qty
         total: Total
-        delivery: Delivery
+        delivery: Entrega
         subtotal: Subtotal
-        tax: Tax
+        tax: Taxa
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Transações
+        transaction_type: Tipo de Transação
+        payment_type: Tipo de Pagamento
+        payment_status: Condições de Pagamento
+        fee: Taxa
+        net_amount: Valor Líquido
+        gross_amount: Valor Bruto
+        last_updated: Última atualização
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Website de seguimento
+        number: Número de rastreio
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Título
+      breadcrumb: Páginas
+      header: Páginas
+      sorting: Classificação
+      visible: Visível
+      last_updated: Última atualização
     form:
-      header: Edit Page
+      header: Editar página
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        header: Escreva a sua página
+        description: Defina o título para a sua página, artigos do menu, ordem de classificação e adicione o conteúdo da sua página.
+        title_label: Título
+        menu_title_label: Título do Menu
+        sorting_label: Classificação
+        content_label: Conteúdo
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        header: Motores de Busca
+        description: Configure o título da página, a descrição da meta e a slug de URL; Estes ajudam a definir como uma página é mostrada nos motores de busca.
+        page_title_label: Título da Página
+        meta_description_label: Descrição do objetivo
+        slug_label: Lento
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Visibilidade
+        description: Defina se a página está visível na sua loja.
+        visible_label: Visível
+        hidden_label: Escondido
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Modelo
+        description: Seleccione o modelo que esta página usará na sua loja.
+      submit_button: Enviar
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Editar Página
+      breadcrumb: Editar
+      pages_index: Páginas
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
+      title: Produtos
+      breadcrumb: Produtos
+      header: Produtos
+      add_product_tooltip: Adicionar Produto
+      stock_management_tooltip: Gestão de armazenamento
+      no_records: Ainda não tens nenhum produto.
+      show_all_filter: Mostrar tudo
+      published_filter: Publicado
+      draft_filter: Projeto
+      archived_filter: Arquivado
+      featured_filter: Em destaque
+      filter_by: Filtrar por
+      weighting_sorting: Pesando
+      name_sorting: Nome
+      popularity_sorting: Popularidade
+      sort_by: Ordenar por
       sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      part_number: Parte nº.
+      name: Nome
+      variant: Variante
+      net_price: Preço Líquido
+      gross_price: Preço bruto
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Editar produto
+      breadcrumb: Editar
+      product_index: Produtos
+      header: Editar Produto
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Publicar
+      save_button: Guardar
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Opções adicionais
+        description: Caracterize o produto e/ou remova as opções SKU da página do produto.
+        featured_label: Em destaque
+        tags_label: Etiqueta
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Associações
+        description: Seleccione acessórios associados e produtos relacionados para o seu produto (os produtos relacionados serão exibidos na página do produto).
+        accessories_label: Acessórios
+        related_products_label: Produtos Relacionados
+        select_accessory_placeholder: Seleccione os acessórios associados
+        select_related_products_placeholder: Seleccione produtos relacionados
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
+        header: Detalhes do produto
+        description: Defina o nome, a descrição e a ordem de classificação para a sua categoria.
+        select_category_placeholder: Seleccione a categoria
+        part_number_label: Número da peça
         sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        name_label: Nome
+        weighting_label: Pesando
+        short_description_label: Breve descrição
+        description_label: Descrição
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Motores de busca
+        description: Configure o título da página e a descrição de meta para ajudar a definir como uma página é exibida nos mecanismos de pesquisa.
+        page_title_label: Título da Página
+        meta_description_label: Descrição do objetivo
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Imagens
+        description: Carregar e editar imagens deste produto. Você também pode definir a imagem padrão para exibição na página do produto.
+        add_image: Adicionar Imagem
+        no_records: Não tens nenhuma imagem para este produto.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        header: Variantes
+        description: Configure as opções variantes para vender este produto.
+        variant_options: Opções de variantes
+        add_variant: Adicionar a variante
+        no_records: Tu não possuis nenhuma variante para este produto.
+        code: Código
+        stock: Inventário
+        cost_value: Preço de custo
+        price: Preço
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Adicionar a variante
+          edit_variant: Editar a variante
+          code_label: Código
+          length_label: Comprimento
+          weight_label: Peso
+          thickness_label: Espessura
+          stock_label: Inventário
+          stock_warning_level_label: Nível de advertência de armazenamento
+          cost_value_label: Preço de custo
+          price_label: Preço
+          submit_button: Enviar
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Adicionar o ajuste de armazenamento para
+          current_stock: O armazenamento actual é
+          description_label: Descrição
+          adjustment_label: Correção
+          submit_button: Enviar
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Configurar Opções de Variante
+          reset_button: Redefinir Variantes
+          submit_button: Enviar
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
+        title: Gestão de armazenamento
+        breadcrumb: Gestão de armazenamento
+        product_index: Produtos
+        add_stock_tooltip: Adicionar armazenamento
+        header: Gestão de armazenamento
+        show_all_filter: Mostrar tudo
+        low_filter: Baixo
+        stock_filer: Armazenamento
+        no_records: Ainda não possui nenhum produto SKUs.
         sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        name: Nome
+        variant: Variante
+        stock: Armazenamento
+        stock_warning_level: Nível de advertência de armazenamento
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Gestão de armazenamento
+        product_index: Produtos
+        stock_management_index: Gestão de armazenamento
+        add_stock_adjustment_tooltip: Adicionar o ajuste de armazenamento
+        header: Histórico de inventários
+        date: Data
+        description: Descrição
+        adjustment: Correção
+        stock: Inventário
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
+        title: Novo Inventário
+        breadcrumb: Novo
+        product_index: Produtos
+        stock_management_index: Gestão de armazenamento
+        header: Novo Inventário
         sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        description_label: Descrição
+        adjustment_label: Correção
+        submit_button: Enviar
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Adicionar Imagem
+        edit_image: Editar Imagem
+        file_label: Arquivo
+        default_label: Padrão
+        submit_button: Enviar
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Perfil
+      breadcrumb: Perfil
+      header: Perfil
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Definições do Perfil
+        description: Defina o nome e a imagem de perfil para a sua conta de administração.
+        first_name_label: Primeiro nome
+        last_name_label: Sobrenome
+        profile_picture_label: Foto de Perfil
+      submit_button: Enviar
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "A sua conta foi confirmada com sucesso. Agora você está inscrito."
+      send_instructions: "Você receberá um e-mail com instruções sobre como confirmar a sua conta, dentro de alguns minutos."
+      send_paranoid_instructions: "Se o seu endereço de e-mail existir no nosso banco de dados, você receberá um e-mail com instruções sobre como confirmar a sua conta, dentro de alguns minutos."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Já estás inscrito."
+      inactive: "A tua conta ainda não está activada."
+      invalid: "E-mail ou palavra-passe inválidos."
+      invalid_token: "Símbolo de autenticação inválido."
+      locked: "A tua conta está bloqueada."
+      not_found_in_database: "E-mail ou palavra-passe inválido."
+      timeout: "A sua sessão expirou, por favor, entre novamente para continuar."
+      unauthenticated: "Tens de entrar ou inscrever-te, antes de continuar."
+      unconfirmed: "Tens de confirmar a tua conta antes de continuar."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Instruções de confirmação"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instruções para redefinir a palavra-passe"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Instruções de desbloqueio"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "Não foi possível autenticá-lo desde %{kind} porque \"%{reason}\"."
+      success: "Autenticado com êxito desde a conta %{kind}."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      no_token: "Não podes aceder a esta página sem ter um email de redefinição de palavra-passe. Se vens de um email de redefinição de palavra-passe, por favor, confirma se usaste o URL completo que te foi fornecido."
+      send_instructions: "Receberá um e-mail com instruções sobre como redefinir a sua palavra-passe dentro de alguns minutos."
+      send_paranoid_instructions: "Se o seu endereço de e-mail existir no nosso banco de dados, você receberá um link de recuperação de palavra-passe no seu endereço de e-mail, dentro de poucos minutos."
+      updated: "A sua palavra-passe foi alterada com sucesso. Agora você está conectado."
+      updated_not_active: "A sua palavra-passe foi alterada com sucesso."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: "Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
+      signed_up: "Bem-vindo! Inscreveu-se com sucesso."
+      signed_up_but_inactive: "Inscreveu-se com sucesso. No entanto, o início de sessão não foi possível, porque a sua conta ainda não está activada."
+      signed_up_but_locked: "Inscreveu-se com êxito. No entanto, não pode entrar, porque a sua conta está bloqueada."
+      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para activar sua conta."
+      update_needs_confirmation: "Actualizou a sua conta com sucesso, mas precisamos de verificar seu novo endereço de e-mail. Por favor, verifique o seu e-mail e clique no link de confirmação para finalizar a aprovação do seu novo endereço de e-mail."
+      updated: "Actualizou a sua conta com sucesso."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Inscrito com sucesso."
+      signed_out: "Anulação de inscrição bem sucedida."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "Dentro de alguns minutos receberá um e-mail com instruções sobre como desbloquear a sua conta."
+      send_paranoid_instructions: "Se a sua conta existir, dentro de alguns minutos, irá receber um e-mail com instruções sobre como desbloqueá-la."
+      unlocked: "A sua conta foi desbloqueada com sucesso. Por favor, entre para continuar."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      already_confirmed: "já foi confirmado, por favor tente entrar"
+      confirmation_period_expired: "necessita ser confirmado em %{period}, por favor solicite um novo"
+      expired: "expirou, por favor, solicite um novo"
+      not_found: "não foi encontrado"
+      not_locked: "não foi bloqueado"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count} erros impediram que esta conta, %{resource}, fosse guardada:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Recebeu uma nova mensagem de
+      header: Nova mensagem
+      hello: Olá
+      name_prefix: Você recebeu a seguinte informação de
+      message_title: Mensagem
+      email_title: E-mail
+      website_title: Página web
+      thanks: Obrigado
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: O seu produto foi salvo com sucesso como um rascunho
+          publish: O seu produto foi publicado com sucesso. Agora está, materialmente, na sua loja
         destroy:
-          valid: Product was successfully deleted
+          valid: O produto foi excluído com sucesso
         archive:
-          valid: Product was successfully archived
+          valid: O produto foi arquivado com sucesso
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: As opções de variantes não podem estar em branco
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: O acessório foi criado com sucesso
         update:
-          valid: Accessory was successfully updated
+          valid: O acessório foi criado com sucesso
         destroy:
-          valid: Accessory was successfully deleted
+          valid: O acessório foi excluído com sucesso
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: As configurações da loja foram actualizadas com sucesso
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: Tu não possuis nenhuma imagem para este produto
       categories:
         create:
-          valid: Category was successfully created
+          valid: A categoria foi criada com sucesso
         update:
-          valid: Category was successfully updated
+          valid: A categoria foi actualizada com sucesso
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: O preço do serviço de entrega foi criado com sucesso
         update:
-          valid: Delivery service price was successfully updated
+          valid: O preço do serviço de entrega foi actualizado com sucesso
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: O preço do serviço de entrega foi excluído com êxito
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: O serviço de entrega foi criado com sucesso
         update:
-          valid: Delivery service was successfully updated
+          valid: O serviço de entrega foi actualizado com sucesso
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: O serviço de entrega foi excluído com êxito
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Necessitas seleccionar um serviço de entrega
       pages:
         update:
-          valid: Page was successfully updated
+          valid: A página foi actualizada com sucesso
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: O perfil foi actualizado com sucesso
+          invalid: Ocorreu um erro ao tentar actualizar os detalhes do seu perfil
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: O seu pedido foi cancelado
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Ocorreu um erro ao tentar completar o seu pedido. Por favor, tente novamente

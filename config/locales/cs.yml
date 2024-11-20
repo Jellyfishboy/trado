@@ -245,7 +245,8 @@ cs:
       delivery_dispatched: Dispatched
       delivery_pending: Pending
       delivery_select: Delivery
-      no_records: You don't have any orders yet.
+      payment_select: Payment
+      no_records: You don't have any orders meeting those criterias
       order_number: Order No.
       full_name: Full Name
       payment_type: Payment Type
@@ -542,6 +543,7 @@ cs:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         few: "%{count} errors prohibited this %{resource} from being saved:"
+        many: "%{count} errors prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
   mailers:
     contact_message:

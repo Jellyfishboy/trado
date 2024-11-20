@@ -1,615 +1,617 @@
 uk:
   global:
-    none_available: None Available
+    none_available: Недоступно
   modal:
-    close_button: Close
+    close_button: Закрити
   accessories:
     index:
-      title: Accessories
-      breadcrumb: Accessories
-      header: Accessories
-      add_tooltip: Add Accessory
-      no_records: You don't have any accessories yet.
-      part_number: Part no.
-      name: Name
-      weight: Weight
-      cost_value: Cost Value
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Аксесуари
+      breadcrumb: Аксесуари
+      header: Аксесуари
+      add_tooltip: Додати аксесуар
+      no_records: У вас ще немає жодного аксесуару.
+      part_number: Артикул №.
+      name: Назва
+      weight: Вага
+      cost_value: Вартість
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     form:
       accessory_detail:
-        header: Accessory Details
-        description: Set the name and part number for your accessory.
-        name_label: Name
-        part_number_label: Part Number
+        header: Характеристики аксесуару
+        description: Додайте назву та номер артикулу до вашого аксесуару.
+        name_label: Назва
+        part_number_label: '№ артикулу'
       weight_price:
-        header: Weight & Price
-        description: Set the weight, net price and original cost value for your accessory.
-        weight_label: Weight
-        cost_value_label: Cost Value
-        net_price_label: Net Price
-      submit_button: Submit
+        header: Вага та ціна
+        description: Задайте вагу, ціну нетто та початкову вартість для вашого аксесуару.
+        weight_label: Вага
+        cost_value_label: Вартість
+        net_price_label: Ціна нетто
+      submit_button: Надіслати
     edit:
-      title: Edit Accessory
-      breadcrumb: Edit
-      accessory_index: Accessories
-      header: Edit Accessory
+      title: Редагувати аксесуар
+      breadcrumb: Редагувати
+      accessory_index: Аксесуари
+      header: Редагувати аксесуар
     new:
-      title: New Accessory
-      breadcrumb: New
-      accessory_index: Accessories
-      header: New Accessory
+      title: Новий аксесуар
+      breadcrumb: Новий
+      accessory_index: Аксесуари
+      header: Новий аксесуар
   dashboard:
-    header: Dashboard
-    orders: Orders
-    completed_orders: Completed
-    pending_orders: Pending
-    failed_orders: Failed
-    transactions: Transactions
-    gross_income_transactions: Gross Income
-    net_income_transactions: Net Income
-    tax_transactions: Tax
-    provider_fees_transactions: Provider Fees
-    delivery_fees_transactions: Delivery Fees
-    activity: Activity
-    activity_active_carts: Active Carts
-    activity_incomplete_orders: Incomplete Orders
+    header: Панель
+    orders: Замовлення
+    completed_orders: Завершено
+    pending_orders: В очікуванні
+    failed_orders: Відхилено
+    transactions: Транзакції
+    gross_income_transactions: Валовий прибуток
+    net_income_transactions: Чистий прибуток
+    tax_transactions: Податок
+    provider_fees_transactions: Комісія провайдера
+    delivery_fees_transactions: Вартість доставки
+    activity: Діяльність
+    activity_active_carts: Активні кошики
+    activity_incomplete_orders: Незавершені замовлення
   settings:
-    title: Settings
-    breadcrumb: Settings
-    header: Settings
+    title: Налаштування
+    breadcrumb: Налаштування
+    header: Налаштування
     store_detail:
-      header: Store Details
-      description: Set the name, email, logo and theme of you store. The email will be used for the contact form and important administration updates.
-      name_label: Name
-      email_label: Email
-      logo_label: Logo
-      theme_label: Theme
+      header: Детальний опис магазину
+      description: Задайте назву, електронну пошту, логотип та тематику вашого магазину. Адрес електронної пошти використовуватиметься для форми зворотнього зв'язку та важливих оновлень адміністрації.
+      name_label: Назва
+      email_label: Електронна пошта
+      logo_label: Логотип
+      theme_label: Тема
     language:
-      header: Language
-      description: Set the language for the administration dashboard.
-      language_label: Language
+      header: Мова
+      description: Задайте мову для панелі адміністрування.
+      language_label: Мова
     tax:
-      header: Tax
-      description: Set the name and percentage rate of your tax.
-      name_label: Name
-      rate_label: Rate
+      header: Податок
+      description: Введіть назву та процентну ставку вашого податку.
+      name_label: Назва
+      rate_label: Ставка
     currency:
-      header: Currency & price display
-      description: Set the currency unit you are operating with in your store and whether you would like your customers to view product prices including and excluding tax.
-      currency_label: Currency
-      price_exc_label: Price inc. & exc. tax
-      price_inc_label: Price inc. tax
+      header: Відображення валюти та ціни
+      description: Введіть одиницю валюти, з якою ви працюєте в вашому магазині, та чи бажаєте ви, щоб покупці могли переглядати ціни на продукцію з урахуванням та без врахування податку.
+      currency_label: Валюта
+      price_exc_label: Ціна з податком та без нього
+      price_inc_label: Ціна з податком
     mailchimp:
-      header: MailChimp Newsletter
-      description: Set the MailChimp list Id for your newsletter.
-      list_id_label: List Id
+      header: Бюлетень MailChimp
+      description: Встановіть ідентифікатор списку MailChimp для бюлетеню.
+      list_id_label: Ідентифікатор списку
     stripe:
-      header: Stripe
-      description: Set the text you would like to display on your customer credit card statements.
-      statement_descriptor_label: Statement Descriptor
+      header: Смуга
+      description: Введіть текст, який би ви бажали щоб відображався в карткових виписках ваших клієнтів.
+      statement_descriptor_label: Дескриптор виписки
     google_analytics:
-      header: Google Analytics
-      description: Enable and set the web tracking code for your store.
-      tracking_code_label: Web Tracking Code
-      enabled_label: Enabled
-      disabled_label: Disabled
-    submit_button: Submit
+      header: Гугл аналітика
+      description: Активуйте та встановіть код веб-відстеження для вашого магазину.
+      tracking_code_label: Код веб-відстеження
+      enabled_label: Активовано
+      disabled_label: Деактивовано
+    submit_button: Подати
   categories:
     index:
-      title: Categories
-      breadcrumb: Categories
-      header: Categories
-      add_tooltip: Add Category
-      no_records: You don't have any categories yet.
-      name: Name
-      description: Description
-      sorting: Sorting
-      active: Active
-      no_of_products: No. of Products
+      title: Категорії
+      breadcrumb: Категорії
+      header: Категорії
+      add_tooltip: Додати категорію
+      no_records: У вас ще немає жодної категорії.
+      name: Назва
+      description: Опис
+      sorting: Сортування
+      active: Активний
+      no_of_products: Номер продукції
     form:
       category_details:
-        header: Category Details
-        description: Set the name, description and sorting order for your category.
-        name_label: Name
-        description_label: Description
-        sorting_label: Sorting
+        header: Характеристики категорії
+        description: Введіть назву, опис та порядок сортування для вашої категорії.
+        name_label: Назва
+        description_label: Опис
+        sorting_label: Сортування
       search_engine:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Пошукові системи
+        description: Введіть заголовок сторінки та метаопис для того щоб визначити, як сторінка відображується в пошукових системах.
+        page_title_label: Заголовок сторінки
+        meta_description_label: Метаопис
       visibility:
-        header: Visibility
-        description: Set if the category is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
-      submit_button: Submit
+        header: Видимість
+        description: Встановіть видимість категорії на фасаді вашого магазину.
+        visible_label: Видимість
+        hidden_label: Приховано
+      submit_button: Подати
     edit:
-      title: Edit Category
-      breadcrumb: Edit
-      category_index: Categories
-      header: Edit Category
+      title: Редагувати категорію
+      breadcrumb: Редагувати
+      category_index: Категорії
+      header: Редагувати категорію
     new:
-      title: New Category
-      breadcrumb: New
-      category_index: Categories
-      header: New Category
+      title: Нова категорія
+      breadcrumb: Новий
+      category_index: Категорії
+      header: Нова категорія
   delivery_service_prices:
     index:
-      title: Delivery pricing for %{service_name}
-      header: Delivery pricing for %{service_name}
-      delivery_service_index: Delivery Services
-      add_tooltip: Add Delivery Price
-      no_records: You don't have any prices for %{service_name} yet.
-      code: Code
-      description: Description
-      weight: Weight Parameters
-      length: Length Parameters
-      thickness: Thickness Parameters
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Ціна за доставку для %{service_name}
+      header: Ціна за доставку для %{service_name}
+      delivery_service_index: Служби доставки
+      add_tooltip: Додати ціну за доставку
+      no_records: У вас ще немає цін на %{service_name}.
+      code: Код
+      description: Опис
+      weight: Параметри ваги
+      length: Параметри довжини
+      thickness: Параметри товщини
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     form:
       delivery_price_details:
-        header: Delivery Price Details
-        description: Set the code, price and description for this delivery price.
-        code_label: Code
-        price_label: Price
-        description_label: Description
+        header: Опис ціни за доставку
+        description: Встановіть код, ціну та опис для цієї ціни за доставку.
+        code_label: Код
+        price_label: Ціна
+        description_label: Опис
       dimension_allowance:
-        header: Dimension Allowance
-        description: Specify the dimension and weight allowance for this delivery price.
-        min_weight_label: Minimum Weight
-        max_weight_label: Maximum Weight
-        min_length_label: Minimum Length
-        max_length_label: Maximum Length
-        min_thickness_label: Minimum Thickness
-        max_thickness_label: Maximum Thickness
-      submit_button: Submit
+        header: Дозволені розміри
+        description: Вкажіть дозволені розміри та вагу для цієї ціни за доставку.
+        min_weight_label: Мінімальна вага
+        max_weight_label: Максимальна вага
+        min_length_label: Мінімальна довжина
+        max_length_label: Максимальна довжина
+        min_thickness_label: Мінімальна товщина
+        max_thickness_label: Максимальна товщина
+      submit_button: Подати
     edit:
-      title: Edit Delivery Pricing
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Pricing
+      title: Редагувати ціну за доставку
+      breadcrumb: Редагувати
+      delivery_service_index: Служби доставки
+      header: Редагувати ціну за доставку
     new:
-      title: New Delivery Pricing
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Pricing
+      title: Нова ціна за доставку
+      breadcrumb: Новий
+      delivery_service_index: Служби доставки
+      header: Нова ціна за доставку
   delivery_services:
     countries_modal:
-      header: Copy Delivery Service Countries
-      description: 'Select which delivery service you would like to copy the country list from:'
-      select_prompt: Select a delivery service...
-      submit_button: Submit
+      header: Скопіювати країни, в яких є служби доставки
+      description: 'Виберіть, з якої служби доставки ви бажаєте скопіювати список країн:'
+      select_prompt: Виберіть службу доставки...
+      submit_button: Подати
     index:
-      title: Delivery Services
-      breadcrumb: Delivery Services
-      header: Delivery Services
-      add_tooltip: Add Delivery Service
-      no_records: You don't have any delivery services yet.
-      courier: Courier
-      name: Name
-      description: Description
-      code: Code
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Служби доставки
+      breadcrumb: Служби доставки
+      header: Служби доставки
+      add_tooltip: Додати службу доставки
+      no_records: У вас ще немає жодної служби доставки.
+      courier: Кур'єр
+      name: Назва
+      description: Опис
+      code: Код
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     form:
       delivery_service_details:
-        header: Delivery Service Details
-        description: Set the courier company name, name and description of your delivery service.
-        courier_name_label: Courier Name
-        name_label: Name
-        description_label: Description
+        header: Детальний опис служби доставки
+        description: Встановіть назву компанії-перевізника, назву та опис вашої служби доставки.
+        courier_name_label: Назва компанії-перевізника
+        name_label: Назва
+        description_label: Опис
       order_constraints:
-        header: Order Constraints
-        description: Limit a delivery service by the total price of an order.
-        price_range_label: Price Range
+        header: Обмеження замовлення
+        description: Обмежити службу доставки на загальну вартість замовлення.
+        price_range_label: Ціновий діапазон
       tracking:
-        header: Tracking
-        description_html: 'Set up tracking for your delivery service. Use <b>{{consignment_number}}</b> to insert consignment number.'
-        tracking_url_label: Tracking Url
+        header: Відстеження
+        description_html: 'Встановіть відстеження для вашої служби доставки. Використовуйте <b>{{consignment_number}}</b> для того щоб вставити номер партії товару.'
+        tracking_url_label: Адреса (Url) відстеження
       countries:
-        header: Countries
-        description_html: 'Select the countries which are available for this delivery service, or <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">copy</a> an existing service country list.'
-        country_placeholder: Select associated countries...
-      submit_button: Submit
+        header: Країни
+        description_html: 'Виберіть країни, доступні для цієї служби доставки, або <a href="#" id="copy-countries" data-delivery-service-id="%{delivery_service_id}">скопіюйте</a> вже існуючий список країн.'
+        country_placeholder: Виберіть відповідні країни...
+      submit_button: Надіслати
     edit:
-      title: Edit Delivery Service
-      breadcrumb: Edit
-      delivery_service_index: Delivery Services
-      header: Edit Delivery Service
+      title: Відредагувати службу доставки
+      breadcrumb: Редагувати
+      delivery_service_index: Служби доставки
+      header: Відредагувати службу доставки
     new:
-      title: New Delivery Service
-      breadcrumb: New
-      delivery_service_index: Delivery Services
-      header: New Delivery Service
+      title: Нова служба доставки
+      breadcrumb: Новий
+      delivery_service_index: Служби доставки
+      header: Нова служба доставки
   orders:
     transactions:
       modal:
-        header: More Info for Transaction
-        error_code: Error Code
-        stripe_charge_id: Stripe Charge Id
-        paypal_transaction_id: PayPal Transaction Id
+        header: Більш детальна інформація щодо транзакції
+        error_code: Код помилки
+        stripe_charge_id: Позначення сплати за смугу
+        paypal_transaction_id: Код транзакції PayPal
     edit:
       modal:
-        header: Edit Order
-        dispatch_date_label: Dispatch Date
-        consignment_number_label: Consignment Number
-        submit_button: Submit
+        header: Редагувати замовлення
+        dispatch_date_label: Дата відправлення
+        consignment_number_label: Номер партії товару
+        submit_button: Надіслати
     index:
-      title: Orders
-      breadcrumb: Orders
-      header: Orders
-      delivery_show_all: Show All
-      delivery_dispatched: Dispatched
-      delivery_pending: Pending
-      delivery_select: Delivery
-      no_records: You don't have any orders yet.
-      order_number: Order No.
-      full_name: Full Name
-      payment_type: Payment Type
-      payment_status: Payment Status
-      delivery_status: Delivery Status
-      gross_amount: Gross Amount
-      last_updated: Last Updated
+      title: Замовлення
+      breadcrumb: Замовлення
+      header: Замовлення
+      delivery_show_all: Показати все
+      delivery_dispatched: Відправлено
+      delivery_pending: В очікуванні
+      delivery_select: Доставка
+      payment_select: Платіж
+      no_records: У вас немає жодного замовлення, що відповідає цим критеріям
+      order_number: '№ замовлення'
+      full_name: Повна назва
+      payment_type: Тип платежу
+      payment_status: Статус платежу
+      delivery_status: Статус доставки
+      gross_amount: Сума брутто
+      last_updated: Останнє оновлення
     show:
-      title: 'Order #%{order_id}'
-      orders_index: Orders
-      cancel_order_tooltip: Cancel Order
-      header: 'Order #%{order_id}'
+      title: 'Замовлення #%{order_id}'
+      orders_index: Замовлення
+      cancel_order_tooltip: Скасувати замовлення
+      header: 'Замовлення #%{order_id}'
       delivery_details:
-        header: Delivery Details
-        email: Email
-        status: Status
-        dispatch_date: Dispatch Date
-        delivery_service: Delivery Service
-        tracking: Tracking
+        header: Інформація щодо доставки
+        email: Електронна пошта
+        status: Статус
+        dispatch_date: Дата відправлення
+        delivery_service: Служба доставки
+        tracking: Відстеження
       billing_address:
-        header: Billing Address
+        header: Адреса для виставлення рахунку
       delivery_address:
-        header: Delivery Address
+        header: Адреса доставки
       payment_details:
-        header: Payment Details
-        card_number: Card Number
-        expiry_date: Expiry Date
+        header: Деталі платежу
+        card_number: Номер картки
+        expiry_date: Дійсна до
       order_items:
-        header: Order Items
-        item: Item
-        sku: SKU
-        price: Price
-        quantity: Qty
-        total: Total
-        delivery: Delivery
-        subtotal: Subtotal
-        tax: Tax
+        header: Замовлені позиції
+        item: Позиція
+        sku: Одиниця зберігання (SKU)
+        price: Ціна
+        quantity: Кількість
+        total: Всього
+        delivery: Доставка
+        subtotal: Підсумок
+        tax: Податок
       transactions:
-        header: Transactions
-        transaction_type: Transaction Type
-        payment_type: Payment Type
-        payment_status: Payment Status
-        fee: Fee
-        net_amount: Net Amount
-        gross_amount: Gross Amount
-        last_updated: Last Updated
+        header: Транзакції
+        transaction_type: Тип транзакції
+        payment_type: Тип платежу
+        payment_status: Статус платежу
+        fee: Комісія
+        net_amount: Сума нетто
+        gross_amount: Сума брутто
+        last_updated: Останнє оновлення
       tracking:
-        website: Tracking Website
-        number: Tracking Number
+        website: Відстеження вебсайту
+        number: Номер для відстеження
   pages:
     index:
-      title: Title
-      breadcrumb: Pages
-      header: Pages
-      sorting: Sorting
-      visible: Visible
-      last_updated: Last Updated
+      title: Назва
+      breadcrumb: Сторінки
+      header: Сторінки
+      sorting: Сортування
+      visible: Видимість
+      last_updated: Останнє оновлення
     form:
-      header: Edit Page
+      header: Редагувати сторінку
       write_your_page:
-        header: Write Your Page
-        description: Set the title for your page, menu item, sorting order and add your page content.
-        title_label: Title
-        menu_title_label: Menu Title
-        sorting_label: Sorting
-        content_label: Content
+        header: Напишіть свою сторінку
+        description: Встановіть назву для вашої сторінки, пункти меню, порядок сортування та додайте зміст вашої сторінки.
+        title_label: Назва
+        menu_title_label: Назва меню
+        sorting_label: Сортування
+        content_label: Зміст
       search_engines:
-        header: Search Engines
-        description: Set up the page title, meta description and URL slug; these help to define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
-        slug_label: Slug
+        header: Пошукові системи
+        description: Введіть заголовок сторінки, метаопис та Url-мітку для того щоб визначити, як сторінка відображується в пошукових системах.
+        page_title_label: Заголовок сторінки
+        meta_description_label: Метаопис
+        slug_label: Мітка
       visibility:
-        header: Visibility
-        description: Set if the page is visible on your storefront.
-        visible_label: Visible
-        hidden_label: Hidden
+        header: Видимість
+        description: Встановіть видимість сторінки на електронній вітрині.
+        visible_label: Видимий
+        hidden_label: Прихований
       template:
-        header: Template
-        description: Select the template this page will use on your storefront.
-      submit_button: Submit
+        header: Шаблон
+        description: Виберіть шаблон, який ця сторінка використовуватиме на електронній вітрині.
+      submit_button: Надіслати
     edit:
-      title: Edit Page
-      breadcrumb: Edit
-      pages_index: Pages
+      title: Редагувати сторінку
+      breadcrumb: Редагувати
+      pages_index: Сторінки
   products:
     index:
-      title: Products
-      breadcrumb: Products
-      header: Products
-      add_product_tooltip: Add Product
-      stock_management_tooltip: Stock Management
-      no_records: You don't have any products yet.
-      show_all_filter: Show All
-      published_filter: Published
-      draft_filter: Draft
-      archived_filter: Archived
-      featured_filter: Featured
-      filter_by: Filter By
-      weighting_sorting: Weighting
-      name_sorting: Name
-      popularity_sorting: Popularity
-      sort_by: Sort By
-      sku: SKU
-      part_number: Part no.
-      name: Name
-      variant: Variant
-      net_price: Net Price
-      gross_price: Gross Price
+      title: Продукція
+      breadcrumb: Продукція
+      header: Продукція
+      add_product_tooltip: Додати товар
+      stock_management_tooltip: Керування складом
+      no_records: У вас ще немає жодного товару.
+      show_all_filter: Показати все
+      published_filter: Опубліковано
+      draft_filter: Малюнок
+      archived_filter: Заархівовано
+      featured_filter: Обраний
+      filter_by: Фільтрувати за
+      weighting_sorting: Зважування
+      name_sorting: Назва
+      popularity_sorting: Популярність
+      sort_by: Сортувати за
+      sku: Одиниця зберігання (SKU)
+      part_number: Артикул №.
+      name: Назва
+      variant: Варіація
+      net_price: Ціна нетто
+      gross_price: Ціна брутто
     edit:
-      title: Edit Product
-      breadcrumb: Edit
-      product_index: Products
-      header: Edit Product
+      title: Редагувати товар
+      breadcrumb: Редагувати
+      product_index: Продукція
+      header: Редагувати товар
     form:
-      publish_button: Publish
-      save_button: Save
+      publish_button: Опублікувати
+      save_button: Зберегти
       additional_options:
-        header: Additional Options
-        description: Feature your product and/or remove SKU options from the product page.
-        featured_label: Featured
-        tags_label: Tag
+        header: Додаткові опції
+        description: Опишіть ваш товар та/або видаліть опції SKU зі сторінки товару.
+        featured_label: Обраний
+        tags_label: Тег
       associations:
-        header: Associations
-        description: Select associated accessories and related products for your product (related products will be displayed on the product page).
-        accessories_label: Accessories
-        related_products_label: Related Products
-        select_accessory_placeholder: Select associated accessories
-        select_related_products_placeholder: Select related products
+        header: Зв'язки
+        description: Оберіть пов'язані аксесуари та супутні товари для вашого продукту (супутні товари відображатимуться на сторінці продукту).
+        accessories_label: Аксесуари
+        related_products_label: Супутні товари
+        select_accessory_placeholder: Оберіть пов'язані аксесуари
+        select_related_products_placeholder: Оберіть супутні товари
       product_details:
-        header: Product Details
-        description: Set the name, description and sorting order for your category.
-        select_category_placeholder: Select category
-        part_number_label: Part Number
-        sku_label: SKU
-        name_label: Name
-        weighting_label: Weighting
-        short_description_label: Short Description
-        description_label: Description
+        header: Детальний опис продукту
+        description: Введіть назву, опис та порядок сортування для вашої категорії.
+        select_category_placeholder: Виберіть категорію
+        part_number_label: '№ артикулу'
+        sku_label: Одиниця зберігання (SKU)
+        name_label: Назва
+        weighting_label: Зважування
+        short_description_label: Стислий опис
+        description_label: Опис
       search_engines:
-        header: Search Engines
-        description: Set up the page title and meta description to help define how a page is shown in search engines.
-        page_title_label: Page Title
-        meta_description_label: Meta Description
+        header: Пошукові системи
+        description: Введіть заголовок сторінки та метаопис для того щоб визначити, як сторінка відображується в пошукових системах.
+        page_title_label: Заголовок сторінки
+        meta_description_label: Метаопис
       images:
-        header: Images
-        description: Upload and edit images of this product. You can also set the default image to display on the product page.
-        add_image: Add Image
-        no_records: You do not have any images for this product.
+        header: Зображення
+        description: Завантажте та відредагуйте зображення цього продукту. Ви також можете встановити стандартне зображення для відображення на сторінці продукту.
+        add_image: Додати зображення
+        no_records: У вас немає жодного зображення для цього продукту.
       skus:
-        header: Variants
-        description: Configure the variant options for selling this product.
-        variant_options: Variant Options
-        add_variant: Add Variant
-        no_records: You do not have any variants for this product.
-        code: Code
-        stock: Stock
-        cost_value: Cost Value
-        price: Price
+        header: Варіації
+        description: Налаштуйте опції варіації для продажу цього продукту.
+        variant_options: Опції варіації
+        add_variant: Додати варіацію
+        no_records: У вас немає жодної варіації для цього продукту.
+        code: Код
+        stock: Запаси
+        cost_value: Вартість
+        price: Ціна
         modal:
-          add_variant: Add Variant
-          edit_variant: Edit Variant
-          code_label: Code
-          length_label: Length
-          weight_label: Weight
-          thickness_label: Thickness
-          stock_label: Stock
-          stock_warning_level_label: Stock Warning Level
-          cost_value_label: Cost Value
-          price_label: Price
-          submit_button: Submit
+          add_variant: Додати варіацію
+          edit_variant: Редагувати варіацію
+          code_label: Код
+          length_label: Довжина
+          weight_label: Вага
+          thickness_label: Товщина
+          stock_label: Запаси
+          stock_warning_level_label: Рівень видачі попередження про закінчення запасів
+          cost_value_label: Вартість
+          price_label: Ціна
+          submit_button: Надіслати
     skus:
       stock_adjustments:
         modal:
-          header: Add Stock Adjustment for
-          current_stock: Current stock is
-          description_label: Description
-          adjustment_label: Adjustment
-          submit_button: Submit
+          header: Додати регулювання запасів для
+          current_stock: Поточні запаси наступні
+          description_label: Опис
+          adjustment_label: Регулювання
+          submit_button: Надіслати
       variants:
         modal:
-          header: Configure Variant Options
-          reset_button: Reset Variants
-          submit_button: Submit
+          header: Налаштувати опції варіації
+          reset_button: Переналаштувати варіації
+          submit_button: Надіслати
     stock:
       index:
-        title: Stock Management
-        breadcrumb: Stock Management
-        product_index: Products
-        add_stock_tooltip: Add Stock
-        header: Stock Management
-        show_all_filter: Show All
-        low_filter: Low
-        stock_filer: Stock
-        no_records: You don't have any Product SKUs yet.
-        sku: SKU
-        name: Name
-        variant: Variant
-        stock: Stock
-        stock_warning_level: Stock Warning Level
+        title: Керування запасами
+        breadcrumb: Керування запасами
+        product_index: Продукція
+        add_stock_tooltip: Додати запаси
+        header: Керування запасами
+        show_all_filter: Показати все
+        low_filter: Низькій рівень
+        stock_filer: Запаси
+        no_records: У вас ще немає SKU товару.
+        sku: Одиниця зберігання (SKU)
+        name: Назва
+        variant: Варіація
+        stock: Запаси
+        stock_warning_level: Рівень видачі попередження про закінчення запасів
       show:
-        title: Stock Management
-        product_index: Products
-        stock_management_index: Stock Management
-        add_stock_adjustment_tooltip: Add Stock Adjustment
-        header: Stock History
-        date: Date
-        description: Description
-        adjustment: Adjustment
-        stock: Stock
+        title: Керування запасами
+        product_index: Продукція
+        stock_management_index: Керування запасами
+        add_stock_adjustment_tooltip: Додати регулювання запасів
+        header: Архів запасів
+        date: Дата
+        description: Опис
+        adjustment: Регулювання
+        stock: Запаси
     stock_adjustments:
       new:
-        title: New Stock
-        breadcrumb: New
-        product_index: Products
-        stock_management_index: Stock Management
-        header: New Stock
-        sku_label: SKU
-        description_label: Description
-        adjustment_label: Adjustment
-        submit_button: Submit
+        title: Новий запас
+        breadcrumb: Новий
+        product_index: Продукція
+        stock_management_index: Керування запасами
+        header: Новий запас
+        sku_label: Одиниця зберігання (SKU)
+        description_label: Опис
+        adjustment_label: Регулювання
+        submit_button: Надіслати
     attachments:
       modal:
-        add_image: Add Image
-        edit_image: Edit Image
-        file_label: File
-        default_label: Default
-        submit_button: Submit
+        add_image: Додати зображення
+        edit_image: Редагувати зображення
+        file_label: Файл
+        default_label: За промовчанням
+        submit_button: Надіслати
   users:
     edit:
-      title: Profile
-      breadcrumb: Profile
-      header: Profile
+      title: Профіль
+      breadcrumb: Профіль
+      header: Профіль
       profile_settings:
-        header: Profile Settings
-        description: Set the name and profile picture for your administration account.
-        first_name_label: First Name
-        last_name_label: Last Name
-        profile_picture_label: Profile Picture
-      submit_button: Submit
+        header: Налаштування профілю
+        description: Введіть назву та виберіть зображення профілю для вашого аккаунту адміністрування.
+        first_name_label: Ім'я
+        last_name_label: Прізвище
+        profile_picture_label: Зображення профілю
+      submit_button: Надіслати
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "Ваш аккаунт підтверджено. Ви увійшли в систему."
+      send_instructions: "Через декілька хвилин ви отримаєте лист с інструкціями щодо того як підтвердити ваш аккаунт."
+      send_paranoid_instructions: "Якщо ваша електронна адреса є в нашій базі данних, за декілька хвилин ви отримаєте лист з інструкціями щодо того, як підтвердити ваш аккаунт."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: "Ви вже увійшли."
+      inactive: "Ваш аккаунт ще не активований."
+      invalid: "Невірна адреса електронної пошти або пароль."
+      invalid_token: "Недійсний код аутентифікації."
+      locked: "Ваш аккаунт заблокований."
+      not_found_in_database: "Невірна адреса електронної пошти або пароль."
+      timeout: "Ваш сеанс роботи завершений, увійдіть знову щоб продовжити."
+      unauthenticated: "Ви повинні увійти, або зареєструватися, перш ніж продовжити."
+      unconfirmed: "Ви повинні підтвердити свій аккаунт перш ніж продовжити."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Інструкції щодо підтвердження"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Переналаштувати інструкції щодо створення паролю"
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: "Розблокувати інструкції"
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: "Не вдалось вас ідентифікувати %{kind} через \"%{reason}\"."
+      success: "Успішна аутентифікація з %{kind} аккаунту."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      no_token: "Ви не можете отримати доступ до цієї сторінки, не переходячи з електронного листа щодо зміни паролю. Якщо ви переходите з електронного листа щодо зміни паролю, перевірте, що ви використовували повну URL-адресу."
+      send_instructions: "За декілька хвилин ви отримаєте лист с інструкціями щодо того як змінити ваш пароль."
+      send_paranoid_instructions: "Якщо ваша електронна адреса є в нашій базі данних, то за декілька хвилин ви отримаєте на вашу пошту посилання на відновлення паролю."
+      updated: "Ваш пароль було успішно змінено. Зараз ви увійшли в систему."
+      updated_not_active: "Ваш пароль було успішно змінено."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: "До побачення! Ваш аккаунт успішно деактивований. Сподіваємось побачити вас знову ще раз."
+      signed_up: "Ласкаво просимо! Ви успішно зареєструвались."
+      signed_up_but_inactive: "Ви успішно зареєструвались. Але ми не можемо надати вам доступ до системи через те, що ваш аккаунт ще не активований."
+      signed_up_but_locked: "Ви успішно зареєструвались. Але ми не можемо надати вам доступ до системи через те, що ваш аккаунт заблокований."
+      signed_up_but_unconfirmed: "На вашу електронну адресу було надіслано посилання для підтвердження. Будь ласка, перейдіть за цим посиланням для того щоб активувати ваш аккаунт."
+      update_needs_confirmation: "Ви успішно внесли зміни до вашого аккаунту, але нам потрібно перевірити вашу нову електронну адресу. Будь ласка, перевірте свою пошту та натисніть на посилання підтвердження для того щоб завершити процедуру підтвердження вашої нової електронної адреси."
+      updated: "Ви успішно внесли зміни до вашого аккаунту."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "Ви успішно увійшли в систему."
+      signed_out: "Ви успішно вийшли з системи."
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: "За декілька хвилин ви отримаєте електронний лист з інструкціями щодо того, як розблокувати ваш аккаунт."
+      send_paranoid_instructions: "Якщо ваш аккаунт існує, за декілька хвилин ви отримаєте електронний лист з інструкціями щодо його розблокування."
+      unlocked: "Ваш аккаунт було успішно розблоковано. Будь ласка, увійдіть в систему для того щоб продовжити."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      already_confirmed: "вже було підтверджено, будь ласка спробуйте увійти в систему"
+      confirmation_period_expired: "потребує підтвердження протягом %{period}, будь ласка надішліть запит на новий"
+      expired: "закінчився, будь ласка надішліть запит на новий"
+      not_found: "не знайдено"
+      not_locked: "не було заблоковано"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "1 помилка не дозволяє зберегти цей %{resource}:"
         few: "%{count} errors prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        many: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "%{count} помилок не дозволяє зберегти цей %{resource}:"
   mailers:
     contact_message:
-      title: Received a new message from
-      header: New Message
-      hello: Hello
-      name_prefix: You have received the following information from
-      message_title: Message
-      email_title: Email
-      website_title: Website
-      thanks: Thanks
+      title: Отримано нове повідомлення від
+      header: Нове повідомлення
+      hello: Привіт
+      name_prefix: Ви отримали наступне повідомлення від
+      message_title: Повідомлення
+      email_title: Електронна пошта
+      website_title: Веб-сайт
+      thanks: Дякуємо
   controllers:
     admin:
       products:
         update:
-          draft: Your product has been saved successfully as a draft
-          publish: Your product has been published successfully. It is now live in your store
+          draft: Ваш товар було успішно збережено як чернетку
+          publish: Ваш товар було успішно опубліковано. Зараз він присутній в онлайн-магазині
         destroy:
-          valid: Product was successfully deleted
+          valid: Товар успішно видалено
         archive:
-          valid: Product was successfully archived
+          valid: Товар успішно заархівовано
       skus:
         variants:
           create:
-            invalid: Variant options can't be blank
+            invalid: Опції варіацій не можуть бути порожніми
       accessories:
         create:
-          valid: Accessory was successfully created
+          valid: Аксесуар вдало створено
         update:
-          valid: Accessory was successfully updated
+          valid: Аксесуар вдало оновлено
         destroy:
-          valid: Accessory was successfully deleted
+          valid: Аксесуар вдало видалено
       admin:
         update:
-          valid: Store settings were successfully updated
+          valid: Налаштування магазину вдало оновлено
       attachments:
         destroy:
-          limit_reached: You do not have any images for this product
+          limit_reached: У вас немає жодного зображення для цього товару
       categories:
         create:
-          valid: Category was successfully created
+          valid: Категорію вдало створено
         update:
-          valid: Category was successfully updated
+          valid: Категорію вдало оновлено
       delivery_service_prices:
         create:
-          valid: Delivery service price was successfully created
+          valid: Ціну доставки вдало створено
         update:
-          valid: Delivery service price was successfully updated
+          valid: Ціну доставки вдало оновлено
         destroy:
-          valid: Delivery service price was successfully deleted
+          valid: Ціну доставки вдало видалено
       delivery_services:
         create:
-          valid: Delivery service was successfully created
+          valid: Службу доставки вдало створено
         update:
-          valid: Delivery service was successfully updated
+          valid: Службу доставки вдало оновлено
         destroy:
-          valid: Delivery service was successfully deleted
+          valid: Службу доставки вдало видалено
         set_countries:
-          select_tag: You need to select a delivery service
+          select_tag: Вам потрібно вибрати службу доставки
       pages:
         update:
-          valid: Page was successfully updated
+          valid: Сторінку було вдало видалено
       users:
         update:
-          valid: Profile was successfully updated
-          invalid: There was an error when attempting to update your profile details
+          valid: Профіль було вдало оновлено
+          invalid: Під час спроби оновити деталі вашого профілю трапилась помилка
     orders:
       destroy:
-        valid: Your order has been cancelled
+        valid: Ваше замовлення було скасовано
       validate_confirm_render:
-        invalid: An error ocurred when trying to complete your order. Please try again
+        invalid: Під час спроби завершити ваше замовлення трапилась помилка. Будь ласка, спробуйте ще раз
